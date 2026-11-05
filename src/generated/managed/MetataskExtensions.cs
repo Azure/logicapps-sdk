@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
 
     public class MetataskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSubscriptionProcessCompleted(Expression<Func<CreateSubscriptionProcessCompletedInput>> webhookRequestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSubscriptionProcessCompleted(Expression<Func<WebhookRequestBodyInput>> webhookRequestBody, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookRequestBody = WorkflowExpression.Compile(webhookRequestBody, nameof(webhookRequestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
         }
     }
 
-    public class CreateSubscriptionProcessCompletedInput
+    public class WebhookRequestBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "PROCESS_COMPLETED";
@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("conditions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSubscriptionProcessCompletedInputConditionsType Conditions { get; set; }
+        public WebhookRequestBodyInputConditionsType Conditions { get; set; }
     }
 
-    public class CreateSubscriptionProcessCompletedInputConditionsType
+    public class WebhookRequestBodyInputConditionsType
     {
         [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Template { get; set; }

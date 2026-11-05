@@ -34,18 +34,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowPostResponse, ApiConnectionActionConfiguration> Workflow(Expression<Func<string>> workflowId, Expression<Func<WorkflowPostInput>> body = null)
+        public IBodyWorkflowAction<WorkflowResponse, ApiConnectionActionConfiguration> Workflow(Expression<Func<string>> workflowId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<WorkflowPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkflowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow/{0}/run", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<WorkflowPostResponse>(callPayload);
+                return new ApiConnectionAction<WorkflowResponse>(callPayload);
             });
         }
 
@@ -110,22 +110,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         public int Credits { get; set; }
     }
 
-    public class WorkflowPostResponse
+    public class WorkflowResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("data")]
-        public WorkflowPostResponseDataType Data { get; set; }
+        public WorkflowResponseDataType Data { get; set; }
     }
 
-    public class WorkflowPostResponseDataType
+    public class WorkflowResponseDataType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class WorkflowPostInput
+    public class BodyInput
     {
         [JsonProperty("startVariables")]
         public JToken StartVariables { get; set; }

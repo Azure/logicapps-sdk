@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
     public class WendocslinkerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
-        public IBodyWorkflowAction<PublishDocxResponse, ApiConnectionActionConfiguration> PublishDocx(Expression<Func<PublishDocxInput>> requestBody)
+        public IBodyWorkflowAction<PublishDocxResponse, ApiConnectionActionConfiguration> PublishDocx(Expression<Func<RequestBodyInput>> requestBody)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<PublishDocxResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
-        public IBodyWorkflowAction<PublishPDFResponse, ApiConnectionActionConfiguration> PublishPDF(Expression<Func<PublishPDFInput>> requestBody)
+        public IBodyWorkflowAction<PublishPDFResponse, ApiConnectionActionConfiguration> PublishPDF(Expression<Func<RequestBodyInput>> requestBody)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<PublishPDFResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
-        public IBodyWorkflowAction<PublishHtmlResponse, ApiConnectionActionConfiguration> PublishHtml(Expression<Func<PublishHtmlInput>> requestBody)
+        public IBodyWorkflowAction<PublishHtmlResponse, ApiConnectionActionConfiguration> PublishHtml(Expression<Func<RequestBodyInput>> requestBody)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredBodyAction<PublishHtmlResponse, ApiConnectionActionConfiguration>(() =>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         public string Exception { get; set; }
     }
 
-    public class PublishDocxInput
+    public class RequestBodyInput
     {
         [JsonProperty("docName")]
         public string DocName { get; set; }
@@ -155,30 +155,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         public string Exception { get; set; }
     }
 
-    public class PublishPDFInput
-    {
-        [JsonProperty("docName")]
-        public string DocName { get; set; }
-
-        [JsonProperty("documentTemplateData")]
-        public string DocumentTemplateData { get; set; }
-
-        [JsonProperty("jsonData")]
-        public string JsonData { get; set; }
-
-        [JsonProperty("logLevel")]
-        public string LogLevel { get; set; }
-
-        [JsonProperty("language")]
-        public string Language { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("clientType")]
-        public string ClientType { get; set; }
-    }
-
     public class PublishHtmlResponse
     {
         [JsonProperty("documentName")]
@@ -213,30 +189,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
 
         [JsonProperty("exception")]
         public string Exception { get; set; }
-    }
-
-    public class PublishHtmlInput
-    {
-        [JsonProperty("docName")]
-        public string DocName { get; set; }
-
-        [JsonProperty("documentTemplateData")]
-        public string DocumentTemplateData { get; set; }
-
-        [JsonProperty("jsonData")]
-        public string JsonData { get; set; }
-
-        [JsonProperty("logLevel")]
-        public string LogLevel { get; set; }
-
-        [JsonProperty("language")]
-        public string Language { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("clientType")]
-        public string ClientType { get; set; }
     }
 }
 

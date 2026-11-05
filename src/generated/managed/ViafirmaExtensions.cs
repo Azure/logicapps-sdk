@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
     public class ViafirmaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<SendSignRequestResponse, ApiConnectionActionConfiguration> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<SendSignRequestInput>> body)
+        public IBodyWorkflowAction<SendSignRequestResponse, ApiConnectionActionConfiguration> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<SendSignRequestBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<CreateSignRequestResponse, ApiConnectionActionConfiguration> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<CreateSignRequestInput>> body)
+        public IBodyWorkflowAction<CreateSignRequestResponse, ApiConnectionActionConfiguration> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<CreateSignRequestBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -59,31 +59,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         public string Code { get; set; }
     }
 
-    public class SendSignRequestInput
+    public class SendSignRequestBodyInput
     {
         [JsonProperty("groupCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupCode { get; set; }
 
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSignRequestInputWorkflowType Workflow { get; set; } = new SendSignRequestInputWorkflowType();
+        public SendSignRequestBodyInputWorkflowType Workflow { get; set; } = new SendSignRequestBodyInputWorkflowType();
 
         [JsonProperty("notification", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSignRequestInputNotificationType Notification { get; set; }
+        public BodyInputNotificationType Notification { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSignRequestInputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("callbackMails")]
         public string CallbackMails { get; set; }
     }
 
-    public class SendSignRequestInputWorkflowType
+    public class SendSignRequestBodyInputWorkflowType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "WEB";
     }
 
-    public class SendSignRequestInputNotificationType
+    public class BodyInputNotificationType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -92,10 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         public string Detail { get; set; }
 
         [JsonProperty("sharedLink", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSignRequestInputNotificationTypeSharedLinkType SharedLink { get; set; }
+        public BodyInputNotificationTypeSharedLinkType SharedLink { get; set; }
     }
 
-    public class SendSignRequestInputNotificationTypeSharedLinkType
+    public class BodyInputNotificationTypeSharedLinkType
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         public string Subject { get; set; }
     }
 
-    public class SendSignRequestInputDocumentType
+    public class BodyInputDocumentType
     {
         [JsonProperty("templateCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateCode { get; set; }
@@ -119,28 +119,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         public string Link { get; set; }
     }
 
-    public class CreateSignRequestInput
+    public class CreateSignRequestBodyInput
     {
         [JsonProperty("groupCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupCode { get; set; }
 
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSignRequestInputWorkflowType Workflow { get; set; } = new CreateSignRequestInputWorkflowType();
+        public CreateSignRequestBodyInputWorkflowType Workflow { get; set; } = new CreateSignRequestBodyInputWorkflowType();
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSignRequestInputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
     }
 
-    public class CreateSignRequestInputWorkflowType
+    public class CreateSignRequestBodyInputWorkflowType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "PRESENTIAL";
-    }
-
-    public class CreateSignRequestInputDocumentType
-    {
-        [JsonProperty("templateCode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplateCode { get; set; }
     }
 }
 

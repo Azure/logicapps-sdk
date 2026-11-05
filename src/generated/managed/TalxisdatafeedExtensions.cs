@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     public class TalxisdatafeedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CompanyLogo(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CompanyLogo(Expression<Func<CompanyLogoJurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
         {
             var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance, ApiConnectionActionConfiguration> GetCompanyFinace(Expression<Func<jurisdictionCodeInput2>> jurisdictionCode, Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance, ApiConnectionActionConfiguration> GetCompanyFinace(Expression<Func<GetCompanyFinaceJurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
         {
             var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<GetWeekOfYearResponse, ApiConnectionActionConfiguration> GetWeekOfYear(Expression<Func<string>> time, Expression<Func<ruleInput>> rule, Expression<Func<firstDayOfWeekInput>> firstDayOfWeek)
+        public IBodyWorkflowAction<GetWeekOfYearResponse, ApiConnectionActionConfiguration> GetWeekOfYear(Expression<Func<string>> time, Expression<Func<RuleInput>> rule, Expression<Func<FirstDayOfWeekInput>> firstDayOfWeek)
         {
             var __workflow_time = WorkflowExpression.Compile(time, nameof(time), required: true);
             var __workflow_rule = WorkflowExpression.Compile(rule, nameof(rule), required: true);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetSalutation(Expression<Func<languageInput>> language, Expression<Func<string>> surname, Expression<Func<genderInput>> gender, Expression<Func<string>> title = null, Expression<Func<string>> suffix = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetSalutation(Expression<Func<LanguageInput>> language, Expression<Func<string>> surname, Expression<Func<GenderInput>> gender, Expression<Func<string>> title = null, Expression<Func<string>> suffix = null)
         {
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_surname = WorkflowExpression.Compile(surname, nameof(surname), required: true);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum jurisdictionCodeInput
+    public enum CompanyLogoJurisdictionCodeInput
     {
         [EnumMember(Value = "cz")]
         Cz,
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum jurisdictionCodeInput2
+    public enum GetCompanyFinaceJurisdictionCodeInput
     {
         CZ,
         SK,
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ruleInput
+    public enum RuleInput
     {
         FirstDay,
         FirstFullWeek,
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum firstDayOfWeekInput
+    public enum FirstDayOfWeekInput
     {
         Sunday,
         Monday,
@@ -408,14 +408,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum languageInput
+    public enum LanguageInput
     {
         CS,
         SK
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum genderInput
+    public enum GenderInput
     {
         [EnumMember(Value = "male")]
         Male,

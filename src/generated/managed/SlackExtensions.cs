@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<PostMessageResponse, ApiConnectionActionConfiguration> PostMessage(Expression<Func<PostMessageV2Input>> message)
+        public IBodyWorkflowAction<PostMessageResponse, ApiConnectionActionConfiguration> PostMessage(Expression<Func<MessageInput>> message)
         {
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             return new DeferredBodyAction<PostMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         public string Ts { get; set; }
     }
 
-    public class PostMessageV2Input
+    public class MessageInput
     {
         [JsonProperty("channel", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         public bool? PostAsUser { get; set; }
 
         [JsonProperty("parse")]
-        public PostMessageV2InputParseModeType? ParseMode { get; set; }
+        public MessageInputParseModeType? ParseMode { get; set; }
 
         [JsonProperty("mrkdwn")]
         public bool? SlackMarkupParsing { get; set; }
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostMessageV2InputParseModeType
+    public enum MessageInputParseModeType
     {
         [EnumMember(Value = "full")]
         Full,

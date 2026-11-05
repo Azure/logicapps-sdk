@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
     public class AzuremonitorlogsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<TableV2, ApiConnectionActionConfiguration> QueryData(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<QueryDataV2Input>> body)
+        public IBodyWorkflowAction<TableV2, ApiConnectionActionConfiguration> QueryData(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<ResourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<BodyInput>> body)
         {
             var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
             var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
-        public IBodyWorkflowAction<VisualizeResults, ApiConnectionActionConfiguration> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<VisualizeQueryV2Input>> body, Expression<Func<visTypeInput>> visType)
+        public IBodyWorkflowAction<VisualizeResults, ApiConnectionActionConfiguration> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<ResourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<BodyInput>> body, Expression<Func<VisTypeInput>> visType)
         {
             var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
             var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum resourcetypeInput
+    public enum ResourcetypeInput
     {
         [EnumMember(Value = "Log Analytics Workspace")]
         LogAnalyticsWorkspace,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         ApplicationInsights
     }
 
-    public class QueryDataV2Input
+    public class BodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
@@ -114,20 +114,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         public PartialQueryError Error { get; set; }
     }
 
-    public class VisualizeQueryV2Input
-    {
-        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Query { get; set; }
-
-        [JsonProperty("timerangetype", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TimeRangeType { get; set; }
-
-        [JsonProperty("timerange", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Timerange { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum visTypeInput
+    public enum VisTypeInput
     {
         [EnumMember(Value = "Html Table")]
         HtmlTable,

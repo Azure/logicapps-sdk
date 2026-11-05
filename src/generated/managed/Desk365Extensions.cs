@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     public class Desk365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<GetAllTicketsResponse, ApiConnectionActionConfiguration> GetAllTickets(Expression<Func<int>> offset = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderTypeInput>> orderType = null, Expression<Func<string>> updatedSince = null, Expression<Func<includeDescriptionInput>> includeDescription = null)
+        public IBodyWorkflowAction<GetAllTicketsResponse, ApiConnectionActionConfiguration> GetAllTickets(Expression<Func<int>> offset = null, Expression<Func<OrderByInput>> orderBy = null, Expression<Func<OrderTypeInput>> orderType = null, Expression<Func<string>> updatedSince = null, Expression<Func<IncludeDescriptionInput>> includeDescription = null)
         {
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<CreateTicketResponse, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketInput>> body)
+        public IBodyWorkflowAction<CreateTicketResponse, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTicketResponse, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<UpdateTicketResponse, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketNumber, Expression<Func<UpdateTicketInput>> body = null)
+        public IBodyWorkflowAction<UpdateTicketResponse, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketNumber, Expression<Func<UpdateTicketBodyInput>> body = null)
         {
             var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
-        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<AddNoteInput>> body = null)
+        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<AddNoteBodyInput>> body = null)
         {
             var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
     public class Desk365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTicketWebhook(Expression<Func<CreateTicketWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTicketWebhook(Expression<Func<CreateTicketWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateTicketWebhook(Expression<Func<UpdateTicketWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateTicketWebhook(Expression<Func<CreateTicketWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddNoteWebhook(Expression<Func<AddNoteWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddNoteWebhook(Expression<Func<AddNoteWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddReplyWebhook(Expression<Func<AddReplyWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddReplyWebhook(Expression<Func<AddReplyWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderByInput
+    public enum OrderByInput
     {
         [EnumMember(Value = "created_time")]
         CreatedTime,
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderTypeInput
+    public enum OrderTypeInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeDescriptionInput
+    public enum IncludeDescriptionInput
     {
         Yes,
         No
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string ClosedOn { get; set; }
     }
 
-    public class CreateTicketInput
+    public class CreateTicketBodyInput
     {
         public string Agent { get; set; }
         public string Category { get; set; }
@@ -278,16 +278,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
-        public CreateTicketInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
         public string Status { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
-        public CreateTicketInputTypeType? Type { get; set; }
+        public BodyInputTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTicketInputPriorityType
+    public enum BodyInputPriorityType
     {
         Low,
         Medium,
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTicketInputTypeType
+    public enum BodyInputTypeType
     {
         Question,
         Incident,
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string UpdatedOn { get; set; }
     }
 
-    public class UpdateTicketInput
+    public class UpdateTicketBodyInput
     {
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -339,34 +339,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string Status { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateTicketInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("type")]
-        public UpdateTicketInputTypeType? Type { get; set; }
+        public BodyInputTypeType? Type { get; set; }
 
         [JsonProperty("assign_to")]
         public string AssignTo { get; set; }
 
         [JsonProperty("category")]
         public string Category { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTicketInputPriorityType
-    {
-        Low,
-        Medium,
-        High,
-        Urgent
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTicketInputTypeType
-    {
-        Question,
-        Incident,
-        Problem,
-        Request
     }
 
     public class AddNoteResponse
@@ -381,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string Private { get; set; }
     }
 
-    public class AddNoteInput
+    public class AddNoteBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
@@ -389,17 +371,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string NotifyAgent { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddNoteInputPrivateType? Private { get; set; } = AddNoteInputPrivateType.Yes;
+        public BodyInputPrivateType? Private { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Desk365.BodyInputPrivateType.Yes;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddNoteInputPrivateType
+    public enum BodyInputPrivateType
     {
         Yes,
         No
     }
 
-    public class CreateTicketWebhookInput
+    public class CreateTicketWebhookBodyInput
     {
         public string ContactEmail { get; set; }
         public string Subject { get; set; }
@@ -412,47 +394,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class UpdateTicketWebhookInput
+    public class AddNoteWebhookBodyInput
     {
-        public string ContactEmail { get; set; }
-        public string Subject { get; set; }
-        public string Status { get; set; }
-        public string Priority { get; set; }
         public string Agent { get; set; }
-        public string Group { get; set; }
+        public string Content { get; set; }
+        public BodyInputPrivateType? Private { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class AddNoteWebhookInput
+    public class AddReplyWebhookBodyInput
     {
-        public string Agent { get; set; }
         public string Content { get; set; }
-        public AddNoteWebhookInputPrivateType? Private { get; set; }
+        public BodyInputResponseTypeType? ResponseType { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddNoteWebhookInputPrivateType
-    {
-        Yes,
-        No
-    }
-
-    public class AddReplyWebhookInput
-    {
-        public string Content { get; set; }
-        public AddReplyWebhookInputResponseTypeType? ResponseType { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddReplyWebhookInputResponseTypeType
+    public enum BodyInputResponseTypeType
     {
         Agent,
         Contact

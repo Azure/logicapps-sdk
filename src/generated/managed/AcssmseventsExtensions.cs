@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acssmsevents
 
     public class AcssmseventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSMSReceivedEventSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> resourceName, Expression<Func<CreateSMSReceivedEventSubscriptionInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSMSReceivedEventSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> resourceName, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acssmsevents
         }
     }
 
-    public class CreateSMSReceivedEventSubscriptionInput
+    public class BodyInput
     {
         [JsonProperty("toPhoneNumbers")]
         public string[] FilterByToPhoneNumber { get; set; }
@@ -46,34 +46,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acssmsevents
         public string EventSubscriptionName { get; set; }
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSMSReceivedEventSubscriptionInputPropertiesType Properties { get; set; } = new CreateSMSReceivedEventSubscriptionInputPropertiesType();
+        public BodyInputPropertiesType Properties { get; set; } = new BodyInputPropertiesType();
     }
 
-    public class CreateSMSReceivedEventSubscriptionInputPropertiesType
+    public class BodyInputPropertiesType
     {
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSMSReceivedEventSubscriptionInputPropertiesTypeDestinationType Destination { get; set; } = new CreateSMSReceivedEventSubscriptionInputPropertiesTypeDestinationType();
+        public BodyInputPropertiesTypeDestinationType Destination { get; set; } = new BodyInputPropertiesTypeDestinationType();
 
         [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSMSReceivedEventSubscriptionInputPropertiesTypeFilterType Filter { get; set; } = new CreateSMSReceivedEventSubscriptionInputPropertiesTypeFilterType();
+        public BodyInputPropertiesTypeFilterType Filter { get; set; } = new BodyInputPropertiesTypeFilterType();
     }
 
-    public class CreateSMSReceivedEventSubscriptionInputPropertiesTypeDestinationType
+    public class BodyInputPropertiesTypeDestinationType
     {
         [JsonProperty("endpointType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EndpointType { get; set; } = "WebHook";
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSMSReceivedEventSubscriptionInputPropertiesTypeDestinationTypePropertiesType Properties { get; set; } = new CreateSMSReceivedEventSubscriptionInputPropertiesTypeDestinationTypePropertiesType();
+        public BodyInputPropertiesTypeDestinationTypePropertiesType Properties { get; set; } = new BodyInputPropertiesTypeDestinationTypePropertiesType();
     }
 
-    public class CreateSMSReceivedEventSubscriptionInputPropertiesTypeDestinationTypePropertiesType
+    public class BodyInputPropertiesTypeDestinationTypePropertiesType
     {
         [JsonProperty("endpointUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CreateSMSReceivedEventSubscriptionInputPropertiesTypeFilterType
+    public class BodyInputPropertiesTypeFilterType
     {
         [JsonProperty("includedEventTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string[] IncludedEventTypes { get; set; } = new string[]

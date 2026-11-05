@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendMessageOperationalUnit(Expression<Func<SendMessageOperationalUnitInput>> sendMessage)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendMessageOperationalUnit(Expression<Func<SendMessageInput>> sendMessage)
         {
             var __workflow_sendMessage = WorkflowExpression.Compile(sendMessage, nameof(sendMessage), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
 
     public class EmigoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, Expression<Func<NewODataItemInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             var __workflow_feed = WorkflowExpression.Compile(feed, nameof(feed), required: true);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         public string OpuStatus { get; set; }
     }
 
-    public class SendMessageOperationalUnitInput
+    public class SendMessageInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int IdOperationalUnit { get; set; }
@@ -342,13 +342,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         public string Url { get; set; }
     }
 
-    public class NewODataItemInput
+    public class RequestBodyOfWebhookInput
     {
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewODataItemInputConfigType Config { get; set; } = new NewODataItemInputConfigType();
+        public RequestBodyOfWebhookInputConfigType Config { get; set; } = new RequestBodyOfWebhookInputConfigType();
     }
 
-    public class NewODataItemInputConfigType
+    public class RequestBodyOfWebhookInputConfigType
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

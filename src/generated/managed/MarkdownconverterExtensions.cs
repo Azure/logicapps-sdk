@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
     public class MarkdownconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration> MarkdownToHtml(Expression<Func<MarkdownToHtmlInput>> body)
+        public IBodyWorkflowAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration> MarkdownToHtml(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToHtmlResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration> MarkdownToJson(Expression<Func<MarkdownToJsonInput>> body)
+        public IBodyWorkflowAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration> MarkdownToJson(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration> MarkdownToXml(Expression<Func<MarkdownToXmlInput>> body)
+        public IBodyWorkflowAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration> MarkdownToXml(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToXmlResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration> MarkdownToPlainText(Expression<Func<MarkdownToPlainTextInput>> body)
+        public IBodyWorkflowAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration> MarkdownToPlainText(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToPlainTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration> MarkdownToCsv(Expression<Func<MarkdownToCsvInput>> body)
+        public IBodyWorkflowAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration> MarkdownToCsv(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToCsvResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration> MarkdownToLaTeX(Expression<Func<MarkdownToLaTeXInput>> body)
+        public IBodyWorkflowAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration> MarkdownToLaTeX(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToLaTeXResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration> MarkdownToAdaptiveCard(Expression<Func<MarkdownToAdaptiveCardInput>> body)
+        public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration> MarkdownToAdaptiveCard(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToAdaptiveCardResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration> MarkdownToYaml(Expression<Func<MarkdownToYamlInput>> body)
+        public IBodyWorkflowAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration> MarkdownToYaml(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToYamlResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration> MarkdownToEmail(Expression<Func<MarkdownToEmailInput>> body)
+        public IBodyWorkflowAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration> MarkdownToEmail(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToEmailResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration> MarkdownToSvg(Expression<Func<MarkdownToSvgInput>> body)
+        public IBodyWorkflowAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration> MarkdownToSvg(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToSvgResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToRssResponse, ApiConnectionActionConfiguration> MarkdownToRss(Expression<Func<MarkdownToRssInput>> body)
+        public IBodyWorkflowAction<MarkdownToRssResponse, ApiConnectionActionConfiguration> MarkdownToRss(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToRssResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration> MarkdownToWiki(Expression<Func<MarkdownToWikiInput>> body)
+        public IBodyWorkflowAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration> MarkdownToWiki(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToWikiResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToPngResponse, ApiConnectionActionConfiguration> MarkdownToPng(Expression<Func<MarkdownToPngInput>> body)
+        public IBodyWorkflowAction<MarkdownToPngResponse, ApiConnectionActionConfiguration> MarkdownToPng(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToPngResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToChartResponse, ApiConnectionActionConfiguration> MarkdownToChart(Expression<Func<MarkdownToChartInput>> body)
+        public IBodyWorkflowAction<MarkdownToChartResponse, ApiConnectionActionConfiguration> MarkdownToChart(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToChartResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration> MarkdownToDiagram(Expression<Func<MarkdownToDiagramInput>> body)
+        public IBodyWorkflowAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration> MarkdownToDiagram(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToDiagramResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownStatsResponse, ApiConnectionActionConfiguration> MarkdownStats(Expression<Func<MarkdownStatsInput>> body)
+        public IBodyWorkflowAction<MarkdownStatsResponse, ApiConnectionActionConfiguration> MarkdownStats(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownStatsResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToQrResponse, ApiConnectionActionConfiguration> MarkdownToQr(Expression<Func<MarkdownToQrInput>> body)
+        public IBodyWorkflowAction<MarkdownToQrResponse, ApiConnectionActionConfiguration> MarkdownToQr(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToQrResponse, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration> MarkdownToJpeg(Expression<Func<MarkdownToJpegInput>> body)
+        public IBodyWorkflowAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration> MarkdownToJpeg(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToJpegResponse, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration> MarkdownToBadge(Expression<Func<MarkdownToBadgeInput>> body)
+        public IBodyWorkflowAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration> MarkdownToBadge(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToBadgeResponse, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration> MarkdownToInfographic(Expression<Func<MarkdownToInfographicInput>> body)
+        public IBodyWorkflowAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration> MarkdownToInfographic(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToInfographicResponse, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToLogResponse, ApiConnectionActionConfiguration> MarkdownToLog(Expression<Func<MarkdownToLogInput>> body)
+        public IBodyWorkflowAction<MarkdownToLogResponse, ApiConnectionActionConfiguration> MarkdownToLog(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToLogResponse, ApiConnectionActionConfiguration>(() =>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration> MarkdownToMetrics(Expression<Func<MarkdownToMetricsInput>> body)
+        public IBodyWorkflowAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration> MarkdownToMetrics(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToMetricsResponse, ApiConnectionActionConfiguration>(() =>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration> MarkdownToSyslog(Expression<Func<MarkdownToSyslogInput>> body)
+        public IBodyWorkflowAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration> MarkdownToSyslog(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToSyslogResponse, ApiConnectionActionConfiguration>(() =>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration> MarkdownToJsDoc(Expression<Func<MarkdownToJsDocInput>> body)
+        public IBodyWorkflowAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration> MarkdownToJsDoc(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToJsDocResponse, ApiConnectionActionConfiguration>(() =>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration> MarkdownToXmlDoc(Expression<Func<MarkdownToXmlDocInput>> body)
+        public IBodyWorkflowAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration> MarkdownToXmlDoc(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToXmlDocResponse, ApiConnectionActionConfiguration>(() =>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration> MarkdownToReadme(Expression<Func<MarkdownToReadmeInput>> body)
+        public IBodyWorkflowAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration> MarkdownToReadme(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToReadmeResponse, ApiConnectionActionConfiguration>(() =>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration> MarkdownToChangelog(Expression<Func<MarkdownToChangelogInput>> body)
+        public IBodyWorkflowAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration> MarkdownToChangelog(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToChangelogResponse, ApiConnectionActionConfiguration>(() =>
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration> MarkdownToTableOfContents(Expression<Func<MarkdownToTableOfContentsInput>> body)
+        public IBodyWorkflowAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration> MarkdownToTableOfContents(Expression<Func<MarkdownStatsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToTableOfContentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
-        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration> MarkdownToStyledHtml(Expression<Func<MarkdownToStyledHtmlInput>> body)
+        public IBodyWorkflowAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration> MarkdownToStyledHtml(Expression<Func<MarkdownToStyledHtmlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkdownToStyledHtmlResponse, ApiConnectionActionConfiguration>(() =>
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToHtmlInput
+    public class MarkdownStatsBodyInput
     {
         [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarkdownContent { get; set; }
@@ -471,12 +471,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToJsonInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToXmlResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -490,12 +484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToXmlInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToPlainTextResponse
@@ -513,12 +501,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToPlainTextInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToCsvResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -532,12 +514,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToCsvInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToLaTeXResponse
@@ -555,12 +531,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToLaTeXInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToAdaptiveCardResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -574,12 +544,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToAdaptiveCardInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToYamlResponse
@@ -597,12 +561,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToYamlInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToEmailResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -616,12 +574,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToEmailInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToSvgResponse
@@ -639,12 +591,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToSvgInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToRssResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -660,12 +606,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToRssInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToWikiResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -679,12 +619,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToWikiInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToPngResponse
@@ -705,12 +639,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToPngInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToChartResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -729,12 +657,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToChartInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToDiagramResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -751,12 +673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToDiagramInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownStatsResponse
@@ -804,12 +720,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public int CodeBlockCount { get; set; }
     }
 
-    public class MarkdownStatsInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToQrResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -826,12 +736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToQrInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToJpegResponse
@@ -852,12 +756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToJpegInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToBadgeResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -874,12 +772,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToBadgeInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToInfographicResponse
@@ -900,12 +792,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToInfographicInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToLogResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -919,12 +805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToLogInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToMetricsResponse
@@ -942,12 +822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToMetricsInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToSyslogResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -961,12 +835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToSyslogInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToJsDocResponse
@@ -984,12 +852,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToJsDocInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToXmlDocResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1003,12 +865,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToXmlDocInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToReadmeResponse
@@ -1026,12 +882,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToReadmeInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToChangelogResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1045,12 +895,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
-    }
-
-    public class MarkdownToChangelogInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
     }
 
     public class MarkdownToTableOfContentsResponse
@@ -1068,12 +912,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string GenerationTime { get; set; }
     }
 
-    public class MarkdownToTableOfContentsInput
-    {
-        [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MarkdownContent { get; set; }
-    }
-
     public class MarkdownToStyledHtmlResponse
     {
         [JsonProperty("originalMarkdown")]
@@ -1089,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string ConversionTime { get; set; }
     }
 
-    public class MarkdownToStyledHtmlInput
+    public class MarkdownToStyledHtmlBodyInput
     {
         [JsonProperty("markdown", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarkdownContent { get; set; }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
-        public IBodyWorkflowAction<CreateDocumentUploadResponse, ApiConnectionActionConfiguration> CreateDocumentUpload(Expression<Func<CreateDocumentUploadInput>> body)
+        public IBodyWorkflowAction<CreateDocumentUploadResponse, ApiConnectionActionConfiguration> CreateDocumentUpload(Expression<Func<CreateDocumentUploadBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateDocumentUploadResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
-        public IBodyWorkflowAction<UpdateDocumentUploadResponse, ApiConnectionActionConfiguration> UpdateDocumentUpload(Expression<Func<string>> uploadId, Expression<Func<UpdateDocumentUploadInput>> body)
+        public IBodyWorkflowAction<UpdateDocumentUploadResponse, ApiConnectionActionConfiguration> UpdateDocumentUpload(Expression<Func<string>> uploadId, Expression<Func<UpdateDocumentUploadBodyInput>> body)
         {
             var __workflow_uploadId = WorkflowExpression.Compile(uploadId, nameof(uploadId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
-        public IBodyWorkflowAction<UploadCreatedResponse, ApiConnectionActionConfiguration> CreateVendorUpload(Expression<Func<CreateVendorUploadInput>> body)
+        public IBodyWorkflowAction<UploadCreatedResponse, ApiConnectionActionConfiguration> CreateVendorUpload(Expression<Func<CreateVendorUploadBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadCreatedResponse, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
 
     public class EphesoftsemantikforinvoicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<UploadCreatedResponse, ApiConnectionTriggerConfiguration> TrigSemantikInvoiceCompleted(Expression<Func<TrigSemantikInvoiceCompletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UploadCreatedResponse, ApiConnectionTriggerConfiguration> TrigSemantikInvoiceCompleted(Expression<Func<TrigSemantikInvoiceCompletedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<UploadCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -109,17 +109,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         public string UploadURL { get; set; }
     }
 
-    public class CreateDocumentUploadInput
+    public class CreateDocumentUploadBodyInput
     {
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDocumentUploadInputTypeType Type { get; set; } = CreateDocumentUploadInputTypeType.Invoice;
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices.BodyInputTypeType.Invoice;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocumentUploadInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "invoice")]
         Invoice
@@ -146,14 +146,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         public string Status { get; set; }
     }
 
-    public class UpdateDocumentUploadInput
+    public class UpdateDocumentUploadBodyInput
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDocumentUploadInputStatusType Status { get; set; } = UpdateDocumentUploadInputStatusType.Completed;
+        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices.BodyInputStatusType.Completed;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDocumentUploadInputStatusType
+    public enum BodyInputStatusType
     {
         [EnumMember(Value = "completed")]
         Completed,
@@ -185,13 +185,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         public string UploadURL { get; set; }
     }
 
-    public class CreateVendorUploadInput
+    public class CreateVendorUploadBodyInput
     {
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
     }
 
-    public class TrigSemantikInvoiceCompletedInput
+    public class TrigSemantikInvoiceCompletedBodyInput
     {
         [JsonProperty("integrationName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IntegrationName { get; set; } = "Microsoft Power Platform";
@@ -203,10 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         internal bool Enabled { get; set; } = true;
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TrigSemantikInvoiceCompletedInputSettingsType Settings { get; set; } = new TrigSemantikInvoiceCompletedInputSettingsType();
+        public BodyInputSettingsType Settings { get; set; } = new BodyInputSettingsType();
     }
 
-    public class TrigSemantikInvoiceCompletedInputSettingsType
+    public class BodyInputSettingsType
     {
         [JsonProperty("payload", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Payload { get; set; } = "{\n     \"AmountDue\": \"$AmountDue\",\n     \"DocumentId\": \"$DocumentId\",\n     \"DueDate\": \"$DueDate\",\n     \"Entity\": \"$Entity\",\n     \"FileName\": \"$FileName\",\n     \"IngestionId\": \"$IngestionId\",\n     \"InvoiceDate\": \"$InvoiceDate\",\n     \"InvoiceNumber\": \"$InvoiceNumber\",\n     \"Memo\": \"$Memo\",\n     \"OrderDate\": \"$OrderDate\",\n     \"PdfUrl\": \"$PdfUrl\",\n     \"PONumber\": \"$PONumber\",\n     \"PostingDate\": \"$PostingDate\",\n     \"ReviewedBy\": \"$ReviewedBy\",\n     \"ServiceEndDate\": \"$ServiceEndDate\",\n     \"ServiceStartDate\": \"$ServiceStartDate\",\n     \"ShipDate\": \"$ShipDate\",\n     \"ShipFreight\": \"$ShipFreight\",\n     \"SubTotal\": \"$SubTotal\",\n     \"TableUrl\": \"$TableUrl\",\n     \"TaxAmount\": \"$TaxAmount\",\n     \"TaxRate\": \"$TaxRate\",\n     \"TenantId\": \"$TenantId\",\n     \"Terms\": \"$Terms\",\n     \"TotalAmount\": \"$TotalAmount\",\n     \"Vendor\": {\n          \"VendorAddress\": {\n               \"VendorCountry\": \"$Vendor:Country\",\n               \"VendorLocality\": \"$Vendor:Locality\",\n               \"VendorPOBox\": \"$Vendor:POBox\",\n               \"VendorPostalCode\": \"$Vendor:PostalCode\",\n               \"VendorRegion\": \"$Vendor:Region\",\n               \"VendorStreetAddress\": \"$Vendor:StreetAddress\"\n          },\n          \"VendorApprover\": \"$Vendor:Approver\",\n          \"VendorCustom1\": \"$Vendor:Custom1\",\n          \"VendorCustom2\": \"$Vendor:Custom2\",\n          \"VendorCustom3\": \"$Vendor:Custom3\",\n          \"VendorCustom4\": \"$Vendor:Custom4\",\n          \"VendorCustom5\": \"$Vendor:Custom5\",\n          \"VendorCustomerId\": \"$Vendor:CustomerId\",\n          \"VendorDepartment\": \"$Vendor:Department\",\n          \"VendorGLCode\": \"$Vendor:GLCode\",\n          \"VendorIBAN\": \"$Vendor:IBAN\",\n          \"VendorId\": \"$Vendor:VendorId\",\n          \"VendorMatched\": \"$Vendor:Matched\",\n          \"VendorMemo\": \"$Vendor:Memo\",\n          \"VendorName\": \"$Vendor:Name\",\n          \"VendorStatus\": \"$Vendor:Status\",\n          \"VendorSWIFT\": \"$Vendor:SWIFT\",\n          \"VendorTaxId\": \"$Vendor:TaxId\",\n          \"VendorTelephone\": \"$Vendor:Telephone\"\n     }\n}";

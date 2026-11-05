@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class BillconverterbypowerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "billconverterbypower")]
-        public IBodyWorkflowAction<DtoResponseT10A002AV01CV01ExtractXmlFromInvoicePdf, ApiConnectionActionConfiguration> T10A002AV01CV01ExtractXmlFromInvoicePdf(Expression<Func<T10A002AV01CV01ExtractXmlFromInvoicePdfInput>> dtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdf)
+        public IBodyWorkflowAction<DtoResponseT10A002AV01CV01ExtractXmlFromInvoicePdf, ApiConnectionActionConfiguration> T10A002AV01CV01ExtractXmlFromInvoicePdf(Expression<Func<DtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdfInput>> dtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdf)
         {
             var __workflow_dtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdf = WorkflowExpression.Compile(dtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdf, nameof(dtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdf), required: true);
             return new DeferredBodyAction<DtoResponseT10A002AV01CV01ExtractXmlFromInvoicePdf, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "billconverterbypower")]
-        public IBodyWorkflowAction<DtoResponseT10A003AV01CV01ConvertXmlInvoiceToPdf, ApiConnectionActionConfiguration> T10A003AV01CV01ConvertXmlInvoiceToPdf(Expression<Func<T10A003AV01CV01ConvertXmlInvoiceToPdfInput>> dtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdf)
+        public IBodyWorkflowAction<DtoResponseT10A003AV01CV01ConvertXmlInvoiceToPdf, ApiConnectionActionConfiguration> T10A003AV01CV01ConvertXmlInvoiceToPdf(Expression<Func<DtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdfInput>> dtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdf)
         {
             var __workflow_dtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdf = WorkflowExpression.Compile(dtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdf, nameof(dtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdf), required: true);
             return new DeferredBodyAction<DtoResponseT10A003AV01CV01ConvertXmlInvoiceToPdf, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "billconverterbypower")]
-        public IBodyWorkflowAction<DtoResponseT10A001AV02CV02ConvertInvoiceToZugferdPdf, ApiConnectionActionConfiguration> T10A001AV02CV02ConvertInvoiceToZugferdPdf(Expression<Func<T10A001AV02CV02ConvertInvoiceToZugferdPdfInput>> dtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdf)
+        public IBodyWorkflowAction<DtoResponseT10A001AV02CV02ConvertInvoiceToZugferdPdf, ApiConnectionActionConfiguration> T10A001AV02CV02ConvertInvoiceToZugferdPdf(Expression<Func<DtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdfInput>> dtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdf)
         {
             var __workflow_dtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdf = WorkflowExpression.Compile(dtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdf, nameof(dtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdf), required: true);
             return new DeferredBodyAction<DtoResponseT10A001AV02CV02ConvertInvoiceToZugferdPdf, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "billconverterbypower")]
-        public IBodyWorkflowAction<DtoResponseT10A004AV01CV02ExtractInvoiceDataFromScan, ApiConnectionActionConfiguration> T10A004AV01CV02ExtractInvoiceDataFromScan(Expression<Func<T10A004AV01CV02ExtractInvoiceDataFromScanInput>> dtoRequestT10A004AV01CV02ExtractInvoiceDataFromScan)
+        public IBodyWorkflowAction<DtoResponseT10A004AV01CV02ExtractInvoiceDataFromScan, ApiConnectionActionConfiguration> T10A004AV01CV02ExtractInvoiceDataFromScan(Expression<Func<DtoRequestT10A004AV01CV02ExtractInvoiceDataFromScanInput>> dtoRequestT10A004AV01CV02ExtractInvoiceDataFromScan)
         {
             var __workflow_dtoRequestT10A004AV01CV02ExtractInvoiceDataFromScan = WorkflowExpression.Compile(dtoRequestT10A004AV01CV02ExtractInvoiceDataFromScan, nameof(dtoRequestT10A004AV01CV02ExtractInvoiceDataFromScan), required: true);
             return new DeferredBodyAction<DtoResponseT10A004AV01CV02ExtractInvoiceDataFromScan, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "billconverterbypower")]
-        public IBodyWorkflowAction<DtoResponseT10A005AV01CV02ValidateIban, ApiConnectionActionConfiguration> T10A005AV01CV02ValidateIban(Expression<Func<T10A005AV01CV02ValidateIbanInput>> dtoRequestT10A005AV01CV02ValidateIban)
+        public IBodyWorkflowAction<DtoResponseT10A005AV01CV02ValidateIban, ApiConnectionActionConfiguration> T10A005AV01CV02ValidateIban(Expression<Func<DtoRequestT10A005AV01CV02ValidateIbanInput>> dtoRequestT10A005AV01CV02ValidateIban)
         {
             var __workflow_dtoRequestT10A005AV01CV02ValidateIban = WorkflowExpression.Compile(dtoRequestT10A005AV01CV02ValidateIban, nameof(dtoRequestT10A005AV01CV02ValidateIban), required: true);
             return new DeferredBodyAction<DtoResponseT10A005AV01CV02ValidateIban, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "billconverterbypower")]
-        public IBodyWorkflowAction<DtoResponseT10A006AV01CV02ValidateVatId, ApiConnectionActionConfiguration> T10A006AV01CV02ValidateVatId(Expression<Func<T10A006AV01CV02ValidateVatIdInput>> dtoRequestT10A006AV01CV02ValidateVatId)
+        public IBodyWorkflowAction<DtoResponseT10A006AV01CV02ValidateVatId, ApiConnectionActionConfiguration> T10A006AV01CV02ValidateVatId(Expression<Func<DtoRequestT10A006AV01CV02ValidateVatIdInput>> dtoRequestT10A006AV01CV02ValidateVatId)
         {
             var __workflow_dtoRequestT10A006AV01CV02ValidateVatId = WorkflowExpression.Compile(dtoRequestT10A006AV01CV02ValidateVatId, nameof(dtoRequestT10A006AV01CV02ValidateVatId), required: true);
             return new DeferredBodyAction<DtoResponseT10A006AV01CV02ValidateVatId, ApiConnectionActionConfiguration>(() =>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string XML { get; set; }
     }
 
-    public class T10A002AV01CV01ExtractXmlFromInvoicePdfInput
+    public class DtoRequestT10A002AV01CV01ExtractXmlFromInvoicePdfInput
     {
         [JsonProperty("invoicePdf")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePDF { get; set; }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string VisualizedInvoicePDF { get; set; }
     }
 
-    public class T10A003AV01CV01ConvertXmlInvoiceToPdfInput
+    public class DtoRequestT10A003AV01CV01ConvertXmlInvoiceToPdfInput
     {
         [JsonProperty("xml")]
         public string InvoiceXML { get; set; }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string[] Notes { get; set; }
     }
 
-    public class T10A001AV02CV02ConvertInvoiceToZugferdPdfInput
+    public class DtoRequestT10A001AV02CV02ConvertInvoiceToZugferdPdfInput
     {
         [JsonProperty("invoicePdf")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePDF { get; set; }
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public double LineNetAmount { get; set; }
     }
 
-    public class T10A004AV01CV02ExtractInvoiceDataFromScanInput
+    public class DtoRequestT10A004AV01CV02ExtractInvoiceDataFromScanInput
     {
         [JsonProperty("invoiceFile")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoiceFile { get; set; }
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string[] Notes { get; set; }
     }
 
-    public class T10A005AV01CV02ValidateIbanInput
+    public class DtoRequestT10A005AV01CV02ValidateIbanInput
     {
         [JsonProperty("iban", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IBAN { get; set; }
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string[] Notes { get; set; }
     }
 
-    public class T10A006AV01CV02ValidateVatIdInput
+    public class DtoRequestT10A006AV01CV02ValidateVatIdInput
     {
         [JsonProperty("vatId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string VATId { get; set; }

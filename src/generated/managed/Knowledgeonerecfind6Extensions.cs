@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<SendFileResponse, ApiConnectionActionConfiguration> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<SendFileInput>> body = null)
+        public IBodyWorkflowAction<SendFileResponse, ApiConnectionActionConfiguration> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -188,17 +188,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         public string Result { get; set; }
     }
 
-    public class SendFileInput
+    public class BodyInput
     {
         public string FileContents { get; set; }
         public string FileName { get; set; }
         public string Title { get; set; }
         public string CreatedDate { get; set; }
         public string EDOCType { get; set; }
-        public SendFileInputExtraFieldsTypeItem[] ExtraFields { get; set; }
+        public BodyInputExtraFieldsTypeItem[] ExtraFields { get; set; }
     }
 
-    public class SendFileInputExtraFieldsTypeItem
+    public class BodyInputExtraFieldsTypeItem
     {
         public string FldName { get; set; }
         public string FldValue { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contextsmsmcp
     public class ContextsmsmcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contextsmsmcp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> mcpSessionId = null, Expression<Func<InvokeMCPInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contextsmsmcp
     {
     }
 
-    public class InvokeMCPInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

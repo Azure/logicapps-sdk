@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
     public class CognitiveservicesqnamakerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
-        public IBodyWorkflowAction<GenerateAnswerResponse, ApiConnectionActionConfiguration> GenerateAnswer(Expression<Func<string>> knowledgeBaseId, Expression<Func<string>> serviceHost, Expression<Func<string>> endpointKey, Expression<Func<GenerateAnswerInput>> body)
+        public IBodyWorkflowAction<GenerateAnswerResponse, ApiConnectionActionConfiguration> GenerateAnswer(Expression<Func<string>> knowledgeBaseId, Expression<Func<string>> serviceHost, Expression<Func<string>> endpointKey, Expression<Func<BodyInput>> body)
         {
             var __workflow_knowledgeBaseId = WorkflowExpression.Compile(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
             var __workflow_serviceHost = WorkflowExpression.Compile(serviceHost, nameof(serviceHost), required: true);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
         public string Source { get; set; }
     }
 
-    public class GenerateAnswerInput
+    public class BodyInput
     {
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }

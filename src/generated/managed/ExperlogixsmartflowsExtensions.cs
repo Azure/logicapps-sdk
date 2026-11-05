@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
     public class ExperlogixsmartflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<InvokeMCPInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<GetDocumentsResponse[], ApiConnectionActionConfiguration> GetDocuments(Expression<Func<GetDocumentsInput>> req)
+        public IBodyWorkflowAction<GetDocumentsResponse[], ApiConnectionActionConfiguration> GetDocuments(Expression<Func<GetDocumentsReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetDocumentsResponse[], ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<FlowExecutionResponse, ApiConnectionActionConfiguration> GetExecutionStatus(Expression<Func<GetExecutionStatusInput>> req)
+        public IBodyWorkflowAction<FlowExecutionResponse, ApiConnectionActionConfiguration> GetExecutionStatus(Expression<Func<GetDocumentsReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<FlowExecutionResponse, ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<DownloadDocumentInput>> req)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<DownloadDocumentReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<FlowExecutionResponse, ApiConnectionActionConfiguration> ExecuteFlow(Expression<Func<ExecuteFlowInput>> req)
+        public IBodyWorkflowAction<FlowExecutionResponse, ApiConnectionActionConfiguration> ExecuteFlow(Expression<Func<ExecuteFlowReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<FlowExecutionResponse, ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportPackage(Expression<Func<ExportPackageInput>> req)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportPackage(Expression<Func<ExportPackageReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BackupPackage(Expression<Func<BackupPackageInput>> req)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BackupPackage(Expression<Func<BackupPackageReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
     {
     }
 
-    public class InvokeMCPInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         public string DownloadUrl { get; set; }
     }
 
-    public class GetDocumentsInput
+    public class GetDocumentsReqInput
     {
         [JsonProperty("executionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExecutionId { get; set; }
@@ -176,19 +176,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         public string FlowExecutionPanelUrl { get; set; }
     }
 
-    public class GetExecutionStatusInput
-    {
-        [JsonProperty("executionId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExecutionId { get; set; }
-    }
-
-    public class DownloadDocumentInput
+    public class DownloadDocumentReqInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
     }
 
-    public class ExecuteFlowInput
+    public class ExecuteFlowReqInput
     {
         [JsonProperty("flowId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FlowId { get; set; }
@@ -203,13 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         public bool? EnableAsynchronousRequestReplyPattern { get; set; } = true;
     }
 
-    public class ExportPackageInput
+    public class ExportPackageReqInput
     {
         [JsonProperty("recordType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExportPackageInputRecordTypeType RecordType { get; set; }
+        public ReqInputRecordTypeType RecordType { get; set; }
 
         [JsonProperty("exportMode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExportPackageInputExportModeType ExportMode { get; set; } = ExportPackageInputExportModeType.All;
+        public ReqInputExportModeType ExportMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows.ReqInputExportModeType.All;
 
         [JsonProperty("records")]
         public JToken Records { get; set; }
@@ -225,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExportPackageInputRecordTypeType
+    public enum ReqInputRecordTypeType
     {
         Flow,
         Template,
@@ -233,14 +227,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExportPackageInputExportModeType
+    public enum ReqInputExportModeType
     {
         All,
         [EnumMember(Value = "Select")]
         SelectRecords
     }
 
-    public class BackupPackageInput
+    public class BackupPackageReqInput
     {
         [JsonProperty("includeHistory", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludeHistory { get; set; } = false;

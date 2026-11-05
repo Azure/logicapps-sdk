@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
     public class _10to8Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "10to8")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BookAppointment(Expression<Func<string>> organisationId, Expression<Func<BookAppointmentInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BookAppointment(Expression<Func<string>> organisationId, Expression<Func<BodyInput>> body)
         {
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         }
     }
 
-    public class BookAppointmentInput
+    public class BodyInput
     {
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }

@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
     public class PerplexityaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perplexityai")]
-        public IBodyWorkflowAction<CompletionPostResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<CompletionPostInput>> body = null)
+        public IBodyWorkflowAction<CompletionResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CompletionPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CompletionPostResponse>(callPayload);
+                return new ApiConnectionAction<CompletionResponse>(callPayload);
             });
         }
     }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
     {
     }
 
-    public class CompletionPostResponse
+    public class CompletionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public int Created { get; set; }
 
         [JsonProperty("choices")]
-        public CompletionPostResponseChoicesTypeItem[] Choices { get; set; }
+        public CompletionResponseChoicesTypeItem[] Choices { get; set; }
 
         [JsonProperty("usage")]
-        public CompletionPostResponseUsageType Usage { get; set; }
+        public CompletionResponseUsageType Usage { get; set; }
     }
 
-    public class CompletionPostResponseChoicesTypeItem
+    public class CompletionResponseChoicesTypeItem
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public string FinishReason { get; set; }
 
         [JsonProperty("message")]
-        public CompletionPostResponseChoicesTypeItemMessageType Message { get; set; }
+        public CompletionResponseChoicesTypeItemMessageType Message { get; set; }
 
         [JsonProperty("delta")]
-        public CompletionPostResponseChoicesTypeItemDeltaType Delta { get; set; }
+        public CompletionResponseChoicesTypeItemDeltaType Delta { get; set; }
     }
 
-    public class CompletionPostResponseChoicesTypeItemMessageType
+    public class CompletionResponseChoicesTypeItemMessageType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public string Role { get; set; }
     }
 
-    public class CompletionPostResponseChoicesTypeItemDeltaType
+    public class CompletionResponseChoicesTypeItemDeltaType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public string Role { get; set; }
     }
 
-    public class CompletionPostResponseUsageType
+    public class CompletionResponseUsageType
     {
         [JsonProperty("prompt_tokens")]
         public int PromptTokens { get; set; }
@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public int TotalTokens { get; set; }
     }
 
-    public class CompletionPostInput
+    public class BodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompletionPostInputModelType Model { get; set; } = CompletionPostInputModelType.Mistral7bInstruct;
+        public BodyInputModelType Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai.BodyInputModelType.Mistral7bInstruct;
 
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompletionPostInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("max_tokens")]
         public int? MaxTokens { get; set; }
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompletionPostInputModelType
+    public enum BodyInputModelType
     {
         [EnumMember(Value = "mistral-7b-instruct")]
         Mistral7bInstruct,
@@ -142,17 +142,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         Mixtral8x7bInstruct
     }
 
-    public class CompletionPostInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompletionPostInputMessagesTypeItemRoleType Role { get; set; } = CompletionPostInputMessagesTypeItemRoleType.System;
+        public BodyInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai.BodyInputMessagesTypeItemRoleType.System;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompletionPostInputMessagesTypeItemRoleType
+    public enum BodyInputMessagesTypeItemRoleType
     {
         [EnumMember(Value = "system")]
         System,

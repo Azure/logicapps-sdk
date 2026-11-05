@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
     public class CompanyconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChoicePrompt(Expression<Func<ChoicePromptInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChoicePrompt(Expression<Func<ChoicePromptRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmPrompt(Expression<Func<ConfirmPromptInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmPrompt(Expression<Func<ConfirmPromptRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<ProactiveDialogStartInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<ProactiveDialogStartBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<ReplyInput>> messageActivity)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<MessageActivityInput>> messageActivity)
         {
             var __workflow_messageActivity = WorkflowExpression.Compile(messageActivity, nameof(messageActivity), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TextPrompt(Expression<Func<TextPromptInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TextPrompt(Expression<Func<TextPromptRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
     public class CompanyconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProactiveDialogSubscribe(Expression<Func<ProactiveDialogSubscribeInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProactiveDialogSubscribe(Expression<Func<ProactiveDialogSubscribeBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartDialogSubscribe(Expression<Func<SmartDialogSubscribeInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartDialogSubscribe(Expression<Func<SmartDialogSubscribeBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartSourceSubscribe(Expression<Func<SmartSourceSubscribeInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmartSourceSubscribe(Expression<Func<SmartSourceSubscribeBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         }
     }
 
-    public class ChoicePromptInput
+    public class ChoicePromptRequestInput
     {
         [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         public string ConversationReference { get; set; }
     }
 
-    public class ConfirmPromptInput
+    public class ConfirmPromptRequestInput
     {
         [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
@@ -160,13 +160,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         public string ConversationReference { get; set; }
     }
 
-    public class ProactiveDialogStartInput
+    public class ProactiveDialogStartBodyInput
     {
         [JsonProperty("upn", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Upn { get; set; }
     }
 
-    public class ReplyInput
+    public class MessageActivityInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         public string ConversationReference { get; set; }
     }
 
-    public class TextPromptInput
+    public class TextPromptRequestInput
     {
         [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         public string ConversationReference { get; set; }
     }
 
-    public class ProactiveDialogSubscribeInput
+    public class ProactiveDialogSubscribeBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         public string Title { get; set; }
     }
 
-    public class SmartDialogSubscribeInput
+    public class SmartDialogSubscribeBodyInput
     {
         [JsonProperty("appId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class SmartSourceSubscribeInput
+    public class SmartSourceSubscribeBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365outlookcalendarmcp
     public class A365outlookcalendarmcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365outlookcalendarmcp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpCalendarTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpCalendarToolsInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpCalendarTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365outlookcalendarmcp
     {
     }
 
-    public class McpCalendarToolsInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

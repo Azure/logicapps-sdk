@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
     public class Hubspotcmsv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaBlogPosttobePublished(Expression<Func<ScheduleaBlogPosttobePublishedInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaBlogPosttobePublished(Expression<Func<ScheduleaBlogPosttobePublishedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatelanguagesofmultiLanguagegroup(Expression<Func<UpdatelanguagesofmultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatelanguagesofmultiLanguagegroup(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlogPostdraft(Expression<Func<string>> objectId, Expression<Func<UpdateaBlogPostdraftInput>> body)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlogPostdraft(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogBodyInput>> body)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> Createanewlanguagevariation(Expression<Func<CreateanewlanguagevariationInput>> body)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> Createanewlanguagevariation(Expression<Func<CreateanewlanguagevariationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CloneaBlog(Expression<Func<CloneaBlogPostInput>> body)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CloneaBlog(Expression<Func<CloneaBlogBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CreateanewBlog(Expression<Func<CreateanewBlogPostInput>> body)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CreateanewBlog(Expression<Func<CreateanewBlogBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogPostfromamultiLanguagegroup(Expression<Func<DetachaBlogPostfromamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogPostfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogPosts(Expression<Func<DeleteabatchofBlogPostsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogPosts(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogPosttoamultiLanguagegroup(Expression<Func<AttachaBlogPosttoamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogPosttoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Setanewprimarylanguage(Expression<Func<SetanewprimarylanguageInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Setanewprimarylanguage(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlog(Expression<Func<string>> objectId, Expression<Func<UpdateaBlogPostInput>> body, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlog(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> UpdateaBlogAuthor(Expression<Func<string>> objectId, Expression<Func<UpdateaBlogAuthorInput>> body, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> UpdateaBlogAuthor(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogAuthorBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogAuthorfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogAuthorfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage(Expression<Func<PutSetanewprimarylanguageInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogAuthors(Expression<Func<DeleteabatchofBlogAuthorsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogAuthors(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> CreateanewBlogAuthor(Expression<Func<CreateanewBlogAuthorInput>> body)
+        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> CreateanewBlogAuthor(Expression<Func<CreateanewBlogAuthorBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation15, ApiConnectionActionConfiguration>(() =>
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation(Expression<Func<PostCreateanewlanguagevariationInput>> body)
+        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation(Expression<Func<PostCreateanewlanguagevariationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation15, ApiConnectionActionConfiguration>(() =>
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogAuthortoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogAuthortoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup(Expression<Func<PostUpdatelanguagesofmultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup1(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup1(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation25, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation1(Expression<Func<PostCreateanewlanguagevariation1Input>> body)
+        public IBodyWorkflowAction<Successfuloperation25, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation1(Expression<Func<PostCreateanewlanguagevariation1BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation25, ApiConnectionActionConfiguration>(() =>
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage1(Expression<Func<PutSetanewprimarylanguage1Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage1(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachablogfromamultiLanguagegroup(Expression<Func<DetachablogfromamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachablogfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachablogtoamultiLanguagegroup(Expression<Func<AttachablogtoamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachablogtoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup2(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup2(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogTagfromamultiLanguagegroup(Expression<Func<DetachaBlogTagfromamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogTagfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogTags(Expression<Func<DeleteabatchofBlogTagsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogTags(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage2(Expression<Func<PutSetanewprimarylanguage2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage2(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> CreateanewBlogTag(Expression<Func<CreateanewBlogTagInput>> body)
+        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> CreateanewBlogTag(Expression<Func<CreateanewBlogTagBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation32, ApiConnectionActionConfiguration>(() =>
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogTagtoamultiLanguagegroup(Expression<Func<AttachaBlogTagtoamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogTagtoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> UpdateaBlogTag(Expression<Func<string>> objectId, Expression<Func<UpdateaBlogTagInput>> body, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> UpdateaBlogTag(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogTagBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation2(Expression<Func<PostCreateanewlanguagevariation2Input>> body)
+        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation2(Expression<Func<PostCreateanewlanguagevariation2BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation32, ApiConnectionActionConfiguration>(() =>
@@ -975,7 +975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Cloneatable(Expression<Func<string>> tableIdOrName, Expression<Func<CloneatableInput>> body)
+        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Cloneatable(Expression<Func<string>> tableIdOrName, Expression<Func<CloneatableBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1064,7 +1064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Createanewtable(Expression<Func<CreateanewtableInput>> body)
+        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Createanewtable(Expression<Func<CreateanewtableBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation37, ApiConnectionActionConfiguration>(() =>
@@ -1113,7 +1113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Updateanexistingtable(Expression<Func<string>> tableIdOrName, Expression<Func<UpdateanexistingtableInput>> body, Expression<Func<bool>> includeForeignIds = null, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Updateanexistingtable(Expression<Func<string>> tableIdOrName, Expression<Func<CreateanewtableBodyInput>> body, Expression<Func<bool>> includeForeignIds = null, Expression<Func<bool>> archived = null)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1231,7 +1231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Replacesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<ReplacesanexistingrowInput>> body)
+        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Replacesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<ReplacesanexistingrowBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
@@ -1247,7 +1247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Updatesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<UpdatesanexistingrowInput>> body)
+        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Updatesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<AddanewrowtoatableBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
@@ -1288,7 +1288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Addanewrowtoatable(Expression<Func<string>> tableIdOrName, Expression<Func<AddanewrowtoatableInput>> body)
+        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Addanewrowtoatable(Expression<Func<string>> tableIdOrName, Expression<Func<AddanewrowtoatableBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Permanentlydeletesrows(Expression<Func<string>> tableIdOrName, Expression<Func<PermanentlydeletesrowsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Permanentlydeletesrows(Expression<Func<string>> tableIdOrName, Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation55, ApiConnectionActionConfiguration> Clonerowsinbatch(Expression<Func<string>> tableIdOrName, Expression<Func<ClonerowsinbatchInput>> body)
+        public IBodyWorkflowAction<Successfuloperation55, ApiConnectionActionConfiguration> Clonerowsinbatch(Expression<Func<string>> tableIdOrName, Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1361,7 +1361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaSitePagetobePublished(Expression<Func<ScheduleaSitePagetobePublishedInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaSitePagetobePublished(Expression<Func<ScheduleaBlogPosttobePublishedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1375,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachasitepagetoamultiLanguagegroup(Expression<Func<AttachasitepagetoamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachasitepagetoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1389,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachasitepagefromamultiLanguagegroup(Expression<Func<DetachasitepagefromamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachasitepagefromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1439,7 +1439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EndanactiveABtest(Expression<Func<EndanactiveABtestInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EndanactiveABtest(Expression<Func<EndanactiveABtestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1466,7 +1466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePagedraft(Expression<Func<string>> objectId, Expression<Func<UpdateaSitePagedraftInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePagedraft(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1526,7 +1526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewSitePage(Expression<Func<CreateanewSitePageInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewSitePage(Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -1540,7 +1540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation3(Expression<Func<PostCreateanewlanguagevariation3Input>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation3(Expression<Func<PostCreateanewlanguagevariation3BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -1554,7 +1554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewABtestvariation(Expression<Func<CreateanewABtestvariationInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewABtestvariation(Expression<Func<CreateanewABtestvariationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -1568,7 +1568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup3(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup3Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup3(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1582,7 +1582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofSitePages(Expression<Func<DeleteabatchofSitePagesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofSitePages(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1596,7 +1596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaSitePage(Expression<Func<CloneaSitePageInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaSitePage(Expression<Func<CloneaBlogBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -1610,7 +1610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage3(Expression<Func<PutSetanewprimarylanguage3Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage3(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1637,7 +1637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RerunapreviousABtest(Expression<Func<RerunapreviousABtestInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RerunapreviousABtest(Expression<Func<PostRerunapreviousABtestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePage(Expression<Func<string>> objectId, Expression<Func<UpdateaSitePageInput>> body, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePage(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1806,7 +1806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> CreateanewFolder(Expression<Func<CreateanewFolderInput>> body)
+        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> CreateanewFolder(Expression<Func<CreateanewFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation80, ApiConnectionActionConfiguration>(() =>
@@ -1833,7 +1833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPagedraft(Expression<Func<string>> objectId, Expression<Func<UpdateaLandingPagedraftInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPagedraft(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1893,7 +1893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewLandingPage(Expression<Func<CreateanewLandingPageInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewLandingPage(Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -1907,7 +1907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaLandingPage(Expression<Func<CloneaLandingPageInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaLandingPage(Expression<Func<CloneaBlogBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -1935,7 +1935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage4(Expression<Func<PutSetanewprimarylanguage4Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage4(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1998,7 +1998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> UpdateaFolder(Expression<Func<string>> objectId, Expression<Func<UpdateaFolderInput>> body, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> UpdateaFolder(Expression<Func<string>> objectId, Expression<Func<CreateanewFolderBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -2016,7 +2016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewABtestvariation(Expression<Func<PostCreateanewABtestvariationInput>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewABtestvariation(Expression<Func<CreateanewABtestvariationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -2030,7 +2030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachalandingpagetoamultiLanguagegroup(Expression<Func<AttachalandingpagetoamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachalandingpagetoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2058,7 +2058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEndanactiveABtest(Expression<Func<PostEndanactiveABtestInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEndanactiveABtest(Expression<Func<EndanactiveABtestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2085,7 +2085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachalandingpagefromamultiLanguagegroup(Expression<Func<DetachalandingpagefromamultiLanguagegroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachalandingpagefromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2099,7 +2099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaLandingPagetobePublished(Expression<Func<ScheduleaLandingPagetobePublishedInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaLandingPagetobePublished(Expression<Func<ScheduleaBlogPosttobePublishedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2113,7 +2113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup4(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup4Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup4(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2127,7 +2127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostRerunapreviousABtest(Expression<Func<PostRerunapreviousABtestInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostRerunapreviousABtest(Expression<Func<PostRerunapreviousABtestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2141,7 +2141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofFolders(Expression<Func<DeleteabatchofFoldersInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofFolders(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2217,7 +2217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPage(Expression<Func<string>> objectId, Expression<Func<UpdateaLandingPageInput>> body, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPage(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -2235,7 +2235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation4(Expression<Func<PostCreateanewlanguagevariation4Input>> body)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation4(Expression<Func<PostCreateanewlanguagevariation3BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
@@ -2249,7 +2249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofLandingPages(Expression<Func<DeleteabatchofLandingPagesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofLandingPages(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2281,7 +2281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
     {
     }
 
-    public class ScheduleaBlogPosttobePublishedInput
+    public class ScheduleaBlogPosttobePublishedBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2290,7 +2290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string PublishDate { get; set; }
     }
 
-    public class UpdatelanguagesofmultiLanguagegroupInput
+    public class PostUpdatelanguagesofmultiLanguagegroup1BodyInput
     {
         [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Languages { get; set; }
@@ -2695,7 +2695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
-    public class UpdateaBlogPostdraftInput
+    public class CreateanewBlogBodyInput
     {
         [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbStatus { get; set; }
@@ -2881,7 +2881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
-    public class CreateanewlanguagevariationInput
+    public class CreateanewlanguagevariationBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2890,7 +2890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Language { get; set; }
     }
 
-    public class CloneaBlogPostInput
+    public class CloneaBlogBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -3109,205 +3109,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Link { get; set; }
     }
 
-    public class CreateanewBlogPostInput
-    {
-        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbStatus { get; set; }
-
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ArchivedAt { get; set; }
-
-        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ArchivedInDashboard { get; set; }
-
-        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] AttachedStylesheets { get; set; }
-
-        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AuthorName { get; set; }
-
-        [JsonProperty("blogAuthorId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BlogAuthorId { get; set; }
-
-        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Campaign { get; set; }
-
-        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentGroupId { get; set; }
-
-        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentTypeCategory { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CreatedById { get; set; }
-
-        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CurrentState { get; set; }
-
-        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool CurrentlyPublished { get; set; }
-
-        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Domain { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceId { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceType { get; set; }
-
-        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageHubDbTableId { get; set; }
-
-        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableDomainStylesheets { get; set; }
-
-        [JsonProperty("enableGoogleAmpOutputOverride", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableGoogleAmpOutputOverride { get; set; }
-
-        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableLayoutStylesheets { get; set; }
-
-        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImage { get; set; }
-
-        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImageAltText { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-
-        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HtmlTitle { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool IncludeDefaultCustomCss { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken LayoutSections { get; set; }
-
-        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkRelCanonicalUrl { get; set; }
-
-        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MabExperimentId { get; set; }
-
-        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryDate { get; set; }
-
-        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageExpiryEnabled { get; set; }
-
-        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectId { get; set; }
-
-        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectUrl { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("postBody", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PostBody { get; set; }
-
-        [JsonProperty("postSummary", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PostSummary { get; set; }
-
-        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PublicAccessRules { get; set; }
-
-        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PublicAccessRulesEnabled { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("rssBody", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RssBody { get; set; }
-
-        [JsonProperty("rssSummary", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RssSummary { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string State { get; set; }
-
-        [JsonProperty("tagIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] TagIds { get; set; }
-
-        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken ThemeSettingsValues { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Translations { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UpdatedById { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseFeaturedImage { get; set; }
-
-        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken WidgetContainers { get; set; }
-
-        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Widgets { get; set; }
-    }
-
-    public class DetachaBlogPostfromamultiLanguagegroupInput
+    public class DetachaBlogAuthorfromamultiLanguagegroupBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
-    public class DeleteabatchofBlogPostsInput
+    public class ClonerowsinbatchBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Inputs { get; set; }
     }
 
-    public class AttachaBlogPosttoamultiLanguagegroupInput
+    public class AttachaBlogAuthortoamultiLanguagegroupBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -3550,198 +3364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Link { get; set; }
     }
 
-    public class SetanewprimarylanguageInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class UpdateaBlogPostInput
-    {
-        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbStatus { get; set; }
-
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ArchivedAt { get; set; }
-
-        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ArchivedInDashboard { get; set; }
-
-        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] AttachedStylesheets { get; set; }
-
-        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AuthorName { get; set; }
-
-        [JsonProperty("blogAuthorId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BlogAuthorId { get; set; }
-
-        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Campaign { get; set; }
-
-        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentGroupId { get; set; }
-
-        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentTypeCategory { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CreatedById { get; set; }
-
-        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CurrentState { get; set; }
-
-        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool CurrentlyPublished { get; set; }
-
-        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Domain { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceId { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceType { get; set; }
-
-        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageHubDbTableId { get; set; }
-
-        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableDomainStylesheets { get; set; }
-
-        [JsonProperty("enableGoogleAmpOutputOverride", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableGoogleAmpOutputOverride { get; set; }
-
-        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableLayoutStylesheets { get; set; }
-
-        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImage { get; set; }
-
-        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImageAltText { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-
-        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HtmlTitle { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool IncludeDefaultCustomCss { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken LayoutSections { get; set; }
-
-        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkRelCanonicalUrl { get; set; }
-
-        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MabExperimentId { get; set; }
-
-        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryDate { get; set; }
-
-        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageExpiryEnabled { get; set; }
-
-        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectId { get; set; }
-
-        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectUrl { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("postBody", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PostBody { get; set; }
-
-        [JsonProperty("postSummary", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PostSummary { get; set; }
-
-        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PublicAccessRules { get; set; }
-
-        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PublicAccessRulesEnabled { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("rssBody", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RssBody { get; set; }
-
-        [JsonProperty("rssSummary", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RssSummary { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string State { get; set; }
-
-        [JsonProperty("tagIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] TagIds { get; set; }
-
-        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken ThemeSettingsValues { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Translations { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UpdatedById { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseFeaturedImage { get; set; }
-
-        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken WidgetContainers { get; set; }
-
-        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Widgets { get; set; }
-    }
-
     public class Successfuloperation15
     {
         [JsonProperty("avatar")]
@@ -3796,7 +3418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Website { get; set; }
     }
 
-    public class UpdateaBlogAuthorInput
+    public class CreateanewBlogAuthorBodyInput
     {
         [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Avatar { get; set; }
@@ -3848,24 +3470,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("website", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Website { get; set; }
-    }
-
-    public class DetachaBlogAuthorfromamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class PutSetanewprimarylanguageInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class DeleteabatchofBlogAuthorsInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Inputs { get; set; }
     }
 
     public class Successfuloperation20
@@ -3934,61 +3538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Website { get; set; }
     }
 
-    public class CreateanewBlogAuthorInput
-    {
-        [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Avatar { get; set; }
-
-        [JsonProperty("bio", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Bio { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DeletedAt { get; set; }
-
-        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("facebook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Facebook { get; set; }
-
-        [JsonProperty("fullName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FullName { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("linkedin", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Linkedin { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("twitter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Twitter { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("website", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Website { get; set; }
-    }
-
-    public class PostCreateanewlanguagevariationInput
+    public class PostCreateanewlanguagevariationBodyInput
     {
         [JsonProperty("blogAuthor", DefaultValueHandling = DefaultValueHandling.Include)]
         public BlogAuthor BlogAuthor { get; set; }
@@ -4055,39 +3605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("website", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Website { get; set; }
-    }
-
-    public class AttachaBlogAuthortoamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-
-        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryLanguage { get; set; }
-    }
-
-    public class PostUpdatelanguagesofmultiLanguagegroupInput
-    {
-        [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Languages { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-    }
-
-    public class PostUpdatelanguagesofmultiLanguagegroup1Input
-    {
-        [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Languages { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
     }
 
     public class Successfuloperation23
@@ -4225,7 +3742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
     }
 
-    public class PostCreateanewlanguagevariation1Input
+    public class PostCreateanewlanguagevariation1BodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -4297,60 +3814,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
     }
 
-    public class PutSetanewprimarylanguage1Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class DetachablogfromamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class AttachablogtoamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-
-        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryLanguage { get; set; }
-    }
-
-    public class PostUpdatelanguagesofmultiLanguagegroup2Input
-    {
-        [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Languages { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-    }
-
-    public class DetachaBlogTagfromamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class DeleteabatchofBlogTagsInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Inputs { get; set; }
-    }
-
-    public class PutSetanewprimarylanguage2Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
     public class Successfuloperation31
     {
         [JsonProperty("results")]
@@ -4411,7 +3874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
     }
 
-    public class CreateanewBlogTagInput
+    public class CreateanewBlogTagBodyInput
     {
         [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Created { get; set; }
@@ -4435,46 +3898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
     }
 
-    public class AttachaBlogTagtoamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-
-        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryLanguage { get; set; }
-    }
-
-    public class UpdateaBlogTagInput
-    {
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DeletedAt { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-    }
-
-    public class PostCreateanewlanguagevariation2Input
+    public class PostCreateanewlanguagevariation2BodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -4579,7 +4003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Deleted { get; set; }
 
         [JsonProperty("options")]
-        public Option[] Options { get; set; }
+        public CloneatableOptionResponse[] Options { get; set; }
 
         [JsonProperty("width")]
         public string Width { get; set; }
@@ -4606,7 +4030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string OptionCount { get; set; }
     }
 
-    public class Option
+    public class CloneatableOptionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -4744,7 +4168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Deleted { get; set; }
 
         [JsonProperty("options")]
-        public Option[] Options { get; set; }
+        public CloneatableOptionResponse[] Options { get; set; }
 
         [JsonProperty("width")]
         public string Width { get; set; }
@@ -4771,7 +4195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string OptionCount { get; set; }
     }
 
-    public class CloneatableInput
+    public class CloneatableBodyInput
     {
         [JsonProperty("copyRows", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CopyRows { get; set; }
@@ -4783,7 +4207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string NewLabel { get; set; }
     }
 
-    public class CreateanewtableInput
+    public class CreateanewtableBodyInput
     {
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
@@ -4822,7 +4246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Name { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Option2[] Options { get; set; }
+        public CreateanewtableOption[] Options { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
@@ -4834,7 +4258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string ForeignColumnId { get; set; }
     }
 
-    public class Option2
+    public class CreateanewtableOption
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -4850,33 +4274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
-    }
-
-    public class UpdateanexistingtableInput
-    {
-        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Label { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("useForPages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseForPages { get; set; }
-
-        [JsonProperty("allowPublicApiAccess", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool AllowPublicApiAccess { get; set; }
-
-        [JsonProperty("allowChildTables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool AllowChildTables { get; set; }
-
-        [JsonProperty("enableChildTablePages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableChildTablePages { get; set; }
-
-        [JsonProperty("columns", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Column5[] Columns { get; set; }
-
-        [JsonProperty("dynamicMetaTags", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken DynamicMetaTags { get; set; }
     }
 
     public class Successfuloperation47
@@ -4945,7 +4342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string PublishedAt { get; set; }
     }
 
-    public class ReplacesanexistingrowInput
+    public class ReplacesanexistingrowBodyInput
     {
         [JsonProperty("values", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Values { get; set; }
@@ -4963,7 +4360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string DisplayIndex { get; set; }
     }
 
-    public class UpdatesanexistingrowInput
+    public class AddanewrowtoatableBodyInput
     {
         [JsonProperty("values", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Values { get; set; }
@@ -4979,30 +4376,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("displayIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int DisplayIndex { get; set; }
-    }
-
-    public class AddanewrowtoatableInput
-    {
-        [JsonProperty("values", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Values { get; set; }
-
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("childTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ChildTableId { get; set; }
-
-        [JsonProperty("displayIndex", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int DisplayIndex { get; set; }
-    }
-
-    public class PermanentlydeletesrowsInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Inputs { get; set; }
     }
 
     public class Successfuloperation55
@@ -5051,12 +4424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("publishedAt")]
         public string PublishedAt { get; set; }
-    }
-
-    public class ClonerowsinbatchInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Inputs { get; set; }
     }
 
     public class Successfuloperation61
@@ -5419,36 +4786,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
-    public class ScheduleaSitePagetobePublishedInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-    }
-
-    public class AttachasitepagetoamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-
-        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryLanguage { get; set; }
-    }
-
-    public class DetachasitepagefromamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
     public class Successfuloperation64
     {
         [JsonProperty("results")]
@@ -5647,7 +4984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
-    public class EndanactiveABtestInput
+    public class EndanactiveABtestBodyInput
     {
         [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbTestId { get; set; }
@@ -5656,7 +4993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string WinnerId { get; set; }
     }
 
-    public class UpdateaSitePagedraftInput
+    public class CreateanewLandingPageBodyInput
     {
         [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbStatus { get; set; }
@@ -6013,181 +5350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
-    public class CreateanewSitePageInput
-    {
-        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbStatus { get; set; }
-
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ArchivedAt { get; set; }
-
-        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ArchivedInDashboard { get; set; }
-
-        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] AttachedStylesheets { get; set; }
-
-        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AuthorName { get; set; }
-
-        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Campaign { get; set; }
-
-        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentGroupId { get; set; }
-
-        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentTypeCategory { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CreatedById { get; set; }
-
-        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CurrentState { get; set; }
-
-        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool CurrentlyPublished { get; set; }
-
-        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Domain { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceId { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceType { get; set; }
-
-        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageHubDbTableId { get; set; }
-
-        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableDomainStylesheets { get; set; }
-
-        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableLayoutStylesheets { get; set; }
-
-        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImage { get; set; }
-
-        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImageAltText { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-
-        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HtmlTitle { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool IncludeDefaultCustomCss { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken LayoutSections { get; set; }
-
-        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkRelCanonicalUrl { get; set; }
-
-        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MabExperimentId { get; set; }
-
-        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryDate { get; set; }
-
-        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageExpiryEnabled { get; set; }
-
-        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectId { get; set; }
-
-        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectUrl { get; set; }
-
-        [JsonProperty("pageRedirected", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageRedirected { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PublicAccessRules { get; set; }
-
-        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PublicAccessRulesEnabled { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string State { get; set; }
-
-        [JsonProperty("subCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SubCategory { get; set; }
-
-        [JsonProperty("templatePath", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplatePath { get; set; }
-
-        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken ThemeSettingsValues { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Translations { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UpdatedById { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseFeaturedImage { get; set; }
-
-        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken WidgetContainers { get; set; }
-
-        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Widgets { get; set; }
-    }
-
-    public class PostCreateanewlanguagevariation3Input
+    public class PostCreateanewlanguagevariation3BodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -6199,7 +5362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string PrimaryLanguage { get; set; }
     }
 
-    public class CreateanewABtestvariationInput
+    public class CreateanewABtestvariationBodyInput
     {
         [JsonProperty("contentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContentId { get; set; }
@@ -6208,217 +5371,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string VariationName { get; set; }
     }
 
-    public class PostUpdatelanguagesofmultiLanguagegroup3Input
-    {
-        [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Languages { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-    }
-
-    public class DeleteabatchofSitePagesInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Inputs { get; set; }
-    }
-
-    public class CloneaSitePageInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("cloneName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CloneName { get; set; }
-    }
-
-    public class PutSetanewprimarylanguage3Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class RerunapreviousABtestInput
+    public class PostRerunapreviousABtestBodyInput
     {
         [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AbTestId { get; set; }
 
         [JsonProperty("variationId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string VariationId { get; set; }
-    }
-
-    public class UpdateaSitePageInput
-    {
-        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbStatus { get; set; }
-
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ArchivedAt { get; set; }
-
-        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ArchivedInDashboard { get; set; }
-
-        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] AttachedStylesheets { get; set; }
-
-        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AuthorName { get; set; }
-
-        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Campaign { get; set; }
-
-        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentGroupId { get; set; }
-
-        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentTypeCategory { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CreatedById { get; set; }
-
-        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CurrentState { get; set; }
-
-        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool CurrentlyPublished { get; set; }
-
-        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Domain { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceId { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceType { get; set; }
-
-        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageHubDbTableId { get; set; }
-
-        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableDomainStylesheets { get; set; }
-
-        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableLayoutStylesheets { get; set; }
-
-        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImage { get; set; }
-
-        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImageAltText { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-
-        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HtmlTitle { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool IncludeDefaultCustomCss { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken LayoutSections { get; set; }
-
-        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkRelCanonicalUrl { get; set; }
-
-        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MabExperimentId { get; set; }
-
-        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryDate { get; set; }
-
-        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageExpiryEnabled { get; set; }
-
-        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectId { get; set; }
-
-        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectUrl { get; set; }
-
-        [JsonProperty("pageRedirected", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageRedirected { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PublicAccessRules { get; set; }
-
-        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PublicAccessRulesEnabled { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string State { get; set; }
-
-        [JsonProperty("subCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SubCategory { get; set; }
-
-        [JsonProperty("templatePath", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplatePath { get; set; }
-
-        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken ThemeSettingsValues { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Translations { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UpdatedById { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseFeaturedImage { get; set; }
-
-        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken WidgetContainers { get; set; }
-
-        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Widgets { get; set; }
     }
 
     public class Successfuloperation78
@@ -6532,7 +5491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
     }
 
-    public class CreateanewFolderInput
+    public class CreateanewFolderBodyInput
     {
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Category { get; set; }
@@ -6554,465 +5513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Updated { get; set; }
-    }
-
-    public class UpdateaLandingPagedraftInput
-    {
-        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbStatus { get; set; }
-
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ArchivedAt { get; set; }
-
-        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ArchivedInDashboard { get; set; }
-
-        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] AttachedStylesheets { get; set; }
-
-        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AuthorName { get; set; }
-
-        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Campaign { get; set; }
-
-        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentGroupId { get; set; }
-
-        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentTypeCategory { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CreatedById { get; set; }
-
-        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CurrentState { get; set; }
-
-        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool CurrentlyPublished { get; set; }
-
-        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Domain { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceId { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceType { get; set; }
-
-        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageHubDbTableId { get; set; }
-
-        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableDomainStylesheets { get; set; }
-
-        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableLayoutStylesheets { get; set; }
-
-        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImage { get; set; }
-
-        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImageAltText { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-
-        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HtmlTitle { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool IncludeDefaultCustomCss { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken LayoutSections { get; set; }
-
-        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkRelCanonicalUrl { get; set; }
-
-        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MabExperimentId { get; set; }
-
-        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryDate { get; set; }
-
-        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageExpiryEnabled { get; set; }
-
-        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectId { get; set; }
-
-        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectUrl { get; set; }
-
-        [JsonProperty("pageRedirected", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageRedirected { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PublicAccessRules { get; set; }
-
-        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PublicAccessRulesEnabled { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string State { get; set; }
-
-        [JsonProperty("subCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SubCategory { get; set; }
-
-        [JsonProperty("templatePath", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplatePath { get; set; }
-
-        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken ThemeSettingsValues { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Translations { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UpdatedById { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseFeaturedImage { get; set; }
-
-        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken WidgetContainers { get; set; }
-
-        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Widgets { get; set; }
-    }
-
-    public class CreateanewLandingPageInput
-    {
-        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbStatus { get; set; }
-
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ArchivedAt { get; set; }
-
-        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ArchivedInDashboard { get; set; }
-
-        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] AttachedStylesheets { get; set; }
-
-        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AuthorName { get; set; }
-
-        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Campaign { get; set; }
-
-        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentGroupId { get; set; }
-
-        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentTypeCategory { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CreatedById { get; set; }
-
-        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CurrentState { get; set; }
-
-        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool CurrentlyPublished { get; set; }
-
-        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Domain { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceId { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceType { get; set; }
-
-        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageHubDbTableId { get; set; }
-
-        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableDomainStylesheets { get; set; }
-
-        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableLayoutStylesheets { get; set; }
-
-        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImage { get; set; }
-
-        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImageAltText { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-
-        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HtmlTitle { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool IncludeDefaultCustomCss { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken LayoutSections { get; set; }
-
-        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkRelCanonicalUrl { get; set; }
-
-        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MabExperimentId { get; set; }
-
-        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryDate { get; set; }
-
-        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageExpiryEnabled { get; set; }
-
-        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectId { get; set; }
-
-        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectUrl { get; set; }
-
-        [JsonProperty("pageRedirected", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageRedirected { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PublicAccessRules { get; set; }
-
-        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PublicAccessRulesEnabled { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string State { get; set; }
-
-        [JsonProperty("subCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SubCategory { get; set; }
-
-        [JsonProperty("templatePath", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplatePath { get; set; }
-
-        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken ThemeSettingsValues { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Translations { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UpdatedById { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseFeaturedImage { get; set; }
-
-        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken WidgetContainers { get; set; }
-
-        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Widgets { get; set; }
-    }
-
-    public class CloneaLandingPageInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("cloneName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CloneName { get; set; }
-    }
-
-    public class PutSetanewprimarylanguage4Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class UpdateaFolderInput
-    {
-        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Category { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DeletedAt { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ParentFolderId { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-    }
-
-    public class PostCreateanewABtestvariationInput
-    {
-        [JsonProperty("contentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentId { get; set; }
-
-        [JsonProperty("variationName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string VariationName { get; set; }
-    }
-
-    public class AttachalandingpagetoamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-
-        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryLanguage { get; set; }
-    }
-
-    public class PostEndanactiveABtestInput
-    {
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("winnerId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WinnerId { get; set; }
-    }
-
-    public class DetachalandingpagefromamultiLanguagegroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class ScheduleaLandingPagetobePublishedInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-    }
-
-    public class PostUpdatelanguagesofmultiLanguagegroup4Input
-    {
-        [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Languages { get; set; }
-
-        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryId { get; set; }
-    }
-
-    public class PostRerunapreviousABtestInput
-    {
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("variationId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string VariationId { get; set; }
-    }
-
-    public class DeleteabatchofFoldersInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Inputs { get; set; }
     }
 
     public class Successfuloperation97
@@ -7028,198 +5528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("user")]
         public User User { get; set; }
-    }
-
-    public class UpdateaLandingPageInput
-    {
-        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbStatus { get; set; }
-
-        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbTestId { get; set; }
-
-        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ArchivedAt { get; set; }
-
-        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ArchivedInDashboard { get; set; }
-
-        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] AttachedStylesheets { get; set; }
-
-        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AuthorName { get; set; }
-
-        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Campaign { get; set; }
-
-        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentGroupId { get; set; }
-
-        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentTypeCategory { get; set; }
-
-        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Created { get; set; }
-
-        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CreatedById { get; set; }
-
-        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CurrentState { get; set; }
-
-        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool CurrentlyPublished { get; set; }
-
-        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Domain { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceId { get; set; }
-
-        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageDataSourceType { get; set; }
-
-        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DynamicPageHubDbTableId { get; set; }
-
-        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableDomainStylesheets { get; set; }
-
-        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool EnableLayoutStylesheets { get; set; }
-
-        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImage { get; set; }
-
-        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeaturedImageAltText { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-
-        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string HtmlTitle { get; set; }
-
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool IncludeDefaultCustomCss { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken LayoutSections { get; set; }
-
-        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkRelCanonicalUrl { get; set; }
-
-        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MabExperimentId { get; set; }
-
-        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryDate { get; set; }
-
-        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageExpiryEnabled { get; set; }
-
-        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectId { get; set; }
-
-        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageExpiryRedirectUrl { get; set; }
-
-        [JsonProperty("pageRedirected", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PageRedirected { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PublicAccessRules { get; set; }
-
-        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool PublicAccessRulesEnabled { get; set; }
-
-        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Slug { get; set; }
-
-        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string State { get; set; }
-
-        [JsonProperty("subCategory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SubCategory { get; set; }
-
-        [JsonProperty("templatePath", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplatePath { get; set; }
-
-        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken ThemeSettingsValues { get; set; }
-
-        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TranslatedFromId { get; set; }
-
-        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Translations { get; set; }
-
-        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Updated { get; set; }
-
-        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UpdatedById { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool UseFeaturedImage { get; set; }
-
-        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken WidgetContainers { get; set; }
-
-        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Widgets { get; set; }
-    }
-
-    public class PostCreateanewlanguagevariation4Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Language { get; set; }
-
-        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PrimaryLanguage { get; set; }
-    }
-
-    public class DeleteabatchofLandingPagesInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Inputs { get; set; }
     }
 }
 

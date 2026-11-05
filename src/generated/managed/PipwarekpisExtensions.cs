@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipwarekpis
     public class PipwarekpisActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipwarekpis")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SaveKpiActuals(Expression<Func<string>> contentType, Expression<Func<bodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SaveKpiActuals(Expression<Func<string>> contentType, Expression<Func<SaveKpiActualsBodyInputItem[]>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipwarekpis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipwarekpis")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SaveKpiTargets(Expression<Func<string>> contentType, Expression<Func<bodyInputItem2[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SaveKpiTargets(Expression<Func<string>> contentType, Expression<Func<SaveKpiTargetsBodyInputItem[]>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -49,34 +49,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipwarekpis
     {
     }
 
-    public class bodyInputItem
+    public class SaveKpiActualsBodyInputItem
     {
-        [JsonProperty("kpiCode")]
+        [JsonProperty("kpiCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KpiCode { get; set; }
 
-        [JsonProperty("valueDate")]
+        [JsonProperty("valueDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ValueDate { get; set; }
 
         [JsonProperty("actualValue")]
-        public double ActualValue { get; set; }
+        public double? ActualValue { get; set; }
 
         [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        public bool? Deleted { get; set; }
     }
 
-    public class bodyInputItem2
+    public class SaveKpiTargetsBodyInputItem
     {
-        [JsonProperty("kpiCode")]
+        [JsonProperty("kpiCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KpiCode { get; set; }
 
-        [JsonProperty("targetDate")]
+        [JsonProperty("targetDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetDate { get; set; }
 
         [JsonProperty("targetValue")]
-        public double TargetValue { get; set; }
+        public double? TargetValue { get; set; }
 
         [JsonProperty("deleted")]
-        public bool Deleted { get; set; }
+        public bool? Deleted { get; set; }
     }
 }
 

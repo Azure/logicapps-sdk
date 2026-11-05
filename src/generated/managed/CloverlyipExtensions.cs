@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
     public class CloverlyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<DirectCarbonResponse, ApiConnectionActionConfiguration> DirectCarbon(Expression<Func<transactionInput>> transaction, Expression<Func<DirectCarbonInput>> body)
+        public IBodyWorkflowAction<DirectCarbonResponse, ApiConnectionActionConfiguration> DirectCarbon(Expression<Func<TransactionInput>> transaction, Expression<Func<DirectCarbonBodyInput>> body)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<DirectTransactionResponse, ApiConnectionActionConfiguration> DirectTransaction(Expression<Func<transactionInput>> transaction, Expression<Func<DirectTransactionInput>> body)
+        public IBodyWorkflowAction<DirectTransactionResponse, ApiConnectionActionConfiguration> DirectTransaction(Expression<Func<TransactionInput>> transaction, Expression<Func<DirectTransactionBodyInput>> body)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculatePackageResponse, ApiConnectionActionConfiguration> CalculatePackage(Expression<Func<string>> transaction, Expression<Func<CalculatePackageInput>> body = null)
+        public IBodyWorkflowAction<CalculatePackageResponse, ApiConnectionActionConfiguration> CalculatePackage(Expression<Func<string>> transaction, Expression<Func<CalculatePackageBodyInput>> body = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateMCCResponse, ApiConnectionActionConfiguration> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<CalculateMCCInput>> body = null)
+        public IBodyWorkflowAction<CalculateMCCResponse, ApiConnectionActionConfiguration> CalculateMCC(Expression<Func<string>> transaction, Expression<Func<CalculateMCCBodyInput>> body = null)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateFreightResponse, ApiConnectionActionConfiguration> CalculateFreight(Expression<Func<string>> transaction, Expression<Func<CalculateFreightInput>> body)
+        public IBodyWorkflowAction<CalculateFreightResponse, ApiConnectionActionConfiguration> CalculateFreight(Expression<Func<string>> transaction, Expression<Func<CalculateFreightBodyInput>> body)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateFlightResponse, ApiConnectionActionConfiguration> CalculateFlight(Expression<Func<transactionInput>> transaction, Expression<Func<CalculateFlightInput>> body)
+        public IBodyWorkflowAction<CalculateFlightResponse, ApiConnectionActionConfiguration> CalculateFlight(Expression<Func<TransactionInput>> transaction, Expression<Func<CalculateFlightBodyInput>> body)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateVehicleResponse, ApiConnectionActionConfiguration> CalculateVehicle(Expression<Func<transactionInput>> transaction, Expression<Func<CalculateVehicleInput>> body)
+        public IBodyWorkflowAction<CalculateVehicleResponse, ApiConnectionActionConfiguration> CalculateVehicle(Expression<Func<TransactionInput>> transaction, Expression<Func<CalculateVehicleBodyInput>> body)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<CalculateElectricityResponse, ApiConnectionActionConfiguration> CalculateElectricity(Expression<Func<transactionInput>> transaction, Expression<Func<CalculateElectricityInput>> body)
+        public IBodyWorkflowAction<CalculateElectricityResponse, ApiConnectionActionConfiguration> CalculateElectricity(Expression<Func<TransactionInput>> transaction, Expression<Func<CalculateElectricityBodyInput>> body)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloverlyip")]
-        public IBodyWorkflowAction<ConvertEstimateResponse, ApiConnectionActionConfiguration> ConvertEstimate(Expression<Func<ConvertEstimateInput>> body)
+        public IBodyWorkflowAction<ConvertEstimateResponse, ApiConnectionActionConfiguration> ConvertEstimate(Expression<Func<ConvertEstimateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConvertEstimateResponse, ApiConnectionActionConfiguration>(() =>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum transactionInput
+    public enum TransactionInput
     {
         [EnumMember(Value = "estimates")]
         Estimates,
@@ -305,29 +305,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         Purchases
     }
 
-    public class DirectCarbonInput
+    public class DirectCarbonBodyInput
     {
         [JsonProperty("weight", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DirectCarbonInputWeightType Weight { get; set; }
+        public DirectCarbonBodyInputWeightType Weight { get; set; }
 
         [JsonProperty("project_match")]
-        public DirectCarbonInputProjectMatchType ProjectMatch { get; set; }
+        public DirectCarbonBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class DirectCarbonInputWeightType
+    public class DirectCarbonBodyInputWeightType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
         [JsonProperty("units", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DirectCarbonInputWeightTypeUnitsType Units { get; set; }
+        public BodyInputWeightTypeUnitsType Units { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DirectCarbonInputWeightTypeUnitsType
+    public enum BodyInputWeightTypeUnitsType
     {
         [EnumMember(Value = "kg")]
         Kg,
@@ -341,13 +341,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         Tons
     }
 
-    public class DirectCarbonInputProjectMatchType
+    public class DirectCarbonBodyInputProjectMatchType
     {
         [JsonProperty("location")]
-        public DirectCarbonInputProjectMatchTypeLocationType Location { get; set; }
+        public DirectCarbonBodyInputProjectMatchTypeLocationType Location { get; set; }
     }
 
-    public class DirectCarbonInputProjectMatchTypeLocationType
+    public class DirectCarbonBodyInputProjectMatchTypeLocationType
     {
         [JsonProperty("latlng")]
         public string[] Latlng { get; set; }
@@ -446,13 +446,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class DirectTransactionInput
+    public class DirectTransactionBodyInput
     {
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DirectTransactionInputCurrencyType Currency { get; set; }
+        public DirectTransactionBodyInputCurrencyType Currency { get; set; }
 
         [JsonProperty("project_match")]
-        public DirectTransactionInputProjectMatchType ProjectMatch { get; set; }
+        public DirectTransactionBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public int? UnitCostUsdCents { get; set; }
     }
 
-    public class DirectTransactionInputCurrencyType
+    public class DirectTransactionBodyInputCurrencyType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Units { get; set; }
     }
 
-    public class DirectTransactionInputProjectMatchType
+    public class DirectTransactionBodyInputProjectMatchType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -569,31 +569,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class CalculatePackageInput
+    public class CalculatePackageBodyInput
     {
         [JsonProperty("weight")]
-        public CalculatePackageInputWeightType Weight { get; set; }
+        public CalculatePackageBodyInputWeightType Weight { get; set; }
 
         [JsonProperty("mode")]
         public string Mode { get; set; }
 
         [JsonProperty("distance")]
-        public CalculatePackageInputDistanceType Distance { get; set; }
+        public CalculatePackageBodyInputDistanceType Distance { get; set; }
 
         [JsonProperty("from")]
-        public CalculatePackageInputFromType From { get; set; }
+        public BodyInputFromType From { get; set; }
 
         [JsonProperty("to")]
-        public CalculatePackageInputToType To { get; set; }
+        public BodyInputToType To { get; set; }
 
         [JsonProperty("project_match")]
-        public CalculatePackageInputProjectMatchType ProjectMatch { get; set; }
+        public CalculateElectricityBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class CalculatePackageInputWeightType
+    public class CalculatePackageBodyInputWeightType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Units { get; set; }
     }
 
-    public class CalculatePackageInputDistanceType
+    public class CalculatePackageBodyInputDistanceType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Units { get; set; }
     }
 
-    public class CalculatePackageInputFromType
+    public class BodyInputFromType
     {
         [JsonProperty("postal_code")]
         public string PostalCode { get; set; }
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Country { get; set; }
     }
 
-    public class CalculatePackageInputToType
+    public class BodyInputToType
     {
         [JsonProperty("postal_code")]
         public string PostalCode { get; set; }
@@ -629,19 +629,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Country { get; set; }
     }
 
-    public class CalculatePackageInputProjectMatchType
+    public class CalculateElectricityBodyInputProjectMatchType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("location")]
-        public CalculatePackageInputProjectMatchTypeLocationType Location { get; set; }
+        public CalculateElectricityBodyInputProjectMatchTypeLocationType Location { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class CalculatePackageInputProjectMatchTypeLocationType
+    public class CalculateElectricityBodyInputProjectMatchTypeLocationType
     {
         [JsonProperty("postal_code")]
         public string PostalCode { get; set; }
@@ -743,49 +743,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class CalculateMCCInput
+    public class CalculateMCCBodyInput
     {
         [JsonProperty("mcc_code")]
         public int? MccCode { get; set; }
 
         [JsonProperty("currency")]
-        public CalculateMCCInputCurrencyType Currency { get; set; }
+        public CalculateMCCBodyInputCurrencyType Currency { get; set; }
 
         [JsonProperty("project_match")]
-        public CalculateMCCInputProjectMatchType ProjectMatch { get; set; }
+        public CalculateElectricityBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class CalculateMCCInputCurrencyType
+    public class CalculateMCCBodyInputCurrencyType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
 
         [JsonProperty("units")]
         public string Units { get; set; }
-    }
-
-    public class CalculateMCCInputProjectMatchType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("location")]
-        public CalculateMCCInputProjectMatchTypeLocationType Location { get; set; }
-
-        [JsonProperty("note")]
-        public string Note { get; set; }
-    }
-
-    public class CalculateMCCInputProjectMatchTypeLocationType
-    {
-        [JsonProperty("postal_code")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
     }
 
     public class CalculateFreightResponse
@@ -881,10 +860,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class CalculateFreightInput
+    public class CalculateFreightBodyInput
     {
         [JsonProperty("weight")]
-        public CalculateFreightInputWeightType Weight { get; set; }
+        public CalculateFreightBodyInputWeightType Weight { get; set; }
 
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -893,16 +872,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Type { get; set; }
 
         [JsonProperty("distance")]
-        public CalculateFreightInputDistanceType Distance { get; set; }
+        public CalculateFreightBodyInputDistanceType Distance { get; set; }
 
         [JsonProperty("project_match")]
-        public CalculateFreightInputProjectMatchType ProjectMatch { get; set; }
+        public CalculateElectricityBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class CalculateFreightInputWeightType
+    public class CalculateFreightBodyInputWeightType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
@@ -911,34 +890,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Units { get; set; }
     }
 
-    public class CalculateFreightInputDistanceType
+    public class CalculateFreightBodyInputDistanceType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
 
         [JsonProperty("units")]
         public string Units { get; set; }
-    }
-
-    public class CalculateFreightInputProjectMatchType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("location")]
-        public CalculateFreightInputProjectMatchTypeLocationType Location { get; set; }
-
-        [JsonProperty("note")]
-        public string Note { get; set; }
-    }
-
-    public class CalculateFreightInputProjectMatchTypeLocationType
-    {
-        [JsonProperty("postal_code")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
     }
 
     public class CalculateFlightResponse
@@ -1034,37 +992,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class CalculateFlightInput
+    public class CalculateFlightBodyInput
     {
         [JsonProperty("airports", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Airports { get; set; }
 
         [JsonProperty("project_match")]
-        public CalculateFlightInputProjectMatchType ProjectMatch { get; set; }
+        public CalculateElectricityBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
-    }
-
-    public class CalculateFlightInputProjectMatchType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("location")]
-        public CalculateFlightInputProjectMatchTypeLocationType Location { get; set; }
-
-        [JsonProperty("note")]
-        public string Note { get; set; }
-    }
-
-    public class CalculateFlightInputProjectMatchTypeLocationType
-    {
-        [JsonProperty("postal_code")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
     }
 
     public class CalculateVehicleResponse
@@ -1160,22 +1097,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class CalculateVehicleInput
+    public class CalculateVehicleBodyInput
     {
         [JsonProperty("distance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateVehicleInputDistanceType Distance { get; set; }
+        public CalculateVehicleBodyInputDistanceType Distance { get; set; }
 
         [JsonProperty("fuel_efficiency", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateVehicleInputFuelEfficiencyType FuelEfficiency { get; set; }
+        public BodyInputFuelEfficiencyType FuelEfficiency { get; set; }
 
         [JsonProperty("project_match")]
-        public CalculateVehicleInputProjectMatchType ProjectMatch { get; set; }
+        public CalculateElectricityBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class CalculateVehicleInputDistanceType
+    public class CalculateVehicleBodyInputDistanceType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
@@ -1184,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string Units { get; set; }
     }
 
-    public class CalculateVehicleInputFuelEfficiencyType
+    public class BodyInputFuelEfficiencyType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
@@ -1194,27 +1131,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
 
         [JsonProperty("of", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Of { get; set; }
-    }
-
-    public class CalculateVehicleInputProjectMatchType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("location")]
-        public CalculateVehicleInputProjectMatchTypeLocationType Location { get; set; }
-
-        [JsonProperty("note")]
-        public string Note { get; set; }
-    }
-
-    public class CalculateVehicleInputProjectMatchTypeLocationType
-    {
-        [JsonProperty("postal_code")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
     }
 
     public class CalculateElectricityResponse
@@ -1310,56 +1226,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class CalculateElectricityInput
+    public class CalculateElectricityBodyInput
     {
         [JsonProperty("energy", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateElectricityInputEnergyType Energy { get; set; }
+        public BodyInputEnergyType Energy { get; set; }
 
         [JsonProperty("project_match")]
-        public CalculateElectricityInputProjectMatchType ProjectMatch { get; set; }
+        public CalculateElectricityBodyInputProjectMatchType ProjectMatch { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class CalculateElectricityInputEnergyType
+    public class BodyInputEnergyType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
         [JsonProperty("units", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateElectricityInputEnergyTypeUnitsType Units { get; set; }
+        public BodyInputEnergyTypeUnitsType Units { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculateElectricityInputEnergyTypeUnitsType
+    public enum BodyInputEnergyTypeUnitsType
     {
         Wh,
         [EnumMember(Value = "kWh")]
         KWh,
         [EnumMember(Value = "mWh")]
         MWh
-    }
-
-    public class CalculateElectricityInputProjectMatchType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("location")]
-        public CalculateElectricityInputProjectMatchTypeLocationType Location { get; set; }
-
-        [JsonProperty("note")]
-        public string Note { get; set; }
-    }
-
-    public class CalculateElectricityInputProjectMatchTypeLocationType
-    {
-        [JsonProperty("postal_code")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
     }
 
     public class ProjectDetailsResponse
@@ -1557,7 +1452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
-    public class ConvertEstimateInput
+    public class ConvertEstimateBodyInput
     {
         [JsonProperty("transaction_ID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }

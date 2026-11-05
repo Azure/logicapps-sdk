@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
     public class HoneywellforgeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IBodyWorkflowAction<CloseCaseResponse, ApiConnectionActionConfiguration> CloseServiceCaseAtForge(Expression<Func<string>> projectId, Expression<Func<string>> serviceCaseNumber, Expression<Func<CloseServiceCaseAtForgeInput>> body)
+        public IBodyWorkflowAction<CloseCaseResponse, ApiConnectionActionConfiguration> CloseServiceCaseAtForge(Expression<Func<string>> projectId, Expression<Func<string>> serviceCaseNumber, Expression<Func<CloseServiceCaseAtForgeBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_serviceCaseNumber = WorkflowExpression.Compile(serviceCaseNumber, nameof(serviceCaseNumber), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEventToForge(Expression<Func<string>> projectId, Expression<Func<SendEventToForgeInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEventToForge(Expression<Func<string>> projectId, Expression<Func<SendEventToForgeBodyInput>> body = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -47,17 +47,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
 
     public class HoneywellforgeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId, Expression<Func<ServiceCaseCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_connectorId = WorkflowExpression.Compile(connectorId, nameof(connectorId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/webhooks/{1}", __workflow_projectId.WithUrlEncoding(1), __workflow_connectorId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new ServiceCaseCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         public string CorrelationId { get; set; }
     }
 
-    public class CloseServiceCaseAtForgeInput
+    public class CloseServiceCaseAtForgeBodyInput
     {
         [JsonProperty("siteId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteId { get; set; }
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         public int? ServiceCaseClosedOn { get; set; }
     }
 
-    public class SendEventToForgeInput
+    public class SendEventToForgeBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventName { get; set; } = "defaultEvent";
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         public string Source { get; set; } = "defaultSource";
     }
 
-    public class ServiceCaseCreatedInput
+    public class ServiceCaseCreatedBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

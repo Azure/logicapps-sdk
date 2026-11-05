@@ -217,24 +217,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseEventTrigger(Expression<Func<string>> eventPath, Expression<Func<CaseEventTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseEventTrigger(Expression<Func<string>> eventPath, FlowRecurrence recurrence = null)
         {
             var __workflow_eventPath = WorkflowExpression.Compile(eventPath, nameof(eventPath), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hook/v1/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["EventPath"] = ExpressionConverter.Convert(__workflow_eventPath);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class CaseEventTriggerInput
+    public class BodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

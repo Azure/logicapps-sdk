@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewContact(Expression<Func<AddNewContactInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewContact(Expression<Func<AddNewContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewClient(Expression<Func<AddNewClientInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewClient(Expression<Func<AddNewClientBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration> UpdateTimeEntry(Expression<Func<string>> dAYENTRYId, Expression<Func<UpdateTimeEntryInput>> body)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration> UpdateTimeEntry(Expression<Func<string>> dAYENTRYId, Expression<Func<UpdateTimeEntryBodyInput>> body)
         {
             var __workflow_dAYENTRYId = WorkflowExpression.Compile(dAYENTRYId, nameof(dAYENTRYId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IBodyWorkflowAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration> CreateTimeEntry(Expression<Func<CreateTimeEntryInput>> body)
+        public IBodyWorkflowAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration> CreateTimeEntry(Expression<Func<CreateTimeEntryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateTimeEntryResponse, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserToProject(Expression<Func<string>> projectId, Expression<Func<AddUserToProjectInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserToProject(Expression<Func<string>> projectId, Expression<Func<AddUserToProjectBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -305,13 +305,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         public string UpdatedDateTime { get; set; }
     }
 
-    public class AddNewContactInput
+    public class AddNewContactBodyInput
     {
         [JsonProperty("contact", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddNewContactInputContactType Contact { get; set; }
+        public BodyInputContactType Contact { get; set; }
     }
 
-    public class AddNewContactInputContactType
+    public class BodyInputContactType
     {
         [JsonProperty("client_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ClientId { get; set; }
@@ -389,13 +389,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         public string LastInvoiceKind { get; set; }
     }
 
-    public class AddNewClientInput
+    public class AddNewClientBodyInput
     {
         [JsonProperty("client", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddNewClientInputClientType Client { get; set; }
+        public BodyInputClientType Client { get; set; }
     }
 
-    public class AddNewClientInputClientType
+    public class BodyInputClientType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -410,13 +410,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         public string Details { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputUserType User { get; set; } = new CreateUserInputUserType();
+        public CreateUserBodyInputUserType User { get; set; } = new CreateUserBodyInputUserType();
     }
 
-    public class CreateUserInputUserType
+    public class CreateUserBodyInputUserType
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         public double Hours { get; set; }
     }
 
-    public class UpdateTimeEntryInput
+    public class UpdateTimeEntryBodyInput
     {
         [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         public string Date { get; set; }
     }
 
-    public class CreateTimeEntryInput
+    public class CreateTimeEntryBodyInput
     {
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -614,13 +614,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         public bool CostBudgetIncludesExpenses { get; set; }
     }
 
-    public class AddUserToProjectInput
+    public class AddUserToProjectBodyInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddUserToProjectInputUserType User { get; set; }
+        public AddUserToProjectBodyInputUserType User { get; set; }
     }
 
-    public class AddUserToProjectInputUserType
+    public class AddUserToProjectBodyInputUserType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UserId { get; set; }

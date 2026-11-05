@@ -58,17 +58,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<TranscriptionPostResponse, ApiConnectionActionConfiguration> Transcription(Expression<Func<TranscriptionPostInput>> body = null)
+        public IBodyWorkflowAction<TranscriptionResponse, ApiConnectionActionConfiguration> Transcription(Expression<Func<TranscriptionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TranscriptionPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TranscriptionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/speechtotext/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TranscriptionPostResponse>(callPayload);
+                return new ApiConnectionAction<TranscriptionResponse>(callPayload);
             });
         }
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CaptionsGet(Expression<Func<string>> id, Expression<Func<acceptInput>> accept = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CaptionsGet(Expression<Func<string>> id, Expression<Func<AcceptInput>> accept = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
@@ -131,17 +131,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<VocabularyPostResponse, ApiConnectionActionConfiguration> Vocabulary(Expression<Func<VocabularyPostInput>> body = null)
+        public IBodyWorkflowAction<VocabularyResponse, ApiConnectionActionConfiguration> Vocabulary(Expression<Func<VocabularyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<VocabularyPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<VocabularyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/speechtotext/v1/vocabularies";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<VocabularyPostResponse>(callPayload);
+                return new ApiConnectionAction<VocabularyResponse>(callPayload);
             });
         }
 
@@ -191,17 +191,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<ExtractionPostResponse, ApiConnectionActionConfiguration> Extraction(Expression<Func<ExtractionPostInput>> body = null)
+        public IBodyWorkflowAction<ExtractionResponse, ApiConnectionActionConfiguration> Extraction(Expression<Func<AnalysisBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractionPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/topic_extraction/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractionPostResponse>(callPayload);
+                return new ApiConnectionAction<ExtractionResponse>(callPayload);
             });
         }
 
@@ -267,17 +267,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<AnalysisPostResponse, ApiConnectionActionConfiguration> Analysis(Expression<Func<AnalysisPostInput>> body = null)
+        public IBodyWorkflowAction<AnalysisResponse, ApiConnectionActionConfiguration> Analysis(Expression<Func<AnalysisBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AnalysisPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AnalysisResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sentiment_analysis/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AnalysisPostResponse>(callPayload);
+                return new ApiConnectionAction<AnalysisResponse>(callPayload);
             });
         }
 
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<AnalysisResultGetResponse, ApiConnectionActionConfiguration> AnalysisResultGet(Expression<Func<string>> id, Expression<Func<filterForInput>> filterFor = null)
+        public IBodyWorkflowAction<AnalysisResultGetResponse, ApiConnectionActionConfiguration> AnalysisResultGet(Expression<Func<string>> id, Expression<Func<FilterForInput>> filterFor = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_filterFor = WorkflowExpression.Compile(filterFor, nameof(filterFor), required: false);
@@ -343,17 +343,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<IdentificationPostResponse, ApiConnectionActionConfiguration> Identification(Expression<Func<IdentificationPostInput>> body = null)
+        public IBodyWorkflowAction<IdentificationResponse, ApiConnectionActionConfiguration> Identification(Expression<Func<IdentificationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<IdentificationPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IdentificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/languageid/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<IdentificationPostResponse>(callPayload);
+                return new ApiConnectionAction<IdentificationResponse>(callPayload);
             });
         }
 
@@ -416,17 +416,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revai")]
-        public IBodyWorkflowAction<AlignmentPostResponse, ApiConnectionActionConfiguration> Alignment(Expression<Func<AlignmentPostInput>> body = null)
+        public IBodyWorkflowAction<AlignmentResponse, ApiConnectionActionConfiguration> Alignment(Expression<Func<AlignmentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AlignmentPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AlignmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/alignment/v1/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AlignmentPostResponse>(callPayload);
+                return new ApiConnectionAction<AlignmentResponse>(callPayload);
             });
         }
 
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Transcriber { get; set; }
     }
 
-    public class TranscriptionPostResponse
+    public class TranscriptionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -531,16 +531,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Transcriber { get; set; }
     }
 
-    public class TranscriptionPostInput
+    public class TranscriptionBodyInput
     {
         [JsonProperty("source_config")]
-        public TranscriptionPostInputSourceConfigType SourceConfig { get; set; }
+        public TranscriptionBodyInputSourceConfigType SourceConfig { get; set; }
 
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
 
         [JsonProperty("notification_config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TranscriptionPostInputNotificationConfigType NotificationConfig { get; set; }
+        public TranscriptionBodyInputNotificationConfigType NotificationConfig { get; set; }
 
         [JsonProperty("delete_after_seconds")]
         public int? DeleteAfterSeconds { get; set; }
@@ -558,10 +558,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public bool? TestMode { get; set; }
 
         [JsonProperty("segments_to_transcribe")]
-        public TranscriptionPostInputSegmentsToTranscribeTypeItem[] SegmentsToTranscribe { get; set; }
+        public BodyInputSegmentsToTranscribeTypeItem[] SegmentsToTranscribe { get; set; }
 
         [JsonProperty("speakers_names")]
-        public TranscriptionPostInputSpeakersNamesTypeItem[] SpeakersNames { get; set; }
+        public BodyInputSpeakersNamesTypeItem[] SpeakersNames { get; set; }
 
         [JsonProperty("skip_diarization")]
         public bool? SkipDiarization { get; set; }
@@ -591,41 +591,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string CustomVocabularyId { get; set; }
 
         [JsonProperty("custom_vocabularies")]
-        public TranscriptionPostInputCustomVocabulariesTypeItem[] CustomVocabularies { get; set; }
+        public BodyInputCustomVocabulariesTypeItem[] CustomVocabularies { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
     }
 
-    public class TranscriptionPostInputSourceConfigType
+    public class TranscriptionBodyInputSourceConfigType
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
         [JsonProperty("auth_headers")]
-        public TranscriptionPostInputSourceConfigTypeAuthHeadersType AuthHeaders { get; set; }
+        public BodyInputSourceConfigTypeAuthHeadersType AuthHeaders { get; set; }
     }
 
-    public class TranscriptionPostInputSourceConfigTypeAuthHeadersType
+    public class BodyInputSourceConfigTypeAuthHeadersType
     {
         public string Authorization { get; set; }
     }
 
-    public class TranscriptionPostInputNotificationConfigType
+    public class TranscriptionBodyInputNotificationConfigType
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
         [JsonProperty("auth_headers")]
-        public TranscriptionPostInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
+        public BodyInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
     }
 
-    public class TranscriptionPostInputNotificationConfigTypeAuthHeadersType
+    public class BodyInputNotificationConfigTypeAuthHeadersType
     {
         public string Authorization { get; set; }
     }
 
-    public class TranscriptionPostInputSegmentsToTranscribeTypeItem
+    public class BodyInputSegmentsToTranscribeTypeItem
     {
         [JsonProperty("start")]
         public int? Start { get; set; }
@@ -634,13 +634,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public int? End { get; set; }
     }
 
-    public class TranscriptionPostInputSpeakersNamesTypeItem
+    public class BodyInputSpeakersNamesTypeItem
     {
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
     }
 
-    public class TranscriptionPostInputCustomVocabulariesTypeItem
+    public class BodyInputCustomVocabulariesTypeItem
     {
         [JsonProperty("phrases")]
         public string[] Phrases { get; set; }
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum acceptInput
+    public enum AcceptInput
     {
         [EnumMember(Value = "application/x-subrip")]
         ApplicationXSubrip,
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string FailureDetail { get; set; }
     }
 
-    public class VocabularyPostResponse
+    public class VocabularyResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -751,36 +751,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string CallbackUrl { get; set; }
     }
 
-    public class VocabularyPostInput
+    public class VocabularyBodyInput
     {
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
 
         [JsonProperty("notification_config")]
-        public VocabularyPostInputNotificationConfigType NotificationConfig { get; set; }
+        public AnalysisBodyInputNotificationConfigType NotificationConfig { get; set; }
 
         [JsonProperty("custom_vocabularies")]
-        public VocabularyPostInputCustomVocabulariesTypeItem[] CustomVocabularies { get; set; }
+        public BodyInputCustomVocabulariesTypeItem[] CustomVocabularies { get; set; }
     }
 
-    public class VocabularyPostInputNotificationConfigType
+    public class AnalysisBodyInputNotificationConfigType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("auth_headers")]
-        public VocabularyPostInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
-    }
-
-    public class VocabularyPostInputNotificationConfigTypeAuthHeadersType
-    {
-        public string Authorization { get; set; }
-    }
-
-    public class VocabularyPostInputCustomVocabulariesTypeItem
-    {
-        [JsonProperty("phrases")]
-        public string[] Phrases { get; set; }
+        public BodyInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
     }
 
     public class VocabularyGetResponse
@@ -825,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public int WordCount { get; set; }
     }
 
-    public class ExtractionPostResponse
+    public class ExtractionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -843,7 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Type { get; set; }
     }
 
-    public class ExtractionPostInput
+    public class AnalysisBodyInput
     {
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -852,45 +841,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Metadata { get; set; }
 
         [JsonProperty("notification_config")]
-        public ExtractionPostInputNotificationConfigType NotificationConfig { get; set; }
+        public AnalysisBodyInputNotificationConfigType NotificationConfig { get; set; }
 
         [JsonProperty("delete_after_seconds")]
         public int? DeleteAfterSeconds { get; set; }
 
         [JsonProperty("json")]
-        public ExtractionPostInputJsonType Json { get; set; }
+        public BodyInputJsonType Json { get; set; }
     }
 
-    public class ExtractionPostInputNotificationConfigType
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("auth_headers")]
-        public ExtractionPostInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
-    }
-
-    public class ExtractionPostInputNotificationConfigTypeAuthHeadersType
-    {
-        public string Authorization { get; set; }
-    }
-
-    public class ExtractionPostInputJsonType
+    public class BodyInputJsonType
     {
         [JsonProperty("monologues")]
-        public ExtractionPostInputJsonTypeMonologuesTypeItem[] Monologues { get; set; }
+        public BodyInputJsonTypeMonologuesTypeItem[] Monologues { get; set; }
     }
 
-    public class ExtractionPostInputJsonTypeMonologuesTypeItem
+    public class BodyInputJsonTypeMonologuesTypeItem
     {
         [JsonProperty("speaker")]
         public int? Speaker { get; set; }
 
         [JsonProperty("elements")]
-        public ExtractionPostInputJsonTypeMonologuesTypeItemElementsTypeItem[] Elements { get; set; }
+        public BodyInputJsonTypeMonologuesTypeItemElementsTypeItem[] Elements { get; set; }
     }
 
-    public class ExtractionPostInputJsonTypeMonologuesTypeItemElementsTypeItem
+    public class BodyInputJsonTypeMonologuesTypeItemElementsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -956,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public double EndTs { get; set; }
     }
 
-    public class AnalysisPostResponse
+    public class AnalysisResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -975,71 +950,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
 
         [JsonProperty("type")]
         public string Type { get; set; }
-    }
-
-    public class AnalysisPostInput
-    {
-        [JsonProperty("language")]
-        public string Language { get; set; }
-
-        [JsonProperty("metadata")]
-        public string Metadata { get; set; }
-
-        [JsonProperty("notification_config")]
-        public AnalysisPostInputNotificationConfigType NotificationConfig { get; set; }
-
-        [JsonProperty("delete_after_seconds")]
-        public int? DeleteAfterSeconds { get; set; }
-
-        [JsonProperty("json")]
-        public AnalysisPostInputJsonType Json { get; set; }
-    }
-
-    public class AnalysisPostInputNotificationConfigType
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("auth_headers")]
-        public AnalysisPostInputNotificationConfigTypeAuthHeadersType AuthHeaders { get; set; }
-    }
-
-    public class AnalysisPostInputNotificationConfigTypeAuthHeadersType
-    {
-        public string Authorization { get; set; }
-    }
-
-    public class AnalysisPostInputJsonType
-    {
-        [JsonProperty("monologues")]
-        public AnalysisPostInputJsonTypeMonologuesTypeItem[] Monologues { get; set; }
-    }
-
-    public class AnalysisPostInputJsonTypeMonologuesTypeItem
-    {
-        [JsonProperty("speaker")]
-        public int? Speaker { get; set; }
-
-        [JsonProperty("elements")]
-        public AnalysisPostInputJsonTypeMonologuesTypeItemElementsTypeItem[] Elements { get; set; }
-    }
-
-    public class AnalysisPostInputJsonTypeMonologuesTypeItemElementsTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("ts")]
-        public double? Ts { get; set; }
-
-        [JsonProperty("end_ts")]
-        public double? EndTs { get; set; }
-
-        [JsonProperty("confidence")]
-        public double? Confidence { get; set; }
     }
 
     public class AnalysisGetResponse
@@ -1088,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterForInput
+    public enum FilterForInput
     {
         [EnumMember(Value = "positive")]
         Positive,
@@ -1116,7 +1026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string CompletedOn { get; set; }
     }
 
-    public class IdentificationPostResponse
+    public class IdentificationResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1131,28 +1041,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Type { get; set; }
     }
 
-    public class IdentificationPostInput
+    public class IdentificationBodyInput
     {
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
 
         [JsonProperty("notification_config")]
-        public IdentificationPostInputNotificationConfigType NotificationConfig { get; set; }
+        public AlignmentBodyInputNotificationConfigType NotificationConfig { get; set; }
 
         [JsonProperty("delete_after_seconds")]
         public int? DeleteAfterSeconds { get; set; }
 
         [JsonProperty("source_config")]
-        public IdentificationPostInputSourceConfigType SourceConfig { get; set; }
+        public AlignmentBodyInputSourceConfigType SourceConfig { get; set; }
     }
 
-    public class IdentificationPostInputNotificationConfigType
+    public class AlignmentBodyInputNotificationConfigType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class IdentificationPostInputSourceConfigType
+    public class AlignmentBodyInputSourceConfigType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1212,7 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Language { get; set; }
     }
 
-    public class AlignmentPostResponse
+    public class AlignmentResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1227,41 +1137,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revai
         public string Type { get; set; }
     }
 
-    public class AlignmentPostInput
+    public class AlignmentBodyInput
     {
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
 
         [JsonProperty("notification_config")]
-        public AlignmentPostInputNotificationConfigType NotificationConfig { get; set; }
+        public AlignmentBodyInputNotificationConfigType NotificationConfig { get; set; }
 
         [JsonProperty("delete_after_seconds")]
         public int? DeleteAfterSeconds { get; set; }
 
         [JsonProperty("source_config")]
-        public AlignmentPostInputSourceConfigType SourceConfig { get; set; }
+        public AlignmentBodyInputSourceConfigType SourceConfig { get; set; }
 
         [JsonProperty("transcript_text")]
         public string TranscriptText { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AlignmentPostInputLanguageType? Language { get; set; } = AlignmentPostInputLanguageType.En;
-    }
-
-    public class AlignmentPostInputNotificationConfigType
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
-    public class AlignmentPostInputSourceConfigType
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
+        public BodyInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Revai.BodyInputLanguageType.En;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AlignmentPostInputLanguageType
+    public enum BodyInputLanguageType
     {
         [EnumMember(Value = "en")]
         En,

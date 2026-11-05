@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
     public class WorkstemauActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _001addFixedSalaryData(Expression<Func<_001addFixedSalaryDataV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _001addFixedSalaryData(Expression<Func<_001addFixedSalaryDataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _003updateFixedSalaryDataById(Expression<Func<_003updateFixedSalaryDataByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _003updateFixedSalaryDataById(Expression<Func<_003updateFixedSalaryDataByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _004addLocationInfo(Expression<Func<_004addLocationInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _004addLocationInfo(Expression<Func<_004addLocationInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _005addVariableSalaryData(Expression<Func<_005addVariableSalaryDataV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _005addVariableSalaryData(Expression<Func<_005addVariableSalaryDataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _006updateLocationById(Expression<Func<_006updateLocationByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _006updateLocationById(Expression<Func<_006updateLocationByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _007updateVariableSalaryDataById(Expression<Func<_007updateVariableSalaryDataByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _007updateVariableSalaryDataById(Expression<Func<UpdateVarSalaryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _009addExternalSalaryData(Expression<Func<_009addExternalSalaryDataV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _009addExternalSalaryData(Expression<Func<_009addExternalSalaryDataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _010addDepartmentInfo(Expression<Func<_010addDepartmentInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _010addDepartmentInfo(Expression<Func<_010addDepartmentInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _011updateExternalSalaryDataById(Expression<Func<_011updateExternalSalaryDataByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _011updateExternalSalaryDataById(Expression<Func<_011updateExternalSalaryDataByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _012updateDepartmentById(Expression<Func<_012updateDepartmentByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _012updateDepartmentById(Expression<Func<UpdateDepartmentInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _014addPositionInfo(Expression<Func<_014addPositionInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _014addPositionInfo(Expression<Func<_014addPositionInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _016updatePositionById(Expression<Func<_016updatePositionByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _016updatePositionById(Expression<Func<UpdatePositionInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _018addCostCenterInfo(Expression<Func<_018addCostCenterInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _018addCostCenterInfo(Expression<Func<_018addCostCenterInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeResp, ApiConnectionActionConfiguration> _01addEmployeeInfo(Expression<Func<_01addEmployeeInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultV3AddEmployeeResp, ApiConnectionActionConfiguration> _01addEmployeeInfo(Expression<Func<_01addEmployeeInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3AddEmployeeResp, ApiConnectionActionConfiguration>(() =>
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _01addLeaveBalanceAdjustInfo(Expression<Func<_01addLeaveBalanceAdjustInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _01addLeaveBalanceAdjustInfo(Expression<Func<_01addLeaveBalanceAdjustInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _01addRosterInfo(Expression<Func<_01addRosterInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _01addRosterInfo(Expression<Func<_01addRosterInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3CalAttendanceResp, ApiConnectionActionConfiguration> _01attendanceSummaryCalculate(Expression<Func<_01attendanceSummaryCalculateV3Input>> body)
+        public IBodyWorkflowAction<ResultV3CalAttendanceResp, ApiConnectionActionConfiguration> _01attendanceSummaryCalculate(Expression<Func<_01attendanceSummaryCalculateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3CalAttendanceResp, ApiConnectionActionConfiguration>(() =>
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _020updateCostCenterById(Expression<Func<_020updateCostCenterByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _020updateCostCenterById(Expression<Func<UpdateCostCenterInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _022addTagInfo(Expression<Func<_022addTagInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _022addTagInfo(Expression<Func<_022addTagInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _022addWorkPatternInfo(Expression<Func<_022addWorkPatternInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _022addWorkPatternInfo(Expression<Func<_022addWorkPatternInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _023updateWorkPatternById(Expression<Func<_023updateWorkPatternByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _023updateWorkPatternById(Expression<Func<_023updateWorkPatternByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _024updateTagById(Expression<Func<_024updateTagByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _024updateTagById(Expression<Func<_024updateTagByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -985,7 +985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp, ApiConnectionActionConfiguration> _02addExpenseApplicationInfo(Expression<Func<_02addExpenseApplicationInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp, ApiConnectionActionConfiguration> _02addExpenseApplicationInfo(Expression<Func<_02addExpenseApplicationInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3BizReimbursementInsertResp, ApiConnectionActionConfiguration>(() =>
@@ -999,7 +999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _02batchSaveRosterInfo(Expression<Func<_02batchSaveRosterInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _02batchSaveRosterInfo(Expression<Func<_02batchSaveRosterInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1198,7 +1198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _03updateEmployeeById(Expression<Func<_03updateEmployeeByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _03updateEmployeeById(Expression<Func<_01addEmployeeInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1212,7 +1212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddMobileCardResp, ApiConnectionActionConfiguration> _04addAttendanceDataInfo(Expression<Func<_04addAttendanceDataInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultV3AddMobileCardResp, ApiConnectionActionConfiguration> _04addAttendanceDataInfo(Expression<Func<_04addAttendanceDataInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3AddMobileCardResp, ApiConnectionActionConfiguration>(() =>
@@ -1226,7 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04calculationLeaveBalance(Expression<Func<_04calculationLeaveBalanceV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04calculationLeaveBalance(Expression<Func<_04calculationLeaveBalanceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04updateExpenseApplicationById(Expression<Func<_04updateExpenseApplicationByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04updateExpenseApplicationById(Expression<Func<_04updateExpenseApplicationByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1323,7 +1323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04updateRosterInfoById(Expression<Func<_04updateRosterInfoByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _04updateRosterInfoById(Expression<Func<_04updateRosterInfoByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1563,7 +1563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _06resign(Expression<Func<_06resignV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _06resign(Expression<Func<_06resignBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1577,7 +1577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _06updateAttendanceDataById(Expression<Func<_06updateAttendanceDataByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _06updateAttendanceDataById(Expression<Func<_06updateAttendanceDataByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1591,7 +1591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp, ApiConnectionActionConfiguration> _07addEmployeeHistory(Expression<Func<_07addEmployeeHistoryV3Input>> body)
+        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp, ApiConnectionActionConfiguration> _07addEmployeeHistory(Expression<Func<_07addEmployeeHistoryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3AddEmployeeHistoryResp, ApiConnectionActionConfiguration>(() =>
@@ -1605,7 +1605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp, ApiConnectionActionConfiguration> _07addLeaveApplicationInfo(Expression<Func<_07addLeaveApplicationInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp, ApiConnectionActionConfiguration> _07addLeaveApplicationInfo(Expression<Func<_07addLeaveApplicationInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3LeaveHolidayInsertResp, ApiConnectionActionConfiguration>(() =>
@@ -1619,7 +1619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _07addShitTemplateInfo(Expression<Func<_07addShitTemplateInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _07addShitTemplateInfo(Expression<Func<_07addShitTemplateInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1758,7 +1758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateEmployeeHistoryById(Expression<Func<_09updateEmployeeHistoryByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateEmployeeHistoryById(Expression<Func<_09updateEmployeeHistoryByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1772,7 +1772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateLeaveApplicationById(Expression<Func<_09updateLeaveApplicationByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateLeaveApplicationById(Expression<Func<UpdateLeaveApplicationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1786,7 +1786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateShiftTemplateById(Expression<Func<_09updateShiftTemplateByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _09updateShiftTemplateById(Expression<Func<_09updateShiftTemplateByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1800,7 +1800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddTimesheetResp, ApiConnectionActionConfiguration> _10addTimesheetInfo(Expression<Func<_10addTimesheetInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultV3AddTimesheetResp, ApiConnectionActionConfiguration> _10addTimesheetInfo(Expression<Func<_10addTimesheetInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3AddTimesheetResp, ApiConnectionActionConfiguration>(() =>
@@ -1912,7 +1912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _11addOpenShiftInfo(Expression<Func<_11addOpenShiftInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _11addOpenShiftInfo(Expression<Func<_11addOpenShiftInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -1982,7 +1982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _12updateTimesheetById(Expression<Func<_12updateTimesheetByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _12updateTimesheetById(Expression<Func<_12updateTimesheetByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2074,7 +2074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _13updateOpenShiftById(Expression<Func<_13updateOpenShiftByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _13updateOpenShiftById(Expression<Func<_13updateOpenShiftByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2159,7 +2159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp, ApiConnectionActionConfiguration> _15addCalendarRemarkInfo(Expression<Func<_15addCalendarRemarkInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp, ApiConnectionActionConfiguration> _15addCalendarRemarkInfo(Expression<Func<_15addCalendarRemarkInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultV3AddCalendarRemarkInfoResp, ApiConnectionActionConfiguration>(() =>
@@ -2201,7 +2201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _16addProjectCategoryInfo(Expression<Func<_16addProjectCategoryInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _16addProjectCategoryInfo(Expression<Func<_16addProjectCategoryInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2275,7 +2275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _17updateCalendarRemarkById(Expression<Func<_17updateCalendarRemarkByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _17updateCalendarRemarkById(Expression<Func<_17updateCalendarRemarkByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2316,7 +2316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _18updateProjectCategoryById(Expression<Func<_18updateProjectCategoryByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _18updateProjectCategoryById(Expression<Func<_18updateProjectCategoryByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2351,7 +2351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _20addProjectInfo(Expression<Func<_20addProjectInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _20addProjectInfo(Expression<Func<_20addProjectInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2379,7 +2379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _22updateProjectById(Expression<Func<_22updateProjectByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _22updateProjectById(Expression<Func<_22updateProjectByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2428,7 +2428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _25addProjectCertificateInfo(Expression<Func<_25addProjectCertificateInfoV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _25addProjectCertificateInfo(Expression<Func<_25addProjectCertificateInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2442,7 +2442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _26updateProjectCertificateById(Expression<Func<_26updateProjectCertificateByIdV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _26updateProjectCertificateById(Expression<Func<_26updateProjectCertificateByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -2495,7 +2495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _28addProjectCertificateHours(Expression<Func<_28addProjectCertificateHoursV3Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> _28addProjectCertificateHours(Expression<Func<_28addProjectCertificateHoursBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3122,7 +3122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateCardById(Expression<Func<UpdateCardByIdV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateCardById(Expression<Func<UpdateCardByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3136,7 +3136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateCostCenterInfo(Expression<Func<UpdateCostCenterInfoV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateCostCenterInfo(Expression<Func<UpdateCostCenterInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3150,7 +3150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateDepartmentInfo(Expression<Func<UpdateDepartmentInfoV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateDepartmentInfo(Expression<Func<UpdateDepartmentInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3164,7 +3164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateEmployeeInfo(Expression<Func<UpdateEmployeeInfoV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateEmployeeInfo(Expression<Func<UpdateEmployeeInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3178,7 +3178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateExpenseApplication(Expression<Func<UpdateExpenseApplicationV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateExpenseApplication(Expression<Func<UpdateExpenseApplicationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3192,7 +3192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateExternalSalary(Expression<Func<UpdateExternalSalaryV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateExternalSalary(Expression<Func<UpdateExternalSalaryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3206,7 +3206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateFixedSalary(Expression<Func<UpdateFixedSalaryV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateFixedSalary(Expression<Func<UpdateFixedSalaryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3220,7 +3220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateLabelInfo(Expression<Func<UpdateLabelInfoV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateLabelInfo(Expression<Func<UpdateLabelInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3234,7 +3234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateLeaveApplication(Expression<Func<UpdateLeaveApplicationV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateLeaveApplication(Expression<Func<UpdateLeaveApplicationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3248,7 +3248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdatePositionInfo(Expression<Func<UpdatePositionInfoV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdatePositionInfo(Expression<Func<UpdatePositionInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3262,7 +3262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateRosterData(Expression<Func<UpdateRosterDataV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateRosterData(Expression<Func<UpdateRosterDataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3276,7 +3276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateRosterItem(Expression<Func<UpdateRosterItemV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateRosterItem(Expression<Func<UpdateRosterItemBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3290,7 +3290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateShiftTemplate(Expression<Func<UpdateShiftTemplateV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateShiftTemplate(Expression<Func<UpdateShiftTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3304,7 +3304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateTenantInfo(Expression<Func<UpdateTenantInfoV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateTenantInfo(Expression<Func<UpdateTenantInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3318,7 +3318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateTimesheet(Expression<Func<UpdateTimesheetV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateTimesheet(Expression<Func<UpdateTimesheetBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3332,7 +3332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateVarSalary(Expression<Func<UpdateVarSalaryV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateVarSalary(Expression<Func<UpdateVarSalaryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3346,7 +3346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateWorkLocation(Expression<Func<UpdateWorkLocationV2Input>> body)
+        public IBodyWorkflowAction<ResultBoolean, ApiConnectionActionConfiguration> UpdateWorkLocation(Expression<Func<UpdateWorkLocationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultBoolean, ApiConnectionActionConfiguration>(() =>
@@ -3376,7 +3376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public bool Data { get; set; }
     }
 
-    public class _001addFixedSalaryDataV3Input
+    public class _001addFixedSalaryDataBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -3601,7 +3601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public V3SysEnterpriseUserResp Data { get; set; }
     }
 
-    public class _003updateFixedSalaryDataByIdV3Input
+    public class _003updateFixedSalaryDataByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -3628,7 +3628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public double? SurplusAmount { get; set; }
     }
 
-    public class _004addLocationInfoV3Input
+    public class _004addLocationInfoBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3712,7 +3712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public double SurplusAmount { get; set; }
     }
 
-    public class _005addVariableSalaryDataV3Input
+    public class _005addVariableSalaryDataBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -3733,7 +3733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string DataType { get; set; }
     }
 
-    public class _006updateLocationByIdV3Input
+    public class _006updateLocationByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -3841,7 +3841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string AreaCode { get; set; }
     }
 
-    public class _007updateVariableSalaryDataByIdV3Input
+    public class UpdateVarSalaryBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -3949,7 +3949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string PayrollPlanName { get; set; }
     }
 
-    public class _009addExternalSalaryDataV3Input
+    public class _009addExternalSalaryDataBodyInput
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -4027,7 +4027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public bool ProhibitClockingInOutsideTheOpenRange { get; set; }
     }
 
-    public class _010addDepartmentInfoV3Input
+    public class _010addDepartmentInfoBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -4042,7 +4042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string ParentId { get; set; }
     }
 
-    public class _011updateExternalSalaryDataByIdV3Input
+    public class _011updateExternalSalaryDataByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -4132,7 +4132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string ExpirationDate { get; set; }
     }
 
-    public class _012updateDepartmentByIdV3Input
+    public class UpdateDepartmentInfoBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -4143,11 +4143,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         [JsonProperty("departmentCode")]
         public string DepartmentCode { get; set; }
 
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
         [JsonProperty("parentId")]
         public string ParentId { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
     }
 
     public class ResultIPageV3DepartmentResp
@@ -4327,7 +4327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string PayrollPeriodId { get; set; }
     }
 
-    public class _014addPositionInfoV3Input
+    public class _014addPositionInfoBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -4471,7 +4471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string PayrollPolicyId { get; set; }
     }
 
-    public class _016updatePositionByIdV3Input
+    public class UpdatePositionInfoBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -4543,7 +4543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Status { get; set; }
     }
 
-    public class _018addCostCenterInfoV3Input
+    public class _018addCostCenterInfoBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -4699,7 +4699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Id { get; set; }
     }
 
-    public class _01addEmployeeInfoV3Input
+    public class _01addEmployeeInfoBodyInput
     {
         [JsonProperty("entryDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryDate { get; set; }
@@ -4843,7 +4843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string BizLabelIds { get; set; }
     }
 
-    public class _01addLeaveBalanceAdjustInfoV3Input
+    public class _01addLeaveBalanceAdjustInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -4861,7 +4861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Adjust { get; set; }
     }
 
-    public class _01addRosterInfoV3Input
+    public class _01addRosterInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -4927,7 +4927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string CalId { get; set; }
     }
 
-    public class _01attendanceSummaryCalculateV3Input
+    public class _01attendanceSummaryCalculateBodyInput
     {
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
@@ -5089,7 +5089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string FormulaAlias { get; set; }
     }
 
-    public class _020updateCostCenterByIdV3Input
+    public class UpdateCostCenterInfoBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -5161,7 +5161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public V3ExternalPayItemResp Data { get; set; }
     }
 
-    public class _022addTagInfoV3Input
+    public class _022addTagInfoBodyInput
     {
         [JsonProperty("labelCode")]
         public string LabelCode { get; set; }
@@ -5176,7 +5176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string ParentId { get; set; }
     }
 
-    public class _022addWorkPatternInfoV3Input
+    public class _022addWorkPatternInfoBodyInput
     {
         [JsonProperty("advancedSetting")]
         public string AdvancedSetting { get; set; }
@@ -5242,7 +5242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string DaySign { get; set; }
     }
 
-    public class _023updateWorkPatternByIdV3Input
+    public class _023updateWorkPatternByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -5317,7 +5317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string DaySign { get; set; }
     }
 
-    public class _024updateTagByIdV3Input
+    public class _024updateTagByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -5671,7 +5671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string EnglishName { get; set; }
     }
 
-    public class _02addExpenseApplicationInfoV3Input
+    public class _02addExpenseApplicationInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -5692,7 +5692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Remark { get; set; }
     }
 
-    public class _02batchSaveRosterInfoV3Input
+    public class _02batchSaveRosterInfoBodyInput
     {
         [JsonProperty("employeeIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] EmployeeIds { get; set; }
@@ -6043,150 +6043,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string AfterAdjust { get; set; }
     }
 
-    public class _03updateEmployeeByIdV3Input
-    {
-        [JsonProperty("entryDate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EntryDate { get; set; }
-
-        [JsonProperty("englishName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EnglishName { get; set; }
-
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("employeeStatus")]
-        public string EmployeeStatus { get; set; }
-
-        [JsonProperty("sex")]
-        public string Sex { get; set; }
-
-        [JsonProperty("nationality")]
-        public string Nationality { get; set; }
-
-        [JsonProperty("maritalStatus")]
-        public string MaritalStatus { get; set; }
-
-        [JsonProperty("countryCode")]
-        public string CountryCode { get; set; }
-
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-
-        [JsonProperty("calculateSalaryType")]
-        public string CalculateSalaryType { get; set; }
-
-        [JsonProperty("workDate")]
-        public string WorkDate { get; set; }
-
-        [JsonProperty("basicPay")]
-        public double? BasicPay { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("identityCard")]
-        public string IdentityCard { get; set; }
-
-        [JsonProperty("chineseName")]
-        public string ChineseName { get; set; }
-
-        [JsonProperty("surnameEnglish")]
-        public string SurnameEnglish { get; set; }
-
-        [JsonProperty("personalNameEnglish")]
-        public string PersonalNameEnglish { get; set; }
-
-        [JsonProperty("birthday")]
-        public string Birthday { get; set; }
-
-        [JsonProperty("address")]
-        public string Address { get; set; }
-
-        [JsonProperty("emergencyContactName")]
-        public string EmergencyContactName { get; set; }
-
-        [JsonProperty("emergencyContactRelation")]
-        public string EmergencyContactRelation { get; set; }
-
-        [JsonProperty("emergencyContactPhone")]
-        public string EmergencyContactPhone { get; set; }
-
-        [JsonProperty("bankCode")]
-        public string BankCode { get; set; }
-
-        [JsonProperty("bankBranchNumber")]
-        public string BankBranchNumber { get; set; }
-
-        [JsonProperty("bankAccountNo")]
-        public string BankAccountNo { get; set; }
-
-        [JsonProperty("confirmationDate")]
-        public string ConfirmationDate { get; set; }
-
-        [JsonProperty("date1")]
-        public string Date1 { get; set; }
-
-        [JsonProperty("date2")]
-        public string Date2 { get; set; }
-
-        [JsonProperty("date3")]
-        public string Date3 { get; set; }
-
-        [JsonProperty("date4")]
-        public string Date4 { get; set; }
-
-        [JsonProperty("text1")]
-        public string Text1 { get; set; }
-
-        [JsonProperty("text2")]
-        public string Text2 { get; set; }
-
-        [JsonProperty("text3")]
-        public string Text3 { get; set; }
-
-        [JsonProperty("text4")]
-        public string Text4 { get; set; }
-
-        [JsonProperty("text5")]
-        public string Text5 { get; set; }
-
-        [JsonProperty("text6")]
-        public string Text6 { get; set; }
-
-        [JsonProperty("directSupervisorId")]
-        public string DirectSupervisorId { get; set; }
-
-        [JsonProperty("departmentId")]
-        public string DepartmentId { get; set; }
-
-        [JsonProperty("positionId")]
-        public string PositionId { get; set; }
-
-        [JsonProperty("hireType")]
-        public string HireType { get; set; }
-
-        [JsonProperty("payrollRegulationId")]
-        public string PayrollRegulationId { get; set; }
-
-        [JsonProperty("costCenterId")]
-        public string CostCenterId { get; set; }
-
-        [JsonProperty("attendCalculationId")]
-        public string AttendCalculationId { get; set; }
-
-        [JsonProperty("mobileCardCalType")]
-        public string MobileCardCalType { get; set; }
-
-        [JsonProperty("regularType")]
-        public string RegularType { get; set; }
-
-        [JsonProperty("insurePlanName")]
-        public string InsurePlanName { get; set; }
-
-        [JsonProperty("bizLabelIds")]
-        public string BizLabelIds { get; set; }
-    }
-
     public class ResultV3AddMobileCardResp
     {
         [JsonProperty("code")]
@@ -6205,7 +6061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Id { get; set; }
     }
 
-    public class _04addAttendanceDataInfoV3Input
+    public class _04addAttendanceDataInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -6241,7 +6097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string DeviceId { get; set; }
     }
 
-    public class _04calculationLeaveBalanceV3Input
+    public class _04calculationLeaveBalanceBodyInput
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -6448,7 +6304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string CostCenterCode { get; set; }
     }
 
-    public class _04updateExpenseApplicationByIdV3Input
+    public class _04updateExpenseApplicationByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -6469,7 +6325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Remark { get; set; }
     }
 
-    public class _04updateRosterInfoByIdV3Input
+    public class _04updateRosterInfoByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -7468,7 +7324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string DateType { get; set; }
     }
 
-    public class _06resignV3Input
+    public class _06resignBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -7483,7 +7339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Remark { get; set; }
     }
 
-    public class _06updateAttendanceDataByIdV3Input
+    public class _06updateAttendanceDataByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -7537,7 +7393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Id { get; set; }
     }
 
-    public class _07addEmployeeHistoryV3Input
+    public class _07addEmployeeHistoryBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -7651,7 +7507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Status { get; set; }
     }
 
-    public class _07addLeaveApplicationInfoV3Input
+    public class _07addLeaveApplicationInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -7687,7 +7543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Remark { get; set; }
     }
 
-    public class _07addShitTemplateInfoV3Input
+    public class _07addShitTemplateInfoBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -7921,7 +7777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public int CalculationOrder { get; set; }
     }
 
-    public class _09updateEmployeeHistoryByIdV3Input
+    public class _09updateEmployeeHistoryByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -7972,7 +7828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string MajorWorkLocationId { get; set; }
     }
 
-    public class _09updateLeaveApplicationByIdV3Input
+    public class UpdateLeaveApplicationBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -7998,17 +7854,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         [JsonProperty("timeType")]
         public string TimeType { get; set; }
 
+        [JsonProperty("remark")]
+        public string Remark { get; set; }
+
         [JsonProperty("holidayDate")]
         public string HolidayDate { get; set; }
 
         [JsonProperty("time")]
         public string Time { get; set; }
-
-        [JsonProperty("remark")]
-        public string Remark { get; set; }
     }
 
-    public class _09updateShiftTemplateByIdV3Input
+    public class _09updateShiftTemplateByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -8053,7 +7909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Id { get; set; }
     }
 
-    public class _10addTimesheetInfoV3Input
+    public class _10addTimesheetInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -8371,7 +8227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string LunchEndTime { get; set; }
     }
 
-    public class _11addOpenShiftInfoV3Input
+    public class _11addOpenShiftInfoBodyInput
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -8530,7 +8386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public bool IsCurrent { get; set; }
     }
 
-    public class _12updateTimesheetByIdV3Input
+    public class _12updateTimesheetByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -8725,7 +8581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Status { get; set; }
     }
 
-    public class _13updateOpenShiftByIdV3Input
+    public class _13updateOpenShiftByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -9007,7 +8863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Id { get; set; }
     }
 
-    public class _15addCalendarRemarkInfoV3Input
+    public class _15addCalendarRemarkInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -9172,7 +9028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public double PlanAmount { get; set; }
     }
 
-    public class _16addProjectCategoryInfoV3Input
+    public class _16addProjectCategoryInfoBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -9307,7 +9163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public int DeferCarryoverMonth { get; set; }
     }
 
-    public class _17updateCalendarRemarkByIdV3Input
+    public class _17updateCalendarRemarkByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -9424,7 +9280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Remark { get; set; }
     }
 
-    public class _18updateProjectCategoryByIdV3Input
+    public class _18updateProjectCategoryByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -9490,7 +9346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string ParentName { get; set; }
     }
 
-    public class _20addProjectInfoV3Input
+    public class _20addProjectInfoBodyInput
     {
         [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
@@ -9511,7 +9367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public double? MaxRate { get; set; }
     }
 
-    public class _22updateProjectByIdV3Input
+    public class _22updateProjectByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -9637,7 +9493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public double MaxRate { get; set; }
     }
 
-    public class _25addProjectCertificateInfoV3Input
+    public class _25addProjectCertificateInfoBodyInput
     {
         [JsonProperty("employeeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
@@ -9661,7 +9517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Reason { get; set; }
     }
 
-    public class _26updateProjectCertificateByIdV3Input
+    public class _26updateProjectCertificateByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -9733,7 +9589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public double WorkedHours { get; set; }
     }
 
-    public class _28addProjectCertificateHoursV3Input
+    public class _28addProjectCertificateHoursBodyInput
     {
         [JsonProperty("projectCertificateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectCertificateId { get; set; }
@@ -11728,7 +11584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string AreaType { get; set; }
     }
 
-    public class UpdateCardByIdV2Input
+    public class UpdateCardByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -11740,40 +11596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Remark { get; set; }
     }
 
-    public class UpdateCostCenterInfoV2Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("costCenterCode")]
-        public string CostCenterCode { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class UpdateDepartmentInfoV2Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("departmentCode")]
-        public string DepartmentCode { get; set; }
-
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class UpdateEmployeeInfoV2Input
+    public class UpdateEmployeeInfoBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -11974,7 +11797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string OtherIncomeName { get; set; }
     }
 
-    public class UpdateExpenseApplicationV2Input
+    public class UpdateExpenseApplicationBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -11989,7 +11812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Remark { get; set; }
     }
 
-    public class UpdateExternalSalaryV2Input
+    public class UpdateExternalSalaryBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -12010,7 +11833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string ExpirationDate { get; set; }
     }
 
-    public class UpdateFixedSalaryV2Input
+    public class UpdateFixedSalaryBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -12028,7 +11851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string EndDate { get; set; }
     }
 
-    public class UpdateLabelInfoV2Input
+    public class UpdateLabelInfoBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -12043,58 +11866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public int? LabelStatus { get; set; }
     }
 
-    public class UpdateLeaveApplicationV2Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("holidayType")]
-        public string HolidayType { get; set; }
-
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("startTime")]
-        public string StartTime { get; set; }
-
-        [JsonProperty("endDate")]
-        public string EndDate { get; set; }
-
-        [JsonProperty("endTime")]
-        public string EndTime { get; set; }
-
-        [JsonProperty("leaveTime")]
-        public double? LeaveTime { get; set; }
-
-        [JsonProperty("timeType")]
-        public string TimeType { get; set; }
-
-        [JsonProperty("remark")]
-        public string Remark { get; set; }
-
-        [JsonProperty("holidayDate")]
-        public string HolidayDate { get; set; }
-
-        [JsonProperty("time")]
-        public string Time { get; set; }
-    }
-
-    public class UpdatePositionInfoV2Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("positionCode")]
-        public string PositionCode { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class UpdateRosterDataV2Input
+    public class UpdateRosterDataBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -12124,7 +11896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string AcrossTheNight { get; set; }
     }
 
-    public class UpdateRosterItemV2Input
+    public class UpdateRosterItemBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -12136,7 +11908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string Code { get; set; }
     }
 
-    public class UpdateShiftTemplateV2Input
+    public class UpdateShiftTemplateBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -12166,7 +11938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string LunchEndTime { get; set; }
     }
 
-    public class UpdateTenantInfoV2Input
+    public class UpdateTenantInfoBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -12187,7 +11959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public string BankAccountNo { get; set; }
     }
 
-    public class UpdateTimesheetV2Input
+    public class UpdateTimesheetBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -12208,19 +11980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
         public int? MealTime { get; set; }
     }
 
-    public class UpdateVarSalaryV2Input
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("money")]
-        public double? Money { get; set; }
-
-        [JsonProperty("remark")]
-        public string Remark { get; set; }
-    }
-
-    public class UpdateWorkLocationV2Input
+    public class UpdateWorkLocationBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }

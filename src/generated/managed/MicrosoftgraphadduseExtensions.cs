@@ -13,37 +13,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
     public class MicrosoftgraphadduseActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserPostInput>> body = null)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UserPostResponse>(callPayload);
+                return new ApiConnectionAction<UserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<InvitePostResponse, ApiConnectionActionConfiguration> Invite(Expression<Func<InvitePostInput>> body = null)
+        public IBodyWorkflowAction<InviteResponse, ApiConnectionActionConfiguration> Invite(Expression<Func<InviteBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<InvitePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<InviteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invitations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<InvitePostResponse>(callPayload);
+                return new ApiConnectionAction<InviteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MembersPatch(Expression<Func<string>> groupId, Expression<Func<MembersPatchInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MembersPatch(Expression<Func<string>> groupId, Expression<Func<MembersPatchBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
     {
     }
 
-    public class UserPostResponse
+    public class UserResponse
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -102,13 +102,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string UserPrincipalName { get; set; }
 
         [JsonProperty("identities")]
-        public UserPostResponseIdentitiesTypeItem[] Identities { get; set; }
+        public UserResponseIdentitiesTypeItem[] Identities { get; set; }
 
         [JsonProperty("passwordPolicies")]
         public string PasswordPolicies { get; set; }
     }
 
-    public class UserPostResponseIdentitiesTypeItem
+    public class UserResponseIdentitiesTypeItem
     {
         [JsonProperty("signInType")]
         public string SignInType { get; set; }
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string IssuerAssignedId { get; set; }
     }
 
-    public class UserPostInput
+    public class UserBodyInput
     {
         [JsonProperty("accountEnabled")]
         public bool? AccountEnabled { get; set; }
@@ -135,16 +135,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string UserPrincipalName { get; set; }
 
         [JsonProperty("passwordProfile")]
-        public UserPostInputPasswordProfileType PasswordProfile { get; set; }
+        public BodyInputPasswordProfileType PasswordProfile { get; set; }
 
         [JsonProperty("identities")]
-        public UserPostInputIdentitiesTypeItem[] Identities { get; set; }
+        public BodyInputIdentitiesTypeItem[] Identities { get; set; }
 
         [JsonProperty("onPremisesImmutableId")]
         public string OnPremisesImmutableId { get; set; }
     }
 
-    public class UserPostInputPasswordProfileType
+    public class BodyInputPasswordProfileType
     {
         [JsonProperty("forceChangePasswordNextSignIn")]
         public bool? ForceChangePasswordNextSignIn { get; set; }
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string Password { get; set; }
     }
 
-    public class UserPostInputIdentitiesTypeItem
+    public class BodyInputIdentitiesTypeItem
     {
         [JsonProperty("signInType")]
         public string SignInType { get; set; }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string IssuerAssignedId { get; set; }
     }
 
-    public class InvitePostResponse
+    public class InviteResponse
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -198,13 +198,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string Status { get; set; }
 
         [JsonProperty("invitedUserMessageInfo")]
-        public InvitePostResponseInvitedUserMessageInfoType InvitedUserMessageInfo { get; set; }
+        public InviteResponseInvitedUserMessageInfoType InvitedUserMessageInfo { get; set; }
 
         [JsonProperty("invitedUser")]
-        public InvitePostResponseInvitedUserType InvitedUser { get; set; }
+        public InviteResponseInvitedUserType InvitedUser { get; set; }
     }
 
-    public class InvitePostResponseInvitedUserMessageInfoType
+    public class InviteResponseInvitedUserMessageInfoType
     {
         [JsonProperty("messageLanguage")]
         public string MessageLanguage { get; set; }
@@ -213,16 +213,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string CustomizedMessageBody { get; set; }
 
         [JsonProperty("ccRecipients")]
-        public InvitePostResponseInvitedUserMessageInfoTypeCcRecipientsTypeItem[] CcRecipients { get; set; }
+        public InviteResponseInvitedUserMessageInfoTypeCcRecipientsTypeItem[] CcRecipients { get; set; }
     }
 
-    public class InvitePostResponseInvitedUserMessageInfoTypeCcRecipientsTypeItem
+    public class InviteResponseInvitedUserMessageInfoTypeCcRecipientsTypeItem
     {
         [JsonProperty("emailAddress")]
-        public InvitePostResponseInvitedUserMessageInfoTypeCcRecipientsTypeItemEmailAddressType EmailAddress { get; set; }
+        public InviteResponseInvitedUserMessageInfoTypeCcRecipientsTypeItemEmailAddressType EmailAddress { get; set; }
     }
 
-    public class InvitePostResponseInvitedUserMessageInfoTypeCcRecipientsTypeItemEmailAddressType
+    public class InviteResponseInvitedUserMessageInfoTypeCcRecipientsTypeItemEmailAddressType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -231,13 +231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string Address { get; set; }
     }
 
-    public class InvitePostResponseInvitedUserType
+    public class InviteResponseInvitedUserType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class InvitePostInput
+    public class InviteBodyInput
     {
         [JsonProperty("invitedUserEmailAddress")]
         public string InvitedUserEmailAddress { get; set; }
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
         public string InviteRedirectUrl { get; set; }
     }
 
-    public class MembersPatchInput
+    public class MembersPatchBodyInput
     {
         [JsonProperty("members@odata.bind", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] MembersOdataBind { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
     public class NpstodayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendSurvey(Expression<Func<string>> campaign, Expression<Func<SendSurveyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSurvey(Expression<Func<string>> campaign, Expression<Func<SendSurveyBodyInput>> body = null)
         {
             var __workflow_campaign = WorkflowExpression.Compile(campaign, nameof(campaign), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "npstoday")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<AddEmployeeInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<AddEmployeeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
 
     public class NpstodayTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewResponse(Expression<Func<NewResponseInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewResponse(Expression<Func<NewResponseBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewCampaignMember(Expression<Func<NewCampaignMemberInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewCampaignMember(Expression<Func<NewCampaignMemberBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         }
     }
 
-    public class SendSurveyInput
+    public class SendSurveyBodyInput
     {
         [JsonProperty("respondent")]
-        public SendSurveyInputRespondentType Respondent { get; set; }
+        public BodyInputRespondentType Respondent { get; set; }
     }
 
-    public class SendSurveyInputRespondentType
+    public class BodyInputRespondentType
     {
         [JsonProperty("emailAddress")]
         public string EmailAddress { get; set; }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         public string PhoneNumber { get; set; }
     }
 
-    public class AddEmployeeInput
+    public class AddEmployeeBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         public bool? Active { get; set; }
     }
 
-    public class NewResponseInput
+    public class NewResponseBodyInput
     {
         [JsonProperty("campaignId")]
         public int? CampaignId { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
         internal string EventType { get; set; } = "NewResponse";
     }
 
-    public class NewCampaignMemberInput
+    public class NewCampaignMemberBodyInput
     {
         [JsonProperty("campaignId")]
         public int? CampaignId { get; set; }

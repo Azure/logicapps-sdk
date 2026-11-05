@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IBodyWorkflowAction<CreateProcInstResponse, ApiConnectionActionConfiguration> CreateProcInst(Expression<Func<CreateProcInstInput>> body = null)
+        public IBodyWorkflowAction<CreateProcInstResponse, ApiConnectionActionConfiguration> CreateProcInst(Expression<Func<CreateProcInstBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateProcInstResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetCustomAttrs(Expression<Func<string>> cUSTOMId, Expression<Func<SetCustomAttrsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetCustomAttrs(Expression<Func<string>> cUSTOMId, Expression<Func<SetCustomAttrsBodyInput>> body = null)
         {
             var __workflow_cUSTOMId = WorkflowExpression.Compile(cUSTOMId, nameof(cUSTOMId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomAttr(Expression<Func<string>> cUSTOMId, Expression<Func<GetCustomAttrInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomAttr(Expression<Func<string>> cUSTOMId, Expression<Func<GetCustomAttrBodyInput>> body = null)
         {
             var __workflow_cUSTOMId = WorkflowExpression.Compile(cUSTOMId, nameof(cUSTOMId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IBodyWorkflowAction<GetRegisteredUserbyNameResponse, ApiConnectionActionConfiguration> GetRegisteredUserbyName(Expression<Func<GetRegisteredUserbyNameInput>> body = null)
+        public IBodyWorkflowAction<GetRegisteredUserbyNameResponse, ApiConnectionActionConfiguration> GetRegisteredUserbyName(Expression<Func<GetRegisteredUserbyNameBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetRegisteredUserbyNameResponse, ApiConnectionActionConfiguration>(() =>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "agilepointnx")]
-        public IBodyWorkflowAction<CompleteManualWorkItemResponse, ApiConnectionActionConfiguration> CompleteManualWorkItem(Expression<Func<string>> workItemId, Expression<Func<CompleteManualWorkItemInput>> body = null)
+        public IBodyWorkflowAction<CompleteManualWorkItemResponse, ApiConnectionActionConfiguration> CompleteManualWorkItem(Expression<Func<string>> workItemId, Expression<Func<CompleteManualWorkItemBodyInput>> body = null)
         {
             var __workflow_workItemId = WorkflowExpression.Compile(workItemId, nameof(workItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
 
     public class AgilepointnxTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerByAgilePointProcessInstanceCreation(Expression<Func<TriggerByAgilePointProcessInstanceCreationInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerByAgilePointProcessInstanceCreation(Expression<Func<TriggerByAgilePointProcessInstanceCreationBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeryByAgilePointActivity(Expression<Func<TriggeryByAgilePointActivityInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeryByAgilePointActivity(Expression<Func<TriggeryByAgilePointActivityBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         public string NameValue { get; set; }
     }
 
-    public class CreateProcInstInput
+    public class CreateProcInstBodyInput
     {
         [JsonProperty("ProcessID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessId { get; set; }
@@ -334,28 +334,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
 
         [JsonProperty("blnStartImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? BlnStartImmediately { get; set; } = true;
-        public CreateProcInstInputAttributesTypeItem[] Attributes { get; set; }
+        public BodyInputAttributesTypeItem[] Attributes { get; set; }
     }
 
-    public class CreateProcInstInputAttributesTypeItem
+    public class BodyInputAttributesTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
     }
 
-    public class SetCustomAttrsInput
+    public class SetCustomAttrsBodyInput
     {
         [JsonProperty("attributes")]
-        public SetCustomAttrsInputAttributesTypeItem[] Attributes { get; set; }
+        public BodyInputAttributesTypeItem[] Attributes { get; set; }
     }
 
-    public class SetCustomAttrsInputAttributesTypeItem
-    {
-        public string Name { get; set; }
-        public string Value { get; set; }
-    }
-
-    public class GetCustomAttrInput
+    public class GetCustomAttrBodyInput
     {
         [JsonProperty("attrName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttrName { get; set; }
@@ -443,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         public string WorkCalendarId { get; set; }
     }
 
-    public class GetRegisteredUserbyNameInput
+    public class GetRegisteredUserbyNameBodyInput
     {
         [JsonProperty("userName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
@@ -496,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         public string WorkObjectInfo { get; set; }
     }
 
-    public class CompleteManualWorkItemInput
+    public class CompleteManualWorkItemBodyInput
     {
         [JsonProperty("clientData", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ClientData { get; set; } = "null";
@@ -552,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         public int Value { get; set; }
     }
 
-    public class TriggerByAgilePointProcessInstanceCreationInput
+    public class TriggerByAgilePointProcessInstanceCreationBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -570,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         public string[] TargetApplications { get; set; }
     }
 
-    public class TriggeryByAgilePointActivityInput
+    public class TriggeryByAgilePointActivityBodyInput
     {
         public string Name { get; set; }
 
@@ -588,17 +582,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Agilepointnx
         {
             "*"
         };
-        public TriggeryByAgilePointActivityInputHeadersTypeItem[] Headers { get; set; }
+        public BodyInputHeadersTypeItem[] Headers { get; set; }
     }
 
-    public class TriggeryByAgilePointActivityInputHeadersTypeItem
+    public class BodyInputHeadersTypeItem
     {
         public string Name { get; set; }
-        public TriggeryByAgilePointActivityInputHeadersTypeItemValueType? Value { get; set; }
+        public BodyInputHeadersTypeItemValueType? Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggeryByAgilePointActivityInputHeadersTypeItemValueType
+    public enum BodyInputHeadersTypeItemValueType
     {
         Text,
         Number,

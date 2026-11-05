@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
     public class ImanageinsightplusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse, ApiConnectionActionConfiguration> GetCurationPropertiesForDocument(Expression<Func<GetCurationPropertiesForDocumentInput>> body)
+        public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse, ApiConnectionActionConfiguration> GetCurationPropertiesForDocument(Expression<Func<GetCurationPropertiesForDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetCurationPropertiesForDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody, ApiConnectionActionConfiguration> SetCurationPropertiesForDocument(Expression<Func<SetCurationPropertiesForDocumentInput>> body)
+        public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody, ApiConnectionActionConfiguration> SetCurationPropertiesForDocument(Expression<Func<SetCurationPropertiesForDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SetCurationPropertiesForDocumentResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration> SearchCurationTaxonomyNodeValues(Expression<Func<SearchCurationTaxonomyNodeValuesInput>> body)
+        public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration> SearchCurationTaxonomyNodeValues(Expression<Func<SearchCurationTaxonomyNodeValuesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchCurationTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
-        public IBodyWorkflowAction<SearchKnowledgeDocumentsResponse, ApiConnectionActionConfiguration> SearchKnowledgeDocuments(Expression<Func<SearchKnowledgeDocumentsInput>> body)
+        public IBodyWorkflowAction<SearchKnowledgeDocumentsResponse, ApiConnectionActionConfiguration> SearchKnowledgeDocuments(Expression<Func<SearchKnowledgeDocumentsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchKnowledgeDocumentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         UNPUBLISHED
     }
 
-    public class GetCurationPropertiesForDocumentInput
+    public class GetCurationPropertiesForDocumentBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public CurationProperties Data { get; set; }
     }
 
-    public class SetCurationPropertiesForDocumentInput
+    public class SetCurationPropertiesForDocumentBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public string Ssid { get; set; }
     }
 
-    public class SearchCurationTaxonomyNodeValuesInput
+    public class SearchCurationTaxonomyNodeValuesBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public string Query { get; set; }
 
         [JsonProperty("enabled_state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SearchCurationTaxonomyNodeValuesInputEnabledStateType? EnabledState { get; set; } = SearchCurationTaxonomyNodeValuesInputEnabledStateType.Enabled;
+        public BodyInputEnabledStateType? EnabledState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus.BodyInputEnabledStateType.Enabled;
 
         [JsonProperty("include_path", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludePath { get; set; } = false;
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchCurationTaxonomyNodeValuesInputEnabledStateType
+    public enum BodyInputEnabledStateType
     {
         Enabled,
         Disabled,
@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         Public
     }
 
-    public class SearchKnowledgeDocumentsInput
+    public class SearchKnowledgeDocumentsBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -829,10 +829,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public bool? IncludeSubfolders { get; set; } = false;
 
         [JsonProperty("searchFilters")]
-        public SearchKnowledgeDocumentsInputSearchFiltersTypeItem[] SearchFilters { get; set; }
+        public BodyInputSearchFiltersTypeItem[] SearchFilters { get; set; }
     }
 
-    public class SearchKnowledgeDocumentsInputSearchFiltersTypeItem
+    public class BodyInputSearchFiltersTypeItem
     {
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }

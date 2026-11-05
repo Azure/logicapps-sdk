@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
-        public IBodyWorkflowAction<CreateConversionResponse, ApiConnectionActionConfiguration> CreateConversion(Expression<Func<CreateConversionInput>> body)
+        public IBodyWorkflowAction<CreateConversionResponse, ApiConnectionActionConfiguration> CreateConversion(Expression<Func<CreateConversionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateConversionResponse, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
-        public IBodyWorkflowAction<CreateOrUpdateLinkResponse, ApiConnectionActionConfiguration> CreateOrUpdateLink(Expression<Func<CreateOrUpdateLinkInput>> body)
+        public IBodyWorkflowAction<CreateOrUpdateLinkResponse, ApiConnectionActionConfiguration> CreateOrUpdateLink(Expression<Func<CreateOrUpdateLinkBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateOrUpdateLinkResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
-        public IBodyWorkflowAction<GetClicksResponse, ApiConnectionActionConfiguration> GetClicks(Expression<Func<string>> workspaceId, Expression<Func<string>> linkId = null, Expression<Func<string>> linkIds = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> country = null, Expression<Func<string>> browser = null, Expression<Func<string>> platform = null, Expression<Func<string>> referer = null, Expression<Func<string>> isp = null, Expression<Func<bool>> bots = null, Expression<Func<bool>> unique = null, Expression<Func<string>> timezone = null, Expression<Func<frequencyInput>> frequency = null)
+        public IBodyWorkflowAction<GetClicksResponse, ApiConnectionActionConfiguration> GetClicks(Expression<Func<string>> workspaceId, Expression<Func<string>> linkId = null, Expression<Func<string>> linkIds = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> country = null, Expression<Func<string>> browser = null, Expression<Func<string>> platform = null, Expression<Func<string>> referer = null, Expression<Func<string>> isp = null, Expression<Func<bool>> bots = null, Expression<Func<bool>> unique = null, Expression<Func<string>> timezone = null, Expression<Func<FrequencyInput>> frequency = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_linkId = WorkflowExpression.Compile(linkId, nameof(linkId), required: false);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkly")]
-        public IBodyWorkflowAction<GetClickCountersResponse, ApiConnectionActionConfiguration> GetClickCounters(Expression<Func<string>> workspaceId, Expression<Func<counterInput>> counter, Expression<Func<string>> linkId = null, Expression<Func<string>> linkIds = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> country = null, Expression<Func<bool>> bots = null, Expression<Func<bool>> unique = null)
+        public IBodyWorkflowAction<GetClickCountersResponse, ApiConnectionActionConfiguration> GetClickCounters(Expression<Func<string>> workspaceId, Expression<Func<CounterInput>> counter, Expression<Func<string>> linkId = null, Expression<Func<string>> linkIds = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> country = null, Expression<Func<bool>> bots = null, Expression<Func<bool>> unique = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_counter = WorkflowExpression.Compile(counter, nameof(counter), required: true);
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         Unknown
     }
 
-    public class CreateConversionInput
+    public class CreateConversionBodyInput
     {
         [JsonProperty("amount_cents")]
         public int? AmountCents { get; set; }
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string EventName { get; set; }
 
         [JsonProperty("event_type")]
-        public CreateConversionInputEventTypeType? EventType { get; set; }
+        public BodyInputEventTypeType? EventType { get; set; }
 
         [JsonProperty("external_id")]
         public string CustomerId { get; set; }
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateConversionInputEventTypeType
+    public enum BodyInputEventTypeType
     {
         [EnumMember(Value = "lead")]
         Lead,
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string What { get; set; }
     }
 
-    public class CreateOrUpdateLinkInput
+    public class CreateOrUpdateLinkBodyInput
     {
         [JsonProperty("url")]
         public string DestinationURL { get; set; }
@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum frequencyInput
+    public enum FrequencyInput
     {
         [EnumMember(Value = "day")]
         Day,
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum counterInput
+    public enum CounterInput
     {
         [EnumMember(Value = "country")]
         Country,

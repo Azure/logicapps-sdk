@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     public class ZellisActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ValidateNotification(Expression<Func<string>> xZipSignature, Expression<Func<ValidateNotificationInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ValidateNotification(Expression<Func<string>> xZipSignature, Expression<Func<ValidateNotificationBodyInput>> body)
         {
             var __workflow_xZipSignature = WorkflowExpression.Compile(xZipSignature, nameof(xZipSignature), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> AmendObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body)
+        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> AmendObject(Expression<Func<AmendObjectEntityInput>> entity, Expression<Func<object>> body)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> UpdateObject(Expression<Func<entityInput2>> entity, Expression<Func<object>> body)
+        public IBodyWorkflowAction<StaticResponseWriteSchema, ApiConnectionActionConfiguration> UpdateObject(Expression<Func<UpdateObjectEntityInput>> entity, Expression<Func<object>> body)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class ZellisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CRUDEntitiy(Expression<Func<CRUDEntitiyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CRUDEntitiy(Expression<Func<CRUDEntitiyBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         }
     }
 
-    public class ValidateNotificationInput
+    public class ValidateNotificationBodyInput
     {
         [JsonProperty("payload", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Payload { get; set; }
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum entityInput
+    public enum AmendObjectEntityInput
     {
         AbsenceHeaders,
         CostCentres,
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum entityInput2
+    public enum UpdateObjectEntityInput
     {
         AbsenceDailyDetails,
         AbsenceHeaders,
@@ -223,13 +223,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         WorkerUSCDetails
     }
 
-    public class CRUDEntitiyInput
+    public class CRUDEntitiyBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Event { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CRUDEntitiyInputEventTypeType EventType { get; set; } = new CRUDEntitiyInputEventTypeType();
+        public BodyInputEventTypeType EventType { get; set; } = new BodyInputEventTypeType();
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsEnabled { get; set; } = true;
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         internal string URL { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CRUDEntitiyInputEventTypeType
+    public class BodyInputEventTypeType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Create { get; set; } = true;

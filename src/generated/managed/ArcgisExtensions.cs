@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<RunResult, ApiConnectionActionConfiguration> RunDataPipeline(Expression<Func<string>> dataPipelineFilter, Expression<Func<RunDataPipelineInput>> submitRunBody)
+        public IBodyWorkflowAction<RunResult, ApiConnectionActionConfiguration> RunDataPipeline(Expression<Func<string>> dataPipelineFilter, Expression<Func<SubmitRunBodyInput>> submitRunBody)
         {
             var __workflow_dataPipelineFilter = WorkflowExpression.Compile(dataPipelineFilter, nameof(dataPipelineFilter), required: true);
             var __workflow_submitRunBody = WorkflowExpression.Compile(submitRunBody, nameof(submitRunBody), required: true);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<DeleteItemInFeatureLayerResponseItem[], ApiConnectionActionConfiguration> DeleteItemInFeatureLayer(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, Expression<Func<string>> idField, Expression<Func<DeleteItemInFeatureLayerInput>> data = null)
+        public IBodyWorkflowAction<DeleteItemInFeatureLayerResponseItem[], ApiConnectionActionConfiguration> DeleteItemInFeatureLayer(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, Expression<Func<string>> idField, Expression<Func<DeleteItemInFeatureLayerDataInput>> data = null)
         {
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<ReverseGeocodeResponse, ApiConnectionActionConfiguration> ReverseGeocode(Expression<Func<string>> geocoder, Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<locationTypeInput>> locationType = null)
+        public IBodyWorkflowAction<ReverseGeocodeResponse, ApiConnectionActionConfiguration> ReverseGeocode(Expression<Func<string>> geocoder, Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<LocationTypeInput>> locationType = null)
         {
             var __workflow_geocoder = WorkflowExpression.Compile(geocoder, nameof(geocoder), required: true);
             var __workflow_x = WorkflowExpression.Compile(x, nameof(x), required: true);
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<TimeConversionHelperResponse, ApiConnectionActionConfiguration> TimeConversionHelper(Expression<Func<TimeConversionHelperInput>> data)
+        public IBodyWorkflowAction<TimeConversionHelperResponse, ApiConnectionActionConfiguration> TimeConversionHelper(Expression<Func<TimeConversionHelperDataInput>> data)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
             return new DeferredBodyAction<TimeConversionHelperResponse, ApiConnectionActionConfiguration>(() =>
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<FeatureReportSubmitJobResponse, ApiConnectionActionConfiguration> FeatureReportSubmitJob(Expression<Func<FeatureReportSubmitJobInput>> createFeatureReportBody)
+        public IBodyWorkflowAction<FeatureReportSubmitJobResponse, ApiConnectionActionConfiguration> FeatureReportSubmitJob(Expression<Func<CreateFeatureReportBodyInput>> createFeatureReportBody)
         {
             var __workflow_createFeatureReportBody = WorkflowExpression.Compile(createFeatureReportBody, nameof(createFeatureReportBody), required: true);
             return new DeferredBodyAction<FeatureReportSubmitJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindAddressCandidates(Expression<Func<string>> geocoder, Expression<Func<object>> body, Expression<Func<locationTypeInput>> locationType = null, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindAddressCandidates(Expression<Func<string>> geocoder, Expression<Func<object>> body, Expression<Func<LocationTypeInput>> locationType = null, Expression<Func<string>> srs = null)
         {
             var __workflow_geocoder = WorkflowExpression.Compile(geocoder, nameof(geocoder), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GeocodeAddresses(Expression<Func<string>> geocoder, Expression<Func<GeocodeAddressesV2Input>> data)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GeocodeAddresses(Expression<Func<string>> geocoder, Expression<Func<GeocodeAddressesDataInput>> data)
         {
             var __workflow_geocoder = WorkflowExpression.Compile(geocoder, nameof(geocoder), required: true);
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
@@ -453,14 +453,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<GeoenrichV2Response, ApiConnectionActionConfiguration> Geoenrich(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<bufferTypeInput>> bufferType, Expression<Func<object>> body)
+        public IBodyWorkflowAction<GeoenrichResponse, ApiConnectionActionConfiguration> Geoenrich(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<BufferTypeInput>> bufferType, Expression<Func<object>> body)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_datacollection = WorkflowExpression.Compile(datacollection, nameof(datacollection), required: true);
             var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
             var __workflow_bufferType = WorkflowExpression.Compile(bufferType, nameof(bufferType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<GeoenrichV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GeoenrichResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/geoenrichment/enrich";
                 var apiCallHttpMethod = "post";
@@ -470,19 +470,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 callPayload.Queries["parameter"] = ExpressionConverter.Convert(__workflow_parameter);
                 callPayload.Queries["bufferType"] = ExpressionConverter.Convert(__workflow_bufferType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GeoenrichV2Response>(callPayload);
+                return new ApiConnectionAction<GeoenrichResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgis")]
-        public IBodyWorkflowAction<GetRouteV2Response, ApiConnectionActionConfiguration> GetRoute(Expression<Func<GetRouteV2Input>> routing, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
+        public IBodyWorkflowAction<GetRouteResponse, ApiConnectionActionConfiguration> GetRoute(Expression<Func<RoutingInput>> routing, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
         {
             var __workflow_routing = WorkflowExpression.Compile(routing, nameof(routing), required: true);
             var __workflow_travelModeName = WorkflowExpression.Compile(travelModeName, nameof(travelModeName), required: false);
             var __workflow_findBestSequence = WorkflowExpression.Compile(findBestSequence, nameof(findBestSequence), required: false);
             var __workflow_preserveFirstStop = WorkflowExpression.Compile(preserveFirstStop, nameof(preserveFirstStop), required: false);
             var __workflow_returnDirections = WorkflowExpression.Compile(returnDirections, nameof(returnDirections), required: false);
-            return new DeferredBodyAction<GetRouteV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetRouteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/routing";
                 var apiCallHttpMethod = "post";
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 if (__workflow_returnDirections != null)
                     callPayload.Queries["returnDirections"] = ExpressionConverter.Convert(__workflow_returnDirections);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_routing);
-                return new ApiConnectionAction<GetRouteV2Response>(callPayload);
+                return new ApiConnectionAction<GetRouteResponse>(callPayload);
             });
         }
 
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
     public class ArcgisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddDataInput>> addWebhookBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddWebhookBodyInput>> addWebhookBody, FlowRecurrence recurrence = null)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_addWebhookBody = WorkflowExpression.Compile(addWebhookBody, nameof(addWebhookBody), required: true);
@@ -538,12 +538,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentCreatedV2Response, ApiConnectionTriggerConfiguration> WebhookAttachmentCreated(Expression<Func<WebhookAttachmentCreatedV2Input>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentCreatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentCreated(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookAttachmentCreatedV2Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookAttachmentCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/attachmentsCreated";
                 var apiCallHttpMethod = "post";
@@ -551,16 +551,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookAttachmentCreatedV2Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<WebhookAttachmentCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentDeletedV2Response, ApiConnectionTriggerConfiguration> WebhookAttachmentDeleted(Expression<Func<WebhookAttachmentDeletedV2Input>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentDeletedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentDeleted(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookAttachmentDeletedV2Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookAttachmentDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/attachmentsDeleted";
                 var apiCallHttpMethod = "post";
@@ -568,16 +568,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookAttachmentDeletedV2Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<WebhookAttachmentDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentUpdatedV2Response, ApiConnectionTriggerConfiguration> WebhookAttachmentUpdated(Expression<Func<WebhookAttachmentUpdatedV2Input>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentUpdated(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookAttachmentUpdatedV2Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/attachmentsUpdated";
                 var apiCallHttpMethod = "post";
@@ -585,16 +585,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookAttachmentUpdatedV2Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<WebhookAttachmentUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLCreatedV2Response, ApiConnectionTriggerConfiguration> WebhookFLCreated(Expression<Func<WebhookFLCreatedV2Input>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLCreatedResponse, ApiConnectionTriggerConfiguration> WebhookFLCreated(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookFLCreatedV2Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookFLCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/featuresCreated";
                 var apiCallHttpMethod = "post";
@@ -602,16 +602,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookFLCreatedV2Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<WebhookFLCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLDeletedV2Response, ApiConnectionTriggerConfiguration> WebhookFLDeleted(Expression<Func<WebhookFLDeletedV2Input>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLDeletedResponse, ApiConnectionTriggerConfiguration> WebhookFLDeleted(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookFLDeletedV2Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookFLDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/featuresDeleted";
                 var apiCallHttpMethod = "post";
@@ -619,16 +619,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookFLDeletedV2Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<WebhookFLDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLEditedV2Response, ApiConnectionTriggerConfiguration> WebhookFLEdited(Expression<Func<WebhookFLEditedV2Input>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLEditedResponse, ApiConnectionTriggerConfiguration> WebhookFLEdited(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
-            return new DeferredBodyTrigger<WebhookFLEditedV2Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookFLEditedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhook/createWebhook/featuresUpdated";
                 var apiCallHttpMethod = "post";
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<WebhookFLEditedV2Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<WebhookFLEditedResponse>(callPayload, recurrence: recurrence);
             });
         }
     }
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string Status { get; set; }
     }
 
-    public class RunDataPipelineInput
+    public class SubmitRunBodyInput
     {
         [JsonProperty("dataPipelineItem", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataPipeline { get; set; }
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string GlobalId { get; set; }
     }
 
-    public class DeleteItemInFeatureLayerInput
+    public class DeleteItemInFeatureLayerDataInput
     {
         [JsonProperty("deletedIds")]
         public string DeleteRecords { get; set; }
@@ -881,7 +881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum locationTypeInput
+    public enum LocationTypeInput
     {
         Rooftop,
         Street
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public double UnixTimeStampInMilliseconds { get; set; }
     }
 
-    public class TimeConversionHelperInput
+    public class TimeConversionHelperDataInput
     {
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
@@ -1028,7 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string ObjectIds { get; set; }
     }
 
-    public class FeatureReportSubmitJobInput
+    public class CreateFeatureReportBodyInput
     {
         [JsonProperty("surveyItemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Survey { get; set; }
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string ReportTemplate { get; set; }
 
         [JsonProperty("queryParameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FeatureReportSubmitJobInputValueType Value { get; set; }
+        public CreateFeatureReportBodyInputValueType Value { get; set; }
 
         [JsonProperty("utcOffset")]
         public string UTCOffset { get; set; }
@@ -1049,13 +1049,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string ReportName { get; set; }
 
         [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FeatureReportSubmitJobInputFormatType? Format { get; set; } = FeatureReportSubmitJobInputFormatType.Docx;
+        public CreateFeatureReportBodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis.CreateFeatureReportBodyInputFormatType.Docx;
 
         [JsonProperty("asyncPattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool EnableAsyncPattern { get; set; } = true;
     }
 
-    public class FeatureReportSubmitJobInputValueType
+    public class CreateFeatureReportBodyInputValueType
     {
         [JsonProperty("objectIds")]
         public string FeatureObjectId { get; set; }
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FeatureReportSubmitJobInputFormatType
+    public enum CreateFeatureReportBodyInputFormatType
     {
         [EnumMember(Value = "docx")]
         Docx,
@@ -1073,13 +1073,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         Pdf
     }
 
-    public class GeocodeAddressesV2Input
+    public class GeocodeAddressesDataInput
     {
         [JsonProperty("addresses", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Addresses { get; set; }
     }
 
-    public class GeoenrichV2Response
+    public class GeoenrichResponse
     {
         [JsonProperty("value")]
         public double ParameterValue { get; set; }
@@ -1092,7 +1092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bufferTypeInput
+    public enum BufferTypeInput
     {
         [EnumMember(Value = "default")]
         Default,
@@ -1102,9 +1102,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         NetworkServiceArea
     }
 
-    public class GetRouteV2Response
+    public class GetRouteResponse
     {
-        public GetRouteV2ResponseDirectionsTypeItem[] Directions { get; set; }
+        public GetRouteResponseDirectionsTypeItem[] Directions { get; set; }
         public string Name { get; set; }
 
         [JsonProperty("Kilometers")]
@@ -1118,25 +1118,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public JToken RouteGeometry { get; set; }
     }
 
-    public class GetRouteV2ResponseDirectionsTypeItem
+    public class GetRouteResponseDirectionsTypeItem
     {
         [JsonProperty("text")]
         public string DirectionText { get; set; }
     }
 
-    public class GetRouteV2Input
+    public class RoutingInput
     {
         [JsonProperty("stops", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoutingStops { get; set; }
     }
 
-    public class AddDataInput
+    public class AddWebhookBodyInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddDataInputValueType Value { get; set; } = new AddDataInputValueType();
+        public AddWebhookBodyInputValueType Value { get; set; } = new AddWebhookBodyInputValueType();
     }
 
-    public class AddDataInputValueType
+    public class AddWebhookBodyInputValueType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "MS-FLOW";
@@ -1166,7 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public bool IncludeServiceResponse { get; set; } = true;
     }
 
-    public class WebhookAttachmentCreatedV2Response
+    public class WebhookAttachmentCreatedResponse
     {
         [JsonProperty("id")]
         public double WebhookId { get; set; }
@@ -1178,19 +1178,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string Name { get; set; }
     }
 
-    public class WebhookAttachmentCreatedV2Input
+    public class BodyInput
     {
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookAttachmentCreatedV2InputConfigType Config { get; set; } = new WebhookAttachmentCreatedV2InputConfigType();
+        public BodyInputConfigType Config { get; set; } = new BodyInputConfigType();
     }
 
-    public class WebhookAttachmentCreatedV2InputConfigType
+    public class BodyInputConfigType
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class WebhookAttachmentDeletedV2Response
+    public class WebhookAttachmentDeletedResponse
     {
         [JsonProperty("id")]
         public double WebhookId { get; set; }
@@ -1202,19 +1202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string Name { get; set; }
     }
 
-    public class WebhookAttachmentDeletedV2Input
-    {
-        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookAttachmentDeletedV2InputConfigType Config { get; set; } = new WebhookAttachmentDeletedV2InputConfigType();
-    }
-
-    public class WebhookAttachmentDeletedV2InputConfigType
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookAttachmentUpdatedV2Response
+    public class WebhookAttachmentUpdatedResponse
     {
         [JsonProperty("id")]
         public double WebhookId { get; set; }
@@ -1226,19 +1214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string Name { get; set; }
     }
 
-    public class WebhookAttachmentUpdatedV2Input
-    {
-        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookAttachmentUpdatedV2InputConfigType Config { get; set; } = new WebhookAttachmentUpdatedV2InputConfigType();
-    }
-
-    public class WebhookAttachmentUpdatedV2InputConfigType
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookFLCreatedV2Response
+    public class WebhookFLCreatedResponse
     {
         [JsonProperty("id")]
         public double WebhookId { get; set; }
@@ -1250,19 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string Name { get; set; }
     }
 
-    public class WebhookFLCreatedV2Input
-    {
-        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookFLCreatedV2InputConfigType Config { get; set; } = new WebhookFLCreatedV2InputConfigType();
-    }
-
-    public class WebhookFLCreatedV2InputConfigType
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookFLDeletedV2Response
+    public class WebhookFLDeletedResponse
     {
         [JsonProperty("id")]
         public double WebhookId { get; set; }
@@ -1274,19 +1238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
         public string Name { get; set; }
     }
 
-    public class WebhookFLDeletedV2Input
-    {
-        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookFLDeletedV2InputConfigType Config { get; set; } = new WebhookFLDeletedV2InputConfigType();
-    }
-
-    public class WebhookFLDeletedV2InputConfigType
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookFLEditedV2Response
+    public class WebhookFLEditedResponse
     {
         [JsonProperty("id")]
         public double WebhookId { get; set; }
@@ -1296,18 +1248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
 
         [JsonProperty("name")]
         public string Name { get; set; }
-    }
-
-    public class WebhookFLEditedV2Input
-    {
-        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookFLEditedV2InputConfigType Config { get; set; } = new WebhookFLEditedV2InputConfigType();
-    }
-
-    public class WebhookFLEditedV2InputConfigType
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

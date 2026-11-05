@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        public IBodyWorkflowAction<GetNearbyRadarResponse, ApiConnectionActionConfiguration> GetNearbyRadar(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null)
+        public IBodyWorkflowAction<GetNearbyRadarResponse, ApiConnectionActionConfiguration> GetNearbyRadar(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<DataSetInput>> dataSet = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        public IBodyWorkflowAction<GetRadarRainfallResponse, ApiConnectionActionConfiguration> GetRadarRainfall(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> radarCode = null, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<GetRadarRainfallResponse, ApiConnectionActionConfiguration> GetRadarRainfall(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> radarCode = null, Expression<Func<DataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        public IBodyWorkflowAction<GetRadarDailySummariesResponse, ApiConnectionActionConfiguration> GetRadarDailySummaries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<GetRadarDailySummariesResponse, ApiConnectionActionConfiguration> GetRadarDailySummaries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<DataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
-        public IBodyWorkflowAction<GetRadarMonthlySummariesResponse, ApiConnectionActionConfiguration> GetRadarMonthlySummaries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<GetRadarMonthlySummariesResponse, ApiConnectionActionConfiguration> GetRadarMonthlySummaries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<DataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
             var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
             var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dataSetInput
+    public enum DataSetInput
     {
         RF3,
         RF2,

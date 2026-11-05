@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
     public class PdflessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
-        public IBodyWorkflowAction<PDFDtoApiResult, ApiConnectionActionConfiguration> CreatePDF(Expression<Func<string>> version, Expression<Func<CreatePDFInput>> command)
+        public IBodyWorkflowAction<PDFDtoApiResult, ApiConnectionActionConfiguration> CreatePDF(Expression<Func<string>> version, Expression<Func<CommandInput>> command)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_command = WorkflowExpression.Compile(command, nameof(command), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
         public string CreatedAt { get; set; }
     }
 
-    public class CreatePDFInput
+    public class CommandInput
     {
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }

@@ -13,34 +13,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
     public class PineconeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<IndexStatsPostResponse, ApiConnectionActionConfiguration> IndexStats()
+        public IBodyWorkflowAction<IndexStatsResponse, ApiConnectionActionConfiguration> IndexStats()
         {
-            return new DeferredBodyAction<IndexStatsPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IndexStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/describe_index_stats";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<IndexStatsPostResponse>(callPayload);
+                return new ApiConnectionAction<IndexStatsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorQueryPostResponse, ApiConnectionActionConfiguration> VectorQuery(Expression<Func<VectorQueryPostInput>> body = null)
+        public IBodyWorkflowAction<VectorQueryResponse, ApiConnectionActionConfiguration> VectorQuery(Expression<Func<VectorQueryBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<VectorQueryPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<VectorQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<VectorQueryPostResponse>(callPayload);
+                return new ApiConnectionAction<VectorQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorDelete(Expression<Func<VectorDeletePostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorDelete(Expression<Func<VectorDeleteBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorUpdate(Expression<Func<VectorUpdateInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VectorUpdate(Expression<Func<VectorUpdateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -87,17 +87,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorUpsertPostResponse, ApiConnectionActionConfiguration> VectorUpsert(Expression<Func<VectorUpsertPostInput>> body = null)
+        public IBodyWorkflowAction<VectorUpsertResponse, ApiConnectionActionConfiguration> VectorUpsert(Expression<Func<VectorUpsertBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<VectorUpsertPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<VectorUpsertResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/vectors/upsert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<VectorUpsertPostResponse>(callPayload);
+                return new ApiConnectionAction<VectorUpsertResponse>(callPayload);
             });
         }
 
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CollectionCreate(Expression<Func<CollectionCreatePostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CollectionCreate(Expression<Func<CollectionCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Index(Expression<Func<IndexPostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Index(Expression<Func<IndexBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IndexPatch(Expression<Func<string>> indexName, Expression<Func<IndexPatchInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IndexPatch(Expression<Func<string>> indexName, Expression<Func<IndexPatchBodyInput>> body = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -228,10 +228,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
     {
     }
 
-    public class IndexStatsPostResponse
+    public class IndexStatsResponse
     {
         [JsonProperty("namespaces")]
-        public IndexStatsPostResponseNamespacesType Namespaces { get; set; }
+        public IndexStatsResponseNamespacesType Namespaces { get; set; }
 
         [JsonProperty("dimension")]
         public int Dimension { get; set; }
@@ -240,28 +240,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public double IndexFullness { get; set; }
     }
 
-    public class IndexStatsPostResponseNamespacesType
+    public class IndexStatsResponseNamespacesType
     {
         [JsonProperty("namespace")]
-        public IndexStatsPostResponseNamespacesTypeNamespaceType Namespace { get; set; }
+        public IndexStatsResponseNamespacesTypeNamespaceType Namespace { get; set; }
     }
 
-    public class IndexStatsPostResponseNamespacesTypeNamespaceType
+    public class IndexStatsResponseNamespacesTypeNamespaceType
     {
         [JsonProperty("vectorCount")]
         public int VectorCount { get; set; }
     }
 
-    public class VectorQueryPostResponse
+    public class VectorQueryResponse
     {
         [JsonProperty("matches")]
-        public VectorQueryPostResponseMatchesTypeItem[] Matches { get; set; }
+        public VectorQueryResponseMatchesTypeItem[] Matches { get; set; }
 
         [JsonProperty("namespace")]
         public string Namespace { get; set; }
     }
 
-    public class VectorQueryPostResponseMatchesTypeItem
+    public class VectorQueryResponseMatchesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -273,13 +273,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public double[] Values { get; set; }
 
         [JsonProperty("sparseValues")]
-        public VectorQueryPostResponseMatchesTypeItemSparseValuesType SparseValues { get; set; }
+        public VectorQueryResponseMatchesTypeItemSparseValuesType SparseValues { get; set; }
 
         [JsonProperty("metadata")]
-        public VectorQueryPostResponseMatchesTypeItemMetadataType Metadata { get; set; }
+        public VectorQueryResponseMatchesTypeItemMetadataType Metadata { get; set; }
     }
 
-    public class VectorQueryPostResponseMatchesTypeItemSparseValuesType
+    public class VectorQueryResponseMatchesTypeItemSparseValuesType
     {
         [JsonProperty("indices")]
         public int[] Indices { get; set; }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public double[] Values { get; set; }
     }
 
-    public class VectorQueryPostResponseMatchesTypeItemMetadataType
+    public class VectorQueryResponseMatchesTypeItemMetadataType
     {
         [JsonProperty("genre")]
         public string Genre { get; set; }
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public int Year { get; set; }
     }
 
-    public class VectorQueryPostInput
+    public class VectorQueryBodyInput
     {
         [JsonProperty("includeValues")]
         public bool? IncludeValues { get; set; }
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public bool? IncludeMetadata { get; set; }
 
         [JsonProperty("sparseVector")]
-        public VectorQueryPostInputSparseVectorType SparseVector { get; set; }
+        public BodyInputSparseVectorType SparseVector { get; set; }
 
         [JsonProperty("namespace")]
         public string Namespace { get; set; }
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public string Id { get; set; }
     }
 
-    public class VectorQueryPostInputSparseVectorType
+    public class BodyInputSparseVectorType
     {
         [JsonProperty("indices")]
         public int[] Indices { get; set; }
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public int[] Values { get; set; }
     }
 
-    public class VectorDeletePostInput
+    public class VectorDeleteBodyInput
     {
         [JsonProperty("deleteAll")]
         public bool? DeleteAll { get; set; }
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public int Year { get; set; }
     }
 
-    public class VectorUpdateInput
+    public class VectorUpdateBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -399,13 +399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public double[] Values { get; set; }
 
         [JsonProperty("sparseValues")]
-        public VectorUpdateInputSparseValuesType SparseValues { get; set; }
+        public BodyInputSparseValuesType SparseValues { get; set; }
 
         [JsonProperty("namespace")]
         public string Namespace { get; set; }
     }
 
-    public class VectorUpdateInputSparseValuesType
+    public class BodyInputSparseValuesType
     {
         [JsonProperty("indices")]
         public int[] Indices { get; set; }
@@ -414,22 +414,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public double[] Values { get; set; }
     }
 
-    public class VectorUpsertPostResponse
+    public class VectorUpsertResponse
     {
         [JsonProperty("upsertedCount")]
         public int UpsertedCount { get; set; }
     }
 
-    public class VectorUpsertPostInput
+    public class VectorUpsertBodyInput
     {
         [JsonProperty("vectors")]
-        public VectorUpsertPostInputVectorsTypeItem[] Vectors { get; set; }
+        public BodyInputVectorsTypeItem[] Vectors { get; set; }
 
         [JsonProperty("namespace")]
         public string Namespace { get; set; }
     }
 
-    public class VectorUpsertPostInputVectorsTypeItem
+    public class BodyInputVectorsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -438,10 +438,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public double[] Values { get; set; }
 
         [JsonProperty("sparseValues")]
-        public VectorUpsertPostInputVectorsTypeItemSparseValuesType SparseValues { get; set; }
+        public BodyInputVectorsTypeItemSparseValuesType SparseValues { get; set; }
     }
 
-    public class VectorUpsertPostInputVectorsTypeItemSparseValuesType
+    public class BodyInputVectorsTypeItemSparseValuesType
     {
         [JsonProperty("indices")]
         public int[] Indices { get; set; }
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public double[] Values { get; set; }
     }
 
-    public class CollectionCreatePostInput
+    public class CollectionCreateBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public string Status { get; set; }
     }
 
-    public class IndexPostInput
+    public class IndexBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         public string State { get; set; }
     }
 
-    public class IndexPatchInput
+    public class IndexPatchBodyInput
     {
         [JsonProperty("replicas")]
         public int? Replicas { get; set; }

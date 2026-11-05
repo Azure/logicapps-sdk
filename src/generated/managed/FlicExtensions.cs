@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
     public class FlicTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<FlicButtonTriggerInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<FlicButtonTriggerRequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_buttonUuid = WorkflowExpression.Compile(buttonUuid, nameof(buttonUuid), required: true);
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
@@ -30,33 +30,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FlicTaskTrigger(Expression<Func<string>> taskUuid, Expression<Func<FlicTaskTriggerInput>> requestBodyOfWebhook = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FlicTaskTrigger(Expression<Func<string>> taskUuid, FlowRecurrence recurrence = null)
         {
             var __workflow_taskUuid = WorkflowExpression.Compile(taskUuid, nameof(taskUuid), required: true);
-            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/msflow/subscribe/{0}", __workflow_taskUuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_requestBodyOfWebhook != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                callPayload.Body = new FlicTaskTriggerRequestBodyOfWebhookInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class FlicButtonTriggerInput
+    public class FlicButtonTriggerRequestBodyOfWebhookInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlicButtonTriggerInputEventsType? Events { get; set; } = FlicButtonTriggerInputEventsType.Any;
+        public RequestBodyOfWebhookInputEventsType? Events { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Flic.RequestBodyOfWebhookInputEventsType.Any;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FlicButtonTriggerInputEventsType
+    public enum RequestBodyOfWebhookInputEventsType
     {
         [EnumMember(Value = "click")]
         Click,
@@ -68,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
         Any
     }
 
-    public class FlicTaskTriggerInput
+    public class FlicTaskTriggerRequestBodyOfWebhookInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
-        public IBodyWorkflowAction<UrlSsrfThreatDetectionResponseFull, ApiConnectionActionConfiguration> NetworkThreatDetectionDetectSsrfUrl(Expression<Func<NetworkThreatDetectionDetectSsrfUrlInput>> request)
+        public IBodyWorkflowAction<UrlSsrfThreatDetectionResponseFull, ApiConnectionActionConfiguration> NetworkThreatDetectionDetectSsrfUrl(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<UrlSsrfThreatDetectionResponseFull, ApiConnectionActionConfiguration>(() =>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
         public string ThreatLevel { get; set; }
     }
 
-    public class NetworkThreatDetectionDetectSsrfUrlInput
+    public class RequestInput
     {
         public string URL { get; set; }
         public string[] BlockedDomains { get; set; }

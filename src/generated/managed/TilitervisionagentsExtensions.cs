@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
     public class TilitervisionagentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
-        public IBodyWorkflowAction<AgentResponse, ApiConnectionActionConfiguration> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<RunVisionAgentInput>> payload)
+        public IBodyWorkflowAction<AgentResponse, ApiConnectionActionConfiguration> RunVisionAgent(Expression<Func<AgentNameInput>> agentName, Expression<Func<PayloadInput>> payload)
         {
             var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum agentNameInput
+    public enum AgentNameInput
     {
         [EnumMember(Value = "cleanliness-score")]
         CleanlinessScore,
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
         TyreRecognition
     }
 
-    public class RunVisionAgentInput
+    public class PayloadInput
     {
         [JsonProperty("input_file_b64", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputFileB64 { get; set; }

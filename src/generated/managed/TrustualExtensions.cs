@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
     public class TrustualActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyFile(Expression<Func<CertifyFileInput>> body)
+        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyFile(Expression<Func<CertifyFileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CertificationOutput, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyHash(Expression<Func<CertifyHashInput>> body)
+        public IBodyWorkflowAction<CertificationOutput, ApiConnectionActionConfiguration> CertifyHash(Expression<Func<CertifyHashBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CertificationOutput, ApiConnectionActionConfiguration>(() =>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         public string Id { get; set; }
 
         [JsonProperty("language")]
-        public ZLanguage Language { get; set; }
+        public CertifyFileZLanguageResponse Language { get; set; }
 
         [JsonProperty("local_timestamp")]
         public string LocalTimestamp { get; set; }
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ZLanguage
+    public enum CertifyFileZLanguageResponse
     {
         [EnumMember(Value = "de")]
         De,
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         Failed
     }
 
-    public class CertifyFileInput
+    public class CertifyFileBodyInput
     {
         [JsonProperty("file_base_64", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ZLanguage? CertificateLanguage { get; set; } = ZLanguage.En;
+        public CertifyFileZLanguage? CertificateLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Trustual.CertifyFileZLanguage.En;
 
         [JsonProperty("offset")]
         public double? TimeZoneOffset { get; set; }
@@ -130,13 +130,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         public bool? SandboxMode { get; set; }
     }
 
-    public class CertifyHashInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CertifyFileZLanguage
+    {
+        [EnumMember(Value = "de")]
+        De,
+        [EnumMember(Value = "en")]
+        En,
+        [EnumMember(Value = "es")]
+        Es,
+        [EnumMember(Value = "fr")]
+        Fr,
+        [EnumMember(Value = "it")]
+        It,
+        [EnumMember(Value = "nl")]
+        Nl
+    }
+
+    public class CertifyHashBodyInput
     {
         [JsonProperty("hash", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Hash { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ZLanguage? CertificateLanguage { get; set; } = ZLanguage.En;
+        public CertifyFileZLanguage? CertificateLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Trustual.CertifyFileZLanguage.En;
 
         [JsonProperty("offset")]
         public double? TimeZoneOffset { get; set; }

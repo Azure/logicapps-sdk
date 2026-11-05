@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     public class PdfblocksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfblocks")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeDocumentsArray(Expression<Func<MergeDocumentsArrayInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeDocumentsArray(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     {
     }
 
-    public class MergeDocumentsArrayInput
+    public class BodyInput
     {
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MergeDocumentsArrayInputDocumentsTypeItem[] Documents { get; set; }
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
     }
 
-    public class MergeDocumentsArrayInputDocumentsTypeItem
+    public class BodyInputDocumentsTypeItem
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }

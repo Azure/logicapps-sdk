@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
     public class MaqtextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration> SentimentClassifier(Expression<Func<SentimentClassifierInput>> body)
+        public IBodyWorkflowAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration> SentimentClassifier(Expression<Func<SentimentClassifierBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SentimentClassifierResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<PIIScrubberResponse, ApiConnectionActionConfiguration> PIIScrubber(Expression<Func<PIIScrubberInput>> body = null)
+        public IBodyWorkflowAction<PIIScrubberResponse, ApiConnectionActionConfiguration> PIIScrubber(Expression<Func<PIIScrubberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PIIScrubberResponse, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration> KeyPhraseExtractor(Expression<Func<KeyPhraseExtractorInput>> body = null)
+        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration> KeyPhraseExtractor(Expression<Func<KeyPhraseExtractorBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<KeyPhraseExtractorResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -70,13 +70,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         public double Sentiment { get; set; }
     }
 
-    public class SentimentClassifierInput
+    public class SentimentClassifierBodyInput
     {
         [JsonProperty("data")]
-        public SentimentClassifierInputDataTypeItem[] Data { get; set; }
+        public BodyInputDataTypeItem[] Data { get; set; }
     }
 
-    public class SentimentClassifierInputDataTypeItem
+    public class BodyInputDataTypeItem
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         public string ScrubbedText { get; set; }
     }
 
-    public class PIIScrubberInput
+    public class PIIScrubberBodyInput
     {
         [JsonProperty("data")]
         public string Data { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         public string[] Similar { get; set; }
     }
 
-    public class KeyPhraseExtractorInput
+    public class KeyPhraseExtractorBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }

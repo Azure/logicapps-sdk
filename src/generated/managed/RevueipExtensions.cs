@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> AddSubscriber(Expression<Func<AddSubscriberInput>> body = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> AddSubscriber(Expression<Func<AddSubscriberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UpdateSubscriber(Expression<Func<UpdateSubscriberInput>> body = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UpdateSubscriber(Expression<Func<AddSubscriberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UnsubscribeSubscriber(Expression<Func<UnsubscribeSubscriberInput>> body = null)
+        public IBodyWorkflowAction<Subscriber, ApiConnectionActionConfiguration> UnsubscribeSubscriber(Expression<Func<UnsubscribeSubscriberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Subscriber, ApiConnectionActionConfiguration>(() =>
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         public bool DoubleOptIn { get; set; }
     }
 
-    public class AddSubscriberInput
+    public class AddSubscriberBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -359,22 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         public bool? DoubleOptIn { get; set; }
     }
 
-    public class UpdateSubscriberInput
-    {
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("first_name")]
-        public string FirstName { get; set; }
-
-        [JsonProperty("last_name")]
-        public string LastName { get; set; }
-
-        [JsonProperty("double_opt_in")]
-        public bool? DoubleOptIn { get; set; }
-    }
-
-    public class UnsubscribeSubscriberInput
+    public class UnsubscribeSubscriberBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }

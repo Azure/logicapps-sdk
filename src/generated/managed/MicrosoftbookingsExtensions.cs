@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
 
     public class MicrosoftbookingsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CreateAppointmentInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CreateAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<UpdateAppointmentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<UpdateAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CancelAppointmentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CancelAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
         public string WebhookId { get; set; }
     }
 
-    public class CreateAppointmentInput
+    public class CreateAppointmentBodyInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAppointmentInputWebhookType Webhook { get; set; } = new CreateAppointmentInputWebhookType();
+        public CreateAppointmentBodyInputWebhookType Webhook { get; set; } = new CreateAppointmentBodyInputWebhookType();
     }
 
-    public class CreateAppointmentInputWebhookType
+    public class CreateAppointmentBodyInputWebhookType
     {
         [JsonProperty("notification_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
@@ -113,13 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
         };
     }
 
-    public class UpdateAppointmentInput
+    public class UpdateAppointmentBodyInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateAppointmentInputWebhookType Webhook { get; set; } = new UpdateAppointmentInputWebhookType();
+        public UpdateAppointmentBodyInputWebhookType Webhook { get; set; } = new UpdateAppointmentBodyInputWebhookType();
     }
 
-    public class UpdateAppointmentInputWebhookType
+    public class UpdateAppointmentBodyInputWebhookType
     {
         [JsonProperty("notification_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
@@ -134,13 +134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
         };
     }
 
-    public class CancelAppointmentInput
+    public class CancelAppointmentBodyInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CancelAppointmentInputWebhookType Webhook { get; set; } = new CancelAppointmentInputWebhookType();
+        public CancelAppointmentBodyInputWebhookType Webhook { get; set; } = new CancelAppointmentBodyInputWebhookType();
     }
 
-    public class CancelAppointmentInputWebhookType
+    public class CancelAppointmentBodyInputWebhookType
     {
         [JsonProperty("notification_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";

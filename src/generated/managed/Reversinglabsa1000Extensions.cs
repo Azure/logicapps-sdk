@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
     public class Reversinglabsa1000Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDetailedReport(Expression<Func<RetrieveDetailedReportInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDetailedReport(Expression<Func<RetrieveDetailedReportBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDynamicAnalysisReport(Expression<Func<string>> hashValue, Expression<Func<formatInput>> format, Expression<Func<endpointInput>> endpoint)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveDynamicAnalysisReport(Expression<Func<string>> hashValue, Expression<Func<FormatInput>> format, Expression<Func<EndpointInput>> endpoint)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveSummaryReport(Expression<Func<RetrieveSummaryReportInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveSummaryReport(Expression<Func<RetrieveSummaryReportBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveProcessingStatusFiles(Expression<Func<RetrieveProcessingStatusFilesInput>> body, Expression<Func<string>> status = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveProcessingStatusFiles(Expression<Func<RetrieveProcessingStatusFilesBodyInput>> body, Expression<Func<string>> status = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveClassificationForSample(Expression<Func<string>> hashValue, Expression<Func<localonlyInput>> localonly = null, Expression<Func<avScannersInput>> avScanners = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveClassificationForSample(Expression<Func<string>> hashValue, Expression<Func<LocalonlyInput>> localonly = null, Expression<Func<AvScannersInput>> avScanners = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_localonly = WorkflowExpression.Compile(localonly, nameof(localonly), required: false);
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PerformAdvancedSearch(Expression<Func<PerformAdvancedSearchInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PerformAdvancedSearch(Expression<Func<PerformAdvancedSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteUserTagsFromSample(Expression<Func<string>> sampleHash, Expression<Func<DeleteUserTagsFromSampleInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteUserTagsFromSample(Expression<Func<string>> sampleHash, Expression<Func<CreateUserTagsForSampleBodyInput>> body)
         {
             var __workflow_sampleHash = WorkflowExpression.Compile(sampleHash, nameof(sampleHash), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUserTagsForSample(Expression<Func<string>> sampleHash, Expression<Func<CreateUserTagsForSampleInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUserTagsForSample(Expression<Func<string>> sampleHash, Expression<Func<CreateUserTagsForSampleBodyInput>> body)
         {
             var __workflow_sampleHash = WorkflowExpression.Compile(sampleHash, nameof(sampleHash), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
     {
     }
 
-    public class RetrieveDetailedReportInput
+    public class RetrieveDetailedReportBodyInput
     {
         [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] HashValues { get; set; }
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "html")]
         Html,
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum endpointInput
+    public enum EndpointInput
     {
         [EnumMember(Value = "create")]
         Create,
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         Status
     }
 
-    public class RetrieveSummaryReportInput
+    public class RetrieveSummaryReportBodyInput
     {
         [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] HashValues { get; set; }
@@ -510,25 +510,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         public string SkipReanalysis { get; set; }
     }
 
-    public class RetrieveProcessingStatusFilesInput
+    public class RetrieveProcessingStatusFilesBodyInput
     {
         [JsonProperty("hash_values", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] HashValues { get; set; }
     }
 
-    public enum localonlyInput
+    public enum LocalonlyInput
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum avScannersInput
+    public enum AvScannersInput
     {
         _0 = 0,
         _1 = 1
     }
 
-    public class PerformAdvancedSearchInput
+    public class PerformAdvancedSearchBodyInput
     {
         [JsonProperty("query")]
         public string Query { get; set; }
@@ -543,13 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         public string Sort { get; set; }
     }
 
-    public class DeleteUserTagsFromSampleInput
-    {
-        [JsonProperty("tags", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Tags { get; set; }
-    }
-
-    public class CreateUserTagsForSampleInput
+    public class CreateUserTagsForSampleBodyInput
     {
         [JsonProperty("tags", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Tags { get; set; }

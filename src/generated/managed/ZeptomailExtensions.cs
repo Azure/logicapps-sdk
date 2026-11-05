@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendMail(Expression<Func<SendMailInput>> body)
+        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendMail(Expression<Func<SendMailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SuccessMessage, ApiConnectionActionConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendTemplateMail(Expression<Func<SendTemplateMailInput>> body)
+        public IBodyWorkflowAction<SuccessMessage, ApiConnectionActionConfiguration> SendTemplateMail(Expression<Func<SendTemplateMailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SuccessMessage, ApiConnectionActionConfiguration>(() =>
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string DetailedMessage { get; set; }
     }
 
-    public class SendMailInput
+    public class SendMailBodyInput
     {
         [JsonProperty("mailagent_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MailAgent { get; set; }
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public EmailAddressItems[] BCC { get; set; }
 
         [JsonProperty("mailtype", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMailInputMailTypeType? MailType { get; set; } = SendMailInputMailTypeType.Html;
+        public BodyInputMailTypeType? MailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail.BodyInputMailTypeType.Html;
 
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public ReplyToAddresss[] ReplyTo { get; set; }
 
         [JsonProperty("attachments")]
-        public SendMailInputAttachmentsTypeItem[] Attachments { get; set; }
+        public BodyInputAttachmentsTypeItem[] Attachments { get; set; }
     }
 
     public class FromAddress
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMailInputMailTypeType
+    public enum BodyInputMailTypeType
     {
         [EnumMember(Value = "html")]
         Html,
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string Name { get; set; }
     }
 
-    public class SendMailInputAttachmentsTypeItem
+    public class BodyInputAttachmentsTypeItem
     {
         [JsonProperty("content")]
         public string Base64Content { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string FileName { get; set; }
     }
 
-    public class SendTemplateMailInput
+    public class SendTemplateMailBodyInput
     {
         [JsonProperty("mailagent_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MailAgent { get; set; }
@@ -369,13 +369,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public EmailAddressItems[] BCC { get; set; }
 
         [JsonProperty("merge_key_detail")]
-        public SendTemplateMailInputMergeInfoTypeItem[] MergeInfo { get; set; }
+        public BodyInputMergeInfoTypeItem[] MergeInfo { get; set; }
 
         [JsonProperty("reply_to")]
         public ReplyToAddresss[] ReplyTo { get; set; }
     }
 
-    public class SendTemplateMailInputMergeInfoTypeItem
+    public class BodyInputMergeInfoTypeItem
     {
         [JsonProperty("key")]
         public string Tag { get; set; }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<UpdateIssueInput>> issue)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<IssueInput>> issue)
         {
             var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
             var __workflow_issue = WorkflowExpression.Compile(issue, nameof(issue), required: true);
@@ -218,22 +218,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         public string Author { get; set; }
     }
 
-    public class UpdateIssueInput
+    public class IssueInput
     {
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateIssueInputIssueType Issue { get; set; }
+        public IssueInputIssueType Issue { get; set; }
     }
 
-    public class UpdateIssueInputIssueType
+    public class IssueInputIssueType
     {
         [JsonProperty("priority_id")]
         public string Priority { get; set; }
 
         [JsonProperty("tracker_id")]
-        public UpdateIssueInputIssueTypeTrackerType? Tracker { get; set; }
+        public IssueInputIssueTypeTrackerType? Tracker { get; set; }
 
         [JsonProperty("status_id")]
-        public UpdateIssueInputIssueTypeStatusType? Status { get; set; }
+        public IssueInputIssueTypeStatusType? Status { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateIssueInputIssueTypeTrackerType
+    public enum IssueInputIssueTypeTrackerType
     {
         Bug,
         Feature,
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateIssueInputIssueTypeStatusType
+    public enum IssueInputIssueTypeStatusType
     {
         New,
         [EnumMember(Value = "In Progress")]

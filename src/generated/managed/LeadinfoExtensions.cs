@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
-                callPayload.Body = new TriggerCompanyInput().ToJToken();
+                callPayload.Body = new TriggerCompanyBodyInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerCompanyResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
-                callPayload.Body = new ShareContactInput().ToJToken();
+                callPayload.Body = new ShareContactBodyInput().ToJToken();
                 return new ApiConnectionTrigger<ShareContactResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
-                callPayload.Body = new TriggerContactInput().ToJToken();
+                callPayload.Body = new TriggerContactBodyInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerContactResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["version"] = Convert.ToString("2");
-                callPayload.Body = new ShareCompanyInput().ToJToken();
+                callPayload.Body = new ShareCompanyBodyInput().ToJToken();
                 return new ApiConnectionTrigger<ShareCompanyResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
         public string Type { get; set; }
     }
 
-    public class TriggerCompanyInput
+    public class TriggerCompanyBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "trigger";
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
         public string Type { get; set; }
     }
 
-    public class ShareContactInput
+    public class ShareContactBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "share_contact";
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
         public string Type { get; set; }
     }
 
-    public class TriggerContactInput
+    public class TriggerContactBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "trigger_contact";
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
         public string Type { get; set; }
     }
 
-    public class ShareCompanyInput
+    public class ShareCompanyBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "share";

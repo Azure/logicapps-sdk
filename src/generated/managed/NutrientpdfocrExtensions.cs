@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
     public class NutrientpdfocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientpdfocr")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> OcrPdf(Expression<Func<OcrPdfInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> OcrPdf(Expression<Func<OcrPdfInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientpdfocr")]
-        public IBodyWorkflowAction<OcrOperationResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<OcrTextInput>> inputData)
+        public IBodyWorkflowAction<OcrOperationResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<OcrTextInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OcrOperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         InvalidExtension
     }
 
-    public class OcrPdfInput
+    public class OcrPdfInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -97,13 +97,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         internal bool MetaData { get; set; } = false;
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrPdfInputLanguageType? Language { get; set; } = OcrPdfInputLanguageType.English;
+        public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputLanguageType.English;
 
         [JsonProperty("performance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrPdfInputPerformanceType? Performance { get; set; } = OcrPdfInputPerformanceType.SlowButAccurate;
+        public InputDataInputPerformanceType? Performance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputPerformanceType.SlowButAccurate;
 
         [JsonProperty("characters_option", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrPdfInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = OcrPdfInputBlacklistWhitelistType.None;
+        public InputDataInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputBlacklistWhitelistType.None;
 
         [JsonProperty("characters")]
         public string Characters { get; set; }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrPdfInputLanguageType
+    public enum InputDataInputLanguageType
     {
         English,
         Arabic,
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrPdfInputPerformanceType
+    public enum InputDataInputPerformanceType
     {
         [EnumMember(Value = "Slow but accurate")]
         SlowButAccurate,
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrPdfInputBlacklistWhitelistType
+    public enum InputDataInputBlacklistWhitelistType
     {
         None,
         Whitelist,
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         InvalidExtension
     }
 
-    public class OcrTextInput
+    public class OcrTextInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputLanguageType? Language { get; set; } = OcrTextInputLanguageType.English;
+        public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputLanguageType.English;
 
         [JsonProperty("x")]
         public string XCoordinate { get; set; }
@@ -228,10 +228,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         public string PageNumber { get; set; } = "";
 
         [JsonProperty("performance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputPerformanceType? Performance { get; set; } = OcrTextInputPerformanceType.SlowButAccurate;
+        public InputDataInputPerformanceType? Performance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputPerformanceType.SlowButAccurate;
 
         [JsonProperty("characters_option", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = OcrTextInputBlacklistWhitelistType.None;
+        public InputDataInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputBlacklistWhitelistType.None;
 
         [JsonProperty("characters")]
         public string Characters { get; set; }
@@ -241,45 +241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
         [JsonProperty("fail_on_error", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FailOnError { get; set; } = true;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputLanguageType
-    {
-        English,
-        Arabic,
-        Danish,
-        German,
-        Dutch,
-        Finnish,
-        French,
-        Hebrew,
-        Hungarian,
-        Italian,
-        Norwegian,
-        Portuguese,
-        Spanish,
-        Swedish,
-        Russian
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputPerformanceType
-    {
-        [EnumMember(Value = "Slow but accurate")]
-        SlowButAccurate,
-        [EnumMember(Value = "Faster and less accurate")]
-        FasterAndLessAccurate,
-        [EnumMember(Value = "Fastest and least accurate")]
-        FastestAndLeastAccurate
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputBlacklistWhitelistType
-    {
-        None,
-        Whitelist,
-        Blacklist
     }
 }
 

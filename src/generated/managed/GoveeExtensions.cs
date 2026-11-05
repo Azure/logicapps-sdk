@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     public class GoveeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration> RunCommandOnDevice(Expression<Func<RunCommandOnDeviceInput>> body)
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration> RunCommandOnDevice(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RunCommandOnDeviceResponse, ApiConnectionActionConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         public JToken Data { get; set; }
     }
 
-    public class RunCommandOnDeviceInput
+    public class BodyInput
     {
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceMACAddress { get; set; }
@@ -70,29 +70,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         public string DeviceModel { get; set; }
 
         [JsonProperty("cmd", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RunCommandOnDeviceInputCmdType Cmd { get; set; }
+        public BodyInputCmdType Cmd { get; set; }
 
         [JsonProperty("turn")]
-        public RunCommandOnDeviceInputTurnType? Turn { get; set; }
+        public BodyInputTurnType? Turn { get; set; }
 
         [JsonProperty("brightness")]
         public int? Brightness { get; set; }
 
         [JsonProperty("color")]
-        public RunCommandOnDeviceInputColorType Color { get; set; }
+        public BodyInputColorType Color { get; set; }
 
         [JsonProperty("colorTem")]
         public int? ColorTemperature { get; set; }
     }
 
-    public class RunCommandOnDeviceInputCmdType
+    public class BodyInputCmdType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RunCommandOnDeviceInputCmdTypeCommandNameType CommandName { get; set; }
+        public BodyInputCmdTypeCommandNameType CommandName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RunCommandOnDeviceInputCmdTypeCommandNameType
+    public enum BodyInputCmdTypeCommandNameType
     {
         [EnumMember(Value = "turn")]
         Turn,
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RunCommandOnDeviceInputTurnType
+    public enum BodyInputTurnType
     {
         [EnumMember(Value = "on")]
         On,
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         Off
     }
 
-    public class RunCommandOnDeviceInputColorType
+    public class BodyInputColorType
     {
         [JsonProperty("r")]
         public int? ColorRed { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
     public class ContentunderstandingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentunderstanding")]
-        public IBodyWorkflowAction<AnalyzeOperationResult, ApiConnectionActionConfiguration> AnalyzeContent(Expression<Func<string>> analyzerId, Expression<Func<AnalyzeContentInput>> body = null, Expression<Func<processingLocationInput>> processingLocation = null, Expression<Func<string>> stringEncoding = null)
+        public IBodyWorkflowAction<AnalyzeOperationResult, ApiConnectionActionConfiguration> AnalyzeContent(Expression<Func<string>> analyzerId, Expression<Func<BodyInput>> body = null, Expression<Func<ProcessingLocationInput>> processingLocation = null, Expression<Func<string>> stringEncoding = null)
         {
             var __workflow_analyzerId = WorkflowExpression.Compile(analyzerId, nameof(analyzerId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
         AudioVisual
     }
 
-    public class AnalyzeContentInput
+    public class BodyInput
     {
         [JsonProperty("inputFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum processingLocationInput
+    public enum ProcessingLocationInput
     {
         [EnumMember(Value = "geography")]
         Geography,

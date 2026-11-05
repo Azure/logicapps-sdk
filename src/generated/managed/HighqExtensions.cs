@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
     public class HighqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveDocuments(Expression<Func<string>> version, Expression<Func<string>> targetfolder, Expression<Func<MoveDocumentsInput>> fileidcsv = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveDocuments(Expression<Func<string>> version, Expression<Func<string>> targetfolder, Expression<Func<FileidcsvInput>> fileidcsv = null)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_targetfolder = WorkflowExpression.Compile(targetfolder, nameof(targetfolder), required: true);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IBodyWorkflowAction<Site, ApiConnectionActionConfiguration> CreateSite(Expression<Func<string>> version, Expression<Func<CreateSiteInput>> body)
+        public IBodyWorkflowAction<Site, ApiConnectionActionConfiguration> CreateSite(Expression<Func<string>> version, Expression<Func<BodyInput>> body)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateSite(Expression<Func<string>> version, Expression<Func<string>> siteid, Expression<Func<UpdateSiteInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateSite(Expression<Func<string>> version, Expression<Func<string>> siteid, Expression<Func<BodyInput>> body)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_siteid = WorkflowExpression.Compile(siteid, nameof(siteid), required: true);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
     {
     }
 
-    public class MoveDocumentsInput
+    public class FileidcsvInput
     {
         [JsonProperty("fileidCSV")]
         public string FileidCSV { get; set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Sitefolderpermission { get; set; }
 
         [JsonProperty("module")]
-        public ModuleDBO Module { get; set; }
+        public CreateSiteModuleDBOResponse Module { get; set; }
 
         [JsonProperty("adminnote")]
         public string Adminnote { get; set; }
@@ -342,49 +342,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Filerelationshipsitepermissionlevel { get; set; }
     }
 
-    public class ModuleDBO
+    public class CreateSiteModuleDBOResponse
     {
         [JsonProperty("home")]
-        public HomeDBO Home { get; set; }
+        public CreateSiteHomeDBOResponse Home { get; set; }
 
         [JsonProperty("activity")]
-        public ActivityDBO Activity { get; set; }
+        public CreateSiteActivityDBOResponse Activity { get; set; }
 
         [JsonProperty("document")]
-        public DocumentDBO Document { get; set; }
+        public CreateSiteDocumentDBOResponse Document { get; set; }
 
         [JsonProperty("blog")]
-        public BlogDBO Blog { get; set; }
+        public CreateSiteBlogDBOResponse Blog { get; set; }
 
         [JsonProperty("wiki")]
-        public WikiDBO Wiki { get; set; }
+        public CreateSiteWikiDBOResponse Wiki { get; set; }
 
         [JsonProperty("task")]
-        public TaskDBO TaskObject { get; set; }
+        public CreateSiteTaskDBOResponse TaskObject { get; set; }
 
         [JsonProperty("event")]
-        public EventDBO Event { get; set; }
+        public CreateSiteEventDBOResponse Event { get; set; }
 
         [JsonProperty("isheet")]
-        public ISheetDBO Isheet { get; set; }
+        public CreateSiteISheetDBOResponse Isheet { get; set; }
 
         [JsonProperty("qa")]
-        public QaDBO Qa { get; set; }
+        public CreateSiteQaDBOResponse Qa { get; set; }
 
         [JsonProperty("people")]
-        public PeopleDBO People { get; set; }
+        public CreateSitePeopleDBOResponse People { get; set; }
 
         [JsonProperty("contractexpress")]
-        public ContractExpressDBO Contractexpress { get; set; }
+        public CreateSiteContractExpressDBOResponse Contractexpress { get; set; }
     }
 
-    public class HomeDBO
+    public class CreateSiteHomeDBOResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
     }
 
-    public class ActivityDBO
+    public class CreateSiteActivityDBOResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
@@ -393,13 +393,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Microblog { get; set; }
     }
 
-    public class DocumentDBO
+    public class CreateSiteDocumentDBOResponse
     {
         [JsonProperty("docid")]
         public string Docid { get; set; }
     }
 
-    public class BlogDBO
+    public class CreateSiteBlogDBOResponse
     {
         [JsonProperty("blogTitle")]
         public string BlogTitle { get; set; }
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class WikiDBO
+    public class CreateSiteWikiDBOResponse
     {
         [JsonProperty("wikiid")]
         public int Wikiid { get; set; }
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Wikiversionid { get; set; }
     }
 
-    public class TaskDBO
+    public class CreateSiteTaskDBOResponse
     {
         [JsonProperty("index")]
         public string Index { get; set; }
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Resource { get; set; }
     }
 
-    public class EventDBO
+    public class CreateSiteEventDBOResponse
     {
         [JsonProperty("eventTitle")]
         public string EventTitle { get; set; }
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class ISheetDBO
+    public class CreateSiteISheetDBOResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -687,19 +687,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Sheettypeid { get; set; }
     }
 
-    public class QaDBO
+    public class CreateSiteQaDBOResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
     }
 
-    public class PeopleDBO
+    public class CreateSitePeopleDBOResponse
     {
         [JsonProperty("person")]
-        public PersonDBO[] Person { get; set; }
+        public CreateSitePersonDBOResponse[] Person { get; set; }
     }
 
-    public class PersonDBO
+    public class CreateSitePersonDBOResponse
     {
         [JsonProperty("userid")]
         public int Userid { get; set; }
@@ -729,13 +729,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Department { get; set; }
     }
 
-    public class ContractExpressDBO
+    public class CreateSiteContractExpressDBOResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
     }
 
-    public class CreateSiteInput
+    public class BodyInput
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Sitefolderpermission { get; set; }
 
         [JsonProperty("module")]
-        public ModuleDBO2 Module { get; set; }
+        public CreateSiteModuleDBO Module { get; set; }
 
         [JsonProperty("adminnote")]
         public string Adminnote { get; set; }
@@ -1005,43 +1005,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? Filerelationshipsitepermissionlevel { get; set; }
     }
 
-    public class ModuleDBO2
+    public class CreateSiteModuleDBO
     {
         [JsonProperty("home")]
-        public HomeDBO Home { get; set; }
+        public CreateSiteHomeDBO Home { get; set; }
 
         [JsonProperty("activity")]
-        public ActivityDBO Activity { get; set; }
+        public CreateSiteActivityDBO Activity { get; set; }
 
         [JsonProperty("document")]
-        public DocumentDBO Document { get; set; }
+        public CreateSiteDocumentDBO Document { get; set; }
 
         [JsonProperty("blog")]
-        public BlogDBO2 Blog { get; set; }
+        public CreateSiteBlogDBO Blog { get; set; }
 
         [JsonProperty("wiki")]
-        public WikiDBO2 Wiki { get; set; }
+        public CreateSiteWikiDBO Wiki { get; set; }
 
         [JsonProperty("task")]
-        public TaskDBO2 TaskObject { get; set; }
+        public CreateSiteTaskDBO TaskObject { get; set; }
 
         [JsonProperty("event")]
-        public EventDBO2 Event { get; set; }
+        public CreateSiteEventDBO Event { get; set; }
 
         [JsonProperty("isheet")]
-        public ISheetDBO2 Isheet { get; set; }
+        public CreateSiteISheetDBO Isheet { get; set; }
 
         [JsonProperty("qa")]
-        public QaDBO Qa { get; set; }
+        public CreateSiteQaDBO Qa { get; set; }
 
         [JsonProperty("people")]
-        public PeopleDBO2 People { get; set; }
+        public CreateSitePeopleDBO People { get; set; }
 
         [JsonProperty("contractexpress")]
-        public ContractExpressDBO Contractexpress { get; set; }
+        public CreateSiteContractExpressDBO Contractexpress { get; set; }
     }
 
-    public class BlogDBO2
+    public class CreateSiteHomeDBO
+    {
+        [JsonProperty("enable")]
+        public string Enable { get; set; }
+    }
+
+    public class CreateSiteActivityDBO
+    {
+        [JsonProperty("enable")]
+        public string Enable { get; set; }
+
+        [JsonProperty("microblog")]
+        public string Microblog { get; set; }
+    }
+
+    public class CreateSiteDocumentDBO
+    {
+        [JsonProperty("docid")]
+        public string Docid { get; set; }
+    }
+
+    public class CreateSiteBlogDBO
     {
         [JsonProperty("blogTitle")]
         public string BlogTitle { get; set; }
@@ -1089,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class WikiDBO2
+    public class CreateSiteWikiDBO
     {
         [JsonProperty("wikiid")]
         public int? Wikiid { get; set; }
@@ -1134,7 +1155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? Wikiversionid { get; set; }
     }
 
-    public class TaskDBO2
+    public class CreateSiteTaskDBO
     {
         [JsonProperty("index")]
         public string Index { get; set; }
@@ -1179,7 +1200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Resource { get; set; }
     }
 
-    public class EventDBO2
+    public class CreateSiteEventDBO
     {
         [JsonProperty("eventTitle")]
         public string EventTitle { get; set; }
@@ -1242,7 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class ISheetDBO2
+    public class CreateSiteISheetDBO
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1329,13 +1350,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? Sheettypeid { get; set; }
     }
 
-    public class PeopleDBO2
+    public class CreateSiteQaDBO
     {
-        [JsonProperty("person")]
-        public PersonDBO2[] Person { get; set; }
+        [JsonProperty("enable")]
+        public string Enable { get; set; }
     }
 
-    public class PersonDBO2
+    public class CreateSitePeopleDBO
+    {
+        [JsonProperty("person")]
+        public CreateSitePersonDBO[] Person { get; set; }
+    }
+
+    public class CreateSitePersonDBO
     {
         [JsonProperty("userid")]
         public int? Userid { get; set; }
@@ -1365,274 +1392,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Department { get; set; }
     }
 
-    public class UpdateSiteInput
+    public class CreateSiteContractExpressDBO
     {
-        [JsonProperty("id")]
-        public int? Id { get; set; }
-
-        [JsonProperty("sitename")]
-        public string Sitename { get; set; }
-
-        [JsonProperty("role")]
-        public string Role { get; set; }
-
-        [JsonProperty("sitedescription")]
-        public string Sitedescription { get; set; }
-
-        [JsonProperty("enabledmodules")]
-        public string Enabledmodules { get; set; }
-
-        [JsonProperty("sitefolderID")]
-        public string SitefolderId { get; set; }
-
-        [JsonProperty("sitefolderpermission")]
-        public string Sitefolderpermission { get; set; }
-
-        [JsonProperty("module")]
-        public ModuleDBO2 Module { get; set; }
-
-        [JsonProperty("adminnote")]
-        public string Adminnote { get; set; }
-
-        [JsonProperty("startdate")]
-        public string Startdate { get; set; }
-
-        [JsonProperty("enddate")]
-        public string Enddate { get; set; }
-
-        [JsonProperty("createddate")]
-        public string Createddate { get; set; }
-
-        [JsonProperty("archiveddate")]
-        public string Archiveddate { get; set; }
-
-        [JsonProperty("clientno")]
-        public string Clientno { get; set; }
-
-        [JsonProperty("matterno")]
-        public string Matterno { get; set; }
-
-        [JsonProperty("landingpage")]
-        public string Landingpage { get; set; }
-
-        [JsonProperty("link")]
-        public string Link { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("statusid")]
-        public int? Statusid { get; set; }
-
-        [JsonProperty("size")]
-        public string Size { get; set; }
-
-        [JsonProperty("billingnotes")]
-        public string Billingnotes { get; set; }
-
-        [JsonProperty("billingnextinvoicedate")]
-        public string Billingnextinvoicedate { get; set; }
-
-        [JsonProperty("billinglastinvoicedate")]
-        public string Billinglastinvoicedate { get; set; }
-
-        [JsonProperty("filepagecount")]
-        public string Filepagecount { get; set; }
-
-        [JsonProperty("maxpagecount")]
-        public string Maxpagecount { get; set; }
-
-        [JsonProperty("sitehttplink")]
-        public string Sitehttplink { get; set; }
-
-        [JsonProperty("isSyncable")]
-        public int? IsSyncable { get; set; }
-
-        [JsonProperty("enforceusergroups")]
-        public string Enforceusergroups { get; set; }
-
-        [JsonProperty("csvSiteCategory")]
-        public string CsvSiteCategory { get; set; }
-
-        [JsonProperty("siteNameInDefaultLanguage")]
-        public string SiteNameInDefaultLanguage { get; set; }
-
-        [JsonProperty("visible")]
-        public int? Visible { get; set; }
-
-        [JsonProperty("siteLogoName")]
-        public string SiteLogoName { get; set; }
-
-        [JsonProperty("siteLogoFileSize")]
-        public int? SiteLogoFileSize { get; set; }
-
-        [JsonProperty("siteLogoHeight")]
-        public int? SiteLogoHeight { get; set; }
-
-        [JsonProperty("siteLogoWidth")]
-        public int? SiteLogoWidth { get; set; }
-
-        [JsonProperty("siteStatus")]
-        public int? SiteStatus { get; set; }
-
-        [JsonProperty("applySiteTerms")]
-        public int? ApplySiteTerms { get; set; }
-
-        [JsonProperty("siteTerm")]
-        public string SiteTerm { get; set; }
-
-        [JsonProperty("termType")]
-        public int? TermType { get; set; }
-
-        [JsonProperty("nextLoginSiteTerms")]
-        public int? NextLoginSiteTerms { get; set; }
-
-        [JsonProperty("defaultSiteTermsEnable")]
-        public int? DefaultSiteTermsEnable { get; set; }
-
-        [JsonProperty("advancedQAPermission")]
-        public int? AdvancedQAPermission { get; set; }
-
-        [JsonProperty("isInternal")]
-        public int? IsInternal { get; set; }
-
-        [JsonProperty("psm")]
-        public int? Psm { get; set; }
-
-        [JsonProperty("siteLabelDisplay")]
-        public string SiteLabelDisplay { get; set; }
-
-        [JsonProperty("allowSiteAdministration")]
-        public int? AllowSiteAdministration { get; set; }
-
-        [JsonProperty("siteLevelPasswordEnable")]
-        public int? SiteLevelPasswordEnable { get; set; }
-
-        [JsonProperty("siteLevelPasscodeEnable")]
-        public int? SiteLevelPasscodeEnable { get; set; }
-
-        [JsonProperty("passcodeUsingAuthApp")]
-        public int? PasscodeUsingAuthApp { get; set; }
-
-        [JsonProperty("sitePassword")]
-        public string SitePassword { get; set; }
-
-        [JsonProperty("ipRestrictionEnable")]
-        public int? IpRestrictionEnable { get; set; }
-
-        [JsonProperty("availableIP")]
-        public string AvailableIP { get; set; }
-
-        [JsonProperty("highqDrive")]
-        public int? HighqDrive { get; set; }
-
-        [JsonProperty("applySiteHomePage")]
-        public int? ApplySiteHomePage { get; set; }
-
-        [JsonProperty("siteHomePage")]
-        public string SiteHomePage { get; set; }
-
-        [JsonProperty("siteHomePageType")]
-        public int? SiteHomePageType { get; set; }
-
-        [JsonProperty("nextLoginSiteHomePage")]
-        public int? NextLoginSiteHomePage { get; set; }
-
-        [JsonProperty("applyDisplayContent")]
-        public int? ApplyDisplayContent { get; set; }
-
-        [JsonProperty("displayContent")]
-        public string DisplayContent { get; set; }
-
-        [JsonProperty("rssSecurity")]
-        public int? RssSecurity { get; set; }
-
-        [JsonProperty("encryptedPassword")]
-        public int? EncryptedPassword { get; set; }
-
-        [JsonProperty("availableIPRangeCSV")]
-        public string AvailableIPRangeCSV { get; set; }
-
-        [JsonProperty("siteModuleID")]
-        public int? SiteModuleId { get; set; }
-
-        [JsonProperty("icalSecurity")]
-        public int? IcalSecurity { get; set; }
-
-        [JsonProperty("defaultDisplayContent")]
-        public string DefaultDisplayContent { get; set; }
-
-        [JsonProperty("defaultEmailAlert")]
-        public int? DefaultEmailAlert { get; set; }
-
-        [JsonProperty("excelReportFooter")]
-        public int? ExcelReportFooter { get; set; }
-
-        [JsonProperty("excelReportFooterText")]
-        public string ExcelReportFooterText { get; set; }
-
-        [JsonProperty("announcementMLJSON")]
-        public string AnnouncementMLJSON { get; set; }
-
-        [JsonProperty("templateType")]
-        public int? TemplateType { get; set; }
-
-        [JsonProperty("templateLicence")]
-        public int? TemplateLicence { get; set; }
-
-        [JsonProperty("openChannelAppID")]
-        public string OpenChannelAppId { get; set; }
-
-        [JsonProperty("itemid")]
-        public int? Itemid { get; set; }
-
-        [JsonProperty("sitemetadatasheetid")]
-        public int? Sitemetadatasheetid { get; set; }
-
-        [JsonProperty("mysite")]
-        public bool? Mysite { get; set; }
-
-        [JsonProperty("lastaccesseddate")]
-        public string Lastaccesseddate { get; set; }
-
-        [JsonProperty("defaultViewerMetaDataTab")]
-        public int? DefaultViewerMetaDataTab { get; set; }
-
-        [JsonProperty("documentMetadataViewId")]
-        public int? DocumentMetadataViewId { get; set; }
-
-        [JsonProperty("folderMetadataViewId")]
-        public int? FolderMetadataViewId { get; set; }
-
-        [JsonProperty("docSort")]
-        public int? DocSort { get; set; }
-
-        [JsonProperty("folderSort")]
-        public int? FolderSort { get; set; }
-
-        [JsonProperty("defaultFolderRenderView")]
-        public int? DefaultFolderRenderView { get; set; }
-
-        [JsonProperty("isTaskAttachmentDefault")]
-        public int? IsTaskAttachmentDefault { get; set; }
-
-        [JsonProperty("taskAttachmentDefaultFolderId")]
-        public int? TaskAttachmentDefaultFolderId { get; set; }
-
-        [JsonProperty("favourite")]
-        public string Favourite { get; set; }
-
-        [JsonProperty("enabledocumentredaction")]
-        public bool? Enabledocumentredaction { get; set; }
-
-        [JsonProperty("mentiongroups")]
-        public int? Mentiongroups { get; set; }
-
-        [JsonProperty("enablefilerelationships")]
-        public bool? Enablefilerelationships { get; set; }
-
-        [JsonProperty("filerelationshipsitepermissionlevel")]
-        public int? Filerelationshipsitepermissionlevel { get; set; }
+        [JsonProperty("enable")]
+        public string Enable { get; set; }
     }
 }
 

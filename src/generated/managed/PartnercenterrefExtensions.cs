@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> CreateReferral(Expression<Func<CreateReferralInput>> referral, Expression<Func<string>> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> CreateReferral(Expression<Func<ReferralInput>> referral, Expression<Func<string>> mSCorrelationId = null)
         {
             var __workflow_referral = WorkflowExpression.Compile(referral, nameof(referral), required: true);
             var __workflow_mSCorrelationId = WorkflowExpression.Compile(mSCorrelationId, nameof(mSCorrelationId), required: false);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> UpdateReferralById(Expression<Func<string>> id, Expression<Func<UpdateReferralByIdInput>> odataReferral, Expression<Func<string>> ifMatch, Expression<Func<string>> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> UpdateReferralById(Expression<Func<string>> id, Expression<Func<OdataReferralInput>> odataReferral, Expression<Func<string>> ifMatch, Expression<Func<string>> mSCorrelationId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_odataReferral = WorkflowExpression.Compile(odataReferral, nameof(odataReferral), required: true);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> PatchReferralById(Expression<Func<string>> id, Expression<Func<referralInputItem[]>> referral, Expression<Func<string>> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> PatchReferralById(Expression<Func<string>> id, Expression<Func<PatchReferralByIdReferralInputItem[]>> referral, Expression<Func<string>> mSCorrelationId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_referral = WorkflowExpression.Compile(referral, nameof(referral), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> CreateDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<referralInputItem2[]>> referral, Expression<Func<string>> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> CreateDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<CreateDealRegistrationByReferralIdReferralInputItem[]>> referral, Expression<Func<string>> mSCorrelationId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_referral = WorkflowExpression.Compile(referral, nameof(referral), required: true);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterref")]
-        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> PatchDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<referralInputItem22[]>> referral, Expression<Func<string>> mSCorrelationId = null)
+        public IBodyWorkflowAction<MicrosoftPartnerServicePartnerReferralsContractsV3Referral, ApiConnectionActionConfiguration> PatchDealRegistrationByReferralId(Expression<Func<string>> id, Expression<Func<PatchDealRegistrationByReferralIdReferralInputItem[]>> referral, Expression<Func<string>> mSCorrelationId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_referral = WorkflowExpression.Compile(referral, nameof(referral), required: true);
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string ApprovedDateTime { get; set; }
     }
 
-    public class CreateReferralInput
+    public class ReferralInput
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -671,16 +671,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string CampaignId { get; set; }
 
         [JsonProperty("consent")]
-        public CreateReferralInputConsentType Consent { get; set; }
+        public ReferralInputConsentType Consent { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedDateTime { get; set; }
 
         [JsonProperty("customerProfile")]
-        public CreateReferralInputCustomerProfileType CustomerProfile { get; set; }
+        public ReferralInputCustomerProfileType CustomerProfile { get; set; }
 
         [JsonProperty("details")]
-        public CreateReferralInputDetailsType Details { get; set; }
+        public ReferralInputDetailsType Details { get; set; }
 
         [JsonProperty("eTag")]
         public string ETag { get; set; }
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Id { get; set; }
 
         [JsonProperty("inviteContext")]
-        public CreateReferralInputInviteContextType InviteContext { get; set; }
+        public ReferralInputInviteContextType InviteContext { get; set; }
 
         [JsonProperty("lastModifiedVia")]
         public string LastModifiedVia { get; set; }
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string LastRunId { get; set; }
 
         [JsonProperty("links")]
-        public CreateReferralInputLinksType Links { get; set; }
+        public ReferralInputLinksType Links { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string ReferralProgram { get; set; }
 
         [JsonProperty("salesStage")]
-        public CreateReferralInputSalesStageType? SalesStage { get; set; }
+        public ReferralInputSalesStageType? SalesStage { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -740,13 +740,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Substatus { get; set; }
 
         [JsonProperty("target")]
-        public CreateReferralInputTargetTypeItem[] Target { get; set; }
+        public ReferralInputTargetTypeItem[] Target { get; set; }
 
         [JsonProperty("team")]
-        public CreateReferralInputTeamTypeItem[] Team { get; set; }
+        public ReferralInputTeamTypeItem[] Team { get; set; }
 
         [JsonProperty("trackingInfo")]
-        public CreateReferralInputTrackingInfoType TrackingInfo { get; set; }
+        public ReferralInputTrackingInfoType TrackingInfo { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string MpnId { get; set; }
 
         [JsonProperty("registrations")]
-        public CreateReferralInputRegistrationsTypeItem[] Registrations { get; set; }
+        public ReferralInputRegistrationsTypeItem[] Registrations { get; set; }
 
         [JsonProperty("registrationStatus")]
         public string RegistrationStatus { get; set; }
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Direction { get; set; }
 
         [JsonProperty("tags")]
-        public CreateReferralInputTagsTypeItem[] Tags { get; set; }
+        public ReferralInputTagsTypeItem[] Tags { get; set; }
 
         [JsonProperty("acceptedDateTime")]
         public string AcceptedDateTime { get; set; }
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string ClosedDateTime { get; set; }
     }
 
-    public class CreateReferralInputConsentType
+    public class ReferralInputConsentType
     {
         [JsonProperty("consentToContact")]
         public bool? ConsentToContact { get; set; }
@@ -800,10 +800,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public bool? ConsentToShareReferralWithMicrosoftSellers { get; set; }
     }
 
-    public class CreateReferralInputCustomerProfileType
+    public class ReferralInputCustomerProfileType
     {
         [JsonProperty("address")]
-        public CreateReferralInputCustomerProfileTypeAddressType Address { get; set; }
+        public ReferralInputCustomerProfileTypeAddressType Address { get; set; }
 
         [JsonProperty("ids")]
         public JToken[] Ids { get; set; }
@@ -815,10 +815,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Size { get; set; }
 
         [JsonProperty("team")]
-        public CreateReferralInputCustomerProfileTypeTeamTypeItem[] Team { get; set; }
+        public ReferralInputCustomerProfileTypeTeamTypeItem[] Team { get; set; }
     }
 
-    public class CreateReferralInputCustomerProfileTypeAddressType
+    public class ReferralInputCustomerProfileTypeAddressType
     {
         [JsonProperty("addressLine1")]
         public string AddressLine1 { get; set; }
@@ -842,10 +842,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string State { get; set; }
     }
 
-    public class CreateReferralInputCustomerProfileTypeTeamTypeItem
+    public class ReferralInputCustomerProfileTypeTeamTypeItem
     {
         [JsonProperty("contactPreference")]
-        public CreateReferralInputCustomerProfileTypeTeamTypeItemContactPreferenceType ContactPreference { get; set; }
+        public ReferralInputCustomerProfileTypeTeamTypeItemContactPreferenceType ContactPreference { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string PhoneNumber { get; set; }
     }
 
-    public class CreateReferralInputCustomerProfileTypeTeamTypeItemContactPreferenceType
+    public class ReferralInputCustomerProfileTypeTeamTypeItemContactPreferenceType
     {
         [JsonProperty("disableNotifications")]
         public bool? DisableNotifications { get; set; }
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Locale { get; set; }
     }
 
-    public class CreateReferralInputDetailsType
+    public class ReferralInputDetailsType
     {
         [JsonProperty("closingDateTime")]
         public string ClosingDateTime { get; set; }
@@ -890,19 +890,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Notes { get; set; }
 
         [JsonProperty("requirements")]
-        public CreateReferralInputDetailsTypeRequirementsType Requirements { get; set; }
+        public ReferralInputDetailsTypeRequirementsType Requirements { get; set; }
     }
 
-    public class CreateReferralInputDetailsTypeRequirementsType
+    public class ReferralInputDetailsTypeRequirementsType
     {
         [JsonProperty("industries")]
-        public CreateReferralInputDetailsTypeRequirementsTypeIndustriesTypeItem[] Industries { get; set; }
+        public ReferralInputDetailsTypeRequirementsTypeIndustriesTypeItem[] Industries { get; set; }
 
         [JsonProperty("products")]
-        public CreateReferralInputDetailsTypeRequirementsTypeProductsTypeItem[] Products { get; set; }
+        public ReferralInputDetailsTypeRequirementsTypeProductsTypeItem[] Products { get; set; }
 
         [JsonProperty("services")]
-        public CreateReferralInputDetailsTypeRequirementsTypeServicesTypeItem[] Services { get; set; }
+        public ReferralInputDetailsTypeRequirementsTypeServicesTypeItem[] Services { get; set; }
 
         [JsonProperty("solutions")]
         public JToken[] Solutions { get; set; }
@@ -914,38 +914,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public JToken AdditionalRequirements { get; set; }
     }
 
-    public class CreateReferralInputDetailsTypeRequirementsTypeIndustriesTypeItem
+    public class ReferralInputDetailsTypeRequirementsTypeIndustriesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateReferralInputDetailsTypeRequirementsTypeProductsTypeItem
+    public class ReferralInputDetailsTypeRequirementsTypeProductsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateReferralInputDetailsTypeRequirementsTypeServicesTypeItem
+    public class ReferralInputDetailsTypeRequirementsTypeServicesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateReferralInputInviteContextType
+    public class ReferralInputInviteContextType
     {
         [JsonProperty("assistanceRequestCode")]
-        public CreateReferralInputInviteContextTypeAssistanceRequestCodeType? AssistanceRequestCode { get; set; }
+        public ReferralInputInviteContextTypeAssistanceRequestCodeType? AssistanceRequestCode { get; set; }
 
         [JsonProperty("invitedBy")]
-        public CreateReferralInputInviteContextTypeInvitedByType InvitedBy { get; set; }
+        public ReferralInputInviteContextTypeInvitedByType InvitedBy { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateReferralInputInviteContextTypeAssistanceRequestCodeType
+    public enum ReferralInputInviteContextTypeAssistanceRequestCodeType
     {
         Unknown,
         GeneralOrOther,
@@ -956,7 +956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         WorkloadSpecificValueProposition
     }
 
-    public class CreateReferralInputInviteContextTypeInvitedByType
+    public class ReferralInputInviteContextTypeInvitedByType
     {
         [JsonProperty("organizationId")]
         public string OrganizationId { get; set; }
@@ -965,16 +965,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string OrganizationName { get; set; }
     }
 
-    public class CreateReferralInputLinksType
+    public class ReferralInputLinksType
     {
         [JsonProperty("relatedReferrals")]
-        public CreateReferralInputLinksTypeRelatedReferralsType RelatedReferrals { get; set; }
+        public ReferralInputLinksTypeRelatedReferralsType RelatedReferrals { get; set; }
 
         [JsonProperty("self")]
-        public CreateReferralInputLinksTypeSelfType Self { get; set; }
+        public ReferralInputLinksTypeSelfType Self { get; set; }
     }
 
-    public class CreateReferralInputLinksTypeRelatedReferralsType
+    public class ReferralInputLinksTypeRelatedReferralsType
     {
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Uri { get; set; }
     }
 
-    public class CreateReferralInputLinksTypeSelfType
+    public class ReferralInputLinksTypeSelfType
     {
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -993,7 +993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateReferralInputSalesStageType
+    public enum ReferralInputSalesStageType
     {
         Qualify,
         Develop,
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         Close
     }
 
-    public class CreateReferralInputTargetTypeItem
+    public class ReferralInputTargetTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1010,10 +1010,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Type { get; set; }
     }
 
-    public class CreateReferralInputTeamTypeItem
+    public class ReferralInputTeamTypeItem
     {
         [JsonProperty("contactPreference")]
-        public CreateReferralInputTeamTypeItemContactPreferenceType ContactPreference { get; set; }
+        public ReferralInputTeamTypeItemContactPreferenceType ContactPreference { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1028,7 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string PhoneNumber { get; set; }
     }
 
-    public class CreateReferralInputTeamTypeItemContactPreferenceType
+    public class ReferralInputTeamTypeItemContactPreferenceType
     {
         [JsonProperty("disableNotifications")]
         public bool? DisableNotifications { get; set; }
@@ -1037,13 +1037,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Locale { get; set; }
     }
 
-    public class CreateReferralInputTrackingInfoType
+    public class ReferralInputTrackingInfoType
     {
         [JsonProperty("microsoftMsxId")]
         public string MicrosoftMsxId { get; set; }
     }
 
-    public class CreateReferralInputRegistrationsTypeItem
+    public class ReferralInputRegistrationsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1058,16 +1058,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string StatusReason { get; set; }
 
         [JsonProperty("contract")]
-        public CreateReferralInputRegistrationsTypeItemContractType Contract { get; set; }
+        public ReferralInputRegistrationsTypeItemContractType Contract { get; set; }
 
         [JsonProperty("solutionDetails")]
-        public CreateReferralInputRegistrationsTypeItemSolutionDetailsTypeItem[] SolutionDetails { get; set; }
+        public ReferralInputRegistrationsTypeItemSolutionDetailsTypeItem[] SolutionDetails { get; set; }
 
         [JsonProperty("statusHistory")]
-        public CreateReferralInputRegistrationsTypeItemStatusHistoryType StatusHistory { get; set; }
+        public ReferralInputRegistrationsTypeItemStatusHistoryType StatusHistory { get; set; }
     }
 
-    public class CreateReferralInputRegistrationsTypeItemContractType
+    public class ReferralInputRegistrationsTypeItemContractType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Term { get; set; }
     }
 
-    public class CreateReferralInputRegistrationsTypeItemSolutionDetailsTypeItem
+    public class ReferralInputRegistrationsTypeItemSolutionDetailsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1109,10 +1109,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string PricingModel { get; set; }
 
         [JsonProperty("marketplaceTransactionDetails")]
-        public CreateReferralInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType MarketplaceTransactionDetails { get; set; }
+        public ReferralInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType MarketplaceTransactionDetails { get; set; }
     }
 
-    public class CreateReferralInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType
+    public class ReferralInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType
     {
         [JsonProperty("isMarketplaceTransacted")]
         public bool? IsMarketplaceTransacted { get; set; }
@@ -1121,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string MarketplaceTransactionDateTime { get; set; }
     }
 
-    public class CreateReferralInputRegistrationsTypeItemStatusHistoryType
+    public class ReferralInputRegistrationsTypeItemStatusHistoryType
     {
         [JsonProperty("reviewPendingDateTime")]
         public string ReviewPendingDateTime { get; set; }
@@ -1139,13 +1139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string ApprovedDateTime { get; set; }
     }
 
-    public class CreateReferralInputTagsTypeItem
+    public class ReferralInputTagsTypeItem
     {
         [JsonProperty("tag")]
         public string Tag { get; set; }
     }
 
-    public class UpdateReferralByIdInput
+    public class OdataReferralInput
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -1154,16 +1154,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string CampaignId { get; set; }
 
         [JsonProperty("consent")]
-        public UpdateReferralByIdInputConsentType Consent { get; set; }
+        public OdataReferralInputConsentType Consent { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string CreatedDateTime { get; set; }
 
         [JsonProperty("customerProfile")]
-        public UpdateReferralByIdInputCustomerProfileType CustomerProfile { get; set; }
+        public OdataReferralInputCustomerProfileType CustomerProfile { get; set; }
 
         [JsonProperty("details")]
-        public UpdateReferralByIdInputDetailsType Details { get; set; }
+        public OdataReferralInputDetailsType Details { get; set; }
 
         [JsonProperty("eTag")]
         public string ETag { get; set; }
@@ -1184,7 +1184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Id { get; set; }
 
         [JsonProperty("inviteContext")]
-        public UpdateReferralByIdInputInviteContextType InviteContext { get; set; }
+        public OdataReferralInputInviteContextType InviteContext { get; set; }
 
         [JsonProperty("lastModifiedVia")]
         public string LastModifiedVia { get; set; }
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string LastRunId { get; set; }
 
         [JsonProperty("links")]
-        public UpdateReferralByIdInputLinksType Links { get; set; }
+        public OdataReferralInputLinksType Links { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1211,7 +1211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string ReferralProgram { get; set; }
 
         [JsonProperty("salesStage")]
-        public UpdateReferralByIdInputSalesStageType? SalesStage { get; set; }
+        public OdataReferralInputSalesStageType? SalesStage { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -1223,13 +1223,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Substatus { get; set; }
 
         [JsonProperty("target")]
-        public UpdateReferralByIdInputTargetTypeItem[] Target { get; set; }
+        public OdataReferralInputTargetTypeItem[] Target { get; set; }
 
         [JsonProperty("team")]
-        public UpdateReferralByIdInputTeamTypeItem[] Team { get; set; }
+        public OdataReferralInputTeamTypeItem[] Team { get; set; }
 
         [JsonProperty("trackingInfo")]
-        public UpdateReferralByIdInputTrackingInfoType TrackingInfo { get; set; }
+        public OdataReferralInputTrackingInfoType TrackingInfo { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1241,7 +1241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string MpnId { get; set; }
 
         [JsonProperty("registrations")]
-        public UpdateReferralByIdInputRegistrationsTypeItem[] Registrations { get; set; }
+        public OdataReferralInputRegistrationsTypeItem[] Registrations { get; set; }
 
         [JsonProperty("registrationStatus")]
         public string RegistrationStatus { get; set; }
@@ -1262,7 +1262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Direction { get; set; }
 
         [JsonProperty("tags")]
-        public UpdateReferralByIdInputTagsTypeItem[] Tags { get; set; }
+        public OdataReferralInputTagsTypeItem[] Tags { get; set; }
 
         [JsonProperty("acceptedDateTime")]
         public string AcceptedDateTime { get; set; }
@@ -1271,7 +1271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string ClosedDateTime { get; set; }
     }
 
-    public class UpdateReferralByIdInputConsentType
+    public class OdataReferralInputConsentType
     {
         [JsonProperty("consentToContact")]
         public bool? ConsentToContact { get; set; }
@@ -1283,10 +1283,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public bool? ConsentToShareReferralWithMicrosoftSellers { get; set; }
     }
 
-    public class UpdateReferralByIdInputCustomerProfileType
+    public class OdataReferralInputCustomerProfileType
     {
         [JsonProperty("address")]
-        public UpdateReferralByIdInputCustomerProfileTypeAddressType Address { get; set; }
+        public OdataReferralInputCustomerProfileTypeAddressType Address { get; set; }
 
         [JsonProperty("ids")]
         public JToken[] Ids { get; set; }
@@ -1298,10 +1298,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Size { get; set; }
 
         [JsonProperty("team")]
-        public UpdateReferralByIdInputCustomerProfileTypeTeamTypeItem[] Team { get; set; }
+        public OdataReferralInputCustomerProfileTypeTeamTypeItem[] Team { get; set; }
     }
 
-    public class UpdateReferralByIdInputCustomerProfileTypeAddressType
+    public class OdataReferralInputCustomerProfileTypeAddressType
     {
         [JsonProperty("addressLine1")]
         public string AddressLine1 { get; set; }
@@ -1325,10 +1325,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string State { get; set; }
     }
 
-    public class UpdateReferralByIdInputCustomerProfileTypeTeamTypeItem
+    public class OdataReferralInputCustomerProfileTypeTeamTypeItem
     {
         [JsonProperty("contactPreference")]
-        public UpdateReferralByIdInputCustomerProfileTypeTeamTypeItemContactPreferenceType ContactPreference { get; set; }
+        public OdataReferralInputCustomerProfileTypeTeamTypeItemContactPreferenceType ContactPreference { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1343,7 +1343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string PhoneNumber { get; set; }
     }
 
-    public class UpdateReferralByIdInputCustomerProfileTypeTeamTypeItemContactPreferenceType
+    public class OdataReferralInputCustomerProfileTypeTeamTypeItemContactPreferenceType
     {
         [JsonProperty("disableNotifications")]
         public bool? DisableNotifications { get; set; }
@@ -1352,7 +1352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Locale { get; set; }
     }
 
-    public class UpdateReferralByIdInputDetailsType
+    public class OdataReferralInputDetailsType
     {
         [JsonProperty("closingDateTime")]
         public string ClosingDateTime { get; set; }
@@ -1373,19 +1373,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Notes { get; set; }
 
         [JsonProperty("requirements")]
-        public UpdateReferralByIdInputDetailsTypeRequirementsType Requirements { get; set; }
+        public OdataReferralInputDetailsTypeRequirementsType Requirements { get; set; }
     }
 
-    public class UpdateReferralByIdInputDetailsTypeRequirementsType
+    public class OdataReferralInputDetailsTypeRequirementsType
     {
         [JsonProperty("industries")]
-        public UpdateReferralByIdInputDetailsTypeRequirementsTypeIndustriesTypeItem[] Industries { get; set; }
+        public OdataReferralInputDetailsTypeRequirementsTypeIndustriesTypeItem[] Industries { get; set; }
 
         [JsonProperty("products")]
-        public UpdateReferralByIdInputDetailsTypeRequirementsTypeProductsTypeItem[] Products { get; set; }
+        public OdataReferralInputDetailsTypeRequirementsTypeProductsTypeItem[] Products { get; set; }
 
         [JsonProperty("services")]
-        public UpdateReferralByIdInputDetailsTypeRequirementsTypeServicesTypeItem[] Services { get; set; }
+        public OdataReferralInputDetailsTypeRequirementsTypeServicesTypeItem[] Services { get; set; }
 
         [JsonProperty("solutions")]
         public JToken[] Solutions { get; set; }
@@ -1397,38 +1397,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public JToken AdditionalRequirements { get; set; }
     }
 
-    public class UpdateReferralByIdInputDetailsTypeRequirementsTypeIndustriesTypeItem
+    public class OdataReferralInputDetailsTypeRequirementsTypeIndustriesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class UpdateReferralByIdInputDetailsTypeRequirementsTypeProductsTypeItem
+    public class OdataReferralInputDetailsTypeRequirementsTypeProductsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class UpdateReferralByIdInputDetailsTypeRequirementsTypeServicesTypeItem
+    public class OdataReferralInputDetailsTypeRequirementsTypeServicesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class UpdateReferralByIdInputInviteContextType
+    public class OdataReferralInputInviteContextType
     {
         [JsonProperty("assistanceRequestCode")]
-        public UpdateReferralByIdInputInviteContextTypeAssistanceRequestCodeType? AssistanceRequestCode { get; set; }
+        public OdataReferralInputInviteContextTypeAssistanceRequestCodeType? AssistanceRequestCode { get; set; }
 
         [JsonProperty("invitedBy")]
-        public UpdateReferralByIdInputInviteContextTypeInvitedByType InvitedBy { get; set; }
+        public OdataReferralInputInviteContextTypeInvitedByType InvitedBy { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateReferralByIdInputInviteContextTypeAssistanceRequestCodeType
+    public enum OdataReferralInputInviteContextTypeAssistanceRequestCodeType
     {
         Unknown,
         GeneralOrOther,
@@ -1439,7 +1439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         WorkloadSpecificValueProposition
     }
 
-    public class UpdateReferralByIdInputInviteContextTypeInvitedByType
+    public class OdataReferralInputInviteContextTypeInvitedByType
     {
         [JsonProperty("organizationId")]
         public string OrganizationId { get; set; }
@@ -1448,16 +1448,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string OrganizationName { get; set; }
     }
 
-    public class UpdateReferralByIdInputLinksType
+    public class OdataReferralInputLinksType
     {
         [JsonProperty("relatedReferrals")]
-        public UpdateReferralByIdInputLinksTypeRelatedReferralsType RelatedReferrals { get; set; }
+        public OdataReferralInputLinksTypeRelatedReferralsType RelatedReferrals { get; set; }
 
         [JsonProperty("self")]
-        public UpdateReferralByIdInputLinksTypeSelfType Self { get; set; }
+        public OdataReferralInputLinksTypeSelfType Self { get; set; }
     }
 
-    public class UpdateReferralByIdInputLinksTypeRelatedReferralsType
+    public class OdataReferralInputLinksTypeRelatedReferralsType
     {
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -1466,7 +1466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Uri { get; set; }
     }
 
-    public class UpdateReferralByIdInputLinksTypeSelfType
+    public class OdataReferralInputLinksTypeSelfType
     {
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -1476,7 +1476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateReferralByIdInputSalesStageType
+    public enum OdataReferralInputSalesStageType
     {
         Qualify,
         Develop,
@@ -1484,7 +1484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         Close
     }
 
-    public class UpdateReferralByIdInputTargetTypeItem
+    public class OdataReferralInputTargetTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1493,10 +1493,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Type { get; set; }
     }
 
-    public class UpdateReferralByIdInputTeamTypeItem
+    public class OdataReferralInputTeamTypeItem
     {
         [JsonProperty("contactPreference")]
-        public UpdateReferralByIdInputTeamTypeItemContactPreferenceType ContactPreference { get; set; }
+        public OdataReferralInputTeamTypeItemContactPreferenceType ContactPreference { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1511,7 +1511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string PhoneNumber { get; set; }
     }
 
-    public class UpdateReferralByIdInputTeamTypeItemContactPreferenceType
+    public class OdataReferralInputTeamTypeItemContactPreferenceType
     {
         [JsonProperty("disableNotifications")]
         public bool? DisableNotifications { get; set; }
@@ -1520,13 +1520,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Locale { get; set; }
     }
 
-    public class UpdateReferralByIdInputTrackingInfoType
+    public class OdataReferralInputTrackingInfoType
     {
         [JsonProperty("microsoftMsxId")]
         public string MicrosoftMsxId { get; set; }
     }
 
-    public class UpdateReferralByIdInputRegistrationsTypeItem
+    public class OdataReferralInputRegistrationsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1541,16 +1541,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string StatusReason { get; set; }
 
         [JsonProperty("contract")]
-        public UpdateReferralByIdInputRegistrationsTypeItemContractType Contract { get; set; }
+        public OdataReferralInputRegistrationsTypeItemContractType Contract { get; set; }
 
         [JsonProperty("solutionDetails")]
-        public UpdateReferralByIdInputRegistrationsTypeItemSolutionDetailsTypeItem[] SolutionDetails { get; set; }
+        public OdataReferralInputRegistrationsTypeItemSolutionDetailsTypeItem[] SolutionDetails { get; set; }
 
         [JsonProperty("statusHistory")]
-        public UpdateReferralByIdInputRegistrationsTypeItemStatusHistoryType StatusHistory { get; set; }
+        public OdataReferralInputRegistrationsTypeItemStatusHistoryType StatusHistory { get; set; }
     }
 
-    public class UpdateReferralByIdInputRegistrationsTypeItemContractType
+    public class OdataReferralInputRegistrationsTypeItemContractType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
@@ -1571,7 +1571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Term { get; set; }
     }
 
-    public class UpdateReferralByIdInputRegistrationsTypeItemSolutionDetailsTypeItem
+    public class OdataReferralInputRegistrationsTypeItemSolutionDetailsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1592,10 +1592,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string PricingModel { get; set; }
 
         [JsonProperty("marketplaceTransactionDetails")]
-        public UpdateReferralByIdInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType MarketplaceTransactionDetails { get; set; }
+        public OdataReferralInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType MarketplaceTransactionDetails { get; set; }
     }
 
-    public class UpdateReferralByIdInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType
+    public class OdataReferralInputRegistrationsTypeItemSolutionDetailsTypeItemMarketplaceTransactionDetailsType
     {
         [JsonProperty("isMarketplaceTransacted")]
         public bool? IsMarketplaceTransacted { get; set; }
@@ -1604,7 +1604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string MarketplaceTransactionDateTime { get; set; }
     }
 
-    public class UpdateReferralByIdInputRegistrationsTypeItemStatusHistoryType
+    public class OdataReferralInputRegistrationsTypeItemStatusHistoryType
     {
         [JsonProperty("reviewPendingDateTime")]
         public string ReviewPendingDateTime { get; set; }
@@ -1622,26 +1622,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string ApprovedDateTime { get; set; }
     }
 
-    public class UpdateReferralByIdInputTagsTypeItem
+    public class OdataReferralInputTagsTypeItem
     {
         [JsonProperty("tag")]
         public string Tag { get; set; }
     }
 
-    public class referralInputItem
+    public class PatchReferralByIdReferralInputItem
     {
-        [JsonProperty("op")]
-        public referralInputItemUpdateOperationType UpdateOperation { get; set; }
+        [JsonProperty("op", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReferralInputItemUpdateOperationType? UpdateOperation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref.ReferralInputItemUpdateOperationType.Replace;
 
         [JsonProperty("path")]
-        public referralInputItemFieldPathType FieldPath { get; set; }
+        public PatchReferralByIdReferralInputItemFieldPathType? FieldPath { get; set; }
 
         [JsonProperty("value")]
         public JToken Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemUpdateOperationType
+    public enum ReferralInputItemUpdateOperationType
     {
         [EnumMember(Value = "replace")]
         Replace,
@@ -1650,7 +1650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemFieldPathType
+    public enum PatchReferralByIdReferralInputItemFieldPathType
     {
         [EnumMember(Value = "/campaignId")]
         CampaignId,
@@ -1696,51 +1696,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         Team2
     }
 
-    public class referralInputItem2
+    public class CreateDealRegistrationByReferralIdReferralInputItem
     {
-        [JsonProperty("op")]
-        public referralInputItemOpType Op { get; set; }
+        [JsonProperty("op", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReferralInputItemOpType? Op { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref.ReferralInputItemOpType.Add;
 
-        [JsonProperty("path")]
-        public referralInputItemPathType Path { get; set; }
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReferralInputItemPathType? Path { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref.ReferralInputItemPathType.Registrations;
 
-        [JsonProperty("value")]
-        public referralInputItemValueType Value { get; set; }
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReferralInputItemValueType Value { get; set; } = new ReferralInputItemValueType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemOpType
+    public enum ReferralInputItemOpType
     {
         [EnumMember(Value = "add")]
         Add
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemPathType
+    public enum ReferralInputItemPathType
     {
         [EnumMember(Value = "/registrations/-")]
         Registrations
     }
 
-    public class referralInputItemValueType
+    public class ReferralInputItemValueType
     {
-        [JsonProperty("type")]
-        public referralInputItemValueTypeTypeType Type { get; set; }
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReferralInputItemValueTypeTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref.ReferralInputItemValueTypeTypeType.AzureIPCoSell;
 
         [JsonProperty("solutionDetails")]
-        public referralInputItemValueTypeSolutionDetailsTypeItem[] SolutionDetails { get; set; }
+        public ReferralInputItemValueTypeSolutionDetailsTypeItem[] SolutionDetails { get; set; }
 
         [JsonProperty("contract")]
-        public referralInputItemValueTypeContractType Contract { get; set; }
+        public ReferralInputItemValueTypeContractType Contract { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemValueTypeTypeType
+    public enum ReferralInputItemValueTypeTypeType
     {
         AzureIPCoSell
     }
 
-    public class referralInputItemValueTypeSolutionDetailsTypeItem
+    public class ReferralInputItemValueTypeSolutionDetailsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1749,45 +1749,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Currency { get; set; }
 
         [JsonProperty("value")]
-        public double Value { get; set; }
+        public double? Value { get; set; }
 
         [JsonProperty("isDeployedOnAzure")]
-        public bool IsDeployedOnAzure { get; set; }
+        public bool? IsDeployedOnAzure { get; set; }
 
         [JsonProperty("primaryDeploymentOn")]
-        public referralInputItemValueTypeSolutionDetailsTypeItemPrimaryDeploymentOnType PrimaryDeploymentOn { get; set; }
+        public ReferralInputItemValueTypeSolutionDetailsTypeItemPrimaryDeploymentOnType? PrimaryDeploymentOn { get; set; }
 
         [JsonProperty("pricingModel")]
-        public referralInputItemValueTypeSolutionDetailsTypeItemPricingModelType PricingModel { get; set; }
+        public ReferralInputItemValueTypeSolutionDetailsTypeItemPricingModelType? PricingModel { get; set; }
 
         [JsonProperty("marketplaceTransactionDetails")]
-        public referralInputItemValueTypeSolutionDetailsTypeItemMarketplaceTransactionDetailsType MarketplaceTransactionDetails { get; set; }
+        public ReferralInputItemValueTypeSolutionDetailsTypeItemMarketplaceTransactionDetailsType MarketplaceTransactionDetails { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemValueTypeSolutionDetailsTypeItemPrimaryDeploymentOnType
+    public enum ReferralInputItemValueTypeSolutionDetailsTypeItemPrimaryDeploymentOnType
     {
         Customer,
         Partner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemValueTypeSolutionDetailsTypeItemPricingModelType
+    public enum ReferralInputItemValueTypeSolutionDetailsTypeItemPricingModelType
     {
         PayAsYouGo,
         Other
     }
 
-    public class referralInputItemValueTypeSolutionDetailsTypeItemMarketplaceTransactionDetailsType
+    public class ReferralInputItemValueTypeSolutionDetailsTypeItemMarketplaceTransactionDetailsType
     {
         [JsonProperty("isMarketplaceTransacted")]
-        public bool IsMarketplaceTransacted { get; set; }
+        public bool? IsMarketplaceTransacted { get; set; }
 
         [JsonProperty("marketplaceTransactionDateTime")]
         public string MarketplaceTransactionDateTime { get; set; }
     }
 
-    public class referralInputItemValueTypeContractType
+    public class ReferralInputItemValueTypeContractType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -1796,10 +1796,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string EndDateTime { get; set; }
 
         [JsonProperty("term")]
-        public referralInputItemValueTypeContractTypeTermType Term { get; set; }
+        public ReferralInputItemValueTypeContractTypeTermType? Term { get; set; }
 
         [JsonProperty("value")]
-        public double Value { get; set; }
+        public double? Value { get; set; }
 
         [JsonProperty("signDateTime")]
         public string SignDateTime { get; set; }
@@ -1809,26 +1809,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemValueTypeContractTypeTermType
+    public enum ReferralInputItemValueTypeContractTypeTermType
     {
         Perpetual,
         Finite
     }
 
-    public class referralInputItem22
+    public class PatchDealRegistrationByReferralIdReferralInputItem
     {
-        [JsonProperty("op")]
-        public referralInputItemUpdateOperationType UpdateOperation { get; set; }
+        [JsonProperty("op", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ReferralInputItemUpdateOperationType? UpdateOperation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref.ReferralInputItemUpdateOperationType.Replace;
 
         [JsonProperty("path")]
-        public referralInputItemFieldPathType2 FieldPath { get; set; }
+        public PatchDealRegistrationByReferralIdReferralInputItemFieldPathType? FieldPath { get; set; }
 
         [JsonProperty("value")]
         public JToken Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum referralInputItemFieldPathType2
+    public enum PatchDealRegistrationByReferralIdReferralInputItemFieldPathType
     {
         [EnumMember(Value = "/registrations/0/contract/startDateTime")]
         Registrations0ContractStartDateTime,

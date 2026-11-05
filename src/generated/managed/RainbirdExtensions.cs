@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
     public class RainbirdActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<StartResponse, ApiConnectionActionConfiguration> Start(Expression<Func<environmentInput>> environment, Expression<Func<string>> kmId)
+        public IBodyWorkflowAction<StartResponse, ApiConnectionActionConfiguration> Start(Expression<Func<EnvironmentInput>> environment, Expression<Func<string>> kmId)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_kmId = WorkflowExpression.Compile(kmId, nameof(kmId), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<InjectResponse, ApiConnectionActionConfiguration> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<InjectResponse, ApiConnectionActionConfiguration> Inject(Expression<Func<EnvironmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<QueryInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Query(Expression<Func<EnvironmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<QueryBodyInput>> body)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<ResponseInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Response(Expression<Func<EnvironmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<ResponseBodyInput>> body)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Undo(Expression<Func<EnvironmentInput>> environment, Expression<Func<string>> sessionId, Expression<Func<object>> body = null)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<EvidenceResponse, ApiConnectionActionConfiguration> Evidence(Expression<Func<environmentInput>> environment, Expression<Func<string>> factId, Expression<Func<string>> sessionId)
+        public IBodyWorkflowAction<EvidenceResponse, ApiConnectionActionConfiguration> Evidence(Expression<Func<EnvironmentInput>> environment, Expression<Func<string>> factId, Expression<Func<string>> sessionId)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             var __workflow_factId = WorkflowExpression.Compile(factId, nameof(factId), required: true);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Version(Expression<Func<environmentInput>> environment)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Version(Expression<Func<EnvironmentInput>> environment)
         {
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum environmentInput
+    public enum EnvironmentInput
     {
         [EnumMember(Value = "enterprise-api.rainbird.ai")]
         EnterpriseApiRainbirdAi,
@@ -161,22 +161,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public string Result { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
-        [JsonProperty("subject")]
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Subject { get; set; }
 
-        [JsonProperty("relationship")]
-        public string Relationship { get; set; }
+        [JsonProperty("relationship", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Relationship { get; set; }
 
-        [JsonProperty("object")]
+        [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ObjectEntity { get; set; }
 
-        [JsonProperty("certainty")]
+        [JsonProperty("certainty", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Certainty { get; set; }
     }
 
-    public class QueryInput
+    public class QueryBodyInput
     {
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -188,13 +188,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public string ObjectEntity { get; set; }
     }
 
-    public class ResponseInput
+    public class ResponseBodyInput
     {
         [JsonProperty("answers")]
-        public ResponseInputAnswersTypeItem[] Answers { get; set; }
+        public BodyInputAnswersTypeItem[] Answers { get; set; }
     }
 
-    public class ResponseInputAnswersTypeItem
+    public class BodyInputAnswersTypeItem
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Subject { get; set; }

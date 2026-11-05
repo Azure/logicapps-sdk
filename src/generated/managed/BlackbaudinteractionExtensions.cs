@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration> CreateAction(Expression<Func<CreateActionInput>> body)
+        public IBodyWorkflowAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration> CreateAction(Expression<Func<CreateActionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedAction, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAction(Expression<Func<string>> actionId, Expression<Func<EditActionInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAction(Expression<Func<string>> actionId, Expression<Func<EditActionBodyInput>> body)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration> CreateActionAttachment(Expression<Func<CreateActionAttachmentInput>> body)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration> CreateActionAttachment(Expression<Func<CreateActionAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedActionAttachment, ApiConnectionActionConfiguration>(() =>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditActionAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditActionAttachmentBodyInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration> CreateActionCustomField(Expression<Func<CreateActionCustomFieldInput>> body)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration> CreateActionCustomField(Expression<Func<CreateActionCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedActionCustomField, ApiConnectionActionConfiguration>(() =>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditActionCustomFieldInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditActionCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditActionCustomFieldBodyInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Id { get; set; }
     }
 
-    public class CreateActionInput
+    public class CreateActionBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Date { get; set; }
 
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateActionInputCategoryType Category { get; set; }
+        public BodyInputCategoryType Category { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Status { get; set; }
 
         [JsonProperty("direction")]
-        public CreateActionInputDirectionType? Direction { get; set; }
+        public BodyInputDirectionType? Direction { get; set; }
 
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -342,10 +342,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string OpportunityId { get; set; }
 
         [JsonProperty("outcome")]
-        public CreateActionInputOutcomeType? Outcome { get; set; }
+        public BodyInputOutcomeType? Outcome { get; set; }
 
         [JsonProperty("priority")]
-        public CreateActionInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("start_time")]
         public string StartTime { get; set; }
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionInputCategoryType
+    public enum BodyInputCategoryType
     {
         [EnumMember(Value = "Phone Call")]
         PhoneCall,
@@ -373,34 +373,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionInputDirectionType
+    public enum BodyInputDirectionType
     {
         Inbound,
         Outbound
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionInputOutcomeType
+    public enum BodyInputOutcomeType
     {
         Successful,
         Unsuccessful
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionInputPriorityType
+    public enum BodyInputPriorityType
     {
         Normal,
         High,
         Low
     }
 
-    public class EditActionInput
+    public class EditActionBodyInput
     {
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("category")]
-        public EditActionInputCategoryType? Category { get; set; }
+        public BodyInputCategoryType? Category { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Status { get; set; }
 
         [JsonProperty("direction")]
-        public EditActionInputDirectionType? Direction { get; set; }
+        public BodyInputDirectionType? Direction { get; set; }
 
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -430,10 +430,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string OpportunityId { get; set; }
 
         [JsonProperty("outcome")]
-        public EditActionInputOutcomeType? Outcome { get; set; }
+        public BodyInputOutcomeType? Outcome { get; set; }
 
         [JsonProperty("priority")]
-        public EditActionInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("start_time")]
         public string StartTime { get; set; }
@@ -443,40 +443,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
 
         [JsonProperty("fundraisers")]
         public string[] FundraiserS { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditActionInputCategoryType
-    {
-        [EnumMember(Value = "Phone Call")]
-        PhoneCall,
-        Meeting,
-        Mailing,
-        Email,
-        [EnumMember(Value = "Task/Other")]
-        TaskOther
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditActionInputDirectionType
-    {
-        Inbound,
-        Outbound
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditActionInputOutcomeType
-    {
-        Successful,
-        Unsuccessful
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditActionInputPriorityType
-    {
-        Normal,
-        High,
-        Low
     }
 
     public class ConstituentApiApiCollectionOfActionAttachmentRead
@@ -631,13 +597,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Id { get; set; }
     }
 
-    public class CreateActionAttachmentInput
+    public class CreateActionAttachmentBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionId { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateActionAttachmentInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -662,13 +628,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionAttachmentInputTypeType
+    public enum BodyInputTypeType
     {
         Link,
         Physical
     }
 
-    public class EditActionAttachmentInput
+    public class EditActionAttachmentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -689,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Id { get; set; }
     }
 
-    public class CreateActionCustomFieldInput
+    public class CreateActionCustomFieldBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionId { get; set; }
@@ -707,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string Comment { get; set; }
     }
 
-    public class EditActionCustomFieldInput
+    public class EditActionCustomFieldBodyInput
     {
         [JsonProperty("category")]
         public string Category { get; set; }

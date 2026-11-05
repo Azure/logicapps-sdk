@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
-        public IBodyWorkflowAction<GetMemberGroupsResponse, ApiConnectionActionConfiguration> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<GetMemberGroupsInput>> body)
+        public IBodyWorkflowAction<GetMemberGroupsResponse, ApiConnectionActionConfiguration> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<BodyInput>> body)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         public string[] Value { get; set; }
     }
 
-    public class GetMemberGroupsInput
+    public class BodyInput
     {
         [JsonProperty("securityEnabledOnly", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool SecurityEnabledOnly { get; set; } = false;

@@ -123,17 +123,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
 
     public class ElfsquaddataTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTrigger(Expression<Func<string>> triggerName, Expression<Func<CreateTriggerInput>> webHooksSubscription = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTrigger(Expression<Func<string>> triggerName, FlowRecurrence recurrence = null)
         {
             var __workflow_triggerName = WorkflowExpression.Compile(triggerName, nameof(triggerName), required: true);
-            var __workflow_webHooksSubscription = WorkflowExpression.Compile(webHooksSubscription, nameof(webHooksSubscription), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/2/webhooks/{0}", __workflow_triggerName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_webHooksSubscription != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_webHooksSubscription);
+                callPayload.Body = new WebHooksSubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -148,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elfsquaddata
         public string NextLink { get; set; }
     }
 
-    public class CreateTriggerInput
+    public class WebHooksSubscriptionInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

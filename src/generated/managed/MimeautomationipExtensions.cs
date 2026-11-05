@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
     public class MimeautomationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<Attachment[], ApiConnectionActionConfiguration> ExtractFiles(Expression<Func<ExtractFilesInput>> body = null)
+        public IBodyWorkflowAction<Attachment[], ApiConnectionActionConfiguration> ExtractFiles(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Attachment[], ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<MimeAttachment[], ApiConnectionActionConfiguration> ExtractFilesFromEml(Expression<Func<ExtractFilesFromEmlInput>> body = null)
+        public IBodyWorkflowAction<MimeAttachment[], ApiConnectionActionConfiguration> ExtractFilesFromEml(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<MimeAttachment[], ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         public string Content { get; set; }
     }
 
-    public class ExtractFilesInput
+    public class BodyInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
@@ -71,12 +71,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         public string MimeType { get; set; }
 
         [JsonProperty("content")]
-        public string Content { get; set; }
-    }
-
-    public class ExtractFilesFromEmlInput
-    {
-        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 }

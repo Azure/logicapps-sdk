@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
 
     public class BoldsignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<WebHooksInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse, ApiConnectionTriggerConfiguration> WebHooks(Expression<Func<EventsInput>> events, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum eventsInput
+    public enum EventsInput
     {
         Sent,
         Signed,
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         DraftCreated
     }
 
-    public class WebHooksInput
+    public class BodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook";

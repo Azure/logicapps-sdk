@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public class SurvalyzerswissActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration> CreateAndInviteMembers(Expression<Func<CreateAndInviteMembersInput>> body = null)
+        public IBodyWorkflowAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration> CreateAndInviteMembers(Expression<Func<CreateAndInviteMembersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateAndInviteMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateArtifactResponse, ApiConnectionActionConfiguration> CreateArtifact(Expression<Func<CreateArtifactInput>> body = null)
+        public IBodyWorkflowAction<CreateArtifactResponse, ApiConnectionActionConfiguration> CreateArtifact(Expression<Func<CreateArtifactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateArtifactResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateMembersResponse, ApiConnectionActionConfiguration> CreateMembers(Expression<Func<CreateMembersInput>> body = null)
+        public IBodyWorkflowAction<CreateMembersResponse, ApiConnectionActionConfiguration> CreateMembers(Expression<Func<CreateMembersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreatePanelResponse, ApiConnectionActionConfiguration> CreatePanel(Expression<Func<CreatePanelInput>> body = null)
+        public IBodyWorkflowAction<CreatePanelResponse, ApiConnectionActionConfiguration> CreatePanel(Expression<Func<CreatePanelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreatePanelResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateSurveyResponse, ApiConnectionActionConfiguration> CreateSurvey(Expression<Func<CreateSurveyInput>> body = null)
+        public IBodyWorkflowAction<CreateSurveyResponse, ApiConnectionActionConfiguration> CreateSurvey(Expression<Func<CreateSurveyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateSurveyResponse, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<CreateWebHookResponse, ApiConnectionActionConfiguration> CreateWebHook(Expression<Func<CreateWebHookInput>> body = null)
+        public IBodyWorkflowAction<CreateWebHookResponse, ApiConnectionActionConfiguration> CreateWebHook(Expression<Func<CreateWebHookBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateWebHookResponse, ApiConnectionActionConfiguration>(() =>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteArtifactResponse, ApiConnectionActionConfiguration> DeleteArtifact(Expression<Func<DeleteArtifactInput>> body = null)
+        public IBodyWorkflowAction<DeleteArtifactResponse, ApiConnectionActionConfiguration> DeleteArtifact(Expression<Func<DeleteArtifactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteArtifactResponse, ApiConnectionActionConfiguration>(() =>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteDistributorResponse, ApiConnectionActionConfiguration> DeleteDistributor(Expression<Func<DeleteDistributorInput>> body = null)
+        public IBodyWorkflowAction<DeleteDistributorResponse, ApiConnectionActionConfiguration> DeleteDistributor(Expression<Func<DeleteDistributorBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteDistributorResponse, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteInterviewResponse, ApiConnectionActionConfiguration> DeleteInterview(Expression<Func<DeleteInterviewInput>> body = null)
+        public IBodyWorkflowAction<DeleteInterviewResponse, ApiConnectionActionConfiguration> DeleteInterview(Expression<Func<DeleteInterviewBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteInterviewResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteMembersResponse, ApiConnectionActionConfiguration> DeleteMembers(Expression<Func<DeleteMembersInput>> body = null)
+        public IBodyWorkflowAction<DeleteMembersResponse, ApiConnectionActionConfiguration> DeleteMembers(Expression<Func<DeleteMembersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeletePanelResponse, ApiConnectionActionConfiguration> DeletePanel(Expression<Func<DeletePanelInput>> body = null)
+        public IBodyWorkflowAction<DeletePanelResponse, ApiConnectionActionConfiguration> DeletePanel(Expression<Func<DeletePanelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeletePanelResponse, ApiConnectionActionConfiguration>(() =>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteSamplingProjectResponse, ApiConnectionActionConfiguration> DeleteSamplingProject(Expression<Func<DeleteSamplingProjectInput>> body = null)
+        public IBodyWorkflowAction<DeleteSamplingProjectResponse, ApiConnectionActionConfiguration> DeleteSamplingProject(Expression<Func<DeleteSamplingProjectBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteSamplingProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteSurveyResponse, ApiConnectionActionConfiguration> DeleteSurvey(Expression<Func<DeleteSurveyInput>> body = null)
+        public IBodyWorkflowAction<DeleteSurveyResponse, ApiConnectionActionConfiguration> DeleteSurvey(Expression<Func<DeleteSurveyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteSurveyResponse, ApiConnectionActionConfiguration>(() =>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DeleteWebHookResponse, ApiConnectionActionConfiguration> DeleteWebHook(Expression<Func<DeleteWebHookInput>> body = null)
+        public IBodyWorkflowAction<DeleteWebHookResponse, ApiConnectionActionConfiguration> DeleteWebHook(Expression<Func<DeleteWebHookBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteWebHookResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<DownloadAnswersResponse, ApiConnectionActionConfiguration> DownloadInterviewPdf(Expression<Func<string>> tenant, Expression<Func<int>> surveyId, Expression<Func<string>> interviewId, Expression<Func<bool>> showPartialCompleted = null, Expression<Func<string>> locale = null, Expression<Func<string>> timeZone = null, Expression<Func<DownloadInterviewPdfInput>> body = null)
+        public IBodyWorkflowAction<DownloadAnswersResponse, ApiConnectionActionConfiguration> DownloadInterviewPdf(Expression<Func<string>> tenant, Expression<Func<int>> surveyId, Expression<Func<string>> interviewId, Expression<Func<bool>> showPartialCompleted = null, Expression<Func<string>> locale = null, Expression<Func<string>> timeZone = null, Expression<Func<DownloadInterviewPdfBodyInput>> body = null)
         {
             var __workflow_tenant = WorkflowExpression.Compile(tenant, nameof(tenant), required: true);
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration> ExecuteSendMail(Expression<Func<ExecuteSendMailInput>> body = null)
+        public IBodyWorkflowAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration> ExecuteSendMail(Expression<Func<ExecuteSendMailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExecuteSendMailResponse, ApiConnectionActionConfiguration>(() =>
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration> ExecuteWorkflowTransition(Expression<Func<ExecuteWorkflowTransitionInput>> body = null)
+        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration> ExecuteWorkflowTransition(Expression<Func<ExecuteWorkflowTransitionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExecuteWorkflowTransitionResponse, ApiConnectionActionConfiguration>(() =>
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<InviteMembersResponse, ApiConnectionActionConfiguration> InviteMembers(Expression<Func<InviteMembersInput>> body = null)
+        public IBodyWorkflowAction<InviteMembersResponse, ApiConnectionActionConfiguration> InviteMembers(Expression<Func<InviteMembersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InviteMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadArtifactListRequest, ApiConnectionActionConfiguration> ReadArtifactList(Expression<Func<ReadArtifactListInput>> body = null)
+        public IBodyWorkflowAction<ReadArtifactListRequest, ApiConnectionActionConfiguration> ReadArtifactList(Expression<Func<CreateArtifactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadArtifactListRequest, ApiConnectionActionConfiguration>(() =>
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration> ReadBounceList(Expression<Func<ReadBounceListInput>> body = null)
+        public IBodyWorkflowAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration> ReadBounceList(Expression<Func<ReadBounceListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadBounceListResponseV3, ApiConnectionActionConfiguration>(() =>
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadDistributorListResponse, ApiConnectionActionConfiguration> ReadDistributorList(Expression<Func<ReadDistributorListInput>> body = null)
+        public IBodyWorkflowAction<ReadDistributorListResponse, ApiConnectionActionConfiguration> ReadDistributorList(Expression<Func<ReadDistributorListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadDistributorListResponse, ApiConnectionActionConfiguration>(() =>
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadIncentiveListResponse, ApiConnectionActionConfiguration> ReadIncentiveList(Expression<Func<ReadIncentiveListInput>> body = null)
+        public IBodyWorkflowAction<ReadIncentiveListResponse, ApiConnectionActionConfiguration> ReadIncentiveList(Expression<Func<ReadIncentiveListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadIncentiveListResponse, ApiConnectionActionConfiguration>(() =>
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse, ApiConnectionActionConfiguration> ReadIncentiveTransactionList(Expression<Func<ReadIncentiveTransactionListInput>> body = null)
+        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse, ApiConnectionActionConfiguration> ReadIncentiveTransactionList(Expression<Func<ReadIncentiveListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadIncentiveTransactionListResponse, ApiConnectionActionConfiguration>(() =>
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration> ReadInterview(Expression<Func<ReadInterviewInput>> body = null)
+        public IBodyWorkflowAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration> ReadInterview(Expression<Func<ReadInterviewBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadInterviewDataResponse, ApiConnectionActionConfiguration>(() =>
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3, ApiConnectionActionConfiguration> ReadInterviewListCompact(Expression<Func<ReadInterviewListCompactInput>> body = null)
+        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3, ApiConnectionActionConfiguration> ReadInterviewListCompact(Expression<Func<ReadInterviewListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadInterviewListCompactResponseV3, ApiConnectionActionConfiguration>(() =>
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadInterviewListResponseV3, ApiConnectionActionConfiguration> ReadInterviewList(Expression<Func<ReadInterviewListInput>> body = null)
+        public IBodyWorkflowAction<ReadInterviewListResponseV3, ApiConnectionActionConfiguration> ReadInterviewList(Expression<Func<ReadInterviewListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadInterviewListResponseV3, ApiConnectionActionConfiguration>(() =>
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadMemberListResponse, ApiConnectionActionConfiguration> ReadMemberList(Expression<Func<ReadMemberListInput>> body = null)
+        public IBodyWorkflowAction<ReadMemberListResponse, ApiConnectionActionConfiguration> ReadMemberList(Expression<Func<ReadMemberListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadMemberListResponse, ApiConnectionActionConfiguration>(() =>
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration> ReadMessageTemplateList(Expression<Func<ReadMessageTemplateListInput>> body = null)
+        public IBodyWorkflowAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration> ReadMessageTemplateList(Expression<Func<ReadMessageTemplateListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadMessageTemplateListResponse, ApiConnectionActionConfiguration>(() =>
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadOptOutListResponseV3, ApiConnectionActionConfiguration> ReadOptOutList(Expression<Func<ReadOptOutListInput>> body = null)
+        public IBodyWorkflowAction<ReadOptOutListResponseV3, ApiConnectionActionConfiguration> ReadOptOutList(Expression<Func<ReadOptOutListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadOptOutListResponseV3, ApiConnectionActionConfiguration>(() =>
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration> ReadPanel(Expression<Func<ReadPanelInput>> body = null)
+        public IBodyWorkflowAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration> ReadPanel(Expression<Func<ReadPanelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadPanelDefinitionResponse, ApiConnectionActionConfiguration>(() =>
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSamplingProjectResponse, ApiConnectionActionConfiguration> ReadSamplingProject(Expression<Func<ReadSamplingProjectInput>> body = null)
+        public IBodyWorkflowAction<ReadSamplingProjectResponse, ApiConnectionActionConfiguration> ReadSamplingProject(Expression<Func<ReadSamplingProjectBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadSamplingProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSurveyLinksResponse, ApiConnectionActionConfiguration> ReadSurveyLinks(Expression<Func<ReadSurveyLinksInput>> body = null)
+        public IBodyWorkflowAction<ReadSurveyLinksResponse, ApiConnectionActionConfiguration> ReadSurveyLinks(Expression<Func<ReadSurveyLinksBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadSurveyLinksResponse, ApiConnectionActionConfiguration>(() =>
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSurveyListResponse, ApiConnectionActionConfiguration> ReadSurveyList(Expression<Func<ReadSurveyListInput>> body = null)
+        public IBodyWorkflowAction<ReadSurveyListResponse, ApiConnectionActionConfiguration> ReadSurveyList(Expression<Func<ReadSurveyListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadSurveyListResponse, ApiConnectionActionConfiguration>(() =>
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadSurveyResponse, ApiConnectionActionConfiguration> ReadSurvey(Expression<Func<ReadSurveyInput>> body = null)
+        public IBodyWorkflowAction<ReadSurveyResponse, ApiConnectionActionConfiguration> ReadSurvey(Expression<Func<ReadSurveyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadSurveyResponse, ApiConnectionActionConfiguration>(() =>
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadWebHookListResponse, ApiConnectionActionConfiguration> ReadWebHookList(Expression<Func<ReadWebHookListInput>> body = null)
+        public IBodyWorkflowAction<ReadWebHookListResponse, ApiConnectionActionConfiguration> ReadWebHookList(Expression<Func<ReadWebHookListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadWebHookListResponse, ApiConnectionActionConfiguration>(() =>
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration> ReadWorkflowTransitions(Expression<Func<ReadWorkflowTransitionsInput>> body = null)
+        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration> ReadWorkflowTransitions(Expression<Func<ReadWorkflowTransitionsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadWorkflowTransitionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ReadWorkspaceListResponse, ApiConnectionActionConfiguration> ReadWorkspaceList(Expression<Func<ReadWorkspaceListInput>> body = null)
+        public IBodyWorkflowAction<ReadWorkspaceListResponse, ApiConnectionActionConfiguration> ReadWorkspaceList(Expression<Func<ReadIncentiveListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ReadWorkspaceListResponse, ApiConnectionActionConfiguration>(() =>
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration> RedeemIncentiveCode(Expression<Func<RedeemIncentiveCodeInput>> body = null)
+        public IBodyWorkflowAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration> RedeemIncentiveCode(Expression<Func<RedeemIncentiveCodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RedeemIncentiveCodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<RemindMembersResponse, ApiConnectionActionConfiguration> RemindMembers(Expression<Func<RemindMembersInput>> body = null)
+        public IBodyWorkflowAction<RemindMembersResponse, ApiConnectionActionConfiguration> RemindMembers(Expression<Func<RemindMembersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RemindMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<ResetInterviewResponse, ApiConnectionActionConfiguration> ResetInterview(Expression<Func<ResetInterviewInput>> body = null)
+        public IBodyWorkflowAction<ResetInterviewResponse, ApiConnectionActionConfiguration> ResetInterview(Expression<Func<DeleteInterviewBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ResetInterviewResponse, ApiConnectionActionConfiguration>(() =>
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<UpdateMembersResponse, ApiConnectionActionConfiguration> UpdateMembers(Expression<Func<UpdateMembersInput>> body = null)
+        public IBodyWorkflowAction<UpdateMembersResponse, ApiConnectionActionConfiguration> UpdateMembers(Expression<Func<CreateMembersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<WritePanelResponse, ApiConnectionActionConfiguration> UpdatePanel(Expression<Func<UpdatePanelInput>> body = null)
+        public IBodyWorkflowAction<WritePanelResponse, ApiConnectionActionConfiguration> UpdatePanel(Expression<Func<UpdatePanelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<WritePanelResponse, ApiConnectionActionConfiguration>(() =>
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<UpdateSurveyResponse, ApiConnectionActionConfiguration> UpdateSurvey(Expression<Func<UpdateSurveyInput>> body = null)
+        public IBodyWorkflowAction<UpdateSurveyResponse, ApiConnectionActionConfiguration> UpdateSurvey(Expression<Func<UpdateSurveyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateSurveyResponse, ApiConnectionActionConfiguration>(() =>
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<UpdateWebHookResponse, ApiConnectionActionConfiguration> UpdateWebHook(Expression<Func<UpdateWebHookInput>> body = null)
+        public IBodyWorkflowAction<UpdateWebHookResponse, ApiConnectionActionConfiguration> UpdateWebHook(Expression<Func<UpdateWebHookBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateWebHookResponse, ApiConnectionActionConfiguration>(() =>
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzerswiss")]
-        public IBodyWorkflowAction<WriteOptOutListResponse, ApiConnectionActionConfiguration> WriteOptOutList(Expression<Func<WriteOptOutListInput>> body = null)
+        public IBodyWorkflowAction<WriteOptOutListResponse, ApiConnectionActionConfiguration> WriteOptOutList(Expression<Func<WriteOptOutListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<WriteOptOutListResponse, ApiConnectionActionConfiguration>(() =>
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorMessage { get; set; }
     }
 
-    public class CreateAndInviteMembersInput
+    public class CreateAndInviteMembersBodyInput
     {
         [JsonProperty("samplingProjectId")]
         public int? SamplingProjectId { get; set; }
@@ -764,16 +764,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int PanelId { get; set; }
 
         [JsonProperty("channel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DistributionChannel Channel { get; set; }
+        public CreateAndInviteMembersDistributionChannel Channel { get; set; }
 
         [JsonProperty("messageTemplateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock2[] TextBlocks { get; set; }
+        public CreateAndInviteMembersTextBlock[] TextBlocks { get; set; }
 
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Member2[] Members { get; set; }
+        public CreateAndInviteMembersMember[] Members { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DistributionChannel
+    public enum CreateAndInviteMembersDistributionChannel
     {
         Invalid,
         Email,
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         WhatsApp
     }
 
-    public class TextBlock2
+    public class CreateAndInviteMembersTextBlock
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -817,10 +817,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Type { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement2[] Text { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Text { get; set; }
     }
 
-    public class TranslationElement2
+    public class CreateAndInviteMembersTranslationElement
     {
         [JsonProperty("languageCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LanguageCode { get; set; }
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Text { get; set; }
     }
 
-    public class Member2
+    public class CreateAndInviteMembersMember
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -850,10 +850,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string UpdatedBy { get; set; }
 
         [JsonProperty("interviews")]
-        public Interview2[] Interviews { get; set; }
+        public CreateAndInviteMembersInterview[] Interviews { get; set; }
     }
 
-    public class Interview2
+    public class CreateAndInviteMembersInterview
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class CreateArtifactInput
+    public class CreateArtifactBodyInput
     {
         [JsonProperty("workspaceId")]
         public int? WorkspaceId { get; set; }
@@ -931,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class CreateMembersInput
+    public class CreateMembersBodyInput
     {
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int PanelId { get; set; }
 
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Member2[] Members { get; set; }
+        public CreateAndInviteMembersMember[] Members { get; set; }
     }
 
     public class CreatePanelResponse
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class CreatePanelInput
+    public class CreatePanelBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkspaceId { get; set; }
@@ -1005,7 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class CreateSurveyInput
+    public class CreateSurveyBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkspaceId { get; set; }
@@ -1014,13 +1014,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Name { get; set; }
 
         [JsonProperty("surveyDefinition", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SurveyDefinition2 SurveyDefinition { get; set; }
+        public CreateSurveySurveyDefinition SurveyDefinition { get; set; }
 
         [JsonProperty("surveyConfiguration")]
-        public SurveyConfiguration2 SurveyConfiguration { get; set; }
+        public CreateSurveySurveyConfiguration SurveyConfiguration { get; set; }
     }
 
-    public class SurveyDefinition2
+    public class CreateSurveySurveyDefinition
     {
         [JsonProperty("allowMultipleParticipation", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AllowMultipleParticipation { get; set; }
@@ -1041,22 +1041,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? EnableCodeAccess { get; set; }
 
         [JsonProperty("dataAccessControl")]
-        public DataAccessControl2 DataAccessControl { get; set; }
+        public CreateSurveyDataAccessControl DataAccessControl { get; set; }
 
         [JsonProperty("associatedPanels")]
         public int[] AssociatedPanels { get; set; }
 
         [JsonProperty("codeAccessMode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CodeAccessMode CodeAccessMode { get; set; }
+        public CreateSurveyCodeAccessMode CodeAccessMode { get; set; }
 
         [JsonProperty("enablePanelSync")]
         public bool? EnablePanelSync { get; set; }
 
         [JsonProperty("panelSyncBehaviour")]
-        public PanelSyncBehaviour? PanelSyncBehaviour { get; set; }
+        public CreateSurveyPanelSyncBehaviour? PanelSyncBehaviour { get; set; }
 
         [JsonProperty("panelSyncs")]
-        public PanelSyncElement[] PanelSyncs { get; set; }
+        public CreateSurveyPanelSyncElement[] PanelSyncs { get; set; }
 
         [JsonProperty("defaultLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DefaultLanguage { get; set; }
@@ -1068,54 +1068,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string[] Languages { get; set; }
 
         [JsonProperty("sections", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Section2[] Sections { get; set; }
+        public CreateSurveySection[] Sections { get; set; }
 
         [JsonProperty("customVariables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CustomVariable2[] CustomVariables { get; set; }
+        public CreateSurveyCustomVariable[] CustomVariables { get; set; }
 
         [JsonProperty("surveyEndText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TranslationElement2[] SurveyEndText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] SurveyEndText { get; set; }
 
         [JsonProperty("defaultTextOverrides")]
         public JToken DefaultTextOverrides { get; set; }
     }
 
-    public class DataAccessControl2
+    public class CreateSurveyDataAccessControl
     {
         [JsonProperty("accessType")]
-        public AccessType? AccessType { get; set; }
+        public CreateSurveyAccessType? AccessType { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AccessType
+    public enum CreateSurveyAccessType
     {
         Private,
         Conditional,
         Public
     }
 
-    public class Condition2
+    public class CreateSurveyCondition
     {
         [JsonProperty("conjunction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Conjunction Conjunction { get; set; }
+        public CreateSurveyConjunction Conjunction { get; set; }
 
         [JsonProperty("conditionType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConditionType ConditionType { get; set; }
+        public CreateSurveyConditionType ConditionType { get; set; }
 
         [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identifier { get; set; }
 
         [JsonProperty("conditionOperator", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConditionOperator ConditionOperator { get; set; }
+        public CreateSurveyConditionOperator ConditionOperator { get; set; }
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
 
         [JsonProperty("variableType")]
-        public VariableType? VariableType { get; set; }
+        public CreateSurveyVariableType? VariableType { get; set; }
 
         [JsonProperty("jsonValue")]
         public bool? JsonValue { get; set; }
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Conjunction
+    public enum CreateSurveyConjunction
     {
         Invalid,
         And,
@@ -1133,7 +1133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConditionType
+    public enum CreateSurveyConditionType
     {
         Invalid,
         Question,
@@ -1152,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConditionOperator
+    public enum CreateSurveyConditionOperator
     {
         Invalid,
         IsLessThan,
@@ -1176,7 +1176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum VariableType
+    public enum CreateSurveyVariableType
     {
         Invalid,
         Number,
@@ -1190,7 +1190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CodeAccessMode
+    public enum CreateSurveyCodeAccessMode
     {
         None,
         StrongUsernamePassword,
@@ -1200,14 +1200,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PanelSyncBehaviour
+    public enum CreateSurveyPanelSyncBehaviour
     {
         Invalid,
         Default,
         SignUp
     }
 
-    public class PanelSyncElement
+    public class CreateSurveyPanelSyncElement
     {
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
@@ -1216,7 +1216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string PanelField { get; set; }
     }
 
-    public class Section2
+    public class CreateSurveySection
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
@@ -1231,19 +1231,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool ExcludeFromRandomization { get; set; }
 
         [JsonProperty("elements", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SurveyElement2[] Elements { get; set; }
+        public CreateSurveySurveyElement[] Elements { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition2 Condition { get; set; }
+        public CreateSurveyConditionDefinition Condition { get; set; }
     }
 
-    public class SurveyElement2
+    public class CreateSurveySurveyElement
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
         [JsonProperty("elementType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ElementType ElementType { get; set; }
+        public CreateSurveyElementType ElementType { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -1252,10 +1252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? CodeManuallyChanged { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement2[] Text { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Text { get; set; }
 
         [JsonProperty("hintText")]
-        public TranslationElement2[] HintText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] HintText { get; set; }
 
         [JsonProperty("hasHintText")]
         public bool? HasHintText { get; set; }
@@ -1264,22 +1264,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? HasNotAvailableChoice { get; set; }
 
         [JsonProperty("notAvailableChoiceText")]
-        public TranslationElement2[] NotAvailableChoiceText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] NotAvailableChoiceText { get; set; }
 
         [JsonProperty("forceResponse")]
         public bool? ForceResponse { get; set; }
 
         [JsonProperty("choices")]
-        public Choice2[] Choices { get; set; }
+        public CreateSurveyChoice[] Choices { get; set; }
 
         [JsonProperty("randomizeChoices")]
         public bool? RandomizeChoices { get; set; }
 
         [JsonProperty("columnType")]
-        public ColumnType? ColumnType { get; set; }
+        public CreateSurveyColumnType? ColumnType { get; set; }
 
         [JsonProperty("prompt")]
-        public TranslationElement2[] Prompt { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Prompt { get; set; }
 
         [JsonProperty("minValue")]
         public int? MinValue { get; set; }
@@ -1291,13 +1291,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? ShowCenterLabel { get; set; }
 
         [JsonProperty("leftLabel")]
-        public TranslationElement2[] LeftLabel { get; set; }
+        public CreateAndInviteMembersTranslationElement[] LeftLabel { get; set; }
 
         [JsonProperty("centerLabel")]
-        public TranslationElement2[] CenterLabel { get; set; }
+        public CreateAndInviteMembersTranslationElement[] CenterLabel { get; set; }
 
         [JsonProperty("rightLabel")]
-        public TranslationElement2[] RightLabel { get; set; }
+        public CreateAndInviteMembersTranslationElement[] RightLabel { get; set; }
 
         [JsonProperty("showValue")]
         public bool? ShowValue { get; set; }
@@ -1306,22 +1306,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int? MaxDecimals { get; set; }
 
         [JsonProperty("textFieldSize")]
-        public TextFieldSize? TextFieldSize { get; set; }
+        public CreateSurveyTextFieldSize? TextFieldSize { get; set; }
 
         [JsonProperty("autocomplete")]
         public bool? Autocomplete { get; set; }
 
         [JsonProperty("autocompleteText")]
-        public TranslationElement2[] AutocompleteText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] AutocompleteText { get; set; }
 
         [JsonProperty("contentValidation")]
-        public ContentValidation2 ContentValidation { get; set; }
+        public CreateSurveyContentValidation ContentValidation { get; set; }
 
         [JsonProperty("hasPlaceholder")]
         public bool? HasPlaceholder { get; set; }
 
         [JsonProperty("placeholder")]
-        public TranslationElement2[] Placeholder { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Placeholder { get; set; }
 
         [JsonProperty("isPassword")]
         public bool? IsPassword { get; set; }
@@ -1336,28 +1336,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int? MaximumCheckedChoices { get; set; }
 
         [JsonProperty("columnGroups")]
-        public ColumnGroup2[] ColumnGroups { get; set; }
+        public CreateSurveyColumnGroup[] ColumnGroups { get; set; }
 
         [JsonProperty("randomizeRows")]
         public bool? RandomizeRows { get; set; }
 
         [JsonProperty("rows")]
-        public MinMaxChoice2[] Rows { get; set; }
+        public CreateSurveyMinMaxChoice[] Rows { get; set; }
 
         [JsonProperty("numberOfRanks")]
         public int? NumberOfRanks { get; set; }
 
         [JsonProperty("likeText")]
-        public TranslationElement2[] LikeText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] LikeText { get; set; }
 
         [JsonProperty("dislikeText")]
-        public TranslationElement2[] DislikeText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] DislikeText { get; set; }
 
         [JsonProperty("hasStartText")]
         public bool? HasStartText { get; set; }
 
         [JsonProperty("startText")]
-        public TranslationElement2[] StartText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] StartText { get; set; }
 
         [JsonProperty("enableMeasurement")]
         public bool? EnableMeasurement { get; set; }
@@ -1375,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string InterviewState { get; set; }
 
         [JsonProperty("action")]
-        public ActionElement2 Action { get; set; }
+        public CreateSurveyActionElement Action { get; set; }
 
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1384,40 +1384,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string To { get; set; }
 
         [JsonProperty("subject")]
-        public TranslationElement2[] Subject { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Subject { get; set; }
 
         [JsonProperty("message")]
-        public TranslationElement2[] Message { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Message { get; set; }
 
         [JsonProperty("valueAssignmentType")]
-        public ValueAssignmentType? ValueAssignmentType { get; set; }
+        public CreateSurveyValueAssignmentType? ValueAssignmentType { get; set; }
 
         [JsonProperty("variableName")]
         public string VariableName { get; set; }
 
         [JsonProperty("functionTerm")]
-        public TranslationElement2[] FunctionTerm { get; set; }
+        public CreateAndInviteMembersTranslationElement[] FunctionTerm { get; set; }
 
         [JsonProperty("executionBehavior")]
-        public ExecutionBehavior? ExecutionBehavior { get; set; }
+        public CreateSurveyExecutionBehavior? ExecutionBehavior { get; set; }
 
         [JsonProperty("apiCallMethod")]
-        public ApiCallMethod? ApiCallMethod { get; set; }
+        public CreateSurveyApiCallMethod? ApiCallMethod { get; set; }
 
         [JsonProperty("url")]
-        public TranslationElement2[] Url { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Url { get; set; }
 
         [JsonProperty("headers")]
         public string Headers { get; set; }
 
         [JsonProperty("body")]
-        public TranslationElement2[] Body { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Body { get; set; }
 
         [JsonProperty("externalUri")]
         public string ExternalUri { get; set; }
 
         [JsonProperty("scriptType")]
-        public ScriptType? ScriptType { get; set; }
+        public CreateSurveyScriptType? ScriptType { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -1426,13 +1426,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? HasRatingLabels { get; set; }
 
         [JsonProperty("leftRatingLabel")]
-        public TranslationElement2[] LeftRatingLabel { get; set; }
+        public CreateAndInviteMembersTranslationElement[] LeftRatingLabel { get; set; }
 
         [JsonProperty("rightRatingLabel")]
-        public TranslationElement2[] RightRatingLabel { get; set; }
+        public CreateAndInviteMembersTranslationElement[] RightRatingLabel { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition2 Condition { get; set; }
+        public CreateSurveyConditionDefinition Condition { get; set; }
 
         [JsonProperty("evaluateAsJson")]
         public bool? EvaluateAsJson { get; set; }
@@ -1441,7 +1441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string AutocompleteListVariable { get; set; }
 
         [JsonProperty("arrangementMode")]
-        public ArrangementMode? ArrangementMode { get; set; }
+        public CreateSurveyArrangementMode? ArrangementMode { get; set; }
 
         [JsonProperty("enableAnimation")]
         public bool? EnableAnimation { get; set; }
@@ -1454,7 +1454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ElementType
+    public enum CreateSurveyElementType
     {
         Invalid,
         SingleChoice,
@@ -1481,7 +1481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Nps
     }
 
-    public class Choice2
+    public class CreateSurveyChoice
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
@@ -1493,7 +1493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? CodeManuallyChanged { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TranslationElement2[] Text { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Text { get; set; }
 
         [JsonProperty("allowTextEntry", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AllowTextEntry { get; set; }
@@ -1505,7 +1505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool Autocomplete { get; set; }
 
         [JsonProperty("autocompleteText")]
-        public TranslationElement2[] AutocompleteText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] AutocompleteText { get; set; }
 
         [JsonProperty("exclusive", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Exclusive { get; set; }
@@ -1514,19 +1514,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? ExcludeFromRandomization { get; set; }
 
         [JsonProperty("contentValidation")]
-        public ContentValidation2 ContentValidation { get; set; }
+        public CreateSurveyContentValidation ContentValidation { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition2 Condition { get; set; }
+        public CreateSurveyConditionDefinition Condition { get; set; }
 
         [JsonProperty("autocompleteListVariable")]
         public string AutocompleteListVariable { get; set; }
     }
 
-    public class ContentValidation2
+    public class CreateSurveyContentValidation
     {
         [JsonProperty("validationType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ContentValidationType ValidationType { get; set; }
+        public CreateSurveyContentValidationType ValidationType { get; set; }
 
         [JsonProperty("earliestDate")]
         public string EarliestDate { get; set; }
@@ -1548,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContentValidationType
+    public enum CreateSurveyContentValidationType
     {
         Invalid,
         None,
@@ -1559,17 +1559,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Real
     }
 
-    public class ConditionDefinition2
+    public class CreateSurveyConditionDefinition
     {
         [JsonProperty("conditionAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConditionAction ConditionAction { get; set; }
+        public CreateSurveyConditionAction ConditionAction { get; set; }
 
         [JsonProperty("elements", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Condition2[] Elements { get; set; }
+        public CreateSurveyCondition[] Elements { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConditionAction
+    public enum CreateSurveyConditionAction
     {
         Invalid,
         Passes,
@@ -1577,7 +1577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ColumnType
+    public enum CreateSurveyColumnType
     {
         Invalid,
         Single,
@@ -1585,7 +1585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextFieldSize
+    public enum CreateSurveyTextFieldSize
     {
         Invalid,
         Small,
@@ -1593,38 +1593,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Large
     }
 
-    public class ColumnGroup2
+    public class CreateSurveyColumnGroup
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TranslationElement2[] Text { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Text { get; set; }
 
         [JsonProperty("hasNotAvailableChoice", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool HasNotAvailableChoice { get; set; }
 
         [JsonProperty("notAvailableChoiceText")]
-        public TranslationElement2[] NotAvailableChoiceText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] NotAvailableChoiceText { get; set; }
 
         [JsonProperty("randomizeColumns", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool RandomizeColumns { get; set; }
 
         [JsonProperty("prompt")]
-        public TranslationElement2[] Prompt { get; set; }
+        public CreateAndInviteMembersTranslationElement[] Prompt { get; set; }
 
         [JsonProperty("choiceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ChoiceType ChoiceType { get; set; }
+        public CreateSurveyChoiceType ChoiceType { get; set; }
 
         [JsonProperty("choices", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Choice2[] Choices { get; set; }
+        public CreateSurveyChoice[] Choices { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition2 Condition { get; set; }
+        public CreateSurveyConditionDefinition Condition { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChoiceType
+    public enum CreateSurveyChoiceType
     {
         Invalid,
         Single,
@@ -1634,7 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         StarScale
     }
 
-    public class MinMaxChoice2
+    public class CreateSurveyMinMaxChoice
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
@@ -1646,32 +1646,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? CodeManuallyChanged { get; set; }
 
         [JsonProperty("leftText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TranslationElement2[] LeftText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] LeftText { get; set; }
 
         [JsonProperty("rightText", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TranslationElement2[] RightText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] RightText { get; set; }
 
         [JsonProperty("excludeFromRandomization", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ExcludeFromRandomization { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition2 Condition { get; set; }
+        public CreateSurveyConditionDefinition Condition { get; set; }
     }
 
-    public class ActionElement2
+    public class CreateSurveyActionElement
     {
         [JsonProperty("actionType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActionType ActionType { get; set; }
+        public CreateSurveyActionType ActionType { get; set; }
 
         [JsonProperty("endOfSurveyText")]
-        public TranslationElement2[] EndOfSurveyText { get; set; }
+        public CreateAndInviteMembersTranslationElement[] EndOfSurveyText { get; set; }
 
         [JsonProperty("forwardUrl")]
-        public TranslationElement2[] ForwardUrl { get; set; }
+        public CreateAndInviteMembersTranslationElement[] ForwardUrl { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ActionType
+    public enum CreateSurveyActionType
     {
         Invalid,
         ShowEndOfSurveyText,
@@ -1679,7 +1679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ValueAssignmentType
+    public enum CreateSurveyValueAssignmentType
     {
         Invalid,
         Custom,
@@ -1689,7 +1689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExecutionBehavior
+    public enum CreateSurveyExecutionBehavior
     {
         Invalid,
         AnyTime,
@@ -1699,7 +1699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ApiCallMethod
+    public enum CreateSurveyApiCallMethod
     {
         Invalid,
         Get,
@@ -1707,7 +1707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ScriptType
+    public enum CreateSurveyScriptType
     {
         Invalid,
         JavaScript,
@@ -1715,14 +1715,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrangementMode
+    public enum CreateSurveyArrangementMode
     {
         Invalid,
         Cubic,
         Circular
     }
 
-    public class CustomVariable2
+    public class CreateSurveyCustomVariable
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
@@ -1731,32 +1731,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string VariableName { get; set; }
 
         [JsonProperty("variableType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public VariableType VariableType { get; set; }
+        public CreateSurveyVariableType VariableType { get; set; }
     }
 
-    public class SurveyConfiguration2
+    public class CreateSurveySurveyConfiguration
     {
         [JsonProperty("designConfiguration")]
-        public DesignConfiguration2 DesignConfiguration { get; set; }
+        public CreateSurveyDesignConfiguration DesignConfiguration { get; set; }
 
         [JsonProperty("anonymizingConfiguration")]
-        public AnonymizingConfiguration2 AnonymizingConfiguration { get; set; }
+        public CreateSurveyAnonymizingConfiguration AnonymizingConfiguration { get; set; }
     }
 
-    public class DesignConfiguration2
+    public class CreateSurveyDesignConfiguration
     {
         [JsonProperty("surveyDesignLayout")]
         public int? SurveyDesignLayout { get; set; }
 
         [JsonProperty("matrixSubQuestionSize")]
-        public MatrixSubQuestionSize? MatrixSubQuestionSize { get; set; }
+        public CreateSurveyMatrixSubQuestionSize? MatrixSubQuestionSize { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock2[] TextBlocks { get; set; }
+        public CreateAndInviteMembersTextBlock[] TextBlocks { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MatrixSubQuestionSize
+    public enum CreateSurveyMatrixSubQuestionSize
     {
         M,
         S,
@@ -1764,10 +1764,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Xl
     }
 
-    public class AnonymizingConfiguration2
+    public class CreateSurveyAnonymizingConfiguration
     {
         [JsonProperty("anonymizingMode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AnonymizingMode AnonymizingMode { get; set; }
+        public CreateSurveyAnonymizingMode AnonymizingMode { get; set; }
 
         [JsonProperty("logIp", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool LogIp { get; set; }
@@ -1780,7 +1780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AnonymizingMode
+    public enum CreateSurveyAnonymizingMode
     {
         Invalid,
         Personalized,
@@ -1802,10 +1802,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class CreateWebHookInput
+    public class CreateWebHookBodyInput
     {
         [JsonProperty("eventType")]
-        public EventType? EventType { get; set; }
+        public CreateWebHookEventType? EventType { get; set; }
 
         [JsonProperty("entityIdentifier")]
         public string EntityIdentifier { get; set; }
@@ -1818,7 +1818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventType
+    public enum CreateWebHookEventType
     {
         Invalid,
         InterviewComplete,
@@ -1837,7 +1837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeleteArtifactInput
+    public class DeleteArtifactBodyInput
     {
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -1861,7 +1861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeleteDistributorInput
+    public class DeleteDistributorBodyInput
     {
         [JsonProperty("distributorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int DistributorId { get; set; }
@@ -1882,7 +1882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeleteInterviewInput
+    public class DeleteInterviewBodyInput
     {
         [JsonProperty("interviewId")]
         public string InterviewId { get; set; }
@@ -1903,7 +1903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeleteMembersInput
+    public class DeleteMembersBodyInput
     {
         [JsonProperty("panelId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PanelId { get; set; }
@@ -1927,7 +1927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeletePanelInput
+    public class DeletePanelBodyInput
     {
         [JsonProperty("panelId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PanelId { get; set; }
@@ -1948,7 +1948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeleteSamplingProjectInput
+    public class DeleteSamplingProjectBodyInput
     {
         [JsonProperty("samplingProjectId")]
         public int? SamplingProjectId { get; set; }
@@ -1969,7 +1969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeleteSurveyInput
+    public class DeleteSurveyBodyInput
     {
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
@@ -1987,7 +1987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DeleteWebHookInput
+    public class DeleteWebHookBodyInput
     {
         [JsonProperty("webHookId")]
         public string WebHookId { get; set; }
@@ -2008,7 +2008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class DownloadInterviewPdfInput
+    public class DownloadInterviewPdfBodyInput
     {
         [JsonProperty("isCancellationRequested")]
         public bool? IsCancellationRequested { get; set; }
@@ -2047,13 +2047,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class ExecuteSendMailInput
+    public class ExecuteSendMailBodyInput
     {
         [JsonProperty("messageTemplateId")]
         public int? MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock2[] TextBlocks { get; set; }
+        public CreateAndInviteMembersTextBlock[] TextBlocks { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Language { get; set; }
@@ -2095,7 +2095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class ExecuteWorkflowTransitionInput
+    public class ExecuteWorkflowTransitionBodyInput
     {
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkflowType Workflow { get; set; }
@@ -2151,7 +2151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class InviteMembersInput
+    public class InviteMembersBodyInput
     {
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
@@ -2169,16 +2169,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock2[] TextBlocks { get; set; }
+        public CreateAndInviteMembersTextBlock[] TextBlocks { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("channel")]
-        public DistributionChannel? Channel { get; set; }
+        public CreateAndInviteMembersDistributionChannel? Channel { get; set; }
 
         [JsonProperty("asyncProcess")]
         public bool? AsyncProcess { get; set; }
@@ -2206,15 +2206,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
         [JsonProperty("workspaceId")]
         public int WorkspaceId { get; set; }
-    }
-
-    public class ReadArtifactListInput
-    {
-        [JsonProperty("path")]
-        public string Path { get; set; }
-
-        [JsonProperty("workspaceId")]
-        public int? WorkspaceId { get; set; }
     }
 
     public class ReadBounceListResponseV3
@@ -2268,7 +2259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int Phone { get; set; }
 
         [JsonProperty("invitationType")]
-        public InvitationType InvitationType { get; set; }
+        public ReadBounceListInvitationTypeResponse InvitationType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2281,14 +2272,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InvitationType
+    public enum ReadBounceListInvitationTypeResponse
     {
         Invalid,
         Invitation,
         Reminder
     }
 
-    public class ReadBounceListInput
+    public class ReadBounceListBodyInput
     {
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
@@ -2300,13 +2291,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int[] Distributors { get; set; }
 
         [JsonProperty("invitationType")]
-        public InvitationType? InvitationType { get; set; }
+        public ReadBounceListInvitationType? InvitationType { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadBounceListInvitationType
+    {
+        Invalid,
+        Invitation,
+        Reminder
     }
 
     public class Paging
@@ -2371,7 +2370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int DistributorId { get; set; }
 
         [JsonProperty("distributionChannel")]
-        public DistributionChannel DistributionChannel { get; set; }
+        public ReadDistributorListDistributionChannelResponse DistributionChannel { get; set; }
 
         [JsonProperty("surveyId")]
         public int SurveyId { get; set; }
@@ -2395,37 +2394,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string DistributionState { get; set; }
 
         [JsonProperty("conditions")]
-        public ConditionDefinition[] Conditions { get; set; }
+        public ReadDistributorListConditionDefinitionResponse[] Conditions { get; set; }
     }
 
-    public class ConditionDefinition
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadDistributorListDistributionChannelResponse
+    {
+        Invalid,
+        Email,
+        Sms,
+        LinkList,
+        ApiEndpoint,
+        WhatsApp
+    }
+
+    public class ReadDistributorListConditionDefinitionResponse
     {
         [JsonProperty("conditionAction")]
-        public ConditionAction ConditionAction { get; set; }
+        public ReadDistributorListConditionActionResponse ConditionAction { get; set; }
 
         [JsonProperty("elements")]
-        public Condition[] Elements { get; set; }
+        public ReadDistributorListConditionResponse[] Elements { get; set; }
     }
 
-    public class Condition
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadDistributorListConditionActionResponse
+    {
+        Invalid,
+        Passes,
+        Fails
+    }
+
+    public class ReadDistributorListConditionResponse
     {
         [JsonProperty("conjunction")]
-        public Conjunction Conjunction { get; set; }
+        public ReadDistributorListConjunctionResponse Conjunction { get; set; }
 
         [JsonProperty("conditionType")]
-        public ConditionType ConditionType { get; set; }
+        public ReadDistributorListConditionTypeResponse ConditionType { get; set; }
 
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
 
         [JsonProperty("conditionOperator")]
-        public ConditionOperator ConditionOperator { get; set; }
+        public ReadDistributorListConditionOperatorResponse ConditionOperator { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
 
         [JsonProperty("variableType")]
-        public VariableType VariableType { get; set; }
+        public ReadDistributorListVariableTypeResponse VariableType { get; set; }
 
         [JsonProperty("jsonValue")]
         public bool JsonValue { get; set; }
@@ -2434,7 +2452,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string JsonPath { get; set; }
     }
 
-    public class ReadDistributorListInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadDistributorListConjunctionResponse
+    {
+        Invalid,
+        And,
+        Or
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadDistributorListConditionTypeResponse
+    {
+        Invalid,
+        Question,
+        Panel,
+        Device,
+        UrlVariable,
+        Calculation,
+        Language,
+        CustomVariable,
+        Counters,
+        RemoteList,
+        RemoteIntegerRange,
+        RemoteString,
+        RemoteInteger,
+        SQL
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadDistributorListConditionOperatorResponse
+    {
+        Invalid,
+        IsLessThan,
+        IsLessThanOrEqualTo,
+        IsGreaterThan,
+        IsGreaterThanOrEqualTo,
+        IsEqualTo,
+        IsNotEqualTo,
+        IsEmpty,
+        IsNotEmpty,
+        Contains,
+        DoesNotContain,
+        MatchRegex,
+        DoesNotMatchRegex,
+        AnyIsEqual,
+        AnyIsNotEqual,
+        AnyIsEmpty,
+        AnyIsNotEmpty,
+        AnyMatchRegex,
+        AnyDoesNotMatchRegex
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadDistributorListVariableTypeResponse
+    {
+        Invalid,
+        Number,
+        Real,
+        String,
+        Date,
+        JsonList,
+        Json,
+        MathJs,
+        Matrix
+    }
+
+    public class ReadDistributorListBodyInput
     {
         [JsonProperty("surveyId")]
         public int? SurveyId { get; set; }
@@ -2443,7 +2526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int? PanelId { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2485,10 +2568,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int AvailableVouchersCount { get; set; }
     }
 
-    public class ReadIncentiveListInput
+    public class ReadIncentiveListBodyInput
     {
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2539,22 +2622,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string InterviewLink { get; set; }
     }
 
-    public class ReadIncentiveTransactionListInput
-    {
-        [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
-
-        [JsonProperty("paging")]
-        public Paging Paging { get; set; }
-    }
-
     public class ReadInterviewDataResponse
     {
         [JsonProperty("responseData")]
         public JToken ResponseData { get; set; }
 
         [JsonProperty("surveyDefinition")]
-        public SurveyDefinition SurveyDefinition { get; set; }
+        public ReadInterviewSurveyDefinitionResponse SurveyDefinition { get; set; }
 
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
@@ -2566,7 +2640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class SurveyDefinition
+    public class ReadInterviewSurveyDefinitionResponse
     {
         [JsonProperty("allowMultipleParticipation")]
         public bool AllowMultipleParticipation { get; set; }
@@ -2587,22 +2661,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool EnableCodeAccess { get; set; }
 
         [JsonProperty("dataAccessControl")]
-        public DataAccessControl DataAccessControl { get; set; }
+        public ReadInterviewDataAccessControlResponse DataAccessControl { get; set; }
 
         [JsonProperty("associatedPanels")]
         public int[] AssociatedPanels { get; set; }
 
         [JsonProperty("codeAccessMode")]
-        public CodeAccessMode CodeAccessMode { get; set; }
+        public ReadInterviewCodeAccessModeResponse CodeAccessMode { get; set; }
 
         [JsonProperty("enablePanelSync")]
         public bool EnablePanelSync { get; set; }
 
         [JsonProperty("panelSyncBehaviour")]
-        public PanelSyncBehaviour PanelSyncBehaviour { get; set; }
+        public ReadInterviewPanelSyncBehaviourResponse PanelSyncBehaviour { get; set; }
 
         [JsonProperty("panelSyncs")]
-        public PanelSyncElement[] PanelSyncs { get; set; }
+        public ReadInterviewPanelSyncElementResponse[] PanelSyncs { get; set; }
 
         [JsonProperty("defaultLanguage")]
         public string DefaultLanguage { get; set; }
@@ -2614,28 +2688,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string[] Languages { get; set; }
 
         [JsonProperty("sections")]
-        public Section[] Sections { get; set; }
+        public ReadInterviewSectionResponse[] Sections { get; set; }
 
         [JsonProperty("customVariables")]
-        public CustomVariable[] CustomVariables { get; set; }
+        public ReadInterviewCustomVariableResponse[] CustomVariables { get; set; }
 
         [JsonProperty("surveyEndText")]
-        public TranslationElement[] SurveyEndText { get; set; }
+        public ReadInterviewTranslationElementResponse[] SurveyEndText { get; set; }
 
         [JsonProperty("defaultTextOverrides")]
         public JToken DefaultTextOverrides { get; set; }
     }
 
-    public class DataAccessControl
+    public class ReadInterviewDataAccessControlResponse
     {
         [JsonProperty("accessType")]
-        public AccessType AccessType { get; set; }
+        public ReadInterviewAccessTypeResponse AccessType { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public ReadDistributorListConditionResponse[] Conditions { get; set; }
     }
 
-    public class Section
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewAccessTypeResponse
+    {
+        Private,
+        Conditional,
+        Public
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewCodeAccessModeResponse
+    {
+        None,
+        StrongUsernamePassword,
+        StrongAccessCode,
+        WeakUsernamePassword,
+        WeakAccessCode
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewPanelSyncBehaviourResponse
+    {
+        Invalid,
+        Default,
+        SignUp
+    }
+
+    public class ReadInterviewPanelSyncElementResponse
+    {
+        [JsonProperty("identifier")]
+        public string Identifier { get; set; }
+
+        [JsonProperty("panelField")]
+        public string PanelField { get; set; }
+    }
+
+    public class ReadInterviewSectionResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -2650,19 +2759,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool ExcludeFromRandomization { get; set; }
 
         [JsonProperty("elements")]
-        public SurveyElement[] Elements { get; set; }
+        public ReadInterviewSurveyElementResponse[] Elements { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ReadDistributorListConditionDefinitionResponse Condition { get; set; }
     }
 
-    public class SurveyElement
+    public class ReadInterviewSurveyElementResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("elementType")]
-        public ElementType ElementType { get; set; }
+        public ReadInterviewElementTypeResponse ElementType { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -2671,10 +2780,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool CodeManuallyChanged { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        public ReadInterviewTranslationElementResponse[] Text { get; set; }
 
         [JsonProperty("hintText")]
-        public TranslationElement[] HintText { get; set; }
+        public ReadInterviewTranslationElementResponse[] HintText { get; set; }
 
         [JsonProperty("hasHintText")]
         public bool HasHintText { get; set; }
@@ -2683,22 +2792,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool HasNotAvailableChoice { get; set; }
 
         [JsonProperty("notAvailableChoiceText")]
-        public TranslationElement[] NotAvailableChoiceText { get; set; }
+        public ReadInterviewTranslationElementResponse[] NotAvailableChoiceText { get; set; }
 
         [JsonProperty("forceResponse")]
         public bool ForceResponse { get; set; }
 
         [JsonProperty("choices")]
-        public Choice[] Choices { get; set; }
+        public ReadInterviewChoiceResponse[] Choices { get; set; }
 
         [JsonProperty("randomizeChoices")]
         public bool RandomizeChoices { get; set; }
 
         [JsonProperty("columnType")]
-        public ColumnType ColumnType { get; set; }
+        public ReadInterviewColumnTypeResponse ColumnType { get; set; }
 
         [JsonProperty("prompt")]
-        public TranslationElement[] Prompt { get; set; }
+        public ReadInterviewTranslationElementResponse[] Prompt { get; set; }
 
         [JsonProperty("minValue")]
         public int MinValue { get; set; }
@@ -2710,13 +2819,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool ShowCenterLabel { get; set; }
 
         [JsonProperty("leftLabel")]
-        public TranslationElement[] LeftLabel { get; set; }
+        public ReadInterviewTranslationElementResponse[] LeftLabel { get; set; }
 
         [JsonProperty("centerLabel")]
-        public TranslationElement[] CenterLabel { get; set; }
+        public ReadInterviewTranslationElementResponse[] CenterLabel { get; set; }
 
         [JsonProperty("rightLabel")]
-        public TranslationElement[] RightLabel { get; set; }
+        public ReadInterviewTranslationElementResponse[] RightLabel { get; set; }
 
         [JsonProperty("showValue")]
         public bool ShowValue { get; set; }
@@ -2725,22 +2834,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int MaxDecimals { get; set; }
 
         [JsonProperty("textFieldSize")]
-        public TextFieldSize TextFieldSize { get; set; }
+        public ReadInterviewTextFieldSizeResponse TextFieldSize { get; set; }
 
         [JsonProperty("autocomplete")]
         public bool Autocomplete { get; set; }
 
         [JsonProperty("autocompleteText")]
-        public TranslationElement[] AutocompleteText { get; set; }
+        public ReadInterviewTranslationElementResponse[] AutocompleteText { get; set; }
 
         [JsonProperty("contentValidation")]
-        public ContentValidation ContentValidation { get; set; }
+        public ReadInterviewContentValidationResponse ContentValidation { get; set; }
 
         [JsonProperty("hasPlaceholder")]
         public bool HasPlaceholder { get; set; }
 
         [JsonProperty("placeholder")]
-        public TranslationElement[] Placeholder { get; set; }
+        public ReadInterviewTranslationElementResponse[] Placeholder { get; set; }
 
         [JsonProperty("isPassword")]
         public bool IsPassword { get; set; }
@@ -2755,28 +2864,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int MaximumCheckedChoices { get; set; }
 
         [JsonProperty("columnGroups")]
-        public ColumnGroup[] ColumnGroups { get; set; }
+        public ReadInterviewColumnGroupResponse[] ColumnGroups { get; set; }
 
         [JsonProperty("randomizeRows")]
         public bool RandomizeRows { get; set; }
 
         [JsonProperty("rows")]
-        public MinMaxChoice[] Rows { get; set; }
+        public ReadInterviewMinMaxChoiceResponse[] Rows { get; set; }
 
         [JsonProperty("numberOfRanks")]
         public int NumberOfRanks { get; set; }
 
         [JsonProperty("likeText")]
-        public TranslationElement[] LikeText { get; set; }
+        public ReadInterviewTranslationElementResponse[] LikeText { get; set; }
 
         [JsonProperty("dislikeText")]
-        public TranslationElement[] DislikeText { get; set; }
+        public ReadInterviewTranslationElementResponse[] DislikeText { get; set; }
 
         [JsonProperty("hasStartText")]
         public bool HasStartText { get; set; }
 
         [JsonProperty("startText")]
-        public TranslationElement[] StartText { get; set; }
+        public ReadInterviewTranslationElementResponse[] StartText { get; set; }
 
         [JsonProperty("enableMeasurement")]
         public bool EnableMeasurement { get; set; }
@@ -2794,7 +2903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string InterviewState { get; set; }
 
         [JsonProperty("action")]
-        public ActionElement Action { get; set; }
+        public ReadInterviewActionElementResponse Action { get; set; }
 
         [JsonProperty("from")]
         public string From { get; set; }
@@ -2803,40 +2912,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string To { get; set; }
 
         [JsonProperty("subject")]
-        public TranslationElement[] Subject { get; set; }
+        public ReadInterviewTranslationElementResponse[] Subject { get; set; }
 
         [JsonProperty("message")]
-        public TranslationElement[] Message { get; set; }
+        public ReadInterviewTranslationElementResponse[] Message { get; set; }
 
         [JsonProperty("valueAssignmentType")]
-        public ValueAssignmentType ValueAssignmentType { get; set; }
+        public ReadInterviewValueAssignmentTypeResponse ValueAssignmentType { get; set; }
 
         [JsonProperty("variableName")]
         public string VariableName { get; set; }
 
         [JsonProperty("functionTerm")]
-        public TranslationElement[] FunctionTerm { get; set; }
+        public ReadInterviewTranslationElementResponse[] FunctionTerm { get; set; }
 
         [JsonProperty("executionBehavior")]
-        public ExecutionBehavior ExecutionBehavior { get; set; }
+        public ReadInterviewExecutionBehaviorResponse ExecutionBehavior { get; set; }
 
         [JsonProperty("apiCallMethod")]
-        public ApiCallMethod ApiCallMethod { get; set; }
+        public ReadInterviewApiCallMethodResponse ApiCallMethod { get; set; }
 
         [JsonProperty("url")]
-        public TranslationElement[] Url { get; set; }
+        public ReadInterviewTranslationElementResponse[] Url { get; set; }
 
         [JsonProperty("headers")]
         public string Headers { get; set; }
 
         [JsonProperty("body")]
-        public TranslationElement[] Body { get; set; }
+        public ReadInterviewTranslationElementResponse[] Body { get; set; }
 
         [JsonProperty("externalUri")]
         public string ExternalUri { get; set; }
 
         [JsonProperty("scriptType")]
-        public ScriptType ScriptType { get; set; }
+        public ReadInterviewScriptTypeResponse ScriptType { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -2845,13 +2954,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool HasRatingLabels { get; set; }
 
         [JsonProperty("leftRatingLabel")]
-        public TranslationElement[] LeftRatingLabel { get; set; }
+        public ReadInterviewTranslationElementResponse[] LeftRatingLabel { get; set; }
 
         [JsonProperty("rightRatingLabel")]
-        public TranslationElement[] RightRatingLabel { get; set; }
+        public ReadInterviewTranslationElementResponse[] RightRatingLabel { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ReadDistributorListConditionDefinitionResponse Condition { get; set; }
 
         [JsonProperty("evaluateAsJson")]
         public bool EvaluateAsJson { get; set; }
@@ -2860,7 +2969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string AutocompleteListVariable { get; set; }
 
         [JsonProperty("arrangementMode")]
-        public ArrangementMode ArrangementMode { get; set; }
+        public ReadInterviewArrangementModeResponse ArrangementMode { get; set; }
 
         [JsonProperty("enableAnimation")]
         public bool EnableAnimation { get; set; }
@@ -2872,7 +2981,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool HasPrompt { get; set; }
     }
 
-    public class TranslationElement
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewElementTypeResponse
+    {
+        Invalid,
+        SingleChoice,
+        MultipleChoice,
+        Dropdown,
+        Slider,
+        OpenQuestion,
+        Date,
+        Email,
+        TextBlock,
+        PageBreak,
+        Matrix,
+        SemanticDifferential,
+        RankOrder,
+        ImplicitAssociation,
+        Validation,
+        UrlForwarding,
+        SendEmail,
+        ValueAssignment,
+        ApiCall,
+        Script,
+        QuotaCheck,
+        StarScale,
+        Nps
+    }
+
+    public class ReadInterviewTranslationElementResponse
     {
         [JsonProperty("languageCode")]
         public string LanguageCode { get; set; }
@@ -2881,7 +3018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Text { get; set; }
     }
 
-    public class Choice
+    public class ReadInterviewChoiceResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -2893,7 +3030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool CodeManuallyChanged { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        public ReadInterviewTranslationElementResponse[] Text { get; set; }
 
         [JsonProperty("allowTextEntry")]
         public bool AllowTextEntry { get; set; }
@@ -2905,7 +3042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool Autocomplete { get; set; }
 
         [JsonProperty("autocompleteText")]
-        public TranslationElement[] AutocompleteText { get; set; }
+        public ReadInterviewTranslationElementResponse[] AutocompleteText { get; set; }
 
         [JsonProperty("exclusive")]
         public bool Exclusive { get; set; }
@@ -2914,19 +3051,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool ExcludeFromRandomization { get; set; }
 
         [JsonProperty("contentValidation")]
-        public ContentValidation ContentValidation { get; set; }
+        public ReadInterviewContentValidationResponse ContentValidation { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ReadDistributorListConditionDefinitionResponse Condition { get; set; }
 
         [JsonProperty("autocompleteListVariable")]
         public string AutocompleteListVariable { get; set; }
     }
 
-    public class ContentValidation
+    public class ReadInterviewContentValidationResponse
     {
         [JsonProperty("validationType")]
-        public ContentValidationType ValidationType { get; set; }
+        public ReadInterviewContentValidationTypeResponse ValidationType { get; set; }
 
         [JsonProperty("earliestDate")]
         public string EarliestDate { get; set; }
@@ -2947,37 +3084,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool DisableThousandSeparator { get; set; }
     }
 
-    public class ColumnGroup
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewContentValidationTypeResponse
+    {
+        Invalid,
+        None,
+        Number,
+        Email,
+        Date,
+        List,
+        Real
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewColumnTypeResponse
+    {
+        Invalid,
+        Single,
+        Multiple
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewTextFieldSizeResponse
+    {
+        Invalid,
+        Small,
+        Medium,
+        Large
+    }
+
+    public class ReadInterviewColumnGroupResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        public ReadInterviewTranslationElementResponse[] Text { get; set; }
 
         [JsonProperty("hasNotAvailableChoice")]
         public bool HasNotAvailableChoice { get; set; }
 
         [JsonProperty("notAvailableChoiceText")]
-        public TranslationElement[] NotAvailableChoiceText { get; set; }
+        public ReadInterviewTranslationElementResponse[] NotAvailableChoiceText { get; set; }
 
         [JsonProperty("randomizeColumns")]
         public bool RandomizeColumns { get; set; }
 
         [JsonProperty("prompt")]
-        public TranslationElement[] Prompt { get; set; }
+        public ReadInterviewTranslationElementResponse[] Prompt { get; set; }
 
         [JsonProperty("choiceType")]
-        public ChoiceType ChoiceType { get; set; }
+        public ReadInterviewChoiceTypeResponse ChoiceType { get; set; }
 
         [JsonProperty("choices")]
-        public Choice[] Choices { get; set; }
+        public ReadInterviewChoiceResponse[] Choices { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ReadDistributorListConditionDefinitionResponse Condition { get; set; }
     }
 
-    public class MinMaxChoice
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewChoiceTypeResponse
+    {
+        Invalid,
+        Single,
+        Multiple,
+        Dropdown,
+        Text,
+        StarScale
+    }
+
+    public class ReadInterviewMinMaxChoiceResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -2989,31 +3166,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool CodeManuallyChanged { get; set; }
 
         [JsonProperty("leftText")]
-        public TranslationElement[] LeftText { get; set; }
+        public ReadInterviewTranslationElementResponse[] LeftText { get; set; }
 
         [JsonProperty("rightText")]
-        public TranslationElement[] RightText { get; set; }
+        public ReadInterviewTranslationElementResponse[] RightText { get; set; }
 
         [JsonProperty("excludeFromRandomization")]
         public bool ExcludeFromRandomization { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ReadDistributorListConditionDefinitionResponse Condition { get; set; }
     }
 
-    public class ActionElement
+    public class ReadInterviewActionElementResponse
     {
         [JsonProperty("actionType")]
-        public ActionType ActionType { get; set; }
+        public ReadInterviewActionTypeResponse ActionType { get; set; }
 
         [JsonProperty("endOfSurveyText")]
-        public TranslationElement[] EndOfSurveyText { get; set; }
+        public ReadInterviewTranslationElementResponse[] EndOfSurveyText { get; set; }
 
         [JsonProperty("forwardUrl")]
-        public TranslationElement[] ForwardUrl { get; set; }
+        public ReadInterviewTranslationElementResponse[] ForwardUrl { get; set; }
     }
 
-    public class CustomVariable
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewActionTypeResponse
+    {
+        Invalid,
+        ShowEndOfSurveyText,
+        ForwardToUrl
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewValueAssignmentTypeResponse
+    {
+        Invalid,
+        Custom,
+        Panel,
+        Survey,
+        Credit
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewExecutionBehaviorResponse
+    {
+        Invalid,
+        AnyTime,
+        FirstTime,
+        EachTime,
+        SurveyLoad
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewApiCallMethodResponse
+    {
+        Invalid,
+        Get,
+        Post
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewScriptTypeResponse
+    {
+        Invalid,
+        JavaScript,
+        Css
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadInterviewArrangementModeResponse
+    {
+        Invalid,
+        Cubic,
+        Circular
+    }
+
+    public class ReadInterviewCustomVariableResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -3022,10 +3251,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string VariableName { get; set; }
 
         [JsonProperty("variableType")]
-        public VariableType VariableType { get; set; }
+        public ReadDistributorListVariableTypeResponse VariableType { get; set; }
     }
 
-    public class ReadInterviewInput
+    public class ReadInterviewBodyInput
     {
         [JsonProperty("tenant", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Tenant { get; set; }
@@ -3109,7 +3338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Value { get; set; }
     }
 
-    public class ReadInterviewListCompactInput
+    public class ReadInterviewListBodyInput
     {
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
@@ -3124,7 +3353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? LoadCodePlan { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3175,31 +3404,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public JToken Value { get; set; }
     }
 
-    public class ReadInterviewListInput
-    {
-        [JsonProperty("tenant")]
-        public string Tenant { get; set; }
-
-        [JsonProperty("surveyId")]
-        public int? SurveyId { get; set; }
-
-        [JsonProperty("fieldsToDownload")]
-        public string[] FieldsToDownload { get; set; }
-
-        [JsonProperty("loadCodePlan")]
-        public bool? LoadCodePlan { get; set; }
-
-        [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
-
-        [JsonProperty("paging")]
-        public Paging Paging { get; set; }
-    }
-
     public class ReadMemberListResponse
     {
         [JsonProperty("members")]
-        public Member[] Members { get; set; }
+        public ReadMemberListMemberResponse[] Members { get; set; }
 
         [JsonProperty("totalCount")]
         public int TotalCount { get; set; }
@@ -3214,7 +3422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class Member
+    public class ReadMemberListMemberResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -3235,10 +3443,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string UpdatedBy { get; set; }
 
         [JsonProperty("interviews")]
-        public Interview[] Interviews { get; set; }
+        public ReadMemberListInterviewResponse[] Interviews { get; set; }
     }
 
-    public class Interview
+    public class ReadMemberListInterviewResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3277,7 +3485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int DistributorId { get; set; }
     }
 
-    public class ReadMemberListInput
+    public class ReadMemberListBodyInput
     {
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
@@ -3292,7 +3500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string[] FieldsToDownload { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3337,7 +3545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string[] Locales { get; set; }
     }
 
-    public class ReadMessageTemplateListInput
+    public class ReadMessageTemplateListBodyInput
     {
         [JsonProperty("workspaceId")]
         public int? WorkspaceId { get; set; }
@@ -3346,7 +3554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Language { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3385,7 +3593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string OptOutBy { get; set; }
     }
 
-    public class ReadOptOutListInput
+    public class ReadOptOutListBodyInput
     {
         [JsonProperty("panelId")]
         public int? PanelId { get; set; }
@@ -3394,7 +3602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int? WorkspaceId { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3421,7 +3629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public VariableGroupElement[] Groups { get; set; }
 
         [JsonProperty("dataAccessControl")]
-        public DataAccessControl DataAccessControl { get; set; }
+        public ReadInterviewDataAccessControlResponse DataAccessControl { get; set; }
     }
 
     public class VariableGroupElement
@@ -3466,13 +3674,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ValidationErrorMessageId { get; set; }
 
         [JsonProperty("panelFieldType")]
-        public VariableType PanelFieldType { get; set; }
+        public ReadDistributorListVariableTypeResponse PanelFieldType { get; set; }
 
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
     }
 
-    public class ReadPanelInput
+    public class ReadPanelBodyInput
     {
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
@@ -3529,10 +3737,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ExecutedDistribution { get; set; }
 
         [JsonProperty("conditions")]
-        public ConditionDefinition[] Conditions { get; set; }
+        public ReadDistributorListConditionDefinitionResponse[] Conditions { get; set; }
     }
 
-    public class ReadSamplingProjectInput
+    public class ReadSamplingProjectBodyInput
     {
         [JsonProperty("samplingProjectId")]
         public int? SamplingProjectId { get; set; }
@@ -3565,7 +3773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Language { get; set; }
     }
 
-    public class ReadSurveyLinksInput
+    public class ReadSurveyLinksBodyInput
     {
         [JsonProperty("surveyId")]
         public int? SurveyId { get; set; }
@@ -3629,13 +3837,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Closed
     }
 
-    public class ReadSurveyListInput
+    public class ReadSurveyListBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkspaceId { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3659,10 +3867,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string CreatedBy { get; set; }
 
         [JsonProperty("survey")]
-        public SurveyDefinition Survey { get; set; }
+        public ReadInterviewSurveyDefinitionResponse Survey { get; set; }
 
         [JsonProperty("surveyConfiguration")]
-        public SurveyConfiguration SurveyConfiguration { get; set; }
+        public ReadSurveySurveyConfigurationResponse SurveyConfiguration { get; set; }
 
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
@@ -3674,28 +3882,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class SurveyConfiguration
+    public class ReadSurveySurveyConfigurationResponse
     {
         [JsonProperty("designConfiguration")]
-        public DesignConfiguration DesignConfiguration { get; set; }
+        public ReadSurveyDesignConfigurationResponse DesignConfiguration { get; set; }
 
         [JsonProperty("anonymizingConfiguration")]
-        public AnonymizingConfiguration AnonymizingConfiguration { get; set; }
+        public ReadSurveyAnonymizingConfigurationResponse AnonymizingConfiguration { get; set; }
     }
 
-    public class DesignConfiguration
+    public class ReadSurveyDesignConfigurationResponse
     {
         [JsonProperty("surveyDesignLayout")]
         public int SurveyDesignLayout { get; set; }
 
         [JsonProperty("matrixSubQuestionSize")]
-        public MatrixSubQuestionSize MatrixSubQuestionSize { get; set; }
+        public ReadSurveyMatrixSubQuestionSizeResponse MatrixSubQuestionSize { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock[] TextBlocks { get; set; }
+        public ReadSurveyTextBlockResponse[] TextBlocks { get; set; }
     }
 
-    public class TextBlock
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadSurveyMatrixSubQuestionSizeResponse
+    {
+        M,
+        S,
+        L,
+        Xl
+    }
+
+    public class ReadSurveyTextBlockResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3704,13 +3921,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Type { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        public ReadInterviewTranslationElementResponse[] Text { get; set; }
     }
 
-    public class AnonymizingConfiguration
+    public class ReadSurveyAnonymizingConfigurationResponse
     {
         [JsonProperty("anonymizingMode")]
-        public AnonymizingMode AnonymizingMode { get; set; }
+        public ReadSurveyAnonymizingModeResponse AnonymizingMode { get; set; }
 
         [JsonProperty("logIp")]
         public bool LogIp { get; set; }
@@ -3722,7 +3939,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool LogReferer { get; set; }
     }
 
-    public class ReadSurveyInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadSurveyAnonymizingModeResponse
+    {
+        Invalid,
+        Personalized,
+        Anonymous
+    }
+
+    public class ReadSurveyBodyInput
     {
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
@@ -3752,7 +3977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Id { get; set; }
 
         [JsonProperty("eventType")]
-        public EventType EventType { get; set; }
+        public ReadWebHookListEventTypeResponse EventType { get; set; }
 
         [JsonProperty("entityIdentifier")]
         public string EntityIdentifier { get; set; }
@@ -3770,10 +3995,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string UpdatedBy { get; set; }
     }
 
-    public class ReadWebHookListInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ReadWebHookListEventTypeResponse
+    {
+        Invalid,
+        InterviewComplete,
+        ApprovalRequest
+    }
+
+    public class ReadWebHookListBodyInput
     {
         [JsonProperty("eventType")]
-        public EventType? EventType { get; set; }
+        public CreateWebHookEventType? EventType { get; set; }
 
         [JsonProperty("entityIdentifier")]
         public string EntityIdentifier { get; set; }
@@ -3809,7 +4042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Condition { get; set; }
     }
 
-    public class ReadWorkflowTransitionsInput
+    public class ReadWorkflowTransitionsBodyInput
     {
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkflowType Workflow { get; set; }
@@ -3848,15 +4081,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int NumberOfSurveys { get; set; }
     }
 
-    public class ReadWorkspaceListInput
-    {
-        [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
-
-        [JsonProperty("paging")]
-        public Paging Paging { get; set; }
-    }
-
     public class RedeemIncentiveCodeResponse
     {
         [JsonProperty("voucherCode")]
@@ -3872,7 +4096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class RedeemIncentiveCodeInput
+    public class RedeemIncentiveCodeBodyInput
     {
         [JsonProperty("incentiveId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int IncentiveId { get; set; }
@@ -3893,7 +4117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class RemindMembersInput
+    public class RemindMembersBodyInput
     {
         [JsonProperty("distributorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int DistributorId { get; set; }
@@ -3902,16 +4126,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock2[] TextBlocks { get; set; }
+        public CreateAndInviteMembersTextBlock[] TextBlocks { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition2[] Conditions { get; set; }
+        public CreateSurveyCondition[] Conditions { get; set; }
 
         [JsonProperty("channel")]
-        public DistributionChannel? Channel { get; set; }
+        public CreateAndInviteMembersDistributionChannel? Channel { get; set; }
 
         [JsonProperty("from")]
         public string From { get; set; }
@@ -3938,15 +4162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class ResetInterviewInput
-    {
-        [JsonProperty("surveyId")]
-        public int? SurveyId { get; set; }
-
-        [JsonProperty("interviewId")]
-        public string InterviewId { get; set; }
-    }
-
     public class UpdateMembersResponse
     {
         [JsonProperty("validationIssues")]
@@ -3962,18 +4177,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class UpdateMembersInput
-    {
-        [JsonProperty("tenant")]
-        public string Tenant { get; set; }
-
-        [JsonProperty("panelId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int PanelId { get; set; }
-
-        [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Member2[] Members { get; set; }
-    }
-
     public class WritePanelResponse
     {
         [JsonProperty("isSuccess")]
@@ -3986,7 +4189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class UpdatePanelInput
+    public class UpdatePanelBodyInput
     {
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
@@ -4047,7 +4250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class UpdateSurveyInput
+    public class UpdateSurveyBodyInput
     {
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SurveyId { get; set; }
@@ -4056,10 +4259,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string SurveyName { get; set; }
 
         [JsonProperty("surveyDefinition", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SurveyDefinition2 SurveyDefinition { get; set; }
+        public CreateSurveySurveyDefinition SurveyDefinition { get; set; }
 
         [JsonProperty("surveyConfiguration")]
-        public SurveyConfiguration2 SurveyConfiguration { get; set; }
+        public CreateSurveySurveyConfiguration SurveyConfiguration { get; set; }
     }
 
     public class UpdateWebHookResponse
@@ -4074,13 +4277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class UpdateWebHookInput
+    public class UpdateWebHookBodyInput
     {
         [JsonProperty("webHookId")]
         public string WebHookId { get; set; }
 
         [JsonProperty("eventType")]
-        public EventType? EventType { get; set; }
+        public CreateWebHookEventType? EventType { get; set; }
 
         [JsonProperty("entityIdentifier")]
         public string EntityIdentifier { get; set; }
@@ -4104,7 +4307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
-    public class WriteOptOutListInput
+    public class WriteOptOutListBodyInput
     {
         [JsonProperty("workspaceId")]
         public int? WorkspaceId { get; set; }

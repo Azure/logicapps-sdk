@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
     public class DelivereaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Shipments(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<ShipmentsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Shipments(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<BodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -102,22 +102,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
     {
     }
 
-    public class ShipmentsInput
+    public class BodyInput
     {
         [JsonProperty("from")]
-        public ShipmentsInputFromType From { get; set; }
+        public BodyInputFromType From { get; set; }
 
         [JsonProperty("to")]
-        public ShipmentsInputToType To { get; set; }
+        public BodyInputToType To { get; set; }
 
         [JsonProperty("costCenterCode")]
         public string CostCenterCode { get; set; }
 
         [JsonProperty("clientAdditionalInfo")]
-        public ShipmentsInputClientAdditionalInfoType ClientAdditionalInfo { get; set; }
+        public BodyInputClientAdditionalInfoType ClientAdditionalInfo { get; set; }
 
         [JsonProperty("serviceAttributes")]
-        public ShipmentsInputServiceAttributesType ServiceAttributes { get; set; }
+        public BodyInputServiceAttributesType ServiceAttributes { get; set; }
 
         [JsonProperty("serviceCode")]
         public string ServiceCode { get; set; }
@@ -141,19 +141,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         public string TotalAmount { get; set; }
 
         [JsonProperty("customs")]
-        public ShipmentsInputCustomsType Customs { get; set; }
+        public BodyInputCustomsType Customs { get; set; }
 
         [JsonProperty("batch")]
-        public ShipmentsInputBatchType Batch { get; set; }
+        public BodyInputBatchType Batch { get; set; }
 
         [JsonProperty("estimatedDate")]
         public string EstimatedDate { get; set; }
 
         [JsonProperty("parcels")]
-        public ShipmentsInputParcelsTypeItem[] Parcels { get; set; }
+        public BodyInputParcelsTypeItem[] Parcels { get; set; }
     }
 
-    public class ShipmentsInputFromType
+    public class BodyInputFromType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         public string DistributionCenterId { get; set; }
     }
 
-    public class ShipmentsInputToType
+    public class BodyInputToType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -222,31 +222,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         public string DistributionCenterId { get; set; }
     }
 
-    public class ShipmentsInputClientAdditionalInfoType
+    public class BodyInputClientAdditionalInfoType
     {
         [JsonProperty("category")]
         public string Category { get; set; }
     }
 
-    public class ShipmentsInputServiceAttributesType
+    public class BodyInputServiceAttributesType
     {
         [JsonProperty("cashOnDelivery")]
         public string CashOnDelivery { get; set; }
     }
 
-    public class ShipmentsInputCustomsType
+    public class BodyInputCustomsType
     {
         [JsonProperty("invoiceId")]
         public string InvoiceId { get; set; }
     }
 
-    public class ShipmentsInputBatchType
+    public class BodyInputBatchType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class ShipmentsInputParcelsTypeItem
+    public class BodyInputParcelsTypeItem
     {
         [JsonProperty("weight")]
         public double? Weight { get; set; }

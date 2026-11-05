@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudprospects")]
-        public IBodyWorkflowAction<ConstituentApiCreatedConstituentRating, ApiConnectionActionConfiguration> CreateConstituentRating(Expression<Func<CreateConstituentRatingInput>> body)
+        public IBodyWorkflowAction<ConstituentApiCreatedConstituentRating, ApiConnectionActionConfiguration> CreateConstituentRating(Expression<Func<CreateConstituentRatingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConstituentApiCreatedConstituentRating, ApiConnectionActionConfiguration>(() =>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudprospects")]
-        public IBodyWorkflowAction<OpportunityApiCreatedOpportunity, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<CreateOpportunityInput>> body)
+        public IBodyWorkflowAction<OpportunityApiCreatedOpportunity, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<CreateOpportunityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OpportunityApiCreatedOpportunity, ApiConnectionActionConfiguration>(() =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudprospects")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunity(Expression<Func<string>> opportunityId, Expression<Func<EditOpportunityInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunity(Expression<Func<string>> opportunityId, Expression<Func<EditOpportunityBodyInput>> body)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudprospects")]
-        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityAttachment, ApiConnectionActionConfiguration> CreateOpportunityAttachment(Expression<Func<CreateOpportunityAttachmentInput>> body)
+        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityAttachment, ApiConnectionActionConfiguration> CreateOpportunityAttachment(Expression<Func<CreateOpportunityAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OpportunityApiCreatedOpportunityAttachment, ApiConnectionActionConfiguration>(() =>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudprospects")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditOpportunityAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditOpportunityAttachmentBodyInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudprospects")]
-        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityCustomField, ApiConnectionActionConfiguration> CreateOpportunityCustomField(Expression<Func<CreateOpportunityCustomFieldInput>> body)
+        public IBodyWorkflowAction<OpportunityApiCreatedOpportunityCustomField, ApiConnectionActionConfiguration> CreateOpportunityCustomField(Expression<Func<CreateOpportunityCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OpportunityApiCreatedOpportunityCustomField, ApiConnectionActionConfiguration>(() =>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudprospects")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditOpportunityCustomFieldInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditOpportunityCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditOpportunityCustomFieldBodyInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string Id { get; set; }
     }
 
-    public class CreateConstituentRatingInput
+    public class CreateConstituentRatingBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string FundId { get; set; }
 
         [JsonProperty("fundraisers")]
-        public OpportunityApiFundraiser[] FundraiserS { get; set; }
+        public GetOpportunityOpportunityApiFundraiserResponse[] FundraiserS { get; set; }
 
         [JsonProperty("inactive")]
         public bool Inactive { get; set; }
@@ -402,16 +402,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public double Value { get; set; }
     }
 
-    public class OpportunityApiFundraiser
+    public class GetOpportunityOpportunityApiFundraiserResponse
     {
         [JsonProperty("constituent_id")]
         public string ConstituentId { get; set; }
 
         [JsonProperty("credit_amount")]
-        public OpportunityApiFundraiserCreditAmountType CreditAmount { get; set; }
+        public GetOpportunityOpportunityApiFundraiserCreditAmountTypeResponse CreditAmount { get; set; }
     }
 
-    public class OpportunityApiFundraiserCreditAmountType
+    public class GetOpportunityOpportunityApiFundraiserCreditAmountTypeResponse
     {
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string Id { get; set; }
     }
 
-    public class CreateOpportunityInput
+    public class CreateOpportunityBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
@@ -444,19 +444,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string AskDate { get; set; }
 
         [JsonProperty("ask_amount")]
-        public CreateOpportunityInputAskAmountType AskAmount { get; set; }
+        public BodyInputAskAmountType AskAmount { get; set; }
 
         [JsonProperty("expected_date")]
         public string ExpectedDate { get; set; }
 
         [JsonProperty("expected_amount")]
-        public CreateOpportunityInputExpectedAmountType ExpectedAmount { get; set; }
+        public BodyInputExpectedAmountType ExpectedAmount { get; set; }
 
         [JsonProperty("funded_date")]
         public string FundedDate { get; set; }
 
         [JsonProperty("funded_amount")]
-        public CreateOpportunityInputFundedAmountType FundedAmount { get; set; }
+        public BodyInputFundedAmountType FundedAmount { get; set; }
 
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
@@ -465,46 +465,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string FundId { get; set; }
 
         [JsonProperty("fundraisers")]
-        public OpportunityApiFundraiser2[] FundraiserS { get; set; }
+        public CreateOpportunityOpportunityApiFundraiser[] FundraiserS { get; set; }
 
         [JsonProperty("inactive")]
         public bool? Inactive { get; set; }
     }
 
-    public class CreateOpportunityInputAskAmountType
+    public class BodyInputAskAmountType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
-    public class CreateOpportunityInputExpectedAmountType
+    public class BodyInputExpectedAmountType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
-    public class CreateOpportunityInputFundedAmountType
+    public class BodyInputFundedAmountType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
-    public class OpportunityApiFundraiser2
+    public class CreateOpportunityOpportunityApiFundraiser
     {
         [JsonProperty("constituent_id")]
         public string ConstituentId { get; set; }
 
         [JsonProperty("credit_amount")]
-        public OpportunityApiFundraiserCreditAmountType2 CreditAmount { get; set; }
+        public CreateOpportunityOpportunityApiFundraiserCreditAmountType CreditAmount { get; set; }
     }
 
-    public class OpportunityApiFundraiserCreditAmountType2
+    public class CreateOpportunityOpportunityApiFundraiserCreditAmountType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
-    public class EditOpportunityInput
+    public class EditOpportunityBodyInput
     {
         [JsonProperty("purpose")]
         public string Purpose { get; set; }
@@ -522,19 +522,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string AskDate { get; set; }
 
         [JsonProperty("ask_amount")]
-        public EditOpportunityInputAskAmountType AskAmount { get; set; }
+        public BodyInputAskAmountType AskAmount { get; set; }
 
         [JsonProperty("expected_date")]
         public string ExpectedDate { get; set; }
 
         [JsonProperty("expected_amount")]
-        public EditOpportunityInputExpectedAmountType ExpectedAmount { get; set; }
+        public BodyInputExpectedAmountType ExpectedAmount { get; set; }
 
         [JsonProperty("funded_date")]
         public string FundedDate { get; set; }
 
         [JsonProperty("funded_amount")]
-        public EditOpportunityInputFundedAmountType FundedAmount { get; set; }
+        public BodyInputFundedAmountType FundedAmount { get; set; }
 
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
@@ -543,28 +543,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string FundId { get; set; }
 
         [JsonProperty("fundraisers")]
-        public OpportunityApiFundraiser2[] FundraiserS { get; set; }
+        public CreateOpportunityOpportunityApiFundraiser[] FundraiserS { get; set; }
 
         [JsonProperty("inactive")]
         public bool? Inactive { get; set; }
-    }
-
-    public class EditOpportunityInputAskAmountType
-    {
-        [JsonProperty("value")]
-        public double? Value { get; set; }
-    }
-
-    public class EditOpportunityInputExpectedAmountType
-    {
-        [JsonProperty("value")]
-        public double? Value { get; set; }
-    }
-
-    public class EditOpportunityInputFundedAmountType
-    {
-        [JsonProperty("value")]
-        public double? Value { get; set; }
     }
 
     public class OpportunityApiApiCollectionOfOpportunityAttachmentRead
@@ -719,13 +701,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string Id { get; set; }
     }
 
-    public class CreateOpportunityAttachmentInput
+    public class CreateOpportunityAttachmentBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OpportunityId { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOpportunityAttachmentInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -750,13 +732,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOpportunityAttachmentInputTypeType
+    public enum BodyInputTypeType
     {
         Link,
         Physical
     }
 
-    public class EditOpportunityAttachmentInput
+    public class EditOpportunityAttachmentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -777,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string Id { get; set; }
     }
 
-    public class CreateOpportunityCustomFieldInput
+    public class CreateOpportunityCustomFieldBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OpportunityId { get; set; }
@@ -795,7 +777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string Comment { get; set; }
     }
 
-    public class EditOpportunityCustomFieldInput
+    public class EditOpportunityCustomFieldBodyInput
     {
         [JsonProperty("category")]
         public string Category { get; set; }

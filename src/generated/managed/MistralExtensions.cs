@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
     public class MistralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> CreateChatCompletion(Expression<Func<CreateChatCompletionInput>> body)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> CreateChatCompletion(Expression<Func<CreateChatCompletionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatCompletionResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<EmbeddingResponse, ApiConnectionActionConfiguration> CreateEmbedding(Expression<Func<CreateEmbeddingInput>> body)
+        public IBodyWorkflowAction<EmbeddingResponse, ApiConnectionActionConfiguration> CreateEmbedding(Expression<Func<CreateEmbeddingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmbeddingResponse, ApiConnectionActionConfiguration>(() =>
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public int TotalTokens { get; set; }
     }
 
-    public class CreateChatCompletionInput
+    public class CreateChatCompletionBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; }
 
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateChatCompletionInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("temperature", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Temperature { get; set; } = 0.7;
@@ -158,17 +158,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public int? RandomSeed { get; set; }
     }
 
-    public class CreateChatCompletionInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateChatCompletionInputMessagesTypeItemRoleType? Role { get; set; } = CreateChatCompletionInputMessagesTypeItemRoleType.User;
+        public BodyInputMessagesTypeItemRoleType? Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mistral.BodyInputMessagesTypeItemRoleType.User;
 
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateChatCompletionInputMessagesTypeItemRoleType
+    public enum BodyInputMessagesTypeItemRoleType
     {
         [EnumMember(Value = "system")]
         System,
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public int TotalTokens { get; set; }
     }
 
-    public class CreateEmbeddingInput
+    public class CreateEmbeddingBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; } = "mistral-embed";
@@ -228,11 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string[] Input { get; set; }
 
         [JsonProperty("encoding_format")]
-        public CreateEmbeddingInputEncodingFormatType? EncodingFormat { get; set; }
+        public BodyInputEncodingFormatType? EncodingFormat { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddingInputEncodingFormatType
+    public enum BodyInputEncodingFormatType
     {
         [EnumMember(Value = "float")]
         Float

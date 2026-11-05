@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
     public class KustoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kusto")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpKustoQueryManagement(Expression<Func<McpKustoQueryManagementInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpKustoQueryManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
         public JToken Error { get; set; }
     }
 
-    public class McpKustoQueryManagementInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

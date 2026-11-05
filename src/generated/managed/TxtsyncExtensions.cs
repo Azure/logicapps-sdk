@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
     public class TxtsyncActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
-        public IBodyWorkflowAction<SMS[], ApiConnectionActionConfiguration> SendSMS(Expression<Func<SendSMSInput>> body)
+        public IBodyWorkflowAction<SMS[], ApiConnectionActionConfiguration> SendSMS(Expression<Func<SendSMSBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SMS[], ApiConnectionActionConfiguration>(() =>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
-        public IBodyWorkflowAction<SMS, ApiConnectionActionConfiguration> SendBulkSMS(Expression<Func<SendBulkSMSInput>> body)
+        public IBodyWorkflowAction<SMS, ApiConnectionActionConfiguration> SendBulkSMS(Expression<Func<SendBulkSMSBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SMS, ApiConnectionActionConfiguration>(() =>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
-        public IBodyWorkflowAction<AddContactResponse, ApiConnectionActionConfiguration> AddContact(Expression<Func<AddContactInput>> body)
+        public IBodyWorkflowAction<AddContactResponse, ApiConnectionActionConfiguration> AddContact(Expression<Func<AddContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
-        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> id, Expression<Func<UpdateContactInput>> body)
+        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> id, Expression<Func<UpdateContactBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "txtsync")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateContactByExternalReference(Expression<Func<string>> id, Expression<Func<UpdateContactByExternalReferenceInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateContactByExternalReference(Expression<Func<string>> id, Expression<Func<UpdateContactBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
-                callPayload.Body = new InboundSMSInput().ToJToken();
+                callPayload.Body = new InboundSMSBodyInput().ToJToken();
                 return new ApiConnectionTrigger<InboundSMSResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["x-api-key"] = Convert.ToString("<Secret cannot be exposed in connector artifacts>");
-                callPayload.Body = new OutboundSMSInput().ToJToken();
+                callPayload.Body = new InboundSMSBodyInput().ToJToken();
                 return new ApiConnectionTrigger<OutboundSMSResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public double Status { get; set; }
     }
 
-    public class SendSMSInput
+    public class SendSMSBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string To { get; set; }
     }
 
-    public class SendBulkSMSInput
+    public class SendBulkSMSBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string FullName { get; set; }
     }
 
-    public class AddContactInput
+    public class AddContactBodyInput
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string FullName { get; set; }
     }
 
-    public class UpdateContactInput
+    public class UpdateContactBodyInput
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -386,29 +386,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public bool AllowSMS { get; set; }
     }
 
-    public class UpdateContactByExternalReferenceInput
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string MobileNumber { get; set; }
-        public string CompanyName { get; set; }
-        public string ExternalReference { get; set; }
-        public string EmailAddress { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string City { get; set; }
-        public string County { get; set; }
-        public string Postcode { get; set; }
-        public string Country { get; set; }
-        public string Custom01 { get; set; }
-        public string Custom02 { get; set; }
-        public string Custom03 { get; set; }
-        public string Custom04 { get; set; }
-        public string Custom05 { get; set; }
-        public bool? AllowSMS { get; set; }
-        public string TagNames { get; set; }
-    }
-
     public class InboundSMSResponse
     {
         public InboundSMSResponseContentType Content { get; set; }
@@ -439,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         public string ToNumber { get; set; }
     }
 
-    public class InboundSMSInput
+    public class InboundSMSBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string URL { get; set; } = "#{listCallbackUrl()}";
@@ -473,12 +450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
         [JsonProperty("SMSID")]
         public int SMSId { get; set; }
         public string ToNumber { get; set; }
-    }
-
-    public class OutboundSMSInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpgardenip
     public class HttpgardenipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "httpgardenip")]
-        public IBodyWorkflowAction<StatusGetResponse, ApiConnectionActionConfiguration> StatusGet(Expression<Func<int>> code, Expression<Func<@fileInput>> @file)
+        public IBodyWorkflowAction<StatusGetResponse, ApiConnectionActionConfiguration> StatusGet(Expression<Func<int>> code, Expression<Func<FileInput>> @file)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpgardenip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum @fileInput
+    public enum FileInput
     {
         [EnumMember(Value = "jpg")]
         Jpg,

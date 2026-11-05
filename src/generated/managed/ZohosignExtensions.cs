@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     public class ZohosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeAPI(Expression<Func<string>> url, Expression<Func<methodInput>> method, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeAPI(Expression<Func<string>> url, Expression<Func<MethodInput>> method, Expression<Func<object>> body = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohosign")]
-        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> requestId, Expression<Func<UpdateDocumentInput>> body)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> requestId, Expression<Func<UpdateDocumentBodyInput>> body)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
 
     public class ZohosignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ZohoSignTriggers(Expression<Func<ZohoSignTriggersInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ZohoSignTriggers(Expression<Func<ZohoSignTriggersBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,
@@ -498,13 +498,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string Status { get; set; }
     }
 
-    public class UpdateDocumentInput
+    public class UpdateDocumentBodyInput
     {
         [JsonProperty("requests", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDocumentInputRequestsType Requests { get; set; } = new UpdateDocumentInputRequestsType();
+        public BodyInputRequestsType Requests { get; set; } = new BodyInputRequestsType();
     }
 
-    public class UpdateDocumentInputRequestsType
+    public class BodyInputRequestsType
     {
         [JsonProperty("request_type_id")]
         public string RequestTypeId { get; set; }
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string RequestName { get; set; }
 
         [JsonProperty("actions")]
-        public UpdateDocumentInputRequestsTypeActionsTypeItem[] Actions { get; set; }
+        public BodyInputRequestsTypeActionsTypeItem[] Actions { get; set; }
 
         [JsonProperty("expiration_days", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ExpirationDays { get; set; } = 15;
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string Notes { get; set; }
     }
 
-    public class UpdateDocumentInputRequestsTypeActionsTypeItem
+    public class BodyInputRequestsTypeActionsTypeItem
     {
         [JsonProperty("recipient_name")]
         public string RecipientName { get; set; }
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string RecipientCountrycode { get; set; }
 
         [JsonProperty("action_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDocumentInputRequestsTypeActionsTypeItemActionTypeType? ActionType { get; set; } = UpdateDocumentInputRequestsTypeActionsTypeItemActionTypeType.SIGN;
+        public BodyInputRequestsTypeActionsTypeItemActionTypeType? ActionType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign.BodyInputRequestsTypeActionsTypeItemActionTypeType.SIGN;
 
         [JsonProperty("private_notes")]
         public string PrivateNotes { get; set; }
@@ -561,14 +561,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public bool? VerifyRecipient { get; set; } = false;
 
         [JsonProperty("verification_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDocumentInputRequestsTypeActionsTypeItemVerificationTypeType? VerificationType { get; set; } = UpdateDocumentInputRequestsTypeActionsTypeItemVerificationTypeType.NONE;
+        public BodyInputRequestsTypeActionsTypeItemVerificationTypeType? VerificationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign.BodyInputRequestsTypeActionsTypeItemVerificationTypeType.NONE;
 
         [JsonProperty("verification_code")]
         public string VerificationCode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDocumentInputRequestsTypeActionsTypeItemActionTypeType
+    public enum BodyInputRequestsTypeActionsTypeItemActionTypeType
     {
         SIGN,
         VIEW,
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDocumentInputRequestsTypeActionsTypeItemVerificationTypeType
+    public enum BodyInputRequestsTypeActionsTypeItemVerificationTypeType
     {
         NONE,
         OFFLINE,
@@ -612,13 +612,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
         public string TemplateName { get; set; }
     }
 
-    public class ZohoSignTriggersInput
+    public class ZohoSignTriggersBodyInput
     {
         [JsonProperty("webhook_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhook_actions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ZohoSignTriggersInputWebhookActionsType WebhookActions { get; set; }
+        public BodyInputWebhookActionsType WebhookActions { get; set; }
 
         [JsonProperty("purpose", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Purpose { get; set; } = "Microsoft PowerAutomate";
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ZohoSignTriggersInputWebhookActionsType
+    public enum BodyInputWebhookActionsType
     {
         Sign,
         Decline,

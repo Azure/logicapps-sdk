@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<ErrorModel, ApiConnectionActionConfiguration> Delete(Expression<Func<string>> transactionId, Expression<Func<DeleteInput>> body = null)
+        public IBodyWorkflowAction<ErrorModel, ApiConnectionActionConfiguration> Delete(Expression<Func<string>> transactionId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<Transaction, ApiConnectionActionConfiguration> Create(Expression<Func<CreateInput>> transaction)
+        public IBodyWorkflowAction<Transaction, ApiConnectionActionConfiguration> Create(Expression<Func<TransactionInput>> transaction)
         {
             var __workflow_transaction = WorkflowExpression.Compile(transaction, nameof(transaction), required: true);
             return new DeferredBodyAction<Transaction, ApiConnectionActionConfiguration>(() =>
@@ -171,8 +171,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string Id { get; set; }
         public string Email { get; set; }
         public string IntroText { get; set; }
-        public Authentication[] Authentications { get; set; }
-        public Verification[] Verifications { get; set; }
+        public CreateAuthenticationResponse[] Authentications { get; set; }
+        public CreateVerificationResponse[] Verifications { get; set; }
         public bool SendSignRequest { get; set; }
         public string SignUrl { get; set; }
         public string SignRequestSubject { get; set; }
@@ -189,27 +189,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public TransactionSignersTypeItemActivitiesTypeItem[] Activities { get; set; }
     }
 
-    public class Authentication
+    public class CreateAuthenticationResponse
     {
-        public AuthenticationTypeType Type { get; set; }
+        public CreateAuthenticationTypeTypeResponse Type { get; set; }
         public string Number { get; set; }
         public double Bsn { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AuthenticationTypeType
+    public enum CreateAuthenticationTypeTypeResponse
     {
         DigiD,
         PhoneNumber
     }
 
-    public class Verification
+    public class CreateVerificationResponse
     {
-        public VerificationTypeType Type { get; set; }
+        public CreateVerificationTypeTypeResponse Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum VerificationTypeType
+    public enum CreateVerificationTypeTypeResponse
     {
         Consent,
         DigiD,
@@ -306,22 +306,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string Message { get; set; }
     }
 
-    public class DeleteInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SendNotifications { get; set; } = false;
         public string Reason { get; set; }
     }
 
-    public class CreateInput
+    public class TransactionInput
     {
         public JToken Files { get; set; }
-        public CreateInputLanguageType? Language { get; set; }
+        public TransactionInputLanguageType? Language { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Seal { get; set; } = false;
-        public CreateInputSignersTypeItem[] Signers { get; set; }
-        public CreateInputReceiversTypeItem[] Receivers { get; set; }
+        public TransactionInputSignersTypeItem[] Signers { get; set; }
+        public TransactionInputReceiversTypeItem[] Receivers { get; set; }
         public string Reference { get; set; }
         public string PostbackUrl { get; set; }
 
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateInputLanguageType
+    public enum TransactionInputLanguageType
     {
         [EnumMember(Value = "de-DE")]
         DeDE,
@@ -351,15 +351,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         NlNL
     }
 
-    public class CreateInputSignersTypeItem
+    public class TransactionInputSignersTypeItem
     {
         public string Id { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
         public string IntroText { get; set; }
-        public Authentication2[] Authentications { get; set; }
-        public Verification2[] Verifications { get; set; }
+        public CreateAuthentication[] Authentications { get; set; }
+        public CreateVerification[] Verifications { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SendSignRequest { get; set; } = true;
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public bool? SendSignConfirmation { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateInputSignersTypeItemLanguageType? Language { get; set; } = CreateInputSignersTypeItemLanguageType.NlNL;
+        public TransactionInputSignersTypeItemLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Signhost.TransactionInputSignersTypeItemLanguageType.NlNL;
         public string ScribbleName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -381,25 +381,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReturnUrl { get; set; } = "https://signhost.com";
         public JToken Context { get; set; }
-        public CreateInputSignersTypeItemActivitiesTypeItem[] Activities { get; set; }
+        public TransactionInputSignersTypeItemActivitiesTypeItem[] Activities { get; set; }
     }
 
-    public class Authentication2
+    public class CreateAuthentication
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AuthenticationTypeType Type { get; set; }
+        public CreateAuthenticationTypeType Type { get; set; }
         public string Number { get; set; }
         public double? Bsn { get; set; }
     }
 
-    public class Verification2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateAuthenticationTypeType
+    {
+        DigiD,
+        PhoneNumber
+    }
+
+    public class CreateVerification
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public VerificationTypeType Type { get; set; }
+        public CreateVerificationTypeType Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateInputSignersTypeItemLanguageType
+    public enum CreateVerificationTypeType
+    {
+        Consent,
+        DigiD,
+        [EnumMember(Value = "eHerkenning")]
+        EHerkenning,
+        [EnumMember(Value = "eIDAS Login")]
+        EIdASLogin,
+        [EnumMember(Value = "iDeal")]
+        IDeal,
+        [EnumMember(Value = "iDIN")]
+        IdIN,
+        [EnumMember(Value = "itsme Identification")]
+        ItsmeIdentification,
+        PhoneNumber,
+        Scribble,
+        [EnumMember(Value = "itsme sign")]
+        ItsmeSign,
+        SigningCertificate,
+        SURFnet,
+        [EnumMember(Value = "ZealiD Qualified")]
+        ZealiDQualified
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum TransactionInputSignersTypeItemLanguageType
     {
         [EnumMember(Value = "de-DE")]
         DeDE,
@@ -417,15 +449,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         NlNL
     }
 
-    public class CreateInputSignersTypeItemActivitiesTypeItem
+    public class TransactionInputSignersTypeItemActivitiesTypeItem
     {
         public string Id { get; set; }
-        public CreateInputSignersTypeItemActivitiesTypeItemCodeType? Code { get; set; }
+        public TransactionInputSignersTypeItemActivitiesTypeItemCodeType? Code { get; set; }
         public string Info { get; set; }
         public string CreatedDateTime { get; set; }
     }
 
-    public enum CreateInputSignersTypeItemActivitiesTypeItemCodeType
+    public enum TransactionInputSignersTypeItemActivitiesTypeItemCodeType
     {
         _101 = 101,
         _102 = 102,
@@ -443,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         _403 = 403
     }
 
-    public class CreateInputReceiversTypeItem
+    public class TransactionInputReceiversTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

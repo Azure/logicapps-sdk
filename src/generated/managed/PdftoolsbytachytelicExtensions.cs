@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
     public class PdftoolsbytachytelicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
-        public IBodyWorkflowAction<OptimizePdfResponse, ApiConnectionActionConfiguration> OptimizePdf(Expression<Func<OptimizePdfInput>> body)
+        public IBodyWorkflowAction<OptimizePdfResponse, ApiConnectionActionConfiguration> OptimizePdf(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OptimizePdfResponse, ApiConnectionActionConfiguration>(() =>
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
         public string OptimizedPDF { get; set; }
     }
 
-    public class OptimizePdfInput
+    public class BodyInput
     {
         [JsonProperty("PdfFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFileContent { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OptimizePdfInputModeType? Mode { get; set; } = OptimizePdfInputModeType.Aggressive;
+        public BodyInputModeType? Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic.BodyInputModeType.Aggressive;
 
         [JsonProperty("Garbage", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? GarbageLevel { get; set; } = 4;
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OptimizePdfInputModeType
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "aggressive")]
         Aggressive,

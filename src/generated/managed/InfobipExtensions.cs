@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
     public class InfobipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSMS(Expression<Func<SendInfobipSMSInput>> requestBody = null)
+        public IBodyWorkflowAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration> SendInfobipSMS(Expression<Func<SendInfobipSMSRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<SendSMSSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
-        public IBodyWorkflowAction<VoiceCallSuccessResponseBody, ApiConnectionActionConfiguration> MakeInfobipVoiceCall(Expression<Func<MakeInfobipVoiceCallInput>> requestBody = null)
+        public IBodyWorkflowAction<VoiceCallSuccessResponseBody, ApiConnectionActionConfiguration> MakeInfobipVoiceCall(Expression<Func<MakeInfobipVoiceCallRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<VoiceCallSuccessResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
 
     public class InfobipTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateInfobipSMSWebhook(Expression<Func<CreateInfobipSMSWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateInfobipSMSWebhook(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string DescriptionOfMessageSendingStatus { get; set; }
     }
 
-    public class SendInfobipSMSInput
+    public class SendInfobipSMSRequestBodyInput
     {
         [JsonProperty("from")]
         public string SenderSPhoneNumber { get; set; }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string DescriptionOfMessageSendingStatus { get; set; }
     }
 
-    public class MakeInfobipVoiceCallInput
+    public class MakeInfobipVoiceCallRequestBodyInput
     {
         [JsonProperty("from")]
         public string CallerSPhoneNumber { get; set; }
@@ -155,11 +155,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string Message { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MakeInfobipVoiceCallInputLanguageType Language { get; set; } = MakeInfobipVoiceCallInputLanguageType.En;
+        public RequestBodyInputLanguageType Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Infobip.RequestBodyInputLanguageType.En;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MakeInfobipVoiceCallInputLanguageType
+    public enum RequestBodyInputLanguageType
     {
         [EnumMember(Value = "en")]
         En,
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string Message { get; set; }
     }
 
-    public class CreateInfobipSMSWebhookInput
+    public class RequestBodyOfWebhookInput
     {
         [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PhoneNumber { get; set; }

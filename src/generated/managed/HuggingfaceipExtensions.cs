@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
     public class HuggingfaceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ModelId(Expression<Func<string>> modelId, Expression<Func<ModelIdPostInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ModelId(Expression<Func<string>> modelId, Expression<Func<ModelIdBodyInput>> body = null)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -29,51 +29,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<FillMaskPostResponseItem[], ApiConnectionActionConfiguration> FillMask(Expression<Func<FillMaskPostInput>> body)
+        public IBodyWorkflowAction<FillMaskResponseItem[], ApiConnectionActionConfiguration> FillMask(Expression<Func<FillMaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<FillMaskPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FillMaskResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bert-base-uncased";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FillMaskPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<FillMaskResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<SummarizationPostResponseItem[], ApiConnectionActionConfiguration> Summarization(Expression<Func<SummarizationPostInput>> body = null)
+        public IBodyWorkflowAction<SummarizationResponseItem[], ApiConnectionActionConfiguration> Summarization(Expression<Func<SummarizationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SummarizationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SummarizationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-cnn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SummarizationPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<SummarizationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<AnswerPostResponse, ApiConnectionActionConfiguration> Answer(Expression<Func<AnswerPostInput>> body = null)
+        public IBodyWorkflowAction<AnswerResponse, ApiConnectionActionConfiguration> Answer(Expression<Func<AnswerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AnswerPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AnswerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deepset/roberta-base-squad2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AnswerPostResponse>(callPayload);
+                return new ApiConnectionAction<AnswerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<double[], ApiConnectionActionConfiguration> SentenceSimilarity(Expression<Func<SentenceSimilarityPostInput>> body = null)
+        public IBodyWorkflowAction<double[], ApiConnectionActionConfiguration> SentenceSimilarity(Expression<Func<SentenceSimilarityBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<double[], ApiConnectionActionConfiguration>(() =>
@@ -88,92 +88,92 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][], ApiConnectionActionConfiguration> TextClassification(Expression<Func<TextClassificationPostInput>> body = null)
+        public IBodyWorkflowAction<TextClassificationResponseItemItem[][], ApiConnectionActionConfiguration> TextClassification(Expression<Func<FillMaskBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TextClassificationPostResponseItemItem[][], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TextClassificationResponseItemItem[][], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TextClassificationPostResponseItemItem[][]>(callPayload);
+                return new ApiConnectionAction<TextClassificationResponseItemItem[][]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextGenerationPostResponseItem[], ApiConnectionActionConfiguration> TextGeneration(Expression<Func<TextGenerationPostInput>> body = null)
+        public IBodyWorkflowAction<TextGenerationResponseItem[], ApiConnectionActionConfiguration> TextGeneration(Expression<Func<SummarizationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TextGenerationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TextGenerationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gpt2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TextGenerationPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<TextGenerationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TokenClassificationPostResponseItem[], ApiConnectionActionConfiguration> TokenClassification(Expression<Func<TokenClassificationPostInput>> body = null)
+        public IBodyWorkflowAction<TokenClassificationResponseItem[], ApiConnectionActionConfiguration> TokenClassification(Expression<Func<TokenClassificationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TokenClassificationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TokenClassificationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TokenClassificationPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<TokenClassificationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TranslationPostResponseItem[], ApiConnectionActionConfiguration> Translation(Expression<Func<TranslationPostInput>> body = null)
+        public IBodyWorkflowAction<TranslationResponseItem[], ApiConnectionActionConfiguration> Translation(Expression<Func<FillMaskBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TranslationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TranslationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/t5-base";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TranslationPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<TranslationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ZeroShotPostResponse, ApiConnectionActionConfiguration> ZeroShot(Expression<Func<ZeroShotPostInput>> body = null)
+        public IBodyWorkflowAction<ZeroShotResponse, ApiConnectionActionConfiguration> ZeroShot(Expression<Func<ZeroShotBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ZeroShotPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ZeroShotResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-mnli";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ZeroShotPostResponse>(callPayload);
+                return new ApiConnectionAction<ZeroShotResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ConversationalPostResponse, ApiConnectionActionConfiguration> Conversational(Expression<Func<ConversationalPostInput>> body = null)
+        public IBodyWorkflowAction<ConversationalResponse, ApiConnectionActionConfiguration> Conversational(Expression<Func<ConversationalBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ConversationalPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ConversationalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/microsoft/DialoGPT-large";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ConversationalPostResponse>(callPayload);
+                return new ApiConnectionAction<ConversationalResponse>(callPayload);
             });
         }
     }
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
     {
     }
 
-    public class ModelIdPostInput
+    public class ModelIdBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Inputs { get; set; }
@@ -197,10 +197,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public JToken Table { get; set; }
 
         [JsonProperty("options")]
-        public ModelIdPostInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class ModelIdPostInputOptionsType
+    public class BodyInputOptionsType
     {
         [JsonProperty("use_cache")]
         public bool? UseCache { get; set; }
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public bool? WaitForModel { get; set; }
     }
 
-    public class FillMaskPostResponseItem
+    public class FillMaskResponseItem
     {
         [JsonProperty("score")]
         public double Score { get; set; }
@@ -224,43 +224,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string Sequence { get; set; }
     }
 
-    public class FillMaskPostInput
+    public class FillMaskBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Inputs { get; set; }
 
         [JsonProperty("options")]
-        public FillMaskPostInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class FillMaskPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class SummarizationPostResponseItem
+    public class SummarizationResponseItem
     {
         [JsonProperty("summary_text")]
         public string SummaryText { get; set; }
     }
 
-    public class SummarizationPostInput
+    public class SummarizationBodyInput
     {
         [JsonProperty("inputs")]
         public string Inputs { get; set; }
 
         [JsonProperty("parameters")]
-        public SummarizationPostInputParametersType Parameters { get; set; }
+        public SummarizationBodyInputParametersType Parameters { get; set; }
 
         [JsonProperty("options")]
-        public SummarizationPostInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class SummarizationPostInputParametersType
+    public class SummarizationBodyInputParametersType
     {
         [JsonProperty("do_sample")]
         public bool? DoSample { get; set; }
@@ -287,16 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public double? MaxTime { get; set; }
     }
 
-    public class SummarizationPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class AnswerPostResponse
+    public class AnswerResponse
     {
         [JsonProperty("score")]
         public double Score { get; set; }
@@ -311,13 +293,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string Answer { get; set; }
     }
 
-    public class AnswerPostInput
+    public class AnswerBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AnswerPostInputInputsType Inputs { get; set; }
+        public AnswerBodyInputInputsType Inputs { get; set; }
     }
 
-    public class AnswerPostInputInputsType
+    public class AnswerBodyInputInputsType
     {
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
@@ -326,16 +308,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string Context { get; set; }
     }
 
-    public class SentenceSimilarityPostInput
+    public class SentenceSimilarityBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SentenceSimilarityPostInputInputsType Inputs { get; set; }
+        public SentenceSimilarityBodyInputInputsType Inputs { get; set; }
 
         [JsonProperty("options")]
-        public SentenceSimilarityPostInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class SentenceSimilarityPostInputInputsType
+    public class SentenceSimilarityBodyInputInputsType
     {
         [JsonProperty("source_sentence", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSentence { get; set; }
@@ -344,16 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string[] Sentences { get; set; }
     }
 
-    public class SentenceSimilarityPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class TextClassificationPostResponseItemItem
+    public class TextClassificationResponseItemItem
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -362,79 +335,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public double Score { get; set; }
     }
 
-    public class TextClassificationPostInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Inputs { get; set; }
-
-        [JsonProperty("options")]
-        public TextClassificationPostInputOptionsType Options { get; set; }
-    }
-
-    public class TextClassificationPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class TextGenerationPostResponseItem
+    public class TextGenerationResponseItem
     {
         [JsonProperty("generated_text")]
         public string GeneratedText { get; set; }
     }
 
-    public class TextGenerationPostInput
-    {
-        [JsonProperty("inputs")]
-        public string Inputs { get; set; }
-
-        [JsonProperty("parameters")]
-        public TextGenerationPostInputParametersType Parameters { get; set; }
-
-        [JsonProperty("options")]
-        public TextGenerationPostInputOptionsType Options { get; set; }
-    }
-
-    public class TextGenerationPostInputParametersType
-    {
-        [JsonProperty("do_sample")]
-        public bool? DoSample { get; set; }
-
-        [JsonProperty("min_length")]
-        public int? MinLength { get; set; }
-
-        [JsonProperty("max_length")]
-        public int? MaxLength { get; set; }
-
-        [JsonProperty("top_k")]
-        public int? TopK { get; set; }
-
-        [JsonProperty("top_p")]
-        public int? TopP { get; set; }
-
-        [JsonProperty("temperature")]
-        public double? Temperature { get; set; }
-
-        [JsonProperty("repetition_penalty")]
-        public double? RepetitionPenalty { get; set; }
-
-        [JsonProperty("max_time")]
-        public double? MaxTime { get; set; }
-    }
-
-    public class TextGenerationPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class TokenClassificationPostResponseItem
+    public class TokenClassificationResponseItem
     {
         [JsonProperty("entity_group")]
         public string EntityGroup { get; set; }
@@ -452,58 +359,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public int End { get; set; }
     }
 
-    public class TokenClassificationPostInput
+    public class TokenClassificationBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Inputs { get; set; }
 
         [JsonProperty("parameters")]
-        public TokenClassificationPostInputParametersType Parameters { get; set; }
+        public TokenClassificationBodyInputParametersType Parameters { get; set; }
 
         [JsonProperty("options")]
-        public TokenClassificationPostInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class TokenClassificationPostInputParametersType
+    public class TokenClassificationBodyInputParametersType
     {
         [JsonProperty("aggregation_strategy")]
         public string AggregationStrategy { get; set; }
     }
 
-    public class TokenClassificationPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class TranslationPostResponseItem
+    public class TranslationResponseItem
     {
         [JsonProperty("translation_text")]
         public string TranslationText { get; set; }
     }
 
-    public class TranslationPostInput
-    {
-        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Inputs { get; set; }
-
-        [JsonProperty("options")]
-        public TranslationPostInputOptionsType Options { get; set; }
-    }
-
-    public class TranslationPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class ZeroShotPostResponse
+    public class ZeroShotResponse
     {
         [JsonProperty("sequence")]
         public string Sequence { get; set; }
@@ -515,19 +395,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public double[] Scores { get; set; }
     }
 
-    public class ZeroShotPostInput
+    public class ZeroShotBodyInput
     {
         [JsonProperty("inputs")]
         public string Inputs { get; set; }
 
         [JsonProperty("parameters")]
-        public ZeroShotPostInputParametersType Parameters { get; set; }
+        public ZeroShotBodyInputParametersType Parameters { get; set; }
 
         [JsonProperty("options")]
-        public ZeroShotPostInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class ZeroShotPostInputParametersType
+    public class ZeroShotBodyInputParametersType
     {
         [JsonProperty("candidate_labels")]
         public string[] CandidateLabels { get; set; }
@@ -536,25 +416,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public bool? MultiLabel { get; set; }
     }
 
-    public class ZeroShotPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
-    }
-
-    public class ConversationalPostResponse
+    public class ConversationalResponse
     {
         [JsonProperty("generated_text")]
         public string GeneratedText { get; set; }
 
         [JsonProperty("conversation")]
-        public ConversationalPostResponseConversationType Conversation { get; set; }
+        public ConversationalResponseConversationType Conversation { get; set; }
     }
 
-    public class ConversationalPostResponseConversationType
+    public class ConversationalResponseConversationType
     {
         [JsonProperty("past_user_inputs")]
         public string[] PastUserInputs { get; set; }
@@ -563,19 +434,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string[] GeneratedResponses { get; set; }
     }
 
-    public class ConversationalPostInput
+    public class ConversationalBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConversationalPostInputInputsType Inputs { get; set; }
+        public ConversationalBodyInputInputsType Inputs { get; set; }
 
         [JsonProperty("parameters")]
-        public ConversationalPostInputParametersType Parameters { get; set; }
+        public ConversationalBodyInputParametersType Parameters { get; set; }
 
         [JsonProperty("options")]
-        public ConversationalPostInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class ConversationalPostInputInputsType
+    public class ConversationalBodyInputInputsType
     {
         [JsonProperty("past_user_inputs")]
         public string[] PastUserInputs { get; set; }
@@ -587,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string Text { get; set; }
     }
 
-    public class ConversationalPostInputParametersType
+    public class ConversationalBodyInputParametersType
     {
         [JsonProperty("min_length")]
         public int? MinLength { get; set; }
@@ -609,15 +480,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
 
         [JsonProperty("max_time")]
         public double? MaxTime { get; set; }
-    }
-
-    public class ConversationalPostInputOptionsType
-    {
-        [JsonProperty("use_cache")]
-        public bool? UseCache { get; set; }
-
-        [JsonProperty("wait_for_model")]
-        public bool? WaitForModel { get; set; }
     }
 }
 

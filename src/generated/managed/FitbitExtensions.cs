@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetSleepLogListResponse, ApiConnectionActionConfiguration> GetSleepLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetSleepLogListResponse, ApiConnectionActionConfiguration> GetSleepLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<SortInput>> sort = null, Expression<Func<int>> limit = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_afterDate = WorkflowExpression.Compile(afterDate, nameof(afterDate), required: false);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetActivityGoalsResponse, ApiConnectionActionConfiguration> GetActivityGoals(Expression<Func<string>> userId, Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<GetActivityGoalsResponse, ApiConnectionActionConfiguration> GetActivityGoals(Expression<Func<string>> userId, Expression<Func<GetActivityGoalsPeriodInput>> period)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetActivityLogListResponse, ApiConnectionActionConfiguration> GetActivityLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetActivityLogListResponse, ApiConnectionActionConfiguration> GetActivityLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<SortInput>> sort = null, Expression<Func<int>> limit = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_afterDate = WorkflowExpression.Compile(afterDate, nameof(afterDate), required: false);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse, ApiConnectionActionConfiguration> GetActivityTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput>> resource, Expression<Func<string>> date, Expression<Func<periodInput2>> period)
+        public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse, ApiConnectionActionConfiguration> GetActivityTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<GetActivityTimeSeriesbyDateResourceInput>> resource, Expression<Func<string>> date, Expression<Func<GetActivityTimeSeriesbyDatePeriodInput>> period)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBodyGoalsResponse, ApiConnectionActionConfiguration> GetBodyGoals(Expression<Func<string>> userId, Expression<Func<goalTypeInput>> goalType)
+        public IBodyWorkflowAction<GetBodyGoalsResponse, ApiConnectionActionConfiguration> GetBodyGoals(Expression<Func<string>> userId, Expression<Func<GoalTypeInput>> goalType)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_goalType = WorkflowExpression.Compile(goalType, nameof(goalType), required: true);
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse, ApiConnectionActionConfiguration> GetBodyTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput2>> resource, Expression<Func<string>> date, Expression<Func<periodInput3>> period)
+        public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse, ApiConnectionActionConfiguration> GetBodyTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<GetBodyTimeSeriesbyDateResourceInput>> resource, Expression<Func<string>> date, Expression<Func<GetActivityTimeSeriesbyDatePeriodInput>> period)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse, ApiConnectionActionConfiguration> GetBodyFatTimerSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput4>> period)
+        public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse, ApiConnectionActionConfiguration> GetBodyFatTimerSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<GetActivityTimeSeriesbyDatePeriodInput>> period)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse, ApiConnectionActionConfiguration> GetWeightTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput5>> period)
+        public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse, ApiConnectionActionConfiguration> GetWeightTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<GetActivityTimeSeriesbyDatePeriodInput>> period)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
@@ -1034,7 +1034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -1070,7 +1070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum periodInput
+    public enum GetActivityGoalsPeriodInput
     {
         [EnumMember(Value = "daily")]
         Daily,
@@ -1625,7 +1625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum resourceInput
+    public enum GetActivityTimeSeriesbyDateResourceInput
     {
         [EnumMember(Value = "activityCalories")]
         ActivityCalories,
@@ -1650,7 +1650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum periodInput2
+    public enum GetActivityTimeSeriesbyDatePeriodInput
     {
         [EnumMember(Value = "1d")]
         _1d,
@@ -1695,7 +1695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum goalTypeInput
+    public enum GoalTypeInput
     {
         [EnumMember(Value = "weight")]
         Weight,
@@ -1773,7 +1773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum resourceInput2
+    public enum GetBodyTimeSeriesbyDateResourceInput
     {
         [EnumMember(Value = "bmi")]
         Bmi,
@@ -1781,27 +1781,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         Fat,
         [EnumMember(Value = "weight")]
         Weight
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum periodInput3
-    {
-        [EnumMember(Value = "1d")]
-        _1d,
-        [EnumMember(Value = "7d")]
-        _7d,
-        [EnumMember(Value = "30d")]
-        _30d,
-        [EnumMember(Value = "1w")]
-        _1w,
-        [EnumMember(Value = "1m")]
-        _1m,
-        [EnumMember(Value = "3m")]
-        _3m,
-        [EnumMember(Value = "6m")]
-        _6m,
-        [EnumMember(Value = "1y")]
-        _1y
     }
 
     public class GetBodyFatTimerSeriesbyDateResponse
@@ -1826,27 +1805,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
 
         [JsonProperty("time")]
         public string Time { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum periodInput4
-    {
-        [EnumMember(Value = "1d")]
-        _1d,
-        [EnumMember(Value = "7d")]
-        _7d,
-        [EnumMember(Value = "30d")]
-        _30d,
-        [EnumMember(Value = "1w")]
-        _1w,
-        [EnumMember(Value = "1m")]
-        _1m,
-        [EnumMember(Value = "3m")]
-        _3m,
-        [EnumMember(Value = "6m")]
-        _6m,
-        [EnumMember(Value = "1y")]
-        _1y
     }
 
     public class GetWeightTimeSeriesbyDateResponse
@@ -1877,27 +1835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
 
         [JsonProperty("weight")]
         public int Weight { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum periodInput5
-    {
-        [EnumMember(Value = "1d")]
-        _1d,
-        [EnumMember(Value = "7d")]
-        _7d,
-        [EnumMember(Value = "30d")]
-        _30d,
-        [EnumMember(Value = "1w")]
-        _1w,
-        [EnumMember(Value = "1m")]
-        _1m,
-        [EnumMember(Value = "3m")]
-        _3m,
-        [EnumMember(Value = "6m")]
-        _6m,
-        [EnumMember(Value = "1y")]
-        _1y
     }
 
     public class GetBreathingRateSummarybyDateResponse

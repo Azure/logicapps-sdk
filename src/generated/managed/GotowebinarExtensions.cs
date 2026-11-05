@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotowebinar")]
-        public IBodyWorkflowAction<RegistrationResult, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> webinarKey, Expression<Func<AddRegistrantInput>> body)
+        public IBodyWorkflowAction<RegistrationResult, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> webinarKey, Expression<Func<BodyInput>> body)
         {
             var __workflow_webinarKey = WorkflowExpression.Compile(webinarKey, nameof(webinarKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
         public string Description { get; set; }
     }
 
-    public class AddRegistrantInput
+    public class BodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }

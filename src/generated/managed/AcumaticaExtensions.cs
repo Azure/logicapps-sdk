@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCustomer(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingCustomerInput>> body)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCustomer(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingCustomerBodyInput>> body)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingOpportunity(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingOpportunityInput>> body)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingOpportunity(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingOpportunityBodyInput>> body)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCase(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingCaseInput>> body)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse, ApiConnectionActionConfiguration> CreatesOrUpdatesAnExistingCase(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<CreatesOrUpdatesAnExistingCaseBodyInput>> body)
         {
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
@@ -584,57 +584,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInput
+    public class CreatesOrUpdatesAnExistingCustomerBodyInput
     {
         [JsonProperty("CustomerID")]
-        public CreatesOrUpdatesAnExistingCustomerInputCustomerIdType CustomerId { get; set; }
-        public CreatesOrUpdatesAnExistingCustomerInputCustomerNameType CustomerName { get; set; }
-        public CreatesOrUpdatesAnExistingCustomerInputStatusType Status { get; set; }
-        public CreatesOrUpdatesAnExistingCustomerInputAccountRefType AccountRef { get; set; }
+        public BodyInputCustomerIdType CustomerId { get; set; }
+        public BodyInputCustomerNameType CustomerName { get; set; }
+        public BodyInputStatusType Status { get; set; }
+        public BodyInputAccountRefType AccountRef { get; set; }
 
         [JsonProperty("CurrencyID")]
-        public CreatesOrUpdatesAnExistingCustomerInputCurrencyIdType CurrencyId { get; set; }
-        public CreatesOrUpdatesAnExistingCustomerInputCustomerClassType CustomerClass { get; set; }
-        public CreatesOrUpdatesAnExistingCustomerInputTermsType Terms { get; set; }
+        public BodyInputCurrencyIdType CurrencyId { get; set; }
+        public BodyInputCustomerClassType CustomerClass { get; set; }
+        public BodyInputTermsType Terms { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInputCustomerIdType
+    public class BodyInputCustomerIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInputCustomerNameType
+    public class BodyInputCustomerNameType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInputStatusType
+    public class BodyInputStatusType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInputAccountRefType
+    public class BodyInputAccountRefType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInputCurrencyIdType
+    public class BodyInputCurrencyIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInputCustomerClassType
+    public class BodyInputCustomerClassType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCustomerInputTermsType
+    public class BodyInputTermsType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -836,99 +836,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInput
+    public class CreatesOrUpdatesAnExistingOpportunityBodyInput
     {
         [JsonProperty("OpportunityID")]
-        public CreatesOrUpdatesAnExistingOpportunityInputOpportunityIdType OpportunityId { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputSubjectType Subject { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputStatusType Status { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputStageType Stage { get; set; }
+        public BodyInputOpportunityIdType OpportunityId { get; set; }
+        public BodyInputSubjectType Subject { get; set; }
+        public BodyInputStatusType Status { get; set; }
+        public BodyInputStageType Stage { get; set; }
 
         [JsonProperty("CurrencyID")]
-        public CreatesOrUpdatesAnExistingOpportunityInputCurrencyIdType CurrencyId { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputBusinessAccountType BusinessAccount { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputContactDisplayNameType ContactDisplayName { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputAmountType Amount { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputDiscountType Discount { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputTotalType Total { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputSourceType Source { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputReasonType Reason { get; set; }
-        public CreatesOrUpdatesAnExistingOpportunityInputProjectType Project { get; set; }
+        public BodyInputCurrencyIdType CurrencyId { get; set; }
+        public BodyInputBusinessAccountType BusinessAccount { get; set; }
+        public BodyInputContactDisplayNameType ContactDisplayName { get; set; }
+        public BodyInputAmountType Amount { get; set; }
+        public BodyInputDiscountType Discount { get; set; }
+        public BodyInputTotalType Total { get; set; }
+        public BodyInputSourceType Source { get; set; }
+        public BodyInputReasonType Reason { get; set; }
+        public BodyInputProjectType Project { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputOpportunityIdType
+    public class BodyInputOpportunityIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputSubjectType
+    public class BodyInputSubjectType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputStatusType
+    public class BodyInputStageType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputStageType
+    public class BodyInputBusinessAccountType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputCurrencyIdType
+    public class BodyInputContactDisplayNameType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputBusinessAccountType
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class CreatesOrUpdatesAnExistingOpportunityInputContactDisplayNameType
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class CreatesOrUpdatesAnExistingOpportunityInputAmountType
+    public class BodyInputAmountType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputDiscountType
+    public class BodyInputDiscountType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputTotalType
+    public class BodyInputTotalType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputSourceType
+    public class BodyInputSourceType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputReasonType
+    public class BodyInputReasonType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingOpportunityInputProjectType
+    public class BodyInputProjectType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1116,78 +1104,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseInput
+    public class CreatesOrUpdatesAnExistingCaseBodyInput
     {
         [JsonProperty("CaseID")]
-        public CreatesOrUpdatesAnExistingCaseInputCaseIdType CaseId { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputSubjectType Subject { get; set; }
+        public BodyInputCaseIdType CaseId { get; set; }
+        public BodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("ClassID")]
-        public CreatesOrUpdatesAnExistingCaseInputClassIdType ClassId { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputBusinessAccountType BusinessAccount { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputDescriptionType Description { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputContactDisplayNameType ContactDisplayName { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputStatusType Status { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputReasonType Reason { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputSeverityType Severity { get; set; }
-        public CreatesOrUpdatesAnExistingCaseInputPriorityType Priority { get; set; }
+        public BodyInputClassIdType ClassId { get; set; }
+        public BodyInputBusinessAccountType BusinessAccount { get; set; }
+        public BodyInputDescriptionType Description { get; set; }
+        public BodyInputContactDisplayNameType ContactDisplayName { get; set; }
+        public BodyInputStatusType Status { get; set; }
+        public BodyInputReasonType Reason { get; set; }
+        public BodyInputSeverityType Severity { get; set; }
+        public BodyInputPriorityType Priority { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseInputCaseIdType
+    public class BodyInputCaseIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseInputSubjectType
+    public class BodyInputClassIdType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseInputClassIdType
+    public class BodyInputDescriptionType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseInputBusinessAccountType
+    public class BodyInputSeverityType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreatesOrUpdatesAnExistingCaseInputDescriptionType
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class CreatesOrUpdatesAnExistingCaseInputContactDisplayNameType
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class CreatesOrUpdatesAnExistingCaseInputStatusType
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class CreatesOrUpdatesAnExistingCaseInputReasonType
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class CreatesOrUpdatesAnExistingCaseInputSeverityType
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class CreatesOrUpdatesAnExistingCaseInputPriorityType
+    public class BodyInputPriorityType
     {
         [JsonProperty("value")]
         public string Value { get; set; }

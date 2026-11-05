@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
     public class KintoneActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddRecord(Expression<Func<AddRecordInput>> requestBodyOfRecord = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddRecord(Expression<Func<AddRecordRequestBodyOfRecordInput>> requestBodyOfRecord = null)
         {
             var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<UpdateRecordInput>> requestBodyOfRecord = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<UpdateRecordRequestBodyOfRecordInput>> requestBodyOfRecord = null)
         {
             var __workflow_requestBodyOfRecord = WorkflowExpression.Compile(requestBodyOfRecord, nameof(requestBodyOfRecord), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
     public class KintoneTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<WebhookTriggerInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<WebhookTriggerRequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForUpdatingRecord(Expression<Func<AddWebhookForUpdatingRecordInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForUpdatingRecord(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForDeletingRecord(Expression<Func<AddWebhookForDeletingRecordInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForDeletingRecord(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForAddingRecordComment(Expression<Func<AddWebhookForAddingRecordCommentInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForAddingRecordComment(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForUpdatingStatus(Expression<Func<AddWebhookForUpdatingStatusInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AddWebhookForUpdatingStatus(Expression<Func<AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         }
     }
 
-    public class AddRecordInput
+    public class AddRecordRequestBodyOfRecordInput
     {
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         public JToken Record { get; set; }
     }
 
-    public class UpdateRecordInput
+    public class UpdateRecordRequestBodyOfRecordInput
     {
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         public JToken Record { get; set; }
     }
 
-    public class WebhookTriggerInput
+    public class WebhookTriggerRequestBodyOfWebhookInput
     {
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }
@@ -156,52 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         internal string SchemaType { get; set; } = "TRIGGER_WEBHOOK_RECORD";
     }
 
-    public class AddWebhookForUpdatingRecordInput
-    {
-        [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AppId { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Description { get; set; } = "Added by Microsoft Flow. Settings should not be changed.";
-
-        [JsonProperty("schemaType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SchemaType { get; set; } = "TRIGGER_WEBHOOK_RECORD";
-    }
-
-    public class AddWebhookForDeletingRecordInput
-    {
-        [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AppId { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Description { get; set; } = "Added by Microsoft Flow. Settings should not be changed.";
-
-        [JsonProperty("schemaType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SchemaType { get; set; } = "TRIGGER_WEBHOOK_RECORD";
-    }
-
-    public class AddWebhookForAddingRecordCommentInput
-    {
-        [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AppId { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Description { get; set; } = "Added by Microsoft Flow. Settings should not be changed.";
-
-        [JsonProperty("schemaType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SchemaType { get; set; } = "TRIGGER_WEBHOOK_RECORD";
-    }
-
-    public class AddWebhookForUpdatingStatusInput
+    public class AddWebhookForAddingRecordCommentRequestBodyOfWebhookInput
     {
         [JsonProperty("app", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppId { get; set; }

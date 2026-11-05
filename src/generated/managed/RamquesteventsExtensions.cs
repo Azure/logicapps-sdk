@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CCEEventTrigger(Expression<Func<CCEEventTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CCEEventTrigger(Expression<Func<CCEEventTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> HorizonEventTrigger(Expression<Func<HorizonEventTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> HorizonEventTrigger(Expression<Func<HorizonEventTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -43,17 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
         }
     }
 
-    public class CCEEventTriggerInput
+    public class CCEEventTriggerBodyInput
     {
         [JsonProperty("webHook", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHook { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("action")]
-        public CCEEventTriggerInputActionType? Action { get; set; }
+        public BodyInputActionType? Action { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CCEEventTriggerInputActionType
+    public enum BodyInputActionType
     {
         TaskEvent,
         DocumentEvent,
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
         CheckWriting
     }
 
-    public class HorizonEventTriggerInput
+    public class HorizonEventTriggerBodyInput
     {
         [JsonProperty("webHook", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHook { get; set; } = "#{listCallbackUrl()}";

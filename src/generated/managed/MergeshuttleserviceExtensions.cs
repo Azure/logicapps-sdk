@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mergeshuttleservice")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostFixedRoute(Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostFixedRoute(Expression<Func<BodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -128,31 +128,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
         public int DisplayOrder { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("routeMasterName")]
         public string RouteMasterName { get; set; }
 
         [JsonProperty("tripSchedules")]
-        public bodyInputItemTripSchedulesTypeItem[] TripSchedules { get; set; }
+        public BodyInputItemTripSchedulesTypeItem[] TripSchedules { get; set; }
 
         [JsonProperty("routeMasterId")]
-        public int RouteMasterId { get; set; }
+        public int? RouteMasterId { get; set; }
 
         [JsonProperty("displayOrder")]
-        public int DisplayOrder { get; set; }
+        public int? DisplayOrder { get; set; }
 
         [JsonProperty("imageUrl")]
         public string ImageUrl { get; set; }
     }
 
-    public class bodyInputItemTripSchedulesTypeItem
+    public class BodyInputItemTripSchedulesTypeItem
     {
         [JsonProperty("stops")]
-        public bodyInputItemTripSchedulesTypeItemStopsTypeItem[] Stops { get; set; }
+        public BodyInputItemTripSchedulesTypeItemStopsTypeItem[] Stops { get; set; }
 
         [JsonProperty("tripDetail")]
-        public bodyInputItemTripSchedulesTypeItemTripDetailTypeItem[] TripDetail { get; set; }
+        public BodyInputItemTripSchedulesTypeItemTripDetailTypeItem[] TripDetail { get; set; }
 
         [JsonProperty("startTime")]
         public string StartTime { get; set; }
@@ -161,43 +161,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
         public string EndTime { get; set; }
     }
 
-    public class bodyInputItemTripSchedulesTypeItemStopsTypeItem
+    public class BodyInputItemTripSchedulesTypeItemStopsTypeItem
     {
         [JsonProperty("feedstoreBuildingId")]
-        public int FeedstoreBuildingId { get; set; }
+        public int? FeedstoreBuildingId { get; set; }
 
         [JsonProperty("stopName")]
         public string StopName { get; set; }
 
         [JsonProperty("isPickup")]
-        public bool IsPickup { get; set; }
+        public bool? IsPickup { get; set; }
 
         [JsonProperty("isDropOff")]
-        public bool IsDropOff { get; set; }
+        public bool? IsDropOff { get; set; }
 
         [JsonProperty("displayOrder")]
-        public int DisplayOrder { get; set; }
+        public int? DisplayOrder { get; set; }
 
         [JsonProperty("refBuildingName")]
         public string RefBuildingName { get; set; }
 
         [JsonProperty("refBuildingId")]
-        public int RefBuildingId { get; set; }
+        public int? RefBuildingId { get; set; }
     }
 
-    public class bodyInputItemTripSchedulesTypeItemTripDetailTypeItem
+    public class BodyInputItemTripSchedulesTypeItemTripDetailTypeItem
     {
         [JsonProperty("stopSchedules")]
-        public bodyInputItemTripSchedulesTypeItemTripDetailTypeItemStopSchedulesTypeItem[] StopSchedules { get; set; }
+        public BodyInputItemTripSchedulesTypeItemTripDetailTypeItemStopSchedulesTypeItem[] StopSchedules { get; set; }
 
         [JsonProperty("vehicleName")]
         public string VehicleName { get; set; }
 
         [JsonProperty("displayOrder")]
-        public int DisplayOrder { get; set; }
+        public int? DisplayOrder { get; set; }
     }
 
-    public class bodyInputItemTripSchedulesTypeItemTripDetailTypeItemStopSchedulesTypeItem
+    public class BodyInputItemTripSchedulesTypeItemTripDetailTypeItemStopSchedulesTypeItem
     {
         [JsonProperty("stopName")]
         public string StopName { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
         public string StopTime { get; set; }
 
         [JsonProperty("displayOrder")]
-        public int DisplayOrder { get; set; }
+        public int? DisplayOrder { get; set; }
     }
 }
 

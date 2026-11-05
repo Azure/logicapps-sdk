@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
     public class CyberproofActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPCreateExecution(Expression<Func<CPCreateExecutionInput>> actionReq)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPCreateExecution(Expression<Func<CPCreateExecutionActionReqInput>> actionReq)
         {
             var __workflow_actionReq = WorkflowExpression.Compile(actionReq, nameof(actionReq), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CPCreateWebhookExecution(Expression<Func<CPCreateWebhookExecutionInput>> actionReq)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPCreateWebhookExecution(Expression<Func<CPCreateWebhookExecutionActionReqInput>> actionReq)
         {
             var __workflow_actionReq = WorkflowExpression.Compile(actionReq, nameof(actionReq), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetAlertCustomField(Expression<Func<CPSetAlertCustomFieldInput>> actionCustomReq)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetAlertCustomField(Expression<Func<CPGetAlertCustomFieldActionCustomReqInput>> actionCustomReq)
         {
             var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetAlertCustomField(Expression<Func<CPGetAlertCustomFieldInput>> actionCustomReq)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetAlertCustomField(Expression<Func<CPGetAlertCustomFieldActionCustomReqInput>> actionCustomReq)
         {
             var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetIncidentSummary(Expression<Func<CPGetIncidentSummaryInput>> actionCustomReq)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CPGetIncidentSummary(Expression<Func<CPGetIncidentSummaryActionCustomReqInput>> actionCustomReq)
         {
             var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetIncidentSummary(Expression<Func<CPSetIncidentSummaryInput>> actionCustomReq)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CPSetIncidentSummary(Expression<Func<CPSetIncidentSummaryActionCustomReqInput>> actionCustomReq)
         {
             var __workflow_actionCustomReq = WorkflowExpression.Compile(actionCustomReq, nameof(actionCustomReq), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
 
     public class CyberproofTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CPTrigger(Expression<Func<CPTriggerInput>> actionReq, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CPTrigger(Expression<Func<CPTriggerActionReqInput>> actionReq, FlowRecurrence recurrence = null)
         {
             var __workflow_actionReq = WorkflowExpression.Compile(actionReq, nameof(actionReq), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         }
     }
 
-    public class CPCreateExecutionInput
+    public class CPCreateExecutionActionReqInput
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SelectAction { get; set; }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         public JToken Parameters { get; set; }
     }
 
-    public class CPCreateWebhookExecutionInput
+    public class CPCreateWebhookExecutionActionReqInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         public JToken Parameters { get; set; }
     }
 
-    public class CPSetAlertCustomFieldInput
+    public class CPGetAlertCustomFieldActionCustomReqInput
     {
         [JsonProperty("alert_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AlertId { get; set; }
@@ -146,19 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         public JToken SelectField { get; set; }
     }
 
-    public class CPGetAlertCustomFieldInput
-    {
-        [JsonProperty("alert_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AlertId { get; set; }
-
-        [JsonProperty("classifications", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SelectClassification { get; set; }
-
-        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken SelectField { get; set; }
-    }
-
-    public class CPGetIncidentSummaryInput
+    public class CPGetIncidentSummaryActionCustomReqInput
     {
         [JsonProperty("incident_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IncidentId { get; set; }
@@ -167,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         public JToken SelectIncidentSummary { get; set; }
     }
 
-    public class CPSetIncidentSummaryInput
+    public class CPSetIncidentSummaryActionCustomReqInput
     {
         [JsonProperty("incident_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IncidentId { get; set; }
@@ -176,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         public JToken SelectValue { get; set; }
     }
 
-    public class CPTriggerInput
+    public class CPTriggerActionReqInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

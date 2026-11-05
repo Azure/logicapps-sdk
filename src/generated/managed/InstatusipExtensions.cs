@@ -31,17 +31,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PagePostResponse, ApiConnectionActionConfiguration> Page(Expression<Func<PagePostInput>> body = null)
+        public IBodyWorkflowAction<PageResponse, ApiConnectionActionConfiguration> Page(Expression<Func<PageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/pages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PagePostResponse>(callPayload);
+                return new ApiConnectionAction<PageResponse>(callPayload);
             });
         }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<PagePutResponse, ApiConnectionActionConfiguration> PagePut(Expression<Func<string>> pageId, Expression<Func<PagePutInput>> body = null)
+        public IBodyWorkflowAction<PagePutResponse, ApiConnectionActionConfiguration> PagePut(Expression<Func<string>> pageId, Expression<Func<PagePutBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -94,18 +94,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentPostResponse, ApiConnectionActionConfiguration> Component(Expression<Func<string>> pageId, Expression<Func<ComponentPostInput>> body = null)
+        public IBodyWorkflowAction<ComponentResponse, ApiConnectionActionConfiguration> Component(Expression<Func<string>> pageId, Expression<Func<ComponentBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ComponentPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ComponentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/components", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ComponentPostResponse>(callPayload);
+                return new ApiConnectionAction<ComponentResponse>(callPayload);
             });
         }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<ComponentPutResponse, ApiConnectionActionConfiguration> ComponentPut(Expression<Func<string>> pageId, Expression<Func<string>> componentId, Expression<Func<ComponentPutInput>> body = null)
+        public IBodyWorkflowAction<ComponentPutResponse, ApiConnectionActionConfiguration> ComponentPut(Expression<Func<string>> pageId, Expression<Func<string>> componentId, Expression<Func<ComponentBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_componentId = WorkflowExpression.Compile(componentId, nameof(componentId), required: true);
@@ -177,18 +177,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentPostResponse, ApiConnectionActionConfiguration> Incident(Expression<Func<string>> pageId, Expression<Func<IncidentPostInput>> body = null)
+        public IBodyWorkflowAction<IncidentResponse, ApiConnectionActionConfiguration> Incident(Expression<Func<string>> pageId, Expression<Func<IncidentBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<IncidentPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IncidentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<IncidentPostResponse>(callPayload);
+                return new ApiConnectionAction<IncidentResponse>(callPayload);
             });
         }
 
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentPutResponse, ApiConnectionActionConfiguration> IncidentPut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<IncidentPutInput>> body = null)
+        public IBodyWorkflowAction<IncidentPutResponse, ApiConnectionActionConfiguration> IncidentPut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<IncidentPutBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
@@ -238,16 +238,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentTemplatePostResponse, ApiConnectionActionConfiguration> IncidentTemplate(Expression<Func<string>> pageId, Expression<Func<string>> template)
+        public IBodyWorkflowAction<IncidentTemplateResponse, ApiConnectionActionConfiguration> IncidentTemplate(Expression<Func<string>> pageId, Expression<Func<string>> template)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            return new DeferredBodyAction<IncidentTemplatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IncidentTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/{0}/incidents/{1}", __workflow_pageId.WithUrlEncoding(1), __workflow_template.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<IncidentTemplatePostResponse>(callPayload);
+                return new ApiConnectionAction<IncidentTemplateResponse>(callPayload);
             });
         }
 
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdatePutResponse, ApiConnectionActionConfiguration> IncidentUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId, Expression<Func<IncidentUpdatePutInput>> body = null)
+        public IBodyWorkflowAction<IncidentUpdatePutResponse, ApiConnectionActionConfiguration> IncidentUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId, Expression<Func<IncidentUpdateBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
@@ -300,34 +300,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdatePostResponse, ApiConnectionActionConfiguration> IncidentUpdate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<IncidentUpdatePostInput>> body = null)
+        public IBodyWorkflowAction<IncidentUpdateResponse, ApiConnectionActionConfiguration> IncidentUpdate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<IncidentUpdateBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<IncidentUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IncidentUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/incidents/{1}/incident-updates", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<IncidentUpdatePostResponse>(callPayload);
+                return new ApiConnectionAction<IncidentUpdateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse, ApiConnectionActionConfiguration> IncidentUpdateTemplate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
+        public IBodyWorkflowAction<IncidentUpdateTemplateResponse, ApiConnectionActionConfiguration> IncidentUpdateTemplate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
-            return new DeferredBodyAction<IncidentUpdateTemplatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IncidentUpdateTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/{0}/incidents/{1}/incident-updates/{2}", __workflow_pageId.WithUrlEncoding(1), __workflow_incidentId.WithUrlEncoding(1), __workflow_template.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<IncidentUpdateTemplatePostResponse>(callPayload);
+                return new ApiConnectionAction<IncidentUpdateTemplateResponse>(callPayload);
             });
         }
 
@@ -351,18 +351,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenancePostResponse, ApiConnectionActionConfiguration> Maintenance(Expression<Func<string>> pageId, Expression<Func<MaintenancePostInput>> body = null)
+        public IBodyWorkflowAction<MaintenanceResponse, ApiConnectionActionConfiguration> Maintenance(Expression<Func<string>> pageId, Expression<Func<MaintenanceBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MaintenancePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MaintenanceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MaintenancePostResponse>(callPayload);
+                return new ApiConnectionAction<MaintenanceResponse>(callPayload);
             });
         }
 
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenancePutResponse, ApiConnectionActionConfiguration> MaintenancePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<MaintenancePutInput>> body = null)
+        public IBodyWorkflowAction<MaintenancePutResponse, ApiConnectionActionConfiguration> MaintenancePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<MaintenancePutBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceUpdatePutResponse, ApiConnectionActionConfiguration> MaintenanceUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId, Expression<Func<MaintenanceUpdatePutInput>> body = null)
+        public IBodyWorkflowAction<MaintenanceUpdatePutResponse, ApiConnectionActionConfiguration> MaintenanceUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId, Expression<Func<MaintenanceUpdateBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
@@ -460,19 +460,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<MaintenanceUpdatePostResponse, ApiConnectionActionConfiguration> MaintenanceUpdate(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<MaintenanceUpdatePostInput>> body = null)
+        public IBodyWorkflowAction<MaintenanceUpdateResponse, ApiConnectionActionConfiguration> MaintenanceUpdate(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<MaintenanceUpdateBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MaintenanceUpdatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MaintenanceUpdateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates", __workflow_pageId.WithUrlEncoding(1), __workflow_maintenanceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MaintenanceUpdatePostResponse>(callPayload);
+                return new ApiConnectionAction<MaintenanceUpdateResponse>(callPayload);
             });
         }
 
@@ -496,18 +496,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TemplatePostResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> pageId, Expression<Func<TemplatePostInput>> body = null)
+        public IBodyWorkflowAction<TemplateResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> pageId, Expression<Func<TemplateBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TemplatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/templates", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+                return new ApiConnectionAction<TemplateResponse>(callPayload);
             });
         }
 
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<TemplatePutResponse, ApiConnectionActionConfiguration> TemplatePut(Expression<Func<string>> pageId, Expression<Func<string>> templateId, Expression<Func<TemplatePutInput>> body = null)
+        public IBodyWorkflowAction<TemplatePutResponse, ApiConnectionActionConfiguration> TemplatePut(Expression<Func<string>> pageId, Expression<Func<string>> templateId, Expression<Func<TemplatePutBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TeamMember(Expression<Func<string>> pageId, Expression<Func<TeamMemberPostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TeamMember(Expression<Func<string>> pageId, Expression<Func<TeamMemberBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -625,18 +625,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
-        public IBodyWorkflowAction<SubscriberPostResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<string>> pageId, Expression<Func<SubscriberPostInput>> body = null)
+        public IBodyWorkflowAction<SubscriberResponse, ApiConnectionActionConfiguration> Subscriber(Expression<Func<string>> pageId, Expression<Func<SubscriberBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SubscriberPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SubscriberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/{0}/subscribers", __workflow_pageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SubscriberPostResponse>(callPayload);
+                return new ApiConnectionAction<SubscriberResponse>(callPayload);
             });
         }
 
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string UpdatedAt { get; set; }
     }
 
-    public class PagePostResponse
+    public class PageResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -878,10 +878,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] AllowList { get; set; }
 
         [JsonProperty("components")]
-        public PagePostResponseComponentsTypeItem[] Components { get; set; }
+        public PageResponseComponentsTypeItem[] Components { get; set; }
     }
 
-    public class PagePostResponseComponentsTypeItem
+    public class PageResponseComponentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Incidents { get; set; }
     }
 
-    public class PagePostInput
+    public class PageBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1157,7 +1157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Incidents { get; set; }
     }
 
-    public class PagePutInput
+    public class PagePutBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1295,7 +1295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Group { get; set; }
     }
 
-    public class ComponentPostResponse
+    public class ComponentResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1322,7 +1322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Group { get; set; }
     }
 
-    public class ComponentPostInput
+    public class ComponentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1401,27 +1401,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
 
         [JsonProperty("group")]
         public string Group { get; set; }
-    }
-
-    public class ComponentPutInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("order")]
-        public int? Order { get; set; }
-
-        [JsonProperty("showUptime")]
-        public bool? ShowUptime { get; set; }
-
-        [JsonProperty("grouped")]
-        public bool? Grouped { get; set; }
     }
 
     public class IncidentsGetResponseItem
@@ -1517,7 +1496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string PublicEmail { get; set; }
     }
 
-    public class IncidentPostResponse
+    public class IncidentResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1538,10 +1517,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Updates { get; set; }
 
         [JsonProperty("components")]
-        public IncidentPostResponseComponentsTypeItem[] Components { get; set; }
+        public IncidentResponseComponentsTypeItem[] Components { get; set; }
     }
 
-    public class IncidentPostResponseComponentsTypeItem
+    public class IncidentResponseComponentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1556,10 +1535,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool ShowUptime { get; set; }
 
         [JsonProperty("site")]
-        public IncidentPostResponseComponentsTypeItemSiteType Site { get; set; }
+        public IncidentResponseComponentsTypeItemSiteType Site { get; set; }
     }
 
-    public class IncidentPostResponseComponentsTypeItemSiteType
+    public class IncidentResponseComponentsTypeItemSiteType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1580,7 +1559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string PublicEmail { get; set; }
     }
 
-    public class IncidentPostInput
+    public class IncidentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1601,10 +1580,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? Notify { get; set; }
 
         [JsonProperty("statuses")]
-        public IncidentPostInputStatusesTypeItem[] Statuses { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
     }
 
-    public class IncidentPostInputStatusesTypeItem
+    public class BodyInputStatusesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1775,7 +1754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string PublicEmail { get; set; }
     }
 
-    public class IncidentPutInput
+    public class IncidentPutBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1793,19 +1772,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? Notify { get; set; }
 
         [JsonProperty("statuses")]
-        public IncidentPutInputStatusesTypeItem[] Statuses { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
     }
 
-    public class IncidentPutInputStatusesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class IncidentTemplatePostResponse
+    public class IncidentTemplateResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2021,7 +1991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Subscribers { get; set; }
     }
 
-    public class IncidentUpdatePutInput
+    public class IncidentUpdateBodyInput
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -2039,19 +2009,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? Notify { get; set; }
 
         [JsonProperty("statuses")]
-        public IncidentUpdatePutInputStatusesTypeItem[] Statuses { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
     }
 
-    public class IncidentUpdatePutInputStatusesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class IncidentUpdatePostResponse
+    public class IncidentUpdateResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2072,10 +2033,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Started { get; set; }
 
         [JsonProperty("incident")]
-        public IncidentUpdatePostResponseIncidentType Incident { get; set; }
+        public IncidentUpdateResponseIncidentType Incident { get; set; }
     }
 
-    public class IncidentUpdatePostResponseIncidentType
+    public class IncidentUpdateResponseIncidentType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2090,10 +2051,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Status { get; set; }
 
         [JsonProperty("components")]
-        public IncidentUpdatePostResponseIncidentTypeComponentsTypeItem[] Components { get; set; }
+        public IncidentUpdateResponseIncidentTypeComponentsTypeItem[] Components { get; set; }
     }
 
-    public class IncidentUpdatePostResponseIncidentTypeComponentsTypeItem
+    public class IncidentUpdateResponseIncidentTypeComponentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2108,13 +2069,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool ShowUptime { get; set; }
 
         [JsonProperty("site")]
-        public IncidentUpdatePostResponseIncidentTypeComponentsTypeItemSiteType Site { get; set; }
+        public IncidentUpdateResponseIncidentTypeComponentsTypeItemSiteType Site { get; set; }
 
         [JsonProperty("subscribers")]
         public string[] Subscribers { get; set; }
     }
 
-    public class IncidentUpdatePostResponseIncidentTypeComponentsTypeItemSiteType
+    public class IncidentUpdateResponseIncidentTypeComponentsTypeItemSiteType
     {
         [JsonProperty("subdomain")]
         public string Subdomain { get; set; }
@@ -2132,37 +2093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Subscribers { get; set; }
     }
 
-    public class IncidentUpdatePostInput
-    {
-        [JsonProperty("message")]
-        public string Message { get; set; }
-
-        [JsonProperty("components")]
-        public string[] Components { get; set; }
-
-        [JsonProperty("started")]
-        public string Started { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("notify")]
-        public bool? Notify { get; set; }
-
-        [JsonProperty("statuses")]
-        public IncidentUpdatePostInputStatusesTypeItem[] Statuses { get; set; }
-    }
-
-    public class IncidentUpdatePostInputStatusesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class IncidentUpdateTemplatePostResponse
+    public class IncidentUpdateTemplateResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2318,7 +2249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string PublicEmail { get; set; }
     }
 
-    public class MaintenancePostResponse
+    public class MaintenanceResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2342,10 +2273,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Updates { get; set; }
 
         [JsonProperty("components")]
-        public MaintenancePostResponseComponentsTypeItem[] Components { get; set; }
+        public MaintenanceResponseComponentsTypeItem[] Components { get; set; }
     }
 
-    public class MaintenancePostResponseComponentsTypeItem
+    public class MaintenanceResponseComponentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2360,10 +2291,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool ShowUptime { get; set; }
 
         [JsonProperty("site")]
-        public MaintenancePostResponseComponentsTypeItemSiteType Site { get; set; }
+        public MaintenanceResponseComponentsTypeItemSiteType Site { get; set; }
     }
 
-    public class MaintenancePostResponseComponentsTypeItemSiteType
+    public class MaintenanceResponseComponentsTypeItemSiteType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2384,7 +2315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string PublicEmail { get; set; }
     }
 
-    public class MaintenancePostInput
+    public class MaintenanceBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2429,16 +2360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? AutoEnd { get; set; }
 
         [JsonProperty("statuses")]
-        public MaintenancePostInputStatusesTypeItem[] Statuses { get; set; }
-    }
-
-    public class MaintenancePostInputStatusesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
     }
 
     public class MaintenanceGetResponse
@@ -2651,7 +2573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string PublicEmail { get; set; }
     }
 
-    public class MaintenancePutInput
+    public class MaintenancePutBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2675,16 +2597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? Notify { get; set; }
 
         [JsonProperty("statuses")]
-        public MaintenancePutInputStatusesTypeItem[] Statuses { get; set; }
-    }
-
-    public class MaintenancePutInputStatusesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
     }
 
     public class MaintenanceUpdateGetResponse
@@ -2861,7 +2774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Subscribers { get; set; }
     }
 
-    public class MaintenanceUpdatePutInput
+    public class MaintenanceUpdateBodyInput
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -2882,19 +2795,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? Notify { get; set; }
 
         [JsonProperty("statuses")]
-        public MaintenanceUpdatePutInputStatusesTypeItem[] Statuses { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
     }
 
-    public class MaintenanceUpdatePutInputStatusesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class MaintenanceUpdatePostResponse
+    public class MaintenanceUpdateResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2915,10 +2819,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Status { get; set; }
 
         [JsonProperty("maintenance")]
-        public MaintenanceUpdatePostResponseMaintenanceType Maintenance { get; set; }
+        public MaintenanceUpdateResponseMaintenanceType Maintenance { get; set; }
     }
 
-    public class MaintenanceUpdatePostResponseMaintenanceType
+    public class MaintenanceUpdateResponseMaintenanceType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2933,10 +2837,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Status { get; set; }
 
         [JsonProperty("components")]
-        public MaintenanceUpdatePostResponseMaintenanceTypeComponentsTypeItem[] Components { get; set; }
+        public MaintenanceUpdateResponseMaintenanceTypeComponentsTypeItem[] Components { get; set; }
     }
 
-    public class MaintenanceUpdatePostResponseMaintenanceTypeComponentsTypeItem
+    public class MaintenanceUpdateResponseMaintenanceTypeComponentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2954,10 +2858,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Subscribers { get; set; }
 
         [JsonProperty("site")]
-        public MaintenanceUpdatePostResponseMaintenanceTypeComponentsTypeItemSiteType Site { get; set; }
+        public MaintenanceUpdateResponseMaintenanceTypeComponentsTypeItemSiteType Site { get; set; }
     }
 
-    public class MaintenanceUpdatePostResponseMaintenanceTypeComponentsTypeItemSiteType
+    public class MaintenanceUpdateResponseMaintenanceTypeComponentsTypeItemSiteType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2979,39 +2883,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
 
         [JsonProperty("subscribers")]
         public string[] Subscribers { get; set; }
-    }
-
-    public class MaintenanceUpdatePostInput
-    {
-        [JsonProperty("message")]
-        public string Message { get; set; }
-
-        [JsonProperty("components")]
-        public string[] Components { get; set; }
-
-        [JsonProperty("started")]
-        public string Started { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("notify")]
-        public bool? Notify { get; set; }
-
-        [JsonProperty("statuses")]
-        public MaintenanceUpdatePostInputStatusesTypeItem[] Statuses { get; set; }
-    }
-
-    public class MaintenanceUpdatePostInputStatusesTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
     }
 
     public class PageTemplatesGetResponseItem
@@ -3092,7 +2963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Message { get; set; }
     }
 
-    public class TemplatePostResponse
+    public class TemplateResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3140,10 +3011,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Components { get; set; }
 
         [JsonProperty("translations")]
-        public TemplatePostResponseTranslationsType Translations { get; set; }
+        public TemplateResponseTranslationsType Translations { get; set; }
     }
 
-    public class TemplatePostResponseTranslationsType
+    public class TemplateResponseTranslationsType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3152,7 +3023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Message { get; set; }
     }
 
-    public class TemplatePostInput
+    public class TemplateBodyInput
     {
         [JsonProperty("subdomain")]
         public string Subdomain { get; set; }
@@ -3173,10 +3044,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? Notify { get; set; }
 
         [JsonProperty("components")]
-        public TemplatePostInputComponentsTypeItem[] Components { get; set; }
+        public BodyInputComponentsTypeItem[] Components { get; set; }
     }
 
-    public class TemplatePostInputComponentsTypeItem
+    public class BodyInputComponentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3347,7 +3218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Message { get; set; }
     }
 
-    public class TemplatePutInput
+    public class TemplatePutBodyInput
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3365,16 +3236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public bool? Notify { get; set; }
 
         [JsonProperty("components")]
-        public TemplatePutInputComponentsTypeItem[] Components { get; set; }
-    }
-
-    public class TemplatePutInputComponentsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
+        public BodyInputComponentsTypeItem[] Components { get; set; }
     }
 
     public class TeammatesGetResponseItem
@@ -3401,7 +3263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Avatar { get; set; }
     }
 
-    public class TeamMemberPostInput
+    public class TeamMemberBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -3434,7 +3296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string[] Components { get; set; }
     }
 
-    public class SubscriberPostResponse
+    public class SubscriberResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3443,10 +3305,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Email { get; set; }
 
         [JsonProperty("site")]
-        public SubscriberPostResponseSiteType Site { get; set; }
+        public SubscriberResponseSiteType Site { get; set; }
     }
 
-    public class SubscriberPostResponseSiteType
+    public class SubscriberResponseSiteType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3467,7 +3329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         public string Language { get; set; }
     }
 
-    public class SubscriberPostInput
+    public class SubscriberBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }

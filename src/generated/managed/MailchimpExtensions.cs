@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<CreateNewListResponseModel, ApiConnectionActionConfiguration> Newlist(Expression<Func<NewlistInput>> newListRequest)
+        public IBodyWorkflowAction<CreateNewListResponseModel, ApiConnectionActionConfiguration> Newlist(Expression<Func<NewListRequestInput>> newListRequest)
         {
             var __workflow_newListRequest = WorkflowExpression.Compile(newListRequest, nameof(newListRequest), required: true);
             return new DeferredBodyAction<CreateNewListResponseModel, ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<GetAddMembersBatchResponseModel, ApiConnectionActionConfiguration> AddMembers(Expression<Func<string>> listId, Expression<Func<AddMembersInput>> body, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null)
+        public IBodyWorkflowAction<GetAddMembersBatchResponseModel, ApiConnectionActionConfiguration> AddMembers(Expression<Func<string>> listId, Expression<Func<BodyInput>> body, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Addmember(Expression<Func<string>> listId, Expression<Func<AddmemberInput>> newMemberInList)
+        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Addmember(Expression<Func<string>> listId, Expression<Func<NewMemberInListInput>> newMemberInList)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_newMemberInList = WorkflowExpression.Compile(newMemberInList, nameof(newMemberInList), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<CampaignResponseModel, ApiConnectionActionConfiguration> Newcampaign(Expression<Func<NewcampaignV2Input>> newCampaignRequest)
+        public IBodyWorkflowAction<CampaignResponseModel, ApiConnectionActionConfiguration> Newcampaign(Expression<Func<NewCampaignRequestInput>> newCampaignRequest)
         {
             var __workflow_newCampaignRequest = WorkflowExpression.Compile(newCampaignRequest, nameof(newCampaignRequest), required: true);
             return new DeferredBodyAction<CampaignResponseModel, ApiConnectionActionConfiguration>(() =>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
-        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Updatemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<UpdatememberV2Input>> updateMemberInListRequest)
+        public IBodyWorkflowAction<MemberResponseModel, ApiConnectionActionConfiguration> Updatemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<UpdateMemberInListRequestInput>> updateMemberInListRequest)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_memberEmail = WorkflowExpression.Compile(memberEmail, nameof(memberEmail), required: true);
@@ -234,25 +234,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string ContentType { get; set; }
 
         [JsonProperty("recipient")]
-        public Recipient[] List { get; set; }
+        public GetCampaignsRecipientResponse[] List { get; set; }
 
         [JsonProperty("settings")]
-        public SettingsV2 Settings { get; set; }
+        public GetCampaignsSettingsV2Response Settings { get; set; }
 
         [JsonProperty("variate_settings")]
-        public VariateSettings VariateSettings { get; set; }
+        public GetCampaignsVariateSettingsResponse VariateSettings { get; set; }
 
         [JsonProperty("tracking")]
-        public Tracking Tracking { get; set; }
+        public GetCampaignsTrackingResponse Tracking { get; set; }
 
         [JsonProperty("rss_opts")]
-        public RSSOpts RssOpts { get; set; }
+        public GetCampaignsRSSOptsResponse RssOpts { get; set; }
 
         [JsonProperty("ab_split_opts")]
         public ABSplitOpts AbSplitOpts { get; set; }
 
         [JsonProperty("social_card")]
-        public SocialCard SocialCard { get; set; }
+        public GetCampaignsSocialCardResponse SocialCard { get; set; }
 
         [JsonProperty("report_summary")]
         public ReportSummary ReportSummary { get; set; }
@@ -281,16 +281,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Variate
     }
 
-    public class Recipient
+    public class GetCampaignsRecipientResponse
     {
         [JsonProperty("list_id")]
         public string ListId { get; set; }
 
         [JsonProperty("segment_opts")]
-        public SegmentOpts SegmentOpts { get; set; }
+        public GetCampaignsSegmentOptsResponse SegmentOpts { get; set; }
     }
 
-    public class SegmentOpts
+    public class GetCampaignsSegmentOptsResponse
     {
         [JsonProperty("saved_segment_id")]
         public int SavedSegmentId { get; set; }
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string MatchType { get; set; }
     }
 
-    public class SettingsV2
+    public class GetCampaignsSettingsV2Response
     {
         [JsonProperty("subject_line")]
         public string CampaignSubjectLine { get; set; }
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool FacebookComments { get; set; }
     }
 
-    public class VariateSettings
+    public class GetCampaignsVariateSettingsResponse
     {
         [JsonProperty("winner_criteria")]
         public string WinningCriteria { get; set; }
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string[] ReplyToAddresses { get; set; }
     }
 
-    public class Tracking
+    public class GetCampaignsTrackingResponse
     {
         [JsonProperty("opens")]
         public bool Opens { get; set; }
@@ -389,16 +389,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string ClickTaleAnalyticsTracking { get; set; }
 
         [JsonProperty("salesforce")]
-        public Salesforce Salesforce { get; set; }
+        public GetCampaignsSalesforceResponse Salesforce { get; set; }
 
         [JsonProperty("highrise")]
-        public Highrise Highrise { get; set; }
+        public GetCampaignsHighriseResponse Highrise { get; set; }
 
         [JsonProperty("capsule")]
-        public Capsule Capsule { get; set; }
+        public GetCampaignsCapsuleResponse Capsule { get; set; }
     }
 
-    public class Salesforce
+    public class GetCampaignsSalesforceResponse
     {
         [JsonProperty("campaign")]
         public bool SalesforceCampaign { get; set; }
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool SalesforceNote { get; set; }
     }
 
-    public class Highrise
+    public class GetCampaignsHighriseResponse
     {
         [JsonProperty("campaign")]
         public bool HighriseCampaign { get; set; }
@@ -416,29 +416,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool HighriseNote { get; set; }
     }
 
-    public class Capsule
+    public class GetCampaignsCapsuleResponse
     {
         [JsonProperty("notes")]
         public bool CapsuleNote { get; set; }
     }
 
-    public class RSSOpts
+    public class GetCampaignsRSSOptsResponse
     {
         [JsonProperty("feed_url")]
         public string FeedURL { get; set; }
 
         [JsonProperty("frequency")]
-        public RSSOptsFrequencyType Frequency { get; set; }
+        public GetCampaignsRSSOptsFrequencyTypeResponse Frequency { get; set; }
 
         [JsonProperty("constrain_rss_img")]
         public string ConstrainRSSImages { get; set; }
 
         [JsonProperty("schedule")]
-        public Schedule Schedule { get; set; }
+        public GetCampaignsScheduleResponse Schedule { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RSSOptsFrequencyType
+    public enum GetCampaignsRSSOptsFrequencyTypeResponse
     {
         [EnumMember(Value = "")]
         None,
@@ -450,22 +450,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Monthly
     }
 
-    public class Schedule
+    public class GetCampaignsScheduleResponse
     {
         [JsonProperty("hour")]
         public int SendingHour { get; set; }
 
         [JsonProperty("daily_send")]
-        public DailySend DailySend { get; set; }
+        public GetCampaignsDailySendResponse DailySend { get; set; }
 
         [JsonProperty("weekly_send_day")]
-        public ScheduleWeeklySendingDayType WeeklySendingDay { get; set; }
+        public GetCampaignsScheduleWeeklySendingDayTypeResponse WeeklySendingDay { get; set; }
 
         [JsonProperty("monthly_send_date")]
         public double MonthlySendingDay { get; set; }
     }
 
-    public class DailySend
+    public class GetCampaignsDailySendResponse
     {
         [JsonProperty("sunday")]
         public bool Sunday { get; set; }
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ScheduleWeeklySendingDayType
+    public enum GetCampaignsScheduleWeeklySendingDayTypeResponse
     {
         [EnumMember(Value = "")]
         None,
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string SendTimeWinner { get; set; }
     }
 
-    public class SocialCard
+    public class GetCampaignsSocialCardResponse
     {
         [JsonProperty("image_url")]
         public string ImageURL { get; set; }
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string ListName { get; set; }
 
         [JsonProperty("contact")]
-        public Contact Contact { get; set; }
+        public GetListsContactResponse Contact { get; set; }
 
         [JsonProperty("permission_reminder")]
         public string PermissionReminder { get; set; }
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool UseArchiveBar { get; set; }
 
         [JsonProperty("campaign_defaults")]
-        public CampaignDefaults CampaignDefaults { get; set; }
+        public GetListsCampaignDefaultsResponse CampaignDefaults { get; set; }
 
         [JsonProperty("notify_on_subscribe")]
         public string NotifyOnSubscribe { get; set; }
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public Link[] Links { get; set; }
     }
 
-    public class Contact
+    public class GetListsContactResponse
     {
         [JsonProperty("company")]
         public string CompanyName { get; set; }
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string PhoneNumber { get; set; }
     }
 
-    public class CampaignDefaults
+    public class GetListsCampaignDefaultsResponse
     {
         [JsonProperty("from_name")]
         public string SenderSName { get; set; }
@@ -726,11 +726,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Subject { get; set; }
 
         [JsonProperty("language")]
-        public CampaignDefaultsLanguageType Language { get; set; }
+        public GetListsCampaignDefaultsLanguageTypeResponse Language { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CampaignDefaultsLanguageType
+    public enum GetListsCampaignDefaultsLanguageTypeResponse
     {
         [EnumMember(Value = "")]
         None,
@@ -889,13 +889,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string DateOfLastListUnsubscribe { get; set; }
     }
 
-    public class NewlistInput
+    public class NewListRequestInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
         [JsonProperty("contact", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Contact2 Contact { get; set; } = new Contact2();
+        public NewlistContact Contact { get; set; } = new NewlistContact();
 
         [JsonProperty("permission_reminder", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PermissionReminder { get; set; }
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? UseArchiveBar { get; set; }
 
         [JsonProperty("campaign_defaults", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CampaignDefaults2 CampaignDefaults { get; set; } = new CampaignDefaults2();
+        public NewlistCampaignDefaults CampaignDefaults { get; set; } = new NewlistCampaignDefaults();
 
         [JsonProperty("notify_on_subscribe")]
         public string NotifyOnSubscribe { get; set; }
@@ -916,10 +916,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool EmailTypeOption { get; set; } = true;
 
         [JsonProperty("visibility")]
-        public NewlistInputVisibilityType? Visibility { get; set; }
+        public NewListRequestInputVisibilityType? Visibility { get; set; }
     }
 
-    public class Contact2
+    public class NewlistContact
     {
         [JsonProperty("company", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyName { get; set; }
@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string PhoneNumber { get; set; }
     }
 
-    public class CampaignDefaults2
+    public class NewlistCampaignDefaults
     {
         [JsonProperty("from_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SenderSName { get; set; }
@@ -958,11 +958,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Subject { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CampaignDefaultsLanguageType Language { get; set; } = CampaignDefaultsLanguageType.En;
+        public NewlistCampaignDefaultsLanguageType Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp.NewlistCampaignDefaultsLanguageType.En;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewlistInputVisibilityType
+    public enum NewlistCampaignDefaultsLanguageType
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "en")]
+        En,
+        [EnumMember(Value = "ar")]
+        Ar,
+        [EnumMember(Value = "af")]
+        Af,
+        [EnumMember(Value = "be")]
+        Be,
+        [EnumMember(Value = "bg")]
+        Bg,
+        [EnumMember(Value = "ca")]
+        Ca,
+        [EnumMember(Value = "zh")]
+        Zh,
+        [EnumMember(Value = "hr")]
+        Hr,
+        [EnumMember(Value = "cs")]
+        Cs,
+        [EnumMember(Value = "da")]
+        Da,
+        [EnumMember(Value = "nl")]
+        Nl,
+        [EnumMember(Value = "et")]
+        Et,
+        [EnumMember(Value = "fa")]
+        Fa,
+        [EnumMember(Value = "fi")]
+        Fi,
+        [EnumMember(Value = "fr")]
+        Fr,
+        [EnumMember(Value = "fr_CA")]
+        FrCA,
+        [EnumMember(Value = "de")]
+        De,
+        [EnumMember(Value = "el")]
+        El,
+        [EnumMember(Value = "he")]
+        He,
+        [EnumMember(Value = "hi")]
+        Hi,
+        [EnumMember(Value = "hu")]
+        Hu,
+        [EnumMember(Value = "is")]
+        Is,
+        [EnumMember(Value = "id")]
+        Id,
+        [EnumMember(Value = "ga")]
+        Ga,
+        [EnumMember(Value = "it")]
+        It,
+        [EnumMember(Value = "ja")]
+        Ja,
+        [EnumMember(Value = "km")]
+        Km,
+        [EnumMember(Value = "ko")]
+        Ko,
+        [EnumMember(Value = "lv")]
+        Lv,
+        [EnumMember(Value = "lt")]
+        Lt,
+        [EnumMember(Value = "mt")]
+        Mt,
+        [EnumMember(Value = "ms")]
+        Ms,
+        [EnumMember(Value = "mk")]
+        Mk,
+        [EnumMember(Value = "no")]
+        No,
+        [EnumMember(Value = "pl")]
+        Pl,
+        [EnumMember(Value = "pt")]
+        Pt,
+        [EnumMember(Value = "pt_PT")]
+        PtPT,
+        [EnumMember(Value = "ro")]
+        Ro,
+        [EnumMember(Value = "ru")]
+        Ru,
+        [EnumMember(Value = "sr")]
+        Sr,
+        [EnumMember(Value = "sk")]
+        Sk,
+        [EnumMember(Value = "sl")]
+        Sl,
+        [EnumMember(Value = "es")]
+        Es,
+        [EnumMember(Value = "es_ES")]
+        EsES,
+        [EnumMember(Value = "sw")]
+        Sw,
+        [EnumMember(Value = "sv")]
+        Sv,
+        [EnumMember(Value = "ta")]
+        Ta,
+        [EnumMember(Value = "th")]
+        Th,
+        [EnumMember(Value = "tr")]
+        Tr,
+        [EnumMember(Value = "uk")]
+        Uk,
+        [EnumMember(Value = "vi")]
+        Vi
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum NewListRequestInputVisibilityType
     {
         [EnumMember(Value = "")]
         None,
@@ -984,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public int ErrorCount { get; set; }
     }
 
-    public class AddMembersInput
+    public class BodyInput
     {
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewMemberInListRequest[] Members { get; set; }
@@ -996,13 +1105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     public class NewMemberInListRequest
     {
         [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewMemberInListRequestEmailTypeType? EmailType { get; set; } = NewMemberInListRequestEmailTypeType.Html;
+        public NewMemberInListRequestEmailTypeType? EmailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp.NewMemberInListRequestEmailTypeType.Html;
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewMemberInListRequestStatusType Status { get; set; }
 
         [JsonProperty("merge_fields")]
-        public FirstAndLastName MergeFields { get; set; }
+        public AddMembersFirstAndLastName MergeFields { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -1011,7 +1120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? VIP { get; set; }
 
         [JsonProperty("location")]
-        public Location2 Location { get; set; }
+        public AddMembersLocation Location { get; set; }
 
         [JsonProperty("email_address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
@@ -1043,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Pending
     }
 
-    public class FirstAndLastName
+    public class AddMembersFirstAndLastName
     {
         [JsonProperty("FNAME")]
         public string FirstName { get; set; }
@@ -1052,7 +1161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string LastName { get; set; }
     }
 
-    public class Location2
+    public class AddMembersLocation
     {
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }
@@ -1091,7 +1200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Status { get; set; }
 
         [JsonProperty("merge_fields")]
-        public FirstAndLastName MergeFields { get; set; }
+        public AddmemberFirstAndLastNameResponse MergeFields { get; set; }
 
         [JsonProperty("stats")]
         public Stats Stats { get; set; }
@@ -1124,7 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string EmailClient { get; set; }
 
         [JsonProperty("location")]
-        public Location Location { get; set; }
+        public AddmemberLocationResponse Location { get; set; }
 
         [JsonProperty("last_note")]
         public LastNote LastNote { get; set; }
@@ -1136,7 +1245,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public Link[] Links { get; set; }
     }
 
-    public class Location
+    public class AddmemberFirstAndLastNameResponse
+    {
+        [JsonProperty("FNAME")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("LNAME")]
+        public string LastName { get; set; }
+    }
+
+    public class AddmemberLocationResponse
     {
         [JsonProperty("latitude")]
         public double Latitude { get; set; }
@@ -1160,16 +1278,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Note { get; set; }
     }
 
-    public class AddmemberInput
+    public class NewMemberInListInput
     {
         [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddmemberInputEmailTypeType? EmailType { get; set; } = AddmemberInputEmailTypeType.Html;
+        public NewMemberInListInputEmailTypeType? EmailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp.NewMemberInListInputEmailTypeType.Html;
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddmemberInputStatusType Status { get; set; }
+        public NewMemberInListInputStatusType Status { get; set; }
 
         [JsonProperty("merge_fields")]
-        public FirstAndLastName MergeFields { get; set; }
+        public AddMembersFirstAndLastName MergeFields { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -1178,14 +1296,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? VIP { get; set; }
 
         [JsonProperty("location")]
-        public Location2 Location { get; set; }
+        public AddMembersLocation Location { get; set; }
 
         [JsonProperty("email_address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddmemberInputEmailTypeType
+    public enum NewMemberInListInputEmailTypeType
     {
         [EnumMember(Value = "")]
         None,
@@ -1196,7 +1314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddmemberInputStatusType
+    public enum NewMemberInListInputStatusType
     {
         [EnumMember(Value = "")]
         None,
@@ -1210,32 +1328,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Pending
     }
 
-    public class NewcampaignV2Input
+    public class NewCampaignRequestInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewcampaignV2InputCampaignTypeType CampaignType { get; set; }
+        public NewCampaignRequestInputCampaignTypeType CampaignType { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Recipient2 Recipients { get; set; }
+        public NewcampaignRecipient Recipients { get; set; }
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SettingsV22 Settings { get; set; }
+        public NewcampaignSettingsV2 Settings { get; set; }
 
         [JsonProperty("variate_settings")]
-        public VariateSettings2 VariateSettings { get; set; }
+        public NewcampaignVariateSettings VariateSettings { get; set; }
 
         [JsonProperty("tracking")]
-        public Tracking2 Tracking { get; set; }
+        public NewcampaignTracking Tracking { get; set; }
 
         [JsonProperty("rss_opts")]
-        public RSSOpts2 RssOpts { get; set; }
+        public NewcampaignRSSOpts RssOpts { get; set; }
 
         [JsonProperty("social_card")]
-        public SocialCard SocialCard { get; set; }
+        public NewcampaignSocialCard SocialCard { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewcampaignV2InputCampaignTypeType
+    public enum NewCampaignRequestInputCampaignTypeType
     {
         [EnumMember(Value = "")]
         None,
@@ -1251,16 +1369,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Variate
     }
 
-    public class Recipient2
+    public class NewcampaignRecipient
     {
         [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListId { get; set; }
 
         [JsonProperty("segment_opts")]
-        public SegmentOpts2 SegmentOpts { get; set; }
+        public NewcampaignSegmentOpts SegmentOpts { get; set; }
     }
 
-    public class SegmentOpts2
+    public class NewcampaignSegmentOpts
     {
         [JsonProperty("saved_segment_id")]
         public int? SavedSegmentId { get; set; }
@@ -1269,7 +1387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string MatchType { get; set; }
     }
 
-    public class SettingsV22
+    public class NewcampaignSettingsV2
     {
         [JsonProperty("subject_line", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignSubjectLine { get; set; }
@@ -1311,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? FacebookComments { get; set; }
     }
 
-    public class VariateSettings2
+    public class NewcampaignVariateSettings
     {
         [JsonProperty("winner_criteria")]
         public string WinningCriteria { get; set; }
@@ -1335,7 +1453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string[] ReplyToAddresses { get; set; }
     }
 
-    public class Tracking2
+    public class NewcampaignTracking
     {
         [JsonProperty("opens")]
         public bool? Opens { get; set; }
@@ -1359,16 +1477,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string ClickTaleAnalyticsTracking { get; set; }
 
         [JsonProperty("salesforce")]
-        public Salesforce2 Salesforce { get; set; }
+        public NewcampaignSalesforce Salesforce { get; set; }
 
         [JsonProperty("highrise")]
-        public Highrise2 Highrise { get; set; }
+        public NewcampaignHighrise Highrise { get; set; }
 
         [JsonProperty("capsule")]
-        public Capsule2 Capsule { get; set; }
+        public NewcampaignCapsule Capsule { get; set; }
     }
 
-    public class Salesforce2
+    public class NewcampaignSalesforce
     {
         [JsonProperty("campaign")]
         public bool? SalesforceCampaign { get; set; }
@@ -1377,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? SalesforceNote { get; set; }
     }
 
-    public class Highrise2
+    public class NewcampaignHighrise
     {
         [JsonProperty("campaign")]
         public bool? HighriseCampaign { get; set; }
@@ -1386,43 +1504,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? HighriseNote { get; set; }
     }
 
-    public class Capsule2
+    public class NewcampaignCapsule
     {
         [JsonProperty("notes")]
         public bool? CapsuleNote { get; set; }
     }
 
-    public class RSSOpts2
+    public class NewcampaignRSSOpts
     {
         [JsonProperty("feed_url")]
         public string FeedURL { get; set; }
 
         [JsonProperty("frequency")]
-        public RSSOptsFrequencyType? Frequency { get; set; }
+        public NewcampaignRSSOptsFrequencyType? Frequency { get; set; }
 
         [JsonProperty("constrain_rss_img")]
         public string ConstrainRSSImages { get; set; }
 
         [JsonProperty("schedule")]
-        public Schedule2 Schedule { get; set; }
+        public NewcampaignSchedule Schedule { get; set; }
     }
 
-    public class Schedule2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum NewcampaignRSSOptsFrequencyType
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "daily")]
+        Daily,
+        [EnumMember(Value = "weekly")]
+        Weekly,
+        [EnumMember(Value = "monthly")]
+        Monthly
+    }
+
+    public class NewcampaignSchedule
     {
         [JsonProperty("hour")]
         public int? SendingHour { get; set; }
 
         [JsonProperty("daily_send")]
-        public DailySend2 DailySend { get; set; }
+        public NewcampaignDailySend DailySend { get; set; }
 
         [JsonProperty("weekly_send_day")]
-        public ScheduleWeeklySendingDayType? WeeklySendingDay { get; set; }
+        public NewcampaignScheduleWeeklySendingDayType? WeeklySendingDay { get; set; }
 
         [JsonProperty("monthly_send_date")]
         public double? MonthlySendingDay { get; set; }
     }
 
-    public class DailySend2
+    public class NewcampaignDailySend
     {
         [JsonProperty("sunday")]
         public bool? Sunday { get; set; }
@@ -1446,16 +1577,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? Saturday { get; set; }
     }
 
-    public class UpdatememberV2Input
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum NewcampaignScheduleWeeklySendingDayType
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "sunday")]
+        Sunday,
+        [EnumMember(Value = "monday")]
+        Monday,
+        [EnumMember(Value = "tuesday")]
+        Tuesday,
+        [EnumMember(Value = "wednesday")]
+        Wednesday,
+        [EnumMember(Value = "thursday")]
+        Thursday,
+        [EnumMember(Value = "friday")]
+        Friday,
+        [EnumMember(Value = "saturday")]
+        Saturday
+    }
+
+    public class NewcampaignSocialCard
+    {
+        [JsonProperty("image_url")]
+        public string ImageURL { get; set; }
+
+        [JsonProperty("description")]
+        public string CampaignDescription { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+    }
+
+    public class UpdateMemberInListRequestInput
     {
         [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdatememberV2InputEmailTypeType? EmailType { get; set; } = UpdatememberV2InputEmailTypeType.Html;
+        public UpdateMemberInListRequestInputEmailTypeType? EmailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp.UpdateMemberInListRequestInputEmailTypeType.Html;
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdatememberV2InputStatusType Status { get; set; }
+        public UpdateMemberInListRequestInputStatusType Status { get; set; }
 
         [JsonProperty("merge_fields")]
-        public FirstAndLastName MergeFields { get; set; }
+        public AddMembersFirstAndLastName MergeFields { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -1464,11 +1628,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? VIP { get; set; }
 
         [JsonProperty("location")]
-        public Location2 Location { get; set; }
+        public AddMembersLocation Location { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatememberV2InputEmailTypeType
+    public enum UpdateMemberInListRequestInputEmailTypeType
     {
         [EnumMember(Value = "")]
         None,
@@ -1479,7 +1643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatememberV2InputStatusType
+    public enum UpdateMemberInListRequestInputStatusType
     {
         [EnumMember(Value = "")]
         None,
@@ -1523,7 +1687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Status { get; set; }
 
         [JsonProperty("merge_fields")]
-        public FirstAndLastName MergeFields { get; set; }
+        public AddmemberFirstAndLastNameResponse MergeFields { get; set; }
 
         [JsonProperty("stats")]
         public Stats Stats { get; set; }
@@ -1556,7 +1720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string EmailClient { get; set; }
 
         [JsonProperty("location")]
-        public Location Location { get; set; }
+        public AddmemberLocationResponse Location { get; set; }
 
         [JsonProperty("last_note")]
         public LastNote LastNote { get; set; }

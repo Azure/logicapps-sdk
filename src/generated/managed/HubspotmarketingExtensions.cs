@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FormsCreate(Expression<Func<FormsCreateInput>> data = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FormsCreate(Expression<Func<FormsCreateDataInput>> data = null)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FormsUpdate(Expression<Func<string>> formId, Expression<Func<FormsUpdateInput>> data)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FormsUpdate(Expression<Func<string>> formId, Expression<Func<FormsUpdateDataInput>> data)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEventsUpdateCreateOrUpdate(Expression<Func<string>> externalEventId, Expression<Func<MarketingEventsUpdateCreateOrUpdateInput>> data)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEventsUpdateCreateOrUpdate(Expression<Func<string>> externalEventId, Expression<Func<MarketingEventsUpdateCreateOrUpdateDataInput>> data)
         {
             var __workflow_externalEventId = WorkflowExpression.Compile(externalEventId, nameof(externalEventId), required: true);
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEmailsUpdate(Expression<Func<string>> id, Expression<Func<MarketingEmailsUpdateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEmailsUpdate(Expression<Func<string>> id, Expression<Func<MarketingEmailsUpdateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEmailsCreate(Expression<Func<MarketingEmailsCreateInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MarketingEmailsCreate(Expression<Func<MarketingEmailsCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
     {
     }
 
-    public class FormsCreateInput
+    public class FormsCreateDataInput
     {
         [JsonProperty("formType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormType { get; set; } = "hubspot";
@@ -252,16 +252,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string ArchivedAt { get; set; }
 
         [JsonProperty("fieldGroups")]
-        public FormsCreateInputFieldGroupsTypeItem[] FieldGroups { get; set; }
+        public DataInputFieldGroupsTypeItem[] FieldGroups { get; set; }
 
         [JsonProperty("configuration")]
-        public FormsCreateInputConfigurationType Configuration { get; set; }
+        public DataInputConfigurationType Configuration { get; set; }
 
         [JsonProperty("displayOptions")]
-        public FormsCreateInputDisplayOptionsType DisplayOptions { get; set; }
+        public DataInputDisplayOptionsType DisplayOptions { get; set; }
     }
 
-    public class FormsCreateInputFieldGroupsTypeItem
+    public class DataInputFieldGroupsTypeItem
     {
         [JsonProperty("groupType")]
         public string GroupType { get; set; }
@@ -273,10 +273,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string RichText { get; set; }
 
         [JsonProperty("fields")]
-        public FormsCreateInputFieldGroupsTypeItemFieldsTypeItem[] Fields { get; set; }
+        public DataInputFieldGroupsTypeItemFieldsTypeItem[] Fields { get; set; }
     }
 
-    public class FormsCreateInputFieldGroupsTypeItemFieldsTypeItem
+    public class DataInputFieldGroupsTypeItemFieldsTypeItem
     {
         [JsonProperty("fieldType")]
         public string FieldType { get; set; }
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public bool? Hidden { get; set; }
 
         [JsonProperty("dependentFields")]
-        public FormsCreateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItem[] DependentFields { get; set; }
+        public DataInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItem[] DependentFields { get; set; }
 
         [JsonProperty("placeholder")]
         public string Placeholder { get; set; }
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string DefaultValue { get; set; }
 
         [JsonProperty("validation")]
-        public FormsCreateInputFieldGroupsTypeItemFieldsTypeItemValidationType Validation { get; set; }
+        public DataInputFieldGroupsTypeItemFieldsTypeItemValidationType Validation { get; set; }
 
         [JsonProperty("useCountryCodeSelect")]
         public bool? UseCountryCodeSelect { get; set; }
@@ -318,19 +318,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string[] DefaultValues { get; set; }
 
         [JsonProperty("options")]
-        public FormsCreateInputFieldGroupsTypeItemFieldsTypeItemOptionsTypeItem[] Options { get; set; }
+        public DataInputFieldGroupsTypeItemFieldsTypeItemOptionsTypeItem[] Options { get; set; }
 
         [JsonProperty("allowMultipleFiles")]
         public bool? AllowMultipleFiles { get; set; }
     }
 
-    public class FormsCreateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItem
+    public class DataInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItem
     {
         [JsonProperty("dependentCondition")]
-        public FormsCreateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItemDependentConditionType DependentCondition { get; set; }
+        public DataInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItemDependentConditionType DependentCondition { get; set; }
     }
 
-    public class FormsCreateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItemDependentConditionType
+    public class DataInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItemDependentConditionType
     {
         [JsonProperty("operator")]
         public string Operator { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string RangeEnd { get; set; }
     }
 
-    public class FormsCreateInputFieldGroupsTypeItemFieldsTypeItemValidationType
+    public class DataInputFieldGroupsTypeItemFieldsTypeItemValidationType
     {
         [JsonProperty("blockedEmailDomains")]
         public string[] BlockedEmailDomains { get; set; }
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public int? MaxAllowedDigits { get; set; }
     }
 
-    public class FormsCreateInputFieldGroupsTypeItemFieldsTypeItemOptionsTypeItem
+    public class DataInputFieldGroupsTypeItemFieldsTypeItemOptionsTypeItem
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public int? DisplayOrder { get; set; }
     }
 
-    public class FormsCreateInputConfigurationType
+    public class DataInputConfigurationType
     {
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public bool? Cloneable { get; set; }
 
         [JsonProperty("postSubmitAction")]
-        public FormsCreateInputConfigurationTypePostSubmitActionType PostSubmitAction { get; set; }
+        public DataInputConfigurationTypePostSubmitActionType PostSubmitAction { get; set; }
 
         [JsonProperty("editable")]
         public bool? Editable { get; set; }
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public bool? AllowLinkToResetKnownValues { get; set; }
     }
 
-    public class FormsCreateInputConfigurationTypePostSubmitActionType
+    public class DataInputConfigurationTypePostSubmitActionType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string Value { get; set; }
     }
 
-    public class FormsCreateInputDisplayOptionsType
+    public class DataInputDisplayOptionsType
     {
         [JsonProperty("renderRawHtml")]
         public bool? RenderRawHtml { get; set; }
@@ -435,13 +435,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string SubmitButtonText { get; set; }
 
         [JsonProperty("style")]
-        public FormsCreateInputDisplayOptionsTypeStyleType Style { get; set; }
+        public DataInputDisplayOptionsTypeStyleType Style { get; set; }
 
         [JsonProperty("cssClass")]
         public string CssClass { get; set; }
     }
 
-    public class FormsCreateInputDisplayOptionsTypeStyleType
+    public class DataInputDisplayOptionsTypeStyleType
     {
         [JsonProperty("fontFamily")]
         public string FontFamily { get; set; }
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string SubmitSize { get; set; }
     }
 
-    public class FormsUpdateInput
+    public class FormsUpdateDataInput
     {
         [JsonProperty("formType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormType { get; set; } = "hubspot";
@@ -504,241 +504,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string ArchivedAt { get; set; }
 
         [JsonProperty("fieldGroups")]
-        public FormsUpdateInputFieldGroupsTypeItem[] FieldGroups { get; set; }
+        public DataInputFieldGroupsTypeItem[] FieldGroups { get; set; }
 
         [JsonProperty("configuration")]
-        public FormsUpdateInputConfigurationType Configuration { get; set; }
+        public DataInputConfigurationType Configuration { get; set; }
 
         [JsonProperty("displayOptions")]
-        public FormsUpdateInputDisplayOptionsType DisplayOptions { get; set; }
+        public DataInputDisplayOptionsType DisplayOptions { get; set; }
     }
 
-    public class FormsUpdateInputFieldGroupsTypeItem
-    {
-        [JsonProperty("groupType")]
-        public string GroupType { get; set; }
-
-        [JsonProperty("richTextType")]
-        public string RichTextType { get; set; }
-
-        [JsonProperty("richText")]
-        public string RichText { get; set; }
-
-        [JsonProperty("fields")]
-        public FormsUpdateInputFieldGroupsTypeItemFieldsTypeItem[] Fields { get; set; }
-    }
-
-    public class FormsUpdateInputFieldGroupsTypeItemFieldsTypeItem
-    {
-        [JsonProperty("fieldType")]
-        public string FieldType { get; set; }
-
-        [JsonProperty("objectTypeId")]
-        public string ObjectTypeId { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("required")]
-        public bool? Required { get; set; }
-
-        [JsonProperty("hidden")]
-        public bool? Hidden { get; set; }
-
-        [JsonProperty("dependentFields")]
-        public FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItem[] DependentFields { get; set; }
-
-        [JsonProperty("placeholder")]
-        public string Placeholder { get; set; }
-
-        [JsonProperty("defaultValue")]
-        public string DefaultValue { get; set; }
-
-        [JsonProperty("validation")]
-        public FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemValidationType Validation { get; set; }
-
-        [JsonProperty("useCountryCodeSelect")]
-        public bool? UseCountryCodeSelect { get; set; }
-
-        [JsonProperty("defaultValues")]
-        public string[] DefaultValues { get; set; }
-
-        [JsonProperty("options")]
-        public FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemOptionsTypeItem[] Options { get; set; }
-
-        [JsonProperty("allowMultipleFiles")]
-        public bool? AllowMultipleFiles { get; set; }
-    }
-
-    public class FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItem
-    {
-        [JsonProperty("dependentCondition")]
-        public FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItemDependentConditionType DependentCondition { get; set; }
-    }
-
-    public class FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemDependentFieldsTypeItemDependentConditionType
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-
-        [JsonProperty("rangeStart")]
-        public string RangeStart { get; set; }
-
-        [JsonProperty("rangeEnd")]
-        public string RangeEnd { get; set; }
-    }
-
-    public class FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemValidationType
-    {
-        [JsonProperty("blockedEmailDomains")]
-        public string[] BlockedEmailDomains { get; set; }
-
-        [JsonProperty("useDefaultBlockList")]
-        public bool? UseDefaultBlockList { get; set; }
-
-        [JsonProperty("minAllowedDigits")]
-        public int? MinAllowedDigits { get; set; }
-
-        [JsonProperty("maxAllowedDigits")]
-        public int? MaxAllowedDigits { get; set; }
-    }
-
-    public class FormsUpdateInputFieldGroupsTypeItemFieldsTypeItemOptionsTypeItem
-    {
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("displayOrder")]
-        public int? DisplayOrder { get; set; }
-    }
-
-    public class FormsUpdateInputConfigurationType
-    {
-        [JsonProperty("language")]
-        public string Language { get; set; }
-
-        [JsonProperty("cloneable")]
-        public bool? Cloneable { get; set; }
-
-        [JsonProperty("postSubmitAction")]
-        public FormsUpdateInputConfigurationTypePostSubmitActionType PostSubmitAction { get; set; }
-
-        [JsonProperty("editable")]
-        public bool? Editable { get; set; }
-
-        [JsonProperty("archivable")]
-        public bool? Archivable { get; set; }
-
-        [JsonProperty("recaptchaEnabled")]
-        public bool? RecaptchaEnabled { get; set; }
-
-        [JsonProperty("notifyContactOwner")]
-        public bool? NotifyContactOwner { get; set; }
-
-        [JsonProperty("notifyRecipients")]
-        public string[] NotifyRecipients { get; set; }
-
-        [JsonProperty("createNewContactForNewEmail")]
-        public bool? CreateNewContactForNewEmail { get; set; }
-
-        [JsonProperty("prePopulateKnownValues")]
-        public bool? PrePopulateKnownValues { get; set; }
-
-        [JsonProperty("allowLinkToResetKnownValues")]
-        public bool? AllowLinkToResetKnownValues { get; set; }
-    }
-
-    public class FormsUpdateInputConfigurationTypePostSubmitActionType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class FormsUpdateInputDisplayOptionsType
-    {
-        [JsonProperty("renderRawHtml")]
-        public bool? RenderRawHtml { get; set; }
-
-        [JsonProperty("theme")]
-        public string Theme { get; set; }
-
-        [JsonProperty("submitButtonText")]
-        public string SubmitButtonText { get; set; }
-
-        [JsonProperty("style")]
-        public FormsUpdateInputDisplayOptionsTypeStyleType Style { get; set; }
-
-        [JsonProperty("cssClass")]
-        public string CssClass { get; set; }
-    }
-
-    public class FormsUpdateInputDisplayOptionsTypeStyleType
-    {
-        [JsonProperty("fontFamily")]
-        public string FontFamily { get; set; }
-
-        [JsonProperty("backgroundWidth")]
-        public string BackgroundWidth { get; set; }
-
-        [JsonProperty("labelTextColor")]
-        public string LabelTextColor { get; set; }
-
-        [JsonProperty("labelTextSize")]
-        public string LabelTextSize { get; set; }
-
-        [JsonProperty("helpTextColor")]
-        public string HelpTextColor { get; set; }
-
-        [JsonProperty("helpTextSize")]
-        public string HelpTextSize { get; set; }
-
-        [JsonProperty("legalConsentTextColor")]
-        public string LegalConsentTextColor { get; set; }
-
-        [JsonProperty("legalConsentTextSize")]
-        public string LegalConsentTextSize { get; set; }
-
-        [JsonProperty("submitColor")]
-        public string SubmitColor { get; set; }
-
-        [JsonProperty("submitAlignment")]
-        public string SubmitAlignment { get; set; }
-
-        [JsonProperty("submitFontColor")]
-        public string SubmitFontColor { get; set; }
-
-        [JsonProperty("submitSize")]
-        public string SubmitSize { get; set; }
-    }
-
-    public class MarketingEventsUpdateCreateOrUpdateInput
+    public class MarketingEventsUpdateCreateOrUpdateDataInput
     {
         [JsonProperty("eventName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventName { get; set; }
 
         [JsonProperty("eventType")]
-        public MarketingEventsUpdateCreateOrUpdateInputEventTypeType? EventType { get; set; }
+        public DataInputEventTypeType? EventType { get; set; }
 
         [JsonProperty("startDateTime")]
         public string StartDateTime { get; set; }
@@ -759,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public bool? EventCancelled { get; set; }
 
         [JsonProperty("customProperties")]
-        public MarketingEventsUpdateCreateOrUpdateInputCustomPropertiesTypeItem[] CustomProperties { get; set; }
+        public DataInputCustomPropertiesTypeItem[] CustomProperties { get; set; }
 
         [JsonProperty("externalAccountId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExternalAccountId { get; set; }
@@ -769,14 +550,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MarketingEventsUpdateCreateOrUpdateInputEventTypeType
+    public enum DataInputEventTypeType
     {
         WEBINAR,
         CONFERENCE,
         WORKSHOP
     }
 
-    public class MarketingEventsUpdateCreateOrUpdateInputCustomPropertiesTypeItem
+    public class DataInputCustomPropertiesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -812,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string RequestId { get; set; }
     }
 
-    public class MarketingEmailsUpdateInput
+    public class MarketingEmailsUpdateBodyInput
     {
         [JsonProperty("fromName")]
         public string FromName { get; set; }
@@ -824,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public string Subject { get; set; }
     }
 
-    public class MarketingEmailsCreateInput
+    public class MarketingEmailsCreateBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     public class Junglemail365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsEmailsResponse, ApiConnectionActionConfiguration> EmailsGet(Expression<Func<string>> requestJobId, Expression<Func<requestEmailTypeInput>> requestEmailType)
+        public IBodyWorkflowAction<JsEmailsResponse, ApiConnectionActionConfiguration> EmailsGet(Expression<Func<string>> requestJobId, Expression<Func<RequestEmailTypeInput>> requestEmailType)
         {
             var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
             var __workflow_requestEmailType = WorkflowExpression.Compile(requestEmailType, nameof(requestEmailType), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JobApprove(Expression<Func<JobApproveInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JobApprove(Expression<Func<JobApproveRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsCreateJobResponse, ApiConnectionActionConfiguration> JobCreate(Expression<Func<JobCreateInput>> request)
+        public IBodyWorkflowAction<JsCreateJobResponse, ApiConnectionActionConfiguration> JobCreate(Expression<Func<JobCreateRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JsCreateJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JobReject(Expression<Func<JobRejectInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JobReject(Expression<Func<JobApproveRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsTrackerLogResponse, ApiConnectionActionConfiguration> TrackerLogGet(Expression<Func<string>> requestJobId, Expression<Func<requestDataTypeInput>> requestDataType)
+        public IBodyWorkflowAction<JsTrackerLogResponse, ApiConnectionActionConfiguration> TrackerLogGet(Expression<Func<string>> requestJobId, Expression<Func<RequestDataTypeInput>> requestDataType)
         {
             var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
             var __workflow_requestDataType = WorkflowExpression.Compile(requestDataType, nameof(requestDataType), required: true);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
     public class Junglemail365Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobCompleted(Expression<Func<WebhookJobCompletedInput>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobCompleted(Expression<Func<WebhookJobCompletedRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             });
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobStarted(Expression<Func<WebhookJobStartedInput>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobStarted(Expression<Func<WebhookJobCompletedRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             });
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobSumitted(Expression<Func<WebhookJobSumittedInput>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration> WebhookJobSumitted(Expression<Func<WebhookJobCompletedRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestEmailTypeInput
+    public enum RequestEmailTypeInput
     {
         Sent,
         Skipped,
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         Completed
     }
 
-    public class JobApproveInput
+    public class JobApproveRequestInput
     {
         [JsonProperty("comments")]
         public string Comments { get; set; }
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public bool Success { get; set; }
     }
 
-    public class JobCreateInput
+    public class JobCreateRequestInput
     {
         [JsonProperty("adGroups")]
         public string Office365Groups { get; set; }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string EmailContent { get; set; }
 
         [JsonProperty("emailContentType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JobCreateInputEmailContentTypeType? EmailContentType { get; set; } = JobCreateInputEmailContentTypeType.Template;
+        public RequestInputEmailContentTypeType? EmailContentType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365.RequestInputEmailContentTypeType.Template;
 
         [JsonProperty("emailSubject")]
         public string EmailSubject { get; set; }
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string ExchangeGroups { get; set; }
 
         [JsonProperty("jobExecutionType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JobCreateInputWhenToSendTypeType? WhenToSendType { get; set; } = JobCreateInputWhenToSendTypeType.Now;
+        public RequestInputWhenToSendTypeType? WhenToSendType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365.RequestInputWhenToSendTypeType.Now;
 
         [JsonProperty("jobScheduleTime")]
         public string WhenToSend { get; set; }
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string RecipientFilterView { get; set; }
 
         [JsonProperty("recipientType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JobCreateInputRecipientSourceType RecipientSource { get; set; } = JobCreateInputRecipientSourceType.Emails;
+        public RequestInputRecipientSourceType RecipientSource { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365.RequestInputRecipientSourceType.Emails;
 
         [JsonProperty("removeDuplicates", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RemoveDuplicates { get; set; } = true;
@@ -317,21 +317,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JobCreateInputEmailContentTypeType
+    public enum RequestInputEmailContentTypeType
     {
         Template,
         Html
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JobCreateInputWhenToSendTypeType
+    public enum RequestInputWhenToSendTypeType
     {
         Now,
         AtSpecifiedTime
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JobCreateInputRecipientSourceType
+    public enum RequestInputRecipientSourceType
     {
         Emails,
         List,
@@ -555,15 +555,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string URL { get; set; }
     }
 
-    public class JobRejectInput
-    {
-        [JsonProperty("comments")]
-        public string Comments { get; set; }
-
-        [JsonProperty("secret", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Secret { get; set; }
-    }
-
     public class JsTrackerLogResponse
     {
         [JsonProperty("trackerLog")]
@@ -616,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestDataTypeInput
+    public enum RequestDataTypeInput
     {
         OpensUnique,
         OpensTotal,
@@ -666,25 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string WebhookId { get; set; }
     }
 
-    public class WebhookJobCompletedInput
-    {
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-
-        [JsonProperty("triggerUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TriggerUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookJobStartedInput
-    {
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-
-        [JsonProperty("triggerUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TriggerUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookJobSumittedInput
+    public class WebhookJobCompletedRequestInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }

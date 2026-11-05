@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> SendInvitation(Expression<Func<SendInvitationInput>> body)
+        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> SendInvitation(Expression<Func<SendInvitationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApiResponse, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<DisassociateMemberInput>> body = null)
+        public IBodyWorkflowAction<ApiResponse, ApiConnectionActionConfiguration> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<DisassociateMemberBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         public string Message { get; set; }
     }
 
-    public class SendInvitationInput
+    public class SendInvitationBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CardTemplateId { get; set; }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         public string Extension { get; set; }
     }
 
-    public class DisassociateMemberInput
+    public class DisassociateMemberBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }

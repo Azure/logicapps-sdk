@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration> CreateInviteeNoShow(Expression<Func<CreateInviteeNoShowInput>> body = null)
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration> CreateInviteeNoShow(Expression<Func<CreateInviteeNoShowBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateInviteeNoShowResponse, ApiConnectionActionConfiguration>(() =>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscription(Expression<Func<CreateWebhookSubscriptionInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscription(Expression<Func<CreateWebhookSubscriptionBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<CreateWebhookSubscriptionRoutingFormSubmissionInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<CreateWebhookSubscriptionRoutingFormSubmissionBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string CreatedAt { get; set; }
     }
 
-    public class CreateInviteeNoShowInput
+    public class CreateInviteeNoShowBodyInput
     {
         [JsonProperty("invitee", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Invitee { get; set; }
@@ -359,20 +359,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string SalesforceUuid { get; set; }
     }
 
-    public class CreateWebhookSubscriptionInput
+    public class CreateWebhookSubscriptionBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookSubscriptionInputEventsTypeItem[] Events { get; set; }
+        public CreateWebhookSubscriptionBodyInputEventsTypeItem[] Events { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Scope { get; set; } = "organization";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookSubscriptionInputEventsTypeItem
+    public enum CreateWebhookSubscriptionBodyInputEventsTypeItem
     {
         [EnumMember(Value = "invitee.created")]
         InviteeCreated,
@@ -474,20 +474,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string SalesforceUuid { get; set; }
     }
 
-    public class CreateWebhookSubscriptionRoutingFormSubmissionInput
+    public class CreateWebhookSubscriptionRoutingFormSubmissionBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookSubscriptionRoutingFormSubmissionInputEventsTypeItem[] Events { get; set; }
+        public CreateWebhookSubscriptionRoutingFormSubmissionBodyInputEventsTypeItem[] Events { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Scope { get; set; } = "organization";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookSubscriptionRoutingFormSubmissionInputEventsTypeItem
+    public enum CreateWebhookSubscriptionRoutingFormSubmissionBodyInputEventsTypeItem
     {
         [EnumMember(Value = "routing_form_submission.created")]
         RoutingFormSubmissionCreated

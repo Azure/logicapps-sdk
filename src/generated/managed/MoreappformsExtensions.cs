@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
     public class MoreappformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moreappforms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> formId, Expression<Func<CreateTaskInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> formId, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_formId != null)
                     callPayload.Headers["formId"] = ExpressionConverter.Convert(__workflow_formId);
-                callPayload.Body = new NewSubmissionInput().ToJToken();
+                callPayload.Body = new NewSubmissionBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_formId != null)
                     callPayload.Headers["formId"] = ExpressionConverter.Convert(__workflow_formId);
-                callPayload.Body = new TaskFulfilledInput().ToJToken();
+                callPayload.Body = new TaskFulfilledBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("recipients")]
         public string[] Recipients { get; set; }
@@ -114,16 +114,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
         public JToken Data { get; set; }
 
         [JsonProperty("publishInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskInputPublishInfoType PublishInfo { get; set; } = new CreateTaskInputPublishInfoType();
+        public BodyInputPublishInfoType PublishInfo { get; set; } = new BodyInputPublishInfoType();
     }
 
-    public class CreateTaskInputPublishInfoType
+    public class BodyInputPublishInfoType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "IMMEDIATE";
     }
 
-    public class NewSubmissionInput
+    public class NewSubmissionBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
         internal string Status { get; set; } = "ACTIVE";
     }
 
-    public class TaskFulfilledInput
+    public class TaskFulfilledBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

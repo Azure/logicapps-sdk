@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Translate(Expression<Func<string>> to, Expression<Func<TranslateInput>> body, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<textTypeInput>> textType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Translate(Expression<Func<string>> to, Expression<Func<BodyInput>> body, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<TextTypeInput>> textType = null)
         {
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<Language, ApiConnectionActionConfiguration> Detect(Expression<Func<DetectInput>> body)
+        public IBodyWorkflowAction<Language, ApiConnectionActionConfiguration> Detect(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Language, ApiConnectionActionConfiguration>(() =>
@@ -78,25 +78,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         public string LanguageName { get; set; }
     }
 
-    public class TranslateInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum textTypeInput
+    public enum TextTypeInput
     {
         [EnumMember(Value = "plain")]
         Plain,
         [EnumMember(Value = "html")]
         Html
-    }
-
-    public class DetectInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
     }
 }
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> siteUrl, Expression<Func<CreateProjectInput>> proj)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> siteUrl, Expression<Func<ProjInput>> proj)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_proj = WorkflowExpression.Compile(proj, nameof(proj), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<CreateTaskInput>> task)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<TaskInput>> task)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<EnterpriseResource, ApiConnectionActionConfiguration> CreateResource(Expression<Func<string>> siteUrl, Expression<Func<CreateResourceInput>> resource)
+        public IBodyWorkflowAction<EnterpriseResource, ApiConnectionActionConfiguration> CreateResource(Expression<Func<string>> siteUrl, Expression<Func<ResourceInput>> resource)
         {
             var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         public string WinProjVersion { get; set; }
     }
 
-    public class CreateProjectInput
+    public class ProjInput
     {
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         public bool IsMilestoneTask { get; set; }
     }
 
-    public class CreateTaskInput
+    public class TaskInput
     {
         [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
         public TaskParameters Parameters { get; set; }
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
         public string TerminationDate { get; set; }
     }
 
-    public class CreateResourceInput
+    public class ResourceInput
     {
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceName { get; set; }

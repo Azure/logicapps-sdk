@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serpapi
     public class SerpapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serpapi")]
-        public IBodyWorkflowAction<GoogleSearchResponse, ApiConnectionActionConfiguration> GoogleSearch(Expression<Func<string>> q, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<int>> radius = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> cr = null, Expression<Func<string>> lr = null, Expression<Func<string>> tbs = null, Expression<Func<safeInput>> safe = null, Expression<Func<nfprInput>> nfpr = null, Expression<Func<filterInput>> filter = null, Expression<Func<tbmInput>> tbm = null, Expression<Func<int>> start = null, Expression<Func<deviceInput>> device = null, Expression<Func<bool>> noCache = null, Expression<Func<bool>> async = null, Expression<Func<outputInput>> output = null, Expression<Func<string>> ludocid = null, Expression<Func<string>> kgmid = null, Expression<Func<string>> lsig = null, Expression<Func<string>> si = null, Expression<Func<string>> ibp = null, Expression<Func<string>> uds = null, Expression<Func<bool>> zeroTrace = null)
+        public IBodyWorkflowAction<GoogleSearchResponse, ApiConnectionActionConfiguration> GoogleSearch(Expression<Func<string>> q, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<int>> radius = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> cr = null, Expression<Func<string>> lr = null, Expression<Func<string>> tbs = null, Expression<Func<SafeInput>> safe = null, Expression<Func<NfprInput>> nfpr = null, Expression<Func<FilterInput>> filter = null, Expression<Func<TbmInput>> tbm = null, Expression<Func<int>> start = null, Expression<Func<DeviceInput>> device = null, Expression<Func<bool>> noCache = null, Expression<Func<bool>> async = null, Expression<Func<OutputInput>> output = null, Expression<Func<string>> ludocid = null, Expression<Func<string>> kgmid = null, Expression<Func<string>> lsig = null, Expression<Func<string>> si = null, Expression<Func<string>> ibp = null, Expression<Func<string>> uds = null, Expression<Func<bool>> zeroTrace = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serpapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum safeInput
+    public enum SafeInput
     {
         [EnumMember(Value = "active")]
         Active,
@@ -187,20 +187,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serpapi
         Off
     }
 
-    public enum nfprInput
+    public enum NfprInput
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum filterInput
+    public enum FilterInput
     {
         _0 = 0,
         _1 = 1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tbmInput
+    public enum TbmInput
     {
         [EnumMember(Value = "isch")]
         Isch,
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serpapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum deviceInput
+    public enum DeviceInput
     {
         [EnumMember(Value = "desktop")]
         Desktop,
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serpapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum outputInput
+    public enum OutputInput
     {
         [EnumMember(Value = "json")]
         Json,

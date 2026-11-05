@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     public class VisualstudioteamservicesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<WorkItemSearchResponse, ApiConnectionActionConfiguration> SearchWorkItemsAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<SearchWorkItemsAsyncInput>> searchRequest)
+        public IBodyWorkflowAction<WorkItemSearchResponse, ApiConnectionActionConfiguration> SearchWorkItemsAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<SearchRequestInput>> searchRequest)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListBuildResult, ApiConnectionActionConfiguration> ListBuilds(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> definitions = null, Expression<Func<string>> buildNumber = null, Expression<Func<string>> branchName = null, Expression<Func<resultFilterInput>> resultFilter = null, Expression<Func<statusFilterInput>> statusFilter = null, Expression<Func<reasonFilterInput>> reasonFilter = null, Expression<Func<string>> requestedFor = null, Expression<Func<string>> minTime = null, Expression<Func<string>> maxTime = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<VstsListBuildResult, ApiConnectionActionConfiguration> ListBuilds(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> definitions = null, Expression<Func<string>> buildNumber = null, Expression<Func<string>> branchName = null, Expression<Func<ListBuildsResultFilterInput>> resultFilter = null, Expression<Func<StatusFilterInput>> statusFilter = null, Expression<Func<ReasonFilterInput>> reasonFilter = null, Expression<Func<string>> requestedFor = null, Expression<Func<string>> minTime = null, Expression<Func<string>> maxTime = null, Expression<Func<int>> top = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<BuildResult, ApiConnectionActionConfiguration> QueueNewBuild(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> buildDefId, Expression<Func<QueueNewBuildInput>> buildDetails = null)
+        public IBodyWorkflowAction<BuildResult, ApiConnectionActionConfiguration> QueueNewBuild(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> buildDefId, Expression<Func<BuildDetailsInput>> buildDetails = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<Release, ApiConnectionActionConfiguration> CreateRelease(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> releaseDefId, Expression<Func<CreateReleaseInput>> releaseStartMetadata)
+        public IBodyWorkflowAction<Release, ApiConnectionActionConfiguration> CreateRelease(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> releaseDefId, Expression<Func<ReleaseStartMetadataInput>> releaseStartMetadata)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> account, Expression<Func<HttpRequestInput>> parameters)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> account, Expression<Func<ParametersInput>> parameters)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListWorkItemField, ApiConnectionActionConfiguration> ListWorkItemFieldsAsync(Expression<Func<string>> account, Expression<Func<string>> project = null, Expression<Func<expandInput>> expand = null)
+        public IBodyWorkflowAction<VstsListWorkItemField, ApiConnectionActionConfiguration> ListWorkItemFieldsAsync(Expression<Func<string>> account, Expression<Func<string>> project = null, Expression<Func<ListWorkItemFieldsAsyncExpandInput>> expand = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: false);
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<PatchWorkItemResponse, ApiConnectionActionConfiguration> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<UpdateWorkItemInput>> workItem, Expression<Func<string>> project = null, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<PatchWorkItemResponse, ApiConnectionActionConfiguration> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<WorkItemInput>> workItem, Expression<Func<string>> project = null, Expression<Func<string>> type = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<WorkItemDetailsV2Response, ApiConnectionActionConfiguration> GetWorkItemDetailsV2Async(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id, Expression<Func<string>> asOf = null, Expression<Func<expandInput2>> expand = null)
+        public IBodyWorkflowAction<WorkItemDetailsV2Response, ApiConnectionActionConfiguration> GetWorkItemDetailsV2Async(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id, Expression<Func<string>> asOf = null, Expression<Func<GetWorkItemDetailsV2AsyncExpandInput>> expand = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<WorkItemCommentsResponse, ApiConnectionActionConfiguration> GetWorkItemCommentsAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<int>> top = null, Expression<Func<orderInput>> order = null, Expression<Func<bool>> includeDeleted = null, Expression<Func<expandInput3>> expand = null)
+        public IBodyWorkflowAction<WorkItemCommentsResponse, ApiConnectionActionConfiguration> GetWorkItemCommentsAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<int>> top = null, Expression<Func<OrderInput>> order = null, Expression<Func<bool>> includeDeleted = null, Expression<Func<GetWorkItemCommentsAsyncExpandInput>> expand = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<WorkItemComment, ApiConnectionActionConfiguration> CreateWorkItemCommentAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<CreateWorkItemCommentAsyncInput>> comment, Expression<Func<string>> type = null, Expression<Func<formatInput>> format = null)
+        public IBodyWorkflowAction<WorkItemComment, ApiConnectionActionConfiguration> CreateWorkItemCommentAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<CommentInput>> comment, Expression<Func<string>> type = null, Expression<Func<FormatInput>> format = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<PatchWorkItemResponse, ApiConnectionActionConfiguration> AddWorkItemLinkAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<int>> workItemId, Expression<Func<AddWorkItemLinkAsyncInput>> linkRequest)
+        public IBodyWorkflowAction<PatchWorkItemResponse, ApiConnectionActionConfiguration> AddWorkItemLinkAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<int>> workItemId, Expression<Func<AddWorkItemLinkAsyncLinkRequestInput>> linkRequest)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<PatchWorkItemResponse, ApiConnectionActionConfiguration> DeleteWorkItemLinkAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<int>> workItemId, Expression<Func<DeleteWorkItemLinkAsyncInput>> linkRequest)
+        public IBodyWorkflowAction<PatchWorkItemResponse, ApiConnectionActionConfiguration> DeleteWorkItemLinkAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<int>> workItemId, Expression<Func<DeleteWorkItemLinkAsyncLinkRequestInput>> linkRequest)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<WorkItemComment, ApiConnectionActionConfiguration> UpdateWorkItemCommentAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<int>> commentId, Expression<Func<UpdateWorkItemCommentAsyncInput>> comment, Expression<Func<formatInput>> format = null)
+        public IBodyWorkflowAction<WorkItemComment, ApiConnectionActionConfiguration> UpdateWorkItemCommentAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<int>> commentId, Expression<Func<CommentInput>> comment, Expression<Func<FormatInput>> format = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class VisualstudioteamservicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VstsListBuildResult, ApiConnectionTriggerConfiguration> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<resultFilterInput2>> resultFilter = null, Expression<Func<string>> definitions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListBuildResult, ApiConnectionTriggerConfiguration> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<OnBuildCompletedResultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
             });
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse, ApiConnectionTriggerConfiguration> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<AreaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<IterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         public string[] Highlights { get; set; }
     }
 
-    public class SearchWorkItemsAsyncInput
+    public class SearchRequestInput
     {
         [JsonProperty("searchText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchText { get; set; }
@@ -1360,7 +1360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum resultFilterInput
+    public enum ListBuildsResultFilterInput
     {
         [EnumMember(Value = "succeeded")]
         Succeeded,
@@ -1373,7 +1373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusFilterInput
+    public enum StatusFilterInput
     {
         [EnumMember(Value = "none")]
         None,
@@ -1392,7 +1392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum reasonFilterInput
+    public enum ReasonFilterInput
     {
         [EnumMember(Value = "none")]
         None,
@@ -1422,7 +1422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         All
     }
 
-    public class QueueNewBuildInput
+    public class BuildDetailsInput
     {
         [JsonProperty("sourceBranch")]
         public string SourceBranch { get; set; }
@@ -1591,18 +1591,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         Abandoned
     }
 
-    public class CreateReleaseInput
+    public class ReleaseStartMetadataInput
     {
         public string Description { get; set; }
         public bool? IsDraft { get; set; }
-        public CreateReleaseInputReasonType? Reason { get; set; }
+        public ReleaseStartMetadataInputReasonType? Reason { get; set; }
 
         [JsonProperty("Variables")]
         public ConfigurationVariable[] ReleaseVariables { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateReleaseInputReasonType
+    public enum ReleaseStartMetadataInputReasonType
     {
         None,
         Manual,
@@ -1619,10 +1619,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         public string Value { get; set; }
     }
 
-    public class HttpRequestInput
+    public class ParametersInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public HttpRequestInputMethodType Method { get; set; } = HttpRequestInputMethodType.GET;
+        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices.ParametersInputMethodType.GET;
 
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelativeURI { get; set; }
@@ -1634,7 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HttpRequestInputMethodType
+    public enum ParametersInputMethodType
     {
         GET,
         POST,
@@ -1688,7 +1688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum expandInput
+    public enum ListWorkItemFieldsAsyncExpandInput
     {
         None,
         Extension,
@@ -1876,7 +1876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         public string AssignedTo { get; set; }
     }
 
-    public class UpdateWorkItemInput
+    public class WorkItemInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1897,7 +1897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         public string LinkURL { get; set; }
 
         [JsonProperty("linkType")]
-        public UpdateWorkItemInputLinkTypeType? LinkType { get; set; }
+        public WorkItemInputLinkTypeType? LinkType { get; set; }
 
         [JsonProperty("linkComment")]
         public string LinkComment { get; set; }
@@ -1910,7 +1910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateWorkItemInputLinkTypeType
+    public enum WorkItemInputLinkTypeType
     {
         [EnumMember(Value = "Dependency-forward")]
         DependencyForward,
@@ -1999,7 +1999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum expandInput2
+    public enum GetWorkItemDetailsV2AsyncExpandInput
     {
         None,
         Relations,
@@ -2215,7 +2215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -2224,7 +2224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum expandInput3
+    public enum GetWorkItemCommentsAsyncExpandInput
     {
         [EnumMember(Value = "none")]
         None,
@@ -2238,14 +2238,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         All
     }
 
-    public class CreateWorkItemCommentAsyncInput
+    public class CommentInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommentText { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "markdown")]
         Markdown,
@@ -2253,10 +2253,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         Html
     }
 
-    public class AddWorkItemLinkAsyncInput
+    public class AddWorkItemLinkAsyncLinkRequestInput
     {
         [JsonProperty("linkType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddWorkItemLinkAsyncInputLinkTypeType LinkType { get; set; } = AddWorkItemLinkAsyncInputLinkTypeType.SystemLinkTypesRelated;
+        public LinkRequestInputLinkTypeType LinkType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices.LinkRequestInputLinkTypeType.SystemLinkTypesRelated;
 
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetURL { get; set; }
@@ -2266,7 +2266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddWorkItemLinkAsyncInputLinkTypeType
+    public enum LinkRequestInputLinkTypeType
     {
         [EnumMember(Value = "System.LinkTypes.Related")]
         SystemLinkTypesRelated,
@@ -2301,7 +2301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         Hyperlink
     }
 
-    public class DeleteWorkItemLinkAsyncInput
+    public class DeleteWorkItemLinkAsyncLinkRequestInput
     {
         [JsonProperty("linkId")]
         public int? RelationId { get; set; }
@@ -2310,11 +2310,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         public string WorkItemLinkToRemove { get; set; }
 
         [JsonProperty("linkType")]
-        public DeleteWorkItemLinkAsyncInputLinkRelationTypeType? LinkRelationType { get; set; }
+        public LinkRequestInputLinkRelationTypeType? LinkRelationType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeleteWorkItemLinkAsyncInputLinkRelationTypeType
+    public enum LinkRequestInputLinkRelationTypeType
     {
         [EnumMember(Value = "System.LinkTypes.Related")]
         SystemLinkTypesRelated,
@@ -2347,12 +2347,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [EnumMember(Value = "Microsoft.VSTS.Common.Affects-Reverse")]
         MicrosoftVSTSCommonAffectsReverse,
         Hyperlink
-    }
-
-    public class UpdateWorkItemCommentAsyncInput
-    {
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CommentText { get; set; }
     }
 
     public class VstsListQueryHierarchyItem
@@ -2648,7 +2642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum resultFilterInput2
+    public enum OnBuildCompletedResultFilterInput
     {
         [EnumMember(Value = "")]
         None,
@@ -3047,14 +3041,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum areaPathComparisonInput
+    public enum AreaPathComparisonInput
     {
         Equals,
         Under
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum iterationPathComparisonInput
+    public enum IterationPathComparisonInput
     {
         Equals,
         Under

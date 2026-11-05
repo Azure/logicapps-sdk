@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
     public class PersonrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantCreateResponse, ApiConnectionActionConfiguration> ApiApplicantCreate(Expression<Func<ApiApplicantCreateInput>> body = null)
+        public IBodyWorkflowAction<ApiApplicantCreateResponse, ApiConnectionActionConfiguration> ApiApplicantCreate(Expression<Func<ApiApplicantCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiApplicantCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiVerificationlinkCreateResponse, ApiConnectionActionConfiguration> ApiVerificationlinkCreate(Expression<Func<ApiVerificationlinkCreateInput>> body = null)
+        public IBodyWorkflowAction<ApiVerificationlinkCreateResponse, ApiConnectionActionConfiguration> ApiVerificationlinkCreate(Expression<Func<ApiVerificationlinkCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiVerificationlinkCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ApiDocumentUpload(Expression<Func<ApiDocumentUploadInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApiDocumentUpload(Expression<Func<ApiDocumentUploadBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantStatusResponse, ApiConnectionActionConfiguration> ApiApplicantStatus(Expression<Func<ApiApplicantStatusInput>> body = null)
+        public IBodyWorkflowAction<ApiApplicantStatusResponse, ApiConnectionActionConfiguration> ApiApplicantStatus(Expression<Func<ApiApplicantDetailsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiApplicantStatusResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantDetailsResponse, ApiConnectionActionConfiguration> ApiApplicantDetails(Expression<Func<ApiApplicantDetailsInput>> body = null)
+        public IBodyWorkflowAction<ApiApplicantDetailsResponse, ApiConnectionActionConfiguration> ApiApplicantDetails(Expression<Func<ApiApplicantDetailsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiApplicantDetailsResponse, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ApiRequestApplicantCheck(Expression<Func<ApiRequestApplicantCheckInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApiRequestApplicantCheck(Expression<Func<ApiApplicantDetailsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         public string ApplicantStatus { get; set; }
     }
 
-    public class ApiApplicantCreateInput
+    public class ApiApplicantCreateBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -173,13 +173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         public string VerificationLink { get; set; }
     }
 
-    public class ApiVerificationlinkCreateInput
+    public class ApiVerificationlinkCreateBodyInput
     {
         [JsonProperty("applicant")]
         public string Applicant { get; set; }
     }
 
-    public class ApiDocumentUploadInput
+    public class ApiDocumentUploadBodyInput
     {
         [JsonProperty("applicantId")]
         public string ApplicantId { get; set; }
@@ -194,10 +194,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         public string DocCountryISO { get; set; }
 
         [JsonProperty("docFile")]
-        public ApiDocumentUploadInputDocFileType DocFile { get; set; }
+        public BodyInputDocFileType DocFile { get; set; }
     }
 
-    public class ApiDocumentUploadInputDocFileType
+    public class BodyInputDocFileType
     {
         [JsonProperty("filename")]
         public string Filename { get; set; }
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         public string Id { get; set; }
     }
 
-    public class ApiApplicantStatusInput
+    public class ApiApplicantDetailsBodyInput
     {
         [JsonProperty("applicantId")]
         public string ApplicantId { get; set; }
@@ -330,18 +330,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
 
         [JsonProperty("status")]
         public string Status { get; set; }
-    }
-
-    public class ApiApplicantDetailsInput
-    {
-        [JsonProperty("applicantId")]
-        public string ApplicantId { get; set; }
-    }
-
-    public class ApiRequestApplicantCheckInput
-    {
-        [JsonProperty("applicantId")]
-        public string ApplicantId { get; set; }
     }
 }
 

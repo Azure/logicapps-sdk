@@ -16,23 +16,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 
     public class DataactivatorpreviewTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString, Expression<Func<CreatePowerAutomateWorkflowInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString, FlowRecurrence recurrence = null)
         {
             var __workflow_connectionString = WorkflowExpression.Compile(connectionString, nameof(connectionString), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/powerAutomateFlow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Connection-String"] = ExpressionConverter.Convert(__workflow_connectionString);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class CreatePowerAutomateWorkflowInput
+    public class BodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";

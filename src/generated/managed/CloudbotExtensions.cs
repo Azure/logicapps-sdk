@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
     public class CloudbotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFilename, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> fileContents)
+        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> xCbotFilename, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> fileContents)
         {
             var __workflow_xCbotContentLanguage = WorkflowExpression.Compile(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: true);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadFile(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> @ref)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadFile(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> @ref)
         {
             var __workflow_xCbotContentLanguage = WorkflowExpression.Compile(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: true);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudbot")]
-        public IBodyWorkflowAction<ExecuteBotResponse, ApiConnectionActionConfiguration> ExecuteBot(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, Expression<Func<ExecuteBotInput>> body)
+        public IBodyWorkflowAction<ExecuteBotResponse, ApiConnectionActionConfiguration> ExecuteBot(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, Expression<Func<ExecuteBotBodyInput>> body)
         {
             var __workflow_xCbotContentLanguage = WorkflowExpression.Compile(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: true);
@@ -69,12 +69,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
 
     public class CloudbotTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BotDoneResponse, ApiConnectionTriggerConfiguration> BotDone(Expression<Func<xCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, Expression<Func<BotDoneInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BotDoneResponse, ApiConnectionTriggerConfiguration> BotDone(Expression<Func<XCbotContentLanguageInput>> xCbotContentLanguage, Expression<Func<string>> publicId, Expression<Func<string>> botId, FlowRecurrence recurrence = null)
         {
             var __workflow_xCbotContentLanguage = WorkflowExpression.Compile(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<BotDoneResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/bots/{1}/subscriptions", __workflow_publicId.WithUrlEncoding(1), __workflow_botId.WithUrlEncoding(1)));
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-cbot-content-language"] = ExpressionConverter.Convert(__workflow_xCbotContentLanguage);
                 callPayload.Headers["x-cbot-content-type"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BotDoneBodyInput().ToJToken();
                 return new ApiConnectionTrigger<BotDoneResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum xCbotContentLanguageInput
+    public enum XCbotContentLanguageInput
     {
         [EnumMember(Value = "ja")]
         Ja,
@@ -172,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public string OutputJSON { get; set; }
     }
 
-    public class ExecuteBotInput
+    public class ExecuteBotBodyInput
     {
         [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Async { get; set; }
@@ -223,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public string UnsubscribeEndpoint { get; set; }
     }
 
-    public class BotDoneInput
+    public class BotDoneBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "onended";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
     public class BulksmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<SendSmsMessageInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<BodyInput>> body)
         {
             var __workflow_autoUnicode = WorkflowExpression.Compile(autoUnicode, nameof(autoUnicode), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
     {
     }
 
-    public class SendSmsMessageInput
+    public class BodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }

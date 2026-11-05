@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<SendEmailV3Input>> emailMessage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<EmailMessageInput>> emailMessage)
         {
             var __workflow_emailMessage = WorkflowExpression.Compile(emailMessage, nameof(emailMessage), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
     {
     }
 
-    public class SendEmailV3Input
+    public class EmailMessageInput
     {
         public string From { get; set; }
         public string To { get; set; }
@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
         public string Subject { get; set; }
         public string Body { get; set; }
         public string Bcc { get; set; }
-        public SendEmailV3InputImportanceType? Importance { get; set; }
+        public EmailMessageInputImportanceType? Importance { get; set; }
         public string ReadReceipt { get; set; }
         public string DeliveryReceipt { get; set; }
         public AttachmentV2[] Attachments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendEmailV3InputImportanceType
+    public enum EmailMessageInputImportanceType
     {
         Normal,
         Low,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
     public class LeapaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImagesGetResponseItem[], ApiConnectionActionConfiguration> ImagesGet(Expression<Func<modelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<ImagesGetResponseItem[], ApiConnectionActionConfiguration> ImagesGet(Expression<Func<ModelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_onlyFinished = WorkflowExpression.Compile(onlyFinished, nameof(onlyFinished), required: false);
@@ -35,23 +35,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImagePostResponse, ApiConnectionActionConfiguration> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<ImagePostInput>> body = null)
+        public IBodyWorkflowAction<ImageResponse, ApiConnectionActionConfiguration> Image(Expression<Func<ModelIdInput>> modelId, Expression<Func<ImageBodyInput>> body = null)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ImagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/images/models/{0}/inferences", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ImagePostResponse>(callPayload);
+                return new ApiConnectionAction<ImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
+        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<ModelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImageDelete(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImageDelete(Expression<Func<ModelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
@@ -79,17 +79,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelPostResponse, ApiConnectionActionConfiguration> Model(Expression<Func<ModelPostInput>> body = null)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> Model(Expression<Func<ModelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ModelPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ModelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/images/models/new";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ModelPostResponse>(callPayload);
+                return new ApiConnectionAction<ModelResponse>(callPayload);
             });
         }
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelGetResponse, ApiConnectionActionConfiguration> ModelGet(Expression<Func<modelIdInput>> modelId)
+        public IBodyWorkflowAction<ModelGetResponse, ApiConnectionActionConfiguration> ModelGet(Expression<Func<ModelIdInput>> modelId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelGetResponse, ApiConnectionActionConfiguration>(() =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<ModelDeleteResponse, ApiConnectionActionConfiguration> ModelDelete(Expression<Func<modelIdInput>> modelId)
+        public IBodyWorkflowAction<ModelDeleteResponse, ApiConnectionActionConfiguration> ModelDelete(Expression<Func<ModelIdInput>> modelId)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelDeleteResponse, ApiConnectionActionConfiguration>(() =>
@@ -144,17 +144,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
-        public IBodyWorkflowAction<MusicPostResponse, ApiConnectionActionConfiguration> Music(Expression<Func<MusicPostInput>> body = null)
+        public IBodyWorkflowAction<MusicResponse, ApiConnectionActionConfiguration> Music(Expression<Func<MusicBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MusicPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MusicResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/music";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MusicPostResponse>(callPayload);
+                return new ApiConnectionAction<MusicResponse>(callPayload);
             });
         }
 
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modelIdInput
+    public enum ModelIdInput
     {
         [EnumMember(Value = "26a1a203-3a46-42cb-8cfa-f4de075907d8")]
         SDXL,
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         FutureDiffusion
     }
 
-    public class ImagePostResponse
+    public class ImageResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public int Steps { get; set; }
 
         [JsonProperty("images")]
-        public ImagePostResponseImagesTypeItem[] Images { get; set; }
+        public ImageResponseImagesTypeItem[] Images { get; set; }
 
         [JsonProperty("modelId")]
         public string[] ModelId { get; set; }
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string UpscalingOption { get; set; }
     }
 
-    public class ImagePostResponseImagesTypeItem
+    public class ImageResponseImagesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string Uri { get; set; }
     }
 
-    public class ImagePostInput
+    public class ImageBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string CreatedAt { get; set; }
     }
 
-    public class ModelPostResponse
+    public class ModelResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string[] ImageSamples { get; set; }
     }
 
-    public class ModelPostInput
+    public class ModelBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string MediaUri { get; set; }
     }
 
-    public class MusicPostResponse
+    public class MusicResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -567,20 +567,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string MediaUri { get; set; }
     }
 
-    public class MusicPostInput
+    public class MusicBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MusicPostInputModeType Mode { get; set; } = MusicPostInputModeType.Melody;
+        public BodyInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip.BodyInputModeType.Melody;
 
         [JsonProperty("duration", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Duration { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MusicPostInputModeType
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "melody")]
         Melody,

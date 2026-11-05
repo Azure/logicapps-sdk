@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
     public class SosinventoryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sosinventoryip")]
-        public IBodyWorkflowAction<ItemResponse, ApiConnectionActionConfiguration> Item(Expression<Func<string>> location = null, Expression<Func<string>> tags = null, Expression<Func<typeInput>> type = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<ItemResponse, ApiConnectionActionConfiguration> Item(Expression<Func<string>> location = null, Expression<Func<string>> tags = null, Expression<Func<TypeInput>> type = null, Expression<Func<int>> limit = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
             var __workflow_tags = WorkflowExpression.Compile(tags, nameof(tags), required: false);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sosinventoryip")]
-        public IBodyWorkflowAction<LotResponse, ApiConnectionActionConfiguration> Lot(Expression<Func<string>> location = null, Expression<Func<archivedInput>> archived = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<LotResponse, ApiConnectionActionConfiguration> Lot(Expression<Func<string>> location = null, Expression<Func<ArchivedInput>> archived = null, Expression<Func<LotStatusInput>> status = null, Expression<Func<int>> limit = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sosinventoryip")]
-        public IBodyWorkflowAction<SalesOrderResponse, ApiConnectionActionConfiguration> SalesOrder(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<statusInput2>> status = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<double>> id = null)
+        public IBodyWorkflowAction<SalesOrderResponse, ApiConnectionActionConfiguration> SalesOrder(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<PickTicketStatusInput>> status = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<double>> id = null)
         {
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sosinventoryip")]
-        public IBodyWorkflowAction<Pickticket, ApiConnectionActionConfiguration> UpdatePickTicket(Expression<Func<int>> id, Expression<Func<UpdatePickTicketInput>> pickticket = null)
+        public IBodyWorkflowAction<Pickticket, ApiConnectionActionConfiguration> UpdatePickTicket(Expression<Func<int>> id, Expression<Func<PickticketInput>> pickticket = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_pickticket = WorkflowExpression.Compile(pickticket, nameof(pickticket), required: false);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sosinventoryip")]
-        public IBodyWorkflowAction<PickTicketResponse, ApiConnectionActionConfiguration> PickTicket(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<string>> summary = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<statusInput3>> status = null)
+        public IBodyWorkflowAction<PickTicketResponse, ApiConnectionActionConfiguration> PickTicket(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<string>> summary = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<PickTicketStatusInput>> status = null)
         {
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "Inventory Item")]
         InventoryItem,
@@ -583,14 +583,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum archivedInput
+    public enum ArchivedInput
     {
         Yes,
         No
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum LotStatusInput
     {
         [EnumMember(Value = "expired")]
         Expired,
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput2
+    public enum PickTicketStatusInput
     {
         [EnumMember(Value = "open")]
         Open,
@@ -1353,7 +1353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string TrackingNumber { get; set; }
 
         [JsonProperty("linkedTransaction")]
-        public Linkedtransaction LinkedTransaction { get; set; }
+        public PickTicketLinkedtransactionResponse LinkedTransaction { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -1437,7 +1437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class Linkedtransaction
+    public class PickTicketLinkedtransactionResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1578,7 +1578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInput
+    public class PickticketInput
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1599,28 +1599,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Date { get; set; }
 
         [JsonProperty("customer")]
-        public UpdatePickTicketInputCustomerType Customer { get; set; }
+        public PickticketInputCustomerType Customer { get; set; }
 
         [JsonProperty("location")]
-        public UpdatePickTicketInputLocationType Location { get; set; }
+        public PickticketInputLocationType Location { get; set; }
 
         [JsonProperty("channel")]
-        public UpdatePickTicketInputChannelType Channel { get; set; }
+        public PickticketInputChannelType Channel { get; set; }
 
         [JsonProperty("priority")]
-        public UpdatePickTicketInputPriorityType Priority { get; set; }
+        public PickticketInputPriorityType Priority { get; set; }
 
         [JsonProperty("assignedToUser")]
-        public UpdatePickTicketInputAssignedToUserType AssignedToUser { get; set; }
+        public PickticketInputAssignedToUserType AssignedToUser { get; set; }
 
         [JsonProperty("shippingMethod")]
-        public UpdatePickTicketInputShippingMethodType ShippingMethod { get; set; }
+        public PickticketInputShippingMethodType ShippingMethod { get; set; }
 
         [JsonProperty("trackingNumber")]
         public string TrackingNumber { get; set; }
 
         [JsonProperty("linkedTransaction")]
-        public Linkedtransaction2 LinkedTransaction { get; set; }
+        public UpdatePickTicketLinkedtransaction LinkedTransaction { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -1629,7 +1629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string CustomerNotes { get; set; }
 
         [JsonProperty("customFields")]
-        public UpdatePickTicketInputCustomFieldsTypeItem[] CustomFields { get; set; }
+        public PickticketInputCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("pickBy")]
         public string PickBy { get; set; }
@@ -1647,10 +1647,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public bool? HasSignature { get; set; }
 
         [JsonProperty("lines")]
-        public UpdatePickTicketInputLinesTypeItem[] Lines { get; set; }
+        public PickticketInputLinesTypeItem[] Lines { get; set; }
     }
 
-    public class UpdatePickTicketInputCustomerType
+    public class PickticketInputCustomerType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1659,7 +1659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputLocationType
+    public class PickticketInputLocationType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1668,7 +1668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputChannelType
+    public class PickticketInputChannelType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1677,7 +1677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputPriorityType
+    public class PickticketInputPriorityType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1686,7 +1686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputAssignedToUserType
+    public class PickticketInputAssignedToUserType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1695,7 +1695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputShippingMethodType
+    public class PickticketInputShippingMethodType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1704,7 +1704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class Linkedtransaction2
+    public class UpdatePickTicketLinkedtransaction
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1719,7 +1719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public int? Linenumber { get; set; }
     }
 
-    public class UpdatePickTicketInputCustomFieldsTypeItem
+    public class PickticketInputCustomFieldsTypeItem
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1734,7 +1734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string DataType { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItem
+    public class PickticketInputLinesTypeItem
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1743,19 +1743,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public int? LineNumber { get; set; }
 
         [JsonProperty("item")]
-        public UpdatePickTicketInputLinesTypeItemItemType Item { get; set; }
+        public PickticketInputLinesTypeItemItemType Item { get; set; }
 
         [JsonProperty("class")]
         public string Class { get; set; }
 
         [JsonProperty("job")]
-        public UpdatePickTicketInputLinesTypeItemJobType Job { get; set; }
+        public PickticketInputLinesTypeItemJobType Job { get; set; }
 
         [JsonProperty("workcenter")]
-        public UpdatePickTicketInputLinesTypeItemWorkcenterType Workcenter { get; set; }
+        public PickticketInputLinesTypeItemWorkcenterType Workcenter { get; set; }
 
         [JsonProperty("tax")]
-        public UpdatePickTicketInputLinesTypeItemTaxType Tax { get; set; }
+        public PickticketInputLinesTypeItemTaxType Tax { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1776,13 +1776,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Volumeunit { get; set; }
 
         [JsonProperty("uom")]
-        public UpdatePickTicketInputLinesTypeItemUomType Uom { get; set; }
+        public PickticketInputLinesTypeItemUomType Uom { get; set; }
 
         [JsonProperty("lot")]
-        public UpdatePickTicketInputLinesTypeItemLotType Lot { get; set; }
+        public PickticketInputLinesTypeItemLotType Lot { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItemItemType
+    public class PickticketInputLinesTypeItemItemType
     {
         [JsonProperty("id")]
         public double? Id { get; set; }
@@ -1791,7 +1791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItemJobType
+    public class PickticketInputLinesTypeItemJobType
     {
         [JsonProperty("id")]
         public double? Id { get; set; }
@@ -1800,7 +1800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItemWorkcenterType
+    public class PickticketInputLinesTypeItemWorkcenterType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1809,16 +1809,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItemTaxType
+    public class PickticketInputLinesTypeItemTaxType
     {
         [JsonProperty("taxable")]
         public bool? Taxable { get; set; }
 
         [JsonProperty("taxCode")]
-        public UpdatePickTicketInputLinesTypeItemTaxTypeTaxCodeType TaxCode { get; set; }
+        public PickticketInputLinesTypeItemTaxTypeTaxCodeType TaxCode { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItemTaxTypeTaxCodeType
+    public class PickticketInputLinesTypeItemTaxTypeTaxCodeType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1827,7 +1827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItemUomType
+    public class PickticketInputLinesTypeItemUomType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1836,7 +1836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string Name { get; set; }
     }
 
-    public class UpdatePickTicketInputLinesTypeItemLotType
+    public class PickticketInputLinesTypeItemLotType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1855,15 +1855,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
 
         [JsonProperty("data")]
         public Pickticket[] Data { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput3
-    {
-        [EnumMember(Value = "open")]
-        Open,
-        [EnumMember(Value = "closed")]
-        Closed
     }
 }
 

@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactCreate(Expression<Func<string>> accountId, Expression<Func<ContactCreateInput>> body = null)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactCreate(Expression<Func<string>> accountId, Expression<Func<ContactCreateBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<ContactUpdateInput>> body = null)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<ContactCreateBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_contactid = WorkflowExpression.Compile(contactid, nameof(contactid), required: true);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<PushCampaignResponse, ApiConnectionActionConfiguration> CampaignPush(Expression<Func<string>> accountId, Expression<Func<CampaignPushInput>> body)
+        public IBodyWorkflowAction<PushCampaignResponse, ApiConnectionActionConfiguration> CampaignPush(Expression<Func<string>> accountId, Expression<Func<CampaignPushBodyInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -104,10 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
     public class TruedialogsmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> IncomingSMSReceived(Expression<Func<string>> accountId, Expression<Func<IncomingSMSReceivedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> IncomingSMSReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback", __workflow_accountId.WithUrlEncoding(1)));
@@ -115,15 +114,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new IncomingSMSReceivedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> KeywordReceived(Expression<Func<string>> accountId, Expression<Func<KeywordReceivedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> KeywordReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-1", __workflow_accountId.WithUrlEncoding(1)));
@@ -131,15 +129,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new KeywordReceivedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> StopReceived(Expression<Func<string>> accountId, Expression<Func<StopReceivedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> StopReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-6", __workflow_accountId.WithUrlEncoding(1)));
@@ -147,15 +144,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new StopReceivedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> DeliveryNoticeReceived(Expression<Func<string>> accountId, Expression<Func<DeliveryNoticeReceivedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> DeliveryNoticeReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-12", __workflow_accountId.WithUrlEncoding(1)));
@@ -163,15 +159,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new DeliveryNoticeReceivedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> InvalidTargets(Expression<Func<string>> accountId, Expression<Func<InvalidTargetsInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration> InvalidTargets(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/account/{0}/callback/-13", __workflow_accountId.WithUrlEncoding(1)));
@@ -179,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new InvalidTargetsBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -341,15 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         public int Id { get; set; }
     }
 
-    public class ContactCreateInput
-    {
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
-
-    public class ContactUpdateInput
+    public class ContactCreateBodyInput
     {
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
@@ -432,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         public JToken[] Schedules { get; set; }
     }
 
-    public class CampaignPushInput
+    public class CampaignPushBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Channels { get; set; }
@@ -580,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         public int Id { get; set; }
     }
 
-    public class IncomingSMSReceivedInput
+    public class IncomingSMSReceivedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 11;
@@ -592,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         internal bool Active { get; set; } = true;
     }
 
-    public class KeywordReceivedInput
+    public class KeywordReceivedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 1;
@@ -604,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         internal bool Active { get; set; } = true;
     }
 
-    public class StopReceivedInput
+    public class StopReceivedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 6;
@@ -616,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         internal bool Active { get; set; } = true;
     }
 
-    public class DeliveryNoticeReceivedInput
+    public class DeliveryNoticeReceivedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 12;
@@ -628,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         internal bool Active { get; set; } = true;
     }
 
-    public class InvalidTargetsInput
+    public class InvalidTargetsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal int CallbackType { get; set; } = 13;

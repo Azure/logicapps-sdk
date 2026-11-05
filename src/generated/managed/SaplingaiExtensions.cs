@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
     public class SaplingaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<SpellcheckResponse, ApiConnectionActionConfiguration> Spellcheck(Expression<Func<SpellcheckInput>> body)
+        public IBodyWorkflowAction<SpellcheckResponse, ApiConnectionActionConfiguration> Spellcheck(Expression<Func<MedicalSpellcheckBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SpellcheckResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<MedicalSpellcheckResponse, ApiConnectionActionConfiguration> MedicalSpellcheck(Expression<Func<MedicalSpellcheckInput>> body)
+        public IBodyWorkflowAction<MedicalSpellcheckResponse, ApiConnectionActionConfiguration> MedicalSpellcheck(Expression<Func<MedicalSpellcheckBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MedicalSpellcheckResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<AutocompleteResponse, ApiConnectionActionConfiguration> Autocomplete(Expression<Func<AutocompleteInput>> body)
+        public IBodyWorkflowAction<AutocompleteResponse, ApiConnectionActionConfiguration> Autocomplete(Expression<Func<AutocompleteBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AutocompleteResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<StatisticsResponse, ApiConnectionActionConfiguration> Statistics(Expression<Func<StatisticsInput>> body)
+        public IBodyWorkflowAction<StatisticsResponse, ApiConnectionActionConfiguration> Statistics(Expression<Func<StatisticsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StatisticsResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<DetectAiResponse, ApiConnectionActionConfiguration> DetectAi(Expression<Func<DetectAiInput>> body)
+        public IBodyWorkflowAction<DetectAiResponse, ApiConnectionActionConfiguration> DetectAi(Expression<Func<DetectAiBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DetectAiResponse, ApiConnectionActionConfiguration>(() =>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         public string GeneralErrorType { get; set; }
     }
 
-    public class SpellcheckInput
+    public class MedicalSpellcheckBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -147,27 +147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         public EditDef[] Edits { get; set; }
     }
 
-    public class MedicalSpellcheckInput
-    {
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
-
-        [JsonProperty("min_length", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int MinLength { get; set; } = 3;
-
-        [JsonProperty("session_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SessionId { get; set; }
-
-        [JsonProperty("multiple_edits")]
-        public bool? MultipleEdits { get; set; }
-
-        [JsonProperty("neural_spellcheck")]
-        public bool? NeuralSpellcheck { get; set; }
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-    }
-
     public class AutocompleteResponse
     {
         [JsonProperty("hash")]
@@ -180,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         public string Query { get; set; }
     }
 
-    public class AutocompleteInput
+    public class AutocompleteBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
@@ -210,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         public int Words { get; set; }
     }
 
-    public class StatisticsInput
+    public class StatisticsBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -246,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
         public string Sentence { get; set; }
     }
 
-    public class DetectAiInput
+    public class DetectAiBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }

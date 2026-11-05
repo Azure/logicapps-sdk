@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courtlistener")]
-        public IBodyWorkflowAction<CitationResult[], ApiConnectionActionConfiguration> GetCitation(Expression<Func<GetCitationInput>> body)
+        public IBodyWorkflowAction<CitationResult[], ApiConnectionActionConfiguration> GetCitation(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CitationResult[], ApiConnectionActionConfiguration>(() =>
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courtlistener
         public string URLPath { get; set; }
     }
 
-    public class GetCitationInput
+    public class BodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }

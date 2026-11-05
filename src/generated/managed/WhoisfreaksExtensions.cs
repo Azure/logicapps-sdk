@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
     public class WhoisfreaksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LiveWhoisLookup(Expression<Func<string>> domainName, Expression<Func<formatInput>> format)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LiveWhoisLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format)
         {
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HistoricalWhoisLookup(Expression<Func<string>> domainName, Expression<Func<formatInput>> format)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HistoricalWhoisLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format)
         {
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LiveDnsLookup(Expression<Func<string>> domainName, Expression<Func<formatInput>> format, Expression<Func<string>> type = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LiveDnsLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format, Expression<Func<string>> type = null)
         {
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HitoricalDnsLookup(Expression<Func<string>> domainName, Expression<Func<formatInput>> format, Expression<Func<string>> type = null, Expression<Func<int>> page = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HitoricalDnsLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format, Expression<Func<string>> type = null, Expression<Func<int>> page = null)
         {
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReverseDnsLookup(Expression<Func<string>> value, Expression<Func<formatInput>> format, Expression<Func<string>> type = null, Expression<Func<bool>> exact = null, Expression<Func<int>> page = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReverseDnsLookup(Expression<Func<string>> value, Expression<Func<FormatInput>> format, Expression<Func<string>> type = null, Expression<Func<bool>> exact = null, Expression<Func<int>> page = null)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DomainAvailabilityLookup(Expression<Func<string>> domain, Expression<Func<formatInput>> format, Expression<Func<bool>> sug = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DomainAvailabilityLookup(Expression<Func<string>> domain, Expression<Func<FormatInput>> format, Expression<Func<bool>> sug = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainAvailabilityLookup(Expression<Func<formatInput>> format, Expression<Func<BulkDomainAvailabilityLookupInput>> body, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainAvailabilityLookup(Expression<Func<FormatInput>> format, Expression<Func<BulkDomainAvailabilityLookupBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SSLLookup(Expression<Func<string>> domainName, Expression<Func<formatInput>> format, Expression<Func<bool>> chain = null, Expression<Func<bool>> sslRaw = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SSLLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format, Expression<Func<bool>> chain = null, Expression<Func<bool>> sslRaw = null)
         {
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpGeolocationLookup(Expression<Func<BulkIpGeolocationLookupInput>> body, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpGeolocationLookup(Expression<Func<BulkIpGeolocationLookupBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SubdomainLookup(Expression<Func<string>> domain, Expression<Func<formatInput>> format, Expression<Func<int>> page = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubdomainLookup(Expression<Func<string>> domain, Expression<Func<FormatInput>> format, Expression<Func<int>> page = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpReputationLookup(Expression<Func<BulkIpReputationLookupInput>> body, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIpReputationLookup(Expression<Func<BulkIpGeolocationLookupBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DomainReputationLookup(Expression<Func<string>> domainName, Expression<Func<formatInput>> format)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DomainReputationLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format)
         {
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkWhoisLookup(Expression<Func<formatInput>> format, Expression<Func<BulkWhoisLookupInput>> body, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkWhoisLookup(Expression<Func<FormatInput>> format, Expression<Func<BulkDomainAvailabilityLookupBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainLookup(Expression<Func<formatInput>> format, Expression<Func<BulkDomainLookupInput>> body, Expression<Func<string>> type = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkDomainLookup(Expression<Func<FormatInput>> format, Expression<Func<BulkDomainLookupBodyInput>> body, Expression<Func<string>> type = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AsnWhois(Expression<Func<string>> asn, Expression<Func<formatInput>> format)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AsnWhois(Expression<Func<string>> asn, Expression<Func<FormatInput>> format)
         {
             var __workflow_asn = WorkflowExpression.Compile(asn, nameof(asn), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -425,39 +425,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
-        [EnumMember(Value = "json")]
-        Json,
         [EnumMember(Value = "xml")]
-        Xml
+        Xml,
+        [EnumMember(Value = "json")]
+        Json
     }
 
-    public class BulkDomainAvailabilityLookupInput
+    public class BulkDomainAvailabilityLookupBodyInput
     {
         [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] DomainNames { get; set; }
     }
 
-    public class BulkIpGeolocationLookupInput
+    public class BulkIpGeolocationLookupBodyInput
     {
         [JsonProperty("ips", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Ips { get; set; }
     }
 
-    public class BulkIpReputationLookupInput
-    {
-        [JsonProperty("ips", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Ips { get; set; }
-    }
-
-    public class BulkWhoisLookupInput
-    {
-        [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] DomainNames { get; set; }
-    }
-
-    public class BulkDomainLookupInput
+    public class BulkDomainLookupBodyInput
     {
         [JsonProperty("domainNames", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] DomainNames { get; set; }

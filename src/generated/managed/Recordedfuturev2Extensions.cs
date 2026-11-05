@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<PlaybookAlertSearchItem[], ApiConnectionActionConfiguration> PlaybookAlertSearch(Expression<Func<PlaybookAlertSearchInput>> body)
+        public IBodyWorkflowAction<PlaybookAlertSearchItem[], ApiConnectionActionConfiguration> PlaybookAlertSearch(Expression<Func<PlaybookAlertSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlaybookAlertSearchItem[], ApiConnectionActionConfiguration>(() =>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration> DetectionRuleSearch(Expression<Func<DetectionRuleSearchInput>> body = null)
+        public IBodyWorkflowAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration> DetectionRuleSearch(Expression<Func<DetectionRuleSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DetectionRuleSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<RListDResponseItem[], ApiConnectionActionConfiguration> RListD(Expression<Func<pathInput>> path)
+        public IBodyWorkflowAction<RListDResponseItem[], ApiConnectionActionConfiguration> RListD(Expression<Func<PathInput>> path)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<RListDResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<SoarBulkLookupResponse, ApiConnectionActionConfiguration> SoarBulkLookup(Expression<Func<SoarBulkLookupInput>> body = null)
+        public IBodyWorkflowAction<SoarBulkLookupResponse, ApiConnectionActionConfiguration> SoarBulkLookup(Expression<Func<SoarBulkLookupBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SoarBulkLookupResponse, ApiConnectionActionConfiguration>(() =>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<ThreatMapActorsResponse, ApiConnectionActionConfiguration> ThreatMapActors(Expression<Func<ThreatMapActorsInput>> body)
+        public IBodyWorkflowAction<ThreatMapActorsResponse, ApiConnectionActionConfiguration> ThreatMapActors(Expression<Func<ThreatMapActorsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ThreatMapActorsResponse, ApiConnectionActionConfiguration>(() =>
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<ThreatMapMalwareResponse, ApiConnectionActionConfiguration> ThreatMapMalware(Expression<Func<ThreatMapMalwareInput>> body)
+        public IBodyWorkflowAction<ThreatMapMalwareResponse, ApiConnectionActionConfiguration> ThreatMapMalware(Expression<Func<ThreatMapMalwareBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ThreatMapMalwareResponse, ApiConnectionActionConfiguration>(() =>
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration> STIXIndicators(Expression<Func<STIXIndicatorsInput>> body)
+        public IBodyWorkflowAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration> STIXIndicators(Expression<Func<STIXIndicatorsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration> STIXMalwareIndicators(Expression<Func<STIXMalwareIndicatorsInput>> body)
+        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration> STIXMalwareIndicators(Expression<Func<STIXMalwareIndicatorsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
@@ -306,14 +306,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<AlertSearchV2Response, ApiConnectionActionConfiguration> AlertSearch(Expression<Func<string>> triggered = null, Expression<Func<string>> alertRule = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null, Expression<Func<fieldsInput>> fields = null)
+        public IBodyWorkflowAction<AlertSearchResponse, ApiConnectionActionConfiguration> AlertSearch(Expression<Func<string>> triggered = null, Expression<Func<string>> alertRule = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null, Expression<Func<FieldsInput>> fields = null)
         {
             var __workflow_triggered = WorkflowExpression.Compile(triggered, nameof(triggered), required: false);
             var __workflow_alertRule = WorkflowExpression.Compile(alertRule, nameof(alertRule), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<AlertSearchV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AlertSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/alerts";
                 var apiCallHttpMethod = "get";
@@ -328,23 +328,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                     callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
-                return new ApiConnectionAction<AlertSearchV2Response>(callPayload);
+                return new ApiConnectionAction<AlertSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<AlertSearchIdV2Response, ApiConnectionActionConfiguration> AlertSearchId(Expression<Func<string>> id, Expression<Func<fieldsInput>> fields = null)
+        public IBodyWorkflowAction<AlertSearchIdResponse, ApiConnectionActionConfiguration> AlertSearchId(Expression<Func<string>> id, Expression<Func<FieldsInput>> fields = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<AlertSearchIdV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AlertSearchIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/alerts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
-                return new ApiConnectionAction<AlertSearchIdV2Response>(callPayload);
+                return new ApiConnectionAction<AlertSearchIdResponse>(callPayload);
             });
         }
     }
@@ -1025,38 +1025,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string OrganisationName { get; set; }
     }
 
-    public class PlaybookAlertSearchInput
+    public class PlaybookAlertSearchBodyInput
     {
         [JsonProperty("limit")]
         public string Limit { get; set; }
 
         [JsonProperty("entities")]
-        public PlaybookAlertSearchInputEntitiesTypeItem[] Entities { get; set; }
+        public PlaybookAlertSearchBodyInputEntitiesTypeItem[] Entities { get; set; }
 
         [JsonProperty("statuses")]
-        public PlaybookAlertSearchInputStatusesTypeItem[] Statuses { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
 
         [JsonProperty("priorities")]
-        public PlaybookAlertSearchInputPrioritiesTypeItem[] Priorities { get; set; }
+        public BodyInputPrioritiesTypeItem[] Priorities { get; set; }
 
         [JsonProperty("categories")]
-        public PlaybookAlertSearchInputCategoriesTypeItem[] Categories { get; set; }
+        public BodyInputCategoriesTypeItem[] Categories { get; set; }
 
         [JsonProperty("created_from_relative")]
-        public PlaybookAlertSearchInputCreatedFromRelativeType? CreatedFromRelative { get; set; }
+        public BodyInputCreatedFromRelativeType? CreatedFromRelative { get; set; }
 
         [JsonProperty("created_until_relative")]
-        public PlaybookAlertSearchInputCreatedUntilRelativeType? CreatedUntilRelative { get; set; }
+        public BodyInputCreatedUntilRelativeType? CreatedUntilRelative { get; set; }
 
         [JsonProperty("updated_from_relative")]
-        public PlaybookAlertSearchInputUpdatedFromRelativeType? UpdatedFromRelative { get; set; }
+        public BodyInputUpdatedFromRelativeType? UpdatedFromRelative { get; set; }
 
         [JsonProperty("updated_until_relative")]
-        public PlaybookAlertSearchInputUpdatedUntilRelativeType? UpdatedUntilRelative { get; set; }
+        public BodyInputUpdatedUntilRelativeType? UpdatedUntilRelative { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputEntitiesTypeItem
+    public enum PlaybookAlertSearchBodyInputEntitiesTypeItem
     {
         [EnumMember(Value = "ip:8.8.8.8")]
         Ip8888,
@@ -1067,7 +1067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputStatusesTypeItem
+    public enum BodyInputStatusesTypeItem
     {
         New,
         InProgress,
@@ -1076,7 +1076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputPrioritiesTypeItem
+    public enum BodyInputPrioritiesTypeItem
     {
         High,
         Moderate,
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputCategoriesTypeItem
+    public enum BodyInputCategoriesTypeItem
     {
         [EnumMember(Value = "domain_abuse")]
         DomainAbuse,
@@ -1095,7 +1095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputCreatedFromRelativeType
+    public enum BodyInputCreatedFromRelativeType
     {
         [EnumMember(Value = "-5m")]
         _5m,
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputCreatedUntilRelativeType
+    public enum BodyInputCreatedUntilRelativeType
     {
         [EnumMember(Value = "-0m")]
         _0m,
@@ -1117,7 +1117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputUpdatedFromRelativeType
+    public enum BodyInputUpdatedFromRelativeType
     {
         [EnumMember(Value = "-5m")]
         _5m,
@@ -1128,7 +1128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PlaybookAlertSearchInputUpdatedUntilRelativeType
+    public enum BodyInputUpdatedUntilRelativeType
     {
         [EnumMember(Value = "-0m")]
         _0m,
@@ -1246,23 +1246,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string DisplayName { get; set; }
     }
 
-    public class DetectionRuleSearchInput
+    public class DetectionRuleSearchBodyInput
     {
         [JsonProperty("types")]
-        public DetectionRuleSearchInputTypesTypeItem[] Types { get; set; }
+        public BodyInputTypesTypeItem[] Types { get; set; }
 
         [JsonProperty("entities")]
-        public DetectionRuleSearchInputEntitiesTypeItem[] Entities { get; set; }
+        public DetectionRuleSearchBodyInputEntitiesTypeItem[] Entities { get; set; }
 
         [JsonProperty("created")]
-        public DetectionRuleSearchInputCreatedType Created { get; set; }
+        public BodyInputCreatedType Created { get; set; }
 
         [JsonProperty("limit")]
-        public DetectionRuleSearchInputLimitType? Limit { get; set; }
+        public BodyInputLimitType? Limit { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DetectionRuleSearchInputTypesTypeItem
+    public enum BodyInputTypesTypeItem
     {
         [EnumMember(Value = "sigma")]
         Sigma,
@@ -1273,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DetectionRuleSearchInputEntitiesTypeItem
+    public enum DetectionRuleSearchBodyInputEntitiesTypeItem
     {
         [EnumMember(Value = "CVE-2000-01")]
         CVE200001,
@@ -1281,7 +1281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         MitreTA0001
     }
 
-    public class DetectionRuleSearchInputCreatedType
+    public class BodyInputCreatedType
     {
         [JsonProperty("before")]
         public string Before { get; set; }
@@ -1290,7 +1290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string After { get; set; }
     }
 
-    public enum DetectionRuleSearchInputLimitType
+    public enum BodyInputLimitType
     {
         _1 = 1,
         _10 = 10,
@@ -1321,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum pathInput
+    public enum PathInput
     {
         [EnumMember(Value = "/public/MicrosoftAzure/ip_default.json")]
         PublicMicrosoftAzureIpDefaultJson,
@@ -1447,7 +1447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public double Score { get; set; }
     }
 
-    public class SoarBulkLookupInput
+    public class SoarBulkLookupBodyInput
     {
         [JsonProperty("ip")]
         public string[] Ip { get; set; }
@@ -1555,7 +1555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Name { get; set; }
     }
 
-    public class ThreatMapActorsInput
+    public class ThreatMapActorsBodyInput
     {
         [JsonProperty("actors", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Actors { get; set; }
@@ -1657,7 +1657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Name { get; set; }
     }
 
-    public class ThreatMapMalwareInput
+    public class ThreatMapMalwareBodyInput
     {
         [JsonProperty("malware", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Malware { get; set; }
@@ -1738,7 +1738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Url { get; set; }
     }
 
-    public class STIXIndicatorsInput
+    public class STIXIndicatorsBodyInput
     {
         [JsonProperty("actors")]
         public string[] Actors { get; set; }
@@ -1837,7 +1837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Url { get; set; }
     }
 
-    public class STIXMalwareIndicatorsInput
+    public class STIXMalwareIndicatorsBodyInput
     {
         [JsonProperty("malware")]
         public string[] Malware { get; set; }
@@ -1867,13 +1867,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string ThreatHuntDescription { get; set; }
     }
 
-    public class AlertSearchV2Response
+    public class AlertSearchResponse
     {
         [JsonProperty("data")]
         public AlertSearchV2[] Data { get; set; }
 
         [JsonProperty("counts")]
-        public AlertSearchV2ResponseCountsType Counts { get; set; }
+        public AlertSearchResponseCountsType Counts { get; set; }
     }
 
     public class AlertSearchV2
@@ -2086,7 +2086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Text { get; set; }
     }
 
-    public class AlertSearchV2ResponseCountsType
+    public class AlertSearchResponseCountsType
     {
         [JsonProperty("returned")]
         public int Returned { get; set; }
@@ -2096,7 +2096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsInput
+    public enum FieldsInput
     {
         [EnumMember(Value = "ai_insights")]
         AiInsights,
@@ -2122,7 +2122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         IdHits
     }
 
-    public class AlertSearchIdV2Response
+    public class AlertSearchIdResponse
     {
         [JsonProperty("data")]
         public AlertSearchV2 Data { get; set; }

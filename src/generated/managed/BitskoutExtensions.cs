@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginForFileResponse, ApiConnectionActionConfiguration> RunPluginForFile(Expression<Func<RunPluginForFileInput>> body = null)
+        public IBodyWorkflowAction<RunPluginForFileResponse, ApiConnectionActionConfiguration> RunPluginForFile(Expression<Func<RunPluginForFileBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RunPluginForFileResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginTextResponse, ApiConnectionActionConfiguration> RunPluginText(Expression<Func<RunPluginTextInput>> body = null)
+        public IBodyWorkflowAction<RunPluginTextResponse, ApiConnectionActionConfiguration> RunPluginText(Expression<Func<RunPluginTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RunPluginTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration> ExtractDataFromInvoice(Expression<Func<ExtractDataFromInvoiceInput>> body = null)
+        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration> ExtractDataFromInvoice(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataFromInvoiceResponse, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration> ExtractDataPurchaseOrders(Expression<Func<ExtractDataPurchaseOrdersInput>> body = null)
+        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration> ExtractDataPurchaseOrders(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataPurchaseOrdersResponse, ApiConnectionActionConfiguration>(() =>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration> ExtractDataBillofLading(Expression<Func<ExtractDataBillofLadingInput>> body = null)
+        public IBodyWorkflowAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration> ExtractDataBillofLading(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataBillofLadingResponse, ApiConnectionActionConfiguration>(() =>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataCVResponse, ApiConnectionActionConfiguration> ExtractDataCV(Expression<Func<ExtractDataCVInput>> body = null)
+        public IBodyWorkflowAction<ExtractDataCVResponse, ApiConnectionActionConfiguration> ExtractDataCV(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataCVResponse, ApiConnectionActionConfiguration>(() =>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectDocumentTypeResponse, ApiConnectionActionConfiguration> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<DetectDocumentTypeInput>> body = null)
+        public IBodyWorkflowAction<DetectDocumentTypeResponse, ApiConnectionActionConfiguration> DetectDocumentType(Expression<Func<DoctypeInput>> doctype, Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_doctype = WorkflowExpression.Compile(doctype, nameof(doctype), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration> ExtractDataBusinessCards(Expression<Func<ExtractDataBusinessCardsInput>> body = null)
+        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration> ExtractDataBusinessCards(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataBusinessCardsResponse, ApiConnectionActionConfiguration>(() =>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration> ExtractQRCode(Expression<Func<ExtractQRCodeInput>> body = null)
+        public IBodyWorkflowAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration> ExtractQRCode(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractQRCodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration> ExtractBarcodeFromFile(Expression<Func<ExtractBarcodeFromFileInput>> body = null)
+        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration> ExtractBarcodeFromFile(Expression<Func<DetectDocumentTypeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractBarcodeFromFileResponse, ApiConnectionActionConfiguration>(() =>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration> DetectResponseColdEmail(Expression<Func<DetectResponseColdEmailInput>> body = null)
+        public IBodyWorkflowAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration> DetectResponseColdEmail(Expression<Func<DetectResponseColdEmailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DetectResponseColdEmailResponse, ApiConnectionActionConfiguration>(() =>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration> ExtractDataHARO(Expression<Func<ExtractDataHAROInput>> body = null)
+        public IBodyWorkflowAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration> ExtractDataHARO(Expression<Func<DetectResponseColdEmailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration>(() =>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public JToken Outputs { get; set; }
     }
 
-    public class RunPluginForFileInput
+    public class RunPluginForFileBodyInput
     {
         [JsonProperty("plugin")]
         public string Plugin { get; set; }
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public JToken Outputs { get; set; }
     }
 
-    public class RunPluginTextInput
+    public class RunPluginTextBodyInput
     {
         [JsonProperty("plugin")]
         public string Plugin { get; set; }
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string Name { get; set; }
     }
 
-    public class ExtractDataFromInvoiceInput
+    public class DetectDocumentTypeBodyInput
     {
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -357,12 +357,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string Name { get; set; }
     }
 
-    public class ExtractDataPurchaseOrdersInput
-    {
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
-    }
-
     public class ExtractDataBillofLadingResponse
     {
         [JsonProperty("outputs")]
@@ -397,12 +391,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string Weight { get; set; }
     }
 
-    public class ExtractDataBillofLadingInput
-    {
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
-    }
-
     public class ExtractDataCVResponse
     {
         [JsonProperty("outputs")]
@@ -430,12 +418,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string TOTALYEARSEXPERIENCE { get; set; }
     }
 
-    public class ExtractDataCVInput
-    {
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
-    }
-
     public class DetectDocumentTypeResponse
     {
         [JsonProperty("outputs")]
@@ -450,18 +432,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum doctypeInput
+    public enum DoctypeInput
     {
         [EnumMember(Value = "legal")]
         Legal,
         [EnumMember(Value = "logistics")]
         Logistics
-    }
-
-    public class DetectDocumentTypeInput
-    {
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
     }
 
     public class ExtractDataBusinessCardsResponse
@@ -498,12 +474,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string WEBSITE { get; set; }
     }
 
-    public class ExtractDataBusinessCardsInput
-    {
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
-    }
-
     public class ExtractQRCodeResponse
     {
         [JsonProperty("outputs")]
@@ -516,12 +486,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
         [JsonProperty("qrcode")]
         public string Qrcode { get; set; }
-    }
-
-    public class ExtractQRCodeInput
-    {
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
     }
 
     public class ExtractBarcodeFromFileResponse
@@ -538,12 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string Barcode { get; set; }
     }
 
-    public class ExtractBarcodeFromFileInput
-    {
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
-    }
-
     public class DetectResponseColdEmailResponse
     {
         [JsonProperty("outputs")]
@@ -556,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string Result { get; set; }
     }
 
-    public class DetectResponseColdEmailInput
+    public class DetectResponseColdEmailBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -580,12 +538,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string QUERY { get; set; }
         public string REQUIREMENTS { get; set; }
         public string RawJSON { get; set; }
-    }
-
-    public class ExtractDataHAROInput
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
     }
 }
 

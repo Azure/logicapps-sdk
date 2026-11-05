@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AttributeDTO, ApiConnectionActionConfiguration> AttributesGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> type = null, Expression<Func<bool>> isFilterable = null, Expression<Func<bool>> displayOnProduct = null, Expression<Func<bool>> displayInList = null, Expression<Func<string>> search = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AttributeDTO, ApiConnectionActionConfiguration> AttributesGETGetAll(Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<string>> type = null, Expression<Func<bool>> isFilterable = null, Expression<Func<bool>> displayOnProduct = null, Expression<Func<bool>> displayInList = null, Expression<Func<string>> search = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<BrandDTO[], ApiConnectionActionConfiguration> BrandsGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<BrandDTO[], ApiConnectionActionConfiguration> BrandsGETGetAll(Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CategoryDTO[], ApiConnectionActionConfiguration> CategoriesGETGetAll(Expression<Func<string>> title = null, Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> parentId = null, Expression<Func<string>> path = null, Expression<Func<string>> parentIds = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CategoryDTO[], ApiConnectionActionConfiguration> CategoriesGETGetAll(Expression<Func<string>> title = null, Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> parentId = null, Expression<Func<string>> path = null, Expression<Func<string>> parentIds = null, Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<IcoTagDTO[], ApiConnectionActionConfiguration> IcoTagsGETGetAll(Expression<Func<string>> name = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<IcoTagDTO[], ApiConnectionActionConfiguration> IcoTagsGETGetAll(Expression<Func<string>> name = null, Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> ProductVariantsGETGetAllFlat(Expression<Func<string>> price = null, Expression<Func<double>> maxPrice = null, Expression<Func<string>> size1 = null, Expression<Func<string>> size2 = null, Expression<Func<string>> size3 = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> date1 = null, Expression<Func<string>> date2 = null, Expression<Func<string>> date3 = null, Expression<Func<string>> date1DateRange = null, Expression<Func<string>> date2DateRange = null, Expression<Func<string>> date3DateRange = null, Expression<Func<string>> insertDateRange = null, Expression<Func<string>> search = null, Expression<Func<double>> minPrice = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> availability = null, Expression<Func<string>> tag = null, Expression<Func<string>> sourceTag = null, Expression<Func<string>> privacyRule = null, Expression<Func<string>> rule = null, Expression<Func<string>> condition = null, Expression<Func<string>> ids = null, Expression<Func<string>> id = null, Expression<Func<string>> priceRange = null, Expression<Func<string>> brandCode = null, Expression<Func<string>> brandId = null, Expression<Func<string>> attribute = null, Expression<Func<string>> pathCategory = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> additionalCategoryId = null, Expression<Func<string>> stockAvailabilityId = null, Expression<Func<string>> attributeSetId = null, Expression<Func<string>> priceCategoryId = null, Expression<Func<bool>> hasMedia = null, Expression<Func<string>> masterId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> ProductVariantsGETGetAllFlat(Expression<Func<string>> price = null, Expression<Func<double>> maxPrice = null, Expression<Func<string>> size1 = null, Expression<Func<string>> size2 = null, Expression<Func<string>> size3 = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> date1 = null, Expression<Func<string>> date2 = null, Expression<Func<string>> date3 = null, Expression<Func<string>> date1DateRange = null, Expression<Func<string>> date2DateRange = null, Expression<Func<string>> date3DateRange = null, Expression<Func<string>> insertDateRange = null, Expression<Func<string>> search = null, Expression<Func<double>> minPrice = null, Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<string>> availability = null, Expression<Func<string>> tag = null, Expression<Func<string>> sourceTag = null, Expression<Func<string>> privacyRule = null, Expression<Func<string>> rule = null, Expression<Func<string>> condition = null, Expression<Func<string>> ids = null, Expression<Func<string>> id = null, Expression<Func<string>> priceRange = null, Expression<Func<string>> brandCode = null, Expression<Func<string>> brandId = null, Expression<Func<string>> attribute = null, Expression<Func<string>> pathCategory = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> additionalCategoryId = null, Expression<Func<string>> stockAvailabilityId = null, Expression<Func<string>> attributeSetId = null, Expression<Func<string>> priceCategoryId = null, Expression<Func<bool>> hasMedia = null, Expression<Func<string>> masterId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_price = WorkflowExpression.Compile(price, nameof(price), required: false);
             var __workflow_maxPrice = WorkflowExpression.Compile(maxPrice, nameof(maxPrice), required: false);
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AssortmentValueDTO[], ApiConnectionActionConfiguration> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<statusInput2>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AssortmentValueDTO[], ApiConnectionActionConfiguration> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<AssortmentValueGETGetAllStatusInput>> status = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_customerid = WorkflowExpression.Compile(customerid, nameof(customerid), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CustomerDTO[], ApiConnectionActionConfiguration> CustomersGETGetAll(Expression<Func<statusInput3>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CustomerDTO[], ApiConnectionActionConfiguration> CustomersGETGetAll(Expression<Func<CustomersGETGetAllStatusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
     public class ShopranosTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductCreatedTrigger(Expression<Func<ProductCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductUpdatedTrigger(Expression<Func<ProductUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductDeletedTrigger(Expression<Func<ProductDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CategoryCreatedTrigger(Expression<Func<CategoryCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CategoryCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CategoryUpdatedTrigger(Expression<Func<CategoryUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CategoryUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CategoryDeletedTrigger(Expression<Func<CategoryDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CategoryDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BrandCreatedTrigger(Expression<Func<BrandCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BrandCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BrandUpdatedTrigger(Expression<Func<BrandUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BrandUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BrandDeletedTrigger(Expression<Func<BrandDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BrandDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -666,7 +666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UnitCreatedTrigger(Expression<Func<UnitCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UnitCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UnitUpdatedTrigger(Expression<Func<UnitUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UnitUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -694,7 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UnitDeletedTrigger(Expression<Func<UnitDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UnitDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeCreatedTrigger(Expression<Func<AttributeCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeUpdatedTrigger(Expression<Func<AttributeUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeDeletedTrigger(Expression<Func<AttributeDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -750,7 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeSetCreatedTrigger(Expression<Func<AttributeSetCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeSetCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeSetUpdatedTrigger(Expression<Func<AttributeSetUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeSetUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeSetDeletedTrigger(Expression<Func<AttributeSetDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AttributeSetDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CheckoutCreatedTrigger(Expression<Func<CheckoutCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CheckoutCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CheckoutCompletedTrigger(Expression<Func<CheckoutCompletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CheckoutCompletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CustomerCreatedTrigger(Expression<Func<CustomerCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CustomerCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CustomerUpdatedTrigger(Expression<Func<CustomerUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CustomerUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -848,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CustomerDeletedTrigger(Expression<Func<CustomerDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CustomerDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OrderCreatedTrigger(Expression<Func<OrderCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OrderCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OrderUpdatedTrigger(Expression<Func<OrderUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OrderUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OrderDeletedTrigger(Expression<Func<OrderDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OrderDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InventoryLevelCreatedTrigger(Expression<Func<InventoryLevelCreatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InventoryLevelCreatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -918,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InventoryLevelUpdatedTrigger(Expression<Func<InventoryLevelUpdatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InventoryLevelUpdatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InventoryLevelDeletedTrigger(Expression<Func<InventoryLevelDeletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InventoryLevelDeletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PaymentInitiatedTrigger(Expression<Func<PaymentInitiatedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PaymentInitiatedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -960,7 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PaymentCompletedTrigger(Expression<Func<PaymentCompletedTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PaymentCompletedTrigger(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -1121,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum AttributesGETGetAllStatusInput
     {
         Draft,
         Active,
@@ -1501,14 +1501,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput2
+    public enum AssortmentValueGETGetAllStatusInput
     {
         Inactive,
         Active
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sourceInput
+    public enum SourceInput
     {
         [EnumMember(Value = "manual")]
         Manual,
@@ -1692,7 +1692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput3
+    public enum CustomersGETGetAllStatusInput
     {
         Active,
         Inactive,
@@ -2440,277 +2440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public double VatValue { get; set; }
     }
 
-    public class ProductCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class ProductUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class ProductDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CategoryCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CategoryUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CategoryDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class BrandCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class BrandUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class BrandDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class UnitCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class UnitUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class UnitDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class AttributeCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class AttributeUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class AttributeDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class AttributeSetCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class AttributeSetUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class AttributeSetDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CheckoutCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CheckoutCompletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CustomerCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CustomerUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class CustomerDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class OrderCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class OrderUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class OrderDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class InventoryLevelCreatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class InventoryLevelUpdatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class InventoryLevelDeletedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class PaymentInitiatedTriggerInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-    }
-
-    public class PaymentCompletedTriggerInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

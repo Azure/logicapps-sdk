@@ -30,18 +30,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 
     public class RencoregovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, Expression<Func<CheckNotificationTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
             var __workflow_checkId = WorkflowExpression.Compile(checkId, nameof(checkId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", __workflow_workspaceId.WithUrlEncoding(1), __workflow_environmentId.WithUrlEncoding(1), __workflow_checkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -176,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
         public string Type { get; set; }
     }
 
-    public class CheckNotificationTriggerInput
+    public class BodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

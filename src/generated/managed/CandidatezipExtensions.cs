@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
     public class CandidatezipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeStandardViaFileContent(Expression<Func<ParseResumeStandardViaFileContentInput>> body)
+        public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeStandardViaFileContent(Expression<Func<ParseJDViaFileContentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseResumeStandardViaFileContentResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeDetailViaFileContent(Expression<Func<ParseResumeDetailViaFileContentInput>> body)
+        public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeDetailViaFileContent(Expression<Func<ParseJDViaFileContentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseResumeDetailViaFileContentResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse, ApiConnectionActionConfiguration> ParseResumeDetailViaUrl(Expression<Func<ParseResumeDetailViaUrlInput>> body)
+        public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse, ApiConnectionActionConfiguration> ParseResumeDetailViaUrl(Expression<Func<ParseJDViaUrlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseResumeDetailViaUrlResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseJDViaFileContentResponse, ApiConnectionActionConfiguration> ParseJDViaFileContent(Expression<Func<ParseJDViaFileContentInput>> body)
+        public IBodyWorkflowAction<ParseJDViaFileContentResponse, ApiConnectionActionConfiguration> ParseJDViaFileContent(Expression<Func<ParseJDViaFileContentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseJDViaFileContentResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse, ApiConnectionActionConfiguration> ParseResumeStandardViaUrl(Expression<Func<ParseResumeStandardViaUrlInput>> body)
+        public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse, ApiConnectionActionConfiguration> ParseResumeStandardViaUrl(Expression<Func<ParseJDViaUrlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseResumeStandardViaUrlResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseJDViaUrlResponse, ApiConnectionActionConfiguration> ParseJDViaUrl(Expression<Func<ParseJDViaUrlInput>> body)
+        public IBodyWorkflowAction<ParseJDViaUrlResponse, ApiConnectionActionConfiguration> ParseJDViaUrl(Expression<Func<ParseJDViaUrlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseJDViaUrlResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeBasicViaFileContent(Expression<Func<ParseResumeBasicViaFileContentInput>> body)
+        public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse, ApiConnectionActionConfiguration> ParseResumeBasicViaFileContent(Expression<Func<ParseJDViaFileContentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseResumeBasicViaFileContentResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
-        public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse, ApiConnectionActionConfiguration> ParseResumeBasicViaUrl(Expression<Func<ParseResumeBasicViaUrlInput>> body)
+        public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse, ApiConnectionActionConfiguration> ParseResumeBasicViaUrl(Expression<Func<ParseJDViaUrlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseResumeBasicViaUrlResponse, ApiConnectionActionConfiguration>(() =>
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string ExperienceEndDate1 { get; set; }
     }
 
-    public class ParseResumeStandardViaFileContentInput
+    public class ParseJDViaFileContentBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -1320,15 +1320,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string OtherObjectives { get; set; }
     }
 
-    public class ParseResumeDetailViaFileContentInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
-    }
-
     public class ParseResumeDetailViaUrlResponse
     {
         [JsonProperty("Education_InstitutionCity1")]
@@ -2265,7 +2256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string ExperienceStartDate3 { get; set; }
     }
 
-    public class ParseResumeDetailViaUrlInput
+    public class ParseJDViaUrlBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2338,15 +2329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string PreferredSkill8 { get; set; }
         public string ExperienceRequired { get; set; }
         public string JdFileData { get; set; }
-    }
-
-    public class ParseJDViaFileContentInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class ParseResumeStandardViaUrlResponse
@@ -2607,15 +2589,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string OtherErrorMessage { get; set; }
     }
 
-    public class ParseResumeStandardViaUrlInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
-    }
-
     public class ParseJDViaUrlResponse
     {
         public string JobDescription { get; set; }
@@ -2682,15 +2655,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string PreferredSkill8 { get; set; }
         public string ExperienceRequired { get; set; }
         public string JdFileData { get; set; }
-    }
-
-    public class ParseJDViaUrlInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
     }
 
     public class ParseResumeBasicViaFileContentResponse
@@ -2760,15 +2724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 
         [JsonProperty("Other_ResumeFileName")]
         public string OtherResumeFileName { get; set; }
-    }
-
-    public class ParseResumeBasicViaFileContentInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class ParseResumeBasicViaUrlResponse
@@ -2844,15 +2799,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 
         [JsonProperty("Other_ErrorMessage")]
         public string OtherErrorMessage { get; set; }
-    }
-
-    public class ParseResumeBasicViaUrlInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
     }
 }
 

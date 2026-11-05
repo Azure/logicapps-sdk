@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
     public class DocumotorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documotor")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDoc(Expression<Func<string>> templateId, Expression<Func<acceptInput>> accept, Expression<Func<string>> stageId = null, Expression<Func<object>> documentData = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDoc(Expression<Func<string>> templateId, Expression<Func<AcceptInput>> accept, Expression<Func<string>> stageId = null, Expression<Func<object>> documentData = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum acceptInput
+    public enum AcceptInput
     {
         [EnumMember(Value = "*/*")]
         Unnamed,

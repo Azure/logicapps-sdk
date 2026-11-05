@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
     public class ExperlogixcpqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<InvokeMCPInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromCopy(Expression<Func<CreateConfigurationFromCopyInput>> req)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromCopy(Expression<Func<CreateConfigurationFromCopyReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfiguration(Expression<Func<UpdateConfigurationInput>> req)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfiguration(Expression<Func<CreateConfigurationReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfiguration(Expression<Func<CreateConfigurationInput>> req)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfiguration(Expression<Func<CreateConfigurationReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromChanges(Expression<Func<CreateConfigurationFromChangesInput>> req)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> CreateConfigurationFromChanges(Expression<Func<CreateConfigurationFromChangesReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfigurationFromChanges(Expression<Func<UpdateConfigurationFromChangesInput>> req)
+        public IBodyWorkflowAction<GetConfigurationResponse, ApiConnectionActionConfiguration> UpdateConfigurationFromChanges(Expression<Func<UpdateConfigurationFromChangesReqInput>> req)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
             return new DeferredBodyAction<GetConfigurationResponse, ApiConnectionActionConfiguration>(() =>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetModelMetadataResponse, ApiConnectionActionConfiguration> GetModelMetadata(Expression<Func<GetModelMetadataInput>> req = null)
+        public IBodyWorkflowAction<GetModelMetadataResponse, ApiConnectionActionConfiguration> GetModelMetadata(Expression<Func<GetModelMetadataReqInput>> req = null)
         {
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: false);
             return new DeferredBodyAction<GetModelMetadataResponse, ApiConnectionActionConfiguration>(() =>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
     {
     }
 
-    public class InvokeMCPInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         public string[] Messages { get; set; }
     }
 
-    public class CreateConfigurationFromCopyInput
+    public class CreateConfigurationFromCopyReqInput
     {
         [JsonProperty("targetId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetId { get; set; }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         public int[] LineItemIds { get; set; }
     }
 
-    public class UpdateConfigurationInput
+    public class CreateConfigurationReqInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -202,19 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         public string ConfigurationXml { get; set; }
     }
 
-    public class CreateConfigurationInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
-
-        [JsonProperty("configurationXml", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ConfigurationXml { get; set; }
-    }
-
-    public class CreateConfigurationFromChangesInput
+    public class CreateConfigurationFromChangesReqInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -262,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         public string Value { get; set; }
     }
 
-    public class UpdateConfigurationFromChangesInput
+    public class UpdateConfigurationFromChangesReqInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -297,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         public string Description { get; set; }
     }
 
-    public class GetModelMetadataInput
+    public class GetModelMetadataReqInput
     {
         [JsonProperty("relevantCategories")]
         public string[] RelevantCategories { get; set; }

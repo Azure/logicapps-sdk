@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<OrderItemResponse, ApiConnectionActionConfiguration> OrderItem(Expression<Func<string>> sysId, Expression<Func<OrderItemInput>> body)
+        public IBodyWorkflowAction<OrderItemResponse, ApiConnectionActionConfiguration> OrderItem(Expression<Func<string>> sysId, Expression<Func<BodyInput>> body)
         {
             var __workflow_sysId = WorkflowExpression.Compile(sysId, nameof(sysId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         public string Table { get; set; }
     }
 
-    public class OrderItemInput
+    public class BodyInput
     {
         [JsonProperty("sysparm_quantity", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SysparmQuantity { get; set; }

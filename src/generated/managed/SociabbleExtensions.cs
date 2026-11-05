@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     public class SociabbleActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendAlertRequest(Expression<Func<SendAlertRequestInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendAlertRequest(Expression<Func<SendAlertRequestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<InternalContent, ApiConnectionActionConfiguration> CreateInternalNews(Expression<Func<CreateInternalNewsInput>> body)
+        public IBodyWorkflowAction<InternalContent, ApiConnectionActionConfiguration> CreateInternalNews(Expression<Func<CreateInternalNewsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InternalContent, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<ExternalContent, ApiConnectionActionConfiguration> CreateExternalContent(Expression<Func<CreateExternalContentInput>> body)
+        public IBodyWorkflowAction<ExternalContent, ApiConnectionActionConfiguration> CreateExternalContent(Expression<Func<CreateExternalContentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExternalContent, ApiConnectionActionConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaSuggestContent, ApiConnectionActionConfiguration> CtaSuggestContentCreation(Expression<Func<CtaSuggestContentCreationInput>> body)
+        public IBodyWorkflowAction<CtaSuggestContent, ApiConnectionActionConfiguration> CtaSuggestContentCreation(Expression<Func<CtaSuggestContentCreationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CtaSuggestContent, ApiConnectionActionConfiguration>(() =>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaInvitationContent, ApiConnectionActionConfiguration> CtaInvitationContentCreation(Expression<Func<CtaInvitationContentCreationInput>> body)
+        public IBodyWorkflowAction<CtaInvitationContent, ApiConnectionActionConfiguration> CtaInvitationContentCreation(Expression<Func<CtaInvitationContentCreationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CtaInvitationContent, ApiConnectionActionConfiguration>(() =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaMobileContent, ApiConnectionActionConfiguration> CtaMobileContentCreation(Expression<Func<CtaMobileContentCreationInput>> body)
+        public IBodyWorkflowAction<CtaMobileContent, ApiConnectionActionConfiguration> CtaMobileContentCreation(Expression<Func<CtaMobileContentCreationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CtaMobileContent, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IBodyWorkflowAction<CtaEventContent, ApiConnectionActionConfiguration> CtaEventCreation(Expression<Func<CtaEventCreationInput>> body)
+        public IBodyWorkflowAction<CtaEventContent, ApiConnectionActionConfiguration> CtaEventCreation(Expression<Func<CtaEventCreationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CtaEventContent, ApiConnectionActionConfiguration>(() =>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<AssignBadgeToUserInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<AssignBadgeToUserBodyInput>> body)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<AssignCustomActionToUserInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<AssignCustomActionToUserBodyInput>> body)
         {
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     {
     }
 
-    public class SendAlertRequestInput
+    public class SendAlertRequestBodyInput
     {
         [JsonProperty("alertText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AlertText { get; set; }
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public int Order { get; set; }
     }
 
-    public class CreateInternalNewsInput
+    public class CreateInternalNewsBodyInput
     {
         [JsonProperty("channelIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ChannelIds { get; set; }
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     public class LocalizedInternalContentCreation
     {
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LanguageBehavior Language { get; set; }
+        public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
         [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LanguageBehavior
+    public enum AssignCustomActionToUserLanguageBehavior
     {
         [EnumMember(Value = "af")]
         Afrikaans,
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     public class LocalizedExternalContent
     {
         [JsonProperty("language")]
-        public LanguageBehavior Language { get; set; }
+        public CreateExternalContentLanguageBehaviorResponse Language { get; set; }
 
         [JsonProperty("isDefault")]
         public bool IsDefault { get; set; }
@@ -685,7 +685,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public ContentImage Image { get; set; }
     }
 
-    public class CreateExternalContentInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateExternalContentLanguageBehaviorResponse
+    {
+        [EnumMember(Value = "af")]
+        Afrikaans,
+        [EnumMember(Value = "ar")]
+        Arabic,
+        [EnumMember(Value = "bn")]
+        Bengali,
+        [EnumMember(Value = "bs")]
+        Bosnian,
+        [EnumMember(Value = "pt-BR")]
+        BrazilianPortuguese,
+        [EnumMember(Value = "bg")]
+        Bulgarian,
+        [EnumMember(Value = "ca")]
+        Catalan,
+        [EnumMember(Value = "zh-Hans")]
+        ChineseSimplified,
+        [EnumMember(Value = "zh-Hant")]
+        ChineseTraditional,
+        [EnumMember(Value = "hr")]
+        Croatian,
+        [EnumMember(Value = "cs")]
+        Czech,
+        [EnumMember(Value = "da")]
+        Danish,
+        [EnumMember(Value = "nl")]
+        Dutch,
+        [EnumMember(Value = "en")]
+        English,
+        [EnumMember(Value = "et")]
+        Estonian,
+        [EnumMember(Value = "fil")]
+        Filipino,
+        [EnumMember(Value = "fi")]
+        Finnish,
+        [EnumMember(Value = "fr")]
+        French,
+        [EnumMember(Value = "de")]
+        German,
+        [EnumMember(Value = "el")]
+        Greek,
+        [EnumMember(Value = "he")]
+        Hebrew,
+        [EnumMember(Value = "hi")]
+        Hindi,
+        [EnumMember(Value = "hu")]
+        Hungarian,
+        [EnumMember(Value = "is")]
+        Icelandic,
+        [EnumMember(Value = "id")]
+        Indonesian,
+        [EnumMember(Value = "it")]
+        Italian,
+        [EnumMember(Value = "ja")]
+        Japanese,
+        [EnumMember(Value = "sw")]
+        Kiswahili,
+        [EnumMember(Value = "ko")]
+        Korean,
+        [EnumMember(Value = "lv")]
+        Latvian,
+        [EnumMember(Value = "lt")]
+        Lithuanian,
+        [EnumMember(Value = "ms")]
+        Malay,
+        [EnumMember(Value = "mt")]
+        Maltese,
+        [EnumMember(Value = "nb")]
+        Norwegian,
+        [EnumMember(Value = "fa")]
+        Persian,
+        [EnumMember(Value = "pl")]
+        Polish,
+        [EnumMember(Value = "pt")]
+        Portuguese,
+        [EnumMember(Value = "ro")]
+        Romanian,
+        [EnumMember(Value = "ru")]
+        Russian,
+        [EnumMember(Value = "sr")]
+        Serbian,
+        [EnumMember(Value = "sk")]
+        Slovak,
+        [EnumMember(Value = "sl")]
+        Slovenian,
+        [EnumMember(Value = "es")]
+        Spanish,
+        [EnumMember(Value = "sv")]
+        Swedish,
+        [EnumMember(Value = "ta")]
+        Tamil,
+        [EnumMember(Value = "th")]
+        Thai,
+        [EnumMember(Value = "tr")]
+        Turkish,
+        [EnumMember(Value = "uk")]
+        Ukrainian,
+        [EnumMember(Value = "ur")]
+        Urdu,
+        [EnumMember(Value = "vi")]
+        Vietnamese,
+        [EnumMember(Value = "cy")]
+        Welsh
+    }
+
+    public class CreateExternalContentBodyInput
     {
         [JsonProperty("channelIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ChannelIds { get; set; }
@@ -748,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     public class LocalizedExternalContentCreation
     {
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LanguageBehavior Language { get; set; }
+        public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
         [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
@@ -845,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string BackgroundColor { get; set; }
     }
 
-    public class CtaSuggestContentCreationInput
+    public class CtaSuggestContentCreationBodyInput
     {
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
@@ -896,7 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     public class LocalizedBaseCtaContentCreation
     {
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LanguageBehavior Language { get; set; }
+        public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
         [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
@@ -962,7 +1069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public LocalizedBaseCtaContent[] Contents { get; set; }
     }
 
-    public class CtaInvitationContentCreationInput
+    public class CtaInvitationContentCreationBodyInput
     {
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
@@ -1055,7 +1162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public LocalizedBaseCtaContent[] Contents { get; set; }
     }
 
-    public class CtaMobileContentCreationInput
+    public class CtaMobileContentCreationBodyInput
     {
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
@@ -1205,7 +1312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string SummaryForegroundColor { get; set; }
     }
 
-    public class CtaEventCreationInput
+    public class CtaEventCreationBodyInput
     {
         [JsonProperty("discriminator", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Discriminator { get; set; } = "Cta";
@@ -1268,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
     public class LocalizedCtaEventContentCreation
     {
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LanguageBehavior Language { get; set; }
+        public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
         [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
@@ -1310,7 +1417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string ButtonBackgroundColor { get; set; }
     }
 
-    public class AssignBadgeToUserInput
+    public class AssignBadgeToUserBodyInput
     {
         [JsonProperty("badgeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BadgeId { get; set; }
@@ -1319,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public int Level { get; set; }
     }
 
-    public class AssignCustomActionToUserInput
+    public class AssignCustomActionToUserBodyInput
     {
         [JsonProperty("isEngaging")]
         public bool? IsEngaging { get; set; }
@@ -1331,13 +1438,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public int? Points { get; set; }
 
         [JsonProperty("contents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AssignCustomActionToUserInputContentsTypeItem[] Contents { get; set; }
+        public BodyInputContentsTypeItem[] Contents { get; set; }
     }
 
-    public class AssignCustomActionToUserInputContentsTypeItem
+    public class BodyInputContentsTypeItem
     {
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LanguageBehavior Language { get; set; }
+        public AssignCustomActionToUserLanguageBehavior Language { get; set; }
 
         [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }

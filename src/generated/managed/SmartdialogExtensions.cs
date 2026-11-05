@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     public class SmartdialogActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<SendMessageInput>> requestBody)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<SendMessageRequestBodyInput>> requestBody)
         {
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
             var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendReplyMessageResponse, ApiConnectionActionConfiguration> SendReplyMessage(Expression<Func<string>> parentMessageId, Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<SendReplyMessageInput>> requestBody)
+        public IBodyWorkflowAction<SendReplyMessageResponse, ApiConnectionActionConfiguration> SendReplyMessage(Expression<Func<string>> parentMessageId, Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<SendMessageRequestBodyInput>> requestBody)
         {
             var __workflow_parentMessageId = WorkflowExpression.Compile(parentMessageId, nameof(parentMessageId), required: true);
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse, ApiConnectionActionConfiguration> SendDiscussionReplyMessage(Expression<Func<string>> customerId, Expression<Func<SendDiscussionReplyMessageInput>> requestBody)
+        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse, ApiConnectionActionConfiguration> SendDiscussionReplyMessage(Expression<Func<string>> customerId, Expression<Func<SendDiscussionReplyMessageRequestBodyInput>> requestBody)
         {
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWhatsappTemplate(Expression<Func<string>> customerId, Expression<Func<string>> identityNumber, Expression<Func<CreateWhatsappTemplateInput>> requestBody)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWhatsappTemplate(Expression<Func<string>> customerId, Expression<Func<string>> identityNumber, Expression<Func<CreateWhatsappTemplateRequestBodyInput>> requestBody)
         {
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
             var __workflow_identityNumber = WorkflowExpression.Compile(identityNumber, nameof(identityNumber), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse, ApiConnectionActionConfiguration> SendWhatsappTemplateMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<SendWhatsappTemplateMessageInput>> requestBody)
+        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse, ApiConnectionActionConfiguration> SendWhatsappTemplateMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<SendWhatsappTemplateMessageRequestBodyInput>> requestBody)
         {
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
             var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> UpdateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<UpdateGroupContactInput>> requestBody)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> UpdateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<UpdateGroupContactRequestBodyInput>> requestBody)
         {
             var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
             var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<CreateGroupContactInput>> requestBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<CreateGroupContactRequestBodyInput>> requestBody)
         {
             var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
             var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SmartdialogTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewMessageResponse, ApiConnectionTriggerConfiguration> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, Expression<Func<NewMessageInput>> createWebhookRequestBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMessageResponse, ApiConnectionTriggerConfiguration> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, Expression<Func<CreateWebhookRequestBodyInput>> createWebhookRequestBody, FlowRecurrence recurrence = null)
         {
             var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Id { get; set; }
     }
 
-    public class SendMessageInput
+    public class SendMessageRequestBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sender { get; set; }
@@ -221,26 +221,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Content { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageInputProtocolType Protocol { get; set; } = SendMessageInputProtocolType.SMS;
+        public RequestBodyInputProtocolType Protocol { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog.RequestBodyInputProtocolType.SMS;
         public string SendDateTime { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageInputRecipientsTypeItem[] Recipients { get; set; }
+        public SendMessageRequestBodyInputRecipientsTypeItem[] Recipients { get; set; }
         public string AttachmentUri { get; set; }
         public string CustomerData { get; set; }
         public bool? AdMessage { get; set; }
         public string DlrUrl { get; set; }
         public string RequestId { get; set; }
-        public SendMessageInputUnicodeCharacterHandlingPolicyType? UnicodeCharacterHandlingPolicy { get; set; }
+        public RequestBodyInputUnicodeCharacterHandlingPolicyType? UnicodeCharacterHandlingPolicy { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMessageInputProtocolType
+    public enum RequestBodyInputProtocolType
     {
         SMS
     }
 
-    public class SendMessageInputRecipientsTypeItem
+    public class SendMessageRequestBodyInputRecipientsTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMessageInputUnicodeCharacterHandlingPolicyType
+    public enum RequestBodyInputUnicodeCharacterHandlingPolicyType
     {
         None,
         Strict,
@@ -268,49 +268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Id { get; set; }
     }
 
-    public class SendReplyMessageInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Sender { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Content { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendReplyMessageInputProtocolType Protocol { get; set; } = SendReplyMessageInputProtocolType.SMS;
-        public string SendDateTime { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendReplyMessageInputRecipientsTypeItem[] Recipients { get; set; }
-        public string AttachmentUri { get; set; }
-        public string CustomerData { get; set; }
-        public bool? AdMessage { get; set; }
-        public string DlrUrl { get; set; }
-        public string RequestId { get; set; }
-        public SendReplyMessageInputUnicodeCharacterHandlingPolicyType? UnicodeCharacterHandlingPolicy { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendReplyMessageInputProtocolType
-    {
-        SMS
-    }
-
-    public class SendReplyMessageInputRecipientsTypeItem
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Address { get; set; }
-        public JToken Personalization { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendReplyMessageInputUnicodeCharacterHandlingPolicyType
-    {
-        None,
-        Strict,
-        Replace
-    }
-
     public class SendDiscussionReplyMessageResponse
     {
         public string MessageId { get; set; }
@@ -325,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Id { get; set; }
     }
 
-    public class SendDiscussionReplyMessageInput
+    public class SendDiscussionReplyMessageRequestBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ThreadId { get; set; }
@@ -335,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string CustomerData { get; set; }
     }
 
-    public class CreateWhatsappTemplateInput
+    public class CreateWhatsappTemplateRequestBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -348,19 +305,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Language { get; set; }
-        public CreateWhatsappTemplateInputButtonsTypeItem[] Buttons { get; set; }
+        public CreateWhatsappTemplateRequestBodyInputButtonsTypeItem[] Buttons { get; set; }
         public string AttachmentUrl { get; set; }
     }
 
-    public class CreateWhatsappTemplateInputButtonsTypeItem
+    public class CreateWhatsappTemplateRequestBodyInputButtonsTypeItem
     {
-        public CreateWhatsappTemplateInputButtonsTypeItemTypeType? Type { get; set; }
+        public RequestBodyInputButtonsTypeItemTypeType? Type { get; set; }
         public string Label { get; set; }
         public string Data { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWhatsappTemplateInputButtonsTypeItemTypeType
+    public enum RequestBodyInputButtonsTypeItemTypeType
     {
         Call,
         QuickReply,
@@ -388,16 +345,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Id { get; set; }
     }
 
-    public class SendWhatsappTemplateMessageInput
+    public class SendWhatsappTemplateMessageRequestBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsappTemplateMessageInputRecipientsTypeItem[] Recipients { get; set; }
+        public SendWhatsappTemplateMessageRequestBodyInputRecipientsTypeItem[] Recipients { get; set; }
         public string[] BodyParameters { get; set; }
         public string[] HeaderParameters { get; set; }
-        public SendWhatsappTemplateMessageInputButtonsTypeItem[] Buttons { get; set; }
+        public SendWhatsappTemplateMessageRequestBodyInputButtonsTypeItem[] Buttons { get; set; }
         public string SendDateTime { get; set; }
         public string AttachmentUri { get; set; }
         public bool? UseSmsFallback { get; set; }
@@ -406,24 +363,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string RequestId { get; set; }
     }
 
-    public class SendWhatsappTemplateMessageInputRecipientsTypeItem
+    public class SendWhatsappTemplateMessageRequestBodyInputRecipientsTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
-    public class SendWhatsappTemplateMessageInputButtonsTypeItem
+    public class SendWhatsappTemplateMessageRequestBodyInputButtonsTypeItem
     {
-        public SendWhatsappTemplateMessageInputButtonsTypeItemTypeType? Type { get; set; }
+        public RequestBodyInputButtonsTypeItemTypeType? Type { get; set; }
         public string Data { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendWhatsappTemplateMessageInputButtonsTypeItemTypeType
-    {
-        Call,
-        QuickReply,
-        Url
     }
 
     public class GetGroupContactResponse
@@ -482,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Value { get; set; }
     }
 
-    public class UpdateGroupContactInput
+    public class UpdateGroupContactRequestBodyInput
     {
         [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Active { get; set; } = true;
@@ -497,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string LastName { get; set; }
 
         [JsonProperty("gender")]
-        public UpdateGroupContactInputGenderType? Gender { get; set; }
+        public RequestBodyInputGenderType? Gender { get; set; }
 
         [JsonProperty("birthYear")]
         public int? BirthYear { get; set; }
@@ -515,21 +464,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string CountryCode { get; set; }
 
         [JsonProperty("customContactProperties")]
-        public UpdateGroupContactInputCustomContactPropertiesTypeItem[] CustomContactProperties { get; set; }
+        public RequestBodyInputCustomContactPropertiesTypeItem[] CustomContactProperties { get; set; }
 
         [JsonProperty("phoneNumberRegions")]
         public string[] PhoneNumberRegions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGroupContactInputGenderType
+    public enum RequestBodyInputGenderType
     {
         Male,
         Female,
         Other
     }
 
-    public class UpdateGroupContactInputCustomContactPropertiesTypeItem
+    public class RequestBodyInputCustomContactPropertiesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -538,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Value { get; set; }
     }
 
-    public class CreateGroupContactInput
+    public class CreateGroupContactRequestBodyInput
     {
         [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Active { get; set; } = true;
@@ -556,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string LastName { get; set; }
 
         [JsonProperty("gender")]
-        public CreateGroupContactInputGenderType? Gender { get; set; }
+        public RequestBodyInputGenderType? Gender { get; set; }
 
         [JsonProperty("birthYear")]
         public int? BirthYear { get; set; }
@@ -574,27 +523,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string CountryCode { get; set; }
 
         [JsonProperty("customContactProperties")]
-        public CreateGroupContactInputCustomContactPropertiesTypeItem[] CustomContactProperties { get; set; }
+        public RequestBodyInputCustomContactPropertiesTypeItem[] CustomContactProperties { get; set; }
 
         [JsonProperty("phoneNumberRegions")]
         public string[] PhoneNumberRegions { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGroupContactInputGenderType
-    {
-        Male,
-        Female,
-        Other
-    }
-
-    public class CreateGroupContactInputCustomContactPropertiesTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
     }
 
     public class NewMessageResponse
@@ -603,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Id { get; set; }
     }
 
-    public class NewMessageInput
+    public class CreateWebhookRequestBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "PowerAutomate (Auto Created Webhook)";
@@ -615,10 +547,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         internal string Description { get; set; } = "PowerAutomate auto-created webhook. Please don´t modify. Will be removed by PowerAutomate , when the Flow/Logic App is disabled or removed";
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewMessageInputOptionsType Options { get; set; } = new NewMessageInputOptionsType();
+        public CreateWebhookRequestBodyInputOptionsType Options { get; set; } = new CreateWebhookRequestBodyInputOptionsType();
     }
 
-    public class NewMessageInputOptionsType
+    public class CreateWebhookRequestBodyInputOptionsType
     {
         [JsonProperty("endpointUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EndpointUrl { get; set; } = "#{listCallbackUrl()}";

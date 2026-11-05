@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<AccountUpdateResponse, ApiConnectionActionConfiguration> AccountUpdate(Expression<Func<AccountUpdateInput>> body = null)
+        public IBodyWorkflowAction<AccountUpdateResponse, ApiConnectionActionConfiguration> AccountUpdate(Expression<Func<AccountUpdateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AccountUpdateResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainCreateResponse, ApiConnectionActionConfiguration> DomainCreate(Expression<Func<DomainCreateInput>> body)
+        public IBodyWorkflowAction<DomainCreateResponse, ApiConnectionActionConfiguration> DomainCreate(Expression<Func<DomainCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DomainCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainUpdateResponse, ApiConnectionActionConfiguration> DomainUpdate(Expression<Func<string>> id, Expression<Func<DomainUpdateInput>> body = null)
+        public IBodyWorkflowAction<DomainUpdateResponse, ApiConnectionActionConfiguration> DomainUpdate(Expression<Func<string>> id, Expression<Func<DomainUpdateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkShortenResponse, ApiConnectionActionConfiguration> LinkShorten(Expression<Func<LinkShortenInput>> body)
+        public IBodyWorkflowAction<LinkShortenResponse, ApiConnectionActionConfiguration> LinkShorten(Expression<Func<LinkShortenBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LinkShortenResponse, ApiConnectionActionConfiguration>(() =>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkUpdateResponse, ApiConnectionActionConfiguration> LinkUpdate(Expression<Func<string>> id, Expression<Func<LinkUpdateInput>> body)
+        public IBodyWorkflowAction<LinkUpdateResponse, ApiConnectionActionConfiguration> LinkUpdate(Expression<Func<string>> id, Expression<Func<LinkUpdateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelCreateResponse, ApiConnectionActionConfiguration> PixelCreate(Expression<Func<PixelCreateInput>> body)
+        public IBodyWorkflowAction<PixelCreateResponse, ApiConnectionActionConfiguration> PixelCreate(Expression<Func<PixelCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PixelCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelUpdateResponse, ApiConnectionActionConfiguration> PixelUpdate(Expression<Func<string>> id, Expression<Func<PixelUpdateInput>> body)
+        public IBodyWorkflowAction<PixelUpdateResponse, ApiConnectionActionConfiguration> PixelUpdate(Expression<Func<string>> id, Expression<Func<PixelUpdateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRCreateResponse, ApiConnectionActionConfiguration> QRCreate(Expression<Func<QRCreateInput>> body = null)
+        public IBodyWorkflowAction<QRCreateResponse, ApiConnectionActionConfiguration> QRCreate(Expression<Func<QRCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QRCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRUpdateResponse, ApiConnectionActionConfiguration> QRUpdate(Expression<Func<string>> id, Expression<Func<QRUpdateInput>> body)
+        public IBodyWorkflowAction<QRUpdateResponse, ApiConnectionActionConfiguration> QRUpdate(Expression<Func<string>> id, Expression<Func<QRUpdateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PlanSubscribeResponse, ApiConnectionActionConfiguration> PlanSubscribe(Expression<Func<string>> planid, Expression<Func<string>> userid, Expression<Func<PlanSubscribeInput>> body = null)
+        public IBodyWorkflowAction<PlanSubscribeResponse, ApiConnectionActionConfiguration> PlanSubscribe(Expression<Func<string>> planid, Expression<Func<string>> userid, Expression<Func<PlanSubscribeBodyInput>> body = null)
         {
             var __workflow_planid = WorkflowExpression.Compile(planid, nameof(planid), required: true);
             var __workflow_userid = WorkflowExpression.Compile(userid, nameof(userid), required: true);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<UserListResponse, ApiConnectionActionConfiguration> UserList(Expression<Func<filterInput>> filter = null)
+        public IBodyWorkflowAction<UserListResponse, ApiConnectionActionConfiguration> UserList(Expression<Func<FilterInput>> filter = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<UserListResponse, ApiConnectionActionConfiguration>(() =>
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<UserCreateResponse, ApiConnectionActionConfiguration> UserCreate(Expression<Func<UserCreateInput>> body)
+        public IBodyWorkflowAction<UserCreateResponse, ApiConnectionActionConfiguration> UserCreate(Expression<Func<UserCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Message { get; set; }
     }
 
-    public class AccountUpdateInput
+    public class AccountUpdateBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public int Id { get; set; }
     }
 
-    public class DomainCreateInput
+    public class DomainCreateBodyInput
     {
         [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Domain { get; set; }
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Message { get; set; }
     }
 
-    public class DomainUpdateInput
+    public class DomainUpdateBodyInput
     {
         [JsonProperty("redirectroot")]
         public string Redirectroot { get; set; }
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Shorturl { get; set; }
     }
 
-    public class LinkShortenInput
+    public class LinkShortenBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -849,16 +849,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Type { get; set; }
 
         [JsonProperty("geotarget")]
-        public LinkShortenInputGeotargetTypeItem[] Geotarget { get; set; }
+        public BodyInputGeotargetTypeItem[] Geotarget { get; set; }
 
         [JsonProperty("devicetarget")]
-        public LinkShortenInputDevicetargetTypeItem[] Devicetarget { get; set; }
+        public BodyInputDevicetargetTypeItem[] Devicetarget { get; set; }
 
         [JsonProperty("parameters")]
-        public LinkShortenInputParametersTypeItem[] Parameters { get; set; }
+        public BodyInputParametersTypeItem[] Parameters { get; set; }
     }
 
-    public class LinkShortenInputGeotargetTypeItem
+    public class BodyInputGeotargetTypeItem
     {
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -867,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Link { get; set; }
     }
 
-    public class LinkShortenInputDevicetargetTypeItem
+    public class BodyInputDevicetargetTypeItem
     {
         [JsonProperty("device")]
         public string Device { get; set; }
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Link { get; set; }
     }
 
-    public class LinkShortenInputParametersTypeItem
+    public class BodyInputParametersTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -903,7 +903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Short { get; set; }
     }
 
-    public class LinkUpdateInput
+    public class LinkUpdateBodyInput
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -921,46 +921,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Type { get; set; }
 
         [JsonProperty("geotarget")]
-        public LinkUpdateInputGeotargetTypeItem[] Geotarget { get; set; }
+        public BodyInputGeotargetTypeItem[] Geotarget { get; set; }
 
         [JsonProperty("devicetarget")]
-        public LinkUpdateInputDevicetargetTypeItem[] Devicetarget { get; set; }
+        public BodyInputDevicetargetTypeItem[] Devicetarget { get; set; }
 
         [JsonProperty("parameters")]
-        public LinkUpdateInputParametersTypeItem[] Parameters { get; set; }
-    }
-
-    public class LinkUpdateInputGeotargetTypeItem
-    {
-        [JsonProperty("location")]
-        public string Location { get; set; }
-
-        [JsonProperty("link")]
-        public string Link { get; set; }
-    }
-
-    public class LinkUpdateInputDevicetargetTypeItem
-    {
-        [JsonProperty("device")]
-        public string Device { get; set; }
-
-        [JsonProperty("link")]
-        public string Link { get; set; }
-    }
-
-    public class LinkUpdateInputParametersTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("device")]
-        public string Device { get; set; }
-
-        [JsonProperty("link")]
-        public string Link { get; set; }
+        public BodyInputParametersTypeItem[] Parameters { get; set; }
     }
 
     public class LinkDeleteResponse
@@ -1029,7 +996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public int Id { get; set; }
     }
 
-    public class PixelCreateInput
+    public class PixelCreateBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
@@ -1050,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Message { get; set; }
     }
 
-    public class PixelUpdateInput
+    public class PixelUpdateBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1216,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Link { get; set; }
     }
 
-    public class QRCreateInput
+    public class QRCreateBodyInput
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1243,7 +1210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Message { get; set; }
     }
 
-    public class QRUpdateInput
+    public class QRUpdateBodyInput
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1459,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Message { get; set; }
     }
 
-    public class PlanSubscribeInput
+    public class PlanSubscribeBodyInput
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1508,7 +1475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterInput
+    public enum FilterInput
     {
         [EnumMember(Value = "admin")]
         Admin,
@@ -1581,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Username { get; set; }
     }
 
-    public class UserCreateInput
+    public class UserCreateBodyInput
     {
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }

@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetCommonFinancialsResponse, ApiConnectionActionConfiguration> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<GetCommonFinancialsResponse, ApiConnectionActionConfiguration> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<PeriodInput>> period = null, Expression<Func<string>> before = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
@@ -292,11 +292,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<StockDataV2Response, ApiConnectionActionConfiguration> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<StockDataResponse, ApiConnectionActionConfiguration> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
         {
             var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<StockDataV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StockDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/StockData";
                 var apiCallHttpMethod = "get";
@@ -305,28 +305,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 if (__workflow_fields != null)
                     callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
                 callPayload.Headers["Accept-Version"] = Convert.ToString(2);
-                return new ApiConnectionAction<StockDataV2Response>(callPayload);
+                return new ApiConnectionAction<StockDataResponse>(callPayload);
             });
         }
     }
 
     public class AletheiaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewFilings(Expression<Func<NewFilingsInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewFilings(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/SubscribeToNewFilingsWebhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NewFilingsBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InsiderTrading(Expression<Func<InsiderTradingInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InsiderTrading(Expression<Func<InsiderTradingBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -545,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public double Cash { get; set; }
     }
 
-    public enum periodInput
+    public enum PeriodInput
     {
         _0 = 0,
         _1 = 1
@@ -645,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public string DataCollected { get; set; }
     }
 
-    public class StockDataV2Response
+    public class StockDataResponse
     {
         public string Symbol { get; set; }
         public int FullTimeEmployees { get; set; }
@@ -724,13 +722,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public string LastSplitDate { get; set; }
     }
 
-    public class NewFilingsInput
+    public class NewFilingsBodyInput
     {
         [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class InsiderTradingInput
+    public class InsiderTradingBodyInput
     {
         [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
@@ -742,13 +740,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public int? Owner { get; set; }
 
         [JsonProperty("transactionType")]
-        public InsiderTradingInputTransactionTypeType? TransactionType { get; set; }
+        public BodyInputTransactionTypeType? TransactionType { get; set; }
 
         [JsonProperty("securityType")]
-        public InsiderTradingInputSecurityTypeType? SecurityType { get; set; }
+        public BodyInputSecurityTypeType? SecurityType { get; set; }
     }
 
-    public enum InsiderTradingInputTransactionTypeType
+    public enum BodyInputTransactionTypeType
     {
         _0 = 0,
         _1 = 1,
@@ -772,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         _19 = 19
     }
 
-    public enum InsiderTradingInputSecurityTypeType
+    public enum BodyInputSecurityTypeType
     {
         _0 = 0,
         _1 = 1

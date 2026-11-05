@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     public class FulcrumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<AttachmentsResponse, ApiConnectionActionConfiguration> GetAllAttachments(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<string>> ownerType = null, Expression<Func<sortInput>> sort = null, Expression<Func<sortDirectionInput>> sortDirection = null)
+        public IBodyWorkflowAction<AttachmentsResponse, ApiConnectionActionConfiguration> GetAllAttachments(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<string>> ownerType = null, Expression<Func<SortInput>> sort = null, Expression<Func<SortDirectionInput>> sortDirection = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Query(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<QueryPostInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Query(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<QueryBodyInput>> body = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsCreate(Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<RecordsCreateInput>> body = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsCreate(Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<RecordsCreateBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<RecordsPartialUpdateInput>> body = null)
+        public IBodyWorkflowAction<SingleRecordResponse, ApiConnectionActionConfiguration> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<RecordsPartialUpdateBodyInput>> body = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<RecordsUpdateInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<RecordsCreateBodyInput>> body = null)
         {
             var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<ReportResponse, ApiConnectionActionConfiguration> ReportsCreate(Expression<Func<ReportsCreateInput>> body)
+        public IBodyWorkflowAction<ReportResponse, ApiConnectionActionConfiguration> ReportsCreate(Expression<Func<ReportsCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReportResponse, ApiConnectionActionConfiguration>(() =>
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
 
     public class FulcrumTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnFulcrumEventResponse, ApiConnectionTriggerConfiguration> OnFulcrumEvent(Expression<Func<OnFulcrumEventInput>> body, Expression<Func<string>> contentType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnFulcrumEventResponse, ApiConnectionTriggerConfiguration> OnFulcrumEvent(Expression<Func<OnFulcrumEventBodyInput>> body, Expression<Func<string>> contentType = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "name")]
         Name,
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortDirectionInput
+    public enum SortDirectionInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -862,10 +862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public Photo Photo { get; set; }
     }
 
-    public class QueryPostInput
+    public class QueryBodyInput
     {
         [JsonProperty("format")]
-        public QueryPostInputFormatType? Format { get; set; }
+        public BodyInputFormatType? Format { get; set; }
 
         [JsonProperty("q", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Q { get; set; }
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QueryPostInputFormatType
+    public enum BodyInputFormatType
     {
         [EnumMember(Value = "json")]
         Json,
@@ -948,7 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public JToken FormValues { get; set; }
 
         [JsonProperty("geometry")]
-        public Geometry Geometry { get; set; }
+        public RecordsCreateGeometryResponse Geometry { get; set; }
 
         [JsonProperty("horizontal_accuracy")]
         public double HorizontalAccuracy { get; set; }
@@ -1014,17 +1014,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public double Longitude { get; set; }
     }
 
-    public class Geometry
+    public class RecordsCreateGeometryResponse
     {
         [JsonProperty("coordinates")]
         public JToken Coordinates { get; set; }
 
         [JsonProperty("type")]
-        public GeometryTypeType Type { get; set; }
+        public RecordsCreateGeometryTypeTypeResponse Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GeometryTypeType
+    public enum RecordsCreateGeometryTypeTypeResponse
     {
         Point,
         LineString,
@@ -1040,13 +1040,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public Record Record { get; set; }
     }
 
-    public class RecordsCreateInput
+    public class RecordsCreateBodyInput
     {
         [JsonProperty("record", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecordsCreateInputRecordType Record { get; set; }
+        public RecordsCreateBodyInputRecordType Record { get; set; }
     }
 
-    public class RecordsCreateInputRecordType
+    public class RecordsCreateBodyInputRecordType
     {
         [JsonProperty("assigned_to_id")]
         public string AssignedToId { get; set; }
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public JToken FormValues { get; set; }
 
         [JsonProperty("geometry")]
-        public Geometry2 Geometry { get; set; }
+        public RecordsCreateGeometry Geometry { get; set; }
 
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }
@@ -1073,22 +1073,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public string Status { get; set; }
     }
 
-    public class Geometry2
+    public class RecordsCreateGeometry
     {
         [JsonProperty("coordinates", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Coordinates { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GeometryTypeType Type { get; set; }
+        public RecordsCreateGeometryTypeType Type { get; set; }
     }
 
-    public class RecordsPartialUpdateInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum RecordsCreateGeometryTypeType
+    {
+        Point,
+        LineString,
+        Polygon,
+        MultiPoint,
+        MultiLineString,
+        MultiPolygon
+    }
+
+    public class RecordsPartialUpdateBodyInput
     {
         [JsonProperty("record", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecordsPartialUpdateInputRecordType Record { get; set; }
+        public RecordsPartialUpdateBodyInputRecordType Record { get; set; }
     }
 
-    public class RecordsPartialUpdateInputRecordType
+    public class RecordsPartialUpdateBodyInputRecordType
     {
         [JsonProperty("assigned_to_id")]
         public string AssignedToId { get; set; }
@@ -1097,40 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public JToken FormValues { get; set; }
 
         [JsonProperty("geometry")]
-        public Geometry2 Geometry { get; set; }
-
-        [JsonProperty("latitude")]
-        public double? Latitude { get; set; }
-
-        [JsonProperty("longitude")]
-        public double? Longitude { get; set; }
-
-        [JsonProperty("project_id")]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class RecordsUpdateInput
-    {
-        [JsonProperty("record", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecordsUpdateInputRecordType Record { get; set; }
-    }
-
-    public class RecordsUpdateInputRecordType
-    {
-        [JsonProperty("assigned_to_id")]
-        public string AssignedToId { get; set; }
-
-        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("form_values")]
-        public JToken FormValues { get; set; }
-
-        [JsonProperty("geometry")]
-        public Geometry2 Geometry { get; set; }
+        public RecordsCreateGeometry Geometry { get; set; }
 
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }
@@ -1358,13 +1336,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         Failed
     }
 
-    public class ReportsCreateInput
+    public class ReportsCreateBodyInput
     {
         [JsonProperty("report", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReportsCreateInputReportType Report { get; set; }
+        public BodyInputReportType Report { get; set; }
     }
 
-    public class ReportsCreateInputReportType
+    public class BodyInputReportType
     {
         [JsonProperty("record_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecordId { get; set; }
@@ -1709,13 +1687,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public string CreatedAt { get; set; }
     }
 
-    public class OnFulcrumEventInput
+    public class OnFulcrumEventBodyInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnFulcrumEventInputWebhookType Webhook { get; set; } = new OnFulcrumEventInputWebhookType();
+        public BodyInputWebhookType Webhook { get; set; } = new BodyInputWebhookType();
     }
 
-    public class OnFulcrumEventInputWebhookType
+    public class BodyInputWebhookType
     {
         [JsonProperty("active")]
         public bool? Active { get; set; }

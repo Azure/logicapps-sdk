@@ -13,122 +13,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
     public class MonsterapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<TextImageAddPostResponse, ApiConnectionActionConfiguration> TextImageAdd(Expression<Func<TextImageAddPostInput>> body = null)
+        public IBodyWorkflowAction<TextImageAddResponse, ApiConnectionActionConfiguration> TextImageAdd(Expression<Func<TextImageAddBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TextImageAddPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TextImageAddResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-text-task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TextImageAddPostResponse>(callPayload);
+                return new ApiConnectionAction<TextImageAddResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<TextImageStatusPostResponse, ApiConnectionActionConfiguration> TextImageStatus(Expression<Func<TextImageStatusPostInput>> body = null)
+        public IBodyWorkflowAction<TextImageStatusResponse, ApiConnectionActionConfiguration> TextImageStatus(Expression<Func<AudioStatusBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TextImageStatusPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TextImageStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/task-text-status";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TextImageStatusPostResponse>(callPayload);
+                return new ApiConnectionAction<TextImageStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageImageAddPostResponse, ApiConnectionActionConfiguration> ImageImageAdd(Expression<Func<ImageImageAddPostInput>> body = null)
+        public IBodyWorkflowAction<ImageImageAddResponse, ApiConnectionActionConfiguration> ImageImageAdd(Expression<Func<ImageImageAddBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ImageImageAddPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ImageImageAddResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-image-task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ImageImageAddPostResponse>(callPayload);
+                return new ApiConnectionAction<ImageImageAddResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageImageStatusPostResponse, ApiConnectionActionConfiguration> ImageImageStatus(Expression<Func<ImageImageStatusPostInput>> body = null)
+        public IBodyWorkflowAction<ImageImageStatusResponse, ApiConnectionActionConfiguration> ImageImageStatus(Expression<Func<AudioStatusBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ImageImageStatusPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ImageImageStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/task-image-status";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ImageImageStatusPostResponse>(callPayload);
+                return new ApiConnectionAction<ImageImageStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageEditPostResponse, ApiConnectionActionConfiguration> ImageEdit(Expression<Func<ImageEditPostInput>> body = null)
+        public IBodyWorkflowAction<ImageEditResponse, ApiConnectionActionConfiguration> ImageEdit(Expression<Func<ImageEditBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ImageEditPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ImageEditResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-edit-task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ImageEditPostResponse>(callPayload);
+                return new ApiConnectionAction<ImageEditResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageEditStatusPostResponse, ApiConnectionActionConfiguration> ImageEditStatus(Expression<Func<ImageEditStatusPostInput>> body = null)
+        public IBodyWorkflowAction<ImageEditStatusResponse, ApiConnectionActionConfiguration> ImageEditStatus(Expression<Func<AudioStatusBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ImageEditStatusPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ImageEditStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/task-edit-status";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ImageEditStatusPostResponse>(callPayload);
+                return new ApiConnectionAction<ImageEditStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<AudioPostResponse, ApiConnectionActionConfiguration> Audio(Expression<Func<AudioPostInput>> body = null)
+        public IBodyWorkflowAction<AudioResponse, ApiConnectionActionConfiguration> Audio(Expression<Func<AudioBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AudioPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AudioResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add-audio-task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AudioPostResponse>(callPayload);
+                return new ApiConnectionAction<AudioResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<AudioStatusPostResponse, ApiConnectionActionConfiguration> AudioStatus(Expression<Func<AudioStatusPostInput>> body = null)
+        public IBodyWorkflowAction<AudioStatusResponse, ApiConnectionActionConfiguration> AudioStatus(Expression<Func<AudioStatusBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AudioStatusPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AudioStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/task-audio-status";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AudioStatusPostResponse>(callPayload);
+                return new ApiConnectionAction<AudioStatusResponse>(callPayload);
             });
         }
     }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
     {
     }
 
-    public class TextImageAddPostResponse
+    public class TextImageAddResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -146,16 +146,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string ProcessId { get; set; }
     }
 
-    public class TextImageAddPostInput
+    public class TextImageAddBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Model { get; set; } = "txt2img";
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextImageAddPostInputDataType Data { get; set; }
+        public TextImageAddBodyInputDataType Data { get; set; }
     }
 
-    public class TextImageAddPostInputDataType
+    public class TextImageAddBodyInputDataType
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
@@ -179,16 +179,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public int? Seed { get; set; }
     }
 
-    public class TextImageStatusPostResponse
+    public class TextImageStatusResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("response_data")]
-        public TextImageStatusPostResponseResponseDataType ResponseData { get; set; }
+        public TextImageStatusResponseResponseDataType ResponseData { get; set; }
     }
 
-    public class TextImageStatusPostResponseResponseDataType
+    public class TextImageStatusResponseResponseDataType
     {
         [JsonProperty("process_id")]
         public string ProcessId { get; set; }
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string Status { get; set; }
 
         [JsonProperty("result")]
-        public TextImageStatusPostResponseResponseDataTypeResultType Result { get; set; }
+        public TextImageStatusResponseResponseDataTypeResultType Result { get; set; }
 
         [JsonProperty("credit_used")]
         public int CreditUsed { get; set; }
@@ -206,19 +206,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public int Overage { get; set; }
     }
 
-    public class TextImageStatusPostResponseResponseDataTypeResultType
+    public class TextImageStatusResponseResponseDataTypeResultType
     {
         [JsonProperty("output")]
         public string[] Output { get; set; }
     }
 
-    public class TextImageStatusPostInput
+    public class AudioStatusBodyInput
     {
         [JsonProperty("process_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessId { get; set; }
     }
 
-    public class ImageImageAddPostResponse
+    public class ImageImageAddResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -227,16 +227,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string ProcessId { get; set; }
     }
 
-    public class ImageImageAddPostInput
+    public class ImageImageAddBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Model { get; set; } = "img2img";
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageImageAddPostInputDataType Data { get; set; }
+        public ImageImageAddBodyInputDataType Data { get; set; }
     }
 
-    public class ImageImageAddPostInputDataType
+    public class ImageImageAddBodyInputDataType
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
@@ -260,16 +260,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public int? Seed { get; set; }
     }
 
-    public class ImageImageStatusPostResponse
+    public class ImageImageStatusResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("response_data")]
-        public ImageImageStatusPostResponseResponseDataType ResponseData { get; set; }
+        public ImageImageStatusResponseResponseDataType ResponseData { get; set; }
     }
 
-    public class ImageImageStatusPostResponseResponseDataType
+    public class ImageImageStatusResponseResponseDataType
     {
         [JsonProperty("process_id")]
         public string ProcessId { get; set; }
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string Status { get; set; }
 
         [JsonProperty("result")]
-        public ImageImageStatusPostResponseResponseDataTypeResultType Result { get; set; }
+        public ImageImageStatusResponseResponseDataTypeResultType Result { get; set; }
 
         [JsonProperty("credit_used")]
         public int CreditUsed { get; set; }
@@ -287,19 +287,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public int Overage { get; set; }
     }
 
-    public class ImageImageStatusPostResponseResponseDataTypeResultType
+    public class ImageImageStatusResponseResponseDataTypeResultType
     {
         [JsonProperty("output")]
         public string[] Output { get; set; }
     }
 
-    public class ImageImageStatusPostInput
-    {
-        [JsonProperty("process_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ProcessId { get; set; }
-    }
-
-    public class ImageEditPostResponse
+    public class ImageEditResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -308,16 +302,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string ProcessId { get; set; }
     }
 
-    public class ImageEditPostInput
+    public class ImageEditBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Model { get; set; } = "pix2pix";
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageEditPostInputDataType Data { get; set; }
+        public ImageEditBodyInputDataType Data { get; set; }
     }
 
-    public class ImageEditPostInputDataType
+    public class ImageEditBodyInputDataType
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
@@ -341,16 +335,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public int? Seed { get; set; }
     }
 
-    public class ImageEditStatusPostResponse
+    public class ImageEditStatusResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("response_data")]
-        public ImageEditStatusPostResponseResponseDataType ResponseData { get; set; }
+        public ImageEditStatusResponseResponseDataType ResponseData { get; set; }
     }
 
-    public class ImageEditStatusPostResponseResponseDataType
+    public class ImageEditStatusResponseResponseDataType
     {
         [JsonProperty("process_id")]
         public string ProcessId { get; set; }
@@ -359,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string Status { get; set; }
 
         [JsonProperty("result")]
-        public ImageEditStatusPostResponseResponseDataTypeResultType Result { get; set; }
+        public ImageEditStatusResponseResponseDataTypeResultType Result { get; set; }
 
         [JsonProperty("credit_used")]
         public int CreditUsed { get; set; }
@@ -368,19 +362,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public int Overage { get; set; }
     }
 
-    public class ImageEditStatusPostResponseResponseDataTypeResultType
+    public class ImageEditStatusResponseResponseDataTypeResultType
     {
         [JsonProperty("output")]
         public string[] Output { get; set; }
     }
 
-    public class ImageEditStatusPostInput
-    {
-        [JsonProperty("process_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ProcessId { get; set; }
-    }
-
-    public class AudioPostResponse
+    public class AudioResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -389,26 +377,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string ProcessId { get; set; }
     }
 
-    public class AudioPostInput
+    public class AudioBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Model { get; set; } = "whisper";
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AudioPostInputDataType Data { get; set; } = new AudioPostInputDataType();
+        public AudioBodyInputDataType Data { get; set; } = new AudioBodyInputDataType();
     }
 
-    public class AudioPostInputDataType
+    public class AudioBodyInputDataType
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string File { get; set; }
 
         [JsonProperty("transcription_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AudioPostInputDataTypeTranscriptionFormatType TranscriptionFormat { get; set; } = AudioPostInputDataTypeTranscriptionFormatType.Text;
+        public BodyInputDataTypeTranscriptionFormatType TranscriptionFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip.BodyInputDataTypeTranscriptionFormatType.Text;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AudioPostInputDataTypeTranscriptionFormatType
+    public enum BodyInputDataTypeTranscriptionFormatType
     {
         [EnumMember(Value = "text")]
         Text,
@@ -418,16 +406,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         Word
     }
 
-    public class AudioStatusPostResponse
+    public class AudioStatusResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("response_data")]
-        public AudioStatusPostResponseResponseDataType ResponseData { get; set; }
+        public AudioStatusResponseResponseDataType ResponseData { get; set; }
     }
 
-    public class AudioStatusPostResponseResponseDataType
+    public class AudioStatusResponseResponseDataType
     {
         [JsonProperty("process_id")]
         public string ProcessId { get; set; }
@@ -436,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string Status { get; set; }
 
         [JsonProperty("result")]
-        public AudioStatusPostResponseResponseDataTypeResultType Result { get; set; }
+        public AudioStatusResponseResponseDataTypeResultType Result { get; set; }
 
         [JsonProperty("credit_used")]
         public int CreditUsed { get; set; }
@@ -445,16 +433,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public int Overage { get; set; }
     }
 
-    public class AudioStatusPostResponseResponseDataTypeResultType
+    public class AudioStatusResponseResponseDataTypeResultType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
-    }
-
-    public class AudioStatusPostInput
-    {
-        [JsonProperty("process_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ProcessId { get; set; }
     }
 }
 

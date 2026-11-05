@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<UpdateTaskInput>> updatedTask)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<UpdatedTaskInput>> updatedTask)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_updatedTask = WorkflowExpression.Compile(updatedTask, nameof(updatedTask), required: true);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> AddTask(Expression<Func<AddTaskInput>> newTask)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> AddTask(Expression<Func<NewTaskInput>> newTask)
         {
             var __workflow_newTask = WorkflowExpression.Compile(newTask, nameof(newTask), required: true);
             return new DeferredBodyAction<TaskObject, ApiConnectionActionConfiguration>(() =>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> id, Expression<Func<UpdateProjectInput>> updatedProject)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> id, Expression<Func<UpdatedProjectInput>> updatedProject)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_updatedProject = WorkflowExpression.Compile(updatedProject, nameof(updatedProject), required: true);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> AddProject(Expression<Func<AddProjectInput>> newProject)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> AddProject(Expression<Func<NewProjectInput>> newProject)
         {
             var __workflow_newProject = WorkflowExpression.Compile(newProject, nameof(newProject), required: true);
             return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<Lead, ApiConnectionActionConfiguration> UpdateLead(Expression<Func<string>> id, Expression<Func<UpdateLeadInput>> updatedLead)
+        public IBodyWorkflowAction<Lead, ApiConnectionActionConfiguration> UpdateLead(Expression<Func<string>> id, Expression<Func<UpdatedLeadInput>> updatedLead)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_updatedLead = WorkflowExpression.Compile(updatedLead, nameof(updatedLead), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<Lead, ApiConnectionActionConfiguration> AddLead(Expression<Func<AddLeadInput>> newLead)
+        public IBodyWorkflowAction<Lead, ApiConnectionActionConfiguration> AddLead(Expression<Func<NewLeadInput>> newLead)
         {
             var __workflow_newLead = WorkflowExpression.Compile(newLead, nameof(newLead), required: true);
             return new DeferredBodyAction<Lead, ApiConnectionActionConfiguration>(() =>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> id, Expression<Func<UpdateContactInput>> updatedContact)
+        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> id, Expression<Func<UpdatedContactInput>> updatedContact)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_updatedContact = WorkflowExpression.Compile(updatedContact, nameof(updatedContact), required: true);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> AddContact(Expression<Func<AddContactInput>> newContact)
+        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> AddContact(Expression<Func<NewContactInput>> newContact)
         {
             var __workflow_newContact = WorkflowExpression.Compile(newContact, nameof(newContact), required: true);
             return new DeferredBodyAction<Contact, ApiConnectionActionConfiguration>(() =>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "insightly")]
-        public IBodyWorkflowAction<OrganizationInfo, ApiConnectionActionConfiguration> AddOrganization(Expression<Func<AddOrganizationInput>> newOrganization)
+        public IBodyWorkflowAction<OrganizationInfo, ApiConnectionActionConfiguration> AddOrganization(Expression<Func<NewOrganizationInput>> newOrganization)
         {
             var __workflow_newOrganization = WorkflowExpression.Compile(newOrganization, nameof(newOrganization), required: true);
             return new DeferredBodyAction<OrganizationInfo, ApiConnectionActionConfiguration>(() =>
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Waiting
     }
 
-    public class UpdateTaskInput
+    public class UpdatedTaskInput
     {
         [JsonProperty("TITLE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskTitle { get; set; }
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string TaskDetails { get; set; }
 
         [JsonProperty("STATUS", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateTaskInputTaskStatusType TaskStatus { get; set; }
+        public UpdatedTaskInputTaskStatusType TaskStatus { get; set; }
 
         [JsonProperty("PRIORITY")]
         public int? TaskPriority { get; set; }
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputTaskStatusType
+    public enum UpdatedTaskInputTaskStatusType
     {
         Completed,
         Deferred,
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Waiting
     }
 
-    public class AddTaskInput
+    public class NewTaskInput
     {
         [JsonProperty("TITLE", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskTitle { get; set; }
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string TaskDetails { get; set; }
 
         [JsonProperty("STATUS", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddTaskInputTaskStatusType TaskStatus { get; set; }
+        public NewTaskInputTaskStatusType TaskStatus { get; set; }
 
         [JsonProperty("PRIORITY")]
         public int? TaskPriority { get; set; }
@@ -571,7 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddTaskInputTaskStatusType
+    public enum NewTaskInputTaskStatusType
     {
         Completed,
         Deferred,
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public bool CanDelete { get; set; }
     }
 
-    public class UpdateProjectInput
+    public class UpdatedProjectInput
     {
         [JsonProperty("PROJECT_NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
@@ -660,13 +660,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string ProjectDetails { get; set; }
 
         [JsonProperty("STATUS", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateProjectInputProjectStatusType ProjectStatus { get; set; }
+        public UpdatedProjectInputProjectStatusType ProjectStatus { get; set; }
 
         [JsonProperty("IMAGE_URL")]
         public string ImageURL { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
-        public UpdateProjectInputProjectVisibilityType? ProjectVisibility { get; set; }
+        public UpdatedProjectInputProjectVisibilityType? ProjectVisibility { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int? VisibleTeamId { get; set; }
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateProjectInputProjectStatusType
+    public enum UpdatedProjectInputProjectStatusType
     {
         Completed,
         Deferred,
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateProjectInputProjectVisibilityType
+    public enum UpdatedProjectInputProjectVisibilityType
     {
         Everyone,
         Individuals,
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string TagName { get; set; }
     }
 
-    public class AddProjectInput
+    public class NewProjectInput
     {
         [JsonProperty("PROJECT_NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
@@ -724,13 +724,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string ProjectDetails { get; set; }
 
         [JsonProperty("STATUS", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddProjectInputProjectStatusType ProjectStatus { get; set; }
+        public NewProjectInputProjectStatusType ProjectStatus { get; set; }
 
         [JsonProperty("IMAGE_URL")]
         public string ImageURL { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
-        public AddProjectInputProjectVisibilityType? ProjectVisibility { get; set; }
+        public NewProjectInputProjectVisibilityType? ProjectVisibility { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int? VisibleTeamId { get; set; }
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddProjectInputProjectStatusType
+    public enum NewProjectInputProjectStatusType
     {
         Completed,
         Deferred,
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddProjectInputProjectVisibilityType
+    public enum NewProjectInputProjectVisibilityType
     {
         Everyone,
         Individuals,
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public bool CanDelete { get; set; }
     }
 
-    public class UpdateLeadInput
+    public class UpdatedLeadInput
     {
         [JsonProperty("TITLE")]
         public string Title { get; set; }
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string ConvertedDateTime { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
-        public UpdateLeadInputLeadVisibilityType? LeadVisibility { get; set; }
+        public UpdatedLeadInputLeadVisibilityType? LeadVisibility { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int? VisibleTeamId { get; set; }
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateLeadInputLeadVisibilityType
+    public enum UpdatedLeadInputLeadVisibilityType
     {
         Everyone,
         Individuals,
@@ -965,7 +965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Team
     }
 
-    public class AddLeadInput
+    public class NewLeadInput
     {
         [JsonProperty("TITLE")]
         public string Title { get; set; }
@@ -983,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string ConvertedDateTime { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
-        public AddLeadInputLeadVisibilityType? LeadVisibility { get; set; }
+        public NewLeadInputLeadVisibilityType? LeadVisibility { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int? VisibleTeamId { get; set; }
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddLeadInputLeadVisibilityType
+    public enum NewLeadInputLeadVisibilityType
     {
         Everyone,
         Individuals,
@@ -1229,7 +1229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string Country { get; set; }
     }
 
-    public class UpdateContactInput
+    public class UpdatedContactInput
     {
         [JsonProperty("SALUTATION")]
         public string Salutation { get; set; }
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string Background { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
-        public UpdateContactInputContactVisibilityType? ContactVisibility { get; set; }
+        public UpdatedContactInputContactVisibilityType? ContactVisibility { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int? VisibleTeamId { get; set; }
@@ -1253,14 +1253,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleUserIDs { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
-        public ContactInfo2[] ContactInformation { get; set; }
+        public AddContactContactInfo[] ContactInformation { get; set; }
 
         [JsonProperty("TAGS")]
         public Tag[] Tag { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateContactInputContactVisibilityType
+    public enum UpdatedContactInputContactVisibilityType
     {
         Everyone,
         Individuals,
@@ -1268,13 +1268,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Team
     }
 
-    public class ContactInfo2
+    public class AddContactContactInfo
     {
         [JsonProperty("CONTACT_INFO_ID")]
         public int? ContactInfoId { get; set; }
 
         [JsonProperty("TYPE")]
-        public ContactInfoTypeType? Type { get; set; }
+        public AddContactContactInfoTypeType? Type { get; set; }
 
         [JsonProperty("SUBTYPE")]
         public string SubType { get; set; }
@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactInfoTypeType
+    public enum AddContactContactInfoTypeType
     {
         Phone,
         Email,
@@ -1295,7 +1295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Website
     }
 
-    public class AddContactInput
+    public class NewContactInput
     {
         [JsonProperty("SALUTATION")]
         public string Salutation { get; set; }
@@ -1310,7 +1310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string Background { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
-        public AddContactInputContactVisibilityType? ContactVisibility { get; set; }
+        public NewContactInputContactVisibilityType? ContactVisibility { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int? VisibleTeamId { get; set; }
@@ -1319,14 +1319,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleUserIDs { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
-        public ContactInfo2[] ContactInformation { get; set; }
+        public AddContactContactInfo[] ContactInformation { get; set; }
 
         [JsonProperty("TAGS")]
         public Tag[] Tag { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddContactInputContactVisibilityType
+    public enum NewContactInputContactVisibilityType
     {
         Everyone,
         Individuals,
@@ -1421,10 +1421,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string OrganizationVisibility { get; set; }
 
         [JsonProperty("ADDRESSES")]
-        public Address[] Organization { get; set; }
+        public AddOrganizationAddressResponse[] Organization { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
-        public ContactInfo[] ContactInformation { get; set; }
+        public AddOrganizationContactInfoResponse[] ContactInformation { get; set; }
 
         [JsonProperty("BACKGROUND")]
         public string Background { get; set; }
@@ -1439,7 +1439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int VisibleUserIDs { get; set; }
     }
 
-    public class Address
+    public class AddOrganizationAddressResponse
     {
         [JsonProperty("ADDRESS_ID")]
         public int AddressId { get; set; }
@@ -1463,13 +1463,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string AddressCountry { get; set; }
     }
 
-    public class ContactInfo
+    public class AddOrganizationContactInfoResponse
     {
         [JsonProperty("CONTACT_INFO_ID")]
         public int ContactInfoId { get; set; }
 
         [JsonProperty("TYPE")]
-        public ContactInfoTypeType Type { get; set; }
+        public AddOrganizationContactInfoTypeTypeResponse Type { get; set; }
 
         [JsonProperty("SUBTYPE")]
         public string SubType { get; set; }
@@ -1481,7 +1481,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string Detail { get; set; }
     }
 
-    public class AddOrganizationInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrganizationContactInfoTypeTypeResponse
+    {
+        Phone,
+        Email,
+        Social,
+        Website
+    }
+
+    public class NewOrganizationInput
     {
         [JsonProperty("ORGANISATION_NAME", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganizationName { get; set; }
@@ -1490,7 +1499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string OrganizationBackground { get; set; }
 
         [JsonProperty("VISIBLE_TO")]
-        public AddOrganizationInputOrganizationVisibilityType? OrganizationVisibility { get; set; }
+        public NewOrganizationInputOrganizationVisibilityType? OrganizationVisibility { get; set; }
 
         [JsonProperty("VISIBLE_TEAM_ID")]
         public int? VisibleTeamId { get; set; }
@@ -1499,17 +1508,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleUserIDs { get; set; }
 
         [JsonProperty("ADDRESSES")]
-        public Address2[] OrganizationAddress { get; set; }
+        public AddOrganizationAddress[] OrganizationAddress { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
-        public ContactInfo2[] ContactInformation { get; set; }
+        public AddContactContactInfo[] ContactInformation { get; set; }
 
         [JsonProperty("TAGS")]
         public Tag[] Tags { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddOrganizationInputOrganizationVisibilityType
+    public enum NewOrganizationInputOrganizationVisibilityType
     {
         Everyone,
         Individuals,
@@ -1517,7 +1526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Team
     }
 
-    public class Address2
+    public class AddOrganizationAddress
     {
         [JsonProperty("ADDRESS_ID")]
         public int? AddressId { get; set; }

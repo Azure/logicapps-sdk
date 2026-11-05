@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     public class GroupmgrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrGroupApproval(Expression<Func<GroupMgrGroupApprovalInput>> body)
+        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrGroupApproval(Expression<Func<GroupMgrGroupApprovalBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupExtended, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrCreateGroup(Expression<Func<GroupMgrCreateGroupInput>> body)
+        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrCreateGroup(Expression<Func<GroupMgrCreateGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupExtended, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrUpdateGroup(Expression<Func<GroupMgrUpdateGroupInput>> body)
+        public IBodyWorkflowAction<GroupExtended, ApiConnectionActionConfiguration> GroupMgrUpdateGroup(Expression<Func<GroupMgrUpdateGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupExtended, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GroupMgrDeleteGroup(Expression<Func<GroupMgrDeleteGroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupMgrDeleteGroup(Expression<Func<GroupMgrDeleteGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GroupMgrArchiveGroup(Expression<Func<GroupMgrArchiveGroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupMgrArchiveGroup(Expression<Func<GroupMgrArchiveGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
 
     public class GroupmgrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupRequested(Expression<Func<GroupMgrGroupRequestedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupRequested(Expression<Func<GroupMgrGroupRequestedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -98,41 +98,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupCreated(Expression<Func<GroupMgrGroupCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhookrequest/GroupCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new GroupMgrGroupCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupUpdated(Expression<Func<GroupMgrGroupUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhookrequest/GroupUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new GroupMgrGroupCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupDeleted(Expression<Func<GroupMgrGroupDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupMgrGroupDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/webhookrequest/GroupDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new GroupMgrGroupCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -159,17 +156,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         public string CreatedBy { get; set; }
     }
 
-    public class GroupMgrGroupApprovalInput
+    public class GroupMgrGroupApprovalBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GroupMgrGroupApprovalInputApprovedType Approved { get; set; } = GroupMgrGroupApprovalInputApprovedType.Approve;
+        public BodyInputApprovedType Approved { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr.BodyInputApprovedType.Approve;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GroupMgrGroupApprovalInputApprovedType
+    public enum BodyInputApprovedType
     {
         [EnumMember(Value = "true")]
         Approve,
@@ -177,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Reject
     }
 
-    public class GroupMgrCreateGroupInput
+    public class GroupMgrCreateGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -191,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         public string GroupType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GroupMgrCreateGroupInputIsPublicType? IsPublic { get; set; } = GroupMgrCreateGroupInputIsPublicType.Public;
+        public GroupMgrCreateGroupBodyInputIsPublicType? IsPublic { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr.GroupMgrCreateGroupBodyInputIsPublicType.Public;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateTeam { get; set; } = false;
@@ -200,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GroupMgrCreateGroupInputIsPublicType
+    public enum GroupMgrCreateGroupBodyInputIsPublicType
     {
         [EnumMember(Value = "true")]
         Public,
@@ -208,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Private
     }
 
-    public class GroupMgrUpdateGroupInput
+    public class GroupMgrUpdateGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
@@ -218,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         public string GroupType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GroupMgrUpdateGroupInputIsPublicType? IsPublic { get; set; } = GroupMgrUpdateGroupInputIsPublicType.None;
+        public GroupMgrUpdateGroupBodyInputIsPublicType? IsPublic { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr.GroupMgrUpdateGroupBodyInputIsPublicType.None;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CreateTeam { get; set; } = false;
@@ -226,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GroupMgrUpdateGroupInputIsPublicType
+    public enum GroupMgrUpdateGroupBodyInputIsPublicType
     {
         [EnumMember(Value = "")]
         None,
@@ -236,23 +233,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Private
     }
 
-    public class GroupMgrDeleteGroupInput
+    public class GroupMgrDeleteGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemId { get; set; }
     }
 
-    public class GroupMgrArchiveGroupInput
+    public class GroupMgrArchiveGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListItemId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GroupMgrArchiveGroupInputArchiveType Archive { get; set; } = GroupMgrArchiveGroupInputArchiveType.Archive;
+        public BodyInputArchiveType Archive { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr.BodyInputArchiveType.Archive;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GroupMgrArchiveGroupInputArchiveType
+    public enum BodyInputArchiveType
     {
         [EnumMember(Value = "true")]
         Archive,
@@ -260,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Unarchive
     }
 
-    public class GroupMgrGroupRequestedInput
+    public class GroupMgrGroupRequestedBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -269,19 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         internal string Webhook { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class GroupMgrGroupCreatedInput
-    {
-        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Webhook { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class GroupMgrGroupUpdatedInput
-    {
-        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Webhook { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class GroupMgrGroupDeletedInput
+    public class GroupMgrGroupCreatedBodyInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Webhook { get; set; } = "#{listCallbackUrl()}";

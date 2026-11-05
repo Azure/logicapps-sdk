@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
     public class ActActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
-        public IBodyWorkflowAction<ActWebApiModelsContact, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> contact)
+        public IBodyWorkflowAction<ActWebApiModelsContact, ApiConnectionActionConfiguration> CreateContact(Expression<Func<ContactInput>> contact)
         {
             var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: true);
             return new DeferredBodyAction<ActWebApiModelsContact, ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
         public JToken CustomFields { get; set; }
     }
 
-    public class CreateContactInput
+    public class ContactInput
     {
         [JsonProperty("fullName")]
         public string FullName { get; set; }

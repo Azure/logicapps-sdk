@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense, ApiConnectionActionConfiguration> AddExpense(Expression<Func<string>> accountid, Expression<Func<AddExpenseInput>> body)
+        public IBodyWorkflowAction<Expense, ApiConnectionActionConfiguration> AddExpense(Expression<Func<string>> accountid, Expression<Func<AddExpenseBodyInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<UpdateExpenseInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<UpdateExpenseBodyInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<DeleteExpenseInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<DeleteExpenseBodyInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> AddClient(Expression<Func<string>> accountid, Expression<Func<AddClientInput>> body)
+        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> AddClient(Expression<Func<string>> accountid, Expression<Func<AddClientBodyInput>> body)
         {
             var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -239,16 +239,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string CurrencyCode { get; set; }
     }
 
-    public class AddExpenseInput
+    public class AddExpenseBodyInput
     {
         [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddExpenseInputExpenseType Expense { get; set; }
+        public AddExpenseBodyInputExpenseType Expense { get; set; }
     }
 
-    public class AddExpenseInputExpenseType
+    public class AddExpenseBodyInputExpenseType
     {
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddExpenseInputExpenseTypeAmountType Amount { get; set; }
+        public AddExpenseBodyInputExpenseTypeAmountType Amount { get; set; }
 
         [JsonProperty("categoryid", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Category { get; set; }
@@ -266,17 +266,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string Notes { get; set; }
     }
 
-    public class AddExpenseInputExpenseTypeAmountType
+    public class AddExpenseBodyInputExpenseTypeAmountType
     {
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Amount { get; set; }
 
         [JsonProperty("code")]
-        public AddExpenseInputExpenseTypeAmountTypeCurrencyType? Currency { get; set; }
+        public BodyInputExpenseTypeAmountTypeCurrencyType? Currency { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddExpenseInputExpenseTypeAmountTypeCurrencyType
+    public enum BodyInputExpenseTypeAmountTypeCurrencyType
     {
         AED,
         AMD,
@@ -456,16 +456,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         ZWL
     }
 
-    public class UpdateExpenseInput
+    public class UpdateExpenseBodyInput
     {
         [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateExpenseInputExpenseType Expense { get; set; }
+        public UpdateExpenseBodyInputExpenseType Expense { get; set; }
     }
 
-    public class UpdateExpenseInputExpenseType
+    public class UpdateExpenseBodyInputExpenseType
     {
         [JsonProperty("amount")]
-        public UpdateExpenseInputExpenseTypeAmountType Amount { get; set; }
+        public UpdateExpenseBodyInputExpenseTypeAmountType Amount { get; set; }
 
         [JsonProperty("categoryid")]
         public int? Category { get; set; }
@@ -483,203 +483,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string Notes { get; set; }
     }
 
-    public class UpdateExpenseInputExpenseTypeAmountType
+    public class UpdateExpenseBodyInputExpenseTypeAmountType
     {
         [JsonProperty("amount")]
         public string Amount { get; set; }
 
         [JsonProperty("code")]
-        public UpdateExpenseInputExpenseTypeAmountTypeCurrencyType? Currency { get; set; }
+        public BodyInputExpenseTypeAmountTypeCurrencyType? Currency { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateExpenseInputExpenseTypeAmountTypeCurrencyType
-    {
-        AED,
-        AMD,
-        ANG,
-        ARS,
-        AUD,
-        AWG,
-        AZN,
-        BAM,
-        BBD,
-        BDT,
-        BGN,
-        BHD,
-        BIF,
-        BMD,
-        BND,
-        BOB,
-        BOV,
-        BRL,
-        BSD,
-        BTN,
-        BWP,
-        BYN,
-        BYR,
-        BZD,
-        CAD,
-        CDF,
-        CHE,
-        CHF,
-        CHW,
-        CLF,
-        CLP,
-        CNY,
-        COP,
-        COU,
-        CRC,
-        CUC,
-        CUP,
-        CVE,
-        CZK,
-        DJF,
-        DKK,
-        DOP,
-        EGP,
-        ERN,
-        ETB,
-        EUR,
-        FJD,
-        FKP,
-        GBP,
-        GEL,
-        GHS,
-        GIP,
-        GMD,
-        GNF,
-        GTQ,
-        GYD,
-        HKD,
-        HNL,
-        HRK,
-        HTG,
-        HUF,
-        [EnumMember(Value = "IDR")]
-        IdR,
-        ILS,
-        INR,
-        IQD,
-        IRR,
-        ISK,
-        JMD,
-        JOD,
-        JPY,
-        KES,
-        KGS,
-        KHR,
-        KMF,
-        KPW,
-        KRW,
-        KWD,
-        KYD,
-        KZT,
-        LAK,
-        LBP,
-        LKR,
-        LRD,
-        LSL,
-        LYD,
-        MAD,
-        MDL,
-        MGA,
-        MKD,
-        MMK,
-        MNT,
-        MOP,
-        MRO,
-        MUR,
-        MVR,
-        MWK,
-        MXN,
-        MXV,
-        MYR,
-        MZN,
-        NAD,
-        NGN,
-        NIO,
-        NOK,
-        NPR,
-        NZD,
-        OMR,
-        PAB,
-        PEN,
-        PGK,
-        PHP,
-        PKR,
-        PLN,
-        PYG,
-        QAR,
-        RON,
-        RSD,
-        RUB,
-        RWF,
-        SAR,
-        SBD,
-        SCR,
-        SDG,
-        SEK,
-        SGD,
-        SHP,
-        SLL,
-        SOS,
-        SRD,
-        SSP,
-        STD,
-        SVC,
-        SYP,
-        SZL,
-        THB,
-        TJS,
-        TMT,
-        TND,
-        TOP,
-        TRY,
-        TTD,
-        TWD,
-        TZS,
-        UAH,
-        UGX,
-        USD,
-        USN,
-        UYI,
-        UYU,
-        UZS,
-        VEF,
-        VND,
-        VUV,
-        WST,
-        XAF,
-        XAG,
-        XAU,
-        XBA,
-        XBB,
-        XBC,
-        XBD,
-        XCD,
-        XDR,
-        XOF,
-        XPD,
-        XPF,
-        XPT,
-        XSU,
-        XTS,
-        XUA,
-        XXX,
-        YER,
-        ZAR,
-        ZMW,
-        ZWL
-    }
-
-    public class DeleteExpenseInput
+    public class DeleteExpenseBodyInput
     {
         [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteExpenseInputExpenseType Expense { get; set; } = new DeleteExpenseInputExpenseType();
+        public DeleteExpenseBodyInputExpenseType Expense { get; set; } = new DeleteExpenseBodyInputExpenseType();
     }
 
-    public class DeleteExpenseInputExpenseType
+    public class DeleteExpenseBodyInputExpenseType
     {
         [JsonProperty("vis_state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int VisState { get; set; } = 1;
@@ -781,13 +600,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string CurrencyCode { get; set; }
     }
 
-    public class AddClientInput
+    public class AddClientBodyInput
     {
         [JsonProperty("client", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddClientInputClientType Client { get; set; }
+        public BodyInputClientType Client { get; set; }
     }
 
-    public class AddClientInputClientType
+    public class BodyInputClientType
     {
         [JsonProperty("fname")]
         public string FirstName { get; set; }
@@ -805,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string PhoneNumber { get; set; }
 
         [JsonProperty("currency_code")]
-        public AddClientInputClientTypeCurrencyType? Currency { get; set; }
+        public BodyInputClientTypeCurrencyType? Currency { get; set; }
 
         [JsonProperty("p_street")]
         public string StreetAddress1 { get; set; }
@@ -827,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddClientInputClientTypeCurrencyType
+    public enum BodyInputClientTypeCurrencyType
     {
         AED,
         AMD,

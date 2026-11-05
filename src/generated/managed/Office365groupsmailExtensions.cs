@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class Office365groupsmailActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<CreateConversationResponse, ApiConnectionActionConfiguration> CreateConversation(Expression<Func<string>> groupId, Expression<Func<CreateConversationInput>> body)
+        public IBodyWorkflowAction<CreateConversationResponse, ApiConnectionActionConfiguration> CreateConversation(Expression<Func<string>> groupId, Expression<Func<CreateConversationBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> conversationId, Expression<Func<CreateConversationThreadInput>> body)
+        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> conversationId, Expression<Func<CreateConversationBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateGroupThread(Expression<Func<string>> groupId, Expression<Func<CreateGroupThreadInput>> body)
+        public IBodyWorkflowAction<NewConversationThreadResponse, ApiConnectionActionConfiguration> CreateGroupThread(Expression<Func<string>> groupId, Expression<Func<CreateConversationBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyToAThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<ReplyToAThreadInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyToAThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<ReplyBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<ReplyPostInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Reply(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<ReplyBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Forward(Expression<Func<string>> groupMail, Expression<Func<string>> conversationId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<ForwardPostV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Forward(Expression<Func<string>> groupMail, Expression<Func<string>> conversationId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<ForwardBodyInput>> body)
         {
             var __workflow_groupMail = WorkflowExpression.Compile(groupMail, nameof(groupMail), required: true);
             var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string ThreadId { get; set; }
     }
 
-    public class CreateConversationInput
+    public class CreateConversationBodyInput
     {
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewTopic { get; set; }
@@ -528,15 +528,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public string ConversationThreadId { get; set; }
     }
 
-    public class CreateConversationThreadInput
-    {
-        [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string NewTopic { get; set; }
-
-        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewPostBody Post { get; set; } = new NewPostBody();
-    }
-
     public class ListGroupThreadsResponse
     {
         [JsonProperty("@odata.nextLink")]
@@ -544,15 +535,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
         [JsonProperty("value")]
         public ConversationThread[] Value { get; set; }
-    }
-
-    public class CreateGroupThreadInput
-    {
-        [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string NewTopic { get; set; }
-
-        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewPostBody Post { get; set; } = new NewPostBody();
     }
 
     public class ListThreadPostsResponse
@@ -579,20 +561,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public Attachment[] Value { get; set; }
     }
 
-    public class ReplyToAThreadInput
-    {
-        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewPostBody Post { get; set; } = new NewPostBody();
-    }
-
-    public class ReplyPostInput
+    public class ReplyBodyInput
     {
         [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewPostBody Post { get; set; } = new NewPostBody();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,
@@ -601,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         DELETE
     }
 
-    public class ForwardPostV2Input
+    public class ForwardBodyInput
     {
         public string Comment { get; set; }
 

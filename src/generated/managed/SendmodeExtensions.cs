@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
     public class SendmodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<SendSMSInput>> message, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<SendSMSMessageInput>> message, Expression<Func<string>> contentType = null)
         {
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<OptoutCustomerResponse, ApiConnectionActionConfiguration> OptoutCustomer(Expression<Func<string>> contentType, Expression<Func<OptoutCustomerInput>> message)
+        public IBodyWorkflowAction<OptoutCustomerResponse, ApiConnectionActionConfiguration> OptoutCustomer(Expression<Func<string>> contentType, Expression<Func<OptoutCustomerMessageInput>> message)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
-        public IBodyWorkflowAction<ImportCustomerResponse, ApiConnectionActionConfiguration> ImportCustomer(Expression<Func<ImportCustomerInput>> importdata, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<ImportCustomerResponse, ApiConnectionActionConfiguration> ImportCustomer(Expression<Func<ImportdataInput>> importdata, Expression<Func<string>> contentType = null)
         {
             var __workflow_importdata = WorkflowExpression.Compile(importdata, nameof(importdata), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         public string[] Recipients { get; set; }
     }
 
-    public class SendSMSInput
+    public class SendSMSMessageInput
     {
         [JsonProperty("senderid")]
         public string Senderid { get; set; }
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         public string Optoutreason { get; set; }
     }
 
-    public class OptoutCustomerInput
+    public class OptoutCustomerMessageInput
     {
         [JsonProperty("mobilenumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Mobilenumber { get; set; }
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         public string Dateofbirth { get; set; }
     }
 
-    public class ImportCustomerInput
+    public class ImportdataInput
     {
         [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Group { get; set; }

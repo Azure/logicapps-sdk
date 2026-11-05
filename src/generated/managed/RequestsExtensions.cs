@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
     public class RequestsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requests")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateContact(Expression<Func<RepfabricCreateContactInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateContact(Expression<Func<RepfabricCreateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requests")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateCompany(Expression<Func<RepfabricCreateCompanyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateCompany(Expression<Func<RepfabricCreateCompanyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requests")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateQuote(Expression<Func<RepfabricCreateQuoteInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateQuote(Expression<Func<RepfabricCreateQuoteBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
     {
     }
 
-    public class RepfabricCreateContactInput
+    public class RepfabricCreateContactBodyInput
     {
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         public string[] ContactTags { get; set; }
     }
 
-    public class RepfabricCreateCompanyInput
+    public class RepfabricCreateCompanyBodyInput
     {
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         public string CompanySalesTeam { get; set; }
     }
 
-    public class RepfabricCreateQuoteInput
+    public class RepfabricCreateQuoteBodyInput
     {
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
@@ -290,10 +290,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requests
         public string Value { get; set; }
 
         [JsonProperty("line-item")]
-        public RepfabricCreateQuoteInputLineItemType LineItem { get; set; }
+        public BodyInputLineItemType LineItem { get; set; }
     }
 
-    public class RepfabricCreateQuoteInputLineItemType
+    public class BodyInputLineItemType
     {
         [JsonProperty("part-num")]
         public string PartNum { get; set; }

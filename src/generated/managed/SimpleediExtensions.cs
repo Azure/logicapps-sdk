@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
     public class SimpleediActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EdiToJson(Expression<Func<EdiToJsonInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EdiToJson(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml(Expression<Func<XmlToXmlInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -47,19 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
     {
     }
 
-    public class EdiToJsonInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class XmlToXmlInput
+    public class BodyInput
     {
         [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputString { get; set; }

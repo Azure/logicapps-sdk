@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
 
     public class WorkfronteventsubscrTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration> OnWorkfrontEvent(Expression<Func<OnWorkfrontEventInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration> OnWorkfrontEvent(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<OnWorkfrontEventResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -39,26 +39,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
         public string Version { get; set; }
     }
 
-    public class OnWorkfrontEventInput
+    public class BodyInput
     {
         [JsonProperty("objCode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnWorkfrontEventInputObjectTypeType ObjectType { get; set; }
+        public BodyInputObjectTypeType ObjectType { get; set; }
 
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnWorkfrontEventInputEventTypeType EventType { get; set; }
+        public BodyInputEventTypeType EventType { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("filters")]
-        public OnWorkfrontEventInputEventFiltersTypeItem[] EventFilters { get; set; }
+        public BodyInputEventFiltersTypeItem[] EventFilters { get; set; }
 
         [JsonProperty("filterConnector", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnWorkfrontEventInputFilterConnectorType? FilterConnector { get; set; } = OnWorkfrontEventInputFilterConnectorType.AND;
+        public BodyInputFilterConnectorType? FilterConnector { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr.BodyInputFilterConnectorType.AND;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OnWorkfrontEventInputObjectTypeType
+    public enum BodyInputObjectTypeType
     {
         PROJ,
         [EnumMember(Value = "TASK")]
@@ -79,14 +79,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OnWorkfrontEventInputEventTypeType
+    public enum BodyInputEventTypeType
     {
         CREATE,
         UPDATE,
         DELETE
     }
 
-    public class OnWorkfrontEventInputEventFiltersTypeItem
+    public class BodyInputEventFiltersTypeItem
     {
         [JsonProperty("fieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
@@ -95,14 +95,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
         public string FieldValue { get; set; }
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnWorkfrontEventInputEventFiltersTypeItemStateType? State { get; set; } = OnWorkfrontEventInputEventFiltersTypeItemStateType.NewState;
+        public BodyInputEventFiltersTypeItemStateType? State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr.BodyInputEventFiltersTypeItemStateType.NewState;
 
         [JsonProperty("comparison", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnWorkfrontEventInputEventFiltersTypeItemComparisonOperatorType? ComparisonOperator { get; set; } = OnWorkfrontEventInputEventFiltersTypeItemComparisonOperatorType.Eq;
+        public BodyInputEventFiltersTypeItemComparisonOperatorType? ComparisonOperator { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr.BodyInputEventFiltersTypeItemComparisonOperatorType.Eq;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OnWorkfrontEventInputEventFiltersTypeItemStateType
+    public enum BodyInputEventFiltersTypeItemStateType
     {
         [EnumMember(Value = "newState")]
         NewState,
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OnWorkfrontEventInputEventFiltersTypeItemComparisonOperatorType
+    public enum BodyInputEventFiltersTypeItemComparisonOperatorType
     {
         [EnumMember(Value = "eq")]
         Eq,
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OnWorkfrontEventInputFilterConnectorType
+    public enum BodyInputFilterConnectorType
     {
         AND,
         OR

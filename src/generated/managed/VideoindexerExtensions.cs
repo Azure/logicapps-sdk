@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
     public class VideoindexerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UploadVideo(Expression<Func<string>> videoUrl, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UploadVideo(Expression<Func<string>> videoUrl, Expression<Func<string>> name, Expression<Func<UploadVideoPrivacyInput>> privacy, Expression<Func<LanguageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
         {
             var __workflow_videoUrl = WorkflowExpression.Compile(videoUrl, nameof(videoUrl), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> face = null, Expression<Func<string>> query = null, Expression<Func<string>> searchInPublicAccount = null, Expression<Func<privacyInput2>> privacy = null, Expression<Func<textScopeInput>> textScope = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> id = null, Expression<Func<string>> partition = null, Expression<Func<string>> owner = null, Expression<Func<double>> pageSize = null, Expression<Func<double>> skip = null, Expression<Func<string>> externalId = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<string>> face = null, Expression<Func<string>> query = null, Expression<Func<string>> searchInPublicAccount = null, Expression<Func<SearchPrivacyInput>> privacy = null, Expression<Func<TextScopeInput>> textScope = null, Expression<Func<LanguageInput>> language = null, Expression<Func<string>> id = null, Expression<Func<string>> partition = null, Expression<Func<string>> owner = null, Expression<Func<double>> pageSize = null, Expression<Func<double>> skip = null, Expression<Func<string>> externalId = null)
         {
             var __workflow_face = WorkflowExpression.Compile(face, nameof(face), required: false);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<GetBreakdownResponse, ApiConnectionActionConfiguration> GetBreakdown(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<GetBreakdownResponse, ApiConnectionActionConfiguration> GetBreakdown(Expression<Func<string>> id, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetInsightsWidgetUrl(Expression<Func<string>> id, Expression<Func<widgetTypeInput>> widgetType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetInsightsWidgetUrl(Expression<Func<string>> id, Expression<Func<WidgetTypeInput>> widgetType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_widgetType = WorkflowExpression.Compile(widgetType, nameof(widgetType), required: false);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetVttUrl(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetVttUrl(Expression<Func<string>> id, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetInsightsWidgetUrlByExternalId(Expression<Func<string>> externalId, Expression<Func<widgetTypeInput>> widgetType = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetInsightsWidgetUrlByExternalId(Expression<Func<string>> externalId, Expression<Func<WidgetTypeInput>> widgetType = null)
         {
             var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: true);
             var __workflow_widgetType = WorkflowExpression.Compile(widgetType, nameof(widgetType), required: false);
@@ -270,14 +270,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum privacyInput
+    public enum UploadVideoPrivacyInput
     {
         Private,
         Public
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum languageInput
+    public enum LanguageInput
     {
         English,
         Spanish,
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum privacyInput2
+    public enum SearchPrivacyInput
     {
         Private,
         Organization,
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum textScopeInput
+    public enum TextScopeInput
     {
         Transcript,
         Ocr
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum widgetTypeInput
+    public enum WidgetTypeInput
     {
         People,
         Sentiments,

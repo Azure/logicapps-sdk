@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<ReturnFlowResultInput>> callbackBody)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<CallbackBodyInput>> callbackBody)
         {
             var __workflow_callbackId = WorkflowExpression.Compile(callbackId, nameof(callbackId), required: true);
             var __workflow_callbackBody = WorkflowExpression.Compile(callbackBody, nameof(callbackBody), required: true);
@@ -70,17 +70,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
 
     public class BttnTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RegisterWebhook(Expression<Func<string>> id, Expression<Func<RegisterWebhookInput>> webhookRequestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RegisterWebhook(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_webhookRequestBody = WorkflowExpression.Compile(webhookRequestBody, nameof(webhookRequestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhookRequestBody);
+                callPayload.Body = new WebhookRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         public string NameId { get; set; }
     }
 
-    public class ReturnFlowResultInput
+    public class CallbackBodyInput
     {
         [JsonProperty("result", DefaultValueHandling = DefaultValueHandling.Include)]
         public BttnActionResult FlowResult { get; set; }
@@ -172,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         public string User { get; set; }
     }
 
-    public class RegisterWebhookInput
+    public class WebhookRequestBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";

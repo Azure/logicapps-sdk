@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0, ApiConnectionActionConfiguration> Relationships(Expression<Func<RelationshipsPostInput>> body)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0, ApiConnectionActionConfiguration> Relationships(Expression<Func<RelationshipsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0, ApiConnectionActionConfiguration>(() =>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0, ApiConnectionActionConfiguration> RelationshipsPatch(Expression<Func<string>> key, Expression<Func<RelationshipsPatchInput>> body)
+        public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0, ApiConnectionActionConfiguration> RelationshipsPatch(Expression<Func<string>> key, Expression<Func<ObjectsPatchBodyInput>> body)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0, ApiConnectionActionConfiguration> Objects(Expression<Func<ObjectsPostInput>> body)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0, ApiConnectionActionConfiguration> Objects(Expression<Func<ObjectsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0, ApiConnectionActionConfiguration>(() =>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
-        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0, ApiConnectionActionConfiguration> ObjectsPatch(Expression<Func<string>> key, Expression<Func<ObjectsPatchInput>> body)
+        public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0, ApiConnectionActionConfiguration> ObjectsPatch(Expression<Func<string>> key, Expression<Func<ObjectsPatchBodyInput>> body)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
     public class OrbusinfinityTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0, ApiConnectionTriggerConfiguration>(() =>
@@ -1646,7 +1646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string Message { get; set; }
     }
 
-    public class RelationshipsPostInput
+    public class RelationshipsBodyInput
     {
         [JsonProperty("relationshipTypeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelationshipTypeId { get; set; }
@@ -1745,7 +1745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string RelationshipId { get; set; }
     }
 
-    public class RelationshipsPatchInput
+    public class ObjectsPatchBodyInput
     {
         [JsonProperty("attributeValuesFlat")]
         public JToken AttributeValuesFlat { get; set; }
@@ -2094,7 +2094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string ObjectTypeId { get; set; }
     }
 
-    public class ObjectsPostInput
+    public class ObjectsBodyInput
     {
         [JsonProperty("objectTypeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectTypeId { get; set; }
@@ -2190,12 +2190,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string Name { get; set; }
     }
 
-    public class ObjectsPatchInput
-    {
-        [JsonProperty("attributeValuesFlat")]
-        public JToken AttributeValuesFlat { get; set; }
-    }
-
     public class OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0
     {
         [JsonProperty("successMessage")]
@@ -2229,7 +2223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public int WebhookId { get; set; }
     }
 
-    public class PostWebhooksInput
+    public class PostWebhooksBodyInput
     {
         [JsonProperty("secret")]
         public string Secret { get; set; }

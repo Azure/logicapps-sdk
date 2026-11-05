@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 
     public class Ubiqodbyskiplyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration> ReceiveDataFromTrackers(Expression<Func<ReceiveDataFromTrackersInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration> ReceiveDataFromTrackers(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ReceiveDataFromTrackersResponseItem[], ApiConnectionTriggerConfiguration>(() =>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
         public string Id { get; set; }
     }
 
-    public class ReceiveDataFromTrackersInput
+    public class BodyInput
     {
         [JsonProperty("hookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string HookUrl { get; set; } = "#{listCallbackUrl()}";

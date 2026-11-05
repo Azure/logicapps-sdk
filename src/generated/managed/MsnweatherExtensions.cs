@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     public class MsnweatherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<CurrentWeather, ApiConnectionActionConfiguration> CurrentWeather(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<CurrentWeather, ApiConnectionActionConfiguration> CurrentWeather(Expression<Func<string>> location, Expression<Func<UnitsInput>> units)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<WeatherForecast, ApiConnectionActionConfiguration> TodaysForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<WeatherForecast, ApiConnectionActionConfiguration> TodaysForecast(Expression<Func<string>> location, Expression<Func<UnitsInput>> units)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<WeatherForecast, ApiConnectionActionConfiguration> TomorrowsForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<WeatherForecast, ApiConnectionActionConfiguration> TomorrowsForecast(Expression<Func<string>> location, Expression<Func<UnitsInput>> units)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 
     public class MsnweatherTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionTriggerConfiguration> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionTriggerConfiguration> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<MeasureInput>> measure, Expression<Func<WhenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, FlowRecurrence recurrence = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_measure = WorkflowExpression.Compile(measure, nameof(measure), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
             });
         }
 
-        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionTriggerConfiguration> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather, ApiConnectionTriggerConfiguration> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<UnitsInput>> units, FlowRecurrence recurrence = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum unitsInput
+    public enum UnitsInput
     {
         [EnumMember(Value = "I")]
         Imperial,
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum measureInput
+    public enum MeasureInput
     {
         Temperature,
         [EnumMember(Value = "UV Index")]
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum whenInput
+    public enum WhenInput
     {
         [EnumMember(Value = "Is equal to")]
         IsEqualTo,

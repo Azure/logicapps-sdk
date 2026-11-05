@@ -27,16 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eigenevents
 
     public class EigeneventsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<double>> eventIds, Expression<Func<CreateWebhookInput>> bodyOfTriggerRequest, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<double>> eventIds, FlowRecurrence recurrence = null)
         {
             var __workflow_eventIds = WorkflowExpression.Compile(eventIds, nameof(eventIds), required: true);
-            var __workflow_bodyOfTriggerRequest = WorkflowExpression.Compile(bodyOfTriggerRequest, nameof(bodyOfTriggerRequest), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/api/webhook/{0}", __workflow_eventIds.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_bodyOfTriggerRequest);
+                callPayload.Body = new BodyOfTriggerRequestInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eigenevents
         public string WebhookId { get; set; }
     }
 
-    public class CreateWebhookInput
+    public class BodyOfTriggerRequestInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";

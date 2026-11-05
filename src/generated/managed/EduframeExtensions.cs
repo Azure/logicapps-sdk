@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     public class EduframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> PostAccounts(Expression<Func<PostAccountsInput>> body = null)
+        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> PostAccounts(Expression<Func<PostAccountsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Account, ApiConnectionActionConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Authentication, ApiConnectionActionConfiguration> PostAuthentication(Expression<Func<PostAuthenticationInput>> body = null)
+        public IBodyWorkflowAction<Authentication, ApiConnectionActionConfiguration> PostAuthentication(Expression<Func<PostAuthenticationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Authentication, ApiConnectionActionConfiguration>(() =>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Category, ApiConnectionActionConfiguration> PostCategories(Expression<Func<PostCategoriesInput>> body = null)
+        public IBodyWorkflowAction<Category, ApiConnectionActionConfiguration> PostCategories(Expression<Func<PostCategoriesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Category, ApiConnectionActionConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Category[], ApiConnectionActionConfiguration> GetCategories(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortInputItem[]>> sort = null)
+        public IBodyWorkflowAction<Category[], ApiConnectionActionConfiguration> GetCategories(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<GetCategoriesSortInputItem[]>> sort = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Course, ApiConnectionActionConfiguration> PostCourses(Expression<Func<PostCoursesInput>> body = null)
+        public IBodyWorkflowAction<Course, ApiConnectionActionConfiguration> PostCourses(Expression<Func<PostCoursesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Course, ApiConnectionActionConfiguration>(() =>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Course[], ApiConnectionActionConfiguration> GetCourses(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortInputItem[]>> sort = null)
+        public IBodyWorkflowAction<Course[], ApiConnectionActionConfiguration> GetCourses(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<GetCategoriesSortInputItem[]>> sort = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostUsersInput>> body = null)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostUsersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<User, ApiConnectionActionConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<User[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortInputItem2[]>> sort = null)
+        public IBodyWorkflowAction<User[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<GetUsersSortInputItem[]>> sort = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> PostInvoices(Expression<Func<PostInvoicesInput>> body = null)
+        public IBodyWorkflowAction<Invoice, ApiConnectionActionConfiguration> PostInvoices(Expression<Func<PostInvoicesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Invoice, ApiConnectionActionConfiguration>(() =>
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<InvoiceVat, ApiConnectionActionConfiguration> PostInvoiceVats(Expression<Func<PostInvoiceVatsInput>> body = null)
+        public IBodyWorkflowAction<InvoiceVat, ApiConnectionActionConfiguration> PostInvoiceVats(Expression<Func<PostInvoiceVatsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InvoiceVat, ApiConnectionActionConfiguration>(() =>
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<Label[], ApiConnectionActionConfiguration> GetLabels(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<modelTypeInput>> modelType = null)
+        public IBodyWorkflowAction<Label[], ApiConnectionActionConfiguration> GetLabels(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<ModelTypeInput>> modelType = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
 
     public class EduframeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Webhook, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Webhook, ApiConnectionTriggerConfiguration> PostWebhooks(Expression<Func<PostWebhooksBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<Webhook, ApiConnectionTriggerConfiguration>(() =>
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public AccountAccountTypeType AccountType { get; set; }
 
         [JsonProperty("address")]
-        public AddressInfo Address { get; set; }
+        public GetAccountsAddressInfoResponse Address { get; set; }
 
         [JsonProperty("phone")]
         public string Phone { get; set; }
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         Personal
     }
 
-    public class AddressInfo
+    public class GetAccountsAddressInfoResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public int SignupQuestionId { get; set; }
     }
 
-    public class PostAccountsInput
+    public class PostAccountsBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -493,10 +493,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string Email { get; set; }
 
         [JsonProperty("address_attributes")]
-        public AddressInfo2 AddressAttributes { get; set; }
+        public PostAccountsAddressInfo AddressAttributes { get; set; }
     }
 
-    public class AddressInfo2
+    public class PostAccountsAddressInfo
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -547,20 +547,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string CreatedAt { get; set; }
     }
 
-    public class PostAuthenticationInput
+    public class PostAuthenticationBodyInput
     {
         [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UserId { get; set; }
 
         [JsonProperty("authentication_provider_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostAuthenticationInputAuthenticationProviderTypeType AuthenticationProviderType { get; set; }
+        public BodyInputAuthenticationProviderTypeType AuthenticationProviderType { get; set; }
 
         [JsonProperty("uid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uid { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostAuthenticationInputAuthenticationProviderTypeType
+    public enum BodyInputAuthenticationProviderTypeType
     {
         [EnumMember(Value = "azure_active_directory")]
         AzureActiveDirectory,
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string AvatarUrl { get; set; }
     }
 
-    public class PostCategoriesInput
+    public class PostCategoriesBodyInput
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInputItem
+    public enum GetCategoriesSortInputItem
     {
         [EnumMember(Value = "position")]
         Position
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         Free
     }
 
-    public class PostCoursesInput
+    public class PostCoursesBodyInput
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string Cost { get; set; }
 
         [JsonProperty("cost_scheme")]
-        public PostCoursesInputCostSchemeType? CostScheme { get; set; }
+        public BodyInputCostSchemeType? CostScheme { get; set; }
 
         [JsonProperty("is_published", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IsPublished { get; set; } = true;
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostCoursesInputCostSchemeType
+    public enum BodyInputCostSchemeType
     {
         [EnumMember(Value = "student")]
         Student,
@@ -836,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public UserLocaleType Locale { get; set; }
 
         [JsonProperty("address")]
-        public AddressInfo Address { get; set; }
+        public GetAccountsAddressInfoResponse Address { get; set; }
 
         [JsonProperty("roles")]
         public string[] Roles { get; set; }
@@ -916,7 +916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         EnGB
     }
 
-    public class PostUsersInput
+    public class PostUsersBodyInput
     {
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
@@ -940,20 +940,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public bool? WithAuthentication { get; set; } = true;
 
         [JsonProperty("locale")]
-        public PostUsersInputLocaleType? Locale { get; set; }
+        public BodyInputLocaleType? Locale { get; set; }
 
         [JsonProperty("label_ids")]
         public double[] LabelIds { get; set; }
 
         [JsonProperty("address_attributes")]
-        public AddressInfo2 AddressAttributes { get; set; }
+        public PostAccountsAddressInfo AddressAttributes { get; set; }
 
         [JsonProperty("notes_user")]
         public string NotesUser { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostUsersInputLocaleType
+    public enum BodyInputLocaleType
     {
         [EnumMember(Value = "nl")]
         Nl,
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInputItem2
+    public enum GetUsersSortInputItem
     {
         [EnumMember(Value = "first_name")]
         FirstName,
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string Footnote { get; set; }
 
         [JsonProperty("invoice_items")]
-        public InvoiceItem[] InvoiceItems { get; set; }
+        public GetInvoicesInvoiceItemResponse[] InvoiceItems { get; set; }
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         GBP
     }
 
-    public class InvoiceItem
+    public class GetInvoicesInvoiceItemResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string CreatedAt { get; set; }
     }
 
-    public class PostInvoicesInput
+    public class PostInvoicesBodyInput
     {
         [JsonProperty("account_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public double AccountId { get; set; }
@@ -1109,10 +1109,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string AccountName { get; set; }
 
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostInvoicesInputCurrencyType Currency { get; set; }
+        public BodyInputCurrencyType Currency { get; set; }
 
         [JsonProperty("invoice_items_attributes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InvoiceItem2[] InvoiceItemsAttributes { get; set; }
+        public PostInvoicesInvoiceItem[] InvoiceItemsAttributes { get; set; }
 
         [JsonProperty("feature")]
         public string Feature { get; set; }
@@ -1122,7 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostInvoicesInputCurrencyType
+    public enum BodyInputCurrencyType
     {
         EUR,
         ISK,
@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         GBP
     }
 
-    public class InvoiceItem2
+    public class PostInvoicesInvoiceItem
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1169,7 +1169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string Percentage { get; set; }
     }
 
-    public class PostInvoiceVatsInput
+    public class PostInvoiceVatsBodyInput
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1248,7 +1248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modelTypeInput
+    public enum ModelTypeInput
     {
         Lead,
         Order,
@@ -1397,7 +1397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         UserUpdated
     }
 
-    public class PostWebhooksInput
+    public class PostWebhooksBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1409,11 +1409,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public bool? Active { get; set; } = true;
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostWebhooksInputEventsTypeItem[] Events { get; set; }
+        public BodyInputEventsTypeItem[] Events { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostWebhooksInputEventsTypeItem
+    public enum BodyInputEventsTypeItem
     {
         [EnumMember(Value = "account.created")]
         AccountCreated,

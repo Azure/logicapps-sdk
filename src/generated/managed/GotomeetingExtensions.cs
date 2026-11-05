@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMeeting(Expression<Func<string>> meetingId, Expression<Func<UpdateMeetingInput>> meeting)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateMeeting(Expression<Func<string>> meetingId, Expression<Func<MeetingInput>> meeting)
         {
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             var __workflow_meeting = WorkflowExpression.Compile(meeting, nameof(meeting), required: true);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> CreateMeeting(Expression<Func<CreateMeetingV2Input>> newMeeting)
+        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> CreateMeeting(Expression<Func<NewMeetingInput>> newMeeting)
         {
             var __workflow_newMeeting = WorkflowExpression.Compile(newMeeting, nameof(newMeeting), required: true);
             return new DeferredBodyAction<NewMeetingResponse, ApiConnectionActionConfiguration>(() =>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         public string MeetingType { get; set; }
     }
 
-    public class UpdateMeetingInput
+    public class MeetingInput
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
@@ -198,14 +198,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         public bool RequiresPassword { get; set; }
 
         [JsonProperty("conferencecallinfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateMeetingInputConferenceCallInfoType ConferenceCallInfo { get; set; }
+        public MeetingInputConferenceCallInfoType ConferenceCallInfo { get; set; }
 
         [JsonProperty("meetingtype")]
-        public UpdateMeetingInputMeetingTypeType? MeetingType { get; set; }
+        public MeetingInputMeetingTypeType? MeetingType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateMeetingInputConferenceCallInfoType
+    public enum MeetingInputConferenceCallInfoType
     {
         PSTN,
         Free,
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateMeetingInputMeetingTypeType
+    public enum MeetingInputMeetingTypeType
     {
         [EnumMember(Value = "immediate")]
         Immediate,
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         public string ConferenceCallInfo { get; set; }
     }
 
-    public class CreateMeetingV2Input
+    public class NewMeetingInput
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
@@ -273,14 +273,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         public bool RequiresPassword { get; set; }
 
         [JsonProperty("conferencecallinfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateMeetingV2InputConferenceCallInfoType ConferenceCallInfo { get; set; }
+        public NewMeetingInputConferenceCallInfoType ConferenceCallInfo { get; set; }
 
         [JsonProperty("meetingtype", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateMeetingV2InputMeetingTypeType MeetingType { get; set; }
+        public NewMeetingInputMeetingTypeType MeetingType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateMeetingV2InputConferenceCallInfoType
+    public enum NewMeetingInputConferenceCallInfoType
     {
         PSTN,
         Free,
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateMeetingV2InputMeetingTypeType
+    public enum NewMeetingInputMeetingTypeType
     {
         [EnumMember(Value = "immediate")]
         Immediate,

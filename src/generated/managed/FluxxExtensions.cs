@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CustomAction(Expression<Func<string>> endpoint, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null)
         {
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> typeId, Expression<Func<CreateRecordInput>> body = null)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> typeId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindRecords(Expression<Func<string>> typeId, Expression<Func<FindRecordsInput>> body = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindRecords(Expression<Func<string>> typeId, Expression<Func<BodyInput>> body = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<FindOrCreateRecordInput>> body = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<BodyInput>> body = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<UpdateRecordInput>> body)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<BodyInput>> body)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         PUT,
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         public JToken Model { get; set; }
     }
 
-    public class CreateRecordInput
+    public class BodyInput
     {
         [JsonProperty("data")]
         public JToken Data { get; set; }
@@ -176,24 +176,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     {
         [JsonProperty("model")]
         public JToken[] Model { get; set; }
-    }
-
-    public class FindRecordsInput
-    {
-        [JsonProperty("data")]
-        public JToken Data { get; set; }
-    }
-
-    public class FindOrCreateRecordInput
-    {
-        [JsonProperty("data")]
-        public JToken Data { get; set; }
-    }
-
-    public class UpdateRecordInput
-    {
-        [JsonProperty("data")]
-        public JToken Data { get; set; }
     }
 }
 

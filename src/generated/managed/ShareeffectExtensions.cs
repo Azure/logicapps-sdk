@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
     public class ShareeffectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermResponse, ApiConnectionActionConfiguration> AddUpdateTerm(Expression<Func<AddUpdateTermInput>> body)
+        public IBodyWorkflowAction<AddUpdateTermResponse, ApiConnectionActionConfiguration> AddUpdateTerm(Expression<Func<AddUpdateTermBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddUpdateTermResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse, ApiConnectionActionConfiguration> AddUpdateTermByKeyValue(Expression<Func<AddUpdateTermByKeyValueInput>> body)
+        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse, ApiConnectionActionConfiguration> AddUpdateTermByKeyValue(Expression<Func<AddUpdateTermByKeyValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddUpdateTermByKeyValueResponse, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<UploadTemplateResponse, ApiConnectionActionConfiguration> UploadTemplate(Expression<Func<UploadTemplateInput>> body)
+        public IBodyWorkflowAction<UploadTemplateResponse, ApiConnectionActionConfiguration> UploadTemplate(Expression<Func<UploadTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadTemplateResponse, ApiConnectionActionConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentInput>> body)
+        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         public string LicenseExpires { get; set; }
     }
 
-    public class AddUpdateTermInput
+    public class AddUpdateTermBodyInput
     {
         [JsonProperty("isavailable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Isavailable { get; set; } = true;
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         public string LicenseExpires { get; set; }
     }
 
-    public class AddUpdateTermByKeyValueInput
+    public class AddUpdateTermByKeyValueBodyInput
     {
         [JsonProperty("isavailable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Isavailable { get; set; } = true;
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         public string TemplateId { get; set; }
     }
 
-    public class UploadTemplateInput
+    public class UploadTemplateBodyInput
     {
         [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
@@ -201,13 +201,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         public string Content { get; set; }
     }
 
-    public class GenerateDocumentInput
+    public class GenerateDocumentBodyInput
     {
         [JsonProperty("templateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
 
         [JsonProperty("outputformat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentInputOutputformatType Outputformat { get; set; }
+        public BodyInputOutputformatType Outputformat { get; set; }
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Data { get; set; }
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentInputOutputformatType
+    public enum BodyInputOutputformatType
     {
         [EnumMember(Value = "docx")]
         Docx,

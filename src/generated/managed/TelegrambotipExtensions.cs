@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> token, Expression<Func<SendMessageInput>> body = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> token, Expression<Func<SendMessageBodyInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
-        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendPhoto(Expression<Func<string>> token, Expression<Func<SendPhotoInput>> body = null)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendPhoto(Expression<Func<string>> token, Expression<Func<SendPhotoBodyInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telegrambotip")]
-        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> GetChat(Expression<Func<string>> token, Expression<Func<GetChatInput>> body = null)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> GetChat(Expression<Func<string>> token, Expression<Func<GetChatBodyInput>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         public Message Result { get; set; }
     }
 
-    public class SendMessageInput
+    public class SendMessageBodyInput
     {
         [JsonProperty("chat_id")]
         public string ChatId { get; set; }
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         public string ParseMode { get; set; }
     }
 
-    public class SendPhotoInput
+    public class SendPhotoBodyInput
     {
         [JsonProperty("chat_id")]
         public string ChatId { get; set; }
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telegrambotip
         public string Photo { get; set; }
     }
 
-    public class GetChatInput
+    public class GetChatBodyInput
     {
         [JsonProperty("chat_id")]
         public string ChatId { get; set; }

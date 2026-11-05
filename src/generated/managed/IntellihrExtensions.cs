@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
     public class IntellihrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
-        public IBodyWorkflowAction<SingleJob, ApiConnectionActionConfiguration> EndJob(Expression<Func<string>> id, Expression<Func<EndJobInput>> body)
+        public IBodyWorkflowAction<SingleJob, ApiConnectionActionConfiguration> EndJob(Expression<Func<string>> id, Expression<Func<BodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
         public string Currency { get; set; }
     }
 
-    public class EndJobInput
+    public class BodyInput
     {
         [JsonProperty("endDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndDate { get; set; }

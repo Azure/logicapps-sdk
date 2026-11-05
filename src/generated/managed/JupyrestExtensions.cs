@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse, ApiConnectionActionConfiguration> NotebookExecution(Expression<Func<NotebookExecutionInput>> parameters, Expression<Func<bool>> report = null)
+        public IBodyWorkflowAction<NotebookResponse, ApiConnectionActionConfiguration> NotebookExecution(Expression<Func<ParametersInput>> parameters, Expression<Func<bool>> report = null)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             var __workflow_report = WorkflowExpression.Compile(report, nameof(report), required: false);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<SynapseResponse, ApiConnectionActionConfiguration> UploadToSynapse(Expression<Func<UploadToSynapseInput>> parameters = null)
+        public IBodyWorkflowAction<SynapseResponse, ApiConnectionActionConfiguration> UploadToSynapse(Expression<Func<ParametersInput>> parameters = null)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<SynapseResponse, ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         public string Exception { get; set; }
     }
 
-    public class NotebookExecutionInput
+    public class ParametersInput
     {
         [JsonProperty("notebook")]
         public string Notebook { get; set; }
@@ -119,15 +119,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
     {
         [JsonProperty("url")]
         public string Url { get; set; }
-    }
-
-    public class UploadToSynapseInput
-    {
-        [JsonProperty("notebook")]
-        public string Notebook { get; set; }
-
-        [JsonProperty("parameters")]
-        public JToken Parameters { get; set; }
     }
 }
 

@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugami
 
     public class DocugamiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RegisterWebhookResponse, ApiConnectionTriggerConfiguration> RegisterWebhook(Expression<Func<string>> xDocugamiOrganizationId, Expression<Func<RegisterWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegisterWebhookResponse, ApiConnectionTriggerConfiguration> RegisterWebhook(Expression<Func<string>> xDocugamiOrganizationId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_xDocugamiOrganizationId = WorkflowExpression.Compile(xDocugamiOrganizationId, nameof(xDocugamiOrganizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugami
         public string CreatedAt { get; set; }
     }
 
-    public class RegisterWebhookInput
+    public class BodyInput
     {
         [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Target { get; set; } = "Project";

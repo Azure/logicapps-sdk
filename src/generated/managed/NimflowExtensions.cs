@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
     public class NimflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<DispatchContextActionResult, ApiConnectionActionConfiguration> ContextsDispatchAction(Expression<Func<ContextsDispatchActionInput>> command)
+        public IBodyWorkflowAction<DispatchContextActionResult, ApiConnectionActionConfiguration> ContextsDispatchAction(Expression<Func<ContextsDispatchActionCommandInput>> command)
         {
             var __workflow_command = WorkflowExpression.Compile(command, nameof(command), required: true);
             return new DeferredBodyAction<DispatchContextActionResult, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<AddTaskResponseResult, ApiConnectionActionConfiguration> TasksAddResponse(Expression<Func<TasksAddResponseInput>> command)
+        public IBodyWorkflowAction<AddTaskResponseResult, ApiConnectionActionConfiguration> TasksAddResponse(Expression<Func<TasksAddResponseCommandInput>> command)
         {
             var __workflow_command = WorkflowExpression.Compile(command, nameof(command), required: true);
             return new DeferredBodyAction<AddTaskResponseResult, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
     public class NimflowTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskCreatedPost(Expression<Func<WhenTaskCreatedPostInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskCreatedPost(Expression<Func<WhenTaskArchivedPostRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskUpdatedPost(Expression<Func<WhenTaskUpdatedPostInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskUpdatedPost(Expression<Func<WhenTaskArchivedPostRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskArchivedPost(Expression<Func<WhenTaskArchivedPostInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTaskArchivedPost(Expression<Func<WhenTaskArchivedPostRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenMilestoneReachedPost(Expression<Func<WhenMilestoneReachedPostInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenMilestoneReachedPost(Expression<Func<WhenMilestoneClearedPostRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenMilestoneClearedPost(Expression<Func<WhenMilestoneClearedPostInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenMilestoneClearedPost(Expression<Func<WhenMilestoneClearedPostRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         public bool IsNew { get; set; }
     }
 
-    public class ContextsDispatchActionInput
+    public class ContextsDispatchActionCommandInput
     {
         [JsonProperty("contextTypeName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextTypeName { get; set; }
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         public string ResponseId { get; set; }
     }
 
-    public class TasksAddResponseInput
+    public class TasksAddResponseCommandInput
     {
         [JsonProperty("contextReference", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextReference { get; set; }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         public string ItemKey { get; set; }
     }
 
-    public class WhenTaskCreatedPostInput
+    public class WhenTaskArchivedPostRequestInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -187,43 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         public string TaskTypeName { get; set; }
     }
 
-    public class WhenTaskUpdatedPostInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("contextTypeName")]
-        public string ContextTypeName { get; set; }
-
-        [JsonProperty("taskTypeName")]
-        public string TaskTypeName { get; set; }
-    }
-
-    public class WhenTaskArchivedPostInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("contextTypeName")]
-        public string ContextTypeName { get; set; }
-
-        [JsonProperty("taskTypeName")]
-        public string TaskTypeName { get; set; }
-    }
-
-    public class WhenMilestoneReachedPostInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("contextTypeName")]
-        public string ContextTypeName { get; set; }
-
-        [JsonProperty("milestoneName")]
-        public string MilestoneName { get; set; }
-    }
-
-    public class WhenMilestoneClearedPostInput
+    public class WhenMilestoneClearedPostRequestInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

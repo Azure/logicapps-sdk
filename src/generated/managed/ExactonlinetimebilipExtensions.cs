@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<PutProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<ProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<PostProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse, ApiConnectionActionConfiguration> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<ProjectRestrictionRebillingsInput>> projectRestrictionRebillings = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_projectRestrictionRebillings = WorkflowExpression.Compile(projectRestrictionRebillings, nameof(projectRestrictionRebillings), required: false);
@@ -1019,7 +1019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PutTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<PutTimeCorrectionsInput>> timeCorrections = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PutTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<TimeCorrectionsInput>> timeCorrections = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PostTimeCorrections(Expression<Func<string>> division, Expression<Func<PostTimeCorrectionsInput>> timeCorrections = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse, ApiConnectionActionConfiguration> PostTimeCorrections(Expression<Func<string>> division, Expression<Func<TimeCorrectionsInput>> timeCorrections = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_timeCorrections = WorkflowExpression.Compile(timeCorrections, nameof(timeCorrections), required: false);
@@ -1093,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<PutTimeTransactionsInput>> timeTransactions = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> id, Expression<Func<TimeTransactionsInput>> timeTransactions = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -1111,7 +1111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<PostTimeTransactionsInput>> timeTransactions = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse, ApiConnectionActionConfiguration> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<TimeTransactionsInput>> timeTransactions = null)
         {
             var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
             var __workflow_timeTransactions = WorkflowExpression.Compile(timeTransactions, nameof(timeTransactions), required: false);
@@ -1578,30 +1578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string ProjectDescription { get; set; }
     }
 
-    public class PutProjectRestrictionRebillingsInput
-    {
-        [JsonProperty("ID")]
-        public string Id { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CostTypeRebill { get; set; }
-        public string CostTypeRebillCode { get; set; }
-        public string CostTypeRebillDescription { get; set; }
-        public string Created { get; set; }
-        public string Creator { get; set; }
-        public string CreatorFullName { get; set; }
-        public int? Division { get; set; }
-        public string Modified { get; set; }
-        public string Modifier { get; set; }
-        public string ModifierFullName { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Project { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectDescription { get; set; }
-    }
-
-    public class PostProjectRestrictionRebillingsInput
+    public class ProjectRestrictionRebillingsInput
     {
         [JsonProperty("ID")]
         public string Id { get; set; }
@@ -2135,23 +2112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public double Quantity { get; set; }
     }
 
-    public class PutTimeCorrectionsInput
-    {
-        [JsonProperty("ID")]
-        public string Id { get; set; }
-        public string Created { get; set; }
-        public string Creator { get; set; }
-        public string CreatorFullName { get; set; }
-        public int? Division { get; set; }
-        public string Modified { get; set; }
-        public string Modifier { get; set; }
-        public string ModifierFullName { get; set; }
-        public string Notes { get; set; }
-        public string OriginalEntryId { get; set; }
-        public double? Quantity { get; set; }
-    }
-
-    public class PostTimeCorrectionsInput
+    public class TimeCorrectionsInput
     {
         [JsonProperty("ID")]
         public string Id { get; set; }
@@ -2229,63 +2190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public double Type { get; set; }
     }
 
-    public class PutTimeTransactionsInput
-    {
-        [JsonProperty("ID")]
-        public string Id { get; set; }
-        public string Account { get; set; }
-        public string AccountName { get; set; }
-        public string Activity { get; set; }
-        public string ActivityDescription { get; set; }
-        public double? Amount { get; set; }
-        public double? AmountFC { get; set; }
-        public string Attachment { get; set; }
-        public string Created { get; set; }
-        public string Creator { get; set; }
-        public string CreatorFullName { get; set; }
-        public string Currency { get; set; }
-        public string Date { get; set; }
-        public int? Division { get; set; }
-        public string DivisionDescription { get; set; }
-        public string Employee { get; set; }
-        public string EndTime { get; set; }
-        public int? EntryNumber { get; set; }
-        public string ErrorText { get; set; }
-        public double? HourStatus { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Item { get; set; }
-        public string ItemDescription { get; set; }
-        public bool? ItemDivisable { get; set; }
-        public string Modified { get; set; }
-        public string Modifier { get; set; }
-        public string ModifierFullName { get; set; }
-        public string Notes { get; set; }
-        public double? Price { get; set; }
-        public double? PriceFC { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Project { get; set; }
-        public string ProjectAccount { get; set; }
-        public string ProjectAccountCode { get; set; }
-        public string ProjectAccountName { get; set; }
-        public string ProjectCode { get; set; }
-        public string ProjectDescription { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Quantity { get; set; }
-        public bool? SkipValidation { get; set; }
-        public string StartTime { get; set; }
-        public string Subscription { get; set; }
-        public string SubscriptionAccount { get; set; }
-        public string SubscriptionAccountCode { get; set; }
-        public string SubscriptionAccountName { get; set; }
-        public string SubscriptionDescription { get; set; }
-        public int? SubscriptionNumber { get; set; }
-        public double? Type { get; set; }
-    }
-
-    public class PostTimeTransactionsInput
+    public class TimeTransactionsInput
     {
         [JsonProperty("ID")]
         public string Id { get; set; }

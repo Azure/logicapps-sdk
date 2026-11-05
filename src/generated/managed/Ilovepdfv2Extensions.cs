@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     public class Ilovepdfv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Compress(Expression<Func<CompressInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Compress(Expression<Func<CompressBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Split(Expression<Func<SplitInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Split(Expression<Func<SplitBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Protect(Expression<Func<ProtectInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Protect(Expression<Func<ProtectBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoJPG(Expression<Func<PDFtoJPGInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoJPG(Expression<Func<PDFtoJPGBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> ImageToPDF(Expression<Func<ImageToPDFInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> ImageToPDF(Expression<Func<ImageToPDFBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoPDFA(Expression<Func<PDFtoPDFAInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoPDFA(Expression<Func<PDFtoPDFABodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Unlock(Expression<Func<UnlockInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Unlock(Expression<Func<UnlockBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<AddPageNumberInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<AddPageNumberBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Merge(Expression<Func<MergeInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Merge(Expression<Func<MergeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Watermark(Expression<Func<WatermarkInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Watermark(Expression<Func<WatermarkBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Rotate(Expression<Func<RotateInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Rotate(Expression<Func<RotateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFOCR(Expression<Func<PDFOCRInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFOCR(Expression<Func<PDFOCRBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> OfficeToPDF(Expression<Func<OfficeToPDFInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> OfficeToPDF(Expression<Func<DetectFormsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DetectForms(Expression<Func<DetectFormsInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DetectForms(Expression<Func<DetectFormsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Summarize(Expression<Func<SummarizeInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Summarize(Expression<Func<SummarizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Translate(Expression<Func<TranslateInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> Translate(Expression<Func<TranslateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> SplitSmart(Expression<Func<SplitSmartInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> SplitSmart(Expression<Func<SplitSmartBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFMarkdown(Expression<Func<PDFMarkdownInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFMarkdown(Expression<Func<DetectFormsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -269,10 +269,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     {
     }
 
-    public class CompressInput
+    public class CompressBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -284,11 +284,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("compression_level")]
-        public CompressInputCompressionLevelType? CompressionLevel { get; set; }
+        public BodyInputCompressionLevelType? CompressionLevel { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressInputFileSourceType
+    public enum BodyInputFileSourceType
     {
         [EnumMember(Value = "binary")]
         Binary,
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressInputCompressionLevelType
+    public enum BodyInputCompressionLevelType
     {
         [EnumMember(Value = "extreme")]
         Extreme,
@@ -307,10 +307,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Low
     }
 
-    public class SplitInput
+    public class SplitBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("split_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitInputSplitModeType SplitMode { get; set; }
+        public BodyInputSplitModeType SplitMode { get; set; }
 
         [JsonProperty("ranges")]
         public string Ranges { get; set; }
@@ -334,20 +334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string RemovePages { get; set; }
 
         [JsonProperty("merge_after")]
-        public SplitInputMergeAfterType? MergeAfter { get; set; }
+        public BodyInputMergeAfterType? MergeAfter { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitInputSplitModeType
+    public enum BodyInputSplitModeType
     {
         [EnumMember(Value = "fixed_ranges")]
         FixedRanges,
@@ -362,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitInputMergeAfterType
+    public enum BodyInputMergeAfterType
     {
         [EnumMember(Value = "true")]
         True,
@@ -370,10 +361,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         False
     }
 
-    public class ProtectInput
+    public class ProtectBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ProtectInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -388,19 +379,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Password { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProtectInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class PDFtoJPGInput
+    public class PDFtoJPGBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PDFtoJPGInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -412,20 +394,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("pdfjpg_mode")]
-        public PDFtoJPGInputPdfjpgModeType? PdfjpgMode { get; set; }
+        public BodyInputPdfjpgModeType? PdfjpgMode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFtoJPGInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFtoJPGInputPdfjpgModeType
+    public enum BodyInputPdfjpgModeType
     {
         [EnumMember(Value = "pages")]
         Pages,
@@ -433,10 +406,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Extract
     }
 
-    public class ImageToPDFInput
+    public class ImageToPDFBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageToPDFInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -454,20 +427,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Margin { get; set; }
 
         [JsonProperty("pagesize")]
-        public ImageToPDFInputPagesizeType? Pagesize { get; set; }
+        public BodyInputPagesizeType? Pagesize { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageToPDFInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageToPDFInputPagesizeType
+    public enum BodyInputPagesizeType
     {
         [EnumMember(Value = "fit")]
         Fit,
@@ -476,10 +440,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Letter
     }
 
-    public class PDFtoPDFAInput
+    public class PDFtoPDFABodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PDFtoPDFAInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -491,23 +455,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("conformance")]
-        public PDFtoPDFAInputConformanceType? Conformance { get; set; }
+        public BodyInputConformanceType? Conformance { get; set; }
 
         [JsonProperty("allow_downgrade")]
-        public PDFtoPDFAInputAllowDowngradeType? AllowDowngrade { get; set; }
+        public BodyInputAllowDowngradeType? AllowDowngrade { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFtoPDFAInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFtoPDFAInputConformanceType
+    public enum BodyInputConformanceType
     {
         [EnumMember(Value = "pdfa-1b")]
         Pdfa1b,
@@ -528,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFtoPDFAInputAllowDowngradeType
+    public enum BodyInputAllowDowngradeType
     {
         [EnumMember(Value = "true")]
         True,
@@ -536,10 +491,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         False
     }
 
-    public class UnlockInput
+    public class UnlockBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UnlockInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -554,19 +509,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Password { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UnlockInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class AddPageNumberInput
+    public class AddPageNumberBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPageNumberInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -578,10 +524,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("facing_pages")]
-        public AddPageNumberInputFacingPagesType? FacingPages { get; set; }
+        public BodyInputFacingPagesType? FacingPages { get; set; }
 
         [JsonProperty("first_cover")]
-        public AddPageNumberInputFirstCoverType? FirstCover { get; set; }
+        public BodyInputFirstCoverType? FirstCover { get; set; }
 
         [JsonProperty("pages")]
         public string Pages { get; set; }
@@ -590,10 +536,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string StartingNumber { get; set; }
 
         [JsonProperty("vertical_position")]
-        public AddPageNumberInputVerticalPositionType? VerticalPosition { get; set; }
+        public AddPageNumberBodyInputVerticalPositionType? VerticalPosition { get; set; }
 
         [JsonProperty("horizontal_position")]
-        public AddPageNumberInputHorizontalPositionType? HorizontalPosition { get; set; }
+        public BodyInputHorizontalPositionType? HorizontalPosition { get; set; }
 
         [JsonProperty("vertical_position_adjustment")]
         public string VerticalPositionAdjustment { get; set; }
@@ -602,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string HorizontalPositionAdjustment { get; set; }
 
         [JsonProperty("font_family")]
-        public AddPageNumberInputFontFamilyType? FontFamily { get; set; }
+        public BodyInputFontFamilyType? FontFamily { get; set; }
 
         [JsonProperty("font_size")]
         public string FontSize { get; set; }
@@ -615,16 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputFacingPagesType
+    public enum BodyInputFacingPagesType
     {
         [EnumMember(Value = "true")]
         True,
@@ -633,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputFirstCoverType
+    public enum BodyInputFirstCoverType
     {
         [EnumMember(Value = "true")]
         True,
@@ -642,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputVerticalPositionType
+    public enum AddPageNumberBodyInputVerticalPositionType
     {
         [EnumMember(Value = "bottom")]
         Bottom,
@@ -651,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputHorizontalPositionType
+    public enum BodyInputHorizontalPositionType
     {
         [EnumMember(Value = "left")]
         Left,
@@ -662,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputFontFamilyType
+    public enum BodyInputFontFamilyType
     {
         Arial,
         [EnumMember(Value = "Arial Unicode MS")]
@@ -679,10 +616,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         LohitMarathi
     }
 
-    public class MergeInput
+    public class MergeBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MergeInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -694,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("file_source2")]
-        public MergeInputFileSource2Type? FileSource2 { get; set; }
+        public BodyInputFileSource2Type? FileSource2 { get; set; }
 
         [JsonProperty("file_name2")]
         public string FileName2 { get; set; }
@@ -707,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MergeInputFileSourceType
+    public enum BodyInputFileSource2Type
     {
         [EnumMember(Value = "binary")]
         Binary,
@@ -715,19 +652,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Url
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MergeInputFileSource2Type
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class WatermarkInput
+    public class WatermarkBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WatermarkInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -739,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("mode")]
-        public WatermarkInputModeType? Mode { get; set; }
+        public BodyInputModeType? Mode { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -760,10 +688,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Pages { get; set; }
 
         [JsonProperty("vertical_position")]
-        public WatermarkInputVerticalPositionType? VerticalPosition { get; set; }
+        public WatermarkBodyInputVerticalPositionType? VerticalPosition { get; set; }
 
         [JsonProperty("horizontal_position")]
-        public WatermarkInputHorizontalPositionType? HorizontalPosition { get; set; }
+        public BodyInputHorizontalPositionType? HorizontalPosition { get; set; }
 
         [JsonProperty("vertical_position_adjustment")]
         public string VerticalPositionAdjustment { get; set; }
@@ -772,16 +700,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string HorizontalPositionAdjustment { get; set; }
 
         [JsonProperty("mosaic")]
-        public WatermarkInputMosaicType? Mosaic { get; set; }
+        public BodyInputMosaicType? Mosaic { get; set; }
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
 
         [JsonProperty("font_family")]
-        public WatermarkInputFontFamilyType? FontFamily { get; set; }
+        public BodyInputFontFamilyType? FontFamily { get; set; }
 
         [JsonProperty("font_style")]
-        public WatermarkInputFontStyleType? FontStyle { get; set; }
+        public BodyInputFontStyleType? FontStyle { get; set; }
 
         [JsonProperty("font_size")]
         public string FontSize { get; set; }
@@ -793,20 +721,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Transparency { get; set; }
 
         [JsonProperty("layer")]
-        public WatermarkInputLayerType? Layer { get; set; }
+        public BodyInputLayerType? Layer { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputModeType
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "text")]
         Text,
@@ -815,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputVerticalPositionType
+    public enum WatermarkBodyInputVerticalPositionType
     {
         [EnumMember(Value = "bottom")]
         Bottom,
@@ -826,18 +745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputHorizontalPositionType
-    {
-        [EnumMember(Value = "left")]
-        Left,
-        [EnumMember(Value = "center")]
-        Center,
-        [EnumMember(Value = "right")]
-        Right
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputMosaicType
+    public enum BodyInputMosaicType
     {
         [EnumMember(Value = "true")]
         True,
@@ -846,32 +754,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputFontFamilyType
-    {
-        Arial,
-        [EnumMember(Value = "Arial Unicode MS")]
-        ArialUnicodeMS,
-        Verdana,
-        Courier,
-        [EnumMember(Value = "Times New Roman")]
-        TimesNewRoman,
-        [EnumMember(Value = "Comic Sans MS")]
-        ComicSansMS,
-        [EnumMember(Value = "WenQuanYi Zen Hei")]
-        WenQuanYiZenHei,
-        [EnumMember(Value = "Lohit Marathi")]
-        LohitMarathi
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputFontStyleType
+    public enum BodyInputFontStyleType
     {
         Bold,
         Italic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkInputLayerType
+    public enum BodyInputLayerType
     {
         [EnumMember(Value = "above")]
         Above,
@@ -879,10 +769,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Below
     }
 
-    public class RotateInput
+    public class RotateBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RotateInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -894,20 +784,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
 
         [JsonProperty("rotate")]
-        public RotateInputRotateType? Rotate { get; set; }
+        public BodyInputRotateType? Rotate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RotateInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RotateInputRotateType
+    public enum BodyInputRotateType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -919,10 +800,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         _270
     }
 
-    public class PDFOCRInput
+    public class PDFOCRBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PDFOCRInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -937,19 +818,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string OcrLanguages { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFOCRInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class OfficeToPDFInput
+    public class DetectFormsBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OfficeToPDFInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -961,43 +833,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileUrl { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OfficeToPDFInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class DetectFormsInput
+    public class SummarizeBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DetectFormsInputFileSourceType FileSource { get; set; }
-
-        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
-
-        [JsonProperty("file")]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
-
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DetectFormsInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class SummarizeInput
-    {
-        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SummarizeInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -1015,19 +854,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string OutputFormat { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SummarizeInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class TranslateInput
+    public class TranslateBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TranslateInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -1045,19 +875,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string TranslateMode { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TranslateInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class SplitSmartInput
+    public class SplitSmartBodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitSmartInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -1070,39 +891,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
 
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitSmartInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
-    }
-
-    public class PDFMarkdownInput
-    {
-        [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PDFMarkdownInputFileSourceType FileSource { get; set; }
-
-        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileName { get; set; }
-
-        [JsonProperty("file")]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
-
-        [JsonProperty("file_url")]
-        public string FileUrl { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFMarkdownInputFileSourceType
-    {
-        [EnumMember(Value = "binary")]
-        Binary,
-        [EnumMember(Value = "url")]
-        Url
     }
 }
 

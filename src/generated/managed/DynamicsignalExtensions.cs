@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class DynamicsignalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UserRequestResponse, ApiConnectionActionConfiguration> GetUserByEmail(Expression<Func<GetUserByEmailInput>> body)
+        public IBodyWorkflowAction<UserRequestResponse, ApiConnectionActionConfiguration> GetUserByEmail(Expression<Func<GetUserByEmailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UserRequestResponse, ApiConnectionActionConfiguration> PreregisterUser(Expression<Func<PreregisterUserInput>> body)
+        public IBodyWorkflowAction<UserRequestResponse, ApiConnectionActionConfiguration> PreregisterUser(Expression<Func<PreregisterUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse, ApiConnectionActionConfiguration> Create(Expression<Func<CreatePostInput>> body)
+        public IBodyWorkflowAction<PostResponse, ApiConnectionActionConfiguration> Create(Expression<Func<CreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostResponse, ApiConnectionActionConfiguration>(() =>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse, ApiConnectionActionConfiguration> AddImageTo(Expression<Func<string>> id, Expression<Func<AddImageToPostInput>> body)
+        public IBodyWorkflowAction<SuccessResponse, ApiConnectionActionConfiguration> AddImageTo(Expression<Func<string>> id, Expression<Func<AddImageToBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse, ApiConnectionActionConfiguration> Update(Expression<Func<string>> id, Expression<Func<UpdatePostInput>> body)
+        public IBodyWorkflowAction<PostResponse, ApiConnectionActionConfiguration> Update(Expression<Func<string>> id, Expression<Func<UpdateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse, ApiConnectionActionConfiguration> ManagePosts(Expression<Func<ManagePostsInput>> body)
+        public IBodyWorkflowAction<SuccessResponse, ApiConnectionActionConfiguration> ManagePosts(Expression<Func<ManagePostsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SuccessResponse, ApiConnectionActionConfiguration>(() =>
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Excluded
     }
 
-    public class GetUserByEmailInput
+    public class GetUserByEmailBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string MimeType { get; set; }
     }
 
-    public class PreregisterUserInput
+    public class PreregisterUserBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string InvitationMessage { get; set; }
 
         [JsonProperty("notificationsDefault")]
-        public PreregisterUserInputNotificationsDefaultType? NotificationsDefault { get; set; }
+        public BodyInputNotificationsDefaultType? NotificationsDefault { get; set; }
 
         [JsonProperty("privileges")]
         public UserPrivilegesRequestResponse Value { get; set; }
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PreregisterUserInputNotificationsDefaultType
+    public enum BodyInputNotificationsDefaultType
     {
         Immediately,
         AfterFirstLogin
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public PostLinkRequestResponse[] Links { get; set; }
 
         [JsonProperty("tags")]
-        public PostTagRequestResponse[] Tags { get; set; }
+        public CreatePostTagRequestResponse2[] Tags { get; set; }
 
         [JsonProperty("media")]
         public PostMediaRequestResponse[] Media { get; set; }
@@ -1233,7 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string CreatedDate { get; set; }
     }
 
-    public class PostTagRequestResponse
+    public class CreatePostTagRequestResponse2
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1453,7 +1453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public int ParentCategoryId { get; set; }
     }
 
-    public class CreatePostInput
+    public class CreateBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1480,13 +1480,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string MemberVideoUrl { get; set; }
 
         [JsonProperty("postType")]
-        public CreatePostInputPostTypeType? PostType { get; set; }
+        public BodyInputPostTypeType? PostType { get; set; }
 
         [JsonProperty("approvalState")]
-        public CreatePostInputApprovalStateType? ApprovalState { get; set; }
+        public BodyInputApprovalStateType? ApprovalState { get; set; }
 
         [JsonProperty("displayMode")]
-        public CreatePostInputDisplayModeType? DisplayMode { get; set; }
+        public BodyInputDisplayModeType? DisplayMode { get; set; }
 
         [JsonProperty("sharable")]
         public bool? Sharable { get; set; }
@@ -1516,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool? ShareImagesOnly { get; set; }
 
         [JsonProperty("tags")]
-        public PostTagRequestResponse[] Tags { get; set; }
+        public CreatePostTagRequestResponse[] Tags { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -1538,14 +1538,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePostInputPostTypeType
+    public enum BodyInputPostTypeType
     {
         Text,
         Video
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePostInputApprovalStateType
+    public enum BodyInputApprovalStateType
     {
         Pending,
         Published,
@@ -1553,10 +1553,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePostInputDisplayModeType
+    public enum BodyInputDisplayModeType
     {
         DisplayInApp,
         OpenExternally
+    }
+
+    public class CreatePostTagRequestResponse
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class SuccessResponse
@@ -1565,13 +1571,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Code { get; set; }
     }
 
-    public class AddImageToPostInput
+    public class AddImageToBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
     }
 
-    public class UpdatePostInput
+    public class UpdateBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1823,7 +1829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool IsSubscribed { get; set; }
     }
 
-    public class ManagePostsInput
+    public class ManagePostsBodyInput
     {
         [JsonProperty("postIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] PostIDs { get; set; }
@@ -1841,15 +1847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public int[] TargetIDs { get; set; }
 
         [JsonProperty("approvalState")]
-        public ManagePostsInputApprovalStateType? ApprovalState { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ManagePostsInputApprovalStateType
-    {
-        Pending,
-        Published,
-        Excluded
+        public BodyInputApprovalStateType? ApprovalState { get; set; }
     }
 }
 

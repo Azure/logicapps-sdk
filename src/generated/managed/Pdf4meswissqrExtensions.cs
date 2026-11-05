@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     public class Pdf4meswissqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSwissQrBill(Expression<Func<CreateSwissQrBillV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSwissQrBill(Expression<Func<CreateSwissQrBillBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadSwissQrBillV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadSwissQrBillBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -43,17 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response, ApiConnectionActionConfiguration> SplitDocBySwissQrCode(Expression<Func<SplitDocBySwissQrCodeV1Input>> body = null)
+        public IBodyWorkflowAction<SplitDocBySwissQrCodeResponse, ApiConnectionActionConfiguration> SplitDocBySwissQrCode(Expression<Func<SplitDocBySwissQrCodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SplitDocBySwissQrCodeV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SplitDocBySwissQrCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SplitDocBySwissQrCodeV1Response>(callPayload);
+                return new ApiConnectionAction<SplitDocBySwissQrCodeResponse>(callPayload);
             });
         }
     }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     {
     }
 
-    public class CreateSwissQrBillV1Input
+    public class CreateSwissQrBillBodyInput
     {
         [JsonProperty("amount")]
         public string Amount { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         public string BillingInfo { get; set; }
 
         [JsonProperty("crAddressType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSwissQrBillV1InputCrAddressTypeType CrAddressType { get; set; } = CreateSwissQrBillV1InputCrAddressTypeType.S;
+        public BodyInputCrAddressTypeType CrAddressType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputCrAddressTypeType.S;
 
         [JsonProperty("crCity")]
         public string CrCity { get; set; }
@@ -95,31 +95,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         public string CrStreetOrAddressLine2 { get; set; }
 
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSwissQrBillV1InputCurrencyType? Currency { get; set; } = CreateSwissQrBillV1InputCurrencyType.CHF;
+        public BodyInputCurrencyType? Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputCurrencyType.CHF;
 
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSwissQrBillV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("iban", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Iban { get; set; }
 
         [JsonProperty("languageType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSwissQrBillV1InputLanguageTypeType? LanguageType { get; set; } = CreateSwissQrBillV1InputLanguageTypeType.English;
+        public BodyInputLanguageTypeType? LanguageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputLanguageTypeType.English;
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         [JsonProperty("referenceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSwissQrBillV1InputReferenceTypeType? ReferenceType { get; set; } = CreateSwissQrBillV1InputReferenceTypeType.QRR;
+        public BodyInputReferenceTypeType? ReferenceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputReferenceTypeType.QRR;
 
         [JsonProperty("seperatorLine", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSwissQrBillV1InputSeperatorLineType? SeperatorLine { get; set; } = CreateSwissQrBillV1InputSeperatorLineType.LineWithScissor;
+        public BodyInputSeperatorLineType? SeperatorLine { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputSeperatorLineType.LineWithScissor;
 
         [JsonProperty("udAddressType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSwissQrBillV1InputUdAddressTypeType? UdAddressType { get; set; } = CreateSwissQrBillV1InputUdAddressTypeType.S;
+        public BodyInputUdAddressTypeType? UdAddressType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputUdAddressTypeType.S;
 
         [JsonProperty("udCity")]
         public string UdCity { get; set; }
@@ -141,27 +141,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSwissQrBillV1InputCrAddressTypeType
+    public enum BodyInputCrAddressTypeType
     {
         S,
         K
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSwissQrBillV1InputCurrencyType
+    public enum BodyInputCurrencyType
     {
         CHF,
         EUR
     }
 
-    public class CreateSwissQrBillV1InputDocumentType
+    public class BodyInputDocumentType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSwissQrBillV1InputLanguageTypeType
+    public enum BodyInputLanguageTypeType
     {
         German,
         French,
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSwissQrBillV1InputReferenceTypeType
+    public enum BodyInputReferenceTypeType
     {
         QRR,
         SCOR,
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSwissQrBillV1InputSeperatorLineType
+    public enum BodyInputSeperatorLineType
     {
         LineWithScissor,
         Line,
@@ -186,34 +186,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSwissQrBillV1InputUdAddressTypeType
+    public enum BodyInputUdAddressTypeType
     {
         S,
         K
     }
 
-    public class ReadSwissQrBillV1Input
+    public class ReadSwissQrBillBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadSwissQrBillV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
     }
 
-    public class ReadSwissQrBillV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class SplitDocBySwissQrCodeV1Response
+    public class SplitDocBySwissQrCodeResponse
     {
         [JsonProperty("splitedDocuments")]
-        public SplitDocBySwissQrCodeV1ResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
+        public SplitDocBySwissQrCodeResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
     }
 
-    public class SplitDocBySwissQrCodeV1ResponseSplitedDocumentsTypeItem
+    public class SplitDocBySwissQrCodeResponseSplitedDocumentsTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -222,25 +216,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         public string StreamFile { get; set; }
     }
 
-    public class SplitDocBySwissQrCodeV1Input
+    public class SplitDocBySwissQrCodeBodyInput
     {
         [JsonProperty("barcodeFilter", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal SplitDocBySwissQrCodeV1InputBarcodeFilterType BarcodeFilter { get; set; } = SplitDocBySwissQrCodeV1InputBarcodeFilterType.StartsWith;
+        internal BodyInputBarcodeFilterType BarcodeFilter { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputBarcodeFilterType.StartsWith;
 
         [JsonProperty("barcodeString", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string BarcodeString { get; set; } = "SPC";
 
         [JsonProperty("barcodeType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal SplitDocBySwissQrCodeV1InputBarcodeTypeType BarcodeType { get; set; } = SplitDocBySwissQrCodeV1InputBarcodeTypeType.Qrcode;
+        internal BodyInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputBarcodeTypeType.Qrcode;
 
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocBySwissQrCodeV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("splitBarcodePage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocBySwissQrCodeV1InputSplitBarcodePageType SplitBarcodePage { get; set; } = SplitDocBySwissQrCodeV1InputSplitBarcodePageType.Before;
+        public BodyInputSplitBarcodePageType SplitBarcodePage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputSplitBarcodePageType.Before;
 
         [JsonProperty("combinePagesWithSameConsecutiveBarcodes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CombinePagesWithSameConsecutiveBarcodes { get; set; } = false;
@@ -250,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocBySwissQrCodeV1InputBarcodeFilterType
+    public enum BodyInputBarcodeFilterType
     {
         [EnumMember(Value = "startsWith")]
         StartsWith,
@@ -263,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocBySwissQrCodeV1InputBarcodeTypeType
+    public enum BodyInputBarcodeTypeType
     {
         [EnumMember(Value = "any")]
         Any,
@@ -273,14 +267,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         Qrcode
     }
 
-    public class SplitDocBySwissQrCodeV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocBySwissQrCodeV1InputSplitBarcodePageType
+    public enum BodyInputSplitBarcodePageType
     {
         [EnumMember(Value = "before")]
         Before,

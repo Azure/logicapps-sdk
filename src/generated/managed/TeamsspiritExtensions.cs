@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveTeam(Expression<Func<string>> groupId, Expression<Func<ArchiveTeamInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveTeam(Expression<Func<string>> groupId, Expression<Func<ArchiveTeamBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeTagValue(Expression<Func<string>> groupId, Expression<Func<ChangeTagValueInput>> content)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeTagValue(Expression<Func<string>> groupId, Expression<Func<ContentInput>> content)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupId, Expression<Func<RemoveAllUsersExceptOneOwnerInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupId, Expression<Func<RemoveAllUsersExceptOneOwnerBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUser(Expression<Func<string>> groupId, Expression<Func<RemoveUserInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUser(Expression<Func<string>> groupId, Expression<Func<ChangeRoleToMemberBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToMember(Expression<Func<string>> groupId, Expression<Func<ChangeRoleToMemberInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToMember(Expression<Func<string>> groupId, Expression<Func<ChangeRoleToMemberBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToOwner(Expression<Func<string>> groupId, Expression<Func<ChangeRoleToOwnerInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChangeRoleToOwner(Expression<Func<string>> groupId, Expression<Func<ChangeRoleToMemberBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExtendExpirationDate(Expression<Func<string>> groupId, Expression<Func<ExtendExpirationDateInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExtendExpirationDate(Expression<Func<string>> groupId, Expression<Func<ExtendExpirationDateBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 
     public class TeamsspiritTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActionTriggerResponse, ApiConnectionTriggerConfiguration> ActionTrigger(Expression<Func<ActionTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse, ApiConnectionTriggerConfiguration> ActionTrigger(Expression<Func<ActionTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<ActionTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -306,13 +306,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         public int Type { get; set; }
     }
 
-    public class ArchiveTeamInput
+    public class ArchiveTeamBodyInput
     {
         [JsonProperty("sharePointReadOnly", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool SharePointReadOnly { get; set; }
     }
 
-    public class ChangeTagValueInput
+    public class ContentInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -321,31 +321,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         public string Value { get; set; }
     }
 
-    public class RemoveAllUsersExceptOneOwnerInput
+    public class RemoveAllUsersExceptOneOwnerBodyInput
     {
         [JsonProperty("ownerId")]
         public string OwnerId { get; set; }
     }
 
-    public class RemoveUserInput
+    public class ChangeRoleToMemberBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
     }
 
-    public class ChangeRoleToMemberInput
-    {
-        [JsonProperty("userId")]
-        public string UserId { get; set; }
-    }
-
-    public class ChangeRoleToOwnerInput
-    {
-        [JsonProperty("userId")]
-        public string UserId { get; set; }
-    }
-
-    public class ExtendExpirationDateInput
+    public class ExtendExpirationDateBodyInput
     {
         [JsonProperty("weeks", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Weeks { get; set; } = "4'";
@@ -357,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         public string UnsubscribeUrl { get; set; }
     }
 
-    public class ActionTriggerInput
+    public class ActionTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

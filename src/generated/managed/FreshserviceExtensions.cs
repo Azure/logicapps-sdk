@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     public class FreshserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
-        public IBodyWorkflowAction<AddNoteResponseV2, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketId, Expression<Func<AddNoteV2Input>> body)
+        public IBodyWorkflowAction<AddNoteResponseV2, ApiConnectionActionConfiguration> AddNote(Expression<Func<int>> ticketId, Expression<Func<AddNoteBodyInput>> body)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
-        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketV2Input>> body)
+        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshservice")]
-        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketId, Expression<Func<UpdateTicketV2Input>> body)
+        public IBodyWorkflowAction<CreateUpdateTicketResponseV2, ApiConnectionActionConfiguration> UpdateTicket(Expression<Func<int>> ticketId, Expression<Func<UpdateTicketBodyInput>> body)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public int TicketId { get; set; }
     }
 
-    public class AddNoteV2Input
+    public class AddNoteBodyInput
     {
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Note { get; set; }
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public string[] ToEmails { get; set; }
     }
 
-    public class CreateTicketV2Input
+    public class CreateTicketBodyInput
     {
         [JsonProperty("requester_id")]
         public int? RequesterId { get; set; }
@@ -197,26 +197,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public string Subject { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTicketV2InputStatusType Status { get; set; }
+        public BodyInputStatusType Status { get; set; }
 
         [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTicketV2InputPriorityType Priority { get; set; }
+        public BodyInputPriorityType Priority { get; set; }
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
         [JsonProperty("urgency")]
-        public CreateTicketV2InputUrgencyType? Urgency { get; set; }
+        public BodyInputUrgencyType? Urgency { get; set; }
 
         [JsonProperty("impact")]
-        public CreateTicketV2InputImpactType? Impact { get; set; }
+        public BodyInputImpactType? Impact { get; set; }
 
         [JsonProperty("source")]
-        public CreateTicketV2InputSourceType? Source { get; set; }
+        public BodyInputSourceType? Source { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTicketV2InputStatusType
+    public enum BodyInputStatusType
     {
         Open,
         Pending,
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTicketV2InputPriorityType
+    public enum BodyInputPriorityType
     {
         Low,
         Medium,
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTicketV2InputUrgencyType
+    public enum BodyInputUrgencyType
     {
         Low,
         Medium,
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTicketV2InputImpactType
+    public enum BodyInputImpactType
     {
         Low,
         Medium,
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTicketV2InputSourceType
+    public enum BodyInputSourceType
     {
         Email,
         Portal,
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         Chat
     }
 
-    public class UpdateTicketV2Input
+    public class UpdateTicketBodyInput
     {
         [JsonProperty("requester_id")]
         public int? RequesterId { get; set; }
@@ -267,62 +267,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public string Subject { get; set; }
 
         [JsonProperty("status")]
-        public UpdateTicketV2InputStatusType? Status { get; set; }
+        public BodyInputStatusType? Status { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateTicketV2InputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("urgency")]
-        public UpdateTicketV2InputUrgencyType? Urgency { get; set; }
+        public BodyInputUrgencyType? Urgency { get; set; }
 
         [JsonProperty("impact")]
-        public UpdateTicketV2InputImpactType? Impact { get; set; }
+        public BodyInputImpactType? Impact { get; set; }
 
         [JsonProperty("source")]
-        public UpdateTicketV2InputSourceType? Source { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTicketV2InputStatusType
-    {
-        Open,
-        Pending,
-        Resolved,
-        Closed
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTicketV2InputPriorityType
-    {
-        Low,
-        Medium,
-        High,
-        Urgent
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTicketV2InputUrgencyType
-    {
-        Low,
-        Medium,
-        High
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTicketV2InputImpactType
-    {
-        Low,
-        Medium,
-        High
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTicketV2InputSourceType
-    {
-        Email,
-        Portal,
-        Phone,
-        Chat
+        public BodyInputSourceType? Source { get; set; }
     }
 
     public class ListTicketResponseV2

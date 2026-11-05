@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<SumInput>> body = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<SumBodyInput>> body = null)
         {
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<RegexInput>> body = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<RegexBodyInput>> body = null)
         {
             var __workflow_xCustomHost = WorkflowExpression.Compile(xCustomHost, nameof(xCustomHost), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         public string Details { get; set; }
     }
 
-    public class SumInput
+    public class SumBodyInput
     {
         [JsonProperty("data")]
         public string Data { get; set; }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         public string Path { get; set; }
     }
 
-    public class RegexInput
+    public class RegexBodyInput
     {
         [JsonProperty("content")]
         public string Content { get; set; }

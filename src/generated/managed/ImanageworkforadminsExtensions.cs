@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<SearchCustomPropertyResponseBody, ApiConnectionActionConfiguration> SearchCustomPropertyAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null, Expression<Func<string>> alias = null, Expression<Func<string>> description = null, Expression<Func<bool>> hipaa = null, Expression<Func<enabledStateInput>> enabledState = null)
+        public IBodyWorkflowAction<SearchCustomPropertyResponseBody, ApiConnectionActionConfiguration> SearchCustomPropertyAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null, Expression<Func<string>> alias = null, Expression<Func<string>> description = null, Expression<Func<bool>> hipaa = null, Expression<Func<EnabledStateInput>> enabledState = null)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
             var __workflow_lookupFieldId = WorkflowExpression.Compile(lookupFieldId, nameof(lookupFieldId), required: true);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateCustomOrPropertyLookup(Expression<Func<CreateCustomOrPropertyLookupInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateCustomOrPropertyLookup(Expression<Func<CreateCustomOrPropertyLookupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration> AssignUserToLibrary(Expression<Func<AssignUserToLibraryInput>> body)
+        public IBodyWorkflowAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration> AssignUserToLibrary(Expression<Func<AssignUserToLibraryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AssignUserToLibraryResponse, ApiConnectionActionConfiguration>(() =>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateFolderResponseBody, ApiConnectionActionConfiguration> AddFolder(Expression<Func<AddFolderInput>> body)
+        public IBodyWorkflowAction<CreateFolderResponseBody, ApiConnectionActionConfiguration> AddFolder(Expression<Func<AddFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateFolderResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateTabResponseBody, ApiConnectionActionConfiguration> AddTab(Expression<Func<AddTabInput>> body)
+        public IBodyWorkflowAction<CreateTabResponseBody, ApiConnectionActionConfiguration> AddTab(Expression<Func<AddTabBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTabResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration> AddShortcutsToMyMattersAdmin(Expression<Func<AddShortcutsToMyMattersAdminInput>> body)
+        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration> AddShortcutsToMyMattersAdmin(Expression<Func<AddShortcutsToMyMattersAdminBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddShortcutsToMyMattersAdminResponse, ApiConnectionActionConfiguration>(() =>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateCustomField(Expression<Func<UpdateCustomFieldInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateCustomField(Expression<Func<CreateCustomOrPropertyLookupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration> GetRowsFromCSVDocument(Expression<Func<GetRowsFromCSVDocumentInput>> body)
+        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration> GetRowsFromCSVDocument(Expression<Func<GetRowsFromCSVDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetRowsFromCSVDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<MoveFolderResponseBody, ApiConnectionActionConfiguration> MoveFolder(Expression<Func<MoveFolderInput>> body)
+        public IBodyWorkflowAction<MoveFolderResponseBody, ApiConnectionActionConfiguration> MoveFolder(Expression<Func<MoveFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveFolderResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<UpdateFolderInput>> body)
+        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<UpdateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateFolderPropertiesResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum enabledStateInput
+    public enum EnabledStateInput
     {
         Enabled,
         Disabled,
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         BothEnabledAndDisabled
     }
 
-    public class CreateCustomOrPropertyLookupInput
+    public class CreateCustomOrPropertyLookupBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public bool UserCreated { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("full_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FullName { get; set; }
@@ -441,14 +441,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public bool IgnoreIfUserAlreadyExists { get; set; } = true;
 
         [JsonProperty("password_create_method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputPasswordCreateMethodType PasswordCreateMethod { get; set; } = CreateUserInputPasswordCreateMethodType.SendAnEmail;
+        public BodyInputPasswordCreateMethodType PasswordCreateMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins.BodyInputPasswordCreateMethodType.SendAnEmail;
 
         [JsonProperty("create_password", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken CreatePassword { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateUserInputPasswordCreateMethodType
+    public enum BodyInputPasswordCreateMethodType
     {
         [EnumMember(Value = "Send an email")]
         SendAnEmail,
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public double UserNum { get; set; }
     }
 
-    public class AssignUserToLibraryInput
+    public class AssignUserToLibraryBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         WorkspaceShortcut
     }
 
-    public class AddFolderInput
+    public class AddFolderBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -761,10 +761,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string ParentId { get; set; }
 
         [JsonProperty("parentType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddFolderInputParentTypeType ParentType { get; set; }
+        public BodyInputParentTypeType ParentType { get; set; }
 
         [JsonProperty("default_security", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddFolderInputDefaultSecurityType DefaultSecurity { get; set; } = AddFolderInputDefaultSecurityType.Inherit;
+        public AddFolderBodyInputDefaultSecurityType DefaultSecurity { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins.AddFolderBodyInputDefaultSecurityType.Inherit;
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -785,14 +785,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public bool? IsExternalAsNormal { get; set; } = false;
 
         [JsonProperty("inherit_profile_from_workspace", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddFolderInputInheritProfileFromWorkspaceType InheritProfileFromWorkspace { get; set; } = AddFolderInputInheritProfileFromWorkspaceType.Yes;
+        public BodyInputInheritProfileFromWorkspaceType InheritProfileFromWorkspace { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins.BodyInputInheritProfileFromWorkspaceType.Yes;
 
         [JsonProperty("profileProperties")]
         public JToken ProfileProperties { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddFolderInputParentTypeType
+    public enum BodyInputParentTypeType
     {
         Folder,
         Workspace,
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddFolderInputDefaultSecurityType
+    public enum AddFolderBodyInputDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
         Inherit,
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddFolderInputInheritProfileFromWorkspaceType
+    public enum BodyInputInheritProfileFromWorkspaceType
     {
         Yes,
         No
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         Public
     }
 
-    public class AddTabInput
+    public class AddTabBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -880,26 +880,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string ParentId { get; set; }
 
         [JsonProperty("default_security", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddTabInputDefaultSecurityType DefaultSecurity { get; set; } = AddTabInputDefaultSecurityType.Inherit;
+        public AddFolderBodyInputDefaultSecurityType DefaultSecurity { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins.AddFolderBodyInputDefaultSecurityType.Inherit;
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("owner")]
         public string Owner { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddTabInputDefaultSecurityType
-    {
-        [EnumMember(Value = "inherit")]
-        Inherit,
-        [EnumMember(Value = "private")]
-        Private,
-        [EnumMember(Value = "view")]
-        View,
-        [EnumMember(Value = "public")]
-        Public
     }
 
     public class GetMyMattersCategoriesResponse
@@ -991,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string Id { get; set; }
     }
 
-    public class AddShortcutsToMyMattersAdminInput
+    public class AddShortcutsToMyMattersAdminBodyInput
     {
         [JsonProperty("user_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -1001,18 +988,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
 
         [JsonProperty("category_id")]
         public string CategoryId { get; set; }
-    }
-
-    public class UpdateCustomFieldInput
-    {
-        [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LibraryId { get; set; }
-
-        [JsonProperty("lookupFieldId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LookupFieldId { get; set; }
-
-        [JsonProperty("aliasInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken AliasInfo { get; set; }
     }
 
     public class GetRowsFromCSVDocumentResponse
@@ -1030,7 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public int Count { get; set; }
     }
 
-    public class GetRowsFromCSVDocumentInput
+    public class GetRowsFromCSVDocumentBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -1060,7 +1035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string FolderUrl { get; set; }
     }
 
-    public class MoveFolderInput
+    public class MoveFolderBodyInput
     {
         [JsonProperty("folder_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
@@ -1075,7 +1050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public NewFolderProfile Data { get; set; }
     }
 
-    public class UpdateFolderInput
+    public class UpdateFolderBodyInput
     {
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
@@ -1084,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string Name { get; set; }
 
         [JsonProperty("default_security", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateFolderInputDefaultSecurityType? DefaultSecurity { get; set; } = UpdateFolderInputDefaultSecurityType.NoChange;
+        public UpdateFolderBodyInputDefaultSecurityType? DefaultSecurity { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins.UpdateFolderBodyInputDefaultSecurityType.NoChange;
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1109,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateFolderInputDefaultSecurityType
+    public enum UpdateFolderBodyInputDefaultSecurityType
     {
         [EnumMember(Value = "no change")]
         NoChange,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
     public class BoomappconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS1Response, ApiConnectionActionConfiguration> SMS1(Expression<Func<SMS1Input>> body = null)
+        public IBodyWorkflowAction<SMS1Response, ApiConnectionActionConfiguration> SMS1(Expression<Func<SMS1BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SMS1Response, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS2Response, ApiConnectionActionConfiguration> SMS2(Expression<Func<SMS2Input>> body = null)
+        public IBodyWorkflowAction<SMS2Response, ApiConnectionActionConfiguration> SMS2(Expression<Func<SMS2BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SMS2Response, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<SMS3Response, ApiConnectionActionConfiguration> SMS3(Expression<Func<SMS3Input>> body = null)
+        public IBodyWorkflowAction<SMS3Response, ApiConnectionActionConfiguration> SMS3(Expression<Func<SMS1BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SMS3Response, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<VOICEResponse, ApiConnectionActionConfiguration> VOICE(Expression<Func<VOICEInput>> body = null)
+        public IBodyWorkflowAction<VOICEResponse, ApiConnectionActionConfiguration> VOICE(Expression<Func<VOICEBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<VOICEResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<EMAILResponse, ApiConnectionActionConfiguration> EMAIL(Expression<Func<EMAILInput>> body = null)
+        public IBodyWorkflowAction<EMAILResponse, ApiConnectionActionConfiguration> EMAIL(Expression<Func<EMAILBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<EMAILResponse, ApiConnectionActionConfiguration>(() =>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string TelephoneNumber { get; set; }
     }
 
-    public class SMS1Input
+    public class SMS1BodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string MessageContent { get; set; }
 
         [JsonProperty("recipient_address")]
-        public SMS1InputRecipientAddressTypeItem[] RecipientAddress { get; set; }
+        public BodyInputRecipientAddressTypeItem[] RecipientAddress { get; set; }
 
         [JsonProperty("priority")]
         public bool? Priority { get; set; }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string CustomParameter { get; set; }
     }
 
-    public class SMS1InputRecipientAddressTypeItem
+    public class BodyInputRecipientAddressTypeItem
     {
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string TelephoneNumber { get; set; }
     }
 
-    public class SMS2Input
+    public class SMS2BodyInput
     {
         [JsonProperty("conversation_id")]
         public string ConversationId { get; set; }
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string MessageContent { get; set; }
 
         [JsonProperty("recipient_address")]
-        public SMS2InputRecipientAddressTypeItem[] RecipientAddress { get; set; }
+        public BodyInputRecipientAddressTypeItem[] RecipientAddress { get; set; }
 
         [JsonProperty("validity_period")]
         public int? ValidityPeriod { get; set; }
@@ -231,12 +231,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string CustomParameter { get; set; }
     }
 
-    public class SMS2InputRecipientAddressTypeItem
-    {
-        [JsonProperty("number")]
-        public string Number { get; set; }
-    }
-
     public class SMS3Response
     {
         [JsonProperty("status")]
@@ -259,36 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 
         [JsonProperty("telephone_number")]
         public string TelephoneNumber { get; set; }
-    }
-
-    public class SMS3Input
-    {
-        [JsonProperty("from")]
-        public string From { get; set; }
-
-        [JsonProperty("message_content")]
-        public string MessageContent { get; set; }
-
-        [JsonProperty("recipient_address")]
-        public SMS3InputRecipientAddressTypeItem[] RecipientAddress { get; set; }
-
-        [JsonProperty("priority")]
-        public bool? Priority { get; set; }
-
-        [JsonProperty("unique_identifier")]
-        public string UniqueIdentifier { get; set; }
-
-        [JsonProperty("campaign_name")]
-        public string CampaignName { get; set; }
-
-        [JsonProperty("custom_parameter")]
-        public string CustomParameter { get; set; }
-    }
-
-    public class SMS3InputRecipientAddressTypeItem
-    {
-        [JsonProperty("number")]
-        public string Number { get; set; }
     }
 
     public class VOICEResponse
@@ -315,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string TelephoneNumber { get; set; }
     }
 
-    public class VOICEInput
+    public class VOICEBodyInput
     {
         [JsonProperty("voice_intro")]
         public string VoiceIntro { get; set; }
@@ -327,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string VoiceRedirectMessage { get; set; }
 
         [JsonProperty("voice_redirect_no")]
-        public VOICEInputVoiceRedirectNoType VoiceRedirectNo { get; set; }
+        public BodyInputVoiceRedirectNoType VoiceRedirectNo { get; set; }
 
         [JsonProperty("voice_retries")]
         public int? VoiceRetries { get; set; }
@@ -339,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string MessageContent { get; set; }
 
         [JsonProperty("recipient_address")]
-        public VOICEInputRecipientAddressTypeItem[] RecipientAddress { get; set; }
+        public BodyInputRecipientAddressTypeItem[] RecipientAddress { get; set; }
 
         [JsonProperty("priority")]
         public bool? Priority { get; set; }
@@ -354,13 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string CustomParameter { get; set; }
     }
 
-    public class VOICEInputVoiceRedirectNoType
-    {
-        [JsonProperty("number")]
-        public string Number { get; set; }
-    }
-
-    public class VOICEInputRecipientAddressTypeItem
+    public class BodyInputVoiceRedirectNoType
     {
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -390,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string EmailAddress { get; set; }
     }
 
-    public class EMAILInput
+    public class EMAILBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }

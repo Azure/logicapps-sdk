@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     public class Pdf4mepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentUsingTemplate(Expression<Func<GenerateDocumentUsingTemplateInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentUsingTemplate(Expression<Func<GenerateDocumentUsingTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<AddPageNumberInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPageNumber(Expression<Func<AddPageNumberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> _1ResizeDocument(Expression<Func<_1ResizeDocumentV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> _1ResizeDocument(Expression<Func<_1ResizeDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddAttachmentToPdf(Expression<Func<AddAttachmentToPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddAttachmentToPdf(Expression<Func<AddAttachmentToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddFormField(Expression<Func<AddFormFieldV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddFormField(Expression<Func<AddFormFieldBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddHtmlHeaderFooter(Expression<Func<AddHtmlHeaderFooterV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddHtmlHeaderFooter(Expression<Func<AddHtmlHeaderFooterBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddMargin(Expression<Func<AddMarginV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddMargin(Expression<Func<AddMarginBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -117,22 +117,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ClassifyDocumentV1Response, ApiConnectionActionConfiguration> ClassifyDocument(Expression<Func<ClassifyDocumentV1Input>> body = null)
+        public IBodyWorkflowAction<ClassifyDocumentResponse, ApiConnectionActionConfiguration> ClassifyDocument(Expression<Func<ClassifyDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ClassifyDocumentV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ClassifyDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ClassifyDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ClassifyDocumentV1Response>(callPayload);
+                return new ApiConnectionAction<ClassifyDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<CreatePdfAV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<CreatePdfABodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateZugferdInvoice(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateZugferdInvoice(Expression<Func<CreateZugferdInvoiceSchemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
             var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CropPdf(Expression<Func<CropPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CropPdf(Expression<Func<CropPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteBlankPages(Expression<Func<DeleteBlankPagesV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteBlankPages(Expression<Func<DeleteBlankPagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeletePages(Expression<Func<DeletePagesV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeletePages(Expression<Func<DeletePagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DigitalSignPdf(Expression<Func<DigitalSignPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DigitalSignPdf(Expression<Func<DigitalSignPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -244,22 +244,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ExtractAttachmentFromPdfV1Response, ApiConnectionActionConfiguration> ExtractAttachmentFromPdf(Expression<Func<ExtractAttachmentFromPdfV1Input>> body = null)
+        public IBodyWorkflowAction<ExtractAttachmentFromPdfResponse, ApiConnectionActionConfiguration> ExtractAttachmentFromPdf(Expression<Func<ExtractAttachmentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractAttachmentFromPdfV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractAttachmentFromPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractAttachmentFromPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractAttachmentFromPdfV1Response>(callPayload);
+                return new ApiConnectionAction<ExtractAttachmentFromPdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExtractPages(Expression<Func<ExtractPagesV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExtractPages(Expression<Func<DeletePagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -274,67 +274,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ExtractPdfFormDataV1Response, ApiConnectionActionConfiguration> ExtractPdfFormData(Expression<Func<ExtractPdfFormDataV1Input>> body = null)
+        public IBodyWorkflowAction<ExtractPdfFormDataResponse, ApiConnectionActionConfiguration> ExtractPdfFormData(Expression<Func<ExtractAttachmentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractPdfFormDataV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractPdfFormDataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractPdfFormData";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractPdfFormDataV1Response>(callPayload);
+                return new ApiConnectionAction<ExtractPdfFormDataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ExtractResourcesV1Response, ApiConnectionActionConfiguration> ExtractResources(Expression<Func<ExtractResourcesV1Input>> body = null)
+        public IBodyWorkflowAction<ExtractResourcesResponse, ApiConnectionActionConfiguration> ExtractResources(Expression<Func<ExtractResourcesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractResourcesV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractResourcesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractResources";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractResourcesV1Response>(callPayload);
+                return new ApiConnectionAction<ExtractResourcesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ExtractTableFromPdfV1Response, ApiConnectionActionConfiguration> ExtractTableFromPdf(Expression<Func<ExtractTableFromPdfV1Input>> body = null)
+        public IBodyWorkflowAction<ExtractTableFromPdfResponse, ApiConnectionActionConfiguration> ExtractTableFromPdf(Expression<Func<ExtractAttachmentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractTableFromPdfV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractTableFromPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractTableFromPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractTableFromPdfV1Response>(callPayload);
+                return new ApiConnectionAction<ExtractTableFromPdfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ExtractTextByExpressionV1Response, ApiConnectionActionConfiguration> ExtractTextByExpression(Expression<Func<ExtractTextByExpressionV1Input>> body = null)
+        public IBodyWorkflowAction<ExtractTextByExpressionResponse, ApiConnectionActionConfiguration> ExtractTextByExpression(Expression<Func<ExtractTextByExpressionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractTextByExpressionV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractTextByExpressionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExtractTextByExpression";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractTextByExpressionV1Response>(callPayload);
+                return new ApiConnectionAction<ExtractTextByExpressionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FindAndReplace(Expression<Func<FindAndReplaceV2Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FindAndReplace(Expression<Func<FindAndReplaceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlattenPdf(Expression<Func<FlattenPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlattenPdf(Expression<Func<ExtractAttachmentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentFromPdf(Expression<Func<GenerateDocumentFromPdfV2Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentFromPdf(Expression<Func<GenerateDocumentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -379,22 +379,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<GenerateDocumentMultipleV1Response, ApiConnectionActionConfiguration> GenerateDocumentMultiple(Expression<Func<GenerateDocumentMultipleV1Input>> body = null)
+        public IBodyWorkflowAction<GenerateDocumentMultipleResponse, ApiConnectionActionConfiguration> GenerateDocumentMultiple(Expression<Func<GenerateDocumentMultipleBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GenerateDocumentMultipleV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerateDocumentMultipleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/GenerateDocumentMultiple";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GenerateDocumentMultipleV1Response>(callPayload);
+                return new ApiConnectionAction<GenerateDocumentMultipleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentSingle(Expression<Func<GenerateDocumentSingleV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocumentSingle(Expression<Func<GenerateDocumentSingleBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -409,22 +409,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<GetPdfMetadataV1Response, ApiConnectionActionConfiguration> GetPdfMetadata(Expression<Func<GetPdfMetadataV1Input>> body = null)
+        public IBodyWorkflowAction<GetPdfMetadataResponse, ApiConnectionActionConfiguration> GetPdfMetadata(Expression<Func<ExtractAttachmentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GetPdfMetadataV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetPdfMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/GetPdfMetadata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GetPdfMetadataV1Response>(callPayload);
+                return new ApiConnectionAction<GetPdfMetadataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> HighlightText(Expression<Func<HighlightTextV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> HighlightText(Expression<Func<HighlightTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImageStamp(Expression<Func<ImageStampV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImageStamp(Expression<Func<ImageStampBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinearizePdf(Expression<Func<LinearizePdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinearizePdf(Expression<Func<LinearizePdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Merge(Expression<Func<MergeV1Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Merge(Expression<Func<MergeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeOverlay(Expression<Func<MergeOverlayV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergeOverlay(Expression<Func<MergeOverlayBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Optimize(Expression<Func<OptimizeV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Optimize(Expression<Func<OptimizeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -513,22 +513,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ParseDocumentV1Response, ApiConnectionActionConfiguration> ParseDocument(Expression<Func<ParseDocumentV1Input>> body = null)
+        public IBodyWorkflowAction<ParseDocumentResponse, ApiConnectionActionConfiguration> ParseDocument(Expression<Func<ParseDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ParseDocumentV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ParseDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ParseDocument";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ParseDocumentV1Response>(callPayload);
+                return new ApiConnectionAction<ParseDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfOcr(Expression<Func<PdfOcrV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfOcr(Expression<Func<PdfOcrBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PrepareForPrint(Expression<Func<schemaValInput2>> schemaVal = null, Expression<Func<object>> operation = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PrepareForPrint(Expression<Func<PrepareForPrintSchemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
             var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProtectDocument(Expression<Func<ProtectDocumentV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProtectDocument(Expression<Func<ProtectDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RedactPdf(Expression<Func<RedactPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RedactPdf(Expression<Func<RedactPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RepairPdf(Expression<Func<RepairPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RepairPdf(Expression<Func<ExtractAttachmentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReplaceTextWithImage(Expression<Func<ReplaceTextWithImageV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReplaceTextWithImage(Expression<Func<ReplaceTextWithImageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotateDocument(Expression<Func<RotateDocumentV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotateDocument(Expression<Func<RotateDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotatePage(Expression<Func<RotatePageV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RotatePage(Expression<Func<RotatePageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetPDFMetadata(Expression<Func<SetPDFMetadataV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetPDFMetadata(Expression<Func<SetPDFMetadataBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SignPdf(Expression<Func<SignPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SignPdf(Expression<Func<SignPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -682,37 +682,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<SplitByTextV1Response, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitByTextV1Input>> body = null)
+        public IBodyWorkflowAction<SplitByTextResponse, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitByTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SplitByTextV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SplitByTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitByText";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SplitByTextV1Response>(callPayload);
+                return new ApiConnectionAction<SplitByTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<SplitDocumentV1Response, ApiConnectionActionConfiguration> SplitDocument(Expression<Func<SplitDocumentV1Input>> body = null)
+        public IBodyWorkflowAction<SplitDocumentResponse, ApiConnectionActionConfiguration> SplitDocument(Expression<Func<SplitDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SplitDocumentV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SplitDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SplitDocumentV1Response>(callPayload);
+                return new ApiConnectionAction<SplitDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Stamp(Expression<Func<StampV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Stamp(Expression<Func<StampBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -727,22 +727,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<StartPDF4meWfV1Response, ApiConnectionActionConfiguration> StartPDF4meWf(Expression<Func<StartPDF4meWfV1Input>> body = null)
+        public IBodyWorkflowAction<StartPDF4meWfResponse, ApiConnectionActionConfiguration> StartPDF4meWf(Expression<Func<StartPDF4meWfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<StartPDF4meWfV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StartPDF4meWfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ExecuteWfTrigger";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<StartPDF4meWfV1Response>(callPayload);
+                return new ApiConnectionAction<StartPDF4meWfResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Unlock(Expression<Func<UnlockV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Unlock(Expression<Func<UnlockBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -757,39 +757,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<UploadBlobAllV1Response, ApiConnectionActionConfiguration> UploadBlobAll(Expression<Func<UploadBlobAllV1Input>> body = null)
+        public IBodyWorkflowAction<UploadBlobAllResponse, ApiConnectionActionConfiguration> UploadBlobAll(Expression<Func<UploadBlobAllBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<UploadBlobAllV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UploadBlobAllResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/UploadBlobAll";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UploadBlobAllV1Response>(callPayload);
+                return new ApiConnectionAction<UploadBlobAllResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mepdf")]
-        public IBodyWorkflowAction<ValidatePDFAV1Response, ApiConnectionActionConfiguration> ValidatePDFA(Expression<Func<ValidatePDFAV1Input>> body = null)
+        public IBodyWorkflowAction<ValidatePDFAResponse, ApiConnectionActionConfiguration> ValidatePDFA(Expression<Func<ExtractAttachmentFromPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ValidatePDFAV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ValidatePDFAResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ValidatePDFA";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ValidatePDFAV1Response>(callPayload);
+                return new ApiConnectionAction<ValidatePDFAResponse>(callPayload);
             });
         }
     }
 
     public class Pdf4mepdfTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> GetDocumentFromPDF4me(Expression<Func<GetDocumentFromPDF4meInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> GetDocumentFromPDF4me(Expression<Func<GetDocumentFromPDF4meBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
@@ -803,13 +803,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         }
     }
 
-    public class GenerateDocumentUsingTemplateInput
+    public class GenerateDocumentUsingTemplateBodyInput
     {
         [JsonProperty("templateFileName")]
         public string TemplateName { get; set; }
 
         [JsonProperty("documentDataType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentUsingTemplateInputDocumentDataTypeType? DocumentDataType { get; set; } = GenerateDocumentUsingTemplateInputDocumentDataTypeType.Json;
+        public BodyInputDocumentDataTypeType? DocumentDataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputDocumentDataTypeType.Json;
 
         [JsonProperty("documentDataText")]
         public string DocumentDataText { get; set; }
@@ -822,13 +822,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentUsingTemplateInputDocumentDataTypeType
+    public enum BodyInputDocumentDataTypeType
     {
         Json,
         XML
     }
 
-    public class AddPageNumberInput
+    public class AddPageNumberBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -840,10 +840,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string PageNumberFormat { get; set; } = "# of {totalPages}";
 
         [JsonProperty("alignX", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPageNumberInputAlignXType AlignX { get; set; } = AddPageNumberInputAlignXType.Left;
+        public AddPageNumberBodyInputAlignXType AlignX { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.AddPageNumberBodyInputAlignXType.Left;
 
         [JsonProperty("alignY", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPageNumberInputAlignYType AlignY { get; set; } = AddPageNumberInputAlignYType.Top;
+        public AddPageNumberBodyInputAlignYType AlignY { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.AddPageNumberBodyInputAlignYType.Top;
 
         [JsonProperty("marginXinMM", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MarginXinMM { get; set; } = 0;
@@ -865,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputAlignXType
+    public enum AddPageNumberBodyInputAlignXType
     {
         Left,
         Center,
@@ -873,20 +873,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPageNumberInputAlignYType
+    public enum AddPageNumberBodyInputAlignYType
     {
         Top,
         Middle,
         Bottom
     }
 
-    public class _1ResizeDocumentV1Input
+    public class _1ResizeDocumentBodyInput
     {
         [JsonProperty("docContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document")]
-        public _1ResizeDocumentV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("pageSequence", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PageSequence { get; set; } = "all";
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool IsPageSizeRequested { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public _1ResizeDocumentV1InputPageSizeType PageSize { get; set; } = new _1ResizeDocumentV1InputPageSizeType();
+        public BodyInputPageSizeType PageSize { get; set; } = new BodyInputPageSizeType();
 
         [JsonProperty("paddingTop", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? PaddingTop { get; set; } = 0;
@@ -910,16 +910,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public double? PaddingRight { get; set; } = 0;
     }
 
-    public class _1ResizeDocumentV1InputDocumentType
+    public class AddAttachmentToPdfBodyInputDocumentType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
-    public class _1ResizeDocumentV1InputPageSizeType
+    public class BodyInputPageSizeType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public _1ResizeDocumentV1InputPageSizeTypeTypeType Type { get; set; } = _1ResizeDocumentV1InputPageSizeTypeTypeType.A4;
+        public BodyInputPageSizeTypeTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputPageSizeTypeTypeType.A4;
 
         [JsonProperty("customWidth")]
         public string CustomWidth { get; set; }
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum _1ResizeDocumentV1InputPageSizeTypeTypeType
+    public enum BodyInputPageSizeTypeTypeType
     {
         Custom,
         A0,
@@ -947,52 +947,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         P11x17
     }
 
-    public class AddAttachmentToPdfV1Input
+    public class AddAttachmentToPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddAttachmentToPdfV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("attachments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddAttachmentToPdfV1InputAttachmentsTypeItem[] Attachments { get; set; }
+        public BodyInputAttachmentsTypeItem[] Attachments { get; set; }
     }
 
-    public class AddAttachmentToPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class AddAttachmentToPdfV1InputAttachmentsTypeItem
+    public class BodyInputAttachmentsTypeItem
     {
         [JsonProperty("docContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document")]
-        public AddAttachmentToPdfV1InputAttachmentsTypeItemDocumentType Document { get; set; }
+        public BodyInputAttachmentsTypeItemDocumentType Document { get; set; }
     }
 
-    public class AddAttachmentToPdfV1InputAttachmentsTypeItemDocumentType
+    public class BodyInputAttachmentsTypeItemDocumentType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
-    public class AddFormFieldV1Input
+    public class AddFormFieldBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddFormFieldV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("fieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
 
         [JsonProperty("formFieldType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddFormFieldV1InputFormFieldTypeType FormFieldType { get; set; } = AddFormFieldV1InputFormFieldTypeType.TextBox;
+        public BodyInputFormFieldTypeType FormFieldType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputFormFieldTypeType.TextBox;
 
         [JsonProperty("initialValue")]
         public string InitialValue { get; set; }
@@ -1007,32 +1001,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string Pages { get; set; } = "1";
     }
 
-    public class AddFormFieldV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddFormFieldV1InputFormFieldTypeType
+    public enum BodyInputFormFieldTypeType
     {
         TextBox,
         CheckBox
     }
 
-    public class AddHtmlHeaderFooterV1Input
+    public class AddHtmlHeaderFooterBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddHtmlHeaderFooterV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("htmlContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HtmlContent { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddHtmlHeaderFooterV1InputLocationType? Location { get; set; } = AddHtmlHeaderFooterV1InputLocationType.Header;
+        public BodyInputLocationType? Location { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputLocationType.Header;
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pages { get; set; } = "all";
@@ -1053,27 +1041,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string MarginBottom { get; set; }
     }
 
-    public class AddHtmlHeaderFooterV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddHtmlHeaderFooterV1InputLocationType
+    public enum BodyInputLocationType
     {
         Header,
         Footer,
         Both
     }
 
-    public class AddMarginV1Input
+    public class AddMarginBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddMarginV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("marginLeft", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarginLeft { get; set; }
@@ -1088,42 +1070,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string MarginBottom { get; set; }
     }
 
-    public class AddMarginV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ClassifyDocumentV1Response
+    public class ClassifyDocumentResponse
     {
         [JsonProperty("className")]
         public string ClassName { get; set; }
     }
 
-    public class ClassifyDocumentV1Input
+    public class ClassifyDocumentBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document")]
-        public ClassifyDocumentV1InputDocumentType Document { get; set; }
+        public ClassifyDocumentBodyInputDocumentType Document { get; set; }
     }
 
-    public class ClassifyDocumentV1InputDocumentType
+    public class ClassifyDocumentBodyInputDocumentType
     {
         public string Name { get; set; }
     }
 
-    public class CreatePdfAV1Input
+    public class CreatePdfABodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePdfAV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("compliance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePdfAV1InputComplianceType Compliance { get; set; } = CreatePdfAV1InputComplianceType.PdfA1b;
+        public BodyInputComplianceType Compliance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputComplianceType.PdfA1b;
 
         [JsonProperty("allowUpgrade", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AllowUpgrade { get; set; } = true;
@@ -1132,14 +1108,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool? AllowDowngrade { get; set; } = true;
     }
 
-    public class CreatePdfAV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePdfAV1InputComplianceType
+    public enum BodyInputComplianceType
     {
         PdfA1b,
         PdfA1a,
@@ -1152,7 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum schemaValInput
+    public enum CreateZugferdInvoiceSchemaValInput
     {
         [EnumMember(Value = "1.0-XML")]
         _10XML,
@@ -1168,16 +1138,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         _20CSV
     }
 
-    public class CropPdfV1Input
+    public class CropPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CropPdfV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("cropType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CropPdfV1InputCropTypeType CropType { get; set; }
+        public BodyInputCropTypeType CropType { get; set; }
 
         [JsonProperty("leftBorder", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? LeftBorder { get; set; } = 0;
@@ -1204,70 +1174,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public int? Height { get; set; } = 0;
     }
 
-    public class CropPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CropPdfV1InputCropTypeType
+    public enum BodyInputCropTypeType
     {
         Border,
         Rectangle
     }
 
-    public class DeleteBlankPagesV1Input
+    public class DeleteBlankPagesBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteBlankPagesV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("deletePageOption", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteBlankPagesV1InputDeletePageOptionType DeletePageOption { get; set; } = DeleteBlankPagesV1InputDeletePageOptionType.NoTextNoImages;
-    }
-
-    public class DeleteBlankPagesV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public BodyInputDeletePageOptionType DeletePageOption { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputDeletePageOptionType.NoTextNoImages;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeleteBlankPagesV1InputDeletePageOptionType
+    public enum BodyInputDeletePageOptionType
     {
         NoTextNoImages,
         NoText,
         NoImages
     }
 
-    public class DeletePagesV1Input
+    public class DeletePagesBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeletePagesV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("pageNumbers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PageNumbers { get; set; }
     }
 
-    public class DeletePagesV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class DigitalSignPdfV1Input
+    public class DigitalSignPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DigitalSignPdfV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("signCertificate", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SignCertificate { get; set; }
@@ -1303,19 +1255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool? Visible { get; set; } = true;
     }
 
-    public class DigitalSignPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ExtractAttachmentFromPdfV1Response
+    public class ExtractAttachmentFromPdfResponse
     {
         [JsonProperty("outputDocuments")]
-        public ExtractAttachmentFromPdfV1ResponseOutputDocumentsTypeItem[] OutputDocuments { get; set; }
+        public ExtractAttachmentFromPdfResponseOutputDocumentsTypeItem[] OutputDocuments { get; set; }
     }
 
-    public class ExtractAttachmentFromPdfV1ResponseOutputDocumentsTypeItem
+    public class ExtractAttachmentFromPdfResponseOutputDocumentsTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -1324,40 +1270,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string StreamFile { get; set; }
     }
 
-    public class ExtractAttachmentFromPdfV1Input
+    public class ExtractAttachmentFromPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractAttachmentFromPdfV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
     }
 
-    public class ExtractAttachmentFromPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ExtractPagesV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractPagesV1InputDocumentType Document { get; set; }
-
-        [JsonProperty("pageNumbers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PageNumbers { get; set; }
-    }
-
-    public class ExtractPagesV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ExtractPdfFormDataV1Response
+    public class ExtractPdfFormDataResponse
     {
         [JsonProperty("traceId")]
         public string TraceId { get; set; }
@@ -1366,31 +1288,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public JToken FormData { get; set; }
     }
 
-    public class ExtractPdfFormDataV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractPdfFormDataV1InputDocumentType Document { get; set; }
-    }
-
-    public class ExtractPdfFormDataV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ExtractResourcesV1Response
+    public class ExtractResourcesResponse
     {
         [JsonProperty("texts")]
         public string[] Texts { get; set; }
 
         [JsonProperty("images")]
-        public ExtractResourcesV1ResponseImagesTypeItem[] Images { get; set; }
+        public ExtractResourcesResponseImagesTypeItem[] Images { get; set; }
     }
 
-    public class ExtractResourcesV1ResponseImagesTypeItem
+    public class ExtractResourcesResponseImagesTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -1399,13 +1306,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string StreamFile { get; set; }
     }
 
-    public class ExtractResourcesV1Input
+    public class ExtractResourcesBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractResourcesV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("extractText", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExtractText { get; set; } = true;
@@ -1414,19 +1321,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool? ExtractImages { get; set; } = true;
     }
 
-    public class ExtractResourcesV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ExtractTableFromPdfV1Response
+    public class ExtractTableFromPdfResponse
     {
         [JsonProperty("tableList")]
-        public ExtractTableFromPdfV1ResponseTableListTypeItem[] TableList { get; set; }
+        public ExtractTableFromPdfResponseTableListTypeItem[] TableList { get; set; }
     }
 
-    public class ExtractTableFromPdfV1ResponseTableListTypeItem
+    public class ExtractTableFromPdfResponseTableListTypeItem
     {
         [JsonProperty("pageNumber")]
         public int PageNumber { get; set; }
@@ -1435,34 +1336,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string[][] Table { get; set; }
     }
 
-    public class ExtractTableFromPdfV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractTableFromPdfV1InputDocumentType Document { get; set; }
-    }
-
-    public class ExtractTableFromPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ExtractTextByExpressionV1Response
+    public class ExtractTextByExpressionResponse
     {
         [JsonProperty("textList")]
         public string[] TextList { get; set; }
     }
 
-    public class ExtractTextByExpressionV1Input
+    public class ExtractTextByExpressionBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractTextByExpressionV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("expression", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Expression { get; set; }
@@ -1471,31 +1357,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string PageSequence { get; set; } = "all";
     }
 
-    public class ExtractTextByExpressionV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class FindAndReplaceV2Input
+    public class FindAndReplaceBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FindAndReplaceV2InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("findReplaceList")]
-        public FindAndReplaceV2InputFindReplaceListTypeItem[] FindReplaceList { get; set; }
+        public BodyInputFindReplaceListTypeItem[] FindReplaceList { get; set; }
     }
 
-    public class FindAndReplaceV2InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class FindAndReplaceV2InputFindReplaceListTypeItem
+    public class BodyInputFindReplaceListTypeItem
     {
         [JsonProperty("oldText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OldText { get; set; }
@@ -1507,22 +1381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string PageSequence { get; set; } = "all";
     }
 
-    public class FlattenPdfV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlattenPdfV1InputDocumentType Document { get; set; }
-    }
-
-    public class FlattenPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class GenerateDocumentFromPdfV2Input
+    public class GenerateDocumentFromPdfBodyInput
     {
         [JsonProperty("templateDocContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateDocContent { get; set; }
@@ -1537,13 +1396,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool? KeepPdfEditable { get; set; } = false;
     }
 
-    public class GenerateDocumentMultipleV1Response
+    public class GenerateDocumentMultipleResponse
     {
         [JsonProperty("outputDocuments")]
-        public GenerateDocumentMultipleV1ResponseOutputDocumentsTypeItem[] OutputDocuments { get; set; }
+        public GenerateDocumentMultipleResponseOutputDocumentsTypeItem[] OutputDocuments { get; set; }
     }
 
-    public class GenerateDocumentMultipleV1ResponseOutputDocumentsTypeItem
+    public class GenerateDocumentMultipleResponseOutputDocumentsTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -1552,10 +1411,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string StreamFile { get; set; }
     }
 
-    public class GenerateDocumentMultipleV1Input
+    public class GenerateDocumentMultipleBodyInput
     {
         [JsonProperty("templateFileType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentMultipleV1InputTemplateFileTypeType TemplateFileType { get; set; } = GenerateDocumentMultipleV1InputTemplateFileTypeType.Docx;
+        public GenerateDocumentMultipleBodyInputTemplateFileTypeType TemplateFileType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.GenerateDocumentMultipleBodyInputTemplateFileTypeType.Docx;
 
         [JsonProperty("templateFileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateFileName { get; set; }
@@ -1564,7 +1423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateFileData { get; set; }
 
         [JsonProperty("documentDataType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentMultipleV1InputDocumentDataTypeType DocumentDataType { get; set; } = GenerateDocumentMultipleV1InputDocumentDataTypeType.Json;
+        public BodyInputDocumentDataTypeType DocumentDataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputDocumentDataTypeType.Json;
 
         [JsonProperty("documentDataFile")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentDataFile { get; set; }
@@ -1576,14 +1435,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string MetaDataJson { get; set; }
 
         [JsonProperty("outputType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentMultipleV1InputOutputTypeType OutputType { get; set; } = GenerateDocumentMultipleV1InputOutputTypeType.Docx;
+        public BodyInputOutputTypeType OutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputOutputTypeType.Docx;
 
         [JsonProperty("keepPdfEditable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? KeepPdfEditable { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentMultipleV1InputTemplateFileTypeType
+    public enum GenerateDocumentMultipleBodyInputTemplateFileTypeType
     {
         Docx,
         Html,
@@ -1591,24 +1450,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentMultipleV1InputDocumentDataTypeType
-    {
-        Json,
-        XML
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentMultipleV1InputOutputTypeType
+    public enum BodyInputOutputTypeType
     {
         PDF,
         Docx,
         Html
     }
 
-    public class GenerateDocumentSingleV1Input
+    public class GenerateDocumentSingleBodyInput
     {
         [JsonProperty("templateFileType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentSingleV1InputTemplateFileTypeType TemplateFileType { get; set; } = GenerateDocumentSingleV1InputTemplateFileTypeType.DocxPDF4meTemplateSyntax;
+        public GenerateDocumentSingleBodyInputTemplateFileTypeType TemplateFileType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.GenerateDocumentSingleBodyInputTemplateFileTypeType.DocxPDF4meTemplateSyntax;
 
         [JsonProperty("templateFileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateFileName { get; set; }
@@ -1617,7 +1469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateFileData { get; set; }
 
         [JsonProperty("documentDataType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentSingleV1InputDocumentDataTypeType DocumentDataType { get; set; } = GenerateDocumentSingleV1InputDocumentDataTypeType.Json;
+        public BodyInputDocumentDataTypeType DocumentDataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputDocumentDataTypeType.Json;
 
         [JsonProperty("documentDataFile")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentDataFile { get; set; }
@@ -1629,14 +1481,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string MetaDataJson { get; set; }
 
         [JsonProperty("outputType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentSingleV1InputOutputTypeType OutputType { get; set; } = GenerateDocumentSingleV1InputOutputTypeType.Docx;
+        public BodyInputOutputTypeType OutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputOutputTypeType.Docx;
 
         [JsonProperty("keepPdfEditable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? KeepPdfEditable { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentSingleV1InputTemplateFileTypeType
+    public enum GenerateDocumentSingleBodyInputTemplateFileTypeType
     {
         [EnumMember(Value = "Docx")]
         DocxPDF4meTemplateSyntax,
@@ -1649,22 +1501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         GoogleDocs
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentSingleV1InputDocumentDataTypeType
-    {
-        Json,
-        XML
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentSingleV1InputOutputTypeType
-    {
-        PDF,
-        Docx,
-        Html
-    }
-
-    public class GetPdfMetadataV1Response
+    public class GetPdfMetadataResponse
     {
         public string Title { get; set; }
         public string Subject { get; set; }
@@ -1682,40 +1519,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string PdfVersion { get; set; }
     }
 
-    public class GetPdfMetadataV1Input
+    public class HighlightTextBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetPdfMetadataV1InputDocumentType Document { get; set; }
-    }
-
-    public class GetPdfMetadataV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class HighlightTextV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HighlightTextV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("textHighlightList", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HighlightTextV1InputTextHighlightListTypeItem[] TextHighlightList { get; set; }
+        public BodyInputTextHighlightListTypeItem[] TextHighlightList { get; set; }
     }
 
-    public class HighlightTextV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class HighlightTextV1InputTextHighlightListTypeItem
+    public class BodyInputTextHighlightListTypeItem
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -1724,7 +1540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string HighlightColor { get; set; }
     }
 
-    public class ImageStampV1Input
+    public class ImageStampBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -1742,10 +1558,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string Pages { get; set; } = "all";
 
         [JsonProperty("alignX", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageStampV1InputAlignXType AlignX { get; set; } = ImageStampV1InputAlignXType.Left;
+        public ImageStampBodyInputAlignXType AlignX { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.ImageStampBodyInputAlignXType.Left;
 
         [JsonProperty("alignY", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageStampV1InputAlignYType AlignY { get; set; } = ImageStampV1InputAlignYType.Top;
+        public ImageStampBodyInputAlignYType AlignY { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.ImageStampBodyInputAlignYType.Top;
 
         [JsonProperty("heightInMM", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HeightInMM { get; set; } = "0";
@@ -1767,7 +1583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageStampV1InputAlignXType
+    public enum ImageStampBodyInputAlignXType
     {
         [EnumMember(Value = "left")]
         Left,
@@ -1778,7 +1594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageStampV1InputAlignYType
+    public enum ImageStampBodyInputAlignYType
     {
         [EnumMember(Value = "top")]
         Top,
@@ -1788,47 +1604,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         Bottom
     }
 
-    public class LinearizePdfV1Input
+    public class LinearizePdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearizePdfV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("optimizeProfile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearizePdfV1InputOptimizeProfileType OptimizeProfile { get; set; } = LinearizePdfV1InputOptimizeProfileType.Default;
-    }
-
-    public class LinearizePdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public LinearizePdfBodyInputOptimizeProfileType OptimizeProfile { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.LinearizePdfBodyInputOptimizeProfileType.Default;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearizePdfV1InputOptimizeProfileType
+    public enum LinearizePdfBodyInputOptimizeProfileType
     {
         Default,
         Max
     }
 
-    public class MergeV1Input
+    public class MergeBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MergeV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
     }
 
-    public class MergeV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class MergeOverlayV1Input
+    public class MergeOverlayBodyInput
     {
         [JsonProperty("baseDocContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseDocContent { get; set; }
@@ -1843,26 +1647,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string LayerDocName { get; set; }
     }
 
-    public class OptimizeV1Input
+    public class OptimizeBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OptimizeV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("optimizeProfile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OptimizeV1InputOptimizeProfileType OptimizeProfile { get; set; } = OptimizeV1InputOptimizeProfileType.Max;
-    }
-
-    public class OptimizeV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public OptimizeBodyInputOptimizeProfileType OptimizeProfile { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.OptimizeBodyInputOptimizeProfileType.Max;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OptimizeV1InputOptimizeProfileType
+    public enum OptimizeBodyInputOptimizeProfileType
     {
         Default,
         Max,
@@ -1875,7 +1673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         CompressMax
     }
 
-    public class ParseDocumentV1Response
+    public class ParseDocumentResponse
     {
         [JsonProperty("traceId")]
         public string TraceId { get; set; }
@@ -1884,34 +1682,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public JToken ParseInfo { get; set; }
     }
 
-    public class ParseDocumentV1Input
+    public class ParseDocumentBodyInput
     {
         [JsonProperty("docContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document")]
-        public ParseDocumentV1InputDocumentType Document { get; set; }
+        public ClassifyDocumentBodyInputDocumentType Document { get; set; }
         public string TemplateName { get; set; }
     }
 
-    public class ParseDocumentV1InputDocumentType
-    {
-        public string Name { get; set; }
-    }
-
-    public class PdfOcrV1Input
+    public class PdfOcrBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfOcrV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("qualityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfOcrV1InputQualityTypeType QualityType { get; set; } = PdfOcrV1InputQualityTypeType.Draft;
+        public BodyInputQualityTypeType QualityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputQualityTypeType.Draft;
 
         [JsonProperty("ocrWhenNeeded", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfOcrV1InputOcrWhenNeededType? OcrWhenNeeded { get; set; } = PdfOcrV1InputOcrWhenNeededType.False;
+        public BodyInputOcrWhenNeededType? OcrWhenNeeded { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputOcrWhenNeededType.False;
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -1920,21 +1713,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool? IsAsync { get; set; } = false;
     }
 
-    public class PdfOcrV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfOcrV1InputQualityTypeType
+    public enum BodyInputQualityTypeType
     {
         Draft,
         High
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfOcrV1InputOcrWhenNeededType
+    public enum BodyInputOcrWhenNeededType
     {
         [EnumMember(Value = "false")]
         False,
@@ -1943,7 +1730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum schemaValInput2
+    public enum PrepareForPrintSchemaValInput
     {
         Default,
         A0,
@@ -1961,29 +1748,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         Custom
     }
 
-    public class ProtectDocumentV1Input
+    public class ProtectDocumentBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ProtectDocumentV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
 
         [JsonProperty("pdfPermission", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ProtectDocumentV1InputPdfPermissionType PdfPermission { get; set; } = ProtectDocumentV1InputPdfPermissionType.All;
-    }
-
-    public class ProtectDocumentV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public BodyInputPdfPermissionType PdfPermission { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputPdfPermissionType.All;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProtectDocumentV1InputPdfPermissionType
+    public enum BodyInputPdfPermissionType
     {
         All,
         None,
@@ -1997,49 +1778,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         Modify
     }
 
-    public class RedactPdfV1Input
+    public class RedactPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("redactPdfAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputRedactPdfActionType RedactPdfAction { get; set; }
+        public BodyInputRedactPdfActionType RedactPdfAction { get; set; }
     }
 
-    public class RedactPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class RedactPdfV1InputRedactPdfActionType
+    public class BodyInputRedactPdfActionType
     {
         [JsonProperty("redactBoxes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItem[] RedactBoxes { get; set; }
+        public BodyInputRedactPdfActionTypeRedactBoxesTypeItem[] RedactBoxes { get; set; }
     }
 
-    public class RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItem
+    public class BodyInputRedactPdfActionTypeRedactBoxesTypeItem
     {
         [JsonProperty("coordinates", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemCoordinatesType Coordinates { get; set; } = new RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemCoordinatesType();
+        public BodyInputRedactPdfActionTypeRedactBoxesTypeItemCoordinatesType Coordinates { get; set; } = new BodyInputRedactPdfActionTypeRedactBoxesTypeItemCoordinatesType();
 
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemColorType Color { get; set; } = new RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemColorType();
+        public BodyInputRedactPdfActionTypeRedactBoxesTypeItemColorType Color { get; set; } = new BodyInputRedactPdfActionTypeRedactBoxesTypeItemColorType();
 
         [JsonProperty("fillColor", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemFillColorType FillColor { get; set; } = new RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemFillColorType();
+        public BodyInputRedactPdfActionTypeRedactBoxesTypeItemFillColorType FillColor { get; set; } = new BodyInputRedactPdfActionTypeRedactBoxesTypeItemFillColorType();
 
         [JsonProperty("borderColor", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemBorderColorType BorderColor { get; set; } = new RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemBorderColorType();
+        public BodyInputRedactPdfActionTypeRedactBoxesTypeItemBorderColorType BorderColor { get; set; } = new BodyInputRedactPdfActionTypeRedactBoxesTypeItemBorderColorType();
 
         [JsonProperty("overlayText")]
         public string OverlayText { get; set; }
 
         [JsonProperty("overlayTextAlignment", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemOverlayTextAlignmentType? OverlayTextAlignment { get; set; } = RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemOverlayTextAlignmentType.None;
+        public BodyInputRedactPdfActionTypeRedactBoxesTypeItemOverlayTextAlignmentType? OverlayTextAlignment { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputRedactPdfActionTypeRedactBoxesTypeItemOverlayTextAlignmentType.None;
 
         [JsonProperty("page", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Page { get; set; } = 1;
@@ -2048,7 +1823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool? RepeatText { get; set; } = false;
     }
 
-    public class RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemCoordinatesType
+    public class BodyInputRedactPdfActionTypeRedactBoxesTypeItemCoordinatesType
     {
         [JsonProperty("x1", DefaultValueHandling = DefaultValueHandling.Include)]
         public int X1 { get; set; } = 0;
@@ -2063,7 +1838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public int Y2 { get; set; } = 0;
     }
 
-    public class RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemColorType
+    public class BodyInputRedactPdfActionTypeRedactBoxesTypeItemColorType
     {
         [JsonProperty("red", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Red { get; set; } = 0;
@@ -2075,7 +1850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public double Blue { get; set; } = 0;
     }
 
-    public class RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemFillColorType
+    public class BodyInputRedactPdfActionTypeRedactBoxesTypeItemFillColorType
     {
         [JsonProperty("red", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Red { get; set; } = 0;
@@ -2087,7 +1862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public double Blue { get; set; } = 0;
     }
 
-    public class RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemBorderColorType
+    public class BodyInputRedactPdfActionTypeRedactBoxesTypeItemBorderColorType
     {
         [JsonProperty("red", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Red { get; set; } = 0;
@@ -2100,7 +1875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RedactPdfV1InputRedactPdfActionTypeRedactBoxesTypeItemOverlayTextAlignmentType
+    public enum BodyInputRedactPdfActionTypeRedactBoxesTypeItemOverlayTextAlignmentType
     {
         None,
         Left,
@@ -2110,28 +1885,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         FullJustify
     }
 
-    public class RepairPdfV1Input
+    public class ReplaceTextWithImageBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RepairPdfV1InputDocumentType Document { get; set; }
-    }
-
-    public class RepairPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ReplaceTextWithImageV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReplaceTextWithImageV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("replaceText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplaceText { get; set; }
@@ -2149,32 +1909,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string PageSequence { get; set; } = "all";
     }
 
-    public class ReplaceTextWithImageV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class RotateDocumentV1Input
+    public class RotateDocumentBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RotateDocumentV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("rotationType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RotateDocumentV1InputRotationTypeType RotationType { get; set; } = RotateDocumentV1InputRotationTypeType.NoRotation;
-    }
-
-    public class RotateDocumentV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public BodyInputRotationTypeType RotationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputRotationTypeType.NoRotation;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RotateDocumentV1InputRotationTypeType
+    public enum BodyInputRotationTypeType
     {
         NoRotation,
         Clockwise,
@@ -2182,7 +1930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         UpsideDown
     }
 
-    public class RotatePageV1Input
+    public class RotatePageBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -2194,25 +1942,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public int Page { get; set; } = 1;
 
         [JsonProperty("rotationType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RotatePageV1InputRotationTypeType RotationType { get; set; } = RotatePageV1InputRotationTypeType.NoRotation;
+        public BodyInputRotationTypeType RotationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputRotationTypeType.NoRotation;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RotatePageV1InputRotationTypeType
-    {
-        NoRotation,
-        Clockwise,
-        CounterClockwise,
-        UpsideDown
-    }
-
-    public class SetPDFMetadataV1Input
+    public class SetPDFMetadataBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetPDFMetadataV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2233,17 +1972,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string Producer { get; set; }
 
         [JsonProperty("permissions")]
-        public SetPDFMetadataV1InputPermissionsTypeItem[] Permissions { get; set; }
-    }
-
-    public class SetPDFMetadataV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public BodyInputPermissionsTypeItem[] Permissions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetPDFMetadataV1InputPermissionsTypeItem
+    public enum BodyInputPermissionsTypeItem
     {
         All,
         None,
@@ -2257,7 +1990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         Modify
     }
 
-    public class SignPdfV1Input
+    public class SignPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -2272,10 +2005,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string ImageName { get; set; }
 
         [JsonProperty("alignX", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignPdfV1InputAlignXType AlignX { get; set; } = SignPdfV1InputAlignXType.Left;
+        public ImageStampBodyInputAlignXType AlignX { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.ImageStampBodyInputAlignXType.Left;
 
         [JsonProperty("alignY", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignPdfV1InputAlignYType AlignY { get; set; } = SignPdfV1InputAlignYType.Top;
+        public ImageStampBodyInputAlignYType AlignY { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.ImageStampBodyInputAlignYType.Top;
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pages { get; set; } = "1";
@@ -2296,35 +2029,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public int Opacity { get; set; } = 100;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignPdfV1InputAlignXType
-    {
-        [EnumMember(Value = "left")]
-        Left,
-        [EnumMember(Value = "center")]
-        Center,
-        [EnumMember(Value = "right")]
-        Right
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignPdfV1InputAlignYType
-    {
-        [EnumMember(Value = "top")]
-        Top,
-        [EnumMember(Value = "middle")]
-        Middle,
-        [EnumMember(Value = "bottom")]
-        Bottom
-    }
-
-    public class SplitByTextV1Response
+    public class SplitByTextResponse
     {
         [JsonProperty("splitedDocuments")]
-        public SplitByTextV1ResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
+        public SplitByTextResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
     }
 
-    public class SplitByTextV1ResponseSplitedDocumentsTypeItem
+    public class SplitByTextResponseSplitedDocumentsTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -2336,32 +2047,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string StreamFile { get; set; }
     }
 
-    public class SplitByTextV1Input
+    public class SplitByTextBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByTextV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
         [JsonProperty("splitTextPage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByTextV1InputSplitTextPageType SplitTextPage { get; set; } = SplitByTextV1InputSplitTextPageType.Before;
+        public BodyInputSplitTextPageType SplitTextPage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputSplitTextPageType.Before;
 
         [JsonProperty("fileNaming", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByTextV1InputFileNamingType? FileNaming { get; set; } = SplitByTextV1InputFileNamingType.NameAsPerOrder;
-    }
-
-    public class SplitByTextV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public BodyInputFileNamingType? FileNaming { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputFileNamingType.NameAsPerOrder;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByTextV1InputSplitTextPageType
+    public enum BodyInputSplitTextPageType
     {
         [EnumMember(Value = "before")]
         Before,
@@ -2370,19 +2075,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByTextV1InputFileNamingType
+    public enum BodyInputFileNamingType
     {
         WithPageNumber,
         NameAsPerOrder
     }
 
-    public class SplitDocumentV1Response
+    public class SplitDocumentResponse
     {
         [JsonProperty("splitedDocuments")]
-        public SplitDocumentV1ResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
+        public SplitDocumentResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
     }
 
-    public class SplitDocumentV1ResponseSplitedDocumentsTypeItem
+    public class SplitDocumentResponseSplitedDocumentsTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -2391,16 +2096,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string StreamFile { get; set; }
     }
 
-    public class SplitDocumentV1Input
+    public class SplitDocumentBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocumentV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("splitAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocumentV1InputSplitActionType SplitAction { get; set; } = SplitDocumentV1InputSplitActionType.SplitAfterPage;
+        public BodyInputSplitActionType SplitAction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputSplitActionType.SplitAfterPage;
 
         [JsonProperty("splitActionNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SplitActionNumber { get; set; } = 1;
@@ -2417,17 +2122,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string SplitRanges { get; set; } = "1-3,5-";
 
         [JsonProperty("fileNaming", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocumentV1InputFileNamingType? FileNaming { get; set; } = SplitDocumentV1InputFileNamingType.NameAsPerOrder;
-    }
-
-    public class SplitDocumentV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public BodyInputFileNamingType? FileNaming { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.BodyInputFileNamingType.NameAsPerOrder;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocumentV1InputSplitActionType
+    public enum BodyInputSplitActionType
     {
         SplitAfterPage,
         RecurringSplitAfterPage,
@@ -2435,20 +2134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         SplitRanges
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocumentV1InputFileNamingType
-    {
-        WithPageNumber,
-        NameAsPerOrder
-    }
-
-    public class StampV1Input
+    public class StampBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StampV1InputDocumentType Document { get; set; }
+        public AddAttachmentToPdfBodyInputDocumentType Document { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -2472,10 +2164,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string Pages { get; set; } = "all";
 
         [JsonProperty("alignX", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StampV1InputAlignXType AlignX { get; set; } = StampV1InputAlignXType.Left;
+        public ImageStampBodyInputAlignXType AlignX { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.ImageStampBodyInputAlignXType.Left;
 
         [JsonProperty("alignY", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StampV1InputAlignYType AlignY { get; set; } = StampV1InputAlignYType.Top;
+        public ImageStampBodyInputAlignYType AlignY { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf.ImageStampBodyInputAlignYType.Top;
 
         [JsonProperty("marginXInMM", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarginXInMM { get; set; } = "0";
@@ -2499,35 +2191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public bool? FitTextOverPage { get; set; } = false;
     }
 
-    public class StampV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StampV1InputAlignXType
-    {
-        [EnumMember(Value = "left")]
-        Left,
-        [EnumMember(Value = "center")]
-        Center,
-        [EnumMember(Value = "right")]
-        Right
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StampV1InputAlignYType
-    {
-        [EnumMember(Value = "top")]
-        Top,
-        [EnumMember(Value = "middle")]
-        Middle,
-        [EnumMember(Value = "bottom")]
-        Bottom
-    }
-
-    public class StartPDF4meWfV1Response
+    public class StartPDF4meWfResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -2536,7 +2200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string JobId { get; set; }
     }
 
-    public class StartPDF4meWfV1Input
+    public class StartPDF4meWfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -2548,7 +2212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string WfName { get; set; }
     }
 
-    public class UnlockV1Input
+    public class UnlockBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -2560,12 +2224,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public string Password { get; set; }
     }
 
-    public class UploadBlobAllV1Response
+    public class UploadBlobAllResponse
     {
         public string BlobId { get; set; }
     }
 
-    public class UploadBlobAllV1Input
+    public class UploadBlobAllBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -2574,29 +2238,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mepdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocName { get; set; }
     }
 
-    public class ValidatePDFAV1Response
+    public class ValidatePDFAResponse
     {
         public string Conformance { get; set; }
         public bool IsConforming { get; set; }
         public bool IsPdfA { get; set; }
     }
 
-    public class ValidatePDFAV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ValidatePDFAV1InputDocumentType Document { get; set; }
-    }
-
-    public class ValidatePDFAV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class GetDocumentFromPDF4meInput
+    public class GetDocumentFromPDF4meBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     public class CloudmersivepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfAddAnnotations(Expression<Func<EditPdfAddAnnotationsInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfAddAnnotations(Expression<Func<EditPdfAddAnnotationsRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetFormFields(Expression<Func<EditPdfSetFormFieldsInput>> fieldValues)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetFormFields(Expression<Func<FieldValuesInput>> fieldValues)
         {
             var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetMetadata(Expression<Func<EditPdfSetMetadataInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditPdfSetMetadata(Expression<Func<EditPdfSetMetadataRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     {
     }
 
-    public class EditPdfAddAnnotationsInput
+    public class EditPdfAddAnnotationsRequestInput
     {
         public PdfAnnotation[] AnnotationsToAdd { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         public double? Width { get; set; }
     }
 
-    public class EditPdfSetFormFieldsInput
+    public class FieldValuesInput
     {
         public SetFormFieldValue[] FieldValues { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         public string TextValue { get; set; }
     }
 
-    public class EditPdfSetMetadataInput
+    public class EditPdfSetMetadataRequestInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public PdfMetadata MetadataToSet { get; set; }

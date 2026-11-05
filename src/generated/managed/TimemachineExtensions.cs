@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     public class TimemachineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> SetTopicQuizSettings(Expression<Func<string>> topicId, Expression<Func<SetTopicQuizSettingsInput>> body)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> SetTopicQuizSettings(Expression<Func<string>> topicId, Expression<Func<SetModuleQuizSettingsBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetTopicIntro(Expression<Func<string>> topicId, Expression<Func<SetTopicIntroInput>> body)
+        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetTopicIntro(Expression<Func<string>> topicId, Expression<Func<SetModuleIntroBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> SetModuleQuizSettings(Expression<Func<string>> moduleId, Expression<Func<SetModuleQuizSettingsInput>> body)
+        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> SetModuleQuizSettings(Expression<Func<string>> moduleId, Expression<Func<SetModuleQuizSettingsBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetModuleIntro(Expression<Func<string>> moduleId, Expression<Func<SetModuleIntroInput>> body)
+        public IBodyWorkflowAction<IntroDto, ApiConnectionActionConfiguration> SetModuleIntro(Expression<Func<string>> moduleId, Expression<Func<SetModuleIntroBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<MediaDetailDto, ApiConnectionActionConfiguration> UpdateMediaMetadata(Expression<Func<string>> id, Expression<Func<UpdateMediaMetadataInput>> body)
+        public IBodyWorkflowAction<MediaDetailDto, ApiConnectionActionConfiguration> UpdateMediaMetadata(Expression<Func<string>> id, Expression<Func<UpdateDepartmentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DocumentDetailDto, ApiConnectionActionConfiguration> UpdateDocumentMetadata(Expression<Func<string>> id, Expression<Func<UpdateDocumentMetadataInput>> body)
+        public IBodyWorkflowAction<DocumentDetailDto, ApiConnectionActionConfiguration> UpdateDocumentMetadata(Expression<Func<string>> id, Expression<Func<UpdateDepartmentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserDto, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<AddTopicQuizQuestionInput>> body)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<AddLessonQuestionBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderTopicQuizQuestions(Expression<Func<string>> topicId, Expression<Func<ReorderTopicQuizQuestionsInput>> body)
+        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderTopicQuizQuestions(Expression<Func<string>> topicId, Expression<Func<ReorderLessonQuestionsBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> MoveTopic(Expression<Func<string>> topicId, Expression<Func<MoveTopicInput>> body)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> MoveTopic(Expression<Func<string>> topicId, Expression<Func<MoveTopicBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LinkDocumentsToTopic(Expression<Func<string>> topicId, Expression<Func<LinkDocumentsToTopicInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LinkDocumentsToTopic(Expression<Func<string>> topicId, Expression<Func<AssignDocumentsToExpertBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> AddLearningByteToTopic(Expression<Func<string>> topicId, Expression<Func<AddLearningByteToTopicInput>> body)
+        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> AddLearningByteToTopic(Expression<Func<string>> topicId, Expression<Func<AddLearningByteToTopicBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVoiceExercise(Expression<Func<string>> topicId, Expression<Func<AddRpeVoiceExerciseInput>> body)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVoiceExercise(Expression<Func<string>> topicId, Expression<Func<AddRpeVideoExerciseBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVideoExercise(Expression<Func<string>> topicId, Expression<Func<AddRpeVideoExerciseInput>> body)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddRpeVideoExercise(Expression<Func<string>> topicId, Expression<Func<AddRpeVideoExerciseBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddIleTextExercise(Expression<Func<string>> topicId, Expression<Func<AddIleTextExerciseInput>> body)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> AddIleTextExercise(Expression<Func<string>> topicId, Expression<Func<AddIleTextExerciseBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> AddTopicToModule(Expression<Func<string>> moduleId, Expression<Func<AddTopicToModuleInput>> body)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> AddTopicToModule(Expression<Func<string>> moduleId, Expression<Func<AddLearningByteToTopicBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicListResponse, ApiConnectionActionConfiguration> ReorderTopicsInModule(Expression<Func<string>> moduleId, Expression<Func<ReorderTopicsInModuleInput>> body)
+        public IBodyWorkflowAction<TopicListResponse, ApiConnectionActionConfiguration> ReorderTopicsInModule(Expression<Func<string>> moduleId, Expression<Func<GenerateCourseContentBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<AddModuleQuizQuestionInput>> body)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<AddLessonQuestionBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderModuleQuizQuestions(Expression<Func<string>> moduleId, Expression<Func<ReorderModuleQuizQuestionsInput>> body)
+        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderModuleQuizQuestions(Expression<Func<string>> moduleId, Expression<Func<ReorderLessonQuestionsBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<AddLessonQuestionInput>> body)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> AddLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<AddLessonQuestionBodyInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderLessonQuestions(Expression<Func<string>> lessonId, Expression<Func<ReorderLessonQuestionsInput>> body)
+        public IBodyWorkflowAction<QuestionListResponse, ApiConnectionActionConfiguration> ReorderLessonQuestions(Expression<Func<string>> lessonId, Expression<Func<ReorderLessonQuestionsBodyInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> AddLessonToLearningByte(Expression<Func<string>> lbId, Expression<Func<AddLessonToLearningByteInput>> body)
+        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> AddLessonToLearningByte(Expression<Func<string>> lbId, Expression<Func<AddLessonToLearningByteBodyInput>> body)
         {
             var __workflow_lbId = WorkflowExpression.Compile(lbId, nameof(lbId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignRolesToExpert(Expression<Func<string>> id, Expression<Func<AssignRolesToExpertInput>> body)
+        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignRolesToExpert(Expression<Func<string>> id, Expression<Func<AssignRolesToCourseBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignDocumentsToExpert(Expression<Func<string>> id, Expression<Func<AssignDocumentsToExpertInput>> body)
+        public IBodyWorkflowAction<ExpertDetailDto, ApiConnectionActionConfiguration> AssignDocumentsToExpert(Expression<Func<string>> id, Expression<Func<AssignDocumentsToExpertBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<AskResponse, ApiConnectionActionConfiguration> AskExpert(Expression<Func<string>> id, Expression<Func<AskExpertInput>> body)
+        public IBodyWorkflowAction<AskResponse, ApiConnectionActionConfiguration> AskExpert(Expression<Func<string>> id, Expression<Func<AskExpertBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -729,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateDepartment(Expression<Func<CreateDepartmentInput>> body)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateDepartment(Expression<Func<AddLearningByteToTopicBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DepartmentDto, ApiConnectionActionConfiguration>(() =>
@@ -743,7 +743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateRoleInDepartment(Expression<Func<string>> id, Expression<Func<CreateRoleInDepartmentInput>> body)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> CreateRoleInDepartment(Expression<Func<string>> id, Expression<Func<CreateRoleInDepartmentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> AssignUserToRole(Expression<Func<string>> id, Expression<Func<string>> roleId, Expression<Func<AssignUserToRoleInput>> body)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> AssignUserToRole(Expression<Func<string>> id, Expression<Func<string>> roleId, Expression<Func<AssignUserToRoleBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_roleId = WorkflowExpression.Compile(roleId, nameof(roleId), required: true);
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> CreateDemoTraining(Expression<Func<CreateDemoTrainingInput>> body)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> CreateDemoTraining(Expression<Func<CreateDemoTrainingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DemoTrainingDto, ApiConnectionActionConfiguration>(() =>
@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> ReprocessDemoTraining(Expression<Func<string>> id, Expression<Func<ReprocessDemoTrainingInput>> body = null)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> ReprocessDemoTraining(Expression<Func<string>> id, Expression<Func<ReprocessDemoTrainingBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTrainingAvailability(Expression<Func<string>> id, Expression<Func<UpdateDemoTrainingAvailabilityInput>> body)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTrainingAvailability(Expression<Func<string>> id, Expression<Func<UpdateDemoTrainingAvailabilityBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<CreateCourseInput>> body)
+        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<CreateCourseBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CourseDetailDto, ApiConnectionActionConfiguration>(() =>
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> AssignRolesToCourse(Expression<Func<string>> id, Expression<Func<AssignRolesToCourseInput>> body)
+        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> AssignRolesToCourse(Expression<Func<string>> id, Expression<Func<AssignRolesToCourseBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -934,7 +934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> GenerateCourseContent(Expression<Func<string>> id, Expression<Func<GenerateCourseContentInput>> body)
+        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> GenerateCourseContent(Expression<Func<string>> id, Expression<Func<GenerateCourseContentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -962,7 +962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> AddModuleToCourse(Expression<Func<string>> courseId, Expression<Func<AddModuleToCourseInput>> body)
+        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> AddModuleToCourse(Expression<Func<string>> courseId, Expression<Func<AddLearningByteToTopicBodyInput>> body)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -977,7 +977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleListResponse, ApiConnectionActionConfiguration> ReorderModulesInCourse(Expression<Func<string>> courseId, Expression<Func<ReorderModulesInCourseInput>> body)
+        public IBodyWorkflowAction<ModuleListResponse, ApiConnectionActionConfiguration> ReorderModulesInCourse(Expression<Func<string>> courseId, Expression<Func<ReorderModulesInCourseBodyInput>> body)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> RegenerateCourseItem(Expression<Func<RegenerateCourseItemInput>> body)
+        public IBodyWorkflowAction<GenerationRequestResponse, ApiConnectionActionConfiguration> RegenerateCourseItem(Expression<Func<RegenerateCourseItemBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerationRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -1006,7 +1006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<GenerateCourseResponse, ApiConnectionActionConfiguration> GenerateCourse(Expression<Func<GenerateCourseInput>> body)
+        public IBodyWorkflowAction<GenerateCourseResponse, ApiConnectionActionConfiguration> GenerateCourse(Expression<Func<GenerateCourseBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateCourseResponse, ApiConnectionActionConfiguration>(() =>
@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> id, Expression<Func<UpdateUserInput>> body)
+        public IBodyWorkflowAction<UserDto, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> id, Expression<Func<UpdateUserBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1074,7 +1074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> UpdateTopic(Expression<Func<string>> topicId, Expression<Func<UpdateTopicInput>> body)
+        public IBodyWorkflowAction<TopicDto, ApiConnectionActionConfiguration> UpdateTopic(Expression<Func<string>> topicId, Expression<Func<UpdateDepartmentBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1117,7 +1117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<string>> questionId, Expression<Func<UpdateTopicQuizQuestionInput>> body)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateTopicQuizQuestion(Expression<Func<string>> topicId, Expression<Func<string>> questionId, Expression<Func<UpdateLessonQuestionBodyInput>> body)
         {
             var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> UpdateModule(Expression<Func<string>> moduleId, Expression<Func<UpdateModuleInput>> body)
+        public IBodyWorkflowAction<ModuleDetailDto, ApiConnectionActionConfiguration> UpdateModule(Expression<Func<string>> moduleId, Expression<Func<UpdateDepartmentBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1202,7 +1202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<string>> questionId, Expression<Func<UpdateModuleQuizQuestionInput>> body)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateModuleQuizQuestion(Expression<Func<string>> moduleId, Expression<Func<string>> questionId, Expression<Func<UpdateLessonQuestionBodyInput>> body)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> UpdateLesson(Expression<Func<string>> lessonId, Expression<Func<UpdateLessonInput>> body)
+        public IBodyWorkflowAction<LessonDetailDto, ApiConnectionActionConfiguration> UpdateLesson(Expression<Func<string>> lessonId, Expression<Func<UpdateLessonBodyInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<string>> questionId, Expression<Func<UpdateLessonQuestionInput>> body)
+        public IBodyWorkflowAction<QuestionDto, ApiConnectionActionConfiguration> UpdateLessonQuestion(Expression<Func<string>> lessonId, Expression<Func<string>> questionId, Expression<Func<UpdateLessonQuestionBodyInput>> body)
         {
             var __workflow_lessonId = WorkflowExpression.Compile(lessonId, nameof(lessonId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
@@ -1329,7 +1329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> UpdateLearningByte(Expression<Func<string>> lbId, Expression<Func<UpdateLearningByteInput>> body)
+        public IBodyWorkflowAction<LearningByteDetailDto, ApiConnectionActionConfiguration> UpdateLearningByte(Expression<Func<string>> lbId, Expression<Func<UpdateDepartmentBodyInput>> body)
         {
             var __workflow_lbId = WorkflowExpression.Compile(lbId, nameof(lbId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1370,7 +1370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> UpdateExercise(Expression<Func<string>> id, Expression<Func<UpdateExerciseInput>> body)
+        public IBodyWorkflowAction<ExerciseDto, ApiConnectionActionConfiguration> UpdateExercise(Expression<Func<string>> id, Expression<Func<UpdateExerciseBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> UpdateDepartment(Expression<Func<string>> id, Expression<Func<UpdateDepartmentInput>> body)
+        public IBodyWorkflowAction<DepartmentDto, ApiConnectionActionConfiguration> UpdateDepartment(Expression<Func<string>> id, Expression<Func<UpdateDepartmentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1439,7 +1439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTraining(Expression<Func<string>> id, Expression<Func<UpdateDemoTrainingInput>> body)
+        public IBodyWorkflowAction<DemoTrainingDto, ApiConnectionActionConfiguration> UpdateDemoTraining(Expression<Func<string>> id, Expression<Func<UpdateDemoTrainingBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1480,7 +1480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timemachine")]
-        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> UpdateCourse(Expression<Func<string>> id, Expression<Func<UpdateCourseInput>> body)
+        public IBodyWorkflowAction<CourseDetailDto, ApiConnectionActionConfiguration> UpdateCourse(Expression<Func<string>> id, Expression<Func<UpdateCourseBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1776,7 +1776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int Count { get; set; }
     }
 
-    public class SetTopicQuizSettingsInput
+    public class SetModuleQuizSettingsBodyInput
     {
         [JsonProperty("questionType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string QuestionType { get; set; }
@@ -1809,7 +1809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string UpdatedAt { get; set; }
     }
 
-    public class SetTopicIntroInput
+    public class SetModuleIntroBodyInput
     {
         [JsonProperty("introduction")]
         public string Introduction { get; set; }
@@ -1843,21 +1843,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("topics")]
         public TopicDto[] Topics { get; set; }
-    }
-
-    public class SetModuleQuizSettingsInput
-    {
-        [JsonProperty("questionType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string QuestionType { get; set; }
-
-        [JsonProperty("count")]
-        public int? Count { get; set; }
-    }
-
-    public class SetModuleIntroInput
-    {
-        [JsonProperty("introduction")]
-        public string Introduction { get; set; }
     }
 
     public class MediaDetailDto
@@ -1908,7 +1893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string Name { get; set; }
     }
 
-    public class UpdateMediaMetadataInput
+    public class UpdateDepartmentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1945,15 +1930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("downloadUrl")]
         public string DownloadUrl { get; set; }
-    }
-
-    public class UpdateDocumentMetadataInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
     }
 
     public class UserListResponse
@@ -2025,7 +2001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int TotalPages { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -2097,10 +2073,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int OrdinalNumber { get; set; }
     }
 
-    public class AddTopicQuizQuestionInput
+    public class AddLessonQuestionBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddTopicQuizQuestionInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -2116,7 +2092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddTopicQuizQuestionInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "MULTIPLE_CHOICE")]
         MULTIPLECHOICE,
@@ -2133,13 +2109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public bool? IsCorrect { get; set; }
     }
 
-    public class ReorderTopicQuizQuestionsInput
+    public class ReorderLessonQuestionsBodyInput
     {
         [JsonProperty("questionIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] QuestionIds { get; set; }
     }
 
-    public class MoveTopicInput
+    public class MoveTopicBodyInput
     {
         [JsonProperty("targetModuleId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetModuleId { get; set; }
@@ -2187,7 +2163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string LinkedAt { get; set; }
     }
 
-    public class LinkDocumentsToTopicInput
+    public class AssignDocumentsToExpertBodyInput
     {
         [JsonProperty("documentIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] DocumentIds { get; set; }
@@ -2289,7 +2265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string UpdatedAt { get; set; }
     }
 
-    public class AddLearningByteToTopicInput
+    public class AddLearningByteToTopicBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -2382,7 +2358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string TopicKnowledgeBase { get; set; }
     }
 
-    public class AddRpeVoiceExerciseInput
+    public class AddRpeVideoExerciseBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
@@ -2400,25 +2376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public bool? ReverseRolePlayMandatory { get; set; }
     }
 
-    public class AddRpeVideoExerciseInput
-    {
-        [JsonProperty("prompt")]
-        public string Prompt { get; set; }
-
-        [JsonProperty("avatarPictureId")]
-        public string AvatarPictureId { get; set; }
-
-        [JsonProperty("avatarCharacteristics")]
-        public string AvatarCharacteristics { get; set; }
-
-        [JsonProperty("reverseRolePlayEnabled")]
-        public bool? ReverseRolePlayEnabled { get; set; }
-
-        [JsonProperty("reverseRolePlayMandatory")]
-        public bool? ReverseRolePlayMandatory { get; set; }
-    }
-
-    public class AddIleTextExerciseInput
+    public class AddIleTextExerciseBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
@@ -2430,52 +2388,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public TopicDto[] Items { get; set; }
     }
 
-    public class AddTopicToModuleInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class ReorderTopicsInModuleInput
+    public class GenerateCourseContentBodyInput
     {
         [JsonProperty("topicIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] TopicIds { get; set; }
-    }
-
-    public class AddModuleQuizQuestionInput
-    {
-        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddModuleQuizQuestionInputTypeType Type { get; set; }
-
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
-
-        [JsonProperty("ordinalNumber")]
-        public int? OrdinalNumber { get; set; }
-
-        [JsonProperty("options")]
-        public QuestionOptionInput[] Options { get; set; }
-
-        [JsonProperty("expectedAnswer")]
-        public string ExpectedAnswer { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddModuleQuizQuestionInputTypeType
-    {
-        [EnumMember(Value = "MULTIPLE_CHOICE")]
-        MULTIPLECHOICE,
-        [EnumMember(Value = "OPEN_ENDED")]
-        OPENENDED
-    }
-
-    public class ReorderModuleQuizQuestionsInput
-    {
-        [JsonProperty("questionIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] QuestionIds { get; set; }
     }
 
     public class MediaListResponse
@@ -2518,39 +2434,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("uploadedBy")]
         public UploadedByDto UploadedBy { get; set; }
-    }
-
-    public class AddLessonQuestionInput
-    {
-        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddLessonQuestionInputTypeType Type { get; set; }
-
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
-
-        [JsonProperty("ordinalNumber")]
-        public int? OrdinalNumber { get; set; }
-
-        [JsonProperty("options")]
-        public QuestionOptionInput[] Options { get; set; }
-
-        [JsonProperty("expectedAnswer")]
-        public string ExpectedAnswer { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddLessonQuestionInputTypeType
-    {
-        [EnumMember(Value = "MULTIPLE_CHOICE")]
-        MULTIPLECHOICE,
-        [EnumMember(Value = "OPEN_ENDED")]
-        OPENENDED
-    }
-
-    public class ReorderLessonQuestionsInput
-    {
-        [JsonProperty("questionIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] QuestionIds { get; set; }
     }
 
     public class LessonListResponse
@@ -2604,7 +2487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string Source { get; set; }
     }
 
-    public class AddLessonToLearningByteInput
+    public class AddLessonToLearningByteBodyInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
@@ -2664,16 +2547,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string LinkedAt { get; set; }
     }
 
-    public class AssignRolesToExpertInput
+    public class AssignRolesToCourseBodyInput
     {
         [JsonProperty("roleIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] RoleIds { get; set; }
-    }
-
-    public class AssignDocumentsToExpertInput
-    {
-        [JsonProperty("documentIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] DocumentIds { get; set; }
     }
 
     public class AskResponse
@@ -2685,7 +2562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int DurationMs { get; set; }
     }
 
-    public class AskExpertInput
+    public class AskExpertBodyInput
     {
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
@@ -2754,16 +2631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public DepartmentRoleDto[] Roles { get; set; }
     }
 
-    public class CreateDepartmentInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class CreateRoleInDepartmentInput
+    public class CreateRoleInDepartmentBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -2775,7 +2643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string Description { get; set; }
     }
 
-    public class AssignUserToRoleInput
+    public class AssignUserToRoleBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -2895,7 +2763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int DurationSeconds { get; set; }
     }
 
-    public class CreateDemoTrainingInput
+    public class CreateDemoTrainingBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -2904,7 +2772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string Description { get; set; }
 
         [JsonProperty("trainingType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDemoTrainingInputTrainingTypeType TrainingType { get; set; }
+        public BodyInputTrainingTypeType TrainingType { get; set; }
 
         [JsonProperty("videoFileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string VideoFileId { get; set; }
@@ -2917,7 +2785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDemoTrainingInputTrainingTypeType
+    public enum BodyInputTrainingTypeType
     {
         [EnumMember(Value = "DEMO_TRAINING")]
         DEMOTRAINING,
@@ -2925,13 +2793,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         APPLICATIONTRAINING
     }
 
-    public class ReprocessDemoTrainingInput
+    public class ReprocessDemoTrainingBodyInput
     {
         [JsonProperty("processingPrompt")]
         public string ProcessingPrompt { get; set; }
     }
 
-    public class UpdateDemoTrainingAvailabilityInput
+    public class UpdateDemoTrainingAvailabilityBodyInput
     {
         [JsonProperty("available", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Available { get; set; }
@@ -3030,16 +2898,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public int TopicCount { get; set; }
     }
 
-    public class CreateCourseInput
+    public class CreateCourseBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
-    }
-
-    public class AssignRolesToCourseInput
-    {
-        [JsonProperty("roleIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] RoleIds { get; set; }
     }
 
     public class GenerationRequestResponse
@@ -3049,12 +2911,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
         [JsonProperty("status")]
         public string Status { get; set; }
-    }
-
-    public class GenerateCourseContentInput
-    {
-        [JsonProperty("topicIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] TopicIds { get; set; }
     }
 
     public class ModuleListResponse
@@ -3093,35 +2949,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public QuizSettingDto[] QuizSettings { get; set; }
     }
 
-    public class AddModuleToCourseInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class ReorderModulesInCourseInput
+    public class ReorderModulesInCourseBodyInput
     {
         [JsonProperty("moduleIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ModuleIds { get; set; }
     }
 
-    public class RegenerateCourseItemInput
+    public class RegenerateCourseItemBodyInput
     {
         [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RegenerateCourseItemInputTargetType Target { get; set; }
+        public BodyInputTargetType Target { get; set; }
 
         [JsonProperty("targetId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetId { get; set; }
 
         [JsonProperty("parentType")]
-        public RegenerateCourseItemInputParentTypeType? ParentType { get; set; }
+        public BodyInputParentTypeType? ParentType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RegenerateCourseItemInputTargetType
+    public enum BodyInputTargetType
     {
         LESSON,
         [EnumMember(Value = "LESSON_QUESTIONS")]
@@ -3132,7 +2979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RegenerateCourseItemInputParentTypeType
+    public enum BodyInputParentTypeType
     {
         MODULE,
         TOPIC
@@ -3147,7 +2994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string GenerationRequestId { get; set; }
     }
 
-    public class GenerateCourseInput
+    public class GenerateCourseBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3180,7 +3027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string Description { get; set; }
     }
 
-    public class UpdateUserInput
+    public class UpdateUserBodyInput
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -3195,16 +3042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string[] DepartmentRoleIds { get; set; }
     }
 
-    public class UpdateTopicInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class UpdateTopicQuizQuestionInput
+    public class UpdateLessonQuestionBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -3216,55 +3054,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string ExpectedAnswer { get; set; }
     }
 
-    public class UpdateModuleInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class UpdateModuleQuizQuestionInput
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("options")]
-        public QuestionOptionInput[] Options { get; set; }
-
-        [JsonProperty("expectedAnswer")]
-        public string ExpectedAnswer { get; set; }
-    }
-
-    public class UpdateLessonInput
+    public class UpdateLessonBodyInput
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class UpdateLessonQuestionInput
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("options")]
-        public QuestionOptionInput[] Options { get; set; }
-
-        [JsonProperty("expectedAnswer")]
-        public string ExpectedAnswer { get; set; }
-    }
-
-    public class UpdateLearningByteInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class UpdateExerciseInput
+    public class UpdateExerciseBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
@@ -3306,16 +3102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string SuccessMetric { get; set; }
     }
 
-    public class UpdateDepartmentInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class UpdateDemoTrainingInput
+    public class UpdateDemoTrainingBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3324,7 +3111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string Description { get; set; }
 
         [JsonProperty("trainingType")]
-        public UpdateDemoTrainingInputTrainingTypeType? TrainingType { get; set; }
+        public BodyInputTrainingTypeType? TrainingType { get; set; }
 
         [JsonProperty("departmentId")]
         public string DepartmentId { get; set; }
@@ -3333,16 +3120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
         public string[] AssignedRoleIds { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDemoTrainingInputTrainingTypeType
-    {
-        [EnumMember(Value = "DEMO_TRAINING")]
-        DEMOTRAINING,
-        [EnumMember(Value = "APPLICATION_TRAINING")]
-        APPLICATIONTRAINING
-    }
-
-    public class UpdateCourseInput
+    public class UpdateCourseBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

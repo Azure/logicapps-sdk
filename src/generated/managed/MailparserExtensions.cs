@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 
     public class MailparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<WebhookCreateInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: true);
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
         public string DispatcherId { get; set; }
     }
 
-    public class WebhookCreateInput
+    public class RequestBodyOfWebhookInput
     {
         [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";

@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<PlantResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<PlantInput>> body)
+        public IBodyWorkflowAction<PlantResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<PlantBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlantResponse, ApiConnectionActionConfiguration>(() =>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<UpdateTreeTemplateResponse, ApiConnectionActionConfiguration> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<UpdateTreeTemplateInput>> body)
+        public IBodyWorkflowAction<UpdateTreeTemplateResponse, ApiConnectionActionConfiguration> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<UpdateTreeTemplateBodyInput>> body)
         {
             var __workflow_planterId = WorkflowExpression.Compile(planterId, nameof(planterId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<BuyCreditResponse, ApiConnectionActionConfiguration> BuyCredit(Expression<Func<BuyCreditInput>> body)
+        public IBodyWorkflowAction<BuyCreditResponse, ApiConnectionActionConfiguration> BuyCredit(Expression<Func<BuyCreditBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BuyCreditResponse, ApiConnectionActionConfiguration>(() =>
@@ -429,10 +429,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         public string CertificateUrl { get; set; }
     }
 
-    public class PlantInput
+    public class PlantBodyInput
     {
         [JsonProperty("recipients")]
-        public PlantInputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("planter_id")]
         public int? PlanterId { get; set; }
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         public string Message { get; set; }
     }
 
-    public class PlantInputRecipientsTypeItem
+    public class BodyInputRecipientsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         public string ForestUrl { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         public string Image { get; set; }
     }
 
-    public class UpdateTreeTemplateInput
+    public class UpdateTreeTemplateBodyInput
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         public int PaymentId { get; set; }
     }
 
-    public class BuyCreditInput
+    public class BuyCreditBodyInput
     {
         [JsonProperty("planter_id")]
         public int? PlanterId { get; set; }

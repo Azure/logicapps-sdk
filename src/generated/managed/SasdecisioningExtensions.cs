@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
     public class SasdecisioningActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sasdecisioning")]
-        public IBodyWorkflowAction<StepOutput, ApiConnectionActionConfiguration> ExecuteStep(Expression<Func<string>> moduleId, Expression<Func<string>> stepId, Expression<Func<ExecuteStepInput>> input)
+        public IBodyWorkflowAction<StepOutput, ApiConnectionActionConfiguration> ExecuteStep(Expression<Func<string>> moduleId, Expression<Func<string>> stepId, Expression<Func<InputInput>> input)
         {
             var __workflow_moduleId = WorkflowExpression.Compile(moduleId, nameof(moduleId), required: true);
             var __workflow_stepId = WorkflowExpression.Compile(stepId, nameof(stepId), required: true);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
 
     public class SasdecisioningTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateValidateWebhook(Expression<Func<CreateValidateWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateValidateWebhook(Expression<Func<CreateValidateWebhookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreatePublishWebhook(Expression<Func<CreatePublishWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreatePublishWebhook(Expression<Func<CreatePublishWebhookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateGenericWebhook(Expression<Func<CreateGenericWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateGenericWebhook(Expression<Func<CreateGenericWebhookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -80,10 +80,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
         public string StepId { get; set; }
 
         [JsonProperty("outputs")]
-        public Variable[] Outputs { get; set; }
+        public ExecuteStepVariableResponse[] Outputs { get; set; }
     }
 
-    public class Variable
+    public class ExecuteStepVariableResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -95,13 +95,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
         public string Encoding { get; set; }
     }
 
-    public class ExecuteStepInput
+    public class InputInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Variable2[] Inputs { get; set; }
+        public ExecuteStepVariable[] Inputs { get; set; }
     }
 
-    public class Variable2
+    public class ExecuteStepVariable
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
         public JToken Value { get; set; }
     }
 
-    public class CreateValidateWebhookInput
+    public class CreateValidateWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Validate Webhook From Power Automate";
@@ -122,17 +122,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
         public string ResourcePath { get; set; } = "/";
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateValidateWebhookInputStateType State { get; set; } = CreateValidateWebhookInputStateType.Success;
+        public BodyInputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning.BodyInputStateType.Success;
 
         [JsonProperty("condition", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateValidateWebhookInputConditionType Condition { get; set; } = new CreateValidateWebhookInputConditionType();
+        internal CreateValidateWebhookBodyInputConditionType Condition { get; set; } = new CreateValidateWebhookBodyInputConditionType();
 
         [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateValidateWebhookInputCallbackType Callback { get; set; } = new CreateValidateWebhookInputCallbackType();
+        internal BodyInputCallbackType Callback { get; set; } = new BodyInputCallbackType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateValidateWebhookInputStateType
+    public enum BodyInputStateType
     {
         [EnumMember(Value = "success")]
         Success,
@@ -140,19 +140,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
         Failure
     }
 
-    public class CreateValidateWebhookInputConditionType
+    public class CreateValidateWebhookBodyInputConditionType
     {
         [JsonProperty("callbackContentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackContentType { get; set; } = "application/vnd.sas.webhook.callback.validate";
     }
 
-    public class CreateValidateWebhookInputCallbackType
+    public class BodyInputCallbackType
     {
         [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Uri { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CreatePublishWebhookInput
+    public class CreatePublishWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Publish Webhook From Power Automate";
@@ -167,25 +167,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
         public string DestinationType { get; set; } = "microAnalyticService";
 
         [JsonProperty("condition", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreatePublishWebhookInputConditionType Condition { get; set; } = new CreatePublishWebhookInputConditionType();
+        internal CreatePublishWebhookBodyInputConditionType Condition { get; set; } = new CreatePublishWebhookBodyInputConditionType();
 
         [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreatePublishWebhookInputCallbackType Callback { get; set; } = new CreatePublishWebhookInputCallbackType();
+        internal BodyInputCallbackType Callback { get; set; } = new BodyInputCallbackType();
     }
 
-    public class CreatePublishWebhookInputConditionType
+    public class CreatePublishWebhookBodyInputConditionType
     {
         [JsonProperty("callbackContentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackContentType { get; set; } = "application/vnd.sas.webhook.callback.publish";
     }
 
-    public class CreatePublishWebhookInputCallbackType
-    {
-        [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Uri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateGenericWebhookInput
+    public class CreateGenericWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Generic Webhook From Power Automate";
@@ -194,25 +188,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sasdecisioning
         internal bool Active { get; set; } = true;
 
         [JsonProperty("condition", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGenericWebhookInputConditionType Condition { get; set; } = new CreateGenericWebhookInputConditionType();
+        public CreateGenericWebhookBodyInputConditionType Condition { get; set; } = new CreateGenericWebhookBodyInputConditionType();
 
         [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateGenericWebhookInputCallbackType Callback { get; set; } = new CreateGenericWebhookInputCallbackType();
+        internal BodyInputCallbackType Callback { get; set; } = new BodyInputCallbackType();
     }
 
-    public class CreateGenericWebhookInputConditionType
+    public class CreateGenericWebhookBodyInputConditionType
     {
         [JsonProperty("callbackContentType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CallbackContentType { get; set; } = "application/vnd.sas.webhook.callback.publish";
 
         [JsonProperty("callbackContentFilter")]
         public string CallbackContentFilter { get; set; }
-    }
-
-    public class CreateGenericWebhookInputCallbackType
-    {
-        [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Uri { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

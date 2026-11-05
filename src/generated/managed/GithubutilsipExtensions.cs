@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     public class GithubutilsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdown(Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<PostMarkdownInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdown(Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdownRaw(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> body, Expression<Func<string>> xGitHubApiVersion = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostMarkdownRaw(Expression<Func<ContentTypeInput>> contentType, Expression<Func<string>> body, Expression<Func<string>> xGitHubApiVersion = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -168,20 +168,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     {
     }
 
-    public class PostMarkdownInput
+    public class BodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostMarkdownInputModeType? Mode { get; set; } = PostMarkdownInputModeType.Markdown;
+        public BodyInputModeType? Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip.BodyInputModeType.Markdown;
 
         [JsonProperty("context")]
         public string Context { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostMarkdownInputModeType
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "markdown")]
         Markdown,
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentTypeInput
+    public enum ContentTypeInput
     {
         [EnumMember(Value = "text/plain")]
         TextPlain,

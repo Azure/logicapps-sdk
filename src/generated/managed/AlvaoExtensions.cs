@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
 
     public class AlvaoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> TicketTransitionsToStatus(Expression<Func<TicketTransitionsToStatusInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> TicketTransitionsToStatus(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         public int Id { get; set; }
     }
 
-    public class TicketTransitionsToStatusInput
+    public class BodyInput
     {
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";

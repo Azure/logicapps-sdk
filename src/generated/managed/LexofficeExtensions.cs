@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesPost, ApiConnectionActionConfiguration> CreateArticle(Expression<Func<CreateArticleInput>> body)
+        public IBodyWorkflowAction<ResponseArticlesPost, ApiConnectionActionConfiguration> CreateArticle(Expression<Func<CreateArticleBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseArticlesPost, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<UpdateAnArticleInput>> body = null)
+        public IBodyWorkflowAction<ResponseArticlesIdGet, ApiConnectionActionConfiguration> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<UpdateAnArticleBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DownloadFileLexoffice(Expression<Func<string>> fileId, Expression<Func<acceptInput>> accept = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DownloadFileLexoffice(Expression<Func<string>> fileId, Expression<Func<AcceptInput>> accept = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVoucherlistGet, ApiConnectionActionConfiguration> RetrieveAndFilterVoucherlist(Expression<Func<voucherTypeInput>> voucherType, Expression<Func<voucherStatusInput>> voucherStatus, Expression<Func<bool>> archived = null, Expression<Func<string>> contactId = null, Expression<Func<string>> voucherDateFrom = null, Expression<Func<string>> voucherDateTo = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> updatedDateFrom = null, Expression<Func<string>> updatedDateTo = null, Expression<Func<string>> voucherNumber = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ResponseVoucherlistGet, ApiConnectionActionConfiguration> RetrieveAndFilterVoucherlist(Expression<Func<VoucherTypeInput>> voucherType, Expression<Func<VoucherStatusInput>> voucherStatus, Expression<Func<bool>> archived = null, Expression<Func<string>> contactId = null, Expression<Func<string>> voucherDateFrom = null, Expression<Func<string>> voucherDateTo = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> updatedDateFrom = null, Expression<Func<string>> updatedDateTo = null, Expression<Func<string>> voucherNumber = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
             var __workflow_voucherType = WorkflowExpression.Compile(voucherType, nameof(voucherType), required: true);
             var __workflow_voucherStatus = WorkflowExpression.Compile(voucherStatus, nameof(voucherStatus), required: true);
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersPost, ApiConnectionActionConfiguration> CreateVoucher(Expression<Func<CreateVoucherInput>> body)
+        public IBodyWorkflowAction<ResponseVouchersPost, ApiConnectionActionConfiguration> CreateVoucher(Expression<Func<CreateVoucherBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseVouchersPost, ApiConnectionActionConfiguration>(() =>
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersIdPut, ApiConnectionActionConfiguration> UpdateVoucher(Expression<Func<string>> id, Expression<Func<UpdateVoucherInput>> body)
+        public IBodyWorkflowAction<ResponseVouchersIdPut, ApiConnectionActionConfiguration> UpdateVoucher(Expression<Func<string>> id, Expression<Func<UpdateVoucherBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 
     public class LexofficeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration> EventSubscriptionLexoffice(Expression<Func<EventSubscriptionLexofficeInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration> EventSubscriptionLexoffice(Expression<Func<EventSubscriptionLexofficeBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ResponseEventSubscriptionsPost, ApiConnectionTriggerConfiguration>(() =>
@@ -890,25 +890,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
-    public class CreateArticleInput
+    public class CreateArticleBodyInput
     {
         [JsonProperty("articleNumber")]
         public string ArticleNumber { get; set; }
 
         [JsonProperty("price")]
-        public CreateArticleInputPriceType Price { get; set; }
+        public CreateArticleBodyInputPriceType Price { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("type")]
-        public CreateArticleInputTypeType? Type { get; set; }
+        public CreateArticleBodyInputTypeType? Type { get; set; }
 
         [JsonProperty("unitName")]
         public string UnitName { get; set; }
     }
 
-    public class CreateArticleInputPriceType
+    public class CreateArticleBodyInputPriceType
     {
         [JsonProperty("grossPrice")]
         public double? GrossPrice { get; set; }
@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateArticleInputTypeType
+    public enum CreateArticleBodyInputTypeType
     {
         PRODUCT,
         SERVICE
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double TaxRate { get; set; }
     }
 
-    public class UpdateAnArticleInput
+    public class UpdateAnArticleBodyInput
     {
         [JsonProperty("articleNumber")]
         public string ArticleNumber { get; set; }
@@ -1032,13 +1032,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string Note { get; set; }
 
         [JsonProperty("price", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateAnArticleInputPriceType Price { get; set; } = new UpdateAnArticleInputPriceType();
+        public UpdateAnArticleBodyInputPriceType Price { get; set; } = new UpdateAnArticleBodyInputPriceType();
 
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateAnArticleInputTypeType Type { get; set; }
+        public CreateArticleBodyInputTypeType Type { get; set; }
 
         [JsonProperty("unitName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UnitName { get; set; }
@@ -1047,13 +1047,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
-    public class UpdateAnArticleInputPriceType
+    public class UpdateAnArticleBodyInputPriceType
     {
         [JsonProperty("grossPrice", DefaultValueHandling = DefaultValueHandling.Include)]
         public double GrossPrice { get; set; }
 
         [JsonProperty("leadingPrice", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateAnArticleInputPriceTypeLeadingPriceType LeadingPrice { get; set; } = UpdateAnArticleInputPriceTypeLeadingPriceType.GROSS;
+        public BodyInputPriceTypeLeadingPriceType LeadingPrice { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice.BodyInputPriceTypeLeadingPriceType.GROSS;
 
         [JsonProperty("netPrice", DefaultValueHandling = DefaultValueHandling.Include)]
         public double NetPrice { get; set; }
@@ -1063,17 +1063,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateAnArticleInputPriceTypeLeadingPriceType
+    public enum BodyInputPriceTypeLeadingPriceType
     {
         GROSS,
         NET
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateAnArticleInputTypeType
-    {
-        PRODUCT,
-        SERVICE
     }
 
     public class ResponseContactsGet
@@ -2262,7 +2255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum acceptInput
+    public enum AcceptInput
     {
         [EnumMember(Value = "*/*")]
         Unnamed,
@@ -3528,7 +3521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum voucherTypeInput
+    public enum VoucherTypeInput
     {
         [EnumMember(Value = "any")]
         Any,
@@ -3555,7 +3548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum voucherStatusInput
+    public enum VoucherStatusInput
     {
         [EnumMember(Value = "any")]
         Any,
@@ -3601,7 +3594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
-    public class CreateVoucherInput
+    public class CreateVoucherBodyInput
     {
         [JsonProperty("contactId")]
         public string ContactId { get; set; }
@@ -3616,7 +3609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string ShippingDate { get; set; }
 
         [JsonProperty("taxType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateVoucherInputTaxTypeType TaxType { get; set; }
+        public BodyInputTaxTypeType TaxType { get; set; }
 
         [JsonProperty("totalGrossAmount")]
         public double? TotalGrossAmount { get; set; }
@@ -3625,7 +3618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double? TotalTaxAmount { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateVoucherInputTypeType Type { get; set; }
+        public CreateVoucherBodyInputTypeType Type { get; set; }
 
         [JsonProperty("useCollectiveContact")]
         public bool? UseCollectiveContact { get; set; }
@@ -3634,17 +3627,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string VoucherDate { get; set; }
 
         [JsonProperty("voucherItems", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateVoucherInputVoucherItemsTypeItem[] VoucherItems { get; set; }
+        public BodyInputVoucherItemsTypeItem[] VoucherItems { get; set; }
 
         [JsonProperty("voucherNumber")]
         public string VoucherNumber { get; set; }
 
         [JsonProperty("voucherStatus")]
-        public CreateVoucherInputVoucherStatusType? VoucherStatus { get; set; }
+        public BodyInputVoucherStatusType? VoucherStatus { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateVoucherInputTaxTypeType
+    public enum BodyInputTaxTypeType
     {
         [EnumMember(Value = "net")]
         Net,
@@ -3653,7 +3646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateVoucherInputTypeType
+    public enum CreateVoucherBodyInputTypeType
     {
         [EnumMember(Value = "salesinvoice")]
         Salesinvoice,
@@ -3677,7 +3670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         Deliverynote
     }
 
-    public class CreateVoucherInputVoucherItemsTypeItem
+    public class BodyInputVoucherItemsTypeItem
     {
         [JsonProperty("amount")]
         public double? Amount { get; set; }
@@ -3693,7 +3686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateVoucherInputVoucherStatusType
+    public enum BodyInputVoucherStatusType
     {
         [EnumMember(Value = "unchecked")]
         Unchecked,
@@ -3845,7 +3838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double TaxRatePercent { get; set; }
     }
 
-    public class UpdateVoucherInput
+    public class UpdateVoucherBodyInput
     {
         [JsonProperty("contactId")]
         public string ContactId { get; set; }
@@ -3863,7 +3856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string ShippingDate { get; set; }
 
         [JsonProperty("taxType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateVoucherInputTaxTypeType TaxType { get; set; }
+        public BodyInputTaxTypeType TaxType { get; set; }
 
         [JsonProperty("totalGrossAmount")]
         public double? TotalGrossAmount { get; set; }
@@ -3872,7 +3865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double? TotalTaxAmount { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateVoucherInputTypeType Type { get; set; }
+        public CreateVoucherBodyInputTypeType Type { get; set; }
 
         [JsonProperty("useCollectiveContact")]
         public bool? UseCollectiveContact { get; set; }
@@ -3884,71 +3877,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string VoucherDate { get; set; }
 
         [JsonProperty("voucherItems", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateVoucherInputVoucherItemsTypeItem[] VoucherItems { get; set; }
+        public BodyInputVoucherItemsTypeItem[] VoucherItems { get; set; }
 
         [JsonProperty("voucherNumber")]
         public string VoucherNumber { get; set; }
 
         [JsonProperty("voucherStatus")]
-        public UpdateVoucherInputVoucherStatusType? VoucherStatus { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateVoucherInputTaxTypeType
-    {
-        [EnumMember(Value = "net")]
-        Net,
-        [EnumMember(Value = "gross")]
-        Gross
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateVoucherInputTypeType
-    {
-        [EnumMember(Value = "salesinvoice")]
-        Salesinvoice,
-        [EnumMember(Value = "salescreditnote")]
-        Salescreditnote,
-        [EnumMember(Value = "purchaseinvoice")]
-        Purchaseinvoice,
-        [EnumMember(Value = "purchasecreditnote")]
-        Purchasecreditnote,
-        [EnumMember(Value = "invoice")]
-        Invoice,
-        [EnumMember(Value = "downpaymentinvoice")]
-        Downpaymentinvoice,
-        [EnumMember(Value = "creditnote")]
-        Creditnote,
-        [EnumMember(Value = "orderconfirmation")]
-        Orderconfirmation,
-        [EnumMember(Value = "quotation")]
-        Quotation,
-        [EnumMember(Value = "deliverynote")]
-        Deliverynote
-    }
-
-    public class UpdateVoucherInputVoucherItemsTypeItem
-    {
-        [JsonProperty("amount")]
-        public double? Amount { get; set; }
-
-        [JsonProperty("categoryId")]
-        public string CategoryId { get; set; }
-
-        [JsonProperty("taxAmount")]
-        public double? TaxAmount { get; set; }
-
-        [JsonProperty("taxRatePercent")]
-        public int? TaxRatePercent { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateVoucherInputVoucherStatusType
-    {
-        [EnumMember(Value = "unchecked")]
-        Unchecked,
-        [EnumMember(Value = "open")]
-        Open
+        public BodyInputVoucherStatusType? VoucherStatus { get; set; }
     }
 
     public class ResponseEventSubscriptionsPost
@@ -3969,17 +3904,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
-    public class EventSubscriptionLexofficeInput
+    public class EventSubscriptionLexofficeBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EventSubscriptionLexofficeInputEventTypeType EventType { get; set; }
+        public BodyInputEventTypeType EventType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventSubscriptionLexofficeInputEventTypeType
+    public enum BodyInputEventTypeType
     {
         [EnumMember(Value = "article.created")]
         ArticleCreated,

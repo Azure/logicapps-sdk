@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     public class WdatpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<AdvancedHuntingResponse, ApiConnectionActionConfiguration> AdvancedHunting(Expression<Func<AdvancedHuntingInput>> body)
+        public IBodyWorkflowAction<AdvancedHuntingResponse, ApiConnectionActionConfiguration> AdvancedHunting(Expression<Func<AdvancedHuntingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AdvancedHuntingResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> CreateAlertByReference(Expression<Func<CreateAlertByReferenceInput>> body)
+        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> CreateAlertByReference(Expression<Func<CreateAlertByReferenceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Alert, ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> PatchAlert(Expression<Func<string>> alertId, Expression<Func<PatchAlertInput>> body)
+        public IBodyWorkflowAction<Alert, ApiConnectionActionConfiguration> PatchAlert(Expression<Func<string>> alertId, Expression<Func<PatchAlertBodyInput>> body)
         {
             var __workflow_alertId = WorkflowExpression.Compile(alertId, nameof(alertId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<InitiateInvestigationResponse, ApiConnectionActionConfiguration> InitiateInvestigation(Expression<Func<string>> machineId, Expression<Func<InitiateInvestigationInput>> body)
+        public IBodyWorkflowAction<InitiateInvestigationResponse, ApiConnectionActionConfiguration> InitiateInvestigation(Expression<Func<string>> machineId, Expression<Func<CancelSingleMachineActionBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Investigation, ApiConnectionActionConfiguration> StartInvestigation(Expression<Func<string>> machineId, Expression<Func<StartInvestigationInput>> body)
+        public IBodyWorkflowAction<Investigation, ApiConnectionActionConfiguration> StartInvestigation(Expression<Func<string>> machineId, Expression<Func<CancelSingleMachineActionBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CancelSingleMachineAction(Expression<Func<string>> machineActionId, Expression<Func<CancelSingleMachineActionInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CancelSingleMachineAction(Expression<Func<string>> machineActionId, Expression<Func<CancelSingleMachineActionBodyInput>> body)
         {
             var __workflow_machineActionId = WorkflowExpression.Compile(machineActionId, nameof(machineActionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CollectInvestigationPackage(Expression<Func<string>> machineId, Expression<Func<CollectInvestigationPackageInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> CollectInvestigationPackage(Expression<Func<string>> machineId, Expression<Func<CancelSingleMachineActionBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> IsolateMachine(Expression<Func<string>> machineId, Expression<Func<IsolateMachineInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> IsolateMachine(Expression<Func<string>> machineId, Expression<Func<IsolateMachineBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnisolateMachine(Expression<Func<string>> machineId, Expression<Func<UnisolateMachineInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnisolateMachine(Expression<Func<string>> machineId, Expression<Func<CancelSingleMachineActionBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<RestrictAppExecutionInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<CancelSingleMachineActionBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnrestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<UnrestrictAppExecutionInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> UnrestrictAppExecution(Expression<Func<string>> machineId, Expression<Func<CancelSingleMachineActionBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunAntivirusScan(Expression<Func<string>> machineId, Expression<Func<RunAntivirusScanInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunAntivirusScan(Expression<Func<string>> machineId, Expression<Func<RunAntivirusScanBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunLiveResponse(Expression<Func<string>> machineId, Expression<Func<RunLiveResponseInput>> body)
+        public IBodyWorkflowAction<MachineAction, ApiConnectionActionConfiguration> RunLiveResponse(Expression<Func<string>> machineId, Expression<Func<RunLiveResponseBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wdatp")]
-        public IBodyWorkflowAction<Machine, ApiConnectionActionConfiguration> MachineTag(Expression<Func<string>> machineId, Expression<Func<MachineTagInput>> body)
+        public IBodyWorkflowAction<Machine, ApiConnectionActionConfiguration> MachineTag(Expression<Func<string>> machineId, Expression<Func<MachineTagBodyInput>> body)
         {
             var __workflow_machineId = WorkflowExpression.Compile(machineId, nameof(machineId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -532,15 +532,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class WdatpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration> WebHooksCreateWebHook(Expression<Func<WebHooksCreateWebHookInput>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration> WebHooksCreateWebHook(FlowRecurrence recurrence = null)
         {
-            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyTrigger<WebHookSubscriptionTableEntity, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscriptions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
+                callPayload.Body = new RequestInput().ToJToken();
                 return new ApiConnectionTrigger<WebHookSubscriptionTableEntity>(callPayload, recurrence: recurrence);
             });
         }
@@ -576,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public int TableRowCount { get; set; }
     }
 
-    public class AdvancedHuntingInput
+    public class AdvancedHuntingBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
@@ -678,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         Other
     }
 
-    public class CreateAlertByReferenceInput
+    public class CreateAlertByReferenceBodyInput
     {
         [JsonProperty("machineId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MachineId { get; set; }
@@ -690,10 +689,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string EventTime { get; set; }
 
         [JsonProperty("severity", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAlertByReferenceInputSeverityType Severity { get; set; }
+        public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAlertByReferenceInputCategoryType Category { get; set; }
+        public BodyInputCategoryType Category { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -706,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAlertByReferenceInputSeverityType
+    public enum BodyInputSeverityType
     {
         Low,
         Medium,
@@ -714,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAlertByReferenceInputCategoryType
+    public enum BodyInputCategoryType
     {
         General,
         CommandAndControl,
@@ -746,23 +745,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string NextLink { get; set; }
     }
 
-    public class PatchAlertInput
+    public class PatchAlertBodyInput
     {
         [JsonProperty("status")]
-        public PatchAlertInputStatusType? Status { get; set; }
+        public BodyInputStatusType? Status { get; set; }
 
         [JsonProperty("assignedTo")]
         public string AssignedTo { get; set; }
 
         [JsonProperty("classification")]
-        public PatchAlertInputClassificationType? Classification { get; set; }
+        public BodyInputClassificationType? Classification { get; set; }
 
         [JsonProperty("determination")]
-        public PatchAlertInputDeterminationType? Determination { get; set; }
+        public BodyInputDeterminationType? Determination { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PatchAlertInputStatusType
+    public enum BodyInputStatusType
     {
         New,
         InProgress,
@@ -770,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PatchAlertInputClassificationType
+    public enum BodyInputClassificationType
     {
         Unknown,
         FalsePositive,
@@ -778,7 +777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PatchAlertInputDeterminationType
+    public enum BodyInputDeterminationType
     {
         NotAvailable,
         Apt,
@@ -795,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string Value { get; set; }
     }
 
-    public class InitiateInvestigationInput
+    public class CancelSingleMachineActionBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
@@ -847,12 +846,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         UnsupportedOs,
         UnsupportedAlertType,
         SuppressedAlert
-    }
-
-    public class StartInvestigationInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Comment { get; set; }
     }
 
     public class MachineAction
@@ -964,12 +957,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         Created
     }
 
-    public class CancelSingleMachineActionInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Comment { get; set; }
-    }
-
     public class GetLiveResponseDownloadLinkResponse
     {
         [JsonProperty("value")]
@@ -1057,69 +1044,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string NextLink { get; set; }
     }
 
-    public class CollectInvestigationPackageInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Comment { get; set; }
-    }
-
     public class GetInvestigationPackageUriResponse
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class IsolateMachineInput
+    public class IsolateMachineBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public IsolateMachineInputIsolationTypeType IsolationType { get; set; } = IsolateMachineInputIsolationTypeType.Full;
+        public BodyInputIsolationTypeType IsolationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp.BodyInputIsolationTypeType.Full;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IsolateMachineInputIsolationTypeType
+    public enum BodyInputIsolationTypeType
     {
         Full,
         Selective
     }
 
-    public class UnisolateMachineInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Comment { get; set; }
-    }
-
-    public class RestrictAppExecutionInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Comment { get; set; }
-    }
-
-    public class UnrestrictAppExecutionInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Comment { get; set; }
-    }
-
-    public class RunAntivirusScanInput
+    public class RunAntivirusScanBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RunAntivirusScanInputScanTypeType ScanType { get; set; }
+        public BodyInputScanTypeType ScanType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RunAntivirusScanInputScanTypeType
+    public enum BodyInputScanTypeType
     {
         Quick,
         Full
     }
 
-    public class RunLiveResponseInput
+    public class RunLiveResponseBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
@@ -1410,17 +1373,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string NextLink { get; set; }
     }
 
-    public class MachineTagInput
+    public class MachineTagBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MachineTagInputActionType Action { get; set; }
+        public BodyInputActionType Action { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MachineTagInputActionType
+    public enum BodyInputActionType
     {
         Add,
         Remove
@@ -1438,7 +1401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
         public string ClientState { get; set; }
     }
 
-    public class WebHooksCreateWebHookInput
+    public class RequestInput
     {
         [JsonProperty("clientState", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ClientState { get; set; } = "flow";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     public class FemaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1DeclarationDenialsResponse, ApiConnectionActionConfiguration> GetV1DeclarationDenials(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem[]>> orderby = null, Expression<Func<selectInputItem[]>> select = null)
+        public IBodyWorkflowAction<V1DeclarationDenialsResponse, ApiConnectionActionConfiguration> GetV1DeclarationDenials(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DeclarationDenialsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DeclarationDenialsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2DisasterDeclarationsSummariesResponse, ApiConnectionActionConfiguration> GetV2DisasterDeclarationsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem2[]>> orderby = null, Expression<Func<selectInputItem2[]>> select = null)
+        public IBodyWorkflowAction<V2DisasterDeclarationsSummariesResponse, ApiConnectionActionConfiguration> GetV2DisasterDeclarationsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2DisasterDeclarationsSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2DisasterDeclarationsSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1FemaWebDeclarationAreasResponse, ApiConnectionActionConfiguration> GetV1FemaWebDeclarationAreas(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem3[]>> orderby = null, Expression<Func<selectInputItem3[]>> select = null)
+        public IBodyWorkflowAction<V1FemaWebDeclarationAreasResponse, ApiConnectionActionConfiguration> GetV1FemaWebDeclarationAreas(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDeclarationAreasOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDeclarationAreasSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1FemaWebDisasterDeclarationsResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterDeclarations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem4[]>> orderby = null, Expression<Func<selectInputItem4[]>> select = null)
+        public IBodyWorkflowAction<V1FemaWebDisasterDeclarationsResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterDeclarations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDisasterDeclarationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDisasterDeclarationsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1FemaWebDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem5[]>> orderby = null, Expression<Func<selectInputItem5[]>> select = null)
+        public IBodyWorkflowAction<V1FemaWebDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV1FemaWebDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1FemaWebDisasterSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1FemaWebDisasterSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2MissionAssignmentsResponse, ApiConnectionActionConfiguration> GetV2MissionAssignments(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem6[]>> orderby = null, Expression<Func<selectInputItem6[]>> select = null)
+        public IBodyWorkflowAction<V2MissionAssignmentsResponse, ApiConnectionActionConfiguration> GetV2MissionAssignments(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2MissionAssignmentsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2MissionAssignmentsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2EmergencyManagementPerformanceGrantsResponse, ApiConnectionActionConfiguration> GetV2EmergencyManagementPerformanceGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem7[]>> orderby = null, Expression<Func<selectInputItem7[]>> select = null)
+        public IBodyWorkflowAction<V2EmergencyManagementPerformanceGrantsResponse, ApiConnectionActionConfiguration> GetV2EmergencyManagementPerformanceGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2EmergencyManagementPerformanceGrantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2EmergencyManagementPerformanceGrantsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1IpawsArchivedAlertsResponse, ApiConnectionActionConfiguration> GetV1IpawsArchivedAlerts(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem8[]>> orderby = null, Expression<Func<selectInputItem8[]>> select = null)
+        public IBodyWorkflowAction<V1IpawsArchivedAlertsResponse, ApiConnectionActionConfiguration> GetV1IpawsArchivedAlerts(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IpawsArchivedAlertsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IpawsArchivedAlertsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NonDisasterAssistanceFirefighterGrantsResponse, ApiConnectionActionConfiguration> GetV1NonDisasterAssistanceFirefighterGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem9[]>> orderby = null, Expression<Func<selectInputItem9[]>> select = null)
+        public IBodyWorkflowAction<V1NonDisasterAssistanceFirefighterGrantsResponse, ApiConnectionActionConfiguration> GetV1NonDisasterAssistanceFirefighterGrants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NonDisasterAssistanceFirefighterGrantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NonDisasterAssistanceFirefighterGrantsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V4HazardMitigationAssistanceMitigatedPropertiesResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceMitigatedProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem10[]>> orderby = null, Expression<Func<selectInputItem10[]>> select = null)
+        public IBodyWorkflowAction<V4HazardMitigationAssistanceMitigatedPropertiesResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceMitigatedProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV4HazardMitigationAssistanceMitigatedPropertiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV4HazardMitigationAssistanceMitigatedPropertiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V4HazardMitigationAssistanceProjectsResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceProjects(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem11[]>> orderby = null, Expression<Func<selectInputItem11[]>> select = null)
+        public IBodyWorkflowAction<V4HazardMitigationAssistanceProjectsResponse, ApiConnectionActionConfiguration> GetV4HazardMitigationAssistanceProjects(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV4HazardMitigationAssistanceProjectsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV4HazardMitigationAssistanceProjectsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem12[]>> orderby = null, Expression<Func<selectInputItem12[]>> select = null)
+        public IBodyWorkflowAction<V2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HazardMitigationAssistanceProjectsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationAssistanceProjectsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem13[]>> orderby = null, Expression<Func<selectInputItem13[]>> select = null)
+        public IBodyWorkflowAction<V1HazardMitigationAssistanceProjectsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationAssistanceProjectsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HazardMitigationAssistanceProjectsFinancialTransactionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HazardMitigationAssistanceProjectsFinancialTransactionsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HazardMitigationGrantProgramDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationGrantProgramDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem14[]>> orderby = null, Expression<Func<selectInputItem14[]>> select = null)
+        public IBodyWorkflowAction<V2HazardMitigationGrantProgramDisasterSummariesResponse, ApiConnectionActionConfiguration> GetV2HazardMitigationGrantProgramDisasterSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HazardMitigationGrantProgramDisasterSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HazardMitigationGrantProgramDisasterSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HazardMitigationPlanStatusesResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationPlanStatuses(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem15[]>> orderby = null, Expression<Func<selectInputItem15[]>> select = null)
+        public IBodyWorkflowAction<V1HazardMitigationPlanStatusesResponse, ApiConnectionActionConfiguration> GetV1HazardMitigationPlanStatuses(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HazardMitigationPlanStatusesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HazardMitigationPlanStatusesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HmaSubapplicationsResponse, ApiConnectionActionConfiguration> GetV2HmaSubapplications(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem16[]>> orderby = null, Expression<Func<selectInputItem16[]>> select = null)
+        public IBodyWorkflowAction<V2HmaSubapplicationsResponse, ApiConnectionActionConfiguration> GetV2HmaSubapplications(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HmaSubapplicationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HmaSubapplicationsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HmaSubapplicationsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem17[]>> orderby = null, Expression<Func<selectInputItem17[]>> select = null)
+        public IBodyWorkflowAction<V1HmaSubapplicationsByNfipCrsCommunitiesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsByNfipCrsCommunities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsByNfipCrsCommunitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsByNfipCrsCommunitiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HmaSubapplicationsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem18[]>> orderby = null, Expression<Func<selectInputItem18[]>> select = null)
+        public IBodyWorkflowAction<V1HmaSubapplicationsFinancialTransactionsResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsFinancialTransactions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsFinancialTransactionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsFinancialTransactionsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1HmaSubapplicationsProjectSiteInventoriesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsProjectSiteInventories(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem19[]>> orderby = null, Expression<Func<selectInputItem19[]>> select = null)
+        public IBodyWorkflowAction<V1HmaSubapplicationsProjectSiteInventoriesResponse, ApiConnectionActionConfiguration> GetV1HmaSubapplicationsProjectSiteInventories(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1HmaSubapplicationsProjectSiteInventoriesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1HmaSubapplicationsProjectSiteInventoriesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HousingAssistanceOwnersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceOwners(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem20[]>> orderby = null, Expression<Func<selectInputItem20[]>> select = null)
+        public IBodyWorkflowAction<V2HousingAssistanceOwnersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceOwners(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HousingAssistanceOwnersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HousingAssistanceOwnersSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2HousingAssistanceRentersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceRenters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem21[]>> orderby = null, Expression<Func<selectInputItem21[]>> select = null)
+        public IBodyWorkflowAction<V2HousingAssistanceRentersResponse, ApiConnectionActionConfiguration> GetV2HousingAssistanceRenters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2HousingAssistanceRentersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2HousingAssistanceRentersSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1IndividualAssistanceHousingRegistrantsLargeDisastersResponse, ApiConnectionActionConfiguration> GetV1IndividualAssistanceHousingRegistrantsLargeDisasters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem22[]>> orderby = null, Expression<Func<selectInputItem22[]>> select = null)
+        public IBodyWorkflowAction<V1IndividualAssistanceHousingRegistrantsLargeDisastersResponse, ApiConnectionActionConfiguration> GetV1IndividualAssistanceHousingRegistrantsLargeDisasters(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IndividualAssistanceHousingRegistrantsLargeDisastersOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IndividualAssistanceHousingRegistrantsLargeDisastersSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1IndividualsAndHouseholdsProgramValidRegistrationsResponse, ApiConnectionActionConfiguration> GetV1IndividualsAndHouseholdsProgramValidRegistrations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem23[]>> orderby = null, Expression<Func<selectInputItem23[]>> select = null)
+        public IBodyWorkflowAction<V1IndividualsAndHouseholdsProgramValidRegistrationsResponse, ApiConnectionActionConfiguration> GetV1IndividualsAndHouseholdsProgramValidRegistrations(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1IndividualsAndHouseholdsProgramValidRegistrationsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1IndividualsAndHouseholdsProgramValidRegistrationsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2RegistrationIntakeIndividualsHouseholdProgramsResponse, ApiConnectionActionConfiguration> GetV2RegistrationIntakeIndividualsHouseholdPrograms(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem24[]>> orderby = null, Expression<Func<selectInputItem24[]>> select = null)
+        public IBodyWorkflowAction<V2RegistrationIntakeIndividualsHouseholdProgramsResponse, ApiConnectionActionConfiguration> GetV2RegistrationIntakeIndividualsHouseholdPrograms(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2RegistrationIntakeIndividualsHouseholdProgramsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2RegistrationIntakeIndividualsHouseholdProgramsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1DataSetFieldsResponse, ApiConnectionActionConfiguration> GetV1DataSetFields(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem25[]>> orderby = null, Expression<Func<selectInputItem25[]>> select = null)
+        public IBodyWorkflowAction<V1DataSetFieldsResponse, ApiConnectionActionConfiguration> GetV1DataSetFields(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DataSetFieldsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DataSetFieldsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1113,7 +1113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1DataSetsResponse, ApiConnectionActionConfiguration> GetV1DataSets(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem26[]>> orderby = null, Expression<Func<selectInputItem26[]>> select = null)
+        public IBodyWorkflowAction<V1DataSetsResponse, ApiConnectionActionConfiguration> GetV1DataSets(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1DataSetsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1DataSetsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1157,7 +1157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2FemaRegionsResponse, ApiConnectionActionConfiguration> GetV2FemaRegions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem27[]>> orderby = null, Expression<Func<selectInputItem27[]>> select = null)
+        public IBodyWorkflowAction<V2FemaRegionsResponse, ApiConnectionActionConfiguration> GetV2FemaRegions(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FemaRegionsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FemaRegionsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2FimaNfipClaimsResponse, ApiConnectionActionConfiguration> GetV2FimaNfipClaims(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem28[]>> orderby = null, Expression<Func<selectInputItem28[]>> select = null)
+        public IBodyWorkflowAction<V2FimaNfipClaimsResponse, ApiConnectionActionConfiguration> GetV2FimaNfipClaims(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FimaNfipClaimsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FimaNfipClaimsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1245,7 +1245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2FimaNfipPoliciesResponse, ApiConnectionActionConfiguration> GetV2FimaNfipPolicies(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem29[]>> orderby = null, Expression<Func<selectInputItem29[]>> select = null)
+        public IBodyWorkflowAction<V2FimaNfipPoliciesResponse, ApiConnectionActionConfiguration> GetV2FimaNfipPolicies(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2FimaNfipPoliciesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2FimaNfipPoliciesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1289,7 +1289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityLayerComprehensiveResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerComprehensive(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem30[]>> orderby = null, Expression<Func<selectInputItem30[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityLayerComprehensiveResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerComprehensive(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerComprehensiveOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerComprehensiveSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1333,7 +1333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsSplitResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsSplit(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem31[]>> orderby = null, Expression<Func<selectInputItem31[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsSplitResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsSplit(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsSplitOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsSplitSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1377,7 +1377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsWholeResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsWhole(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem32[]>> orderby = null, Expression<Func<selectInputItem32[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityLayerNoOverlapsWholeResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityLayerNoOverlapsWhole(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsWholeOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityLayerNoOverlapsWholeSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1421,7 +1421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipCommunityStatusBookResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityStatusBook(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem33[]>> orderby = null, Expression<Func<selectInputItem33[]>> select = null)
+        public IBodyWorkflowAction<V1NfipCommunityStatusBookResponse, ApiConnectionActionConfiguration> GetV1NfipCommunityStatusBook(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipCommunityStatusBookOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipCommunityStatusBookSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1465,7 +1465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipMultipleLossPropertiesResponse, ApiConnectionActionConfiguration> GetV1NfipMultipleLossProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem34[]>> orderby = null, Expression<Func<selectInputItem34[]>> select = null)
+        public IBodyWorkflowAction<V1NfipMultipleLossPropertiesResponse, ApiConnectionActionConfiguration> GetV1NfipMultipleLossProperties(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipMultipleLossPropertiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipMultipleLossPropertiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1509,7 +1509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1NfipResidentialPenetrationRatesResponse, ApiConnectionActionConfiguration> GetV1NfipResidentialPenetrationRates(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem35[]>> orderby = null, Expression<Func<selectInputItem35[]>> select = null)
+        public IBodyWorkflowAction<V1NfipResidentialPenetrationRatesResponse, ApiConnectionActionConfiguration> GetV1NfipResidentialPenetrationRates(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1NfipResidentialPenetrationRatesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1NfipResidentialPenetrationRatesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceApplicantsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem36[]>> orderby = null, Expression<Func<selectInputItem36[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceApplicantsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicants(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceApplicantsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceApplicantsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1597,7 +1597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceApplicantsProgramDeliveriesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicantsProgramDeliveries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem37[]>> orderby = null, Expression<Func<selectInputItem37[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceApplicantsProgramDeliveriesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceApplicantsProgramDeliveries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceApplicantsProgramDeliveriesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceApplicantsProgramDeliveriesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1641,7 +1641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsDetailsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsDetails(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem38[]>> orderby = null, Expression<Func<selectInputItem38[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsDetailsResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsDetails(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceFundedProjectsDetailsOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceFundedProjectsDetailsSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1685,7 +1685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsSummariesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem39[]>> orderby = null, Expression<Func<selectInputItem39[]>> select = null)
+        public IBodyWorkflowAction<V1PublicAssistanceFundedProjectsSummariesResponse, ApiConnectionActionConfiguration> GetV1PublicAssistanceFundedProjectsSummaries(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV1PublicAssistanceFundedProjectsSummariesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV1PublicAssistanceFundedProjectsSummariesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1729,7 +1729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fema")]
-        public IBodyWorkflowAction<V2PublicAssistanceGrantAwardActivitiesResponse, ApiConnectionActionConfiguration> GetV2PublicAssistanceGrantAwardActivities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<orderbyInputItem40[]>> orderby = null, Expression<Func<selectInputItem40[]>> select = null)
+        public IBodyWorkflowAction<V2PublicAssistanceGrantAwardActivitiesResponse, ApiConnectionActionConfiguration> GetV2PublicAssistanceGrantAwardActivities(Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null, Expression<Func<string>> filename = null, Expression<Func<bool>> metadata = null, Expression<Func<string>> gzip = null, Expression<Func<GetV2PublicAssistanceGrantAwardActivitiesOrderbyInputItem[]>> orderby = null, Expression<Func<GetV2PublicAssistanceGrantAwardActivitiesSelectInputItem[]>> select = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
@@ -1887,7 +1887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem
+    public enum GetV1DeclarationDenialsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -1972,7 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem
+    public enum GetV1DeclarationDenialsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2111,7 +2111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem2
+    public enum GetV2DisasterDeclarationsSummariesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2228,7 +2228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem2
+    public enum GetV2DisasterDeclarationsSummariesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2341,7 +2341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem3
+    public enum GetV1FemaWebDeclarationAreasOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2402,7 +2402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem3
+    public enum GetV1FemaWebDeclarationAreasSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2511,7 +2511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem4
+    public enum GetV1FemaWebDisasterDeclarationsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2604,7 +2604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem4
+    public enum GetV1FemaWebDisasterDeclarationsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2705,7 +2705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem5
+    public enum GetV1FemaWebDisasterSummariesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2766,7 +2766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem5
+    public enum GetV1FemaWebDisasterSummariesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -2926,7 +2926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem6
+    public enum GetV2MissionAssignmentsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3087,7 +3087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem6
+    public enum GetV2MissionAssignmentsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3207,7 +3207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem7
+    public enum GetV2EmergencyManagementPerformanceGrantsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3248,7 +3248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem7
+    public enum GetV2EmergencyManagementPerformanceGrantsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3335,7 +3335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem8
+    public enum GetV1IpawsArchivedAlertsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3412,7 +3412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem8
+    public enum GetV1IpawsArchivedAlertsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3490,7 +3490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem9
+    public enum GetV1NonDisasterAssistanceFirefighterGrantsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3531,7 +3531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem9
+    public enum GetV1NonDisasterAssistanceFirefighterGrantsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3621,7 +3621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem10
+    public enum GetV4HazardMitigationAssistanceMitigatedPropertiesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3702,7 +3702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem10
+    public enum GetV4HazardMitigationAssistanceMitigatedPropertiesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3854,7 +3854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem11
+    public enum GetV4HazardMitigationAssistanceProjectsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -3991,7 +3991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem11
+    public enum GetV4HazardMitigationAssistanceProjectsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -4090,7 +4090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem12
+    public enum GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -4119,7 +4119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem12
+    public enum GetV2HazardMitigationAssistanceProjectsByNfipCrsCommunitiesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -4179,7 +4179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem13
+    public enum GetV1HazardMitigationAssistanceProjectsFinancialTransactionsOrderbyInputItem
     {
         [EnumMember(Value = "projectIdentifier")]
         ProjectIdentifier,
@@ -4228,7 +4228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem13
+    public enum GetV1HazardMitigationAssistanceProjectsFinancialTransactionsSelectInputItem
     {
         [EnumMember(Value = "projectIdentifier")]
         ProjectIdentifier,
@@ -4373,7 +4373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem14
+    public enum GetV2HazardMitigationGrantProgramDisasterSummariesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -4522,7 +4522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem14
+    public enum GetV2HazardMitigationGrantProgramDisasterSummariesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -4675,7 +4675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem15
+    public enum GetV1HazardMitigationPlanStatusesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -4768,7 +4768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem15
+    public enum GetV1HazardMitigationPlanStatusesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -5094,7 +5094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem16
+    public enum GetV2HmaSubapplicationsOrderbyInputItem
     {
         [EnumMember(Value = "subapplicationIdentifier")]
         SubapplicationIdentifier,
@@ -5455,7 +5455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem16
+    public enum GetV2HmaSubapplicationsSelectInputItem
     {
         [EnumMember(Value = "subapplicationIdentifier")]
         SubapplicationIdentifier,
@@ -5681,7 +5681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem17
+    public enum GetV1HmaSubapplicationsByNfipCrsCommunitiesOrderbyInputItem
     {
         [EnumMember(Value = "subapplicationIdentifier")]
         SubapplicationIdentifier,
@@ -5730,7 +5730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem17
+    public enum GetV1HmaSubapplicationsByNfipCrsCommunitiesSelectInputItem
     {
         [EnumMember(Value = "subapplicationIdentifier")]
         SubapplicationIdentifier,
@@ -5794,7 +5794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem18
+    public enum GetV1HmaSubapplicationsFinancialTransactionsOrderbyInputItem
     {
         [EnumMember(Value = "subapplicationIdentifier")]
         SubapplicationIdentifier,
@@ -5835,7 +5835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem18
+    public enum GetV1HmaSubapplicationsFinancialTransactionsSelectInputItem
     {
         [EnumMember(Value = "subapplicationIdentifier")]
         SubapplicationIdentifier,
@@ -5991,7 +5991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem19
+    public enum GetV1HmaSubapplicationsProjectSiteInventoriesOrderbyInputItem
     {
         [EnumMember(Value = "subapplicationId")]
         SubapplicationId,
@@ -6160,7 +6160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem19
+    public enum GetV1HmaSubapplicationsProjectSiteInventoriesSelectInputItem
     {
         [EnumMember(Value = "subapplicationId")]
         SubapplicationId,
@@ -6329,7 +6329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem20
+    public enum GetV2HousingAssistanceOwnersOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -6430,7 +6430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem20
+    public enum GetV2HousingAssistanceOwnersSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -6556,7 +6556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem21
+    public enum GetV2HousingAssistanceRentersOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -6645,7 +6645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem21
+    public enum GetV2HousingAssistanceRentersSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -6828,7 +6828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem22
+    public enum GetV1IndividualAssistanceHousingRegistrantsLargeDisastersOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -7001,7 +7001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem22
+    public enum GetV1IndividualAssistanceHousingRegistrantsLargeDisastersSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -7313,7 +7313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem23
+    public enum GetV1IndividualsAndHouseholdsProgramValidRegistrationsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -7602,7 +7602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem23
+    public enum GetV1IndividualsAndHouseholdsProgramValidRegistrationsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -7816,7 +7816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem24
+    public enum GetV2RegistrationIntakeIndividualsHouseholdProgramsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -7897,7 +7897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem24
+    public enum GetV2RegistrationIntakeIndividualsHouseholdProgramsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -7998,7 +7998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem25
+    public enum GetV1DataSetFieldsOrderbyInputItem
     {
         [EnumMember(Value = "datasetId")]
         DatasetId,
@@ -8067,7 +8067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem25
+    public enum GetV1DataSetFieldsSelectInputItem
     {
         [EnumMember(Value = "datasetId")]
         DatasetId,
@@ -8231,7 +8231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem26
+    public enum GetV1DataSetsOrderbyInputItem
     {
         [EnumMember(Value = "identifier")]
         Identifier,
@@ -8392,7 +8392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem26
+    public enum GetV1DataSetsSelectInputItem
     {
         [EnumMember(Value = "identifier")]
         Identifier,
@@ -8521,7 +8521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem27
+    public enum GetV2FemaRegionsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -8574,7 +8574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem27
+    public enum GetV2FemaRegionsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -8832,7 +8832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem28
+    public enum GetV2FimaNfipClaimsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -9129,7 +9129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem28
+    public enum GetV2FimaNfipClaimsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -9531,7 +9531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem29
+    public enum GetV2FimaNfipPoliciesOrderbyInputItem
     {
         [EnumMember(Value = "agricultureStructureIndicator")]
         AgricultureStructureIndicator,
@@ -9859,7 +9859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem29
+    public enum GetV2FimaNfipPoliciesSelectInputItem
     {
         [EnumMember(Value = "agricultureStructureIndicator")]
         AgricultureStructureIndicator,
@@ -10104,7 +10104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem30
+    public enum GetV1NfipCommunityLayerComprehensiveOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -10201,7 +10201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem30
+    public enum GetV1NfipCommunityLayerComprehensiveSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -10340,7 +10340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem31
+    public enum GetV1NfipCommunityLayerNoOverlapsSplitOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -10449,7 +10449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem31
+    public enum GetV1NfipCommunityLayerNoOverlapsSplitSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -10585,7 +10585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem32
+    public enum GetV1NfipCommunityLayerNoOverlapsWholeOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -10682,7 +10682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem32
+    public enum GetV1NfipCommunityLayerNoOverlapsWholeSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -10791,7 +10791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem33
+    public enum GetV1NfipCommunityStatusBookOrderbyInputItem
     {
         [EnumMember(Value = "communityIdNumber")]
         CommunityIdNumber,
@@ -10860,7 +10860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem33
+    public enum GetV1NfipCommunityStatusBookSelectInputItem
     {
         [EnumMember(Value = "communityIdNumber")]
         CommunityIdNumber,
@@ -10988,7 +10988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem34
+    public enum GetV1NfipMultipleLossPropertiesOrderbyInputItem
     {
         [EnumMember(Value = "fipsCountyCode")]
         FipsCountyCode,
@@ -11101,7 +11101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem34
+    public enum GetV1NfipMultipleLossPropertiesSelectInputItem
     {
         [EnumMember(Value = "fipsCountyCode")]
         FipsCountyCode,
@@ -11194,7 +11194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem35
+    public enum GetV1NfipResidentialPenetrationRatesOrderbyInputItem
     {
         [EnumMember(Value = "state")]
         State,
@@ -11231,7 +11231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem35
+    public enum GetV1NfipResidentialPenetrationRatesSelectInputItem
     {
         [EnumMember(Value = "state")]
         State,
@@ -11295,7 +11295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem36
+    public enum GetV1PublicAssistanceApplicantsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -11344,7 +11344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem36
+    public enum GetV1PublicAssistanceApplicantsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -11486,7 +11486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem37
+    public enum GetV1PublicAssistanceApplicantsProgramDeliveriesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -11631,7 +11631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem37
+    public enum GetV1PublicAssistanceApplicantsProgramDeliveriesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -11782,7 +11782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem38
+    public enum GetV1PublicAssistanceFundedProjectsDetailsOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -11875,7 +11875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem38
+    public enum GetV1PublicAssistanceFundedProjectsDetailsSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -11970,7 +11970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem39
+    public enum GetV1PublicAssistanceFundedProjectsSummariesOrderbyInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -12023,7 +12023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem39
+    public enum GetV1PublicAssistanceFundedProjectsSummariesSelectInputItem
     {
         [EnumMember(Value = "id")]
         Id,
@@ -12131,7 +12131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderbyInputItem40
+    public enum GetV2PublicAssistanceGrantAwardActivitiesOrderbyInputItem
     {
         [EnumMember(Value = "region")]
         Region,
@@ -12228,7 +12228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fema
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum selectInputItem40
+    public enum GetV2PublicAssistanceGrantAwardActivitiesSelectInputItem
     {
         [EnumMember(Value = "region")]
         Region,

@@ -13,27 +13,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
     public class StarmindActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
-        public IBodyWorkflowAction<FindExpertsV3Response, ApiConnectionActionConfiguration> FindExperts(Expression<Func<FindExpertsV3Input>> body)
+        public IBodyWorkflowAction<FindExpertsResponse, ApiConnectionActionConfiguration> FindExperts(Expression<Func<FindExpertsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<FindExpertsV3Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FindExpertsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/experts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FindExpertsV3Response>(callPayload);
+                return new ApiConnectionAction<FindExpertsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
-        public IBodyWorkflowAction<FindQuestionsV3Response, ApiConnectionActionConfiguration> FindQuestions(Expression<Func<string>> query = null, Expression<Func<int>> limit = null, Expression<Func<filterInput>> filter = null, Expression<Func<sortInput>> sort = null)
+        public IBodyWorkflowAction<FindQuestionsResponse, ApiConnectionActionConfiguration> FindQuestions(Expression<Func<string>> query = null, Expression<Func<int>> limit = null, Expression<Func<FilterInput>> filter = null, Expression<Func<SortInput>> sort = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<FindQuestionsV3Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FindQuestionsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/questions";
                 var apiCallHttpMethod = "get";
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
                     callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<FindQuestionsV3Response>(callPayload);
+                return new ApiConnectionAction<FindQuestionsResponse>(callPayload);
             });
         }
 
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
-        public IBodyWorkflowAction<Question, ApiConnectionActionConfiguration> PostQuestionDraft(Expression<Func<PostQuestionDraftV3Input>> body)
+        public IBodyWorkflowAction<Question, ApiConnectionActionConfiguration> PostQuestionDraft(Expression<Func<PostQuestionDraftBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Question, ApiConnectionActionConfiguration>(() =>
@@ -78,15 +78,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starmind")]
-        public IBodyWorkflowAction<PublishQuestionDraftV3Response, ApiConnectionActionConfiguration> PublishQuestionDraft(Expression<Func<int>> questionId)
+        public IBodyWorkflowAction<PublishQuestionDraftResponse, ApiConnectionActionConfiguration> PublishQuestionDraft(Expression<Func<int>> questionId)
         {
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
-            return new DeferredBodyAction<PublishQuestionDraftV3Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublishQuestionDraftResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v3/questions/{0}/publish", __workflow_questionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<PublishQuestionDraftV3Response>(callPayload);
+                return new ApiConnectionAction<PublishQuestionDraftResponse>(callPayload);
             });
         }
     }
@@ -95,16 +95,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
     {
     }
 
-    public class FindExpertsV3Response
+    public class FindExpertsResponse
     {
         [JsonProperty("experts")]
-        public FindExpertsV3ResponseExpertsTypeItem[] Experts { get; set; }
+        public FindExpertsResponseExpertsTypeItem[] Experts { get; set; }
 
         [JsonProperty("label_matches")]
         public ConceptLabelMatch[] LabelMatches { get; set; }
     }
 
-    public class FindExpertsV3ResponseExpertsTypeItem
+    public class FindExpertsResponseExpertsTypeItem
     {
         [JsonProperty("concept_scores")]
         public ExpertConceptScoresItem[] ConceptScores { get; set; }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         public ExpertConceptScoresItemConceptTypeLabelsForLanguagesTypeItemDescriptionTypeType DescriptionType { get; set; }
 
         [JsonProperty("language")]
-        public Language Language { get; set; }
+        public FindExpertsLanguageResponse Language { get; set; }
 
         [JsonProperty("labels")]
         public string[] Labels { get; set; }
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Language
+    public enum FindExpertsLanguageResponse
     {
         [EnumMember(Value = "de")]
         De,
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         public bool IsTechnical { get; set; }
 
         [JsonProperty("language")]
-        public Language Language { get; set; }
+        public FindExpertsLanguageResponse Language { get; set; }
 
         [JsonProperty("last_name")]
         public string LastName { get; set; }
@@ -282,19 +282,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         public string PrimaryLabel { get; set; }
     }
 
-    public class FindExpertsV3Input
+    public class FindExpertsBodyInput
     {
         [JsonProperty("language")]
-        public Language? Language { get; set; }
+        public FindExpertsLanguage? Language { get; set; }
 
         [JsonProperty("text_query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TextQuery { get; set; }
     }
 
-    public class FindQuestionsV3Response
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum FindExpertsLanguage
+    {
+        [EnumMember(Value = "de")]
+        De,
+        [EnumMember(Value = "en")]
+        En,
+        [EnumMember(Value = "es")]
+        Es,
+        [EnumMember(Value = "fr")]
+        Fr,
+        [EnumMember(Value = "hr")]
+        Hr,
+        [EnumMember(Value = "it")]
+        It,
+        [EnumMember(Value = "pt")]
+        Pt,
+        [EnumMember(Value = "ro")]
+        Ro,
+        [EnumMember(Value = "xx")]
+        Xx,
+        [EnumMember(Value = "zh")]
+        Zh
+    }
+
+    public class FindQuestionsResponse
     {
         [JsonProperty("_links")]
-        public FindQuestionsV3ResponseLinksType Links { get; set; }
+        public FindQuestionsResponseLinksType Links { get; set; }
 
         [JsonProperty("items")]
         public Question[] Items { get; set; }
@@ -303,31 +328,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         public int Total { get; set; }
     }
 
-    public class FindQuestionsV3ResponseLinksType
+    public class FindQuestionsResponseLinksType
     {
         [JsonProperty("self")]
-        public FindQuestionsV3ResponseLinksTypeSelfType Self { get; set; }
+        public FindQuestionsResponseLinksTypeSelfType Self { get; set; }
 
         [JsonProperty("next")]
-        public FindQuestionsV3ResponseLinksTypeNextType Next { get; set; }
+        public FindQuestionsResponseLinksTypeNextType Next { get; set; }
 
         [JsonProperty("last")]
-        public FindQuestionsV3ResponseLinksTypeLastType Last { get; set; }
+        public FindQuestionsResponseLinksTypeLastType Last { get; set; }
     }
 
-    public class FindQuestionsV3ResponseLinksTypeSelfType
+    public class FindQuestionsResponseLinksTypeSelfType
     {
         [JsonProperty("href")]
         public string Href { get; set; }
     }
 
-    public class FindQuestionsV3ResponseLinksTypeNextType
+    public class FindQuestionsResponseLinksTypeNextType
     {
         [JsonProperty("href")]
         public string Href { get; set; }
     }
 
-    public class FindQuestionsV3ResponseLinksTypeLastType
+    public class FindQuestionsResponseLinksTypeLastType
     {
         [JsonProperty("href")]
         public string Href { get; set; }
@@ -382,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterInput
+    public enum FilterInput
     {
         [EnumMember(Value = "solved")]
         Solved,
@@ -405,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "last_activity.desc")]
         LastActivityDesc,
@@ -482,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         public int Line { get; set; }
     }
 
-    public class PostQuestionDraftV3Input
+    public class PostQuestionDraftBodyInput
     {
         [JsonProperty("category")]
         public int? Category { get; set; }
@@ -494,13 +519,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starmind
         public string Description { get; set; }
 
         [JsonProperty("language")]
-        public Language? Language { get; set; }
+        public FindExpertsLanguage? Language { get; set; }
 
         [JsonProperty("knowledge_space")]
         public int? KnowledgeSpace { get; set; }
     }
 
-    public class PublishQuestionDraftV3Response
+    public class PublishQuestionDraftResponse
     {
         [JsonProperty("number_of_experts")]
         public int NumberOfExperts { get; set; }

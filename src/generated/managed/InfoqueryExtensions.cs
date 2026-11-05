@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
     public class InfoqueryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<AddNewPartnerEmployeeToPartnerCompanyResponse, ApiConnectionActionConfiguration> AddNewPartnerEmployeeToPartnerCompany(Expression<Func<string>> partnerCompanyId, Expression<Func<AddNewPartnerEmployeeToPartnerCompanyInput>> body)
+        public IBodyWorkflowAction<AddNewPartnerEmployeeToPartnerCompanyResponse, ApiConnectionActionConfiguration> AddNewPartnerEmployeeToPartnerCompany(Expression<Func<string>> partnerCompanyId, Expression<Func<AddNewPartnerEmployeeToPartnerCompanyBodyInput>> body)
         {
             var __workflow_partnerCompanyId = WorkflowExpression.Compile(partnerCompanyId, nameof(partnerCompanyId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<CreateNewFileResponse, ApiConnectionActionConfiguration> CreateNewFile(Expression<Func<CreateNewFileInput>> body = null)
+        public IBodyWorkflowAction<CreateNewFileResponse, ApiConnectionActionConfiguration> CreateNewFile(Expression<Func<CreateNewFileBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateNewFileResponse, ApiConnectionActionConfiguration>(() =>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<UpdateActionForFileResponse, ApiConnectionActionConfiguration> UpdateActionForFile(Expression<Func<string>> fileId, Expression<Func<string>> fileActionId, Expression<Func<UpdateActionForFileInput>> body = null)
+        public IBodyWorkflowAction<UpdateActionForFileResponse, ApiConnectionActionConfiguration> UpdateActionForFile(Expression<Func<string>> fileId, Expression<Func<string>> fileActionId, Expression<Func<UpdateActionForFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_fileActionId = WorkflowExpression.Compile(fileActionId, nameof(fileActionId), required: true);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetsFilesFromGivenSearchCriteria(Expression<Func<GetsFilesFromGivenSearchCriteriaInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetsFilesFromGivenSearchCriteria(Expression<Func<GetsFilesFromGivenSearchCriteriaBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeletePartnerOnSpecificFile(Expression<Func<string>> fileId, Expression<Func<DeletePartnerOnSpecificFileInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeletePartnerOnSpecificFile(Expression<Func<string>> fileId, Expression<Func<DeletePartnerOnSpecificFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CancelsPreviouslyPlacedOrder(Expression<Func<string>> fileId, Expression<Func<CancelsPreviouslyPlacedOrderInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CancelsPreviouslyPlacedOrder(Expression<Func<string>> fileId, Expression<Func<CancelsPreviouslyPlacedOrderBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<CreateNewDocumentOnSpecificFileResponse, ApiConnectionActionConfiguration> CreateNewDocumentOnSpecificFile(Expression<Func<string>> fileId, Expression<Func<CreateNewDocumentOnSpecificFileInput>> body = null)
+        public IBodyWorkflowAction<CreateNewDocumentOnSpecificFileResponse, ApiConnectionActionConfiguration> CreateNewDocumentOnSpecificFile(Expression<Func<string>> fileId, Expression<Func<CreateNewDocumentOnSpecificFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeletePreviouslyPlacedOrder(Expression<Func<string>> fileId, Expression<Func<DeletePreviouslyPlacedOrderInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeletePreviouslyPlacedOrder(Expression<Func<string>> fileId, Expression<Func<CancelsPreviouslyPlacedOrderBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddOrUpdateCustomFieldOnSpecificFile(Expression<Func<string>> fileId, Expression<Func<AddOrUpdateCustomFieldOnSpecificFileInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddOrUpdateCustomFieldOnSpecificFile(Expression<Func<string>> fileId, Expression<Func<AddOrUpdateCustomFieldOnSpecificDocumentBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddPartnerToSpecificFile(Expression<Func<string>> fileId, Expression<Func<AddPartnerToSpecificFileInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddPartnerToSpecificFile(Expression<Func<string>> fileId, Expression<Func<AddPartnerToSpecificFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<UpdatePartnerInformationForSpecificFileResponse, ApiConnectionActionConfiguration> UpdatePartnerInformationForSpecificFile(Expression<Func<string>> fileId, Expression<Func<string>> partnerId, Expression<Func<UpdatePartnerInformationForSpecificFileInput>> body = null)
+        public IBodyWorkflowAction<UpdatePartnerInformationForSpecificFileResponse, ApiConnectionActionConfiguration> UpdatePartnerInformationForSpecificFile(Expression<Func<string>> fileId, Expression<Func<string>> partnerId, Expression<Func<UpdatePartnerInformationForSpecificFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<AddNoteToFileResponse, ApiConnectionActionConfiguration> AddNoteToFile(Expression<Func<string>> fileId, Expression<Func<AddNoteToFileInput>> body = null)
+        public IBodyWorkflowAction<AddNoteToFileResponse, ApiConnectionActionConfiguration> AddNoteToFile(Expression<Func<string>> fileId, Expression<Func<AddNoteToFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<UploadWebURLDocumentToSpecificFileResponse, ApiConnectionActionConfiguration> UploadWebURLDocumentToSpecificFile(Expression<Func<string>> fileId, Expression<Func<UploadWebURLDocumentToSpecificFileInput>> body = null)
+        public IBodyWorkflowAction<UploadWebURLDocumentToSpecificFileResponse, ApiConnectionActionConfiguration> UploadWebURLDocumentToSpecificFile(Expression<Func<string>> fileId, Expression<Func<UploadWebURLDocumentToSpecificFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddOrUpdateCustomFieldOnSpecificDocument(Expression<Func<string>> fileId, Expression<Func<string>> documentId, Expression<Func<AddOrUpdateCustomFieldOnSpecificDocumentInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddOrUpdateCustomFieldOnSpecificDocument(Expression<Func<string>> fileId, Expression<Func<string>> documentId, Expression<Func<AddOrUpdateCustomFieldOnSpecificDocumentBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<UpdatePartnerEmployeeResponse, ApiConnectionActionConfiguration> UpdatePartnerEmployee(Expression<Func<string>> userId, Expression<Func<string>> partnerCompanyId, Expression<Func<UpdatePartnerEmployeeInput>> body = null)
+        public IBodyWorkflowAction<UpdatePartnerEmployeeResponse, ApiConnectionActionConfiguration> UpdatePartnerEmployee(Expression<Func<string>> userId, Expression<Func<string>> partnerCompanyId, Expression<Func<UpdatePartnerEmployeeBodyInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_partnerCompanyId = WorkflowExpression.Compile(partnerCompanyId, nameof(partnerCompanyId), required: true);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<AddActionToFileResponse, ApiConnectionActionConfiguration> AddActionToFile(Expression<Func<string>> fileId, Expression<Func<AddActionToFileInput>> body = null)
+        public IBodyWorkflowAction<AddActionToFileResponse, ApiConnectionActionConfiguration> AddActionToFile(Expression<Func<string>> fileId, Expression<Func<AddActionToFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -488,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<EstimateClosingFeeResponse, ApiConnectionActionConfiguration> EstimateClosingFee(Expression<Func<EstimateClosingFeeInput>> body = null)
+        public IBodyWorkflowAction<EstimateClosingFeeResponse, ApiConnectionActionConfiguration> EstimateClosingFee(Expression<Func<EstimateClosingFeeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<EstimateClosingFeeResponse, ApiConnectionActionConfiguration>(() =>
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string EmailAddress { get; set; }
     }
 
-    public class AddNewPartnerEmployeeToPartnerCompanyInput
+    public class AddNewPartnerEmployeeToPartnerCompanyBodyInput
     {
         public string Password { get; set; }
         public string PasswordExpirationDate { get; set; }
@@ -541,10 +541,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public AddNewPartnerEmployeeToPartnerCompanyInputContactInformationType ContactInformation { get; set; }
+        public AddNewPartnerEmployeeToPartnerCompanyBodyInputContactInformationType ContactInformation { get; set; }
     }
 
-    public class AddNewPartnerEmployeeToPartnerCompanyInputContactInformationType
+    public class AddNewPartnerEmployeeToPartnerCompanyBodyInputContactInformationType
     {
         public string EmailAddress { get; set; }
     }
@@ -557,12 +557,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string[] Warnings { get; set; }
     }
 
-    public class CreateNewFileInput
+    public class CreateNewFileBodyInput
     {
-        public CreateNewFileInputBuyersTypeItem[] Buyers { get; set; }
-        public CreateNewFileInputSellersTypeItem[] Sellers { get; set; }
+        public BodyInputBuyersTypeItem[] Buyers { get; set; }
+        public BodyInputSellersTypeItem[] Sellers { get; set; }
         public string EstimatedSettlementDate { get; set; }
-        public CreateNewFileInputTransactionProductTypeType TransactionProductType { get; set; }
+        public BodyInputTransactionProductTypeType TransactionProductType { get; set; }
         public int? SalesPrice { get; set; }
         public string ClientFileNumber { get; set; }
         public string PiggybackFileNumber { get; set; }
@@ -571,29 +571,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [JsonProperty("SourceOfBusinessID")]
         public int? SourceOfBusinessId { get; set; }
         public string Note { get; set; }
-        public CreateNewFileInputCustomFieldsTypeItem[] CustomFields { get; set; }
-        public CreateNewFileInputLoansTypeItem[] Loans { get; set; }
-        public CreateNewFileInputPropertiesTypeItem[] Properties { get; set; }
+        public BodyInputCustomFieldsTypeItem[] CustomFields { get; set; }
+        public CreateNewFileBodyInputLoansTypeItem[] Loans { get; set; }
+        public BodyInputPropertiesTypeItem[] Properties { get; set; }
     }
 
-    public class CreateNewFileInputBuyersTypeItem
+    public class BodyInputBuyersTypeItem
     {
         public string EntityType { get; set; }
         public bool? IsPrimaryTransactee { get; set; }
-        public CreateNewFileInputBuyersTypeItemPrimaryType Primary { get; set; }
+        public BodyInputBuyersTypeItemPrimaryType Primary { get; set; }
         public bool? UsePropertyAddress { get; set; }
-        public CreateNewFileInputBuyersTypeItemAddressType Address { get; set; }
+        public BodyInputBuyersTypeItemAddressType Address { get; set; }
         public string MaritalStatus { get; set; }
         public string Email { get; set; }
     }
 
-    public class CreateNewFileInputBuyersTypeItemPrimaryType
+    public class BodyInputBuyersTypeItemPrimaryType
     {
         public string First { get; set; }
         public string Last { get; set; }
     }
 
-    public class CreateNewFileInputBuyersTypeItemAddressType
+    public class BodyInputBuyersTypeItemAddressType
     {
         public string Address1 { get; set; }
         public string City { get; set; }
@@ -601,24 +601,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Zip { get; set; }
     }
 
-    public class CreateNewFileInputSellersTypeItem
+    public class BodyInputSellersTypeItem
     {
         public string EntityType { get; set; }
         public bool? IsPrimaryTransactee { get; set; }
-        public CreateNewFileInputSellersTypeItemPrimaryType Primary { get; set; }
+        public BodyInputSellersTypeItemPrimaryType Primary { get; set; }
         public bool? UsePropertyAddress { get; set; }
-        public CreateNewFileInputSellersTypeItemAddressType Address { get; set; }
+        public BodyInputSellersTypeItemAddressType Address { get; set; }
         public string MaritalStatus { get; set; }
         public string Email { get; set; }
     }
 
-    public class CreateNewFileInputSellersTypeItemPrimaryType
+    public class BodyInputSellersTypeItemPrimaryType
     {
         public string First { get; set; }
         public string Last { get; set; }
     }
 
-    public class CreateNewFileInputSellersTypeItemAddressType
+    public class BodyInputSellersTypeItemAddressType
     {
         public string Address1 { get; set; }
         public string City { get; set; }
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Zip { get; set; }
     }
 
-    public class CreateNewFileInputTransactionProductTypeType
+    public class BodyInputTransactionProductTypeType
     {
         [JsonProperty("TransactionTypeID")]
         public int? TransactionTypeId { get; set; }
@@ -635,13 +635,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public int? ProductTypeId { get; set; }
     }
 
-    public class CreateNewFileInputCustomFieldsTypeItem
+    public class BodyInputCustomFieldsTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
     }
 
-    public class CreateNewFileInputLoansTypeItem
+    public class CreateNewFileBodyInputLoansTypeItem
     {
         public int? LienPosition { get; set; }
         public string LoanNumber { get; set; }
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string LoanType { get; set; }
     }
 
-    public class CreateNewFileInputPropertiesTypeItem
+    public class BodyInputPropertiesTypeItem
     {
         public bool? IsPrimary { get; set; }
         public string StreetNumber { get; set; }
@@ -708,21 +708,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public int FileActionId { get; set; }
     }
 
-    public class UpdateActionForFileInput
+    public class UpdateActionForFileBodyInput
     {
-        public UpdateActionForFileInputStartTaskType StartTask { get; set; }
-        public UpdateActionForFileInputCompleteTaskType CompleteTask { get; set; }
+        public UpdateActionForFileBodyInputStartTaskType StartTask { get; set; }
+        public UpdateActionForFileBodyInputCompleteTaskType CompleteTask { get; set; }
     }
 
-    public class UpdateActionForFileInputStartTaskType
-    {
-        [JsonProperty("CoordinatorTypeID")]
-        public int? CoordinatorTypeId { get; set; }
-        public string DueDate { get; set; }
-        public bool? DoneDateLocked { get; set; }
-    }
-
-    public class UpdateActionForFileInputCompleteTaskType
+    public class UpdateActionForFileBodyInputStartTaskType
     {
         [JsonProperty("CoordinatorTypeID")]
         public int? CoordinatorTypeId { get; set; }
@@ -730,7 +722,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public bool? DoneDateLocked { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInput
+    public class UpdateActionForFileBodyInputCompleteTaskType
+    {
+        [JsonProperty("CoordinatorTypeID")]
+        public int? CoordinatorTypeId { get; set; }
+        public string DueDate { get; set; }
+        public bool? DoneDateLocked { get; set; }
+    }
+
+    public class GetsFilesFromGivenSearchCriteriaBodyInput
     {
         public string FileNumber { get; set; }
 
@@ -740,35 +740,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         [JsonProperty("OfficeID")]
         public int? OfficeId { get; set; }
         public string ClientsFileNumber { get; set; }
-        public GetsFilesFromGivenSearchCriteriaInputTransactionProductTypeType TransactionProductType { get; set; }
-        public GetsFilesFromGivenSearchCriteriaInputStatusesTypeItem[] Statuses { get; set; }
+        public BodyInputTransactionProductTypeType TransactionProductType { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
         public string PolicyNumber { get; set; }
         public string SearchNumber { get; set; }
         public string LoanNumber { get; set; }
-        public GetsFilesFromGivenSearchCriteriaInputPropertyType Property { get; set; }
-        public GetsFilesFromGivenSearchCriteriaInputBuyerType Buyer { get; set; }
-        public GetsFilesFromGivenSearchCriteriaInputFilePartnerType FilePartner { get; set; }
+        public BodyInputPropertyType Property { get; set; }
+        public BodyInputBuyerType Buyer { get; set; }
+        public BodyInputFilePartnerType FilePartner { get; set; }
         public string OpenedFromDate { get; set; }
         public string OpenedToDate { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInputTransactionProductTypeType
-    {
-        [JsonProperty("TransactionTypeID")]
-        public int? TransactionTypeId { get; set; }
-
-        [JsonProperty("ProductTypeID")]
-        public int? ProductTypeId { get; set; }
-    }
-
-    public class GetsFilesFromGivenSearchCriteriaInputStatusesTypeItem
+    public class BodyInputStatusesTypeItem
     {
         [JsonProperty("StatusID")]
         public int? StatusId { get; set; }
         public string Name { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInputPropertyType
+    public class BodyInputPropertyType
     {
         public bool? IsPrimary { get; set; }
         public string StreetNumber { get; set; }
@@ -782,60 +773,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string ParcelId { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInputBuyerType
+    public class BodyInputBuyerType
     {
         public string EntityType { get; set; }
-        public GetsFilesFromGivenSearchCriteriaInputBuyerTypePrimaryType Primary { get; set; }
+        public BodyInputBuyerTypePrimaryType Primary { get; set; }
         public bool? UsePropertyAddress { get; set; }
         public string MaritalStatus { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInputBuyerTypePrimaryType
+    public class BodyInputBuyerTypePrimaryType
     {
         public string First { get; set; }
         public string Last { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInputFilePartnerType
+    public class BodyInputFilePartnerType
     {
-        public GetsFilesFromGivenSearchCriteriaInputFilePartnerTypePrimaryEmployeeType PrimaryEmployee { get; set; }
+        public BodyInputFilePartnerTypePrimaryEmployeeType PrimaryEmployee { get; set; }
 
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
 
         [JsonProperty("PartnerID")]
         public int? PartnerId { get; set; }
-        public GetsFilesFromGivenSearchCriteriaInputFilePartnerTypePartnerTypeType PartnerType { get; set; }
+        public BodyInputFilePartnerTypePartnerTypeType PartnerType { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInputFilePartnerTypePrimaryEmployeeType
+    public class BodyInputFilePartnerTypePrimaryEmployeeType
     {
         [JsonProperty("UserID")]
         public int? UserId { get; set; }
     }
 
-    public class GetsFilesFromGivenSearchCriteriaInputFilePartnerTypePartnerTypeType
+    public class BodyInputFilePartnerTypePartnerTypeType
     {
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
     }
 
-    public class DeletePartnerOnSpecificFileInput
+    public class DeletePartnerOnSpecificFileBodyInput
     {
-        public DeletePartnerOnSpecificFileInputPartnersTypeItem[] Partners { get; set; }
+        public DeletePartnerOnSpecificFileBodyInputPartnersTypeItem[] Partners { get; set; }
     }
 
-    public class DeletePartnerOnSpecificFileInputPartnersTypeItem
+    public class DeletePartnerOnSpecificFileBodyInputPartnersTypeItem
     {
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
 
         [JsonProperty("PartnerID")]
         public int? PartnerId { get; set; }
-        public DeletePartnerOnSpecificFileInputPartnersTypeItemPartnerTypeType PartnerType { get; set; }
+        public BodyInputPartnersTypeItemPartnerTypeType PartnerType { get; set; }
     }
 
-    public class DeletePartnerOnSpecificFileInputPartnersTypeItemPartnerTypeType
+    public class BodyInputPartnersTypeItemPartnerTypeType
     {
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
@@ -932,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Zip { get; set; }
     }
 
-    public class CancelsPreviouslyPlacedOrderInput
+    public class CancelsPreviouslyPlacedOrderBodyInput
     {
         [JsonProperty("FileID")]
         public int? FileId { get; set; }
@@ -949,72 +940,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public int DocumentId { get; set; }
     }
 
-    public class CreateNewDocumentOnSpecificFileInput
+    public class CreateNewDocumentOnSpecificFileBodyInput
     {
         public string DocumentName { get; set; }
-        public CreateNewDocumentOnSpecificFileInputDocumentTypeType DocumentType { get; set; }
+        public BodyInputDocumentTypeType DocumentType { get; set; }
         public string Description { get; set; }
         public string InternalOnly { get; set; }
         public string DocumentBody { get; set; }
     }
 
-    public class CreateNewDocumentOnSpecificFileInputDocumentTypeType
+    public class BodyInputDocumentTypeType
     {
         [JsonProperty("DocumentTypeID")]
         public int? DocumentTypeId { get; set; }
     }
 
-    public class DeletePreviouslyPlacedOrderInput
+    public class AddOrUpdateCustomFieldOnSpecificDocumentBodyInput
     {
-        [JsonProperty("FileID")]
-        public int? FileId { get; set; }
+        public BodyInputCustomFieldsTypeItem[] CustomFields { get; set; }
     }
 
-    public class AddOrUpdateCustomFieldOnSpecificFileInput
+    public class AddPartnerToSpecificFileBodyInput
     {
-        public AddOrUpdateCustomFieldOnSpecificFileInputCustomFieldsTypeItem[] CustomFields { get; set; }
+        public AddPartnerToSpecificFileBodyInputPartnersTypeItem[] Partners { get; set; }
     }
 
-    public class AddOrUpdateCustomFieldOnSpecificFileInputCustomFieldsTypeItem
+    public class AddPartnerToSpecificFileBodyInputPartnersTypeItem
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
-    }
-
-    public class AddPartnerToSpecificFileInput
-    {
-        public AddPartnerToSpecificFileInputPartnersTypeItem[] Partners { get; set; }
-    }
-
-    public class AddPartnerToSpecificFileInputPartnersTypeItem
-    {
-        public AddPartnerToSpecificFileInputPartnersTypeItemPrimaryEmployeeType PrimaryEmployee { get; set; }
-        public AddPartnerToSpecificFileInputPartnersTypeItemSecondaryEmployeesTypeItem[] SecondaryEmployees { get; set; }
+        public BodyInputPartnersTypeItemPrimaryEmployeeType PrimaryEmployee { get; set; }
+        public BodyInputPartnersTypeItemSecondaryEmployeesTypeItem[] SecondaryEmployees { get; set; }
 
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
 
         [JsonProperty("PartnerID")]
         public int? PartnerId { get; set; }
-        public AddPartnerToSpecificFileInputPartnersTypeItemPartnerTypeType PartnerType { get; set; }
+        public BodyInputPartnersTypeItemPartnerTypeType PartnerType { get; set; }
     }
 
-    public class AddPartnerToSpecificFileInputPartnersTypeItemPrimaryEmployeeType
+    public class BodyInputPartnersTypeItemPrimaryEmployeeType
     {
         [JsonProperty("UserID")]
         public int? UserId { get; set; }
     }
 
-    public class AddPartnerToSpecificFileInputPartnersTypeItemSecondaryEmployeesTypeItem
+    public class BodyInputPartnersTypeItemSecondaryEmployeesTypeItem
     {
         [JsonProperty("UserID")]
         public int? UserId { get; set; }
-    }
-
-    public class AddPartnerToSpecificFileInputPartnersTypeItemPartnerTypeType
-    {
-        [JsonProperty("PartnerTypeID")]
-        public int? PartnerTypeId { get; set; }
     }
 
     public class UpdatePartnerInformationForSpecificFileResponse
@@ -1113,12 +1086,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Website { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInput
+    public class UpdatePartnerInformationForSpecificFileBodyInput
     {
         [JsonProperty("FileID")]
         public int? FileId { get; set; }
-        public UpdatePartnerInformationForSpecificFileInputPrimaryEmployeeType PrimaryEmployee { get; set; }
-        public UpdatePartnerInformationForSpecificFileInputSecondaryEmployeesTypeItem[] SecondaryEmployees { get; set; }
+        public BodyInputPrimaryEmployeeType PrimaryEmployee { get; set; }
+        public BodyInputSecondaryEmployeesTypeItem[] SecondaryEmployees { get; set; }
         public string ReferenceNumber { get; set; }
         public string RemoteFileNumber { get; set; }
 
@@ -1127,26 +1100,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
 
         [JsonProperty("PartnerID")]
         public int? PartnerId { get; set; }
-        public UpdatePartnerInformationForSpecificFileInputPartnerTypeType PartnerType { get; set; }
+        public BodyInputPartnerTypeType PartnerType { get; set; }
 
         [JsonProperty("OfficeID")]
         public int? OfficeId { get; set; }
         public string PartnerName { get; set; }
-        public UpdatePartnerInformationForSpecificFileInputMailingAddressType MailingAddress { get; set; }
-        public UpdatePartnerInformationForSpecificFileInputContactInformationType ContactInformation { get; set; }
+        public BodyInputMailingAddressType MailingAddress { get; set; }
+        public UpdatePartnerInformationForSpecificFileBodyInputContactInformationType ContactInformation { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInputPrimaryEmployeeType
+    public class BodyInputPrimaryEmployeeType
     {
         [JsonProperty("UserID")]
         public int? UserId { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UpdatePartnerInformationForSpecificFileInputPrimaryEmployeeTypeContactInformationType ContactInformation { get; set; }
+        public BodyInputPrimaryEmployeeTypeContactInformationType ContactInformation { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInputPrimaryEmployeeTypeContactInformationType
+    public class BodyInputPrimaryEmployeeTypeContactInformationType
     {
         public string PhoneNumber { get; set; }
         public string HomePhoneNumber { get; set; }
@@ -1158,17 +1131,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Website { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInputSecondaryEmployeesTypeItem
+    public class BodyInputSecondaryEmployeesTypeItem
     {
         [JsonProperty("UserID")]
         public int? UserId { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UpdatePartnerInformationForSpecificFileInputSecondaryEmployeesTypeItemContactInformationType ContactInformation { get; set; }
+        public BodyInputSecondaryEmployeesTypeItemContactInformationType ContactInformation { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInputSecondaryEmployeesTypeItemContactInformationType
+    public class BodyInputSecondaryEmployeesTypeItemContactInformationType
     {
         public string PhoneNumber { get; set; }
         public string HomePhoneNumber { get; set; }
@@ -1180,14 +1153,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Website { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInputPartnerTypeType
+    public class BodyInputPartnerTypeType
     {
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
         public string PartnerTypeName { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInputMailingAddressType
+    public class BodyInputMailingAddressType
     {
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -1196,7 +1169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string Zip { get; set; }
     }
 
-    public class UpdatePartnerInformationForSpecificFileInputContactInformationType
+    public class UpdatePartnerInformationForSpecificFileBodyInputContactInformationType
     {
         public string PhoneNumber { get; set; }
         public string HomePhoneNumber { get; set; }
@@ -1220,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public int NoteId { get; set; }
     }
 
-    public class AddNoteToFileInput
+    public class AddNoteToFileBodyInput
     {
         public string Subject { get; set; }
         public string Body { get; set; }
@@ -1278,30 +1251,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public int DocumentId { get; set; }
     }
 
-    public class UploadWebURLDocumentToSpecificFileInput
+    public class UploadWebURLDocumentToSpecificFileBodyInput
     {
         public string DocumentName { get; set; }
-        public UploadWebURLDocumentToSpecificFileInputDocumentTypeType DocumentType { get; set; }
+        public BodyInputDocumentTypeType DocumentType { get; set; }
         public string Description { get; set; }
         public bool? InternalOnly { get; set; }
         public string WebURL { get; set; }
-    }
-
-    public class UploadWebURLDocumentToSpecificFileInputDocumentTypeType
-    {
-        [JsonProperty("DocumentTypeID")]
-        public int? DocumentTypeId { get; set; }
-    }
-
-    public class AddOrUpdateCustomFieldOnSpecificDocumentInput
-    {
-        public AddOrUpdateCustomFieldOnSpecificDocumentInputCustomFieldsTypeItem[] CustomFields { get; set; }
-    }
-
-    public class AddOrUpdateCustomFieldOnSpecificDocumentInputCustomFieldsTypeItem
-    {
-        public string Name { get; set; }
-        public string Value { get; set; }
     }
 
     public class UpdatePartnerEmployeeResponse
@@ -1337,29 +1293,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string EmailAddress { get; set; }
     }
 
-    public class UpdatePartnerEmployeeInput
+    public class UpdatePartnerEmployeeBodyInput
     {
         public string Password { get; set; }
         public string PasswordExpirationDate { get; set; }
-        public UpdatePartnerEmployeeInputRolesTypeItem[] Roles { get; set; }
+        public BodyInputRolesTypeItem[] Roles { get; set; }
         public bool? Enabled { get; set; }
         public bool? WebsiteAccess { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public UpdatePartnerEmployeeInputContactInformationType ContactInformation { get; set; }
+        public AddNewPartnerEmployeeToPartnerCompanyBodyInputContactInformationType ContactInformation { get; set; }
     }
 
-    public class UpdatePartnerEmployeeInputRolesTypeItem
+    public class BodyInputRolesTypeItem
     {
         [JsonProperty("RoleID")]
         public int? RoleId { get; set; }
         public string Name { get; set; }
-    }
-
-    public class UpdatePartnerEmployeeInputContactInformationType
-    {
-        public string EmailAddress { get; set; }
     }
 
     public class GetPartiesForSpecificFileResponse
@@ -1494,45 +1445,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public int FileActionId { get; set; }
     }
 
-    public class AddActionToFileInput
+    public class AddActionToFileBodyInput
     {
-        public AddActionToFileInputActionTypeType ActionType { get; set; }
-        public AddActionToFileInputGroupType Group { get; set; }
-        public AddActionToFileInputStartTaskType StartTask { get; set; }
-        public AddActionToFileInputCompleteTaskType CompleteTask { get; set; }
+        public BodyInputActionTypeType ActionType { get; set; }
+        public BodyInputGroupType Group { get; set; }
+        public AddActionToFileBodyInputStartTaskType StartTask { get; set; }
+        public AddActionToFileBodyInputCompleteTaskType CompleteTask { get; set; }
     }
 
-    public class AddActionToFileInputActionTypeType
+    public class BodyInputActionTypeType
     {
         [JsonProperty("ActionTypeID")]
         public int? ActionTypeId { get; set; }
     }
 
-    public class AddActionToFileInputGroupType
+    public class BodyInputGroupType
     {
         [JsonProperty("ActionGroupID")]
         public int? ActionGroupId { get; set; }
     }
 
-    public class AddActionToFileInputStartTaskType
+    public class AddActionToFileBodyInputStartTaskType
     {
         [JsonProperty("CoordinatorTypeID")]
         public int? CoordinatorTypeId { get; set; }
         public string DueDate { get; set; }
     }
 
-    public class AddActionToFileInputCompleteTaskType
+    public class AddActionToFileBodyInputCompleteTaskType
     {
-        public AddActionToFileInputCompleteTaskTypePartnerType Partner { get; set; }
+        public BodyInputCompleteTaskTypePartnerType Partner { get; set; }
         public string DueDate { get; set; }
     }
 
-    public class AddActionToFileInputCompleteTaskTypePartnerType
+    public class BodyInputCompleteTaskTypePartnerType
     {
-        public AddActionToFileInputCompleteTaskTypePartnerTypePartnerTypeType PartnerType { get; set; }
+        public BodyInputCompleteTaskTypePartnerTypePartnerTypeType PartnerType { get; set; }
     }
 
-    public class AddActionToFileInputCompleteTaskTypePartnerTypePartnerTypeType
+    public class BodyInputCompleteTaskTypePartnerTypePartnerTypeType
     {
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
@@ -1879,61 +1830,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public int FullLendersPremium { get; set; }
     }
 
-    public class EstimateClosingFeeInput
+    public class EstimateClosingFeeBodyInput
     {
-        public EstimateClosingFeeInputTransactionProductTypeType TransactionProductType { get; set; }
+        public BodyInputTransactionProductTypeType TransactionProductType { get; set; }
         public string SettlementStatementVersion { get; set; }
         public int? SalesPrice { get; set; }
-        public EstimateClosingFeeInputLoansTypeItem[] Loans { get; set; }
-        public EstimateClosingFeeInputPropertiesTypeItem[] Properties { get; set; }
-        public EstimateClosingFeeInputFilePartnersTypeItem[] FilePartners { get; set; }
-        public EstimateClosingFeeInputEndorsementsTypeItem[] Endorsements { get; set; }
+        public EstimateClosingFeeBodyInputLoansTypeItem[] Loans { get; set; }
+        public BodyInputPropertiesTypeItem[] Properties { get; set; }
+        public BodyInputFilePartnersTypeItem[] FilePartners { get; set; }
+        public BodyInputEndorsementsTypeItem[] Endorsements { get; set; }
     }
 
-    public class EstimateClosingFeeInputTransactionProductTypeType
-    {
-        [JsonProperty("TransactionTypeID")]
-        public int? TransactionTypeId { get; set; }
-
-        [JsonProperty("ProductTypeID")]
-        public int? ProductTypeId { get; set; }
-    }
-
-    public class EstimateClosingFeeInputLoansTypeItem
+    public class EstimateClosingFeeBodyInputLoansTypeItem
     {
         public int? LienPosition { get; set; }
         public int? LoanAmount { get; set; }
         public string LoanType { get; set; }
     }
 
-    public class EstimateClosingFeeInputPropertiesTypeItem
-    {
-        public bool? IsPrimary { get; set; }
-        public string StreetNumber { get; set; }
-        public string StreetName { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string County { get; set; }
-        public string Zip { get; set; }
-    }
-
-    public class EstimateClosingFeeInputFilePartnersTypeItem
+    public class BodyInputFilePartnersTypeItem
     {
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
 
         [JsonProperty("PartnerID")]
         public int? PartnerId { get; set; }
-        public EstimateClosingFeeInputFilePartnersTypeItemPartnerTypeType PartnerType { get; set; }
+        public BodyInputFilePartnersTypeItemPartnerTypeType PartnerType { get; set; }
     }
 
-    public class EstimateClosingFeeInputFilePartnersTypeItemPartnerTypeType
+    public class BodyInputFilePartnersTypeItemPartnerTypeType
     {
         [JsonProperty("PartnerTypeID")]
         public int? PartnerTypeId { get; set; }
     }
 
-    public class EstimateClosingFeeInputEndorsementsTypeItem
+    public class BodyInputEndorsementsTypeItem
     {
         public string Name { get; set; }
     }

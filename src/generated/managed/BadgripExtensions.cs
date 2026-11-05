@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<IssuerCreateResponse, ApiConnectionActionConfiguration> IssuerCreate(Expression<Func<IssuerCreateInput>> body = null)
+        public IBodyWorkflowAction<IssuerCreateResponse, ApiConnectionActionConfiguration> IssuerCreate(Expression<Func<IssuerCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IssuerCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<IssuerUpdateResponse, ApiConnectionActionConfiguration> IssuerUpdate(Expression<Func<string>> entityId, Expression<Func<IssuerUpdateInput>> body = null)
+        public IBodyWorkflowAction<IssuerUpdateResponse, ApiConnectionActionConfiguration> IssuerUpdate(Expression<Func<string>> entityId, Expression<Func<IssuerCreateBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<AssertionIssueResponse, ApiConnectionActionConfiguration> AssertionIssue(Expression<Func<string>> entityId, Expression<Func<AssertionIssueInput>> body = null)
+        public IBodyWorkflowAction<AssertionIssueResponse, ApiConnectionActionConfiguration> AssertionIssue(Expression<Func<string>> entityId, Expression<Func<AssertionIssueBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<ClassCreateIssuerResponse, ApiConnectionActionConfiguration> ClassCreateIssuer(Expression<Func<string>> entityId, Expression<Func<ClassCreateIssuerInput>> body = null)
+        public IBodyWorkflowAction<ClassCreateIssuerResponse, ApiConnectionActionConfiguration> ClassCreateIssuer(Expression<Func<string>> entityId, Expression<Func<ClassCreateBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<ClassCreateResponse, ApiConnectionActionConfiguration> ClassCreate(Expression<Func<int>> num = null, Expression<Func<ClassCreateInput>> body = null)
+        public IBodyWorkflowAction<ClassCreateResponse, ApiConnectionActionConfiguration> ClassCreate(Expression<Func<int>> num = null, Expression<Func<ClassCreateBodyInput>> body = null)
         {
             var __workflow_num = WorkflowExpression.Compile(num, nameof(num), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<ClassUpdateResponse, ApiConnectionActionConfiguration> ClassUpdate(Expression<Func<string>> entityId, Expression<Func<ClassUpdateInput>> body = null)
+        public IBodyWorkflowAction<ClassUpdateResponse, ApiConnectionActionConfiguration> ClassUpdate(Expression<Func<string>> entityId, Expression<Func<ClassCreateBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<ClassIssueAssertionResponse, ApiConnectionActionConfiguration> ClassIssueAssertion(Expression<Func<string>> entityId, Expression<Func<ClassIssueAssertionInput>> body = null)
+        public IBodyWorkflowAction<ClassIssueAssertionResponse, ApiConnectionActionConfiguration> ClassIssueAssertion(Expression<Func<string>> entityId, Expression<Func<AssertionIssueBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AssertionRevoke(Expression<Func<string>> entityId, Expression<Func<AssertionRevokeInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssertionRevoke(Expression<Func<string>> entityId, Expression<Func<AssertionRevokeBodyInput>> body)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<AssertionUpdateResponse, ApiConnectionActionConfiguration> AssertionUpdate(Expression<Func<string>> entityId, Expression<Func<AssertionUpdateInput>> body = null)
+        public IBodyWorkflowAction<AssertionUpdateResponse, ApiConnectionActionConfiguration> AssertionUpdate(Expression<Func<string>> entityId, Expression<Func<AssertionIssueBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<UserCreateResponse, ApiConnectionActionConfiguration> UserCreate(Expression<Func<string>> entityId, Expression<Func<UserCreateInput>> body = null)
+        public IBodyWorkflowAction<UserCreateResponse, ApiConnectionActionConfiguration> UserCreate(Expression<Func<string>> entityId, Expression<Func<UserCreateBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<UserUpdateResponse, ApiConnectionActionConfiguration> UserUpdate(Expression<Func<string>> entityId, Expression<Func<UserUpdateInput>> body = null)
+        public IBodyWorkflowAction<UserUpdateResponse, ApiConnectionActionConfiguration> UserUpdate(Expression<Func<string>> entityId, Expression<Func<UserCreateBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<BackpackUploadAssertionResponse, ApiConnectionActionConfiguration> BackpackUploadAssertion(Expression<Func<BackpackUploadAssertionInput>> body = null)
+        public IBodyWorkflowAction<BackpackUploadAssertionResponse, ApiConnectionActionConfiguration> BackpackUploadAssertion(Expression<Func<AssertionIssueBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BackpackUploadAssertionResponse, ApiConnectionActionConfiguration>(() =>
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<BackpackUpdateAcceptanceResponse, ApiConnectionActionConfiguration> BackpackUpdateAcceptance(Expression<Func<string>> entityId, Expression<Func<BackpackUpdateAcceptanceInput>> body = null)
+        public IBodyWorkflowAction<BackpackUpdateAcceptanceResponse, ApiConnectionActionConfiguration> BackpackUpdateAcceptance(Expression<Func<string>> entityId, Expression<Func<BackpackUpdateAcceptanceBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<CollectionCreateResponse, ApiConnectionActionConfiguration> CollectionCreate(Expression<Func<CollectionCreateInput>> body = null)
+        public IBodyWorkflowAction<CollectionCreateResponse, ApiConnectionActionConfiguration> CollectionCreate(Expression<Func<CollectionCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CollectionCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<CollectionUpdateResponse, ApiConnectionActionConfiguration> CollectionUpdate(Expression<Func<string>> entityId, Expression<Func<CollectionUpdateInput>> body = null)
+        public IBodyWorkflowAction<CollectionUpdateResponse, ApiConnectionActionConfiguration> CollectionUpdate(Expression<Func<string>> entityId, Expression<Func<CollectionCreateBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<ClassIssueBulkResponse, ApiConnectionActionConfiguration> ClassIssueBulk(Expression<Func<string>> entityId, Expression<Func<ClassIssueBulkInput>> body = null)
+        public IBodyWorkflowAction<ClassIssueBulkResponse, ApiConnectionActionConfiguration> ClassIssueBulk(Expression<Func<string>> entityId, Expression<Func<AssertionIssueBodyInput>> body = null)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -549,7 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<AssertionRevokeBulkResponse, ApiConnectionActionConfiguration> AssertionRevokeBulk(Expression<Func<AssertionRevokeBulkInput>> body = null)
+        public IBodyWorkflowAction<AssertionRevokeBulkResponse, ApiConnectionActionConfiguration> AssertionRevokeBulk(Expression<Func<AssertionIssueBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AssertionRevokeBulkResponse, ApiConnectionActionConfiguration>(() =>
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> TokenRetrieve(Expression<Func<object>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> TokenRetrieve(Expression<Func<TokenRetrieveBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AccountRequestRecovery(Expression<Func<AccountRequestRecoveryInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AccountRequestRecovery(Expression<Func<AccountRequestRecoveryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IBodyWorkflowAction<AccountRecoverResponse, ApiConnectionActionConfiguration> AccountRecover(Expression<Func<AccountRecoverInput>> body)
+        public IBodyWorkflowAction<AccountRecoverResponse, ApiConnectionActionConfiguration> AccountRecover(Expression<Func<AccountRecoverBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AccountRecoverResponse, ApiConnectionActionConfiguration>(() =>
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "badgrip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BackpackImportAssertion(Expression<Func<BackpackImportAssertionInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BackpackImportAssertion(Expression<Func<BackpackImportAssertionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Role { get; set; }
     }
 
-    public class IssuerCreateInput
+    public class IssuerCreateBodyInput
     {
         [JsonProperty("createdBy")]
         public string CreatedBy { get; set; }
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Url { get; set; }
 
         [JsonProperty("staff")]
-        public IssuerCreateInputStaffTypeItem[] Staff { get; set; }
+        public BodyInputStaffTypeItem[] Staff { get; set; }
 
         [JsonProperty("extensions")]
         public string Extensions { get; set; }
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string BadgrDomain { get; set; }
     }
 
-    public class IssuerCreateInputStaffTypeItem
+    public class BodyInputStaffTypeItem
     {
         [JsonProperty("entityType")]
         public string EntityType { get; set; }
@@ -1009,54 +1009,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
     }
 
     public class IssuerUpdateResponseResultTypeItemStaffTypeItem
-    {
-        [JsonProperty("entityType")]
-        public string EntityType { get; set; }
-
-        [JsonProperty("entityId")]
-        public string EntityId { get; set; }
-
-        [JsonProperty("userProfile")]
-        public string UserProfile { get; set; }
-
-        [JsonProperty("user")]
-        public string User { get; set; }
-
-        [JsonProperty("role")]
-        public string Role { get; set; }
-    }
-
-    public class IssuerUpdateInput
-    {
-        [JsonProperty("createdBy")]
-        public string CreatedBy { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("image")]
-        public string Image { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("staff")]
-        public IssuerUpdateInputStaffTypeItem[] Staff { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-
-        [JsonProperty("badgrDomain")]
-        public string BadgrDomain { get; set; }
-    }
-
-    public class IssuerUpdateInputStaffTypeItem
     {
         [JsonProperty("entityType")]
         public string EntityType { get; set; }
@@ -1290,7 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class AssertionIssueInput
+    public class AssertionIssueBodyInput
     {
         [JsonProperty("badgeclass")]
         public string Badgeclass { get; set; }
@@ -1305,7 +1257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string IssuerOpenBadgeId { get; set; }
 
         [JsonProperty("recipient")]
-        public AssertionIssueInputRecipientType Recipient { get; set; }
+        public AssertionIssueBodyInputRecipientType Recipient { get; set; }
 
         [JsonProperty("issuedOn")]
         public string IssuedOn { get; set; }
@@ -1314,7 +1266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
 
         [JsonProperty("evidence")]
-        public AssertionIssueInputEvidenceTypeItem[] Evidence { get; set; }
+        public BodyInputEvidenceTypeItem[] Evidence { get; set; }
 
         [JsonProperty("expires")]
         public string Expires { get; set; }
@@ -1326,7 +1278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string BadgeclassName { get; set; }
     }
 
-    public class AssertionIssueInputRecipientType
+    public class AssertionIssueBodyInputRecipientType
     {
         [JsonProperty("identity")]
         public string Identity { get; set; }
@@ -1344,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Salt { get; set; }
     }
 
-    public class AssertionIssueInputEvidenceTypeItem
+    public class BodyInputEvidenceTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1551,7 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Duration { get; set; }
     }
 
-    public class ClassCreateIssuerInput
+    public class ClassCreateBodyInput
     {
         [JsonProperty("issuer")]
         public string Issuer { get; set; }
@@ -1578,19 +1530,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string CriteriaNarrative { get; set; }
 
         [JsonProperty("alignments")]
-        public ClassCreateIssuerInputAlignmentsTypeItem[] Alignments { get; set; }
+        public BodyInputAlignmentsTypeItem[] Alignments { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
 
         [JsonProperty("expires")]
-        public ClassCreateIssuerInputExpiresType Expires { get; set; }
+        public BodyInputExpiresType Expires { get; set; }
 
         [JsonProperty("extensions")]
         public string Extensions { get; set; }
     }
 
-    public class ClassCreateIssuerInputAlignmentsTypeItem
+    public class BodyInputAlignmentsTypeItem
     {
         [JsonProperty("targetName")]
         public string TargetName { get; set; }
@@ -1608,7 +1560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string TargetCode { get; set; }
     }
 
-    public class ClassCreateIssuerInputExpiresType
+    public class BodyInputExpiresType
     {
         [JsonProperty("amount")]
         public string Amount { get; set; }
@@ -1815,72 +1767,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Duration { get; set; }
     }
 
-    public class ClassCreateInput
-    {
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
-
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("image")]
-        public string Image { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("achievementType")]
-        public string AchievementType { get; set; }
-
-        [JsonProperty("criteriaUrl")]
-        public string CriteriaUrl { get; set; }
-
-        [JsonProperty("criteriaNarrative")]
-        public string CriteriaNarrative { get; set; }
-
-        [JsonProperty("alignments")]
-        public ClassCreateInputAlignmentsTypeItem[] Alignments { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
-
-        [JsonProperty("expires")]
-        public ClassCreateInputExpiresType Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-    }
-
-    public class ClassCreateInputAlignmentsTypeItem
-    {
-        [JsonProperty("targetName")]
-        public string TargetName { get; set; }
-
-        [JsonProperty("targetUrl")]
-        public string TargetUrl { get; set; }
-
-        [JsonProperty("targetDescription")]
-        public string TargetDescription { get; set; }
-
-        [JsonProperty("targetFramework")]
-        public string TargetFramework { get; set; }
-
-        [JsonProperty("targetCode")]
-        public string TargetCode { get; set; }
-    }
-
-    public class ClassCreateInputExpiresType
-    {
-        [JsonProperty("amount")]
-        public string Amount { get; set; }
-
-        [JsonProperty("duration")]
-        public string Duration { get; set; }
-    }
-
     public class ClassGetResponse
     {
         [JsonProperty("status")]
@@ -2071,72 +1957,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
     }
 
     public class ClassUpdateResponseResultTypeItemExpiresType
-    {
-        [JsonProperty("amount")]
-        public string Amount { get; set; }
-
-        [JsonProperty("duration")]
-        public string Duration { get; set; }
-    }
-
-    public class ClassUpdateInput
-    {
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
-
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("image")]
-        public string Image { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("achievementType")]
-        public string AchievementType { get; set; }
-
-        [JsonProperty("criteriaUrl")]
-        public string CriteriaUrl { get; set; }
-
-        [JsonProperty("criteriaNarrative")]
-        public string CriteriaNarrative { get; set; }
-
-        [JsonProperty("alignments")]
-        public ClassUpdateInputAlignmentsTypeItem[] Alignments { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
-
-        [JsonProperty("expires")]
-        public ClassUpdateInputExpiresType Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-    }
-
-    public class ClassUpdateInputAlignmentsTypeItem
-    {
-        [JsonProperty("targetName")]
-        public string TargetName { get; set; }
-
-        [JsonProperty("targetUrl")]
-        public string TargetUrl { get; set; }
-
-        [JsonProperty("targetDescription")]
-        public string TargetDescription { get; set; }
-
-        [JsonProperty("targetFramework")]
-        public string TargetFramework { get; set; }
-
-        [JsonProperty("targetCode")]
-        public string TargetCode { get; set; }
-    }
-
-    public class ClassUpdateInputExpiresType
     {
         [JsonProperty("amount")]
         public string Amount { get; set; }
@@ -2361,69 +2181,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class ClassIssueAssertionInput
-    {
-        [JsonProperty("badgeclass")]
-        public string Badgeclass { get; set; }
-
-        [JsonProperty("badgeclassOpenBadgeId")]
-        public string BadgeclassOpenBadgeId { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
-
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("recipient")]
-        public ClassIssueAssertionInputRecipientType Recipient { get; set; }
-
-        [JsonProperty("issuedOn")]
-        public string IssuedOn { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-
-        [JsonProperty("evidence")]
-        public ClassIssueAssertionInputEvidenceTypeItem[] Evidence { get; set; }
-
-        [JsonProperty("expires")]
-        public string Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-
-        [JsonProperty("badgeclassName")]
-        public string BadgeclassName { get; set; }
-    }
-
-    public class ClassIssueAssertionInputRecipientType
-    {
-        [JsonProperty("identity")]
-        public string Identity { get; set; }
-
-        [JsonProperty("hashed")]
-        public bool? Hashed { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("plaintextIdentity")]
-        public string PlaintextIdentity { get; set; }
-
-        [JsonProperty("salt")]
-        public string Salt { get; set; }
-    }
-
-    public class ClassIssueAssertionInputEvidenceTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-    }
-
     public class AssertionGetAResponse
     {
         [JsonProperty("status")]
@@ -2532,7 +2289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class AssertionRevokeInput
+    public class AssertionRevokeBodyInput
     {
         [JsonProperty("revocation_reason")]
         public string RevocationReason { get; set; }
@@ -2638,69 +2395,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
     }
 
     public class AssertionUpdateResponseResultTypeItemEvidenceTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-    }
-
-    public class AssertionUpdateInput
-    {
-        [JsonProperty("badgeclass")]
-        public string Badgeclass { get; set; }
-
-        [JsonProperty("badgeclassOpenBadgeId")]
-        public string BadgeclassOpenBadgeId { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
-
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("recipient")]
-        public AssertionUpdateInputRecipientType Recipient { get; set; }
-
-        [JsonProperty("issuedOn")]
-        public string IssuedOn { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-
-        [JsonProperty("evidence")]
-        public AssertionUpdateInputEvidenceTypeItem[] Evidence { get; set; }
-
-        [JsonProperty("expires")]
-        public string Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-
-        [JsonProperty("badgeclassName")]
-        public string BadgeclassName { get; set; }
-    }
-
-    public class AssertionUpdateInputRecipientType
-    {
-        [JsonProperty("identity")]
-        public string Identity { get; set; }
-
-        [JsonProperty("hashed")]
-        public bool? Hashed { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("plaintextIdentity")]
-        public string PlaintextIdentity { get; set; }
-
-        [JsonProperty("salt")]
-        public string Salt { get; set; }
-    }
-
-    public class AssertionUpdateInputEvidenceTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -2907,7 +2601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string CaseVariants { get; set; }
     }
 
-    public class UserCreateInput
+    public class UserCreateBodyInput
     {
         [JsonProperty("entityType")]
         public string EntityType { get; set; }
@@ -2922,7 +2616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string LastName { get; set; }
 
         [JsonProperty("emails")]
-        public UserCreateInputEmailsTypeItem[] Emails { get; set; }
+        public BodyInputEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -2949,7 +2643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Recipient { get; set; }
     }
 
-    public class UserCreateInputEmailsTypeItem
+    public class BodyInputEmailsTypeItem
     {
         [JsonProperty("entityType")]
         public string EntityType { get; set; }
@@ -3046,69 +2740,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
 
         [JsonProperty("primary")]
         public bool Primary { get; set; }
-
-        [JsonProperty("caseVariants")]
-        public string CaseVariants { get; set; }
-    }
-
-    public class UserUpdateInput
-    {
-        [JsonProperty("entityType")]
-        public string EntityType { get; set; }
-
-        [JsonProperty("entityId")]
-        public string EntityId { get; set; }
-
-        [JsonProperty("firstName")]
-        public string FirstName { get; set; }
-
-        [JsonProperty("lastName")]
-        public string LastName { get; set; }
-
-        [JsonProperty("emails")]
-        public UserUpdateInputEmailsTypeItem[] Emails { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("telephone")]
-        public string Telephone { get; set; }
-
-        [JsonProperty("agreedTermsVersion")]
-        public string AgreedTermsVersion { get; set; }
-
-        [JsonProperty("hasAgreedToLatestTermsVersion")]
-        public string HasAgreedToLatestTermsVersion { get; set; }
-
-        [JsonProperty("marketingOptIn")]
-        public string MarketingOptIn { get; set; }
-
-        [JsonProperty("badgrDomain")]
-        public string BadgrDomain { get; set; }
-
-        [JsonProperty("hasPasswordSet")]
-        public string HasPasswordSet { get; set; }
-
-        [JsonProperty("recipient")]
-        public string Recipient { get; set; }
-    }
-
-    public class UserUpdateInputEmailsTypeItem
-    {
-        [JsonProperty("entityType")]
-        public string EntityType { get; set; }
-
-        [JsonProperty("entityId")]
-        public string EntityId { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("verified")]
-        public bool? Verified { get; set; }
-
-        [JsonProperty("primary")]
-        public bool? Primary { get; set; }
 
         [JsonProperty("caseVariants")]
         public string CaseVariants { get; set; }
@@ -3330,69 +2961,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class BackpackUploadAssertionInput
-    {
-        [JsonProperty("badgeclass")]
-        public string Badgeclass { get; set; }
-
-        [JsonProperty("badgeclassOpenBadgeId")]
-        public string BadgeclassOpenBadgeId { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
-
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("recipient")]
-        public BackpackUploadAssertionInputRecipientType Recipient { get; set; }
-
-        [JsonProperty("issuedOn")]
-        public string IssuedOn { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-
-        [JsonProperty("evidence")]
-        public BackpackUploadAssertionInputEvidenceTypeItem[] Evidence { get; set; }
-
-        [JsonProperty("expires")]
-        public string Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-
-        [JsonProperty("badgeclassName")]
-        public string BadgeclassName { get; set; }
-    }
-
-    public class BackpackUploadAssertionInputRecipientType
-    {
-        [JsonProperty("identity")]
-        public string Identity { get; set; }
-
-        [JsonProperty("hashed")]
-        public bool? Hashed { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("plaintextIdentity")]
-        public string PlaintextIdentity { get; set; }
-
-        [JsonProperty("salt")]
-        public string Salt { get; set; }
-    }
-
-    public class BackpackUploadAssertionInputEvidenceTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-    }
-
     public class BackpackGetAssertionDetailsResponse
     {
         [JsonProperty("status")]
@@ -3585,7 +3153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class BackpackUpdateAcceptanceInput
+    public class BackpackUpdateAcceptanceBodyInput
     {
         [JsonProperty("acceptance")]
         public string Acceptance { get; set; }
@@ -3600,7 +3168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string IssuerOpenBadgeId { get; set; }
 
         [JsonProperty("recipient")]
-        public BackpackUpdateAcceptanceInputRecipientType Recipient { get; set; }
+        public BackpackUpdateAcceptanceBodyInputRecipientType Recipient { get; set; }
 
         [JsonProperty("issuedOn")]
         public string IssuedOn { get; set; }
@@ -3609,7 +3177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
 
         [JsonProperty("evidence")]
-        public BackpackUpdateAcceptanceInputEvidenceTypeItem[] Evidence { get; set; }
+        public BodyInputEvidenceTypeItem[] Evidence { get; set; }
 
         [JsonProperty("expires")]
         public string Expires { get; set; }
@@ -3618,7 +3186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Pending { get; set; }
     }
 
-    public class BackpackUpdateAcceptanceInputRecipientType
+    public class BackpackUpdateAcceptanceBodyInputRecipientType
     {
         [JsonProperty("identity")]
         public string Identity { get; set; }
@@ -3631,15 +3199,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
 
         [JsonProperty("plaintextIdentity")]
         public string PlaintextIdentity { get; set; }
-    }
-
-    public class BackpackUpdateAcceptanceInputEvidenceTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
     }
 
     public class CollectionGetResponse
@@ -3930,7 +3489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class CollectionCreateInput
+    public class CollectionCreateBodyInput
     {
         [JsonProperty("entityType")]
         public string EntityType { get; set; }
@@ -3957,7 +3516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public bool? Published { get; set; }
 
         [JsonProperty("assertions")]
-        public CollectionCreateInputAssertionsTypeItem[] Assertions { get; set; }
+        public BodyInputAssertionsTypeItem[] Assertions { get; set; }
 
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; }
@@ -3966,7 +3525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string CreatedBy { get; set; }
     }
 
-    public class CollectionCreateInputAssertionsTypeItem
+    public class BodyInputAssertionsTypeItem
     {
         [JsonProperty("badgeclass")]
         public string Badgeclass { get; set; }
@@ -3981,7 +3540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string IssuerOpenBadgeId { get; set; }
 
         [JsonProperty("recipient")]
-        public CollectionCreateInputAssertionsTypeItemRecipientType Recipient { get; set; }
+        public BodyInputAssertionsTypeItemRecipientType Recipient { get; set; }
 
         [JsonProperty("issuedOn")]
         public string IssuedOn { get; set; }
@@ -3990,7 +3549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
 
         [JsonProperty("evidence")]
-        public CollectionCreateInputAssertionsTypeItemEvidenceTypeItem[] Evidence { get; set; }
+        public BodyInputAssertionsTypeItemEvidenceTypeItem[] Evidence { get; set; }
 
         [JsonProperty("expires")]
         public string Expires { get; set; }
@@ -4002,7 +3561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string BadgeclassName { get; set; }
     }
 
-    public class CollectionCreateInputAssertionsTypeItemRecipientType
+    public class BodyInputAssertionsTypeItemRecipientType
     {
         [JsonProperty("identity")]
         public string Identity { get; set; }
@@ -4020,7 +3579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Salt { get; set; }
     }
 
-    public class CollectionCreateInputAssertionsTypeItemEvidenceTypeItem
+    public class BodyInputAssertionsTypeItemEvidenceTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -4317,105 +3876,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class CollectionUpdateInput
-    {
-        [JsonProperty("entityType")]
-        public string EntityType { get; set; }
-
-        [JsonProperty("entityId")]
-        public string EntityId { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("owner")]
-        public string Owner { get; set; }
-
-        [JsonProperty("share_url")]
-        public string ShareUrl { get; set; }
-
-        [JsonProperty("shareHash")]
-        public string ShareHash { get; set; }
-
-        [JsonProperty("published")]
-        public bool? Published { get; set; }
-
-        [JsonProperty("assertions")]
-        public CollectionUpdateInputAssertionsTypeItem[] Assertions { get; set; }
-
-        [JsonProperty("createdAt")]
-        public string CreatedAt { get; set; }
-
-        [JsonProperty("createdBy")]
-        public string CreatedBy { get; set; }
-    }
-
-    public class CollectionUpdateInputAssertionsTypeItem
-    {
-        [JsonProperty("badgeclass")]
-        public string Badgeclass { get; set; }
-
-        [JsonProperty("badgeclassOpenBadgeId")]
-        public string BadgeclassOpenBadgeId { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
-
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("recipient")]
-        public CollectionUpdateInputAssertionsTypeItemRecipientType Recipient { get; set; }
-
-        [JsonProperty("issuedOn")]
-        public string IssuedOn { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-
-        [JsonProperty("evidence")]
-        public CollectionUpdateInputAssertionsTypeItemEvidenceTypeItem[] Evidence { get; set; }
-
-        [JsonProperty("expires")]
-        public string Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-
-        [JsonProperty("badgeclassName")]
-        public string BadgeclassName { get; set; }
-    }
-
-    public class CollectionUpdateInputAssertionsTypeItemRecipientType
-    {
-        [JsonProperty("identity")]
-        public string Identity { get; set; }
-
-        [JsonProperty("hashed")]
-        public bool? Hashed { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("plaintextIdentity")]
-        public string PlaintextIdentity { get; set; }
-
-        [JsonProperty("salt")]
-        public string Salt { get; set; }
-    }
-
-    public class CollectionUpdateInputAssertionsTypeItemEvidenceTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-    }
-
     public class ClassIssueBulkResponse
     {
         [JsonProperty("status")]
@@ -4516,69 +3976,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
     }
 
     public class ClassIssueBulkResponseResultTypeItemEvidenceTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-    }
-
-    public class ClassIssueBulkInput
-    {
-        [JsonProperty("badgeclass")]
-        public string Badgeclass { get; set; }
-
-        [JsonProperty("badgeclassOpenBadgeId")]
-        public string BadgeclassOpenBadgeId { get; set; }
-
-        [JsonProperty("issuer")]
-        public string Issuer { get; set; }
-
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("recipient")]
-        public ClassIssueBulkInputRecipientType Recipient { get; set; }
-
-        [JsonProperty("issuedOn")]
-        public string IssuedOn { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-
-        [JsonProperty("evidence")]
-        public ClassIssueBulkInputEvidenceTypeItem[] Evidence { get; set; }
-
-        [JsonProperty("expires")]
-        public string Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-
-        [JsonProperty("badgeclassName")]
-        public string BadgeclassName { get; set; }
-    }
-
-    public class ClassIssueBulkInputRecipientType
-    {
-        [JsonProperty("identity")]
-        public string Identity { get; set; }
-
-        [JsonProperty("hashed")]
-        public bool? Hashed { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("plaintextIdentity")]
-        public string PlaintextIdentity { get; set; }
-
-        [JsonProperty("salt")]
-        public string Salt { get; set; }
-    }
-
-    public class ClassIssueBulkInputEvidenceTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -4695,70 +4092,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Narrative { get; set; }
     }
 
-    public class AssertionRevokeBulkInput
+    public class TokenRetrieveBodyInput
     {
-        [JsonProperty("badgeclass")]
-        public string Badgeclass { get; set; }
+        [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Token { get; set; }
 
-        [JsonProperty("badgeclassOpenBadgeId")]
-        public string BadgeclassOpenBadgeId { get; set; }
-
-        [JsonProperty("issuer")]
+        [JsonProperty("issuer", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Issuer { get; set; }
 
-        [JsonProperty("issuerOpenBadgeId")]
-        public string IssuerOpenBadgeId { get; set; }
-
-        [JsonProperty("recipient")]
-        public AssertionRevokeBulkInputRecipientType Recipient { get; set; }
-
-        [JsonProperty("issuedOn")]
-        public string IssuedOn { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-
-        [JsonProperty("evidence")]
-        public AssertionRevokeBulkInputEvidenceTypeItem[] Evidence { get; set; }
-
-        [JsonProperty("expires")]
+        [JsonProperty("expires", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Expires { get; set; }
-
-        [JsonProperty("extensions")]
-        public string Extensions { get; set; }
-
-        [JsonProperty("badgeclassName")]
-        public string BadgeclassName { get; set; }
     }
 
-    public class AssertionRevokeBulkInputRecipientType
-    {
-        [JsonProperty("identity")]
-        public string Identity { get; set; }
-
-        [JsonProperty("hashed")]
-        public bool? Hashed { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("plaintextIdentity")]
-        public string PlaintextIdentity { get; set; }
-
-        [JsonProperty("salt")]
-        public string Salt { get; set; }
-    }
-
-    public class AssertionRevokeBulkInputEvidenceTypeItem
-    {
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("narrative")]
-        public string Narrative { get; set; }
-    }
-
-    public class AccountRequestRecoveryInput
+    public class AccountRequestRecoveryBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -4782,7 +4128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public bool Success { get; set; }
     }
 
-    public class AccountRecoverInput
+    public class AccountRecoverBodyInput
     {
         [JsonProperty("token")]
         public string Token { get; set; }
@@ -4791,7 +4137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Badgrip
         public string Password { get; set; }
     }
 
-    public class BackpackImportAssertionInput
+    public class BackpackImportAssertionBodyInput
     {
         [JsonProperty("url")]
         public string Url { get; set; }

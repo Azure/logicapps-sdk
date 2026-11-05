@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitParametersResponse, ApiConnectionActionConfiguration> InitParameters(Expression<Func<InitParametersInput>> body = null)
+        public IBodyWorkflowAction<InitParametersResponse, ApiConnectionActionConfiguration> InitParameters(Expression<Func<InitParametersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InitParametersResponse, ApiConnectionActionConfiguration>(() =>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitResponse, ApiConnectionActionConfiguration> Init(Expression<Func<InitInput>> body = null)
+        public IBodyWorkflowAction<InitResponse, ApiConnectionActionConfiguration> Init(Expression<Func<InitBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InitResponse, ApiConnectionActionConfiguration>(() =>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
     public class FinalcadoneconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsCreated(Expression<Func<ThenObsCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsCreated(Expression<Func<ThenDocumentCreatedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsUpdated(Expression<Func<ThenObsUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsUpdated(Expression<Func<ThenDocumentCreatedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormCreated(Expression<Func<ThenFormCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormCreated(Expression<Func<ThenDocumentCreatedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormUpdated(Expression<Func<ThenFormUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormUpdated(Expression<Func<ThenDocumentCreatedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenDocumentCreated(Expression<Func<ThenDocumentCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenDocumentCreated(Expression<Func<ThenDocumentCreatedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         public string Timezone { get; set; }
     }
 
-    public class InitParametersInput
+    public class InitParametersBodyInput
     {
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Language { get; set; } = "fr";
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         public string ProjectId { get; set; }
     }
 
-    public class InitInput
+    public class InitBodyInput
     {
         [JsonProperty("business_organization_id")]
         public string OrganizationId { get; set; }
@@ -181,55 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         public string ProjectId { get; set; }
     }
 
-    public class ThenObsCreatedInput
-    {
-        [JsonProperty("business_organization_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OrganizationId { get; set; }
-
-        [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("client_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ClientUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class ThenObsUpdatedInput
-    {
-        [JsonProperty("business_organization_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OrganizationId { get; set; }
-
-        [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("client_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ClientUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class ThenFormCreatedInput
-    {
-        [JsonProperty("business_organization_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OrganizationId { get; set; }
-
-        [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("client_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ClientUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class ThenFormUpdatedInput
-    {
-        [JsonProperty("business_organization_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OrganizationId { get; set; }
-
-        [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("client_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ClientUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class ThenDocumentCreatedInput
+    public class ThenDocumentCreatedBodyInput
     {
         [JsonProperty("business_organization_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganizationId { get; set; }

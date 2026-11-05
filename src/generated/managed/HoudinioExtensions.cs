@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
     public class HoudinioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
-        public IBodyWorkflowAction<ScanResponse, ApiConnectionActionConfiguration> LaunchScan(Expression<Func<LaunchScanInput>> body)
+        public IBodyWorkflowAction<ScanResponse, ApiConnectionActionConfiguration> LaunchScan(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScanResponse, ApiConnectionActionConfiguration>(() =>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         public string Status { get; set; }
     }
 
-    public class LaunchScanInput
+    public class BodyInput
     {
         [JsonProperty("artifact", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Artifact { get; set; }

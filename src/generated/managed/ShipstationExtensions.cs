@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstation
 
     public class ShipstationTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscribeResponse, ApiConnectionTriggerConfiguration> WebhookSubscribe(Expression<Func<WebhookSubscribeInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscribeResponse, ApiConnectionTriggerConfiguration> WebhookSubscribe(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscribeResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstation
         public int Id { get; set; }
     }
 
-    public class WebhookSubscribeInput
+    public class BodyInput
     {
         [JsonProperty("friendly_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FriendlyName { get; set; }

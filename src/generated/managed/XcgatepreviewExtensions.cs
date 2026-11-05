@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
     public class XcgatepreviewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<LoginAuthResponse, ApiConnectionActionConfiguration> LoginAuth(Expression<Func<string>> host = null, Expression<Func<LoginAuthInput>> body = null)
+        public IBodyWorkflowAction<LoginAuthResponse, ApiConnectionActionConfiguration> LoginAuth(Expression<Func<string>> host = null, Expression<Func<LoginAuthBodyInput>> body = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionFindResponse, ApiConnectionActionConfiguration> ActionFind(Expression<Func<string>> host = null, Expression<Func<ActionFindInput>> body = null)
+        public IBodyWorkflowAction<ActionFindResponse, ApiConnectionActionConfiguration> ActionFind(Expression<Func<string>> host = null, Expression<Func<ActionFindBodyInput>> body = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionGetResponse, ApiConnectionActionConfiguration> ActionGet(Expression<Func<string>> host = null, Expression<Func<ActionGetInput>> body = null)
+        public IBodyWorkflowAction<ActionGetResponse, ApiConnectionActionConfiguration> ActionGet(Expression<Func<string>> host = null, Expression<Func<ActionGetBodyInput>> body = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string Error { get; set; }
     }
 
-    public class LoginAuthInput
+    public class LoginAuthBodyInput
     {
         [JsonProperty("companyCd")]
         public string CompanyCd { get; set; }
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindInput
+    public class ActionFindBodyInput
     {
         [JsonProperty("companyCd")]
         public string CompanyCd { get; set; }
@@ -806,10 +806,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string[] ReportCdList { get; set; }
 
         [JsonProperty("find")]
-        public ActionFindInputFindType Find { get; set; }
+        public BodyInputFindType Find { get; set; }
 
         [JsonProperty("sortList")]
-        public ActionFindInputSortListTypeItem[] SortList { get; set; }
+        public BodyInputSortListTypeItem[] SortList { get; set; }
 
         [JsonProperty("pageSize")]
         public string PageSize { get; set; }
@@ -818,22 +818,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string PageNo { get; set; }
 
         [JsonProperty("requestList")]
-        public ActionFindInputRequestListTypeItem[] RequestList { get; set; }
+        public BodyInputRequestListTypeItem[] RequestList { get; set; }
 
         [JsonProperty("enableEpoch")]
         public string EnableEpoch { get; set; }
     }
 
-    public class ActionFindInputFindType
+    public class BodyInputFindType
     {
         [JsonProperty("statement")]
         public string Statement { get; set; }
 
         [JsonProperty("statementList")]
-        public ActionFindInputFindTypeStatementListTypeItem[] StatementList { get; set; }
+        public BodyInputFindTypeStatementListTypeItem[] StatementList { get; set; }
     }
 
-    public class ActionFindInputFindTypeStatementListTypeItem
+    public class BodyInputFindTypeStatementListTypeItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string Value { get; set; }
     }
 
-    public class ActionFindInputSortListTypeItem
+    public class BodyInputSortListTypeItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string Value { get; set; }
     }
 
-    public class ActionFindInputRequestListTypeItem
+    public class BodyInputRequestListTypeItem
     {
         [JsonProperty("fieldName")]
         public string FieldName { get; set; }
@@ -980,7 +980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string ContentURL { get; set; }
     }
 
-    public class ActionGetInput
+    public class ActionGetBodyInput
     {
         [JsonProperty("companyCd")]
         public string CompanyCd { get; set; }

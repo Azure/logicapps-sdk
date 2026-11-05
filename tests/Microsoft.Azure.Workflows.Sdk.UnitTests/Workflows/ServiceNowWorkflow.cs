@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var email = WorkflowActions.BuiltIn.Compose(() => "text");
 
             var sendEmail = WorkflowActions.Managed.Outlook("office365").SendEmail(
-                emailMessage: () => new SendEmailV2Input
+                emailMessage: () => new EmailMessageInput
                 {
                     To = (string)email.Output["to"],
                     Subject = (string)email.Output["subject"],

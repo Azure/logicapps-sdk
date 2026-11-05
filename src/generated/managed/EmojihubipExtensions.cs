@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllCategoryResponseItem[], ApiConnectionActionConfiguration> AllCategory(Expression<Func<categoryNameInput>> categoryName)
+        public IBodyWorkflowAction<AllCategoryResponseItem[], ApiConnectionActionConfiguration> AllCategory(Expression<Func<CategoryNameInput>> categoryName)
         {
             var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
             return new DeferredBodyAction<AllCategoryResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllGroupResponseItem[], ApiConnectionActionConfiguration> AllGroup(Expression<Func<groupNameInput>> groupName)
+        public IBodyWorkflowAction<AllGroupResponseItem[], ApiConnectionActionConfiguration> AllGroup(Expression<Func<GroupNameInput>> groupName)
         {
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             return new DeferredBodyAction<AllGroupResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomCategoryResponse, ApiConnectionActionConfiguration> RandomCategory(Expression<Func<categoryNameInput>> categoryName)
+        public IBodyWorkflowAction<RandomCategoryResponse, ApiConnectionActionConfiguration> RandomCategory(Expression<Func<CategoryNameInput>> categoryName)
         {
             var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
             return new DeferredBodyAction<RandomCategoryResponse, ApiConnectionActionConfiguration>(() =>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomGroupResponse, ApiConnectionActionConfiguration> RandomGroup(Expression<Func<groupNameInput>> groupName)
+        public IBodyWorkflowAction<RandomGroupResponse, ApiConnectionActionConfiguration> RandomGroup(Expression<Func<GroupNameInput>> groupName)
         {
             var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             return new DeferredBodyAction<RandomGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum categoryNameInput
+    public enum CategoryNameInput
     {
         [EnumMember(Value = "smileys_and_people")]
         SmileysAndPeople,
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum groupNameInput
+    public enum GroupNameInput
     {
         [EnumMember(Value = "body")]
         Body,

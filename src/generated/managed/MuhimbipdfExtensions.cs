@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     public class MuhimbipdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> CompositeWatermark(Expression<Func<CompositeWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> CompositeWatermark(Expression<Func<CompositeWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> CompressPdf(Expression<Func<CompressPdfInput>> inputPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> CompressPdf(Expression<Func<CompressPdfInputPdfDataInput>> inputPdfData)
         {
             var __workflow_inputPdfData = WorkflowExpression.Compile(inputPdfData, nameof(inputPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> Convert(Expression<Func<ConvertInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> Convert(Expression<Func<ConvertInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertCad(Expression<Func<ConvertCadInput>> inputCadData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertCad(Expression<Func<InputCadDataInput>> inputCadData)
         {
             var __workflow_inputCadData = WorkflowExpression.Compile(inputCadData, nameof(inputCadData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertEmail(Expression<Func<ConvertEmailInput>> inputEmailData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertEmail(Expression<Func<InputEmailDataInput>> inputEmailData)
         {
             var __workflow_inputEmailData = WorkflowExpression.Compile(inputEmailData, nameof(inputEmailData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertExcel(Expression<Func<ConvertExcelInput>> inputExcelData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertExcel(Expression<Func<InputExcelDataInput>> inputExcelData)
         {
             var __workflow_inputExcelData = WorkflowExpression.Compile(inputExcelData, nameof(inputExcelData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertHtml(Expression<Func<ConvertHtmlInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertHtml(Expression<Func<ConvertHtmlInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertInfopath(Expression<Func<ConvertInfopathInput>> inputInfopathData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertInfopath(Expression<Func<InputInfopathDataInput>> inputInfopathData)
         {
             var __workflow_inputInfopathData = WorkflowExpression.Compile(inputInfopathData, nameof(inputInfopathData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPdfa(Expression<Func<ConvertPdfaInput>> inputPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPdfa(Expression<Func<ConvertPdfaInputPdfDataInput>> inputPdfData)
         {
             var __workflow_inputPdfData = WorkflowExpression.Compile(inputPdfData, nameof(inputPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPowerpoint(Expression<Func<ConvertPowerpointInput>> inputPowerpointData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPowerpoint(Expression<Func<InputPowerpointDataInput>> inputPowerpointData)
         {
             var __workflow_inputPowerpointData = WorkflowExpression.Compile(inputPowerpointData, nameof(inputPowerpointData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<ConvertVisioInput>> inputVisioData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<InputVisioDataInput>> inputVisioData)
         {
             var __workflow_inputVisioData = WorkflowExpression.Compile(inputVisioData, nameof(inputVisioData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertWord(Expression<Func<ConvertWordInput>> inputWordData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertWord(Expression<Func<InputWordDataInput>> inputWordData)
         {
             var __workflow_inputWordData = WorkflowExpression.Compile(inputWordData, nameof(inputWordData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponseCommon, ApiConnectionActionConfiguration> CopyMetadata(Expression<Func<CopyMetadataInput>> inputData)
+        public IBodyWorkflowAction<OperationResponseCommon, ApiConnectionActionConfiguration> CopyMetadata(Expression<Func<CopyMetadataInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponseCommon, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> EllipseWatermark(Expression<Func<EllipseWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> EllipseWatermark(Expression<Func<EllipseWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExportFormData(Expression<Func<ExportFormDataInput>> inputFromPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExportFormData(Expression<Func<InputFromPdfDataInput>> inputFromPdfData)
         {
             var __workflow_inputFromPdfData = WorkflowExpression.Compile(inputFromPdfData, nameof(inputFromPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<ExtractTextInput>> inputPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<ExtractTextInputPdfDataInput>> inputPdfData)
         {
             var __workflow_inputPdfData = WorkflowExpression.Compile(inputPdfData, nameof(inputPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ImageWatermark(Expression<Func<ImageWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ImageWatermark(Expression<Func<ImageWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ImportFormData(Expression<Func<ImportFormDataInput>> inputXmlData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ImportFormData(Expression<Func<InputXmlDataInput>> inputXmlData)
         {
             var __workflow_inputXmlData = WorkflowExpression.Compile(inputXmlData, nameof(inputXmlData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractKeyValuePairs(Expression<Func<ExtractKeyValuePairsInput>> inputPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractKeyValuePairs(Expression<Func<ExtractKeyValuePairsInputPdfDataInput>> inputPdfData)
         {
             var __workflow_inputPdfData = WorkflowExpression.Compile(inputPdfData, nameof(inputPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LineWatermark(Expression<Func<LineWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LineWatermark(Expression<Func<LineWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LinearBarcodeWatermark(Expression<Func<LinearBarcodeWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LinearBarcodeWatermark(Expression<Func<LinearBarcodeWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> MergeToPdf(Expression<Func<MergeToPdfInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> MergeToPdf(Expression<Func<MergeToPdfInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> OcrPdf(Expression<Func<OcrPdfInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> OcrPdf(Expression<Func<OcrPdfInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OcrOperationResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<OcrTextInput>> inputData)
+        public IBodyWorkflowAction<OcrOperationResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<OcrTextInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OcrOperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> PdfWatermark(Expression<Func<PdfWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> PdfWatermark(Expression<Func<PdfWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> QrCodeWatermark(Expression<Func<QrCodeWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> QrCodeWatermark(Expression<Func<QrCodeWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RectangleWatermark(Expression<Func<RectangleWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RectangleWatermark(Expression<Func<RectangleWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RtfWatermark(Expression<Func<RtfWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RtfWatermark(Expression<Func<RtfWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> SecurePdf(Expression<Func<SecurePdfInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> SecurePdf(Expression<Func<SecurePdfInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<SplitOperationResponse, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfInput>> inputData)
+        public IBodyWorkflowAction<SplitOperationResponse, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<SplitOperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> TextWatermark(Expression<Func<TextWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> TextWatermark(Expression<Func<TextWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         InvalidExtension
     }
 
-    public class CompositeWatermarkInput
+    public class CompositeWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     {
     }
 
-    public class CompressPdfInput
+    public class CompressPdfInputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -525,70 +525,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("remove_annotations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveAnnotationsType? RemoveAnnotations { get; set; } = CompressPdfInputRemoveAnnotationsType.Default;
+        public InputPdfDataInputRemoveAnnotationsType? RemoveAnnotations { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveAnnotationsType.Default;
 
         [JsonProperty("remove_blank_pages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveBlankPagesType? RemoveBlankPages { get; set; } = CompressPdfInputRemoveBlankPagesType.Default;
+        public InputPdfDataInputRemoveBlankPagesType? RemoveBlankPages { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveBlankPagesType.Default;
 
         [JsonProperty("remove_bookmarks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveBookmarksType? RemoveBookmarks { get; set; } = CompressPdfInputRemoveBookmarksType.Default;
+        public InputPdfDataInputRemoveBookmarksType? RemoveBookmarks { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveBookmarksType.Default;
 
         [JsonProperty("remove_embedded_files", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveEmbeddedFilesType? RemoveEmbeddedFiles { get; set; } = CompressPdfInputRemoveEmbeddedFilesType.Default;
+        public InputPdfDataInputRemoveEmbeddedFilesType? RemoveEmbeddedFiles { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveEmbeddedFilesType.Default;
 
         [JsonProperty("remove_form_fields", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveFormFieldsType? RemoveFormFields { get; set; } = CompressPdfInputRemoveFormFieldsType.Default;
+        public InputPdfDataInputRemoveFormFieldsType? RemoveFormFields { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveFormFieldsType.Default;
 
         [JsonProperty("remove_hyperlinks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveHyperlinksType? RemoveHyperlinks { get; set; } = CompressPdfInputRemoveHyperlinksType.Default;
+        public InputPdfDataInputRemoveHyperlinksType? RemoveHyperlinks { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveHyperlinksType.Default;
 
         [JsonProperty("remove_javascript", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveJavaScriptType? RemoveJavaScript { get; set; } = CompressPdfInputRemoveJavaScriptType.Default;
+        public InputPdfDataInputRemoveJavaScriptType? RemoveJavaScript { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveJavaScriptType.Default;
 
         [JsonProperty("remove_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemoveMetadataType? RemoveMetadata { get; set; } = CompressPdfInputRemoveMetadataType.Default;
+        public InputPdfDataInputRemoveMetadataType? RemoveMetadata { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemoveMetadataType.Default;
 
         [JsonProperty("remove_page_thumbnails", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRemovePageThumbnailsType? RemovePageThumbnails { get; set; } = CompressPdfInputRemovePageThumbnailsType.Default;
+        public InputPdfDataInputRemovePageThumbnailsType? RemovePageThumbnails { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRemovePageThumbnailsType.Default;
 
         [JsonProperty("pack_fonts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputPackFontsType? PackFonts { get; set; } = CompressPdfInputPackFontsType.Default;
+        public InputPdfDataInputPackFontsType? PackFonts { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputPackFontsType.Default;
 
         [JsonProperty("pack_document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputPackDocumentType? PackDocument { get; set; } = CompressPdfInputPackDocumentType.Default;
+        public InputPdfDataInputPackDocumentType? PackDocument { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputPackDocumentType.Default;
 
         [JsonProperty("recompress_images", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputRecompressImagesType? RecompressImages { get; set; } = CompressPdfInputRecompressImagesType.Default;
+        public InputPdfDataInputRecompressImagesType? RecompressImages { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputRecompressImagesType.Default;
 
         [JsonProperty("enable_mrc", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputEnableMRCType? EnableMRC { get; set; } = CompressPdfInputEnableMRCType.Default;
+        public InputPdfDataInputEnableMRCType? EnableMRC { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputEnableMRCType.Default;
 
         [JsonProperty("downscale_resolution_mrc", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DownscaleResolutionMRC { get; set; } = 100;
 
         [JsonProperty("preserve_smoothing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputPreserveSmoothingType? PreserveSmoothing { get; set; } = CompressPdfInputPreserveSmoothingType.Default;
+        public InputPdfDataInputPreserveSmoothingType? PreserveSmoothing { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputPreserveSmoothingType.Default;
 
         [JsonProperty("image_quality", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputImageQualityType? ImageQuality { get; set; } = CompressPdfInputImageQualityType.Default;
+        public InputPdfDataInputImageQualityType? ImageQuality { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputImageQualityType.Default;
 
         [JsonProperty("downscale_images", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputDownscaleImagesType? DownscaleImages { get; set; } = CompressPdfInputDownscaleImagesType.Default;
+        public InputPdfDataInputDownscaleImagesType? DownscaleImages { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputDownscaleImagesType.Default;
 
         [JsonProperty("downscale_resolution", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DownscaleResolution { get; set; } = 200;
 
         [JsonProperty("enable_color_detection", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputEnableColorDetectionType? EnableColorDetection { get; set; } = CompressPdfInputEnableColorDetectionType.Default;
+        public InputPdfDataInputEnableColorDetectionType? EnableColorDetection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputEnableColorDetectionType.Default;
 
         [JsonProperty("enable_char_repair", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputEnableCharRepairType? EnableCharRepair { get; set; } = CompressPdfInputEnableCharRepairType.Default;
+        public InputPdfDataInputEnableCharRepairType? EnableCharRepair { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputEnableCharRepairType.Default;
 
         [JsonProperty("enable_jpeg2000", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputEnableJPEG2000Type? EnableJPEG2000 { get; set; } = CompressPdfInputEnableJPEG2000Type.Default;
+        public InputPdfDataInputEnableJPEG2000Type? EnableJPEG2000 { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputEnableJPEG2000Type.Default;
 
         [JsonProperty("enable_jbig2", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompressPdfInputEnableJBIG2Type? EnableJBIG2 { get; set; } = CompressPdfInputEnableJBIG2Type.Default;
+        public InputPdfDataInputEnableJBIG2Type? EnableJBIG2 { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputEnableJBIG2Type.Default;
 
         [JsonProperty("jbig2_pms_threshold", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? JBIG2PMSThreshold { get; set; } = 85;
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveAnnotationsType
+    public enum InputPdfDataInputRemoveAnnotationsType
     {
         Default,
         Yes,
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveBlankPagesType
+    public enum InputPdfDataInputRemoveBlankPagesType
     {
         Default,
         Yes,
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveBookmarksType
+    public enum InputPdfDataInputRemoveBookmarksType
     {
         Default,
         Yes,
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveEmbeddedFilesType
+    public enum InputPdfDataInputRemoveEmbeddedFilesType
     {
         Default,
         Yes,
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveFormFieldsType
+    public enum InputPdfDataInputRemoveFormFieldsType
     {
         Default,
         Yes,
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveHyperlinksType
+    public enum InputPdfDataInputRemoveHyperlinksType
     {
         Default,
         Yes,
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveJavaScriptType
+    public enum InputPdfDataInputRemoveJavaScriptType
     {
         Default,
         Yes,
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemoveMetadataType
+    public enum InputPdfDataInputRemoveMetadataType
     {
         Default,
         Yes,
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRemovePageThumbnailsType
+    public enum InputPdfDataInputRemovePageThumbnailsType
     {
         Default,
         Yes,
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputPackFontsType
+    public enum InputPdfDataInputPackFontsType
     {
         Default,
         Yes,
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputPackDocumentType
+    public enum InputPdfDataInputPackDocumentType
     {
         Default,
         Yes,
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputRecompressImagesType
+    public enum InputPdfDataInputRecompressImagesType
     {
         Default,
         Yes,
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputEnableMRCType
+    public enum InputPdfDataInputEnableMRCType
     {
         Default,
         Yes,
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputPreserveSmoothingType
+    public enum InputPdfDataInputPreserveSmoothingType
     {
         Default,
         Yes,
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputImageQualityType
+    public enum InputPdfDataInputImageQualityType
     {
         Default,
         [EnumMember(Value = "Very Very High")]
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputDownscaleImagesType
+    public enum InputPdfDataInputDownscaleImagesType
     {
         Default,
         Yes,
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputEnableColorDetectionType
+    public enum InputPdfDataInputEnableColorDetectionType
     {
         Default,
         Yes,
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputEnableCharRepairType
+    public enum InputPdfDataInputEnableCharRepairType
     {
         Default,
         Yes,
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputEnableJPEG2000Type
+    public enum InputPdfDataInputEnableJPEG2000Type
     {
         Default,
         Yes,
@@ -760,14 +760,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompressPdfInputEnableJBIG2Type
+    public enum InputPdfDataInputEnableJBIG2Type
     {
         Default,
         Yes,
         No
     }
 
-    public class ConvertInput
+    public class ConvertInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertInputOutputFormatType OutputFormat { get; set; } = ConvertInputOutputFormatType.PDF;
+        public InputDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInputOutputFormatType
+    public enum InputDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         XFDF
     }
 
-    public class ConvertCadInput
+    public class InputCadDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("paper_size", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputPaperSizeType? PaperSize { get; set; } = ConvertCadInputPaperSizeType.Letter;
+        public InputCadDataInputPaperSizeType? PaperSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputCadDataInputPaperSizeType.Letter;
 
         [JsonProperty("paper_size_custom")]
         public string PaperSizeCustom { get; set; }
@@ -861,16 +861,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string BackgroundColor { get; set; } = "White";
 
         [JsonProperty("foreground_color", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputForegroundColorType? ForegroundColor { get; set; } = ConvertCadInputForegroundColorType.GreyscaleDarken;
+        public InputCadDataInputForegroundColorType? ForegroundColor { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputCadDataInputForegroundColorType.GreyscaleDarken;
 
         [JsonProperty("foreground_color_custom")]
         public string ForegroundColorCustom { get; set; }
 
         [JsonProperty("empty_layout_detection_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputEmptyLayoutDetectionType? EmptyLayoutDetection { get; set; } = ConvertCadInputEmptyLayoutDetectionType.SkipEmptyLayouts;
+        public InputCadDataInputEmptyLayoutDetectionType? EmptyLayoutDetection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputCadDataInputEmptyLayoutDetectionType.SkipEmptyLayouts;
 
         [JsonProperty("layout_sort_order", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputLayoutSortOrderType? LayoutSortOrder { get; set; } = ConvertCadInputLayoutSortOrderType.Ascending;
+        public InputCadDataInputLayoutSortOrderType? LayoutSortOrder { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputCadDataInputLayoutSortOrderType.Ascending;
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputPaperSizeType
+    public enum InputCadDataInputPaperSizeType
     {
         A3,
         A4,
@@ -897,7 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputForegroundColorType
+    public enum InputCadDataInputForegroundColorType
     {
         Default,
         CorrectForBackground,
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputEmptyLayoutDetectionType
+    public enum InputCadDataInputEmptyLayoutDetectionType
     {
         Default,
         SkipNone,
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputLayoutSortOrderType
+    public enum InputCadDataInputLayoutSortOrderType
     {
         Default,
         Ascending,
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         TabOrder
     }
 
-    public class ConvertEmailInput
+    public class InputEmailDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -948,13 +948,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? IncludeAttachments { get; set; } = true;
 
         [JsonProperty("attachment_merge_mode")]
-        public ConvertEmailInputAttachmentActionType? AttachmentAction { get; set; }
+        public InputEmailDataInputAttachmentActionType? AttachmentAction { get; set; }
 
         [JsonProperty("display_attachment_summary", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AttachmentSummary { get; set; } = true;
 
         [JsonProperty("unsupported_attachment_behaviour", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertEmailInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; } = ConvertEmailInputUnsupportedAttachmentActionType.Error;
+        public InputEmailDataInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputEmailDataInputUnsupportedAttachmentActionType.Error;
 
         [JsonProperty("include_attachment_types")]
         public string IncludeAttachmentFilter { get; set; }
@@ -966,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string ViewportSize { get; set; } = "Paper";
 
         [JsonProperty("paper_size", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertEmailInputPaperSizeType? PaperSize { get; set; } = ConvertEmailInputPaperSizeType.Letter;
+        public InputEmailDataInputPaperSizeType? PaperSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputEmailDataInputPaperSizeType.Letter;
 
         [JsonProperty("paper_size_custom")]
         public string PaperSizeCustom { get; set; }
@@ -990,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertEmailInputConversionQualityType? ConversionQuality { get; set; }
+        public InputEmailDataInputConversionQualityType? ConversionQuality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1000,7 +1000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputAttachmentActionType
+    public enum InputEmailDataInputAttachmentActionType
     {
         Default,
         Merge,
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputUnsupportedAttachmentActionType
+    public enum InputEmailDataInputUnsupportedAttachmentActionType
     {
         Error,
         Remove,
@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputPaperSizeType
+    public enum InputEmailDataInputPaperSizeType
     {
         A3,
         A4,
@@ -1028,14 +1028,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputConversionQualityType
+    public enum InputEmailDataInputConversionQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertExcelInput
+    public class InputExcelDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1050,13 +1050,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertExcelInputOutputFormatType OutputFormat { get; set; } = ConvertExcelInputOutputFormatType.PDF;
+        public InputExcelDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputExcelDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("range")]
-        public ConvertExcelInputRangeType? Range { get; set; }
+        public InputExcelDataInputRangeType? Range { get; set; }
 
         [JsonProperty("unhide_all_rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RevealHiddenRows { get; set; } = false;
@@ -1077,7 +1077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertExcelInputQualityType? Quality { get; set; }
+        public InputExcelDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertExcelInputOutputFormatType
+    public enum InputExcelDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertExcelInputRangeType
+    public enum InputExcelDataInputRangeType
     {
         VisibleDocuments,
         AllDocuments,
@@ -1114,14 +1114,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertExcelInputQualityType
+    public enum InputExcelDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertHtmlInput
+    public class ConvertHtmlInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1130,13 +1130,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string SourceURLOrHTML { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlInputPageOrientationType? PageOrientation { get; set; } = ConvertHtmlInputPageOrientationType.Portrait;
+        public InputDataInputPageOrientationType? PageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPageOrientationType.Portrait;
 
         [JsonProperty("media_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlInputMediaTypeType? MediaType { get; set; } = ConvertHtmlInputMediaTypeType.Screen;
+        public InputDataInputMediaTypeType? MediaType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputMediaTypeType.Screen;
 
         [JsonProperty("authentication_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlInputAuthenticationTypeType? AuthenticationType { get; set; } = ConvertHtmlInputAuthenticationTypeType.Anonymous;
+        public InputDataInputAuthenticationTypeType? AuthenticationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputAuthenticationTypeType.Anonymous;
 
         [JsonProperty("username")]
         public string UserName { get; set; }
@@ -1155,21 +1155,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlInputPageOrientationType
+    public enum InputDataInputPageOrientationType
     {
         Portrait,
         Landscape
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlInputMediaTypeType
+    public enum InputDataInputMediaTypeType
     {
         Screen,
         Print
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlInputAuthenticationTypeType
+    public enum InputDataInputAuthenticationTypeType
     {
         Anonymous,
         [EnumMember(Value = "SharePoint Online")]
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         Web
     }
 
-    public class ConvertInfopathInput
+    public class InputInfopathDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1192,7 +1192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertInfopathInputOutputFormatType OutputFormat { get; set; } = ConvertInfopathInputOutputFormatType.PDF;
+        public InputInfopathDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputInfopathDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -1207,10 +1207,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? IncludeAttachment { get; set; } = true;
 
         [JsonProperty("attachment_merge_mode")]
-        public ConvertInfopathInputAttachmentActionType? AttachmentAction { get; set; }
+        public InputInfopathDataInputAttachmentActionType? AttachmentAction { get; set; }
 
         [JsonProperty("unsupported_attachment_behaviour")]
-        public ConvertInfopathInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; }
+        public InputInfopathDataInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; }
 
         [JsonProperty("break_merge_on_error")]
         public bool? BreakMergeOnError { get; set; }
@@ -1222,22 +1222,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string ExcludeAttachmentFilter { get; set; }
 
         [JsonProperty("default_paper_size")]
-        public ConvertInfopathInputDefaultPaperSizeType? DefaultPaperSize { get; set; }
+        public InputInfopathDataInputDefaultPaperSizeType? DefaultPaperSize { get; set; }
 
         [JsonProperty("default_paper_size_custom")]
         public string DefaultPaperSizeCustom { get; set; }
 
         [JsonProperty("force_paper_size")]
-        public ConvertInfopathInputForcePaperSizeType? ForcePaperSize { get; set; }
+        public InputInfopathDataInputForcePaperSizeType? ForcePaperSize { get; set; }
 
         [JsonProperty("force_paper_size_custom")]
         public string ForcePaperSizeCustom { get; set; }
 
         [JsonProperty("default_page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertInfopathInputDefaultPageOrientationType? DefaultPageOrientation { get; set; } = ConvertInfopathInputDefaultPageOrientationType.Default;
+        public InputInfopathDataInputDefaultPageOrientationType? DefaultPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputInfopathDataInputDefaultPageOrientationType.Default;
 
         [JsonProperty("force_page_orientation")]
-        public ConvertInfopathInputForcePageOrientationType? ForcePageOrientation { get; set; }
+        public InputInfopathDataInputForcePageOrientationType? ForcePageOrientation { get; set; }
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -1246,7 +1246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertInfopathInputConversionQualityType? ConversionQuality { get; set; }
+        public InputInfopathDataInputConversionQualityType? ConversionQuality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1256,7 +1256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputOutputFormatType
+    public enum InputInfopathDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -1275,7 +1275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputAttachmentActionType
+    public enum InputInfopathDataInputAttachmentActionType
     {
         Default,
         Merge,
@@ -1284,7 +1284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputUnsupportedAttachmentActionType
+    public enum InputInfopathDataInputUnsupportedAttachmentActionType
     {
         Error,
         Remove,
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputDefaultPaperSizeType
+    public enum InputInfopathDataInputDefaultPaperSizeType
     {
         A3,
         A4,
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputForcePaperSizeType
+    public enum InputInfopathDataInputForcePaperSizeType
     {
         A3,
         A4,
@@ -1314,7 +1314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputDefaultPageOrientationType
+    public enum InputInfopathDataInputDefaultPageOrientationType
     {
         Default,
         Portrait,
@@ -1323,7 +1323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputForcePageOrientationType
+    public enum InputInfopathDataInputForcePageOrientationType
     {
         Default,
         Portrait,
@@ -1332,14 +1332,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputConversionQualityType
+    public enum InputInfopathDataInputConversionQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertPdfaInput
+    public class ConvertPdfaInputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1357,7 +1357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("pdf_profile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertPdfaInputPDFProfileType PDFProfile { get; set; } = ConvertPdfaInputPDFProfileType.PDFA2B;
+        public InputPdfDataInputPDFProfileType PDFProfile { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputPDFProfileType.PDFA2B;
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1367,7 +1367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPdfaInputPDFProfileType
+    public enum InputPdfDataInputPDFProfileType
     {
         Default,
         [EnumMember(Value = "PDF_1_5")]
@@ -1396,7 +1396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         PDF17
     }
 
-    public class ConvertPowerpointInput
+    public class InputPowerpointDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1411,16 +1411,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertPowerpointInputOutputFormatType OutputFormat { get; set; } = ConvertPowerpointInputOutputFormatType.PDF;
+        public InputPowerpointDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPowerpointDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("range")]
-        public ConvertPowerpointInputRangeType? Range { get; set; }
+        public InputPowerpointDataInputRangeType? Range { get; set; }
 
         [JsonProperty("print_output_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertPowerpointInputPrintLayoutHandoutsType? PrintLayoutHandouts { get; set; } = ConvertPowerpointInputPrintLayoutHandoutsType.Slides;
+        public InputPowerpointDataInputPrintLayoutHandoutsType? PrintLayoutHandouts { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPowerpointDataInputPrintLayoutHandoutsType.Slides;
 
         [JsonProperty("frame_slides", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FrameSlides { get; set; } = true;
@@ -1432,7 +1432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertPowerpointInputQualityType? Quality { get; set; }
+        public InputPowerpointDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1442,7 +1442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputOutputFormatType
+    public enum InputPowerpointDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -1456,7 +1456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputRangeType
+    public enum InputPowerpointDataInputRangeType
     {
         VisibleDocuments,
         AllDocuments,
@@ -1464,7 +1464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputPrintLayoutHandoutsType
+    public enum InputPowerpointDataInputPrintLayoutHandoutsType
     {
         Slides,
         OneSlideHandouts,
@@ -1478,14 +1478,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputQualityType
+    public enum InputPowerpointDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertVisioInput
+    public class InputVisioDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1500,13 +1500,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertVisioInputOutputFormatType OutputFormat { get; set; } = ConvertVisioInputOutputFormatType.PDF;
+        public InputVisioDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputVisioDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("range")]
-        public ConvertVisioInputRangeType? Range { get; set; }
+        public InputVisioDataInputRangeType? Range { get; set; }
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -1515,7 +1515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertVisioInputQualityType? Quality { get; set; }
+        public InputVisioDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1525,28 +1525,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertVisioInputOutputFormatType
+    public enum InputVisioDataInputOutputFormatType
     {
         PDF,
         XPS
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertVisioInputRangeType
+    public enum InputVisioDataInputRangeType
     {
         AllDocuments,
         ActiveDocuments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertVisioInputQualityType
+    public enum InputVisioDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertWordInput
+    public class InputWordDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1561,19 +1561,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertWordInputOutputFormatType OutputFormat { get; set; } = ConvertWordInputOutputFormatType.PDF;
+        public InputWordDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputWordDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("revisions_and_comments_display_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertWordInputDisplayForReviewType? DisplayForReview { get; set; } = ConvertWordInputDisplayForReviewType.Final;
+        public InputWordDataInputDisplayForReviewType? DisplayForReview { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputWordDataInputDisplayForReviewType.Final;
 
         [JsonProperty("revisions_and_comments_markup_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertWordInputReviewMarkupModeType? ReviewMarkupMode { get; set; } = ConvertWordInputReviewMarkupModeType.InLine;
+        public InputWordDataInputReviewMarkupModeType? ReviewMarkupMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputWordDataInputReviewMarkupModeType.InLine;
 
         [JsonProperty("generate_bookmarks")]
-        public ConvertWordInputGenerateBookmarksType? GenerateBookmarks { get; set; }
+        public InputWordDataInputGenerateBookmarksType? GenerateBookmarks { get; set; }
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -1582,7 +1582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertWordInputQualityType? Quality { get; set; }
+        public InputWordDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1592,7 +1592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputOutputFormatType
+    public enum InputWordDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -1611,7 +1611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputDisplayForReviewType
+    public enum InputWordDataInputDisplayForReviewType
     {
         Final,
         Original,
@@ -1620,7 +1620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputReviewMarkupModeType
+    public enum InputWordDataInputReviewMarkupModeType
     {
         Balloon,
         InLine,
@@ -1628,7 +1628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputGenerateBookmarksType
+    public enum InputWordDataInputGenerateBookmarksType
     {
         Disabled,
         Automatic,
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputQualityType
+    public enum InputWordDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
@@ -1674,7 +1674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         InvalidExtension
     }
 
-    public class CopyMetadataInput
+    public class CopyMetadataInputDataInput
     {
         [JsonProperty("site_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteUrl { get; set; }
@@ -1701,7 +1701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    public class EllipseWatermarkInput
+    public class EllipseWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -1713,7 +1713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputPositionType Position { get; set; } = EllipseWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -1731,7 +1731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputLayerType? Layer { get; set; } = EllipseWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -1758,10 +1758,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = EllipseWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputPrintOnlyType? PrintOnly { get; set; } = EllipseWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputPositionType
+    public enum InputDataInputPositionType
     {
         [EnumMember(Value = "Top Left")]
         TopLeft,
@@ -1802,14 +1802,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputLayerType
+    public enum InputDataInputLayerType
     {
         Background,
         Foreground
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputWatermarkPageOrientationType
+    public enum InputDataInputWatermarkPageOrientationType
     {
         Portrait,
         Landscape,
@@ -1817,7 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputPrintOnlyType
+    public enum InputDataInputPrintOnlyType
     {
         [EnumMember(Value = "false")]
         False,
@@ -1825,7 +1825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         True
     }
 
-    public class ExportFormDataInput
+    public class InputFromPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1840,7 +1840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExportFormDataInputOutputDataFormatType OutputDataFormat { get; set; } = ExportFormDataInputOutputDataFormatType.XML;
+        public InputFromPdfDataInputOutputDataFormatType OutputDataFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputFromPdfDataInputOutputDataFormatType.XML;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -1850,14 +1850,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExportFormDataInputOutputDataFormatType
+    public enum InputFromPdfDataInputOutputDataFormatType
     {
         XML,
         FDF,
         XFDF
     }
 
-    public class ExtractTextInput
+    public class ExtractTextInputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -1878,7 +1878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    public class ImageWatermarkInput
+    public class ImageWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -1896,7 +1896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputPositionType Position { get; set; } = ImageWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -1911,7 +1911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputLayerType? Layer { get; set; } = ImageWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -1938,10 +1938,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = ImageWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputPrintOnlyType? PrintOnly { get; set; } = ImageWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -1956,56 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class ImportFormDataInput
+    public class InputXmlDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -2038,10 +1989,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string Password { get; set; }
 
         [JsonProperty("flatten", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImportFormDataInputFlattenType? Flatten { get; set; } = ImportFormDataInputFlattenType.Default;
+        public InputXmlDataInputFlattenType? Flatten { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputXmlDataInputFlattenType.Default;
 
         [JsonProperty("read_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImportFormDataInputReadOnlyType? ReadOnly { get; set; } = ImportFormDataInputReadOnlyType.Default;
+        public InputXmlDataInputReadOnlyType? ReadOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputXmlDataInputReadOnlyType.Default;
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -2051,7 +2002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImportFormDataInputFlattenType
+    public enum InputXmlDataInputFlattenType
     {
         Default,
         Yes,
@@ -2059,14 +2010,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImportFormDataInputReadOnlyType
+    public enum InputXmlDataInputReadOnlyType
     {
         Default,
         Yes,
         No
     }
 
-    public class ExtractKeyValuePairsInput
+    public class ExtractKeyValuePairsInputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -2084,37 +2035,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string OCRLanguage { get; set; } = "eng";
 
         [JsonProperty("dpi", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputDPIType? DPI { get; set; } = ExtractKeyValuePairsInputDPIType._300;
+        public InputPdfDataInputDPIType? DPI { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputDPIType._300;
 
         [JsonProperty("kvp_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputKVPOutputFormatType? KVPOutputFormat { get; set; } = ExtractKeyValuePairsInputKVPOutputFormatType.Json;
+        public InputPdfDataInputKVPOutputFormatType? KVPOutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputKVPOutputFormatType.Json;
 
         [JsonProperty("page_range", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PageRange { get; set; } = "*";
 
         [JsonProperty("autorotate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputAutorotateType? Autorotate { get; set; } = ExtractKeyValuePairsInputAutorotateType.Default;
+        public InputPdfDataInputAutorotateType? Autorotate { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputAutorotateType.Default;
 
         [JsonProperty("trim_symbols", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputTrimSymbolsType? TrimSymbols { get; set; } = ExtractKeyValuePairsInputTrimSymbolsType.Default;
+        public InputPdfDataInputTrimSymbolsType? TrimSymbols { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputTrimSymbolsType.Default;
 
         [JsonProperty("include_key_bounding_box", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeKeyBoundingBoxType? IncludeKeyBoundingBox { get; set; } = ExtractKeyValuePairsInputIncludeKeyBoundingBoxType.Default;
+        public InputPdfDataInputIncludeKeyBoundingBoxType? IncludeKeyBoundingBox { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputIncludeKeyBoundingBoxType.Default;
 
         [JsonProperty("include_value_bounding_box", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeValueBoundingBoxType? IncludeValueBoundingBox { get; set; } = ExtractKeyValuePairsInputIncludeValueBoundingBoxType.Default;
+        public InputPdfDataInputIncludeValueBoundingBoxType? IncludeValueBoundingBox { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputIncludeValueBoundingBoxType.Default;
 
         [JsonProperty("include_page_number", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludePageNumberType? IncludePageNumber { get; set; } = ExtractKeyValuePairsInputIncludePageNumberType.Default;
+        public InputPdfDataInputIncludePageNumberType? IncludePageNumber { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputIncludePageNumberType.Default;
 
         [JsonProperty("include_confidence", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeConfidenceType? IncludeConfidence { get; set; } = ExtractKeyValuePairsInputIncludeConfidenceType.Default;
+        public InputPdfDataInputIncludeConfidenceType? IncludeConfidence { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputIncludeConfidenceType.Default;
 
         [JsonProperty("confidence_threshold", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ConfidenceThreshold { get; set; } = 50;
 
         [JsonProperty("include_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeTypeType? IncludeType { get; set; } = ExtractKeyValuePairsInputIncludeTypeType.Default;
+        public InputPdfDataInputIncludeTypeType? IncludeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputPdfDataInputIncludeTypeType.Default;
 
         [JsonProperty("expected_keys")]
         public string ExpectedKeys { get; set; }
@@ -2124,7 +2075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputDPIType
+    public enum InputPdfDataInputDPIType
     {
         [EnumMember(Value = "500")]
         _500,
@@ -2139,7 +2090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputKVPOutputFormatType
+    public enum InputPdfDataInputKVPOutputFormatType
     {
         [EnumMember(Value = "json")]
         Json,
@@ -2150,7 +2101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputAutorotateType
+    public enum InputPdfDataInputAutorotateType
     {
         Default,
         Yes,
@@ -2158,7 +2109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputTrimSymbolsType
+    public enum InputPdfDataInputTrimSymbolsType
     {
         Default,
         Yes,
@@ -2166,7 +2117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeKeyBoundingBoxType
+    public enum InputPdfDataInputIncludeKeyBoundingBoxType
     {
         Default,
         Yes,
@@ -2174,7 +2125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeValueBoundingBoxType
+    public enum InputPdfDataInputIncludeValueBoundingBoxType
     {
         Default,
         Yes,
@@ -2182,7 +2133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludePageNumberType
+    public enum InputPdfDataInputIncludePageNumberType
     {
         Default,
         Yes,
@@ -2190,7 +2141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeConfidenceType
+    public enum InputPdfDataInputIncludeConfidenceType
     {
         Default,
         Yes,
@@ -2198,14 +2149,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeTypeType
+    public enum InputPdfDataInputIncludeTypeType
     {
         Default,
         Yes,
         No
     }
 
-    public class LineWatermarkInput
+    public class LineWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -2217,7 +2168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputPositionType Position { get; set; } = LineWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -2235,7 +2186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinateEnd { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputLayerType? Layer { get; set; } = LineWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -2259,10 +2210,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = LineWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputPrintOnlyType? PrintOnly { get; set; } = LineWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -2277,56 +2228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class LinearBarcodeWatermarkInput
+    public class LinearBarcodeWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -2344,16 +2246,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("barcode_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputBarcodeTypeType BarcodeType { get; set; } = LinearBarcodeWatermarkInputBarcodeTypeType.Codabar;
+        public InputDataInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputBarcodeTypeType.Codabar;
 
         [JsonProperty("omit_start_stop_symbols", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputOmitEncodingOfStartStopSymbolsType? OmitEncodingOfStartStopSymbols { get; set; } = LinearBarcodeWatermarkInputOmitEncodingOfStartStopSymbolsType.False;
+        public InputDataInputOmitEncodingOfStartStopSymbolsType? OmitEncodingOfStartStopSymbols { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputOmitEncodingOfStartStopSymbolsType.False;
 
         [JsonProperty("disable_checkdigit", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputDisableCheckDigitType DisableCheckDigit { get; set; } = LinearBarcodeWatermarkInputDisableCheckDigitType.False;
+        public InputDataInputDisableCheckDigitType DisableCheckDigit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputDisableCheckDigitType.False;
 
         [JsonProperty("show_checkdigit", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputShowCheckDigitType ShowCheckDigit { get; set; } = LinearBarcodeWatermarkInputShowCheckDigitType.False;
+        public InputDataInputShowCheckDigitType ShowCheckDigit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputShowCheckDigitType.False;
 
         [JsonProperty("margin")]
         public string Margin { get; set; }
@@ -2368,10 +2270,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string FontStyle { get; set; }
 
         [JsonProperty("label_placement", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputLabelPlacementType? LabelPlacement { get; set; } = LinearBarcodeWatermarkInputLabelPlacementType.BottomCenter;
+        public InputDataInputLabelPlacementType? LabelPlacement { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLabelPlacementType.BottomCenter;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputPositionType Position { get; set; } = LinearBarcodeWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -2386,7 +2288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputLayerType? Layer { get; set; } = LinearBarcodeWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -2410,10 +2312,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = LinearBarcodeWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputPrintOnlyType? PrintOnly { get; set; } = LinearBarcodeWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -2429,7 +2331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputBarcodeTypeType
+    public enum InputDataInputBarcodeTypeType
     {
         Codabar,
         Code11,
@@ -2448,7 +2350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputOmitEncodingOfStartStopSymbolsType
+    public enum InputDataInputOmitEncodingOfStartStopSymbolsType
     {
         [EnumMember(Value = "true")]
         True,
@@ -2457,7 +2359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputDisableCheckDigitType
+    public enum InputDataInputDisableCheckDigitType
     {
         [EnumMember(Value = "true")]
         True,
@@ -2466,7 +2368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputShowCheckDigitType
+    public enum InputDataInputShowCheckDigitType
     {
         [EnumMember(Value = "true")]
         True,
@@ -2475,7 +2377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputLabelPlacementType
+    public enum InputDataInputLabelPlacementType
     {
         [EnumMember(Value = "Top Left")]
         TopLeft,
@@ -2492,56 +2394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         BottomRight
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class MergeToPdfInput
+    public class MergeToPdfInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -2580,7 +2433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("document_start_page", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MergeToPdfInputEachDocumentType? EachDocument { get; set; } = MergeToPdfInputEachDocumentType.StartsOnTheNextPage;
+        public InputDataInputEachDocumentType? EachDocument { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputEachDocumentType.StartsOnTheNextPage;
 
         [JsonProperty("source_files")]
         public MergeSourceFile[] SourceFiles { get; set; }
@@ -2593,7 +2446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MergeToPdfInputEachDocumentType
+    public enum InputDataInputEachDocumentType
     {
         [EnumMember(Value = "Starts on the default page")]
         StartsOnTheDefaultPage,
@@ -2614,7 +2467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
-    public class OcrPdfInput
+    public class OcrPdfInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -2632,13 +2485,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         internal bool MetaData { get; set; } = false;
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrPdfInputLanguageType? Language { get; set; } = OcrPdfInputLanguageType.English;
+        public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLanguageType.English;
 
         [JsonProperty("performance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrPdfInputPerformanceType? Performance { get; set; } = OcrPdfInputPerformanceType.SlowButAccurate;
+        public InputDataInputPerformanceType? Performance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPerformanceType.SlowButAccurate;
 
         [JsonProperty("characters_option", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrPdfInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = OcrPdfInputBlacklistWhitelistType.None;
+        public InputDataInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputBlacklistWhitelistType.None;
 
         [JsonProperty("characters")]
         public string Characters { get; set; }
@@ -2654,7 +2507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrPdfInputLanguageType
+    public enum InputDataInputLanguageType
     {
         English,
         Arabic,
@@ -2674,7 +2527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrPdfInputPerformanceType
+    public enum InputDataInputPerformanceType
     {
         [EnumMember(Value = "Slow but accurate")]
         SlowButAccurate,
@@ -2685,7 +2538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrPdfInputBlacklistWhitelistType
+    public enum InputDataInputBlacklistWhitelistType
     {
         None,
         Whitelist,
@@ -2726,7 +2579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         InvalidExtension
     }
 
-    public class OcrTextInput
+    public class OcrTextInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -2741,7 +2594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputLanguageType? Language { get; set; } = OcrTextInputLanguageType.English;
+        public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLanguageType.English;
 
         [JsonProperty("x")]
         public string XCoordinate { get; set; }
@@ -2759,10 +2612,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string PageNumber { get; set; } = "";
 
         [JsonProperty("performance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputPerformanceType? Performance { get; set; } = OcrTextInputPerformanceType.SlowButAccurate;
+        public InputDataInputPerformanceType? Performance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPerformanceType.SlowButAccurate;
 
         [JsonProperty("characters_option", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = OcrTextInputBlacklistWhitelistType.None;
+        public InputDataInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputBlacklistWhitelistType.None;
 
         [JsonProperty("characters")]
         public string Characters { get; set; }
@@ -2774,46 +2627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputLanguageType
-    {
-        English,
-        Arabic,
-        Danish,
-        German,
-        Dutch,
-        Finnish,
-        French,
-        Hebrew,
-        Hungarian,
-        Italian,
-        Norwegian,
-        Portuguese,
-        Spanish,
-        Swedish,
-        Russian
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputPerformanceType
-    {
-        [EnumMember(Value = "Slow but accurate")]
-        SlowButAccurate,
-        [EnumMember(Value = "Faster and less accurate")]
-        FasterAndLessAccurate,
-        [EnumMember(Value = "Fastest and least accurate")]
-        FastestAndLeastAccurate
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputBlacklistWhitelistType
-    {
-        None,
-        Whitelist,
-        Blacklist
-    }
-
-    public class PdfWatermarkInput
+    public class PdfWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -2831,7 +2645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputPositionType Position { get; set; } = PdfWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -2846,7 +2660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputLayerType? Layer { get; set; } = PdfWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -2864,10 +2678,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = PdfWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputPrintOnlyType? PrintOnly { get; set; } = PdfWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -2882,56 +2696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class QrCodeWatermarkInput
+    public class QrCodeWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -2949,16 +2714,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputVersionType Version { get; set; } = QrCodeWatermarkInputVersionType.Auto;
+        public InputDataInputVersionType Version { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputVersionType.Auto;
 
         [JsonProperty("input_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputInputModeType InputMode { get; set; } = QrCodeWatermarkInputInputModeType.Binary;
+        public InputDataInputInputModeType InputMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputInputModeType.Binary;
 
         [JsonProperty("error_correction_level", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputErrorCorrectionLevelType ErrorCorrectionLevel { get; set; } = QrCodeWatermarkInputErrorCorrectionLevelType.Low;
+        public InputDataInputErrorCorrectionLevelType ErrorCorrectionLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputErrorCorrectionLevelType.Low;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputPositionType Position { get; set; } = QrCodeWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -2973,7 +2738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputLayerType? Layer { get; set; } = QrCodeWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -2997,10 +2762,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = QrCodeWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputPrintOnlyType? PrintOnly { get; set; } = QrCodeWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -3016,7 +2781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputVersionType
+    public enum InputDataInputVersionType
     {
         Auto,
         [EnumMember(Value = "Version 1")]
@@ -3102,7 +2867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputInputModeType
+    public enum InputDataInputInputModeType
     {
         Binary,
         Alphanumeric,
@@ -3110,7 +2875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputErrorCorrectionLevelType
+    public enum InputDataInputErrorCorrectionLevelType
     {
         Low,
         Medium,
@@ -3118,56 +2883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         Quartile
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class RectangleWatermarkInput
+    public class RectangleWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -3179,7 +2895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputPositionType Position { get; set; } = RectangleWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -3197,7 +2913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputLayerType? Layer { get; set; } = RectangleWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -3224,10 +2940,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = RectangleWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputPrintOnlyType? PrintOnly { get; set; } = RectangleWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -3242,56 +2958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class RtfWatermarkInput
+    public class RtfWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -3309,7 +2976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputPositionType Position { get; set; } = RtfWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -3324,7 +2991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputLayerType? Layer { get; set; } = RtfWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -3351,10 +3018,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = RtfWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputPrintOnlyType? PrintOnly { get; set; } = RtfWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -3369,56 +3036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class SecurePdfInput
+    public class SecurePdfInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -3485,7 +3103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         InvalidExtension
     }
 
-    public class SplitPdfInput
+    public class SplitPdfInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -3503,7 +3121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string FileNameTemplate { get; set; }
 
         [JsonProperty("file_split_by", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitPdfInputSplitByType SplitBy { get; set; } = SplitPdfInputSplitByType.NumberOfPages;
+        public InputDataInputSplitByType SplitBy { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputSplitByType.NumberOfPages;
 
         [JsonProperty("split_parameter", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SplitParameter { get; set; } = 1;
@@ -3513,7 +3131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitPdfInputSplitByType
+    public enum InputDataInputSplitByType
     {
         [EnumMember(Value = "Number of Pages")]
         NumberOfPages,
@@ -3521,7 +3139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         BookmarkLevel
     }
 
-    public class TextWatermarkInput
+    public class TextWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -3548,13 +3166,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string FontColor { get; set; } = "#000000";
 
         [JsonProperty("alignment", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputTextAlignmentType TextAlignment { get; set; } = TextWatermarkInputTextAlignmentType.TopLeft;
+        public InputDataInputTextAlignmentType TextAlignment { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputTextAlignmentType.TopLeft;
 
         [JsonProperty("word_wrap", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputWordWrapType WordWrap { get; set; } = TextWatermarkInputWordWrapType.Word;
+        public InputDataInputWordWrapType WordWrap { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWordWrapType.Word;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputPositionType Position { get; set; } = TextWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -3569,7 +3187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputLayerType? Layer { get; set; } = TextWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -3596,10 +3214,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = TextWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputPrintOnlyType? PrintOnly { get; set; } = TextWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -3615,7 +3233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputTextAlignmentType
+    public enum InputDataInputTextAlignmentType
     {
         [EnumMember(Value = "Top Left")]
         TopLeft,
@@ -3644,61 +3262,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputWordWrapType
+    public enum InputDataInputWordWrapType
     {
         WordOnly,
         Character,
         None,
         Word
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
     }
 }
 

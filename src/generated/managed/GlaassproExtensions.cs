@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserPostInput>> request)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> UserPost2(Expression<Func<string>> userId, Expression<Func<UserPost2Input>> request)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> UserPost2(Expression<Func<string>> userId, Expression<Func<UserPost2RequestInput>> request)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<MetadataSwitchResponse, ApiConnectionActionConfiguration> MetadataPostSwitch(Expression<Func<string>> metadataId, Expression<Func<MetadataPostSwitchInput>> request)
+        public IBodyWorkflowAction<MetadataSwitchResponse, ApiConnectionActionConfiguration> MetadataPostSwitch(Expression<Func<string>> metadataId, Expression<Func<MetadataPostSwitchRequestInput>> request)
         {
             var __workflow_metadataId = WorkflowExpression.Compile(metadataId, nameof(metadataId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<MetadataSwitchResponse[], ApiConnectionActionConfiguration> MetadataPutSwitches(Expression<Func<string>> metadataId, Expression<Func<switchesInputItem[]>> switches)
+        public IBodyWorkflowAction<MetadataSwitchResponse[], ApiConnectionActionConfiguration> MetadataPutSwitches(Expression<Func<string>> metadataId, Expression<Func<SwitchesInputItem[]>> switches)
         {
             var __workflow_metadataId = WorkflowExpression.Compile(metadataId, nameof(metadataId), required: true);
             var __workflow_switches = WorkflowExpression.Compile(switches, nameof(switches), required: true);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<MetadataSwitchResponse, ApiConnectionActionConfiguration> MetadataPutSwitch(Expression<Func<string>> metadataId, Expression<Func<string>> switchId, Expression<Func<MetadataPutSwitchInput>> request)
+        public IBodyWorkflowAction<MetadataSwitchResponse, ApiConnectionActionConfiguration> MetadataPutSwitch(Expression<Func<string>> metadataId, Expression<Func<string>> switchId, Expression<Func<MetadataPostSwitchRequestInput>> request)
         {
             var __workflow_metadataId = WorkflowExpression.Compile(metadataId, nameof(metadataId), required: true);
             var __workflow_switchId = WorkflowExpression.Compile(switchId, nameof(switchId), required: true);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<SearchResponse[], ApiConnectionActionConfiguration> SearchGet(Expression<Func<string>> query, Expression<Func<filterInput>> filter = null, Expression<Func<int>> take = null)
+        public IBodyWorkflowAction<SearchResponse[], ApiConnectionActionConfiguration> SearchGet(Expression<Func<string>> query, Expression<Func<FilterInput>> filter = null, Expression<Func<int>> take = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> CasePrint(Expression<Func<string>> id, Expression<Func<CasePrintPostInput>> body = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> CasePrint(Expression<Func<string>> id, Expression<Func<CasePrintBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
-        public IBodyWorkflowAction<CaseReplyResponse, ApiConnectionActionConfiguration> CaseReply(Expression<Func<string>> id, Expression<Func<CaseReplyPostInput>> body)
+        public IBodyWorkflowAction<CaseReplyResponse, ApiConnectionActionConfiguration> CaseReply(Expression<Func<string>> id, Expression<Func<CaseReplyBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
     public class GlaassproTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseCreatedTrigger(Expression<Func<CaseCreatedTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseCreatedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseUpdatedTrigger(Expression<Func<CaseUpdatedTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseUpdatedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseClosedTrigger(Expression<Func<CaseClosedTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CaseClosedTrigger(Expression<Func<CaseClosedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MetadataCreatedTrigger(Expression<Func<MetadataCreatedTriggerInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MetadataCreatedTrigger(Expression<Func<MetadataCreatedTriggerRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MetadataUpdatedTrigger(Expression<Func<MetadataUpdatedTriggerInput>> request, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MetadataUpdatedTrigger(Expression<Func<MetadataCreatedTriggerRequestInput>> request, FlowRecurrence recurrence = null)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string ApplicationUrl { get; set; }
     }
 
-    public class UserPostInput
+    public class UserRequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public bool IsManagerial { get; set; }
     }
 
-    public class UserPost2Input
+    public class UserPost2RequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Active { get; set; }
@@ -453,20 +453,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Label { get; set; }
     }
 
-    public class MetadataPostSwitchInput
+    public class MetadataPostSwitchRequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
     }
 
-    public class switchesInputItem
+    public class SwitchesInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
-        public string Label { get; set; }
-    }
 
-    public class MetadataPutSwitchInput
-    {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
     }
@@ -481,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterInput
+    public enum FilterInput
     {
         Location,
         Company,
@@ -529,22 +526,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Text { get; set; }
     }
 
-    public class CasePrintPostInput
+    public class CasePrintBodyInput
     {
         public bool? UseCustom { get; set; }
-        public CasePrintPostInputDisplayGalleryType? DisplayGallery { get; set; }
-        public CasePrintPostInputDisplayTextType? DisplayText { get; set; }
+        public BodyInputDisplayGalleryType? DisplayGallery { get; set; }
+        public BodyInputDisplayTextType? DisplayText { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CasePrintPostInputDisplayGalleryType
+    public enum BodyInputDisplayGalleryType
     {
         Gallery,
         List
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CasePrintPostInputDisplayTextType
+    public enum BodyInputDisplayTextType
     {
         Beside,
         Below
@@ -564,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Name { get; set; }
     }
 
-    public class CaseReplyPostInput
+    public class CaseReplyBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -573,66 +570,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public bool WithoutNotification { get; set; }
     }
 
-    public class CaseCreatedTriggerInput
+    public class CaseClosedTriggerBodyInput
     {
         public string TemplateId { get; set; }
-        public CaseCreatedTriggerInputScopeType? Scope { get; set; }
+        public BodyInputScopeType? Scope { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Notification { get; set; } = "#{listCallbackUrl()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CaseCreatedTriggerInputScopeType
+    public enum BodyInputScopeType
     {
         ByMe,
         ForMe,
         All
     }
 
-    public class CaseUpdatedTriggerInput
-    {
-        public string TemplateId { get; set; }
-        public CaseUpdatedTriggerInputScopeType? Scope { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Notification { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CaseUpdatedTriggerInputScopeType
-    {
-        ByMe,
-        ForMe,
-        All
-    }
-
-    public class CaseClosedTriggerInput
-    {
-        public string TemplateId { get; set; }
-        public CaseClosedTriggerInputScopeType? Scope { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Notification { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CaseClosedTriggerInputScopeType
-    {
-        ByMe,
-        ForMe,
-        All
-    }
-
-    public class MetadataCreatedTriggerInput
-    {
-        public string MetadataId { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Notification { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class MetadataUpdatedTriggerInput
+    public class MetadataCreatedTriggerRequestInput
     {
         public string MetadataId { get; set; }
 

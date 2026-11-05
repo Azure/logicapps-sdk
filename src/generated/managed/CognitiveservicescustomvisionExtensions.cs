@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> ClassifyImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<ClassifyImageUrlV2Input>> body)
+        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> ClassifyImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<BodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> DetectImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<DetectImageUrlV2Input>> body)
+        public IBodyWorkflowAction<PredictImageResponseV3, ApiConnectionActionConfiguration> DetectImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<BodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
@@ -129,13 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         public double Height { get; set; }
     }
 
-    public class ClassifyImageUrlV2Input
-    {
-        [JsonProperty("Url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageURL { get; set; }
-    }
-
-    public class DetectImageUrlV2Input
+    public class BodyInput
     {
         [JsonProperty("Url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImageURL { get; set; }

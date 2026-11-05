@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
     public class FiretextActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "firetext")]
-        public IBodyWorkflowAction<SendsmsResponse, ApiConnectionActionConfiguration> Sendsms(Expression<Func<SendsmsInput>> body = null)
+        public IBodyWorkflowAction<SendsmsResponse, ApiConnectionActionConfiguration> Sendsms(Expression<Func<SendsmsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendsmsResponse, ApiConnectionActionConfiguration>(() =>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "firetext")]
-        public IBodyWorkflowAction<SubscribeResponse, ApiConnectionActionConfiguration> Subscribe(Expression<Func<SubscribeInput>> body = null)
+        public IBodyWorkflowAction<SubscribeResponse, ApiConnectionActionConfiguration> Subscribe(Expression<Func<SubscribeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SubscribeResponse, ApiConnectionActionConfiguration>(() =>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
         public string Success { get; set; }
     }
 
-    public class SendsmsInput
+    public class SendsmsBodyInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
         public string Success { get; set; }
     }
 
-    public class SubscribeInput
+    public class SubscribeBodyInput
     {
         [JsonProperty("custom1")]
         public string Custom1 { get; set; }
@@ -120,10 +120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Firetext
         public string Mobile { get; set; }
 
         [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SubscribeInputUpdateType? Update { get; set; } = SubscribeInputUpdateType._0;
+        public BodyInputUpdateType? Update { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Firetext.BodyInputUpdateType._0;
     }
 
-    public enum SubscribeInputUpdateType
+    public enum BodyInputUpdateType
     {
         _0 = 0,
         _1 = 1

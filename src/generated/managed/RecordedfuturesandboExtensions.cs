@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
     public class RecordedfuturesandboActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<GetReportResponse, ApiConnectionActionConfiguration> GetReport(Expression<Func<string>> sampleId, Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null)
+        public IBodyWorkflowAction<GetReportResponse, ApiConnectionActionConfiguration> GetReport(Expression<Func<string>> sampleId, Expression<Func<string>> sandboxToken = null, Expression<Func<RegionInput>> region = null)
         {
             var __workflow_sampleId = WorkflowExpression.Compile(sampleId, nameof(sampleId), required: true);
             var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: false);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<GetSummaryResponse, ApiConnectionActionConfiguration> GetSummary(Expression<Func<string>> sampleId, Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null)
+        public IBodyWorkflowAction<GetSummaryResponse, ApiConnectionActionConfiguration> GetSummary(Expression<Func<string>> sampleId, Expression<Func<string>> sandboxToken = null, Expression<Func<RegionInput>> region = null)
         {
             var __workflow_sampleId = WorkflowExpression.Compile(sampleId, nameof(sampleId), required: true);
             var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: false);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
-        public IBodyWorkflowAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration> SubmitUrlSample(Expression<Func<string>> sandboxToken = null, Expression<Func<regionInput>> region = null, Expression<Func<SubmitUrlSampleInput>> body = null)
+        public IBodyWorkflowAction<SubmitUrlSampleResponse, ApiConnectionActionConfiguration> SubmitUrlSample(Expression<Func<string>> sandboxToken = null, Expression<Func<RegionInput>> region = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: false);
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum regionInput
+    public enum RegionInput
     {
         [EnumMember(Value = "us")]
         Us,
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         public string Url { get; set; }
     }
 
-    public class SubmitUrlSampleInput
+    public class BodyInput
     {
         [JsonProperty("url")]
         public string Url { get; set; }

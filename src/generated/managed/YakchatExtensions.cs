@@ -13,23 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
     public class YakchatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
-        public IBodyWorkflowAction<SendMessageV2Response, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageV2Input>> body)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SendMessageV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/Automation/SendMessage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SendMessageV2Response>(callPayload);
+                return new ApiConnectionAction<SendMessageResponse>(callPayload);
             });
         }
     }
 
     public class YakchatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BidirectionalMessage(Expression<Func<BidirectionalMessageInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BidirectionalMessage(Expression<Func<BidirectionalMessageBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<InboundMessageV2Input>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<BidirectionalMessageBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OutboundMessage(Expression<Func<OutboundMessageV2Input>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OutboundMessage(Expression<Func<BidirectionalMessageBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
         }
     }
 
-    public class SendMessageV2Response
+    public class SendMessageResponse
     {
         public int Id { get; set; }
         public string Message { get; set; }
         public string Result { get; set; }
     }
 
-    public class SendMessageV2Input
+    public class SendMessageBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InboxEmail { get; set; }
@@ -88,25 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
         public string MessageTo { get; set; }
     }
 
-    public class BidirectionalMessageInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InboxEmail { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class InboundMessageV2Input
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InboxEmail { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OutboundMessageV2Input
+    public class BidirectionalMessageBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string InboxEmail { get; set; }

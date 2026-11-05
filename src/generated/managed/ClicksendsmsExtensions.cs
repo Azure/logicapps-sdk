@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
     public class ClicksendsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SmsSendResponse, ApiConnectionActionConfiguration> SmsSend(Expression<Func<SmsSendInput>> body)
+        public IBodyWorkflowAction<SmsSendResponse, ApiConnectionActionConfiguration> SmsSend(Expression<Func<SmsSendBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SmsSendResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> CreateList(Expression<Func<CreateListInput>> body)
+        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> CreateList(Expression<Func<CreateListBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateListResponse, ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendVoiceResponse, ApiConnectionActionConfiguration> SendVoice(Expression<Func<SendVoiceInput>> body)
+        public IBodyWorkflowAction<SendVoiceResponse, ApiConnectionActionConfiguration> SendVoice(Expression<Func<SendVoiceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendVoiceResponse, ApiConnectionActionConfiguration>(() =>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<CreateListContactResponse, ApiConnectionActionConfiguration> CreateListContact(Expression<Func<int>> listId, Expression<Func<CreateListContactInput>> body)
+        public IBodyWorkflowAction<CreateListContactResponse, ApiConnectionActionConfiguration> CreateListContact(Expression<Func<int>> listId, Expression<Func<CreateListContactBodyInput>> body)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<SendMmsInput>> body)
+        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<SendMmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMmsResponse, ApiConnectionActionConfiguration>(() =>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendFaxResponse, ApiConnectionActionConfiguration> SendFax(Expression<Func<SendFaxInput>> body)
+        public IBodyWorkflowAction<SendFaxResponse, ApiConnectionActionConfiguration> SendFax(Expression<Func<SendFaxBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendFaxResponse, ApiConnectionActionConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<convertInput>> convert, Expression<Func<UploadMediaInput>> body)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<ConvertInput>> convert, Expression<Func<UploadMediaBodyInput>> body)
         {
             var __workflow_convert = WorkflowExpression.Compile(convert, nameof(convert), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendLetterResponse, ApiConnectionActionConfiguration> SendLetter(Expression<Func<SendLetterInput>> body)
+        public IBodyWorkflowAction<SendLetterResponse, ApiConnectionActionConfiguration> SendLetter(Expression<Func<SendLetterBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendLetterResponse, ApiConnectionActionConfiguration>(() =>
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<SendPostcardInput>> body)
+        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<SendPostcardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendPostcardResponse, ApiConnectionActionConfiguration>(() =>
@@ -216,15 +216,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
     public class ClicksendsmsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmsInboundAutomation(Expression<Func<SmsInboundAutomationInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmsInboundAutomation(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/ms-flow/automations/sms/inbound";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new SmsInboundAutomationBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -332,13 +331,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string CurrencyNameLong { get; set; }
     }
 
-    public class SmsSendInput
+    public class SmsSendBodyInput
     {
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SmsSendInputMessagesTypeItem[] Messages { get; set; }
+        public SmsSendBodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class SmsSendInputMessagesTypeItem
+    public class SmsSendBodyInputMessagesTypeItem
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -383,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public int ContactsCount { get; set; }
     }
 
-    public class CreateListInput
+    public class CreateListBodyInput
     {
         [JsonProperty("list_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
@@ -563,13 +562,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string CurrencyNameLong { get; set; }
     }
 
-    public class SendVoiceInput
+    public class SendVoiceBodyInput
     {
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendVoiceInputMessagesTypeItem[] Messages { get; set; }
+        public SendVoiceBodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class SendVoiceInputMessagesTypeItem
+    public class SendVoiceBodyInputMessagesTypeItem
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -581,23 +580,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string Lang { get; set; } = "en-us";
 
         [JsonProperty("voice", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendVoiceInputMessagesTypeItemVoiceType Voice { get; set; }
+        public BodyInputMessagesTypeItemVoiceType Voice { get; set; }
 
         [JsonProperty("custom_string")]
         public string CustomString { get; set; }
 
         [JsonProperty("require_input")]
-        public SendVoiceInputMessagesTypeItemRequireInputType? RequireInput { get; set; }
+        public BodyInputMessagesTypeItemRequireInputType? RequireInput { get; set; }
 
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Source { get; set; } = "MSPowerAutomate";
 
         [JsonProperty("machine_detection")]
-        public SendVoiceInputMessagesTypeItemMachineDetectionType? MachineDetection { get; set; }
+        public BodyInputMessagesTypeItemMachineDetectionType? MachineDetection { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendVoiceInputMessagesTypeItemVoiceType
+    public enum BodyInputMessagesTypeItemVoiceType
     {
         [EnumMember(Value = "male")]
         Male,
@@ -605,13 +604,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         Female
     }
 
-    public enum SendVoiceInputMessagesTypeItemRequireInputType
+    public enum BodyInputMessagesTypeItemRequireInputType
     {
         _1 = 1,
         _0 = 0
     }
 
-    public enum SendVoiceInputMessagesTypeItemMachineDetectionType
+    public enum BodyInputMessagesTypeItemMachineDetectionType
     {
         _1 = 1,
         _0 = 0
@@ -707,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string ListName { get; set; }
     }
 
-    public class CreateListContactInput
+    public class CreateListContactBodyInput
     {
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
@@ -953,16 +952,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string Status { get; set; }
     }
 
-    public class SendMmsInput
+    public class SendMmsBodyInput
     {
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMmsInputMessagesTypeItem[] Messages { get; set; }
+        public SendMmsBodyInputMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("media_file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MediaFile { get; set; }
     }
 
-    public class SendMmsInputMessagesTypeItem
+    public class SendMmsBodyInputMessagesTypeItem
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -1082,16 +1081,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string CurrencyNameLong { get; set; }
     }
 
-    public class SendFaxInput
+    public class SendFaxBodyInput
     {
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendFaxInputMessagesTypeItem[] Messages { get; set; }
+        public SendFaxBodyInputMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("file_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileUrl { get; set; }
     }
 
-    public class SendFaxInputMessagesTypeItem
+    public class SendFaxBodyInputMessagesTypeItem
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -1140,7 +1139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum convertInput
+    public enum ConvertInput
     {
         [EnumMember(Value = "fax")]
         Fax,
@@ -1154,7 +1153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         Postcard
     }
 
-    public class UploadMediaInput
+    public class UploadMediaBodyInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
@@ -1373,55 +1372,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string CurrencyNameLong { get; set; }
     }
 
-    public class SendLetterInput
+    public class SendLetterBodyInput
     {
         [JsonProperty("file_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileUrl { get; set; }
 
         [JsonProperty("template_used")]
-        public SendLetterInputTemplateUsedType? TemplateUsed { get; set; }
+        public BodyInputTemplateUsedType? TemplateUsed { get; set; }
 
         [JsonProperty("colour", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendLetterInputColourType Colour { get; set; }
+        public BodyInputColourType Colour { get; set; }
 
         [JsonProperty("duplex", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendLetterInputDuplexType Duplex { get; set; }
+        public BodyInputDuplexType Duplex { get; set; }
 
         [JsonProperty("priority_post")]
-        public SendLetterInputPriorityPostType? PriorityPost { get; set; }
+        public BodyInputPriorityPostType? PriorityPost { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendLetterInputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Source { get; set; } = "MSPowerAutomate";
     }
 
-    public enum SendLetterInputTemplateUsedType
+    public enum BodyInputTemplateUsedType
     {
         _1 = 1,
         _0 = 0
     }
 
-    public enum SendLetterInputColourType
+    public enum BodyInputColourType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum SendLetterInputDuplexType
+    public enum BodyInputDuplexType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum SendLetterInputPriorityPostType
+    public enum BodyInputPriorityPostType
     {
         _1 = 1,
         _0 = 0
     }
 
-    public class SendLetterInputRecipientsTypeItem
+    public class BodyInputRecipientsTypeItem
     {
         [JsonProperty("address_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressName { get; set; }
@@ -1583,43 +1582,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string CurrencyNameLong { get; set; }
     }
 
-    public class SendPostcardInput
+    public class SendPostcardBodyInput
     {
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendPostcardInputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("file_urls", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] FileUrls { get; set; }
     }
 
-    public class SendPostcardInputRecipientsTypeItem
-    {
-        [JsonProperty("address_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AddressName { get; set; }
-
-        [JsonProperty("address_city", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("address_state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AddressState { get; set; }
-
-        [JsonProperty("address_postal_code", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_country", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("return_address_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int ReturnAddressId { get; set; }
-
-        [JsonProperty("address_line_1", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("address_line_2")]
-        public string AddressLine2 { get; set; }
-    }
-
-    public class SmsInboundAutomationInput
+    public class SmsInboundAutomationBodyInput
     {
         [JsonProperty("message_search_type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int MessageSearchType { get; set; } = 0;

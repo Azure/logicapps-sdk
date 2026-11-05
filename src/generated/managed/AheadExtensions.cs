@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ahead
     public class AheadActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ahead")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AheadReceiveExternalActivity(Expression<Func<AheadReceiveExternalActivityInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AheadReceiveExternalActivity(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,18 +31,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ahead
     {
     }
 
-    public class AheadReceiveExternalActivityInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
         public string Text { get; set; }
         public string Url { get; set; }
         public string MediaUrl { get; set; }
-        public AheadReceiveExternalActivityInputSourceType? Source { get; set; }
+        public BodyInputSourceType? Source { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AheadReceiveExternalActivityInputSourceType
+    public enum BodyInputSourceType
     {
         Ahead,
         DynamicsCrm,

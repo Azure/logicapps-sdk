@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
     public class HouseraterqaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houseraterqa")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateInspection(Expression<Func<UpdateInspectionInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateInspection(Expression<Func<UpdateInspectionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -29,21 +29,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
 
     public class HouseraterqaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InspectionStatusChange(Expression<Func<InspectionStatusChangeInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InspectionStatusChange(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/createWebhook/onSVStatusChange";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new InspectionStatusChangeBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class UpdateInspectionInput
+    public class UpdateInspectionBodyInput
     {
         [JsonProperty("inspectionTemplateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InspectionTemplateId { get; set; }
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
         public string TimeZone { get; set; }
     }
 
-    public class InspectionStatusChangeInput
+    public class InspectionStatusChangeBodyInput
     {
         [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
     public class MessagebirdsmsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "messagebirdsmsip")]
-        public IBodyWorkflowAction<MessagesGetResponse, ApiConnectionActionConfiguration> MessagesGet(Expression<Func<string>> originator = null, Expression<Func<string>> recipient = null, Expression<Func<directionInput>> direction = null, Expression<Func<string>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> searchterm = null, Expression<Func<typeInput>> type = null, Expression<Func<int>> contactId = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> from = null, Expression<Func<string>> until = null)
+        public IBodyWorkflowAction<MessagesGetResponse, ApiConnectionActionConfiguration> MessagesGet(Expression<Func<string>> originator = null, Expression<Func<string>> recipient = null, Expression<Func<DirectionInput>> direction = null, Expression<Func<string>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> searchterm = null, Expression<Func<TypeInput>> type = null, Expression<Func<int>> contactId = null, Expression<Func<StatusInput>> status = null, Expression<Func<string>> from = null, Expression<Func<string>> until = null)
         {
             var __workflow_originator = WorkflowExpression.Compile(originator, nameof(originator), required: false);
             var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: false);
@@ -61,17 +61,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "messagebirdsmsip")]
-        public IBodyWorkflowAction<MessagesPostResponse, ApiConnectionActionConfiguration> Messages(Expression<Func<MessagesPostInput>> body = null)
+        public IBodyWorkflowAction<MessagesResponse, ApiConnectionActionConfiguration> Messages(Expression<Func<MessagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MessagesPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MessagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MessagesPostResponse>(callPayload);
+                return new ApiConnectionAction<MessagesResponse>(callPayload);
             });
         }
 
@@ -89,17 +89,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "messagebirdsmsip")]
-        public IBodyWorkflowAction<BatchPostResponseItem[], ApiConnectionActionConfiguration> Batch(Expression<Func<BatchPostInput>> body = null)
+        public IBodyWorkflowAction<BatchResponseItem[], ApiConnectionActionConfiguration> Batch(Expression<Func<BatchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<BatchPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BatchResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages/batches";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<BatchPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<BatchResponseItem[]>(callPayload);
             });
         }
     }
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum directionInput
+    public enum DirectionInput
     {
         [EnumMember(Value = "mt")]
         Mt,
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "sms")]
         Sms,
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "sent")]
         Sent,
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         DeliveryFailed
     }
 
-    public class MessagesPostResponse
+    public class MessagesResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -349,10 +349,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public string CreatedDatetime { get; set; }
 
         [JsonProperty("recipients")]
-        public MessagesPostResponseRecipientsType Recipients { get; set; }
+        public MessagesResponseRecipientsType Recipients { get; set; }
     }
 
-    public class MessagesPostResponseRecipientsType
+    public class MessagesResponseRecipientsType
     {
         [JsonProperty("totalCount")]
         public int TotalCount { get; set; }
@@ -367,10 +367,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public int TotalDeliveryFailedCount { get; set; }
 
         [JsonProperty("items")]
-        public MessagesPostResponseRecipientsTypeItemsTypeItem[] Items { get; set; }
+        public MessagesResponseRecipientsTypeItemsTypeItem[] Items { get; set; }
     }
 
-    public class MessagesPostResponseRecipientsTypeItemsTypeItem
+    public class MessagesResponseRecipientsTypeItemsTypeItem
     {
         [JsonProperty("recipient")]
         public int Recipient { get; set; }
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public string StatusDatetime { get; set; }
     }
 
-    public class MessagesPostInput
+    public class MessagesBodyInput
     {
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Recipients { get; set; }
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public string[] GroupIds { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessagesPostInputTypeType? Type { get; set; } = MessagesPostInputTypeType.Sms;
+        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip.BodyInputTypeType.Sms;
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public string Datacoding { get; set; }
 
         [JsonProperty("mclass", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessagesPostInputMclassType? Mclass { get; set; } = MessagesPostInputMclassType._1;
+        public BodyInputMclassType? Mclass { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip.BodyInputMclassType._1;
 
         [JsonProperty("shortenUrls")]
         public bool? ShortenUrls { get; set; }
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MessagesPostInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "sms")]
         Sms,
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         Flash
     }
 
-    public enum MessagesPostInputMclassType
+    public enum BodyInputMclassType
     {
         _1 = 1,
         _0 = 0
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public string Currency { get; set; }
     }
 
-    public class BatchPostResponseItem
+    public class BatchResponseItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -610,10 +610,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public string CreatedDatetime { get; set; }
 
         [JsonProperty("recipients")]
-        public BatchPostResponseItemRecipientsType Recipients { get; set; }
+        public BatchResponseItemRecipientsType Recipients { get; set; }
     }
 
-    public class BatchPostResponseItemRecipientsType
+    public class BatchResponseItemRecipientsType
     {
         [JsonProperty("totalCount")]
         public int TotalCount { get; set; }
@@ -628,10 +628,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public int TotalDeliveryFailedCount { get; set; }
 
         [JsonProperty("items")]
-        public BatchPostResponseItemRecipientsTypeItemsTypeItem[] Items { get; set; }
+        public BatchResponseItemRecipientsTypeItemsTypeItem[] Items { get; set; }
     }
 
-    public class BatchPostResponseItemRecipientsTypeItemsTypeItem
+    public class BatchResponseItemRecipientsTypeItemsTypeItem
     {
         [JsonProperty("recipient")]
         public int Recipient { get; set; }
@@ -643,13 +643,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Messagebirdsmsip
         public string StatusDatetime { get; set; }
     }
 
-    public class BatchPostInput
+    public class BatchBodyInput
     {
         [JsonProperty("messages")]
-        public BatchPostInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class BatchPostInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("recipients")]
         public string[] Recipients { get; set; }

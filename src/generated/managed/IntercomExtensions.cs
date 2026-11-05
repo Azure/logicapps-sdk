@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class IntercomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse, ApiConnectionActionConfiguration> CreateLead(Expression<Func<CreateLeadInput>> body)
+        public IBodyWorkflowAction<LeadResponse, ApiConnectionActionConfiguration> CreateLead(Expression<Func<CreateLeadBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LeadResponse, ApiConnectionActionConfiguration>(() =>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         public string TimeZone { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         public string TimeZone { get; set; }
     }
 
-    public class CreateLeadInput
+    public class CreateLeadBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -279,13 +279,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         public string Phone { get; set; }
 
         [JsonProperty("avatar")]
-        public CreateLeadInputAvatarType Avatar { get; set; }
+        public BodyInputAvatarType Avatar { get; set; }
 
         [JsonProperty("companies")]
         public string CompanyId { get; set; }
     }
 
-    public class CreateLeadInputAvatarType
+    public class BodyInputAvatarType
     {
         [JsonProperty("image_url")]
         public string ImageURL { get; set; }

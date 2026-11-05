@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotform
 
     public class JotformTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> TriggerNewResponse(Expression<Func<TriggerNewResponseInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> TriggerNewResponse(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotform
         public string Message { get; set; }
     }
 
-    public class TriggerNewResponseInput
+    public class RequestBodyOfWebhookInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -45,14 +45,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotform
         public string FormId { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerNewResponseInputOutputFormatTypeItem[] OutputFormat { get; set; } = new TriggerNewResponseInputOutputFormatTypeItem[]
+        public RequestBodyOfWebhookInputOutputFormatTypeItem[] OutputFormat { get; set; } = new RequestBodyOfWebhookInputOutputFormatTypeItem[]
         {
-            (TriggerNewResponseInputOutputFormatTypeItem)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Jotform.RequestBodyOfWebhookInputOutputFormatTypeItem.HTML
         };
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerNewResponseInputOutputFormatTypeItem
+    public enum RequestBodyOfWebhookInputOutputFormatTypeItem
     {
         HTML,
         Text

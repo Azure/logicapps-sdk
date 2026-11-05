@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/accounts/hooks/insert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CreateAccountWebhookInput().ToJToken();
+                callPayload.Body = new CreateAccountWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/accounts/hooks/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new UpdateAccountWebhookInput().ToJToken();
+                callPayload.Body = new UpdateAccountWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/contacts/hooks/insert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CreateContactWebhookInput().ToJToken();
+                callPayload.Body = new CreateContactWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/contacts/hooks/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new UpdateContactWebhookInput().ToJToken();
+                callPayload.Body = new UpdateContactWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/opportunities/hooks/insert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CreateOpportunityWebhookInput().ToJToken();
+                callPayload.Body = new CreateOpportunityWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/opportunities/hooks/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new UpdateOpportunityWebhookInput().ToJToken();
+                callPayload.Body = new UpdateOpportunityWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/salesorders/hooks/insert";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CreateSalesOrderWebhookInput().ToJToken();
+                callPayload.Body = new CreateSalesOrderWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
                 var apiCallPath = "/salesorders/hooks/update";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new UpdateSalesOrderWebhookInput().ToJToken();
+                callPayload.Body = new UpdateSalesOrderWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         public string Location { get; set; }
     }
 
-    public class CreateAccountWebhookInput
+    public class CreateAccountWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Account";
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class UpdateAccountWebhookInput
+    public class UpdateAccountWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Account";
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CreateContactWebhookInput
+    public class CreateContactWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Contact";
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class UpdateContactWebhookInput
+    public class UpdateContactWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Contact";
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CreateOpportunityWebhookInput
+    public class CreateOpportunityWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Opportunity";
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class UpdateOpportunityWebhookInput
+    public class UpdateOpportunityWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Opportunity";
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CreateSalesOrderWebhookInput
+    public class CreateSalesOrderWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Sales Order";
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcemanagercrm
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class UpdateSalesOrderWebhookInput
+    public class UpdateSalesOrderWebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Webhook - Insert Sales Order";

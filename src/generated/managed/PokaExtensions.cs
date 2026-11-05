@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
     public class PokaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookDetail, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookInput>> body, Expression<Func<string>> item, Expression<Func<string>> operationName, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookDetail, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<BodyInput>> body, Expression<Func<string>> item, Expression<Func<string>> operationName, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
         public string Url { get; set; }
     }
 
-    public class CreateWebhookInput
+    public class BodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

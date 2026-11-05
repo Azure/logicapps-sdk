@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeliverViaCustomDelivery(Expression<Func<DeliverViaCustomDeliveryInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeliverViaCustomDelivery(Expression<Func<DeliverViaCustomDeliveryBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> SaveToWorkspace(Expression<Func<SaveToWorkspaceInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> SaveToWorkspace(Expression<Func<SaveToWorkspaceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration> CreateLiveSendLink(Expression<Func<CreateLiveSendLinkInput>> body = null)
+        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration> CreateLiveSendLink(Expression<Func<CreateLiveSendLinkBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicLiveSendLiveSendLinkResponse, ApiConnectionActionConfiguration>(() =>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         Table
     }
 
-    public class DeliverViaCustomDeliveryInput
+    public class DeliverViaCustomDeliveryBodyInput
     {
         [JsonProperty("deliveryOption")]
         public string DeliveryOption { get; set; }
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string ModifiedByUserId { get; set; }
     }
 
-    public class SaveToWorkspaceInput
+    public class SaveToWorkspaceBodyInput
     {
         [JsonProperty("workspaceOptions")]
         public SeismicDeliveryWorkspaceOptions WorkspaceOptions { get; set; }
@@ -425,13 +425,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string[] Tags { get; set; }
 
         [JsonProperty("settings")]
-        public SeismicLiveSendLiveSendLinkSettings Settings { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendLinkSettingsResponse Settings { get; set; }
 
         [JsonProperty("content")]
-        public SeismicLiveSendLiveSendLinkContent[] Content { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendLinkContentResponse[] Content { get; set; }
     }
 
-    public class SeismicLiveSendLiveSendLinkSettings
+    public class CreateLiveSendLinkSeismicLiveSendLiveSendLinkSettingsResponse
     {
         [JsonProperty("expiresAt")]
         public string ExpiresAt { get; set; }
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public bool SingleView { get; set; }
     }
 
-    public class SeismicLiveSendLiveSendLinkContent
+    public class CreateLiveSendLinkSeismicLiveSendLiveSendLinkContentResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string TeamsiteId { get; set; }
 
         [JsonProperty("repository")]
-        public SeismicLiveSendLiveSendContentRepositoryEnum Repository { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendContentRepositoryEnumResponse Repository { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string Type { get; set; }
 
         [JsonProperty("libraryContent")]
-        public SeismicLiveSendLiveSendLinkContentBasicInfo LibraryContent { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendLinkContentBasicInfoResponse LibraryContent { get; set; }
 
         [JsonProperty("contentProfileId")]
         public string ProfileId { get; set; }
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SeismicLiveSendLiveSendContentRepositoryEnum
+    public enum CreateLiveSendLinkSeismicLiveSendLiveSendContentRepositoryEnumResponse
     {
         DocCenter,
         NewsCenter,
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         GeneratedLivedocs
     }
 
-    public class SeismicLiveSendLiveSendLinkContentBasicInfo
+    public class CreateLiveSendLinkSeismicLiveSendLiveSendLinkContentBasicInfoResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -501,19 +501,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string TeamSiteId { get; set; }
     }
 
-    public class CreateLiveSendLinkInput
+    public class CreateLiveSendLinkBodyInput
     {
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
 
         [JsonProperty("settings")]
-        public SeismicLiveSendLiveSendLinkSettings2 Settings { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendLinkSettings Settings { get; set; }
 
         [JsonProperty("content")]
-        public SeismicLiveSendLiveSendLinkContent2[] Content { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendLinkContent[] Content { get; set; }
     }
 
-    public class SeismicLiveSendLiveSendLinkSettings2
+    public class CreateLiveSendLinkSeismicLiveSendLiveSendLinkSettings
     {
         [JsonProperty("expiresAt")]
         public string ExpiresAt { get; set; }
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public bool? SingleView { get; set; }
     }
 
-    public class SeismicLiveSendLiveSendLinkContent2
+    public class CreateLiveSendLinkSeismicLiveSendLiveSendLinkContent
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string TeamsiteId { get; set; }
 
         [JsonProperty("repository")]
-        public SeismicLiveSendLiveSendContentRepositoryEnum? Repository { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendContentRepositoryEnum? Repository { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -552,13 +552,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string Type { get; set; }
 
         [JsonProperty("libraryContent")]
-        public SeismicLiveSendLiveSendLinkContentBasicInfo LibraryContent { get; set; }
+        public CreateLiveSendLinkSeismicLiveSendLiveSendLinkContentBasicInfo LibraryContent { get; set; }
 
         [JsonProperty("contentProfileId")]
         public string ProfileId { get; set; }
 
         [JsonProperty("contentProfilePath")]
         public string[] ProfilePath { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateLiveSendLinkSeismicLiveSendLiveSendContentRepositoryEnum
+    {
+        DocCenter,
+        NewsCenter,
+        WorkSpace,
+        Library,
+        GeneratedLivedocs
+    }
+
+    public class CreateLiveSendLinkSeismicLiveSendLiveSendLinkContentBasicInfo
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("versionId")]
+        public string VersionId { get; set; }
+
+        [JsonProperty("teamsiteId")]
+        public string TeamSiteId { get; set; }
     }
 
     public class SeismicLiveSendLiveSendSettingsResponse

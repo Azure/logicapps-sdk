@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtreport")]
-        public IBodyWorkflowAction<ReportApiExecuteReportResponse, ApiConnectionActionConfiguration> StartReportExecutionJob(Expression<Func<StartReportExecutionJobInput>> body)
+        public IBodyWorkflowAction<ReportApiExecuteReportResponse, ApiConnectionActionConfiguration> StartReportExecutionJob(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReportApiExecuteReportResponse, ApiConnectionActionConfiguration>(() =>
@@ -126,39 +126,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         public string[] JobIDs { get; set; }
     }
 
-    public class StartReportExecutionJobInput
+    public class BodyInput
     {
         [JsonProperty("report_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ReportType { get; set; }
 
         [JsonProperty("execution_parameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartReportExecutionJobInputExecutionParametersType ExecutionParameters { get; set; } = new StartReportExecutionJobInputExecutionParametersType();
+        public BodyInputExecutionParametersType ExecutionParameters { get; set; } = new BodyInputExecutionParametersType();
     }
 
-    public class StartReportExecutionJobInputExecutionParametersType
+    public class BodyInputExecutionParametersType
     {
         [JsonProperty("report_instance_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ReportInstance { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartReportExecutionJobInputExecutionParametersTypeOutputFormatType OutputFormat { get; set; } = StartReportExecutionJobInputExecutionParametersTypeOutputFormatType.CSV;
+        public BodyInputExecutionParametersTypeOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport.BodyInputExecutionParametersTypeOutputFormatType.CSV;
 
         [JsonProperty("time_zone_offset_in_minutes")]
         public int? TimeZoneOffset { get; set; }
 
         [JsonProperty("anonymous_option")]
-        public StartReportExecutionJobInputExecutionParametersTypeAnonymousOptionType? AnonymousOption { get; set; }
+        public BodyInputExecutionParametersTypeAnonymousOptionType? AnonymousOption { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartReportExecutionJobInputExecutionParametersTypeOutputFormatType
+    public enum BodyInputExecutionParametersTypeOutputFormatType
     {
         PDF,
         CSV
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartReportExecutionJobInputExecutionParametersTypeAnonymousOptionType
+    public enum BodyInputExecutionParametersTypeAnonymousOptionType
     {
         UseAnonymous,
         UseAsterisk

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
     public class SecplugscanActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<FilescanResponse, ApiConnectionActionConfiguration> Filescan(Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null, Expression<Func<FilescanInput>> body = null)
+        public IBodyWorkflowAction<FilescanResponse, ApiConnectionActionConfiguration> Filescan(Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null, Expression<Func<FilescanBodyInput>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: false);
             var __workflow_xClientId = WorkflowExpression.Compile(xClientId, nameof(xClientId), required: false);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<EmailScanResponse, ApiConnectionActionConfiguration> EmailScan(Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null, Expression<Func<EmailScanInput>> body = null)
+        public IBodyWorkflowAction<EmailScanResponse, ApiConnectionActionConfiguration> EmailScan(Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null, Expression<Func<EmailScanBodyInput>> body = null)
         {
             var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: false);
             var __workflow_xClientId = WorkflowExpression.Compile(xClientId, nameof(xClientId), required: false);
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public JToken Params { get; set; }
     }
 
-    public class FilescanInput
+    public class FilescanBodyInput
     {
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         public JToken Params { get; set; }
     }
 
-    public class EmailScanInput
+    public class EmailScanBodyInput
     {
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }

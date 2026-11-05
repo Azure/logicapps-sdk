@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
     public class AzurecommunicationservicessmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
-        public IBodyWorkflowAction<SendSMSv2Response, ApiConnectionActionConfiguration> SendSMSv2(Expression<Func<SendSMSv2Input>> body)
+        public IBodyWorkflowAction<SendSMSv2Response, ApiConnectionActionConfiguration> SendSMSv2(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSMSv2Response, ApiConnectionActionConfiguration>(() =>
@@ -67,31 +67,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
         Rejected
     }
 
-    public class SendSMSv2Input
+    public class BodyInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromPhoneNumber { get; set; }
 
         [JsonProperty("smsRecipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSMSv2InputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 
         [JsonProperty("smsSendOptions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSMSv2InputSmsSendOptionsType SmsSendOptions { get; set; } = new SendSMSv2InputSmsSendOptionsType();
+        public BodyInputSmsSendOptionsType SmsSendOptions { get; set; } = new BodyInputSmsSendOptionsType();
 
         [JsonProperty("sendSmsOptions", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal SendSMSv2InputSendSmsOptionsType SendSmsOptions { get; set; } = new SendSMSv2InputSendSmsOptionsType();
+        internal BodyInputSendSmsOptionsType SendSmsOptions { get; set; } = new BodyInputSendSmsOptionsType();
     }
 
-    public class SendSMSv2InputRecipientsTypeItem
+    public class BodyInputRecipientsTypeItem
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
     }
 
-    public class SendSMSv2InputSmsSendOptionsType
+    public class BodyInputSmsSendOptionsType
     {
         [JsonProperty("enableDeliveryReport", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DeliveryReport { get; set; } = false;
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
         public string Tag { get; set; }
     }
 
-    public class SendSMSv2InputSendSmsOptionsType
+    public class BodyInputSendSmsOptionsType
     {
         [JsonProperty("enableDeliveryReport", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool? EnableDeliveryReport { get; set; } = false;

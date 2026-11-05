@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<EnrollUserToCourseResponse, ApiConnectionActionConfiguration> EnrollUserToCourse(Expression<Func<string>> courseId, Expression<Func<EnrollUserToCourseInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<EnrollUserToCourseResponse, ApiConnectionActionConfiguration> EnrollUserToCourse(Expression<Func<string>> courseId, Expression<Func<EnrollUserToCourseBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RejectEnrollmentRequest(Expression<Func<string>> id, Expression<Func<RejectEnrollmentRequestInput>> body = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RejectEnrollmentRequest(Expression<Func<string>> id, Expression<Func<RejectEnrollmentRequestBodyInput>> body = null, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseCategoryResponse, ApiConnectionActionConfiguration> CreateCourseCategory(Expression<Func<CreateCourseCategoryInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseCategoryResponse, ApiConnectionActionConfiguration> CreateCourseCategory(Expression<Func<CreateCourseCategoryBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseResponse, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<CreateCourseInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseResponse, ApiConnectionActionConfiguration> CreateCourse(Expression<Func<CreateCourseBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetakeEnrollmentById(Expression<Func<string>> id, Expression<Func<RetakeEnrollmentByIdInput>> body = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetakeEnrollmentById(Expression<Func<string>> id, Expression<Func<RetakeEnrollmentByIdBodyInput>> body = null, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseTagResponse, ApiConnectionActionConfiguration> CreateCourseTag(Expression<Func<CreateCourseTagInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseTagResponse, ApiConnectionActionConfiguration> CreateCourseTag(Expression<Func<CreateCourseTagBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CancelEnrollment(Expression<Func<string>> enrollmentId, Expression<Func<CancelEnrollmentInput>> body = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CancelEnrollment(Expression<Func<string>> enrollmentId, Expression<Func<CancelEnrollmentBodyInput>> body = null, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_enrollmentId = WorkflowExpression.Compile(enrollmentId, nameof(enrollmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<CreateCourseSessionInput>> body, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<CreateCourseSessionBodyInput>> body, Expression<Func<string>> lMS365UserId = null)
         {
             var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<HttpRequestV2Input>> parameters)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HttpRequest(Expression<Func<ParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -328,137 +328,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 var apiCallPath = "/webhooks/subscribe/EnrollmentApprovalRequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new EnrollmentApprovalRequestInput().ToJToken();
+                callPayload.Body = new CourseCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseEnrollment(Expression<Func<CourseEnrollmentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseEnrollment(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CourseEnrollment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseUnenrollment(Expression<Func<CourseUnenrollmentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseUnenrollment(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CourseUnenrollment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseStarted(Expression<Func<CourseStartedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseStarted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CourseStarted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseCompleted(Expression<Func<CourseCompletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseCompleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CourseCompleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CoursePublished(Expression<Func<CoursePublishedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CoursePublished(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CoursePublished";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseUnpublished(Expression<Func<CourseUnpublishedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseUnpublished(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CourseUnpublished";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserCreated(Expression<Func<UserCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/UserCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserDeleted(Expression<Func<UserDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/UserDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseCreated(Expression<Func<CourseCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CourseCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseDeleted(Expression<Func<CourseDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CourseDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/subscribe/CourseDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CourseCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -492,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseSessionId { get; set; }
     }
 
-    public class EnrollUserToCourseInput
+    public class EnrollUserToCourseBodyInput
     {
         [JsonProperty("userLoginName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserLoginName { get; set; }
@@ -501,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseSessionId { get; set; }
     }
 
-    public class RejectEnrollmentRequestInput
+    public class RejectEnrollmentRequestBodyInput
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -538,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string ParentCategoryId { get; set; }
     }
 
-    public class CreateCourseCategoryInput
+    public class CreateCourseCategoryBodyInput
     {
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CategoryName { get; set; }
@@ -584,13 +574,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseLayoutId { get; set; }
     }
 
-    public class CreateCourseInput
+    public class CreateCourseBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CourseCatalogId { get; set; }
 
         [JsonProperty("CourseType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCourseInputCoursetypeType Coursetype { get; set; }
+        public BodyInputCoursetypeType Coursetype { get; set; }
 
         [JsonProperty("Title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TrainingTitle { get; set; }
@@ -603,9 +593,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UICulture { get; set; }
-        public CreateCourseInputCategoriesTypeItem[] Categories { get; set; }
-        public CreateCourseInputTagsTypeItem[] Tags { get; set; }
-        public CreateCourseInputEnrollmentFlowType? EnrollmentFlow { get; set; }
+        public BodyInputCategoriesTypeItem[] Categories { get; set; }
+        public BodyInputTagsTypeItem[] Tags { get; set; }
+        public BodyInputEnrollmentFlowType? EnrollmentFlow { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -614,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string[] Quizzes { get; set; }
         public bool? AutoResolveUrlConflict { get; set; }
         public string CourseLayoutId { get; set; }
-        public CreateCourseInputCourseSessionEnrollmentTypeType? CourseSessionEnrollmentType { get; set; }
+        public BodyInputCourseSessionEnrollmentTypeType? CourseSessionEnrollmentType { get; set; }
         public string[] TeacherLogins { get; set; }
         public string[] TrainerLogins { get; set; }
         public string CertificateTemplateId { get; set; }
@@ -625,9 +615,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string LongDescription { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCourseInputPublishingSettingsType PublishingSettings { get; set; } = new CreateCourseInputPublishingSettingsType();
-        public CreateCourseInputExpirySettingsType ExpirySettings { get; set; }
-        public CreateCourseInputDueDateSettingsType DueDateSettings { get; set; }
+        public BodyInputPublishingSettingsType PublishingSettings { get; set; } = new BodyInputPublishingSettingsType();
+        public BodyInputExpirySettingsType ExpirySettings { get; set; }
+        public BodyInputDueDateSettingsType DueDateSettings { get; set; }
         public bool? ShowInCatalog { get; set; }
 
         [JsonProperty("CEU")]
@@ -637,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCourseInputCoursetypeType
+    public enum BodyInputCoursetypeType
     {
         ELearning,
         ClassRoom,
@@ -645,7 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         TrainingPlan
     }
 
-    public class CreateCourseInputCategoriesTypeItem
+    public class BodyInputCategoriesTypeItem
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -653,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string ParentCategoryId { get; set; }
     }
 
-    public class CreateCourseInputTagsTypeItem
+    public class BodyInputTagsTypeItem
     {
         public string Id { get; set; }
 
@@ -663,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCourseInputEnrollmentFlowType
+    public enum BodyInputEnrollmentFlowType
     {
         AutomaticApproval,
         LineManagerApproval,
@@ -673,14 +663,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCourseInputCourseSessionEnrollmentTypeType
+    public enum BodyInputCourseSessionEnrollmentTypeType
     {
         EnrollToSingle,
         EnrollToAll,
         EnrollToMultiple
     }
 
-    public class CreateCourseInputPublishingSettingsType
+    public class BodyInputPublishingSettingsType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IsEnabled { get; set; } = true;
@@ -688,14 +678,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string EndDate { get; set; }
     }
 
-    public class CreateCourseInputExpirySettingsType
+    public class BodyInputExpirySettingsType
     {
         public bool? IsEnabled { get; set; }
         public string FixedDate { get; set; }
         public string DaysAfterCompletion { get; set; }
     }
 
-    public class CreateCourseInputDueDateSettingsType
+    public class BodyInputDueDateSettingsType
     {
         public bool? IsEnabled { get; set; }
         public string FixedDate { get; set; }
@@ -887,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string ModifiedAt { get; set; }
     }
 
-    public class RetakeEnrollmentByIdInput
+    public class RetakeEnrollmentByIdBodyInput
     {
         [JsonProperty("courseSessionId")]
         public string CourseSessionId { get; set; }
@@ -916,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseCatalogId { get; set; }
     }
 
-    public class CreateCourseTagInput
+    public class CreateCourseTagBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1028,7 +1018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseSessionId { get; set; }
     }
 
-    public class CancelEnrollmentInput
+    public class CancelEnrollmentBodyInput
     {
         [JsonProperty("message")]
         public string CancellationMessage { get; set; }
@@ -1059,7 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public bool IsExternal { get; set; }
     }
 
-    public class CreateCourseSessionInput
+    public class CreateCourseSessionBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -1071,17 +1061,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string EndDate { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCourseSessionInputTimeZoneType TimeZone { get; set; }
+        public BodyInputTimeZoneType TimeZone { get; set; }
         public string EnrollmentDeadline { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCourseSessionInputRoomType Room { get; set; } = new CreateCourseSessionInputRoomType();
+        public BodyInputRoomType Room { get; set; } = new BodyInputRoomType();
         public string MeetingUrl { get; set; }
         public string MaxAttendees { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCourseSessionInputTimeZoneType
+    public enum BodyInputTimeZoneType
     {
         [EnumMember(Value = "Afghanistan Standard Time")]
         AfghanistanStandardTime,
@@ -1358,27 +1348,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         YakutskStandardTime
     }
 
-    public class CreateCourseSessionInputRoomType
+    public class BodyInputRoomType
     {
         public string EmailAddress { get; set; }
         public string Title { get; set; }
         public string Location { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCourseSessionInputRoomTypeSourceType? Source { get; set; } = CreateCourseSessionInputRoomTypeSourceType.Unknown;
+        public BodyInputRoomTypeSourceType? Source { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lms365.BodyInputRoomTypeSourceType.Unknown;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCourseSessionInputRoomTypeSourceType
+    public enum BodyInputRoomTypeSourceType
     {
         Unknown,
         Exchange
     }
 
-    public class HttpRequestV2Input
+    public class ParametersInput
     {
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HttpRequestV2InputMethodType Method { get; set; } = HttpRequestV2InputMethodType.GET;
+        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lms365.ParametersInputMethodType.GET;
 
         [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uri { get; set; }
@@ -1391,7 +1381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HttpRequestV2InputMethodType
+    public enum ParametersInputMethodType
     {
         GET,
         PUT,
@@ -1400,67 +1390,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         DELETE
     }
 
-    public class EnrollmentApprovalRequestInput
+    public class CourseCompletedBodyInput
     {
         [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookUri { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CourseEnrollmentInput
-    {
-        [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CourseUnenrollmentInput
-    {
-        [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CourseStartedInput
-    {
-        [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CourseCompletedInput
-    {
-        [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CoursePublishedInput
-    {
-        [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CourseUnpublishedInput
-    {
-        [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class UserCreatedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class UserDeletedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CourseCreatedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CourseDeletedInput
+    public class CourseCreatedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";

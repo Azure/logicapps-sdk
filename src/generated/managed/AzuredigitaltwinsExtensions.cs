@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
     public class AzuredigitaltwinsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<AddModelsResponseItem[], ApiConnectionActionConfiguration> AddModels(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<AddModelsResponseItem[], ApiConnectionActionConfiguration> AddModels(Expression<Func<BodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddModelsResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateModel(Expression<Func<string>> modelid, Expression<Func<UpdateModelInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateModel(Expression<Func<string>> modelid, Expression<Func<AddRelationshipBodyInput>> body)
         {
             var __workflow_modelid = WorkflowExpression.Compile(modelid, nameof(modelid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<TwinResult, ApiConnectionActionConfiguration> AddTwin(Expression<Func<string>> twinid, Expression<Func<AddTwinInput>> body)
+        public IBodyWorkflowAction<TwinResult, ApiConnectionActionConfiguration> AddTwin(Expression<Func<string>> twinid, Expression<Func<AddRelationshipBodyInput>> body)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTwin(Expression<Func<string>> twinid, Expression<Func<UpdateTwinInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTwin(Expression<Func<string>> twinid, Expression<Func<AddRelationshipBodyInput>> body)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<UpdateComponentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateComponent(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<AddRelationshipBodyInput>> body)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_componentPath = WorkflowExpression.Compile(componentPath, nameof(componentPath), required: true);
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<TwinRelationship, ApiConnectionActionConfiguration> AddRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<AddRelationshipInput>> body)
+        public IBodyWorkflowAction<TwinRelationship, ApiConnectionActionConfiguration> AddRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<AddRelationshipBodyInput>> body)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<UpdateRelationshipInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRelationship(Expression<Func<string>> twinid, Expression<Func<string>> relationshipId, Expression<Func<AddRelationshipBodyInput>> body)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<SendTelemetryInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<AddRelationshipBodyInput>> body = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendComponentTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<SendComponentTelemetryInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendComponentTelemetry(Expression<Func<string>> twinid, Expression<Func<string>> componentPath, Expression<Func<string>> messageId, Expression<Func<string>> telemetrySourceTime = null, Expression<Func<AddRelationshipBodyInput>> body = null)
         {
             var __workflow_twinid = WorkflowExpression.Compile(twinid, nameof(twinid), required: true);
             var __workflow_componentPath = WorkflowExpression.Compile(componentPath, nameof(componentPath), required: true);
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredigitaltwins")]
-        public IBodyWorkflowAction<QueryResult, ApiConnectionActionConfiguration> QueryTwins(Expression<Func<QueryTwinsInput>> body = null)
+        public IBodyWorkflowAction<QueryResult, ApiConnectionActionConfiguration> QueryTwins(Expression<Func<QueryTwinsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QueryResult, ApiConnectionActionConfiguration>(() =>
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         public string AdditionalProperties { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("@id")]
         public string Id { get; set; }
@@ -386,13 +386,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         public string DisplayName { get; set; }
 
         [JsonProperty("contents")]
-        public bodyInputItemContentsTypeItem[] Contents { get; set; }
+        public BodyInputItemContentsTypeItem[] Contents { get; set; }
 
         [JsonProperty("@context")]
         public string Context { get; set; }
     }
 
-    public class bodyInputItemContentsTypeItem
+    public class BodyInputItemContentsTypeItem
     {
         [JsonProperty("@type")]
         public string Type { get; set; }
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         public string Schema { get; set; }
     }
 
-    public class UpdateModelInput
+    public class AddRelationshipBodyInput
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -533,28 +533,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         public string Result { get; set; }
     }
 
-    public class AddTwinInput
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateTwinInput
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
     public class GetComponentResult
     {
         [JsonProperty("result")]
         public string Result { get; set; }
-    }
-
-    public class UpdateComponentInput
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
     }
 
     public class TwinRelationship
@@ -576,18 +558,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
 
         [JsonProperty("additionalProperties")]
         public string AdditionalProperties { get; set; }
-    }
-
-    public class AddRelationshipInput
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateRelationshipInput
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
     }
 
     public class ListIncomingRelationshipsResponse
@@ -617,18 +587,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         public string RelationshipLink { get; set; }
     }
 
-    public class SendTelemetryInput
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class SendComponentTelemetryInput
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
     public class ListRelationshipsResponse
     {
         [JsonProperty("value")]
@@ -650,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredigitaltwins
         public string ContinuationToken { get; set; }
     }
 
-    public class QueryTwinsInput
+    public class QueryTwinsBodyInput
     {
         [JsonProperty("query")]
         public string Query { get; set; }

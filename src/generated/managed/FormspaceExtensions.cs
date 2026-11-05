@@ -28,22 +28,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
 
     public class FormspaceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenResponseSubmitted(Expression<Func<string>> organizationId, Expression<Func<string>> formId, Expression<Func<WhenResponseSubmittedInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenResponseSubmitted(Expression<Func<string>> organizationId, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredBodyTrigger<Subscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/forms/{1}/subscriptions", __workflow_organizationId.WithUrlEncoding(1), __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
+                callPayload.Body = new WhenResponseSubmittedSubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<Subscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenInvokedByWorkflow(Expression<Func<string>> organizationId, Expression<Func<WhenInvokedByWorkflowInput>> subscription, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenInvokedByWorkflow(Expression<Func<string>> organizationId, Expression<Func<WhenInvokedByWorkflowSubscriptionInput>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
@@ -88,13 +87,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
         WorkflowInvoked
     }
 
-    public class WhenResponseSubmittedInput
+    public class WhenResponseSubmittedSubscriptionInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class WhenInvokedByWorkflowInput
+    public class WhenInvokedByWorkflowSubscriptionInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NameInFormspace { get; set; }

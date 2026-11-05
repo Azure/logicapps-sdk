@@ -13,62 +13,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     public class TavilyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<SearchPostResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchPostInput>> body = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SearchPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/search";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SearchPostResponse>(callPayload);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<ExtractPostResponse, ApiConnectionActionConfiguration> Extract(Expression<Func<ExtractPostInput>> body = null)
+        public IBodyWorkflowAction<ExtractResponse, ApiConnectionActionConfiguration> Extract(Expression<Func<ExtractBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/extract";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractPostResponse>(callPayload);
+                return new ApiConnectionAction<ExtractResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<CrawlPostResponse, ApiConnectionActionConfiguration> Crawl(Expression<Func<CrawlPostInput>> body = null)
+        public IBodyWorkflowAction<CrawlResponse, ApiConnectionActionConfiguration> Crawl(Expression<Func<CrawlBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CrawlPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CrawlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/crawl";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CrawlPostResponse>(callPayload);
+                return new ApiConnectionAction<CrawlResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tavily")]
-        public IBodyWorkflowAction<MapPostResponse, ApiConnectionActionConfiguration> Map(Expression<Func<MapPostInput>> body = null)
+        public IBodyWorkflowAction<MapResponse, ApiConnectionActionConfiguration> Map(Expression<Func<MapBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MapPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MapResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/map";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MapPostResponse>(callPayload);
+                return new ApiConnectionAction<MapResponse>(callPayload);
             });
         }
     }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     {
     }
 
-    public class SearchPostResponse
+    public class SearchResponse
     {
         [JsonProperty("query")]
         public string Query { get; set; }
@@ -86,16 +86,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string Answer { get; set; }
 
         [JsonProperty("images")]
-        public SearchPostResponseImagesTypeItem[] Images { get; set; }
+        public SearchResponseImagesTypeItem[] Images { get; set; }
 
         [JsonProperty("results")]
-        public SearchPostResponseResultsTypeItem[] Results { get; set; }
+        public SearchResponseResultsTypeItem[] Results { get; set; }
 
         [JsonProperty("response_time")]
         public double ResponseTime { get; set; }
     }
 
-    public class SearchPostResponseImagesTypeItem
+    public class SearchResponseImagesTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string Description { get; set; }
     }
 
-    public class SearchPostResponseResultsTypeItem
+    public class SearchResponseResultsTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -122,16 +122,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string RawContent { get; set; }
     }
 
-    public class SearchPostInput
+    public class SearchBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SearchPostInputTopicType? Topic { get; set; } = SearchPostInputTopicType.General;
+        public BodyInputTopicType? Topic { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tavily.BodyInputTopicType.General;
 
         [JsonProperty("search_depth", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SearchPostInputSearchDepthType? SearchDepth { get; set; } = SearchPostInputSearchDepthType.Basic;
+        public BodyInputSearchDepthType? SearchDepth { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tavily.BodyInputSearchDepthType.Basic;
 
         [JsonProperty("chunks_per_source")]
         public int? ChunksPerSource { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public int? MaxResults { get; set; } = 5;
 
         [JsonProperty("time_range")]
-        public SearchPostInputTimeRangeType? TimeRange { get; set; }
+        public BodyInputTimeRangeType? TimeRange { get; set; }
 
         [JsonProperty("days", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Days { get; set; } = 7;
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchPostInputTopicType
+    public enum BodyInputTopicType
     {
         [EnumMember(Value = "general")]
         General,
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchPostInputSearchDepthType
+    public enum BodyInputSearchDepthType
     {
         [EnumMember(Value = "basic")]
         Basic,
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchPostInputTimeRangeType
+    public enum BodyInputTimeRangeType
     {
         [EnumMember(Value = "day")]
         Day,
@@ -203,19 +203,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         Y
     }
 
-    public class ExtractPostResponse
+    public class ExtractResponse
     {
         [JsonProperty("results")]
-        public ExtractPostResponseResultsTypeItem[] Results { get; set; }
+        public ExtractResponseResultsTypeItem[] Results { get; set; }
 
         [JsonProperty("failed_results")]
-        public ExtractPostResponseFailedResultsTypeItem[] FailedResults { get; set; }
+        public ExtractResponseFailedResultsTypeItem[] FailedResults { get; set; }
 
         [JsonProperty("response_time")]
         public double ResponseTime { get; set; }
     }
 
-    public class ExtractPostResponseResultsTypeItem
+    public class ExtractResponseResultsTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string[] Images { get; set; }
     }
 
-    public class ExtractPostResponseFailedResultsTypeItem
+    public class ExtractResponseFailedResultsTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string Error { get; set; }
     }
 
-    public class ExtractPostInput
+    public class ExtractBodyInput
     {
         [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Urls { get; set; }
@@ -245,11 +245,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public bool? IncludeImages { get; set; } = false;
 
         [JsonProperty("extract_depth", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractPostInputExtractDepthType? ExtractDepth { get; set; } = ExtractPostInputExtractDepthType.Basic;
+        public BodyInputExtractDepthType? ExtractDepth { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tavily.BodyInputExtractDepthType.Basic;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractPostInputExtractDepthType
+    public enum BodyInputExtractDepthType
     {
         [EnumMember(Value = "basic")]
         Basic,
@@ -257,19 +257,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         Advanced
     }
 
-    public class CrawlPostResponse
+    public class CrawlResponse
     {
         [JsonProperty("base_url")]
         public string BaseUrl { get; set; }
 
         [JsonProperty("results")]
-        public CrawlPostResponseResultsTypeItem[] Results { get; set; }
+        public CrawlResponseResultsTypeItem[] Results { get; set; }
 
         [JsonProperty("response_time")]
         public double ResponseTime { get; set; }
     }
 
-    public class CrawlPostResponseResultsTypeItem
+    public class CrawlResponseResultsTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string RawContent { get; set; }
     }
 
-    public class CrawlPostInput
+    public class CrawlBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -317,19 +317,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string[] Categories { get; set; }
 
         [JsonProperty("extract_depth", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CrawlPostInputExtractDepthType? ExtractDepth { get; set; } = CrawlPostInputExtractDepthType.Basic;
+        public BodyInputExtractDepthType? ExtractDepth { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tavily.BodyInputExtractDepthType.Basic;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CrawlPostInputExtractDepthType
-    {
-        [EnumMember(Value = "basic")]
-        Basic,
-        [EnumMember(Value = "advanced")]
-        Advanced
-    }
-
-    public class MapPostResponse
+    public class MapResponse
     {
         [JsonProperty("base_url")]
         public string BaseUrl { get; set; }
@@ -341,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public double ResponseTime { get; set; }
     }
 
-    public class MapPostInput
+    public class MapBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -374,11 +365,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public bool? AllowExternal { get; set; } = false;
 
         [JsonProperty("categories")]
-        public MapPostInputCategoriesTypeItem[] Categories { get; set; }
+        public BodyInputCategoriesTypeItem[] Categories { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MapPostInputCategoriesTypeItem
+    public enum BodyInputCategoriesTypeItem
     {
         Careers,
         Blog,

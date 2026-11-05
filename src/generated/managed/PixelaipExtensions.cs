@@ -25,22 +25,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserPostInput>> body = null)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UserPostResponse>(callPayload);
+                return new ApiConnectionAction<UserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<TokenPutResponse, ApiConnectionActionConfiguration> TokenPut(Expression<Func<TokenPutInput>> body = null)
+        public IBodyWorkflowAction<TokenPutResponse, ApiConnectionActionConfiguration> TokenPut(Expression<Func<TokenPutBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TokenPutResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<ProfilePutResponse, ApiConnectionActionConfiguration> ProfilePut(Expression<Func<ProfilePutInput>> body = null)
+        public IBodyWorkflowAction<ProfilePutResponse, ApiConnectionActionConfiguration> ProfilePut(Expression<Func<ProfilePutBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ProfilePutResponse, ApiConnectionActionConfiguration>(() =>
@@ -96,22 +96,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPostResponse, ApiConnectionActionConfiguration> Graph(Expression<Func<GraphPostInput>> body = null)
+        public IBodyWorkflowAction<GraphResponse, ApiConnectionActionConfiguration> Graph(Expression<Func<GraphBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GraphPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GraphResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GraphPostResponse>(callPayload);
+                return new ApiConnectionAction<GraphResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPutResponse, ApiConnectionActionConfiguration> GraphPut(Expression<Func<string>> graphId, Expression<Func<GraphPutInput>> body = null)
+        public IBodyWorkflowAction<GraphPutResponse, ApiConnectionActionConfiguration> GraphPut(Expression<Func<string>> graphId, Expression<Func<GraphPutBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphSVGGetResponse, ApiConnectionActionConfiguration> GraphSVGGet(Expression<Func<string>> graphId, Expression<Func<string>> date = null, Expression<Func<modeInput>> mode = null, Expression<Func<appearanceInput>> appearance = null)
+        public IBodyWorkflowAction<GraphSVGGetResponse, ApiConnectionActionConfiguration> GraphSVGGet(Expression<Func<string>> graphId, Expression<Func<string>> date = null, Expression<Func<ModeInput>> mode = null, Expression<Func<AppearanceInput>> appearance = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
@@ -202,11 +202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelPostResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> graphId, Expression<Func<PixelPostInput>> body = null)
+        public IBodyWorkflowAction<PixelResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> graphId, Expression<Func<PixelBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PixelPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PixelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/";
                 var apiCallHttpMethod = "post";
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
                 callPayload.Queries["graphID"] = ExpressionConverter.Convert(__workflow_graphId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PixelPostResponse>(callPayload);
+                return new ApiConnectionAction<PixelResponse>(callPayload);
             });
         }
 
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelAddPutResponse, ApiConnectionActionConfiguration> PixelAddPut(Expression<Func<string>> graphId, Expression<Func<PixelAddPutInput>> body = null)
+        public IBodyWorkflowAction<PixelAddPutResponse, ApiConnectionActionConfiguration> PixelAddPut(Expression<Func<string>> graphId, Expression<Func<PixelAddPutBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelSubtractPutResponse, ApiConnectionActionConfiguration> PixelSubtractPut(Expression<Func<string>> graphId, Expression<Func<PixelSubtractPutInput>> body = null)
+        public IBodyWorkflowAction<PixelSubtractPutResponse, ApiConnectionActionConfiguration> PixelSubtractPut(Expression<Func<string>> graphId, Expression<Func<PixelAddPutBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class UserPostResponse
+    public class UserResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class UserPostInput
+    public class UserBodyInput
     {
         [JsonProperty("token")]
         public string Token { get; set; }
@@ -380,17 +380,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Username { get; set; }
 
         [JsonProperty("agreeTermsOfService", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UserPostInputAgreeTermsOfServiceType? AgreeTermsOfService { get; set; } = UserPostInputAgreeTermsOfServiceType.Yes;
+        public BodyInputAgreeTermsOfServiceType? AgreeTermsOfService { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputAgreeTermsOfServiceType.Yes;
 
         [JsonProperty("notMinor", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UserPostInputNotMinorType? NotMinor { get; set; } = UserPostInputNotMinorType.Yes;
+        public BodyInputNotMinorType? NotMinor { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputNotMinorType.Yes;
 
         [JsonProperty("thanksCode")]
         public string ThanksCode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UserPostInputAgreeTermsOfServiceType
+    public enum BodyInputAgreeTermsOfServiceType
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UserPostInputNotMinorType
+    public enum BodyInputNotMinorType
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class TokenPutInput
+    public class TokenPutBodyInput
     {
         [JsonProperty("newToken", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewToken { get; set; }
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class ProfilePutInput
+    public class ProfilePutBodyInput
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class GraphPostResponse
+    public class GraphResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class GraphPostInput
+    public class GraphBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -527,10 +527,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Unit { get; set; } = "commit";
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GraphPostInputTypeType Type { get; set; } = GraphPostInputTypeType.Int;
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputTypeType.Int;
 
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GraphPostInputColorType Color { get; set; } = GraphPostInputColorType.Shibafu;
+        public BodyInputColorType Color { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputColorType.Shibafu;
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GraphPostInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "int")]
         Int,
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GraphPostInputColorType
+    public enum BodyInputColorType
     {
         [EnumMember(Value = "shibafu")]
         Shibafu,
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class GraphPutInput
+    public class GraphPutBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Unit { get; set; } = "commit";
 
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GraphPutInputColorType? Color { get; set; } = GraphPutInputColorType.Shibafu;
+        public BodyInputColorType? Color { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputColorType.Shibafu;
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
@@ -602,23 +602,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
         [JsonProperty("publishOptionalData")]
         public bool? PublishOptionalData { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GraphPutInputColorType
-    {
-        [EnumMember(Value = "shibafu")]
-        Shibafu,
-        [EnumMember(Value = "momiji")]
-        Momiji,
-        [EnumMember(Value = "sora")]
-        Sora,
-        [EnumMember(Value = "ichou")]
-        Ichou,
-        [EnumMember(Value = "ajisai")]
-        Ajisai,
-        [EnumMember(Value = "kuro")]
-        Kuro
     }
 
     public class GraphGetResponse
@@ -664,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modeInput
+    public enum ModeInput
     {
         [EnumMember(Value = "short")]
         Short,
@@ -675,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum appearanceInput
+    public enum AppearanceInput
     {
         [EnumMember(Value = "dark")]
         Dark
@@ -720,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public int TodaysQuantity { get; set; }
     }
 
-    public class PixelPostResponse
+    public class PixelResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -729,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class PixelPostInput
+    public class PixelBodyInput
     {
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
@@ -801,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class PixelAddPutInput
+    public class PixelAddPutBodyInput
     {
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
@@ -814,12 +797,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
-    }
-
-    public class PixelSubtractPutInput
-    {
-        [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
     }
 }
 

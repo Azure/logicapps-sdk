@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
     public class CertopusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
-        public IBodyWorkflowAction<CreateCredentialResponse, ApiConnectionActionConfiguration> CreateCredential(Expression<Func<CreateCredentialInput>> body)
+        public IBodyWorkflowAction<CreateCredentialResponse, ApiConnectionActionConfiguration> CreateCredential(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCredentialResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
         public string Name { get; set; }
     }
 
-    public class CreateCredentialInput
+    public class BodyInput
     {
         [JsonProperty("organisationId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganisationId { get; set; }
@@ -115,19 +115,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
         public bool? Publish { get; set; }
 
         [JsonProperty("recipients")]
-        public CreateCredentialInputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
     }
 
-    public class CreateCredentialInputRecipientsTypeItem
+    public class BodyInputRecipientsTypeItem
     {
         [JsonProperty("data")]
-        public CreateCredentialInputRecipientsTypeItemDataType Data { get; set; }
+        public BodyInputRecipientsTypeItemDataType Data { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
     }
 
-    public class CreateCredentialInputRecipientsTypeItemDataType
+    public class BodyInputRecipientsTypeItemDataType
     {
         [JsonProperty("{Name}")]
         public string Name { get; set; }

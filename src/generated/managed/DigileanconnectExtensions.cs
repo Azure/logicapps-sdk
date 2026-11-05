@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<DataValue, ApiConnectionActionConfiguration> DatasourcesDatasourceCreateValue(Expression<Func<int>> id, Expression<Func<DatasourcesDatasourceCreateValueInput>> body = null)
+        public IBodyWorkflowAction<DataValue, ApiConnectionActionConfiguration> DatasourcesDatasourceCreateValue(Expression<Func<int>> id, Expression<Func<DatasourcesDatasourceCreateValueBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksUpdate(Expression<Func<int>> id, Expression<Func<TasksUpdateInput>> body = null)
+        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksUpdate(Expression<Func<int>> id, Expression<Func<TasksCreateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreate(Expression<Func<TasksCreateInput>> body = null)
+        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreate(Expression<Func<TasksCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TaskInfo, ApiConnectionActionConfiguration>(() =>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digileanconnect")]
-        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreateSubTask(Expression<Func<int>> id, Expression<Func<TasksCreateSubTaskInput>> body = null)
+        public IBodyWorkflowAction<TaskInfo, ApiConnectionActionConfiguration> TasksCreateSubTask(Expression<Func<int>> id, Expression<Func<TasksCreateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         public string ExternalId { get; set; }
     }
 
-    public class DatasourcesDatasourceCreateValueInput
+    public class DatasourcesDatasourceCreateValueBodyInput
     {
         [JsonProperty("areaId")]
         public int? AreaId { get; set; }
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         public string Description { get; set; }
 
         [JsonProperty("status")]
-        public TaskStatus Status { get; set; }
+        public TasksCreateTaskStatusResponse Status { get; set; }
 
         [JsonProperty("responsibleUserId")]
         public string ResponsibleUserId { get; set; }
@@ -384,14 +384,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TaskStatus
+    public enum TasksCreateTaskStatusResponse
     {
         NotStarted,
         Completed,
         Blocked
     }
 
-    public class TasksUpdateInput
+    public class TasksCreateBodyInput
     {
         [JsonProperty("externalId")]
         public string ExternalId { get; set; }
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         public string Description { get; set; }
 
         [JsonProperty("status")]
-        public TaskStatus? Status { get; set; }
+        public TasksCreateTaskStatus? Status { get; set; }
 
         [JsonProperty("responsibleUserId")]
         public string ResponsibleUserId { get; set; }
@@ -427,76 +427,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digileanconnect
         public string[] Tags { get; set; }
     }
 
-    public class TasksCreateInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum TasksCreateTaskStatus
     {
-        [JsonProperty("externalId")]
-        public string ExternalId { get; set; }
-
-        [JsonProperty("boardId")]
-        public int? BoardId { get; set; }
-
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("status")]
-        public TaskStatus? Status { get; set; }
-
-        [JsonProperty("responsibleUserId")]
-        public string ResponsibleUserId { get; set; }
-
-        [JsonProperty("dueDate")]
-        public string DueDate { get; set; }
-
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("rowCategoryId")]
-        public int? RowCategoryId { get; set; }
-
-        [JsonProperty("columnCategoryId")]
-        public int? ColumnCategoryId { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
-    }
-
-    public class TasksCreateSubTaskInput
-    {
-        [JsonProperty("externalId")]
-        public string ExternalId { get; set; }
-
-        [JsonProperty("boardId")]
-        public int? BoardId { get; set; }
-
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("status")]
-        public TaskStatus? Status { get; set; }
-
-        [JsonProperty("responsibleUserId")]
-        public string ResponsibleUserId { get; set; }
-
-        [JsonProperty("dueDate")]
-        public string DueDate { get; set; }
-
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("rowCategoryId")]
-        public int? RowCategoryId { get; set; }
-
-        [JsonProperty("columnCategoryId")]
-        public int? ColumnCategoryId { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
+        NotStarted,
+        Completed,
+        Blocked
     }
 }
 

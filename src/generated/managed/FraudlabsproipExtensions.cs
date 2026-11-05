@@ -13,36 +13,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
     public class FraudlabsproipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        public IBodyWorkflowAction<ScreenPostResponse, ApiConnectionActionConfiguration> Screen(Expression<Func<ScreenPostInput>> body)
+        public IBodyWorkflowAction<ScreenResponse, ApiConnectionActionConfiguration> Screen(Expression<Func<ScreenBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<ScreenPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ScreenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/screen";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ScreenPostResponse>(callPayload);
+                return new ApiConnectionAction<ScreenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        public IBodyWorkflowAction<FeedbackPostResponse, ApiConnectionActionConfiguration> Feedback(Expression<Func<FeedbackPostInput>> body = null)
+        public IBodyWorkflowAction<FeedbackResponse, ApiConnectionActionConfiguration> Feedback(Expression<Func<FeedbackBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<FeedbackPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FeedbackResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/feedback";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FeedbackPostResponse>(callPayload);
+                return new ApiConnectionAction<FeedbackResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        public IBodyWorkflowAction<ResultGetResponse, ApiConnectionActionConfiguration> ResultGet(Expression<Func<string>> id = null, Expression<Func<idTypeInput>> idType = null)
+        public IBodyWorkflowAction<ResultGetResponse, ApiConnectionActionConfiguration> ResultGet(Expression<Func<string>> id = null, Expression<Func<IdTypeInput>> idType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_idType = WorkflowExpression.Compile(idType, nameof(idType), required: false);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
     {
     }
 
-    public class ScreenPostResponse
+    public class ScreenResponse
     {
         [JsonProperty("is_country_match")]
         public string IsCountryMatch { get; set; }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public int FraudlabsproCredits { get; set; }
     }
 
-    public class ScreenPostInput
+    public class ScreenBodyInput
     {
         [JsonProperty("ip")]
         public string Ip { get; set; }
@@ -329,14 +329,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string PaymentGateway { get; set; }
 
         [JsonProperty("payment_mode")]
-        public ScreenPostInputPaymentModeType? PaymentMode { get; set; }
+        public BodyInputPaymentModeType? PaymentMode { get; set; }
 
         [JsonProperty("flp_checksum")]
         public string FlpChecksum { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ScreenPostInputPaymentModeType
+    public enum BodyInputPaymentModeType
     {
         [EnumMember(Value = "creditcard")]
         Creditcard,
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         Others
     }
 
-    public class FeedbackPostResponse
+    public class FeedbackResponse
     {
         [JsonProperty("fraudlabspro_error_code")]
         public string FraudlabsproErrorCode { get; set; }
@@ -387,20 +387,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string FraudlabsproMessage { get; set; }
     }
 
-    public class FeedbackPostInput
+    public class FeedbackBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FeedbackPostInputActionType? Action { get; set; } = FeedbackPostInputActionType.APPROVE;
+        public BodyInputActionType? Action { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip.BodyInputActionType.APPROVE;
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FeedbackPostInputActionType
+    public enum BodyInputActionType
     {
         APPROVE,
         REJECT,
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum idTypeInput
+    public enum IdTypeInput
     {
         [EnumMember(Value = "fraudlabspro_id")]
         FraudlabsproId,

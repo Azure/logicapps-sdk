@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     public class SkribblesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
-        public IBodyWorkflowAction<ErrorResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<CreateSealInput>> request)
+        public IBodyWorkflowAction<ErrorResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ErrorResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         DELETE
     }
 
-    public class CreateSealInput
+    public class RequestInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
 
     public class ActivityinfoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddRecordTrigger(Expression<Func<string>> formId, Expression<Func<AddRecordTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddRecordTrigger(Expression<Func<string>> formId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> EditRecordTrigger(Expression<Func<string>> formId, Expression<Func<EditRecordTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> EditRecordTrigger(Expression<Func<string>> formId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> DeleteRecordTrigger(Expression<Func<string>> formId, Expression<Func<DeleteRecordTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> DeleteRecordTrigger(Expression<Func<string>> formId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -65,52 +65,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
         }
     }
 
-    public class AddRecordTriggerInput
+    public class BodyInput
     {
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; } = "Power Automate Webhook";
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddRecordTriggerInputActionType Action { get; set; } = new AddRecordTriggerInputActionType();
+        public BodyInputActionType Action { get; set; } = new BodyInputActionType();
     }
 
-    public class AddRecordTriggerInputActionType
-    {
-        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Type { get; set; } = "WEBHOOK";
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EditRecordTriggerInput
-    {
-        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Label { get; set; } = "Power Automate Webhook";
-
-        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EditRecordTriggerInputActionType Action { get; set; } = new EditRecordTriggerInputActionType();
-    }
-
-    public class EditRecordTriggerInputActionType
-    {
-        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Type { get; set; } = "WEBHOOK";
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class DeleteRecordTriggerInput
-    {
-        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Label { get; set; } = "Power Automate Webhook";
-
-        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteRecordTriggerInputActionType Action { get; set; } = new DeleteRecordTriggerInputActionType();
-    }
-
-    public class DeleteRecordTriggerInputActionType
+    public class BodyInputActionType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "WEBHOOK";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class PlumsailspActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateSiteFromTemplate(Expression<Func<FlowV1SharePointFlowJobsCreateSiteFromTemplatePostInput>> request)
+        public IBodyWorkflowAction<WebUrlResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateSiteFromTemplate(Expression<Func<FlowV1SharePointFlowJobsCreateSiteFromTemplateRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WebUrlResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsChangePermissions(Expression<Func<actionTypeInput>> actionType, Expression<Func<targetInput>> target, Expression<Func<object>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsChangePermissions(Expression<Func<ActionTypeInput>> actionType, Expression<Func<FlowV1SharePointFlowJobsChangePermissionsTargetInput>> target, Expression<Func<object>> request)
         {
             var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsActivateFeature(Expression<Func<FlowV1SharePointFlowJobsActivateFeaturePostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsActivateFeature(Expression<Func<FlowV1SharePointFlowJobsActivateFeatureRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeactivateFeature(Expression<Func<FlowV1SharePointFlowJobsDeactivateFeaturePostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeactivateFeature(Expression<Func<FlowV1SharePointFlowJobsActivateFeatureRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateListOrLibrary(Expression<Func<FlowV1SharePointFlowJobsCreateListOrLibraryPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateListOrLibrary(Expression<Func<FlowV1SharePointFlowJobsCreateListOrLibraryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsSetDefaultSiteGroup(Expression<Func<FlowV1SharePointFlowJobsSetDefaultSiteGroupPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsSetDefaultSiteGroup(Expression<Func<FlowV1SharePointFlowJobsSetDefaultSiteGroupRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyDocumentFromLibrary(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentFromLibraryPostInput>> request)
+        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyDocumentFromLibrary(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DocumentInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveDocumentFromLibrary(Expression<Func<FlowV1SharePointFlowJobsMoveDocumentFromLibraryPostInput>> request)
+        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveDocumentFromLibrary(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DocumentInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveDocumentByUrl(Expression<Func<FlowV1SharePointFlowJobsRemoveDocumentByUrlPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveDocumentByUrl(Expression<Func<FlowV1SharePointFlowJobsRemoveDocumentByUrlRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateDocumentSet(Expression<Func<FlowV1SharePointFlowJobsCreateDocumentSetPostInput>> request)
+        public IBodyWorkflowAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateDocumentSet(Expression<Func<FlowV1SharePointFlowJobsCreateDocumentSetRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyDocumentSet(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentSetPostInput>> request)
+        public IBodyWorkflowAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyDocumentSet(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveDocumentSet(Expression<Func<FlowV1SharePointFlowJobsMoveDocumentSetPostInput>> request)
+        public IBodyWorkflowAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveDocumentSet(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DocumentSetInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateFolderByUrl(Expression<Func<FlowV1SharePointFlowJobsCreateFolderByUrlPostInput>> request)
+        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateFolderByUrl(Expression<Func<FlowV1SharePointFlowJobsCreateFolderByUrlRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<FolderInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateFolderInList(Expression<Func<FlowV1SharePointFlowJobsCreateFolderInListPostInput>> request)
+        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateFolderInList(Expression<Func<FlowV1SharePointFlowJobsCreateFolderInListRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<FolderInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveFolderByUrl(Expression<Func<FlowV1SharePointFlowJobsRemoveFolderByUrlPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveFolderByUrl(Expression<Func<FlowV1SharePointFlowJobsRemoveFolderByUrlRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyFolderFromLibrary(Expression<Func<FlowV1SharePointFlowJobsCopyFolderFromLibraryPostInput>> request)
+        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyFolderFromLibrary(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<FolderInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveFolderFromLibrary(Expression<Func<FlowV1SharePointFlowJobsMoveFolderFromLibraryPostInput>> request)
+        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveFolderFromLibrary(Expression<Func<FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<FolderInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCheckInDocument(Expression<Func<FlowV1SharePointFlowJobsCheckInDocumentPostInput>> request)
+        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCheckInDocument(Expression<Func<FlowV1SharePointFlowJobsCheckInDocumentRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DocumentInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCheckOutDocument(Expression<Func<FlowV1SharePointFlowJobsCheckOutDocumentPostInput>> request)
+        public IBodyWorkflowAction<DocumentInfoResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCheckOutDocument(Expression<Func<FlowV1SharePointFlowJobsCheckOutDocumentRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DocumentInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateModernSite(Expression<Func<siteTypeInput>> siteType, Expression<Func<object>> request)
+        public IBodyWorkflowAction<WebUrlResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateModernSite(Expression<Func<SiteTypeInput>> siteType, Expression<Func<object>> request)
         {
             var __workflow_siteType = WorkflowExpression.Compile(siteType, nameof(siteType), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsApplySiteDesign(Expression<Func<FlowV1SharePointFlowJobsApplySiteDesignPostInput>> request)
+        public IBodyWorkflowAction<WebUrlResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsApplySiteDesign(Expression<Func<FlowV1SharePointFlowJobsApplySiteDesignRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WebUrlResponse, ApiConnectionActionConfiguration>(() =>
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsCreateSharePointGroupPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCreateSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsCreateSharePointGroupRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsRemoveSharePointGroupPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsCheckSharePointGroupExistsRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateSharePointGroupProperties(Expression<Func<FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateSharePointGroupProperties(Expression<Func<FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<GroupExistResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCheckSharePointGroupExists(Expression<Func<FlowV1SharePointFlowJobsCheckSharePointGroupExistsPostInput>> request)
+        public IBodyWorkflowAction<GroupExistResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCheckSharePointGroupExists(Expression<Func<FlowV1SharePointFlowJobsCheckSharePointGroupExistsRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<GroupExistResponse, ApiConnectionActionConfiguration>(() =>
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsAddUserToSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsAddUserToSharePointGroupPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsAddUserToSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsAddUserToSharePointGroupRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveUserFromSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveUserFromSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<GetSPGroupMembersResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetSharePointGroupMembers(Expression<Func<FlowV1SharePointFlowJobsGetSharePointGroupMembersPostInput>> request)
+        public IBodyWorkflowAction<GetSPGroupMembersResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetSharePointGroupMembers(Expression<Func<FlowV1SharePointFlowJobsCheckSharePointGroupExistsRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<GetSPGroupMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<UserExistsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUserExistInSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsUserExistInSharePointGroupPostInput>> request)
+        public IBodyWorkflowAction<UserExistsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUserExistInSharePointGroup(Expression<Func<FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<UserExistsResponse, ApiConnectionActionConfiguration>(() =>
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateSharePointSiteProperties(Expression<Func<FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateSharePointSiteProperties(Expression<Func<FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeleteSharePointSite(Expression<Func<FlowV1SharePointFlowJobsDeleteSharePointSitePostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeleteSharePointSite(Expression<Func<FlowV1SharePointFlowJobsDeleteSharePointSiteRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<SPSiteOptionValueResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsString(Expression<Func<FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringPostInput>> request)
+        public IBodyWorkflowAction<SPSiteOptionValueResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsString(Expression<Func<FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<SPSiteOptionValueResponse, ApiConnectionActionConfiguration>(() =>
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput2>> target, Expression<Func<object>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<FlowV1SharePointFlowJobsInviteExternalUserToSharePointTargetInput>> target, Expression<Func<object>> request)
         {
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyAttachmentsToUrl(Expression<Func<FlowV1SharePointFlowJobsCopyAttachmentsToUrlPostInput>> request)
+        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyAttachmentsToUrl(Expression<Func<FlowV1SharePointFlowJobsCopyAttachmentsToUrlRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ListFileUrlsResponse, ApiConnectionActionConfiguration>(() =>
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveAttachmentsToUrl(Expression<Func<FlowV1SharePointFlowJobsMoveAttachmentsToUrlPostInput>> request)
+        public IBodyWorkflowAction<ListFileUrlsResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveAttachmentsToUrl(Expression<Func<FlowV1SharePointFlowJobsCopyAttachmentsToUrlRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ListFileUrlsResponse, ApiConnectionActionConfiguration>(() =>
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsAddContentTypeToSharePointList(Expression<Func<FlowV1SharePointFlowJobsAddContentTypeToSharePointListPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsAddContentTypeToSharePointList(Expression<Func<FlowV1SharePointFlowJobsAddContentTypeToSharePointListRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyListItemToSharePointList(Expression<Func<FlowV1SharePointFlowJobsCopyListItemToSharePointListPostInput>> request)
+        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsCopyListItemToSharePointList(Expression<Func<FlowV1SharePointFlowJobsCopyListItemToSharePointListRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ListItemIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveListItemToSharePointList(Expression<Func<FlowV1SharePointFlowJobsMoveListItemToSharePointListPostInput>> request)
+        public IBodyWorkflowAction<ListItemIdResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsMoveListItemToSharePointList(Expression<Func<FlowV1SharePointFlowJobsMoveListItemToSharePointListRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ListItemIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WorkflowGuidResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsStartListWorkflow(Expression<Func<FlowV1SharePointFlowJobsStartListWorkflowPostInput>> request)
+        public IBodyWorkflowAction<WorkflowGuidResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsStartListWorkflow(Expression<Func<FlowV1SharePointFlowJobsStartListWorkflowRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WorkflowGuidResponse, ApiConnectionActionConfiguration>(() =>
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WorkflowGuidResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsStartSiteWorkflow(Expression<Func<FlowV1SharePointFlowJobsStartSiteWorkflowPostInput>> request)
+        public IBodyWorkflowAction<WorkflowGuidResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsStartSiteWorkflow(Expression<Func<FlowV1SharePointFlowJobsStartSiteWorkflowRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WorkflowGuidResponse, ApiConnectionActionConfiguration>(() =>
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetItemsByCamlQuery(Expression<Func<FlowV1SharePointFlowJobsGetItemsByCamlQueryPostInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetItemsByCamlQuery(Expression<Func<FlowV1SharePointFlowJobsGetItemsByCamlQueryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<VersionsHistoryResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetVersionsHistory(Expression<Func<FlowV1SharePointFlowJobsGetVersionsHistoryPostInput>> request)
+        public IBodyWorkflowAction<VersionsHistoryResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsGetVersionsHistory(Expression<Func<FlowV1SharePointFlowJobsGetVersionsHistoryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<VersionsHistoryResponse, ApiConnectionActionConfiguration>(() =>
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTemplate(Expression<Func<FlowV1SharePointFlowJobsProvisionPnPTemplatePostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTemplate(Expression<Func<FlowV1SharePointFlowJobsProvisionPnPTemplateRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTenantTemplate(Expression<Func<FlowV1SharePointFlowJobsProvisionPnPTenantTemplatePostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsProvisionPnPTenantTemplate(Expression<Func<FlowV1SharePointFlowJobsProvisionPnPTemplateRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsAddSiteNavigation(Expression<Func<FlowV1SharePointFlowJobsAddSiteNavigationPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsAddSiteNavigation(Expression<Func<FlowV1SharePointFlowJobsAddSiteNavigationRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveSiteNavigation(Expression<Func<FlowV1SharePointFlowJobsRemoveSiteNavigationPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRemoveSiteNavigation(Expression<Func<FlowV1SharePointFlowJobsRemoveSiteNavigationRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateListItem(Expression<Func<FlowV1SharePointFlowJobsUpdateListItemPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUpdateListItem(Expression<Func<FlowV1SharePointFlowJobsUpdateListItemRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -679,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeclareDocumentAsRecord(Expression<Func<FlowV1SharePointFlowJobsDeclareDocumentAsRecordPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsDeclareDocumentAsRecord(Expression<Func<FlowV1SharePointFlowJobsDeclareDocumentAsRecordRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUndeclareDocumentAsRecord(Expression<Func<FlowV1SharePointFlowJobsUndeclareDocumentAsRecordPostInput>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsUndeclareDocumentAsRecord(Expression<Func<FlowV1SharePointFlowJobsDeclareDocumentAsRecordRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -707,7 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsParseCsv(Expression<Func<FlowV1SharePointFlowJobsParseCsvPostInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsParseCsv(Expression<Func<FlowV1SharePointFlowJobsParseCsvRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRegExpMatch(Expression<Func<FlowV1SharePointFlowJobsRegExpMatchPostInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRegExpMatch(Expression<Func<FlowV1SharePointFlowJobsRegExpMatchRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<StringResultResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRegExpReplace(Expression<Func<FlowV1SharePointFlowJobsRegExpReplacePostInput>> request)
+        public IBodyWorkflowAction<StringResultResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRegExpReplace(Expression<Func<FlowV1SharePointFlowJobsRegExpReplaceRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<StringResultResponse, ApiConnectionActionConfiguration>(() =>
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<BooleanResultResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRegExpTest(Expression<Func<FlowV1SharePointFlowJobsRegExpTestPostInput>> request)
+        public IBodyWorkflowAction<BooleanResultResponse, ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsRegExpTest(Expression<Func<FlowV1SharePointFlowJobsRegExpMatchRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<BooleanResultResponse, ApiConnectionActionConfiguration>(() =>
@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string WebURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCreateSiteFromTemplatePostInput
+    public class FlowV1SharePointFlowJobsCreateSiteFromTemplateRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum actionTypeInput
+    public enum ActionTypeInput
     {
         Grant,
         Remove,
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum targetInput
+    public enum FlowV1SharePointFlowJobsChangePermissionsTargetInput
     {
         Site,
         List,
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         Document
     }
 
-    public class FlowV1SharePointFlowJobsActivateFeaturePostInput
+    public class FlowV1SharePointFlowJobsActivateFeatureRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -837,19 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? Force { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsDeactivateFeaturePostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("featureId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FeatureId { get; set; }
-
-        [JsonProperty("force")]
-        public bool? Force { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsCreateListOrLibraryPostInput
+    public class FlowV1SharePointFlowJobsCreateListOrLibraryRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -870,20 +858,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? OnQuickLaunch { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsSetDefaultSiteGroupPostInput
+    public class FlowV1SharePointFlowJobsSetDefaultSiteGroupRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
 
         [JsonProperty("groupType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlowV1SharePointFlowJobsSetDefaultSiteGroupPostInputGroupTypeType GroupType { get; set; }
+        public RequestInputGroupTypeType GroupType { get; set; }
 
         [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FlowV1SharePointFlowJobsSetDefaultSiteGroupPostInputGroupTypeType
+    public enum RequestInputGroupTypeType
     {
         Owner,
         Member,
@@ -899,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string DocumentURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCopyDocumentFromLibraryPostInput
+    public class FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -911,19 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string DestinationURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsMoveDocumentFromLibraryPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceURL { get; set; }
-
-        [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationURL { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsRemoveDocumentByUrlPostInput
+    public class FlowV1SharePointFlowJobsRemoveDocumentByUrlRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -941,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string DocumentSetURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCreateDocumentSetPostInput
+    public class FlowV1SharePointFlowJobsCreateDocumentSetRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -956,30 +932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string ContentType { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCopyDocumentSetPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceURL { get; set; }
-
-        [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationURL { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsMoveDocumentSetPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceURL { get; set; }
-
-        [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationURL { get; set; }
-    }
-
     public class FolderInfoResponse
     {
         [JsonProperty("id")]
@@ -989,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string FolderURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCreateFolderByUrlPostInput
+    public class FlowV1SharePointFlowJobsCreateFolderByUrlRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -998,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string FolderURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCreateFolderInListPostInput
+    public class FlowV1SharePointFlowJobsCreateFolderInListRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1010,7 +962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string FolderPath { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsRemoveFolderByUrlPostInput
+    public class FlowV1SharePointFlowJobsRemoveFolderByUrlRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1019,31 +971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string FolderURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCopyFolderFromLibraryPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceURL { get; set; }
-
-        [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationURL { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsMoveFolderFromLibraryPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceURL { get; set; }
-
-        [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationURL { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsCheckInDocumentPostInput
+    public class FlowV1SharePointFlowJobsCheckInDocumentRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1055,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Comment { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCheckOutDocumentPostInput
+    public class FlowV1SharePointFlowJobsCheckOutDocumentRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1065,14 +993,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum siteTypeInput
+    public enum SiteTypeInput
     {
         TeamSite,
         CommunicationSite,
         TeamSiteWithoutGroup
     }
 
-    public class FlowV1SharePointFlowJobsApplySiteDesignPostInput
+    public class FlowV1SharePointFlowJobsApplySiteDesignRequestInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1081,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string SiteDesign { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCreateSharePointGroupPostInput
+    public class FlowV1SharePointFlowJobsCreateSharePointGroupRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1096,7 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string GroupOwner { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsRemoveSharePointGroupPostInput
+    public class FlowV1SharePointFlowJobsCheckSharePointGroupExistsRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1105,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string GroupName { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesPostInput
+    public class FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1150,16 +1078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool GroupExists { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCheckSharePointGroupExistsPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string GroupName { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsAddUserToSharePointGroupPostInput
+    public class FlowV1SharePointFlowJobsAddUserToSharePointGroupRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1174,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? SendEmail { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupPostInput
+    public class FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1207,34 +1126,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string UserClaims { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsGetSharePointGroupMembersPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string GroupName { get; set; }
-    }
-
     public class UserExistsResponse
     {
         [JsonProperty("userExists")]
         public bool UserExists { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsUserExistInSharePointGroupPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string GroupName { get; set; }
-
-        [JsonProperty("userLogin", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string User { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesPostInput
+    public class FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1312,7 +1210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public int? UIVersion { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsDeleteSharePointSitePostInput
+    public class FlowV1SharePointFlowJobsDeleteSharePointSiteRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1324,7 +1222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string OptionValue { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringPostInput
+    public class FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1334,7 +1232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum targetInput2
+    public enum FlowV1SharePointFlowJobsInviteExternalUserToSharePointTargetInput
     {
         Site,
         Item,
@@ -1347,7 +1245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string[] FileURLs { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCopyAttachmentsToUrlPostInput
+    public class FlowV1SharePointFlowJobsCopyAttachmentsToUrlRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1365,25 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? Overwrite { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsMoveAttachmentsToUrlPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
-
-        [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int ItemId { get; set; }
-
-        [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationFolderURL { get; set; }
-
-        [JsonProperty("overwrite")]
-        public bool? Overwrite { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsAddContentTypeToSharePointListPostInput
+    public class FlowV1SharePointFlowJobsAddContentTypeToSharePointListRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1404,7 +1284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public int ResultItemId { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsCopyListItemToSharePointListPostInput
+    public class FlowV1SharePointFlowJobsCopyListItemToSharePointListRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1422,7 +1302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? CopyAttachments { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsMoveListItemToSharePointListPostInput
+    public class FlowV1SharePointFlowJobsMoveListItemToSharePointListRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1446,7 +1326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string WorkflowGUID { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsStartListWorkflowPostInput
+    public class FlowV1SharePointFlowJobsStartListWorkflowRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1464,7 +1344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public int ItemId { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsStartSiteWorkflowPostInput
+    public class FlowV1SharePointFlowJobsStartSiteWorkflowRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1476,7 +1356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public JToken InputParameters { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsGetItemsByCamlQueryPostInput
+    public class FlowV1SharePointFlowJobsGetItemsByCamlQueryRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1512,7 +1392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Value { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsGetVersionsHistoryPostInput
+    public class FlowV1SharePointFlowJobsGetVersionsHistoryRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1527,7 +1407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string FieldName { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsProvisionPnPTemplatePostInput
+    public class FlowV1SharePointFlowJobsProvisionPnPTemplateRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1560,46 +1440,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Parameters { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsProvisionPnPTenantTemplatePostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("xmlTemplateContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateContent { get; set; }
-
-        [JsonProperty("overwriteSystemPropertyBagValues")]
-        public bool? OverwriteSystemPropertyBagValues { get; set; }
-
-        [JsonProperty("ignoreDuplicateDataRowErrors")]
-        public bool? IgnoreDuplicateDataRowErrors { get; set; }
-
-        [JsonProperty("clearNavigation")]
-        public bool? ClearNavigation { get; set; }
-
-        [JsonProperty("provisionContentTypesToSubWebs")]
-        public bool? ProvisionContentTypesToSubWebs { get; set; }
-
-        [JsonProperty("provisionFieldsToSubWebs")]
-        public bool? ProvisionFieldsToSubWebs { get; set; }
-
-        [JsonProperty("handlers")]
-        public string Handlers { get; set; }
-
-        [JsonProperty("excludeHandlers")]
-        public string ExcludeHandlers { get; set; }
-
-        [JsonProperty("parameters")]
-        public string Parameters { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsAddSiteNavigationPostInput
+    public class FlowV1SharePointFlowJobsAddSiteNavigationRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlowV1SharePointFlowJobsAddSiteNavigationPostInputLocationType Location { get; set; }
+        public RequestInputLocationType Location { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -1615,19 +1462,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FlowV1SharePointFlowJobsAddSiteNavigationPostInputLocationType
+    public enum RequestInputLocationType
     {
         Top,
         QuickLaunch
     }
 
-    public class FlowV1SharePointFlowJobsRemoveSiteNavigationPostInput
+    public class FlowV1SharePointFlowJobsRemoveSiteNavigationRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlowV1SharePointFlowJobsRemoveSiteNavigationPostInputLocationType Location { get; set; }
+        public RequestInputLocationType Location { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -1636,14 +1483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Parent { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FlowV1SharePointFlowJobsRemoveSiteNavigationPostInputLocationType
-    {
-        Top,
-        QuickLaunch
-    }
-
-    public class FlowV1SharePointFlowJobsUpdateListItemPostInput
+    public class FlowV1SharePointFlowJobsUpdateListItemRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1658,7 +1498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public JToken FieldValues { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsDeclareDocumentAsRecordPostInput
+    public class FlowV1SharePointFlowJobsDeclareDocumentAsRecordRequestInput
     {
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SharePointSiteURL { get; set; }
@@ -1670,28 +1510,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string ItemIdOrURL { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsUndeclareDocumentAsRecordPostInput
-    {
-        [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
-
-        [JsonProperty("listName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListName { get; set; }
-
-        [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ItemIdOrURL { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsParseCsvPostInput
+    public class FlowV1SharePointFlowJobsParseCsvRequestInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCSVDocument { get; set; }
 
         [JsonProperty("delimiter")]
-        public FlowV1SharePointFlowJobsParseCsvPostInputDelimiterType? Delimiter { get; set; }
+        public RequestInputDelimiterType? Delimiter { get; set; }
 
         [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlowV1SharePointFlowJobsParseCsvPostInputLocaleType? Locale { get; set; } = FlowV1SharePointFlowJobsParseCsvPostInputLocaleType.EnUS;
+        public RequestInputLocaleType? Locale { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp.RequestInputLocaleType.EnUS;
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
@@ -1704,7 +1532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FlowV1SharePointFlowJobsParseCsvPostInputDelimiterType
+    public enum RequestInputDelimiterType
     {
         Comma,
         Semicolon,
@@ -1713,7 +1541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FlowV1SharePointFlowJobsParseCsvPostInputLocaleType
+    public enum RequestInputLocaleType
     {
         [EnumMember(Value = "aa-DJ")]
         AaDJ,
@@ -2835,7 +2663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         ZuZA
     }
 
-    public class FlowV1SharePointFlowJobsRegExpMatchPostInput
+    public class FlowV1SharePointFlowJobsRegExpMatchRequestInput
     {
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pattern { get; set; }
@@ -2850,7 +2678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Result { get; set; }
     }
 
-    public class FlowV1SharePointFlowJobsRegExpReplacePostInput
+    public class FlowV1SharePointFlowJobsRegExpReplaceRequestInput
     {
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pattern { get; set; }
@@ -2866,15 +2694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     {
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
-    }
-
-    public class FlowV1SharePointFlowJobsRegExpTestPostInput
-    {
-        [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Pattern { get; set; }
-
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
     }
 }
 

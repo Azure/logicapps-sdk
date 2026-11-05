@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
     public class AzureaifoundryinferenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaifoundryinference")]
-        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<string>> apiVersion = null, Expression<Func<ChatCompletionInput>> body = null)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<string>> apiVersion = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -128,10 +128,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
         public int CachedTokens { get; set; }
     }
 
-    public class ChatCompletionInput
+    public class BodyInput
     {
         [JsonProperty("messages")]
-        public ChatCompletionInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("temperature")]
         public double? Temperature { get; set; }
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
         public string Model { get; set; }
     }
 
-    public class ChatCompletionInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("role")]
         public string Role { get; set; }

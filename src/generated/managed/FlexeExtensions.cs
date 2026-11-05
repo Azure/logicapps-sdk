@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
     public class FlexeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProducts(Expression<Func<NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProducts(Expression<Func<NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateRetailFulfillmentOrder(Expression<Func<CreateRetailFulfillmentOrderInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateRetailFulfillmentOrder(Expression<Func<CreateRetailFulfillmentOrderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flexe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExistingRetailFulfillmentOrder(Expression<Func<string>> shipmentId, Expression<Func<UpdateExistingRetailFulfillmentOrderInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateExistingRetailFulfillmentOrder(Expression<Func<string>> shipmentId, Expression<Func<UpdateExistingRetailFulfillmentOrderBodyInput>> body)
         {
             var __workflow_shipmentId = WorkflowExpression.Compile(shipmentId, nameof(shipmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
 
     public class FlexeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> Webhook(Expression<Func<WebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> Webhook(Expression<Func<WebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -138,28 +138,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInput
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsBodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataType Data { get; set; }
+        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsBodyInputDataType Data { get; set; }
 
         [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataType
+    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsBodyInputDataType
     {
         [JsonProperty("dropoffList", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItem[] DropoffList { get; set; }
+        public BodyInputDataTypeDropoffListTypeItem[] DropoffList { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItem
+    public class BodyInputDataTypeDropoffListTypeItem
     {
         [JsonProperty("billOfLading")]
         public string BillOfLading { get; set; }
 
         [JsonProperty("inventory")]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItem[] Inventory { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemInventoryTypeItem[] Inventory { get; set; }
 
         [JsonProperty("expectedInboundShipmentType")]
         public string ExpectedInboundShipmentType { get; set; }
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string ContainerNumber { get; set; }
 
         [JsonProperty("valueOfGoods")]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemValueOfGoodsType ValueOfGoods { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemValueOfGoodsType ValueOfGoods { get; set; }
 
         [JsonProperty("purchaseOrderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PurchaseOrderId { get; set; }
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string ContainerSealNumber { get; set; }
 
         [JsonProperty("reservation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemReservationType Reservation { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemReservationType Reservation { get; set; }
 
         [JsonProperty("suplierOrVendor")]
         public string SuplierOrVendor { get; set; }
@@ -192,19 +192,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Id { get; set; }
 
         [JsonProperty("lpns")]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItem[] Lpns { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemLpnsTypeItem[] Lpns { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItem
+    public class BodyInputDataTypeDropoffListTypeItemInventoryTypeItem
     {
         [JsonProperty("count")]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItemCountType Count { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemInventoryTypeItemCountType Count { get; set; }
 
         [JsonProperty("sku")]
         public string Sku { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemInventoryTypeItemCountType
+    public class BodyInputDataTypeDropoffListTypeItemInventoryTypeItemCountType
     {
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Amount { get; set; }
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Unit { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemValueOfGoodsType
+    public class BodyInputDataTypeDropoffListTypeItemValueOfGoodsType
     {
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Amount { get; set; }
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Unit { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemReservationType
+    public class BodyInputDataTypeDropoffListTypeItemReservationType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -231,19 +231,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Type { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItem
+    public class BodyInputDataTypeDropoffListTypeItemLpnsTypeItem
     {
         [JsonProperty("metadata")]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataType Metadata { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataType Metadata { get; set; }
 
         [JsonProperty("label")]
         public string Label { get; set; }
 
         [JsonProperty("inventory")]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemInventoryTypeItem[] Inventory { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemLpnsTypeItemInventoryTypeItem[] Inventory { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataType
+    public class BodyInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataType
     {
         [JsonProperty("customReference1")]
         public string CustomReference1 { get; set; }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string ManufactureDate { get; set; }
 
         [JsonProperty("extraProperties")]
-        public NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataTypeExtraPropertiesType ExtraProperties { get; set; }
+        public BodyInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataTypeExtraPropertiesType ExtraProperties { get; set; }
 
         [JsonProperty("countryOfOrigin")]
         public string CountryOfOrigin { get; set; }
@@ -276,13 +276,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string ExpirationDate { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataTypeExtraPropertiesType
+    public class BodyInputDataTypeDropoffListTypeItemLpnsTypeItemMetadataTypeExtraPropertiesType
     {
         [JsonProperty("key")]
         public string Key { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputDataTypeDropoffListTypeItemLpnsTypeItemInventoryTypeItem
+    public class BodyInputDataTypeDropoffListTypeItemLpnsTypeItemInventoryTypeItem
     {
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -294,31 +294,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Sku { get; set; }
     }
 
-    public class NotifyWarehouseOfAnInboundShipmentContainingNonPalletizedProductsInputMetaType
+    public class BodyInputMetaType
     {
         [JsonProperty("correlationId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CorrelationId { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInput
+    public class CreateRetailFulfillmentOrderBodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataType Data { get; set; }
+        public CreateRetailFulfillmentOrderBodyInputDataType Data { get; set; }
 
         [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataType
+    public class CreateRetailFulfillmentOrderBodyInputDataType
     {
         [JsonProperty("reservation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeReservationType Reservation { get; set; }
+        public BodyInputDataTypeReservationType Reservation { get; set; }
 
         [JsonProperty("shipment", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentType Shipment { get; set; }
+        public BodyInputDataTypeShipmentType Shipment { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeReservationType
+    public class BodyInputDataTypeReservationType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -327,19 +327,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Type { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentType
+    public class BodyInputDataTypeShipmentType
     {
         [JsonProperty("customerUUID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerUUID { get; set; }
 
         [JsonProperty("inventory", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItem[] Inventory { get; set; }
+        public BodyInputDataTypeShipmentTypeInventoryTypeItem[] Inventory { get; set; }
 
         [JsonProperty("shipTo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipToType ShipTo { get; set; }
+        public BodyInputDataTypeShipmentTypeShipToType ShipTo { get; set; }
 
         [JsonProperty("shipWithin", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipWithinType ShipWithin { get; set; }
+        public BodyInputDataTypeShipmentTypeShipWithinType ShipWithin { get; set; }
 
         [JsonProperty("shipmentType")]
         public string ShipmentType { get; set; }
@@ -360,10 +360,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Instructions { get; set; }
 
         [JsonProperty("labelGenerationData")]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeLabelGenerationDataType LabelGenerationData { get; set; }
+        public BodyInputDataTypeShipmentTypeLabelGenerationDataType LabelGenerationData { get; set; }
 
         [JsonProperty("bolGenerationData")]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataType BolGenerationData { get; set; }
+        public BodyInputDataTypeShipmentTypeBolGenerationDataType BolGenerationData { get; set; }
 
         [JsonProperty("routingDetailsId")]
         public string RoutingDetailsId { get; set; }
@@ -375,46 +375,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string DestinationRetailer { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItem
+    public class BodyInputDataTypeShipmentTypeInventoryTypeItem
     {
         [JsonProperty("count", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountType Count { get; set; }
+        public BodyInputDataTypeShipmentTypeInventoryTypeItemCountType Count { get; set; }
 
         [JsonProperty("sku", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sku { get; set; }
 
         [JsonProperty("attachments")]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemAttachmentsTypeItem[] Attachments { get; set; }
+        public BodyInputDataTypeShipmentTypeInventoryTypeItemAttachmentsTypeItem[] Attachments { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountType
+    public class BodyInputDataTypeShipmentTypeInventoryTypeItemCountType
     {
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeAmountType Amount { get; set; }
+        public BodyInputDataTypeShipmentTypeInventoryTypeItemCountTypeAmountType Amount { get; set; }
 
         [JsonProperty("unit", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeUnitType Unit { get; set; }
+        public BodyInputDataTypeShipmentTypeInventoryTypeItemCountTypeUnitType Unit { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeAmountType
+    public class BodyInputDataTypeShipmentTypeInventoryTypeItemCountTypeAmountType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemCountTypeUnitType
+    public class BodyInputDataTypeShipmentTypeInventoryTypeItemCountTypeUnitType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeInventoryTypeItemAttachmentsTypeItem
+    public class BodyInputDataTypeShipmentTypeInventoryTypeItemAttachmentsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipToType
+    public class BodyInputDataTypeShipmentTypeShipToType
     {
         [JsonProperty("addressLine1", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressLine1 { get; set; }
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Email { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeShipWithinType
+    public class BodyInputDataTypeShipmentTypeShipWithinType
     {
         [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
         public string End { get; set; }
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string Start { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeLabelGenerationDataType
+    public class BodyInputDataTypeShipmentTypeLabelGenerationDataType
     {
         [JsonProperty("carrier")]
         public string Carrier { get; set; }
@@ -468,55 +468,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string CarrierBillingAccountId { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataType
+    public class BodyInputDataTypeShipmentTypeBolGenerationDataType
     {
         [JsonProperty("gs1us")]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usType Gs1us { get; set; }
+        public BodyInputDataTypeShipmentTypeBolGenerationDataTypeGs1usType Gs1us { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usType
+    public class BodyInputDataTypeShipmentTypeBolGenerationDataTypeGs1usType
     {
         [JsonProperty("number")]
         public string Number { get; set; }
 
         [JsonProperty("shipTo")]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeShipToType ShipTo { get; set; }
+        public BodyInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeShipToType ShipTo { get; set; }
 
         [JsonProperty("billTo")]
-        public CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeBillToType BillTo { get; set; }
+        public BodyInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeBillToType BillTo { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeShipToType
+    public class BodyInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeShipToType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeBillToType
+    public class BodyInputDataTypeShipmentTypeBolGenerationDataTypeGs1usTypeBillToType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateRetailFulfillmentOrderInputMetaType
-    {
-        [JsonProperty("correlationId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CorrelationId { get; set; }
-    }
-
-    public class UpdateExistingRetailFulfillmentOrderInput
+    public class UpdateExistingRetailFulfillmentOrderBodyInput
     {
         [JsonProperty("data")]
-        public UpdateExistingRetailFulfillmentOrderInputDataType Data { get; set; }
+        public UpdateExistingRetailFulfillmentOrderBodyInputDataType Data { get; set; }
 
         [JsonProperty("meta")]
         public string Meta { get; set; }
     }
 
-    public class UpdateExistingRetailFulfillmentOrderInputDataType
+    public class UpdateExistingRetailFulfillmentOrderBodyInputDataType
     {
         [JsonProperty("state")]
         public string State { get; set; }
@@ -543,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flexe
         public string SigningKey { get; set; }
     }
 
-    public class WebhookInput
+    public class WebhookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

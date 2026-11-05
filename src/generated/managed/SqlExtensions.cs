@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<ExecutePassThroughNativeQueryV2Input>> query)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<QueryInput>> query)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
-        public IBodyWorkflowAction<GetItemsV2Response, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> apply = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null, Expression<Func<bool>> count = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<GetItemsResponse, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> apply = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null, Expression<Func<bool>> count = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<GetItemsV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0},{1}/tables/{2}/items", __workflow_server.WithUrlEncoding(2), __workflow_database.WithUrlEncoding(2), __workflow_table.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -115,18 +115,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
                     callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
                 if (__workflow_purviewAccountName != null)
                     callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(__workflow_purviewAccountName);
-                return new ApiConnectionAction<GetItemsV2Response>(callPayload);
+                return new ApiConnectionAction<GetItemsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sql")]
-        public IBodyWorkflowAction<GetTablesV2Response, ApiConnectionActionConfiguration> GetTables(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<GetTablesResponse, ApiConnectionActionConfiguration> GetTables(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
             var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
             var __workflow_purviewAccountName = WorkflowExpression.Compile(purviewAccountName, nameof(purviewAccountName), required: false);
-            return new DeferredBodyAction<GetTablesV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetTablesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0},{1}/tables", __workflow_server.WithUrlEncoding(2), __workflow_database.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
                     callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
                 if (__workflow_purviewAccountName != null)
                     callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(__workflow_purviewAccountName);
-                return new ApiConnectionAction<GetTablesV2Response>(callPayload);
+                return new ApiConnectionAction<GetTablesResponse>(callPayload);
             });
         }
 
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
         }
     }
 
-    public class ExecutePassThroughNativeQueryV2Input
+    public class QueryInput
     {
         [JsonProperty("actualParameters")]
         public JToken ActualParameters { get; set; }
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
         public JToken FormalParameters { get; set; }
     }
 
-    public class GetItemsV2Response
+    public class GetItemsResponse
     {
         [JsonProperty("@metadata")]
         public DataWithSensitivityLabelInfo[] Metadata { get; set; }
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
         public JToken DynamicProperties { get; set; }
     }
 
-    public class GetTablesV2Response
+    public class GetTablesResponse
     {
         [JsonProperty("@metadata")]
         public DataWithSensitivityLabelInfo[] Metadata { get; set; }

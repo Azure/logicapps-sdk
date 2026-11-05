@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     public class WorkdaysoapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<ServiceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody)
         {
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RESTOperation(Expression<Func<string>> relativePath, Expression<Func<methodInput>> method = null, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RESTOperation(Expression<Func<string>> relativePath, Expression<Func<MethodInput>> method = null, Expression<Func<ContentTypeInput>> contentType = null, Expression<Func<string>> body = null)
         {
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: false);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<JobChangeResponse, ApiConnectionActionConfiguration> TransferEmployee(Expression<Func<string>> workerId, Expression<Func<TransferEmployeeInput>> body)
+        public IBodyWorkflowAction<JobChangeResponse, ApiConnectionActionConfiguration> TransferEmployee(Expression<Func<string>> workerId, Expression<Func<TransferEmployeeBodyInput>> body)
         {
             var __workflow_workerId = WorkflowExpression.Compile(workerId, nameof(workerId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<RequestFeedbackResponse, ApiConnectionActionConfiguration> RequestFeedback(Expression<Func<string>> workerId, Expression<Func<RequestFeedbackInput>> body)
+        public IBodyWorkflowAction<RequestFeedbackResponse, ApiConnectionActionConfiguration> RequestFeedback(Expression<Func<string>> workerId, Expression<Func<RequestFeedbackBodyInput>> body)
         {
             var __workflow_workerId = WorkflowExpression.Compile(workerId, nameof(workerId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum serviceInput
+    public enum ServiceInput
     {
         [EnumMember(Value = "Human_Resources")]
         HumanResources,
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentTypeInput
+    public enum ContentTypeInput
     {
         [EnumMember(Value = "application/json")]
         ApplicationJson,
@@ -380,22 +380,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string DueDate { get; set; }
 
         [JsonProperty("status")]
-        public WorkdayObjectReference Status { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse Status { get; set; }
 
         [JsonProperty("stepType")]
-        public WorkdayObjectReference StepType { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse StepType { get; set; }
 
         [JsonProperty("initiator")]
-        public WorkdayObjectReference Initiator { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse Initiator { get; set; }
 
         [JsonProperty("subject")]
-        public WorkdayObjectReference Subject { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse Subject { get; set; }
 
         [JsonProperty("overallProcess")]
-        public WorkdayObjectReference OverallProcess { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse OverallProcess { get; set; }
     }
 
-    public class WorkdayObjectReference
+    public class GetWorkerDirectReportsWorkdayObjectReferenceResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -416,22 +416,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string EffectiveDate { get; set; }
 
         [JsonProperty("supervisoryOrganization")]
-        public WorkdayObjectReference SupervisoryOrganization { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse SupervisoryOrganization { get; set; }
     }
 
-    public class TransferEmployeeInput
+    public class TransferEmployeeBodyInput
     {
         [JsonProperty("supervisoryOrganization", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkdayObjectReference SupervisoryOrganization { get; set; }
+        public RequestFeedbackWorkdayObjectReference SupervisoryOrganization { get; set; }
 
         [JsonProperty("jobChangeReason", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkdayObjectReference JobChangeReason { get; set; }
+        public RequestFeedbackWorkdayObjectReference JobChangeReason { get; set; }
 
         [JsonProperty("effective", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EffectiveDate { get; set; }
 
         [JsonProperty("moveManagersTeam")]
         public bool? MoveManagerSTeam { get; set; }
+    }
+
+    public class RequestFeedbackWorkdayObjectReference
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 
     public class RequestFeedbackResponse
@@ -449,16 +455,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string Status { get; set; }
 
         [JsonProperty("feedbackAbout")]
-        public WorkdayObjectReference FeedbackAbout { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse FeedbackAbout { get; set; }
     }
 
-    public class RequestFeedbackInput
+    public class RequestFeedbackBodyInput
     {
         [JsonProperty("feedbackResponders", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkdayObjectReference[] FeedbackResponders { get; set; }
+        public RequestFeedbackWorkdayObjectReference[] FeedbackResponders { get; set; }
 
         [JsonProperty("feedbackTemplate")]
-        public WorkdayObjectReference FeedbackTemplate { get; set; }
+        public RequestFeedbackWorkdayObjectReference FeedbackTemplate { get; set; }
 
         [JsonProperty("feedbackConfidential")]
         public bool? Confidential { get; set; }
@@ -521,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string WorkPhone { get; set; }
 
         [JsonProperty("primarySupervisoryOrganization")]
-        public WorkdayObjectReference PrimarySupervisoryOrganization { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse PrimarySupervisoryOrganization { get; set; }
     }
 
     public class SupervisoryOrganizationsResponse
@@ -584,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string WorkPhone { get; set; }
 
         [JsonProperty("primarySupervisoryOrganization")]
-        public WorkdayObjectReference PrimarySupervisoryOrganization { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse PrimarySupervisoryOrganization { get; set; }
     }
 
     public class PaySlipsResponse
@@ -617,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public double NetPay { get; set; }
 
         [JsonProperty("status")]
-        public WorkdayObjectReference Status { get; set; }
+        public GetWorkerDirectReportsWorkdayObjectReferenceResponse Status { get; set; }
     }
 }
 

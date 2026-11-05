@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
     public class MongodbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> InsertDocument(Expression<Func<InsertDocumentInput>> body)
+        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> InsertDocument(Expression<Func<InsertDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InsertDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindDocumentResponse, ApiConnectionActionConfiguration> FindDocument(Expression<Func<FindDocumentInput>> body)
+        public IBodyWorkflowAction<FindDocumentResponse, ApiConnectionActionConfiguration> FindDocument(Expression<Func<FindDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<UpdateDocumentInput>> body)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<UpdateDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteDocumentResponse, ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<DeleteDocumentInput>> body)
+        public IBodyWorkflowAction<DeleteDocumentResponse, ApiConnectionActionConfiguration> DeleteDocument(Expression<Func<DeleteDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration> InsertMultipleDocuments(Expression<Func<InsertMultipleDocumentsInput>> body)
+        public IBodyWorkflowAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration> InsertMultipleDocuments(Expression<Func<InsertMultipleDocumentsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InsertMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration> FindMultipleDocuments(Expression<Func<FindMultipleDocumentsInput>> body)
+        public IBodyWorkflowAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration> FindMultipleDocuments(Expression<Func<FindMultipleDocumentsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration> UpdateMultipleDocuments(Expression<Func<UpdateMultipleDocumentsInput>> body)
+        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration> UpdateMultipleDocuments(Expression<Func<UpdateDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateMultipleDocumentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration> DeleteManyDocuments(Expression<Func<DeleteManyDocumentsInput>> body)
+        public IBodyWorkflowAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration> DeleteManyDocuments(Expression<Func<DeleteDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteManyDocumentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration> RunAggregationPipeline(Expression<Func<RunAggregationPipelineInput>> body)
+        public IBodyWorkflowAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration> RunAggregationPipeline(Expression<Func<RunAggregationPipelineBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RunAggregationPipelineResponse, ApiConnectionActionConfiguration>(() =>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public string InsertedId { get; set; }
     }
 
-    public class InsertDocumentInput
+    public class InsertDocumentBodyInput
     {
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public JToken Document { get; set; }
     }
 
-    public class FindDocumentInput
+    public class FindDocumentBodyInput
     {
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public int ModifiedCount { get; set; }
     }
 
-    public class UpdateDocumentInput
+    public class UpdateDocumentBodyInput
     {
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public int DeletedCount { get; set; }
     }
 
-    public class DeleteDocumentInput
+    public class DeleteDocumentBodyInput
     {
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public string[] InsertedIds { get; set; }
     }
 
-    public class InsertMultipleDocumentsInput
+    public class InsertMultipleDocumentsBodyInput
     {
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public JToken[] Documents { get; set; }
     }
 
-    public class FindMultipleDocumentsInput
+    public class FindMultipleDocumentsBodyInput
     {
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }
@@ -323,46 +323,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public int ModifiedCount { get; set; }
     }
 
-    public class UpdateMultipleDocumentsInput
-    {
-        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DataSource { get; set; }
-
-        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Database { get; set; }
-
-        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Collection { get; set; }
-
-        [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Filter { get; set; }
-
-        [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Update { get; set; }
-
-        [JsonProperty("upsert")]
-        public bool? Upsert { get; set; }
-    }
-
     public class DeleteManyDocumentsResponse
     {
         [JsonProperty("deletedCount")]
         public int DeletedCount { get; set; }
-    }
-
-    public class DeleteManyDocumentsInput
-    {
-        [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DataSource { get; set; }
-
-        [JsonProperty("database", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Database { get; set; }
-
-        [JsonProperty("collection", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Collection { get; set; }
-
-        [JsonProperty("filter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Filter { get; set; }
     }
 
     public class RunAggregationPipelineResponse
@@ -371,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         public JToken[] Documents { get; set; }
     }
 
-    public class RunAggregationPipelineInput
+    public class RunAggregationPipelineBodyInput
     {
         [JsonProperty("dataSource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataSource { get; set; }

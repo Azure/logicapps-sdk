@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
     public class DraupActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetCompanyPrioritiesResponse, ApiConnectionActionConfiguration> GetCompanyPriorities(Expression<Func<int>> accountId, Expression<Func<GetCompanyPrioritiesInput>> body = null)
+        public IBodyWorkflowAction<GetCompanyPrioritiesResponse, ApiConnectionActionConfiguration> GetCompanyPriorities(Expression<Func<int>> accountId, Expression<Func<GetCompanyPrioritiesBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetDecisionMakersResponse, ApiConnectionActionConfiguration> GetDecisionMakers(Expression<Func<int>> accountId, Expression<Func<GetDecisionMakersInput>> body = null)
+        public IBodyWorkflowAction<GetDecisionMakersResponse, ApiConnectionActionConfiguration> GetDecisionMakers(Expression<Func<int>> accountId, Expression<Func<GetCompanyPrioritiesBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetRelevantWorkloadsResponse, ApiConnectionActionConfiguration> GetRelevantWorkloads(Expression<Func<GetRelevantWorkloadsInput>> body)
+        public IBodyWorkflowAction<GetRelevantWorkloadsResponse, ApiConnectionActionConfiguration> GetRelevantWorkloads(Expression<Func<GetRelevantWorkloadsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetRelevantWorkloadsResponse, ApiConnectionActionConfiguration>(() =>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetAccountIdsResponse, ApiConnectionActionConfiguration> GetAccountIds(Expression<Func<GetAccountIdsInput>> body)
+        public IBodyWorkflowAction<GetAccountIdsResponse, ApiConnectionActionConfiguration> GetAccountIds(Expression<Func<GetAccountIdsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAccountIdsResponse, ApiConnectionActionConfiguration>(() =>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetCompetitorsResponse, ApiConnectionActionConfiguration> GetCompetitors(Expression<Func<int>> accountId, Expression<Func<GetCompetitorsInput>> body = null)
+        public IBodyWorkflowAction<GetCompetitorsResponse, ApiConnectionActionConfiguration> GetCompetitors(Expression<Func<int>> accountId, Expression<Func<GetCompanyPrioritiesBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetOutsourcingDetailsResponse, ApiConnectionActionConfiguration> GetOutsourcingDetails(Expression<Func<int>> accountId, Expression<Func<GetOutsourcingDetailsInput>> body = null)
+        public IBodyWorkflowAction<GetOutsourcingDetailsResponse, ApiConnectionActionConfiguration> GetOutsourcingDetails(Expression<Func<int>> accountId, Expression<Func<GetOutsourcingDetailsBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetKeyTrendsResponse, ApiConnectionActionConfiguration> GetKeyTrends(Expression<Func<GetKeyTrendsInput>> body)
+        public IBodyWorkflowAction<GetKeyTrendsResponse, ApiConnectionActionConfiguration> GetKeyTrends(Expression<Func<GetKeyTrendsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetKeyTrendsResponse, ApiConnectionActionConfiguration>(() =>
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetEcosystemTechStackResponse, ApiConnectionActionConfiguration> GetEcosystemTechStack(Expression<Func<GetEcosystemTechStackInput>> body)
+        public IBodyWorkflowAction<GetEcosystemTechStackResponse, ApiConnectionActionConfiguration> GetEcosystemTechStack(Expression<Func<GetEcosystemTechStackBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetEcosystemTechStackResponse, ApiConnectionActionConfiguration>(() =>
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetVerticalOutsourcingDataResponse, ApiConnectionActionConfiguration> GetVerticalOutsourcingData(Expression<Func<GetVerticalOutsourcingDataInput>> body)
+        public IBodyWorkflowAction<GetVerticalOutsourcingDataResponse, ApiConnectionActionConfiguration> GetVerticalOutsourcingData(Expression<Func<GetEcosystemTechStackBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetVerticalOutsourcingDataResponse, ApiConnectionActionConfiguration>(() =>
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<GetEmployersDataResponse, ApiConnectionActionConfiguration> GetEmployersData(Expression<Func<GetEmployersDataInput>> body)
+        public IBodyWorkflowAction<GetEmployersDataResponse, ApiConnectionActionConfiguration> GetEmployersData(Expression<Func<GetEmployersDataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetEmployersDataResponse, ApiConnectionActionConfiguration>(() =>
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "draup")]
-        public IBodyWorkflowAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration> ExtractEntities(Expression<Func<ExtractEntitiesInput>> body)
+        public IBodyWorkflowAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration> ExtractEntities(Expression<Func<ExtractEntitiesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration>(() =>
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string Name { get; set; }
     }
 
-    public class GetCompanyPrioritiesInput
+    public class GetCompanyPrioritiesBodyInput
     {
         [JsonProperty("workload")]
         public string Workload { get; set; }
@@ -623,19 +623,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string LevelInOrgDesignation { get; set; }
     }
 
-    public class GetDecisionMakersInput
-    {
-        [JsonProperty("workload")]
-        public string Workload { get; set; }
-    }
-
     public class GetRelevantWorkloadsResponse
     {
         [JsonProperty("workloads")]
         public string[] Workloads { get; set; }
     }
 
-    public class GetRelevantWorkloadsInput
+    public class GetRelevantWorkloadsBodyInput
     {
         [JsonProperty("user_description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserDescription { get; set; }
@@ -665,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public double Score { get; set; }
     }
 
-    public class GetAccountIdsInput
+    public class GetAccountIdsBodyInput
     {
         [JsonProperty("search_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchKey { get; set; }
@@ -708,12 +702,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
 
         [JsonProperty("total_product_count")]
         public int TotalProductCount { get; set; }
-    }
-
-    public class GetCompetitorsInput
-    {
-        [JsonProperty("workload")]
-        public string Workload { get; set; }
     }
 
     public class GetCompanySignalsResponse
@@ -848,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string HeaderName { get; set; }
     }
 
-    public class GetOutsourcingDetailsInput
+    public class GetOutsourcingDetailsBodyInput
     {
         [JsonProperty("outsourcing_in_workloads")]
         public string OutsourcingInWorkloads { get; set; }
@@ -1016,7 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public bool IsRelevant { get; set; }
     }
 
-    public class GetKeyTrendsInput
+    public class GetKeyTrendsBodyInput
     {
         [JsonProperty("vertical", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Vertical { get; set; }
@@ -1055,7 +1043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string ProductName { get; set; }
     }
 
-    public class GetEcosystemTechStackInput
+    public class GetEcosystemTechStackBodyInput
     {
         [JsonProperty("widget", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Widget { get; set; }
@@ -1097,15 +1085,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string LogoUrl { get; set; }
     }
 
-    public class GetVerticalOutsourcingDataInput
-    {
-        [JsonProperty("widget", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Widget { get; set; }
-
-        [JsonProperty("vertical", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Vertical { get; set; }
-    }
-
     public class GetEmployersDataResponse
     {
         [JsonProperty("hml")]
@@ -1139,7 +1118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string AccountName { get; set; }
     }
 
-    public class GetEmployersDataInput
+    public class GetEmployersDataBodyInput
     {
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -1169,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Draup
         public string EntityType { get; set; }
     }
 
-    public class ExtractEntitiesInput
+    public class ExtractEntitiesBodyInput
     {
         [JsonProperty("user_query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserQuery { get; set; }

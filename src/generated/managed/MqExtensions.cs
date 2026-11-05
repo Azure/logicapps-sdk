@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
     public class MqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Delete(Expression<Func<DeleteV2Input>> options = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Delete(Expression<Func<DeleteOptionsInput>> options = null)
         {
             var __workflow_options = WorkflowExpression.Compile(options, nameof(options), required: false);
             return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> DeleteAll(Expression<Func<DeleteAllV2Input>> options = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> DeleteAll(Expression<Func<DeleteAllOptionsInput>> options = null)
         {
             var __workflow_options = WorkflowExpression.Compile(options, nameof(options), required: false);
             return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Read(Expression<Func<ReadV2Input>> options = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Read(Expression<Func<DeleteOptionsInput>> options = null)
         {
             var __workflow_options = WorkflowExpression.Compile(options, nameof(options), required: false);
             return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> ReadAll(Expression<Func<ReadAllV2Input>> options = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> ReadAll(Expression<Func<DeleteAllOptionsInput>> options = null)
         {
             var __workflow_options = WorkflowExpression.Compile(options, nameof(options), required: false);
             return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Receive(Expression<Func<ReceiveV2Input>> options = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> Receive(Expression<Func<DeleteOptionsInput>> options = null)
         {
             var __workflow_options = WorkflowExpression.Compile(options, nameof(options), required: false);
             return new DeferredBodyAction<Item, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> ReceiveAll(Expression<Func<ReceiveAllV2Input>> options = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> ReceiveAll(Expression<Func<DeleteAllOptionsInput>> options = null)
         {
             var __workflow_options = WorkflowExpression.Compile(options, nameof(options), required: false);
             return new DeferredBodyAction<ItemsList, ApiConnectionActionConfiguration>(() =>
@@ -103,16 +103,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendV2Response, ApiConnectionActionConfiguration> Send(Expression<Func<SendV2Input>> message)
+        public IBodyWorkflowAction<SendResponse, ApiConnectionActionConfiguration> Send(Expression<Func<MessageInput>> message)
         {
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
-            return new DeferredBodyAction<SendV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_message);
-                return new ApiConnectionAction<SendV2Response>(callPayload);
+                return new ApiConnectionAction<SendResponse>(callPayload);
             });
         }
     }
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public string ReplyToQueueManager { get; set; }
     }
 
-    public class DeleteV2Input
+    public class DeleteOptionsInput
     {
         public string Queue { get; set; }
         public string MessageId { get; set; }
@@ -156,12 +156,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public double? LogicalSequenceNumber { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteV2InputIncludeInfoType? IncludeInfo { get; set; } = DeleteV2InputIncludeInfoType.False;
+        public OptionsInputIncludeInfoType? IncludeInfo { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mq.OptionsInputIncludeInfoType.False;
         public string Timeout { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeleteV2InputIncludeInfoType
+    public enum OptionsInputIncludeInfoType
     {
         [EnumMember(Value = "false")]
         False,
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public Item[] Value { get; set; }
     }
 
-    public class DeleteAllV2Input
+    public class DeleteAllOptionsInput
     {
         public string Queue { get; set; }
         public string MessageId { get; set; }
@@ -186,119 +186,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public double? LogicalSequenceNumber { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteAllV2InputIncludeInfoType? IncludeInfo { get; set; } = DeleteAllV2InputIncludeInfoType.False;
+        public OptionsInputIncludeInfoType? IncludeInfo { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mq.OptionsInputIncludeInfoType.False;
         public string Timeout { get; set; }
         public double? BatchSize { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeleteAllV2InputIncludeInfoType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class ReadV2Input
-    {
-        public string Queue { get; set; }
-        public string MessageId { get; set; }
-        public string CorrelationId { get; set; }
-        public string GroupId { get; set; }
-        public string MessageToken { get; set; }
-        public double? Offset { get; set; }
-        public double? LogicalSequenceNumber { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadV2InputIncludeInfoType? IncludeInfo { get; set; } = ReadV2InputIncludeInfoType.False;
-        public string Timeout { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReadV2InputIncludeInfoType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class ReadAllV2Input
-    {
-        public string Queue { get; set; }
-        public string MessageId { get; set; }
-        public string CorrelationId { get; set; }
-        public string GroupId { get; set; }
-        public string MessageToken { get; set; }
-        public double? Offset { get; set; }
-        public double? LogicalSequenceNumber { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadAllV2InputIncludeInfoType? IncludeInfo { get; set; } = ReadAllV2InputIncludeInfoType.False;
-        public string Timeout { get; set; }
-        public double? BatchSize { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReadAllV2InputIncludeInfoType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class ReceiveV2Input
-    {
-        public string Queue { get; set; }
-        public string MessageId { get; set; }
-        public string CorrelationId { get; set; }
-        public string GroupId { get; set; }
-        public string MessageToken { get; set; }
-        public double? Offset { get; set; }
-        public double? LogicalSequenceNumber { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReceiveV2InputIncludeInfoType? IncludeInfo { get; set; } = ReceiveV2InputIncludeInfoType.False;
-        public string Timeout { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReceiveV2InputIncludeInfoType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class ReceiveAllV2Input
-    {
-        public string Queue { get; set; }
-        public string MessageId { get; set; }
-        public string CorrelationId { get; set; }
-        public string GroupId { get; set; }
-        public string MessageToken { get; set; }
-        public double? Offset { get; set; }
-        public double? LogicalSequenceNumber { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReceiveAllV2InputIncludeInfoType? IncludeInfo { get; set; } = ReceiveAllV2InputIncludeInfoType.False;
-        public string Timeout { get; set; }
-        public double? BatchSize { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReceiveAllV2InputIncludeInfoType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class SendV2Response
+    public class SendResponse
     {
         public string ItemInternalId { get; set; }
         public string MessageData { get; set; }
@@ -306,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public string CorrelationId { get; set; }
     }
 
-    public class SendV2Input
+    public class MessageInput
     {
         public string Queue { get; set; }
 
@@ -314,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public string Message { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendV2InputMessageTypeType? MessageType { get; set; } = SendV2InputMessageTypeType.Datagram;
+        public MessageInputMessageTypeType? MessageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mq.MessageInputMessageTypeType.Datagram;
         public string CorrelationId { get; set; }
         public string MessageId { get; set; }
         public string ReplyToQueue { get; set; }
@@ -325,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendV2InputMessageTypeType
+    public enum MessageInputMessageTypeType
     {
         Datagram,
         Reply,

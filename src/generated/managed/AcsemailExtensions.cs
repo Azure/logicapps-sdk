@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
     public class AcsemailActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
-        public IBodyWorkflowAction<EmailSendResult, ApiConnectionActionConfiguration> SendEmailGAVersion(Expression<Func<SendEmailGAVersionInput>> emailMessage)
+        public IBodyWorkflowAction<EmailSendResult, ApiConnectionActionConfiguration> SendEmailGAVersion(Expression<Func<EmailMessageInput>> emailMessage)
         {
             var __workflow_emailMessage = WorkflowExpression.Compile(emailMessage, nameof(emailMessage), required: true);
             return new DeferredBodyAction<EmailSendResult, ApiConnectionActionConfiguration>(() =>
@@ -95,25 +95,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public JToken Info { get; set; }
     }
 
-    public class SendEmailGAVersionInput
+    public class EmailMessageInput
     {
         [JsonProperty("senderAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SenderAddress { get; set; }
 
         [JsonProperty("importance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailGAVersionInputImportanceType? Importance { get; set; } = SendEmailGAVersionInputImportanceType.Normal;
+        public EmailMessageInputImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail.EmailMessageInputImportanceType.Normal;
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailGAVersionInputRecipientsType Recipients { get; set; }
+        public EmailMessageInputRecipientsType Recipients { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public ContentDetails Content { get; set; }
 
         [JsonProperty("replyTo")]
-        public SendEmailGAVersionInputReplyToTypeItem[] ReplyTo { get; set; }
+        public EmailMessageInputReplyToTypeItem[] ReplyTo { get; set; }
 
         [JsonProperty("attachments")]
-        public SendEmailGAVersionInputAttachmentsTypeItem[] Attachments { get; set; }
+        public EmailMessageInputAttachmentsTypeItem[] Attachments { get; set; }
 
         [JsonProperty("headers")]
         public EmailCustomHeader[] Headers { get; set; }
@@ -123,36 +123,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendEmailGAVersionInputImportanceType
+    public enum EmailMessageInputImportanceType
     {
         High,
         Normal,
         Low
     }
 
-    public class SendEmailGAVersionInputRecipientsType
+    public class EmailMessageInputRecipientsType
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailGAVersionInputRecipientsTypeToTypeItem[] To { get; set; }
-        public SendEmailGAVersionInputRecipientsTypeCCTypeItem[] CC { get; set; }
+        public EmailMessageInputRecipientsTypeToTypeItem[] To { get; set; }
+        public EmailMessageInputRecipientsTypeCCTypeItem[] CC { get; set; }
 
         [JsonProperty("bCC")]
-        public SendEmailGAVersionInputRecipientsTypeBCCTypeItem[] BCC { get; set; }
+        public EmailMessageInputRecipientsTypeBCCTypeItem[] BCC { get; set; }
     }
 
-    public class SendEmailGAVersionInputRecipientsTypeToTypeItem
+    public class EmailMessageInputRecipientsTypeToTypeItem
     {
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
-    public class SendEmailGAVersionInputRecipientsTypeCCTypeItem
+    public class EmailMessageInputRecipientsTypeCCTypeItem
     {
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
-    public class SendEmailGAVersionInputRecipientsTypeBCCTypeItem
+    public class EmailMessageInputRecipientsTypeBCCTypeItem
     {
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
@@ -167,13 +167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public string Html { get; set; }
     }
 
-    public class SendEmailGAVersionInputReplyToTypeItem
+    public class EmailMessageInputReplyToTypeItem
     {
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
     }
 
-    public class SendEmailGAVersionInputAttachmentsTypeItem
+    public class EmailMessageInputAttachmentsTypeItem
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

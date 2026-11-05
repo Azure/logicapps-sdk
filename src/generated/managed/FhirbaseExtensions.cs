@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTAppointmentResponse, ApiConnectionActionConfiguration> POSTAppointment(Expression<Func<POSTAppointmentInput>> body = null)
+        public IBodyWorkflowAction<POSTAppointmentResponse, ApiConnectionActionConfiguration> POSTAppointment(Expression<Func<POSTAppointmentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTAppointmentResponse, ApiConnectionActionConfiguration>(() =>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentIdResponse, ApiConnectionActionConfiguration> DELETEAppointmentId(Expression<Func<string>> id, Expression<Func<DELETEAppointmentIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEAppointmentIdResponse, ApiConnectionActionConfiguration> DELETEAppointmentId(Expression<Func<string>> id, Expression<Func<DELETEAppointmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentIdResponse, ApiConnectionActionConfiguration> PUTAppointmentId(Expression<Func<string>> id, Expression<Func<PUTAppointmentIdInput>> body = null)
+        public IBodyWorkflowAction<PUTAppointmentIdResponse, ApiConnectionActionConfiguration> PUTAppointmentId(Expression<Func<string>> id, Expression<Func<DELETEAppointmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTAppointmentResponseResponse, ApiConnectionActionConfiguration> POSTAppointmentResponse(Expression<Func<POSTAppointmentResponseInput>> body = null)
+        public IBodyWorkflowAction<POSTAppointmentResponseResponse, ApiConnectionActionConfiguration> POSTAppointmentResponse(Expression<Func<POSTAppointmentResponseBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTAppointmentResponseResponse, ApiConnectionActionConfiguration>(() =>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentResponseIdResponse, ApiConnectionActionConfiguration> DELETEAppointmentResponseId(Expression<Func<string>> id, Expression<Func<DELETEAppointmentResponseIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEAppointmentResponseIdResponse, ApiConnectionActionConfiguration> DELETEAppointmentResponseId(Expression<Func<string>> id, Expression<Func<DELETEAppointmentResponseIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentResponseIdResponse, ApiConnectionActionConfiguration> PUTAppointmentResponseId(Expression<Func<string>> id, Expression<Func<PUTAppointmentResponseIdInput>> body = null)
+        public IBodyWorkflowAction<PUTAppointmentResponseIdResponse, ApiConnectionActionConfiguration> PUTAppointmentResponseId(Expression<Func<string>> id, Expression<Func<DELETEAppointmentResponseIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTDeviceResponse, ApiConnectionActionConfiguration> POSTDevice(Expression<Func<POSTDeviceInput>> body = null)
+        public IBodyWorkflowAction<POSTDeviceResponse, ApiConnectionActionConfiguration> POSTDevice(Expression<Func<POSTDeviceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTDeviceResponse, ApiConnectionActionConfiguration>(() =>
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEDeviceIdResponse, ApiConnectionActionConfiguration> DELETEDeviceId(Expression<Func<string>> id, Expression<Func<DELETEDeviceIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEDeviceIdResponse, ApiConnectionActionConfiguration> DELETEDeviceId(Expression<Func<string>> id, Expression<Func<DELETEDeviceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTDeviceIdResponse, ApiConnectionActionConfiguration> PUTDeviceId(Expression<Func<string>> id, Expression<Func<PUTDeviceIdInput>> body = null)
+        public IBodyWorkflowAction<PUTDeviceIdResponse, ApiConnectionActionConfiguration> PUTDeviceId(Expression<Func<string>> id, Expression<Func<DELETEDeviceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTEncounterResponse, ApiConnectionActionConfiguration> POSTEncounter(Expression<Func<POSTEncounterInput>> body = null)
+        public IBodyWorkflowAction<POSTEncounterResponse, ApiConnectionActionConfiguration> POSTEncounter(Expression<Func<DELETEEncounterIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTEncounterResponse, ApiConnectionActionConfiguration>(() =>
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEEncounterIdResponse, ApiConnectionActionConfiguration> DELETEEncounterId(Expression<Func<string>> id, Expression<Func<DELETEEncounterIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEEncounterIdResponse, ApiConnectionActionConfiguration> DELETEEncounterId(Expression<Func<string>> id, Expression<Func<DELETEEncounterIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTEncounterIdResponse, ApiConnectionActionConfiguration> PUTEncounterId(Expression<Func<string>> id, Expression<Func<PUTEncounterIdInput>> body = null)
+        public IBodyWorkflowAction<PUTEncounterIdResponse, ApiConnectionActionConfiguration> PUTEncounterId(Expression<Func<string>> id, Expression<Func<DELETEEncounterIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTFLAGResponse, ApiConnectionActionConfiguration> POSTFLAG(Expression<Func<POSTFLAGInput>> body = null)
+        public IBodyWorkflowAction<POSTFLAGResponse, ApiConnectionActionConfiguration> POSTFLAG(Expression<Func<DELETEFlagIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTFLAGResponse, ApiConnectionActionConfiguration>(() =>
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEFlagIdResponse, ApiConnectionActionConfiguration> DELETEFlagId(Expression<Func<string>> id, Expression<Func<DELETEFlagIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEFlagIdResponse, ApiConnectionActionConfiguration> DELETEFlagId(Expression<Func<string>> id, Expression<Func<DELETEFlagIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTFlagIdResponse, ApiConnectionActionConfiguration> PUTFlagId(Expression<Func<string>> id, Expression<Func<PUTFlagIdInput>> body = null)
+        public IBodyWorkflowAction<PUTFlagIdResponse, ApiConnectionActionConfiguration> PUTFlagId(Expression<Func<string>> id, Expression<Func<DELETEFlagIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTLocationResponse, ApiConnectionActionConfiguration> POSTLocation(Expression<Func<POSTLocationInput>> body = null)
+        public IBodyWorkflowAction<POSTLocationResponse, ApiConnectionActionConfiguration> POSTLocation(Expression<Func<DELETELocationIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTLocationResponse, ApiConnectionActionConfiguration>(() =>
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETELocationIdResponse, ApiConnectionActionConfiguration> DELETELocationId(Expression<Func<string>> id, Expression<Func<DELETELocationIdInput>> body = null)
+        public IBodyWorkflowAction<DELETELocationIdResponse, ApiConnectionActionConfiguration> DELETELocationId(Expression<Func<string>> id, Expression<Func<DELETELocationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTLocationIdResponse, ApiConnectionActionConfiguration> PUTLocationId(Expression<Func<string>> id, Expression<Func<PUTLocationIdInput>> body = null)
+        public IBodyWorkflowAction<PUTLocationIdResponse, ApiConnectionActionConfiguration> PUTLocationId(Expression<Func<string>> id, Expression<Func<DELETELocationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPatientResponse, ApiConnectionActionConfiguration> POSTPatient(Expression<Func<POSTPatientInput>> body = null)
+        public IBodyWorkflowAction<POSTPatientResponse, ApiConnectionActionConfiguration> POSTPatient(Expression<Func<POSTPatientBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTPatientResponse, ApiConnectionActionConfiguration>(() =>
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPatientIdResponse, ApiConnectionActionConfiguration> DELETEPatientId(Expression<Func<string>> id, Expression<Func<DELETEPatientIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEPatientIdResponse, ApiConnectionActionConfiguration> DELETEPatientId(Expression<Func<string>> id, Expression<Func<DELETEPatientIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPatientIdResponse, ApiConnectionActionConfiguration> PUTPatientId(Expression<Func<string>> id, Expression<Func<PUTPatientIdInput>> body = null)
+        public IBodyWorkflowAction<PUTPatientIdResponse, ApiConnectionActionConfiguration> PUTPatientId(Expression<Func<string>> id, Expression<Func<DELETEPatientIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPersonResponse, ApiConnectionActionConfiguration> POSTPerson(Expression<Func<POSTPersonInput>> body = null)
+        public IBodyWorkflowAction<POSTPersonResponse, ApiConnectionActionConfiguration> POSTPerson(Expression<Func<DELETEPersonIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTPersonResponse, ApiConnectionActionConfiguration>(() =>
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPersonIdResponse, ApiConnectionActionConfiguration> DELETEPersonId(Expression<Func<string>> id, Expression<Func<DELETEPersonIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEPersonIdResponse, ApiConnectionActionConfiguration> DELETEPersonId(Expression<Func<string>> id, Expression<Func<DELETEPersonIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPersonIdResponse, ApiConnectionActionConfiguration> PUTPersonId(Expression<Func<string>> id, Expression<Func<PUTPersonIdInput>> body = null)
+        public IBodyWorkflowAction<PUTPersonIdResponse, ApiConnectionActionConfiguration> PUTPersonId(Expression<Func<string>> id, Expression<Func<DELETEPersonIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -997,7 +997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPractitionerResponse, ApiConnectionActionConfiguration> POSTPractitioner(Expression<Func<POSTPractitionerInput>> body = null)
+        public IBodyWorkflowAction<POSTPractitionerResponse, ApiConnectionActionConfiguration> POSTPractitioner(Expression<Func<POSTPractitionerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTPractitionerResponse, ApiConnectionActionConfiguration>(() =>
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPractitionerIdResponse, ApiConnectionActionConfiguration> DELETEPractitionerId(Expression<Func<string>> id, Expression<Func<DELETEPractitionerIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEPractitionerIdResponse, ApiConnectionActionConfiguration> DELETEPractitionerId(Expression<Func<string>> id, Expression<Func<DELETEPractitionerIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -1041,7 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPractitionerIdResponse, ApiConnectionActionConfiguration> PUTPractitionerId(Expression<Func<string>> id, Expression<Func<PUTPractitionerIdInput>> body = null)
+        public IBodyWorkflowAction<PUTPractitionerIdResponse, ApiConnectionActionConfiguration> PUTPractitionerId(Expression<Func<string>> id, Expression<Func<DELETEPractitionerIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -1430,7 +1430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class POSTAppointmentInput
+    public class POSTAppointmentBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1439,25 +1439,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTAppointmentInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("serviceCategory")]
-        public POSTAppointmentInputServiceCategoryTypeItem[] ServiceCategory { get; set; }
+        public BodyInputServiceCategoryTypeItem[] ServiceCategory { get; set; }
 
         [JsonProperty("serviceType")]
-        public POSTAppointmentInputServiceTypeTypeItem[] ServiceType { get; set; }
+        public BodyInputServiceTypeTypeItem[] ServiceType { get; set; }
 
         [JsonProperty("specialty")]
-        public POSTAppointmentInputSpecialtyTypeItem[] Specialty { get; set; }
+        public BodyInputSpecialtyTypeItem[] Specialty { get; set; }
 
         [JsonProperty("appointmentType")]
-        public POSTAppointmentInputAppointmentTypeType AppointmentType { get; set; }
+        public BodyInputAppointmentTypeType AppointmentType { get; set; }
 
         [JsonProperty("reasonReference")]
-        public POSTAppointmentInputReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public BodyInputReasonReferenceTypeItem[] ReasonReference { get; set; }
 
         [JsonProperty("priority")]
         public int? Priority { get; set; }
@@ -1478,13 +1478,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Comment { get; set; }
 
         [JsonProperty("basedOn")]
-        public POSTAppointmentInputBasedOnTypeItem[] BasedOn { get; set; }
+        public BodyInputBasedOnTypeItem[] BasedOn { get; set; }
 
         [JsonProperty("participant")]
-        public POSTAppointmentInputParticipantTypeItem[] Participant { get; set; }
+        public DELETEAppointmentIdBodyInputParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class POSTAppointmentInputTextType
+    public class BodyInputTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -1493,13 +1493,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class POSTAppointmentInputServiceCategoryTypeItem
+    public class BodyInputServiceCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAppointmentInputServiceCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputServiceCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAppointmentInputServiceCategoryTypeItemCodingTypeItem
+    public class BodyInputServiceCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1511,13 +1511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentInputServiceTypeTypeItem
+    public class BodyInputServiceTypeTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAppointmentInputServiceTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputServiceTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAppointmentInputServiceTypeTypeItemCodingTypeItem
+    public class BodyInputServiceTypeTypeItemCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -1526,13 +1526,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentInputSpecialtyTypeItem
+    public class BodyInputSpecialtyTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAppointmentInputSpecialtyTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputSpecialtyTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAppointmentInputSpecialtyTypeItemCodingTypeItem
+    public class BodyInputSpecialtyTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1544,13 +1544,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentInputAppointmentTypeType
+    public class BodyInputAppointmentTypeType
     {
         [JsonProperty("coding")]
-        public POSTAppointmentInputAppointmentTypeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputAppointmentTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAppointmentInputAppointmentTypeTypeCodingTypeItem
+    public class BodyInputAppointmentTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1562,7 +1562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentInputReasonReferenceTypeItem
+    public class BodyInputReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -1571,16 +1571,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentInputBasedOnTypeItem
+    public class BodyInputBasedOnTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAppointmentInputParticipantTypeItem
+    public class DELETEAppointmentIdBodyInputParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public POSTAppointmentInputParticipantTypeItemActorType Actor { get; set; }
+        public BodyInputParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -1589,10 +1589,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public POSTAppointmentInputParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public BodyInputParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class POSTAppointmentInputParticipantTypeItemActorType
+    public class BodyInputParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -1601,13 +1601,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentInputParticipantTypeItemTypeTypeItem
+    public class BodyInputParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAppointmentInputParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAppointmentInputParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class BodyInputParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1772,7 +1772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class DELETEAppointmentIdInput
+    public class DELETEAppointmentIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1781,73 +1781,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAppointmentIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEAppointmentIdInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public DELETEAppointmentIdInputParticipantTypeItem[] Participant { get; set; }
+        public DELETEAppointmentIdBodyInputParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class DELETEAppointmentIdInputMetaType
+    public class BodyInputMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
 
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
-    }
-
-    public class DELETEAppointmentIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class DELETEAppointmentIdInputParticipantTypeItem
-    {
-        [JsonProperty("actor")]
-        public DELETEAppointmentIdInputParticipantTypeItemActorType Actor { get; set; }
-
-        [JsonProperty("required")]
-        public string Required { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("type")]
-        public DELETEAppointmentIdInputParticipantTypeItemTypeTypeItem[] Type { get; set; }
-    }
-
-    public class DELETEAppointmentIdInputParticipantTypeItemActorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEAppointmentIdInputParticipantTypeItemTypeTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEAppointmentIdInputParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEAppointmentIdInputParticipantTypeItemTypeTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
     }
 
     public class PUTAppointmentIdResponse
@@ -1920,84 +1872,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTAppointmentIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTAppointmentIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("text")]
-        public PUTAppointmentIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("participant")]
-        public PUTAppointmentIdInputParticipantTypeItem[] Participant { get; set; }
-    }
-
-    public class PUTAppointmentIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTAppointmentIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class PUTAppointmentIdInputParticipantTypeItem
-    {
-        [JsonProperty("actor")]
-        public PUTAppointmentIdInputParticipantTypeItemActorType Actor { get; set; }
-
-        [JsonProperty("required")]
-        public string Required { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("type")]
-        public PUTAppointmentIdInputParticipantTypeItemTypeTypeItem[] Type { get; set; }
-    }
-
-    public class PUTAppointmentIdInputParticipantTypeItemActorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAppointmentIdInputParticipantTypeItemTypeTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTAppointmentIdInputParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTAppointmentIdInputParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2333,7 +2207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentResponseInput
+    public class POSTAppointmentResponseBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2342,28 +2216,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTAppointmentResponseInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public POSTAppointmentResponseInputAppointmentType Appointment { get; set; }
+        public BodyInputAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public POSTAppointmentResponseInputActorType Actor { get; set; }
+        public BodyInputActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class POSTAppointmentResponseInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class POSTAppointmentResponseInputAppointmentType
+    public class BodyInputAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -2372,7 +2237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTAppointmentResponseInputActorType
+    public class BodyInputActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -2501,7 +2366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEAppointmentResponseIdInput
+    public class DELETEAppointmentResponseIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2510,55 +2375,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAppointmentResponseIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEAppointmentResponseIdInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public DELETEAppointmentResponseIdInputAppointmentType Appointment { get; set; }
+        public BodyInputAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public DELETEAppointmentResponseIdInputActorType Actor { get; set; }
+        public BodyInputActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
-    }
-
-    public class DELETEAppointmentResponseIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEAppointmentResponseIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class DELETEAppointmentResponseIdInputAppointmentType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEAppointmentResponseIdInputActorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
     }
 
     public class PUTAppointmentResponseIdResponse
@@ -2613,66 +2442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTAppointmentResponseIdResponseActorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAppointmentResponseIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTAppointmentResponseIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("text")]
-        public PUTAppointmentResponseIdInputTextType Text { get; set; }
-
-        [JsonProperty("appointment")]
-        public PUTAppointmentResponseIdInputAppointmentType Appointment { get; set; }
-
-        [JsonProperty("actor")]
-        public PUTAppointmentResponseIdInputActorType Actor { get; set; }
-
-        [JsonProperty("participantStatus")]
-        public string ParticipantStatus { get; set; }
-    }
-
-    public class PUTAppointmentResponseIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTAppointmentResponseIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class PUTAppointmentResponseIdInputAppointmentType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAppointmentResponseIdInputActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3131,7 +2900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Reference { get; set; }
     }
 
-    public class POSTDeviceInput
+    public class POSTDeviceBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3140,10 +2909,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTDeviceInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("udiCarrier")]
-        public POSTDeviceInputUdiCarrierTypeItem[] UdiCarrier { get; set; }
+        public BodyInputUdiCarrierTypeItem[] UdiCarrier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3164,25 +2933,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string SerialNumber { get; set; }
 
         [JsonProperty("deviceName")]
-        public POSTDeviceInputDeviceNameTypeItem[] DeviceName { get; set; }
+        public BodyInputDeviceNameTypeItem[] DeviceName { get; set; }
 
         [JsonProperty("type")]
-        public POSTDeviceInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("patient")]
-        public POSTDeviceInputPatientType Patient { get; set; }
+        public BodyInputPatientType Patient { get; set; }
     }
 
-    public class POSTDeviceInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class POSTDeviceInputUdiCarrierTypeItem
+    public class BodyInputUdiCarrierTypeItem
     {
         [JsonProperty("deviceIdentifier")]
         public string DeviceIdentifier { get; set; }
@@ -3191,7 +2951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string CarrierHRF { get; set; }
     }
 
-    public class POSTDeviceInputDeviceNameTypeItem
+    public class BodyInputDeviceNameTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3200,16 +2960,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Type { get; set; }
     }
 
-    public class POSTDeviceInputTypeType
+    public class BodyInputTypeType
     {
         [JsonProperty("coding")]
-        public POSTDeviceInputTypeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputTypeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTDeviceInputTypeTypeCodingTypeItem
+    public class BodyInputTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3221,7 +2981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTDeviceInputPatientType
+    public class BodyInputPatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3368,7 +3128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class DELETEDeviceIdInput
+    public class DELETEDeviceIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3377,34 +3137,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEDeviceIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEDeviceIdInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEDeviceIdInputIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEDeviceIdBodyInputIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class DELETEDeviceIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEDeviceIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class DELETEDeviceIdInputIdentifierTypeItem
+    public class DELETEDeviceIdBodyInputIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3450,51 +3192,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTDeviceIdResponseIdentifierTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class PUTDeviceIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTDeviceIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("text")]
-        public PUTDeviceIdInputTextType Text { get; set; }
-
-        [JsonProperty("identifier")]
-        public PUTDeviceIdInputIdentifierTypeItem[] Identifier { get; set; }
-    }
-
-    public class PUTDeviceIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTDeviceIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class PUTDeviceIdInputIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3941,7 +3638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTEncounterInput
+    public class DELETEEncounterIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3950,40 +3647,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTEncounterInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public POSTEncounterInputClassType Class { get; set; }
+        public BodyInputClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public POSTEncounterInputTypeTypeItem[] Type { get; set; }
+        public BodyInputTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public POSTEncounterInputSubjectType Subject { get; set; }
+        public BodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public POSTEncounterInputParticipantTypeItem[] Participant { get; set; }
+        public DELETEEncounterIdBodyInputParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public POSTEncounterInputPeriodType Period { get; set; }
+        public BodyInputPeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public POSTEncounterInputServiceProviderType ServiceProvider { get; set; }
+        public BodyInputServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class POSTEncounterInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class POSTEncounterInputClassType
+    public class BodyInputClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3992,16 +3680,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class POSTEncounterInputTypeTypeItem
+    public class BodyInputTypeTypeItem
     {
         [JsonProperty("coding")]
-        public POSTEncounterInputTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTEncounterInputTypeTypeItemCodingTypeItem
+    public class BodyInputTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4013,7 +3701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTEncounterInputSubjectType
+    public class BodyInputSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4022,13 +3710,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTEncounterInputParticipantTypeItem
+    public class DELETEEncounterIdBodyInputParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public POSTEncounterInputParticipantTypeItemIndividualType Individual { get; set; }
+        public BodyInputParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class POSTEncounterInputParticipantTypeItemIndividualType
+    public class BodyInputParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4037,7 +3725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTEncounterInputPeriodType
+    public class BodyInputPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -4046,7 +3734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class POSTEncounterInputServiceProviderType
+    public class BodyInputServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4283,120 +3971,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public DELETEEncounterIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("class")]
-        public DELETEEncounterIdInputClassType Class { get; set; }
-
-        [JsonProperty("type")]
-        public DELETEEncounterIdInputTypeTypeItem[] Type { get; set; }
-
-        [JsonProperty("subject")]
-        public DELETEEncounterIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("participant")]
-        public DELETEEncounterIdInputParticipantTypeItem[] Participant { get; set; }
-
-        [JsonProperty("period")]
-        public DELETEEncounterIdInputPeriodType Period { get; set; }
-
-        [JsonProperty("serviceProvider")]
-        public DELETEEncounterIdInputServiceProviderType ServiceProvider { get; set; }
-    }
-
-    public class DELETEEncounterIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEEncounterIdInputClassType
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEEncounterIdInputTypeTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEEncounterIdInputTypeTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEEncounterIdInputTypeTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEEncounterIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEEncounterIdInputParticipantTypeItem
-    {
-        [JsonProperty("individual")]
-        public DELETEEncounterIdInputParticipantTypeItemIndividualType Individual { get; set; }
-    }
-
-    public class DELETEEncounterIdInputParticipantTypeItemIndividualType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEEncounterIdInputPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class DELETEEncounterIdInputServiceProviderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
     public class PUTEncounterIdResponse
     {
         [JsonProperty("resourceType")]
@@ -4503,120 +4077,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTEncounterIdResponseServiceProviderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTEncounterIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTEncounterIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("class")]
-        public PUTEncounterIdInputClassType Class { get; set; }
-
-        [JsonProperty("type")]
-        public PUTEncounterIdInputTypeTypeItem[] Type { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTEncounterIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("participant")]
-        public PUTEncounterIdInputParticipantTypeItem[] Participant { get; set; }
-
-        [JsonProperty("period")]
-        public PUTEncounterIdInputPeriodType Period { get; set; }
-
-        [JsonProperty("serviceProvider")]
-        public PUTEncounterIdInputServiceProviderType ServiceProvider { get; set; }
-    }
-
-    public class PUTEncounterIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTEncounterIdInputClassType
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTEncounterIdInputTypeTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTEncounterIdInputTypeTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTEncounterIdInputTypeTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTEncounterIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTEncounterIdInputParticipantTypeItem
-    {
-        [JsonProperty("individual")]
-        public PUTEncounterIdInputParticipantTypeItemIndividualType Individual { get; set; }
-    }
-
-    public class PUTEncounterIdInputParticipantTypeItemIndividualType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTEncounterIdInputPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class PUTEncounterIdInputServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5201,7 +4661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTFLAGInput
+    public class DELETEFlagIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5210,55 +4670,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTFLAGInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTFLAGInputIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEFlagIdBodyInputIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public POSTFLAGInputCategoryTypeItem[] Category { get; set; }
+        public BodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public POSTFLAGInputCodeType Code { get; set; }
+        public BodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTFLAGInputSubjectType Subject { get; set; }
+        public BodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public POSTFLAGInputPeriodType Period { get; set; }
+        public BodyInputPeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public POSTFLAGInputAuthorType Author { get; set; }
+        public BodyInputAuthorType Author { get; set; }
     }
 
-    public class POSTFLAGInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class POSTFLAGInputIdentifierTypeItem
+    public class DELETEFlagIdBodyInputIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class POSTFLAGInputCategoryTypeItem
+    public class BodyInputCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTFLAGInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTFLAGInputCategoryTypeItemCodingTypeItem
+    public class BodyInputCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5270,16 +4721,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTFLAGInputCodeType
+    public class BodyInputCodeType
     {
         [JsonProperty("coding")]
-        public POSTFLAGInputCodeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTFLAGInputCodeTypeCodingTypeItem
+    public class BodyInputCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5291,25 +4742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTFLAGInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTFLAGInputPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class POSTFLAGInputAuthorType
+    public class BodyInputAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5552,123 +4985,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public DELETEFlagIdInputTextType Text { get; set; }
-
-        [JsonProperty("identifier")]
-        public DELETEFlagIdInputIdentifierTypeItem[] Identifier { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("category")]
-        public DELETEFlagIdInputCategoryTypeItem[] Category { get; set; }
-
-        [JsonProperty("code")]
-        public DELETEFlagIdInputCodeType Code { get; set; }
-
-        [JsonProperty("subject")]
-        public DELETEFlagIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("period")]
-        public DELETEFlagIdInputPeriodType Period { get; set; }
-
-        [JsonProperty("author")]
-        public DELETEFlagIdInputAuthorType Author { get; set; }
-    }
-
-    public class DELETEFlagIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class DELETEFlagIdInputIdentifierTypeItem
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class DELETEFlagIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEFlagIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEFlagIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEFlagIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public DELETEFlagIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEFlagIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEFlagIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEFlagIdInputPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class DELETEFlagIdInputAuthorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
     public class PUTFlagIdResponse
     {
         [JsonProperty("resourceType")]
@@ -5778,123 +5094,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTFlagIdResponseAuthorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTFlagIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public PUTFlagIdInputTextType Text { get; set; }
-
-        [JsonProperty("identifier")]
-        public PUTFlagIdInputIdentifierTypeItem[] Identifier { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("category")]
-        public PUTFlagIdInputCategoryTypeItem[] Category { get; set; }
-
-        [JsonProperty("code")]
-        public PUTFlagIdInputCodeType Code { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTFlagIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("period")]
-        public PUTFlagIdInputPeriodType Period { get; set; }
-
-        [JsonProperty("author")]
-        public PUTFlagIdInputAuthorType Author { get; set; }
-    }
-
-    public class PUTFlagIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class PUTFlagIdInputIdentifierTypeItem
-    {
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class PUTFlagIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTFlagIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTFlagIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTFlagIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTFlagIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTFlagIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTFlagIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTFlagIdInputPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class PUTFlagIdInputAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6338,7 +5537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTLocationInput
+    public class DELETELocationIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6347,7 +5546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTLocationInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -6359,19 +5558,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public POSTLocationInputPartOfType PartOf { get; set; }
+        public BodyInputPartOfType PartOf { get; set; }
     }
 
-    public class POSTLocationInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class POSTLocationInputPartOfType
+    public class BodyInputPartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6464,48 +5654,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETELocationIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public DELETELocationIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("mode")]
-        public string Mode { get; set; }
-
-        [JsonProperty("partOf")]
-        public DELETELocationIdInputPartOfType PartOf { get; set; }
-    }
-
-    public class DELETELocationIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class DELETELocationIdInputPartOfType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
     public class PUTLocationIdResponse
     {
         [JsonProperty("resourceType")]
@@ -6540,48 +5688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTLocationIdResponsePartOfType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTLocationIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public PUTLocationIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("mode")]
-        public string Mode { get; set; }
-
-        [JsonProperty("partOf")]
-        public PUTLocationIdInputPartOfType PartOf { get; set; }
-    }
-
-    public class PUTLocationIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("div")]
-        public string Div { get; set; }
-    }
-
-    public class PUTLocationIdInputPartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7007,7 +6113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Start { get; set; }
     }
 
-    public class POSTPatientInput
+    public class POSTPatientBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7016,10 +6122,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool? Active { get; set; }
 
         [JsonProperty("name")]
-        public POSTPatientInputNameTypeItem[] Name { get; set; }
+        public DELETEPatientIdBodyInputNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public POSTPatientInputTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPatientIdBodyInputTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -7031,10 +6137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool? DeceasedBoolean { get; set; }
 
         [JsonProperty("address")]
-        public POSTPatientInputAddressTypeItem[] Address { get; set; }
+        public DELETEPatientIdBodyInputAddressTypeItem[] Address { get; set; }
     }
 
-    public class POSTPatientInputNameTypeItem
+    public class DELETEPatientIdBodyInputNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -7046,7 +6152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class POSTPatientInputTelecomTypeItem
+    public class DELETEPatientIdBodyInputTelecomTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -7061,7 +6167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public int? Rank { get; set; }
     }
 
-    public class POSTPatientInputAddressTypeItem
+    public class DELETEPatientIdBodyInputAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -7088,10 +6194,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
 
         [JsonProperty("period")]
-        public POSTPatientInputAddressTypeItemPeriodType Period { get; set; }
+        public BodyInputAddressTypeItemPeriodType Period { get; set; }
     }
 
-    public class POSTPatientInputAddressTypeItemPeriodType
+    public class BodyInputAddressTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7388,7 +6494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Start { get; set; }
     }
 
-    public class DELETEPatientIdInput
+    public class DELETEPatientIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7400,10 +6506,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool? Active { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPatientIdInputNameTypeItem[] Name { get; set; }
+        public DELETEPatientIdBodyInputNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public DELETEPatientIdInputTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPatientIdBodyInputTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -7415,70 +6521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool? DeceasedBoolean { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPatientIdInputAddressTypeItem[] Address { get; set; }
-    }
-
-    public class DELETEPatientIdInputNameTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("family")]
-        public string Family { get; set; }
-
-        [JsonProperty("given")]
-        public string[] Given { get; set; }
-    }
-
-    public class DELETEPatientIdInputTelecomTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("rank")]
-        public int? Rank { get; set; }
-    }
-
-    public class DELETEPatientIdInputAddressTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("line")]
-        public string[] Line { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("district")]
-        public string District { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("postalCode")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("period")]
-        public DELETEPatientIdInputAddressTypeItemPeriodType Period { get; set; }
-    }
-
-    public class DELETEPatientIdInputAddressTypeItemPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
+        public DELETEPatientIdBodyInputAddressTypeItem[] Address { get; set; }
     }
 
     public class PUTPatientIdResponse
@@ -7569,99 +6612,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTPatientIdResponseAddressTypeItemPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-    }
-
-    public class PUTPatientIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("active")]
-        public bool? Active { get; set; }
-
-        [JsonProperty("name")]
-        public PUTPatientIdInputNameTypeItem[] Name { get; set; }
-
-        [JsonProperty("telecom")]
-        public PUTPatientIdInputTelecomTypeItem[] Telecom { get; set; }
-
-        [JsonProperty("gender")]
-        public string Gender { get; set; }
-
-        [JsonProperty("birthDate")]
-        public string BirthDate { get; set; }
-
-        [JsonProperty("deceasedBoolean")]
-        public bool? DeceasedBoolean { get; set; }
-
-        [JsonProperty("address")]
-        public PUTPatientIdInputAddressTypeItem[] Address { get; set; }
-    }
-
-    public class PUTPatientIdInputNameTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("family")]
-        public string Family { get; set; }
-
-        [JsonProperty("given")]
-        public string[] Given { get; set; }
-    }
-
-    public class PUTPatientIdInputTelecomTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("rank")]
-        public int? Rank { get; set; }
-    }
-
-    public class PUTPatientIdInputAddressTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("line")]
-        public string[] Line { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("district")]
-        public string District { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("postalCode")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("period")]
-        public PUTPatientIdInputAddressTypeItemPeriodType Period { get; set; }
-    }
-
-    public class PUTPatientIdInputAddressTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -8459,7 +7409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTPersonInput
+    public class DELETEPersonIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8468,10 +7418,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public POSTPersonInputNameTypeItem[] Name { get; set; }
+        public DELETEPatientIdBodyInputNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public POSTPersonInputTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPersonIdBodyInputTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8480,31 +7430,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public POSTPersonInputAddressTypeItem[] Address { get; set; }
+        public DELETEPersonIdBodyInputAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public POSTPersonInputManagingOrganizationType ManagingOrganization { get; set; }
+        public BodyInputManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
         [JsonProperty("link")]
-        public POSTPersonInputLinkTypeItem[] Link { get; set; }
+        public BodyInputLinkTypeItem[] Link { get; set; }
     }
 
-    public class POSTPersonInputNameTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("family")]
-        public string Family { get; set; }
-
-        [JsonProperty("given")]
-        public string[] Given { get; set; }
-    }
-
-    public class POSTPersonInputTelecomTypeItem
+    public class DELETEPersonIdBodyInputTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8516,7 +7454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class POSTPersonInputAddressTypeItem
+    public class DELETEPersonIdBodyInputAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8531,7 +7469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class POSTPersonInputManagingOrganizationType
+    public class BodyInputManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8540,16 +7478,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTPersonInputLinkTypeItem
+    public class BodyInputLinkTypeItem
     {
         [JsonProperty("target")]
-        public POSTPersonInputLinkTypeItemTargetType Target { get; set; }
+        public BodyInputLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class POSTPersonInputLinkTypeItemTargetType
+    public class BodyInputLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8756,105 +7694,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPersonIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public DELETEPersonIdInputNameTypeItem[] Name { get; set; }
-
-        [JsonProperty("telecom")]
-        public DELETEPersonIdInputTelecomTypeItem[] Telecom { get; set; }
-
-        [JsonProperty("gender")]
-        public string Gender { get; set; }
-
-        [JsonProperty("birthDate")]
-        public string BirthDate { get; set; }
-
-        [JsonProperty("address")]
-        public DELETEPersonIdInputAddressTypeItem[] Address { get; set; }
-
-        [JsonProperty("managingOrganization")]
-        public DELETEPersonIdInputManagingOrganizationType ManagingOrganization { get; set; }
-
-        [JsonProperty("active")]
-        public bool? Active { get; set; }
-
-        [JsonProperty("link")]
-        public DELETEPersonIdInputLinkTypeItem[] Link { get; set; }
-    }
-
-    public class DELETEPersonIdInputNameTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("family")]
-        public string Family { get; set; }
-
-        [JsonProperty("given")]
-        public string[] Given { get; set; }
-    }
-
-    public class DELETEPersonIdInputTelecomTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("use")]
-        public string Use { get; set; }
-    }
-
-    public class DELETEPersonIdInputAddressTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("line")]
-        public string[] Line { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-    }
-
-    public class DELETEPersonIdInputManagingOrganizationType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEPersonIdInputLinkTypeItem
-    {
-        [JsonProperty("target")]
-        public DELETEPersonIdInputLinkTypeItemTargetType Target { get; set; }
-
-        [JsonProperty("assurance")]
-        public string Assurance { get; set; }
-    }
-
-    public class DELETEPersonIdInputLinkTypeItemTargetType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
     public class PUTPersonIdResponse
     {
         [JsonProperty("resourceType")]
@@ -8946,105 +7785,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTPersonIdResponseLinkTypeItemTargetType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTPersonIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public PUTPersonIdInputNameTypeItem[] Name { get; set; }
-
-        [JsonProperty("telecom")]
-        public PUTPersonIdInputTelecomTypeItem[] Telecom { get; set; }
-
-        [JsonProperty("gender")]
-        public string Gender { get; set; }
-
-        [JsonProperty("birthDate")]
-        public string BirthDate { get; set; }
-
-        [JsonProperty("address")]
-        public PUTPersonIdInputAddressTypeItem[] Address { get; set; }
-
-        [JsonProperty("managingOrganization")]
-        public PUTPersonIdInputManagingOrganizationType ManagingOrganization { get; set; }
-
-        [JsonProperty("active")]
-        public bool? Active { get; set; }
-
-        [JsonProperty("link")]
-        public PUTPersonIdInputLinkTypeItem[] Link { get; set; }
-    }
-
-    public class PUTPersonIdInputNameTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("family")]
-        public string Family { get; set; }
-
-        [JsonProperty("given")]
-        public string[] Given { get; set; }
-    }
-
-    public class PUTPersonIdInputTelecomTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("use")]
-        public string Use { get; set; }
-    }
-
-    public class PUTPersonIdInputAddressTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("line")]
-        public string[] Line { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-    }
-
-    public class PUTPersonIdInputManagingOrganizationType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTPersonIdInputLinkTypeItem
-    {
-        [JsonProperty("target")]
-        public PUTPersonIdInputLinkTypeItemTargetType Target { get; set; }
-
-        [JsonProperty("assurance")]
-        public string Assurance { get; set; }
-    }
-
-    public class PUTPersonIdInputLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9584,37 +8324,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class POSTPractitionerInput
+    public class POSTPractitionerBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTPractitionerInputIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEDeviceIdBodyInputIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
         [JsonProperty("name")]
-        public POSTPractitionerInputNameTypeItem[] Name { get; set; }
+        public DELETEPractitionerIdBodyInputNameTypeItem[] Name { get; set; }
 
         [JsonProperty("address")]
-        public POSTPractitionerInputAddressTypeItem[] Address { get; set; }
+        public POSTPractitionerBodyInputAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("qualification")]
-        public POSTPractitionerInputQualificationTypeItem[] Qualification { get; set; }
+        public BodyInputQualificationTypeItem[] Qualification { get; set; }
     }
 
-    public class POSTPractitionerInputIdentifierTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class POSTPractitionerInputNameTypeItem
+    public class DELETEPractitionerIdBodyInputNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -9626,7 +8357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class POSTPractitionerInputAddressTypeItem
+    public class POSTPractitionerBodyInputAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9644,22 +8375,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
     }
 
-    public class POSTPractitionerInputQualificationTypeItem
+    public class BodyInputQualificationTypeItem
     {
         [JsonProperty("identifier")]
-        public POSTPractitionerInputQualificationTypeItemIdentifierTypeItem[] Identifier { get; set; }
+        public BodyInputQualificationTypeItemIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("code")]
-        public POSTPractitionerInputQualificationTypeItemCodeType Code { get; set; }
+        public BodyInputQualificationTypeItemCodeType Code { get; set; }
 
         [JsonProperty("period")]
-        public POSTPractitionerInputQualificationTypeItemPeriodType Period { get; set; }
+        public BodyInputQualificationTypeItemPeriodType Period { get; set; }
 
         [JsonProperty("issuer")]
-        public POSTPractitionerInputQualificationTypeItemIssuerType Issuer { get; set; }
+        public BodyInputQualificationTypeItemIssuerType Issuer { get; set; }
     }
 
-    public class POSTPractitionerInputQualificationTypeItemIdentifierTypeItem
+    public class BodyInputQualificationTypeItemIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9668,16 +8399,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class POSTPractitionerInputQualificationTypeItemCodeType
+    public class BodyInputQualificationTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public POSTPractitionerInputQualificationTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputQualificationTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTPractitionerInputQualificationTypeItemCodeTypeCodingTypeItem
+    public class BodyInputQualificationTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9689,13 +8420,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class POSTPractitionerInputQualificationTypeItemPeriodType
+    public class BodyInputQualificationTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class POSTPractitionerInputQualificationTypeItemIssuerType
+    public class BodyInputQualificationTypeItemIssuerType
     {
         [JsonProperty("display")]
         public string Display { get; set; }
@@ -9923,7 +8654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPractitionerIdInput
+    public class DELETEPractitionerIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9932,70 +8663,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEPractitionerIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEPractitionerIdInputIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEDeviceIdBodyInputIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool? Active { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPractitionerIdInputNameTypeItem[] Name { get; set; }
+        public DELETEPractitionerIdBodyInputNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public DELETEPractitionerIdInputTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPersonIdBodyInputTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPractitionerIdInputAddressTypeItem[] Address { get; set; }
+        public DELETEPractitionerIdBodyInputAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class DELETEPractitionerIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEPractitionerIdInputIdentifierTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class DELETEPractitionerIdInputNameTypeItem
-    {
-        [JsonProperty("family")]
-        public string Family { get; set; }
-
-        [JsonProperty("given")]
-        public string[] Given { get; set; }
-
-        [JsonProperty("prefix")]
-        public string[] Prefix { get; set; }
-    }
-
-    public class DELETEPractitionerIdInputTelecomTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("use")]
-        public string Use { get; set; }
-    }
-
-    public class DELETEPractitionerIdInputAddressTypeItem
+    public class DELETEPractitionerIdBodyInputAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }
@@ -10086,96 +8775,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     }
 
     public class PUTPractitionerIdResponseAddressTypeItem
-    {
-        [JsonProperty("line")]
-        public string[] Line { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("postalCode")]
-        public string PostalCode { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-    }
-
-    public class PUTPractitionerIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTPractitionerIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("identifier")]
-        public PUTPractitionerIdInputIdentifierTypeItem[] Identifier { get; set; }
-
-        [JsonProperty("active")]
-        public bool? Active { get; set; }
-
-        [JsonProperty("name")]
-        public PUTPractitionerIdInputNameTypeItem[] Name { get; set; }
-
-        [JsonProperty("telecom")]
-        public PUTPractitionerIdInputTelecomTypeItem[] Telecom { get; set; }
-
-        [JsonProperty("address")]
-        public PUTPractitionerIdInputAddressTypeItem[] Address { get; set; }
-
-        [JsonProperty("gender")]
-        public string Gender { get; set; }
-    }
-
-    public class PUTPractitionerIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTPractitionerIdInputIdentifierTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class PUTPractitionerIdInputNameTypeItem
-    {
-        [JsonProperty("family")]
-        public string Family { get; set; }
-
-        [JsonProperty("given")]
-        public string[] Given { get; set; }
-
-        [JsonProperty("prefix")]
-        public string[] Prefix { get; set; }
-    }
-
-    public class PUTPractitionerIdInputTelecomTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("use")]
-        public string Use { get; set; }
-    }
-
-    public class PUTPractitionerIdInputAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }

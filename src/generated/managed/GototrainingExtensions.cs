@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<AddRegistrantResponse, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<AddRegistrantInput>> body)
+        public IBodyWorkflowAction<AddRegistrantResponse, ApiConnectionActionConfiguration> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<BodyInput>> body)
         {
             var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         public string RegistrantKey { get; set; }
     }
 
-    public class AddRegistrantInput
+    public class BodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RegistrantEmail { get; set; }

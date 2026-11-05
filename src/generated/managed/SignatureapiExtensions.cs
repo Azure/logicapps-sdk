@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class SignatureapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<CreateEnvelopeOutput, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeInput>> body)
+        public IBodyWorkflowAction<CreateEnvelopeOutput, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEnvelopeOutput, ApiConnectionActionConfiguration>(() =>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<AddDocumentInput>> body)
+        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<AddDocumentBodyInput>> body)
         {
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<AddDocumentDocxInput>> body)
+        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<AddDocumentDocxBodyInput>> body)
         {
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<AddTemplateInput>> body)
+        public IBodyWorkflowAction<AddDocumentOutput, ApiConnectionActionConfiguration> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<AddTemplateBodyInput>> body)
         {
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddTemplateData(Expression<Func<string>> documentId, Expression<Func<AddTemplateDataInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddTemplateData(Expression<Func<string>> documentId, Expression<Func<AddTemplateDataBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceSignature(Expression<Func<string>> documentId, Expression<Func<AddPlaceSignatureInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceSignature(Expression<Func<string>> documentId, Expression<Func<AddPlaceSignatureBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceInitials(Expression<Func<string>> documentId, Expression<Func<AddPlaceInitialsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceInitials(Expression<Func<string>> documentId, Expression<Func<AddPlaceInitialsBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceTextInput(Expression<Func<string>> documentId, Expression<Func<AddPlaceTextInputInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceTextInput(Expression<Func<string>> documentId, Expression<Func<AddPlaceTextInputBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceText(Expression<Func<string>> documentId, Expression<Func<AddPlaceTextInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceText(Expression<Func<string>> documentId, Expression<Func<AddPlaceTextBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceRecipientCompletedDate(Expression<Func<string>> documentId, Expression<Func<AddPlaceRecipientCompletedDateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceRecipientCompletedDate(Expression<Func<string>> documentId, Expression<Func<AddPlaceRecipientCompletedDateBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceEnvelopeCompletedDate(Expression<Func<string>> documentId, Expression<Func<AddPlaceEnvelopeCompletedDateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddPlaceEnvelopeCompletedDate(Expression<Func<string>> documentId, Expression<Func<AddPlaceEnvelopeCompletedDateBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddRecipientSignerOutput, ApiConnectionActionConfiguration> AddRecipient(Expression<Func<string>> envelopeId, Expression<Func<AddRecipientInput>> body)
+        public IBodyWorkflowAction<AddRecipientSignerOutput, ApiConnectionActionConfiguration> AddRecipient(Expression<Func<string>> envelopeId, Expression<Func<AddRecipientBodyInput>> body)
         {
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateCeremonyEmailLink(Expression<Func<string>> recipientId, Expression<Func<CreateCeremonyEmailLinkInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateCeremonyEmailLink(Expression<Func<string>> recipientId, Expression<Func<CreateCeremonyEmailLinkBodyInput>> body)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<CreateCeremonyCustomOutput, ApiConnectionActionConfiguration> CreateCeremonyCustom(Expression<Func<string>> recipientId, Expression<Func<CreateCeremonyCustomInput>> body)
+        public IBodyWorkflowAction<CreateCeremonyCustomOutput, ApiConnectionActionConfiguration> CreateCeremonyCustom(Expression<Func<string>> recipientId, Expression<Func<CreateCeremonyCustomBodyInput>> body)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
     public class SignatureapiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCreated(Expression<Func<CreateEndpointForEnvelopeCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCreated(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeStarted(Expression<Func<CreateEndpointForEnvelopeStartedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeStarted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCompleted(Expression<Func<CreateEndpointForEnvelopeCompletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCompleted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeFailed(Expression<Func<CreateEndpointForEnvelopeFailedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCanceled(Expression<Func<CreateEndpointForEnvelopeCanceledInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForEnvelopeCanceled(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientReleased(Expression<Func<CreateEndpointForRecipientReleasedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientReleased(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientSent(Expression<Func<CreateEndpointForRecipientSentInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientSent(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientCompleted(Expression<Func<CreateEndpointForRecipientCompletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientCompleted(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientRejected(Expression<Func<CreateEndpointForRecipientRejectedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientRejected(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientBounced(Expression<Func<CreateEndpointForRecipientBouncedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientBounced(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientFailed(Expression<Func<CreateEndpointForRecipientFailedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientReplaced(Expression<Func<CreateEndpointForRecipientReplacedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientReplaced(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientResent(Expression<Func<CreateEndpointForRecipientResentInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForRecipientResent(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForDeliverableGenerated(Expression<Func<CreateEndpointForDeliverableGeneratedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForDeliverableGenerated(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForDeliverableFailed(Expression<Func<CreateEndpointForDeliverableFailedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateEndpointForDeliverableFailed(Expression<Func<CreateEndpointForDeliverableFailedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -531,10 +531,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public EnvelopeSender Sender { get; set; }
 
         [JsonProperty("mode")]
-        public EnvelopeMode Mode { get; set; }
+        public CreateEnvelopeEnvelopeModeResponse Mode { get; set; }
 
         [JsonProperty("routing")]
-        public EnvelopeRouting Routing { get; set; }
+        public CreateEnvelopeEnvelopeRoutingResponse Routing { get; set; }
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
@@ -543,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string TimestampFormat { get; set; }
 
         [JsonProperty("attestation")]
-        public EnvelopeAttestation Attestation { get; set; }
+        public CreateEnvelopeEnvelopeAttestationResponse Attestation { get; set; }
 
         [JsonProperty("topics")]
         public string[] Topics { get; set; }
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EnvelopeMode
+    public enum CreateEnvelopeEnvelopeModeResponse
     {
         [EnumMember(Value = "live")]
         Live,
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EnvelopeRouting
+    public enum CreateEnvelopeEnvelopeRoutingResponse
     {
         [EnumMember(Value = "parallel")]
         Parallel,
@@ -577,13 +577,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EnvelopeAttestation
+    public enum CreateEnvelopeEnvelopeAttestationResponse
     {
         [EnumMember(Value = "mx_nom151")]
         MxNom151
     }
 
-    public class CreateEnvelopeInput
+    public class CreateEnvelopeBodyInput
     {
         [JsonProperty("draft", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool DraftEnvelope { get; set; } = true;
@@ -598,10 +598,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string EnvelopeMessage { get; set; }
 
         [JsonProperty("mode")]
-        public EnvelopeMode? EnvelopeMode { get; set; }
+        public CreateEnvelopeEnvelopeMode? EnvelopeMode { get; set; }
 
         [JsonProperty("routing")]
-        public EnvelopeRouting? EnvelopeRouting { get; set; }
+        public CreateEnvelopeEnvelopeRouting? EnvelopeRouting { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -613,10 +613,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string TimestampFormat { get; set; }
 
         [JsonProperty("attestation")]
-        public EnvelopeAttestation? EnvelopeAttestation { get; set; }
+        public CreateEnvelopeEnvelopeAttestation? EnvelopeAttestation { get; set; }
 
         [JsonProperty("sender")]
-        public CreateEnvelopeInputSenderType Sender { get; set; }
+        public BodyInputSenderType Sender { get; set; }
 
         [JsonProperty("topics")]
         public string[] EnvelopeTopics { get; set; }
@@ -625,7 +625,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class CreateEnvelopeInputSenderType
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateEnvelopeEnvelopeMode
+    {
+        [EnumMember(Value = "live")]
+        Live,
+        [EnumMember(Value = "test")]
+        Test
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateEnvelopeEnvelopeRouting
+    {
+        [EnumMember(Value = "parallel")]
+        Parallel,
+        [EnumMember(Value = "sequential")]
+        Sequential
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateEnvelopeEnvelopeAttestation
+    {
+        [EnumMember(Value = "mx_nom151")]
+        MxNom151
+    }
+
+    public class BodyInputSenderType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -661,10 +686,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string CompletedAt { get; set; }
 
         [JsonProperty("mode")]
-        public EnvelopeMode Mode { get; set; }
+        public CreateEnvelopeEnvelopeModeResponse Mode { get; set; }
 
         [JsonProperty("routing")]
-        public EnvelopeRouting Routing { get; set; }
+        public CreateEnvelopeEnvelopeRoutingResponse Routing { get; set; }
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
@@ -673,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string TimestampFormat { get; set; }
 
         [JsonProperty("attestation")]
-        public EnvelopeAttestation Attestation { get; set; }
+        public CreateEnvelopeEnvelopeAttestationResponse Attestation { get; set; }
 
         [JsonProperty("topics")]
         public string[] Topics { get; set; }
@@ -703,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Id { get; set; }
     }
 
-    public class AddDocumentInput
+    public class AddDocumentBodyInput
     {
         [JsonProperty("title")]
         public string DocumentTitle { get; set; }
@@ -718,7 +743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class AddDocumentDocxInput
+    public class AddDocumentDocxBodyInput
     {
         [JsonProperty("title")]
         public string DocumentTitle { get; set; }
@@ -733,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class AddTemplateInput
+    public class AddTemplateBodyInput
     {
         [JsonProperty("title")]
         public string DocumentTitle { get; set; }
@@ -751,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class AddTemplateDataInput
+    public class AddTemplateDataBodyInput
     {
         [JsonProperty("field_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
@@ -760,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Value { get; set; }
     }
 
-    public class AddPlaceSignatureInput
+    public class AddPlaceSignatureBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "signature";
@@ -787,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class AddPlaceInitialsInput
+    public class AddPlaceInitialsBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "initials";
@@ -814,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class AddPlaceTextInputInput
+    public class AddPlaceTextInputBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "text_input";
@@ -835,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Prompt { get; set; }
 
         [JsonProperty("requirement", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PlaceRequirement? Requirement { get; set; } = PlaceRequirement.Required;
+        public PlaceRequirement? Requirement { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi.PlaceRequirement.Required;
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -865,7 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Optional
     }
 
-    public class AddPlaceTextInput
+    public class AddPlaceTextBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "text";
@@ -895,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class AddPlaceRecipientCompletedDateInput
+    public class AddPlaceRecipientCompletedDateBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "recipient_completed_date";
@@ -922,7 +947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class AddPlaceEnvelopeCompletedDateInput
+    public class AddPlaceEnvelopeCompletedDateBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PlaceType { get; set; } = "envelope_completed_date";
@@ -961,14 +986,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Key { get; set; }
 
         [JsonProperty("ceremony_creation")]
-        public RecipientCeremonyCreation CeremonyCreation { get; set; }
+        public AddRecipientRecipientCeremonyCreationResponse CeremonyCreation { get; set; }
 
         [JsonProperty("delivery_type")]
-        public RecipientDeliveryType DeliveryType { get; set; }
+        public AddRecipientRecipientDeliveryTypeResponse DeliveryType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecipientCeremonyCreation
+    public enum AddRecipientRecipientCeremonyCreationResponse
     {
         [EnumMember(Value = "automatic")]
         Automatic,
@@ -977,7 +1002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecipientDeliveryType
+    public enum AddRecipientRecipientDeliveryTypeResponse
     {
         [EnumMember(Value = "email")]
         Email,
@@ -985,7 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         None
     }
 
-    public class AddRecipientInput
+    public class AddRecipientBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string RecipientType { get; set; } = "signer";
@@ -1000,13 +1025,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string RecipientKey { get; set; }
 
         [JsonProperty("ceremony_creation")]
-        public RecipientCeremonyCreation? RecipientCeremonyCreation { get; set; }
+        public AddRecipientRecipientCeremonyCreation? RecipientCeremonyCreation { get; set; }
 
         [JsonProperty("delivery_type")]
-        public RecipientDeliveryType? RecipientDeliveryType { get; set; }
+        public AddRecipientRecipientDeliveryType? RecipientDeliveryType { get; set; }
 
         [JsonProperty("extra")]
         public string ExtraProperties { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddRecipientRecipientCeremonyCreation
+    {
+        [EnumMember(Value = "automatic")]
+        Automatic,
+        [EnumMember(Value = "manual")]
+        Manual
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddRecipientRecipientDeliveryType
+    {
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "none")]
+        None
     }
 
     public class Recipient
@@ -1033,19 +1076,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Status { get; set; }
 
         [JsonProperty("ceremony_creation")]
-        public RecipientCeremonyCreation CeremonyCreation { get; set; }
+        public AddRecipientRecipientCeremonyCreationResponse CeremonyCreation { get; set; }
 
         [JsonProperty("delivery_type")]
-        public RecipientDeliveryType DeliveryType { get; set; }
+        public AddRecipientRecipientDeliveryTypeResponse DeliveryType { get; set; }
 
         [JsonProperty("completed_at")]
         public string CompletedAt { get; set; }
     }
 
-    public class CreateCeremonyEmailLinkInput
+    public class CreateCeremonyEmailLinkBodyInput
     {
         [JsonProperty("authentication", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCeremonyEmailLinkInputAuthenticationType Authentication { get; set; } = new CreateCeremonyEmailLinkInputAuthenticationType();
+        public CreateCeremonyEmailLinkBodyInputAuthenticationType Authentication { get; set; } = new CreateCeremonyEmailLinkBodyInputAuthenticationType();
 
         [JsonProperty("redirect_url")]
         public string RedirectURL { get; set; }
@@ -1054,7 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class CreateCeremonyEmailLinkInputAuthenticationType
+    public class CreateCeremonyEmailLinkBodyInputAuthenticationType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CeremonyType { get; set; } = "email_link";
@@ -1066,10 +1109,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Url { get; set; }
     }
 
-    public class CreateCeremonyCustomInput
+    public class CreateCeremonyCustomBodyInput
     {
         [JsonProperty("authentication", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCeremonyCustomInputAuthenticationType Authentication { get; set; } = new CreateCeremonyCustomInputAuthenticationType();
+        public CreateCeremonyCustomBodyInputAuthenticationType Authentication { get; set; } = new CreateCeremonyCustomBodyInputAuthenticationType();
 
         [JsonProperty("redirect_url")]
         public string RedirectURL { get; set; }
@@ -1078,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string ExtraProperties { get; set; }
     }
 
-    public class CreateCeremonyCustomInputAuthenticationType
+    public class CreateCeremonyCustomBodyInputAuthenticationType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CeremonyType { get; set; } = "custom";
@@ -1123,133 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Failed
     }
 
-    public class CreateEndpointForEnvelopeCreatedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForEnvelopeStartedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForEnvelopeCompletedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForEnvelopeFailedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForEnvelopeCanceledInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientReleasedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientSentInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientCompletedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientRejectedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientBouncedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientFailedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientReplacedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForRecipientResentInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForDeliverableGeneratedInput
-    {
-        [JsonProperty("topics")]
-        public string[] Topics { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateEndpointForDeliverableFailedInput
+    public class CreateEndpointForDeliverableFailedBodyInput
     {
         [JsonProperty("topics")]
         public string[] Topics { get; set; }

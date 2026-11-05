@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keepersecretsmanager")]
-        public IBodyWorkflowAction<CreateSecretResponse, ApiConnectionActionConfiguration> CreateSecret(Expression<Func<CreateSecretInput>> body)
+        public IBodyWorkflowAction<CreateSecretResponse, ApiConnectionActionConfiguration> CreateSecret(Expression<Func<CreateSecretBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSecretResponse, ApiConnectionActionConfiguration>(() =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keepersecretsmanager")]
-        public IBodyWorkflowAction<UpdateSecretResponse, ApiConnectionActionConfiguration> UpdateSecret(Expression<Func<string>> uid, Expression<Func<UpdateSecretInput>> body)
+        public IBodyWorkflowAction<UpdateSecretResponse, ApiConnectionActionConfiguration> UpdateSecret(Expression<Func<string>> uid, Expression<Func<UpdateSecretBodyInput>> body)
         {
             var __workflow_uid = WorkflowExpression.Compile(uid, nameof(uid), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string NewSecretUId { get; set; }
     }
 
-    public class CreateSecretInput
+    public class CreateSecretBodyInput
     {
         [JsonProperty("folder_uid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderUId { get; set; }
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keepersecretsmanager
         public string Message { get; set; }
     }
 
-    public class UpdateSecretInput
+    public class UpdateSecretBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }

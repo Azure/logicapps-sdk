@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
     public class TheittipsterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration> GenerateBarcode(Expression<Func<GenerateBarcodeInput>> body = null)
+        public IBodyWorkflowAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration> GenerateBarcode(Expression<Func<GenerateBarcodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GenerateBarcodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration> GenerateQRCode(Expression<Func<GenerateQRCodeInput>> body = null)
+        public IBodyWorkflowAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration> GenerateQRCode(Expression<Func<GenerateQRCodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GenerateQRCodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         public string Body { get; set; }
     }
 
-    public class GenerateBarcodeInput
+    public class GenerateBarcodeBodyInput
     {
         [JsonProperty("barcodeNumber")]
         public string BarcodeNumber { get; set; }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         public string Body { get; set; }
     }
 
-    public class GenerateQRCodeInput
+    public class GenerateQRCodeBodyInput
     {
         [JsonProperty("qrcodeText")]
         public string QrcodeText { get; set; }

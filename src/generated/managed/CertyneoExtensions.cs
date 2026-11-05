@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certyneo")]
-        public IBodyWorkflowAction<EnvelopeList, ApiConnectionActionConfiguration> ListEnvelopes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<EnvelopeList, ApiConnectionActionConfiguration> ListEnvelopes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<StatusInput>> status = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certyneo")]
-        public IBodyWorkflowAction<Envelope, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeInput>> body)
+        public IBodyWorkflowAction<Envelope, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Envelope, ApiConnectionActionConfiguration>(() =>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class CertyneoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> SubscribeEnvelopeEvents(Expression<Func<SubscribeEnvelopeEventsInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> SubscribeEnvelopeEvents(Expression<Func<SubscribeEnvelopeEventsBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public EnvelopeSignatureLevelType SignatureLevel { get; set; }
 
         [JsonProperty("recipients")]
-        public Recipient[] Recipients { get; set; }
+        public CreateEnvelopeRecipientResponse[] Recipients { get; set; }
 
         [JsonProperty("expiresAt")]
         public string ExpiresAt { get; set; }
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         QUALIFIED
     }
 
-    public class Recipient
+    public class CreateEnvelopeRecipientResponse
     {
         [JsonProperty("email")]
         public string RecipientEmail { get; set; }
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public string RecipientName { get; set; }
 
         [JsonProperty("role")]
-        public RecipientRoleType Role { get; set; }
+        public CreateEnvelopeRecipientRoleTypeResponse Role { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecipientRoleType
+    public enum CreateEnvelopeRecipientRoleTypeResponse
     {
         SIGNER,
         VIEWER,
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         DRAFT,
         SCHEDULED,
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         RETURNEDTOSENDER
     }
 
-    public class CreateEnvelopeInput
+    public class CreateEnvelopeBodyInput
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
@@ -278,10 +278,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public EnvelopeField[] Fields { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Recipient2[] Recipients { get; set; }
+        public CreateEnvelopeRecipient[] Recipients { get; set; }
 
         [JsonProperty("signatureLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopeInputSignatureLevelType? SignatureLevel { get; set; } = CreateEnvelopeInputSignatureLevelType.SIMPLE;
+        public BodyInputSignatureLevelType? SignatureLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.BodyInputSignatureLevelType.SIMPLE;
 
         [JsonProperty("expiresAt")]
         public string ExpiresAt { get; set; }
@@ -299,13 +299,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public int Page { get; set; } = 1;
 
         [JsonProperty("fieldType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EnvelopeFieldFieldTypeType FieldType { get; set; } = EnvelopeFieldFieldTypeType.SIGNATURE;
+        public EnvelopeFieldFieldTypeType FieldType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.EnvelopeFieldFieldTypeType.SIGNATURE;
 
         [JsonProperty("anchorText")]
         public string AnchorTextRecommended { get; set; }
 
         [JsonProperty("anchorPlacement", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EnvelopeFieldAnchorPlacementType? AnchorPlacement { get; set; } = EnvelopeFieldAnchorPlacementType.Right;
+        public EnvelopeFieldAnchorPlacementType? AnchorPlacement { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.EnvelopeFieldAnchorPlacementType.Right;
 
         [JsonProperty("anchorIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? AnchorOccurrence { get; set; } = 0;
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         Left
     }
 
-    public class Recipient2
+    public class CreateEnvelopeRecipient
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientEmail { get; set; }
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public string RecipientName { get; set; }
 
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecipientRoleType? Role { get; set; } = RecipientRoleType.SIGNER;
+        public CreateEnvelopeRecipientRoleType? Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo.CreateEnvelopeRecipientRoleType.SIGNER;
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -375,7 +375,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEnvelopeInputSignatureLevelType
+    public enum CreateEnvelopeRecipientRoleType
+    {
+        SIGNER,
+        VIEWER,
+        [EnumMember(Value = "CARBON_COPY")]
+        CARBONCOPY,
+        APPROVER
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputSignatureLevelType
     {
         SIMPLE,
         ADVANCED,
@@ -397,17 +407,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public bool IsActive { get; set; }
     }
 
-    public class SubscribeEnvelopeEventsInput
+    public class SubscribeEnvelopeEventsBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SubscribeEnvelopeEventsInputEventsTypeItem[] Events { get; set; }
+        public BodyInputEventsTypeItem[] Events { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SubscribeEnvelopeEventsInputEventsTypeItem
+    public enum BodyInputEventsTypeItem
     {
         [EnumMember(Value = "envelope.created")]
         EnvelopeCreated,

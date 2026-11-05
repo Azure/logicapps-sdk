@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class AsanaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<AddCommentResponseV2, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> taskId, Expression<Func<AddCommentV2Input>> body)
+        public IBodyWorkflowAction<AddCommentResponseV2, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> taskId, Expression<Func<BodyInput>> body)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<ProjectResponseV2, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> workspace, Expression<Func<CreateProjectV2Input>> project, Expression<Func<string>> team = null)
+        public IBodyWorkflowAction<ProjectResponseV2, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> workspace, Expression<Func<ProjectInput>> project, Expression<Func<string>> team = null)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
-        public IBodyWorkflowAction<TaskResponseV2, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<CreateTaskV2Input>> task)
+        public IBodyWorkflowAction<TaskResponseV2, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<TaskInput>> task)
         {
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             var __workflow_projects = WorkflowExpression.Compile(projects, nameof(projects), required: true);
@@ -237,13 +237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Name { get; set; }
     }
 
-    public class AddCommentV2Input
+    public class BodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddCommentV2InputDataType Data { get; set; }
+        public BodyInputDataType Data { get; set; }
     }
 
-    public class AddCommentV2InputDataType
+    public class BodyInputDataType
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
@@ -384,13 +384,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Name { get; set; }
     }
 
-    public class CreateProjectV2Input
+    public class ProjectInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectV2InputDataType Data { get; set; } = new CreateProjectV2InputDataType();
+        public ProjectInputDataType Data { get; set; } = new ProjectInputDataType();
     }
 
-    public class CreateProjectV2InputDataType
+    public class ProjectInputDataType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public bool? Public { get; set; } = false;
 
         [JsonProperty("color")]
-        public CreateProjectV2InputDataTypeProjectColorType? ProjectColor { get; set; }
+        public ProjectInputDataTypeProjectColorType? ProjectColor { get; set; }
 
         [JsonProperty("notes")]
         public string ProjectNotes { get; set; }
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateProjectV2InputDataTypeProjectColorType
+    public enum ProjectInputDataTypeProjectColorType
     {
         [EnumMember(Value = "dark-pink")]
         DarkPink,
@@ -455,13 +455,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         LightWarmGray
     }
 
-    public class CreateTaskV2Input
+    public class TaskInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskV2InputDataType Data { get; set; } = new CreateTaskV2InputDataType();
+        public TaskInputDataType Data { get; set; } = new TaskInputDataType();
     }
 
-    public class CreateTaskV2InputDataType
+    public class TaskInputDataType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskName { get; set; }
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Description { get; set; }
 
         [JsonProperty("assignee_status")]
-        public CreateTaskV2InputDataTypeAssigneeStatusType? AssigneeStatus { get; set; }
+        public TaskInputDataTypeAssigneeStatusType? AssigneeStatus { get; set; }
 
         [JsonProperty("completed", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Completed { get; set; } = false;
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskV2InputDataTypeAssigneeStatusType
+    public enum TaskInputDataTypeAssigneeStatusType
     {
         Inbox,
         Later,

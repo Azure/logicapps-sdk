@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
     public class CloudmersivedvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ParseAddressResponse, ApiConnectionActionConfiguration> AddressParseString(Expression<Func<AddressParseStringInput>> input)
+        public IBodyWorkflowAction<ParseAddressResponse, ApiConnectionActionConfiguration> AddressParseString(Expression<Func<AddressParseStringInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<ParseAddressResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseFull, ApiConnectionActionConfiguration> DomainUrlFull(Expression<Func<DomainUrlFullInput>> request)
+        public IBodyWorkflowAction<ValidateUrlResponseFull, ApiConnectionActionConfiguration> DomainUrlFull(Expression<Func<DomainUrlFullRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ValidateUrlResponseFull, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly, ApiConnectionActionConfiguration> DomainUrlSyntaxOnly(Expression<Func<DomainUrlSyntaxOnlyInput>> request)
+        public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly, ApiConnectionActionConfiguration> DomainUrlSyntaxOnly(Expression<Func<DomainUrlFullRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ValidateUrlResponseSyntaxOnly, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FirstNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFirstName(Expression<Func<NameValidateFirstNameInput>> input)
+        public IBodyWorkflowAction<FirstNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFirstName(Expression<Func<NameValidateFirstNameInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<FirstNameValidationResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<FullNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFullName(Expression<Func<NameValidateFullNameInput>> input)
+        public IBodyWorkflowAction<FullNameValidationResponse, ApiConnectionActionConfiguration> NameValidateFullName(Expression<Func<NameValidateFullNameInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<FullNameValidationResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<GetGenderResponse, ApiConnectionActionConfiguration> NameGetGender(Expression<Func<NameGetGenderInput>> input)
+        public IBodyWorkflowAction<GetGenderResponse, ApiConnectionActionConfiguration> NameGetGender(Expression<Func<NameGetGenderInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetGenderResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<ValidateIdentifierResponse, ApiConnectionActionConfiguration> NameIdentifier(Expression<Func<NameIdentifierInput>> input)
+        public IBodyWorkflowAction<ValidateIdentifierResponse, ApiConnectionActionConfiguration> NameIdentifier(Expression<Func<NameIdentifierInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<ValidateIdentifierResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<LastNameValidationResponse, ApiConnectionActionConfiguration> NameValidateLastName(Expression<Func<NameValidateLastNameInput>> input)
+        public IBodyWorkflowAction<LastNameValidationResponse, ApiConnectionActionConfiguration> NameValidateLastName(Expression<Func<NameValidateLastNameInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<LastNameValidationResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<PhoneNumberValidationResponse, ApiConnectionActionConfiguration> PhoneNumberSyntaxOnly(Expression<Func<PhoneNumberSyntaxOnlyInput>> value)
+        public IBodyWorkflowAction<PhoneNumberValidationResponse, ApiConnectionActionConfiguration> PhoneNumberSyntaxOnly(Expression<Func<ValueInput>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<PhoneNumberValidationResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<UserAgentValidateResponse, ApiConnectionActionConfiguration> UserAgentParse(Expression<Func<UserAgentParseInput>> request)
+        public IBodyWorkflowAction<UserAgentValidateResponse, ApiConnectionActionConfiguration> UserAgentParse(Expression<Func<UserAgentParseRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<UserAgentValidateResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
-        public IBodyWorkflowAction<VatLookupResponse, ApiConnectionActionConfiguration> VatVatLookup(Expression<Func<VatVatLookupInput>> input)
+        public IBodyWorkflowAction<VatLookupResponse, ApiConnectionActionConfiguration> VatVatLookup(Expression<Func<VatVatLookupInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<VatLookupResponse, ApiConnectionActionConfiguration>(() =>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool Successful { get; set; }
     }
 
-    public class AddressParseStringInput
+    public class AddressParseStringInputInput
     {
         public string AddressString { get; set; }
         public string CapitalizationMode { get; set; }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string WellFormedURL { get; set; }
     }
 
-    public class DomainUrlFullInput
+    public class DomainUrlFullRequestInput
     {
         public string URL { get; set; }
     }
@@ -274,11 +274,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
     {
         public bool ValidURL { get; set; }
         public string WellFormedURL { get; set; }
-    }
-
-    public class DomainUrlSyntaxOnlyInput
-    {
-        public string URL { get; set; }
     }
 
     public class WhoisResponse
@@ -327,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string ValidationResult { get; set; }
     }
 
-    public class NameValidateFirstNameInput
+    public class NameValidateFirstNameInputInput
     {
         public string FirstName { get; set; }
     }
@@ -350,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string ValidationResultLastName { get; set; }
     }
 
-    public class NameValidateFullNameInput
+    public class NameValidateFullNameInputInput
     {
         public string FullNameString { get; set; }
     }
@@ -361,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool Successful { get; set; }
     }
 
-    public class NameGetGenderInput
+    public class NameGetGenderInputInput
     {
         public string CountryCode { get; set; }
         public string FirstName { get; set; }
@@ -373,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool ValidIdentifier { get; set; }
     }
 
-    public class NameIdentifierInput
+    public class NameIdentifierInputInput
     {
         public bool? AllowHyphens { get; set; }
         public bool? AllowNumbers { get; set; }
@@ -391,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string ValidationResult { get; set; }
     }
 
-    public class NameValidateLastNameInput
+    public class NameValidateLastNameInputInput
     {
         public string LastName { get; set; }
     }
@@ -408,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool Successful { get; set; }
     }
 
-    public class PhoneNumberSyntaxOnlyInput
+    public class ValueInput
     {
         public string DefaultCountryCode { get; set; }
         public string PhoneNumber { get; set; }
@@ -432,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool Successful { get; set; }
     }
 
-    public class UserAgentParseInput
+    public class UserAgentParseRequestInput
     {
         public string UserAgentString { get; set; }
     }
@@ -446,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string VatNumber { get; set; }
     }
 
-    public class VatVatLookupInput
+    public class VatVatLookupInputInput
     {
         public string VatCode { get; set; }
     }

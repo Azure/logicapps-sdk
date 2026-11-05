@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration> ParseDocumentDeprecated(Expression<Func<ParseDocumentDeprecatedInput>> request)
+        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration> ParseDocumentDeprecated(Expression<Func<ParseDocumentDeprecatedRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<CreateExecutionDeprecatedInput>> request)
+        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<CreateExecutionDeprecatedRequestInput>> request)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class CradlaiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration> RunCompleted(Expression<Func<string>> actionId, Expression<Func<RunCompletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration> RunCompleted(Expression<Func<string>> actionId, Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -176,10 +176,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string ModelId { get; set; }
 
         [JsonProperty("postprocessConfig")]
-        public PostprocessConfig PostprocessConfig { get; set; }
+        public ParseDocumentDeprecatedPostprocessConfigResponse PostprocessConfig { get; set; }
 
         [JsonProperty("preprocessConfig")]
-        public PreprocessConfig PreprocessConfig { get; set; }
+        public ParseDocumentDeprecatedPreprocessConfigResponse PreprocessConfig { get; set; }
 
         [JsonProperty("predictions")]
         public JToken Predictions { get; set; }
@@ -188,17 +188,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string TrainingId { get; set; }
     }
 
-    public class PostprocessConfig
+    public class ParseDocumentDeprecatedPostprocessConfigResponse
     {
         [JsonProperty("outputFormat")]
-        public PostprocessConfigTheOutputFormatType TheOutputFormat { get; set; }
+        public ParseDocumentDeprecatedPostprocessConfigTheOutputFormatTypeResponse TheOutputFormat { get; set; }
 
         [JsonProperty("strategy")]
-        public PostprocessConfigTheStrategyUsedForAggregatingPredictionsType TheStrategyUsedForAggregatingPredictions { get; set; }
+        public ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsTypeResponse TheStrategyUsedForAggregatingPredictions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostprocessConfigTheOutputFormatType
+    public enum ParseDocumentDeprecatedPostprocessConfigTheOutputFormatTypeResponse
     {
         [EnumMember(Value = "v1")]
         V1,
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostprocessConfigTheStrategyUsedForAggregatingPredictionsType
+    public enum ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsTypeResponse
     {
         [EnumMember(Value = "BEST_N_PAGES")]
         BESTNPAGES,
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         BESTFIRST
     }
 
-    public class PreprocessConfig
+    public class ParseDocumentDeprecatedPreprocessConfigResponse
     {
         [JsonProperty("autoRotate")]
         public bool AutoRotate { get; set; }
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string ImageQuality { get; set; }
     }
 
-    public class ParseDocumentDeprecatedInput
+    public class ParseDocumentDeprecatedRequestInput
     {
         [JsonProperty("modelId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; }
@@ -236,22 +236,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string DocumentId { get; set; }
 
         [JsonProperty("postprocessConfig", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostprocessConfig2 Postprocessing { get; set; } = new PostprocessConfig2();
+        public ParseDocumentDeprecatedPostprocessConfig Postprocessing { get; set; } = new ParseDocumentDeprecatedPostprocessConfig();
 
         [JsonProperty("preprocessConfig")]
-        public PreprocessConfig2 Preprocessing { get; set; }
+        public ParseDocumentDeprecatedPreprocessConfig Preprocessing { get; set; }
     }
 
-    public class PostprocessConfig2
+    public class ParseDocumentDeprecatedPostprocessConfig
     {
         [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostprocessConfigTheOutputFormatType? TheOutputFormat { get; set; } = PostprocessConfigTheOutputFormatType.V2;
+        public ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType? TheOutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType.V2;
 
         [JsonProperty("strategy", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostprocessConfigTheStrategyUsedForAggregatingPredictionsType? TheStrategyUsedForAggregatingPredictions { get; set; } = PostprocessConfigTheStrategyUsedForAggregatingPredictionsType.BESTFIRST;
+        public ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType? TheStrategyUsedForAggregatingPredictions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType.BESTFIRST;
     }
 
-    public class PreprocessConfig2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType
+    {
+        [EnumMember(Value = "v1")]
+        V1,
+        [EnumMember(Value = "v2")]
+        V2
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType
+    {
+        [EnumMember(Value = "BEST_N_PAGES")]
+        BESTNPAGES,
+        [EnumMember(Value = "BEST_FIRST")]
+        BESTFIRST
+    }
+
+    public class ParseDocumentDeprecatedPreprocessConfig
     {
         [JsonProperty("autoRotate")]
         public bool? AutoRotate { get; set; }
@@ -272,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string Status { get; set; }
     }
 
-    public class CreateExecutionDeprecatedInput
+    public class CreateExecutionDeprecatedRequestInput
     {
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkflowInput Input { get; set; }
@@ -299,26 +317,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public JToken Context { get; set; }
     }
 
-    public class RunCompletedInput
+    public class BodyInput
     {
         [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Enabled { get; set; } = true;
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RunCompletedInputConfigType Config { get; set; } = new RunCompletedInputConfigType();
+        public BodyInputConfigType Config { get; set; } = new BodyInputConfigType();
     }
 
-    public class RunCompletedInputConfigType
+    public class BodyInputConfigType
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("httpMethod", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal RunCompletedInputConfigTypeHttpMethodType HttpMethod { get; set; } = RunCompletedInputConfigTypeHttpMethodType.POST;
+        internal BodyInputConfigTypeHttpMethodType HttpMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.BodyInputConfigTypeHttpMethodType.POST;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RunCompletedInputConfigTypeHttpMethodType
+    public enum BodyInputConfigTypeHttpMethodType
     {
         POST,
         GET,

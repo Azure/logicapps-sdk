@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
     public class LeankitActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardInput>> body)
+        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateBoardResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<CreateCardInput>> body)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<CreateCardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCardResponse, ApiConnectionActionConfiguration>(() =>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse, ApiConnectionActionConfiguration> UpdateCard(Expression<Func<string>> cardId, Expression<Func<UpdateCardInput>> body)
+        public IBodyWorkflowAction<CardResponse, ApiConnectionActionConfiguration> UpdateCard(Expression<Func<string>> cardId, Expression<Func<UpdateCardBodyInput>> body)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<AddCommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> cardId, Expression<Func<AddCommentInput>> body)
+        public IBodyWorkflowAction<AddCommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> cardId, Expression<Func<AddCommentBodyInput>> body)
         {
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string BoardId { get; set; }
     }
 
-    public class CreateBoardInput
+    public class CreateBoardBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string CardId { get; set; }
     }
 
-    public class CreateCardInput
+    public class CreateCardBodyInput
     {
         [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BoardId { get; set; }
@@ -193,13 +193,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string BlockReason { get; set; }
 
         [JsonProperty("externalLink")]
-        public CreateCardInputExternalLinkType ExternalLink { get; set; }
+        public BodyInputExternalLinkType ExternalLink { get; set; }
 
         [JsonProperty("assignedUserIds")]
         public string[] Assignees { get; set; }
     }
 
-    public class CreateCardInputExternalLinkType
+    public class BodyInputExternalLinkType
     {
         [JsonProperty("label")]
         public string ExternalLinkLabel { get; set; }
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string Type { get; set; }
     }
 
-    public class UpdateCardInput
+    public class UpdateCardBodyInput
     {
         [JsonProperty("typeId")]
         public string Type { get; set; }
@@ -361,19 +361,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string BlockReason { get; set; }
 
         [JsonProperty("externalLink")]
-        public UpdateCardInputExternalLinkType ExternalLink { get; set; }
+        public BodyInputExternalLinkType ExternalLink { get; set; }
 
         [JsonProperty("assignedUserIds")]
         public string[] Assignees { get; set; }
-    }
-
-    public class UpdateCardInputExternalLinkType
-    {
-        [JsonProperty("label")]
-        public string ExternalLinkLabel { get; set; }
-
-        [JsonProperty("url")]
-        public string ExternalLinkURL { get; set; }
     }
 
     public class AddCommentResponse
@@ -403,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string Name { get; set; }
     }
 
-    public class AddCommentInput
+    public class AddCommentBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }

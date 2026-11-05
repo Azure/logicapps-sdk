@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchUsersIdResponse, ApiConnectionActionConfiguration> PatchUsersId(Expression<Func<int>> id, Expression<Func<PatchUsersIdInput>> body = null)
+        public IBodyWorkflowAction<PatchUsersIdResponse, ApiConnectionActionConfiguration> PatchUsersId(Expression<Func<int>> id, Expression<Func<PatchUsersIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostUsersResponse, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostUsersInput>> body)
+        public IBodyWorkflowAction<PostUsersResponse, ApiConnectionActionConfiguration> PostUsers(Expression<Func<PostGroupsGroupIdUsersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostUsersResponse, ApiConnectionActionConfiguration>(() =>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchBundleNotificationsIdResponse, ApiConnectionActionConfiguration> PatchBundleNotificationsId(Expression<Func<int>> id, Expression<Func<PatchBundleNotificationsIdInput>> body = null)
+        public IBodyWorkflowAction<PatchBundleNotificationsIdResponse, ApiConnectionActionConfiguration> PatchBundleNotificationsId(Expression<Func<int>> id, Expression<Func<PatchBundleNotificationsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostBundleNotificationsResponse, ApiConnectionActionConfiguration> PostBundleNotifications(Expression<Func<PostBundleNotificationsInput>> body)
+        public IBodyWorkflowAction<PostBundleNotificationsResponse, ApiConnectionActionConfiguration> PostBundleNotifications(Expression<Func<PostBundleNotificationsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostBundleNotificationsResponse, ApiConnectionActionConfiguration>(() =>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostBundleRecipientsResponse, ApiConnectionActionConfiguration> PostBundleRecipients(Expression<Func<PostBundleRecipientsInput>> body)
+        public IBodyWorkflowAction<PostBundleRecipientsResponse, ApiConnectionActionConfiguration> PostBundleRecipients(Expression<Func<PostBundleRecipientsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostBundleRecipientsResponse, ApiConnectionActionConfiguration>(() =>
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchBundlesIdResponse, ApiConnectionActionConfiguration> PatchBundlesId(Expression<Func<int>> id, Expression<Func<PatchBundlesIdInput>> body = null)
+        public IBodyWorkflowAction<PatchBundlesIdResponse, ApiConnectionActionConfiguration> PatchBundlesId(Expression<Func<int>> id, Expression<Func<PatchBundlesIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostBundlesResponse, ApiConnectionActionConfiguration> PostBundles(Expression<Func<PostBundlesInput>> body)
+        public IBodyWorkflowAction<PostBundlesResponse, ApiConnectionActionConfiguration> PostBundles(Expression<Func<PostBundlesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostBundlesResponse, ApiConnectionActionConfiguration>(() =>
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<FileActionCopyResponse, ApiConnectionActionConfiguration> FileActionCopy(Expression<Func<string>> path, Expression<Func<FileActionCopyInput>> body = null)
+        public IBodyWorkflowAction<FileActionCopyResponse, ApiConnectionActionConfiguration> FileActionCopy(Expression<Func<string>> path, Expression<Func<FileActionCopyBodyInput>> body = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<FileActionMoveResponse, ApiConnectionActionConfiguration> FileActionMove(Expression<Func<string>> path, Expression<Func<FileActionMoveInput>> body = null)
+        public IBodyWorkflowAction<FileActionMoveResponse, ApiConnectionActionConfiguration> FileActionMove(Expression<Func<string>> path, Expression<Func<FileActionCopyBodyInput>> body = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostGroupsGroupIdUsersResponse, ApiConnectionActionConfiguration> PostGroupsGroupIdUsers(Expression<Func<int>> groupId, Expression<Func<PostGroupsGroupIdUsersInput>> body)
+        public IBodyWorkflowAction<PostGroupsGroupIdUsersResponse, ApiConnectionActionConfiguration> PostGroupsGroupIdUsers(Expression<Func<int>> groupId, Expression<Func<PostGroupsGroupIdUsersBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PatchGroupsIdResponse, ApiConnectionActionConfiguration> PatchGroupsId(Expression<Func<int>> id, Expression<Func<PatchGroupsIdInput>> body = null)
+        public IBodyWorkflowAction<PatchGroupsIdResponse, ApiConnectionActionConfiguration> PatchGroupsId(Expression<Func<int>> id, Expression<Func<PatchGroupsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "filescom")]
-        public IBodyWorkflowAction<PostGroupsResponse, ApiConnectionActionConfiguration> PostGroups(Expression<Func<PostGroupsInput>> body)
+        public IBodyWorkflowAction<PostGroupsResponse, ApiConnectionActionConfiguration> PostGroups(Expression<Func<PostGroupsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostGroupsResponse, ApiConnectionActionConfiguration>(() =>
@@ -1225,10 +1225,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string PasswordExpireAt { get; set; }
     }
 
-    public class PatchUsersIdInput
+    public class PatchUsersIdBodyInput
     {
         [JsonProperty("authentication_method")]
-        public PatchUsersIdInputAuthenticationMethodType? AuthenticationMethod { get; set; }
+        public BodyInputAuthenticationMethodType? AuthenticationMethod { get; set; }
 
         [JsonProperty("company")]
         public string Company { get; set; }
@@ -1262,7 +1262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PatchUsersIdInputAuthenticationMethodType
+    public enum BodyInputAuthenticationMethodType
     {
         [EnumMember(Value = "password")]
         Password,
@@ -1786,10 +1786,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string PasswordExpireAt { get; set; }
     }
 
-    public class PostUsersInput
+    public class PostGroupsGroupIdUsersBodyInput
     {
         [JsonProperty("authentication_method")]
-        public PostUsersInputAuthenticationMethodType? AuthenticationMethod { get; set; }
+        public BodyInputAuthenticationMethodType? AuthenticationMethod { get; set; }
 
         [JsonProperty("company")]
         public string Company { get; set; }
@@ -1820,15 +1820,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostUsersInputAuthenticationMethodType
-    {
-        [EnumMember(Value = "password")]
-        Password,
-        [EnumMember(Value = "email_signup")]
-        EmailSignup
     }
 
     public class GetBundleDownloadsResponseItem
@@ -1942,7 +1933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
-    public class PatchBundleNotificationsIdInput
+    public class PatchBundleNotificationsIdBodyInput
     {
         [JsonProperty("notify_on_registration")]
         public bool? NotifyOnRegistration { get; set; }
@@ -1999,7 +1990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
-    public class PostBundleNotificationsInput
+    public class PostBundleNotificationsBodyInput
     {
         [JsonProperty("bundle_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int BundleId { get; set; }
@@ -2050,7 +2041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
-    public class PostBundleRecipientsInput
+    public class PostBundleRecipientsBodyInput
     {
         [JsonProperty("bundle_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int BundleId { get; set; }
@@ -2473,17 +2464,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string Uri { get; set; }
     }
 
-    public class PatchBundlesIdInput
+    public class PatchBundlesIdBodyInput
     {
         [JsonProperty("expires_at")]
         public string ExpiresAt { get; set; }
 
         [JsonProperty("permissions")]
-        public PatchBundlesIdInputPermissionsType? Permissions { get; set; }
+        public BodyInputPermissionsType? Permissions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PatchBundlesIdInputPermissionsType
+    public enum BodyInputPermissionsType
     {
         [EnumMember(Value = "read")]
         Read,
@@ -2859,7 +2850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string Uri { get; set; }
     }
 
-    public class PostBundlesInput
+    public class PostBundlesBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -2880,27 +2871,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string[] Paths { get; set; }
 
         [JsonProperty("permissions")]
-        public PostBundlesInputPermissionsType? Permissions { get; set; }
+        public BodyInputPermissionsType? Permissions { get; set; }
 
         [JsonProperty("require_registration")]
         public bool? RequireRegistration { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostBundlesInputPermissionsType
-    {
-        [EnumMember(Value = "read")]
-        Read,
-        [EnumMember(Value = "write")]
-        Write,
-        [EnumMember(Value = "read_write")]
-        ReadWrite,
-        [EnumMember(Value = "full")]
-        Full,
-        [EnumMember(Value = "none")]
-        None,
-        [EnumMember(Value = "preview_only")]
-        PreviewOnly
     }
 
     public class FileActionFindResponse
@@ -3038,7 +3012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int FileMigrationId { get; set; }
     }
 
-    public class FileActionCopyInput
+    public class FileActionCopyBodyInput
     {
         [JsonProperty("destination_folder_path")]
         public string DestinationFolderPath { get; set; }
@@ -3054,15 +3028,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
 
         [JsonProperty("file_migration_id")]
         public int FileMigrationId { get; set; }
-    }
-
-    public class FileActionMoveInput
-    {
-        [JsonProperty("destination_folder_path")]
-        public string DestinationFolderPath { get; set; }
-
-        [JsonProperty("destination_name")]
-        public string DestinationName { get; set; }
     }
 
     public class FolderListForPathResponseItem
@@ -3575,51 +3540,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public string PasswordExpireAt { get; set; }
     }
 
-    public class PostGroupsGroupIdUsersInput
-    {
-        [JsonProperty("authentication_method")]
-        public PostGroupsGroupIdUsersInputAuthenticationMethodType? AuthenticationMethod { get; set; }
-
-        [JsonProperty("company")]
-        public string Company { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("group_ids")]
-        public string GroupIds { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("notes")]
-        public string Notes { get; set; }
-
-        [JsonProperty("password")]
-        public string Password { get; set; }
-
-        [JsonProperty("require_password_change")]
-        public bool? RequirePasswordChange { get; set; }
-
-        [JsonProperty("user_home")]
-        public string UserHome { get; set; }
-
-        [JsonProperty("user_root")]
-        public string UserRoot { get; set; }
-
-        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostGroupsGroupIdUsersInputAuthenticationMethodType
-    {
-        [EnumMember(Value = "password")]
-        Password,
-        [EnumMember(Value = "email_signup")]
-        EmailSignup
-    }
-
     public class GetGroupsIdResponse
     {
         [JsonProperty("id")]
@@ -3716,7 +3636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
-    public class PatchGroupsIdInput
+    public class PatchGroupsIdBodyInput
     {
         [JsonProperty("admin_ids")]
         public string AdminIds { get; set; }
@@ -3827,7 +3747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Filescom
         public int WorkspaceId { get; set; }
     }
 
-    public class PostGroupsInput
+    public class PostGroupsBodyInput
     {
         [JsonProperty("admin_ids")]
         public string AdminIds { get; set; }

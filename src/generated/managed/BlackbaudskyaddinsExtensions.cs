@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     public class BlackbaudskyaddinsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration> ValidateUserIdentityToken(Expression<Func<ValidateUserIdentityTokenInput>> body)
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration> ValidateUserIdentityToken(Expression<Func<ValidateUserIdentityTokenBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendHttpRequest(Expression<Func<SendHttpRequestInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendHttpRequest(Expression<Func<SendHttpRequestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         public string EnvironmentId { get; set; }
     }
 
-    public class ValidateUserIdentityTokenInput
+    public class ValidateUserIdentityTokenBodyInput
     {
         [JsonProperty("uit", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdentityToken { get; set; }
@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         public string ApplicationId { get; set; }
     }
 
-    public class SendHttpRequestInput
+    public class SendHttpRequestBodyInput
     {
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendHttpRequestInputMethodType Method { get; set; } = SendHttpRequestInputMethodType.GET;
+        public BodyInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins.BodyInputMethodType.GET;
 
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelativePath { get; set; }
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendHttpRequestInputMethodType
+    public enum BodyInputMethodType
     {
         GET,
         PUT,

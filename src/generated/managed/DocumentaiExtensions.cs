@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
     public class DocumentaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentPolicyResult, ApiConnectionActionConfiguration> ApplyRules(Expression<Func<ApplyRulesInput>> body = null)
+        public IBodyWorkflowAction<DocumentPolicyResult, ApiConnectionActionConfiguration> ApplyRules(Expression<Func<ApplyRulesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DocumentPolicyResult, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentQuestionAnswersResult, ApiConnectionActionConfiguration> AnswerQuestions(Expression<Func<AnswerQuestionsInput>> body = null)
+        public IBodyWorkflowAction<DocumentQuestionAnswersResult, ApiConnectionActionConfiguration> AnswerQuestions(Expression<Func<AnswerQuestionsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DocumentQuestionAnswersResult, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractFieldsAdvancedResponse, ApiConnectionActionConfiguration> ExtractFieldsAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<ExtractFieldsAdvancedInput>> body = null)
+        public IBodyWorkflowAction<ExtractFieldsAdvancedResponse, ApiConnectionActionConfiguration> ExtractFieldsAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<ExtractFieldsAdvancedBodyInput>> body = null)
         {
             var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentAdvancedClassificationResult, ApiConnectionActionConfiguration> ExtractClassificationAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<ExtractClassificationAdvancedInput>> body = null)
+        public IBodyWorkflowAction<DocumentAdvancedClassificationResult, ApiConnectionActionConfiguration> ExtractClassificationAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<ExtractClassificationAdvancedBodyInput>> body = null)
         {
             var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult, ApiConnectionActionConfiguration> ExtractFieldsFromDocumentAdvancedBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<ExtractFieldsFromDocumentAdvancedBatchJobInput>> body = null)
+        public IBodyWorkflowAction<ExtractDocumentBatchJobResult, ApiConnectionActionConfiguration> ExtractFieldsFromDocumentAdvancedBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<ExtractFieldsAdvancedBodyInput>> body = null)
         {
             var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         public string RuleViolationRationale { get; set; }
     }
 
-    public class ApplyRulesInput
+    public class ApplyRulesBodyInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public PolicyRule[] Rules { get; set; }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         public double ConfidenceScore { get; set; }
     }
 
-    public class AnswerQuestionsInput
+    public class AnswerQuestionsBodyInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public DocumentQuestionBoolean[] QuestionsYesNo { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         public string FieldStringValue { get; set; }
     }
 
-    public class ExtractFieldsAdvancedInput
+    public class ExtractFieldsAdvancedBodyInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public FieldToExtract[] FieldsToExtract { get; set; }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         public double ConfidenceScore { get; set; }
     }
 
-    public class ExtractClassificationAdvancedInput
+    public class ExtractClassificationAdvancedBodyInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public DocumentCategories[] Categories { get; set; }
@@ -253,16 +253,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
 
         [JsonProperty("AsyncJobID")]
         public string AsyncJobId { get; set; }
-    }
-
-    public class ExtractFieldsFromDocumentAdvancedBatchJobInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
-        public FieldToExtract[] FieldsToExtract { get; set; }
-        public int? MaximumPagesProcessed { get; set; }
-        public string Preprocessing { get; set; }
-        public string ResultCrossCheck { get; set; }
-        public double? RotateImageDegrees { get; set; }
     }
 
     public class ExtractDocumentJobStatusResult

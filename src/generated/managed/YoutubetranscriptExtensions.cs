@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
     public class YoutubetranscriptActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
-        public IBodyWorkflowAction<TranscriptResponse, ApiConnectionActionConfiguration> GetTranscript(Expression<Func<GetTranscriptInput>> body)
+        public IBodyWorkflowAction<TranscriptResponse, ApiConnectionActionConfiguration> GetTranscript(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TranscriptResponse, ApiConnectionActionConfiguration>(() =>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
         public int CharacterCount { get; set; }
     }
 
-    public class GetTranscriptInput
+    public class BodyInput
     {
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestContext RequestContext { get; set; } = new RequestContext();

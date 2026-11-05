@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> TimeCardConfirmationImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> TimeCardConfirmationImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<TimeCardConfirmationImportBodyInputItem[]>> body = null)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CraftsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CraftsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<CraftsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DailyPlanStatusImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22[]>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DailyPlanStatusImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<DailyPlanStatusImportBodyInputItem[]>> body = null)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EmployeesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EmployeesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EmployeesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentCategoriesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentCategoriesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentCategoriesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentTypesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquipmentTypesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<EquipmentTypesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RolesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RolesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<RolesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TradesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> TradesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<TradesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UsersImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UserRolesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UserRolesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UserRolesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContactsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContactsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContactsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CostCenterImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CostCenterImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<CostCenterImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountCodeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountCodeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<AccountCodeImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountingLedgerImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AccountingLedgerImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<AccountingLedgerImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersDelete(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UsersDelete(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UsersDeleteBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IncoTermsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> IncoTermsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<IncoTermsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MarketsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MarketsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MarketsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialCharacteristicTypeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialCharacteristicTypeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialCharacteristicTypeImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialClassImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialClassImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialClassImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialGroupImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialGroupImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialGroupImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialSetImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MaterialSetImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<MaterialSetImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> OrganizationsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> OrganizationsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<OrganizationsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentTermImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentTermImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PaymentTermImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectContactsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectContactsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectContactsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectCraftImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectCraftImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectCraftImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeeBillingClassesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeeBillingClassesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEmployeeBillingClassesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEmployeesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEmployeesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentBillingClassesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentBillingClassesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentBillingClassesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentTypeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectEquipmentTypeImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectEquipmentTypeImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectSettingsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectSettingsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectSettingsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectVendorsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ProjectVendorsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectVendorsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnionImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnionImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<UnionImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VendorsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> VendorsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<VendorsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<RegionsGetResponseItem[], ApiConnectionActionConfiguration> RegionsGet(Expression<Func<includeTranslationInput>> includeTranslation, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> countryISOCode = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<RegionsGetResponseItem[], ApiConnectionActionConfiguration> RegionsGet(Expression<Func<IncludeTranslationInput>> includeTranslation, Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> countryISOCode = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
             var __workflow_includeTranslation = WorkflowExpression.Compile(includeTranslation, nameof(includeTranslation), required: true);
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
@@ -1494,7 +1494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PurchaseOrderImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PurchaseOrderImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PurchaseOrderImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1512,7 +1512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentRequestImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PaymentRequestImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PaymentRequestImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1530,7 +1530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GoodsReceiptImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GoodsReceiptImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<GoodsReceiptImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1548,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractTaxImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractTaxImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractTaxImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1566,7 +1566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> StorageLocationsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> StorageLocationsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<StorageLocationsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1584,7 +1584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectShippingAddressImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectShippingAddressImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectShippingAddressImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1602,7 +1602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LegalEntitiesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LegalEntitiesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<LegalEntitiesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1620,7 +1620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectLegalEntityImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectLegalEntityImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectLegalEntityImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1638,7 +1638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectStorageLocationImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProjectStorageLocationImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ProjectStorageLocationImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1656,7 +1656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PlantsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PlantsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<PlantsImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1674,7 +1674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ContractEquipmentImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem22222222222222222222222222222222222222222222222[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ContractEquipmentImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractEquipmentImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1692,7 +1692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractAccrualResponseImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem222222222222222222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ContractAccrualResponseImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ContractAccrualResponseImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1710,7 +1710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InvoicesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<bodyInputItem2222222222222222222222222222222222222222222222222[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InvoicesImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<InvoicesImportBodyInputItem[]>> body)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1728,7 +1728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImportActuals(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<ImportActualsInput>> body, Expression<Func<string>> xTaskCompleteCallbackUri = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ImportActuals(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<BodyInput>> body, Expression<Func<string>> xTaskCompleteCallbackUri = null)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -1749,7 +1749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ineight")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MultiProjectActualsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> xTaskCompleteCallbackUri = null, Expression<Func<bodyInputItem22222222222222222222222222222222222222222222222222[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MultiProjectActualsImport(Expression<Func<string>> xIN8TENANTPREFIX, Expression<Func<string>> ocpApimSubscriptionKey, Expression<Func<string>> xTaskCompleteCallbackUri = null, Expression<Func<MultiProjectActualsImportBodyInputItem[]>> body = null)
         {
             var __workflow_xIN8TENANTPREFIX = WorkflowExpression.Compile(xIN8TENANTPREFIX, nameof(xIN8TENANTPREFIX), required: true);
             var __workflow_ocpApimSubscriptionKey = WorkflowExpression.Compile(ocpApimSubscriptionKey, nameof(ocpApimSubscriptionKey), required: true);
@@ -2090,7 +2090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Value { get; set; }
     }
 
-    public class bodyInputItem
+    public class TimeCardConfirmationImportBodyInputItem
     {
         public string TimeCardId { get; set; }
         public string Version { get; set; }
@@ -2098,10 +2098,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string[] Errors { get; set; }
     }
 
-    public class bodyInputItem2
+    public class CraftsImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CraftId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CraftDescription { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TradeId { get; set; }
         public string CurrencyCode { get; set; }
         public string VendorCode { get; set; }
@@ -2109,18 +2114,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string SourceSystemName { get; set; }
         public string UnionSourceSystemId { get; set; }
         public string UoMName { get; set; }
-        public bool UseBaseWageFactors { get; set; }
-        public double StraightTimeRate { get; set; }
-        public double OverTimeFactor { get; set; }
-        public double OverTimeRate { get; set; }
-        public double DoubleTimeFactor { get; set; }
-        public double DoubleTimeRate { get; set; }
-        public bool IsActive { get; set; }
+        public bool? UseBaseWageFactors { get; set; }
+        public double? StraightTimeRate { get; set; }
+        public double? OverTimeFactor { get; set; }
+        public double? OverTimeRate { get; set; }
+        public double? DoubleTimeFactor { get; set; }
+        public double? DoubleTimeRate { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem22
+    public class DailyPlanStatusImportBodyInputItem
     {
-        public int DailyPlanId { get; set; }
+        public int? DailyPlanId { get; set; }
         public string PlanStatusCode { get; set; }
         public string ModifiedById { get; set; }
         public string ModifiedDate { get; set; }
@@ -2131,28 +2136,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string[] Errors { get; set; }
     }
 
-    public class bodyInputItem222
+    public class EmployeesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CraftId { get; set; }
         public string VendorCode { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string EmployeePIN { get; set; }
-        public bool CanReportTime { get; set; }
+        public bool? CanReportTime { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string CurrencyCode { get; set; }
         public string UOMName { get; set; }
-        public double StraightTimeRate { get; set; }
-        public double OverTimeFactor { get; set; }
-        public double OverTimeRate { get; set; }
-        public double DoubleTimeFactor { get; set; }
-        public double DoubleTimeRate { get; set; }
-        public bool UseBaseWageFactors { get; set; }
+        public double? StraightTimeRate { get; set; }
+        public double? OverTimeFactor { get; set; }
+        public double? OverTimeRate { get; set; }
+        public double? DoubleTimeFactor { get; set; }
+        public double? DoubleTimeRate { get; set; }
+        public bool? UseBaseWageFactors { get; set; }
         public string UnionSourceSystemId { get; set; }
         public string PrimaryCompany { get; set; }
         public string JobTitle { get; set; }
@@ -2161,80 +2173,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string CountryISOCode { get; set; }
         public string DefaultCostCenterSourceSystemId { get; set; }
         public string AdditionalPayrollInstructionCode { get; set; }
-        public bool IsOverrideAdditionalPayrollInstructionCodeAllowed { get; set; }
-        public bool IsAvailableWeeklyTimeSheet { get; set; }
+        public bool? IsOverrideAdditionalPayrollInstructionCodeAllowed { get; set; }
+        public bool? IsAvailableWeeklyTimeSheet { get; set; }
     }
 
-    public class bodyInputItem2222
+    public class EquipmentsImportBodyInputItem
     {
         public string EquipmentSystemStatus { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentNumber { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OwnershipType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentType { get; set; }
         public string VendorCode { get; set; }
         public string SerialNumber { get; set; }
         public string Manufacturer { get; set; }
-        public bool Dot { get; set; }
+        public bool? Dot { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentDescription { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
         public string CurrencyCode { get; set; }
         public string CostCenterSourceSystemId { get; set; }
         public string Location { get; set; }
-        public double UnitCost { get; set; }
+        public double? UnitCost { get; set; }
         public string UoMName { get; set; }
-        public bool IsAvailableDailyPlan { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsAvailableDailyPlan { get; set; } = true;
     }
 
-    public class bodyInputItem22222
+    public class EquipmentCategoriesImportBodyInputItem
     {
         public string EquipmentCategoryId { get; set; }
         public string Description { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222
+    public class EquipmentTypesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentTypeId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentCategoryId { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
         public string VendorCode { get; set; }
         public string CurrencyCode { get; set; }
         public string UoMName { get; set; }
-        public double UnitCost { get; set; }
+        public double? UnitCost { get; set; }
     }
 
-    public class bodyInputItem2222222
+    public class RolesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleName { get; set; }
         public string Description { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AdminLevel { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsSystem { get; set; }
-        public bool IsActive { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsSystem { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsActive { get; set; } = true;
     }
 
-    public class bodyInputItem22222222
+    public class TradesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TradeDisplay { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TradeDescription { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222
+    public class UsersImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string Language { get; set; }
         public string DecimalFormat { get; set; }
         public string DateFormat { get; set; }
@@ -2245,30 +2287,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string MobileNumber { get; set; }
         public string WorkNumber { get; set; }
         public string DisplayUserId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
-        public bool IsExternalUser { get; set; }
+        public bool? IsExternalUser { get; set; }
     }
 
-    public class bodyInputItem2222222222
+    public class UserRolesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserSourceSystemId { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string ProjectSourceSystemId { get; set; }
         public string OrganizationSourceSystemId { get; set; }
     }
 
-    public class bodyInputItem22222222222
+    public class ContactsImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Company { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PrimaryEmail { get; set; }
         public string SecondaryEmail { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactTypeReference { get; set; }
         public string LanguagePreference { get; set; }
         public string VendorSourceSystemId { get; set; }
@@ -2284,39 +2342,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ZipCode { get; set; }
         public string RegionISOCode { get; set; }
         public string CountryISOCode { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222222
+    public class CostCenterImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CostCenterDisplayId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CostCenterDescription { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CostCenterTypeDisplayId { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItem2222222222222
+    public class AccountCodeImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AccountCodeOperationType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AccountCodeDescription { get; set; }
         public string ParentAccountCodeSourceSystemId { get; set; }
         public string ReplaceAccountCodeSourceSystemId { get; set; }
-        public bool IsActive { get; set; }
-        public bool PrimaryAutoQuantity { get; set; }
-        public bool SecondaryAutoQuantity { get; set; }
-        public bool IsTerminal { get; set; }
+        public bool? IsActive { get; set; }
+        public bool? PrimaryAutoQuantity { get; set; }
+        public bool? SecondaryAutoQuantity { get; set; }
+        public bool? IsTerminal { get; set; }
         public string PrimaryUOMReference { get; set; }
         public string CurrencyCode { get; set; }
         public string SecondaryUOMReference { get; set; }
-        public bool ContributePrimaryToPrimary { get; set; }
-        public bool ContributePrimaryToSecondary { get; set; }
-        public bool ContributeSecondaryToSecondary { get; set; }
-        public bool FlagAsDisabled { get; set; }
+        public bool? ContributePrimaryToPrimary { get; set; }
+        public bool? ContributePrimaryToSecondary { get; set; }
+        public bool? ContributeSecondaryToSecondary { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? FlagAsDisabled { get; set; } = false;
         public string Notes { get; set; }
         public string SafetyNotes { get; set; }
         public string EnvironmentalNotes { get; set; }
@@ -2353,142 +2427,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string UserDefinedField10 { get; set; }
     }
 
-    public class bodyInputItem22222222222222
+    public class AccountingLedgerImportBodyInputItem
     {
         public string DisplayId { get; set; }
         public string Description { get; set; }
         public string Language { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsActive { get; set; }
-        public bodyInputItemAccountingLedgerTextTypeItem[] AccountingLedgerText { get; set; }
+        public bool? IsActive { get; set; }
+        public BodyInputItemAccountingLedgerTextTypeItem[] AccountingLedgerText { get; set; }
     }
 
-    public class bodyInputItemAccountingLedgerTextTypeItem
+    public class BodyInputItemAccountingLedgerTextTypeItem
     {
         public string Description { get; set; }
         public string Language { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222222222
+    public class UsersDeleteBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
     }
 
-    public class bodyInputItem2222222222222222
+    public class IncoTermsImportBodyInputItem
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public string Language { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsActive { get; set; }
-        public bodyInputItemIncoTermTextTypeItem[] IncoTermText { get; set; }
+        public bool? IsActive { get; set; }
+        public BodyInputItemIncoTermTextTypeItem[] IncoTermText { get; set; }
     }
 
-    public class bodyInputItemIncoTermTextTypeItem
+    public class BodyInputItemIncoTermTextTypeItem
     {
         public string Description { get; set; }
         public string Language { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem22222222222222222
+    public class MarketsImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Description { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222222222222
+    public class MaterialCharacteristicTypeImportBodyInputItem
     {
         public string DisplayId { get; set; }
         public string DefaultCharacteristicName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string Language { get; set; }
         public string DefaultCharacteristicDescription { get; set; }
         public string CharacteristicTypeReference { get; set; }
         public string MaterialCharacteristicTypeReference { get; set; }
         public string SourceSystemName { get; set; }
-        public bodyInputItemMaterialCharacteristicTypeTextTypeItem[] MaterialCharacteristicTypeText { get; set; }
-        public bodyInputItemMaterialCharacteristicTypeElementTypeItem[] MaterialCharacteristicTypeElement { get; set; }
+        public BodyInputItemMaterialCharacteristicTypeTextTypeItem[] MaterialCharacteristicTypeText { get; set; }
+        public BodyInputItemMaterialCharacteristicTypeElementTypeItem[] MaterialCharacteristicTypeElement { get; set; }
     }
 
-    public class bodyInputItemMaterialCharacteristicTypeTextTypeItem
+    public class BodyInputItemMaterialCharacteristicTypeTextTypeItem
     {
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string Language { get; set; }
         public string CharacteristicName { get; set; }
         public string CharacteristicDescription { get; set; }
     }
 
-    public class bodyInputItemMaterialCharacteristicTypeElementTypeItem
+    public class BodyInputItemMaterialCharacteristicTypeElementTypeItem
     {
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string Language { get; set; }
         public string DefaultElementValue { get; set; }
         public string DefaultCharacteristicDescription { get; set; }
-        public bodyInputItemMaterialCharacteristicTypeElementTypeItemMaterialCharacteristicTypeElementTextTypeItem[] MaterialCharacteristicTypeElementText { get; set; }
+        public BodyInputItemMaterialCharacteristicTypeElementTypeItemMaterialCharacteristicTypeElementTextTypeItem[] MaterialCharacteristicTypeElementText { get; set; }
     }
 
-    public class bodyInputItemMaterialCharacteristicTypeElementTypeItemMaterialCharacteristicTypeElementTextTypeItem
+    public class BodyInputItemMaterialCharacteristicTypeElementTypeItemMaterialCharacteristicTypeElementTextTypeItem
     {
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string Language { get; set; }
         public string ElementValue { get; set; }
         public string CharacteristicTypeElementDescription { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222
+    public class MaterialClassImportBodyInputItem
     {
         public string MaterialSetReference { get; set; }
         public string MaterialReference { get; set; }
-        public bool IsActive { get; set; }
-        public bodyInputItemMaterialClassCharacteristicTypeTypeItem[] MaterialClassCharacteristicType { get; set; }
+        public bool? IsActive { get; set; }
+        public BodyInputItemMaterialClassCharacteristicTypeTypeItem[] MaterialClassCharacteristicType { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItemMaterialClassCharacteristicTypeTypeItem
+    public class BodyInputItemMaterialClassCharacteristicTypeTypeItem
     {
         public string MaterialSetCharacteristicTypeReference { get; set; }
         public string DefaultPresetValue { get; set; }
         public string Language { get; set; }
-        public bodyInputItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem[] MaterialClassCharacteristicTypeText { get; set; }
-        public bool IsActive { get; set; }
+        public BodyInputItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem[] MaterialClassCharacteristicTypeText { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem
+    public class BodyInputItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem
     {
         public string Language { get; set; }
         public string PresetValue { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222
+    public class MaterialGroupImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupDisplayId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string MaterialGroupName { get; set; }
         public string Description { get; set; }
         public string ParentMaterialGroupReference { get; set; }
         public string Language { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string MaterialGroupReference { get; set; }
         public string SourceSystemName { get; set; }
-        public bodyInputItemMaterialGroupTextTypeItem[] MaterialGroupText { get; set; }
+        public BodyInputItemMaterialGroupTextTypeItem[] MaterialGroupText { get; set; }
     }
 
-    public class bodyInputItemMaterialGroupTextTypeItem
+    public class BodyInputItemMaterialGroupTextTypeItem
     {
         public string Language { get; set; }
         public string MaterialGroupName { get; set; }
         public string Description { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222
+    public class MaterialImportBodyInputItem
     {
         public string DisplayId { get; set; }
         public string MaterialTypeReference { get; set; }
@@ -2499,189 +2580,224 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string PurchasingUnitOfMeasure { get; set; }
         public string ManufacturingPartNumber { get; set; }
         public string BaseUnitOfMeasure { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string AccountCodeReference { get; set; }
-        public bodyInputItemMaterialTextTypeItem[] MaterialText { get; set; }
-        public bodyInputItemMaterialClassTypeItem[] MaterialClass { get; set; }
+        public BodyInputItemMaterialTextTypeItem[] MaterialText { get; set; }
+        public BodyInputItemMaterialClassTypeItem[] MaterialClass { get; set; }
         public string MaterialReference { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItemMaterialTextTypeItem
+    public class BodyInputItemMaterialTextTypeItem
     {
         public string Language { get; set; }
         public string MaterialDescription { get; set; }
         public string MaterialName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItemMaterialClassTypeItem
+    public class BodyInputItemMaterialClassTypeItem
     {
         public string MaterialSetReference { get; set; }
         public string MaterialReference { get; set; }
-        public bool IsActive { get; set; }
-        public bodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItem[] MaterialClassCharacteristicType { get; set; }
+        public bool? IsActive { get; set; }
+        public BodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItem[] MaterialClassCharacteristicType { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItem
+    public class BodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItem
     {
         public string MaterialSetCharacteristicTypeReference { get; set; }
         public string DefaultPresetValue { get; set; }
         public string Language { get; set; }
-        public bodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem[] MaterialClassCharacteristicTypeText { get; set; }
-        public bool IsActive { get; set; }
+        public BodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem[] MaterialClassCharacteristicTypeText { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem
+    public class BodyInputItemMaterialClassTypeItemMaterialClassCharacteristicTypeTypeItemMaterialClassCharacteristicTypeTextTypeItem
     {
         public string Language { get; set; }
         public string PresetValue { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222
+    public class MaterialSetImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string MaterialDimensionReference { get; set; }
         public string ParentMaterialSetReference { get; set; }
         public string Language { get; set; }
         public string MaterialSetReference { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string MaterialSetName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DefaultSetDescription { get; set; }
-        public bodyInputItemMaterialSetTextTypeItem[] MaterialSetText { get; set; }
-        public bodyInputItemMaterialSetCharacteristicTypeTypeItem[] MaterialSetCharacteristicType { get; set; }
-        public bool IsActive { get; set; }
+        public BodyInputItemMaterialSetTextTypeItem[] MaterialSetText { get; set; }
+        public BodyInputItemMaterialSetCharacteristicTypeTypeItem[] MaterialSetCharacteristicType { get; set; }
+        public bool? IsActive { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItemMaterialSetTextTypeItem
+    public class BodyInputItemMaterialSetTextTypeItem
     {
         public string Language { get; set; }
         public string SetDescription { get; set; }
         public string MaterialSetName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItemMaterialSetCharacteristicTypeTypeItem
+    public class BodyInputItemMaterialSetCharacteristicTypeTypeItem
     {
         public string MaterialSetCharacteristicTypeReference { get; set; }
         public string MaterialCharacteristicReference { get; set; }
         public string MaterialDimensionReference { get; set; }
         public string DynamicDescriptionPosition { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222
+    public class OrganizationsImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganizationName { get; set; }
         public string SourceSystemName { get; set; }
         public string SourceSystemId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganizationDescription { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentOrganization { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222
+    public class PaymentTermImportBodyInputItem
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public string Language { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
-        public bool IsActive { get; set; }
-        public bool IsProgressEstimateNumberRequired { get; set; }
-        public bool IsBillingPeriodRequired { get; set; }
-        public int DueDays { get; set; }
-        public bodyInputItemPaymentTermTextTypeItem[] PaymentTermText { get; set; }
+        public bool? IsActive { get; set; }
+        public bool? IsProgressEstimateNumberRequired { get; set; }
+        public bool? IsBillingPeriodRequired { get; set; }
+        public int? DueDays { get; set; }
+        public BodyInputItemPaymentTermTextTypeItem[] PaymentTermText { get; set; }
     }
 
-    public class bodyInputItemPaymentTermTextTypeItem
+    public class BodyInputItemPaymentTermTextTypeItem
     {
         public string Description { get; set; }
         public string Language { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222
+    public class ProjectContactsImportBodyInputItem
     {
         public string ProjectDisplayId { get; set; }
         public string ContactPrimaryEmail { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactSourceSystemId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectSourceSystemId { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222
+    public class ProjectCraftImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CraftId { get; set; }
-        public double StraightTimeRate { get; set; }
-        public double OverTimeFactor { get; set; }
-        public double OverTimeRate { get; set; }
-        public double DoubleTimeFactor { get; set; }
-        public double DoubleTimeRate { get; set; }
-        public bool IsActive { get; set; }
-        public bool UseBaseWageFactors { get; set; }
+        public double? StraightTimeRate { get; set; }
+        public double? OverTimeFactor { get; set; }
+        public double? OverTimeRate { get; set; }
+        public double? DoubleTimeFactor { get; set; }
+        public double? DoubleTimeRate { get; set; }
+        public bool? IsActive { get; set; }
+        public bool? UseBaseWageFactors { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222
+    public class ProjectEmployeeBillingClassesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectEmployeeBillingClass { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
         public string Description { get; set; }
         public string VendorSourceSystemId { get; set; }
-        public double BillingRateST { get; set; }
-        public double BillingRateDT { get; set; }
-        public double BillingRateOT { get; set; }
-        public bool IsActive { get; set; }
+        public double? BillingRateST { get; set; }
+        public double? BillingRateDT { get; set; }
+        public double? BillingRateOT { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222
+    public class ProjectEmployeesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmployeeId { get; set; }
-        public double StraightTimeRate { get; set; }
-        public double OverTimeFactor { get; set; }
-        public double OverTimeRate { get; set; }
-        public double DoubleTimeFactor { get; set; }
-        public double DoubleTimeRate { get; set; }
+        public double? StraightTimeRate { get; set; }
+        public double? OverTimeFactor { get; set; }
+        public double? OverTimeRate { get; set; }
+        public double? DoubleTimeFactor { get; set; }
+        public double? DoubleTimeRate { get; set; }
         public string SourceSystemName { get; set; }
-        public bool UseBaseWageFactors { get; set; }
+        public bool? UseBaseWageFactors { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
         public string SourceSystemId { get; set; }
         public string UnionSourceSystemId { get; set; }
         public string UoMName { get; set; }
         public string ProjectCraftSourcesystemId { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string BillingClass { get; set; }
         public string ProjectEmployeeBillingClassSourceSystemId { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222
+    public class ProjectEquipmentBillingClassesImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectEquipmentBillingClass { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
         public string Description { get; set; }
         public string VendorSourceSystemId { get; set; }
-        public double BillingRate { get; set; }
-        public bool IsActive { get; set; }
+        public double? BillingRate { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222222
+    public class ProjectEquipmentsImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectNumber { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentNumber { get; set; }
-        public bool IsActive { get; set; }
-        public double UnitCost { get; set; }
+        public bool? IsActive { get; set; }
+        public double? UnitCost { get; set; }
         public string SourceSystemName { get; set; }
         public string SourceSystemId { get; set; }
-        public bool IsAvailableDailyPlan { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IsAvailableDailyPlan { get; set; } = true;
         public string EquipmentProjectStartDate { get; set; }
         public string EquipmentProjectEndDate { get; set; }
         public string ContractReference { get; set; }
@@ -2691,23 +2807,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ProjectEquipmentBillingClassSourceSystemId { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222222
+    public class ProjectEquipmentTypeImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EquipmentTypeId { get; set; }
-        public double UnitCost { get; set; }
-        public bool IsActive { get; set; }
+        public double? UnitCost { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222222
+    public class ProjectImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectDisplayId { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrganizationSourceSystemId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string BaseCurrency { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeZone { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectStatusName { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
@@ -2717,61 +2847,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ZipCode { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
         public string Notes { get; set; }
-        public bool IsActive { get; set; }
-        public double OriginalContractAmount { get; set; }
+        public bool? IsActive { get; set; }
+        public double? OriginalContractAmount { get; set; }
         public string ContractNumber { get; set; }
         public string DateProjectStarted { get; set; }
         public string ContractDate { get; set; }
         public string OriginalContractCompletionDate { get; set; }
-        public int OriginalDuration { get; set; }
+        public int? OriginalDuration { get; set; }
         public string ForecastStartDate { get; set; }
         public string ForecastCompletionDate { get; set; }
-        public int ForecastDuration { get; set; }
+        public int? ForecastDuration { get; set; }
         public string ForecastRevisedCompletionDate { get; set; }
-        public int ForecastExtensionsReductions { get; set; }
-        public int ForecastRevisedDuration { get; set; }
+        public int? ForecastExtensionsReductions { get; set; }
+        public int? ForecastRevisedDuration { get; set; }
         public string ContractRevisedCompletionDate { get; set; }
-        public int ContractExtensionsReductions { get; set; }
-        public int ContractRevisedDuration { get; set; }
+        public int? ContractExtensionsReductions { get; set; }
+        public int? ContractRevisedDuration { get; set; }
         public string CertificateOfSubstantialCompletionExpectedDate { get; set; }
         public string CertificateOfSubstantialCompletionAwardedDate { get; set; }
         public string CertificateOfFinalCompletionExpectedDate { get; set; }
         public string CertificateOfFinalCompletionAwardedDate { get; set; }
         public string CompanyLegalName { get; set; }
-        public bodyInputItemProjectAttributesTypeItem[] ProjectAttributes { get; set; }
+        public BodyInputItemProjectAttributesTypeItem[] ProjectAttributes { get; set; }
         public string[] Markets { get; set; }
     }
 
-    public class bodyInputItemProjectAttributesTypeItem
+    public class BodyInputItemProjectAttributesTypeItem
     {
         public string AttributeName { get; set; }
         public string AttributeSourceSystemId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttributeValue { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222222222
+    public class ProjectSettingsImportBodyInputItem
     {
         public string ProjectSourceSystemId { get; set; }
         public string ProjectSourceSystemName { get; set; }
         public string ProjectDisplayId { get; set; }
-        public bodyInputItemGlobalOptionsType GlobalOptions { get; set; }
-        public bodyInputItemProjectInformationTagsType ProjectInformationTags { get; set; }
-        public bodyInputItemCustomListsTypeItem[] CustomLists { get; set; }
-        public bodyInputItemFuelTypesTypeItem[] FuelTypes { get; set; }
+        public BodyInputItemGlobalOptionsType GlobalOptions { get; set; }
+        public BodyInputItemProjectInformationTagsType ProjectInformationTags { get; set; }
+        public BodyInputItemCustomListsTypeItem[] CustomLists { get; set; }
+        public BodyInputItemFuelTypesTypeItem[] FuelTypes { get; set; }
     }
 
-    public class bodyInputItemGlobalOptionsType
+    public class BodyInputItemGlobalOptionsType
     {
         public string CostItemIntegrationBehavior { get; set; }
-        public bool IsAdvancedWorkAndSchedulingFeaturesEnabled { get; set; }
-        public bool IsTemplateProject { get; set; }
-        public bool IsValidateEquipmentToProjectCurrency { get; set; }
+        public bool? IsAdvancedWorkAndSchedulingFeaturesEnabled { get; set; }
+        public bool? IsTemplateProject { get; set; }
+        public bool? IsValidateEquipmentToProjectCurrency { get; set; }
     }
 
-    public class bodyInputItemProjectInformationTagsType
+    public class BodyInputItemProjectInformationTagsType
     {
         public string ProjectInformationTag1 { get; set; }
         public string ProjectInformationTag2 { get; set; }
@@ -2790,50 +2922,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ProjectInformationTag15 { get; set; }
     }
 
-    public class bodyInputItemCustomListsTypeItem
+    public class BodyInputItemCustomListsTypeItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
         public string[] FieldValues { get; set; }
     }
 
-    public class bodyInputItemFuelTypesTypeItem
+    public class BodyInputItemFuelTypesTypeItem
     {
-        public bool IsEstimatingResourceMapped { get; set; }
+        public bool? IsEstimatingResourceMapped { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FuelTypeDisplay { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UOMSourceSystemId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CurrencyCode { get; set; }
-        public double UnitCost { get; set; }
+        public double? UnitCost { get; set; }
         public string AccountCodeReference { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222222222
+    public class ProjectVendorsImportBodyInputItem
     {
         public string ProjectDisplayId { get; set; }
         public string VendorCode { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string VendorSourceSystemId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectSourceSystemId { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222222222
+    public class UnionImportBodyInputItem
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UnionDisplayId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UnionDescription { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222222222222
+    public class VendorsImportBodyInputItem
     {
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string VendorCode { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string VendorDescription { get; set; }
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
         public string AlternateName { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -2850,12 +3000,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string DefaultCurrencyCode { get; set; }
         public string PreferredLanguage { get; set; }
         public string VendorTaxJurisdiction { get; set; }
-        public string Status { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Status { get; set; } = "Available";
         public string VendorTaxId { get; set; }
-        public bodyInputItemVendorAddressesTypeItem[] VendorAddresses { get; set; }
+        public BodyInputItemVendorAddressesTypeItem[] VendorAddresses { get; set; }
     }
 
-    public class bodyInputItemVendorAddressesTypeItem
+    public class BodyInputItemVendorAddressesTypeItem
     {
         public string VendorAddressType { get; set; }
         public string Address1 { get; set; }
@@ -3307,7 +3459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeTranslationInput
+    public enum IncludeTranslationInput
     {
         False,
         True
@@ -3423,14 +3575,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string FaxNumber { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222222222222
+    public class PurchaseOrderImportBodyInputItem
     {
         public string ContractReference { get; set; }
         public string CurrentValue { get; set; }
         public string CurrentValueProjectCurrency { get; set; }
         public string LogToken { get; set; }
         public string Status { get; set; }
-        public bodyInputItemLoggerTypeItem[] Logger { get; set; }
+        public BodyInputItemLoggerTypeItem[] Logger { get; set; }
         public string ContractTypeReference { get; set; }
         public string VendorReference { get; set; }
         public string PurchasingOrganizationReference { get; set; }
@@ -3472,17 +3624,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string CustomField8 { get; set; }
         public string CustomField9 { get; set; }
         public string CustomField10 { get; set; }
-        public bodyInputItemShippingAddressTypeItem[] ShippingAddress { get; set; }
-        public bodyInputItemContractDetailResponseTypeItem[] ContractDetailResponse { get; set; }
+        public BodyInputItemShippingAddressTypeItem[] ShippingAddress { get; set; }
+        public PurchaseOrderImportBodyInputItemContractDetailResponseTypeItem[] ContractDetailResponse { get; set; }
     }
 
-    public class bodyInputItemLoggerTypeItem
+    public class BodyInputItemLoggerTypeItem
     {
         public string Level { get; set; }
         public string Message { get; set; }
     }
 
-    public class bodyInputItemShippingAddressTypeItem
+    public class BodyInputItemShippingAddressTypeItem
     {
         public string StreetName { get; set; }
 
@@ -3495,7 +3647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxJurisdiction { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItem
+    public class PurchaseOrderImportBodyInputItemContractDetailResponseTypeItem
     {
         public string ContractDetailReference { get; set; }
         public string GrossAmount { get; set; }
@@ -3552,13 +3704,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string CustomField3 { get; set; }
         public string CustomField4 { get; set; }
         public string CustomField5 { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemContractDetailTaxTypeItem[] ContractDetailTax { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemMaterialCharacteristicTypeItem[] MaterialCharacteristic { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem[] ShippingAddress { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem[] ContractDetailCostItem { get; set; }
+        public BodyInputItemContractDetailResponseTypeItemContractDetailTaxTypeItem[] ContractDetailTax { get; set; }
+        public BodyInputItemContractDetailResponseTypeItemMaterialCharacteristicTypeItem[] MaterialCharacteristic { get; set; }
+        public PurchaseOrderImportBodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem[] ShippingAddress { get; set; }
+        public PurchaseOrderImportBodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem[] ContractDetailCostItem { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItemContractDetailTaxTypeItem
+    public class BodyInputItemContractDetailResponseTypeItemContractDetailTaxTypeItem
     {
         public string TaxCode { get; set; }
         public string Description { get; set; }
@@ -3570,13 +3722,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string SourceSystemId { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItemMaterialCharacteristicTypeItem
+    public class BodyInputItemContractDetailResponseTypeItemMaterialCharacteristicTypeItem
     {
         public string MaterialCharacteristicType { get; set; }
         public string MaterialCharacteristicValue { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem
+    public class PurchaseOrderImportBodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem
     {
         public string StreetName { get; set; }
 
@@ -3589,7 +3741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxJurisdiction { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem
+    public class PurchaseOrderImportBodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem
     {
         public string SplitByValue { get; set; }
         public string AccountAssignmentLineNumber { get; set; }
@@ -3598,18 +3750,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string CreatedByReference { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222222222222
+    public class PaymentRequestImportBodyInputItem
     {
         public string PayRequestReference { get; set; }
         public string CreatedDate { get; set; }
         public string PayRequestStatus { get; set; }
         public string ContractReference { get; set; }
         public string LogToken { get; set; }
-        public bodyInputItemLoggerTypeItem[] Logger { get; set; }
-        public bodyInputItemInvoiceReceiptTypeItem[] InvoiceReceipt { get; set; }
+        public BodyInputItemLoggerTypeItem[] Logger { get; set; }
+        public BodyInputItemInvoiceReceiptTypeItem[] InvoiceReceipt { get; set; }
     }
 
-    public class bodyInputItemInvoiceReceiptTypeItem
+    public class BodyInputItemInvoiceReceiptTypeItem
     {
         public string InvoiceStatus { get; set; }
         public string InvoiceStatusDescription { get; set; }
@@ -3632,11 +3784,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ProgressEstimateNumber { get; set; }
         public string BillingPeriod { get; set; }
         public string IsCancelled { get; set; }
-        public bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItem[] InvoiceReceiptItem { get; set; }
-        public bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptPaymentTypeItem[] InvoiceReceiptPayment { get; set; }
+        public BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItem[] InvoiceReceiptItem { get; set; }
+        public BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptPaymentTypeItem[] InvoiceReceiptPayment { get; set; }
     }
 
-    public class bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItem
+    public class BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItem
     {
         public string InvoiceItemNumber { get; set; }
         public string ContractDetailReference { get; set; }
@@ -3646,17 +3798,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ContractLineAmount { get; set; }
         public string ContractLineAmountWithoutTax { get; set; }
         public string ContractLineAmountTax { get; set; }
-        public bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemContractLineAmountTaxDetailTypeItem[] ContractLineAmountTaxDetail { get; set; }
+        public BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemContractLineAmountTaxDetailTypeItem[] ContractLineAmountTaxDetail { get; set; }
         public string InvoiceLineUoM { get; set; }
         public string ProjectCurrencyLineAmount { get; set; }
         public string ProjectCurrencyLineAmountWithoutTax { get; set; }
         public string ProjectCurrencyLineAmountTax { get; set; }
         public string ProjectCurrencyReference { get; set; }
-        public bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem[] ProjectCurrencyLineAmountTaxDetail { get; set; }
+        public BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem[] ProjectCurrencyLineAmountTaxDetail { get; set; }
         public string DebitCreditIndicator { get; set; }
     }
 
-    public class bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemContractLineAmountTaxDetailTypeItem
+    public class BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemContractLineAmountTaxDetailTypeItem
     {
         public string TaxType { get; set; }
         public string Description { get; set; }
@@ -3664,7 +3816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxRate { get; set; }
     }
 
-    public class bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem
+    public class BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem
     {
         public string TaxType { get; set; }
         public string Description { get; set; }
@@ -3672,7 +3824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxRate { get; set; }
     }
 
-    public class bodyInputItemInvoiceReceiptTypeItemInvoiceReceiptPaymentTypeItem
+    public class BodyInputItemInvoiceReceiptTypeItemInvoiceReceiptPaymentTypeItem
     {
         public string PaymentReference { get; set; }
         public string PaymentDate { get; set; }
@@ -3684,13 +3836,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string ProjectCurrencyReference { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222222222222222
+    public class GoodsReceiptImportBodyInputItem
     {
         public string DocumentReference { get; set; }
         public string DocumentYear { get; set; }
         public string SourceSystemId { get; set; }
         public string LogToken { get; set; }
-        public bodyInputItemLoggerTypeItem[] Logger { get; set; }
+        public BodyInputItemLoggerTypeItem[] Logger { get; set; }
         public string GoodsReceiptRequestReference { get; set; }
         public string DocumentDate { get; set; }
         public string PostingDate { get; set; }
@@ -3699,10 +3851,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Reference { get; set; }
         public string DocumentText { get; set; }
         public string BillOfLading { get; set; }
-        public bodyInputItemGoodsReceiptItemTypeItem[] GoodsReceiptItem { get; set; }
+        public BodyInputItemGoodsReceiptItemTypeItem[] GoodsReceiptItem { get; set; }
     }
 
-    public class bodyInputItemGoodsReceiptItemTypeItem
+    public class BodyInputItemGoodsReceiptItemTypeItem
     {
         public string GoodsReceiptStatus { get; set; }
         public string ContractTypeReference { get; set; }
@@ -3719,12 +3871,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string AmountInContractCurrency { get; set; }
         public string AmountWithoutTaxInContractCurrency { get; set; }
         public string TaxAmountInContractCurrency { get; set; }
-        public bodyInputItemGoodsReceiptItemTypeItemContractLineAmountTaxDetailTypeItem[] ContractLineAmountTaxDetail { get; set; }
+        public BodyInputItemGoodsReceiptItemTypeItemContractLineAmountTaxDetailTypeItem[] ContractLineAmountTaxDetail { get; set; }
         public string ProjectCurrency { get; set; }
         public string AmountInProjectCurrency { get; set; }
         public string AmountWithoutTaxInProjectCurrency { get; set; }
         public string TaxAmountInProjectCurrency { get; set; }
-        public bodyInputItemGoodsReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem[] ProjectCurrencyLineAmountTaxDetail { get; set; }
+        public BodyInputItemGoodsReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem[] ProjectCurrencyLineAmountTaxDetail { get; set; }
         public string ReceivedQuantity { get; set; }
         public string ReceivedUOM { get; set; }
         public string ReceivedQuantityInBaseUOM { get; set; }
@@ -3748,7 +3900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string OverDeliveryToleranceIndicator { get; set; }
     }
 
-    public class bodyInputItemGoodsReceiptItemTypeItemContractLineAmountTaxDetailTypeItem
+    public class BodyInputItemGoodsReceiptItemTypeItemContractLineAmountTaxDetailTypeItem
     {
         public string TaxType { get; set; }
         public string Description { get; set; }
@@ -3756,7 +3908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxRate { get; set; }
     }
 
-    public class bodyInputItemGoodsReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem
+    public class BodyInputItemGoodsReceiptItemTypeItemProjectCurrencyLineAmountTaxDetailTypeItem
     {
         public string TaxType { get; set; }
         public string Description { get; set; }
@@ -3764,14 +3916,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxRate { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222222222222222
+    public class ContractTaxImportBodyInputItem
     {
         public string ContractReference { get; set; }
         public string CurrentValue { get; set; }
         public string CurrentValueProjectCurrency { get; set; }
         public string LogToken { get; set; }
         public string Status { get; set; }
-        public bodyInputItemLoggerTypeItem[] Logger { get; set; }
+        public BodyInputItemLoggerTypeItem[] Logger { get; set; }
         public string ContractTypeReference { get; set; }
         public string VendorReference { get; set; }
         public string PurchasingOrganizationReference { get; set; }
@@ -3787,10 +3939,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string PurchaseOrderValue { get; set; }
         public string CreatedByReference { get; set; }
         public string CreatedDate { get; set; }
-        public bodyInputItemContractDetailResponseTypeItem2[] ContractDetailResponse { get; set; }
+        public ContractTaxImportBodyInputItemContractDetailResponseTypeItem[] ContractDetailResponse { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItem2
+    public class ContractTaxImportBodyInputItemContractDetailResponseTypeItem
     {
         public string ContractDetailReference { get; set; }
         public string GrossAmount { get; set; }
@@ -3830,13 +3982,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string WBSCategoryReference { get; set; }
         public string NoFurtherInvoiceIndicator { get; set; }
         public string GoodsReceiptStatus { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemContractDetailTaxTypeItem[] ContractDetailTax { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemMaterialCharacteristicTypeItem[] MaterialCharacteristic { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem2[] ShippingAddress { get; set; }
-        public bodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem2[] ContractDetailCostItem { get; set; }
+        public BodyInputItemContractDetailResponseTypeItemContractDetailTaxTypeItem[] ContractDetailTax { get; set; }
+        public BodyInputItemContractDetailResponseTypeItemMaterialCharacteristicTypeItem[] MaterialCharacteristic { get; set; }
+        public ContractTaxImportBodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem[] ShippingAddress { get; set; }
+        public ContractTaxImportBodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem[] ContractDetailCostItem { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem2
+    public class ContractTaxImportBodyInputItemContractDetailResponseTypeItemShippingAddressTypeItem
     {
         public string StreetName { get; set; }
         public string CityName { get; set; }
@@ -3846,7 +3998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string TaxJurisdiction { get; set; }
     }
 
-    public class bodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem2
+    public class ContractTaxImportBodyInputItemContractDetailResponseTypeItemContractDetailCostItemTypeItem
     {
         public string SplitByValue { get; set; }
         public string AccountAssignmentLineNumber { get; set; }
@@ -3858,7 +4010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string CreatedByReference { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222222222222222
+    public class StorageLocationsImportBodyInputItem
     {
         public string PlantReference { get; set; }
         public string StorageLocationReference { get; set; }
@@ -3866,7 +4018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string SourceSystemId { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222222222222222222
+    public class ProjectShippingAddressImportBodyInputItem
     {
         public string SourceSystemId { get; set; }
         public string ProjectSourceSystemId { get; set; }
@@ -3880,7 +4032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string IsActive { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222222222222222222
+    public class LegalEntitiesImportBodyInputItem
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -3889,7 +4041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Language { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222222222222222222
+    public class ProjectLegalEntityImportBodyInputItem
     {
         public string SourceSystemId { get; set; }
         public string ProjectSourceSystemId { get; set; }
@@ -3900,7 +4052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string IsActive { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222222222222222222222
+    public class ProjectStorageLocationImportBodyInputItem
     {
         public string SourceSystemId { get; set; }
         public string ProjectSourceSystemId { get; set; }
@@ -3910,7 +4062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string IsActive { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222222222222222222222
+    public class PlantsImportBodyInputItem
     {
         public string PlantReference { get; set; }
         public string Description { get; set; }
@@ -3918,35 +4070,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string IsActive { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222222222222222222222
+    public class ContractEquipmentImportBodyInputItem
     {
         public string ProjectReference { get; set; }
         public string ContractReference { get; set; }
         public string LogToken { get; set; }
         public string Status { get; set; }
-        public bodyInputItemLoggerTypeItem[] Logger { get; set; }
-        public bodyInputItemContractEquipmentDetailTypeItem[] ContractEquipmentDetail { get; set; }
+        public BodyInputItemLoggerTypeItem[] Logger { get; set; }
+        public BodyInputItemContractEquipmentDetailTypeItem[] ContractEquipmentDetail { get; set; }
     }
 
-    public class bodyInputItemContractEquipmentDetailTypeItem
+    public class BodyInputItemContractEquipmentDetailTypeItem
     {
         public string ContractDetailReference { get; set; }
         public string EquipmentSourceSystemId { get; set; }
     }
 
-    public class bodyInputItem222222222222222222222222222222222222222222222222
+    public class ContractAccrualResponseImportBodyInputItem
     {
         public string AccrualRequestReference { get; set; }
         public string AccrualRequestStatus { get; set; }
         public string ContractReference { get; set; }
         public string LogToken { get; set; }
-        public bodyInputItemLoggerTypeItem[] Logger { get; set; }
+        public BodyInputItemLoggerTypeItem[] Logger { get; set; }
         public string AccrualSourceSystemId { get; set; }
         public string ContractDetailReference { get; set; }
         public string DisplayId { get; set; }
     }
 
-    public class bodyInputItem2222222222222222222222222222222222222222222222222
+    public class InvoicesImportBodyInputItem
     {
         public string ProjectReference { get; set; }
         public string ContractReference { get; set; }
@@ -3959,27 +4111,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
         public string InvoiceURL { get; set; }
-        public bodyInputItemInvoiceTaxDetailTypeItem[] InvoiceTaxDetail { get; set; }
+        public BodyInputItemInvoiceTaxDetailTypeItem[] InvoiceTaxDetail { get; set; }
     }
 
-    public class bodyInputItemInvoiceTaxDetailTypeItem
+    public class BodyInputItemInvoiceTaxDetailTypeItem
     {
         public string TaxType { get; set; }
         public string TaxAmount { get; set; }
     }
 
-    public class ImportActualsInput
+    public class BodyInput
     {
         public string ProjectDisplay { get; set; }
-        public ImportActualsInputActualsTypeItem[] Actuals { get; set; }
+        public BodyInputActualsTypeItem[] Actuals { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class ImportActualsInputActualsTypeItem
+    public class BodyInputActualsTypeItem
     {
         public string CBSPositionCode { get; set; }
-        public ImportActualsInputActualsTypeItemCostType Cost { get; set; }
+        public BodyInputActualsTypeItemCostType Cost { get; set; }
         public string EquipmentHours { get; set; }
         public string ManHours { get; set; }
         public string Notes { get; set; }
@@ -3988,29 +4140,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Quantity { get; set; }
     }
 
-    public class ImportActualsInputActualsTypeItemCostType
+    public class BodyInputActualsTypeItemCostType
     {
-        public ImportActualsInputActualsTypeItemCostTypeCostCategoriesTypeItem[] CostCategories { get; set; }
+        public BodyInputActualsTypeItemCostTypeCostCategoriesTypeItem[] CostCategories { get; set; }
     }
 
-    public class ImportActualsInputActualsTypeItemCostTypeCostCategoriesTypeItem
+    public class BodyInputActualsTypeItemCostTypeCostCategoriesTypeItem
     {
         public string Amount { get; set; }
         public string Name { get; set; }
     }
 
-    public class bodyInputItem22222222222222222222222222222222222222222222222222
+    public class MultiProjectActualsImportBodyInputItem
     {
         public string ProjectDisplay { get; set; }
-        public bodyInputItemActualsTypeItem[] Actuals { get; set; }
+        public BodyInputItemActualsTypeItem[] Actuals { get; set; }
         public string SourceSystemId { get; set; }
         public string SourceSystemName { get; set; }
     }
 
-    public class bodyInputItemActualsTypeItem
+    public class BodyInputItemActualsTypeItem
     {
         public string CBSPositionCode { get; set; }
-        public bodyInputItemActualsTypeItemCostType Cost { get; set; }
+        public BodyInputItemActualsTypeItemCostType Cost { get; set; }
         public string EquipmentHours { get; set; }
         public string ManHours { get; set; }
         public string Notes { get; set; }
@@ -4019,12 +4171,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ineight
         public string Quantity { get; set; }
     }
 
-    public class bodyInputItemActualsTypeItemCostType
+    public class BodyInputItemActualsTypeItemCostType
     {
-        public bodyInputItemActualsTypeItemCostTypeCostCategoriesTypeItem[] CostCategories { get; set; }
+        public BodyInputItemActualsTypeItemCostTypeCostCategoriesTypeItem[] CostCategories { get; set; }
     }
 
-    public class bodyInputItemActualsTypeItemCostTypeCostCategoriesTypeItem
+    public class BodyInputItemActualsTypeItemCostTypeCostCategoriesTypeItem
     {
         public string Amount { get; set; }
         public string Name { get; set; }

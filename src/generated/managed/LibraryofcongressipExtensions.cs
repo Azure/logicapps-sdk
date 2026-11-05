@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<FormatResponse, ApiConnectionActionConfiguration> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<FormatResponse, ApiConnectionActionConfiguration> Format(Expression<Func<FormatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
@@ -2692,7 +2692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "manuscripts")]
         Manuscripts,

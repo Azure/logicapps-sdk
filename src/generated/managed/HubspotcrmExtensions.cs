@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CompaniesCreate(Expression<Func<CompaniesCreateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CompaniesCreate(Expression<Func<CompaniesCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CompaniesUpdate(Expression<Func<string>> companyId, Expression<Func<CompaniesUpdateInput>> properties)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CompaniesUpdate(Expression<Func<string>> companyId, Expression<Func<CompaniesUpdatePropertiesInput>> properties)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: true);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ContactsCreate(Expression<Func<ContactsCreateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ContactsCreate(Expression<Func<ContactsCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ContactsUpdate(Expression<Func<string>> contactId, Expression<Func<ContactsUpdateInput>> properties)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ContactsUpdate(Expression<Func<string>> contactId, Expression<Func<ContactsUpdatePropertiesInput>> properties)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: true);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DealsCreate(Expression<Func<DealsCreateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DealsCreate(Expression<Func<DealsCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DealsUpdate(Expression<Func<string>> dealId, Expression<Func<DealsUpdateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DealsUpdate(Expression<Func<string>> dealId, Expression<Func<DealsCreateBodyInput>> body)
         {
             var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProductsCreate(Expression<Func<ProductsCreateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProductsCreate(Expression<Func<ProductsCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProductsUpdate(Expression<Func<string>> productId, Expression<Func<ProductsUpdateInput>> properties = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProductsUpdate(Expression<Func<string>> productId, Expression<Func<ProductsUpdatePropertiesInput>> properties = null)
         {
             var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LineItemsCreate(Expression<Func<LineItemsCreateInput>> properties)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LineItemsCreate(Expression<Func<LineItemsCreatePropertiesInput>> properties)
         {
             var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> LineItemsUpdate(Expression<Func<string>> lineItemId, Expression<Func<LineItemsUpdateInput>> body, Expression<Func<string>> idProperty = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> LineItemsUpdate(Expression<Func<string>> lineItemId, Expression<Func<LineItemsUpdateBodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TicketsCreate(Expression<Func<TicketsCreateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TicketsCreate(Expression<Func<TicketsCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TicketsUpdate(Expression<Func<string>> ticketId, Expression<Func<TicketsUpdateInput>> body, Expression<Func<string>> idProperty = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TicketsUpdate(Expression<Func<string>> ticketId, Expression<Func<TicketsCreateBodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -534,13 +534,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
     {
     }
 
-    public class CompaniesCreateInput
+    public class CompaniesCreateBodyInput
     {
         [JsonProperty("properties")]
-        public CompaniesCreateInputPropertiesType Properties { get; set; }
+        public CompaniesCreateBodyInputPropertiesType Properties { get; set; }
     }
 
-    public class CompaniesCreateInputPropertiesType
+    public class CompaniesCreateBodyInputPropertiesType
     {
         [JsonProperty("about_us")]
         public string AboutUs { get; set; }
@@ -798,13 +798,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Zip { get; set; }
     }
 
-    public class CompaniesUpdateInput
+    public class CompaniesUpdatePropertiesInput
     {
         [JsonProperty("properties")]
-        public CompaniesUpdateInputPropertiesType Properties { get; set; }
+        public CompaniesUpdatePropertiesInputPropertiesType Properties { get; set; }
     }
 
-    public class CompaniesUpdateInputPropertiesType
+    public class CompaniesUpdatePropertiesInputPropertiesType
     {
         [JsonProperty("about_us")]
         public string AboutUs { get; set; }
@@ -1062,13 +1062,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Zip { get; set; }
     }
 
-    public class ContactsCreateInput
+    public class ContactsCreateBodyInput
     {
         [JsonProperty("properties")]
-        public ContactsCreateInputPropertiesType Properties { get; set; }
+        public ContactsCreateBodyInputPropertiesType Properties { get; set; }
     }
 
-    public class ContactsCreateInputPropertiesType
+    public class ContactsCreateBodyInputPropertiesType
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -1548,13 +1548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Zip { get; set; }
     }
 
-    public class ContactsUpdateInput
+    public class ContactsUpdatePropertiesInput
     {
         [JsonProperty("properties")]
-        public ContactsUpdateInputPropertiesType Properties { get; set; }
+        public ContactsUpdatePropertiesInputPropertiesType Properties { get; set; }
     }
 
-    public class ContactsUpdateInputPropertiesType
+    public class ContactsUpdatePropertiesInputPropertiesType
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -2034,13 +2034,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Zip { get; set; }
     }
 
-    public class DealsCreateInput
+    public class DealsCreateBodyInput
     {
         [JsonProperty("properties")]
-        public DealsCreateInputPropertiesType Properties { get; set; }
+        public DealsCreateBodyInputPropertiesType Properties { get; set; }
     }
 
-    public class DealsCreateInputPropertiesType
+    public class DealsCreateBodyInputPropertiesType
     {
         [JsonProperty("amount")]
         public string Amount { get; set; }
@@ -2157,136 +2157,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Pipeline { get; set; }
     }
 
-    public class DealsUpdateInput
+    public class ProductsCreateBodyInput
     {
         [JsonProperty("properties")]
-        public DealsUpdateInputPropertiesType Properties { get; set; }
+        public ProductsCreateBodyInputPropertiesType Properties { get; set; }
     }
 
-    public class DealsUpdateInputPropertiesType
-    {
-        [JsonProperty("amount")]
-        public string Amount { get; set; }
-
-        [JsonProperty("amount_in_home_currency")]
-        public string AmountInHomeCurrency { get; set; }
-
-        [JsonProperty("closed_lost_reason")]
-        public string ClosedLostReason { get; set; }
-
-        [JsonProperty("closed_won_reason")]
-        public string ClosedWonReason { get; set; }
-
-        [JsonProperty("closedate")]
-        public string Closedate { get; set; }
-
-        [JsonProperty("createdate")]
-        public string Createdate { get; set; }
-
-        [JsonProperty("dealname")]
-        public string Dealname { get; set; }
-
-        [JsonProperty("dealstage")]
-        public string Dealstage { get; set; }
-
-        [JsonProperty("dealtype")]
-        public string Dealtype { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("engagements_last_meeting_booked")]
-        public string EngagementsLastMeetingBooked { get; set; }
-
-        [JsonProperty("engagements_last_meeting_booked_campaign")]
-        public string EngagementsLastMeetingBookedCampaign { get; set; }
-
-        [JsonProperty("engagements_last_meeting_booked_medium")]
-        public string EngagementsLastMeetingBookedMedium { get; set; }
-
-        [JsonProperty("engagements_last_meeting_booked_source")]
-        public string EngagementsLastMeetingBookedSource { get; set; }
-
-        [JsonProperty("hs_acv")]
-        public string HsAcv { get; set; }
-
-        [JsonProperty("hs_analytics_source")]
-        public string HsAnalyticsSource { get; set; }
-
-        [JsonProperty("hs_analytics_source_data_1")]
-        public string HsAnalyticsSourceData1 { get; set; }
-
-        [JsonProperty("hs_analytics_source_data_2")]
-        public string HsAnalyticsSourceData2 { get; set; }
-
-        [JsonProperty("hs_arr")]
-        public string HsArr { get; set; }
-
-        [JsonProperty("hs_forecast_amount")]
-        public string HsForecastAmount { get; set; }
-
-        [JsonProperty("hs_forecast_probability")]
-        public string HsForecastProbability { get; set; }
-
-        [JsonProperty("hs_lastmodifieddate")]
-        public string HsLastmodifieddate { get; set; }
-
-        [JsonProperty("hs_manual_forecast_category")]
-        public string HsManualForecastCategory { get; set; }
-
-        [JsonProperty("hs_mrr")]
-        public string HsMrr { get; set; }
-
-        [JsonProperty("hs_next_step")]
-        public string HsNextStep { get; set; }
-
-        [JsonProperty("hs_object_id")]
-        public string HsObjectId { get; set; }
-
-        [JsonProperty("hs_priority")]
-        public string HsPriority { get; set; }
-
-        [JsonProperty("hs_tcv")]
-        public string HsTcv { get; set; }
-
-        [JsonProperty("hubspot_owner_assigneddate")]
-        public string HubspotOwnerAssigneddate { get; set; }
-
-        [JsonProperty("hubspot_owner_id")]
-        public string HubspotOwnerId { get; set; }
-
-        [JsonProperty("hubspot_team_id")]
-        public string HubspotTeamId { get; set; }
-
-        [JsonProperty("notes_last_contacted")]
-        public string NotesLastContacted { get; set; }
-
-        [JsonProperty("notes_last_updated")]
-        public string NotesLastUpdated { get; set; }
-
-        [JsonProperty("notes_next_activity_date")]
-        public string NotesNextActivityDate { get; set; }
-
-        [JsonProperty("num_associated_contacts")]
-        public string NumAssociatedContacts { get; set; }
-
-        [JsonProperty("num_contacted_notes")]
-        public string NumContactedNotes { get; set; }
-
-        [JsonProperty("num_notes")]
-        public string NumNotes { get; set; }
-
-        [JsonProperty("pipeline")]
-        public string Pipeline { get; set; }
-    }
-
-    public class ProductsCreateInput
-    {
-        [JsonProperty("properties")]
-        public ProductsCreateInputPropertiesType Properties { get; set; }
-    }
-
-    public class ProductsCreateInputPropertiesType
+    public class ProductsCreateBodyInputPropertiesType
     {
         [JsonProperty("createdate")]
         public string Createdate { get; set; }
@@ -2337,13 +2214,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Tax { get; set; }
     }
 
-    public class ProductsUpdateInput
+    public class ProductsUpdatePropertiesInput
     {
         [JsonProperty("properties")]
-        public ProductsUpdateInputPropertiesType Properties { get; set; }
+        public ProductsUpdatePropertiesInputPropertiesType Properties { get; set; }
     }
 
-    public class ProductsUpdateInputPropertiesType
+    public class ProductsUpdatePropertiesInputPropertiesType
     {
         [JsonProperty("createdate")]
         public string Createdate { get; set; }
@@ -2394,13 +2271,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Tax { get; set; }
     }
 
-    public class LineItemsCreateInput
+    public class LineItemsCreatePropertiesInput
     {
         [JsonProperty("properties")]
-        public LineItemsCreateInputPropertiesType Properties { get; set; }
+        public LineItemsCreatePropertiesInputPropertiesType Properties { get; set; }
     }
 
-    public class LineItemsCreateInputPropertiesType
+    public class LineItemsCreatePropertiesInputPropertiesType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2421,13 +2298,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Price { get; set; }
     }
 
-    public class LineItemsUpdateInput
+    public class LineItemsUpdateBodyInput
     {
         [JsonProperty("properties")]
-        public LineItemsUpdateInputPropertiesType Properties { get; set; }
+        public LineItemsUpdateBodyInputPropertiesType Properties { get; set; }
     }
 
-    public class LineItemsUpdateInputPropertiesType
+    public class LineItemsUpdateBodyInputPropertiesType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2448,109 +2325,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrm
         public string Price { get; set; }
     }
 
-    public class TicketsCreateInput
+    public class TicketsCreateBodyInput
     {
         [JsonProperty("properties")]
-        public TicketsCreateInputPropertiesType Properties { get; set; }
+        public TicketsCreateBodyInputPropertiesType Properties { get; set; }
     }
 
-    public class TicketsCreateInputPropertiesType
-    {
-        [JsonProperty("closed_date")]
-        public string ClosedDate { get; set; }
-
-        [JsonProperty("createdate")]
-        public string Createdate { get; set; }
-
-        [JsonProperty("first_agent_reply_date")]
-        public string FirstAgentReplyDate { get; set; }
-
-        [JsonProperty("hs_feedback_last_ces_follow_up")]
-        public string HsFeedbackLastCesFollowUp { get; set; }
-
-        [JsonProperty("hs_feedback_last_ces_rating")]
-        public string HsFeedbackLastCesRating { get; set; }
-
-        [JsonProperty("hs_feedback_last_survey_date")]
-        public string HsFeedbackLastSurveyDate { get; set; }
-
-        [JsonProperty("hs_lastactivitydate")]
-        public string HsLastactivitydate { get; set; }
-
-        [JsonProperty("hs_lastcontacted")]
-        public string HsLastcontacted { get; set; }
-
-        [JsonProperty("hs_lastmodifieddate")]
-        public string HsLastmodifieddate { get; set; }
-
-        [JsonProperty("hs_nextactivitydate")]
-        public string HsNextactivitydate { get; set; }
-
-        [JsonProperty("hs_num_times_contacted")]
-        public string HsNumTimesContacted { get; set; }
-
-        [JsonProperty("hubspot_owner_assigneddate")]
-        public string HubspotOwnerAssigneddate { get; set; }
-
-        [JsonProperty("last_reply_date")]
-        public string LastReplyDate { get; set; }
-
-        [JsonProperty("num_notes")]
-        public string NumNotes { get; set; }
-
-        [JsonProperty("time_to_close")]
-        public string TimeToClose { get; set; }
-
-        [JsonProperty("time_to_first_agent_reply")]
-        public string TimeToFirstAgentReply { get; set; }
-
-        [JsonProperty("content")]
-        public string Content { get; set; }
-
-        [JsonProperty("hs_file_upload")]
-        public string HsFileUpload { get; set; }
-
-        [JsonProperty("hs_num_associated_companies")]
-        public string HsNumAssociatedCompanies { get; set; }
-
-        [JsonProperty("hs_pipeline")]
-        public string HsPipeline { get; set; }
-
-        [JsonProperty("hs_pipeline_stage")]
-        public string HsPipelineStage { get; set; }
-
-        [JsonProperty("hs_resolution")]
-        public string HsResolution { get; set; }
-
-        [JsonProperty("hs_ticket_category")]
-        public string HsTicketCategory { get; set; }
-
-        [JsonProperty("hs_ticket_id")]
-        public string HsTicketId { get; set; }
-
-        [JsonProperty("hs_ticket_priority")]
-        public string HsTicketPriority { get; set; }
-
-        [JsonProperty("hubspot_owner_id")]
-        public string HubspotOwnerId { get; set; }
-
-        [JsonProperty("hubspot_team_id")]
-        public string HubspotTeamId { get; set; }
-
-        [JsonProperty("source_type")]
-        public string SourceType { get; set; }
-
-        [JsonProperty("subject")]
-        public string Subject { get; set; }
-    }
-
-    public class TicketsUpdateInput
-    {
-        [JsonProperty("properties")]
-        public TicketsUpdateInputPropertiesType Properties { get; set; }
-    }
-
-    public class TicketsUpdateInputPropertiesType
+    public class TicketsCreateBodyInputPropertiesType
     {
         [JsonProperty("closed_date")]
         public string ClosedDate { get; set; }

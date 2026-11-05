@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<SubmitLibraryItemToWorkflowInput>> comment = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CommentInput>> comment = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<GenerateAsyncInput>> genInputReq = null)
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp, ApiConnectionActionConfiguration> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<GenInputReqInput>> genInputReq = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse, ApiConnectionActionConfiguration> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<PublishLibraryItemsInput>> publishRequest = null)
+        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse, ApiConnectionActionConfiguration> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<PublishRequestInput>> publishRequest = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_publishRequest = WorkflowExpression.Compile(publishRequest, nameof(publishRequest), required: false);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceFolder(Expression<Func<CreateWorkspaceFolderInput>> folder = null)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceFolder(Expression<Func<CreateWorkspaceFolderFolderInput>> folder = null)
         {
             var __workflow_folder = WorkflowExpression.Compile(folder, nameof(folder), required: false);
             return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration>(() =>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceContextualFolder(Expression<Func<CreateWorkspaceContextualFolderInput>> folder = null)
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration> CreateWorkspaceContextualFolder(Expression<Func<CreateWorkspaceContextualFolderFolderInput>> folder = null)
         {
             var __workflow_folder = WorkflowExpression.Compile(folder, nameof(folder), required: false);
             return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp, ApiConnectionActionConfiguration>(() =>
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         Livecomponent
     }
 
-    public class SubmitLibraryItemToWorkflowInput
+    public class CommentInput
     {
         [JsonProperty("comments")]
         public string Comments { get; set; }
@@ -549,13 +549,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string GeneratedLivedocId { get; set; }
     }
 
-    public class GenerateAsyncInput
+    public class GenInputReqInput
     {
         [JsonProperty("adHocInputs")]
         public V2AdHocInputs[] AdHocInputs { get; set; }
 
         [JsonProperty("outputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItem[] Outputs { get; set; }
+        public GenInputReqInputOutputsTypeItem[] Outputs { get; set; }
     }
 
     public class V2AdHocInputs
@@ -567,34 +567,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Value { get; set; }
     }
 
-    public class GenerateAsyncInputOutputsTypeItem
+    public class GenInputReqInputOutputsTypeItem
     {
         [JsonProperty("docxOptions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; } = new GenerateAsyncInputOutputsTypeItemDocxOptionsType();
+        public GenInputReqInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; } = new GenInputReqInputOutputsTypeItemDocxOptionsType();
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemFormatType Format { get; set; }
+        public GenInputReqInputOutputsTypeItemFormatType Format { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("pdfOptions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; } = new GenerateAsyncInputOutputsTypeItemPdfOptionsType();
+        public GenInputReqInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; } = new GenInputReqInputOutputsTypeItemPdfOptionsType();
 
         [JsonProperty("pptxOptions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; } = new GenerateAsyncInputOutputsTypeItemPptxOptionsType();
+        public GenInputReqInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; } = new GenInputReqInputOutputsTypeItemPptxOptionsType();
 
         [JsonProperty("xlsxOptions")]
-        public GenerateAsyncInputOutputsTypeItemXlsxOptionsType XlsxOptions { get; set; }
+        public GenInputReqInputOutputsTypeItemXlsxOptionsType XlsxOptions { get; set; }
     }
 
-    public class GenerateAsyncInputOutputsTypeItemDocxOptionsType
+    public class GenInputReqInputOutputsTypeItemDocxOptionsType
     {
         [JsonProperty("imageDpi", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemDocxOptionsTypeImageDpiType? ImageDpi { get; set; } = GenerateAsyncInputOutputsTypeItemDocxOptionsTypeImageDpiType._200;
+        public GenInputReqInputOutputsTypeItemDocxOptionsTypeImageDpiType? ImageDpi { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seismic.GenInputReqInputOutputsTypeItemDocxOptionsTypeImageDpiType._200;
     }
 
-    public enum GenerateAsyncInputOutputsTypeItemDocxOptionsTypeImageDpiType
+    public enum GenInputReqInputOutputsTypeItemDocxOptionsTypeImageDpiType
     {
         _0 = 0,
         _96 = 96,
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateAsyncInputOutputsTypeItemFormatType
+    public enum GenInputReqInputOutputsTypeItemFormatType
     {
         PPTX,
         DOCX,
@@ -614,13 +614,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         XLSX
     }
 
-    public class GenerateAsyncInputOutputsTypeItemPdfOptionsType
+    public class GenInputReqInputOutputsTypeItemPdfOptionsType
     {
         [JsonProperty("compatibility", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemPdfOptionsTypeCompatibilityType? Compatibility { get; set; } = GenerateAsyncInputOutputsTypeItemPdfOptionsTypeCompatibilityType.Acrobat90;
+        public GenInputReqInputOutputsTypeItemPdfOptionsTypeCompatibilityType? Compatibility { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seismic.GenInputReqInputOutputsTypeItemPdfOptionsTypeCompatibilityType.Acrobat90;
 
         [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemPdfOptionsTypeLayoutType? Layout { get; set; } = GenerateAsyncInputOutputsTypeItemPdfOptionsTypeLayoutType.FullPageSlides;
+        public GenInputReqInputOutputsTypeItemPdfOptionsTypeLayoutType? Layout { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seismic.GenInputReqInputOutputsTypeItemPdfOptionsTypeLayoutType.FullPageSlides;
 
         [JsonProperty("openPassword")]
         public string OpenPassword { get; set; }
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateAsyncInputOutputsTypeItemPdfOptionsTypeCompatibilityType
+    public enum GenInputReqInputOutputsTypeItemPdfOptionsTypeCompatibilityType
     {
         [EnumMember(Value = "Acrobat 5.0")]
         Acrobat50,
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateAsyncInputOutputsTypeItemPdfOptionsTypeLayoutType
+    public enum GenInputReqInputOutputsTypeItemPdfOptionsTypeLayoutType
     {
         [EnumMember(Value = "Full Page Slides")]
         FullPageSlides,
@@ -652,16 +652,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         NotePages
     }
 
-    public class GenerateAsyncInputOutputsTypeItemPptxOptionsType
+    public class GenInputReqInputOutputsTypeItemPptxOptionsType
     {
         [JsonProperty("clearNotes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ClearNotes { get; set; } = false;
 
         [JsonProperty("imageDpi", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateAsyncInputOutputsTypeItemPptxOptionsTypeImageDpiType? ImageDpi { get; set; } = GenerateAsyncInputOutputsTypeItemPptxOptionsTypeImageDpiType._200;
+        public GenInputReqInputOutputsTypeItemPptxOptionsTypeImageDpiType? ImageDpi { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seismic.GenInputReqInputOutputsTypeItemPptxOptionsTypeImageDpiType._200;
     }
 
-    public enum GenerateAsyncInputOutputsTypeItemPptxOptionsTypeImageDpiType
+    public enum GenInputReqInputOutputsTypeItemPptxOptionsTypeImageDpiType
     {
         _0 = 0,
         _96 = 96,
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         _400 = 400
     }
 
-    public class GenerateAsyncInputOutputsTypeItemXlsxOptionsType
+    public class GenInputReqInputOutputsTypeItemXlsxOptionsType
     {
         [JsonProperty("datasource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Datasource { get; set; }
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Message { get; set; }
     }
 
-    public class PublishLibraryItemsInput
+    public class PublishRequestInput
     {
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         File
     }
 
-    public class CreateWorkspaceFolderInput
+    public class CreateWorkspaceFolderFolderInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string ParentFolderId { get; set; }
     }
 
-    public class CreateWorkspaceContextualFolderInput
+    public class CreateWorkspaceContextualFolderFolderInput
     {
         [JsonProperty("contextId")]
         public string ContextId { get; set; }

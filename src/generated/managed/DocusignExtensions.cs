@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocgenFormFields(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentGuid, Expression<Func<bodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocgenFormFields(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentGuid, Expression<Func<UpdateDocgenFormFieldsBodyInputItem[]>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnvelopePrefillTabs(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<bodyInputItem2[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnvelopePrefillTabs(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<UpdateEnvelopePrefillTabsBodyInputItem[]>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<CompositeTemplatesResponse, ApiConnectionActionConfiguration> CompositeTemplates(Expression<Func<string>> accountId, Expression<Func<string>> emailSubject, Expression<Func<statusInput>> status, Expression<Func<string>> emailBody = null, Expression<Func<mergeRolesOnDraftInput>> mergeRolesOnDraft = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<CompositeTemplatesResponse, ApiConnectionActionConfiguration> CompositeTemplates(Expression<Func<string>> accountId, Expression<Func<string>> emailSubject, Expression<Func<StatusInput>> status, Expression<Func<string>> emailBody = null, Expression<Func<MergeRolesOnDraftInput>> mergeRolesOnDraft = null, Expression<Func<object>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_emailSubject = WorkflowExpression.Compile(emailSubject, nameof(emailSubject), required: true);
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<FilteredEnvelopeListResponse, ApiConnectionActionConfiguration> SearchListEnvelopes(Expression<Func<string>> accountId, Expression<Func<string>> recipientName = null, Expression<Func<string>> recipientEmailId = null, Expression<Func<string>> envelopeTitle = null, Expression<Func<string>> customFieldName = null, Expression<Func<string>> customFieldValue = null, Expression<Func<string>> searchText = null, Expression<Func<envelopeStatusInput>> envelopeStatus = null, Expression<Func<folderIdsInput>> folderIds = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> fromDate = null, Expression<Func<string>> toDate = null)
+        public IBodyWorkflowAction<FilteredEnvelopeListResponse, ApiConnectionActionConfiguration> SearchListEnvelopes(Expression<Func<string>> accountId, Expression<Func<string>> recipientName = null, Expression<Func<string>> recipientEmailId = null, Expression<Func<string>> envelopeTitle = null, Expression<Func<string>> customFieldName = null, Expression<Func<string>> customFieldValue = null, Expression<Func<string>> searchText = null, Expression<Func<EnvelopeStatusInput>> envelopeStatus = null, Expression<Func<FolderIdsInput>> folderIds = null, Expression<Func<OrderByInput>> orderBy = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> fromDate = null, Expression<Func<string>> toDate = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_recipientName = WorkflowExpression.Compile(recipientName, nameof(recipientName), required: false);
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateEnvelopeFromTemplateNoRecipients(Expression<Func<string>> accountId, Expression<Func<string>> templateId, Expression<Func<statusInput>> status)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateEnvelopeFromTemplateNoRecipients(Expression<Func<string>> accountId, Expression<Func<string>> templateId, Expression<Func<StatusInput>> status)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> SendEnvelope(Expression<Func<string>> accountId, Expression<Func<statusInput>> status, Expression<Func<string>> templateId, Expression<Func<object>> signers = null, Expression<Func<string>> emailSubject = null, Expression<Func<string>> emailBody = null)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> SendEnvelope(Expression<Func<string>> accountId, Expression<Func<StatusInput>> status, Expression<Func<string>> templateId, Expression<Func<object>> signers = null, Expression<Func<string>> emailSubject = null, Expression<Func<string>> emailBody = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> SendEnvelopeWithRecipientFields(Expression<Func<string>> accountId, Expression<Func<string>> templateId, Expression<Func<object>> recipients = null, Expression<Func<mergeRolesOnDraftInput>> mergeRolesOnDraft = null, Expression<Func<string>> emailSubject = null)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> SendEnvelopeWithRecipientFields(Expression<Func<string>> accountId, Expression<Func<string>> templateId, Expression<Func<object>> recipients = null, Expression<Func<MergeRolesOnDraftInput>> mergeRolesOnDraft = null, Expression<Func<string>> emailSubject = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<EmbeddedSenderResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSenderURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<openInInput>> openIn, Expression<Func<returnUrlInput>> returnUrl, Expression<Func<object>> additionalURL = null)
+        public IBodyWorkflowAction<EmbeddedSenderResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSenderURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<OpenInInput>> openIn, Expression<Func<GenerateEmbeddedSenderURLReturnUrlInput>> returnUrl, Expression<Func<object>> additionalURL = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddVerificationToRecipient(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> recipientType, Expression<Func<verificationTypeInput>> verificationType, Expression<Func<object>> additionalRecipientData = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddVerificationToRecipient(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> recipientType, Expression<Func<VerificationTypeInput>> verificationType, Expression<Func<object>> additionalRecipientData = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<Signer, ApiConnectionActionConfiguration> UpdateEnvelopeRecipient(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> recipientType, Expression<Func<string>> signatureType = null, Expression<Func<string>> clientUserId = null, Expression<Func<string>> embeddedRecipientStartURL = null, Expression<Func<string>> routingOrder = null, Expression<Func<emailNotificationLanguageInput>> emailNotificationLanguage = null, Expression<Func<string>> emailNotificationSubject = null, Expression<Func<string>> emailNotificationBody = null, Expression<Func<string>> note = null, Expression<Func<string>> roleName = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phoneNumber = null, Expression<Func<string>> signingGroupId = null, Expression<Func<object>> additionalRecipientParams = null)
+        public IBodyWorkflowAction<Signer, ApiConnectionActionConfiguration> UpdateEnvelopeRecipient(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> recipientType, Expression<Func<string>> signatureType = null, Expression<Func<string>> clientUserId = null, Expression<Func<string>> embeddedRecipientStartURL = null, Expression<Func<string>> routingOrder = null, Expression<Func<EmailNotificationLanguageInput>> emailNotificationLanguage = null, Expression<Func<string>> emailNotificationSubject = null, Expression<Func<string>> emailNotificationBody = null, Expression<Func<string>> note = null, Expression<Func<string>> roleName = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phoneNumber = null, Expression<Func<string>> signingGroupId = null, Expression<Func<object>> additionalRecipientParams = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ApplyTemplatesToDocuments(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> templateId, Expression<Func<ApplyTemplatesToDocumentsInput>> body, Expression<Func<preserveTemplateRecipientInput>> preserveTemplateRecipient = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ApplyTemplatesToDocuments(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> templateId, Expression<Func<ApplyTemplatesToDocumentsBodyInput>> body, Expression<Func<PreserveTemplateRecipientInput>> preserveTemplateRecipient = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<BulkSendListGuidInfo, ApiConnectionActionConfiguration> CreateBulkSendList(Expression<Func<string>> accountId, Expression<Func<string>> name, Expression<Func<CreateBulkSendListInput>> csv)
+        public IBodyWorkflowAction<BulkSendListGuidInfo, ApiConnectionActionConfiguration> CreateBulkSendList(Expression<Func<string>> accountId, Expression<Func<string>> name, Expression<Func<CsvInput>> csv)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<AddDocumentsResponse, ApiConnectionActionConfiguration> AddDocumentsToEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<AddDocumentsToEnvelopeInput>> body = null)
+        public IBodyWorkflowAction<AddDocumentsResponse, ApiConnectionActionConfiguration> AddDocumentsToEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<AddDocumentsToEnvelopeBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecipientTabsValues(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<bodyInputItem22[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecipientTabsValues(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<UpdateRecipientTabsValuesBodyInputItem[]>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<Signer, ApiConnectionActionConfiguration> AddRecipientToEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientType, Expression<Func<string>> clientUserId = null, Expression<Func<string>> recipientId = null, Expression<Func<string>> embeddedRecipientStartURL = null, Expression<Func<string>> routingOrder = null, Expression<Func<emailNotificationLanguageInput>> emailNotificationLanguage = null, Expression<Func<string>> emailNotificationSubject = null, Expression<Func<string>> emailNotificationBody = null, Expression<Func<string>> note = null, Expression<Func<string>> roleName = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phoneNumber = null, Expression<Func<string>> signingGroupId = null, Expression<Func<string>> signatureType = null, Expression<Func<string>> workflowId = null, Expression<Func<object>> additionalRecipientParams = null)
+        public IBodyWorkflowAction<Signer, ApiConnectionActionConfiguration> AddRecipientToEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientType, Expression<Func<string>> clientUserId = null, Expression<Func<string>> recipientId = null, Expression<Func<string>> embeddedRecipientStartURL = null, Expression<Func<string>> routingOrder = null, Expression<Func<EmailNotificationLanguageInput>> emailNotificationLanguage = null, Expression<Func<string>> emailNotificationSubject = null, Expression<Func<string>> emailNotificationBody = null, Expression<Func<string>> note = null, Expression<Func<string>> roleName = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phoneNumber = null, Expression<Func<string>> signingGroupId = null, Expression<Func<string>> signatureType = null, Expression<Func<string>> workflowId = null, Expression<Func<object>> additionalRecipientParams = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateBlankEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> emailSubject, Expression<Func<CreateBlankEnvelopeV2Input>> body = null)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateBlankEnvelope(Expression<Func<string>> accountId, Expression<Func<string>> emailSubject, Expression<Func<CreateBlankEnvelopeBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_emailSubject = WorkflowExpression.Compile(emailSubject, nameof(emailSubject), required: true);
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<EmbeddedSigningResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSigningURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<isInPersonSignerInput>> isInPersonSigner, Expression<Func<authenticationMethodInput>> authenticationMethod, Expression<Func<returnUrlInput2>> returnUrl, Expression<Func<object>> additionalURL)
+        public IBodyWorkflowAction<EmbeddedSigningResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSigningURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<IsInPersonSignerInput>> isInPersonSigner, Expression<Func<AuthenticationMethodInput>> authenticationMethod, Expression<Func<GenerateEmbeddedSigningURLReturnUrlInput>> returnUrl, Expression<Func<object>> additionalURL)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetDocuments(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<documentIdInput>> documentId, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetDocuments(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<DocumentIdInput>> documentId, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
 
     public class DocusignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateOrgHookEnvelope(Expression<Func<string>> organizationId, Expression<Func<CreateOrgHookEnvelopeInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateOrgHookEnvelope(Expression<Func<string>> organizationId, Expression<Func<CreateHookEnvelopeBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateHookEnvelope(Expression<Func<string>> accountId, Expression<Func<CreateHookEnvelopeV4Input>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateHookEnvelope(Expression<Func<string>> accountId, Expression<Func<CreateHookEnvelopeBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -966,10 +966,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string Value { get; set; }
     }
 
-    public class bodyInputItem
+    public class UpdateDocgenFormFieldsBodyInputItem
     {
         [JsonProperty("fieldType")]
-        public bodyInputItemTypeType Type { get; set; }
+        public UpdateDocgenFormFieldsBodyInputItemTypeType? Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -988,7 +988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemTypeType
+    public enum UpdateDocgenFormFieldsBodyInputItemTypeType
     {
         [EnumMember(Value = "Text box")]
         TextBox,
@@ -1041,7 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string Selected { get; set; }
     }
 
-    public class bodyInputItem2
+    public class UpdateEnvelopePrefillTabsBodyInputItem
     {
         [JsonProperty("tabType")]
         public string Type { get; set; }
@@ -1084,14 +1084,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         Sent,
         Created
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum mergeRolesOnDraftInput
+    public enum MergeRolesOnDraftInput
     {
         False,
         True
@@ -1140,7 +1140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum envelopeStatusInput
+    public enum EnvelopeStatusInput
     {
         Any,
         Created,
@@ -1154,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum folderIdsInput
+    public enum FolderIdsInput
     {
         [EnumMember(Value = "Awaiting my signature")]
         AwaitingMySignature,
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderByInput
+    public enum OrderByInput
     {
         [EnumMember(Value = "Action required")]
         ActionRequired,
@@ -1252,14 +1252,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum openInInput
+    public enum OpenInInput
     {
         Prepare,
         Tagging
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum returnUrlInput
+    public enum GenerateEmbeddedSenderURLReturnUrlInput
     {
         [EnumMember(Value = "DocuSign homepage")]
         DocuSignHomepage,
@@ -1304,7 +1304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum verificationTypeInput
+    public enum VerificationTypeInput
     {
         None,
         [EnumMember(Value = "Access Code")]
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum emailNotificationLanguageInput
+    public enum EmailNotificationLanguageInput
     {
         [EnumMember(Value = "Arabic (ar)")]
         ArabicAr,
@@ -1410,13 +1410,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         ArmenianHy
     }
 
-    public class ApplyTemplatesToDocumentsInput
+    public class ApplyTemplatesToDocumentsBodyInput
     {
         [JsonProperty("documentTemplates")]
-        public ApplyTemplatesToDocumentsInputDocumentTemplatesTypeItem[] DocumentTemplates { get; set; }
+        public BodyInputDocumentTemplatesTypeItem[] DocumentTemplates { get; set; }
     }
 
-    public class ApplyTemplatesToDocumentsInputDocumentTemplatesTypeItem
+    public class BodyInputDocumentTemplatesTypeItem
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -1429,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum preserveTemplateRecipientInput
+    public enum PreserveTemplateRecipientInput
     {
         False,
         True
@@ -1441,7 +1441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string BulkSendListGuid { get; set; }
     }
 
-    public class CreateBulkSendListInput
+    public class CsvInput
     {
         [JsonProperty("csv")]
         public string CSVFile { get; set; }
@@ -1513,13 +1513,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string Message { get; set; }
     }
 
-    public class AddDocumentsToEnvelopeInput
+    public class AddDocumentsToEnvelopeBodyInput
     {
         [JsonProperty("documents")]
-        public AddDocumentsToEnvelopeInputUnnamedTypeItem[] Unnamed { get; set; }
+        public BodyInputUnnamedTypeItem[] Unnamed { get; set; }
     }
 
-    public class AddDocumentsToEnvelopeInputUnnamedTypeItem
+    public class BodyInputUnnamedTypeItem
     {
         [JsonProperty("documentBase64", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentBase64 { get; set; }
@@ -1531,14 +1531,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string DocumentName { get; set; }
 
         [JsonProperty("transformPdfFields")]
-        public AddDocumentsToEnvelopeInputUnnamedTypeItemTransformPdfFieldsType? TransformPdfFields { get; set; }
+        public BodyInputUnnamedTypeItemTransformPdfFieldsType? TransformPdfFields { get; set; }
 
         [JsonProperty("assignTabsToRecipientId")]
         public string AssignTabsToRecipient { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddDocumentsToEnvelopeInputUnnamedTypeItemTransformPdfFieldsType
+    public enum BodyInputUnnamedTypeItemTransformPdfFieldsType
     {
         False,
         True
@@ -1571,10 +1571,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string TabType { get; set; }
     }
 
-    public class bodyInputItem22
+    public class UpdateRecipientTabsValuesBodyInputItem
     {
         [JsonProperty("tabType")]
-        public bodyInputItemTypeType2 Type { get; set; }
+        public UpdateRecipientTabsValuesBodyInputItemTypeType? Type { get; set; }
 
         [JsonProperty("tabId")]
         public string Id { get; set; }
@@ -1584,7 +1584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemTypeType2
+    public enum UpdateRecipientTabsValuesBodyInputItemTypeType
     {
         Text,
         Note,
@@ -1597,7 +1597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public Tab[] RecipientTab { get; set; }
     }
 
-    public class CreateBlankEnvelopeV2Input
+    public class CreateBlankEnvelopeBodyInput
     {
         [JsonProperty("emailBlurb")]
         public string EmailBody { get; set; }
@@ -1611,14 +1611,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum isInPersonSignerInput
+    public enum IsInPersonSignerInput
     {
         Yes,
         No
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum authenticationMethodInput
+    public enum AuthenticationMethodInput
     {
         Biometric,
         Email,
@@ -1648,7 +1648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum returnUrlInput2
+    public enum GenerateEmbeddedSigningURLReturnUrlInput
     {
         [EnumMember(Value = "Default URL (Not compatible with iframes)")]
         DefaultURLNotCompatibleWithIframes,
@@ -1657,7 +1657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum documentIdInput
+    public enum DocumentIdInput
     {
         [EnumMember(Value = "Archive : Get ZIP archive with documents and COC")]
         ArchiveGetZIPArchiveWithDocumentsAndCOC,
@@ -1672,7 +1672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum languageInput
+    public enum LanguageInput
     {
         [EnumMember(Value = "Chinese Simplified")]
         ChineseSimplified,
@@ -1693,7 +1693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         Spanish
     }
 
-    public class CreateOrgHookEnvelopeInput
+    public class CreateHookEnvelopeBodyInput
     {
         [JsonProperty("allUsers", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AllUsers { get; set; } = "true";
@@ -1714,136 +1714,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         public string ConnectConfigurationName { get; set; }
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOrgHookEnvelopeInputTriggerEventsTypeItem[] TriggerEvents { get; set; }
+        public BodyInputTriggerEventsTypeItem[] TriggerEvents { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrgHookEnvelopeInputTriggerEventsTypeItem
-    {
-        [EnumMember(Value = "envelope-completed")]
-        EnvelopeCompleted,
-        [EnumMember(Value = "envelope-corrected")]
-        EnvelopeCorrected,
-        [EnumMember(Value = "envelope-created")]
-        EnvelopeCreated,
-        [EnumMember(Value = "envelope-declined")]
-        EnvelopeDeclined,
-        [EnumMember(Value = "envelope-deleted")]
-        EnvelopeDeleted,
-        [EnumMember(Value = "envelope-delivered")]
-        EnvelopeDelivered,
-        [EnumMember(Value = "envelope-discard")]
-        EnvelopeDiscard,
-        [EnumMember(Value = "envelope-purge")]
-        EnvelopePurge,
-        [EnumMember(Value = "envelope-removed")]
-        EnvelopeRemoved,
-        [EnumMember(Value = "envelope-reminder-sent")]
-        EnvelopeReminderSent,
-        [EnumMember(Value = "envelope-resent")]
-        EnvelopeResent,
-        [EnumMember(Value = "envelope-voided")]
-        EnvelopeVoided,
-        [EnumMember(Value = "envelope-sent")]
-        EnvelopeSent,
-        [EnumMember(Value = "recipient-authenticationfailed")]
-        RecipientAuthenticationfailed,
-        [EnumMember(Value = "recipient-autoresponded")]
-        RecipientAutoresponded,
-        [EnumMember(Value = "recipient-completed")]
-        RecipientCompleted,
-        [EnumMember(Value = "recipient-declined")]
-        RecipientDeclined,
-        [EnumMember(Value = "recipient-delegate")]
-        RecipientDelegate,
-        [EnumMember(Value = "recipient-delivered")]
-        RecipientDelivered,
-        [EnumMember(Value = "recipient-finish-later")]
-        RecipientFinishLater,
-        [EnumMember(Value = "recipient-reassign")]
-        RecipientReassign,
-        [EnumMember(Value = "recipient-resent")]
-        RecipientResent,
-        [EnumMember(Value = "recipient-sent")]
-        RecipientSent,
-        [EnumMember(Value = "template-created")]
-        TemplateCreated,
-        [EnumMember(Value = "template-deleted")]
-        TemplateDeleted,
-        [EnumMember(Value = "template-modified")]
-        TemplateModified,
-        [EnumMember(Value = "click-agreed")]
-        ClickAgreed,
-        [EnumMember(Value = "click-declined")]
-        ClickDeclined,
-        [EnumMember(Value = "sms-opt-in")]
-        SmsOptIn,
-        [EnumMember(Value = "sms-opt-out")]
-        SmsOptOut,
-        [EnumMember(Value = "workflow-started")]
-        WorkflowStarted,
-        [EnumMember(Value = "workflow-failed")]
-        WorkflowFailed,
-        [EnumMember(Value = "workflow-completed")]
-        WorkflowCompleted,
-        [EnumMember(Value = "identity-verification-completed")]
-        IdentityVerificationCompleted,
-        [EnumMember(Value = "identity-verification-pending")]
-        IdentityVerificationPending,
-        [EnumMember(Value = "extension-executed")]
-        ExtensionExecuted,
-        [EnumMember(Value = "notary-session-signer-locked")]
-        NotarySessionSignerLocked,
-        [EnumMember(Value = "notary-session-signer-unlocked")]
-        NotarySessionSignerUnlocked,
-        [EnumMember(Value = "notary-session-terminated")]
-        NotarySessionTerminated,
-        [EnumMember(Value = "notary-session-paused")]
-        NotarySessionPaused,
-        [EnumMember(Value = "notary-session-status-updated")]
-        NotarySessionStatusUpdated,
-        [EnumMember(Value = "notary-session-notary-assigned")]
-        NotarySessionNotaryAssigned,
-        [EnumMember(Value = "notary-session-notary-removed")]
-        NotarySessionNotaryRemoved,
-        [EnumMember(Value = "agreement-created")]
-        AgreementCreated,
-        [EnumMember(Value = "agreement-updated")]
-        AgreementUpdated,
-        [EnumMember(Value = "agreement-deleted")]
-        AgreementDeleted,
-        [EnumMember(Value = "agreement-reviews-completed")]
-        AgreementReviewsCompleted,
-        [EnumMember(Value = "agreement-extractions-reviewed")]
-        AgreementExtractionsReviewed
-    }
-
-    public class CreateHookEnvelopeV4Input
-    {
-        [JsonProperty("allUsers", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string AllUsers { get; set; } = "true";
-
-        [JsonProperty("allowEnvelopePublish", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string AllowEnvelopePublish { get; set; } = "true";
-
-        [JsonProperty("includeDocumentFields", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string IncludeDocumentFields { get; set; } = "true";
-
-        [JsonProperty("requiresAcknowledgement", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string RequiresAcknowledgement { get; set; } = "true";
-
-        [JsonProperty("urlToPublishTo", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string UrlToPublishTo { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ConnectConfigurationName { get; set; }
-
-        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateHookEnvelopeV4InputTriggerEventsTypeItem[] TriggerEvents { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateHookEnvelopeV4InputTriggerEventsTypeItem
+    public enum BodyInputTriggerEventsTypeItem
     {
         [EnumMember(Value = "envelope-completed")]
         EnvelopeCompleted,

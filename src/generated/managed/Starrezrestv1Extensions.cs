@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     public class Starrezrestv1Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectEntryResponseItem[], ApiConnectionActionConfiguration> SelectEntry(Expression<Func<SelectEntryInput>> body)
+        public IBodyWorkflowAction<SelectEntryResponseItem[], ApiConnectionActionConfiguration> SelectEntry(Expression<Func<SelectEntryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectEntryResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<CreateEntryResponse, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<CreateEntryInput>> body)
+        public IBodyWorkflowAction<CreateEntryResponse, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<CreateEntryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEntryResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateEntryResponse, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<int>> entryId, Expression<Func<UpdateEntryInput>> body)
+        public IBodyWorkflowAction<UpdateEntryResponse, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<int>> entryId, Expression<Func<UpdateEntryBodyInput>> body)
         {
             var __workflow_entryId = WorkflowExpression.Compile(entryId, nameof(entryId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Delete(Expression<Func<tableNameInput>> tableName, Expression<Func<int>> rowId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Delete(Expression<Func<TableNameInput>> tableName, Expression<Func<int>> rowId)
         {
             var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectEntryCustomFieldResponseItem[], ApiConnectionActionConfiguration> SelectEntryCustomField(Expression<Func<SelectEntryCustomFieldInput>> body)
+        public IBodyWorkflowAction<SelectEntryCustomFieldResponseItem[], ApiConnectionActionConfiguration> SelectEntryCustomField(Expression<Func<SelectEntryCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectEntryCustomFieldResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateEntryCustomFieldResponse, ApiConnectionActionConfiguration> UpdateEntryCustomField(Expression<Func<int>> entryCustomFieldId, Expression<Func<UpdateEntryCustomFieldInput>> body)
+        public IBodyWorkflowAction<UpdateEntryCustomFieldResponse, ApiConnectionActionConfiguration> UpdateEntryCustomField(Expression<Func<int>> entryCustomFieldId, Expression<Func<UpdateEntryCustomFieldBodyInput>> body)
         {
             var __workflow_entryCustomFieldId = WorkflowExpression.Compile(entryCustomFieldId, nameof(entryCustomFieldId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectTermResponseItem[], ApiConnectionActionConfiguration> SelectTerm(Expression<Func<SelectTermInput>> body)
+        public IBodyWorkflowAction<SelectTermResponseItem[], ApiConnectionActionConfiguration> SelectTerm(Expression<Func<SelectTermBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectTermResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectEntryAddressResponseItem[], ApiConnectionActionConfiguration> SelectEntryAddress(Expression<Func<SelectEntryAddressInput>> body)
+        public IBodyWorkflowAction<SelectEntryAddressResponseItem[], ApiConnectionActionConfiguration> SelectEntryAddress(Expression<Func<SelectEntryAddressBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectEntryAddressResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateEntryAddressResponse, ApiConnectionActionConfiguration> UpdateEntryAddress(Expression<Func<int>> entryAddressId, Expression<Func<UpdateEntryAddressInput>> body)
+        public IBodyWorkflowAction<UpdateEntryAddressResponse, ApiConnectionActionConfiguration> UpdateEntryAddress(Expression<Func<int>> entryAddressId, Expression<Func<UpdateEntryAddressBodyInput>> body)
         {
             var __workflow_entryAddressId = WorkflowExpression.Compile(entryAddressId, nameof(entryAddressId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectEntryApplicationResponseItem[], ApiConnectionActionConfiguration> SelectEntryApplication(Expression<Func<SelectEntryApplicationInput>> body)
+        public IBodyWorkflowAction<SelectEntryApplicationResponseItem[], ApiConnectionActionConfiguration> SelectEntryApplication(Expression<Func<SelectEntryApplicationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectEntryApplicationResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<CreateEntryApplicationResponse, ApiConnectionActionConfiguration> CreateEntryApplication(Expression<Func<CreateEntryApplicationInput>> body)
+        public IBodyWorkflowAction<CreateEntryApplicationResponse, ApiConnectionActionConfiguration> CreateEntryApplication(Expression<Func<CreateEntryApplicationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEntryApplicationResponse, ApiConnectionActionConfiguration>(() =>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateEntryApplicationResponse, ApiConnectionActionConfiguration> UpdateEntryApplication(Expression<Func<int>> entryApplicationId, Expression<Func<UpdateEntryApplicationInput>> body)
+        public IBodyWorkflowAction<UpdateEntryApplicationResponse, ApiConnectionActionConfiguration> UpdateEntryApplication(Expression<Func<int>> entryApplicationId, Expression<Func<UpdateEntryApplicationBodyInput>> body)
         {
             var __workflow_entryApplicationId = WorkflowExpression.Compile(entryApplicationId, nameof(entryApplicationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectTermSessionResponseItem[], ApiConnectionActionConfiguration> SelectTermSession(Expression<Func<SelectTermSessionInput>> body)
+        public IBodyWorkflowAction<SelectTermSessionResponseItem[], ApiConnectionActionConfiguration> SelectTermSession(Expression<Func<SelectTermSessionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectTermSessionResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectEntryDetailResponseItem[], ApiConnectionActionConfiguration> SelectEntryDetail(Expression<Func<SelectEntryDetailInput>> body)
+        public IBodyWorkflowAction<SelectEntryDetailResponseItem[], ApiConnectionActionConfiguration> SelectEntryDetail(Expression<Func<SelectEntryDetailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectEntryDetailResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateEntryDetailResponse, ApiConnectionActionConfiguration> UpdateEntryDetail(Expression<Func<int>> entryDetailId, Expression<Func<UpdateEntryDetailInput>> body)
+        public IBodyWorkflowAction<UpdateEntryDetailResponse, ApiConnectionActionConfiguration> UpdateEntryDetail(Expression<Func<int>> entryDetailId, Expression<Func<UpdateEntryDetailBodyInput>> body)
         {
             var __workflow_entryDetailId = WorkflowExpression.Compile(entryDetailId, nameof(entryDetailId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectEntryEnrollmentResponseItem[], ApiConnectionActionConfiguration> SelectEntryEnrollment(Expression<Func<SelectEntryEnrollmentInput>> body)
+        public IBodyWorkflowAction<SelectEntryEnrollmentResponseItem[], ApiConnectionActionConfiguration> SelectEntryEnrollment(Expression<Func<SelectEntryEnrollmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectEntryEnrollmentResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<CreateEntryEnrollmentResponse, ApiConnectionActionConfiguration> CreateEntryEnrollment(Expression<Func<CreateEntryEnrollmentInput>> body)
+        public IBodyWorkflowAction<CreateEntryEnrollmentResponse, ApiConnectionActionConfiguration> CreateEntryEnrollment(Expression<Func<CreateEntryEnrollmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEntryEnrollmentResponse, ApiConnectionActionConfiguration>(() =>
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateEntryEnrollmentResponse, ApiConnectionActionConfiguration> UpdateEntryEnrollment(Expression<Func<int>> entryEnrollmentId, Expression<Func<UpdateEntryEnrollmentInput>> body)
+        public IBodyWorkflowAction<UpdateEntryEnrollmentResponse, ApiConnectionActionConfiguration> UpdateEntryEnrollment(Expression<Func<int>> entryEnrollmentId, Expression<Func<UpdateEntryEnrollmentBodyInput>> body)
         {
             var __workflow_entryEnrollmentId = WorkflowExpression.Compile(entryEnrollmentId, nameof(entryEnrollmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectBookingResponseItem[], ApiConnectionActionConfiguration> SelectBooking(Expression<Func<SelectBookingInput>> body)
+        public IBodyWorkflowAction<SelectBookingResponseItem[], ApiConnectionActionConfiguration> SelectBooking(Expression<Func<SelectBookingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectBookingResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<CreateBookingResponse, ApiConnectionActionConfiguration> CreateBooking(Expression<Func<CreateBookingInput>> body)
+        public IBodyWorkflowAction<CreateBookingResponse, ApiConnectionActionConfiguration> CreateBooking(Expression<Func<CreateBookingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateBookingResponse, ApiConnectionActionConfiguration>(() =>
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateBookingResponse, ApiConnectionActionConfiguration> UpdateBooking(Expression<Func<int>> bookingId, Expression<Func<UpdateBookingInput>> body)
+        public IBodyWorkflowAction<UpdateBookingResponse, ApiConnectionActionConfiguration> UpdateBooking(Expression<Func<int>> bookingId, Expression<Func<UpdateBookingBodyInput>> body)
         {
             var __workflow_bookingId = WorkflowExpression.Compile(bookingId, nameof(bookingId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectRoomSpaceResponseItem[], ApiConnectionActionConfiguration> SelectRoomSpace(Expression<Func<SelectRoomSpaceInput>> body)
+        public IBodyWorkflowAction<SelectRoomSpaceResponseItem[], ApiConnectionActionConfiguration> SelectRoomSpace(Expression<Func<SelectRoomSpaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectRoomSpaceResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<CreateRoomSpaceResponse, ApiConnectionActionConfiguration> CreateRoomSpace(Expression<Func<CreateRoomSpaceInput>> body)
+        public IBodyWorkflowAction<CreateRoomSpaceResponse, ApiConnectionActionConfiguration> CreateRoomSpace(Expression<Func<CreateRoomSpaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateRoomSpaceResponse, ApiConnectionActionConfiguration>(() =>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectRoomLocationResponseItem[], ApiConnectionActionConfiguration> SelectRoomLocation(Expression<Func<SelectRoomLocationInput>> body)
+        public IBodyWorkflowAction<SelectRoomLocationResponseItem[], ApiConnectionActionConfiguration> SelectRoomLocation(Expression<Func<SelectRoomLocationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectRoomLocationResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectTransactionResponseItem[], ApiConnectionActionConfiguration> SelectTransaction(Expression<Func<SelectTransactionInput>> body)
+        public IBodyWorkflowAction<SelectTransactionResponseItem[], ApiConnectionActionConfiguration> SelectTransaction(Expression<Func<SelectTransactionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectTransactionResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<CreateTransactionResponse, ApiConnectionActionConfiguration> CreateTransaction(Expression<Func<CreateTransactionInput>> body)
+        public IBodyWorkflowAction<CreateTransactionResponse, ApiConnectionActionConfiguration> CreateTransaction(Expression<Func<CreateTransactionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTransactionResponse, ApiConnectionActionConfiguration>(() =>
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<SelectRoomSpaceMaintenanceResponseItem[], ApiConnectionActionConfiguration> SelectRoomSpaceMaintenance(Expression<Func<SelectRoomSpaceMaintenanceInput>> body)
+        public IBodyWorkflowAction<SelectRoomSpaceMaintenanceResponseItem[], ApiConnectionActionConfiguration> SelectRoomSpaceMaintenance(Expression<Func<SelectRoomSpaceMaintenanceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectRoomSpaceMaintenanceResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<CreateRoomSpaceMaintenanceResponse, ApiConnectionActionConfiguration> CreateRoomSpaceMaintenance(Expression<Func<CreateRoomSpaceMaintenanceInput>> body)
+        public IBodyWorkflowAction<CreateRoomSpaceMaintenanceResponse, ApiConnectionActionConfiguration> CreateRoomSpaceMaintenance(Expression<Func<CreateRoomSpaceMaintenanceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateRoomSpaceMaintenanceResponse, ApiConnectionActionConfiguration>(() =>
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "starrezrestv1")]
-        public IBodyWorkflowAction<UpdateRoomSpaceMaintenanceResponse, ApiConnectionActionConfiguration> UpdateRoomSpaceMaintenance(Expression<Func<int>> roomSpaceMaintenanceId, Expression<Func<UpdateRoomSpaceMaintenanceInput>> body = null)
+        public IBodyWorkflowAction<UpdateRoomSpaceMaintenanceResponse, ApiConnectionActionConfiguration> UpdateRoomSpaceMaintenance(Expression<Func<int>> roomSpaceMaintenanceId, Expression<Func<UpdateRoomSpaceMaintenanceBodyInput>> body = null)
         {
             var __workflow_roomSpaceMaintenanceId = WorkflowExpression.Compile(roomSpaceMaintenanceId, nameof(roomSpaceMaintenanceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -494,13 +494,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool Testing { get; set; }
     }
 
-    public class SelectEntryInput
+    public class SelectEntryBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectEntryInputPageSizeType PageSize { get; set; } = SelectEntryInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? AddressTypeId { get; set; }
 
         [JsonProperty("Birth_GenderEnum")]
-        public SelectEntryInputBirthGenderEnumType? BirthGenderEnum { get; set; }
+        public BodyInputBirthGenderEnumType? BirthGenderEnum { get; set; }
 
         [JsonProperty("BookingID")]
         public int? BookingId { get; set; }
@@ -526,27 +526,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CreatedBy_SecurityUserID")]
         public int? CreatedBySecurityUserId { get; set; }
-        public SelectEntryInputDateCreatedType DateCreated { get; set; }
-        public SelectEntryInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateCreatedType DateCreated { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public bool? DirectoryFlagPrivacy { get; set; }
-        public SelectEntryInputDOBType DOB { get; set; }
+        public BodyInputDOBType DOB { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int? EntryApplicationId { get; set; }
 
         [JsonProperty("EntryID")]
         public int? EntryId { get; set; }
-        public SelectEntryInputEntryStatusEnumType? EntryStatusEnum { get; set; }
+        public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
 
         [JsonProperty("EventID")]
         public int? EventId { get; set; }
-        public SelectEntryInputGenderEnumType? GenderEnum { get; set; }
+        public BodyInputGenderEnumType? GenderEnum { get; set; }
         public string ID1 { get; set; }
         public string ID2 { get; set; }
         public string ID3 { get; set; }
         public int? ID4 { get; set; }
         public int? ID5 { get; set; }
-        public SelectEntryInputLastCheckInOutDateType LastCheckInOutDate { get; set; }
+        public BodyInputLastCheckInOutDateType LastCheckInOutDate { get; set; }
         public string NameFirst { get; set; }
         public string NameInitials { get; set; }
         public string NameLast { get; set; }
@@ -563,12 +563,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Position { get; set; }
 
         [JsonProperty("Previous_EntryStatusEnum")]
-        public SelectEntryInputPreviousEntryStatusEnumType? PreviousEntryStatusEnum { get; set; }
-        public SelectEntryInputTaxExemptionEnumType? TaxExemptionEnum { get; set; }
+        public BodyInputPreviousEntryStatusEnumType? PreviousEntryStatusEnum { get; set; }
+        public BodyInputTaxExemptionEnumType? TaxExemptionEnum { get; set; }
         public bool? Testing { get; set; }
     }
 
-    public enum SelectEntryInputPageSizeType
+    public enum BodyInputPageSizeType
     {
         _1 = 1,
         _5 = 5,
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputBirthGenderEnumType
+    public enum BodyInputBirthGenderEnumType
     {
         Female,
         Male,
@@ -589,16 +589,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         Unknown
     }
 
-    public class SelectEntryInputDateCreatedType
+    public class BodyInputDateCreatedType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryInputDateCreatedTypeOperatorType? Operator { get; set; }
+        public BodyInputDateCreatedTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputDateCreatedTypeOperatorType
+    public enum BodyInputDateCreatedTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -610,16 +610,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryInputDateModifiedType
+    public class BodyInputDateModifiedType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryInputDateModifiedTypeOperatorType? Operator { get; set; }
+        public BodyInputDateModifiedTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputDateModifiedTypeOperatorType
+    public enum BodyInputDateModifiedTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -631,16 +631,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryInputDOBType
+    public class BodyInputDOBType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryInputDOBTypeOperatorType? Operator { get; set; }
+        public BodyInputDOBTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputDOBTypeOperatorType
+    public enum BodyInputDOBTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputEntryStatusEnumType
+    public enum BodyInputEntryStatusEnumType
     {
         Account,
         Admin,
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputGenderEnumType
+    public enum BodyInputGenderEnumType
     {
         Female,
         Male,
@@ -687,16 +687,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         Unknown
     }
 
-    public class SelectEntryInputLastCheckInOutDateType
+    public class BodyInputLastCheckInOutDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryInputLastCheckInOutDateTypeOperatorType? Operator { get; set; }
+        public BodyInputLastCheckInOutDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputLastCheckInOutDateTypeOperatorType
+    public enum BodyInputLastCheckInOutDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputPreviousEntryStatusEnumType
+    public enum BodyInputPreviousEntryStatusEnumType
     {
         Account,
         Admin,
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryInputTaxExemptionEnumType
+    public enum BodyInputTaxExemptionEnumType
     {
         FullExemption,
         None,
@@ -801,13 +801,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool Testing { get; set; }
     }
 
-    public class CreateEntryInput
+    public class CreateEntryBodyInput
     {
         [JsonProperty("AddressTypeID")]
         public int? AddressTypeId { get; set; }
 
         [JsonProperty("Birth_GenderEnum")]
-        public CreateEntryInputBirthGenderEnumType? BirthGenderEnum { get; set; }
+        public BodyInputBirthGenderEnumType? BirthGenderEnum { get; set; }
 
         [JsonProperty("BookingID")]
         public int? BookingId { get; set; }
@@ -823,11 +823,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("EntryApplicationID")]
         public int? EntryApplicationId { get; set; }
-        public CreateEntryInputEntryStatusEnumType? EntryStatusEnum { get; set; }
+        public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
 
         [JsonProperty("EventID")]
         public int? EventId { get; set; }
-        public CreateEntryInputGenderEnumType? GenderEnum { get; set; }
+        public BodyInputGenderEnumType? GenderEnum { get; set; }
         public string ID1 { get; set; }
         public string ID2 { get; set; }
         public string ID3 { get; set; }
@@ -855,89 +855,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Position { get; set; }
 
         [JsonProperty("Previous_EntryStatusEnum")]
-        public CreateEntryInputPreviousEntryStatusEnumType? PreviousEntryStatusEnum { get; set; }
-        public CreateEntryInputTaxExemptionEnumType? TaxExemptionEnum { get; set; }
+        public BodyInputPreviousEntryStatusEnumType? PreviousEntryStatusEnum { get; set; }
+        public BodyInputTaxExemptionEnumType? TaxExemptionEnum { get; set; }
         public bool? Testing { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryInputBirthGenderEnumType
-    {
-        Female,
-        Male,
-        Neutral,
-        Other,
-        Unknown
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryInputEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryInputGenderEnumType
-    {
-        Female,
-        Male,
-        Neutral,
-        Other,
-        Unknown
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryInputPreviousEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryInputTaxExemptionEnumType
-    {
-        FullExemption,
-        None,
-        Tax1Exempt,
-        Tax2Exempt,
-        Tax3Exempt
     }
 
     public class UpdateEntryResponse
@@ -998,13 +918,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool Testing { get; set; }
     }
 
-    public class UpdateEntryInput
+    public class UpdateEntryBodyInput
     {
         [JsonProperty("AddressTypeID")]
         public int? AddressTypeId { get; set; }
 
         [JsonProperty("Birth_GenderEnum")]
-        public UpdateEntryInputBirthGenderEnumType? BirthGenderEnum { get; set; }
+        public BodyInputBirthGenderEnumType? BirthGenderEnum { get; set; }
 
         [JsonProperty("BookingID")]
         public int? BookingId { get; set; }
@@ -1020,11 +940,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("EntryApplicationID")]
         public int? EntryApplicationId { get; set; }
-        public UpdateEntryInputEntryStatusEnumType? EntryStatusEnum { get; set; }
+        public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
 
         [JsonProperty("EventID")]
         public int? EventId { get; set; }
-        public UpdateEntryInputGenderEnumType? GenderEnum { get; set; }
+        public BodyInputGenderEnumType? GenderEnum { get; set; }
         public string ID1 { get; set; }
         public string ID2 { get; set; }
         public string ID3 { get; set; }
@@ -1048,93 +968,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Position { get; set; }
 
         [JsonProperty("Previous_EntryStatusEnum")]
-        public UpdateEntryInputPreviousEntryStatusEnumType? PreviousEntryStatusEnum { get; set; }
-        public UpdateEntryInputTaxExemptionEnumType? TaxExemptionEnum { get; set; }
+        public BodyInputPreviousEntryStatusEnumType? PreviousEntryStatusEnum { get; set; }
+        public BodyInputTaxExemptionEnumType? TaxExemptionEnum { get; set; }
         public bool? Testing { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryInputBirthGenderEnumType
-    {
-        Female,
-        Male,
-        Neutral,
-        Other,
-        Unknown
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryInputEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryInputGenderEnumType
-    {
-        Female,
-        Male,
-        Neutral,
-        Other,
-        Unknown
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryInputPreviousEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryInputTaxExemptionEnumType
-    {
-        FullExemption,
-        None,
-        Tax1Exempt,
-        Tax2Exempt,
-        Tax3Exempt
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tableNameInput
+    public enum TableNameInput
     {
         Booking,
         Entry,
@@ -1170,13 +1010,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ValueString { get; set; }
     }
 
-    public class SelectEntryCustomFieldInput
+    public class SelectEntryCustomFieldBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectEntryCustomFieldInputPageSizeType PageSize { get; set; } = SelectEntryCustomFieldInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -1186,55 +1026,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CustomFieldDefinitionID")]
         public int? CustomFieldDefinitionId { get; set; }
-        public SelectEntryCustomFieldInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
 
         [JsonProperty("EntryCustomFieldID")]
         public int? EntryCustomFieldId { get; set; }
 
         [JsonProperty("EntryID")]
         public int? EntryId { get; set; }
-        public SelectEntryCustomFieldInputFieldDataTypeEnumType? FieldDataTypeEnum { get; set; }
+        public BodyInputFieldDataTypeEnumType? FieldDataTypeEnum { get; set; }
         public bool? ValueBoolean { get; set; }
-        public SelectEntryCustomFieldInputValueDateType ValueDate { get; set; }
+        public BodyInputValueDateType ValueDate { get; set; }
         public int? ValueInteger { get; set; }
         public double? ValueMoney { get; set; }
         public string ValueString { get; set; }
     }
 
-    public enum SelectEntryCustomFieldInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectEntryCustomFieldInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryCustomFieldInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryCustomFieldInputDateModifiedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryCustomFieldInputFieldDataTypeEnumType
+    public enum BodyInputFieldDataTypeEnumType
     {
         Boolean,
         Date,
@@ -1245,16 +1053,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         StringLong
     }
 
-    public class SelectEntryCustomFieldInputValueDateType
+    public class BodyInputValueDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryCustomFieldInputValueDateTypeOperatorType? Operator { get; set; }
+        public BodyInputValueDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryCustomFieldInputValueDateTypeOperatorType
+    public enum BodyInputValueDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1284,31 +1092,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ValueString { get; set; }
     }
 
-    public class UpdateEntryCustomFieldInput
+    public class UpdateEntryCustomFieldBodyInput
     {
         [JsonProperty("CustomFieldDefinitionID")]
         public int? CustomFieldDefinitionId { get; set; }
 
         [JsonProperty("EntryID")]
         public int? EntryId { get; set; }
-        public UpdateEntryCustomFieldInputFieldDataTypeEnumType? FieldDataTypeEnum { get; set; }
+        public BodyInputFieldDataTypeEnumType? FieldDataTypeEnum { get; set; }
         public bool? ValueBoolean { get; set; }
         public string ValueDate { get; set; }
         public int? ValueInteger { get; set; }
         public double? ValueMoney { get; set; }
         public string ValueString { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryCustomFieldInputFieldDataTypeEnumType
-    {
-        Boolean,
-        Date,
-        DateTime,
-        Integer,
-        Money,
-        String,
-        StringLong
     }
 
     public class SelectTermResponseItem
@@ -1333,13 +1129,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string WebDescription { get; set; }
     }
 
-    public class SelectTermInput
+    public class SelectTermBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectTermInputPageSizeType PageSize { get; set; } = SelectTermInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -1347,15 +1143,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("_orderby")]
         public string Orderby { get; set; }
         public bool? Active { get; set; }
-        public SelectTermInputActiveDateCloseType ActiveDateClose { get; set; }
-        public SelectTermInputActiveDateOpenType ActiveDateOpen { get; set; }
+        public BodyInputActiveDateCloseType ActiveDateClose { get; set; }
+        public BodyInputActiveDateOpenType ActiveDateOpen { get; set; }
 
         [JsonProperty("CategoryID")]
         public int? CategoryId { get; set; }
         public string Comments { get; set; }
-        public SelectTermInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public string Description { get; set; }
-        public SelectTermInputRecordTypeEnumType? RecordTypeEnum { get; set; }
+        public BodyInputRecordTypeEnumType? RecordTypeEnum { get; set; }
         public string TermCode { get; set; }
 
         [JsonProperty("TermID")]
@@ -1366,27 +1162,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string WebDescription { get; set; }
     }
 
-    public enum SelectTermInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectTermInputActiveDateCloseType
+    public class BodyInputActiveDateCloseType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTermInputActiveDateCloseTypeOperatorType? Operator { get; set; }
+        public BodyInputActiveDateCloseTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermInputActiveDateCloseTypeOperatorType
+    public enum BodyInputActiveDateCloseTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1398,37 +1183,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectTermInputActiveDateOpenType
+    public class BodyInputActiveDateOpenType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTermInputActiveDateOpenTypeOperatorType? Operator { get; set; }
+        public BodyInputActiveDateOpenTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermInputActiveDateOpenTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectTermInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectTermInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermInputDateModifiedTypeOperatorType
+    public enum BodyInputActiveDateOpenTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1441,7 +1205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermInputRecordTypeEnumType
+    public enum BodyInputRecordTypeEnumType
     {
         Deleted,
         Normal,
@@ -1485,21 +1249,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public class SelectEntryAddressInput
+    public class SelectEntryAddressBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectEntryAddressInputPageSizeType PageSize { get; set; } = SelectEntryAddressInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
 
         [JsonProperty("_orderby")]
         public string Orderby { get; set; }
-        public SelectEntryAddressInputActiveDateEndType ActiveDateEnd { get; set; }
-        public SelectEntryAddressInputActiveDateStartType ActiveDateStart { get; set; }
+        public BodyInputActiveDateEndType ActiveDateEnd { get; set; }
+        public BodyInputActiveDateStartType ActiveDateStart { get; set; }
 
         [JsonProperty("AddressTypeID")]
         public int? AddressTypeId { get; set; }
@@ -1510,7 +1274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CountryID")]
         public int? CountryId { get; set; }
-        public SelectEntryAddressInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public string Email { get; set; }
 
         [JsonProperty("EntryAddressID")]
@@ -1531,27 +1295,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public enum SelectEntryAddressInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectEntryAddressInputActiveDateEndType
+    public class BodyInputActiveDateEndType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryAddressInputActiveDateEndTypeOperatorType? Operator { get; set; }
+        public BodyInputActiveDateEndTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryAddressInputActiveDateEndTypeOperatorType
+    public enum BodyInputActiveDateEndTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1563,37 +1316,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryAddressInputActiveDateStartType
+    public class BodyInputActiveDateStartType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryAddressInputActiveDateStartTypeOperatorType? Operator { get; set; }
+        public BodyInputActiveDateStartTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryAddressInputActiveDateStartTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectEntryAddressInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryAddressInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryAddressInputDateModifiedTypeOperatorType
+    public enum BodyInputActiveDateStartTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1639,7 +1371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public class UpdateEntryAddressInput
+    public class UpdateEntryAddressBodyInput
     {
         public string ActiveDateEnd { get; set; }
         public string ActiveDateStart { get; set; }
@@ -1753,61 +1485,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool Web { get; set; }
     }
 
-    public class SelectEntryApplicationInput
+    public class SelectEntryApplicationBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectEntryApplicationInputPageSizeType PageSize { get; set; } = SelectEntryApplicationInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
 
         [JsonProperty("_orderby")]
         public string Orderby { get; set; }
-        public SelectEntryApplicationInputAllocateOptionEnumType? AllocateOptionEnum { get; set; }
-        public SelectEntryApplicationInputApplicationDateType ApplicationDate { get; set; }
+        public BodyInputAllocateOptionEnumType? AllocateOptionEnum { get; set; }
+        public BodyInputApplicationDateType ApplicationDate { get; set; }
 
         [JsonProperty("ApplicationStatusID")]
         public int? ApplicationStatusId { get; set; }
-        public SelectEntryApplicationInputCancelDateType CancelDate { get; set; }
+        public BodyInputCancelDateType CancelDate { get; set; }
 
         [JsonProperty("ClassificationID")]
         public int? ClassificationId { get; set; }
         public string Comments { get; set; }
         public string CommentsInternal { get; set; }
-        public SelectEntryApplicationInputCompleteDateType CompleteDate { get; set; }
-        public SelectEntryApplicationInputContractSignedDateType ContractSignedDate { get; set; }
+        public BodyInputCompleteDateType CompleteDate { get; set; }
+        public BodyInputContractSignedDateType ContractSignedDate { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }
         public bool? CustomBit3 { get; set; }
         public bool? CustomBit4 { get; set; }
-        public SelectEntryApplicationInputCustomDate1Type CustomDate1 { get; set; }
-        public SelectEntryApplicationInputCustomDate2Type CustomDate2 { get; set; }
-        public SelectEntryApplicationInputCustomDate3Type CustomDate3 { get; set; }
-        public SelectEntryApplicationInputCustomDate4Type CustomDate4 { get; set; }
-        public SelectEntryApplicationInputDateCreatedType DateCreated { get; set; }
-        public SelectEntryApplicationInputDateModifiedType DateModified { get; set; }
-        public SelectEntryApplicationInputEnquiryDateType EnquiryDate { get; set; }
+        public BodyInputCustomDate1Type CustomDate1 { get; set; }
+        public BodyInputCustomDate2Type CustomDate2 { get; set; }
+        public BodyInputCustomDate3Type CustomDate3 { get; set; }
+        public BodyInputCustomDate4Type CustomDate4 { get; set; }
+        public BodyInputDateCreatedType DateCreated { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
+        public BodyInputEnquiryDateType EnquiryDate { get; set; }
 
         [JsonProperty("EntryApplicationID")]
         public int? EntryApplicationId { get; set; }
 
         [JsonProperty("EntryID")]
         public int? EntryId { get; set; }
-        public SelectEntryApplicationInputExpectedArrivalDateType ExpectedArrivalDate { get; set; }
-        public SelectEntryApplicationInputExpectedArrivalDateLatestType ExpectedArrivalDateLatest { get; set; }
-        public SelectEntryApplicationInputExpectedDepartureDateType ExpectedDepartureDate { get; set; }
-        public SelectEntryApplicationInputOfferedDateType OfferedDate { get; set; }
-        public SelectEntryApplicationInputOfferReplyDateType OfferReplyDate { get; set; }
-        public SelectEntryApplicationInputOfferReplyEnumType? OfferReplyEnum { get; set; }
+        public BodyInputExpectedArrivalDateType ExpectedArrivalDate { get; set; }
+        public BodyInputExpectedArrivalDateLatestType ExpectedArrivalDateLatest { get; set; }
+        public BodyInputExpectedDepartureDateType ExpectedDepartureDate { get; set; }
+        public BodyInputOfferedDateType OfferedDate { get; set; }
+        public BodyInputOfferReplyDateType OfferReplyDate { get; set; }
+        public BodyInputOfferReplyEnumType? OfferReplyEnum { get; set; }
         public string OfferReplyReason { get; set; }
-        public SelectEntryApplicationInputOfferSentDateType OfferSentDate { get; set; }
+        public BodyInputOfferSentDateType OfferSentDate { get; set; }
         public bool? PortalTrackingOnly { get; set; }
         public string PreferenceComments { get; set; }
         public string Rating { get; set; }
-        public SelectEntryApplicationInputReceivedDateType ReceivedDate { get; set; }
+        public BodyInputReceivedDateType ReceivedDate { get; set; }
         public bool? ReceivedDeposit { get; set; }
         public bool? ReceivedDepositWaived { get; set; }
 
@@ -1817,7 +1549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("ReceivedDeposit_WebPaymentID")]
         public int? ReceivedDepositWebPaymentId { get; set; }
         public double? ReceivedDepositAmount { get; set; }
-        public SelectEntryApplicationInputReceivedDepositDateType ReceivedDepositDate { get; set; }
+        public BodyInputReceivedDepositDateType ReceivedDepositDate { get; set; }
         public bool? ReceivedFee { get; set; }
 
         [JsonProperty("ReceivedFee_PaymentID")]
@@ -1826,8 +1558,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("ReceivedFee_WebPaymentID")]
         public int? ReceivedFeeWebPaymentId { get; set; }
         public double? ReceivedFeeAmount { get; set; }
-        public SelectEntryApplicationInputReceivedFeeDateType ReceivedFeeDate { get; set; }
-        public SelectEntryApplicationInputReceivedPhotoDateType ReceivedPhotoDate { get; set; }
+        public BodyInputReceivedFeeDateType ReceivedFeeDate { get; set; }
+        public BodyInputReceivedPhotoDateType ReceivedPhotoDate { get; set; }
         public bool? Returning { get; set; }
         public string RoomMateDescription { get; set; }
 
@@ -1847,34 +1579,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool? Web { get; set; }
     }
 
-    public enum SelectEntryApplicationInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputAllocateOptionEnumType
+    public enum BodyInputAllocateOptionEnumType
     {
         PreferRoomMates,
         PreferRoomPreferences
     }
 
-    public class SelectEntryApplicationInputApplicationDateType
+    public class BodyInputApplicationDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputApplicationDateTypeOperatorType? Operator { get; set; }
+        public BodyInputApplicationDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputApplicationDateTypeOperatorType
+    public enum BodyInputApplicationDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1886,16 +1607,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputCancelDateType
+    public class BodyInputCancelDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputCancelDateTypeOperatorType? Operator { get; set; }
+        public BodyInputCancelDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputCancelDateTypeOperatorType
+    public enum BodyInputCancelDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1907,16 +1628,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputCompleteDateType
+    public class BodyInputCompleteDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputCompleteDateTypeOperatorType? Operator { get; set; }
+        public BodyInputCompleteDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputCompleteDateTypeOperatorType
+    public enum BodyInputCompleteDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1928,16 +1649,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputContractSignedDateType
+    public class BodyInputContractSignedDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputContractSignedDateTypeOperatorType? Operator { get; set; }
+        public BodyInputContractSignedDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputContractSignedDateTypeOperatorType
+    public enum BodyInputContractSignedDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1949,16 +1670,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputCustomDate1Type
+    public class BodyInputCustomDate1Type
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputCustomDate1TypeOperatorType? Operator { get; set; }
+        public BodyInputCustomDate1TypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputCustomDate1TypeOperatorType
+    public enum BodyInputCustomDate1TypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1970,16 +1691,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputCustomDate2Type
+    public class BodyInputCustomDate2Type
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputCustomDate2TypeOperatorType? Operator { get; set; }
+        public BodyInputCustomDate2TypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputCustomDate2TypeOperatorType
+    public enum BodyInputCustomDate2TypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -1991,16 +1712,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputCustomDate3Type
+    public class BodyInputCustomDate3Type
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputCustomDate3TypeOperatorType? Operator { get; set; }
+        public BodyInputCustomDate3TypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputCustomDate3TypeOperatorType
+    public enum BodyInputCustomDate3TypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2012,16 +1733,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputCustomDate4Type
+    public class BodyInputCustomDate4Type
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputCustomDate4TypeOperatorType? Operator { get; set; }
+        public BodyInputCustomDate4TypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputCustomDate4TypeOperatorType
+    public enum BodyInputCustomDate4TypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2033,16 +1754,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputDateCreatedType
+    public class BodyInputEnquiryDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputDateCreatedTypeOperatorType? Operator { get; set; }
+        public BodyInputEnquiryDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputDateCreatedTypeOperatorType
+    public enum BodyInputEnquiryDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2054,16 +1775,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputDateModifiedType
+    public class BodyInputExpectedArrivalDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputDateModifiedTypeOperatorType? Operator { get; set; }
+        public BodyInputExpectedArrivalDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputDateModifiedTypeOperatorType
+    public enum BodyInputExpectedArrivalDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2075,16 +1796,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputEnquiryDateType
+    public class BodyInputExpectedArrivalDateLatestType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputEnquiryDateTypeOperatorType? Operator { get; set; }
+        public BodyInputExpectedArrivalDateLatestTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputEnquiryDateTypeOperatorType
+    public enum BodyInputExpectedArrivalDateLatestTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2096,16 +1817,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputExpectedArrivalDateType
+    public class BodyInputExpectedDepartureDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputExpectedArrivalDateTypeOperatorType? Operator { get; set; }
+        public BodyInputExpectedDepartureDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputExpectedArrivalDateTypeOperatorType
+    public enum BodyInputExpectedDepartureDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2117,16 +1838,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputExpectedArrivalDateLatestType
+    public class BodyInputOfferedDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputExpectedArrivalDateLatestTypeOperatorType? Operator { get; set; }
+        public BodyInputOfferedDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputExpectedArrivalDateLatestTypeOperatorType
+    public enum BodyInputOfferedDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2138,58 +1859,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputExpectedDepartureDateType
+    public class BodyInputOfferReplyDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputExpectedDepartureDateTypeOperatorType? Operator { get; set; }
+        public BodyInputOfferReplyDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputExpectedDepartureDateTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectEntryApplicationInputOfferedDateType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryApplicationInputOfferedDateTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputOfferedDateTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectEntryApplicationInputOfferReplyDateType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryApplicationInputOfferReplyDateTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputOfferReplyDateTypeOperatorType
+    public enum BodyInputOfferReplyDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2202,7 +1881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputOfferReplyEnumType
+    public enum BodyInputOfferReplyEnumType
     {
         Accepted,
         Declined,
@@ -2210,16 +1889,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         NA
     }
 
-    public class SelectEntryApplicationInputOfferSentDateType
+    public class BodyInputOfferSentDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputOfferSentDateTypeOperatorType? Operator { get; set; }
+        public BodyInputOfferSentDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputOfferSentDateTypeOperatorType
+    public enum BodyInputOfferSentDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2231,16 +1910,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputReceivedDateType
+    public class BodyInputReceivedDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputReceivedDateTypeOperatorType? Operator { get; set; }
+        public BodyInputReceivedDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputReceivedDateTypeOperatorType
+    public enum BodyInputReceivedDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2252,16 +1931,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputReceivedDepositDateType
+    public class BodyInputReceivedDepositDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputReceivedDepositDateTypeOperatorType? Operator { get; set; }
+        public BodyInputReceivedDepositDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputReceivedDepositDateTypeOperatorType
+    public enum BodyInputReceivedDepositDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2273,16 +1952,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputReceivedFeeDateType
+    public class BodyInputReceivedFeeDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputReceivedFeeDateTypeOperatorType? Operator { get; set; }
+        public BodyInputReceivedFeeDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputReceivedFeeDateTypeOperatorType
+    public enum BodyInputReceivedFeeDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2294,16 +1973,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryApplicationInputReceivedPhotoDateType
+    public class BodyInputReceivedPhotoDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryApplicationInputReceivedPhotoDateTypeOperatorType? Operator { get; set; }
+        public BodyInputReceivedPhotoDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryApplicationInputReceivedPhotoDateTypeOperatorType
+    public enum BodyInputReceivedPhotoDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2396,9 +2075,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool Web { get; set; }
     }
 
-    public class CreateEntryApplicationInput
+    public class CreateEntryApplicationBodyInput
     {
-        public CreateEntryApplicationInputAllocateOptionEnumType? AllocateOptionEnum { get; set; }
+        public BodyInputAllocateOptionEnumType? AllocateOptionEnum { get; set; }
         public string ApplicationDate { get; set; }
 
         [JsonProperty("ApplicationStatusID")]
@@ -2428,7 +2107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ExpectedDepartureDate { get; set; }
         public string OfferedDate { get; set; }
         public string OfferReplyDate { get; set; }
-        public CreateEntryApplicationInputOfferReplyEnumType? OfferReplyEnum { get; set; }
+        public BodyInputOfferReplyEnumType? OfferReplyEnum { get; set; }
         public string OfferReplyReason { get; set; }
         public string OfferSentDate { get; set; }
         public bool? PortalTrackingOnly { get; set; }
@@ -2472,22 +2151,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("TermID")]
         public int? TermId { get; set; }
         public bool? Web { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryApplicationInputAllocateOptionEnumType
-    {
-        PreferRoomMates,
-        PreferRoomPreferences
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryApplicationInputOfferReplyEnumType
-    {
-        Accepted,
-        Declined,
-        Deferred,
-        NA
     }
 
     public class UpdateEntryApplicationResponse
@@ -2571,9 +2234,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool Web { get; set; }
     }
 
-    public class UpdateEntryApplicationInput
+    public class UpdateEntryApplicationBodyInput
     {
-        public UpdateEntryApplicationInputAllocateOptionEnumType? AllocateOptionEnum { get; set; }
+        public BodyInputAllocateOptionEnumType? AllocateOptionEnum { get; set; }
         public string ApplicationDate { get; set; }
 
         [JsonProperty("ApplicationStatusID")]
@@ -2603,7 +2266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ExpectedDepartureDate { get; set; }
         public string OfferedDate { get; set; }
         public string OfferReplyDate { get; set; }
-        public UpdateEntryApplicationInputOfferReplyEnumType? OfferReplyEnum { get; set; }
+        public BodyInputOfferReplyEnumType? OfferReplyEnum { get; set; }
         public string OfferReplyReason { get; set; }
         public string OfferSentDate { get; set; }
         public bool? PortalTrackingOnly { get; set; }
@@ -2647,22 +2310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("TermID")]
         public int? TermId { get; set; }
         public bool? Web { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryApplicationInputAllocateOptionEnumType
-    {
-        PreferRoomMates,
-        PreferRoomPreferences
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryApplicationInputOfferReplyEnumType
-    {
-        Accepted,
-        Declined,
-        Deferred,
-        NA
     }
 
     public class SelectTermSessionResponseItem
@@ -2762,13 +2409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string WebDescription { get; set; }
     }
 
-    public class SelectTermSessionInput
+    public class SelectTermSessionBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectTermSessionInputPageSizeType PageSize { get; set; } = SelectTermSessionInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -2783,69 +2430,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? CancelBookingDefaultEndBookingReasonId { get; set; }
 
         [JsonProperty("CancelBookingUpdateEndBookingReason_BooleanAskEnum")]
-        public SelectTermSessionInputCancelBookingUpdateEndBookingReasonBooleanAskEnumType? CancelBookingUpdateEndBookingReasonBooleanAskEnum { get; set; }
-        public SelectTermSessionInputCheckInDateType CheckInDate { get; set; }
+        public BodyInputCancelBookingUpdateEndBookingReasonBooleanAskEnumType? CancelBookingUpdateEndBookingReasonBooleanAskEnum { get; set; }
+        public BodyInputCheckInDateType CheckInDate { get; set; }
 
         [JsonProperty("CheckInDateActualDecrease_BooleanAskEnum")]
-        public SelectTermSessionInputCheckInDateActualDecreaseBooleanAskEnumType? CheckInDateActualDecreaseBooleanAskEnum { get; set; }
+        public BodyInputCheckInDateActualDecreaseBooleanAskEnumType? CheckInDateActualDecreaseBooleanAskEnum { get; set; }
 
         [JsonProperty("CheckInDateActualIncrease_BooleanAskEnum")]
-        public SelectTermSessionInputCheckInDateActualIncreaseBooleanAskEnumType? CheckInDateActualIncreaseBooleanAskEnum { get; set; }
+        public BodyInputCheckInDateActualIncreaseBooleanAskEnumType? CheckInDateActualIncreaseBooleanAskEnum { get; set; }
 
         [JsonProperty("CheckInDefaultStart_BookingReasonID")]
         public int? CheckInDefaultStartBookingReasonId { get; set; }
 
         [JsonProperty("CheckInUpdateStartBookingReason_BooleanAskEnum")]
-        public SelectTermSessionInputCheckInUpdateStartBookingReasonBooleanAskEnumType? CheckInUpdateStartBookingReasonBooleanAskEnum { get; set; }
-        public SelectTermSessionInputCheckOutDateType CheckOutDate { get; set; }
+        public BodyInputCheckInUpdateStartBookingReasonBooleanAskEnumType? CheckInUpdateStartBookingReasonBooleanAskEnum { get; set; }
+        public BodyInputCheckOutDateType CheckOutDate { get; set; }
 
         [JsonProperty("CheckOutDateActualDecrease_BooleanAskEnum")]
-        public SelectTermSessionInputCheckOutDateActualDecreaseBooleanAskEnumType? CheckOutDateActualDecreaseBooleanAskEnum { get; set; }
+        public BodyInputCheckOutDateActualDecreaseBooleanAskEnumType? CheckOutDateActualDecreaseBooleanAskEnum { get; set; }
 
         [JsonProperty("CheckOutDateActualIncrease_BooleanAskEnum")]
-        public SelectTermSessionInputCheckOutDateActualIncreaseBooleanAskEnumType? CheckOutDateActualIncreaseBooleanAskEnum { get; set; }
+        public BodyInputCheckOutDateActualIncreaseBooleanAskEnumType? CheckOutDateActualIncreaseBooleanAskEnum { get; set; }
 
         [JsonProperty("CheckOutDefaultEnd_BookingReasonID")]
         public int? CheckOutDefaultEndBookingReasonId { get; set; }
 
         [JsonProperty("CheckOutUpdateEndBookingReason_BooleanAskEnum")]
-        public SelectTermSessionInputCheckOutUpdateEndBookingReasonBooleanAskEnumType? CheckOutUpdateEndBookingReasonBooleanAskEnum { get; set; }
+        public BodyInputCheckOutUpdateEndBookingReasonBooleanAskEnumType? CheckOutUpdateEndBookingReasonBooleanAskEnum { get; set; }
 
         [JsonProperty("ContractDateCheckInDecrease_BooleanAskEnum")]
-        public SelectTermSessionInputContractDateCheckInDecreaseBooleanAskEnumType? ContractDateCheckInDecreaseBooleanAskEnum { get; set; }
+        public BodyInputContractDateCheckInDecreaseBooleanAskEnumType? ContractDateCheckInDecreaseBooleanAskEnum { get; set; }
 
         [JsonProperty("ContractDateCheckInIncrease_BooleanAskEnum")]
-        public SelectTermSessionInputContractDateCheckInIncreaseBooleanAskEnumType? ContractDateCheckInIncreaseBooleanAskEnum { get; set; }
+        public BodyInputContractDateCheckInIncreaseBooleanAskEnumType? ContractDateCheckInIncreaseBooleanAskEnum { get; set; }
 
         [JsonProperty("ContractDateCheckOutDecrease_BooleanAskEnum")]
-        public SelectTermSessionInputContractDateCheckOutDecreaseBooleanAskEnumType? ContractDateCheckOutDecreaseBooleanAskEnum { get; set; }
+        public BodyInputContractDateCheckOutDecreaseBooleanAskEnumType? ContractDateCheckOutDecreaseBooleanAskEnum { get; set; }
 
         [JsonProperty("ContractDateCheckOutIncrease_BooleanAskEnum")]
-        public SelectTermSessionInputContractDateCheckOutIncreaseBooleanAskEnumType? ContractDateCheckOutIncreaseBooleanAskEnum { get; set; }
-        public SelectTermSessionInputContractDateEndType ContractDateEnd { get; set; }
-        public SelectTermSessionInputContractDateStartType ContractDateStart { get; set; }
+        public BodyInputContractDateCheckOutIncreaseBooleanAskEnumType? ContractDateCheckOutIncreaseBooleanAskEnum { get; set; }
+        public BodyInputContractDateEndType ContractDateEnd { get; set; }
+        public BodyInputContractDateStartType ContractDateStart { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }
-        public SelectTermSessionInputCustomDate1Type CustomDate1 { get; set; }
-        public SelectTermSessionInputCustomDate2Type CustomDate2 { get; set; }
+        public BodyInputCustomDate1Type CustomDate1 { get; set; }
+        public BodyInputCustomDate2Type CustomDate2 { get; set; }
         public string CustomString1 { get; set; }
         public string CustomString2 { get; set; }
         public string CustomString3 { get; set; }
         public string CustomString4 { get; set; }
         public string CustomString5 { get; set; }
         public string CustomString6 { get; set; }
-        public SelectTermSessionInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public string Description { get; set; }
 
         [JsonProperty("End_BookingReasonID")]
         public int? EndBookingReasonId { get; set; }
-        public SelectTermSessionInputEntryStatusEnumType? EntryStatusEnum { get; set; }
+        public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
         public string ETA { get; set; }
         public string ETD { get; set; }
 
         [JsonProperty("HousekeepingID")]
         public int? HousekeepingId { get; set; }
-        public SelectTermSessionInputRecordTypeEnumType? RecordTypeEnum { get; set; }
+        public BodyInputRecordTypeEnumType? RecordTypeEnum { get; set; }
         public bool? RoomLocationFixed { get; set; }
 
         [JsonProperty("RoomLocationID")]
@@ -2871,35 +2518,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string WebDescription { get; set; }
     }
 
-    public enum SelectTermSessionInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCancelBookingUpdateEndBookingReasonBooleanAskEnumType
+    public enum BodyInputCancelBookingUpdateEndBookingReasonBooleanAskEnumType
     {
         Ask,
         No,
         Yes
     }
 
-    public class SelectTermSessionInputCheckInDateType
+    public class BodyInputCheckInDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTermSessionInputCheckInDateTypeOperatorType? Operator { get; set; }
+        public BodyInputCheckInDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckInDateTypeOperatorType
+    public enum BodyInputCheckInDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2912,7 +2548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckInDateActualDecreaseBooleanAskEnumType
+    public enum BodyInputCheckInDateActualDecreaseBooleanAskEnumType
     {
         Ask,
         No,
@@ -2920,7 +2556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckInDateActualIncreaseBooleanAskEnumType
+    public enum BodyInputCheckInDateActualIncreaseBooleanAskEnumType
     {
         Ask,
         No,
@@ -2928,23 +2564,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckInUpdateStartBookingReasonBooleanAskEnumType
+    public enum BodyInputCheckInUpdateStartBookingReasonBooleanAskEnumType
     {
         Ask,
         No,
         Yes
     }
 
-    public class SelectTermSessionInputCheckOutDateType
+    public class BodyInputCheckOutDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTermSessionInputCheckOutDateTypeOperatorType? Operator { get; set; }
+        public BodyInputCheckOutDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckOutDateTypeOperatorType
+    public enum BodyInputCheckOutDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -2957,7 +2593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckOutDateActualDecreaseBooleanAskEnumType
+    public enum BodyInputCheckOutDateActualDecreaseBooleanAskEnumType
     {
         Ask,
         No,
@@ -2965,7 +2601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckOutDateActualIncreaseBooleanAskEnumType
+    public enum BodyInputCheckOutDateActualIncreaseBooleanAskEnumType
     {
         Ask,
         No,
@@ -2973,7 +2609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCheckOutUpdateEndBookingReasonBooleanAskEnumType
+    public enum BodyInputCheckOutUpdateEndBookingReasonBooleanAskEnumType
     {
         Ask,
         No,
@@ -2981,7 +2617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputContractDateCheckInDecreaseBooleanAskEnumType
+    public enum BodyInputContractDateCheckInDecreaseBooleanAskEnumType
     {
         Ask,
         No,
@@ -2989,7 +2625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputContractDateCheckInIncreaseBooleanAskEnumType
+    public enum BodyInputContractDateCheckInIncreaseBooleanAskEnumType
     {
         Ask,
         No,
@@ -2997,7 +2633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputContractDateCheckOutDecreaseBooleanAskEnumType
+    public enum BodyInputContractDateCheckOutDecreaseBooleanAskEnumType
     {
         Ask,
         No,
@@ -3005,23 +2641,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputContractDateCheckOutIncreaseBooleanAskEnumType
+    public enum BodyInputContractDateCheckOutIncreaseBooleanAskEnumType
     {
         Ask,
         No,
         Yes
     }
 
-    public class SelectTermSessionInputContractDateEndType
+    public class BodyInputContractDateEndType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTermSessionInputContractDateEndTypeOperatorType? Operator { get; set; }
+        public BodyInputContractDateEndTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputContractDateEndTypeOperatorType
+    public enum BodyInputContractDateEndTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3033,16 +2669,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectTermSessionInputContractDateStartType
+    public class BodyInputContractDateStartType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTermSessionInputContractDateStartTypeOperatorType? Operator { get; set; }
+        public BodyInputContractDateStartTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputContractDateStartTypeOperatorType
+    public enum BodyInputContractDateStartTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3052,104 +2688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         GreaterThanOrEqual,
         [EnumMember(Value = "LESSTHANOREQUALTO")]
         LessThanOrEqual
-    }
-
-    public class SelectTermSessionInputCustomDate1Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectTermSessionInputCustomDate1TypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCustomDate1TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectTermSessionInputCustomDate2Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectTermSessionInputCustomDate2TypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputCustomDate2TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectTermSessionInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectTermSessionInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputDateModifiedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTermSessionInputRecordTypeEnumType
-    {
-        Deleted,
-        Normal,
-        NotDeletableHidden,
-        NotDeletableView,
-        NotDeletableViewModify
     }
 
     public class SelectEntryDetailResponseItem
@@ -3269,13 +2807,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool VisitorHold { get; set; }
     }
 
-    public class SelectEntryDetailInput
+    public class SelectEntryDetailBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectEntryDetailInputPageSizeType PageSize { get; set; } = SelectEntryDetailInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -3295,10 +2833,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string AccountDetail2 { get; set; }
         public string AccountDetail3 { get; set; }
         public string AccountDetail4 { get; set; }
-        public SelectEntryDetailInputAccountDueDateType AccountDueDate { get; set; }
+        public BodyInputAccountDueDateType AccountDueDate { get; set; }
         public bool? Athlete { get; set; }
         public string AthleteTeam { get; set; }
-        public SelectEntryDetailInputAttendeeStatusEnumType? AttendeeStatusEnum { get; set; }
+        public BodyInputAttendeeStatusEnumType? AttendeeStatusEnum { get; set; }
         public string Career { get; set; }
         public string CareerComments { get; set; }
 
@@ -3321,11 +2859,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public double? CurrentHours { get; set; }
         public string CurrentMajor { get; set; }
         public string CurrentMinor { get; set; }
-        public SelectEntryDetailInputDateEntryType DateEntry { get; set; }
-        public SelectEntryDetailInputDateExitType DateExit { get; set; }
-        public SelectEntryDetailInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateEntryType DateEntry { get; set; }
+        public BodyInputDateExitType DateExit { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public bool? Deceased { get; set; }
-        public SelectEntryDetailInputDeceasedDateType DeceasedDate { get; set; }
+        public BodyInputDeceasedDateType DeceasedDate { get; set; }
         public string Dietary { get; set; }
         public string Disability { get; set; }
         public string EmploymentDetails { get; set; }
@@ -3344,7 +2882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("EventRegistrationFeeID")]
         public int? EventRegistrationFeeId { get; set; }
-        public SelectEntryDetailInputExpectedGraduationDateType ExpectedGraduationDate { get; set; }
+        public BodyInputExpectedGraduationDateType ExpectedGraduationDate { get; set; }
         public string FinancialComments { get; set; }
 
         [JsonProperty("FinancialSupportID")]
@@ -3379,9 +2917,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? ResidentYear { get; set; }
         public string SituationResponseComments { get; set; }
         public string SituationResponseDetail { get; set; }
-        public SelectEntryDetailInputSituationResponseEnumType? SituationResponseEnum { get; set; }
-        public SelectEntryDetailInputSituationResponseExpiryDateType SituationResponseExpiryDate { get; set; }
-        public SelectEntryDetailInputSituationResponseModifiedDateType SituationResponseModifiedDate { get; set; }
+        public BodyInputSituationResponseEnumType? SituationResponseEnum { get; set; }
+        public BodyInputSituationResponseExpiryDateType SituationResponseExpiryDate { get; set; }
+        public BodyInputSituationResponseModifiedDateType SituationResponseModifiedDate { get; set; }
         public string SituationResponseSituation { get; set; }
         public string SpecialNeeds { get; set; }
 
@@ -3397,27 +2935,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool? VisitorHold { get; set; }
     }
 
-    public enum SelectEntryDetailInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectEntryDetailInputAccountDueDateType
+    public class BodyInputAccountDueDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryDetailInputAccountDueDateTypeOperatorType? Operator { get; set; }
+        public BodyInputAccountDueDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputAccountDueDateTypeOperatorType
+    public enum BodyInputAccountDueDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3430,7 +2957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputAttendeeStatusEnumType
+    public enum BodyInputAttendeeStatusEnumType
     {
         Arrived,
         Confirmed,
@@ -3440,16 +2967,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         Registered
     }
 
-    public class SelectEntryDetailInputDateEntryType
+    public class BodyInputDateEntryType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryDetailInputDateEntryTypeOperatorType? Operator { get; set; }
+        public BodyInputDateEntryTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputDateEntryTypeOperatorType
+    public enum BodyInputDateEntryTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3461,16 +2988,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryDetailInputDateExitType
+    public class BodyInputDateExitType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryDetailInputDateExitTypeOperatorType? Operator { get; set; }
+        public BodyInputDateExitTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputDateExitTypeOperatorType
+    public enum BodyInputDateExitTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3482,16 +3009,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryDetailInputDateModifiedType
+    public class BodyInputDeceasedDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryDetailInputDateModifiedTypeOperatorType? Operator { get; set; }
+        public BodyInputDeceasedDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputDateModifiedTypeOperatorType
+    public enum BodyInputDeceasedDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3503,37 +3030,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryDetailInputDeceasedDateType
+    public class BodyInputExpectedGraduationDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryDetailInputDeceasedDateTypeOperatorType? Operator { get; set; }
+        public BodyInputExpectedGraduationDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputDeceasedDateTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectEntryDetailInputExpectedGraduationDateType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryDetailInputExpectedGraduationDateTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputExpectedGraduationDateTypeOperatorType
+    public enum BodyInputExpectedGraduationDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3546,23 +3052,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputSituationResponseEnumType
+    public enum BodyInputSituationResponseEnumType
     {
         NoResponse,
         NotOkay,
         Okay
     }
 
-    public class SelectEntryDetailInputSituationResponseExpiryDateType
+    public class BodyInputSituationResponseExpiryDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryDetailInputSituationResponseExpiryDateTypeOperatorType? Operator { get; set; }
+        public BodyInputSituationResponseExpiryDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputSituationResponseExpiryDateTypeOperatorType
+    public enum BodyInputSituationResponseExpiryDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3574,16 +3080,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryDetailInputSituationResponseModifiedDateType
+    public class BodyInputSituationResponseModifiedDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryDetailInputSituationResponseModifiedDateTypeOperatorType? Operator { get; set; }
+        public BodyInputSituationResponseModifiedDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryDetailInputSituationResponseModifiedDateTypeOperatorType
+    public enum BodyInputSituationResponseModifiedDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3711,7 +3217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool VisitorHold { get; set; }
     }
 
-    public class UpdateEntryDetailInput
+    public class UpdateEntryDetailBodyInput
     {
         public bool? AcademicHold { get; set; }
 
@@ -3729,7 +3235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool? AccountHold { get; set; }
         public bool? Athlete { get; set; }
         public string AthleteTeam { get; set; }
-        public UpdateEntryDetailInputAttendeeStatusEnumType? AttendeeStatusEnum { get; set; }
+        public BodyInputAttendeeStatusEnumType? AttendeeStatusEnum { get; set; }
         public string Career { get; set; }
         public string CareerComments { get; set; }
 
@@ -3806,7 +3312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? ResidentYear { get; set; }
         public string SituationResponseComments { get; set; }
         public string SituationResponseDetail { get; set; }
-        public UpdateEntryDetailInputSituationResponseEnumType? SituationResponseEnum { get; set; }
+        public BodyInputSituationResponseEnumType? SituationResponseEnum { get; set; }
         public string SituationResponseExpiryDate { get; set; }
         public string SituationResponseModifiedDate { get; set; }
         public string SituationResponseSituation { get; set; }
@@ -3822,25 +3328,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool? Visa { get; set; }
         public string VisaDetails { get; set; }
         public bool? VisitorHold { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryDetailInputAttendeeStatusEnumType
-    {
-        Arrived,
-        Confirmed,
-        Departed,
-        NA,
-        Other,
-        Registered
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryDetailInputSituationResponseEnumType
-    {
-        NoResponse,
-        NotOkay,
-        Okay
     }
 
     public class SelectEntryEnrollmentResponseItem
@@ -3890,13 +3377,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Years { get; set; }
     }
 
-    public class SelectEntryEnrollmentInput
+    public class SelectEntryEnrollmentBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectEntryEnrollmentInputPageSizeType PageSize { get; set; } = SelectEntryEnrollmentInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -3910,21 +3397,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? CourseId { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }
-        public SelectEntryEnrollmentInputCustomDate1Type CustomDate1 { get; set; }
-        public SelectEntryEnrollmentInputCustomDate2Type CustomDate2 { get; set; }
+        public BodyInputCustomDate1Type CustomDate1 { get; set; }
+        public BodyInputCustomDate2Type CustomDate2 { get; set; }
         public string CustomString1 { get; set; }
         public string CustomString2 { get; set; }
         public string CustomString3 { get; set; }
         public string CustomString4 { get; set; }
         public string CustomString5 { get; set; }
         public string CustomString6 { get; set; }
-        public SelectEntryEnrollmentInputDateEndType DateEnd { get; set; }
-        public SelectEntryEnrollmentInputDateModifiedType DateModified { get; set; }
-        public SelectEntryEnrollmentInputDateStartType DateStart { get; set; }
+        public BodyInputDateEndType DateEnd { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateStartType DateStart { get; set; }
         public string Department { get; set; }
         public string EnrollmentField { get; set; }
         public int? EnrollmentOrder { get; set; }
-        public SelectEntryEnrollmentInputEnrollmentTypeEnumType? EnrollmentTypeEnum { get; set; }
+        public BodyInputEnrollmentTypeEnumType? EnrollmentTypeEnum { get; set; }
 
         [JsonProperty("EntryEnrollmentID")]
         public int? EntryEnrollmentId { get; set; }
@@ -3933,7 +3420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? EntryId { get; set; }
         public string Faculty { get; set; }
         public bool? FullTime { get; set; }
-        public SelectEntryEnrollmentInputGraduationDateType GraduationDate { get; set; }
+        public BodyInputGraduationDateType GraduationDate { get; set; }
         public string Institution { get; set; }
         public bool? IsEnrolled { get; set; }
         public string Major { get; set; }
@@ -3948,27 +3435,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Years { get; set; }
     }
 
-    public enum SelectEntryEnrollmentInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectEntryEnrollmentInputCustomDate1Type
+    public class BodyInputDateEndType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryEnrollmentInputCustomDate1TypeOperatorType? Operator { get; set; }
+        public BodyInputDateEndTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryEnrollmentInputCustomDate1TypeOperatorType
+    public enum BodyInputDateEndTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -3980,79 +3456,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectEntryEnrollmentInputCustomDate2Type
+    public class BodyInputDateStartType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryEnrollmentInputCustomDate2TypeOperatorType? Operator { get; set; }
+        public BodyInputDateStartTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryEnrollmentInputCustomDate2TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectEntryEnrollmentInputDateEndType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryEnrollmentInputDateEndTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryEnrollmentInputDateEndTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectEntryEnrollmentInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryEnrollmentInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryEnrollmentInputDateModifiedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectEntryEnrollmentInputDateStartType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectEntryEnrollmentInputDateStartTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryEnrollmentInputDateStartTypeOperatorType
+    public enum BodyInputDateStartTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4065,23 +3478,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryEnrollmentInputEnrollmentTypeEnumType
+    public enum BodyInputEnrollmentTypeEnumType
     {
         Current,
         Preferred,
         Previous
     }
 
-    public class SelectEntryEnrollmentInputGraduationDateType
+    public class BodyInputGraduationDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectEntryEnrollmentInputGraduationDateTypeOperatorType? Operator { get; set; }
+        public BodyInputGraduationDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectEntryEnrollmentInputGraduationDateTypeOperatorType
+    public enum BodyInputGraduationDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4139,7 +3552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Years { get; set; }
     }
 
-    public class CreateEntryEnrollmentInput
+    public class CreateEntryEnrollmentBodyInput
     {
         public string Campus { get; set; }
         public string Comments { get; set; }
@@ -4161,7 +3574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Department { get; set; }
         public string EnrollmentField { get; set; }
         public int? EnrollmentOrder { get; set; }
-        public CreateEntryEnrollmentInputEnrollmentTypeEnumType? EnrollmentTypeEnum { get; set; }
+        public BodyInputEnrollmentTypeEnumType? EnrollmentTypeEnum { get; set; }
 
         [JsonProperty("EntryID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int EntryId { get; set; }
@@ -4180,14 +3593,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("TermID")]
         public int? TermId { get; set; }
         public string Years { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEntryEnrollmentInputEnrollmentTypeEnumType
-    {
-        Current,
-        Preferred,
-        Previous
     }
 
     public class UpdateEntryEnrollmentResponse
@@ -4236,7 +3641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Years { get; set; }
     }
 
-    public class UpdateEntryEnrollmentInput
+    public class UpdateEntryEnrollmentBodyInput
     {
         public string Campus { get; set; }
         public string Comments { get; set; }
@@ -4258,7 +3663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Department { get; set; }
         public string EnrollmentField { get; set; }
         public int? EnrollmentOrder { get; set; }
-        public UpdateEntryEnrollmentInputEnrollmentTypeEnumType? EnrollmentTypeEnum { get; set; }
+        public BodyInputEnrollmentTypeEnumType? EnrollmentTypeEnum { get; set; }
 
         [JsonProperty("EntryID")]
         public int? EntryId { get; set; }
@@ -4277,14 +3682,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("TermID")]
         public int? TermId { get; set; }
         public string Years { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEntryEnrollmentInputEnrollmentTypeEnumType
-    {
-        Current,
-        Preferred,
-        Previous
     }
 
     public class SelectBookingResponseItem
@@ -4382,13 +3779,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int TermSessionId { get; set; }
     }
 
-    public class SelectBookingInput
+    public class SelectBookingBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectBookingInputPageSizeType PageSize { get; set; } = SelectBookingInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -4400,25 +3797,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("BookingID")]
         public int? BookingId { get; set; }
-        public SelectBookingInputBookingLinkTypeEnumType? BookingLinkTypeEnum { get; set; }
+        public BodyInputBookingLinkTypeEnumType? BookingLinkTypeEnum { get; set; }
 
         [JsonProperty("BookingTypeID")]
         public int? BookingTypeId { get; set; }
-        public SelectBookingInputCheckInDateType CheckInDate { get; set; }
-        public SelectBookingInputCheckInDateActualType CheckInDateActual { get; set; }
-        public SelectBookingInputCheckOutDateType CheckOutDate { get; set; }
-        public SelectBookingInputCheckOutDateActualType CheckOutDateActual { get; set; }
+        public BodyInputCheckInDateType CheckInDate { get; set; }
+        public BodyInputCheckInDateActualType CheckInDateActual { get; set; }
+        public BodyInputCheckOutDateType CheckOutDate { get; set; }
+        public BodyInputCheckOutDateActualType CheckOutDateActual { get; set; }
         public string Comments { get; set; }
-        public SelectBookingInputContractDateEndType ContractDateEnd { get; set; }
-        public SelectBookingInputContractDateStartType ContractDateStart { get; set; }
+        public BodyInputContractDateEndType ContractDateEnd { get; set; }
+        public BodyInputContractDateStartType ContractDateStart { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }
         public bool? CustomBit3 { get; set; }
         public bool? CustomBit4 { get; set; }
-        public SelectBookingInputCustomDate1Type CustomDate1 { get; set; }
-        public SelectBookingInputCustomDate2Type CustomDate2 { get; set; }
-        public SelectBookingInputCustomDate3Type CustomDate3 { get; set; }
-        public SelectBookingInputCustomDate4Type CustomDate4 { get; set; }
+        public BodyInputCustomDate1Type CustomDate1 { get; set; }
+        public BodyInputCustomDate2Type CustomDate2 { get; set; }
+        public BodyInputCustomDate3Type CustomDate3 { get; set; }
+        public BodyInputCustomDate4Type CustomDate4 { get; set; }
         public string CustomString1 { get; set; }
         public string CustomString2 { get; set; }
         public string CustomString3 { get; set; }
@@ -4429,11 +3826,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string CustomString8 { get; set; }
         public string CustomString9 { get; set; }
         public string CustomString10 { get; set; }
-        public SelectBookingInputDateBilledType DateBilled { get; set; }
-        public SelectBookingInputDateChargedToType DateChargedTo { get; set; }
-        public SelectBookingInputDateCreatedType DateCreated { get; set; }
-        public SelectBookingInputDateModifiedType DateModified { get; set; }
-        public SelectBookingInputDateModifiedBillingType DateModifiedBilling { get; set; }
+        public BodyInputDateBilledType DateBilled { get; set; }
+        public BodyInputDateChargedToType DateChargedTo { get; set; }
+        public BodyInputDateCreatedType DateCreated { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedBillingType DateModifiedBilling { get; set; }
         public int? EmotionalSupportAnimalCount { get; set; }
 
         [JsonProperty("End_BookingReasonID")]
@@ -4444,7 +3841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("EntryInvitationID")]
         public int? EntryInvitationId { get; set; }
-        public SelectBookingInputEntryStatusEnumType? EntryStatusEnum { get; set; }
+        public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
         public string ETA { get; set; }
         public string ETD { get; set; }
         public double? Excess { get; set; }
@@ -4458,7 +3855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? NumberOfChildrenFree { get; set; }
         public int? NumberOfGuests { get; set; }
         public int? NumberOfGuestsFree { get; set; }
-        public SelectBookingInputPaidToType PaidTo { get; set; }
+        public BodyInputPaidToType PaidTo { get; set; }
         public int? PetCount { get; set; }
         public bool? ResvChargeToEntry { get; set; }
         public bool? RoomLocationFixed { get; set; }
@@ -4488,19 +3885,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? TermSessionId { get; set; }
     }
 
-    public enum SelectBookingInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputBookingLinkTypeEnumType
+    public enum BodyInputBookingLinkTypeEnumType
     {
         None,
         Child,
@@ -4508,16 +3894,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         Reference
     }
 
-    public class SelectBookingInputCheckInDateType
+    public class BodyInputCheckInDateActualType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectBookingInputCheckInDateTypeOperatorType? Operator { get; set; }
+        public BodyInputCheckInDateActualTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCheckInDateTypeOperatorType
+    public enum BodyInputCheckInDateActualTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4529,16 +3915,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectBookingInputCheckInDateActualType
+    public class BodyInputCheckOutDateActualType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectBookingInputCheckInDateActualTypeOperatorType? Operator { get; set; }
+        public BodyInputCheckOutDateActualTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCheckInDateActualTypeOperatorType
+    public enum BodyInputCheckOutDateActualTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4550,16 +3936,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectBookingInputCheckOutDateType
+    public class BodyInputDateBilledType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectBookingInputCheckOutDateTypeOperatorType? Operator { get; set; }
+        public BodyInputDateBilledTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCheckOutDateTypeOperatorType
+    public enum BodyInputDateBilledTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4571,16 +3957,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectBookingInputCheckOutDateActualType
+    public class BodyInputDateChargedToType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectBookingInputCheckOutDateActualTypeOperatorType? Operator { get; set; }
+        public BodyInputDateChargedToTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCheckOutDateActualTypeOperatorType
+    public enum BodyInputDateChargedToTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4592,16 +3978,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectBookingInputContractDateEndType
+    public class BodyInputDateModifiedBillingType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectBookingInputContractDateEndTypeOperatorType? Operator { get; set; }
+        public BodyInputDateModifiedBillingTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputContractDateEndTypeOperatorType
+    public enum BodyInputDateModifiedBillingTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4613,251 +3999,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectBookingInputContractDateStartType
+    public class BodyInputPaidToType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectBookingInputContractDateStartTypeOperatorType? Operator { get; set; }
+        public BodyInputPaidToTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputContractDateStartTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputCustomDate1Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputCustomDate1TypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCustomDate1TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputCustomDate2Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputCustomDate2TypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCustomDate2TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputCustomDate3Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputCustomDate3TypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCustomDate3TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputCustomDate4Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputCustomDate4TypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputCustomDate4TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputDateBilledType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputDateBilledTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputDateBilledTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputDateChargedToType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputDateChargedToTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputDateChargedToTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputDateCreatedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputDateCreatedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputDateCreatedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputDateModifiedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectBookingInputDateModifiedBillingType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputDateModifiedBillingTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputDateModifiedBillingTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
-    }
-
-    public class SelectBookingInputPaidToType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectBookingInputPaidToTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectBookingInputPaidToTypeOperatorType
+    public enum BodyInputPaidToTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -4962,11 +4113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int TermSessionId { get; set; }
     }
 
-    public class CreateBookingInput
+    public class CreateBookingBodyInput
     {
         public int? AdditionalOccupantCount { get; set; }
         public string AutoAllocationDetail { get; set; }
-        public CreateBookingInputBookingLinkTypeEnumType? BookingLinkTypeEnum { get; set; }
+        public BodyInputBookingLinkTypeEnumType? BookingLinkTypeEnum { get; set; }
 
         [JsonProperty("BookingTypeID")]
         public int? BookingTypeId { get; set; }
@@ -5007,7 +4158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("EntryInvitationID")]
         public int? EntryInvitationId { get; set; }
-        public CreateBookingInputEntryStatusEnumType? EntryStatusEnum { get; set; }
+        public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
         public string ETA { get; set; }
         public string ETD { get; set; }
         public double? Excess { get; set; }
@@ -5049,40 +4200,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("TermSessionID")]
         public int? TermSessionId { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBookingInputBookingLinkTypeEnumType
-    {
-        None,
-        Child,
-        Parent,
-        Reference
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBookingInputEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
     }
 
     public class UpdateBookingResponse
@@ -5178,11 +4295,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int TermSessionId { get; set; }
     }
 
-    public class UpdateBookingInput
+    public class UpdateBookingBodyInput
     {
         public int? AdditionalOccupantCount { get; set; }
         public string AutoAllocationDetail { get; set; }
-        public UpdateBookingInputBookingLinkTypeEnumType? BookingLinkTypeEnum { get; set; }
+        public BodyInputBookingLinkTypeEnumType? BookingLinkTypeEnum { get; set; }
 
         [JsonProperty("BookingTypeID")]
         public int? BookingTypeId { get; set; }
@@ -5223,7 +4340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("EntryInvitationID")]
         public int? EntryInvitationId { get; set; }
-        public UpdateBookingInputEntryStatusEnumType? EntryStatusEnum { get; set; }
+        public BodyInputEntryStatusEnumType? EntryStatusEnum { get; set; }
         public string ETA { get; set; }
         public string ETD { get; set; }
         public double? Excess { get; set; }
@@ -5267,40 +4384,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? TermSessionId { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBookingInputBookingLinkTypeEnumType
-    {
-        None,
-        Child,
-        Parent,
-        Reference
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBookingInputEntryStatusEnumType
-    {
-        Account,
-        Admin,
-        Alumni,
-        Application,
-        Attendee,
-        AttendeeArrived,
-        AttendeeDeparted,
-        Cancelled,
-        Contact,
-        Erased,
-        Held,
-        History,
-        Incident,
-        InRoom,
-        MasterAccount,
-        Occupant,
-        OccupantHistory,
-        OccupantInRoom,
-        Reserved,
-        Tentative
-    }
-
     public class SelectRoomSpaceResponseItem
     {
         public bool AllocateExclude { get; set; }
@@ -5339,13 +4422,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public class SelectRoomSpaceInput
+    public class SelectRoomSpaceBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectRoomSpaceInputPageSizeType PageSize { get; set; } = SelectRoomSpaceInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -5357,14 +4440,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? Bathrooms { get; set; }
         public int? BedCapacity { get; set; }
         public string Comments { get; set; }
-        public SelectRoomSpaceInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public string Description { get; set; }
 
         [JsonProperty("ExtensionID")]
         public int? ExtensionId { get; set; }
         public bool? Hold { get; set; }
         public bool? Networked { get; set; }
-        public SelectRoomSpaceInputRecordTypeEnumType? RecordTypeEnum { get; set; }
+        public BodyInputRecordTypeEnumType? RecordTypeEnum { get; set; }
 
         [JsonProperty("RoomBaseID")]
         public int? RoomBaseId { get; set; }
@@ -5377,7 +4460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("RoomSpaceID")]
         public int? RoomSpaceId { get; set; }
-        public SelectRoomSpaceInputRoomSpaceTypeEnumType? RoomSpaceTypeEnum { get; set; }
+        public BodyInputRoomSpaceTypeEnumType? RoomSpaceTypeEnum { get; set; }
 
         [JsonProperty("SecurityUserID")]
         public int? SecurityUserId { get; set; }
@@ -5388,50 +4471,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public enum SelectRoomSpaceInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectRoomSpaceInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomSpaceInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceInputDateModifiedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceInputRecordTypeEnumType
-    {
-        Deleted,
-        Normal,
-        NotDeletableHidden,
-        NotDeletableView,
-        NotDeletableViewModify
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceInputRoomSpaceTypeEnumType
+    public enum BodyInputRoomSpaceTypeEnumType
     {
         Admin,
         Bed,
@@ -5477,7 +4518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public class CreateRoomSpaceInput
+    public class CreateRoomSpaceBodyInput
     {
         public bool? AllocateExclude { get; set; }
         public int? AllocateSortOrder { get; set; }
@@ -5490,7 +4531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? ExtensionId { get; set; }
         public bool? Hold { get; set; }
         public bool? Networked { get; set; }
-        public CreateRoomSpaceInputRecordTypeEnumType? RecordTypeEnum { get; set; }
+        public BodyInputRecordTypeEnumType? RecordTypeEnum { get; set; }
 
         [JsonProperty("RoomBaseID")]
         public int? RoomBaseId { get; set; }
@@ -5500,7 +4541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("RoomRateID")]
         public int? RoomRateId { get; set; }
-        public CreateRoomSpaceInputRoomSpaceTypeEnumType? RoomSpaceTypeEnum { get; set; }
+        public BodyInputRoomSpaceTypeEnumType? RoomSpaceTypeEnum { get; set; }
 
         [JsonProperty("SecurityUserID")]
         public int? SecurityUserId { get; set; }
@@ -5509,26 +4550,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string Street2 { get; set; }
         public string WebDescription { get; set; }
         public string ZipPostcode { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateRoomSpaceInputRecordTypeEnumType
-    {
-        Deleted,
-        Normal,
-        NotDeletableHidden,
-        NotDeletableView,
-        NotDeletableViewModify
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateRoomSpaceInputRoomSpaceTypeEnumType
-    {
-        Admin,
-        Bed,
-        BedClosed,
-        Public,
-        Shared
     }
 
     public class SelectRoomLocationResponseItem
@@ -5574,13 +4595,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public class SelectRoomLocationInput
+    public class SelectRoomLocationBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectRoomLocationInputPageSizeType PageSize { get; set; } = SelectRoomLocationInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -5598,21 +4619,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? CountryId { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }
-        public SelectRoomLocationInputCustomDate1Type CustomDate1 { get; set; }
-        public SelectRoomLocationInputCustomDate2Type CustomDate2 { get; set; }
+        public BodyInputCustomDate1Type CustomDate1 { get; set; }
+        public BodyInputCustomDate2Type CustomDate2 { get; set; }
         public string CustomString1 { get; set; }
         public string CustomString2 { get; set; }
         public string CustomString3 { get; set; }
         public string CustomString4 { get; set; }
         public string CustomString5 { get; set; }
         public string CustomString6 { get; set; }
-        public SelectRoomLocationInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public string Description { get; set; }
-        public SelectRoomLocationInputGenderTypeEnumType? GenderTypeEnum { get; set; }
+        public BodyInputGenderTypeEnumType? GenderTypeEnum { get; set; }
         public bool? Lease { get; set; }
         public bool? ManagedExternally { get; set; }
         public bool? NonResidential { get; set; }
-        public SelectRoomLocationInputRecordTypeEnumType? RecordTypeEnum { get; set; }
+        public BodyInputRecordTypeEnumType? RecordTypeEnum { get; set; }
 
         [JsonProperty("RoomLocationAreaID")]
         public int? RoomLocationAreaId { get; set; }
@@ -5628,82 +4649,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string ZipPostcode { get; set; }
     }
 
-    public enum SelectRoomLocationInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectRoomLocationInputCustomDate1Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomLocationInputCustomDate1TypeOperatorType? Operator { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomLocationInputCustomDate1TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectRoomLocationInputCustomDate2Type
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomLocationInputCustomDate2TypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomLocationInputCustomDate2TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectRoomLocationInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomLocationInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomLocationInputDateModifiedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomLocationInputGenderTypeEnumType
+    public enum BodyInputGenderTypeEnumType
     {
         [EnumMember(Value = "CoEd")]
         CoEducation,
@@ -5711,16 +4658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         Female,
         Male,
         Neutral
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomLocationInputRecordTypeEnumType
-    {
-        Deleted,
-        Normal,
-        NotDeletableHidden,
-        NotDeletableView,
-        NotDeletableViewModify
     }
 
     public class SelectTransactionResponseItem
@@ -5789,13 +4726,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string TransactionTypeEnum { get; set; }
     }
 
-    public class SelectTransactionInput
+    public class SelectTransactionBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectTransactionInputPageSizeType PageSize { get; set; } = SelectTransactionInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -5803,7 +4740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("_orderby")]
         public string Orderby { get; set; }
         public double? Amount { get; set; }
-        public SelectTransactionInputCallTypeEnumType? CallTypeEnum { get; set; }
+        public SelectTransactionBodyInputCallTypeEnumType? CallTypeEnum { get; set; }
 
         [JsonProperty("ChargeGroupID")]
         public int? ChargeGroupId { get; set; }
@@ -5814,9 +4751,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("CreatedBy_SecurityUserID")]
         public int? CreatedBySecurityUserId { get; set; }
-        public SelectTransactionInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
         public string Description { get; set; }
-        public SelectTransactionInputDueDateType DueDate { get; set; }
+        public BodyInputDueDateType DueDate { get; set; }
         public int? Duration { get; set; }
 
         [JsonProperty("EndOfSessionID")]
@@ -5835,12 +4772,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("InvoiceID")]
         public int? InvoiceId { get; set; }
-        public SelectTransactionInputPaidFromType PaidFrom { get; set; }
-        public SelectTransactionInputPaidToType PaidTo { get; set; }
+        public BodyInputPaidFromType PaidFrom { get; set; }
+        public BodyInputPaidToType PaidTo { get; set; }
 
         [JsonProperty("PaymentID")]
         public int? PaymentId { get; set; }
-        public SelectTransactionInputProcessedDateType ProcessedDate { get; set; }
+        public BodyInputProcessedDateType ProcessedDate { get; set; }
 
         [JsonProperty("Reference_BookingID")]
         public int? ReferenceBookingId { get; set; }
@@ -5859,26 +4796,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("TermSessionID")]
         public int? TermSessionId { get; set; }
-        public SelectTransactionInputTransactionDateType TransactionDate { get; set; }
+        public BodyInputTransactionDateType TransactionDate { get; set; }
 
         [JsonProperty("TransactionID")]
         public int? TransactionId { get; set; }
-        public SelectTransactionInputTransactionTypeEnumType? TransactionTypeEnum { get; set; }
-    }
-
-    public enum SelectTransactionInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
+        public BodyInputTransactionTypeEnumType? TransactionTypeEnum { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputCallTypeEnumType
+    public enum SelectTransactionBodyInputCallTypeEnumType
     {
         Fixed,
         Free,
@@ -5890,16 +4816,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         Other
     }
 
-    public class SelectTransactionInputDateModifiedType
+    public class BodyInputDueDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTransactionInputDateModifiedTypeOperatorType? Operator { get; set; }
+        public BodyInputDueDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputDateModifiedTypeOperatorType
+    public enum BodyInputDueDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -5911,16 +4837,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectTransactionInputDueDateType
+    public class BodyInputPaidFromType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTransactionInputDueDateTypeOperatorType? Operator { get; set; }
+        public BodyInputPaidFromTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputDueDateTypeOperatorType
+    public enum BodyInputPaidFromTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -5932,16 +4858,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectTransactionInputPaidFromType
+    public class BodyInputProcessedDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTransactionInputPaidFromTypeOperatorType? Operator { get; set; }
+        public BodyInputProcessedDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputPaidFromTypeOperatorType
+    public enum BodyInputProcessedDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -5953,58 +4879,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectTransactionInputPaidToType
+    public class BodyInputTransactionDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectTransactionInputPaidToTypeOperatorType? Operator { get; set; }
+        public BodyInputTransactionDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputPaidToTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectTransactionInputProcessedDateType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectTransactionInputProcessedDateTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputProcessedDateTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectTransactionInputTransactionDateType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectTransactionInputTransactionDateTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputTransactionDateTypeOperatorType
+    public enum BodyInputTransactionDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -6017,7 +4901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectTransactionInputTransactionTypeEnumType
+    public enum BodyInputTransactionTypeEnumType
     {
         Adjustment,
         Charge,
@@ -6089,11 +4973,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public string TransactionTypeEnum { get; set; }
     }
 
-    public class CreateTransactionInput
+    public class CreateTransactionBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
-        public CreateTransactionInputCallTypeEnumType? CallTypeEnum { get; set; }
+        public CreateTransactionBodyInputCallTypeEnumType? CallTypeEnum { get; set; }
 
         [JsonProperty("ChargeGroupID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ChargeGroupId { get; set; }
@@ -6146,11 +5030,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         [JsonProperty("TermSessionID")]
         public int? TermSessionId { get; set; }
         public string TransactionDate { get; set; }
-        public CreateTransactionInputTransactionTypeEnumType? TransactionTypeEnum { get; set; }
+        public BodyInputTransactionTypeEnumType? TransactionTypeEnum { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTransactionInputCallTypeEnumType
+    public enum CreateTransactionBodyInputCallTypeEnumType
     {
         Fixed,
         Free,
@@ -6160,17 +5044,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         Mobile,
         None,
         Other
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTransactionInputTransactionTypeEnumType
-    {
-        Adjustment,
-        Charge,
-        Payment,
-        Refund,
-        Telephone,
-        Transfer
     }
 
     public class SelectRoomSpaceMaintenanceResponseItem
@@ -6253,13 +5126,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool ViewOnWeb { get; set; }
     }
 
-    public class SelectRoomSpaceMaintenanceInput
+    public class SelectRoomSpaceMaintenanceBodyInput
     {
         [JsonProperty("_returnEmptyArrayOnNoResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReturnEmptyArrayOnNoResult { get; set; } = true;
 
         [JsonProperty("_pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectRoomSpaceMaintenanceInputPageSizeType PageSize { get; set; } = SelectRoomSpaceMaintenanceInputPageSizeType._1000;
+        public BodyInputPageSizeType PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1.BodyInputPageSizeType._1000;
 
         [JsonProperty("_pageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageIndex { get; set; } = 0;
@@ -6276,14 +5149,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool? ChargeInvoiced { get; set; }
         public string ChargeInvoiceNumber { get; set; }
         public string ChargeType { get; set; }
-        public SelectRoomSpaceMaintenanceInputCompleteDateType CompleteDate { get; set; }
+        public BodyInputCompleteDateType CompleteDate { get; set; }
 
         [JsonProperty("ContactID")]
         public int? ContactId { get; set; }
-        public SelectRoomSpaceMaintenanceInputContractDateType ContractDate { get; set; }
+        public BodyInputContractDateType ContractDate { get; set; }
         public double? ContractorCost { get; set; }
         public double? ContractorCostEstimate { get; set; }
-        public SelectRoomSpaceMaintenanceInputContractorDateType ContractorDate { get; set; }
+        public BodyInputContractorDateType ContractorDate { get; set; }
         public string ContractorETA { get; set; }
         public string ContractorOrderNumber { get; set; }
 
@@ -6291,18 +5164,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public int? CreatedBySecurityUserId { get; set; }
         public bool? CustomBit1 { get; set; }
         public bool? CustomBit2 { get; set; }
-        public SelectRoomSpaceMaintenanceInputCustomDate1Type CustomDate1 { get; set; }
-        public SelectRoomSpaceMaintenanceInputCustomDate2Type CustomDate2 { get; set; }
+        public BodyInputCustomDate1Type CustomDate1 { get; set; }
+        public BodyInputCustomDate2Type CustomDate2 { get; set; }
         public string CustomString1 { get; set; }
         public string CustomString2 { get; set; }
         public string CustomString3 { get; set; }
         public string CustomString4 { get; set; }
         public string CustomString5 { get; set; }
         public string CustomString6 { get; set; }
-        public SelectRoomSpaceMaintenanceInputDateCreatedType DateCreated { get; set; }
-        public SelectRoomSpaceMaintenanceInputDateDueType DateDue { get; set; }
-        public SelectRoomSpaceMaintenanceInputDateModifiedType DateModified { get; set; }
-        public SelectRoomSpaceMaintenanceInputDateReportedType DateReported { get; set; }
+        public BodyInputDateCreatedType DateCreated { get; set; }
+        public BodyInputDateDueType DateDue { get; set; }
+        public BodyInputDateModifiedType DateModified { get; set; }
+        public BodyInputDateReportedType DateReported { get; set; }
         public string Description { get; set; }
         public bool? JobSent { get; set; }
         public string JobStatus { get; set; }
@@ -6338,33 +5211,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
 
         [JsonProperty("SecurityUserID")]
         public int? SecurityUserId { get; set; }
-        public SelectRoomSpaceMaintenanceInputStartDateType StartDate { get; set; }
+        public BodyInputStartDateType StartDate { get; set; }
         public string Status { get; set; }
         public string Technician { get; set; }
         public bool? ViewOnWeb { get; set; }
     }
 
-    public enum SelectRoomSpaceMaintenanceInputPageSizeType
-    {
-        _1 = 1,
-        _5 = 5,
-        _10 = 10,
-        _50 = 50,
-        _100 = 100,
-        _500 = 500,
-        _1000 = 1000
-    }
-
-    public class SelectRoomSpaceMaintenanceInputCompleteDateType
+    public class BodyInputContractDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputCompleteDateTypeOperatorType? Operator { get; set; }
+        public BodyInputContractDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputCompleteDateTypeOperatorType
+    public enum BodyInputContractDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -6376,16 +5238,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectRoomSpaceMaintenanceInputContractDateType
+    public class BodyInputContractorDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputContractDateTypeOperatorType? Operator { get; set; }
+        public BodyInputContractorDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputContractDateTypeOperatorType
+    public enum BodyInputContractorDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -6397,16 +5259,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectRoomSpaceMaintenanceInputContractorDateType
+    public class BodyInputDateDueType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputContractorDateTypeOperatorType? Operator { get; set; }
+        public BodyInputDateDueTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputContractorDateTypeOperatorType
+    public enum BodyInputDateDueTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -6418,16 +5280,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectRoomSpaceMaintenanceInputCustomDate1Type
+    public class BodyInputDateReportedType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputCustomDate1TypeOperatorType? Operator { get; set; }
+        public BodyInputDateReportedTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputCustomDate1TypeOperatorType
+    public enum BodyInputDateReportedTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -6439,121 +5301,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         LessThanOrEqual
     }
 
-    public class SelectRoomSpaceMaintenanceInputCustomDate2Type
+    public class BodyInputStartDateType
     {
         public string Value { get; set; }
 
         [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputCustomDate2TypeOperatorType? Operator { get; set; }
+        public BodyInputStartDateTypeOperatorType? Operator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputCustomDate2TypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectRoomSpaceMaintenanceInputDateCreatedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputDateCreatedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputDateCreatedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectRoomSpaceMaintenanceInputDateDueType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputDateDueTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputDateDueTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectRoomSpaceMaintenanceInputDateModifiedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputDateModifiedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputDateModifiedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectRoomSpaceMaintenanceInputDateReportedType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputDateReportedTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputDateReportedTypeOperatorType
-    {
-        [EnumMember(Value = "GREATERTHAN")]
-        GreaterThan,
-        [EnumMember(Value = "LESSTHAN")]
-        LessThan,
-        [EnumMember(Value = "GREATERTHANOREQUALTO")]
-        GreaterThanOrEqual,
-        [EnumMember(Value = "LESSTHANOREQUALTO")]
-        LessThanOrEqual
-    }
-
-    public class SelectRoomSpaceMaintenanceInputStartDateType
-    {
-        public string Value { get; set; }
-
-        [JsonProperty("_operator")]
-        public SelectRoomSpaceMaintenanceInputStartDateTypeOperatorType? Operator { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectRoomSpaceMaintenanceInputStartDateTypeOperatorType
+    public enum BodyInputStartDateTypeOperatorType
     {
         [EnumMember(Value = "GREATERTHAN")]
         GreaterThan,
@@ -6645,7 +5402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool ViewOnWeb { get; set; }
     }
 
-    public class CreateRoomSpaceMaintenanceInput
+    public class CreateRoomSpaceMaintenanceBodyInput
     {
         public string AccountCode { get; set; }
         public string Cause { get; set; }
@@ -6797,7 +5554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Starrezrestv1
         public bool ViewOnWeb { get; set; }
     }
 
-    public class UpdateRoomSpaceMaintenanceInput
+    public class UpdateRoomSpaceMaintenanceBodyInput
     {
         public string AccountCode { get; set; }
         public string Cause { get; set; }

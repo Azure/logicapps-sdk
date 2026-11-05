@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<SwitchResponseItem[], ApiConnectionActionConfiguration> Switch(Expression<Func<SwitchInput>> body)
+        public IBodyWorkflowAction<SwitchResponseItem[], ApiConnectionActionConfiguration> Switch(Expression<Func<SwitchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SwitchResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<ColorResponseItem[], ApiConnectionActionConfiguration> Color(Expression<Func<ColorInput>> body = null)
+        public IBodyWorkflowAction<ColorResponseItem[], ApiConnectionActionConfiguration> Color(Expression<Func<ColorBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ColorResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<BrightnessResponseItem[], ApiConnectionActionConfiguration> Brightness(Expression<Func<BrightnessInput>> body = null)
+        public IBodyWorkflowAction<BrightnessResponseItem[], ApiConnectionActionConfiguration> Brightness(Expression<Func<BrightnessBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BrightnessResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<TemperatureResponseItem[], ApiConnectionActionConfiguration> Temperature(Expression<Func<TemperatureInput>> body = null)
+        public IBodyWorkflowAction<TemperatureResponseItem[], ApiConnectionActionConfiguration> Temperature(Expression<Func<TemperatureBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TemperatureResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> Query(Expression<Func<QueryInput>> body = null)
+        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> Query(Expression<Func<QueryBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QueryResponse, ApiConnectionActionConfiguration>(() =>
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public string Status { get; set; }
     }
 
-    public class SwitchInput
+    public class SwitchBodyInput
     {
         [JsonProperty("did")]
         public string Did { get; set; }
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public string Status { get; set; }
     }
 
-    public class ColorInput
+    public class ColorBodyInput
     {
         [JsonProperty("did")]
         public string Did { get; set; }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public string Status { get; set; }
     }
 
-    public class BrightnessInput
+    public class BrightnessBodyInput
     {
         [JsonProperty("did")]
         public string Did { get; set; }
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public string Status { get; set; }
     }
 
-    public class TemperatureInput
+    public class TemperatureBodyInput
     {
         [JsonProperty("did")]
         public string Did { get; set; }
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         public int ColorTemperature { get; set; }
     }
 
-    public class QueryInput
+    public class QueryBodyInput
     {
         [JsonProperty("did")]
         public string Did { get; set; }

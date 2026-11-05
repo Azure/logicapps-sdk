@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
     public class NintexworkflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<CreateWorkflowInstanceInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<BodyInput>> body)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
     {
     }
 
-    public class CreateWorkflowInstanceInput
+    public class BodyInput
     {
         [JsonProperty("startData")]
         public JToken StartData { get; set; }

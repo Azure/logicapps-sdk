@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class SafetycultureActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<AuditSearchResponse, ApiConnectionActionConfiguration> SearchAudits(Expression<Func<orderInput>> order = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> template = null, Expression<Func<archivedInput>> archived = null, Expression<Func<completedInput>> completed = null, Expression<Func<ownerInput>> owner = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<AuditSearchResponse, ApiConnectionActionConfiguration> SearchAudits(Expression<Func<OrderInput>> order = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> template = null, Expression<Func<ArchivedInput>> archived = null, Expression<Func<CompletedInput>> completed = null, Expression<Func<OwnerInput>> owner = null, Expression<Func<int>> limit = null)
         {
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_modifiedAfter = WorkflowExpression.Compile(modifiedAfter, nameof(modifiedAfter), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditByIdResponse, ApiConnectionActionConfiguration> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<ArchiveRestoreAuditInput>> body = null)
+        public IBodyWorkflowAction<GetAuditByIdResponse, ApiConnectionActionConfiguration> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitExportResponse, ApiConnectionActionConfiguration> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<formatInput>> format, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
+        public IBodyWorkflowAction<InitExportResponse, ApiConnectionActionConfiguration> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<InitiateAuditExportFormatInput>> format, Expression<Func<TimezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ActionsSearchResponse, ApiConnectionActionConfiguration> SearchActions(Expression<Func<SearchActionsInput>> searchActionsBody = null)
+        public IBodyWorkflowAction<ActionsSearchResponse, ApiConnectionActionConfiguration> SearchActions(Expression<Func<SearchActionsBodyInput>> searchActionsBody = null)
         {
             var __workflow_searchActionsBody = WorkflowExpression.Compile(searchActionsBody, nameof(searchActionsBody), required: false);
             return new DeferredBodyAction<ActionsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> CreateAction(Expression<Func<CreateActionInput>> createActionBody)
+        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> CreateAction(Expression<Func<CreateActionBodyInput>> createActionBody)
         {
             var __workflow_createActionBody = WorkflowExpression.Compile(createActionBody, nameof(createActionBody), required: true);
             return new DeferredBodyAction<Action, ApiConnectionActionConfiguration>(() =>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> UpdateAction(Expression<Func<string>> actionId, Expression<Func<UpdateActionInput>> updateActionBody)
+        public IBodyWorkflowAction<Action, ApiConnectionActionConfiguration> UpdateAction(Expression<Func<string>> actionId, Expression<Func<UpdateActionBodyInput>> updateActionBody)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_updateActionBody = WorkflowExpression.Compile(updateActionBody, nameof(updateActionBody), required: true);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitInspectionExportResponse, ApiConnectionActionConfiguration> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<InitiateInspectionExportInput>> format)
+        public IBodyWorkflowAction<InitInspectionExportResponse, ApiConnectionActionConfiguration> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<InitiateInspectionExportFormatInput>> format)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         [EnumMember(Value = "desc")]
         Desc,
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum archivedInput
+    public enum ArchivedInput
     {
         [EnumMember(Value = "true")]
         True,
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum completedInput
+    public enum CompletedInput
     {
         [EnumMember(Value = "true")]
         True,
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ownerInput
+    public enum OwnerInput
     {
         [EnumMember(Value = "me")]
         Me,
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string TemplateName { get; set; }
     }
 
-    public class ArchiveRestoreAuditInput
+    public class BodyInput
     {
         [JsonProperty("archived")]
         public bool? Archived { get; set; }
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum InitiateAuditExportFormatInput
     {
         [EnumMember(Value = "pdf")]
         Pdf,
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum timezoneInput
+    public enum TimezoneInput
     {
         [EnumMember(Value = "Pacific/Auckland")]
         PacificAuckland,
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string CreatorName { get; set; }
     }
 
-    public class SearchActionsInput
+    public class SearchActionsBodyInput
     {
         [JsonProperty("audit_id")]
         public string[] AuditIdS { get; set; }
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string BeforeDate { get; set; }
     }
 
-    public class CreateActionInput
+    public class CreateActionBodyInput
     {
         [JsonProperty("audit_id")]
         public string AuditId { get; set; }
@@ -672,10 +672,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string Description { get; set; }
 
         [JsonProperty("priority")]
-        public CreateActionInputPriorityType? Priority { get; set; }
+        public CreateActionBodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("status")]
-        public CreateActionInputStatusType? Status { get; set; }
+        public CreateActionBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("due_at")]
         public string DueAt { get; set; }
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionInputPriorityType
+    public enum CreateActionBodyInputPriorityType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionInputStatusType
+    public enum CreateActionBodyInputStatusType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public bool Ok { get; set; }
     }
 
-    public class UpdateActionInput
+    public class UpdateActionBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -725,10 +725,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string Description { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateActionInputPriorityType? Priority { get; set; }
+        public UpdateActionBodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("status")]
-        public UpdateActionInputStatusType? Status { get; set; }
+        public UpdateActionBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("due_at")]
         public string DueAt { get; set; }
@@ -738,7 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateActionInputPriorityType
+    public enum UpdateActionBodyInputPriorityType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateActionInputStatusType
+    public enum UpdateActionBodyInputStatusType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -769,17 +769,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string ExportTaskId { get; set; }
     }
 
-    public class InitiateInspectionExportInput
+    public class InitiateInspectionExportFormatInput
     {
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InitiateInspectionExportInputExportFormatType? ExportFormat { get; set; } = InitiateInspectionExportInputExportFormatType.PDF;
+        public FormatInputExportFormatType? ExportFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture.FormatInputExportFormatType.PDF;
 
         [JsonProperty("preference_id")]
         public string PreferenceId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InitiateInspectionExportInputExportFormatType
+    public enum FormatInputExportFormatType
     {
         PDF,
         WORD

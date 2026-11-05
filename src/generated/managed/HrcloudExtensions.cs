@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<AddEmployeeInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddEmployee(Expression<Func<AddEmployeeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<UpdateEmployeeInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<UpdateEmployeeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         public string Currency { get; set; }
     }
 
-    public class AddEmployeeInput
+    public class AddEmployeeBodyInput
     {
         [JsonProperty("xAddress1")]
         public string XAddress1 { get; set; }
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         public string XDepartmentLookup { get; set; }
     }
 
-    public class UpdateEmployeeInput
+    public class UpdateEmployeeBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }

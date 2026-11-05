@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<Webhook, ApiConnectionActionConfiguration> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<ExecuteWebhookInput>> body = null)
+        public IBodyWorkflowAction<Webhook, ApiConnectionActionConfiguration> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<ContentTypeInput>> contentType = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_webhookId = WorkflowExpression.Compile(webhookId, nameof(webhookId), required: true);
             var __workflow_webhookToken = WorkflowExpression.Compile(webhookToken, nameof(webhookToken), required: true);
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentTypeInput
+    public enum ContentTypeInput
     {
         [EnumMember(Value = "application/json")]
         ApplicationJson,
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         MultipartFormData
     }
 
-    public class ExecuteWebhookInput
+    public class BodyInput
     {
         [JsonProperty("content")]
         public string Content { get; set; }

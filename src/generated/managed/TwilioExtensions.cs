@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
     public class TwilioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> sendMessageRequest)
+        public IBodyWorkflowAction<Message, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageRequestInput>> sendMessageRequest)
         {
             var __workflow_sendMessageRequest = WorkflowExpression.Compile(sendMessageRequest, nameof(sendMessageRequest), required: true);
             return new DeferredBodyAction<Message, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         public string MessagingServiceSid { get; set; }
     }
 
-    public class SendMessageInput
+    public class SendMessageRequestInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }

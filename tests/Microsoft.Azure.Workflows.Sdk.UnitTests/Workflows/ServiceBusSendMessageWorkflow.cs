@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             var sendMessage = WorkflowActions.Managed.Servicebus("servicebus").SendMessage(
                 entityName: () => "my-queue",
-                message: () => new SendMessageInput
+                message: () => new MessageInput
                 {
                     Content = WorkflowBinaryContent.FromWorkflowContent(compose.Output),
                 });

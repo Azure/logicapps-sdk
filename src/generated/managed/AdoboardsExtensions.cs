@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<VstsListSubject, ApiConnectionActionConfiguration> GetSubject(Expression<Func<string>> account, Expression<Func<GetSubjectInput>> subjectQueryDetails)
+        public IBodyWorkflowAction<VstsListSubject, ApiConnectionActionConfiguration> GetSubject(Expression<Func<string>> account, Expression<Func<SubjectQueryDetailsInput>> subjectQueryDetails)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_subjectQueryDetails = WorkflowExpression.Compile(subjectQueryDetails, nameof(subjectQueryDetails), required: true);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<UpdateWorkItemInput>> workItem)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<WorkItemInput>> workItem)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         public string Avatar { get; set; }
     }
 
-    public class GetSubjectInput
+    public class SubjectQueryDetailsInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchTerm { get; set; }
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         public string ScopeDescriptor { get; set; }
     }
 
-    public class UpdateWorkItemInput
+    public class WorkItemInput
     {
         [JsonProperty("priority")]
         public int? Priority { get; set; }

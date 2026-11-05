@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
     public class SocialinsiderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileTimeBasedMetrics(Expression<Func<ProfileTimeBasedMetricsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileTimeBasedMetrics(Expression<Func<ProfileTimeBasedMetricsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileAggregatedMetrics(Expression<Func<ProfileAggregatedMetricsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProfileAggregatedMetrics(Expression<Func<PostsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Posts(Expression<Func<PostsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Posts(Expression<Func<PostsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Stories(Expression<Func<StoriesInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Stories(Expression<Func<StoriesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
     {
     }
 
-    public class ProfileTimeBasedMetricsInput
+    public class ProfileTimeBasedMetricsBodyInput
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         public string[] Profile { get; set; }
     }
 
-    public class ProfileAggregatedMetricsInput
+    public class PostsBodyInput
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -107,22 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         public string[] Profiles { get; set; }
     }
 
-    public class PostsInput
-    {
-        [JsonProperty("key")]
-        public string Key { get; set; }
-
-        [JsonProperty("projectname")]
-        public string Projectname { get; set; }
-
-        [JsonProperty("platform")]
-        public string Platform { get; set; }
-
-        [JsonProperty("profiles")]
-        public string[] Profiles { get; set; }
-    }
-
-    public class StoriesInput
+    public class StoriesBodyInput
     {
         [JsonProperty("key")]
         public string Key { get; set; }

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<SendMessageByPhoneNumberResponse, ApiConnectionActionConfiguration> SendMessageByPhoneNumber(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<SendMessageByPhoneNumberInput>> body)
+        public IBodyWorkflowAction<SendMessageByPhoneNumberResponse, ApiConnectionActionConfiguration> SendMessageByPhoneNumber(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<SendMessageByPhoneNumberBodyInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<CreateContactInput>> body)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<int>> dashboardId, Expression<Func<string>> phoneNumber, Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: true);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<BulkUpdateContactsResponseItem[], ApiConnectionActionConfiguration> BulkUpdateContacts(Expression<Func<int>> dashboardId, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<BulkUpdateContactsResponseItem[], ApiConnectionActionConfiguration> BulkUpdateContacts(Expression<Func<int>> dashboardId, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<UpdateGroupResponse, ApiConnectionActionConfiguration> UpdateGroup(Expression<Func<int>> dashboardId, Expression<Func<int>> groupId, Expression<Func<UpdateGroupInput>> body)
+        public IBodyWorkflowAction<UpdateGroupResponse, ApiConnectionActionConfiguration> UpdateGroup(Expression<Func<int>> dashboardId, Expression<Func<int>> groupId, Expression<Func<CreateGroupBodyInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<int>> dashboardId, Expression<Func<CreateGroupInput>> body)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<int>> dashboardId, Expression<Func<CreateGroupBodyInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreatePaymentResponse, ApiConnectionActionConfiguration> CreatePayment(Expression<Func<int>> dashboardId, Expression<Func<CreatePaymentInput>> body)
+        public IBodyWorkflowAction<CreatePaymentResponse, ApiConnectionActionConfiguration> CreatePayment(Expression<Func<int>> dashboardId, Expression<Func<CreatePaymentBodyInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<UpdateDashboardsNameResponse, ApiConnectionActionConfiguration> UpdateDashboardsName(Expression<Func<int>> dashboardId, Expression<Func<UpdateDashboardsNameInput>> body)
+        public IBodyWorkflowAction<UpdateDashboardsNameResponse, ApiConnectionActionConfiguration> UpdateDashboardsName(Expression<Func<int>> dashboardId, Expression<Func<UpdateDashboardsNameBodyInput>> body)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textrequest")]
-        public IBodyWorkflowAction<CreateDashboardResponse, ApiConnectionActionConfiguration> CreateDashboard(Expression<Func<CreateDashboardInput>> body)
+        public IBodyWorkflowAction<CreateDashboardResponse, ApiConnectionActionConfiguration> CreateDashboard(Expression<Func<CreateDashboardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateDashboardResponse, ApiConnectionActionConfiguration>(() =>
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
     public class TextrequestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TextingWebhookResponse, ApiConnectionTriggerConfiguration> TextingWebhook(Expression<Func<string>> dashboardId, Expression<Func<TextingWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TextingWebhookResponse, ApiConnectionTriggerConfiguration> TextingWebhook(Expression<Func<string>> dashboardId, Expression<Func<TextingWebhookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_dashboardId = WorkflowExpression.Compile(dashboardId, nameof(dashboardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string[] MmsMedia { get; set; }
     }
 
-    public class SendMessageByPhoneNumberInput
+    public class SendMessageByPhoneNumberBodyInput
     {
         [JsonProperty("body")]
         public string MessageBody { get; set; }
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string[] MmsMedia { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("first_name")]
         public string FirstNameOfContact { get; set; }
@@ -903,13 +903,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string[] ContactTags { get; set; }
 
         [JsonProperty("custom_fields")]
-        public CreateContactInputContactCustomFieldsTypeItem[] ContactCustomFields { get; set; }
+        public BodyInputContactCustomFieldsTypeItem[] ContactCustomFields { get; set; }
 
         [JsonProperty("is_resolved")]
         public bool? IsResolved { get; set; }
     }
 
-    public class CreateContactInputContactCustomFieldsTypeItem
+    public class BodyInputContactCustomFieldsTypeItem
     {
         [JsonProperty("id")]
         public string CustomFieldId { get; set; }
@@ -1155,7 +1155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string[] MmsMedia { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("phone_number")]
         public string PhoneNumberOfContact { get; set; }
@@ -1170,13 +1170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string FullNameOfContact { get; set; }
 
         [JsonProperty("is_suppressed")]
-        public bool WhetherMessagesFromThisContactAreSuppressed { get; set; }
+        public bool? WhetherMessagesFromThisContactAreSuppressed { get; set; }
 
         [JsonProperty("is_archived")]
-        public bool WhetherMessagesFromThisContactAreArchived { get; set; }
+        public bool? WhetherMessagesFromThisContactAreArchived { get; set; }
 
         [JsonProperty("is_blocked")]
-        public bool WhetherMessagesFromThisContactAreBlocked { get; set; }
+        public bool? WhetherMessagesFromThisContactAreBlocked { get; set; }
 
         [JsonProperty("suppressed_reason")]
         public string ReasonForSuppressingThisContact { get; set; }
@@ -1191,13 +1191,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string[] ContactTags { get; set; }
 
         [JsonProperty("custom_fields")]
-        public bodyInputItemContactCustomFieldsTypeItem[] ContactCustomFields { get; set; }
+        public BodyInputItemContactCustomFieldsTypeItem[] ContactCustomFields { get; set; }
 
         [JsonProperty("is_resolved")]
-        public bool IsResolved { get; set; }
+        public bool? IsResolved { get; set; }
     }
 
-    public class bodyInputItemContactCustomFieldsTypeItem
+    public class BodyInputItemContactCustomFieldsTypeItem
     {
         [JsonProperty("id")]
         public string CustomFieldId { get; set; }
@@ -1248,7 +1248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string LastMessageSentUtc { get; set; }
     }
 
-    public class UpdateGroupInput
+    public class CreateGroupBodyInput
     {
         [JsonProperty("name")]
         public string GroupName { get; set; }
@@ -1318,15 +1318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
 
         [JsonProperty("last_message_sent_utc")]
         public string LastMessageSentUtc { get; set; }
-    }
-
-    public class CreateGroupInput
-    {
-        [JsonProperty("name")]
-        public string GroupName { get; set; }
-
-        [JsonProperty("notes")]
-        public string GroupNote { get; set; }
     }
 
     public class GetTagsResponse
@@ -1608,7 +1599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string ReferenceNumber { get; set; }
     }
 
-    public class CreatePaymentInput
+    public class CreatePaymentBodyInput
     {
         [JsonProperty("description")]
         public string PaymentDescription { get; set; }
@@ -1650,7 +1641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string Phone { get; set; }
     }
 
-    public class UpdateDashboardsNameInput
+    public class UpdateDashboardsNameBodyInput
     {
         [JsonProperty("name")]
         public string DashboardName { get; set; }
@@ -1758,7 +1749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string Phone { get; set; }
     }
 
-    public class CreateDashboardInput
+    public class CreateDashboardBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1779,20 +1770,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string Event { get; set; }
     }
 
-    public class TextingWebhookInput
+    public class TextingWebhookBodyInput
     {
         [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextingWebhookInputEventType Event { get; set; }
+        public BodyInputEventType Event { get; set; }
 
         [JsonProperty("httpVerb", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string HttpVerb { get; set; } = "POST";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextingWebhookInputEventType
+    public enum BodyInputEventType
     {
         [EnumMember(Value = "msg_received")]
         MsgReceived,

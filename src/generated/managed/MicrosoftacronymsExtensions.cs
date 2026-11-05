@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
     public class MicrosoftacronymsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        public IBodyWorkflowAction<AcronymSearchPostResponse, ApiConnectionActionConfiguration> AcronymSearch(Expression<Func<AcronymSearchPostInput>> body = null)
+        public IBodyWorkflowAction<AcronymSearchResponse, ApiConnectionActionConfiguration> AcronymSearch(Expression<Func<AcronymSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AcronymSearchPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AcronymSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AcronymSearchPostResponse>(callPayload);
+                return new ApiConnectionAction<AcronymSearchResponse>(callPayload);
             });
         }
 
@@ -40,17 +40,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        public IBodyWorkflowAction<AcronymPostResponse, ApiConnectionActionConfiguration> Acronym(Expression<Func<AcronymPostInput>> body = null)
+        public IBodyWorkflowAction<AcronymResponse, ApiConnectionActionConfiguration> Acronym(Expression<Func<AcronymBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AcronymPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AcronymResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/acronyms";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AcronymPostResponse>(callPayload);
+                return new ApiConnectionAction<AcronymResponse>(callPayload);
             });
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AcronymPatch(Expression<Func<string>> acronymsId, Expression<Func<AcronymPatchInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AcronymPatch(Expression<Func<string>> acronymsId, Expression<Func<AcronymPatchBodyInput>> body = null)
         {
             var __workflow_acronymsId = WorkflowExpression.Compile(acronymsId, nameof(acronymsId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -101,25 +101,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
     {
     }
 
-    public class AcronymSearchPostResponse
+    public class AcronymSearchResponse
     {
         [JsonProperty("value")]
-        public AcronymSearchPostResponseValueTypeItem[] Value { get; set; }
+        public AcronymSearchResponseValueTypeItem[] Value { get; set; }
 
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
     }
 
-    public class AcronymSearchPostResponseValueTypeItem
+    public class AcronymSearchResponseValueTypeItem
     {
         [JsonProperty("hitsContainers")]
-        public AcronymSearchPostResponseValueTypeItemHitsContainersTypeItem[] HitsContainers { get; set; }
+        public AcronymSearchResponseValueTypeItemHitsContainersTypeItem[] HitsContainers { get; set; }
     }
 
-    public class AcronymSearchPostResponseValueTypeItemHitsContainersTypeItem
+    public class AcronymSearchResponseValueTypeItemHitsContainersTypeItem
     {
         [JsonProperty("hits")]
-        public AcronymSearchPostResponseValueTypeItemHitsContainersTypeItemHitsTypeItem[] Hits { get; set; }
+        public AcronymSearchResponseValueTypeItemHitsContainersTypeItemHitsTypeItem[] Hits { get; set; }
 
         [JsonProperty("total")]
         public int Total { get; set; }
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string[] Aggregations { get; set; }
     }
 
-    public class AcronymSearchPostResponseValueTypeItemHitsContainersTypeItemHitsTypeItem
+    public class AcronymSearchResponseValueTypeItemHitsContainersTypeItemHitsTypeItem
     {
         [JsonProperty("hitId")]
         public string HitId { get; set; }
@@ -143,10 +143,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string Summary { get; set; }
 
         [JsonProperty("resource")]
-        public AcronymSearchPostResponseValueTypeItemHitsContainersTypeItemHitsTypeItemResourceType Resource { get; set; }
+        public AcronymSearchResponseValueTypeItemHitsContainersTypeItemHitsTypeItemResourceType Resource { get; set; }
     }
 
-    public class AcronymSearchPostResponseValueTypeItemHitsContainersTypeItemHitsTypeItemResourceType
+    public class AcronymSearchResponseValueTypeItemHitsContainersTypeItemHitsTypeItemResourceType
     {
         [JsonProperty("@odata.type")]
         public string Type { get; set; }
@@ -164,13 +164,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string StandsFor { get; set; }
     }
 
-    public class AcronymSearchPostInput
+    public class AcronymSearchBodyInput
     {
         [JsonProperty("requests")]
-        public AcronymSearchPostInputRequestsTypeItem[] Requests { get; set; }
+        public BodyInputRequestsTypeItem[] Requests { get; set; }
     }
 
-    public class AcronymSearchPostInputRequestsTypeItem
+    public class BodyInputRequestsTypeItem
     {
         [JsonProperty("entityTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] EntityTypes { get; set; } = new string[]
@@ -179,10 +179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         };
 
         [JsonProperty("query")]
-        public AcronymSearchPostInputRequestsTypeItemQueryType Query { get; set; }
+        public BodyInputRequestsTypeItemQueryType Query { get; set; }
     }
 
-    public class AcronymSearchPostInputRequestsTypeItemQueryType
+    public class BodyInputRequestsTypeItemQueryType
     {
         [JsonProperty("queryString")]
         public string QueryString { get; set; }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string Id { get; set; }
     }
 
-    public class AcronymPostResponse
+    public class AcronymResponse
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string Id { get; set; }
     }
 
-    public class AcronymPostInput
+    public class AcronymBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -269,11 +269,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string WebUrl { get; set; }
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AcronymPostInputStateType? State { get; set; } = AcronymPostInputStateType.Published;
+        public BodyInputStateType? State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms.BodyInputStateType.Published;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AcronymPostInputStateType
+    public enum BodyInputStateType
     {
         [EnumMember(Value = "published")]
         Published,
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string Id { get; set; }
     }
 
-    public class AcronymPatchInput
+    public class AcronymPatchBodyInput
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -351,20 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string WebUrl { get; set; }
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AcronymPatchInputStateType? State { get; set; } = AcronymPatchInputStateType.Published;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AcronymPatchInputStateType
-    {
-        [EnumMember(Value = "published")]
-        Published,
-        [EnumMember(Value = "draft")]
-        Draft,
-        [EnumMember(Value = "excluded")]
-        Excluded,
-        [EnumMember(Value = "unknownFutureValue")]
-        UnknownFutureValue
+        public BodyInputStateType? State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms.BodyInputStateType.Published;
     }
 }
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> instance, Expression<Func<CreateGoalInput>> body)
+        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> instance, Expression<Func<CreateGoalBodyInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateGoalResponse, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateGoalInput>> body)
+        public IBodyWorkflowAction<UpdateGoalResponse, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateGoalBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateRiskResponse, ApiConnectionActionConfiguration> CreateRisk(Expression<Func<string>> instance, Expression<Func<CreateRiskInput>> body)
+        public IBodyWorkflowAction<CreateRiskResponse, ApiConnectionActionConfiguration> CreateRisk(Expression<Func<string>> instance, Expression<Func<CreateRiskBodyInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateRiskResponse, ApiConnectionActionConfiguration> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateRiskInput>> body)
+        public IBodyWorkflowAction<UpdateRiskResponse, ApiConnectionActionConfiguration> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateRiskBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> instance, Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> instance, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateTaskInput>> body)
+        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateTaskBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> instance, Expression<Func<CreateUpdateInput>> body)
+        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<string>> instance, Expression<Func<CreateUpdateBodyInput>> body)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateUpdateResponse, ApiConnectionActionConfiguration> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateUpdateInput>> body)
+        public IBodyWorkflowAction<UpdateUpdateResponse, ApiConnectionActionConfiguration> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<UpdateUpdateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
@@ -516,13 +516,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int[] TaskIds { get; set; }
     }
 
-    public class CreateGoalInput
+    public class CreateGoalBodyInput
     {
         [JsonProperty("goal", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGoalInputGoalType Goal { get; set; }
+        public CreateGoalBodyInputGoalType Goal { get; set; }
     }
 
-    public class CreateGoalInputGoalType
+    public class CreateGoalBodyInputGoalType
     {
         [JsonProperty("role_id")]
         public int? RoleId { get; set; }
@@ -531,13 +531,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int? CreatorId { get; set; }
 
         [JsonProperty("status")]
-        public CreateGoalInputGoalTypeStatusType? Status { get; set; }
+        public BodyInputGoalTypeStatusType? Status { get; set; }
 
         [JsonProperty("completion_criteria")]
-        public CreateGoalInputGoalTypeCompletionCriteriaType? CompletionCriteria { get; set; }
+        public BodyInputGoalTypeCompletionCriteriaType? CompletionCriteria { get; set; }
 
         [JsonProperty("target_flow")]
-        public CreateGoalInputGoalTypeTargetFlowType? TargetFlow { get; set; }
+        public BodyInputGoalTypeTargetFlowType? TargetFlow { get; set; }
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Action { get; set; }
@@ -561,13 +561,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public string EndTime { get; set; }
 
         [JsonProperty("weight_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGoalInputGoalTypeWeightIdType WeightId { get; set; }
+        public BodyInputGoalTypeWeightIdType WeightId { get; set; }
 
         [JsonProperty("is_private")]
-        public CreateGoalInputGoalTypeIsPrivateType? IsPrivate { get; set; }
+        public BodyInputGoalTypeIsPrivateType? IsPrivate { get; set; }
 
         [JsonProperty("tracking_type")]
-        public CreateGoalInputGoalTypeTrackingTypeType? TrackingType { get; set; }
+        public BodyInputGoalTypeTrackingTypeType? TrackingType { get; set; }
 
         [JsonProperty("entity_template_id")]
         public int? EntityTemplateId { get; set; }
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGoalInputGoalTypeStatusType
+    public enum BodyInputGoalTypeStatusType
     {
         APPRO,
         DRAFT,
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGoalInputGoalTypeCompletionCriteriaType
+    public enum BodyInputGoalTypeCompletionCriteriaType
     {
         [EnumMember(Value = "TARGET-REACHED")]
         TARGETREACHED,
@@ -600,14 +600,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGoalInputGoalTypeTargetFlowType
+    public enum BodyInputGoalTypeTargetFlowType
     {
         OVER,
         UNDER,
         NONE
     }
 
-    public enum CreateGoalInputGoalTypeWeightIdType
+    public enum BodyInputGoalTypeWeightIdType
     {
         _1 = 1,
         _2 = 2,
@@ -615,14 +615,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4 = 4
     }
 
-    public enum CreateGoalInputGoalTypeIsPrivateType
+    public enum BodyInputGoalTypeIsPrivateType
     {
         _0 = 0,
         _1 = 1
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGoalInputGoalTypeTrackingTypeType
+    public enum BodyInputGoalTypeTrackingTypeType
     {
         MANUAL,
         [EnumMember(Value = "SUBGOAL-SUM")]
@@ -832,13 +832,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int[] TaskIds { get; set; }
     }
 
-    public class UpdateGoalInput
+    public class UpdateGoalBodyInput
     {
         [JsonProperty("goal")]
-        public UpdateGoalInputGoalType Goal { get; set; }
+        public UpdateGoalBodyInputGoalType Goal { get; set; }
     }
 
-    public class UpdateGoalInputGoalType
+    public class UpdateGoalBodyInputGoalType
     {
         [JsonProperty("role_id")]
         public int? RoleId { get; set; }
@@ -847,13 +847,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int? CreatorId { get; set; }
 
         [JsonProperty("status")]
-        public UpdateGoalInputGoalTypeStatusType? Status { get; set; }
+        public BodyInputGoalTypeStatusType? Status { get; set; }
 
         [JsonProperty("completion_criteria")]
-        public UpdateGoalInputGoalTypeCompletionCriteriaType? CompletionCriteria { get; set; }
+        public BodyInputGoalTypeCompletionCriteriaType? CompletionCriteria { get; set; }
 
         [JsonProperty("target_flow")]
-        public UpdateGoalInputGoalTypeTargetFlowType? TargetFlow { get; set; }
+        public BodyInputGoalTypeTargetFlowType? TargetFlow { get; set; }
 
         [JsonProperty("action")]
         public string Action { get; set; }
@@ -877,13 +877,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public string EndTime { get; set; }
 
         [JsonProperty("weight_id")]
-        public UpdateGoalInputGoalTypeWeightIdType? WeightId { get; set; }
+        public BodyInputGoalTypeWeightIdType? WeightId { get; set; }
 
         [JsonProperty("is_private")]
         public int? IsPrivate { get; set; }
 
         [JsonProperty("tracking_type")]
-        public UpdateGoalInputGoalTypeTrackingTypeType? TrackingType { get; set; }
+        public BodyInputGoalTypeTrackingTypeType? TrackingType { get; set; }
 
         [JsonProperty("entity_template_id")]
         public int? EntityTemplateId { get; set; }
@@ -899,52 +899,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
 
         [JsonProperty("aligned_to_ids")]
         public int[] AlignedToIds { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGoalInputGoalTypeStatusType
-    {
-        APPRO,
-        DRAFT,
-        ARCHI
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGoalInputGoalTypeCompletionCriteriaType
-    {
-        [EnumMember(Value = "TARGET-REACHED")]
-        TARGETREACHED,
-        [EnumMember(Value = "TARGET-DEADLINE-REACHED")]
-        TARGETDEADLINEREACHED
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGoalInputGoalTypeTargetFlowType
-    {
-        OVER,
-        UNDER,
-        NONE
-    }
-
-    public enum UpdateGoalInputGoalTypeWeightIdType
-    {
-        _1 = 1,
-        _2 = 2,
-        _3 = 3,
-        _4 = 4
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGoalInputGoalTypeTrackingTypeType
-    {
-        MANUAL,
-        [EnumMember(Value = "SUBGOAL-SUM")]
-        SUBGOALSUM,
-        [EnumMember(Value = "SUBGOAL-MEAN")]
-        SUBGOALMEAN,
-        [EnumMember(Value = "WEIGHTED-MEAN")]
-        WEIGHTEDMEAN,
-        TASKS
     }
 
     public class GetAllRisksResponse
@@ -1037,22 +991,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int CA1573011296755 { get; set; }
     }
 
-    public class CreateRiskInput
+    public class CreateRiskBodyInput
     {
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRiskInputIssueType Issue { get; set; }
+        public CreateRiskBodyInputIssueType Issue { get; set; }
     }
 
-    public class CreateRiskInputIssueType
+    public class CreateRiskBodyInputIssueType
     {
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Issue { get; set; }
 
         [JsonProperty("is_critical")]
-        public CreateRiskInputIssueTypeIsCriticalType? IsCritical { get; set; }
+        public BodyInputIssueTypeIsCriticalType? IsCritical { get; set; }
 
         [JsonProperty("is_resolved")]
-        public CreateRiskInputIssueTypeIsResolvedType? IsResolved { get; set; }
+        public BodyInputIssueTypeIsResolvedType? IsResolved { get; set; }
 
         [JsonProperty("role_id")]
         public int? RoleId { get; set; }
@@ -1067,22 +1021,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int? EntityTemplateId { get; set; }
 
         [JsonProperty("custom_attributes")]
-        public CreateRiskInputIssueTypeCustomAttributesType CustomAttributes { get; set; }
+        public BodyInputIssueTypeCustomAttributesType CustomAttributes { get; set; }
     }
 
-    public enum CreateRiskInputIssueTypeIsCriticalType
+    public enum BodyInputIssueTypeIsCriticalType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum CreateRiskInputIssueTypeIsResolvedType
+    public enum BodyInputIssueTypeIsResolvedType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public class CreateRiskInputIssueTypeCustomAttributesType
+    public class BodyInputIssueTypeCustomAttributesType
     {
         public int? CA1573011281053 { get; set; }
         public int? CA1573011296755 { get; set; }
@@ -1190,22 +1144,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int CA1573011296755 { get; set; }
     }
 
-    public class UpdateRiskInput
+    public class UpdateRiskBodyInput
     {
         [JsonProperty("issue")]
-        public UpdateRiskInputIssueType Issue { get; set; }
+        public UpdateRiskBodyInputIssueType Issue { get; set; }
     }
 
-    public class UpdateRiskInputIssueType
+    public class UpdateRiskBodyInputIssueType
     {
         [JsonProperty("issue")]
         public string Issue { get; set; }
 
         [JsonProperty("is_critical")]
-        public UpdateRiskInputIssueTypeIsCriticalType? IsCritical { get; set; }
+        public BodyInputIssueTypeIsCriticalType? IsCritical { get; set; }
 
         [JsonProperty("is_resolved")]
-        public UpdateRiskInputIssueTypeIsResolvedType? IsResolved { get; set; }
+        public BodyInputIssueTypeIsResolvedType? IsResolved { get; set; }
 
         [JsonProperty("role_id")]
         public int? RoleId { get; set; }
@@ -1217,25 +1171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int? EntityTemplateId { get; set; }
 
         [JsonProperty("custom_attributes")]
-        public UpdateRiskInputIssueTypeCustomAttributesType CustomAttributes { get; set; }
-    }
-
-    public enum UpdateRiskInputIssueTypeIsCriticalType
-    {
-        _0 = 0,
-        _1 = 1
-    }
-
-    public enum UpdateRiskInputIssueTypeIsResolvedType
-    {
-        _0 = 0,
-        _1 = 1
-    }
-
-    public class UpdateRiskInputIssueTypeCustomAttributesType
-    {
-        public int? CA1573011281053 { get; set; }
-        public int? CA1573011296755 { get; set; }
+        public BodyInputIssueTypeCustomAttributesType CustomAttributes { get; set; }
     }
 
     public class GetAllTasksResponse
@@ -1336,13 +1272,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4 = 4
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskInputTaskObjectType TaskObject { get; set; }
+        public CreateTaskBodyInputTaskObjectType TaskObject { get; set; }
     }
 
-    public class CreateTaskInputTaskObjectType
+    public class CreateTaskBodyInputTaskObjectType
     {
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskObject { get; set; }
@@ -1351,7 +1287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public string Comment { get; set; }
 
         [JsonProperty("is_complete")]
-        public CreateTaskInputTaskObjectTypeIsCompleteType? IsComplete { get; set; }
+        public BodyInputTaskObjectTypeIsCompleteType? IsComplete { get; set; }
 
         [JsonProperty("role_id")]
         public int? RoleId { get; set; }
@@ -1366,19 +1302,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public string DueDate { get; set; }
 
         [JsonProperty("weight_id")]
-        public CreateTaskInputTaskObjectTypeWeightIdType? WeightId { get; set; }
+        public BodyInputTaskObjectTypeWeightIdType? WeightId { get; set; }
 
         [JsonProperty("entity_template_id")]
         public int? EntityTemplateId { get; set; }
     }
 
-    public enum CreateTaskInputTaskObjectTypeIsCompleteType
+    public enum BodyInputTaskObjectTypeIsCompleteType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum CreateTaskInputTaskObjectTypeWeightIdType
+    public enum BodyInputTaskObjectTypeWeightIdType
     {
         _1 = 1,
         _2 = 2,
@@ -1506,13 +1442,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int EntityTemplateId { get; set; }
     }
 
-    public class UpdateTaskInput
+    public class UpdateTaskBodyInput
     {
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateTaskInputTaskObjectType TaskObject { get; set; }
+        public UpdateTaskBodyInputTaskObjectType TaskObject { get; set; }
     }
 
-    public class UpdateTaskInputTaskObjectType
+    public class UpdateTaskBodyInputTaskObjectType
     {
         [JsonProperty("task")]
         public string TaskObject { get; set; }
@@ -1521,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public string Comment { get; set; }
 
         [JsonProperty("is_complete")]
-        public UpdateTaskInputTaskObjectTypeIsCompleteType? IsComplete { get; set; }
+        public BodyInputTaskObjectTypeIsCompleteType? IsComplete { get; set; }
 
         [JsonProperty("role_id")]
         public int? RoleId { get; set; }
@@ -1536,24 +1472,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public string DueDate { get; set; }
 
         [JsonProperty("weight_id")]
-        public UpdateTaskInputTaskObjectTypeWeightIdType? WeightId { get; set; }
+        public BodyInputTaskObjectTypeWeightIdType? WeightId { get; set; }
 
         [JsonProperty("entity_template_id")]
         public int? EntityTemplateId { get; set; }
-    }
-
-    public enum UpdateTaskInputTaskObjectTypeIsCompleteType
-    {
-        _0 = 0,
-        _1 = 1
-    }
-
-    public enum UpdateTaskInputTaskObjectTypeWeightIdType
-    {
-        _1 = 1,
-        _2 = 2,
-        _3 = 3,
-        _4 = 4
     }
 
     public class GetAllUpdatesResponse
@@ -1628,13 +1550,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int EntityTemplateId { get; set; }
     }
 
-    public class CreateUpdateInput
+    public class CreateUpdateBodyInput
     {
         [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUpdateInputUpdateType Update { get; set; }
+        public CreateUpdateBodyInputUpdateType Update { get; set; }
     }
 
-    public class CreateUpdateInputUpdateType
+    public class CreateUpdateBodyInputUpdateType
     {
         [JsonProperty("comment", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
@@ -1730,13 +1652,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int EntityTemplateId { get; set; }
     }
 
-    public class UpdateUpdateInput
+    public class UpdateUpdateBodyInput
     {
         [JsonProperty("update", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateUpdateInputUpdateType Update { get; set; }
+        public UpdateUpdateBodyInputUpdateType Update { get; set; }
     }
 
-    public class UpdateUpdateInputUpdateType
+    public class UpdateUpdateBodyInputUpdateType
     {
         [JsonProperty("comment")]
         public string Comment { get; set; }

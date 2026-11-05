@@ -16,125 +16,116 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
 
     public class TalkdeskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ContactCreated(Expression<Func<ContactCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ContactCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/contactCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new ContactCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ContactUpdated(Expression<Func<ContactUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ContactUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/contactUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new ContactUpdatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NoteCreated(Expression<Func<NoteCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NoteCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/noteCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NoteCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AgentLogIn(Expression<Func<AgentLogInInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AgentLogIn(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/agentLogIn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new AgentLogInBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AgentLogOut(Expression<Func<AgentLogOutInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AgentLogOut(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/agentLogOut";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new AgentLogOutBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OutboundCallEnds(Expression<Func<OutboundCallEndsInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OutboundCallEnds(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/outboundCallEnds";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OutboundCallEndsBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallReachesContactCenter(Expression<Func<InboundCallReachesContactCenterInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallReachesContactCenter(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/inboundCallReachesContactCenter";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new InboundCallReachesContactCenterBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallEnds(Expression<Func<InboundCallEndsInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallEnds(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/inboundCallEnds";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new InboundCallEndsBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallStarts(Expression<Func<InboundCallStartsInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundCallStarts(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/triggers/inboundCallStarts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new InboundCallStartsBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class ContactCreatedInput
+    public class ContactCreatedBodyInput
     {
         [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
@@ -146,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Message { get; set; } = "{\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"title\":\"Root\",\"type\":\"object\",\"required\":[\"contact_name\",\"contact_email\"],\"properties\":{\"event\":{\"title\":\"Event\",\"type\":\"string\",\"default\":\"{{event}}\"},\"contact_id\":{\"title\":\"Contact ID\",\"type\":\"string\",\"default\":\"{{contact_id}}\"},\"account_id\":{\"title\":\"Account ID\",\"type\":\"string\",\"default\":\"{{account_id}}\"},\"contact_first_name\":{\"title\":\"Contact first name\",\"type\":\"string\",\"default\":\"{{contact.first_name}}\"},\"contact_last_name\":{\"title\":\"Contact last name\",\"type\":\"string\",\"default\":\"{{contact.last_name}}\"},\"contact_name\":{\"title\":\"Contact name\",\"type\":\"string\",\"default\":\"{{contact.name}}\"},\"contact_email\":{\"title\":\"Contact email\",\"type\":\"string\",\"default\":\"{{contact.email}}\"},\"contact_phone\":{\"title\":\"Contact phone\",\"type\":\"string\",\"default\":\"{{contact.phone}}\"},\"contact_address\":{\"title\":\"Contact address\",\"type\":\"string\",\"default\":\"{{contact.address}}\"},\"contact_company\":{\"title\":\"Contact company\",\"type\":\"string\",\"default\":\"{{contact.company}}\"},\"contact_website\":{\"title\":\"Contact website\",\"type\":\"string\",\"default\":\"{{contact.website}}\"},\"contact_title\":{\"title\":\"Contact title\",\"type\":\"string\",\"default\":\"{{contact.title}}\"},\"account_email\":{\"title\":\"Account email\",\"type\":\"string\",\"default\":\"{{account.email}}\"},\"account_name\":{\"title\":\"Account name\",\"type\":\"string\",\"default\":\"{{account.name}}\"}},\"additionalProperties\":false}";
     }
 
-    public class ContactUpdatedInput
+    public class ContactUpdatedBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -158,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Title { get; set; } = "When a contact is updated";
     }
 
-    public class NoteCreatedInput
+    public class NoteCreatedBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -170,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Title { get; set; } = "When a note is created";
     }
 
-    public class AgentLogInInput
+    public class AgentLogInBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -182,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Title { get; set; } = "When agent logs in";
     }
 
-    public class AgentLogOutInput
+    public class AgentLogOutBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -194,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Title { get; set; } = "When agent logs out";
     }
 
-    public class OutboundCallEndsInput
+    public class OutboundCallEndsBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -206,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Title { get; set; } = "When outbound call ends";
     }
 
-    public class InboundCallReachesContactCenterInput
+    public class InboundCallReachesContactCenterBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -218,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Title { get; set; } = "When inbound call reaches contact center";
     }
 
-    public class InboundCallEndsInput
+    public class InboundCallEndsBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -230,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
         internal string Title { get; set; } = "When inbound call ends";
     }
 
-    public class InboundCallStartsInput
+    public class InboundCallStartsBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";

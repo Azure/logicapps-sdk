@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
     public class PlingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> profileId, Expression<Func<SendNotificationInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> profileId, Expression<Func<BodyInput>> body)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
     {
     }
 
-    public class SendNotificationInput
+    public class BodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }

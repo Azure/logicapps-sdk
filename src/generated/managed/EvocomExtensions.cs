@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
 
     public class EvocomTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<NewTaskTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<NewTaskTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<ChangedTaskTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<ChangedTaskTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -83,23 +83,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<NewTeamTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewTeamTrigger(Expression<Func<string>> xEpTenant, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks/Teams/New";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NewTeamTriggerBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<ChangedTeamTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<ChangedTeamTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -115,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<NewProcessTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<NewProcessTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -131,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<ChangedProcessTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<ChangedProcessTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -208,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
         public string StartUrl { get; set; }
     }
 
-    public class NewTaskTriggerInput
+    public class NewTaskTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -217,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
         public int? TaskType { get; set; }
     }
 
-    public class ChangedTaskTriggerInput
+    public class ChangedTaskTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -232,13 +230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
         public int? TaskStatus { get; set; }
     }
 
-    public class NewTeamTriggerInput
+    public class NewTeamTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class ChangedTeamTriggerInput
+    public class ChangedTeamTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -247,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
         public int ChangeType { get; set; }
     }
 
-    public class NewProcessTriggerInput
+    public class NewProcessTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -256,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
         public string DefinitionId { get; set; }
     }
 
-    public class ChangedProcessTriggerInput
+    public class ChangedProcessTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

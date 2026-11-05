@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostCompanyUpdate(Expression<Func<PostCompanyUpdateV2Input>> body)
+        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostCompanyUpdate(Expression<Func<PostCompanyUpdateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
-        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostUpdate(Expression<Func<PostUpdateV2Input>> body)
+        public IBodyWorkflowAction<ShareResponseV2, ApiConnectionActionConfiguration> PostUpdate(Expression<Func<PostUpdateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShareResponseV2, ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public string UpdateId { get; set; }
     }
 
-    public class PostCompanyUpdateV2Input
+    public class PostCompanyUpdateBodyInput
     {
         [JsonProperty("author", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Company { get; set; }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public string Commentary { get; set; }
 
         [JsonProperty("visibility", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCompanyUpdateV2InputVisibilityType Visibility { get; set; }
+        public PostCompanyUpdateBodyInputVisibilityType Visibility { get; set; }
 
         [JsonProperty("lifecycleState", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string LifecycleState { get; set; } = "PUBLISHED";
@@ -90,33 +90,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public bool? IsReshareDisabledByAuthor { get; set; } = false;
 
         [JsonProperty("distribution", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCompanyUpdateV2InputDistributionType Distribution { get; set; } = new PostCompanyUpdateV2InputDistributionType();
+        public BodyInputDistributionType Distribution { get; set; } = new BodyInputDistributionType();
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCompanyUpdateV2InputContentType Content { get; set; } = new PostCompanyUpdateV2InputContentType();
+        public BodyInputContentType Content { get; set; } = new BodyInputContentType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostCompanyUpdateV2InputVisibilityType
+    public enum PostCompanyUpdateBodyInputVisibilityType
     {
         Public,
         [EnumMember(Value = "Logged in members only")]
         LoggedInMembersOnly
     }
 
-    public class PostCompanyUpdateV2InputDistributionType
+    public class BodyInputDistributionType
     {
         [JsonProperty("feedDistribution", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string FeedDistribution { get; set; } = "MAIN_FEED";
     }
 
-    public class PostCompanyUpdateV2InputContentType
+    public class BodyInputContentType
     {
         [JsonProperty("article", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCompanyUpdateV2InputContentTypeArticleType Article { get; set; } = new PostCompanyUpdateV2InputContentTypeArticleType();
+        public BodyInputContentTypeArticleType Article { get; set; } = new BodyInputContentTypeArticleType();
     }
 
-    public class PostCompanyUpdateV2InputContentTypeArticleType
+    public class BodyInputContentTypeArticleType
     {
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; } = "";
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public string ThumbnailURL { get; set; }
     }
 
-    public class PostUpdateV2Input
+    public class PostUpdateBodyInput
     {
         [JsonProperty("commentary", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Commentary { get; set; }
 
         [JsonProperty("visibility", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostUpdateV2InputVisibilityType Visibility { get; set; }
+        public PostUpdateBodyInputVisibilityType Visibility { get; set; }
 
         [JsonProperty("lifecycleState", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string LifecycleState { get; set; } = "PUBLISHED";
@@ -146,47 +146,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public bool? IsReshareDisabledByAuthor { get; set; } = false;
 
         [JsonProperty("distribution", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostUpdateV2InputDistributionType Distribution { get; set; } = new PostUpdateV2InputDistributionType();
+        public BodyInputDistributionType Distribution { get; set; } = new BodyInputDistributionType();
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostUpdateV2InputContentType Content { get; set; } = new PostUpdateV2InputContentType();
+        public BodyInputContentType Content { get; set; } = new BodyInputContentType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostUpdateV2InputVisibilityType
+    public enum PostUpdateBodyInputVisibilityType
     {
         Public,
         [EnumMember(Value = "Connections Only")]
         ConnectionsOnly,
         [EnumMember(Value = "Logged in members only")]
         LoggedInMembersOnly
-    }
-
-    public class PostUpdateV2InputDistributionType
-    {
-        [JsonProperty("feedDistribution", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string FeedDistribution { get; set; } = "MAIN_FEED";
-    }
-
-    public class PostUpdateV2InputContentType
-    {
-        [JsonProperty("article", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostUpdateV2InputContentTypeArticleType Article { get; set; } = new PostUpdateV2InputContentTypeArticleType();
-    }
-
-    public class PostUpdateV2InputContentTypeArticleType
-    {
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Description { get; set; } = "";
-
-        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string URLOfTheArticle { get; set; }
-
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-
-        [JsonProperty("thumbnail")]
-        public string ThumbnailURL { get; set; }
     }
 }
 

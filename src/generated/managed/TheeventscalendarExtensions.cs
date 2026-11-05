@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
     public class TheeventscalendarActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theeventscalendar")]
-        public IBodyWorkflowAction<CreateEventsResponse, ApiConnectionActionConfiguration> CreateEvents(Expression<Func<CreateEventsInput>> body = null)
+        public IBodyWorkflowAction<CreateEventsResponse, ApiConnectionActionConfiguration> CreateEvents(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateEventsResponse, ApiConnectionActionConfiguration>(() =>
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
         public int NotCheckedIn { get; set; }
     }
 
-    public class CreateEventsInput
+    public class BodyInput
     {
         [JsonProperty("author")]
         public int? Author { get; set; }

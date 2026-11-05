@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<BookingCreateResponse, ApiConnectionActionConfiguration> BookingCreate(Expression<Func<BookingCreateInput>> body = null)
+        public IBodyWorkflowAction<BookingCreateResponse, ApiConnectionActionConfiguration> BookingCreate(Expression<Func<BookingCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BookingCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<BookingAvailabilityResponse, ApiConnectionActionConfiguration> BookingAvailability(Expression<Func<BookingAvailabilityInput>> body = null)
+        public IBodyWorkflowAction<BookingAvailabilityResponse, ApiConnectionActionConfiguration> BookingAvailability(Expression<Func<BookingAvailabilityBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BookingAvailabilityResponse, ApiConnectionActionConfiguration>(() =>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<CashDrawerListShiftsResponse, ApiConnectionActionConfiguration> CashDrawerListShifts(Expression<Func<string>> locationId = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> limit = null, Expression<Func<string>> cursor = null)
+        public IBodyWorkflowAction<CashDrawerListShiftsResponse, ApiConnectionActionConfiguration> CashDrawerListShifts(Expression<Func<string>> locationId = null, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> limit = null, Expression<Func<string>> cursor = null)
         {
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: false);
             var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<CheckoutCreateResponse, ApiConnectionActionConfiguration> CheckoutCreate(Expression<Func<string>> locationId, Expression<Func<CheckoutCreateInput>> body)
+        public IBodyWorkflowAction<CheckoutCreateResponse, ApiConnectionActionConfiguration> CheckoutCreate(Expression<Func<string>> locationId, Expression<Func<CheckoutCreateBodyInput>> body)
         {
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<DeviceListResponse, ApiConnectionActionConfiguration> DeviceList(Expression<Func<string>> cursor = null, Expression<Func<string>> locationId = null, Expression<Func<string>> productType = null, Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<DeviceListResponse, ApiConnectionActionConfiguration> DeviceList(Expression<Func<string>> cursor = null, Expression<Func<string>> locationId = null, Expression<Func<string>> productType = null, Expression<Func<StatusInput>> status = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: false);
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<DeviceCreateResponse, ApiConnectionActionConfiguration> DeviceCreate(Expression<Func<DeviceCreateInput>> body = null)
+        public IBodyWorkflowAction<DeviceCreateResponse, ApiConnectionActionConfiguration> DeviceCreate(Expression<Func<DeviceCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeviceCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardListResponse, ApiConnectionActionConfiguration> GiftCardList(Expression<Func<string>> giftCardId = null, Expression<Func<string>> type = null, Expression<Func<string>> locationId = null, Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> limit = null, Expression<Func<string>> cursor = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<GiftCardListResponse, ApiConnectionActionConfiguration> GiftCardList(Expression<Func<string>> giftCardId = null, Expression<Func<string>> type = null, Expression<Func<string>> locationId = null, Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<int>> limit = null, Expression<Func<string>> cursor = null, Expression<Func<SortOrderInput>> sortOrder = null)
         {
             var __workflow_giftCardId = WorkflowExpression.Compile(giftCardId, nameof(giftCardId), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardCreateResponse, ApiConnectionActionConfiguration> GiftCardCreate(Expression<Func<GiftCardCreateInput>> body = null)
+        public IBodyWorkflowAction<GiftCardCreateResponse, ApiConnectionActionConfiguration> GiftCardCreate(Expression<Func<GiftCardCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GiftCardCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration> GiftCardRetrieveGAN(Expression<Func<GiftCardRetrieveGANInput>> body)
+        public IBodyWorkflowAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration> GiftCardRetrieveGAN(Expression<Func<GiftCardRetrieveGANBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration>(() =>
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardRetrieveNonceResponse, ApiConnectionActionConfiguration> GiftCardRetrieveNonce(Expression<Func<GiftCardRetrieveNonceInput>> body = null)
+        public IBodyWorkflowAction<GiftCardRetrieveNonceResponse, ApiConnectionActionConfiguration> GiftCardRetrieveNonce(Expression<Func<GiftCardRetrieveNonceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GiftCardRetrieveNonceResponse, ApiConnectionActionConfiguration>(() =>
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardLinkResponse, ApiConnectionActionConfiguration> GiftCardLink(Expression<Func<string>> giftCardId, Expression<Func<GiftCardLinkInput>> body = null)
+        public IBodyWorkflowAction<GiftCardLinkResponse, ApiConnectionActionConfiguration> GiftCardLink(Expression<Func<string>> giftCardId, Expression<Func<GiftCardLinkBodyInput>> body = null)
         {
             var __workflow_giftCardId = WorkflowExpression.Compile(giftCardId, nameof(giftCardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardUnlinkResponse, ApiConnectionActionConfiguration> GiftCardUnlink(Expression<Func<string>> giftCardId, Expression<Func<GiftCardUnlinkInput>> body)
+        public IBodyWorkflowAction<GiftCardUnlinkResponse, ApiConnectionActionConfiguration> GiftCardUnlink(Expression<Func<string>> giftCardId, Expression<Func<GiftCardLinkBodyInput>> body)
         {
             var __workflow_giftCardId = WorkflowExpression.Compile(giftCardId, nameof(giftCardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborCreateBreakResponse, ApiConnectionActionConfiguration> LaborCreateBreak(Expression<Func<LaborCreateBreakInput>> body)
+        public IBodyWorkflowAction<LaborCreateBreakResponse, ApiConnectionActionConfiguration> LaborCreateBreak(Expression<Func<LaborCreateBreakBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborCreateBreakResponse, ApiConnectionActionConfiguration>(() =>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborUpdateBreakResponse, ApiConnectionActionConfiguration> LaborUpdateBreak(Expression<Func<string>> id, Expression<Func<LaborUpdateBreakInput>> body)
+        public IBodyWorkflowAction<LaborUpdateBreakResponse, ApiConnectionActionConfiguration> LaborUpdateBreak(Expression<Func<string>> id, Expression<Func<LaborUpdateBreakBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborCreateShiftResponse, ApiConnectionActionConfiguration> LaborCreateShift(Expression<Func<LaborCreateShiftInput>> body)
+        public IBodyWorkflowAction<LaborCreateShiftResponse, ApiConnectionActionConfiguration> LaborCreateShift(Expression<Func<LaborCreateShiftBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborCreateShiftResponse, ApiConnectionActionConfiguration>(() =>
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborSearchShiftsResponse, ApiConnectionActionConfiguration> LaborSearchShifts(Expression<Func<LaborSearchShiftsInput>> body)
+        public IBodyWorkflowAction<LaborSearchShiftsResponse, ApiConnectionActionConfiguration> LaborSearchShifts(Expression<Func<LaborSearchShiftsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LaborSearchShiftsResponse, ApiConnectionActionConfiguration>(() =>
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborUpdateShiftResponse, ApiConnectionActionConfiguration> LaborUpdateShift(Expression<Func<string>> id, Expression<Func<LaborUpdateShiftInput>> body = null)
+        public IBodyWorkflowAction<LaborUpdateShiftResponse, ApiConnectionActionConfiguration> LaborUpdateShift(Expression<Func<string>> id, Expression<Func<LaborUpdateShiftBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LaborUpdateConfigResponse, ApiConnectionActionConfiguration> LaborUpdateConfig(Expression<Func<string>> id, Expression<Func<LaborUpdateConfigInput>> body)
+        public IBodyWorkflowAction<LaborUpdateConfigResponse, ApiConnectionActionConfiguration> LaborUpdateConfig(Expression<Func<string>> id, Expression<Func<LaborUpdateConfigBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LocationCreateResponse, ApiConnectionActionConfiguration> LocationCreate(Expression<Func<LocationCreateInput>> body)
+        public IBodyWorkflowAction<LocationCreateResponse, ApiConnectionActionConfiguration> LocationCreate(Expression<Func<LocationCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LocationCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LocationUpdateResponse, ApiConnectionActionConfiguration> LocationUpdate(Expression<Func<string>> locationId, Expression<Func<LocationUpdateInput>> body)
+        public IBodyWorkflowAction<LocationUpdateResponse, ApiConnectionActionConfiguration> LocationUpdate(Expression<Func<string>> locationId, Expression<Func<LocationUpdateBodyInput>> body)
         {
             var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyCreateAccountResponse, ApiConnectionActionConfiguration> LoyaltyCreateAccount(Expression<Func<LoyaltyCreateAccountInput>> body)
+        public IBodyWorkflowAction<LoyaltyCreateAccountResponse, ApiConnectionActionConfiguration> LoyaltyCreateAccount(Expression<Func<LoyaltyCreateAccountBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltyCreateAccountResponse, ApiConnectionActionConfiguration>(() =>
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltySearchAccountsResponse, ApiConnectionActionConfiguration> LoyaltySearchAccounts(Expression<Func<LoyaltySearchAccountsInput>> body)
+        public IBodyWorkflowAction<LoyaltySearchAccountsResponse, ApiConnectionActionConfiguration> LoyaltySearchAccounts(Expression<Func<LoyaltySearchAccountsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltySearchAccountsResponse, ApiConnectionActionConfiguration>(() =>
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyAccumulatePointsResponse, ApiConnectionActionConfiguration> LoyaltyAccumulatePoints(Expression<Func<string>> accountId, Expression<Func<LoyaltyAccumulatePointsInput>> body)
+        public IBodyWorkflowAction<LoyaltyAccumulatePointsResponse, ApiConnectionActionConfiguration> LoyaltyAccumulatePoints(Expression<Func<string>> accountId, Expression<Func<LoyaltyAccumulatePointsBodyInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyAdjustPointsResponse, ApiConnectionActionConfiguration> LoyaltyAdjustPoints(Expression<Func<string>> accountId, Expression<Func<LoyaltyAdjustPointsInput>> body = null)
+        public IBodyWorkflowAction<LoyaltyAdjustPointsResponse, ApiConnectionActionConfiguration> LoyaltyAdjustPoints(Expression<Func<string>> accountId, Expression<Func<LoyaltyAdjustPointsBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltySearchEventsResponse, ApiConnectionActionConfiguration> LoyaltySearchEvents(Expression<Func<LoyaltySearchEventsInput>> body)
+        public IBodyWorkflowAction<LoyaltySearchEventsResponse, ApiConnectionActionConfiguration> LoyaltySearchEvents(Expression<Func<LoyaltySearchEventsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltySearchEventsResponse, ApiConnectionActionConfiguration>(() =>
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyCalculatePointsResponse, ApiConnectionActionConfiguration> LoyaltyCalculatePoints(Expression<Func<string>> programId, Expression<Func<LoyaltyCalculatePointsInput>> body)
+        public IBodyWorkflowAction<LoyaltyCalculatePointsResponse, ApiConnectionActionConfiguration> LoyaltyCalculatePoints(Expression<Func<string>> programId, Expression<Func<LoyaltyCalculatePointsBodyInput>> body)
         {
             var __workflow_programId = WorkflowExpression.Compile(programId, nameof(programId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyCreateRewardResponse, ApiConnectionActionConfiguration> LoyaltyCreateReward(Expression<Func<LoyaltyCreateRewardInput>> body)
+        public IBodyWorkflowAction<LoyaltyCreateRewardResponse, ApiConnectionActionConfiguration> LoyaltyCreateReward(Expression<Func<LoyaltyCreateRewardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltyCreateRewardResponse, ApiConnectionActionConfiguration>(() =>
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltySearchRewardsResponse, ApiConnectionActionConfiguration> LoyaltySearchRewards(Expression<Func<LoyaltySearchRewardsInput>> body)
+        public IBodyWorkflowAction<LoyaltySearchRewardsResponse, ApiConnectionActionConfiguration> LoyaltySearchRewards(Expression<Func<LoyaltySearchRewardsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoyaltySearchRewardsResponse, ApiConnectionActionConfiguration>(() =>
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<LoyaltyRedeemRewardResponse, ApiConnectionActionConfiguration> LoyaltyRedeemReward(Expression<Func<string>> rewardId, Expression<Func<LoyaltyRedeemRewardInput>> body)
+        public IBodyWorkflowAction<LoyaltyRedeemRewardResponse, ApiConnectionActionConfiguration> LoyaltyRedeemReward(Expression<Func<string>> rewardId, Expression<Func<LoyaltyRedeemRewardBodyInput>> body)
         {
             var __workflow_rewardId = WorkflowExpression.Compile(rewardId, nameof(rewardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<MobileAuthorizationCreateResponse, ApiConnectionActionConfiguration> MobileAuthorizationCreate(Expression<Func<MobileAuthorizationCreateInput>> body = null)
+        public IBodyWorkflowAction<MobileAuthorizationCreateResponse, ApiConnectionActionConfiguration> MobileAuthorizationCreate(Expression<Func<MobileAuthorizationCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<MobileAuthorizationCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<SnippetUpsertResponse, ApiConnectionActionConfiguration> SnippetUpsert(Expression<Func<string>> siteId, Expression<Func<SnippetUpsertInput>> body)
+        public IBodyWorkflowAction<SnippetUpsertResponse, ApiConnectionActionConfiguration> SnippetUpsert(Expression<Func<string>> siteId, Expression<Func<SnippetUpsertBodyInput>> body)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamCreateMemberResponse, ApiConnectionActionConfiguration> TeamCreateMember(Expression<Func<TeamCreateMemberInput>> body)
+        public IBodyWorkflowAction<TeamCreateMemberResponse, ApiConnectionActionConfiguration> TeamCreateMember(Expression<Func<TeamCreateMemberBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamCreateMemberResponse, ApiConnectionActionConfiguration>(() =>
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamCreateBulkMembersResponse, ApiConnectionActionConfiguration> TeamCreateBulkMembers(Expression<Func<TeamCreateBulkMembersInput>> body)
+        public IBodyWorkflowAction<TeamCreateBulkMembersResponse, ApiConnectionActionConfiguration> TeamCreateBulkMembers(Expression<Func<TeamCreateBulkMembersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamCreateBulkMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamUpdateBulkMembersResponse, ApiConnectionActionConfiguration> TeamUpdateBulkMembers(Expression<Func<TeamUpdateBulkMembersInput>> body)
+        public IBodyWorkflowAction<TeamUpdateBulkMembersResponse, ApiConnectionActionConfiguration> TeamUpdateBulkMembers(Expression<Func<TeamUpdateBulkMembersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamUpdateBulkMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -947,7 +947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamSearchResponse, ApiConnectionActionConfiguration> TeamSearch(Expression<Func<TeamSearchInput>> body)
+        public IBodyWorkflowAction<TeamSearchResponse, ApiConnectionActionConfiguration> TeamSearch(Expression<Func<TeamSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TeamSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -974,7 +974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamUpdateResponse, ApiConnectionActionConfiguration> TeamUpdate(Expression<Func<string>> teamMemberId, Expression<Func<TeamUpdateInput>> body)
+        public IBodyWorkflowAction<TeamUpdateResponse, ApiConnectionActionConfiguration> TeamUpdate(Expression<Func<string>> teamMemberId, Expression<Func<TeamUpdateBodyInput>> body)
         {
             var __workflow_teamMemberId = WorkflowExpression.Compile(teamMemberId, nameof(teamMemberId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1002,7 +1002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<TeamUpdateWageResponse, ApiConnectionActionConfiguration> TeamUpdateWage(Expression<Func<string>> teamMemberId, Expression<Func<TeamUpdateWageInput>> body)
+        public IBodyWorkflowAction<TeamUpdateWageResponse, ApiConnectionActionConfiguration> TeamUpdateWage(Expression<Func<string>> teamMemberId, Expression<Func<TeamUpdateWageBodyInput>> body)
         {
             var __workflow_teamMemberId = WorkflowExpression.Compile(teamMemberId, nameof(teamMemberId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1017,15 +1017,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<BankAccountGetV1Response, ApiConnectionActionConfiguration> BankAccountGet(Expression<Func<string>> v1BankAccountId)
+        public IBodyWorkflowAction<BankAccountGetResponse, ApiConnectionActionConfiguration> BankAccountGet(Expression<Func<string>> v1BankAccountId)
         {
             var __workflow_v1BankAccountId = WorkflowExpression.Compile(v1BankAccountId, nameof(v1BankAccountId), required: true);
-            return new DeferredBodyAction<BankAccountGetV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BankAccountGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bank-accounts/by-v1-id/{0}", __workflow_v1BankAccountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<BankAccountGetV1Response>(callPayload);
+                return new ApiConnectionAction<BankAccountGetResponse>(callPayload);
             });
         }
     }
@@ -1142,13 +1142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public int ServiceVariationVersion { get; set; }
     }
 
-    public class BookingCreateInput
+    public class BookingCreateBodyInput
     {
         [JsonProperty("booking")]
-        public BookingCreateInputBookingType Booking { get; set; }
+        public BodyInputBookingType Booking { get; set; }
     }
 
-    public class BookingCreateInputBookingType
+    public class BodyInputBookingType
     {
         [JsonProperty("customer_id")]
         public string CustomerId { get; set; }
@@ -1160,10 +1160,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string LocationId { get; set; }
 
         [JsonProperty("appointment_segments")]
-        public BookingCreateInputBookingTypeAppointmentSegmentsTypeItem[] AppointmentSegments { get; set; }
+        public BodyInputBookingTypeAppointmentSegmentsTypeItem[] AppointmentSegments { get; set; }
     }
 
-    public class BookingCreateInputBookingTypeAppointmentSegmentsTypeItem
+    public class BodyInputBookingTypeAppointmentSegmentsTypeItem
     {
         [JsonProperty("duration_minutes")]
         public int? DurationMinutes { get; set; }
@@ -1214,31 +1214,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public int ServiceVariationVersion { get; set; }
     }
 
-    public class BookingAvailabilityInput
+    public class BookingAvailabilityBodyInput
     {
         [JsonProperty("query")]
-        public BookingAvailabilityInputQueryType Query { get; set; }
+        public BookingAvailabilityBodyInputQueryType Query { get; set; }
     }
 
-    public class BookingAvailabilityInputQueryType
+    public class BookingAvailabilityBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public BookingAvailabilityInputQueryTypeFilterType Filter { get; set; }
+        public BookingAvailabilityBodyInputQueryTypeFilterType Filter { get; set; }
     }
 
-    public class BookingAvailabilityInputQueryTypeFilterType
+    public class BookingAvailabilityBodyInputQueryTypeFilterType
     {
         [JsonProperty("start_at_range")]
-        public BookingAvailabilityInputQueryTypeFilterTypeStartAtRangeType StartAtRange { get; set; }
+        public BodyInputQueryTypeFilterTypeStartAtRangeType StartAtRange { get; set; }
 
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
 
         [JsonProperty("segment_filters")]
-        public BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItem[] SegmentFilters { get; set; }
+        public BodyInputQueryTypeFilterTypeSegmentFiltersTypeItem[] SegmentFilters { get; set; }
     }
 
-    public class BookingAvailabilityInputQueryTypeFilterTypeStartAtRangeType
+    public class BodyInputQueryTypeFilterTypeStartAtRangeType
     {
         [JsonProperty("start_at")]
         public string StartAt { get; set; }
@@ -1247,16 +1247,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string EndAt { get; set; }
     }
 
-    public class BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItem
+    public class BodyInputQueryTypeFilterTypeSegmentFiltersTypeItem
     {
         [JsonProperty("service_variation_id")]
         public string ServiceVariationId { get; set; }
 
         [JsonProperty("team_member_id_filter")]
-        public BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItemTeamMemberIdFilterType TeamMemberIdFilter { get; set; }
+        public BodyInputQueryTypeFilterTypeSegmentFiltersTypeItemTeamMemberIdFilterType TeamMemberIdFilter { get; set; }
     }
 
-    public class BookingAvailabilityInputQueryTypeFilterTypeSegmentFiltersTypeItemTeamMemberIdFilterType
+    public class BodyInputQueryTypeFilterTypeSegmentFiltersTypeItemTeamMemberIdFilterType
     {
         [JsonProperty("any")]
         public string[] Any { get; set; }
@@ -1419,7 +1419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOrderInput
+    public enum SortOrderInput
     {
         ASC,
         DESC
@@ -1884,7 +1884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class CheckoutCreateInput
+    public class CheckoutCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
@@ -1893,10 +1893,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string RedirectUrl { get; set; }
 
         [JsonProperty("order")]
-        public CheckoutCreateInputOrderType Order { get; set; }
+        public BodyInputOrderType Order { get; set; }
 
         [JsonProperty("additional_recipients")]
-        public CheckoutCreateInputAdditionalRecipientsTypeItem[] AdditionalRecipients { get; set; }
+        public BodyInputAdditionalRecipientsTypeItem[] AdditionalRecipients { get; set; }
 
         [JsonProperty("ask_for_shipping_address")]
         public bool? AskForShippingAddress { get; set; }
@@ -1908,19 +1908,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PrePopulateBuyerEmail { get; set; }
 
         [JsonProperty("pre_populate_shipping_address")]
-        public CheckoutCreateInputPrePopulateShippingAddressType PrePopulateShippingAddress { get; set; }
+        public BodyInputPrePopulateShippingAddressType PrePopulateShippingAddress { get; set; }
     }
 
-    public class CheckoutCreateInputOrderType
+    public class BodyInputOrderType
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("order")]
-        public CheckoutCreateInputOrderTypeOrderType Order { get; set; }
+        public BodyInputOrderTypeOrderType Order { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderType
+    public class BodyInputOrderTypeOrderType
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -1932,16 +1932,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string ReferenceId { get; set; }
 
         [JsonProperty("line_items")]
-        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+        public BodyInputOrderTypeOrderTypeLineItemsTypeItem[] LineItems { get; set; }
 
         [JsonProperty("taxes")]
-        public CheckoutCreateInputOrderTypeOrderTypeTaxesTypeItem[] Taxes { get; set; }
+        public BodyInputOrderTypeOrderTypeTaxesTypeItem[] Taxes { get; set; }
 
         [JsonProperty("discounts")]
-        public CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItem[] Discounts { get; set; }
+        public BodyInputOrderTypeOrderTypeDiscountsTypeItem[] Discounts { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItem
+    public class BodyInputOrderTypeOrderTypeLineItemsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1950,16 +1950,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Quantity { get; set; }
 
         [JsonProperty("base_price_money")]
-        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
+        public BodyInputOrderTypeOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
 
         [JsonProperty("applied_discounts")]
-        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
+        public BodyInputOrderTypeOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
 
         [JsonProperty("applied_taxes")]
-        public CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedTaxesTypeItem[] AppliedTaxes { get; set; }
+        public BodyInputOrderTypeOrderTypeLineItemsTypeItemAppliedTaxesTypeItem[] AppliedTaxes { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemBasePriceMoneyType
+    public class BodyInputOrderTypeOrderTypeLineItemsTypeItemBasePriceMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -1968,19 +1968,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem
+    public class BodyInputOrderTypeOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem
     {
         [JsonProperty("discount_uid")]
         public string DiscountUid { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderTypeLineItemsTypeItemAppliedTaxesTypeItem
+    public class BodyInputOrderTypeOrderTypeLineItemsTypeItemAppliedTaxesTypeItem
     {
         [JsonProperty("tax_uid")]
         public string TaxUid { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderTypeTaxesTypeItem
+    public class BodyInputOrderTypeOrderTypeTaxesTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -1995,7 +1995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Scope { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItem
+    public class BodyInputOrderTypeOrderTypeDiscountsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -2007,10 +2007,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Scope { get; set; }
 
         [JsonProperty("amount_money")]
-        public CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItemAmountMoneyType AmountMoney { get; set; }
+        public BodyInputOrderTypeOrderTypeDiscountsTypeItemAmountMoneyType AmountMoney { get; set; }
     }
 
-    public class CheckoutCreateInputOrderTypeOrderTypeDiscountsTypeItemAmountMoneyType
+    public class BodyInputOrderTypeOrderTypeDiscountsTypeItemAmountMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -2019,7 +2019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class CheckoutCreateInputAdditionalRecipientsTypeItem
+    public class BodyInputAdditionalRecipientsTypeItem
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -2028,10 +2028,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Title { get; set; }
 
         [JsonProperty("amount_money")]
-        public CheckoutCreateInputAdditionalRecipientsTypeItemAmountMoneyType AmountMoney { get; set; }
+        public BodyInputAdditionalRecipientsTypeItemAmountMoneyType AmountMoney { get; set; }
     }
 
-    public class CheckoutCreateInputAdditionalRecipientsTypeItemAmountMoneyType
+    public class BodyInputAdditionalRecipientsTypeItemAmountMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -2040,7 +2040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class CheckoutCreateInputPrePopulateShippingAddressType
+    public class BodyInputPrePopulateShippingAddressType
     {
         [JsonProperty("address_line_1")]
         public string AddressLine1 { get; set; }
@@ -2107,7 +2107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         UNKNOWN,
         UNPAIRED,
@@ -2151,16 +2151,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string StatusChangedAt { get; set; }
     }
 
-    public class DeviceCreateInput
+    public class DeviceCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("device_code")]
-        public DeviceCreateInputDeviceCodeType DeviceCode { get; set; }
+        public BodyInputDeviceCodeType DeviceCode { get; set; }
     }
 
-    public class DeviceCreateInputDeviceCodeType
+    public class BodyInputDeviceCodeType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2355,32 +2355,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class GiftCardCreateInput
+    public class GiftCardCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("gift_card_activity")]
-        public GiftCardCreateInputGiftCardActivityType GiftCardActivity { get; set; }
+        public BodyInputGiftCardActivityType GiftCardActivity { get; set; }
     }
 
-    public class GiftCardCreateInputGiftCardActivityType
+    public class BodyInputGiftCardActivityType
     {
         [JsonProperty("gift_card_id")]
         public string GiftCardId { get; set; }
 
         [JsonProperty("type")]
-        public GiftCardCreateInputGiftCardActivityTypeTypeType? Type { get; set; }
+        public BodyInputGiftCardActivityTypeTypeType? Type { get; set; }
 
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
 
         [JsonProperty("activate_activity_details")]
-        public GiftCardCreateInputGiftCardActivityTypeActivateActivityDetailsType ActivateActivityDetails { get; set; }
+        public BodyInputGiftCardActivityTypeActivateActivityDetailsType ActivateActivityDetails { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GiftCardCreateInputGiftCardActivityTypeTypeType
+    public enum BodyInputGiftCardActivityTypeTypeType
     {
         ACTIVATE,
         LOAD,
@@ -2402,7 +2402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         IMPORTREVERSAL
     }
 
-    public class GiftCardCreateInputGiftCardActivityTypeActivateActivityDetailsType
+    public class BodyInputGiftCardActivityTypeActivateActivityDetailsType
     {
         [JsonProperty("order_id")]
         public string OrderId { get; set; }
@@ -2450,7 +2450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class GiftCardRetrieveGANInput
+    public class GiftCardRetrieveGANBodyInput
     {
         [JsonProperty("gan")]
         public string Gan { get; set; }
@@ -2495,7 +2495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class GiftCardRetrieveNonceInput
+    public class GiftCardRetrieveNonceBodyInput
     {
         [JsonProperty("nonce")]
         public string Nonce { get; set; }
@@ -2543,7 +2543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class GiftCardLinkInput
+    public class GiftCardLinkBodyInput
     {
         [JsonProperty("customer_id")]
         public string CustomerId { get; set; }
@@ -2586,12 +2586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
 
         [JsonProperty("currency")]
         public string Currency { get; set; }
-    }
-
-    public class GiftCardUnlinkInput
-    {
-        [JsonProperty("customer_id")]
-        public string CustomerId { get; set; }
     }
 
     public class GiftCardRetrieveResponse
@@ -2702,16 +2696,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string UpdatedAt { get; set; }
     }
 
-    public class LaborCreateBreakInput
+    public class LaborCreateBreakBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("break_type")]
-        public LaborCreateBreakInputBreakTypeType BreakType { get; set; }
+        public LaborCreateBreakBodyInputBreakTypeType BreakType { get; set; }
     }
 
-    public class LaborCreateBreakInputBreakTypeType
+    public class LaborCreateBreakBodyInputBreakTypeType
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -2792,13 +2786,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string UpdatedAt { get; set; }
     }
 
-    public class LaborUpdateBreakInput
+    public class LaborUpdateBreakBodyInput
     {
         [JsonProperty("break_type")]
-        public LaborUpdateBreakInputBreakTypeType BreakType { get; set; }
+        public LaborUpdateBreakBodyInputBreakTypeType BreakType { get; set; }
     }
 
-    public class LaborUpdateBreakInputBreakTypeType
+    public class LaborUpdateBreakBodyInputBreakTypeType
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -2906,16 +2900,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public bool IsPaid { get; set; }
     }
 
-    public class LaborCreateShiftInput
+    public class LaborCreateShiftBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("shift")]
-        public LaborCreateShiftInputShiftType Shift { get; set; }
+        public LaborCreateShiftBodyInputShiftType Shift { get; set; }
     }
 
-    public class LaborCreateShiftInputShiftType
+    public class LaborCreateShiftBodyInputShiftType
     {
         [JsonProperty("team_member_id")]
         public string TeamMemberId { get; set; }
@@ -2930,22 +2924,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string EndAt { get; set; }
 
         [JsonProperty("wage")]
-        public LaborCreateShiftInputShiftTypeWageType Wage { get; set; }
+        public BodyInputShiftTypeWageType Wage { get; set; }
 
         [JsonProperty("breaks")]
-        public LaborCreateShiftInputShiftTypeBreaksTypeItem[] Breaks { get; set; }
+        public LaborCreateShiftBodyInputShiftTypeBreaksTypeItem[] Breaks { get; set; }
     }
 
-    public class LaborCreateShiftInputShiftTypeWageType
+    public class BodyInputShiftTypeWageType
     {
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("hourly_rate")]
-        public LaborCreateShiftInputShiftTypeWageTypeHourlyRateType HourlyRate { get; set; }
+        public BodyInputShiftTypeWageTypeHourlyRateType HourlyRate { get; set; }
     }
 
-    public class LaborCreateShiftInputShiftTypeWageTypeHourlyRateType
+    public class BodyInputShiftTypeWageTypeHourlyRateType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -2954,7 +2948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class LaborCreateShiftInputShiftTypeBreaksTypeItem
+    public class LaborCreateShiftBodyInputShiftTypeBreaksTypeItem
     {
         [JsonProperty("start_at")]
         public string StartAt { get; set; }
@@ -3062,31 +3056,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public bool IsPaid { get; set; }
     }
 
-    public class LaborSearchShiftsInput
+    public class LaborSearchShiftsBodyInput
     {
         [JsonProperty("query")]
-        public LaborSearchShiftsInputQueryType Query { get; set; }
+        public LaborSearchShiftsBodyInputQueryType Query { get; set; }
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
     }
 
-    public class LaborSearchShiftsInputQueryType
+    public class LaborSearchShiftsBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public LaborSearchShiftsInputQueryTypeFilterType Filter { get; set; }
+        public LaborSearchShiftsBodyInputQueryTypeFilterType Filter { get; set; }
     }
 
-    public class LaborSearchShiftsInputQueryTypeFilterType
+    public class LaborSearchShiftsBodyInputQueryTypeFilterType
     {
         [JsonProperty("workday")]
-        public LaborSearchShiftsInputQueryTypeFilterTypeWorkdayType Workday { get; set; }
+        public BodyInputQueryTypeFilterTypeWorkdayType Workday { get; set; }
     }
 
-    public class LaborSearchShiftsInputQueryTypeFilterTypeWorkdayType
+    public class BodyInputQueryTypeFilterTypeWorkdayType
     {
         [JsonProperty("date_range")]
-        public LaborSearchShiftsInputQueryTypeFilterTypeWorkdayTypeDateRangeType DateRange { get; set; }
+        public BodyInputQueryTypeFilterTypeWorkdayTypeDateRangeType DateRange { get; set; }
 
         [JsonProperty("match_shifts_by")]
         public string MatchShiftsBy { get; set; }
@@ -3095,7 +3089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string DefaultTimezone { get; set; }
     }
 
-    public class LaborSearchShiftsInputQueryTypeFilterTypeWorkdayTypeDateRangeType
+    public class BodyInputQueryTypeFilterTypeWorkdayTypeDateRangeType
     {
         [JsonProperty("start_date")]
         public string StartDate { get; set; }
@@ -3284,13 +3278,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public bool IsPaid { get; set; }
     }
 
-    public class LaborUpdateShiftInput
+    public class LaborUpdateShiftBodyInput
     {
         [JsonProperty("shift")]
-        public LaborUpdateShiftInputShiftType Shift { get; set; }
+        public LaborUpdateShiftBodyInputShiftType Shift { get; set; }
     }
 
-    public class LaborUpdateShiftInputShiftType
+    public class LaborUpdateShiftBodyInputShiftType
     {
         [JsonProperty("team_member_id")]
         public string TeamMemberId { get; set; }
@@ -3305,34 +3299,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string EndAt { get; set; }
 
         [JsonProperty("wage")]
-        public LaborUpdateShiftInputShiftTypeWageType Wage { get; set; }
+        public BodyInputShiftTypeWageType Wage { get; set; }
 
         [JsonProperty("breaks")]
-        public LaborUpdateShiftInputShiftTypeBreaksTypeItem[] Breaks { get; set; }
+        public LaborUpdateShiftBodyInputShiftTypeBreaksTypeItem[] Breaks { get; set; }
 
         [JsonProperty("version")]
         public int? Version { get; set; }
     }
 
-    public class LaborUpdateShiftInputShiftTypeWageType
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("hourly_rate")]
-        public LaborUpdateShiftInputShiftTypeWageTypeHourlyRateType HourlyRate { get; set; }
-    }
-
-    public class LaborUpdateShiftInputShiftTypeWageTypeHourlyRateType
-    {
-        [JsonProperty("amount")]
-        public int? Amount { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-    }
-
-    public class LaborUpdateShiftInputShiftTypeBreaksTypeItem
+    public class LaborUpdateShiftBodyInputShiftTypeBreaksTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3476,13 +3452,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string UpdatedAt { get; set; }
     }
 
-    public class LaborUpdateConfigInput
+    public class LaborUpdateConfigBodyInput
     {
         [JsonProperty("workweek_config")]
-        public LaborUpdateConfigInputWorkweekConfigType WorkweekConfig { get; set; }
+        public BodyInputWorkweekConfigType WorkweekConfig { get; set; }
     }
 
-    public class LaborUpdateConfigInputWorkweekConfigType
+    public class BodyInputWorkweekConfigType
     {
         [JsonProperty("start_of_week")]
         public string StartOfWeek { get; set; }
@@ -3644,13 +3620,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public double Longitude { get; set; }
     }
 
-    public class LocationCreateInput
+    public class LocationCreateBodyInput
     {
         [JsonProperty("location")]
-        public LocationCreateInputLocationType Location { get; set; }
+        public LocationCreateBodyInputLocationType Location { get; set; }
     }
 
-    public class LocationCreateInputLocationType
+    public class LocationCreateBodyInputLocationType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3662,10 +3638,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string FacebookUrl { get; set; }
 
         [JsonProperty("address")]
-        public LocationCreateInputLocationTypeAddressType Address { get; set; }
+        public BodyInputLocationTypeAddressType Address { get; set; }
     }
 
-    public class LocationCreateInputLocationTypeAddressType
+    public class BodyInputLocationTypeAddressType
     {
         [JsonProperty("address_line_1")]
         public string AddressLine1 { get; set; }
@@ -3863,13 +3839,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public double Longitude { get; set; }
     }
 
-    public class LocationUpdateInput
+    public class LocationUpdateBodyInput
     {
         [JsonProperty("location")]
-        public LocationUpdateInputLocationType Location { get; set; }
+        public LocationUpdateBodyInputLocationType Location { get; set; }
     }
 
-    public class LocationUpdateInputLocationType
+    public class LocationUpdateBodyInputLocationType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3887,34 +3863,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string InstagramUsername { get; set; }
 
         [JsonProperty("address")]
-        public LocationUpdateInputLocationTypeAddressType Address { get; set; }
+        public BodyInputLocationTypeAddressType Address { get; set; }
 
         [JsonProperty("business_hours")]
-        public LocationUpdateInputLocationTypeBusinessHoursType BusinessHours { get; set; }
+        public BodyInputLocationTypeBusinessHoursType BusinessHours { get; set; }
     }
 
-    public class LocationUpdateInputLocationTypeAddressType
-    {
-        [JsonProperty("address_line_1")]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("administrative_district_level_1")]
-        public string AdministrativeDistrictLevel1 { get; set; }
-
-        [JsonProperty("locality")]
-        public string Locality { get; set; }
-
-        [JsonProperty("postal_code")]
-        public string PostalCode { get; set; }
-    }
-
-    public class LocationUpdateInputLocationTypeBusinessHoursType
+    public class BodyInputLocationTypeBusinessHoursType
     {
         [JsonProperty("periods")]
-        public LocationUpdateInputLocationTypeBusinessHoursTypePeriodsTypeItem[] Periods { get; set; }
+        public BodyInputLocationTypeBusinessHoursTypePeriodsTypeItem[] Periods { get; set; }
     }
 
-    public class LocationUpdateInputLocationTypeBusinessHoursTypePeriodsTypeItem
+    public class BodyInputLocationTypeBusinessHoursTypePeriodsTypeItem
     {
         [JsonProperty("day_of_week")]
         public string DayOfWeek { get; set; }
@@ -3968,25 +3929,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string CreatedAt { get; set; }
     }
 
-    public class LoyaltyCreateAccountInput
+    public class LoyaltyCreateAccountBodyInput
     {
         [JsonProperty("loyalty_account")]
-        public LoyaltyCreateAccountInputLoyaltyAccountType LoyaltyAccount { get; set; }
+        public BodyInputLoyaltyAccountType LoyaltyAccount { get; set; }
 
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
     }
 
-    public class LoyaltyCreateAccountInputLoyaltyAccountType
+    public class BodyInputLoyaltyAccountType
     {
         [JsonProperty("mapping")]
-        public LoyaltyCreateAccountInputLoyaltyAccountTypeMappingType Mapping { get; set; }
+        public BodyInputLoyaltyAccountTypeMappingType Mapping { get; set; }
 
         [JsonProperty("program_id")]
         public string ProgramId { get; set; }
     }
 
-    public class LoyaltyCreateAccountInputLoyaltyAccountTypeMappingType
+    public class BodyInputLoyaltyAccountTypeMappingType
     {
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
@@ -4040,7 +4001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string CreatedAt { get; set; }
     }
 
-    public class LoyaltySearchAccountsInput
+    public class LoyaltySearchAccountsBodyInput
     {
         [JsonProperty("query")]
         public JToken Query { get; set; }
@@ -4136,10 +4097,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string OrderId { get; set; }
     }
 
-    public class LoyaltyAccumulatePointsInput
+    public class LoyaltyAccumulatePointsBodyInput
     {
         [JsonProperty("accumulate_points")]
-        public LoyaltyAccumulatePointsInputAccumulatePointsType AccumulatePoints { get; set; }
+        public BodyInputAccumulatePointsType AccumulatePoints { get; set; }
 
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -4148,7 +4109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string IdempotencyKey { get; set; }
     }
 
-    public class LoyaltyAccumulatePointsInputAccumulatePointsType
+    public class BodyInputAccumulatePointsType
     {
         [JsonProperty("order_id")]
         public string OrderId { get; set; }
@@ -4193,16 +4154,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Reason { get; set; }
     }
 
-    public class LoyaltyAdjustPointsInput
+    public class LoyaltyAdjustPointsBodyInput
     {
         [JsonProperty("adjust_points")]
-        public LoyaltyAdjustPointsInputAdjustPointsType AdjustPoints { get; set; }
+        public BodyInputAdjustPointsType AdjustPoints { get; set; }
 
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
     }
 
-    public class LoyaltyAdjustPointsInputAdjustPointsType
+    public class BodyInputAdjustPointsType
     {
         [JsonProperty("points")]
         public int? Points { get; set; }
@@ -4283,28 +4244,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public int Points { get; set; }
     }
 
-    public class LoyaltySearchEventsInput
+    public class LoyaltySearchEventsBodyInput
     {
         [JsonProperty("query")]
-        public LoyaltySearchEventsInputQueryType Query { get; set; }
+        public LoyaltySearchEventsBodyInputQueryType Query { get; set; }
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
     }
 
-    public class LoyaltySearchEventsInputQueryType
+    public class LoyaltySearchEventsBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public LoyaltySearchEventsInputQueryTypeFilterType Filter { get; set; }
+        public LoyaltySearchEventsBodyInputQueryTypeFilterType Filter { get; set; }
     }
 
-    public class LoyaltySearchEventsInputQueryTypeFilterType
+    public class LoyaltySearchEventsBodyInputQueryTypeFilterType
     {
         [JsonProperty("order_filter")]
-        public LoyaltySearchEventsInputQueryTypeFilterTypeOrderFilterType OrderFilter { get; set; }
+        public BodyInputQueryTypeFilterTypeOrderFilterType OrderFilter { get; set; }
     }
 
-    public class LoyaltySearchEventsInputQueryTypeFilterTypeOrderFilterType
+    public class BodyInputQueryTypeFilterTypeOrderFilterType
     {
         [JsonProperty("order_id")]
         public string OrderId { get; set; }
@@ -4424,7 +4385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public int Points { get; set; }
     }
 
-    public class LoyaltyCalculatePointsInput
+    public class LoyaltyCalculatePointsBodyInput
     {
         [JsonProperty("order_id")]
         public string OrderId { get; set; }
@@ -4463,16 +4424,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string UpdatedAt { get; set; }
     }
 
-    public class LoyaltyCreateRewardInput
+    public class LoyaltyCreateRewardBodyInput
     {
         [JsonProperty("reward")]
-        public LoyaltyCreateRewardInputRewardType Reward { get; set; }
+        public BodyInputRewardType Reward { get; set; }
 
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
     }
 
-    public class LoyaltyCreateRewardInputRewardType
+    public class BodyInputRewardType
     {
         [JsonProperty("loyalty_account_id")]
         public string LoyaltyAccountId { get; set; }
@@ -4520,16 +4481,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string RedeemedAt { get; set; }
     }
 
-    public class LoyaltySearchRewardsInput
+    public class LoyaltySearchRewardsBodyInput
     {
         [JsonProperty("query")]
-        public LoyaltySearchRewardsInputQueryType Query { get; set; }
+        public LoyaltySearchRewardsBodyInputQueryType Query { get; set; }
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
     }
 
-    public class LoyaltySearchRewardsInputQueryType
+    public class LoyaltySearchRewardsBodyInputQueryType
     {
         [JsonProperty("loyalty_account_id")]
         public string LoyaltyAccountId { get; set; }
@@ -4607,7 +4568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string RewardId { get; set; }
     }
 
-    public class LoyaltyRedeemRewardInput
+    public class LoyaltyRedeemRewardBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
@@ -4685,7 +4646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string ExpiresAt { get; set; }
     }
 
-    public class MobileAuthorizationCreateInput
+    public class MobileAuthorizationCreateBodyInput
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -4766,13 +4727,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string UpdatedAt { get; set; }
     }
 
-    public class SnippetUpsertInput
+    public class SnippetUpsertBodyInput
     {
         [JsonProperty("snippet")]
-        public SnippetUpsertInputSnippetType Snippet { get; set; }
+        public BodyInputSnippetType Snippet { get; set; }
     }
 
-    public class SnippetUpsertInputSnippetType
+    public class BodyInputSnippetType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -4823,16 +4784,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string[] LocationIds { get; set; }
     }
 
-    public class TeamCreateMemberInput
+    public class TeamCreateMemberBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("team_member")]
-        public TeamCreateMemberInputTeamMemberType TeamMember { get; set; }
+        public BodyInputTeamMemberType TeamMember { get; set; }
     }
 
-    public class TeamCreateMemberInputTeamMemberType
+    public class BodyInputTeamMemberType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -4853,10 +4814,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("assigned_locations")]
-        public TeamCreateMemberInputTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+        public BodyInputTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
     }
 
-    public class TeamCreateMemberInputTeamMemberTypeAssignedLocationsType
+    public class BodyInputTeamMemberTypeAssignedLocationsType
     {
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
@@ -4967,28 +4928,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string AssignmentType { get; set; }
     }
 
-    public class TeamCreateBulkMembersInput
+    public class TeamCreateBulkMembersBodyInput
     {
         [JsonProperty("team_members")]
-        public TeamCreateBulkMembersInputTeamMembersType TeamMembers { get; set; }
+        public TeamCreateBulkMembersBodyInputTeamMembersType TeamMembers { get; set; }
     }
 
-    public class TeamCreateBulkMembersInputTeamMembersType
+    public class TeamCreateBulkMembersBodyInputTeamMembersType
     {
         [JsonProperty("idempotency-key-1")]
-        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1Type IdempotencyKey1 { get; set; }
+        public BodyInputTeamMembersTypeIdempotencyKey1Type IdempotencyKey1 { get; set; }
 
         [JsonProperty("idempotency-key-2")]
-        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2Type IdempotencyKey2 { get; set; }
+        public BodyInputTeamMembersTypeIdempotencyKey2Type IdempotencyKey2 { get; set; }
     }
 
-    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1Type
+    public class BodyInputTeamMembersTypeIdempotencyKey1Type
     {
         [JsonProperty("team_member")]
-        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberType TeamMember { get; set; }
+        public BodyInputTeamMembersTypeIdempotencyKey1TypeTeamMemberType TeamMember { get; set; }
     }
 
-    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberType
+    public class BodyInputTeamMembersTypeIdempotencyKey1TypeTeamMemberType
     {
         [JsonProperty("given_name")]
         public string GivenName { get; set; }
@@ -5006,10 +4967,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("assigned_locations")]
-        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+        public BodyInputTeamMembersTypeIdempotencyKey1TypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
     }
 
-    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey1TypeTeamMemberTypeAssignedLocationsType
+    public class BodyInputTeamMembersTypeIdempotencyKey1TypeTeamMemberTypeAssignedLocationsType
     {
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
@@ -5018,13 +4979,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string AssignmentType { get; set; }
     }
 
-    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2Type
+    public class BodyInputTeamMembersTypeIdempotencyKey2Type
     {
         [JsonProperty("team_member")]
-        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberType TeamMember { get; set; }
+        public BodyInputTeamMembersTypeIdempotencyKey2TypeTeamMemberType TeamMember { get; set; }
     }
 
-    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberType
+    public class BodyInputTeamMembersTypeIdempotencyKey2TypeTeamMemberType
     {
         [JsonProperty("given_name")]
         public string GivenName { get; set; }
@@ -5042,10 +5003,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("assigned_locations")]
-        public TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+        public BodyInputTeamMembersTypeIdempotencyKey2TypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
     }
 
-    public class TeamCreateBulkMembersInputTeamMembersTypeIdempotencyKey2TypeTeamMemberTypeAssignedLocationsType
+    public class BodyInputTeamMembersTypeIdempotencyKey2TypeTeamMemberTypeAssignedLocationsType
     {
         [JsonProperty("assignment_type")]
         public string AssignmentType { get; set; }
@@ -5111,28 +5072,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string[] LocationIds { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInput
+    public class TeamUpdateBulkMembersBodyInput
     {
         [JsonProperty("team_members")]
-        public TeamUpdateBulkMembersInputTeamMembersType TeamMembers { get; set; }
+        public TeamUpdateBulkMembersBodyInputTeamMembersType TeamMembers { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInputTeamMembersType
+    public class TeamUpdateBulkMembersBodyInputTeamMembersType
     {
         [JsonProperty("fpgteZNMaf0qOK-a4t6P")]
-        public TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType FpgteZNMaf0qOKA4t6P { get; set; }
+        public BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType FpgteZNMaf0qOKA4t6P { get; set; }
 
         [JsonProperty("AFMwA08kR-MIF-3Vs0OE")]
-        public TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType AFMwA08kRMIF3Vs0OE { get; set; }
+        public BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType AFMwA08kRMIF3Vs0OE { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType
+    public class BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType
     {
         [JsonProperty("team_member")]
-        public TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType TeamMember { get; set; }
+        public BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType TeamMember { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType
+    public class BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -5156,10 +5117,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("assigned_locations")]
-        public TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+        public BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType
+    public class BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType
     {
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
@@ -5168,13 +5129,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string AssignmentType { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType
+    public class BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType
     {
         [JsonProperty("team_member")]
-        public TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType TeamMember { get; set; }
+        public BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType TeamMember { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType
+    public class BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -5198,10 +5159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("assigned_locations")]
-        public TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+        public BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
     }
 
-    public class TeamUpdateBulkMembersInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType
+    public class BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType
     {
         [JsonProperty("assignment_type")]
         public string AssignmentType { get; set; }
@@ -5258,22 +5219,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string AssignmentType { get; set; }
     }
 
-    public class TeamSearchInput
+    public class TeamSearchBodyInput
     {
         [JsonProperty("query")]
-        public TeamSearchInputQueryType Query { get; set; }
+        public TeamSearchBodyInputQueryType Query { get; set; }
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
     }
 
-    public class TeamSearchInputQueryType
+    public class TeamSearchBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public TeamSearchInputQueryTypeFilterType Filter { get; set; }
+        public TeamSearchBodyInputQueryTypeFilterType Filter { get; set; }
     }
 
-    public class TeamSearchInputQueryTypeFilterType
+    public class TeamSearchBodyInputQueryTypeFilterType
     {
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
@@ -5381,43 +5342,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string[] LocationIds { get; set; }
     }
 
-    public class TeamUpdateInput
+    public class TeamUpdateBodyInput
     {
         [JsonProperty("team_member")]
-        public TeamUpdateInputTeamMemberType TeamMember { get; set; }
-    }
-
-    public class TeamUpdateInputTeamMemberType
-    {
-        [JsonProperty("reference_id")]
-        public string ReferenceId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("given_name")]
-        public string GivenName { get; set; }
-
-        [JsonProperty("family_name")]
-        public string FamilyName { get; set; }
-
-        [JsonProperty("email_address")]
-        public string EmailAddress { get; set; }
-
-        [JsonProperty("phone_number")]
-        public string PhoneNumber { get; set; }
-
-        [JsonProperty("assigned_locations")]
-        public TeamUpdateInputTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
-    }
-
-    public class TeamUpdateInputTeamMemberTypeAssignedLocationsType
-    {
-        [JsonProperty("location_ids")]
-        public string[] LocationIds { get; set; }
-
-        [JsonProperty("assignment_type")]
-        public string AssignmentType { get; set; }
+        public BodyInputTeamMemberType TeamMember { get; set; }
     }
 
     public class TeamRetrieveWageResponse
@@ -5546,22 +5474,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class TeamUpdateWageInput
+    public class TeamUpdateWageBodyInput
     {
         [JsonProperty("wage_setting")]
-        public TeamUpdateWageInputWageSettingType WageSetting { get; set; }
+        public BodyInputWageSettingType WageSetting { get; set; }
     }
 
-    public class TeamUpdateWageInputWageSettingType
+    public class BodyInputWageSettingType
     {
         [JsonProperty("is_overtime_exempt")]
         public bool? IsOvertimeExempt { get; set; }
 
         [JsonProperty("job_assignments")]
-        public TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItem[] JobAssignments { get; set; }
+        public BodyInputWageSettingTypeJobAssignmentsTypeItem[] JobAssignments { get; set; }
     }
 
-    public class TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItem
+    public class BodyInputWageSettingTypeJobAssignmentsTypeItem
     {
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
@@ -5570,16 +5498,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PayType { get; set; }
 
         [JsonProperty("annual_rate")]
-        public TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemAnnualRateType AnnualRate { get; set; }
+        public BodyInputWageSettingTypeJobAssignmentsTypeItemAnnualRateType AnnualRate { get; set; }
 
         [JsonProperty("weekly_hours")]
         public int? WeeklyHours { get; set; }
 
         [JsonProperty("hourly_rate")]
-        public TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemHourlyRateType HourlyRate { get; set; }
+        public BodyInputWageSettingTypeJobAssignmentsTypeItemHourlyRateType HourlyRate { get; set; }
     }
 
-    public class TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemAnnualRateType
+    public class BodyInputWageSettingTypeJobAssignmentsTypeItemAnnualRateType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -5588,7 +5516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class TeamUpdateWageInputWageSettingTypeJobAssignmentsTypeItemHourlyRateType
+    public class BodyInputWageSettingTypeJobAssignmentsTypeItemHourlyRateType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -5597,13 +5525,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class BankAccountGetV1Response
+    public class BankAccountGetResponse
     {
         [JsonProperty("bank_account")]
-        public BankAccountGetV1ResponseBankAccountType BankAccount { get; set; }
+        public BankAccountGetResponseBankAccountType BankAccount { get; set; }
     }
 
-    public class BankAccountGetV1ResponseBankAccountType
+    public class BankAccountGetResponseBankAccountType
     {
         [JsonProperty("id")]
         public string Id { get; set; }

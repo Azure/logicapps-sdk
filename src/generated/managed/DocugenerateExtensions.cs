@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentInput>> body)
+        public IBodyWorkflowAction<GenerateDocumentResponse, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GenerateDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<UpdateDocumentInput>> body = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<UpdateDocumentBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public string DocumentUri { get; set; }
     }
 
-    public class GenerateDocumentInput
+    public class GenerateDocumentBodyInput
     {
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
@@ -323,11 +323,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public string Name { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateDocumentInputOutputFormatType? OutputFormat { get; set; } = GenerateDocumentInputOutputFormatType.Pdf;
+        public BodyInputOutputFormatType? OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate.BodyInputOutputFormatType.Pdf;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateDocumentInputOutputFormatType
+    public enum BodyInputOutputFormatType
     {
         [EnumMember(Value = ".docx")]
         Docx,
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public string DocumentUri { get; set; }
     }
 
-    public class UpdateDocumentInput
+    public class UpdateDocumentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

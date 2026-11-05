@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        public IBodyWorkflowAction<PostCustomerdetailsupdResponse200, ApiConnectionActionConfiguration> PostCustomerDetailsupd(Expression<Func<PostCustomerDetailsupdInput>> postCustomerdetailsupdRequest)
+        public IBodyWorkflowAction<PostCustomerdetailsupdResponse200, ApiConnectionActionConfiguration> PostCustomerDetailsupd(Expression<Func<PostCustomerdetailsupdRequestInput>> postCustomerdetailsupdRequest)
         {
             var __workflow_postCustomerdetailsupdRequest = WorkflowExpression.Compile(postCustomerdetailsupdRequest, nameof(postCustomerdetailsupdRequest), required: true);
             return new DeferredBodyAction<PostCustomerdetailsupdResponse200, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kyndrylmainframe")]
-        public IBodyWorkflowAction<PutCustomerdetailResponse200, ApiConnectionActionConfiguration> PutCustomerDetail(Expression<Func<string>> num, Expression<Func<string>> firstname, Expression<Func<PutCustomerDetailInput>> body)
+        public IBodyWorkflowAction<PutCustomerdetailResponse200, ApiConnectionActionConfiguration> PutCustomerDetail(Expression<Func<string>> num, Expression<Func<string>> firstname, Expression<Func<BodyInput>> body)
         {
             var __workflow_num = WorkflowExpression.Compile(num, nameof(num), required: true);
             var __workflow_firstname = WorkflowExpression.Compile(firstname, nameof(firstname), required: true);
@@ -154,12 +154,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         public string CAPOLICYDATA { get; set; }
     }
 
-    public class PostCustomerDetailsupdInput
+    public class PostCustomerdetailsupdRequestInput
     {
-        public PostCustomerDetailsupdInputLGCMAREAType LGCMAREA { get; set; }
+        public PostCustomerdetailsupdRequestInputLGCMAREAType LGCMAREA { get; set; }
     }
 
-    public class PostCustomerDetailsupdInputLGCMAREAType
+    public class PostCustomerdetailsupdRequestInputLGCMAREAType
     {
         [JsonProperty("CA_RETURN_CODE")]
         public int? CARETURNCODE { get; set; }
@@ -168,10 +168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         public int? CACUSTOMERNUM { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
-        public PostCustomerDetailsupdInputLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
+        public PostCustomerdetailsupdRequestInputLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
     }
 
-    public class PostCustomerDetailsupdInputLGCMAREATypeCACUSTOMERREQUESTType
+    public class PostCustomerdetailsupdRequestInputLGCMAREATypeCACUSTOMERREQUESTType
     {
         [JsonProperty("CA_FIRST_NAME")]
         public string CAFIRSTNAME { get; set; }
@@ -266,21 +266,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kyndrylmainframe
         public string CAPOLICYDATA { get; set; }
     }
 
-    public class PutCustomerDetailInput
+    public class BodyInput
     {
-        public PutCustomerDetailInputLGCMAREAType LGCMAREA { get; set; }
+        public BodyInputLGCMAREAType LGCMAREA { get; set; }
     }
 
-    public class PutCustomerDetailInputLGCMAREAType
+    public class BodyInputLGCMAREAType
     {
         [JsonProperty("CA_RETURN_CODE")]
         public int? CARETURNCODE { get; set; }
 
         [JsonProperty("CA_CUSTOMER_REQUEST")]
-        public PutCustomerDetailInputLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
+        public BodyInputLGCMAREATypeCACUSTOMERREQUESTType CACUSTOMERREQUEST { get; set; }
     }
 
-    public class PutCustomerDetailInputLGCMAREATypeCACUSTOMERREQUESTType
+    public class BodyInputLGCMAREATypeCACUSTOMERREQUESTType
     {
         [JsonProperty("CA_LAST_NAME")]
         public string CALASTNAME { get; set; }

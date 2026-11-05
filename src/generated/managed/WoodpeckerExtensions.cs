@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     public class WoodpeckerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsGetResponseItem[], ApiConnectionActionConfiguration> ProspectsGet(Expression<Func<string>> search = null, Expression<Func<string>> activity = null, Expression<Func<string>> campaignId = null, Expression<Func<bool>> campaignsDetail = null, Expression<Func<sortInput>> sort = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ProspectsGetResponseItem[], ApiConnectionActionConfiguration> ProspectsGet(Expression<Func<string>> search = null, Expression<Func<string>> activity = null, Expression<Func<string>> campaignId = null, Expression<Func<bool>> campaignsDetail = null, Expression<Func<SortInput>> sort = null, Expression<Func<ProspectsGetStatusInput>> status = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_activity = WorkflowExpression.Compile(activity, nameof(activity), required: false);
@@ -68,37 +68,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsPostResponse, ApiConnectionActionConfiguration> Prospects(Expression<Func<ProspectsPostInput>> body = null)
+        public IBodyWorkflowAction<ProspectsResponse, ApiConnectionActionConfiguration> Prospects(Expression<Func<ProspectsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ProspectsPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ProspectsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add_prospects_list";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ProspectsPostResponse>(callPayload);
+                return new ApiConnectionAction<ProspectsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsCampaignPostResponse, ApiConnectionActionConfiguration> ProspectsCampaign(Expression<Func<ProspectsCampaignPostInput>> body = null)
+        public IBodyWorkflowAction<ProspectsCampaignResponse, ApiConnectionActionConfiguration> ProspectsCampaign(Expression<Func<ProspectsCampaignBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ProspectsCampaignPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ProspectsCampaignResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/add_prospects_campaign";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ProspectsCampaignPostResponse>(callPayload);
+                return new ApiConnectionAction<ProspectsCampaignResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<CampaignsGetResponseItem[], ApiConnectionActionConfiguration> CampaignsGet(Expression<Func<statusInput2>> status = null, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<CampaignsGetResponseItem[], ApiConnectionActionConfiguration> CampaignsGet(Expression<Func<CampaignsGetStatusInput>> status = null, Expression<Func<int>> id = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "+id")]
         Id,
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum ProspectsGetStatusInput
     {
         ACTIVE,
         BLACKLIST,
@@ -363,22 +363,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         REPLIED
     }
 
-    public class ProspectsPostResponse
+    public class ProspectsResponse
     {
         [JsonProperty("prospects")]
-        public ProspectsPostResponseProspectsTypeItem[] Prospects { get; set; }
+        public ProspectsResponseProspectsTypeItem[] Prospects { get; set; }
 
         [JsonProperty("status")]
-        public ProspectsPostResponseStatusType Status { get; set; }
+        public ProspectsResponseStatusType Status { get; set; }
     }
 
-    public class ProspectsPostResponseProspectsTypeItem
+    public class ProspectsResponseProspectsTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
     }
 
-    public class ProspectsPostResponseStatusType
+    public class ProspectsResponseStatusType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -390,20 +390,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         public string Msg { get; set; }
     }
 
-    public class ProspectsPostInput
+    public class ProspectsBodyInput
     {
         [JsonProperty("update")]
-        public ProspectsPostInputUpdateType? Update { get; set; }
+        public BodyInputUpdateType? Update { get; set; }
 
         [JsonProperty("force")]
-        public ProspectsPostInputForceType? Force { get; set; }
+        public BodyInputForceType? Force { get; set; }
 
         [JsonProperty("prospects")]
-        public ProspectsPostInputProspectsTypeItem[] Prospects { get; set; }
+        public ProspectsBodyInputProspectsTypeItem[] Prospects { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProspectsPostInputUpdateType
+    public enum BodyInputUpdateType
     {
         [EnumMember(Value = "true")]
         True,
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProspectsPostInputForceType
+    public enum BodyInputForceType
     {
         [EnumMember(Value = "true")]
         True,
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         False
     }
 
-    public class ProspectsPostInputProspectsTypeItem
+    public class ProspectsBodyInputProspectsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -516,16 +516,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         public string Snippet15 { get; set; }
     }
 
-    public class ProspectsCampaignPostResponse
+    public class ProspectsCampaignResponse
     {
         [JsonProperty("prospects")]
-        public ProspectsCampaignPostResponseProspectsTypeItem[] Prospects { get; set; }
+        public ProspectsCampaignResponseProspectsTypeItem[] Prospects { get; set; }
 
         [JsonProperty("status")]
-        public ProspectsCampaignPostResponseStatusType Status { get; set; }
+        public ProspectsCampaignResponseStatusType Status { get; set; }
     }
 
-    public class ProspectsCampaignPostResponseProspectsTypeItem
+    public class ProspectsCampaignResponseProspectsTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         public int Id { get; set; }
     }
 
-    public class ProspectsCampaignPostResponseStatusType
+    public class ProspectsCampaignResponseStatusType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -546,46 +546,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         public string Msg { get; set; }
     }
 
-    public class ProspectsCampaignPostInput
+    public class ProspectsCampaignBodyInput
     {
         [JsonProperty("campaign")]
-        public ProspectsCampaignPostInputCampaignType Campaign { get; set; }
+        public BodyInputCampaignType Campaign { get; set; }
 
         [JsonProperty("update")]
-        public ProspectsCampaignPostInputUpdateType? Update { get; set; }
+        public BodyInputUpdateType? Update { get; set; }
 
         [JsonProperty("force")]
-        public ProspectsCampaignPostInputForceType? Force { get; set; }
+        public BodyInputForceType? Force { get; set; }
 
         [JsonProperty("prospects")]
-        public ProspectsCampaignPostInputProspectsTypeItem[] Prospects { get; set; }
+        public ProspectsCampaignBodyInputProspectsTypeItem[] Prospects { get; set; }
     }
 
-    public class ProspectsCampaignPostInputCampaignType
+    public class BodyInputCampaignType
     {
         [JsonProperty("campaign_id")]
         public int? CampaignId { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProspectsCampaignPostInputUpdateType
-    {
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProspectsCampaignPostInputForceType
-    {
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    public class ProspectsCampaignPostInputProspectsTypeItem
+    public class ProspectsCampaignBodyInputProspectsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -964,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput2
+    public enum CampaignsGetStatusInput
     {
         RUNNING,
         DRAFT,

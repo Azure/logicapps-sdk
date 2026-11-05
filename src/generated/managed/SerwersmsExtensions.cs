@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
     public class SerwersmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<AddBlacklistResponse, ApiConnectionActionConfiguration> AddBlacklist(Expression<Func<AddBlacklistInput>> body)
+        public IBodyWorkflowAction<AddBlacklistResponse, ApiConnectionActionConfiguration> AddBlacklist(Expression<Func<AddBlacklistBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddBlacklistResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<AddContactResponse, ApiConnectionActionConfiguration> AddContact(Expression<Func<AddContactInput>> body)
+        public IBodyWorkflowAction<AddContactResponse, ApiConnectionActionConfiguration> AddContact(Expression<Func<AddContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsInput>> body)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
 
     public class SerwersmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewAnswerResponse, ApiConnectionTriggerConfiguration> NewAnswer(Expression<Func<NewAnswerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewAnswerResponse, ApiConnectionTriggerConfiguration> NewAnswer(Expression<Func<NewAnswerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NewAnswerResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         public bool Success { get; set; }
     }
 
-    public class AddBlacklistInput
+    public class AddBlacklistBodyInput
     {
         [JsonProperty("phone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Phone { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         public bool Success { get; set; }
     }
 
-    public class AddContactInput
+    public class AddContactBodyInput
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         public int Unsent { get; set; }
     }
 
-    public class SendSmsInput
+    public class SendSmsBodyInput
     {
         [JsonProperty("group_id")]
         public string GroupId { get; set; }
@@ -188,14 +188,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         public string Type { get; set; }
     }
 
-    public class NewAnswerInput
+    public class NewAnswerBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewAnswerInputTypeType Type { get; set; } = NewAnswerInputTypeType.NDI;
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms.BodyInputTypeType.NDI;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewAnswerInputTypeType
+    public enum BodyInputTypeType
     {
         ECO,
         ND,

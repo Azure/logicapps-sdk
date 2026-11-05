@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Customerinsights
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "customerinsights")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendStatusReport(Expression<Func<string>> dataset, Expression<Func<reportTypeInput>> reportType, Expression<Func<object>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendStatusReport(Expression<Func<string>> dataset, Expression<Func<ReportTypeInput>> reportType, Expression<Func<object>> payload)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_reportType = WorkflowExpression.Compile(reportType, nameof(reportType), required: true);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Customerinsights
             });
         }
 
-        public IBodyWorkflowTrigger<ProcessData, ApiConnectionTriggerConfiguration> OnProcessCompleted(Expression<Func<string>> dataset, Expression<Func<processInput>> process = null, Expression<Func<bool>> includingManualRefreshes = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessData, ApiConnectionTriggerConfiguration> OnProcessCompleted(Expression<Func<string>> dataset, Expression<Func<ProcessInput>> process = null, Expression<Func<bool>> includingManualRefreshes = null, FlowRecurrence recurrence = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_process = WorkflowExpression.Compile(process, nameof(process), required: false);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Customerinsights
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum reportTypeInput
+    public enum ReportTypeInput
     {
         Export
     }
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Customerinsights
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum processInput
+    public enum ProcessInput
     {
         Unification
     }

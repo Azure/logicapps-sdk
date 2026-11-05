@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<CreateDocGroupEmbeddedInvitesInput>> invite)
+        public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<CreateDocGroupEmbeddedInvitesInviteInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<GenerateDocGroupEmbeddedInviteLinkInput>> invite)
+        public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<GenerateDocGroupEmbeddedInviteLinkInviteInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<CreateEmbeddedInvitesInput>> invite)
+        public IBodyWorkflowAction<CreateEmbeddedInvitesResponse, ApiConnectionActionConfiguration> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<CreateEmbeddedInvitesInviteInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<GenerateEmbeddedInviteLinkInput>> invite)
+        public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse, ApiConnectionActionConfiguration> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<GenerateEmbeddedInviteLinkInviteInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fieldInviteId = WorkflowExpression.Compile(fieldInviteId, nameof(fieldInviteId), required: true);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration> CreateDocGroupFromFiles(Expression<Func<CreateDocGroupFromFilesInput>> body)
+        public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration> CreateDocGroupFromFiles(Expression<Func<CreateDocGroupFromFilesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateDocumentGroupFromFilesResponse, ApiConnectionActionConfiguration>(() =>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateFromTemplateGroupResponse, ApiConnectionActionConfiguration> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<CreateFromTemplateGroupInput>> body = null)
+        public IBodyWorkflowAction<CreateFromTemplateGroupResponse, ApiConnectionActionConfiguration> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<CreateFromTemplateGroupBodyInput>> body = null)
         {
             var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateFromTemplateResponse, ApiConnectionActionConfiguration> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<CreateFromTemplateInput>> body = null)
+        public IBodyWorkflowAction<CreateFromTemplateResponse, ApiConnectionActionConfiguration> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<CreateFromTemplateBodyInput>> body = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<SendUserDefinedInviteInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<SendUserDefinedInviteBodyInput>> body = null)
         {
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<ReplaceRecipientsInDocumentInviteInput>> replaceTo)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<ReplaceRecipientsInDocumentInviteReplaceToInput>> replaceTo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_replaceTo = WorkflowExpression.Compile(replaceTo, nameof(replaceTo), required: true);
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<ReplaceRecipientsInDocumentGroupInviteInput>> replaceTo)
+        public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse, ApiConnectionActionConfiguration> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<ReplaceRecipientsInDocumentGroupInviteReplaceToInput>> replaceTo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<CreateEmbeddedInviteSettingsLinkInput>> inviteSettings)
+        public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<CreateEmbeddedInviteSettingsLinkInviteSettingsInput>> inviteSettings)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteSettings = WorkflowExpression.Compile(inviteSettings, nameof(inviteSettings), required: true);
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<CreateDocGroupEmbeddedInviteSettingsLinkInput>> inviteSettings)
+        public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse, ApiConnectionActionConfiguration> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<CreateDocGroupEmbeddedInviteSettingsLinkInviteSettingsInput>> inviteSettings)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_inviteSettings = WorkflowExpression.Compile(inviteSettings, nameof(inviteSettings), required: true);
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<InviteToSignAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<InviteToSignAllOptionsInput>> invite)
+        public IBodyWorkflowAction<InviteToSignAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<InviteToSignAllOptionsInviteInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<InviteToSignDocGroupAllOptionsInput>> invite)
+        public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse, ApiConnectionActionConfiguration> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<InviteToSignDocGroupAllOptionsInviteInput>> invite)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_invite = WorkflowExpression.Compile(invite, nameof(invite), required: true);
@@ -511,12 +511,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnoweu")]
-        public IBodyWorkflowAction<UpdateFieldValuesV2Response, ApiConnectionActionConfiguration> UpdateFieldValues(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
+        public IBodyWorkflowAction<UpdateFieldValuesResponse, ApiConnectionActionConfiguration> UpdateFieldValues(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
-            return new DeferredBodyAction<UpdateFieldValuesV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UpdateFieldValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/document/{0}/fields", __workflow_docId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
@@ -524,23 +524,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
                 callPayload.Queries["template_id"] = ExpressionConverter.Convert(__workflow_templateId);
                 if (__workflow_fields != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_fields);
-                return new ApiConnectionAction<UpdateFieldValuesV2Response>(callPayload);
+                return new ApiConnectionAction<UpdateFieldValuesResponse>(callPayload);
             });
         }
     }
 
     public class SignnoweuTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<TriggersV2Input>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersResponse, ApiConnectionTriggerConfiguration> Triggers(Expression<Func<TriggersBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<TriggersV2Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<TriggersResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/multievent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionTrigger<TriggersV2Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<TriggersResponse>(callPayload, recurrence: recurrence);
             });
         }
     }
@@ -551,37 +551,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string InviteId { get; set; }
     }
 
-    public class CreateDocGroupEmbeddedInvitesInput
+    public class CreateDocGroupEmbeddedInvitesInviteInput
     {
         [JsonProperty("invites")]
-        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItem[] Invites { get; set; }
+        public CreateDocGroupEmbeddedInvitesInviteInputInvitesTypeItem[] Invites { get; set; }
 
         [JsonProperty("advanced")]
-        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItem[] Advanced { get; set; }
+        public InviteInputAdvancedTypeItem[] Advanced { get; set; }
 
         [JsonProperty("signature")]
-        public CreateDocGroupEmbeddedInvitesInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQESSignatureType? QESSignature { get; set; }
     }
 
-    public class CreateDocGroupEmbeddedInvitesInputInvitesTypeItem
+    public class CreateDocGroupEmbeddedInvitesInviteInputInvitesTypeItem
     {
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
 
         [JsonProperty("signers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItem[] Signers { get; set; }
+        public InviteInputInvitesTypeItemSignersTypeItem[] Signers { get; set; }
     }
 
-    public class CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItem
+    public class InviteInputInvitesTypeItemSignersTypeItem
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItem[] Documents { get; set; }
+        public InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItem[] Documents { get; set; }
     }
 
-    public class CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItem
+    public class InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItem
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -590,17 +590,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Role { get; set; }
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItemActionType Action { get; set; }
+        public InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItemActionType Action { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInvitesInputInvitesTypeItemSignersTypeItemDocumentsTypeItemActionType
+    public enum InviteInputInvitesTypeItemSignersTypeItemDocumentsTypeItemActionType
     {
         Sign,
         View
     }
 
-    public class CreateDocGroupEmbeddedInvitesInputAdvancedTypeItem
+    public class InviteInputAdvancedTypeItem
     {
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Order { get; set; }
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Email { get; set; }
 
         [JsonProperty("language")]
-        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemLanguageType? Language { get; set; }
+        public InviteInputAdvancedTypeItemLanguageType? Language { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -630,10 +630,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string CloseRedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemRedirectTargetType? RedirectTarget { get; set; }
+        public InviteInputAdvancedTypeItemRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("delivery_type")]
-        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemDeliveryTypeType? DeliveryType { get; set; }
+        public InviteInputAdvancedTypeItemDeliveryTypeType? DeliveryType { get; set; }
 
         [JsonProperty("link_expiration")]
         public int? LinkExpiration { get; set; }
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? SessionExpiration { get; set; }
 
         [JsonProperty("authentication_type")]
-        public CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
+        public InviteInputAdvancedTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("authentication_password")]
         public string AuthenticationPassword { get; set; }
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemLanguageType
+    public enum InviteInputAdvancedTypeItemLanguageType
     {
         En,
         Es,
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemRedirectTargetType
+    public enum InviteInputAdvancedTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -672,14 +672,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemDeliveryTypeType
+    public enum InviteInputAdvancedTypeItemDeliveryTypeType
     {
         Email,
         Link
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInvitesInputAdvancedTypeItemAuthenticationTypeType
+    public enum InviteInputAdvancedTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInvitesInputQESSignatureType
+    public enum InviteInputQESSignatureType
     {
         Eideasy,
         Nom151
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string EmbeddedInviteLink { get; set; }
     }
 
-    public class GenerateDocGroupEmbeddedInviteLinkInput
+    public class GenerateDocGroupEmbeddedInviteLinkInviteInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -736,22 +736,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Status { get; set; }
     }
 
-    public class CreateEmbeddedInvitesInput
+    public class CreateEmbeddedInvitesInviteInput
     {
         [JsonProperty("invites")]
-        public CreateEmbeddedInvitesInputInvitesTypeItem[] Invites { get; set; }
+        public CreateEmbeddedInvitesInviteInputInvitesTypeItem[] Invites { get; set; }
 
         [JsonProperty("name_formula")]
         public string NameFormula { get; set; }
 
         [JsonProperty("advanced_params")]
-        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItem[] InviteAdvancedParameters { get; set; }
+        public InviteInputInviteAdvancedParametersTypeItem[] InviteAdvancedParameters { get; set; }
 
         [JsonProperty("signature")]
-        public CreateEmbeddedInvitesInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQESSignatureType? QESSignature { get; set; }
     }
 
-    public class CreateEmbeddedInvitesInputInvitesTypeItem
+    public class CreateEmbeddedInvitesInviteInputInvitesTypeItem
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SignerEmail { get; set; }
@@ -763,13 +763,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int Order { get; set; } = 1;
     }
 
-    public class CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItem
+    public class InviteInputInviteAdvancedParametersTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
 
         [JsonProperty("language")]
-        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemLanguageType? Language { get; set; }
+        public InviteInputInviteAdvancedParametersTypeItemLanguageType? Language { get; set; }
 
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -796,10 +796,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string CloseRedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemRedirectTargetType? RedirectTarget { get; set; }
+        public InviteInputInviteAdvancedParametersTypeItemRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("authentication_type")]
-        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
+        public InviteInputInviteAdvancedParametersTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("authentication_password")]
         public string AuthenticationPassword { get; set; }
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string AuthenticationSmsMessage { get; set; }
 
         [JsonProperty("delivery_type")]
-        public CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemDeliveryTypeType? DeliveryType { get; set; }
+        public InviteInputInviteAdvancedParametersTypeItemDeliveryTypeType? DeliveryType { get; set; }
 
         [JsonProperty("link_expiration")]
         public int? LinkExpiration { get; set; }
@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemLanguageType
+    public enum InviteInputInviteAdvancedParametersTypeItemLanguageType
     {
         En,
         Es,
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemRedirectTargetType
+    public enum InviteInputInviteAdvancedParametersTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemAuthenticationTypeType
+    public enum InviteInputInviteAdvancedParametersTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -847,17 +847,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddedInvitesInputInviteAdvancedParametersTypeItemDeliveryTypeType
+    public enum InviteInputInviteAdvancedParametersTypeItemDeliveryTypeType
     {
         Email,
         Link
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddedInvitesInputQESSignatureType
-    {
-        Eideasy,
-        Nom151
     }
 
     public class GenerateEmbeddedInviteLinkResponse
@@ -872,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Link { get; set; }
     }
 
-    public class GenerateEmbeddedInviteLinkInput
+    public class GenerateEmbeddedInviteLinkInviteInput
     {
         [JsonProperty("link_expiration")]
         public int? LinkExpiration { get; set; }
@@ -935,16 +928,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string DocumentName { get; set; }
     }
 
-    public class CreateDocGroupFromFilesInput
+    public class CreateDocGroupFromFilesBodyInput
     {
         [JsonProperty("group_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentGroupName { get; set; }
 
         [JsonProperty("documents")]
-        public CreateDocGroupFromFilesInputDocumentsTypeItem[] Documents { get; set; }
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
     }
 
-    public class CreateDocGroupFromFilesInputDocumentsTypeItem
+    public class BodyInputDocumentsTypeItem
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentName { get; set; }
@@ -959,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Id { get; set; }
     }
 
-    public class CreateFromTemplateGroupInput
+    public class CreateFromTemplateGroupBodyInput
     {
         [JsonProperty("group_name")]
         public string DocumentGroupName { get; set; }
@@ -1034,7 +1027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Id { get; set; }
     }
 
-    public class CreateFromTemplateInput
+    public class CreateFromTemplateBodyInput
     {
         [JsonProperty("document_name")]
         public string DocumentName { get; set; }
@@ -1046,9 +1039,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string URL { get; set; }
     }
 
-    public class SendUserDefinedInviteInput
+    public class SendUserDefinedInviteBodyInput
     {
-        public SendUserDefinedInviteInputRoleTypeItem[] Role { get; set; }
+        public BodyInputRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("cc")]
         public string CC { get; set; }
@@ -1063,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string EmailAllPartiesOnCompletion { get; set; }
     }
 
-    public class SendUserDefinedInviteInputRoleTypeItem
+    public class BodyInputRoleTypeItem
     {
         [JsonProperty("role")]
         public string Name { get; set; }
@@ -1084,7 +1077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string PersonalizedMessage { get; set; }
 
         [JsonProperty("authentication_type")]
-        public SendUserDefinedInviteInputRoleTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
+        public BodyInputRoleTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1109,7 +1102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendUserDefinedInviteInputRoleTypeItemAuthenticationTypeType
+    public enum BodyInputRoleTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone Call")]
@@ -1237,16 +1230,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string NewEmail { get; set; }
     }
 
-    public class ReplaceRecipientsInDocumentInviteInput
+    public class ReplaceRecipientsInDocumentInviteReplaceToInput
     {
         [JsonProperty("replace_to")]
-        public ReplaceRecipientsInDocumentInviteInputReplaceToTypeItem[] ReplaceTo { get; set; }
+        public ReplaceToInputReplaceToTypeItem[] ReplaceTo { get; set; }
 
         [JsonProperty("advanced")]
-        public ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItem[] AdvancedParameters { get; set; }
+        public ReplaceToInputAdvancedParametersTypeItem[] AdvancedParameters { get; set; }
     }
 
-    public class ReplaceRecipientsInDocumentInviteInputReplaceToTypeItem
+    public class ReplaceToInputReplaceToTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
@@ -1255,7 +1248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string NewEmail { get; set; }
     }
 
-    public class ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItem
+    public class ReplaceToInputAdvancedParametersTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
@@ -1270,7 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? Reminder { get; set; }
 
         [JsonProperty("authentication_type")]
-        public ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
+        public ReplaceToInputAdvancedParametersTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("authentication_password")]
         public string AuthenticationPassword { get; set; }
@@ -1283,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReplaceRecipientsInDocumentInviteInputAdvancedParametersTypeItemAuthenticationTypeType
+    public enum ReplaceToInputAdvancedParametersTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1297,7 +1290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Status { get; set; }
     }
 
-    public class ReplaceRecipientsInDocumentGroupInviteInput
+    public class ReplaceRecipientsInDocumentGroupInviteReplaceToInput
     {
         [JsonProperty("step_id")]
         public string StepId { get; set; }
@@ -1315,10 +1308,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? Reminder { get; set; }
 
         [JsonProperty("invite_action_attributes")]
-        public ReplaceRecipientsInDocumentGroupInviteInputInviteActionAttributesTypeItem[] InviteActionAttributes { get; set; }
+        public ReplaceToInputInviteActionAttributesTypeItem[] InviteActionAttributes { get; set; }
     }
 
-    public class ReplaceRecipientsInDocumentGroupInviteInputInviteActionAttributesTypeItem
+    public class ReplaceToInputInviteActionAttributesTypeItem
     {
         [JsonProperty("document_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -1336,10 +1329,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Url { get; set; }
     }
 
-    public class CreateEmbeddedInviteSettingsLinkInput
+    public class CreateEmbeddedInviteSettingsLinkInviteSettingsInput
     {
         [JsonProperty("type")]
-        public CreateEmbeddedInviteSettingsLinkInputTypeType? Type { get; set; }
+        public CreateEmbeddedInviteSettingsLinkInviteSettingsInputTypeType? Type { get; set; }
 
         [JsonProperty("redirect_uri")]
         public string RedirectUri { get; set; }
@@ -1348,18 +1341,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? LinkExpiration { get; set; } = 15;
 
         [JsonProperty("redirect_target")]
-        public CreateEmbeddedInviteSettingsLinkInputRedirectTargetType? RedirectTarget { get; set; }
+        public InviteSettingsInputRedirectTargetType? RedirectTarget { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddedInviteSettingsLinkInputTypeType
+    public enum CreateEmbeddedInviteSettingsLinkInviteSettingsInputTypeType
     {
         Invite,
         Document
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEmbeddedInviteSettingsLinkInputRedirectTargetType
+    public enum InviteSettingsInputRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1373,10 +1366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Url { get; set; }
     }
 
-    public class CreateDocGroupEmbeddedInviteSettingsLinkInput
+    public class CreateDocGroupEmbeddedInviteSettingsLinkInviteSettingsInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDocGroupEmbeddedInviteSettingsLinkInputTypeType? Type { get; set; } = CreateDocGroupEmbeddedInviteSettingsLinkInputTypeType.Manage;
+        public CreateDocGroupEmbeddedInviteSettingsLinkInviteSettingsInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu.CreateDocGroupEmbeddedInviteSettingsLinkInviteSettingsInputTypeType.Manage;
 
         [JsonProperty("redirect_uri")]
         public string RedirectUri { get; set; }
@@ -1385,25 +1378,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? LinkExpiration { get; set; } = 15;
 
         [JsonProperty("redirect_target")]
-        public CreateDocGroupEmbeddedInviteSettingsLinkInputRedirectTargetType? RedirectTarget { get; set; }
+        public InviteSettingsInputRedirectTargetType? RedirectTarget { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInviteSettingsLinkInputTypeType
+    public enum CreateDocGroupEmbeddedInviteSettingsLinkInviteSettingsInputTypeType
     {
         Manage,
         Edit,
         [EnumMember(Value = "Send-invite")]
         SendInvite
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocGroupEmbeddedInviteSettingsLinkInputRedirectTargetType
-    {
-        [EnumMember(Value = "In the new tab")]
-        InTheNewTab,
-        [EnumMember(Value = "In the same tab")]
-        InTheSameTab
     }
 
     public class InviteToSignAllOptionsResponse
@@ -1412,37 +1396,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Status { get; set; }
     }
 
-    public class InviteToSignAllOptionsInput
+    public class InviteToSignAllOptionsInviteInput
     {
         [JsonProperty("signers")]
-        public InviteToSignAllOptionsInputSignersTypeItem[] Signers { get; set; }
+        public InviteInputSignersTypeItem[] Signers { get; set; }
 
         [JsonProperty("signers_advanced")]
-        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItem[] SignerAdvancedProperties { get; set; }
+        public InviteInputSignerAdvancedPropertiesTypeItem[] SignerAdvancedProperties { get; set; }
 
         [JsonProperty("viewers")]
-        public InviteToSignAllOptionsInputViewersTypeItem[] Viewers { get; set; }
+        public InviteInputViewersTypeItem[] Viewers { get; set; }
 
         [JsonProperty("viewers_advanced")]
-        public InviteToSignAllOptionsInputViewerAdvancedPropertiesTypeItem[] ViewerAdvancedProperties { get; set; }
+        public InviteInputViewerAdvancedPropertiesTypeItem[] ViewerAdvancedProperties { get; set; }
 
         [JsonProperty("approvers")]
-        public InviteToSignAllOptionsInputApproversTypeItem[] Approvers { get; set; }
+        public InviteInputApproversTypeItem[] Approvers { get; set; }
 
         [JsonProperty("approver_advanced")]
-        public InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItem[] ApproverAdvancedProperties { get; set; }
+        public InviteInputApproverAdvancedPropertiesTypeItem[] ApproverAdvancedProperties { get; set; }
 
         [JsonProperty("from")]
         public string From { get; set; }
 
         [JsonProperty("email_groups")]
-        public InviteToSignAllOptionsInputEmailGroupsTypeItem[] EmailGroups { get; set; }
+        public InviteInputEmailGroupsTypeItem[] EmailGroups { get; set; }
 
         [JsonProperty("cc")]
-        public InviteToSignAllOptionsInputCCTypeItem[] CC { get; set; }
+        public InviteInputCCTypeItem[] CC { get; set; }
 
         [JsonProperty("cc_step")]
-        public InviteToSignAllOptionsInputCCStepsTypeItem[] CCSteps { get; set; }
+        public InviteInputCCStepsTypeItem[] CCSteps { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -1457,10 +1441,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string CCMessage { get; set; }
 
         [JsonProperty("signature")]
-        public InviteToSignAllOptionsInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQESSignatureType? QESSignature { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputSignersTypeItem
+    public class InviteInputSignersTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1478,7 +1462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int Order { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItem
+    public class InviteInputSignerAdvancedPropertiesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
@@ -1511,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? DaysUntilExpiration { get; set; }
 
         [JsonProperty("authentication_type")]
-        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
+        public InviteInputSignerAdvancedPropertiesTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("password")]
         public string AuthenticationPassword { get; set; }
@@ -1532,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string RedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemRedirectTargetType? RedirectTarget { get; set; }
+        public InviteInputSignerAdvancedPropertiesTypeItemRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("decline_redirect_uri")]
         public string DeclineRedirectUri { get; set; }
@@ -1550,11 +1534,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public bool? IsDeclineRedirectCanceled { get; set; }
 
         [JsonProperty("language")]
-        public InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemLanguageType? Language { get; set; }
+        public InviteInputSignerAdvancedPropertiesTypeItemLanguageType? Language { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemAuthenticationTypeType
+    public enum InviteInputSignerAdvancedPropertiesTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1563,7 +1547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemRedirectTargetType
+    public enum InviteInputSignerAdvancedPropertiesTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1572,14 +1556,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignAllOptionsInputSignerAdvancedPropertiesTypeItemLanguageType
+    public enum InviteInputSignerAdvancedPropertiesTypeItemLanguageType
     {
         En,
         Es,
         Fr
     }
 
-    public class InviteToSignAllOptionsInputViewersTypeItem
+    public class InviteInputViewersTypeItem
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -1591,7 +1575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int Order { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputViewerAdvancedPropertiesTypeItem
+    public class InviteInputViewerAdvancedPropertiesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
@@ -1603,7 +1587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Message { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputApproversTypeItem
+    public class InviteInputApproversTypeItem
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -1615,7 +1599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int Order { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItem
+    public class InviteInputApproverAdvancedPropertiesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
@@ -1630,7 +1614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Subject { get; set; }
 
         [JsonProperty("authentication_type")]
-        public InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
+        public InviteInputApproverAdvancedPropertiesTypeItemAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1645,11 +1629,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string RedirectUri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemRedirectTargetType? RedirectTarget { get; set; }
+        public InviteInputApproverAdvancedPropertiesTypeItemRedirectTargetType? RedirectTarget { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemAuthenticationTypeType
+    public enum InviteInputApproverAdvancedPropertiesTypeItemAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1658,7 +1642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignAllOptionsInputApproverAdvancedPropertiesTypeItemRedirectTargetType
+    public enum InviteInputApproverAdvancedPropertiesTypeItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1666,7 +1650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         InTheSameTab
     }
 
-    public class InviteToSignAllOptionsInputEmailGroupsTypeItem
+    public class InviteInputEmailGroupsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1675,22 +1659,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Name { get; set; }
 
         [JsonProperty("emails")]
-        public InviteToSignAllOptionsInputEmailGroupsTypeItemEmailsTypeItem[] Emails { get; set; }
+        public InviteInputEmailGroupsTypeItemEmailsTypeItem[] Emails { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputEmailGroupsTypeItemEmailsTypeItem
+    public class InviteInputEmailGroupsTypeItemEmailsTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputCCTypeItem
+    public class InviteInputCCTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
     }
 
-    public class InviteToSignAllOptionsInputCCStepsTypeItem
+    public class InviteInputCCStepsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1702,13 +1686,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? Step { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignAllOptionsInputQESSignatureType
-    {
-        Eideasy,
-        Nom151
-    }
-
     public class InviteToSignDocGroupAllOptionsResponse
     {
         [JsonProperty("id")]
@@ -1718,19 +1695,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string PendingInviteLink { get; set; }
     }
 
-    public class InviteToSignDocGroupAllOptionsInput
+    public class InviteToSignDocGroupAllOptionsInviteInput
     {
         [JsonProperty("invite_steps")]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItem[] InviteSteps { get; set; }
+        public InviteInputInviteStepsTypeItem[] InviteSteps { get; set; }
 
         [JsonProperty("Email")]
-        public InviteToSignDocGroupAllOptionsInputInviteEmailsTypeItem[] InviteEmails { get; set; }
+        public InviteInputInviteEmailsTypeItem[] InviteEmails { get; set; }
 
         [JsonProperty("email_groups")]
-        public InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItem[] EmailGroups { get; set; }
+        public InviteInputEmailGroupsTypeItem[] EmailGroups { get; set; }
 
         [JsonProperty("completion_emails")]
-        public InviteToSignDocGroupAllOptionsInputCompletionEmailsTypeItem[] CompletionEmails { get; set; }
+        public InviteInputCompletionEmailsTypeItem[] CompletionEmails { get; set; }
 
         [JsonProperty("sign_as_merged")]
         public bool? SignAsMerged { get; set; }
@@ -1739,13 +1716,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? ClientTimestamp { get; set; }
 
         [JsonProperty("cc")]
-        public InviteToSignDocGroupAllOptionsInputCCTypeItem[] CC { get; set; }
+        public InviteInputCCTypeItem[] CC { get; set; }
 
         [JsonProperty("signature")]
-        public InviteToSignDocGroupAllOptionsInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQESSignatureType? QESSignature { get; set; }
     }
 
-    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItem
+    public class InviteInputInviteStepsTypeItem
     {
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
@@ -1760,22 +1737,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string RoleName { get; set; }
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemActionType Action { get; set; }
+        public InviteInputInviteStepsTypeItemActionType Action { get; set; }
 
         [JsonProperty("document_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItem[] Advanced { get; set; }
+        public InviteInputInviteStepsTypeItemAdvancedTypeItem[] Advanced { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemActionType
+    public enum InviteInputInviteStepsTypeItemActionType
     {
         View,
         Sign,
         Approve
     }
 
-    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItem
+    public class InviteInputInviteStepsTypeItemAdvancedTypeItem
     {
         [JsonProperty("required_preset_signature_name")]
         public string RequiredPresetSignatureName { get; set; }
@@ -1787,22 +1764,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public bool? AllowDeclineBySignature { get; set; }
 
         [JsonProperty("authentication")]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationType Authentication { get; set; }
+        public InviteInputInviteStepsTypeItemAdvancedTypeItemAuthenticationType Authentication { get; set; }
 
         [JsonProperty("payment_request")]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemPaymentRequestType PaymentRequest { get; set; }
+        public InviteInputInviteStepsTypeItemAdvancedTypeItemPaymentRequestType PaymentRequest { get; set; }
 
         [JsonProperty("redirect")]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectType Redirect { get; set; }
+        public InviteInputInviteStepsTypeItemAdvancedTypeItemRedirectType Redirect { get; set; }
 
         [JsonProperty("language")]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemLanguageType? Language { get; set; }
+        public InviteInputInviteStepsTypeItemAdvancedTypeItemLanguageType? Language { get; set; }
     }
 
-    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationType
+    public class InviteInputInviteStepsTypeItemAdvancedTypeItemAuthenticationType
     {
         [JsonProperty("type")]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType? AuthenticationType { get; set; }
+        public InviteInputInviteStepsTypeItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType? AuthenticationType { get; set; }
 
         [JsonProperty("value")]
         public string Password { get; set; }
@@ -1815,7 +1792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType
+    public enum InviteInputInviteStepsTypeItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType
     {
         Password,
         [EnumMember(Value = "Phone call")]
@@ -1823,7 +1800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         Sms
     }
 
-    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemPaymentRequestType
+    public class InviteInputInviteStepsTypeItemAdvancedTypeItemPaymentRequestType
     {
         [JsonProperty("merchant_id")]
         public string MerchantId { get; set; }
@@ -1835,13 +1812,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Amount { get; set; }
     }
 
-    public class InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectType
+    public class InviteInputInviteStepsTypeItemAdvancedTypeItemRedirectType
     {
         [JsonProperty("redirect_uri")]
         public string Uri { get; set; }
 
         [JsonProperty("redirect_target")]
-        public InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectTypeRedirectTargetType? RedirectTarget { get; set; }
+        public InviteInputInviteStepsTypeItemAdvancedTypeItemRedirectTypeRedirectTargetType? RedirectTarget { get; set; }
 
         [JsonProperty("decline_redirect_uri")]
         public string DeclineRedirectUri { get; set; }
@@ -1860,7 +1837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemRedirectTypeRedirectTargetType
+    public enum InviteInputInviteStepsTypeItemAdvancedTypeItemRedirectTypeRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
         InTheNewTab,
@@ -1869,14 +1846,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignDocGroupAllOptionsInputInviteStepsTypeItemAdvancedTypeItemLanguageType
+    public enum InviteInputInviteStepsTypeItemAdvancedTypeItemLanguageType
     {
         En,
         Es,
         Fr
     }
 
-    public class InviteToSignDocGroupAllOptionsInputInviteEmailsTypeItem
+    public class InviteInputInviteEmailsTypeItem
     {
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; }
@@ -1906,25 +1883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public int? SendReminderEveryXDays { get; set; }
     }
 
-    public class InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("emails")]
-        public InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItemEmailsTypeItem[] Emails { get; set; }
-    }
-
-    public class InviteToSignDocGroupAllOptionsInputEmailGroupsTypeItemEmailsTypeItem
-    {
-        [JsonProperty("email")]
-        public string Email { get; set; }
-    }
-
-    public class InviteToSignDocGroupAllOptionsInputCompletionEmailsTypeItem
+    public class InviteInputCompletionEmailsTypeItem
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1939,26 +1898,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Message { get; set; }
     }
 
-    public class InviteToSignDocGroupAllOptionsInputCCTypeItem
-    {
-        [JsonProperty("email")]
-        public string Email { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteToSignDocGroupAllOptionsInputQESSignatureType
-    {
-        Eideasy,
-        Nom151
-    }
-
-    public class UpdateFieldValuesV2Response
+    public class UpdateFieldValuesResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class TriggersV2Response
+    public class TriggersResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1970,7 +1916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         public string Updated { get; set; }
     }
 
-    public class TriggersV2Input
+    public class TriggersBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Event { get; set; } = "user.document.complete";
@@ -1982,10 +1928,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
         internal string Action { get; set; } = "callback";
 
         [JsonProperty("attributes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggersV2InputAttributesType Attributes { get; set; } = new TriggersV2InputAttributesType();
+        public BodyInputAttributesType Attributes { get; set; } = new BodyInputAttributesType();
     }
 
-    public class TriggersV2InputAttributesType
+    public class BodyInputAttributesType
     {
         [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";

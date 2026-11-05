@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<CreatedScorecard, ApiConnectionActionConfiguration> CreateScorecard(Expression<Func<string>> groupid, Expression<Func<CreateScorecardInput>> scorecard)
+        public IBodyWorkflowAction<CreatedScorecard, ApiConnectionActionConfiguration> CreateScorecard(Expression<Func<string>> groupid, Expression<Func<ScorecardInput>> scorecard)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecard = WorkflowExpression.Compile(scorecard, nameof(scorecard), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<CreateGoalInput>> goal)
+        public IBodyWorkflowAction<CreateGoalResponse, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<CreateGoalGoalInput>> goal)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<UpdateGoalInput>> goal)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<UpdateGoalGoalInput>> goal)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<QueryExecutionResults, ApiConnectionActionConfiguration> ExecuteDatasetQuery(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<ExecuteDatasetQueryInput>> specification)
+        public IBodyWorkflowAction<QueryExecutionResults, ApiConnectionActionConfiguration> ExecuteDatasetQuery(Expression<Func<string>> groupid, Expression<Func<string>> datasetid, Expression<Func<SpecificationInput>> specification)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GoalValueCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<GoalValueCheckinInput>> checkin)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GoalValueCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<GoalValueCheckinCheckinInput>> checkin)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<UpdateGoalCheckinInput>> checkin)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateGoalCheckin(Expression<Func<string>> groupid, Expression<Func<string>> scorecardId, Expression<Func<string>> goalId, Expression<Func<string>> goalCheckin, Expression<Func<UpdateGoalCheckinCheckinInput>> checkin)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_scorecardId = WorkflowExpression.Compile(scorecardId, nameof(scorecardId), required: true);
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<InitiateExportToFileForPbiReportsInput>> exportPayloadPowerBIReport = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InitiateExportToFileForPbiReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<ExportPayloadPowerBIReportInput>> exportPayloadPowerBIReport = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_reportid = WorkflowExpression.Compile(reportid, nameof(reportid), required: true);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerbi")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InitiateExportToFileForPaginatedReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<InitiateExportToFileForPaginatedReportsInput>> exportPayloadPaginatedReport = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> InitiateExportToFileForPaginatedReports(Expression<Func<string>> groupid, Expression<Func<string>> reportid, Expression<Func<ExportPayloadPaginatedReportInput>> exportPayloadPaginatedReport = null)
         {
             var __workflow_groupid = WorkflowExpression.Compile(groupid, nameof(groupid), required: true);
             var __workflow_reportid = WorkflowExpression.Compile(reportid, nameof(reportid), required: true);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string Id { get; set; }
     }
 
-    public class CreateScorecardInput
+    public class ScorecardInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string Id { get; set; }
     }
 
-    public class CreateGoalInput
+    public class CreateGoalGoalInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string TargetValue { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGoalInputStatusType? Status { get; set; } = CreateGoalInputStatusType.NotStarted;
+        public CreateGoalGoalInputStatusType? Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.CreateGoalGoalInputStatusType.NotStarted;
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGoalInputStatusType
+    public enum CreateGoalGoalInputStatusType
     {
         [EnumMember(Value = "Not started")]
         NotStarted,
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         Completed
     }
 
-    public class UpdateGoalInput
+    public class UpdateGoalGoalInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public double? TargetValue { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateGoalInputStatusType? Status { get; set; } = UpdateGoalInputStatusType.LeaveUnchanged;
+        public UpdateGoalGoalInputStatusType? Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.UpdateGoalGoalInputStatusType.LeaveUnchanged;
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGoalInputStatusType
+    public enum UpdateGoalGoalInputStatusType
     {
         [EnumMember(Value = "Leave unchanged")]
         LeaveUnchanged,
@@ -514,25 +514,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public JToken[] FirstTableRows { get; set; }
     }
 
-    public class ExecuteDatasetQueryInput
+    public class SpecificationInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string QueryText { get; set; }
 
         [JsonProperty("serializerSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExecuteDatasetQueryInputSerializerSettingsType SerializerSettings { get; set; } = new ExecuteDatasetQueryInputSerializerSettingsType();
+        public SpecificationInputSerializerSettingsType SerializerSettings { get; set; } = new SpecificationInputSerializerSettingsType();
 
         [JsonProperty("impersonatedUserName")]
         public string ImpersonateUser { get; set; }
     }
 
-    public class ExecuteDatasetQueryInputSerializerSettingsType
+    public class SpecificationInputSerializerSettingsType
     {
         [JsonProperty("includeNulls", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NullsIncluded { get; set; } = false;
     }
 
-    public class GoalValueCheckinInput
+    public class GoalValueCheckinCheckinInput
     {
         [JsonProperty("timestamp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
@@ -541,14 +541,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public double? Value { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GoalValueCheckinInputStatusType? Status { get; set; } = GoalValueCheckinInputStatusType.LeaveUnchanged;
+        public CheckinInputStatusType? Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.CheckinInputStatusType.LeaveUnchanged;
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GoalValueCheckinInputStatusType
+    public enum CheckinInputStatusType
     {
         [EnumMember(Value = "Leave unchanged")]
         LeaveUnchanged,
@@ -593,29 +593,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string CreatedTime { get; set; }
     }
 
-    public class UpdateGoalCheckinInput
+    public class UpdateGoalCheckinCheckinInput
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateGoalCheckinInputStatusType? Status { get; set; } = UpdateGoalCheckinInputStatusType.LeaveUnchanged;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGoalCheckinInputStatusType
-    {
-        [EnumMember(Value = "Leave unchanged")]
-        LeaveUnchanged,
-        [EnumMember(Value = "Not started")]
-        NotStarted,
-        [EnumMember(Value = "On track")]
-        OnTrack,
-        [EnumMember(Value = "At risk")]
-        AtRisk,
-        Behind,
-        Overdue,
-        Completed
+        public CheckinInputStatusType? Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.CheckinInputStatusType.LeaveUnchanged;
     }
 
     public class GetGoalCheckinResponse
@@ -633,22 +617,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public GoalNotesItem[] Notes { get; set; }
     }
 
-    public class InitiateExportToFileForPbiReportsInput
+    public class ExportPayloadPowerBIReportInput
     {
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InitiateExportToFileForPbiReportsInputFormatType Format { get; set; } = InitiateExportToFileForPbiReportsInputFormatType.PDF;
-        public InitiateExportToFileForPbiReportsInputPowerBIReportExportConfigurationType PowerBIReportExportConfiguration { get; set; }
+        public ExportPayloadPowerBIReportInputFormatType Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.ExportPayloadPowerBIReportInputFormatType.PDF;
+        public ExportPayloadPowerBIReportInputPowerBIReportExportConfigurationType PowerBIReportExportConfiguration { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InitiateExportToFileForPbiReportsInputFormatType
+    public enum ExportPayloadPowerBIReportInputFormatType
     {
         PDF,
         PPTX,
         PNG
     }
 
-    public class InitiateExportToFileForPbiReportsInputPowerBIReportExportConfigurationType
+    public class ExportPayloadPowerBIReportInputPowerBIReportExportConfigurationType
     {
         [JsonProperty("settings")]
         public ExportReportSettings Settings { get; set; }
@@ -729,17 +713,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string Value { get; set; }
     }
 
-    public class InitiateExportToFileForPaginatedReportsInput
+    public class ExportPayloadPaginatedReportInput
     {
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InitiateExportToFileForPaginatedReportsInputFormatType Format { get; set; } = InitiateExportToFileForPaginatedReportsInputFormatType.PDF;
+        public ExportPayloadPaginatedReportInputFormatType Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi.ExportPayloadPaginatedReportInputFormatType.PDF;
 
         [JsonProperty("paginatedReportConfiguration")]
-        public InitiateExportToFileForPaginatedReportsInputPaginatedReportConfigurationType PaginatedReportConfiguration { get; set; }
+        public ExportPayloadPaginatedReportInputPaginatedReportConfigurationType PaginatedReportConfiguration { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InitiateExportToFileForPaginatedReportsInputFormatType
+    public enum ExportPayloadPaginatedReportInputFormatType
     {
         PDF,
         CSV,
@@ -752,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         ACCESSIBLEPDF
     }
 
-    public class InitiateExportToFileForPaginatedReportsInputPaginatedReportConfigurationType
+    public class ExportPayloadPaginatedReportInputPaginatedReportConfigurationType
     {
         [JsonProperty("identities")]
         public EffectiveIdentity[] Identities { get; set; }
@@ -761,10 +745,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public JToken FormatSettings { get; set; }
 
         [JsonProperty("parameterValues")]
-        public InitiateExportToFileForPaginatedReportsInputPaginatedReportConfigurationTypeParameterValuesTypeItem[] ParameterValues { get; set; }
+        public ExportPayloadPaginatedReportInputPaginatedReportConfigurationTypeParameterValuesTypeItem[] ParameterValues { get; set; }
     }
 
-    public class InitiateExportToFileForPaginatedReportsInputPaginatedReportConfigurationTypeParameterValuesTypeItem
+    public class ExportPayloadPaginatedReportInputPaginatedReportConfigurationTypeParameterValuesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

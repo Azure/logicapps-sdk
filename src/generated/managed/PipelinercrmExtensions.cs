@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsUpdateResponse, ApiConnectionActionConfiguration> AccountsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<AccountsUpdateInput>> body)
+        public IBodyWorkflowAction<AccountsUpdateResponse, ApiConnectionActionConfiguration> AccountsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<AccountsUpdateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsCreateResponse, ApiConnectionActionConfiguration> AccountsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<AccountsCreateInput>> body)
+        public IBodyWorkflowAction<AccountsCreateResponse, ApiConnectionActionConfiguration> AccountsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<AccountsCreateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsCreateResponse, ApiConnectionActionConfiguration> ContactsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<ContactsCreateInput>> body)
+        public IBodyWorkflowAction<ContactsCreateResponse, ApiConnectionActionConfiguration> ContactsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<ContactsCreateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsUpdateResponse, ApiConnectionActionConfiguration> ContactsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<ContactsUpdateInput>> body)
+        public IBodyWorkflowAction<ContactsUpdateResponse, ApiConnectionActionConfiguration> ContactsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<ContactsUpdateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsCreateResponse, ApiConnectionActionConfiguration> LeadsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<LeadsCreateInput>> body)
+        public IBodyWorkflowAction<LeadsCreateResponse, ApiConnectionActionConfiguration> LeadsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<LeadsCreateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsUpdateResponse, ApiConnectionActionConfiguration> LeadsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<LeadsUpdateInput>> body)
+        public IBodyWorkflowAction<LeadsUpdateResponse, ApiConnectionActionConfiguration> LeadsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<LeadsUpdateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksCreateResponse, ApiConnectionActionConfiguration> TasksCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<TasksCreateInput>> body)
+        public IBodyWorkflowAction<TasksCreateResponse, ApiConnectionActionConfiguration> TasksCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<TasksCreateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksUpdateResponse, ApiConnectionActionConfiguration> TasksUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<TasksUpdateInput>> body)
+        public IBodyWorkflowAction<TasksUpdateResponse, ApiConnectionActionConfiguration> TasksUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<TasksUpdateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesCreateResponse, ApiConnectionActionConfiguration> OpportunitiesCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<OpportunitiesCreateInput>> body)
+        public IBodyWorkflowAction<OpportunitiesCreateResponse, ApiConnectionActionConfiguration> OpportunitiesCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<OpportunitiesCreateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesUpdateResponse, ApiConnectionActionConfiguration> OpportunitiesUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<OpportunitiesUpdateInput>> body)
+        public IBodyWorkflowAction<OpportunitiesUpdateResponse, ApiConnectionActionConfiguration> OpportunitiesUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<OpportunitiesUpdateBodyInput>> body)
         {
             var __workflow_serviceUrl = WorkflowExpression.Compile(serviceUrl, nameof(serviceUrl), required: true);
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class AccountsUpdateInput
+    public class AccountsUpdateBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string UnitId { get; set; }
 
         [JsonProperty("account_class")]
-        public AccountsUpdateInputAccountClassType? AccountClass { get; set; }
+        public BodyInputAccountClassType? AccountClass { get; set; }
 
         [JsonProperty("email1")]
         public string Email1 { get; set; }
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string Comments { get; set; }
     }
 
-    public enum AccountsUpdateInputAccountClassType
+    public enum BodyInputAccountClassType
     {
         _1 = 1,
         _2 = 2,
@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class AccountsCreateInput
+    public class AccountsCreateBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string UnitId { get; set; }
 
         [JsonProperty("account_class")]
-        public AccountsCreateInputAccountClassType? AccountClass { get; set; }
+        public BodyInputAccountClassType? AccountClass { get; set; }
 
         [JsonProperty("email1")]
         public string Email1 { get; set; }
@@ -989,15 +989,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
         [JsonProperty("comments")]
         public string Comments { get; set; }
-    }
-
-    public enum AccountsCreateInputAccountClassType
-    {
-        _1 = 1,
-        _2 = 2,
-        _3 = 3,
-        _4 = 4,
-        _5 = 5
     }
 
     public class ContactsCreateResponse
@@ -1171,7 +1162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class ContactsCreateInput
+    public class ContactsCreateBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1186,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string LastName { get; set; }
 
         [JsonProperty("gender")]
-        public ContactsCreateInputGenderType? Gender { get; set; }
+        public BodyInputGenderType? Gender { get; set; }
 
         [JsonProperty("contact_type_id")]
         public string ContactTypeId { get; set; }
@@ -1219,13 +1210,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string Country { get; set; }
 
         [JsonProperty("account_relations")]
-        public ContactsCreateInputAccountRelationsTypeItem[] AccountRelations { get; set; }
+        public ContactsCreateBodyInputAccountRelationsTypeItem[] AccountRelations { get; set; }
 
         [JsonProperty("comments")]
         public string Comments { get; set; }
     }
 
-    public enum ContactsCreateInputGenderType
+    public enum BodyInputGenderType
     {
         _0 = 0,
         _1 = 1,
@@ -1233,7 +1224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         _3 = 3
     }
 
-    public class ContactsCreateInputAccountRelationsTypeItem
+    public class ContactsCreateBodyInputAccountRelationsTypeItem
     {
         [JsonProperty("is_primary")]
         public bool? IsPrimary { get; set; }
@@ -1593,7 +1584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class ContactsUpdateInput
+    public class ContactsUpdateBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1608,7 +1599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string LastName { get; set; }
 
         [JsonProperty("gender")]
-        public ContactsUpdateInputGenderType? Gender { get; set; }
+        public BodyInputGenderType? Gender { get; set; }
 
         [JsonProperty("contact_type_id")]
         public string ContactTypeId { get; set; }
@@ -1642,14 +1633,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
         [JsonProperty("comments")]
         public string Comments { get; set; }
-    }
-
-    public enum ContactsUpdateInputGenderType
-    {
-        _0 = 0,
-        _1 = 1,
-        _2 = 2,
-        _3 = 3
     }
 
     public class LeadsCreateResponse
@@ -1802,7 +1785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class LeadsCreateInput
+    public class LeadsCreateBodyInput
     {
         [JsonProperty("created")]
         public string Created { get; set; }
@@ -1829,28 +1812,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string UnitId { get; set; }
 
         [JsonProperty("contact_relations")]
-        public LeadsCreateInputContactRelationsTypeItem[] ContactRelations { get; set; }
+        public LeadsCreateBodyInputContactRelationsTypeItem[] ContactRelations { get; set; }
 
         [JsonProperty("account_relations")]
-        public LeadsCreateInputAccountRelationsTypeItem[] AccountRelations { get; set; }
+        public ContactsCreateBodyInputAccountRelationsTypeItem[] AccountRelations { get; set; }
     }
 
-    public class LeadsCreateInputContactRelationsTypeItem
+    public class LeadsCreateBodyInputContactRelationsTypeItem
     {
         [JsonProperty("is_primary")]
         public bool? IsPrimary { get; set; }
 
         [JsonProperty("contact_id")]
         public string ContactId { get; set; }
-    }
-
-    public class LeadsCreateInputAccountRelationsTypeItem
-    {
-        [JsonProperty("is_primary")]
-        public bool? IsPrimary { get; set; }
-
-        [JsonProperty("account_id")]
-        public string AccountId { get; set; }
     }
 
     public class LeadsDeleteResponse
@@ -2162,7 +2136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class LeadsUpdateInput
+    public class LeadsUpdateBodyInput
     {
         [JsonProperty("created")]
         public string Created { get; set; }
@@ -2318,7 +2292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class TasksCreateInput
+    public class TasksCreateBodyInput
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
@@ -2339,32 +2313,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string DueDate { get; set; }
 
         [JsonProperty("priority")]
-        public TasksCreateInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("status")]
-        public TasksCreateInputStatusType? Status { get; set; }
+        public BodyInputStatusType? Status { get; set; }
 
         [JsonProperty("account_relations")]
-        public TasksCreateInputAccountRelationsTypeItem[] AccountRelations { get; set; }
+        public TasksCreateBodyInputAccountRelationsTypeItem[] AccountRelations { get; set; }
 
         [JsonProperty("contact_relations")]
-        public TasksCreateInputContactRelationsTypeItem[] ContactRelations { get; set; }
+        public TasksCreateBodyInputContactRelationsTypeItem[] ContactRelations { get; set; }
 
         [JsonProperty("lead_relations")]
-        public TasksCreateInputLeadRelationsTypeItem[] LeadRelations { get; set; }
+        public BodyInputLeadRelationsTypeItem[] LeadRelations { get; set; }
 
         [JsonProperty("opportunity_relations")]
-        public TasksCreateInputOpportunityRelationsTypeItem[] OpportunityRelations { get; set; }
+        public BodyInputOpportunityRelationsTypeItem[] OpportunityRelations { get; set; }
     }
 
-    public enum TasksCreateInputPriorityType
+    public enum BodyInputPriorityType
     {
         _1 = 1,
         _2 = 2,
         _3 = 3
     }
 
-    public enum TasksCreateInputStatusType
+    public enum BodyInputStatusType
     {
         _1 = 1,
         _2 = 2,
@@ -2373,25 +2347,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         _5 = 5
     }
 
-    public class TasksCreateInputAccountRelationsTypeItem
+    public class TasksCreateBodyInputAccountRelationsTypeItem
     {
         [JsonProperty("account_id")]
         public string AccountId { get; set; }
     }
 
-    public class TasksCreateInputContactRelationsTypeItem
+    public class TasksCreateBodyInputContactRelationsTypeItem
     {
         [JsonProperty("contact_id")]
         public string ContactId { get; set; }
     }
 
-    public class TasksCreateInputLeadRelationsTypeItem
+    public class BodyInputLeadRelationsTypeItem
     {
         [JsonProperty("lead_oppty_id")]
         public string LeadOpptyId { get; set; }
     }
 
-    public class TasksCreateInputOpportunityRelationsTypeItem
+    public class BodyInputOpportunityRelationsTypeItem
     {
         [JsonProperty("lead_oppty_id")]
         public string LeadOpptyId { get; set; }
@@ -2664,7 +2638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
-    public class TasksUpdateInput
+    public class TasksUpdateBodyInput
     {
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -2685,26 +2659,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string DueDate { get; set; }
 
         [JsonProperty("priority")]
-        public TasksUpdateInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("status")]
-        public TasksUpdateInputStatusType? Status { get; set; }
-    }
-
-    public enum TasksUpdateInputPriorityType
-    {
-        _1 = 1,
-        _2 = 2,
-        _3 = 3
-    }
-
-    public enum TasksUpdateInputStatusType
-    {
-        _1 = 1,
-        _2 = 2,
-        _3 = 3,
-        _4 = 4,
-        _5 = 5
+        public BodyInputStatusType? Status { get; set; }
     }
 
     public class OpportunitiesCreateResponse
@@ -2914,7 +2872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public double ValueForeign { get; set; }
     }
 
-    public class OpportunitiesCreateInput
+    public class OpportunitiesCreateBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -2923,7 +2881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string Created { get; set; }
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpportunitiesCreateInputValueType Value { get; set; }
+        public OpportunitiesCreateBodyInputValueType Value { get; set; }
 
         [JsonProperty("closing_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ClosingDate { get; set; }
@@ -2947,13 +2905,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string OwnerId { get; set; }
 
         [JsonProperty("account_relations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpportunitiesCreateInputAccountRelationsTypeItem[] AccountRelations { get; set; }
+        public OpportunitiesCreateBodyInputAccountRelationsTypeItem[] AccountRelations { get; set; }
 
         [JsonProperty("contact_relations")]
-        public OpportunitiesCreateInputContactRelationsTypeItem[] ContactRelations { get; set; }
+        public LeadsCreateBodyInputContactRelationsTypeItem[] ContactRelations { get; set; }
     }
 
-    public class OpportunitiesCreateInputValueType
+    public class OpportunitiesCreateBodyInputValueType
     {
         [JsonProperty("base_value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double BaseValue { get; set; }
@@ -2965,22 +2923,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public double? ValueForeign { get; set; }
     }
 
-    public class OpportunitiesCreateInputAccountRelationsTypeItem
+    public class OpportunitiesCreateBodyInputAccountRelationsTypeItem
     {
         [JsonProperty("is_primary", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsPrimary { get; set; }
 
         [JsonProperty("account_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AccountId { get; set; }
-    }
-
-    public class OpportunitiesCreateInputContactRelationsTypeItem
-    {
-        [JsonProperty("is_primary")]
-        public bool? IsPrimary { get; set; }
-
-        [JsonProperty("contact_id")]
-        public string ContactId { get; set; }
     }
 
     public class OpportunitiesDeleteResponse
@@ -3406,7 +3355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public double ValueForeign { get; set; }
     }
 
-    public class OpportunitiesUpdateInput
+    public class OpportunitiesUpdateBodyInput
     {
         [JsonProperty("created")]
         public string Created { get; set; }
@@ -3415,7 +3364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string Name { get; set; }
 
         [JsonProperty("value")]
-        public OpportunitiesUpdateInputValueType Value { get; set; }
+        public OpportunitiesUpdateBodyInputValueType Value { get; set; }
 
         [JsonProperty("closing_date")]
         public string ClosingDate { get; set; }
@@ -3439,7 +3388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string OwnerId { get; set; }
     }
 
-    public class OpportunitiesUpdateInputValueType
+    public class OpportunitiesUpdateBodyInputValueType
     {
         [JsonProperty("base_value")]
         public double? BaseValue { get; set; }

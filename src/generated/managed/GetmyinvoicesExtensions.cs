@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
     public class GetmyinvoicesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "getmyinvoices")]
-        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse, ApiConnectionActionConfiguration> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<GetInvoiceFromGetMyInvoicesInput>> body)
+        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse, ApiConnectionActionConfiguration> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<BodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
         public string ReadableText { get; set; }
     }
 
-    public class GetInvoiceFromGetMyInvoicesInput
+    public class BodyInput
     {
         [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }

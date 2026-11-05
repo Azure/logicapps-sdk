@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
     public class OnenoteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<CreateSectionInNotebookResponse, ApiConnectionActionConfiguration> CreateSectionInNotebook(Expression<Func<string>> notebookKey, Expression<Func<CreateSectionInNotebookInput>> body)
+        public IBodyWorkflowAction<CreateSectionInNotebookResponse, ApiConnectionActionConfiguration> CreateSectionInNotebook(Expression<Func<string>> notebookKey, Expression<Func<BodyInput>> body)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdatePageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId, Expression<Func<updatesInputItem[]>> updates = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdatePageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId, Expression<Func<UpdatesInputItem[]>> updates = null)
         {
             var __workflow_notebookKey = WorkflowExpression.Compile(notebookKey, nameof(notebookKey), required: true);
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         public string WebClientHref { get; set; }
     }
 
-    public class CreateSectionInNotebookInput
+    public class BodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NameOfTheNewSection { get; set; }
@@ -385,23 +385,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         public string PagesInSectionParentSection { get; set; }
     }
 
-    public class updatesInputItem
+    public class UpdatesInputItem
     {
         [JsonProperty("target")]
         public string Target { get; set; }
 
         [JsonProperty("action")]
-        public updatesInputItemActionType Action { get; set; }
+        public UpdatesInputItemActionType? Action { get; set; }
 
         [JsonProperty("position")]
-        public updatesInputItemLocationType Location { get; set; }
+        public UpdatesInputItemLocationType? Location { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updatesInputItemActionType
+    public enum UpdatesInputItemActionType
     {
         [EnumMember(Value = "append")]
         Append,
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum updatesInputItemLocationType
+    public enum UpdatesInputItemLocationType
     {
         [EnumMember(Value = "after")]
         After,

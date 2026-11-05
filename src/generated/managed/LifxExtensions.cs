@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     public class LifxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveEffect(Expression<Func<string>> lights, Expression<Func<MoveEffectInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveEffect(Expression<Func<string>> lights, Expression<Func<MoveEffectBodyInput>> body)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PulseEffect(Expression<Func<string>> lights, Expression<Func<PulseEffectInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PulseEffect(Expression<Func<string>> lights, Expression<Func<PulseEffectBodyInput>> body)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ActivateScene(Expression<Func<string>> scene, Expression<Func<ActivateSceneInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ActivateScene(Expression<Func<string>> scene, Expression<Func<ActivateSceneBodyInput>> body)
         {
             var __workflow_scene = WorkflowExpression.Compile(scene, nameof(scene), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IBodyWorkflowAction<SetStateResponse, ApiConnectionActionConfiguration> SetState(Expression<Func<string>> lights, Expression<Func<SetStateInput>> body)
+        public IBodyWorkflowAction<SetStateResponse, ApiConnectionActionConfiguration> SetState(Expression<Func<string>> lights, Expression<Func<SetStateBodyInput>> body)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EffectsOff(Expression<Func<string>> lights, Expression<Func<EffectsOffInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EffectsOff(Expression<Func<string>> lights, Expression<Func<EffectsOffBodyInput>> body)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetStates(Expression<Func<SetStatesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetStates(Expression<Func<SetStatesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TogglePower(Expression<Func<string>> lights, Expression<Func<TogglePowerInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TogglePower(Expression<Func<string>> lights, Expression<Func<TogglePowerBodyInput>> body)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BreatheEffect(Expression<Func<string>> lights, Expression<Func<BreatheEffectInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BreatheEffect(Expression<Func<string>> lights, Expression<Func<BreatheEffectBodyInput>> body)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MorphEffect(Expression<Func<string>> lights, Expression<Func<MorphEffectInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MorphEffect(Expression<Func<string>> lights, Expression<Func<MorphEffectBodyInput>> body)
         {
             var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -151,10 +151,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     {
     }
 
-    public class MoveEffectInput
+    public class MoveEffectBodyInput
     {
         [JsonProperty("direction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MoveEffectInputDirectionType? Direction { get; set; } = MoveEffectInputDirectionType.Forward;
+        public BodyInputDirectionType? Direction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lifx.BodyInputDirectionType.Forward;
 
         [JsonProperty("period", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Period { get; set; } = 1;
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MoveEffectInputDirectionType
+    public enum BodyInputDirectionType
     {
         [EnumMember(Value = "forward")]
         Forward,
@@ -175,13 +175,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Backward
     }
 
-    public class PulseEffectInput
+    public class PulseEffectBodyInput
     {
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PulseEffectInputColorType Color { get; set; }
+        public BreatheEffectBodyInputColorType Color { get; set; }
 
         [JsonProperty("from_color")]
-        public PulseEffectInputFromColorType? FromColor { get; set; }
+        public PulseEffectBodyInputFromColorType? FromColor { get; set; }
 
         [JsonProperty("period", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Period { get; set; } = 1;
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PulseEffectInputColorType
+    public enum BreatheEffectBodyInputColorType
     {
         [EnumMember(Value = "")]
         None,
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PulseEffectInputFromColorType
+    public enum PulseEffectBodyInputFromColorType
     {
         [EnumMember(Value = "")]
         LeaveUnchanged,
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Random
     }
 
-    public class ActivateSceneInput
+    public class ActivateSceneBodyInput
     {
         [JsonProperty("duration", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Duration { get; set; } = 0;
@@ -374,13 +374,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         public string Label { get; set; }
     }
 
-    public class SetStateInput
+    public class SetStateBodyInput
     {
         [JsonProperty("power")]
-        public SetStateInputPowerType? Power { get; set; }
+        public BodyInputPowerType? Power { get; set; }
 
         [JsonProperty("color")]
-        public SetStateInputColorType? Color { get; set; }
+        public SetStateBodyInputColorType? Color { get; set; }
 
         [JsonProperty("brightness", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Brightness { get; set; } = 1;
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetStateInputPowerType
+    public enum BodyInputPowerType
     {
         [EnumMember(Value = "on")]
         On,
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetStateInputColorType
+    public enum SetStateBodyInputColorType
     {
         [EnumMember(Value = "")]
         LeaveUnchanged,
@@ -478,31 +478,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Random
     }
 
-    public class EffectsOffInput
+    public class EffectsOffBodyInput
     {
         [JsonProperty("power_off")]
         public bool? PowerOff { get; set; }
     }
 
-    public class SetStatesInput
+    public class SetStatesBodyInput
     {
         [JsonProperty("states", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetStatesInputStatesTypeItem[] States { get; set; }
+        public BodyInputStatesTypeItem[] States { get; set; }
 
         [JsonProperty("defaults", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetStatesInputDefaultsType Defaults { get; set; } = new SetStatesInputDefaultsType();
+        public BodyInputDefaultsType Defaults { get; set; } = new BodyInputDefaultsType();
     }
 
-    public class SetStatesInputStatesTypeItem
+    public class BodyInputStatesTypeItem
     {
         [JsonProperty("selector", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Selector { get; set; }
 
         [JsonProperty("power")]
-        public SetStatesInputStatesTypeItemPowerType? Power { get; set; }
+        public BodyInputStatesTypeItemPowerType? Power { get; set; }
 
         [JsonProperty("color")]
-        public SetStatesInputStatesTypeItemColorType? Color { get; set; }
+        public BodyInputStatesTypeItemColorType? Color { get; set; }
 
         [JsonProperty("brightness", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Brightness { get; set; } = 1;
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetStatesInputStatesTypeItemPowerType
+    public enum BodyInputStatesTypeItemPowerType
     {
         [EnumMember(Value = "on")]
         On,
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetStatesInputStatesTypeItemColorType
+    public enum BodyInputStatesTypeItemColorType
     {
         [EnumMember(Value = "")]
         LeaveUnchanged,
@@ -600,13 +600,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Random
     }
 
-    public class SetStatesInputDefaultsType
+    public class BodyInputDefaultsType
     {
         [JsonProperty("power")]
-        public SetStatesInputDefaultsTypePowerType? Power { get; set; }
+        public BodyInputDefaultsTypePowerType? Power { get; set; }
 
         [JsonProperty("color")]
-        public SetStatesInputDefaultsTypeColorType? Color { get; set; }
+        public BodyInputDefaultsTypeColorType? Color { get; set; }
 
         [JsonProperty("brightness", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Brightness { get; set; } = 1;
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetStatesInputDefaultsTypePowerType
+    public enum BodyInputDefaultsTypePowerType
     {
         [EnumMember(Value = "on")]
         On,
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetStatesInputDefaultsTypeColorType
+    public enum BodyInputDefaultsTypeColorType
     {
         [EnumMember(Value = "")]
         LeaveUnchanged,
@@ -704,19 +704,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Random
     }
 
-    public class TogglePowerInput
+    public class TogglePowerBodyInput
     {
         [JsonProperty("duration", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Duration { get; set; } = 1;
     }
 
-    public class BreatheEffectInput
+    public class BreatheEffectBodyInput
     {
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BreatheEffectInputColorType Color { get; set; }
+        public BreatheEffectBodyInputColorType Color { get; set; }
 
         [JsonProperty("from_color")]
-        public BreatheEffectInputFromColorType? FromColor { get; set; }
+        public BreatheEffectBodyInputFromColorType? FromColor { get; set; }
 
         [JsonProperty("period", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Period { get; set; } = 1;
@@ -735,84 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BreatheEffectInputColorType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "kelvin:1500")]
-        Candlelight,
-        [EnumMember(Value = "kelvin:2000")]
-        Sunset,
-        [EnumMember(Value = "kelvin:2500")]
-        UltraWarm,
-        [EnumMember(Value = "kelvin:2750")]
-        Incandescent,
-        [EnumMember(Value = "kelvin:3000")]
-        Warm,
-        [EnumMember(Value = "kelvin:3200")]
-        NeutralWarm,
-        [EnumMember(Value = "kelvin:3500")]
-        Neutral,
-        [EnumMember(Value = "kelvin:4000")]
-        Cool,
-        [EnumMember(Value = "kelvin:4500")]
-        CoolDaylight,
-        [EnumMember(Value = "kelvin:5000")]
-        SoftDaylight,
-        [EnumMember(Value = "kelvin:5500")]
-        Daylight,
-        [EnumMember(Value = "kelvin:6000")]
-        NoonDaylight,
-        [EnumMember(Value = "kelvin:6500")]
-        BrightDaylight,
-        [EnumMember(Value = "kelvin:7000")]
-        CloudyDaylight,
-        [EnumMember(Value = "kelvin:7500")]
-        BlueDaylight,
-        [EnumMember(Value = "kelvin:8000")]
-        BlueOvercast,
-        [EnumMember(Value = "kelvin:8500")]
-        BlueWater,
-        [EnumMember(Value = "kelvin:9000")]
-        BlueIce,
-        [EnumMember(Value = "red")]
-        Red,
-        [EnumMember(Value = "orange")]
-        Orange,
-        [EnumMember(Value = "yellow")]
-        Yellow,
-        [EnumMember(Value = "green")]
-        Green,
-        [EnumMember(Value = "cyan")]
-        Cyan,
-        [EnumMember(Value = "blue")]
-        Blue,
-        [EnumMember(Value = "purple")]
-        Purple,
-        [EnumMember(Value = "pink")]
-        Pink,
-        [EnumMember(Value = "red saturation:0.5")]
-        PastelRed,
-        [EnumMember(Value = "orange saturation:0.5")]
-        PastelOrange,
-        [EnumMember(Value = "yellow saturation:0.5")]
-        PastelYellow,
-        [EnumMember(Value = "green saturation:0.5")]
-        PastelGreen,
-        [EnumMember(Value = "cyan saturation:0.5")]
-        PastelCyan,
-        [EnumMember(Value = "blue saturation:0.5")]
-        PastelBlue,
-        [EnumMember(Value = "purple saturation:0.5")]
-        PastelPurple,
-        [EnumMember(Value = "pink saturation:0.5")]
-        PastelPink,
-        [EnumMember(Value = "random")]
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BreatheEffectInputFromColorType
+    public enum BreatheEffectBodyInputFromColorType
     {
         [EnumMember(Value = "")]
         ExistingColor,
@@ -888,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Random
     }
 
-    public class MorphEffectInput
+    public class MorphEffectBodyInput
     {
         [JsonProperty("period")]
         public int? Period { get; set; }

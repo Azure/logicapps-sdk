@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
     public class OptiapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CalculateAverageResponse, ApiConnectionActionConfiguration> CalculateAverage(Expression<Func<CalculateAverageInput>> body)
+        public IBodyWorkflowAction<CalculateAverageResponse, ApiConnectionActionConfiguration> CalculateAverage(Expression<Func<CalculateAverageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CalculateAverageResponse, ApiConnectionActionConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ChunkAnArrayResponse, ApiConnectionActionConfiguration> ChunkAnArray(Expression<Func<ChunkAnArrayInput>> body)
+        public IBodyWorkflowAction<ChunkAnArrayResponse, ApiConnectionActionConfiguration> ChunkAnArray(Expression<Func<ChunkAnArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChunkAnArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CombineArrayResponse, ApiConnectionActionConfiguration> CombineArray(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<CombineArrayInput>> body)
+        public IBodyWorkflowAction<CombineArrayResponse, ApiConnectionActionConfiguration> CombineArray(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<CombineArrayBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CheckIfArrayContainAValueResponse, ApiConnectionActionConfiguration> CheckIfArrayContainAValue(Expression<Func<CheckIfArrayContainAValueInput>> body)
+        public IBodyWorkflowAction<CheckIfArrayContainAValueResponse, ApiConnectionActionConfiguration> CheckIfArrayContainAValue(Expression<Func<CheckIfArrayContainAValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CheckIfArrayContainAValueResponse, ApiConnectionActionConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse, ApiConnectionActionConfiguration> FindDifferenceBetweenArrays(Expression<Func<FindDifferenceBetweenArraysInput>> body)
+        public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse, ApiConnectionActionConfiguration> FindDifferenceBetweenArrays(Expression<Func<FindDifferenceBetweenArraysBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindDifferenceBetweenArraysResponse, ApiConnectionActionConfiguration>(() =>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FindDuplicatesInArraysResponse, ApiConnectionActionConfiguration> FindDuplicatesInArrays(Expression<Func<FindDuplicatesInArraysInput>> body)
+        public IBodyWorkflowAction<FindDuplicatesInArraysResponse, ApiConnectionActionConfiguration> FindDuplicatesInArrays(Expression<Func<FindDuplicatesInArraysBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindDuplicatesInArraysResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FilterAnArrayResponse, ApiConnectionActionConfiguration> FilterAnArray(Expression<Func<FilterAnArrayInput>> body)
+        public IBodyWorkflowAction<FilterAnArrayResponse, ApiConnectionActionConfiguration> FilterAnArray(Expression<Func<FilterAnArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FilterAnArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse, ApiConnectionActionConfiguration> FirstWhereWithinAnArray(Expression<Func<FirstWhereWithinAnArrayInput>> body)
+        public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse, ApiConnectionActionConfiguration> FirstWhereWithinAnArray(Expression<Func<FirstWhereWithinAnArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FirstWhereWithinAnArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FlattenAnArrayResponse, ApiConnectionActionConfiguration> FlattenAnArray(Expression<Func<FlattenAnArrayInput>> body)
+        public IBodyWorkflowAction<FlattenAnArrayResponse, ApiConnectionActionConfiguration> FlattenAnArray(Expression<Func<FlattenAnArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FlattenAnArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<RemoveItemFromArrayResponse, ApiConnectionActionConfiguration> RemoveItemFromArray(Expression<Func<RemoveItemFromArrayInput>> body)
+        public IBodyWorkflowAction<RemoveItemFromArrayResponse, ApiConnectionActionConfiguration> RemoveItemFromArray(Expression<Func<CalculateAverageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RemoveItemFromArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration> GroupByAnArrayKey(Expression<Func<GroupByAnArrayKeyInput>> body = null)
+        public IBodyWorkflowAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration> GroupByAnArrayKey(Expression<Func<CalculateAverageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GroupByAnArrayKeyResponse, ApiConnectionActionConfiguration>(() =>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> SortAnArray(Expression<Func<SortAnArrayInput>> body)
+        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> SortAnArray(Expression<Func<SortAnArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StandardArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse, ApiConnectionActionConfiguration> GetUniqueItemsInAnArray(Expression<Func<GetUniqueItemsInAnArrayInput>> body)
+        public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse, ApiConnectionActionConfiguration> GetUniqueItemsInAnArray(Expression<Func<FindDuplicatesInArraysBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetUniqueItemsInAnArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse, ApiConnectionActionConfiguration> AddOrSubtractFromTimeOrDates(Expression<Func<AddOrSubtractFromTimeOrDatesInput>> body)
+        public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse, ApiConnectionActionConfiguration> AddOrSubtractFromTimeOrDates(Expression<Func<AddOrSubtractFromTimeOrDatesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddOrSubtractFromTimeOrDatesResponse, ApiConnectionActionConfiguration>(() =>
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse, ApiConnectionActionConfiguration> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<ConvertAStringToADatetimeObjectInput>> body)
+        public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse, ApiConnectionActionConfiguration> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<ConvertAStringToADatetimeObjectBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse, ApiConnectionActionConfiguration> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<PerformOcrOnAScannedPdfOrImageFileInput>> body)
+        public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse, ApiConnectionActionConfiguration> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<PerformOcrOnAScannedPdfOrImageFileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PerformOcrOnAScannedPdfOrImageFileResponse, ApiConnectionActionConfiguration>(() =>
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<CombineMultiplePdfFilesResponse, ApiConnectionActionConfiguration> CombineMultiplePdfFiles(Expression<Func<CombineMultiplePdfFilesInput>> body)
+        public IBodyWorkflowAction<CombineMultiplePdfFilesResponse, ApiConnectionActionConfiguration> CombineMultiplePdfFiles(Expression<Func<CombineMultiplePdfFilesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CombineMultiplePdfFilesResponse, ApiConnectionActionConfiguration>(() =>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration> GetPdfMetadataInformation(Expression<Func<GetPdfMetadataInformationInput>> body)
+        public IBodyWorkflowAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration> GetPdfMetadataInformation(Expression<Func<GetPdfMetadataInformationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetPdfMetadataInformationResponse, ApiConnectionActionConfiguration>(() =>
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> ConvertAPdfFileToText(Expression<Func<ConvertAPdfFileToTextInput>> body)
+        public IBodyWorkflowAction<StandardArrayResponse, ApiConnectionActionConfiguration> ConvertAPdfFileToText(Expression<Func<ConvertAPdfFileToTextBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StandardArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse, ApiConnectionActionConfiguration> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<SetPasswordOnAPdfFileInput>> body)
+        public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse, ApiConnectionActionConfiguration> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<SetPasswordOnAPdfFileBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration> ReplaceTextInStringBasedOnARegularExpression(Expression<Func<ReplaceTextInStringBasedOnARegularExpressionInput>> body)
+        public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration> ReplaceTextInStringBasedOnARegularExpression(Expression<Func<ReplaceTextInStringBasedOnARegularExpressionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReplaceTextInStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration>(() =>
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration> FindValuesFromAStringBasedOnARegularExpression(Expression<Func<FindValuesFromAStringBasedOnARegularExpressionInput>> body)
+        public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration> FindValuesFromAStringBasedOnARegularExpression(Expression<Func<FindValuesFromAStringBasedOnARegularExpressionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindValuesFromAStringBasedOnARegularExpressionResponse, ApiConnectionActionConfiguration>(() =>
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
-        public IBodyWorkflowAction<ReplaceTextInStringResponse, ApiConnectionActionConfiguration> ReplaceTextInString(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<ReplaceTextInStringInput>> body)
+        public IBodyWorkflowAction<ReplaceTextInStringResponse, ApiConnectionActionConfiguration> ReplaceTextInString(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<ReplaceTextInStringBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public int Average { get; set; }
     }
 
-    public class CalculateAverageInput
+    public class CalculateAverageBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class ChunkAnArrayInput
+    public class ChunkAnArrayBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class CombineArrayInput
+    public class CombineArrayBodyInput
     {
         [JsonProperty("keys", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Keys { get; set; }
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public bool Contains { get; set; }
     }
 
-    public class CheckIfArrayContainAValueInput
+    public class CheckIfArrayContainAValueBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class FindDifferenceBetweenArraysInput
+    public class FindDifferenceBetweenArraysBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class FindDuplicatesInArraysInput
+    public class FindDuplicatesInArraysBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class FilterAnArrayInput
+    public class FilterAnArrayBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class FirstWhereWithinAnArrayInput
+    public class FirstWhereWithinAnArrayBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -517,14 +517,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Key { get; set; }
 
         [JsonProperty("operator")]
-        public FirstWhereWithinAnArrayInputOperatorType? Operator { get; set; }
+        public FirstWhereWithinAnArrayBodyInputOperatorType? Operator { get; set; }
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FirstWhereWithinAnArrayInputOperatorType
+    public enum FirstWhereWithinAnArrayBodyInputOperatorType
     {
         [EnumMember(Value = ">=")]
         Unnamed6,
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class FlattenAnArrayInput
+    public class FlattenAnArrayBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
@@ -561,28 +561,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class RemoveItemFromArrayInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Array { get; set; }
-
-        [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
-    }
-
     public class GroupByAnArrayKeyResponse
     {
         [JsonProperty("array")]
         public string[] Array { get; set; }
-    }
-
-    public class GroupByAnArrayKeyInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Array { get; set; }
-
-        [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
     }
 
     public class StandardArrayResponse
@@ -591,17 +573,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] ResultArray { get; set; }
     }
 
-    public class SortAnArrayInput
+    public class SortAnArrayBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Array { get; set; }
 
         [JsonProperty("sort", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SortAnArrayInputSortType Sort { get; set; } = SortAnArrayInputSortType.Ascending;
+        public BodyInputSortType Sort { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi.BodyInputSortType.Ascending;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SortAnArrayInputSortType
+    public enum BodyInputSortType
     {
         Ascending,
         Descending
@@ -613,31 +595,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
-    public class GetUniqueItemsInAnArrayInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Array { get; set; }
-
-        [JsonProperty("key")]
-        public string Key { get; set; }
-    }
-
     public class AddOrSubtractFromTimeOrDatesResponse
     {
         [JsonProperty("datetime")]
         public string Datetime { get; set; }
     }
 
-    public class AddOrSubtractFromTimeOrDatesInput
+    public class AddOrSubtractFromTimeOrDatesBodyInput
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrSubtractFromTimeOrDatesInputActionType Action { get; set; } = AddOrSubtractFromTimeOrDatesInputActionType.Week;
+        public BodyInputActionType Action { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi.BodyInputActionType.Week;
 
         [JsonProperty("datetime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Datetime { get; set; }
 
         [JsonProperty("operator", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrSubtractFromTimeOrDatesInputOperatorType Operator { get; set; } = AddOrSubtractFromTimeOrDatesInputOperatorType.Add;
+        public AddOrSubtractFromTimeOrDatesBodyInputOperatorType Operator { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi.AddOrSubtractFromTimeOrDatesBodyInputOperatorType.Add;
 
         [JsonProperty("outputFormat")]
         public string OutputFormat { get; set; }
@@ -647,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddOrSubtractFromTimeOrDatesInputActionType
+    public enum BodyInputActionType
     {
         Year,
         Quarter,
@@ -661,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddOrSubtractFromTimeOrDatesInputOperatorType
+    public enum AddOrSubtractFromTimeOrDatesBodyInputOperatorType
     {
         Add,
         Subtract
@@ -673,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Datetime { get; set; }
     }
 
-    public class ConvertAStringToADatetimeObjectInput
+    public class ConvertAStringToADatetimeObjectBodyInput
     {
         [JsonProperty("inputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputFormat { get; set; } = "dd.mm.yyyy";
@@ -694,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Text { get; set; }
     }
 
-    public class PerformOcrOnAScannedPdfOrImageFileInput
+    public class PerformOcrOnAScannedPdfOrImageFileBodyInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string File { get; set; }
@@ -703,25 +676,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Language { get; set; } = "eng";
 
         [JsonProperty("oem", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PerformOcrOnAScannedPdfOrImageFileInputOemType Oem { get; set; }
+        public BodyInputOemType Oem { get; set; }
 
         [JsonProperty("psm", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PerformOcrOnAScannedPdfOrImageFileInputPsmType Psm { get; set; } = PerformOcrOnAScannedPdfOrImageFileInputPsmType._3;
+        public BodyInputPsmType Psm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi.BodyInputPsmType._3;
 
         [JsonProperty("trim", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Trim { get; set; } = false;
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PerformOcrOnAScannedPdfOrImageFileInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
     }
 
-    public enum PerformOcrOnAScannedPdfOrImageFileInputOemType
+    public enum BodyInputOemType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public enum PerformOcrOnAScannedPdfOrImageFileInputPsmType
+    public enum BodyInputPsmType
     {
         _0 = 0,
         _1 = 1,
@@ -740,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PerformOcrOnAScannedPdfOrImageFileInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "pdf")]
         Pdf,
@@ -760,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Content { get; set; }
     }
 
-    public class CombineMultiplePdfFilesInput
+    public class CombineMultiplePdfFilesBodyInput
     {
         [JsonProperty("pdfs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Pdfs { get; set; }
@@ -822,19 +795,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Title { get; set; }
     }
 
-    public class GetPdfMetadataInformationInput
+    public class GetPdfMetadataInformationBodyInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
     }
 
-    public class ConvertAPdfFileToTextInput
+    public class ConvertAPdfFileToTextBodyInput
     {
         [JsonProperty("endPage")]
         public int? EndPage { get; set; }
 
         [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertAPdfFileToTextInputLayoutType Layout { get; set; } = ConvertAPdfFileToTextInputLayoutType.Raw;
+        public BodyInputLayoutType Layout { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi.BodyInputLayoutType.Raw;
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
@@ -844,7 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertAPdfFileToTextInputLayoutType
+    public enum BodyInputLayoutType
     {
         [EnumMember(Value = "raw")]
         Raw,
@@ -858,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Content { get; set; }
     }
 
-    public class SetPasswordOnAPdfFileInput
+    public class SetPasswordOnAPdfFileBodyInput
     {
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
@@ -873,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Text { get; set; }
     }
 
-    public class ReplaceTextInStringBasedOnARegularExpressionInput
+    public class ReplaceTextInStringBasedOnARegularExpressionBodyInput
     {
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pattern { get; set; } = "/string/i";
@@ -891,7 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Values { get; set; }
     }
 
-    public class FindValuesFromAStringBasedOnARegularExpressionInput
+    public class FindValuesFromAStringBasedOnARegularExpressionBodyInput
     {
         [JsonProperty("group")]
         public int? Group { get; set; }
@@ -909,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Text { get; set; }
     }
 
-    public class ReplaceTextInStringInput
+    public class ReplaceTextInStringBodyInput
     {
         [JsonProperty("replace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Replace { get; set; }

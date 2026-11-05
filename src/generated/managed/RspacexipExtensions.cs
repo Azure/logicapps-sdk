@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryCapsulesResponse, ApiConnectionActionConfiguration> QueryCapsules(Expression<Func<QueryCapsulesInput>> body)
+        public IBodyWorkflowAction<QueryCapsulesResponse, ApiConnectionActionConfiguration> QueryCapsules(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryCapsulesResponse, ApiConnectionActionConfiguration>(() =>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryCoresResponse, ApiConnectionActionConfiguration> QueryCores(Expression<Func<QueryCoresInput>> body)
+        public IBodyWorkflowAction<QueryCoresResponse, ApiConnectionActionConfiguration> QueryCores(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryCoresResponse, ApiConnectionActionConfiguration>(() =>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryCrewMembersResponse, ApiConnectionActionConfiguration> QueryCrewMembers(Expression<Func<QueryCrewMembersInput>> body)
+        public IBodyWorkflowAction<QueryCrewMembersResponse, ApiConnectionActionConfiguration> QueryCrewMembers(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryCrewMembersResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryDragonsResponse, ApiConnectionActionConfiguration> QueryDragons(Expression<Func<QueryDragonsInput>> body)
+        public IBodyWorkflowAction<QueryDragonsResponse, ApiConnectionActionConfiguration> QueryDragons(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryDragonsResponse, ApiConnectionActionConfiguration>(() =>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryHistoryResponse, ApiConnectionActionConfiguration> QueryHistory(Expression<Func<QueryHistoryInput>> body)
+        public IBodyWorkflowAction<QueryHistoryResponse, ApiConnectionActionConfiguration> QueryHistory(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryHistoryResponse, ApiConnectionActionConfiguration>(() =>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryLandpadsResponse, ApiConnectionActionConfiguration> QueryLandpads(Expression<Func<QueryLandpadsInput>> body)
+        public IBodyWorkflowAction<QueryLandpadsResponse, ApiConnectionActionConfiguration> QueryLandpads(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryLandpadsResponse, ApiConnectionActionConfiguration>(() =>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryLaunchesResponse, ApiConnectionActionConfiguration> QueryLaunches(Expression<Func<QueryLaunchesInput>> body)
+        public IBodyWorkflowAction<QueryLaunchesResponse, ApiConnectionActionConfiguration> QueryLaunches(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryLaunchesResponse, ApiConnectionActionConfiguration>(() =>
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryLaunchpadsResponse, ApiConnectionActionConfiguration> QueryLaunchpads(Expression<Func<QueryLaunchpadsInput>> body)
+        public IBodyWorkflowAction<QueryLaunchpadsResponse, ApiConnectionActionConfiguration> QueryLaunchpads(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryLaunchpadsResponse, ApiConnectionActionConfiguration>(() =>
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryPayloadsResponse, ApiConnectionActionConfiguration> QueryPayloads(Expression<Func<QueryPayloadsInput>> body)
+        public IBodyWorkflowAction<QueryPayloadsResponse, ApiConnectionActionConfiguration> QueryPayloads(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryPayloadsResponse, ApiConnectionActionConfiguration>(() =>
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryRocketsResponse, ApiConnectionActionConfiguration> QueryRockets(Expression<Func<QueryRocketsInput>> body)
+        public IBodyWorkflowAction<QueryRocketsResponse, ApiConnectionActionConfiguration> QueryRockets(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryRocketsResponse, ApiConnectionActionConfiguration>(() =>
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryShipsResponse, ApiConnectionActionConfiguration> QueryShips(Expression<Func<QueryShipsInput>> body)
+        public IBodyWorkflowAction<QueryShipsResponse, ApiConnectionActionConfiguration> QueryShips(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryShipsResponse, ApiConnectionActionConfiguration>(() =>
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rspacexip")]
-        public IBodyWorkflowAction<QueryStarlinkSatsResponse, ApiConnectionActionConfiguration> QueryStarlinkSats(Expression<Func<QueryStarlinkSatsInput>> body)
+        public IBodyWorkflowAction<QueryStarlinkSatsResponse, ApiConnectionActionConfiguration> QueryStarlinkSats(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryStarlinkSatsResponse, ApiConnectionActionConfiguration>(() =>
@@ -683,16 +683,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public string Id { get; set; }
     }
 
-    public class QueryCapsulesInput
+    public class BodyInput
     {
         [JsonProperty("query")]
         public JToken Query { get; set; }
 
         [JsonProperty("options")]
-        public QueryCapsulesInputOptionsType Options { get; set; }
+        public BodyInputOptionsType Options { get; set; }
     }
 
-    public class QueryCapsulesInputOptionsType
+    public class BodyInputOptionsType
     {
         [JsonProperty("select")]
         public string Select { get; set; }
@@ -743,10 +743,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public bool? AllowDiskUse { get; set; }
 
         [JsonProperty("options")]
-        public QueryCapsulesInputOptionsTypeOptionsType Options { get; set; }
+        public BodyInputOptionsTypeOptionsType Options { get; set; }
     }
 
-    public class QueryCapsulesInputOptionsTypeOptionsType
+    public class BodyInputOptionsTypeOptionsType
     {
         [JsonProperty("pref")]
         public string Pref { get; set; }
@@ -1019,78 +1019,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public string Id { get; set; }
     }
 
-    public class QueryCoresInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryCoresInputOptionsType Options { get; set; }
-    }
-
-    public class QueryCoresInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryCoresInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryCoresInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
-    }
-
     public class GetAllCrewResponseItem
     {
         [JsonProperty("name")]
@@ -1197,78 +1125,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("id")]
         public string Id { get; set; }
-    }
-
-    public class QueryCrewMembersInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryCrewMembersInputOptionsType Options { get; set; }
-    }
-
-    public class QueryCrewMembersInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryCrewMembersInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryCrewMembersInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
     }
 
     public class GetAllDragonsResponseItem
@@ -1955,78 +1811,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public int Lbf { get; set; }
     }
 
-    public class QueryDragonsInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryDragonsInputOptionsType Options { get; set; }
-    }
-
-    public class QueryDragonsInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryDragonsInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryDragonsInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
-    }
-
     public class GetAllHistoryResponseItem
     {
         [JsonProperty("links")]
@@ -2142,78 +1926,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
     {
         [JsonProperty("article")]
         public string Article { get; set; }
-    }
-
-    public class QueryHistoryInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryHistoryInputOptionsType Options { get; set; }
-    }
-
-    public class QueryHistoryInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryHistoryInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryHistoryInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
     }
 
     public class GetAllLandpadsResponseItem
@@ -2412,78 +2124,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
     {
         [JsonProperty("large")]
         public string[] Large { get; set; }
-    }
-
-    public class QueryLandpadsInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryLandpadsInputOptionsType Options { get; set; }
-    }
-
-    public class QueryLandpadsInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryLandpadsInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryLandpadsInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
     }
 
     public class GetAllLaunchesResponseItem
@@ -3096,78 +2736,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("landpad")]
         public string Landpad { get; set; }
-    }
-
-    public class QueryLaunchesInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryLaunchesInputOptionsType Options { get; set; }
-    }
-
-    public class QueryLaunchesInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryLaunchesInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryLaunchesInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
     }
 
     public class GetPastLaunchesResponseItem
@@ -4106,78 +3674,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public string[] Large { get; set; }
     }
 
-    public class QueryLaunchpadsInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryLaunchpadsInputOptionsType Options { get; set; }
-    }
-
-    public class QueryLaunchpadsInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryLaunchpadsInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryLaunchpadsInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
-    }
-
     public class GetAllPayloadsResponseItem
     {
         [JsonProperty("dragon")]
@@ -4545,78 +4041,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("land_landing")]
         public bool LandLanding { get; set; }
-    }
-
-    public class QueryPayloadsInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryPayloadsInputOptionsType Options { get; set; }
-    }
-
-    public class QueryPayloadsInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryPayloadsInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryPayloadsInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
     }
 
     public class GetRoadsterInfoResponse
@@ -5603,78 +5027,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
         public int Lb { get; set; }
     }
 
-    public class QueryRocketsInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryRocketsInputOptionsType Options { get; set; }
-    }
-
-    public class QueryRocketsInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryRocketsInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryRocketsInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
-    }
-
     public class GetAllShipsResponseItem
     {
         [JsonProperty("last_ais_update")]
@@ -5934,78 +5286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("id")]
         public string Id { get; set; }
-    }
-
-    public class QueryShipsInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryShipsInputOptionsType Options { get; set; }
-    }
-
-    public class QueryShipsInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryShipsInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryShipsInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
     }
 
     public class GetAllStarlinkSatsResponseItem
@@ -6429,78 +5709,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rspacexip
 
         [JsonProperty("TLE_LINE2")]
         public string TLELINE2 { get; set; }
-    }
-
-    public class QueryStarlinkSatsInput
-    {
-        [JsonProperty("query")]
-        public JToken Query { get; set; }
-
-        [JsonProperty("options")]
-        public QueryStarlinkSatsInputOptionsType Options { get; set; }
-    }
-
-    public class QueryStarlinkSatsInputOptionsType
-    {
-        [JsonProperty("select")]
-        public string Select { get; set; }
-
-        [JsonProperty("collation")]
-        public JToken Collation { get; set; }
-
-        [JsonProperty("sort")]
-        public string Sort { get; set; }
-
-        [JsonProperty("populate")]
-        public JToken[] Populate { get; set; }
-
-        [JsonProperty("projection")]
-        public string Projection { get; set; }
-
-        [JsonProperty("lean")]
-        public bool? Lean { get; set; }
-
-        [JsonProperty("leanWithId")]
-        public bool? LeanWithId { get; set; }
-
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
-        [JsonProperty("page")]
-        public int? Page { get; set; }
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("customLabels")]
-        public JToken CustomLabels { get; set; }
-
-        [JsonProperty("pagination")]
-        public bool? Pagination { get; set; }
-
-        [JsonProperty("useEstimatedCount")]
-        public bool? UseEstimatedCount { get; set; }
-
-        [JsonProperty("useCustomCountFn")]
-        public bool? UseCustomCountFn { get; set; }
-
-        [JsonProperty("forceCountFn")]
-        public bool? ForceCountFn { get; set; }
-
-        [JsonProperty("allowDiskUse")]
-        public bool? AllowDiskUse { get; set; }
-
-        [JsonProperty("options")]
-        public QueryStarlinkSatsInputOptionsTypeOptionsType Options { get; set; }
-    }
-
-    public class QueryStarlinkSatsInputOptionsTypeOptionsType
-    {
-        [JsonProperty("pref")]
-        public string Pref { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
     }
 }
 

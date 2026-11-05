@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostAIDetectionResponse, ApiConnectionActionConfiguration> PostAIDetection(Expression<Func<PostAIDetectionInput>> body)
+        public IBodyWorkflowAction<PostAIDetectionResponse, ApiConnectionActionConfiguration> PostAIDetection(Expression<Func<PostAIDetectionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostAIDetectionResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostUrlAIDetectionResponse, ApiConnectionActionConfiguration> PostUrlAIDetection(Expression<Func<PostUrlAIDetectionInput>> body)
+        public IBodyWorkflowAction<PostUrlAIDetectionResponse, ApiConnectionActionConfiguration> PostUrlAIDetection(Expression<Func<PostUrlAIDetectionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostUrlAIDetectionResponse, ApiConnectionActionConfiguration>(() =>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         public double Ai { get; set; }
     }
 
-    public class PostAIDetectionInput
+    public class PostAIDetectionBodyInput
     {
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         public double Real { get; set; }
     }
 
-    public class PostUrlAIDetectionInput
+    public class PostUrlAIDetectionBodyInput
     {
         [JsonProperty("url")]
         public string Url { get; set; }

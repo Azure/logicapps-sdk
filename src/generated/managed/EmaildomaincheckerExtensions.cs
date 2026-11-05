@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
     public class EmaildomaincheckerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
-        public IBodyWorkflowAction<CheckDomainResponse, ApiConnectionActionConfiguration> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
+        public IBodyWorkflowAction<CheckDomainResponse, ApiConnectionActionConfiguration> CheckDomain(Expression<Func<string>> domain, Expression<Func<EndpointInput>> endpoint)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum endpointInput
+    public enum EndpointInput
     {
         RapidAPI,
         Blobr

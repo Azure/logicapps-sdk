@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsCreate(Expression<Func<GistsCreateInput>> body)
+        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsCreate(Expression<Func<GistsCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GistSimple, ApiConnectionActionConfiguration>(() =>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsUpdate(Expression<Func<string>> gistId, Expression<Func<GistsUpdateInput>> body)
+        public IBodyWorkflowAction<GistSimple, ApiConnectionActionConfiguration> GistsUpdate(Expression<Func<string>> gistId, Expression<Func<GistsUpdateBodyInput>> body)
         {
             var __workflow_gistId = WorkflowExpression.Compile(gistId, nameof(gistId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsCreateComment(Expression<Func<string>> gistId, Expression<Func<GistsCreateCommentInput>> body)
+        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsCreateComment(Expression<Func<string>> gistId, Expression<Func<GistsCreateCommentBodyInput>> body)
         {
             var __workflow_gistId = WorkflowExpression.Compile(gistId, nameof(gistId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubgistsip")]
-        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsUpdateComment(Expression<Func<string>> gistId, Expression<Func<int>> commentId, Expression<Func<GistsUpdateCommentInput>> body)
+        public IBodyWorkflowAction<GistComment, ApiConnectionActionConfiguration> GistsUpdateComment(Expression<Func<string>> gistId, Expression<Func<int>> commentId, Expression<Func<GistsCreateCommentBodyInput>> body)
         {
             var __workflow_gistId = WorkflowExpression.Compile(gistId, nameof(gistId), required: true);
             var __workflow_commentId = WorkflowExpression.Compile(commentId, nameof(commentId), required: true);
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         public string StarredAt { get; set; }
     }
 
-    public class GistsCreateInput
+    public class GistsCreateBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -839,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         public bool? Public { get; set; } = false;
     }
 
-    public class GistsUpdateInput
+    public class GistsUpdateBodyInput
     {
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
@@ -887,13 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         OWNER
     }
 
-    public class GistsCreateCommentInput
-    {
-        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Body { get; set; }
-    }
-
-    public class GistsUpdateCommentInput
+    public class GistsCreateCommentBodyInput
     {
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }

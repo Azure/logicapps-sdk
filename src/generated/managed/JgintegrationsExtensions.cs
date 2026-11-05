@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
     public class JgintegrationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<HASHHMACResponse, ApiConnectionActionConfiguration> HASHHMAC(Expression<Func<HASHHMACInput>> body)
+        public IBodyWorkflowAction<HASHHMACResponse, ApiConnectionActionConfiguration> HASHHMAC(Expression<Func<HASHHMACBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HASHHMACResponse, ApiConnectionActionConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<PREGREPLACEResponse, ApiConnectionActionConfiguration> PREGREPLACE(Expression<Func<PREGREPLACEInput>> body)
+        public IBodyWorkflowAction<PREGREPLACEResponse, ApiConnectionActionConfiguration> PREGREPLACE(Expression<Func<PREGREPLACEBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PREGREPLACEResponse, ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<MANUALResponse, ApiConnectionActionConfiguration> MANUAL(Expression<Func<MANUALInput>> body)
+        public IBodyWorkflowAction<MANUALResponse, ApiConnectionActionConfiguration> MANUAL(Expression<Func<MANUALBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MANUALResponse, ApiConnectionActionConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HTMLTOPDF(Expression<Func<HTMLTOPDFInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HTMLTOPDF(Expression<Func<HTMLTOPDFBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<FILESTRINGResponse, ApiConnectionActionConfiguration> FILESTRING(Expression<Func<FILESTRINGInput>> body)
+        public IBodyWorkflowAction<FILESTRINGResponse, ApiConnectionActionConfiguration> FILESTRING(Expression<Func<FILESTRINGBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FILESTRINGResponse, ApiConnectionActionConfiguration>(() =>
@@ -103,10 +103,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Hash { get; set; }
     }
 
-    public class HASHHMACInput
+    public class HASHHMACBodyInput
     {
         [JsonProperty("algo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HASHHMACInputAlgoType Algo { get; set; } = HASHHMACInputAlgoType.Sha256;
+        public BodyInputAlgoType Algo { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations.BodyInputAlgoType.Sha256;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HASHHMACInputAlgoType
+    public enum BodyInputAlgoType
     {
         [EnumMember(Value = "md2")]
         Md2,
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Output { get; set; }
     }
 
-    public class PREGREPLACEInput
+    public class PREGREPLACEBodyInput
     {
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pattern { get; set; }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Output { get; set; }
     }
 
-    public class MANUALInput
+    public class MANUALBodyInput
     {
         [JsonProperty("function", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Function { get; set; }
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Data { get; set; }
     }
 
-    public class HTMLTOPDFInput
+    public class HTMLTOPDFBodyInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Html { get; set; }
@@ -211,11 +211,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public bool Landscape { get; set; } = false;
 
         [JsonProperty("pagesize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HTMLTOPDFInputPagesizeType Pagesize { get; set; } = HTMLTOPDFInputPagesizeType.A4;
+        public BodyInputPagesizeType Pagesize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations.BodyInputPagesizeType.A4;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HTMLTOPDFInputPagesizeType
+    public enum BodyInputPagesizeType
     {
         [EnumMember(Value = "[4a0")]
         _4a0,
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Output { get; set; }
     }
 
-    public class FILESTRINGInput
+    public class FILESTRINGBodyInput
     {
         [JsonProperty("pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Pattern { get; set; } = "/[^a-zA-Z0-9 \\-\\(\\)\\_]+/";

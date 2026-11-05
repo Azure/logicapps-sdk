@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survey123")]
-        public IBodyWorkflowAction<FeatureReportSubmitJobResponse, ApiConnectionActionConfiguration> FeatureReportSubmitJob(Expression<Func<FeatureReportSubmitJobInput>> createFeatureReportBody)
+        public IBodyWorkflowAction<FeatureReportSubmitJobResponse, ApiConnectionActionConfiguration> FeatureReportSubmitJob(Expression<Func<CreateFeatureReportBodyInput>> createFeatureReportBody)
         {
             var __workflow_createFeatureReportBody = WorkflowExpression.Compile(createFeatureReportBody, nameof(createFeatureReportBody), required: true);
             return new DeferredBodyAction<FeatureReportSubmitJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
 
     public class Survey123Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddDataInput>> addWebhookBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AddData(Expression<Func<string>> surveyId, Expression<Func<AddWebhookBodyInput>> addWebhookBody, FlowRecurrence recurrence = null)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_addWebhookBody = WorkflowExpression.Compile(addWebhookBody, nameof(addWebhookBody), required: true);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
         public string ObjectIds { get; set; }
     }
 
-    public class FeatureReportSubmitJobInput
+    public class CreateFeatureReportBodyInput
     {
         [JsonProperty("surveyItemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Survey { get; set; }
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
         public string ReportTemplate { get; set; }
 
         [JsonProperty("queryParameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FeatureReportSubmitJobInputValueType Value { get; set; }
+        public CreateFeatureReportBodyInputValueType Value { get; set; }
 
         [JsonProperty("utcOffset")]
         public string UTCOffset { get; set; }
@@ -200,13 +200,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
         public string ReportName { get; set; }
 
         [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FeatureReportSubmitJobInputFormatType? Format { get; set; } = FeatureReportSubmitJobInputFormatType.Docx;
+        public CreateFeatureReportBodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Survey123.CreateFeatureReportBodyInputFormatType.Docx;
 
         [JsonProperty("asyncPattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool EnableAsyncPattern { get; set; } = true;
     }
 
-    public class FeatureReportSubmitJobInputValueType
+    public class CreateFeatureReportBodyInputValueType
     {
         [JsonProperty("objectIds")]
         public string FeatureObjectId { get; set; }
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FeatureReportSubmitJobInputFormatType
+    public enum CreateFeatureReportBodyInputFormatType
     {
         [EnumMember(Value = "docx")]
         Docx,
@@ -224,13 +224,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survey123
         Pdf
     }
 
-    public class AddDataInput
+    public class AddWebhookBodyInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddDataInputValueType Value { get; set; } = new AddDataInputValueType();
+        public AddWebhookBodyInputValueType Value { get; set; } = new AddWebhookBodyInputValueType();
     }
 
-    public class AddDataInputValueType
+    public class AddWebhookBodyInputValueType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "MS-FLOW";

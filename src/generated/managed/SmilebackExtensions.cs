@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
     public class SmilebackTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CSATReceived(Expression<Func<CSATReceivedInput>> field = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CSATReceived(Expression<Func<CSATReceivedFieldInput>> field = null, FlowRecurrence recurrence = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NPSReceived(Expression<Func<NPSReceivedInput>> field = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NPSReceived(Expression<Func<NPSReceivedFieldInput>> field = null, FlowRecurrence recurrence = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PRJReceived(Expression<Func<PRJReceivedInput>> field = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PRJReceived(Expression<Func<PRJReceivedFieldInput>> field = null, FlowRecurrence recurrence = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -158,10 +158,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         public string Name { get; set; }
     }
 
-    public class CSATReceivedInput
+    public class CSATReceivedFieldInput
     {
         [JsonProperty("csat_filter_raiting")]
-        public CSATReceivedInputCsatFilterRaitingTypeItem[] CsatFilterRaiting { get; set; }
+        public FieldInputCsatFilterRaitingTypeItem[] CsatFilterRaiting { get; set; }
 
         [JsonProperty("csat_filter_agents")]
         public string[] CsatFilterAgents { get; set; }
@@ -176,14 +176,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         public string[] CsatFilterContacts { get; set; }
 
         [JsonProperty("csat_filter_comments")]
-        public CSATReceivedInputCsatFilterCommentsType? CsatFilterComments { get; set; }
+        public FieldInputCsatFilterCommentsType? CsatFilterComments { get; set; }
 
         [JsonProperty("csat_filter_mp")]
-        public CSATReceivedInputCsatFilterMpType? CsatFilterMp { get; set; }
+        public FieldInputCsatFilterMpType? CsatFilterMp { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CSATReceivedInputCsatFilterRaitingTypeItem
+    public enum FieldInputCsatFilterRaitingTypeItem
     {
         Positive,
         Neutral,
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CSATReceivedInputCsatFilterCommentsType
+    public enum FieldInputCsatFilterCommentsType
     {
         [EnumMember(Value = "")]
         None,
@@ -199,30 +199,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CSATReceivedInputCsatFilterMpType
+    public enum FieldInputCsatFilterMpType
     {
         [EnumMember(Value = "")]
         None,
         Yes
     }
 
-    public class NPSReceivedInput
+    public class NPSReceivedFieldInput
     {
         [JsonProperty("nps_filter_score")]
-        public NPSReceivedInputNpsFilterScoreTypeItem[] NpsFilterScore { get; set; }
+        public FieldInputNpsFilterScoreTypeItem[] NpsFilterScore { get; set; }
 
         [JsonProperty("nps_filter_campaigns")]
         public string[] NpsFilterCampaigns { get; set; }
 
         [JsonProperty("nps_filter_comments")]
-        public NPSReceivedInputNpsFilterCommentsType? NpsFilterComments { get; set; }
+        public FieldInputNpsFilterCommentsType? NpsFilterComments { get; set; }
 
         [JsonProperty("nps_filter_mp")]
-        public NPSReceivedInputNpsFilterMpType? NpsFilterMp { get; set; }
+        public FieldInputNpsFilterMpType? NpsFilterMp { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NPSReceivedInputNpsFilterScoreTypeItem
+    public enum FieldInputNpsFilterScoreTypeItem
     {
         [EnumMember(Value = "Detractor (0-6)")]
         Detractor06,
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NPSReceivedInputNpsFilterCommentsType
+    public enum FieldInputNpsFilterCommentsType
     {
         [EnumMember(Value = "")]
         None,
@@ -241,30 +241,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NPSReceivedInputNpsFilterMpType
+    public enum FieldInputNpsFilterMpType
     {
         [EnumMember(Value = "")]
         None,
         Yes
     }
 
-    public class PRJReceivedInput
+    public class PRJReceivedFieldInput
     {
         [JsonProperty("projects_filter_score")]
-        public PRJReceivedInputProjectsFilterScoreTypeItem[] ProjectsFilterScore { get; set; }
+        public FieldInputProjectsFilterScoreTypeItem[] ProjectsFilterScore { get; set; }
 
         [JsonProperty("projects_filter_surveys")]
         public string[] ProjectsFilterSurveys { get; set; }
 
         [JsonProperty("projects_filter_comments")]
-        public PRJReceivedInputProjectsFilterCommentsType? ProjectsFilterComments { get; set; }
+        public FieldInputProjectsFilterCommentsType? ProjectsFilterComments { get; set; }
 
         [JsonProperty("projects_filter_mp")]
-        public PRJReceivedInputProjectsFilterMpType? ProjectsFilterMp { get; set; }
+        public FieldInputProjectsFilterMpType? ProjectsFilterMp { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PRJReceivedInputProjectsFilterScoreTypeItem
+    public enum FieldInputProjectsFilterScoreTypeItem
     {
         [EnumMember(Value = "1")]
         _1,
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PRJReceivedInputProjectsFilterCommentsType
+    public enum FieldInputProjectsFilterCommentsType
     {
         [EnumMember(Value = "")]
         None,
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PRJReceivedInputProjectsFilterMpType
+    public enum FieldInputProjectsFilterMpType
     {
         [EnumMember(Value = "")]
         None,

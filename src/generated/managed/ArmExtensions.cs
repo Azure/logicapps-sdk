@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arm")]
-        public IBodyWorkflowAction<ResourceGroup, ApiConnectionActionConfiguration> ResourceGroupsPatch(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<ResourceGroupsPatchInput>> parameters)
+        public IBodyWorkflowAction<ResourceGroup, ApiConnectionActionConfiguration> ResourceGroupsPatch(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<ResourceGroupsPatchParametersInput>> parameters)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arm")]
-        public IBodyWorkflowAction<ResourceGroupExportResult, ApiConnectionActionConfiguration> ResourceGroupsExportTemplate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<ResourceGroupsExportTemplateInput>> parameters)
+        public IBodyWorkflowAction<ResourceGroupExportResult, ApiConnectionActionConfiguration> ResourceGroupsExportTemplate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<ResourceGroupsExportTemplateParametersInput>> parameters)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
@@ -979,16 +979,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
         public JToken Tags { get; set; }
 
         [JsonProperty("properties")]
-        public ResourceGroupProperties Properties { get; set; }
+        public ResourceGroupsGetResourceGroupPropertiesResponse Properties { get; set; }
     }
 
-    public class ResourceGroupProperties
+    public class ResourceGroupsGetResourceGroupPropertiesResponse
     {
         [JsonProperty("provisioningState")]
         public string ProvisioningState { get; set; }
     }
 
-    public class ResourceGroupsPatchInput
+    public class ResourceGroupsPatchParametersInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1006,7 +1006,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
         public JToken Tags { get; set; }
 
         [JsonProperty("properties")]
-        public ResourceGroupProperties Properties { get; set; }
+        public ResourceGroupsPatchResourceGroupProperties Properties { get; set; }
+    }
+
+    public class ResourceGroupsPatchResourceGroupProperties
+    {
+        [JsonProperty("provisioningState")]
+        public string ProvisioningState { get; set; }
     }
 
     public class ResourceGroupExportResult
@@ -1033,27 +1039,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arm
         public JToken[] Details { get; set; }
     }
 
-    public class ResourceGroupsExportTemplateInput
+    public class ResourceGroupsExportTemplateParametersInput
     {
         [JsonProperty("resources", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ResourceGroupsExportTemplateInputResourcesTypeItem[] Resources { get; set; } = new ResourceGroupsExportTemplateInputResourcesTypeItem[]
+        public ParametersInputResourcesTypeItem[] Resources { get; set; } = new ParametersInputResourcesTypeItem[]
         {
-            (ResourceGroupsExportTemplateInputResourcesTypeItem)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Arm.ParametersInputResourcesTypeItem.Unnamed
         };
 
         [JsonProperty("options")]
-        public ResourceGroupsExportTemplateInputOptionsType? Options { get; set; }
+        public ParametersInputOptionsType? Options { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ResourceGroupsExportTemplateInputResourcesTypeItem
+    public enum ParametersInputResourcesTypeItem
     {
         [EnumMember(Value = "*")]
         Unnamed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ResourceGroupsExportTemplateInputOptionsType
+    public enum ParametersInputOptionsType
     {
         IncludeParameterDefaultValue,
         IncludeComments,

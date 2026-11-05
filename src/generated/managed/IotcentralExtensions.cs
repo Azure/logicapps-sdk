@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iotcentral")]
-        public IBodyWorkflowAction<Device, ApiConnectionActionConfiguration> DevicesCreate(Expression<Func<string>> applicationId, Expression<Func<bodyInput>> body, Expression<Func<string>> deviceTemplateDisplayId = null)
+        public IBodyWorkflowAction<Device, ApiConnectionActionConfiguration> DevicesCreate(Expression<Func<string>> applicationId, Expression<Func<DevicesCreateBodyInput>> body, Expression<Func<string>> deviceTemplateDisplayId = null)
         {
             var __workflow_applicationId = WorkflowExpression.Compile(applicationId, nameof(applicationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iotcentral")]
-        public IBodyWorkflowAction<Device, ApiConnectionActionConfiguration> DevicesUpdate(Expression<Func<string>> applicationId, Expression<Func<string>> deviceId, Expression<Func<bodyInput2>> body, Expression<Func<string>> deviceTemplateDisplayId = null)
+        public IBodyWorkflowAction<Device, ApiConnectionActionConfiguration> DevicesUpdate(Expression<Func<string>> applicationId, Expression<Func<string>> deviceId, Expression<Func<DevicesUpdateBodyInput>> body, Expression<Func<string>> deviceTemplateDisplayId = null)
         {
             var __workflow_applicationId = WorkflowExpression.Compile(applicationId, nameof(applicationId), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
 
     public class IotcentralTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Action, ApiConnectionTriggerConfiguration> ActionsCreate(Expression<Func<string>> applicationId, Expression<Func<ActionsCreateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Action, ApiConnectionTriggerConfiguration> ActionsCreate(Expression<Func<string>> applicationId, Expression<Func<ActionsCreateBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_applicationId = WorkflowExpression.Compile(applicationId, nameof(applicationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -133,19 +133,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         public string DeviceConnectionId { get; set; }
 
         [JsonProperty("deviceTemplate")]
-        public DeviceTemplateReference DeviceTemplate { get; set; }
+        public DevicesCreateDeviceTemplateReferenceResponse DeviceTemplate { get; set; }
 
         [JsonProperty("properties")]
-        public DeviceProperties Properties { get; set; }
+        public DevicesCreateDevicePropertiesResponse Properties { get; set; }
 
         [JsonProperty("settings")]
-        public DeviceSettings Settings { get; set; }
+        public DevicesCreateDeviceSettingsResponse Settings { get; set; }
 
         [JsonProperty("measurements")]
-        public DeviceMeasurements Measurements { get; set; }
+        public DevicesCreateDeviceMeasurementsResponse Measurements { get; set; }
     }
 
-    public class DeviceTemplateReference
+    public class DevicesCreateDeviceTemplateReferenceResponse
     {
         [JsonProperty("id")]
         public string DeviceTemplateId { get; set; }
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         public string DeviceTemplateVersion { get; set; }
     }
 
-    public class DeviceProperties
+    public class DevicesCreateDevicePropertiesResponse
     {
         [JsonProperty("device")]
         public JToken Device { get; set; }
@@ -163,13 +163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         public JToken Cloud { get; set; }
     }
 
-    public class DeviceSettings
+    public class DevicesCreateDeviceSettingsResponse
     {
         [JsonProperty("device")]
         public JToken Device { get; set; }
     }
 
-    public class DeviceMeasurements
+    public class DevicesCreateDeviceMeasurementsResponse
     {
         [JsonProperty("telemetry")]
         public JToken Telemetry { get; set; }
@@ -181,52 +181,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         public JToken States { get; set; }
     }
 
-    public class bodyInput
+    public class DevicesCreateBodyInput
     {
         [JsonProperty("id")]
         public string DeviceId { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceName { get; set; }
 
-        [JsonProperty("simulated")]
-        public bool DeviceSimulated { get; set; }
+        [JsonProperty("simulated", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? DeviceSimulated { get; set; } = false;
 
         [JsonProperty("deviceId")]
         public string DeviceConnectionId { get; set; }
 
-        [JsonProperty("deviceTemplate")]
-        public DeviceTemplateReference DeviceTemplate { get; set; }
-
-        [JsonProperty("properties")]
-        public DeviceProperties Properties { get; set; }
-
-        [JsonProperty("settings")]
-        public DeviceSettings Settings { get; set; }
-
-        [JsonProperty("measurements")]
-        public DeviceMeasurements Measurements { get; set; }
+        [JsonProperty("deviceTemplate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DevicesCreateDeviceTemplateReference DeviceTemplate { get; set; }
     }
 
-    public class bodyInput2
+    public class DevicesCreateDeviceTemplateReference
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeviceTemplateId { get; set; }
+
+        [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeviceTemplateVersion { get; set; }
+    }
+
+    public class DevicesUpdateBodyInput
     {
         [JsonProperty("name")]
         public string DeviceName { get; set; }
 
         [JsonProperty("simulated")]
-        public bool DeviceSimulated { get; set; }
+        public bool? DeviceSimulated { get; set; }
 
         [JsonProperty("deviceId")]
         public string DeviceConnectionId { get; set; }
 
         [JsonProperty("deviceTemplate")]
         public DeviceTemplateReferenceUpdate DeviceTemplate { get; set; }
-
-        [JsonProperty("properties")]
-        public DevicePropertiesUpdate Properties { get; set; }
-
-        [JsonProperty("settings")]
-        public DeviceSettingsUpdate Settings { get; set; }
     }
 
     public class DeviceTemplateReferenceUpdate
@@ -236,18 +230,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
 
         [JsonProperty("version")]
         public string DeviceTemplateVersion { get; set; }
-    }
-
-    public class DevicePropertiesUpdate
-    {
-        [JsonProperty("cloud")]
-        public JToken Cloud { get; set; }
-    }
-
-    public class DeviceSettingsUpdate
-    {
-        [JsonProperty("device")]
-        public JToken Device { get; set; }
     }
 
     public class Action
@@ -272,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         Flow
     }
 
-    public class ActionsCreateInput
+    public class ActionsCreateBodyInput
     {
         [JsonProperty("id")]
         public string ActionId { get; set; }
@@ -281,14 +263,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral
         public string Rule { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal ActionsCreateInputActionTypeType ActionType { get; set; } = ActionsCreateInputActionTypeType.Flow;
+        internal BodyInputActionTypeType ActionType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iotcentral.BodyInputActionTypeType.Flow;
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ActionsCreateInputActionTypeType
+    public enum BodyInputActionTypeType
     {
         [EnumMember(Value = "flow")]
         Flow

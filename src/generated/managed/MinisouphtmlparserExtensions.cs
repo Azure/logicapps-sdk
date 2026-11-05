@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
     public class MinisouphtmlparserActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FetchHTMLResponse, ApiConnectionActionConfiguration> FetchHTML(Expression<Func<FetchHTMLInput>> body)
+        public IBodyWorkflowAction<FetchHTMLResponse, ApiConnectionActionConfiguration> FetchHTML(Expression<Func<FetchHTMLBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FetchHTMLResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<SelectElementsResponse, ApiConnectionActionConfiguration> SelectElements(Expression<Func<SelectElementsInput>> body)
+        public IBodyWorkflowAction<SelectElementsResponse, ApiConnectionActionConfiguration> SelectElements(Expression<Func<SelectElementsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SelectElementsResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ExtractValuesResponse, ApiConnectionActionConfiguration> ExtractValues(Expression<Func<ExtractValuesInput>> body)
+        public IBodyWorkflowAction<ExtractValuesResponse, ApiConnectionActionConfiguration> ExtractValues(Expression<Func<ExtractValuesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ExtractValuesResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FindAllElementsResponse, ApiConnectionActionConfiguration> FindAllElements(Expression<Func<FindAllElementsInput>> body)
+        public IBodyWorkflowAction<FindAllElementsResponse, ApiConnectionActionConfiguration> FindAllElements(Expression<Func<FindAllElementsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindAllElementsResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ParseTableResponse, ApiConnectionActionConfiguration> ParseTable(Expression<Func<ParseTableInput>> body)
+        public IBodyWorkflowAction<ParseTableResponse, ApiConnectionActionConfiguration> ParseTable(Expression<Func<ParseTableBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseTableResponse, ApiConnectionActionConfiguration>(() =>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public string Html { get; set; }
     }
 
-    public class FetchHTMLInput
+    public class FetchHTMLBodyInput
     {
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "fetch_html";
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public bool IsSelfClosing { get; set; }
     }
 
-    public class SelectElementsInput
+    public class SelectElementsBodyInput
     {
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "select";
@@ -150,11 +150,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public string Selector { get; set; }
 
         [JsonProperty("selector_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SelectElementsInputSelectorTypeType? SelectorType { get; set; } = SelectElementsInputSelectorTypeType.Css;
+        public BodyInputSelectorTypeType? SelectorType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser.BodyInputSelectorTypeType.Css;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SelectElementsInputSelectorTypeType
+    public enum BodyInputSelectorTypeType
     {
         [EnumMember(Value = "css")]
         Css,
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public int Count { get; set; }
     }
 
-    public class ExtractValuesInput
+    public class ExtractValuesBodyInput
     {
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "extract";
@@ -189,16 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public string Attribute { get; set; }
 
         [JsonProperty("selector_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractValuesInputSelectorTypeType? SelectorType { get; set; } = ExtractValuesInputSelectorTypeType.Css;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractValuesInputSelectorTypeType
-    {
-        [EnumMember(Value = "css")]
-        Css,
-        [EnumMember(Value = "xpath")]
-        Xpath
+        public BodyInputSelectorTypeType? SelectorType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser.BodyInputSelectorTypeType.Css;
     }
 
     public class FindAllElementsResponse
@@ -213,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public int Count { get; set; }
     }
 
-    public class FindAllElementsInput
+    public class FindAllElementsBodyInput
     {
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "find_all";
@@ -225,10 +216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public string TagName { get; set; }
 
         [JsonProperty("attributes")]
-        public FindAllElementsInputAttributesType Attributes { get; set; }
+        public BodyInputAttributesType Attributes { get; set; }
     }
 
-    public class FindAllElementsInputAttributesType
+    public class BodyInputAttributesType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -252,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public string[][] Rows { get; set; }
     }
 
-    public class ParseTableInput
+    public class ParseTableBodyInput
     {
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Operation { get; set; } = "parse_table";

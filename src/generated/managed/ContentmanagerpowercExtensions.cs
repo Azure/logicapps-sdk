@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<int>> uri, Expression<Func<string>> userToImpersonate = null, Expression<Func<DeleteRecordInput>> deleteRecordDetails = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> DeleteRecord(Expression<Func<int>> uri, Expression<Func<string>> userToImpersonate = null, Expression<Func<DeleteRecordDetailsInput>> deleteRecordDetails = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> descendantProperties = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<propertyValueInput>> propertyValue = null, Expression<Func<stringDisplayTypeInput>> stringDisplayType = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> descendantProperties = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<PropertyValueInput>> propertyValue = null, Expression<Func<StringDisplayTypeInput>> stringDisplayType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordReassignAction(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordReassignActionInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordReassignAction(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordReassignActionRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordClose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCloseInput>> @record = null)
+        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordClose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCloseRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordReopen(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordReopenInput>> @record = null)
+        public IBodyWorkflowAction<CMLogResponse, ApiConnectionActionConfiguration> RecordReopen(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordReopenRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachAction(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachActionInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachAction(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachActionRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCompleteActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCompleteActionsInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCompleteActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCompleteActionsRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRemoveAllActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRemoveAllActionsInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRemoveAllActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRemoveAllActionsRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRescheduleActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRescheduleActionsInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRescheduleActions(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRescheduleActionsRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordDispose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordDisposeInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordDispose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordDisposeRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndispose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordUndisposeInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndispose(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordUndisposeRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCheckout(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCheckoutInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordCheckout(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordCheckoutRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndoCheckout(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordUndoCheckoutInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordUndoCheckout(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordUndoCheckoutRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachContact(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachContactInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachContact(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachContactRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachKeyword(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachKeywordInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordAttachKeyword(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordAttachKeywordRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetUserLabel(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordSetUserLabelInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetUserLabel(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordSetUserLabelRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRequestRendition(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRequestRenditionInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordRequestRendition(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordRequestRenditionRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetAssignee(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordSetAssigneeInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RecordSetAssignee(Expression<Func<string>> userToImpersonate = null, Expression<Func<RecordSetAssigneeRecordInput>> @record = null)
         {
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearch(Expression<Func<string>> q, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> applyDefaults = null, Expression<Func<bool>> countResults = null, Expression<Func<bool>> excludeCount = null, Expression<Func<string>> filter = null, Expression<Func<string>> fromSearch = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> options = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<propertyValueInput>> propertyValue = null, Expression<Func<string>> pageSize = null, Expression<Func<string>> purpose = null, Expression<Func<string>> purposeExtra = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> start = null, Expression<Func<stringDisplayTypeInput>> stringDisplayType = null)
+        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearch(Expression<Func<string>> q, Expression<Func<string>> userToImpersonate = null, Expression<Func<bool>> applyDefaults = null, Expression<Func<bool>> countResults = null, Expression<Func<bool>> excludeCount = null, Expression<Func<string>> filter = null, Expression<Func<string>> fromSearch = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> options = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<PropertyValueInput>> propertyValue = null, Expression<Func<string>> pageSize = null, Expression<Func<string>> purpose = null, Expression<Func<string>> purposeExtra = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> start = null, Expression<Func<StringDisplayTypeInput>> stringDisplayType = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<propertyValueInput>> propertyValue = null, Expression<Func<stringDisplayTypeInput>> stringDisplayType = null)
+        public IBodyWorkflowAction<CMLocationsResponse, ApiConnectionActionConfiguration> LocationSearchById(Expression<Func<string>> id, Expression<Func<string>> userToImpersonate = null, Expression<Func<string>> descendantProperties = null, Expression<Func<bool>> includePropertyDefs = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertySets = null, Expression<Func<PropertyValueInput>> propertyValue = null, Expression<Func<StringDisplayTypeInput>> stringDisplayType = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_userToImpersonate = WorkflowExpression.Compile(userToImpersonate, nameof(userToImpersonate), required: false);
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMLocationAddressUri, ApiConnectionActionConfiguration> FindLocationChildAddressUri(Expression<Func<string>> locationUri, Expression<Func<typeInput>> type = null, Expression<Func<string>> userToImpersonate = null)
+        public IBodyWorkflowAction<CMLocationAddressUri, ApiConnectionActionConfiguration> FindLocationChildAddressUri(Expression<Func<string>> locationUri, Expression<Func<TypeInput>> type = null, Expression<Func<string>> userToImpersonate = null)
         {
             var __workflow_locationUri = WorkflowExpression.Compile(locationUri, nameof(locationUri), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMEventData, ApiConnectionActionConfiguration> ReadEventData(Expression<Func<ReadEventDataInput>> rawEventData = null)
+        public IBodyWorkflowAction<CMEventData, ApiConnectionActionConfiguration> ReadEventData(Expression<Func<RawEventDataInput>> rawEventData = null)
         {
             var __workflow_rawEventData = WorkflowExpression.Compile(rawEventData, nameof(rawEventData), required: false);
             return new DeferredBodyAction<CMEventData, ApiConnectionActionConfiguration>(() =>
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> AddAccessControl(Expression<Func<AddAccessControlInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> AddAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RemoveAccessControl(Expression<Func<RemoveAccessControlInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> RemoveAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> SetAccessControl(Expression<Func<SetAccessControlInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> SetAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contentmanagerpowerc")]
-        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> InheritAccessControl(Expression<Func<InheritAccessControlInput>> @record = null)
+        public IBodyWorkflowAction<CMRecordsResponse, ApiConnectionActionConfiguration> InheritAccessControl(Expression<Func<AddAccessControlRecordInput>> @record = null)
         {
             var __workflow_record = WorkflowExpression.Compile(@record, nameof(@record), required: false);
             return new DeferredBodyAction<CMRecordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -1099,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public JToken Meta { get; set; }
     }
 
-    public class DeleteRecordInput
+    public class DeleteRecordDetailsInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool DeleteContents { get; set; } = false;
@@ -1107,7 +1107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum propertyValueInput
+    public enum PropertyValueInput
     {
         Raw,
         String,
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stringDisplayTypeInput
+    public enum StringDisplayTypeInput
     {
         Default,
         DataEntry,
@@ -1129,7 +1129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         WebService
     }
 
-    public class RecordReassignActionInput
+    public class RecordReassignActionRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public int UniqueIdentifier { get; set; }
     }
 
-    public class RecordCloseInput
+    public class RecordCloseRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1196,7 +1196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordReopenInput
+    public class RecordReopenRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Message { get; set; }
     }
 
-    public class RecordAttachActionInput
+    public class RecordAttachActionRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1232,40 +1232,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public int? AssigneeUniqueId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecordAttachActionInputAssigneeOptionType? AssigneeOption { get; set; } = RecordAttachActionInputAssigneeOptionType.OverrideExisting;
+        public RecordInputAssigneeOptionType? AssigneeOption { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc.RecordInputAssigneeOptionType.OverrideExisting;
         public string ScheduleStartDate { get; set; }
 
         [JsonProperty("RecordAction")]
         public int? ExistingAction { get; set; }
 
         [JsonProperty("InsertPos", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecordAttachActionInputInsertPositionType? InsertPosition { get; set; } = RecordAttachActionInputInsertPositionType.After;
+        public RecordInputInsertPositionType? InsertPosition { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc.RecordInputInsertPositionType.After;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecordAttachActionInputAssigneeOptionType
+    public enum RecordInputAssigneeOptionType
     {
         OverrideExisting,
         OnlyIfNoneSpecified
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecordAttachActionInputInsertPositionType
+    public enum RecordInputInsertPositionType
     {
         Before,
         After
     }
 
-    public class RecordCompleteActionsInput
+    public class RecordCompleteActionsRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecordCompleteActionsInputCompleteType Complete { get; set; }
+        public RecordInputCompleteType Complete { get; set; }
 
         [JsonProperty("CompletePrevious", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CompletePreviousActions { get; set; } = false;
@@ -1279,7 +1279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecordCompleteActionsInputCompleteType
+    public enum RecordInputCompleteType
     {
         Current,
         All,
@@ -1287,7 +1287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         ForUniqueIdentifier
     }
 
-    public class RecordRemoveAllActionsInput
+    public class RecordRemoveAllActionsRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1296,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordRescheduleActionsInput
+    public class RecordRescheduleActionsRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1309,21 +1309,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordDisposeInput
+    public class RecordDisposeRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ContinueOnError { get; set; } = false;
-        public RecordDisposeInputMethodOfDisposalType? MethodOfDisposal { get; set; }
+        public RecordInputMethodOfDisposalType? MethodOfDisposal { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecordDisposeInputMethodOfDisposalType
+    public enum RecordInputMethodOfDisposalType
     {
         None,
         Archived,
@@ -1331,7 +1331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         Destroyed
     }
 
-    public class RecordUndisposeInput
+    public class RecordUndisposeRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1343,7 +1343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordCheckoutInput
+    public class RecordCheckoutRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1354,7 +1354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordUndoCheckoutInput
+    public class RecordUndoCheckoutRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1364,7 +1364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordAttachContactInput
+    public class RecordAttachContactRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1382,7 +1382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordAttachKeywordInput
+    public class RecordAttachKeywordRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Record { get; set; }
@@ -1394,7 +1394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordSetUserLabelInput
+    public class RecordSetUserLabelRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Record { get; set; }
@@ -1407,7 +1407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordRequestRenditionInput
+    public class RecordRequestRenditionRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1419,14 +1419,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string Properties { get; set; } = "RecordTitle, RecordNumber";
     }
 
-    public class RecordSetAssigneeInput
+    public class RecordSetAssigneeRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
         public string NewAssignee { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecordSetAssigneeInputAssigneeTypeType? AssigneeType { get; set; } = RecordSetAssigneeInputAssigneeTypeType.AtLocation;
+        public RecordInputAssigneeTypeType? AssigneeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc.RecordInputAssigneeTypeType.AtLocation;
         public string DueForReturnByDate { get; set; }
         public string ActualTimeChangeOccurred { get; set; }
 
@@ -1435,7 +1435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecordSetAssigneeInputAssigneeTypeType
+    public enum RecordInputAssigneeTypeType
     {
         AtLocation,
         AtHome,
@@ -1476,7 +1476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         Street,
         [EnumMember(Value = "Postal")]
@@ -1523,12 +1523,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
         public string ExtraDetails { get; set; }
     }
 
-    public class ReadEventDataInput
+    public class RawEventDataInput
     {
         public string Content { get; set; }
     }
 
-    public class AddAccessControlInput
+    public class AddAccessControlRecordInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
@@ -1601,33 +1601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     {
         [JsonProperty("AccessLocations")]
         public AccessLocationsItem[] ContributeContents { get; set; }
-    }
-
-    public class RemoveAccessControlInput
-    {
-        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int UniqueIdentifier { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
-    }
-
-    public class SetAccessControlInput
-    {
-        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int UniqueIdentifier { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
-    }
-
-    public class InheritAccessControlInput
-    {
-        [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int UniqueIdentifier { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
     }
 }
 

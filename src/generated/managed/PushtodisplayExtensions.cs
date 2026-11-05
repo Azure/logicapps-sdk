@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
     public class PushtodisplayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushtodisplay")]
-        public IBodyWorkflowAction<UpdateResponse, ApiConnectionActionConfiguration> SendUpdate(Expression<Func<SendUpdateInput>> body)
+        public IBodyWorkflowAction<UpdateResponse, ApiConnectionActionConfiguration> SendUpdate(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
         public string UserId { get; set; }
     }
 
-    public class SendUpdateInput
+    public class BodyInput
     {
         [JsonProperty("boardId")]
         public string BoardId { get; set; }
@@ -52,19 +52,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
         public DisplayMessageBlock[] Blocks { get; set; }
 
         [JsonProperty("panelId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendUpdateInputTargetPanelType? TargetPanel { get; set; } = SendUpdateInputTargetPanelType._1;
+        public BodyInputTargetPanelType? TargetPanel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay.BodyInputTargetPanelType._1;
 
         [JsonProperty("fullPanel", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FullPanelMode { get; set; } = false;
 
         [JsonProperty("density", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendUpdateInputContentSpacingType? ContentSpacing { get; set; } = SendUpdateInputContentSpacingType.Standard;
+        public BodyInputContentSpacingType? ContentSpacing { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay.BodyInputContentSpacingType.Standard;
 
         [JsonProperty("alignX", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendUpdateInputHorizontalAlignmentType? HorizontalAlignment { get; set; } = SendUpdateInputHorizontalAlignmentType.Center;
+        public BodyInputHorizontalAlignmentType? HorizontalAlignment { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay.BodyInputHorizontalAlignmentType.Center;
 
         [JsonProperty("alignY", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendUpdateInputVerticalAlignmentType? VerticalAlignment { get; set; } = SendUpdateInputVerticalAlignmentType.Center;
+        public BodyInputVerticalAlignmentType? VerticalAlignment { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay.BodyInputVerticalAlignmentType.Center;
 
         [JsonProperty("background")]
         public string BackgroundColor { get; set; }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
         Bold
     }
 
-    public enum SendUpdateInputTargetPanelType
+    public enum BodyInputTargetPanelType
     {
         _1 = 1,
         _2 = 2,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendUpdateInputContentSpacingType
+    public enum BodyInputContentSpacingType
     {
         [EnumMember(Value = "compact")]
         Compact,
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendUpdateInputHorizontalAlignmentType
+    public enum BodyInputHorizontalAlignmentType
     {
         [EnumMember(Value = "start")]
         Start,
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendUpdateInputVerticalAlignmentType
+    public enum BodyInputVerticalAlignmentType
     {
         [EnumMember(Value = "start")]
         Start,

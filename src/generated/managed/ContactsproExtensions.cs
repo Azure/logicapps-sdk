@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
-        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId, Expression<Func<UpdateContactInput>> body)
+        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId, Expression<Func<BodyInput>> body)
         {
             var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
-        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> contactListId, Expression<Func<CreateContactInput>> body)
+        public IBodyWorkflowAction<Contact, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> contactListId, Expression<Func<BodyInput>> body)
         {
             var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -113,19 +113,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         public string Department { get; set; }
 
         [JsonProperty("internet")]
-        public Internet Internet { get; set; }
+        public CreateContactInternetResponse Internet { get; set; }
 
         [JsonProperty("phones")]
-        public PhoneNumber Phones { get; set; }
+        public CreateContactPhoneNumberResponse Phones { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public CreateContactAddressResponse[] Addresses { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
     }
 
-    public class Internet
+    public class CreateContactInternetResponse
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         public string Twitter { get; set; }
     }
 
-    public class PhoneNumber
+    public class CreateContactPhoneNumberResponse
     {
         [JsonProperty("businessPhone")]
         public string BusinessPhone { get; set; }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         public string BusinessFax { get; set; }
     }
 
-    public class Address
+    public class CreateContactAddressResponse
     {
         [JsonProperty("fullAddress")]
         public string FullAddress { get; set; }
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         public double Lng { get; set; }
     }
 
-    public class UpdateContactInput
+    public class BodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -188,19 +188,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         public string Department { get; set; }
 
         [JsonProperty("internet")]
-        public Internet Internet { get; set; }
+        public CreateContactInternet Internet { get; set; }
 
         [JsonProperty("phones")]
-        public PhoneNumber Phones { get; set; }
+        public CreateContactPhoneNumber Phones { get; set; }
 
         [JsonProperty("addresses")]
-        public Address2[] Addresses { get; set; }
+        public CreateContactAddress[] Addresses { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
     }
 
-    public class Address2
+    public class CreateContactInternet
+    {
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("website")]
+        public string Website { get; set; }
+
+        [JsonProperty("linkedin")]
+        public string Linkedin { get; set; }
+
+        [JsonProperty("facebook")]
+        public string Facebook { get; set; }
+
+        [JsonProperty("twitter")]
+        public string Twitter { get; set; }
+    }
+
+    public class CreateContactPhoneNumber
+    {
+        [JsonProperty("businessPhone")]
+        public string BusinessPhone { get; set; }
+
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+
+        [JsonProperty("home")]
+        public string Home { get; set; }
+
+        [JsonProperty("businessFax")]
+        public string BusinessFax { get; set; }
+    }
+
+    public class CreateContactAddress
     {
         [JsonProperty("fullAddress")]
         public string FullAddress { get; set; }
@@ -210,36 +243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
 
         [JsonProperty("lng")]
         public double? Lng { get; set; }
-    }
-
-    public class CreateContactInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("groupId")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("jobTitle")]
-        public string JobTitle { get; set; }
-
-        [JsonProperty("company")]
-        public string Company { get; set; }
-
-        [JsonProperty("department")]
-        public string Department { get; set; }
-
-        [JsonProperty("internet")]
-        public Internet Internet { get; set; }
-
-        [JsonProperty("phones")]
-        public PhoneNumber Phones { get; set; }
-
-        [JsonProperty("addresses")]
-        public Address2[] Addresses { get; set; }
-
-        [JsonProperty("notes")]
-        public string Notes { get; set; }
     }
 }
 

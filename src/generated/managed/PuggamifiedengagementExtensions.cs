@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
     public class PuggamifiedengagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "puggamifiedengagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreatePlayer(Expression<Func<CreatePlayerInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreatePlayer(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -240,19 +240,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
     {
     }
 
-    public class CreatePlayerInput
+    public class BodyInput
     {
         [JsonProperty("player")]
-        public CreatePlayerInputPlayerType Player { get; set; }
+        public BodyInputPlayerType Player { get; set; }
     }
 
-    public class CreatePlayerInputPlayerType
+    public class BodyInputPlayerType
     {
         [JsonProperty("email")]
         public string Email { get; set; }
 
         [JsonProperty("profile")]
-        public CreatePlayerInputPlayerTypeProfileType Profile { get; set; }
+        public BodyInputPlayerTypeProfileType Profile { get; set; }
 
         [JsonProperty("external_realm")]
         public string ExternalRealm { get; set; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Puggamifiedengagement
         public string ExternalRealmId { get; set; }
     }
 
-    public class CreatePlayerInputPlayerTypeProfileType
+    public class BodyInputPlayerTypeProfileType
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }

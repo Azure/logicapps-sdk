@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
     public class CourieripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<MessageSendPostResponse, ApiConnectionActionConfiguration> MessageSend(Expression<Func<string>> idempotency, Expression<Func<MessageSendPostInput>> body = null)
+        public IBodyWorkflowAction<MessageSendResponse, ApiConnectionActionConfiguration> MessageSend(Expression<Func<string>> idempotency, Expression<Func<MessageSendBodyInput>> body = null)
         {
             var __workflow_idempotency = WorkflowExpression.Compile(idempotency, nameof(idempotency), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MessageSendPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MessageSendResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/send";
                 var apiCallHttpMethod = "post";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
                 callPayload.Queries["idempotency"] = ExpressionConverter.Convert(__workflow_idempotency);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MessageSendPostResponse>(callPayload);
+                return new ApiConnectionAction<MessageSendResponse>(callPayload);
             });
         }
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AudiencePutResponse, ApiConnectionActionConfiguration> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<AudiencePutInput>> body = null)
+        public IBodyWorkflowAction<AudiencePutResponse, ApiConnectionActionConfiguration> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<AudiencePutBodyInput>> body = null)
         {
             var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -131,33 +131,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AutomationTemplatedPostResponse, ApiConnectionActionConfiguration> AutomationTemplated(Expression<Func<string>> templateId, Expression<Func<AutomationTemplatedPostInput>> body = null)
+        public IBodyWorkflowAction<AutomationTemplatedResponse, ApiConnectionActionConfiguration> AutomationTemplated(Expression<Func<string>> templateId, Expression<Func<AutomationTemplatedBodyInput>> body = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AutomationTemplatedPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AutomationTemplatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/automations/{0}/invoke", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AutomationTemplatedPostResponse>(callPayload);
+                return new ApiConnectionAction<AutomationTemplatedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<AutomationAdHocPostResponse, ApiConnectionActionConfiguration> AutomationAdHoc(Expression<Func<AutomationAdHocPostInput>> body = null)
+        public IBodyWorkflowAction<AutomationAdHocResponse, ApiConnectionActionConfiguration> AutomationAdHoc(Expression<Func<AutomationAdHocBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<AutomationAdHocPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AutomationAdHocResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/automations/invoke";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<AutomationAdHocPostResponse>(callPayload);
+                return new ApiConnectionAction<AutomationAdHocResponse>(callPayload);
             });
         }
 
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Brand(Expression<Func<BrandPostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Brand(Expression<Func<BrandBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -205,17 +205,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<BulkJobPostResponse, ApiConnectionActionConfiguration> BulkJob(Expression<Func<BulkJobPostInput>> body = null)
+        public IBodyWorkflowAction<BulkJobResponse, ApiConnectionActionConfiguration> BulkJob(Expression<Func<BulkJobBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<BulkJobPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BulkJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bulk";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<BulkJobPostResponse>(callPayload);
+                return new ApiConnectionAction<BulkJobResponse>(callPayload);
             });
         }
 
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BulkJobUsers(Expression<Func<string>> jobId, Expression<Func<BulkJobUsersPostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> BulkJobUsers(Expression<Func<string>> jobId, Expression<Func<BulkJobUsersBodyInput>> body = null)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListPut(Expression<Func<string>> listId, Expression<Func<ListPutInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListPut(Expression<Func<string>> listId, Expression<Func<ListPutBodyInput>> body = null)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListSubscribers(Expression<Func<string>> listId, Expression<Func<ListSubscribersPostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ListSubscribers(Expression<Func<string>> listId, Expression<Func<ListSubscribersBodyInput>> body = null)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Profile(Expression<Func<string>> recipientId, Expression<Func<ProfilePostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Profile(Expression<Func<string>> recipientId, Expression<Func<ProfileBodyInput>> body = null)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
-        public IBodyWorkflowAction<ProfilePatchResponse, ApiConnectionActionConfiguration> ProfilePatch(Expression<Func<string>> recipientId, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<ProfilePatchResponse, ApiConnectionActionConfiguration> ProfilePatch(Expression<Func<string>> recipientId, Expression<Func<BodyInputItem[]>> body = null)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -559,28 +559,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
     {
     }
 
-    public class MessageSendPostResponse
+    public class MessageSendResponse
     {
         [JsonProperty("requestId")]
         public string RequestId { get; set; }
     }
 
-    public class MessageSendPostInput
+    public class MessageSendBodyInput
     {
         [JsonProperty("message")]
-        public MessageSendPostInputMessageType Message { get; set; }
+        public MessageSendBodyInputMessageType Message { get; set; }
     }
 
-    public class MessageSendPostInputMessageType
+    public class MessageSendBodyInputMessageType
     {
         [JsonProperty("content")]
-        public MessageSendPostInputMessageTypeContentType Content { get; set; }
+        public BodyInputMessageTypeContentType Content { get; set; }
 
         [JsonProperty("to")]
-        public MessageSendPostInputMessageTypeToType To { get; set; }
+        public BodyInputMessageTypeToType To { get; set; }
     }
 
-    public class MessageSendPostInputMessageTypeContentType
+    public class BodyInputMessageTypeContentType
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Body { get; set; }
     }
 
-    public class MessageSendPostInputMessageTypeToType
+    public class BodyInputMessageTypeToType
     {
         [JsonProperty("user_id")]
         public string UserId { get; set; }
@@ -685,16 +685,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Value { get; set; }
     }
 
-    public class AudiencePutInput
+    public class AudiencePutBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("filter")]
-        public AudiencePutInputFilterType Filter { get; set; }
+        public BodyInputFilterType Filter { get; set; }
     }
 
-    public class AudiencePutInputFilterType
+    public class BodyInputFilterType
     {
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -706,10 +706,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Value { get; set; }
 
         [JsonProperty("filters")]
-        public AudiencePutInputFilterTypeFiltersTypeItem[] Filters { get; set; }
+        public BodyInputFilterTypeFiltersTypeItem[] Filters { get; set; }
     }
 
-    public class AudiencePutInputFilterTypeFiltersTypeItem
+    public class BodyInputFilterTypeFiltersTypeItem
     {
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -898,13 +898,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Email { get; set; }
     }
 
-    public class AutomationTemplatedPostResponse
+    public class AutomationTemplatedResponse
     {
         [JsonProperty("runId")]
         public string RunId { get; set; }
     }
 
-    public class AutomationTemplatedPostInput
+    public class AutomationTemplatedBodyInput
     {
         [JsonProperty("brand")]
         public string Brand { get; set; }
@@ -922,16 +922,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Profile { get; set; }
     }
 
-    public class AutomationAdHocPostResponse
+    public class AutomationAdHocResponse
     {
         [JsonProperty("runId")]
         public string RunId { get; set; }
     }
 
-    public class AutomationAdHocPostInput
+    public class AutomationAdHocBodyInput
     {
         [JsonProperty("automation")]
-        public AutomationAdHocPostInputAutomationType Automation { get; set; }
+        public BodyInputAutomationType Automation { get; set; }
 
         [JsonProperty("brand")]
         public string Brand { get; set; }
@@ -949,7 +949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Profile { get; set; }
     }
 
-    public class AutomationAdHocPostInputAutomationType
+    public class BodyInputAutomationType
     {
         [JsonProperty("steps")]
         public JToken[] Steps { get; set; }
@@ -1129,7 +1129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string[] Items { get; set; }
     }
 
-    public class BrandPostInput
+    public class BrandBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1138,25 +1138,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Name { get; set; }
 
         [JsonProperty("settings")]
-        public BrandPostInputSettingsType Settings { get; set; }
+        public BodyInputSettingsType Settings { get; set; }
 
         [JsonProperty("snippets")]
-        public BrandPostInputSnippetsType Snippets { get; set; }
+        public BodyInputSnippetsType Snippets { get; set; }
     }
 
-    public class BrandPostInputSettingsType
+    public class BodyInputSettingsType
     {
         [JsonProperty("colors")]
-        public BrandPostInputSettingsTypeColorsType Colors { get; set; }
+        public BodyInputSettingsTypeColorsType Colors { get; set; }
 
         [JsonProperty("email")]
-        public BrandPostInputSettingsTypeEmailType Email { get; set; }
+        public BodyInputSettingsTypeEmailType Email { get; set; }
 
         [JsonProperty("inapp")]
-        public BrandPostInputSettingsTypeInappType Inapp { get; set; }
+        public BodyInputSettingsTypeInappType Inapp { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeColorsType
+    public class BodyInputSettingsTypeColorsType
     {
         [JsonProperty("primary")]
         public string Primary { get; set; }
@@ -1168,25 +1168,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Tertiary { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailType
+    public class BodyInputSettingsTypeEmailType
     {
         [JsonProperty("header")]
-        public BrandPostInputSettingsTypeEmailTypeHeaderType Header { get; set; }
+        public BodyInputSettingsTypeEmailTypeHeaderType Header { get; set; }
 
         [JsonProperty("footer")]
-        public BrandPostInputSettingsTypeEmailTypeFooterType Footer { get; set; }
+        public BodyInputSettingsTypeEmailTypeFooterType Footer { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeHeaderType
+    public class BodyInputSettingsTypeEmailTypeHeaderType
     {
         [JsonProperty("barColor")]
         public string BarColor { get; set; }
 
         [JsonProperty("logo")]
-        public BrandPostInputSettingsTypeEmailTypeHeaderTypeLogoType Logo { get; set; }
+        public BodyInputSettingsTypeEmailTypeHeaderTypeLogoType Logo { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeHeaderTypeLogoType
+    public class BodyInputSettingsTypeEmailTypeHeaderTypeLogoType
     {
         [JsonProperty("href")]
         public string Href { get; set; }
@@ -1195,64 +1195,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Image { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeFooterType
+    public class BodyInputSettingsTypeEmailTypeFooterType
     {
         [JsonProperty("markdown")]
         public string Markdown { get; set; }
 
         [JsonProperty("social")]
-        public BrandPostInputSettingsTypeEmailTypeFooterTypeSocialType Social { get; set; }
+        public BodyInputSettingsTypeEmailTypeFooterTypeSocialType Social { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeFooterTypeSocialType
+    public class BodyInputSettingsTypeEmailTypeFooterTypeSocialType
     {
         [JsonProperty("facebook")]
-        public BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeFacebookType Facebook { get; set; }
+        public BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeFacebookType Facebook { get; set; }
 
         [JsonProperty("instagram")]
-        public BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeInstagramType Instagram { get; set; }
+        public BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeInstagramType Instagram { get; set; }
 
         [JsonProperty("linkedin")]
-        public BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeLinkedinType Linkedin { get; set; }
+        public BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeLinkedinType Linkedin { get; set; }
 
         [JsonProperty("medium")]
-        public BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeMediumType Medium { get; set; }
+        public BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeMediumType Medium { get; set; }
 
         [JsonProperty("twitter")]
-        public BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeTwitterType Twitter { get; set; }
+        public BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeTwitterType Twitter { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeFacebookType
+    public class BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeFacebookType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeInstagramType
+    public class BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeInstagramType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeLinkedinType
+    public class BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeLinkedinType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeMediumType
+    public class BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeMediumType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeEmailTypeFooterTypeSocialTypeTwitterType
+    public class BodyInputSettingsTypeEmailTypeFooterTypeSocialTypeTwitterType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class BrandPostInputSettingsTypeInappType
+    public class BodyInputSettingsTypeInappType
     {
         [JsonProperty("disableMessageIcon")]
         public bool? DisableMessageIcon { get; set; }
@@ -1264,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Preferences { get; set; }
     }
 
-    public class BrandPostInputSnippetsType
+    public class BodyInputSnippetsType
     {
         [JsonProperty("items")]
         public string[] Items { get; set; }
@@ -1423,19 +1423,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string[] Items { get; set; }
     }
 
-    public class BulkJobPostResponse
+    public class BulkJobResponse
     {
         [JsonProperty("jobId")]
         public string JobId { get; set; }
     }
 
-    public class BulkJobPostInput
+    public class BulkJobBodyInput
     {
         [JsonProperty("message")]
-        public BulkJobPostInputMessageType Message { get; set; }
+        public BulkJobBodyInputMessageType Message { get; set; }
     }
 
-    public class BulkJobPostInputMessageType
+    public class BulkJobBodyInputMessageType
     {
         [JsonProperty("event")]
         public string Event { get; set; }
@@ -1456,7 +1456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string BrandId { get; set; }
 
         [JsonProperty("routing")]
-        public BulkJobPostInputMessageTypeRoutingType Routing { get; set; }
+        public BodyInputMessageTypeRoutingType Routing { get; set; }
 
         [JsonProperty("channels")]
         public JToken Channels { get; set; }
@@ -1465,10 +1465,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Providers { get; set; }
 
         [JsonProperty("metadata")]
-        public BulkJobPostInputMessageTypeMetadataType Metadata { get; set; }
+        public BodyInputMessageTypeMetadataType Metadata { get; set; }
     }
 
-    public class BulkJobPostInputMessageTypeRoutingType
+    public class BodyInputMessageTypeRoutingType
     {
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -1477,7 +1477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string[] Channels { get; set; }
     }
 
-    public class BulkJobPostInputMessageTypeMetadataType
+    public class BodyInputMessageTypeMetadataType
     {
         [JsonProperty("event")]
         public string Event { get; set; }
@@ -1489,10 +1489,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string TraceId { get; set; }
 
         [JsonProperty("utm")]
-        public BulkJobPostInputMessageTypeMetadataTypeUtmType Utm { get; set; }
+        public BodyInputMessageTypeMetadataTypeUtmType Utm { get; set; }
     }
 
-    public class BulkJobPostInputMessageTypeMetadataTypeUtmType
+    public class BodyInputMessageTypeMetadataTypeUtmType
     {
         [JsonProperty("campaign")]
         public string Campaign { get; set; }
@@ -1540,13 +1540,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Event { get; set; }
     }
 
-    public class BulkJobUsersPostInput
+    public class BulkJobUsersBodyInput
     {
         [JsonProperty("users")]
-        public BulkJobUsersPostInputUsersTypeItem[] Users { get; set; }
+        public BodyInputUsersTypeItem[] Users { get; set; }
     }
 
-    public class BulkJobUsersPostInputUsersTypeItem
+    public class BodyInputUsersTypeItem
     {
         [JsonProperty("recipient")]
         public string Recipient { get; set; }
@@ -1666,16 +1666,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Categories { get; set; }
     }
 
-    public class ListPutInput
+    public class ListPutBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("preferences")]
-        public ListPutInputPreferencesType Preferences { get; set; }
+        public BodyInputPreferencesType Preferences { get; set; }
     }
 
-    public class ListPutInputPreferencesType
+    public class BodyInputPreferencesType
     {
         [JsonProperty("notifications")]
         public JToken Notifications { get; set; }
@@ -1723,22 +1723,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Categories { get; set; }
     }
 
-    public class ListSubscribersPostInput
+    public class ListSubscribersBodyInput
     {
         [JsonProperty("recipients")]
-        public ListSubscribersPostInputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
     }
 
-    public class ListSubscribersPostInputRecipientsTypeItem
+    public class BodyInputRecipientsTypeItem
     {
         [JsonProperty("recipientId")]
         public string RecipientId { get; set; }
 
         [JsonProperty("preferences")]
-        public ListSubscribersPostInputRecipientsTypeItemPreferencesType Preferences { get; set; }
+        public BodyInputRecipientsTypeItemPreferencesType Preferences { get; set; }
     }
 
-    public class ListSubscribersPostInputRecipientsTypeItemPreferencesType
+    public class BodyInputRecipientsTypeItemPreferencesType
     {
         [JsonProperty("notifications")]
         public JToken Notifications { get; set; }
@@ -2053,13 +2053,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Status { get; set; }
     }
 
-    public class ProfilePostInput
+    public class ProfileBodyInput
     {
         [JsonProperty("profile")]
-        public ProfilePostInputProfileType Profile { get; set; }
+        public BodyInputProfileType Profile { get; set; }
     }
 
-    public class ProfilePostInputProfileType
+    public class BodyInputProfileType
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -2068,7 +2068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("address")]
-        public ProfilePostInputProfileTypeAddressType Address { get; set; }
+        public BodyInputProfileTypeAddressType Address { get; set; }
 
         [JsonProperty("birthdate")]
         public string Birthdate { get; set; }
@@ -2119,10 +2119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Custom { get; set; }
 
         [JsonProperty("airship")]
-        public ProfilePostInputProfileTypeAirshipType Airship { get; set; }
+        public BodyInputProfileTypeAirshipType Airship { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAddressType
+    public class BodyInputProfileTypeAddressType
     {
         [JsonProperty("formatted")]
         public string Formatted { get; set; }
@@ -2143,10 +2143,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Country { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipType
+    public class BodyInputProfileTypeAirshipType
     {
         [JsonProperty("audience")]
-        public ProfilePostInputProfileTypeAirshipTypeAudienceType Audience { get; set; }
+        public BodyInputProfileTypeAirshipTypeAudienceType Audience { get; set; }
 
         [JsonProperty("device_types")]
         public string[] DeviceTypes { get; set; }
@@ -2158,10 +2158,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string TargetArn { get; set; }
 
         [JsonProperty("discord")]
-        public ProfilePostInputProfileTypeAirshipTypeDiscordType Discord { get; set; }
+        public BodyInputProfileTypeAirshipTypeDiscordType Discord { get; set; }
 
         [JsonProperty("expo")]
-        public ProfilePostInputProfileTypeAirshipTypeExpoType Expo { get; set; }
+        public BodyInputProfileTypeAirshipTypeExpoType Expo { get; set; }
 
         [JsonProperty("facebookPSID")]
         public string FacebookPSId { get; set; }
@@ -2170,28 +2170,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string FirebaseToken { get; set; }
 
         [JsonProperty("intercom")]
-        public ProfilePostInputProfileTypeAirshipTypeIntercomType Intercom { get; set; }
+        public BodyInputProfileTypeAirshipTypeIntercomType Intercom { get; set; }
 
         [JsonProperty("ms_teams")]
-        public ProfilePostInputProfileTypeAirshipTypeMsTeamsType MsTeams { get; set; }
+        public BodyInputProfileTypeAirshipTypeMsTeamsType MsTeams { get; set; }
 
         [JsonProperty("oneSignalPlayerID")]
         public string OneSignalPlayerId { get; set; }
 
         [JsonProperty("slack")]
-        public ProfilePostInputProfileTypeAirshipTypeSlackType Slack { get; set; }
+        public BodyInputProfileTypeAirshipTypeSlackType Slack { get; set; }
 
         [JsonProperty("webhook")]
-        public ProfilePostInputProfileTypeAirshipTypeWebhookType Webhook { get; set; }
+        public BodyInputProfileTypeAirshipTypeWebhookType Webhook { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeAudienceType
+    public class BodyInputProfileTypeAirshipTypeAudienceType
     {
         [JsonProperty("named_user")]
         public string NamedUser { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeDiscordType
+    public class BodyInputProfileTypeAirshipTypeDiscordType
     {
         [JsonProperty("channel_id")]
         public string ChannelId { get; set; }
@@ -2200,7 +2200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string UserId { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeExpoType
+    public class BodyInputProfileTypeAirshipTypeExpoType
     {
         [JsonProperty("token")]
         public string Token { get; set; }
@@ -2209,22 +2209,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string[] Tokens { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeIntercomType
+    public class BodyInputProfileTypeAirshipTypeIntercomType
     {
         [JsonProperty("from")]
         public string From { get; set; }
 
         [JsonProperty("to")]
-        public ProfilePostInputProfileTypeAirshipTypeIntercomTypeToType To { get; set; }
+        public BodyInputProfileTypeAirshipTypeIntercomTypeToType To { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeIntercomTypeToType
+    public class BodyInputProfileTypeAirshipTypeIntercomTypeToType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeMsTeamsType
+    public class BodyInputProfileTypeAirshipTypeMsTeamsType
     {
         [JsonProperty("user_id")]
         public string UserId { get; set; }
@@ -2239,7 +2239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string ServiceUrl { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeSlackType
+    public class BodyInputProfileTypeAirshipTypeSlackType
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }
@@ -2254,16 +2254,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string UserId { get; set; }
 
         [JsonProperty("incoming_webhook")]
-        public ProfilePostInputProfileTypeAirshipTypeSlackTypeIncomingWebhookType IncomingWebhook { get; set; }
+        public BodyInputProfileTypeAirshipTypeSlackTypeIncomingWebhookType IncomingWebhook { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeSlackTypeIncomingWebhookType
+    public class BodyInputProfileTypeAirshipTypeSlackTypeIncomingWebhookType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeWebhookType
+    public class BodyInputProfileTypeAirshipTypeWebhookType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -2275,13 +2275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public JToken Headers { get; set; }
 
         [JsonProperty("authentication")]
-        public ProfilePostInputProfileTypeAirshipTypeWebhookTypeAuthenticationType Authentication { get; set; }
+        public BodyInputProfileTypeAirshipTypeWebhookTypeAuthenticationType Authentication { get; set; }
 
         [JsonProperty("profile")]
         public string Profile { get; set; }
     }
 
-    public class ProfilePostInputProfileTypeAirshipTypeWebhookTypeAuthenticationType
+    public class BodyInputProfileTypeAirshipTypeWebhookTypeAuthenticationType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -2302,10 +2302,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Status { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
-        [JsonProperty("op")]
-        public bodyInputItemOpType Op { get; set; }
+        [JsonProperty("op", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemOpType? Op { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Courierip.BodyInputItemOpType.Add;
 
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -2315,7 +2315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemOpType
+    public enum BodyInputItemOpType
     {
         [EnumMember(Value = "add")]
         Add,

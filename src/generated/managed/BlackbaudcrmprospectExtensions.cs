@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     public class BlackbaudcrmprospectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedUnplannedContactReport, ApiConnectionActionConfiguration> CreateUnplannedContactReport(Expression<Func<CreateUnplannedContactReportInput>> body)
+        public IBodyWorkflowAction<PrsmgCreatedUnplannedContactReport, ApiConnectionActionConfiguration> CreateUnplannedContactReport(Expression<Func<CreateUnplannedContactReportBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PrsmgCreatedUnplannedContactReport, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditProspectContactReport(Expression<Func<string>> contactReportId, Expression<Func<EditProspectContactReportInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditProspectContactReport(Expression<Func<string>> contactReportId, Expression<Func<EditProspectContactReportBodyInput>> body)
         {
             var __workflow_contactReportId = WorkflowExpression.Compile(contactReportId, nameof(contactReportId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedProspectOpportunity, ApiConnectionActionConfiguration> CreateProspectOpportunity(Expression<Func<CreateProspectOpportunityInput>> body)
+        public IBodyWorkflowAction<PrsmgCreatedProspectOpportunity, ApiConnectionActionConfiguration> CreateProspectOpportunity(Expression<Func<CreateProspectOpportunityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PrsmgCreatedProspectOpportunity, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgProspectOpportunitySearchResultCollection, ApiConnectionActionConfiguration> SearchProspectOpportunities(Expression<Func<string>> keyname = null, Expression<Func<string>> firstname = null, Expression<Func<string>> lookupId = null, Expression<Func<bool>> exactmatchonly = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> askDate = null, Expression<Func<double>> askAmount = null, Expression<Func<string>> designationuserid = null, Expression<Func<bool>> onlyProspects = null, Expression<Func<bool>> onlyFundraisers = null, Expression<Func<bool>> onlyStaff = null, Expression<Func<bool>> onlyVolunteers = null, Expression<Func<bool>> onlyPrimaryAddress = null, Expression<Func<bool>> includedeceased = null, Expression<Func<bool>> includeinactive = null, Expression<Func<bool>> checknickname = null, Expression<Func<bool>> checkaliases = null, Expression<Func<bool>> checkalternatelookupids = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<PrsmgProspectOpportunitySearchResultCollection, ApiConnectionActionConfiguration> SearchProspectOpportunities(Expression<Func<string>> keyname = null, Expression<Func<string>> firstname = null, Expression<Func<string>> lookupId = null, Expression<Func<bool>> exactmatchonly = null, Expression<Func<StatusInput>> status = null, Expression<Func<string>> askDate = null, Expression<Func<double>> askAmount = null, Expression<Func<string>> designationuserid = null, Expression<Func<bool>> onlyProspects = null, Expression<Func<bool>> onlyFundraisers = null, Expression<Func<bool>> onlyStaff = null, Expression<Func<bool>> onlyVolunteers = null, Expression<Func<bool>> onlyPrimaryAddress = null, Expression<Func<bool>> includedeceased = null, Expression<Func<bool>> includeinactive = null, Expression<Func<bool>> checknickname = null, Expression<Func<bool>> checkaliases = null, Expression<Func<bool>> checkalternatelookupids = null, Expression<Func<int>> limit = null)
         {
             var __workflow_keyname = WorkflowExpression.Compile(keyname, nameof(keyname), required: false);
             var __workflow_firstname = WorkflowExpression.Compile(firstname, nameof(firstname), required: false);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditProspectOpportunity(Expression<Func<string>> opportunityId, Expression<Func<EditProspectOpportunityInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditProspectOpportunity(Expression<Func<string>> opportunityId, Expression<Func<EditProspectOpportunityBodyInput>> body)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgPlanOpportunityCollection, ApiConnectionActionConfiguration> ListPlanOpportunities(Expression<Func<string>> planId, Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<PrsmgPlanOpportunityCollection, ApiConnectionActionConfiguration> ListPlanOpportunities(Expression<Func<string>> planId, Expression<Func<StatusInput>> status = null)
         {
             var __workflow_planId = WorkflowExpression.Compile(planId, nameof(planId), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlan, ApiConnectionActionConfiguration> CreateMajorGivingPlan(Expression<Func<CreateMajorGivingPlanInput>> body)
+        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlan, ApiConnectionActionConfiguration> CreateMajorGivingPlan(Expression<Func<CreateMajorGivingPlanBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PrsmgCreatedMajorGivingPlan, ApiConnectionActionConfiguration>(() =>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditProspect(Expression<Func<string>> constituentId, Expression<Func<EditProspectInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditProspect(Expression<Func<string>> constituentId, Expression<Func<EditProspectBodyInput>> body)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedProspectConstituency, ApiConnectionActionConfiguration> CreateProspectConstituency(Expression<Func<CreateProspectConstituencyInput>> body)
+        public IBodyWorkflowAction<PrsmgCreatedProspectConstituency, ApiConnectionActionConfiguration> CreateProspectConstituency(Expression<Func<CreateProspectConstituencyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PrsmgCreatedProspectConstituency, ApiConnectionActionConfiguration>(() =>
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlanStep, ApiConnectionActionConfiguration> CreateMajorGivingPlanStep(Expression<Func<CreateMajorGivingPlanStepInput>> body)
+        public IBodyWorkflowAction<PrsmgCreatedMajorGivingPlanStep, ApiConnectionActionConfiguration> CreateMajorGivingPlanStep(Expression<Func<CreateMajorGivingPlanStepBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PrsmgCreatedMajorGivingPlanStep, ApiConnectionActionConfiguration>(() =>
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditMajorGivingPlanStep(Expression<Func<string>> vProspectPlanId, Expression<Func<string>> stepId, Expression<Func<EditMajorGivingPlanStepInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditMajorGivingPlanStep(Expression<Func<string>> vProspectPlanId, Expression<Func<string>> stepId, Expression<Func<EditMajorGivingPlanStepBodyInput>> body)
         {
             var __workflow_vProspectPlanId = WorkflowExpression.Compile(vProspectPlanId, nameof(vProspectPlanId), required: true);
             var __workflow_stepId = WorkflowExpression.Compile(stepId, nameof(stepId), required: true);
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlan, ApiConnectionActionConfiguration> CreateStewardshipPlan(Expression<Func<CreateStewardshipPlanInput>> body)
+        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlan, ApiConnectionActionConfiguration> CreateStewardshipPlan(Expression<Func<CreateStewardshipPlanBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PrsmgCreatedStewardshipPlan, ApiConnectionActionConfiguration>(() =>
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlanStep, ApiConnectionActionConfiguration> CreateStewardshipPlanStep(Expression<Func<CreateStewardshipPlanStepInput>> body)
+        public IBodyWorkflowAction<PrsmgCreatedStewardshipPlanStep, ApiConnectionActionConfiguration> CreateStewardshipPlanStep(Expression<Func<CreateStewardshipPlanStepBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PrsmgCreatedStewardshipPlanStep, ApiConnectionActionConfiguration>(() =>
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmprospect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditStewardshipPlanStep(Expression<Func<string>> stepId, Expression<Func<EditStewardshipPlanStepInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditStewardshipPlanStep(Expression<Func<string>> stepId, Expression<Func<EditStewardshipPlanStepBodyInput>> body)
         {
             var __workflow_stepId = WorkflowExpression.Compile(stepId, nameof(stepId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class CreateUnplannedContactReportInput
+    public class CreateUnplannedContactReportBodyInput
     {
         [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
@@ -490,10 +490,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ActualDate { get; set; }
 
         [JsonProperty("actual_start_time")]
-        public CreateUnplannedContactReportInputActualStartType ActualStart { get; set; }
+        public BodyInputActualStartType ActualStart { get; set; }
 
         [JsonProperty("actual_end_time")]
-        public CreateUnplannedContactReportInputActualEndType ActualEnd { get; set; }
+        public BodyInputActualEndType ActualEnd { get; set; }
 
         [JsonProperty("prospect_plan_status", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Stage { get; set; }
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public PrsmgNewUnplannedContactReportParticipant[] Participants { get; set; }
     }
 
-    public class CreateUnplannedContactReportInputActualStartType
+    public class BodyInputActualStartType
     {
         [JsonProperty("hour")]
         public int? Hour { get; set; }
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public int? Minute { get; set; }
     }
 
-    public class CreateUnplannedContactReportInputActualEndType
+    public class BodyInputActualEndType
     {
         [JsonProperty("hour")]
         public int? Hour { get; set; }
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class EditProspectContactReportInput
+    public class EditProspectContactReportBodyInput
     {
         [JsonProperty("objective")]
         public string Objective { get; set; }
@@ -559,10 +559,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ActualDate { get; set; }
 
         [JsonProperty("actual_start_time")]
-        public EditProspectContactReportInputActualStartType ActualStart { get; set; }
+        public BodyInputActualStartType ActualStart { get; set; }
 
         [JsonProperty("actual_end_time")]
-        public EditProspectContactReportInputActualEndType ActualEnd { get; set; }
+        public BodyInputActualEndType ActualEnd { get; set; }
 
         [JsonProperty("prospect_plan_status")]
         public string Stage { get; set; }
@@ -580,37 +580,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Comment { get; set; }
     }
 
-    public class EditProspectContactReportInputActualStartType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class EditProspectContactReportInputActualEndType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
     public class PrsmgCreatedProspectOpportunity
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateProspectOpportunityInput
+    public class CreateProspectOpportunityBodyInput
     {
         [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProspectOpportunityInputStatusType Status { get; set; }
+        public CreateProspectOpportunityBodyInputStatusType Status { get; set; }
 
         [JsonProperty("opportunity_type")]
         public string Type { get; set; }
@@ -644,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateProspectOpportunityInputStatusType
+    public enum CreateProspectOpportunityBodyInputStatusType
     {
         Unqualified,
         Qualified,
@@ -698,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         Unqualified,
         Qualified,
@@ -790,10 +772,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public int Sequence { get; set; }
     }
 
-    public class EditProspectOpportunityInput
+    public class EditProspectOpportunityBodyInput
     {
         [JsonProperty("status")]
-        public EditProspectOpportunityInputStatusType? Status { get; set; }
+        public CreateProspectOpportunityBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("opportunity_type")]
         public string Type { get; set; }
@@ -824,18 +806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
         [JsonProperty("transaction_currency")]
         public string TransactionCurrency { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditProspectOpportunityInputStatusType
-    {
-        Unqualified,
-        Qualified,
-        [EnumMember(Value = "Response pending")]
-        ResponsePending,
-        Accepted,
-        Rejected,
-        Canceled
     }
 
     public class PrsmgPlanOpportunityCollection
@@ -880,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class CreateMajorGivingPlanInput
+    public class CreateMajorGivingPlanBodyInput
     {
         [JsonProperty("prospect_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProspectId { get; set; }
@@ -1132,7 +1102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Phone { get; set; }
     }
 
-    public class EditProspectInput
+    public class EditProspectBodyInput
     {
         [JsonProperty("prospect_manager_fundraiser_id")]
         public string ManagerId { get; set; }
@@ -1204,7 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class CreateProspectConstituencyInput
+    public class CreateProspectConstituencyBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
@@ -1222,7 +1192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class CreateMajorGivingPlanStepInput
+    public class CreateMajorGivingPlanStepBodyInput
     {
         [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
@@ -1234,7 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Type { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateMajorGivingPlanStepInputStatusType Status { get; set; }
+        public CreateMajorGivingPlanStepBodyInputStatusType Status { get; set; }
 
         [JsonProperty("expected_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExpectedDate { get; set; }
@@ -1258,10 +1228,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public bool? AllDayEvent { get; set; }
 
         [JsonProperty("expected_start_time")]
-        public CreateMajorGivingPlanStepInputExpectedStartType ExpectedStart { get; set; }
+        public BodyInputExpectedStartType ExpectedStart { get; set; }
 
         [JsonProperty("expected_end_time")]
-        public CreateMajorGivingPlanStepInputExpectedEndType ExpectedEnd { get; set; }
+        public BodyInputExpectedEndType ExpectedEnd { get; set; }
 
         [JsonProperty("time_zone_entry")]
         public string TimeZone { get; set; }
@@ -1270,10 +1240,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ActualDate { get; set; }
 
         [JsonProperty("actual_start_time")]
-        public CreateMajorGivingPlanStepInputActualStartType ActualStart { get; set; }
+        public BodyInputActualStartType ActualStart { get; set; }
 
         [JsonProperty("actual_end_time")]
-        public CreateMajorGivingPlanStepInputActualEndType ActualEnd { get; set; }
+        public BodyInputActualEndType ActualEnd { get; set; }
 
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -1289,7 +1259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateMajorGivingPlanStepInputStatusType
+    public enum CreateMajorGivingPlanStepBodyInputStatusType
     {
         Planned,
         Pending,
@@ -1298,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         Declined
     }
 
-    public class CreateMajorGivingPlanStepInputExpectedStartType
+    public class BodyInputExpectedStartType
     {
         [JsonProperty("hour")]
         public int? Hour { get; set; }
@@ -1307,25 +1277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public int? Minute { get; set; }
     }
 
-    public class CreateMajorGivingPlanStepInputExpectedEndType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class CreateMajorGivingPlanStepInputActualStartType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class CreateMajorGivingPlanStepInputActualEndType
+    public class BodyInputExpectedEndType
     {
         [JsonProperty("hour")]
         public int? Hour { get; set; }
@@ -1346,7 +1298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class EditMajorGivingPlanStepInput
+    public class EditMajorGivingPlanStepBodyInput
     {
         [JsonProperty("objective")]
         public string Objective { get; set; }
@@ -1355,7 +1307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Type { get; set; }
 
         [JsonProperty("status")]
-        public EditMajorGivingPlanStepInputStatusType? Status { get; set; }
+        public CreateMajorGivingPlanStepBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("expected_date")]
         public string ExpectedDate { get; set; }
@@ -1379,10 +1331,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public bool? AllDayEvent { get; set; }
 
         [JsonProperty("expected_start_time")]
-        public EditMajorGivingPlanStepInputExpectedStartType ExpectedStart { get; set; }
+        public BodyInputExpectedStartType ExpectedStart { get; set; }
 
         [JsonProperty("expected_end_time")]
-        public EditMajorGivingPlanStepInputExpectedEndType ExpectedEnd { get; set; }
+        public BodyInputExpectedEndType ExpectedEnd { get; set; }
 
         [JsonProperty("time_zone_entry")]
         public string TimeZone { get; set; }
@@ -1391,59 +1343,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ActualDate { get; set; }
 
         [JsonProperty("actual_start_time")]
-        public EditMajorGivingPlanStepInputActualStartType ActualStart { get; set; }
+        public BodyInputActualStartType ActualStart { get; set; }
 
         [JsonProperty("actual_end_time")]
-        public EditMajorGivingPlanStepInputActualEndType ActualEnd { get; set; }
+        public BodyInputActualEndType ActualEnd { get; set; }
 
         [JsonProperty("other_location")]
         public string OtherLocation { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditMajorGivingPlanStepInputStatusType
-    {
-        Planned,
-        Pending,
-        Completed,
-        Cancelled,
-        Declined
-    }
-
-    public class EditMajorGivingPlanStepInputExpectedStartType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class EditMajorGivingPlanStepInputExpectedEndType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class EditMajorGivingPlanStepInputActualStartType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class EditMajorGivingPlanStepInputActualEndType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
     }
 
     public class PrsmgCreatedStewardshipPlan
@@ -1452,7 +1358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class CreateStewardshipPlanInput
+    public class CreateStewardshipPlanBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProspectId { get; set; }
@@ -1497,7 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string Id { get; set; }
     }
 
-    public class CreateStewardshipPlanStepInput
+    public class CreateStewardshipPlanStepBodyInput
     {
         [JsonProperty("stewardship_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
@@ -1515,16 +1421,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public bool? AllDayEvent { get; set; }
 
         [JsonProperty("target_start_time")]
-        public CreateStewardshipPlanStepInputTargetStartType TargetStart { get; set; }
+        public BodyInputTargetStartType TargetStart { get; set; }
 
         [JsonProperty("target_end_time")]
-        public CreateStewardshipPlanStepInputTargetEndType TargetEnd { get; set; }
+        public BodyInputTargetEndType TargetEnd { get; set; }
 
         [JsonProperty("time_zone_entry")]
         public string TimeZone { get; set; }
 
         [JsonProperty("status_code")]
-        public CreateStewardshipPlanStepInputStatusType? Status { get; set; }
+        public CreateStewardshipPlanStepBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("category")]
         public string Category { get; set; }
@@ -1536,7 +1442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ContactMethod { get; set; }
 
         [JsonProperty("recurs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStewardshipPlanStepInputFrequencyType Frequency { get; set; }
+        public BodyInputFrequencyType Frequency { get; set; }
 
         [JsonProperty("start_date")]
         public string StartDate { get; set; }
@@ -1548,7 +1454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string NextTargetDate { get; set; }
 
         [JsonProperty("link_type_code")]
-        public CreateStewardshipPlanStepInputConnectToType? ConnectTo { get; set; }
+        public BodyInputConnectToType? ConnectTo { get; set; }
 
         [JsonProperty("benefit_id")]
         public string BenefitId { get; set; }
@@ -1563,10 +1469,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ActualDate { get; set; }
 
         [JsonProperty("actual_start_time")]
-        public CreateStewardshipPlanStepInputActualStartType ActualStart { get; set; }
+        public BodyInputActualStartType ActualStart { get; set; }
 
         [JsonProperty("actual_end_time")]
-        public CreateStewardshipPlanStepInputActualEndType ActualEnd { get; set; }
+        public BodyInputActualEndType ActualEnd { get; set; }
 
         [JsonProperty("step_participants")]
         public PrsmgNewStewardshipPlanStepParticipant[] Participants { get; set; }
@@ -1575,7 +1481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public PrsmgNewStewardshipPlanStepAssociatedPlan[] AssociatedPlans { get; set; }
     }
 
-    public class CreateStewardshipPlanStepInputTargetStartType
+    public class BodyInputTargetStartType
     {
         [JsonProperty("hour")]
         public int? Hour { get; set; }
@@ -1584,7 +1490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public int? Minute { get; set; }
     }
 
-    public class CreateStewardshipPlanStepInputTargetEndType
+    public class BodyInputTargetEndType
     {
         [JsonProperty("hour")]
         public int? Hour { get; set; }
@@ -1594,7 +1500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateStewardshipPlanStepInputStatusType
+    public enum CreateStewardshipPlanStepBodyInputStatusType
     {
         Pending,
         Completed,
@@ -1603,7 +1509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateStewardshipPlanStepInputFrequencyType
+    public enum BodyInputFrequencyType
     {
         [EnumMember(Value = "Single Occurrence")]
         SingleOccurrence,
@@ -1622,29 +1528,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateStewardshipPlanStepInputConnectToType
+    public enum BodyInputConnectToType
     {
         Benefit,
         Event,
         Mailing
-    }
-
-    public class CreateStewardshipPlanStepInputActualStartType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class CreateStewardshipPlanStepInputActualEndType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
     }
 
     public class PrsmgNewStewardshipPlanStepParticipant
@@ -1659,7 +1547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string PlanId { get; set; }
     }
 
-    public class EditStewardshipPlanStepInput
+    public class EditStewardshipPlanStepBodyInput
     {
         [JsonProperty("objective")]
         public string Objective { get; set; }
@@ -1674,16 +1562,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public bool? AllDayEvent { get; set; }
 
         [JsonProperty("target_start_time")]
-        public EditStewardshipPlanStepInputTargetStartType TargetStart { get; set; }
+        public BodyInputTargetStartType TargetStart { get; set; }
 
         [JsonProperty("target_end_time")]
-        public EditStewardshipPlanStepInputTargetEndType TargetEnd { get; set; }
+        public BodyInputTargetEndType TargetEnd { get; set; }
 
         [JsonProperty("time_zone_entry")]
         public string TimeZone { get; set; }
 
         [JsonProperty("status")]
-        public EditStewardshipPlanStepInputStatusType? Status { get; set; }
+        public CreateStewardshipPlanStepBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("category")]
         public string Category { get; set; }
@@ -1695,7 +1583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ContactMethod { get; set; }
 
         [JsonProperty("recurs")]
-        public EditStewardshipPlanStepInputFrequencyType? Frequency { get; set; }
+        public BodyInputFrequencyType? Frequency { get; set; }
 
         [JsonProperty("start_date")]
         public string StartDate { get; set; }
@@ -1707,7 +1595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string NextTargetDate { get; set; }
 
         [JsonProperty("link_type")]
-        public EditStewardshipPlanStepInputConnectToType? ConnectTo { get; set; }
+        public BodyInputConnectToType? ConnectTo { get; set; }
 
         [JsonProperty("benefit_id")]
         public string BenefitId { get; set; }
@@ -1722,82 +1610,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         public string ActualDate { get; set; }
 
         [JsonProperty("actual_start_time")]
-        public EditStewardshipPlanStepInputActualStartType ActualStart { get; set; }
+        public BodyInputActualStartType ActualStart { get; set; }
 
         [JsonProperty("actual_end_time")]
-        public EditStewardshipPlanStepInputActualEndType ActualEnd { get; set; }
-    }
-
-    public class EditStewardshipPlanStepInputTargetStartType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class EditStewardshipPlanStepInputTargetEndType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditStewardshipPlanStepInputStatusType
-    {
-        Pending,
-        Completed,
-        Cancelled,
-        Declined
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditStewardshipPlanStepInputFrequencyType
-    {
-        [EnumMember(Value = "Single Occurrence")]
-        SingleOccurrence,
-        Annually,
-        [EnumMember(Value = "Semi-Annually")]
-        SemiAnnually,
-        Quarterly,
-        [EnumMember(Value = "Bi-Monthly")]
-        BiMonthly,
-        Monthly,
-        [EnumMember(Value = "Semi-Monthly")]
-        SemiMonthly,
-        [EnumMember(Value = "Bi-Weekly")]
-        BiWeekly,
-        Weekly
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditStewardshipPlanStepInputConnectToType
-    {
-        Benefit,
-        Event,
-        Mailing
-    }
-
-    public class EditStewardshipPlanStepInputActualStartType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
-    }
-
-    public class EditStewardshipPlanStepInputActualEndType
-    {
-        [JsonProperty("hour")]
-        public int? Hour { get; set; }
-
-        [JsonProperty("minute")]
-        public int? Minute { get; set; }
+        public BodyInputActualEndType ActualEnd { get; set; }
     }
 }
 

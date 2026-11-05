@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> Course(Expression<Func<CoursePostInput>> course = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> Course(Expression<Func<CourseInput>> course = null)
         {
             var __workflow_course = WorkflowExpression.Compile(course, nameof(course), required: false);
             return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "casper365")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Student(Expression<Func<StudentPostInput>> student = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Student(Expression<Func<StudentInput>> student = null)
         {
             var __workflow_student = WorkflowExpression.Compile(student, nameof(student), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         public string Email { get; set; }
     }
 
-    public class CoursePostInput
+    public class CourseInput
     {
         [JsonProperty("audience")]
         public string Audience { get; set; }
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Casper365
         public string TutorEmployeeId { get; set; }
     }
 
-    public class StudentPostInput
+    public class StudentInput
     {
         [JsonProperty("acadCareer")]
         public string AcadCareer { get; set; }

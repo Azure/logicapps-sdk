@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "allgeo")]
-        public IBodyWorkflowAction<CreateWorkOrdersResponse, ApiConnectionActionConfiguration> CreateWorkOrders(Expression<Func<string>> token, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<CreateWorkOrdersResponse, ApiConnectionActionConfiguration> CreateWorkOrders(Expression<Func<string>> token, Expression<Func<CreateWorkOrdersBodyInputItem[]>> body)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "allgeo")]
-        public IBodyWorkflowAction<CreateJobSiteResponse, ApiConnectionActionConfiguration> CreateJobSite(Expression<Func<string>> token, Expression<Func<bodyInputItem2[]>> body = null)
+        public IBodyWorkflowAction<CreateJobSiteResponse, ApiConnectionActionConfiguration> CreateJobSite(Expression<Func<string>> token, Expression<Func<CreateJobSiteBodyInputItem[]>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "allgeo")]
-        public IBodyWorkflowAction<CreateTimeClockResponse, ApiConnectionActionConfiguration> CreateTimeClock(Expression<Func<string>> token, Expression<Func<bodyInputItem22[]>> body = null)
+        public IBodyWorkflowAction<CreateTimeClockResponse, ApiConnectionActionConfiguration> CreateTimeClock(Expression<Func<string>> token, Expression<Func<CreateTimeClockBodyInputItem[]>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "allgeo")]
-        public IBodyWorkflowAction<UpdateTimeClockResponse, ApiConnectionActionConfiguration> UpdateTimeClock(Expression<Func<string>> token, Expression<Func<bodyInputItem222[]>> body = null)
+        public IBodyWorkflowAction<UpdateTimeClockResponse, ApiConnectionActionConfiguration> UpdateTimeClock(Expression<Func<string>> token, Expression<Func<UpdateTimeClockBodyInputItem[]>> body = null)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -163,12 +163,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         public int StatusCode { get; set; }
     }
 
-    public class bodyInputItem
+    public class CreateWorkOrdersBodyInputItem
     {
         [JsonProperty("workOrderNumber")]
         public string WorkOrderNumber { get; set; }
 
-        [JsonProperty("workOrderType")]
+        [JsonProperty("workOrderType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkOrderType { get; set; }
 
         [JsonProperty("deviceDesc")]
@@ -177,19 +177,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         [JsonProperty("groupID")]
         public string GroupId { get; set; }
 
-        [JsonProperty("deviceID")]
+        [JsonProperty("deviceID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
 
-        [JsonProperty("locatable")]
+        [JsonProperty("locatable", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Locatable { get; set; }
 
         [JsonProperty("legNumber")]
         public string LegNumber { get; set; }
 
-        [JsonProperty("startDate")]
+        [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 
-        [JsonProperty("endDate")]
+        [JsonProperty("endDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndDate { get; set; }
 
         [JsonProperty("startTime")]
@@ -220,10 +220,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         public string CreateEmployee { get; set; }
 
         [JsonProperty("prefillData")]
-        public bodyInputItemPrefillDataTypeItem[] PrefillData { get; set; }
+        public BodyInputItemPrefillDataTypeItem[] PrefillData { get; set; }
     }
 
-    public class bodyInputItemPrefillDataTypeItem
+    public class BodyInputItemPrefillDataTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -239,15 +239,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         public int StatusCode { get; set; }
     }
 
-    public class bodyInputItem2
+    public class CreateJobSiteBodyInputItem
     {
         [JsonProperty("siteID")]
         public string SiteId { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("address")]
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
 
         [JsonProperty("radius")]
@@ -270,15 +270,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         public int StatusCode { get; set; }
     }
 
-    public class bodyInputItem22
+    public class CreateTimeClockBodyInputItem
     {
-        [JsonProperty("deviceID")]
+        [JsonProperty("deviceID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
 
-        [JsonProperty("timeClockSentTime")]
+        [JsonProperty("timeClockSentTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeClockSentTime { get; set; }
 
-        [JsonProperty("stageName")]
+        [JsonProperty("stageName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StageName { get; set; }
 
         [JsonProperty("customerName")]
@@ -298,15 +298,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         public int StatusCode { get; set; }
     }
 
-    public class bodyInputItem222
+    public class UpdateTimeClockBodyInputItem
     {
-        [JsonProperty("txnID")]
+        [JsonProperty("txnID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TxnId { get; set; }
 
-        [JsonProperty("deviceID")]
+        [JsonProperty("deviceID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
 
-        [JsonProperty("timeClockSentTime")]
+        [JsonProperty("timeClockSentTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeClockSentTime { get; set; }
 
         [JsonProperty("customerName")]
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Allgeo
         [JsonProperty("managerNotes")]
         public string ManagerNotes { get; set; }
 
-        [JsonProperty("stageName")]
+        [JsonProperty("stageName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StageName { get; set; }
     }
 

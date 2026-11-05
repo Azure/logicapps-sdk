@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
     public class CommercientcpqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE100CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE100CreateNewCustomer(Expression<Func<SAGE100CreateNewCustomerInput>> body)
+        public IBodyWorkflowAction<SAGE100CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE100CreateNewCustomer(Expression<Func<SAGE100CreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SAGE100CreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE100CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE100CreateNewSalesOrder(Expression<Func<SAGE100CreateNewSalesOrderInput>> body)
+        public IBodyWorkflowAction<SAGE100CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE100CreateNewSalesOrder(Expression<Func<SAGE100CreateNewSalesOrderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SAGE100CreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewCustomer(Expression<Func<CommercientCPQCreateNewCustomerInput>> body)
+        public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewCustomer(Expression<Func<CommercientCPQCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CommercientCPQCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewProductResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewProduct(Expression<Func<CommercientCPQCreateNewProductInput>> body)
+        public IBodyWorkflowAction<CommercientCPQCreateNewProductResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewProduct(Expression<Func<CommercientCPQCreateNewProductBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CommercientCPQCreateNewProductResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewSalesOrder(Expression<Func<CommercientCPQCreateNewSalesOrderInput>> body)
+        public IBodyWorkflowAction<CommercientCPQCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewSalesOrder(Expression<Func<CommercientCPQCreateNewSalesOrderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CommercientCPQCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<QuickBookCreateNewCustomerResponse, ApiConnectionActionConfiguration> QuickBookCreateNewCustomer(Expression<Func<QuickBookCreateNewCustomerInput>> body)
+        public IBodyWorkflowAction<QuickBookCreateNewCustomerResponse, ApiConnectionActionConfiguration> QuickBookCreateNewCustomer(Expression<Func<QuickBookCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QuickBookCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<QuickBookCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> QuickBookCreateNewSalesOrder(Expression<Func<QuickBookCreateNewSalesOrderInput>> body = null)
+        public IBodyWorkflowAction<QuickBookCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> QuickBookCreateNewSalesOrder(Expression<Func<QuickBookCreateNewSalesOrderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<QuickBookCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewCustomer(Expression<Func<SAGE50UKCreateNewCustomerInput>> body)
+        public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewCustomer(Expression<Func<SAGE50UKCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SAGE50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewSalesOrder(Expression<Func<SAGE50UKCreateNewSalesOrderInput>> body = null)
+        public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewSalesOrder(Expression<Func<SAGE50UKCreateNewSalesOrderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SAGE50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewCustomer(Expression<Func<SAGE50USCreateNewCustomerInput>> body)
+        public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewCustomer(Expression<Func<SAGE50USCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SAGE50USCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewSalesOrder(Expression<Func<SAGE50USCreateNewSalesOrderInput>> body)
+        public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewSalesOrder(Expression<Func<SAGE50USCreateNewSalesOrderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SAGE50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAPB1CreateNewCustomer(Expression<Func<SAPB1CreateNewCustomerInput>> body = null)
+        public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAPB1CreateNewCustomer(Expression<Func<SAPB1CreateNewCustomerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SAPB1CreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAPB1CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAPB1CreateNewSalesOrder(Expression<Func<SAPB1CreateNewSalesOrderInput>> body = null)
+        public IBodyWorkflowAction<SAPB1CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAPB1CreateNewSalesOrder(Expression<Func<SAPB1CreateNewSalesOrderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SAPB1CreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SYSPROCreateNewCustomerResponse, ApiConnectionActionConfiguration> SYSPROCreateNewCustomer(Expression<Func<SYSPROCreateNewCustomerInput>> body)
+        public IBodyWorkflowAction<SYSPROCreateNewCustomerResponse, ApiConnectionActionConfiguration> SYSPROCreateNewCustomer(Expression<Func<SYSPROCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SYSPROCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SYSPROCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SYSPROCreateNewSalesOrder(Expression<Func<SYSPROCreateNewSalesOrderInput>> body = null)
+        public IBodyWorkflowAction<SYSPROCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SYSPROCreateNewSalesOrder(Expression<Func<SYSPROCreateNewSalesOrderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SYSPROCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ZipCode { get; set; }
     }
 
-    public class SAGE100CreateNewCustomerInput
+    public class SAGE100CreateNewCustomerBodyInput
     {
         public string ARDivisionNo { get; set; }
         public string AddressLine1 { get; set; }
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int UnitPrice { get; set; }
     }
 
-    public class SAGE100CreateNewSalesOrderInput
+    public class SAGE100CreateNewSalesOrderBodyInput
     {
         public string ARDivisionNo { get; set; }
         public bool? BatchFax { get; set; }
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string OrderType { get; set; }
         public bool? PrintPickingSheets { get; set; }
         public bool? PrintSalesOrders { get; set; }
-        public SAGE100CreateNewSalesOrderInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public SAGE100CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
         public string SalesOrderNo { get; set; }
         public string SalespersonNo { get; set; }
         public string ShipExpireDate { get; set; }
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string WarehouseCode { get; set; }
     }
 
-    public class SAGE100CreateNewSalesOrderInputSalesOrderLineItemTypeItem
+    public class SAGE100CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public string CommentText { get; set; }
         public int? Discount { get; set; }
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string Acnm { get; set; }
     }
 
-    public class CommercientCPQCreateNewCustomerInput
+    public class CommercientCPQCreateNewCustomerBodyInput
     {
         public string BillingCity { get; set; }
         public string BillingCounty { get; set; }
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string StockCode { get; set; }
     }
 
-    public class CommercientCPQCreateNewProductInput
+    public class CommercientCPQCreateNewProductBodyInput
     {
         public string StockCode { get; set; }
     }
@@ -561,13 +561,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string StockCode { get; set; }
     }
 
-    public class CommercientCPQCreateNewSalesOrderInput
+    public class CommercientCPQCreateNewSalesOrderBodyInput
     {
         public string OrderHeaderGUID { get; set; }
-        public CommercientCPQCreateNewSalesOrderInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public CommercientCPQCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
     }
 
-    public class CommercientCPQCreateNewSalesOrderInputSalesOrderLineItemTypeItem
+    public class CommercientCPQCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public string Price { get; set; }
         public string Qty { get; set; }
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string TermsRef { get; set; }
     }
 
-    public class QuickBookCreateNewCustomerInput
+    public class QuickBookCreateNewCustomerBodyInput
     {
         public string AccountNumber { get; set; }
         public string AltContact { get; set; }
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string UnitOfMeasure { get; set; }
     }
 
-    public class QuickBookCreateNewSalesOrderInput
+    public class QuickBookCreateNewSalesOrderBodyInput
     {
         public string BillAddressAddr1 { get; set; }
         public string BillAddressAddr2 { get; set; }
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string Memo { get; set; }
         public string PONumber { get; set; }
         public string RefNumber { get; set; }
-        public QuickBookCreateNewSalesOrderInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public QuickBookCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
         public string SalesRepRef { get; set; }
         public string ShipAddressAddr1 { get; set; }
         public string ShipAddressAddr2 { get; set; }
@@ -823,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string TxnDate { get; set; }
     }
 
-    public class QuickBookCreateNewSalesOrderInputSalesOrderLineItemTypeItem
+    public class QuickBookCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public int? Amount { get; set; }
         public string ClassRef { get; set; }
@@ -1004,7 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string VATREGNUMBER { get; set; }
     }
 
-    public class SAGE50UKCreateNewCustomerInput
+    public class SAGE50UKCreateNewCustomerBodyInput
     {
         [JsonProperty("ACCOUNT_OPENED")]
         public string ACCOUNTOPENED { get; set; }
@@ -1314,7 +1314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int UNITPRICE { get; set; }
     }
 
-    public class SAGE50UKCreateNewSalesOrderInput
+    public class SAGE50UKCreateNewSalesOrderBodyInput
     {
         [JsonProperty("ACCOUNT_REF")]
         public string ACCOUNTREF { get; set; }
@@ -1438,10 +1438,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
 
         [JsonProperty("SETTLEMENT_DUE_DAYS")]
         public int? SETTLEMENTDUEDAYS { get; set; }
-        public SAGE50UKCreateNewSalesOrderInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public SAGE50UKCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
     }
 
-    public class SAGE50UKCreateNewSalesOrderInputSalesOrderLineItemTypeItem
+    public class SAGE50UKCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public string DESCRIPTION { get; set; }
 
@@ -1565,7 +1565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool IsInactive { get; set; }
     }
 
-    public class SAGE50USCreateNewCustomerInput
+    public class SAGE50USCreateNewCustomerBodyInput
     {
         [JsonProperty("Account_Number")]
         public string AccountNumber { get; set; }
@@ -1780,7 +1780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int Weight { get; set; }
     }
 
-    public class SAGE50USCreateNewSalesOrderInput
+    public class SAGE50USCreateNewSalesOrderBodyInput
     {
         [JsonProperty("Accounts_Receivable_Account")]
         public string AccountsReceivableAccount { get; set; }
@@ -1813,7 +1813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool? NotePrintsAfterLineItems { get; set; }
         public bool? Proposal { get; set; }
         public bool? ProposalAccepted { get; set; }
-        public SAGE50USCreateNewSalesOrderInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public SAGE50USCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
 
         [JsonProperty("Sales_Order_Number")]
         public string SalesOrderNumber { get; set; }
@@ -1841,7 +1841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool? StatementNotePrintsBeforeInvRef { get; set; }
     }
 
-    public class SAGE50USCreateNewSalesOrderInputSalesOrderLineItemTypeItem
+    public class SAGE50USCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public int? Amount { get; set; }
         public int? DistributionNumber { get; set; }
@@ -1969,7 +1969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string Title { get; set; }
     }
 
-    public class SAPB1CreateNewCustomerInput
+    public class SAPB1CreateNewCustomerBodyInput
     {
         public string Address { get; set; }
         public string BillingAddressName { get; set; }
@@ -2015,10 +2015,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ZipCode { get; set; }
 
         [JsonProperty("lstContactEmployees")]
-        public SAPB1CreateNewCustomerInputLstContactEmployeesTypeItem[] LstContactEmployees { get; set; }
+        public BodyInputLstContactEmployeesTypeItem[] LstContactEmployees { get; set; }
     }
 
-    public class SAPB1CreateNewCustomerInputLstContactEmployeesTypeItem
+    public class BodyInputLstContactEmployeesTypeItem
     {
         public string Address { get; set; }
         public string CityOfBirth { get; set; }
@@ -2088,18 +2088,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string WarehouseCode { get; set; }
     }
 
-    public class SAPB1CreateNewSalesOrderInput
+    public class SAPB1CreateNewSalesOrderBodyInput
     {
         public string CardCode { get; set; }
         public string DocDate { get; set; }
         public string DocDueDate { get; set; }
         public int? DocNum { get; set; }
-        public SAPB1CreateNewSalesOrderInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public SAPB1CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
         public int? Series { get; set; }
         public string TaxDate { get; set; }
     }
 
-    public class SAPB1CreateNewSalesOrderInputSalesOrderLineItemTypeItem
+    public class SAPB1CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public int? DiscountPercent { get; set; }
         public string ItemCode { get; set; }
@@ -2246,7 +2246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ESignature { get; set; }
     }
 
-    public class SYSPROCreateNewCustomerInput
+    public class SYSPROCreateNewCustomerBodyInput
     {
         public string AddTelephone { get; set; }
         public string AltMethodFlag { get; set; }
@@ -2610,7 +2610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string MiscTaxCode { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderInput
+    public class SYSPROCreateNewSalesOrderBodyInput
     {
         public string AcceptEarlierShipDate { get; set; }
         public string AcceptKitOptional { get; set; }
@@ -2686,11 +2686,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ReserveStock { get; set; }
         public string ReserveStockRequestAllocs { get; set; }
         public string SalesOrder { get; set; }
-        public SYSPROCreateNewSalesOrderInputSalesOrderDetailsTypeItem[] SalesOrderDetails { get; set; }
-        public SYSPROCreateNewSalesOrderInputSalesOrderFooterCommentsTypeItem[] SalesOrderFooterComments { get; set; }
-        public SYSPROCreateNewSalesOrderInputSalesOrderFreightDetailsTypeItem[] SalesOrderFreightDetails { get; set; }
-        public SYSPROCreateNewSalesOrderInputSalesOrderHeaderCommentsTypeItem[] SalesOrderHeaderComments { get; set; }
-        public SYSPROCreateNewSalesOrderInputSalesOrderMiscChargesDetailsTypeItem[] SalesOrderMiscChargesDetails { get; set; }
+        public BodyInputSalesOrderDetailsTypeItem[] SalesOrderDetails { get; set; }
+        public BodyInputSalesOrderFooterCommentsTypeItem[] SalesOrderFooterComments { get; set; }
+        public BodyInputSalesOrderFreightDetailsTypeItem[] SalesOrderFreightDetails { get; set; }
+        public BodyInputSalesOrderHeaderCommentsTypeItem[] SalesOrderHeaderComments { get; set; }
+        public BodyInputSalesOrderMiscChargesDetailsTypeItem[] SalesOrderMiscChargesDetails { get; set; }
         public string SalesOrderPromoQualifyAction { get; set; }
         public string SalesOrderPromoSelectAction { get; set; }
         public string Salesperson { get; set; }
@@ -2733,7 +2733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ESignature { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderInputSalesOrderDetailsTypeItem
+    public class BodyInputSalesOrderDetailsTypeItem
     {
         public string AlwaysUseDiscountEntered { get; set; }
         public string CommissionCode { get; set; }
@@ -2789,14 +2789,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string UserDefined { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderInputSalesOrderFooterCommentsTypeItem
+    public class BodyInputSalesOrderFooterCommentsTypeItem
     {
         public string FooterComment { get; set; }
         public string FooterCommentType { get; set; }
         public string FooterLineActionType { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderInputSalesOrderFreightDetailsTypeItem
+    public class BodyInputSalesOrderFreightDetailsTypeItem
     {
         public string FreightCost { get; set; }
         public string FreightFstCode { get; set; }
@@ -2808,14 +2808,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string FreightValue { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderInputSalesOrderHeaderCommentsTypeItem
+    public class BodyInputSalesOrderHeaderCommentsTypeItem
     {
         public string HeaderComment { get; set; }
         public string HeaderCommentType { get; set; }
         public string HeaderLineActionType { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderInputSalesOrderMiscChargesDetailsTypeItem
+    public class BodyInputSalesOrderMiscChargesDetailsTypeItem
     {
         public string MiscChargeCode { get; set; }
         public string MiscChargeCost { get; set; }

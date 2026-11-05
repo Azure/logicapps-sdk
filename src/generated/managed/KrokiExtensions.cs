@@ -13,19 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
     public class KrokiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kroki")]
-        public IBodyWorkflowAction<DiagramPostResponse, ApiConnectionActionConfiguration> Diagram(Expression<Func<libraryInput>> library, Expression<Func<string>> output, Expression<Func<DiagramPostInput>> body = null)
+        public IBodyWorkflowAction<DiagramResponse, ApiConnectionActionConfiguration> Diagram(Expression<Func<LibraryInput>> library, Expression<Func<string>> output, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_library = WorkflowExpression.Compile(library, nameof(library), required: true);
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DiagramPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DiagramResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/{1}", __workflow_library.WithUrlEncoding(1), __workflow_output.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DiagramPostResponse>(callPayload);
+                return new ApiConnectionAction<DiagramResponse>(callPayload);
             });
         }
     }
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
     {
     }
 
-    public class DiagramPostResponse
+    public class DiagramResponse
     {
         [JsonProperty("$content-type")]
         public string ContentType { get; set; }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum libraryInput
+    public enum LibraryInput
     {
         [EnumMember(Value = "graphviz")]
         Graphviz,
@@ -92,16 +92,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
         Umlet
     }
 
-    public class DiagramPostInput
+    public class BodyInput
     {
         [JsonProperty("diagram_source", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DiagramSource { get; set; }
 
         [JsonProperty("diagram_options")]
-        public DiagramPostInputDiagramOptionsType DiagramOptions { get; set; }
+        public BodyInputDiagramOptionsType DiagramOptions { get; set; }
     }
 
-    public class DiagramPostInputDiagramOptionsType
+    public class BodyInputDiagramOptionsType
     {
         [JsonProperty("key")]
         public string Key { get; set; }

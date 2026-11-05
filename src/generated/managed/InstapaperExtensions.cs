@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     public class InstapaperActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksLiked(Expression<Func<ListBookmarksLikedInput>> readFilter = null)
+        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksLiked(Expression<Func<ListBookmarksLikedReadFilterInput>> readFilter = null)
         {
             var __workflow_readFilter = WorkflowExpression.Compile(readFilter, nameof(readFilter), required: false);
             return new DeferredBodyAction<BookmarksResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksArchived(Expression<Func<ListBookmarksArchivedInput>> filters = null)
+        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksArchived(Expression<Func<FiltersInput>> filters = null)
         {
             var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             return new DeferredBodyAction<BookmarksResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksInFolder(Expression<Func<string>> folderId, Expression<Func<likedFilterInput>> likedFilter = null, Expression<Func<readFilterInput>> readFilter = null)
+        public IBodyWorkflowAction<BookmarksResponse, ApiConnectionActionConfiguration> ListBookmarksInFolder(Expression<Func<string>> folderId, Expression<Func<LikedFilterInput>> likedFilter = null, Expression<Func<ListBookmarksInFolderReadFilterInput>> readFilter = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_likedFilter = WorkflowExpression.Compile(likedFilter, nameof(likedFilter), required: false);
@@ -346,23 +346,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         public double ReadProgress { get; set; }
     }
 
-    public class ListBookmarksLikedInput
+    public class ListBookmarksLikedReadFilterInput
     {
         [JsonProperty("readFilter")]
         public string ReadFilter { get; set; }
     }
 
-    public class ListBookmarksArchivedInput
+    public class FiltersInput
     {
         [JsonProperty("likedFilter")]
-        public ListBookmarksArchivedInputLikedFilterDefaultAllType? LikedFilterDefaultAll { get; set; }
+        public FiltersInputLikedFilterDefaultAllType? LikedFilterDefaultAll { get; set; }
 
         [JsonProperty("readFilter")]
-        public ListBookmarksArchivedInputReadFilterDefaultAllType? ReadFilterDefaultAll { get; set; }
+        public FiltersInputReadFilterDefaultAllType? ReadFilterDefaultAll { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListBookmarksArchivedInputLikedFilterDefaultAllType
+    public enum FiltersInputLikedFilterDefaultAllType
     {
         Liked,
         [EnumMember(Value = "Not liked")]
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListBookmarksArchivedInputReadFilterDefaultAllType
+    public enum FiltersInputReadFilterDefaultAllType
     {
         Unread,
         [EnumMember(Value = "Unread or partially read")]
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum likedFilterInput
+    public enum LikedFilterInput
     {
         Liked,
         [EnumMember(Value = "Not liked")]
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum readFilterInput
+    public enum ListBookmarksInFolderReadFilterInput
     {
         Unread,
         [EnumMember(Value = "Unread or partially read")]

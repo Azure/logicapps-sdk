@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
     public class CloudmersivenlpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> AnalyticsSentiment(Expression<Func<AnalyticsSentimentInput>> input)
+        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> AnalyticsSentiment(Expression<Func<AnalyticsProfanityInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<ProfanityAnalysisResponse, ApiConnectionActionConfiguration> AnalyticsProfanity(Expression<Func<AnalyticsProfanityInput>> input)
+        public IBodyWorkflowAction<ProfanityAnalysisResponse, ApiConnectionActionConfiguration> AnalyticsProfanity(Expression<Func<AnalyticsProfanityInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<ProfanityAnalysisResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<SubjectivityAnalysisResponse, ApiConnectionActionConfiguration> AnalyticsSubjectivity(Expression<Func<AnalyticsSubjectivityInput>> input)
+        public IBodyWorkflowAction<SubjectivityAnalysisResponse, ApiConnectionActionConfiguration> AnalyticsSubjectivity(Expression<Func<AnalyticsProfanityInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<SubjectivityAnalysisResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration> ExtractEntities(Expression<Func<ExtractEntitiesPostInput>> value)
+        public IBodyWorkflowAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration> ExtractEntities(Expression<Func<ExtractEntitiesValueInput>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<ExtractEntitiesResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageDetectionResponse, ApiConnectionActionConfiguration> LanguageDetectionGetLanguage(Expression<Func<LanguageDetectionGetLanguageInput>> input)
+        public IBodyWorkflowAction<LanguageDetectionResponse, ApiConnectionActionConfiguration> LanguageDetectionGetLanguage(Expression<Func<LanguageDetectionGetLanguageInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<LanguageDetectionResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateDeuToEng(Expression<Func<LanguageTranslationTranslateDeuToEngInput>> input)
+        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateDeuToEng(Expression<Func<LanguageTranslationTranslateDeuToEngInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<LanguageTranslationResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateEngToDeu(Expression<Func<LanguageTranslationTranslateEngToDeuInput>> input)
+        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateEngToDeu(Expression<Func<LanguageTranslationTranslateDeuToEngInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<LanguageTranslationResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateRusToEng(Expression<Func<LanguageTranslationTranslateRusToEngInput>> input)
+        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateRusToEng(Expression<Func<LanguageTranslationTranslateDeuToEngInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<LanguageTranslationResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateEngToRus(Expression<Func<LanguageTranslationTranslateEngToRusInput>> input)
+        public IBodyWorkflowAction<LanguageTranslationResponse, ApiConnectionActionConfiguration> LanguageTranslationTranslateEngToRus(Expression<Func<LanguageTranslationTranslateDeuToEngInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<LanguageTranslationResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<ParseResponse, ApiConnectionActionConfiguration> ParseParseString(Expression<Func<ParseParseStringInput>> input)
+        public IBodyWorkflowAction<ParseResponse, ApiConnectionActionConfiguration> ParseParseString(Expression<Func<ParseParseStringInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<ParseResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagSentence(Expression<Func<PosTaggerTagSentenceInput>> request)
+        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagSentence(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PosResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagVerbs(Expression<Func<PosTaggerTagVerbsInput>> request)
+        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagVerbs(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PosResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagNouns(Expression<Func<PosTaggerTagNounsInput>> request)
+        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagNouns(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PosResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagAdjectives(Expression<Func<PosTaggerTagAdjectivesInput>> request)
+        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagAdjectives(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PosResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagAdverbs(Expression<Func<PosTaggerTagAdverbsInput>> request)
+        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagAdverbs(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PosResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagPronouns(Expression<Func<PosTaggerTagPronounsInput>> request)
+        public IBodyWorkflowAction<PosResponse, ApiConnectionActionConfiguration> PosTaggerTagPronouns(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PosResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<RephraseResponse, ApiConnectionActionConfiguration> RephraseEnglishRephraseSentenceBySentence(Expression<Func<RephraseEnglishRephraseSentenceBySentenceInput>> input)
+        public IBodyWorkflowAction<RephraseResponse, ApiConnectionActionConfiguration> RephraseEnglishRephraseSentenceBySentence(Expression<Func<RephraseEnglishRephraseSentenceBySentenceInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<RephraseResponse, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<SentenceSegmentationResponse, ApiConnectionActionConfiguration> SegmentationGetSentences(Expression<Func<SegmentationGetSentencesInput>> input)
+        public IBodyWorkflowAction<SentenceSegmentationResponse, ApiConnectionActionConfiguration> SegmentationGetSentences(Expression<Func<ParseParseStringInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<SentenceSegmentationResponse, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<GetWordsResponse, ApiConnectionActionConfiguration> SegmentationGetWords(Expression<Func<SegmentationGetWordsInput>> input)
+        public IBodyWorkflowAction<GetWordsResponse, ApiConnectionActionConfiguration> SegmentationGetWords(Expression<Func<SegmentationGetWordsInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetWordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<CheckWordResponse, ApiConnectionActionConfiguration> SpellcheckCorrectJson(Expression<Func<SpellcheckCorrectJsonInput>> value)
+        public IBodyWorkflowAction<CheckWordResponse, ApiConnectionActionConfiguration> SpellcheckCorrectJson(Expression<Func<SpellcheckCorrectJsonValueInput>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<CheckWordResponse, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<CheckSentenceResponse, ApiConnectionActionConfiguration> SpellcheckCheckSentence(Expression<Func<SpellcheckCheckSentenceInput>> value)
+        public IBodyWorkflowAction<CheckSentenceResponse, ApiConnectionActionConfiguration> SpellcheckCheckSentence(Expression<Func<SpellcheckCheckSentenceValueInput>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<CheckSentenceResponse, ApiConnectionActionConfiguration>(() =>
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public int SentenceCount { get; set; }
     }
 
-    public class AnalyticsSentimentInput
+    public class AnalyticsProfanityInputInput
     {
         public string TextToAnalyze { get; set; }
     }
@@ -331,21 +331,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public int SentenceCount { get; set; }
     }
 
-    public class AnalyticsProfanityInput
-    {
-        public string TextToAnalyze { get; set; }
-    }
-
     public class SubjectivityAnalysisResponse
     {
         public bool Successful { get; set; }
         public double SubjectivityScoreResult { get; set; }
         public int SentenceCount { get; set; }
-    }
-
-    public class AnalyticsSubjectivityInput
-    {
-        public string TextToAnalyze { get; set; }
     }
 
     public class ExtractEntitiesResponse
@@ -360,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public string EntityText { get; set; }
     }
 
-    public class ExtractEntitiesPostInput
+    public class ExtractEntitiesValueInput
     {
         public string InputString { get; set; }
     }
@@ -376,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public string DetectedLanguageFullName { get; set; }
     }
 
-    public class LanguageDetectionGetLanguageInput
+    public class LanguageDetectionGetLanguageInputInput
     {
         [JsonProperty("textToDetect")]
         public string TextToDetect { get; set; }
@@ -389,22 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public int SentenceCount { get; set; }
     }
 
-    public class LanguageTranslationTranslateDeuToEngInput
-    {
-        public string TextToTranslate { get; set; }
-    }
-
-    public class LanguageTranslationTranslateEngToDeuInput
-    {
-        public string TextToTranslate { get; set; }
-    }
-
-    public class LanguageTranslationTranslateRusToEngInput
-    {
-        public string TextToTranslate { get; set; }
-    }
-
-    public class LanguageTranslationTranslateEngToRusInput
+    public class LanguageTranslationTranslateDeuToEngInputInput
     {
         public string TextToTranslate { get; set; }
     }
@@ -414,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public string ParseTree { get; set; }
     }
 
-    public class ParseParseStringInput
+    public class ParseParseStringInputInput
     {
         public string InputString { get; set; }
     }
@@ -435,32 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public JToken Tag { get; set; }
     }
 
-    public class PosTaggerTagSentenceInput
-    {
-        public string InputText { get; set; }
-    }
-
-    public class PosTaggerTagVerbsInput
-    {
-        public string InputText { get; set; }
-    }
-
-    public class PosTaggerTagNounsInput
-    {
-        public string InputText { get; set; }
-    }
-
-    public class PosTaggerTagAdjectivesInput
-    {
-        public string InputText { get; set; }
-    }
-
-    public class PosTaggerTagAdverbsInput
-    {
-        public string InputText { get; set; }
-    }
-
-    public class PosTaggerTagPronounsInput
+    public class RequestInput
     {
         public string InputText { get; set; }
     }
@@ -485,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public string RephrasedSentenceText { get; set; }
     }
 
-    public class RephraseEnglishRephraseSentenceBySentenceInput
+    public class RephraseEnglishRephraseSentenceBySentenceInputInput
     {
         public string TextToTranslate { get; set; }
         public int? TargetRephrasingCount { get; set; }
@@ -496,11 +446,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public bool Successful { get; set; }
         public string[] Sentences { get; set; }
         public int SentenceCount { get; set; }
-    }
-
-    public class SegmentationGetSentencesInput
-    {
-        public string InputString { get; set; }
     }
 
     public class GetWordsResponse
@@ -516,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public int EndPosition { get; set; }
     }
 
-    public class SegmentationGetWordsInput
+    public class SegmentationGetWordsInputInput
     {
         public string InputText { get; set; }
     }
@@ -527,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public string[] Suggestions { get; set; }
     }
 
-    public class SpellcheckCorrectJsonInput
+    public class SpellcheckCorrectJsonValueInput
     {
         public string Word { get; set; }
     }
@@ -545,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         public string[] Suggestions { get; set; }
     }
 
-    public class SpellcheckCheckSentenceInput
+    public class SpellcheckCheckSentenceValueInput
     {
         public string Sentence { get; set; }
     }

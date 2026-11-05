@@ -16,40 +16,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Defendersoc
 
     public class DefendersocTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenDefenderOrSentinelAlertCreated(Expression<Func<WhenDefenderOrSentinelAlertCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenDefenderOrSentinelAlertCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscribe/alerts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenDefenderCaseCreatedOrUpdated(Expression<Func<WhenDefenderCaseCreatedOrUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenDefenderCaseCreatedOrUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/subscribe/cases";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class WhenDefenderOrSentinelAlertCreatedInput
-    {
-        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WhenDefenderCaseCreatedOrUpdatedInput
+    public class BodyInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";

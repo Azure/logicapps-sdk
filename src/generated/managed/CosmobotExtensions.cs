@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<AskQuestionResponse, ApiConnectionActionConfiguration> AskQuestion(Expression<Func<AskQuestionInput>> requestBody = null)
+        public IBodyWorkflowAction<AskQuestionResponse, ApiConnectionActionConfiguration> AskQuestion(Expression<Func<AskQuestionRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<AskQuestionResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<ParseTextResponse, ApiConnectionActionConfiguration> ParseText(Expression<Func<ParseTextInput>> requestBody = null)
+        public IBodyWorkflowAction<ParseTextResponse, ApiConnectionActionConfiguration> ParseText(Expression<Func<ParseTextRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<ParseTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<TranslateInput>> requestBody = null)
+        public IBodyWorkflowAction<TranslateResponse, ApiConnectionActionConfiguration> Translate(Expression<Func<TranslateRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<TranslateResponse, ApiConnectionActionConfiguration>(() =>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddExpert(Expression<Func<AddExpertInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddExpert(Expression<Func<AddExpertRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveExpert(Expression<Func<RemoveExpertInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveExpert(Expression<Func<RemoveExpertRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddTopic(Expression<Func<AddTopicInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddTopic(Expression<Func<AddTopicRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RenameTopic(Expression<Func<RenameTopicInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RenameTopic(Expression<Func<RenameTopicRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddAnswer(Expression<Func<AddAnswerInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddAnswer(Expression<Func<AddAnswerRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAnswer(Expression<Func<EditAnswerInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAnswer(Expression<Func<EditAnswerRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAnswer(Expression<Func<DeleteAnswerInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAnswer(Expression<Func<DeleteAnswerRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddSubAnswer(Expression<Func<AddSubAnswerInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSubAnswer(Expression<Func<AddSubAnswerRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<OpenTicketQuestionResponse, ApiConnectionActionConfiguration> OpenTicketQuestion(Expression<Func<OpenTicketQuestionInput>> requestBody = null)
+        public IBodyWorkflowAction<OpenTicketQuestionResponse, ApiConnectionActionConfiguration> OpenTicketQuestion(Expression<Func<OpenTicketQuestionRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<OpenTicketQuestionResponse, ApiConnectionActionConfiguration>(() =>
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IBodyWorkflowAction<OpenTicketFeedbackResponse, ApiConnectionActionConfiguration> OpenTicketFeedback(Expression<Func<OpenTicketFeedbackInput>> requestBody = null)
+        public IBodyWorkflowAction<OpenTicketFeedbackResponse, ApiConnectionActionConfiguration> OpenTicketFeedback(Expression<Func<OpenTicketFeedbackRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<OpenTicketFeedbackResponse, ApiConnectionActionConfiguration>(() =>
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CloseTicket(Expression<Func<CloseTicketInput>> requestBody = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CloseTicket(Expression<Func<CloseTicketRequestBodyInput>> requestBody = null)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -328,80 +328,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class CosmobotTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewTicket(Expression<Func<OnNewTicketInput>> requestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewTicket(FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new-ticket";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnResolvedTicket(Expression<Func<OnResolvedTicketInput>> requestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnResolvedTicket(FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/resolved-ticket";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdatedTicketTopic(Expression<Func<OnUpdatedTicketTopicInput>> requestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdatedTicketTopic(FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/updated-ticket-topic";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewAnswer(Expression<Func<OnNewAnswerInput>> requestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnNewAnswer(FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/new-answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdateAnswer(Expression<Func<OnUpdateAnswerInput>> requestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnUpdateAnswer(FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/update-answer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnAskedQuestion(Expression<Func<OnAskedQuestionInput>> requestBody, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnAskedQuestion(FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/asked-question";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
+                callPayload.Body = new OnAskedQuestionRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -446,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string ModifiedBy { get; set; }
     }
 
-    public class AskQuestionInput
+    public class AskQuestionRequestBodyInput
     {
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
@@ -464,17 +458,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string OutputText { get; set; }
     }
 
-    public class ParseTextInput
+    public class ParseTextRequestBodyInput
     {
         [JsonProperty("inputText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputText { get; set; }
 
         [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParseTextInputOutputFormatType OutputFormat { get; set; } = ParseTextInputOutputFormatType.Markdown;
+        public RequestBodyInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot.RequestBodyInputOutputFormatType.Markdown;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ParseTextInputOutputFormatType
+    public enum RequestBodyInputOutputFormatType
     {
         [EnumMember(Value = "markdown")]
         Markdown,
@@ -490,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string OutputText { get; set; }
     }
 
-    public class TranslateInput
+    public class TranslateRequestBodyInput
     {
         [JsonProperty("targetLanguageCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetLanguageCode { get; set; }
@@ -532,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string[] ExpertEmails { get; set; }
     }
 
-    public class AddExpertInput
+    public class AddExpertRequestBodyInput
     {
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
@@ -541,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string ExpertEmail { get; set; }
     }
 
-    public class RemoveExpertInput
+    public class RemoveExpertRequestBodyInput
     {
         [JsonProperty("expertEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExpertEmail { get; set; }
@@ -550,7 +544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string Topic { get; set; }
     }
 
-    public class AddTopicInput
+    public class AddTopicRequestBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -562,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string[] ExpertEmails { get; set; }
     }
 
-    public class RenameTopicInput
+    public class RenameTopicRequestBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -571,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string NewName { get; set; }
     }
 
-    public class AddAnswerInput
+    public class AddAnswerRequestBodyInput
     {
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
@@ -589,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string UserEmail { get; set; }
     }
 
-    public class EditAnswerInput
+    public class EditAnswerRequestBodyInput
     {
         [JsonProperty("shortDescription", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ShortDescription { get; set; }
@@ -610,13 +604,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string UserEmail { get; set; }
     }
 
-    public class DeleteAnswerInput
+    public class DeleteAnswerRequestBodyInput
     {
         [JsonProperty("shortDescription", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ShortDescription { get; set; }
     }
 
-    public class AddSubAnswerInput
+    public class AddSubAnswerRequestBodyInput
     {
         [JsonProperty("shortDescription", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ShortDescription { get; set; }
@@ -676,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public Ticket Ticket { get; set; }
     }
 
-    public class OpenTicketQuestionInput
+    public class OpenTicketQuestionRequestBodyInput
     {
         [JsonProperty("userEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserEmail { get; set; }
@@ -694,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public Ticket Ticket { get; set; }
     }
 
-    public class OpenTicketFeedbackInput
+    public class OpenTicketFeedbackRequestBodyInput
     {
         [JsonProperty("userEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserEmail { get; set; }
@@ -709,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string FeedbackText { get; set; }
     }
 
-    public class CloseTicketInput
+    public class CloseTicketRequestBodyInput
     {
         [JsonProperty("ticketId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TicketId { get; set; }
@@ -721,37 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string EditorComment { get; set; }
     }
 
-    public class OnNewTicketInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnResolvedTicketInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnUpdatedTicketTopicInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnNewAnswerInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnUpdateAnswerInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnAskedQuestionInput
+    public class OnAskedQuestionRequestBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

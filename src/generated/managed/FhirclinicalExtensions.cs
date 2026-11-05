@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration> POSTAdverseEvent(Expression<Func<POSTAdverseEventInput>> body = null)
+        public IBodyWorkflowAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration> POSTAdverseEvent(Expression<Func<POSTAdverseEventBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration>(() =>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEAdverseEventIdResponse, ApiConnectionActionConfiguration> DELETEAdverseEventId(Expression<Func<string>> id, Expression<Func<DELETEAdverseEventIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEAdverseEventIdResponse, ApiConnectionActionConfiguration> DELETEAdverseEventId(Expression<Func<string>> id, Expression<Func<DELETEAdverseEventIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTAdverseEventIdResponse, ApiConnectionActionConfiguration> PUTAdverseEventId(Expression<Func<string>> id, Expression<Func<PUTAdverseEventIdInput>> body = null)
+        public IBodyWorkflowAction<PUTAdverseEventIdResponse, ApiConnectionActionConfiguration> PUTAdverseEventId(Expression<Func<string>> id, Expression<Func<DELETEAdverseEventIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration> POSTAllergyIntolerance(Expression<Func<POSTAllergyIntoleranceInput>> body = null)
+        public IBodyWorkflowAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration> POSTAllergyIntolerance(Expression<Func<POSTAllergyIntoleranceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration>(() =>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> DELETEAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DELETEAllergyIntoleranceIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> DELETEAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DELETEAllergyIntoleranceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> PUTAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<PUTAllergyIntoleranceIdInput>> body = null)
+        public IBodyWorkflowAction<PUTAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> PUTAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DELETEAllergyIntoleranceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTCarePlanResponse, ApiConnectionActionConfiguration> POSTCarePlan(Expression<Func<POSTCarePlanInput>> body = null)
+        public IBodyWorkflowAction<POSTCarePlanResponse, ApiConnectionActionConfiguration> POSTCarePlan(Expression<Func<POSTCarePlanBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTCarePlanResponse, ApiConnectionActionConfiguration>(() =>
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETECarePlanIdResponse, ApiConnectionActionConfiguration> DELETECarePlanId(Expression<Func<string>> id, Expression<Func<DELETECarePlanIdInput>> body = null)
+        public IBodyWorkflowAction<DELETECarePlanIdResponse, ApiConnectionActionConfiguration> DELETECarePlanId(Expression<Func<string>> id, Expression<Func<DELETECarePlanIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTCarePlanIdResponse, ApiConnectionActionConfiguration> PUTCarePlanId(Expression<Func<string>> id, Expression<Func<PUTCarePlanIdInput>> body = null)
+        public IBodyWorkflowAction<PUTCarePlanIdResponse, ApiConnectionActionConfiguration> PUTCarePlanId(Expression<Func<string>> id, Expression<Func<DELETECarePlanIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTConditionResponse, ApiConnectionActionConfiguration> POSTCondition(Expression<Func<POSTConditionInput>> body = null)
+        public IBodyWorkflowAction<POSTConditionResponse, ApiConnectionActionConfiguration> POSTCondition(Expression<Func<POSTConditionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTConditionResponse, ApiConnectionActionConfiguration>(() =>
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEConditionIdResponse, ApiConnectionActionConfiguration> DELETEConditionId(Expression<Func<string>> id, Expression<Func<DELETEConditionIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEConditionIdResponse, ApiConnectionActionConfiguration> DELETEConditionId(Expression<Func<string>> id, Expression<Func<DELETEConditionIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTConditionIdResponse, ApiConnectionActionConfiguration> PUTConditionId(Expression<Func<string>> id, Expression<Func<PUTConditionIdInput>> body = null)
+        public IBodyWorkflowAction<PUTConditionIdResponse, ApiConnectionActionConfiguration> PUTConditionId(Expression<Func<string>> id, Expression<Func<DELETEConditionIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration> POSTDiagnosticReport(Expression<Func<POSTDiagnosticReportInput>> body = null)
+        public IBodyWorkflowAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration> POSTDiagnosticReport(Expression<Func<POSTDiagnosticReportBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration>(() =>
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEDiagnosticReportIdResponse, ApiConnectionActionConfiguration> DELETEDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DELETEDiagnosticReportIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEDiagnosticReportIdResponse, ApiConnectionActionConfiguration> DELETEDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DELETEDiagnosticReportIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTDiagnosticReportIdResponse, ApiConnectionActionConfiguration> PUTDiagnosticReportId(Expression<Func<string>> id, Expression<Func<PUTDiagnosticReportIdInput>> body = null)
+        public IBodyWorkflowAction<PUTDiagnosticReportIdResponse, ApiConnectionActionConfiguration> PUTDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DELETEDiagnosticReportIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationResponse, ApiConnectionActionConfiguration> POSTMedication(Expression<Func<POSTMedicationInput>> body = null)
+        public IBodyWorkflowAction<POSTMedicationResponse, ApiConnectionActionConfiguration> POSTMedication(Expression<Func<POSTMedicationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTMedicationResponse, ApiConnectionActionConfiguration>(() =>
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEMedicationIdResponse, ApiConnectionActionConfiguration> DELETEMedicationId(Expression<Func<string>> id, Expression<Func<DELETEMedicationIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEMedicationIdResponse, ApiConnectionActionConfiguration> DELETEMedicationId(Expression<Func<string>> id, Expression<Func<DELETEMedicationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationIdResponse, ApiConnectionActionConfiguration> PUTMedicationId(Expression<Func<string>> id, Expression<Func<PUTMedicationIdInput>> body = null)
+        public IBodyWorkflowAction<PUTMedicationIdResponse, ApiConnectionActionConfiguration> PUTMedicationId(Expression<Func<string>> id, Expression<Func<PUTMedicationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration> POSTMedicationRequest(Expression<Func<POSTMedicationRequestInput>> body = null)
+        public IBodyWorkflowAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration> POSTMedicationRequest(Expression<Func<POSTMedicationRequestBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEMedicationRequestIdResponse, ApiConnectionActionConfiguration> DELETEMedicationRequestId(Expression<Func<string>> id, Expression<Func<DELETEMedicationRequestIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEMedicationRequestIdResponse, ApiConnectionActionConfiguration> DELETEMedicationRequestId(Expression<Func<string>> id, Expression<Func<DELETEMedicationRequestIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationRequestIdResponse, ApiConnectionActionConfiguration> PUTMedicationRequestId(Expression<Func<string>> id, Expression<Func<PUTMedicationRequestIdInput>> body = null)
+        public IBodyWorkflowAction<PUTMedicationRequestIdResponse, ApiConnectionActionConfiguration> PUTMedicationRequestId(Expression<Func<string>> id, Expression<Func<DELETEMedicationRequestIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration> POSTMedicationStatement(Expression<Func<POSTMedicationStatementInput>> body = null)
+        public IBodyWorkflowAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration> POSTMedicationStatement(Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration>(() =>
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DELETEMedicationStatementId(Expression<Func<string>> id, Expression<Func<DELETEMedicationStatementIdInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DELETEMedicationStatementId(Expression<Func<string>> id, Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationStatementIdResponse, ApiConnectionActionConfiguration> PUTMedicationStatementId(Expression<Func<string>> id, Expression<Func<PUTMedicationStatementIdInput>> body = null)
+        public IBodyWorkflowAction<PUTMedicationStatementIdResponse, ApiConnectionActionConfiguration> PUTMedicationStatementId(Expression<Func<string>> id, Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTObservationResponse, ApiConnectionActionConfiguration> POSTObservation(Expression<Func<POSTObservationInput>> body = null)
+        public IBodyWorkflowAction<POSTObservationResponse, ApiConnectionActionConfiguration> POSTObservation(Expression<Func<POSTObservationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTObservationResponse, ApiConnectionActionConfiguration>(() =>
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEObservationIdResponse, ApiConnectionActionConfiguration> DELETEObservationId(Expression<Func<string>> id, Expression<Func<DELETEObservationIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEObservationIdResponse, ApiConnectionActionConfiguration> DELETEObservationId(Expression<Func<string>> id, Expression<Func<DELETEObservationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTObservationIdResponse, ApiConnectionActionConfiguration> PUTObservationId(Expression<Func<string>> id, Expression<Func<PUTObservationIdInput>> body = null)
+        public IBodyWorkflowAction<PUTObservationIdResponse, ApiConnectionActionConfiguration> PUTObservationId(Expression<Func<string>> id, Expression<Func<DELETEObservationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTProcedureResponse, ApiConnectionActionConfiguration> POSTProcedure(Expression<Func<POSTProcedureInput>> body = null)
+        public IBodyWorkflowAction<POSTProcedureResponse, ApiConnectionActionConfiguration> POSTProcedure(Expression<Func<POSTProcedureBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTProcedureResponse, ApiConnectionActionConfiguration>(() =>
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEProcedureIdResponse, ApiConnectionActionConfiguration> DELETEProcedureId(Expression<Func<string>> id, Expression<Func<DELETEProcedureIdInput>> body = null)
+        public IBodyWorkflowAction<DELETEProcedureIdResponse, ApiConnectionActionConfiguration> DELETEProcedureId(Expression<Func<string>> id, Expression<Func<DELETEProcedureIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTProcedureIdResponse, ApiConnectionActionConfiguration> PUTProcedureId(Expression<Func<string>> id, Expression<Func<PUTProcedureIdInput>> body = null)
+        public IBodyWorkflowAction<PUTProcedureIdResponse, ApiConnectionActionConfiguration> PUTProcedureId(Expression<Func<string>> id, Expression<Func<DELETEProcedureIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -907,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration> POSTRiskAssessment(Expression<Func<POSTRiskAssessmentInput>> body = null)
+        public IBodyWorkflowAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration> POSTRiskAssessment(Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration>(() =>
@@ -941,7 +941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETERiskAssessmentIdResponse, ApiConnectionActionConfiguration> DELETERiskAssessmentId(Expression<Func<string>> id, Expression<Func<DELETERiskAssessmentIdInput>> body = null)
+        public IBodyWorkflowAction<DELETERiskAssessmentIdResponse, ApiConnectionActionConfiguration> DELETERiskAssessmentId(Expression<Func<string>> id, Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTRiskAssessmentIdResponse, ApiConnectionActionConfiguration> PUTRiskAssessmentId(Expression<Func<string>> id, Expression<Func<PUTRiskAssessmentIdInput>> body = null)
+        public IBodyWorkflowAction<PUTRiskAssessmentIdResponse, ApiConnectionActionConfiguration> PUTRiskAssessmentId(Expression<Func<string>> id, Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -1383,7 +1383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class POSTAdverseEventInput
+    public class POSTAdverseEventBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1392,37 +1392,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTAdverseEventInputIdentifierType Identifier { get; set; }
+        public BodyInputIdentifierType Identifier { get; set; }
 
         [JsonProperty("actuality")]
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public POSTAdverseEventInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
-        public POSTAdverseEventInputEventType Event { get; set; }
+        public BodyInputEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public POSTAdverseEventInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("seriousness")]
-        public POSTAdverseEventInputSeriousnessType Seriousness { get; set; }
+        public BodyInputSeriousnessType Seriousness { get; set; }
 
         [JsonProperty("severity")]
-        public POSTAdverseEventInputSeverityType Severity { get; set; }
+        public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public POSTAdverseEventInputRecorderType Recorder { get; set; }
+        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
-        public POSTAdverseEventInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
+        public BodyInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
     }
 
-    public class POSTAdverseEventInputIdentifierType
+    public class BodyInputIdentifierType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1431,13 +1431,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class POSTAdverseEventInputCategoryTypeItem
+    public class DELETEAdverseEventIdBodyInputCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAdverseEventInputCategoryTypeItemCodingTypeItem
+    public class BodyInputCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1449,16 +1449,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventInputEventType
+    public class BodyInputEventType
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventInputEventTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputEventTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTAdverseEventInputEventTypeCodingTypeItem
+    public class BodyInputEventTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1470,19 +1470,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventInputSubjectType
+    public class DELETEAdverseEventIdBodyInputSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAdverseEventInputSeriousnessType
+    public class BodyInputSeriousnessType
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventInputSeriousnessTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputSeriousnessTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAdverseEventInputSeriousnessTypeCodingTypeItem
+    public class BodyInputSeriousnessTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1494,13 +1494,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventInputSeverityType
+    public class BodyInputSeverityType
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventInputSeverityTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputSeverityTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAdverseEventInputSeverityTypeCodingTypeItem
+    public class BodyInputSeverityTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1512,19 +1512,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventInputRecorderType
+    public class DELETEAdverseEventIdBodyInputRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAdverseEventInputSuspectEntityTypeItem
+    public class BodyInputSuspectEntityTypeItem
     {
         [JsonProperty("instance")]
-        public POSTAdverseEventInputSuspectEntityTypeItemInstanceType Instance { get; set; }
+        public BodyInputSuspectEntityTypeItemInstanceType Instance { get; set; }
     }
 
-    public class POSTAdverseEventInputSuspectEntityTypeItemInstanceType
+    public class BodyInputSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -1848,7 +1848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class DELETEAdverseEventIdInput
+    public class DELETEAdverseEventIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1857,154 +1857,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAdverseEventIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEAdverseEventIdInputIdentifierType Identifier { get; set; }
+        public BodyInputIdentifierType Identifier { get; set; }
 
         [JsonProperty("actuality")]
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
-        public DELETEAdverseEventIdInputEventType Event { get; set; }
+        public BodyInputEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("seriousness")]
-        public DELETEAdverseEventIdInputSeriousnessType Seriousness { get; set; }
+        public BodyInputSeriousnessType Seriousness { get; set; }
 
         [JsonProperty("severity")]
-        public DELETEAdverseEventIdInputSeverityType Severity { get; set; }
+        public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEAdverseEventIdInputRecorderType Recorder { get; set; }
+        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
-        public DELETEAdverseEventIdInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
+        public BodyInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
     }
 
-    public class DELETEAdverseEventIdInputMetaType
+    public class BodyInputMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
 
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputIdentifierType
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEAdverseEventIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputEventType
-    {
-        [JsonProperty("coding")]
-        public DELETEAdverseEventIdInputEventTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputEventTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputSeriousnessType
-    {
-        [JsonProperty("coding")]
-        public DELETEAdverseEventIdInputSeriousnessTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputSeriousnessTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputSeverityType
-    {
-        [JsonProperty("coding")]
-        public DELETEAdverseEventIdInputSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputSeverityTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputSuspectEntityTypeItem
-    {
-        [JsonProperty("instance")]
-        public DELETEAdverseEventIdInputSuspectEntityTypeItemInstanceType Instance { get; set; }
-    }
-
-    public class DELETEAdverseEventIdInputSuspectEntityTypeItemInstanceType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
     }
 
     public class PUTAdverseEventIdResponse
@@ -2161,165 +2053,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     }
 
     public class PUTAdverseEventIdResponseSuspectEntityTypeItemInstanceType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTAdverseEventIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTAdverseEventIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("identifier")]
-        public PUTAdverseEventIdInputIdentifierType Identifier { get; set; }
-
-        [JsonProperty("actuality")]
-        public string Actuality { get; set; }
-
-        [JsonProperty("category")]
-        public PUTAdverseEventIdInputCategoryTypeItem[] Category { get; set; }
-
-        [JsonProperty("event")]
-        public PUTAdverseEventIdInputEventType Event { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTAdverseEventIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("seriousness")]
-        public PUTAdverseEventIdInputSeriousnessType Seriousness { get; set; }
-
-        [JsonProperty("severity")]
-        public PUTAdverseEventIdInputSeverityType Severity { get; set; }
-
-        [JsonProperty("recorder")]
-        public PUTAdverseEventIdInputRecorderType Recorder { get; set; }
-
-        [JsonProperty("suspectEntity")]
-        public PUTAdverseEventIdInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputIdentifierType
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTAdverseEventIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputEventType
-    {
-        [JsonProperty("coding")]
-        public PUTAdverseEventIdInputEventTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputEventTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputSeriousnessType
-    {
-        [JsonProperty("coding")]
-        public PUTAdverseEventIdInputSeriousnessTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputSeriousnessTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputSeverityType
-    {
-        [JsonProperty("coding")]
-        public PUTAdverseEventIdInputSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputSeverityTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputSuspectEntityTypeItem
-    {
-        [JsonProperty("instance")]
-        public PUTAdverseEventIdInputSuspectEntityTypeItemInstanceType Instance { get; set; }
-    }
-
-    public class PUTAdverseEventIdInputSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -2631,7 +2364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInput
+    public class POSTAllergyIntoleranceBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2640,16 +2373,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTAllergyIntoleranceInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTAllergyIntoleranceInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public POSTAllergyIntoleranceInputClinicalStatusType ClinicalStatus { get; set; }
+        public POSTAllergyIntoleranceBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public POSTAllergyIntoleranceInputVerificationStatusType VerificationStatus { get; set; }
+        public POSTAllergyIntoleranceBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2661,43 +2394,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public POSTAllergyIntoleranceInputCodeType Code { get; set; }
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("patient")]
-        public POSTAllergyIntoleranceInputPatientType Patient { get; set; }
+        public BodyInputPatientType Patient { get; set; }
 
         [JsonProperty("recordedDate")]
         public string RecordedDate { get; set; }
 
         [JsonProperty("recorder")]
-        public POSTAllergyIntoleranceInputRecorderType Recorder { get; set; }
+        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("reaction")]
-        public POSTAllergyIntoleranceInputReactionTypeItem[] Reaction { get; set; }
+        public BodyInputReactionTypeItem[] Reaction { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class POSTAllergyIntoleranceInputTextType
+    public class DELETECarePlanIdBodyInputTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputClinicalStatusType
+    public class POSTAllergyIntoleranceBodyInputClinicalStatusType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public POSTAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputClinicalStatusTypeCodingTypeItem
+    public class POSTAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2709,13 +2433,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputVerificationStatusType
+    public class POSTAllergyIntoleranceBodyInputVerificationStatusType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public POSTAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputVerificationStatusTypeCodingTypeItem
+    public class POSTAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2727,13 +2451,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputCodeType
+    public class DELETEDiagnosticReportIdBodyInputCodeType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceInputCodeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputCodeTypeCodingTypeItem
+    public class BodyInputCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2745,31 +2469,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputPatientType
+    public class BodyInputPatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class POSTAllergyIntoleranceInputReactionTypeItem
+    public class BodyInputReactionTypeItem
     {
         [JsonProperty("manifestation")]
-        public POSTAllergyIntoleranceInputReactionTypeItemManifestationTypeItem[] Manifestation { get; set; }
+        public BodyInputReactionTypeItemManifestationTypeItem[] Manifestation { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputReactionTypeItemManifestationTypeItem
+    public class BodyInputReactionTypeItemManifestationTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceInputReactionTypeItemManifestationTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputReactionTypeItemManifestationTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceInputReactionTypeItemManifestationTypeItemCodingTypeItem
+    public class BodyInputReactionTypeItemManifestationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2985,7 +2703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdInput
+    public class DELETEAllergyIntoleranceIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2994,13 +2712,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAllergyIntoleranceIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETEAllergyIntoleranceIdInputClinicalStatusType ClinicalStatus { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETEAllergyIntoleranceIdInputVerificationStatusType VerificationStatus { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3012,31 +2730,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdInputCodeType Code { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("patient")]
-        public DELETEAllergyIntoleranceIdInputPatientType Patient { get; set; }
+        public BodyInputPatientType Patient { get; set; }
 
         [JsonProperty("recordedDate")]
         public string RecordedDate { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEAllergyIntoleranceIdInputClinicalStatusType
+    public class DELETEAllergyIntoleranceIdBodyInputClinicalStatusType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdInputClinicalStatusTypeCodingTypeItem
+    public class DELETEAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3045,13 +2754,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdInputVerificationStatusType
+    public class DELETEAllergyIntoleranceIdBodyInputVerificationStatusType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdInputVerificationStatusTypeCodingTypeItem
+    public class DELETEAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3060,31 +2769,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdInputCodeType
+    public class DELETEAllergyIntoleranceIdBodyInputCodeType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
-    }
-
-    public class DELETEAllergyIntoleranceIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEAllergyIntoleranceIdInputPatientType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
     }
 
     public class PUTAllergyIntoleranceIdResponse
@@ -3184,108 +2875,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     }
 
     public class PUTAllergyIntoleranceIdResponsePatientType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTAllergyIntoleranceIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("clinicalStatus")]
-        public PUTAllergyIntoleranceIdInputClinicalStatusType ClinicalStatus { get; set; }
-
-        [JsonProperty("verificationStatus")]
-        public PUTAllergyIntoleranceIdInputVerificationStatusType VerificationStatus { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("category")]
-        public string[] Category { get; set; }
-
-        [JsonProperty("criticality")]
-        public string Criticality { get; set; }
-
-        [JsonProperty("code")]
-        public PUTAllergyIntoleranceIdInputCodeType Code { get; set; }
-
-        [JsonProperty("patient")]
-        public PUTAllergyIntoleranceIdInputPatientType Patient { get; set; }
-
-        [JsonProperty("recordedDate")]
-        public string RecordedDate { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputClinicalStatusType
-    {
-        [JsonProperty("coding")]
-        public PUTAllergyIntoleranceIdInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputClinicalStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputVerificationStatusType
-    {
-        [JsonProperty("coding")]
-        public PUTAllergyIntoleranceIdInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputVerificationStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTAllergyIntoleranceIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTAllergyIntoleranceIdInputPatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3798,7 +3387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTCarePlanInput
+    public class POSTCarePlanBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3807,10 +3396,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTCarePlanInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTCarePlanInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3819,7 +3408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("category")]
-        public POSTCarePlanInputCategoryTypeItem[] Category { get; set; }
+        public POSTCarePlanBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3828,73 +3417,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Description { get; set; }
 
         [JsonProperty("subject")]
-        public POSTCarePlanInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public POSTCarePlanInputEncounterType Encounter { get; set; }
+        public POSTCarePlanBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("period")]
-        public POSTCarePlanInputPeriodType Period { get; set; }
+        public POSTCarePlanBodyInputPeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
-        public POSTCarePlanInputCareTeamTypeItem[] CareTeam { get; set; }
+        public BodyInputCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public POSTCarePlanInputAddressesTypeItem[] Addresses { get; set; }
+        public POSTCarePlanBodyInputAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("activity")]
-        public POSTCarePlanInputActivityTypeItem[] Activity { get; set; }
+        public POSTCarePlanBodyInputActivityTypeItem[] Activity { get; set; }
     }
 
-    public class POSTCarePlanInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class POSTCarePlanInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTCarePlanInputCategoryTypeItem
+    public class POSTCarePlanBodyInputCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTCarePlanInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTCarePlanInputSubjectType
+    public class POSTCarePlanBodyInputEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanInputEncounterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class POSTCarePlanInputPeriodType
+    public class POSTCarePlanBodyInputPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -3903,46 +3459,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class POSTCarePlanInputCareTeamTypeItem
+    public class BodyInputCareTeamTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanInputAddressesTypeItem
+    public class POSTCarePlanBodyInputAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanInputActivityTypeItem
+    public class POSTCarePlanBodyInputActivityTypeItem
     {
         [JsonProperty("detail")]
-        public POSTCarePlanInputActivityTypeItemDetailType Detail { get; set; }
+        public POSTCarePlanBodyInputActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class POSTCarePlanInputActivityTypeItemDetailType
+    public class POSTCarePlanBodyInputActivityTypeItemDetailType
     {
         [JsonProperty("code")]
-        public POSTCarePlanInputActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("location")]
-        public POSTCarePlanInputActivityTypeItemDetailTypeLocationType Location { get; set; }
+        public BodyInputActivityTypeItemDetailTypeLocationType Location { get; set; }
     }
 
-    public class POSTCarePlanInputActivityTypeItemDetailTypeCodeType
+    public class POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public POSTCarePlanInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3954,7 +3510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTCarePlanInputActivityTypeItemDetailTypeLocationType
+    public class BodyInputActivityTypeItemDetailTypeLocationType
     {
         [JsonProperty("display")]
         public string Display { get; set; }
@@ -4407,7 +3963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdInput
+    public class DELETECarePlanIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4416,13 +3972,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETECarePlanIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETECarePlanIdInputContainedTypeItem[] Contained { get; set; }
+        public DELETECarePlanIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4431,40 +3987,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public DELETECarePlanIdInputPeriodType Period { get; set; }
+        public DELETECarePlanIdBodyInputPeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
-        public DELETECarePlanIdInputCareTeamTypeItem[] CareTeam { get; set; }
+        public BodyInputCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public DELETECarePlanIdInputAddressesTypeItem[] Addresses { get; set; }
+        public DELETECarePlanIdBodyInputAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("goal")]
-        public DELETECarePlanIdInputGoalTypeItem[] Goal { get; set; }
+        public BodyInputGoalTypeItem[] Goal { get; set; }
 
         [JsonProperty("activity")]
-        public DELETECarePlanIdInputActivityTypeItem[] Activity { get; set; }
+        public DELETECarePlanIdBodyInputActivityTypeItem[] Activity { get; set; }
     }
 
-    public class DELETECarePlanIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETECarePlanIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETECarePlanIdInputContainedTypeItem
+    public class DELETECarePlanIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4473,34 +4014,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETECarePlanIdInputContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
+        public BodyInputContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETECarePlanIdInputContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
+        public BodyInputContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("code")]
-        public DELETECarePlanIdInputContainedTypeItemCodeType Code { get; set; }
+        public DELETECarePlanIdBodyInputContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdInputContainedTypeItemSubjectType Subject { get; set; }
+        public BodyInputContainedTypeItemSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public DELETECarePlanIdInputContainedTypeItemParticipantTypeItem[] Participant { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("lifecycleStatus")]
         public string LifecycleStatus { get; set; }
 
         [JsonProperty("description")]
-        public DELETECarePlanIdInputContainedTypeItemDescriptionType Description { get; set; }
+        public BodyInputContainedTypeItemDescriptionType Description { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemClinicalStatusType
+    public class BodyInputContainedTypeItemClinicalStatusType
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdInputContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemClinicalStatusTypeCodingTypeItem
+    public class BodyInputContainedTypeItemClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4509,13 +4050,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemVerificationStatusType
+    public class BodyInputContainedTypeItemVerificationStatusType
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdInputContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemVerificationStatusTypeCodingTypeItem
+    public class BodyInputContainedTypeItemVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4524,13 +4065,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemCodeType
+    public class DELETECarePlanIdBodyInputContainedTypeItemCodeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemSubjectType
+    public class BodyInputContainedTypeItemSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4539,28 +4080,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemParticipantTypeItem
+    public class BodyInputContainedTypeItemParticipantTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("role")]
-        public DELETECarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("member")]
-        public DELETECarePlanIdInputContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItem
+    public class BodyInputContainedTypeItemParticipantTypeItemRoleTypeItem
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
+    public class BodyInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4569,7 +4110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemParticipantTypeItemMemberType
+    public class BodyInputContainedTypeItemParticipantTypeItemMemberType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4578,13 +4119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdInputContainedTypeItemDescriptionType
+    public class BodyInputContainedTypeItemDescriptionType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdInputSubjectType
+    public class DELETECarePlanIdBodyInputSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4593,19 +4134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdInputPeriodType
+    public class DELETECarePlanIdBodyInputPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class DELETECarePlanIdInputCareTeamTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETECarePlanIdInputAddressesTypeItem
+    public class DELETECarePlanIdBodyInputAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4614,34 +4149,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdInputGoalTypeItem
+    public class BodyInputGoalTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETECarePlanIdInputActivityTypeItem
+    public class DELETECarePlanIdBodyInputActivityTypeItem
     {
         [JsonProperty("outcomeReference")]
-        public DELETECarePlanIdInputActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
+        public BodyInputActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
 
         [JsonProperty("detail")]
-        public DELETECarePlanIdInputActivityTypeItemDetailType Detail { get; set; }
+        public DELETECarePlanIdBodyInputActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class DELETECarePlanIdInputActivityTypeItemOutcomeReferenceTypeItem
+    public class BodyInputActivityTypeItemOutcomeReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETECarePlanIdInputActivityTypeItemDetailType
+    public class DELETECarePlanIdBodyInputActivityTypeItemDetailType
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
 
         [JsonProperty("code")]
-        public DELETECarePlanIdInputActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4650,22 +4185,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool? DoNotPerform { get; set; }
 
         [JsonProperty("scheduledPeriod")]
-        public DELETECarePlanIdInputActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
+        public BodyInputActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
 
         [JsonProperty("performer")]
-        public DELETECarePlanIdInputActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
+        public BodyInputActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
     }
 
-    public class DELETECarePlanIdInputActivityTypeItemDetailTypeCodeType
+    public class DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4674,7 +4209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdInputActivityTypeItemDetailTypeScheduledPeriodType
+    public class BodyInputActivityTypeItemDetailTypeScheduledPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -4683,7 +4218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class DELETECarePlanIdInputActivityTypeItemDetailTypePerformerTypeItem
+    public class BodyInputActivityTypeItemDetailTypePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4969,291 +4504,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     }
 
     public class PUTCarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTCarePlanIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTCarePlanIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("text")]
-        public PUTCarePlanIdInputTextType Text { get; set; }
-
-        [JsonProperty("contained")]
-        public PUTCarePlanIdInputContainedTypeItem[] Contained { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("intent")]
-        public string Intent { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTCarePlanIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("period")]
-        public PUTCarePlanIdInputPeriodType Period { get; set; }
-
-        [JsonProperty("careTeam")]
-        public PUTCarePlanIdInputCareTeamTypeItem[] CareTeam { get; set; }
-
-        [JsonProperty("addresses")]
-        public PUTCarePlanIdInputAddressesTypeItem[] Addresses { get; set; }
-
-        [JsonProperty("goal")]
-        public PUTCarePlanIdInputGoalTypeItem[] Goal { get; set; }
-
-        [JsonProperty("activity")]
-        public PUTCarePlanIdInputActivityTypeItem[] Activity { get; set; }
-    }
-
-    public class PUTCarePlanIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTCarePlanIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItem
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("clinicalStatus")]
-        public PUTCarePlanIdInputContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
-
-        [JsonProperty("verificationStatus")]
-        public PUTCarePlanIdInputContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
-
-        [JsonProperty("code")]
-        public PUTCarePlanIdInputContainedTypeItemCodeType Code { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTCarePlanIdInputContainedTypeItemSubjectType Subject { get; set; }
-
-        [JsonProperty("participant")]
-        public PUTCarePlanIdInputContainedTypeItemParticipantTypeItem[] Participant { get; set; }
-
-        [JsonProperty("lifecycleStatus")]
-        public string LifecycleStatus { get; set; }
-
-        [JsonProperty("description")]
-        public PUTCarePlanIdInputContainedTypeItemDescriptionType Description { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemClinicalStatusType
-    {
-        [JsonProperty("coding")]
-        public PUTCarePlanIdInputContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemClinicalStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemVerificationStatusType
-    {
-        [JsonProperty("coding")]
-        public PUTCarePlanIdInputContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemVerificationStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemCodeType
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemParticipantTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("role")]
-        public PUTCarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
-
-        [JsonProperty("member")]
-        public PUTCarePlanIdInputContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTCarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemParticipantTypeItemMemberType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTCarePlanIdInputContainedTypeItemDescriptionType
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTCarePlanIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTCarePlanIdInputPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-    }
-
-    public class PUTCarePlanIdInputCareTeamTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTCarePlanIdInputAddressesTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTCarePlanIdInputGoalTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTCarePlanIdInputActivityTypeItem
-    {
-        [JsonProperty("outcomeReference")]
-        public PUTCarePlanIdInputActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
-
-        [JsonProperty("detail")]
-        public PUTCarePlanIdInputActivityTypeItemDetailType Detail { get; set; }
-    }
-
-    public class PUTCarePlanIdInputActivityTypeItemOutcomeReferenceTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTCarePlanIdInputActivityTypeItemDetailType
-    {
-        [JsonProperty("kind")]
-        public string Kind { get; set; }
-
-        [JsonProperty("code")]
-        public PUTCarePlanIdInputActivityTypeItemDetailTypeCodeType Code { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("doNotPerform")]
-        public bool? DoNotPerform { get; set; }
-
-        [JsonProperty("scheduledPeriod")]
-        public PUTCarePlanIdInputActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
-
-        [JsonProperty("performer")]
-        public PUTCarePlanIdInputActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
-    }
-
-    public class PUTCarePlanIdInputActivityTypeItemDetailTypeCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTCarePlanIdInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTCarePlanIdInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTCarePlanIdInputActivityTypeItemDetailTypeScheduledPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class PUTCarePlanIdInputActivityTypeItemDetailTypePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5592,7 +4842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class POSTConditionInput
+    public class POSTConditionBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5601,115 +4851,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTConditionInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public POSTConditionInputClinicalStatusType ClinicalStatus { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public POSTConditionInputVerificationStatusType VerificationStatus { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public POSTConditionInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
-        public POSTConditionInputSeverityType Severity { get; set; }
+        public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public POSTConditionInputCodeType Code { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
-        public POSTConditionInputBodySiteTypeItem[] BodySite { get; set; }
+        public BodyInputBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public POSTConditionInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
     }
 
-    public class POSTConditionInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTConditionInputClinicalStatusType
+    public class BodyInputBodySiteTypeItem
     {
         [JsonProperty("coding")]
-        public POSTConditionInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTConditionInputClinicalStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class POSTConditionInputVerificationStatusType
-    {
-        [JsonProperty("coding")]
-        public POSTConditionInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTConditionInputVerificationStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class POSTConditionInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public POSTConditionInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTConditionInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTConditionInputSeverityType
-    {
-        [JsonProperty("coding")]
-        public POSTConditionInputSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTConditionInputSeverityTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTConditionInputCodeType
-    {
-        [JsonProperty("coding")]
-        public POSTConditionInputCodeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTConditionInputCodeTypeCodingTypeItem
+    public class BodyInputBodySiteTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5719,33 +4897,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
         [JsonProperty("display")]
         public string Display { get; set; }
-    }
-
-    public class POSTConditionInputBodySiteTypeItem
-    {
-        [JsonProperty("coding")]
-        public POSTConditionInputBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class POSTConditionInputBodySiteTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTConditionInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
     }
 
     public class GETConditionIdResponse
@@ -6084,7 +5235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class DELETEConditionIdInput
+    public class DELETEConditionIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6093,163 +5244,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEConditionIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEConditionIdInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETEConditionIdInputClinicalStatusType ClinicalStatus { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETEConditionIdInputVerificationStatusType VerificationStatus { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public DELETEConditionIdInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
-        public DELETEConditionIdInputSeverityType Severity { get; set; }
+        public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public DELETEConditionIdInputCodeType Code { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
-        public DELETEConditionIdInputBodySiteTypeItem[] BodySite { get; set; }
+        public BodyInputBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEConditionIdInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
-    }
-
-    public class DELETEConditionIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEConditionIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETEConditionIdInputClinicalStatusType
-    {
-        [JsonProperty("coding")]
-        public DELETEConditionIdInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEConditionIdInputClinicalStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEConditionIdInputVerificationStatusType
-    {
-        [JsonProperty("coding")]
-        public DELETEConditionIdInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEConditionIdInputVerificationStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEConditionIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEConditionIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEConditionIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEConditionIdInputSeverityType
-    {
-        [JsonProperty("coding")]
-        public DELETEConditionIdInputSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEConditionIdInputSeverityTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEConditionIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public DELETEConditionIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEConditionIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEConditionIdInputBodySiteTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEConditionIdInputBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEConditionIdInputBodySiteTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEConditionIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
     }
 
     public class PUTConditionIdResponse
@@ -6415,174 +5437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     }
 
     public class PUTConditionIdResponseSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTConditionIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTConditionIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("text")]
-        public PUTConditionIdInputTextType Text { get; set; }
-
-        [JsonProperty("clinicalStatus")]
-        public PUTConditionIdInputClinicalStatusType ClinicalStatus { get; set; }
-
-        [JsonProperty("verificationStatus")]
-        public PUTConditionIdInputVerificationStatusType VerificationStatus { get; set; }
-
-        [JsonProperty("category")]
-        public PUTConditionIdInputCategoryTypeItem[] Category { get; set; }
-
-        [JsonProperty("severity")]
-        public PUTConditionIdInputSeverityType Severity { get; set; }
-
-        [JsonProperty("code")]
-        public PUTConditionIdInputCodeType Code { get; set; }
-
-        [JsonProperty("bodySite")]
-        public PUTConditionIdInputBodySiteTypeItem[] BodySite { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTConditionIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("onsetDateTime")]
-        public string OnsetDateTime { get; set; }
-    }
-
-    public class PUTConditionIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTConditionIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTConditionIdInputClinicalStatusType
-    {
-        [JsonProperty("coding")]
-        public PUTConditionIdInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTConditionIdInputClinicalStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTConditionIdInputVerificationStatusType
-    {
-        [JsonProperty("coding")]
-        public PUTConditionIdInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTConditionIdInputVerificationStatusTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTConditionIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTConditionIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTConditionIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTConditionIdInputSeverityType
-    {
-        [JsonProperty("coding")]
-        public PUTConditionIdInputSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTConditionIdInputSeverityTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTConditionIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTConditionIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTConditionIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTConditionIdInputBodySiteTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTConditionIdInputBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTConditionIdInputBodySiteTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTConditionIdInputSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6885,7 +5739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class POSTDiagnosticReportInput
+    public class POSTDiagnosticReportBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6894,46 +5748,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTDiagnosticReportInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTDiagnosticReportInputIdentifierTypeItem[] Identifier { get; set; }
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("basedOn")]
-        public POSTDiagnosticReportInputBasedOnTypeItem[] BasedOn { get; set; }
+        public BodyInputBasedOnTypeItem[] BasedOn { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public POSTDiagnosticReportInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public POSTDiagnosticReportInputCodeType Code { get; set; }
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTDiagnosticReportInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public POSTDiagnosticReportInputPerformerTypeItem[] Performer { get; set; }
+        public DELETEDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
-        public POSTDiagnosticReportInputResultTypeItem[] Result { get; set; }
+        public BodyInputResultTypeItem[] Result { get; set; }
 
         [JsonProperty("conclusion")]
         public string Conclusion { get; set; }
     }
 
-    public class POSTDiagnosticReportInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTDiagnosticReportInputIdentifierTypeItem
+    public class BodyInputIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -6945,49 +5793,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class POSTDiagnosticReportInputBasedOnTypeItem
+    public class BodyInputBasedOnTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTDiagnosticReportInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public POSTDiagnosticReportInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTDiagnosticReportInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTDiagnosticReportInputCodeType
-    {
-        [JsonProperty("coding")]
-        public POSTDiagnosticReportInputCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTDiagnosticReportInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTDiagnosticReportInputSubjectType
+    public class DELETEDiagnosticReportIdBodyInputPerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6996,16 +5808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTDiagnosticReportInputPerformerTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTDiagnosticReportInputResultTypeItem
+    public class BodyInputResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7287,7 +6090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdInput
+    public class DELETEDiagnosticReportIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7296,133 +6099,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEDiagnosticReportIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEDiagnosticReportIdInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEDiagnosticReportIdInputIdentifierTypeItem[] Identifier { get; set; }
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("basedOn")]
-        public DELETEDiagnosticReportIdInputBasedOnTypeItem[] BasedOn { get; set; }
+        public BodyInputBasedOnTypeItem[] BasedOn { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEDiagnosticReportIdInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdInputCodeType Code { get; set; }
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEDiagnosticReportIdInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEDiagnosticReportIdInputPerformerTypeItem[] Performer { get; set; }
+        public DELETEDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
-        public DELETEDiagnosticReportIdInputResultTypeItem[] Result { get; set; }
+        public BodyInputResultTypeItem[] Result { get; set; }
 
         [JsonProperty("conclusion")]
         public string Conclusion { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputIdentifierTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputBasedOnTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEDiagnosticReportIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public DELETEDiagnosticReportIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputPerformerTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEDiagnosticReportIdInputResultTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
     }
 
     public class PUTDiagnosticReportIdResponse
@@ -7558,144 +6268,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     }
 
     public class PUTDiagnosticReportIdResponseResultTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTDiagnosticReportIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("text")]
-        public PUTDiagnosticReportIdInputTextType Text { get; set; }
-
-        [JsonProperty("identifier")]
-        public PUTDiagnosticReportIdInputIdentifierTypeItem[] Identifier { get; set; }
-
-        [JsonProperty("basedOn")]
-        public PUTDiagnosticReportIdInputBasedOnTypeItem[] BasedOn { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("category")]
-        public PUTDiagnosticReportIdInputCategoryTypeItem[] Category { get; set; }
-
-        [JsonProperty("code")]
-        public PUTDiagnosticReportIdInputCodeType Code { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTDiagnosticReportIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("issued")]
-        public string Issued { get; set; }
-
-        [JsonProperty("performer")]
-        public PUTDiagnosticReportIdInputPerformerTypeItem[] Performer { get; set; }
-
-        [JsonProperty("result")]
-        public PUTDiagnosticReportIdInputResultTypeItem[] Result { get; set; }
-
-        [JsonProperty("conclusion")]
-        public string Conclusion { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputIdentifierTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputBasedOnTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTDiagnosticReportIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTDiagnosticReportIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputPerformerTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTDiagnosticReportIdInputResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8061,7 +6633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class POSTMedicationInput
+    public class POSTMedicationBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8070,37 +6642,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTMedicationInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public POSTMedicationInputContainedTypeItem[] Contained { get; set; }
+        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public POSTMedicationInputCodeType Code { get; set; }
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("manufacturer")]
-        public POSTMedicationInputManufacturerType Manufacturer { get; set; }
+        public BodyInputManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("form")]
-        public POSTMedicationInputFormType Form { get; set; }
+        public BodyInputFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public POSTMedicationInputIngredientTypeItem[] Ingredient { get; set; }
+        public BodyInputIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public POSTMedicationInputBatchType Batch { get; set; }
+        public BodyInputBatchType Batch { get; set; }
     }
 
-    public class POSTMedicationInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTMedicationInputContainedTypeItem
+    public class DELETEMedicationIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8112,37 +6678,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Name { get; set; }
     }
 
-    public class POSTMedicationInputCodeType
-    {
-        [JsonProperty("coding")]
-        public POSTMedicationInputCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTMedicationInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTMedicationInputManufacturerType
+    public class BodyInputManufacturerType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTMedicationInputFormType
+    public class BodyInputFormType
     {
         [JsonProperty("coding")]
-        public POSTMedicationInputFormTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationInputFormTypeCodingTypeItem
+    public class BodyInputFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8154,25 +6702,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationInputIngredientTypeItem
+    public class BodyInputIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public POSTMedicationInputIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public BodyInputIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("isActive")]
         public bool? IsActive { get; set; }
 
         [JsonProperty("strength")]
-        public POSTMedicationInputIngredientTypeItemStrengthType Strength { get; set; }
+        public BodyInputIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class POSTMedicationInputIngredientTypeItemItemCodeableConceptType
+    public class BodyInputIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public POSTMedicationInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class BodyInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8184,16 +6732,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationInputIngredientTypeItemStrengthType
+    public class BodyInputIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public POSTMedicationInputIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public BodyInputIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public POSTMedicationInputIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public BodyInputIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class POSTMedicationInputIngredientTypeItemStrengthTypeNumeratorType
+    public class BodyInputIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -8205,7 +6753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationInputIngredientTypeItemStrengthTypeDenominatorType
+    public class BodyInputIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -8217,7 +6765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationInputBatchType
+    public class BodyInputBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -8580,7 +7128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class DELETEMedicationIdInput
+    public class DELETEMedicationIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8589,172 +7137,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEMedicationIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEMedicationIdInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationIdInputContainedTypeItem[] Contained { get; set; }
+        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public DELETEMedicationIdInputCodeType Code { get; set; }
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("manufacturer")]
-        public DELETEMedicationIdInputManufacturerType Manufacturer { get; set; }
+        public BodyInputManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("form")]
-        public DELETEMedicationIdInputFormType Form { get; set; }
+        public BodyInputFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public DELETEMedicationIdInputIngredientTypeItem[] Ingredient { get; set; }
+        public BodyInputIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public DELETEMedicationIdInputBatchType Batch { get; set; }
-    }
-
-    public class DELETEMedicationIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEMedicationIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETEMedicationIdInputContainedTypeItem
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class DELETEMedicationIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationIdInputManufacturerType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEMedicationIdInputFormType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationIdInputFormTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationIdInputFormTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationIdInputIngredientTypeItem
-    {
-        [JsonProperty("itemCodeableConcept")]
-        public DELETEMedicationIdInputIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
-
-        [JsonProperty("isActive")]
-        public bool? IsActive { get; set; }
-
-        [JsonProperty("strength")]
-        public DELETEMedicationIdInputIngredientTypeItemStrengthType Strength { get; set; }
-    }
-
-    public class DELETEMedicationIdInputIngredientTypeItemItemCodeableConceptType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationIdInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationIdInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationIdInputIngredientTypeItemStrengthType
-    {
-        [JsonProperty("numerator")]
-        public DELETEMedicationIdInputIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
-
-        [JsonProperty("denominator")]
-        public DELETEMedicationIdInputIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
-    }
-
-    public class DELETEMedicationIdInputIngredientTypeItemStrengthTypeNumeratorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEMedicationIdInputIngredientTypeItemStrengthTypeDenominatorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEMedicationIdInputBatchType
-    {
-        [JsonProperty("lotNumber")]
-        public string LotNumber { get; set; }
-
-        [JsonProperty("expirationDate")]
-        public string ExpirationDate { get; set; }
+        public BodyInputBatchType Batch { get; set; }
     }
 
     public class PUTMedicationIdResponse
@@ -8934,7 +7341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class PUTMedicationIdInput
+    public class PUTMedicationIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8943,163 +7350,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public PUTMedicationIdInputTextType Text { get; set; }
+        public PUTMedicationIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public PUTMedicationIdInputContainedTypeItem[] Contained { get; set; }
+        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public PUTMedicationIdInputCodeType Code { get; set; }
+        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("manufacturer")]
-        public PUTMedicationIdInputManufacturerType Manufacturer { get; set; }
+        public BodyInputManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("form")]
-        public PUTMedicationIdInputFormType Form { get; set; }
+        public BodyInputFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public PUTMedicationIdInputIngredientTypeItem[] Ingredient { get; set; }
+        public BodyInputIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public PUTMedicationIdInputBatchType Batch { get; set; }
+        public BodyInputBatchType Batch { get; set; }
     }
 
-    public class PUTMedicationIdInputTextType
+    public class PUTMedicationIdBodyInputTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("div")]
         public string Div { get; set; }
-    }
-
-    public class PUTMedicationIdInputContainedTypeItem
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class PUTMedicationIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationIdInputManufacturerType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTMedicationIdInputFormType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationIdInputFormTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationIdInputFormTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationIdInputIngredientTypeItem
-    {
-        [JsonProperty("itemCodeableConcept")]
-        public PUTMedicationIdInputIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
-
-        [JsonProperty("isActive")]
-        public bool? IsActive { get; set; }
-
-        [JsonProperty("strength")]
-        public PUTMedicationIdInputIngredientTypeItemStrengthType Strength { get; set; }
-    }
-
-    public class PUTMedicationIdInputIngredientTypeItemItemCodeableConceptType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationIdInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationIdInputIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationIdInputIngredientTypeItemStrengthType
-    {
-        [JsonProperty("numerator")]
-        public PUTMedicationIdInputIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
-
-        [JsonProperty("denominator")]
-        public PUTMedicationIdInputIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
-    }
-
-    public class PUTMedicationIdInputIngredientTypeItemStrengthTypeNumeratorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTMedicationIdInputIngredientTypeItemStrengthTypeDenominatorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTMedicationIdInputBatchType
-    {
-        [JsonProperty("lotNumber")]
-        public string LotNumber { get; set; }
-
-        [JsonProperty("expirationDate")]
-        public string ExpirationDate { get; set; }
     }
 
     public class GETMedicationRequestResponse
@@ -9729,7 +8010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInput
+    public class POSTMedicationRequestBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9738,13 +8019,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTMedicationRequestInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public POSTMedicationRequestInputContainedTypeItem[] Contained { get; set; }
+        public DELETEMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTMedicationRequestInputIdentifierTypeItem[] Identifier { get; set; }
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -9753,46 +8034,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public POSTMedicationRequestInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public POSTMedicationRequestBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public POSTMedicationRequestInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public POSTMedicationRequestInputEncounterType Encounter { get; set; }
+        public DELETEMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("supportingInformation")]
-        public POSTMedicationRequestInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
+        public BodyInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
 
         [JsonProperty("authoredOn")]
         public string AuthoredOn { get; set; }
 
         [JsonProperty("requester")]
-        public POSTMedicationRequestInputRequesterType Requester { get; set; }
+        public BodyInputRequesterType Requester { get; set; }
 
         [JsonProperty("reasonCode")]
-        public POSTMedicationRequestInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DELETEMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
-        public POSTMedicationRequestInputNoteTypeItem[] Note { get; set; }
+        public BodyInputNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosageInstruction")]
-        public POSTMedicationRequestInputDosageInstructionTypeItem[] DosageInstruction { get; set; }
+        public BodyInputDosageInstructionTypeItem[] DosageInstruction { get; set; }
 
         [JsonProperty("dispenseRequest")]
-        public POSTMedicationRequestInputDispenseRequestType DispenseRequest { get; set; }
+        public BodyInputDispenseRequestType DispenseRequest { get; set; }
 
         [JsonProperty("substitution")]
-        public POSTMedicationRequestInputSubstitutionType Substitution { get; set; }
+        public BodyInputSubstitutionType Substitution { get; set; }
     }
 
-    public class POSTMedicationRequestInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTMedicationRequestInputContainedTypeItem
+    public class DELETEMedicationRequestIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9801,16 +8076,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public POSTMedicationRequestInputContainedTypeItemCodeType Code { get; set; }
+        public DELETEMedicationRequestIdBodyInputContainedTypeItemCodeType Code { get; set; }
     }
 
-    public class POSTMedicationRequestInputContainedTypeItemCodeType
+    public class DELETEMedicationRequestIdBodyInputContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputContainedTypeItemCodeTypeCodingTypeItem
+    public class BodyInputContainedTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9822,25 +8097,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputIdentifierTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class POSTMedicationRequestInputMedicationCodeableConceptType
+    public class POSTMedicationRequestBodyInputMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputMedicationCodeableConceptTypeCodingTypeItem
+    public class BodyInputMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9852,7 +8115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputSubjectType
+    public class DELETEMedicationRequestIdBodyInputEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9861,7 +8124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputEncounterType
+    public class BodyInputSupportingInformationTypeItem
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+    }
+
+    public class BodyInputRequesterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9870,28 +8139,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputSupportingInformationTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class POSTMedicationRequestInputRequesterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTMedicationRequestInputReasonCodeTypeItem
+    public class DELETEMedicationRequestIdBodyInputReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputReasonCodeTypeItemCodingTypeItem
+    public class BodyInputReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9903,13 +8157,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputNoteTypeItem
+    public class BodyInputNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItem
+    public class BodyInputDosageInstructionTypeItem
     {
         [JsonProperty("sequence")]
         public int? Sequence { get; set; }
@@ -9918,28 +8172,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
 
         [JsonProperty("additionalInstruction")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
+        public BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
 
         [JsonProperty("timing")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemTimingType Timing { get; set; }
+        public BodyInputDosageInstructionTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("route")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemRouteType Route { get; set; }
+        public BodyInputDosageInstructionTypeItemRouteType Route { get; set; }
 
         [JsonProperty("method")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemMethodType Method { get; set; }
+        public BodyInputDosageInstructionTypeItemMethodType Method { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemAdditionalInstructionTypeItem
+    public class BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItem
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9951,13 +8205,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemTimingType
+    public class BodyInputDosageInstructionTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public BodyInputDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemTimingTypeRepeatType
+    public class BodyInputDosageInstructionTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int? Frequency { get; set; }
@@ -9969,13 +8223,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemRouteType
+    public class BodyInputDosageInstructionTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemRouteTypeCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9987,13 +8241,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemMethodType
+    public class BodyInputDosageInstructionTypeItemMethodType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemMethodTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemMethodTypeCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemMethodTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10005,22 +8259,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItem
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10032,7 +8286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class BodyInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -10047,22 +8301,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationRequestInputDispenseRequestType
+    public class BodyInputDispenseRequestType
     {
         [JsonProperty("validityPeriod")]
-        public POSTMedicationRequestInputDispenseRequestTypeValidityPeriodType ValidityPeriod { get; set; }
+        public BodyInputDispenseRequestTypeValidityPeriodType ValidityPeriod { get; set; }
 
         [JsonProperty("numberOfRepeatsAllowed")]
         public int? NumberOfRepeatsAllowed { get; set; }
 
         [JsonProperty("quantity")]
-        public POSTMedicationRequestInputDispenseRequestTypeQuantityType Quantity { get; set; }
+        public BodyInputDispenseRequestTypeQuantityType Quantity { get; set; }
 
         [JsonProperty("expectedSupplyDuration")]
-        public POSTMedicationRequestInputDispenseRequestTypeExpectedSupplyDurationType ExpectedSupplyDuration { get; set; }
+        public BodyInputDispenseRequestTypeExpectedSupplyDurationType ExpectedSupplyDuration { get; set; }
     }
 
-    public class POSTMedicationRequestInputDispenseRequestTypeValidityPeriodType
+    public class BodyInputDispenseRequestTypeValidityPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -10071,7 +8325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class POSTMedicationRequestInputDispenseRequestTypeQuantityType
+    public class BodyInputDispenseRequestTypeQuantityType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -10086,7 +8340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationRequestInputDispenseRequestTypeExpectedSupplyDurationType
+    public class BodyInputDispenseRequestTypeExpectedSupplyDurationType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -10101,22 +8355,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationRequestInputSubstitutionType
+    public class BodyInputSubstitutionType
     {
         [JsonProperty("allowedBoolean")]
         public bool? AllowedBoolean { get; set; }
 
         [JsonProperty("reason")]
-        public POSTMedicationRequestInputSubstitutionTypeReasonType Reason { get; set; }
+        public BodyInputSubstitutionTypeReasonType Reason { get; set; }
     }
 
-    public class POSTMedicationRequestInputSubstitutionTypeReasonType
+    public class BodyInputSubstitutionTypeReasonType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestInputSubstitutionTypeReasonTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputSubstitutionTypeReasonTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestInputSubstitutionTypeReasonTypeCodingTypeItem
+    public class BodyInputSubstitutionTypeReasonTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10560,7 +8814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Mode { get; set; }
     }
 
-    public class DELETEMedicationRequestIdInput
+    public class DELETEMedicationRequestIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10569,13 +8823,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETEMedicationRequestIdInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationRequestIdInputContainedTypeItem[] Contained { get; set; }
+        public DELETEMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEMedicationRequestIdInputIdentifierTypeItem[] Identifier { get; set; }
+        public BodyInputIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -10584,367 +8838,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationReference")]
-        public DELETEMedicationRequestIdInputMedicationReferenceType MedicationReference { get; set; }
+        public BodyInputMedicationReferenceType MedicationReference { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEMedicationRequestIdInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public DELETEMedicationRequestIdInputEncounterType Encounter { get; set; }
+        public DELETEMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("supportingInformation")]
-        public DELETEMedicationRequestIdInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
+        public BodyInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
 
         [JsonProperty("authoredOn")]
         public string AuthoredOn { get; set; }
 
         [JsonProperty("requester")]
-        public DELETEMedicationRequestIdInputRequesterType Requester { get; set; }
+        public BodyInputRequesterType Requester { get; set; }
 
         [JsonProperty("reasonCode")]
-        public DELETEMedicationRequestIdInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DELETEMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
-        public DELETEMedicationRequestIdInputNoteTypeItem[] Note { get; set; }
+        public BodyInputNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosageInstruction")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItem[] DosageInstruction { get; set; }
+        public BodyInputDosageInstructionTypeItem[] DosageInstruction { get; set; }
 
         [JsonProperty("dispenseRequest")]
-        public DELETEMedicationRequestIdInputDispenseRequestType DispenseRequest { get; set; }
+        public BodyInputDispenseRequestType DispenseRequest { get; set; }
 
         [JsonProperty("substitution")]
-        public DELETEMedicationRequestIdInputSubstitutionType Substitution { get; set; }
+        public BodyInputSubstitutionType Substitution { get; set; }
     }
 
-    public class DELETEMedicationRequestIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputContainedTypeItem
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("code")]
-        public DELETEMedicationRequestIdInputContainedTypeItemCodeType Code { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputContainedTypeItemCodeType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationRequestIdInputContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputContainedTypeItemCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputIdentifierTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputMedicationReferenceType
+    public class BodyInputMedicationReferenceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputEncounterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputSupportingInformationTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputRequesterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputReasonCodeTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationRequestIdInputReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputReasonCodeTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItem
-    {
-        [JsonProperty("sequence")]
-        public int? Sequence { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("additionalInstruction")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
-
-        [JsonProperty("timing")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemTimingType Timing { get; set; }
-
-        [JsonProperty("route")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemRouteType Route { get; set; }
-
-        [JsonProperty("method")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemMethodType Method { get; set; }
-
-        [JsonProperty("doseAndRate")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemTimingType
-    {
-        [JsonProperty("repeat")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemTimingTypeRepeatType
-    {
-        [JsonProperty("frequency")]
-        public int? Frequency { get; set; }
-
-        [JsonProperty("period")]
-        public int? Period { get; set; }
-
-        [JsonProperty("periodUnit")]
-        public string PeriodUnit { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemRouteType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemRouteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemMethodType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemMethodTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItem
-    {
-        [JsonProperty("type")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
-
-        [JsonProperty("doseQuantity")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDispenseRequestType
-    {
-        [JsonProperty("validityPeriod")]
-        public DELETEMedicationRequestIdInputDispenseRequestTypeValidityPeriodType ValidityPeriod { get; set; }
-
-        [JsonProperty("numberOfRepeatsAllowed")]
-        public int? NumberOfRepeatsAllowed { get; set; }
-
-        [JsonProperty("quantity")]
-        public DELETEMedicationRequestIdInputDispenseRequestTypeQuantityType Quantity { get; set; }
-
-        [JsonProperty("expectedSupplyDuration")]
-        public DELETEMedicationRequestIdInputDispenseRequestTypeExpectedSupplyDurationType ExpectedSupplyDuration { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDispenseRequestTypeValidityPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDispenseRequestTypeQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputDispenseRequestTypeExpectedSupplyDurationType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputSubstitutionType
-    {
-        [JsonProperty("allowedBoolean")]
-        public bool? AllowedBoolean { get; set; }
-
-        [JsonProperty("reason")]
-        public DELETEMedicationRequestIdInputSubstitutionTypeReasonType Reason { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputSubstitutionTypeReasonType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationRequestIdInputSubstitutionTypeReasonTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationRequestIdInputSubstitutionTypeReasonTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
     }
 
     public class PUTMedicationRequestIdResponse
@@ -11161,393 +9091,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public PUTMedicationRequestIdInputTextType Text { get; set; }
-
-        [JsonProperty("contained")]
-        public PUTMedicationRequestIdInputContainedTypeItem[] Contained { get; set; }
-
-        [JsonProperty("identifier")]
-        public PUTMedicationRequestIdInputIdentifierTypeItem[] Identifier { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("intent")]
-        public string Intent { get; set; }
-
-        [JsonProperty("medicationReference")]
-        public PUTMedicationRequestIdInputMedicationReferenceType MedicationReference { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTMedicationRequestIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("encounter")]
-        public PUTMedicationRequestIdInputEncounterType Encounter { get; set; }
-
-        [JsonProperty("supportingInformation")]
-        public PUTMedicationRequestIdInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
-
-        [JsonProperty("authoredOn")]
-        public string AuthoredOn { get; set; }
-
-        [JsonProperty("requester")]
-        public PUTMedicationRequestIdInputRequesterType Requester { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public PUTMedicationRequestIdInputReasonCodeTypeItem[] ReasonCode { get; set; }
-
-        [JsonProperty("note")]
-        public PUTMedicationRequestIdInputNoteTypeItem[] Note { get; set; }
-
-        [JsonProperty("dosageInstruction")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItem[] DosageInstruction { get; set; }
-
-        [JsonProperty("dispenseRequest")]
-        public PUTMedicationRequestIdInputDispenseRequestType DispenseRequest { get; set; }
-
-        [JsonProperty("substitution")]
-        public PUTMedicationRequestIdInputSubstitutionType Substitution { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputContainedTypeItem
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("code")]
-        public PUTMedicationRequestIdInputContainedTypeItemCodeType Code { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputContainedTypeItemCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationRequestIdInputContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputContainedTypeItemCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputIdentifierTypeItem
-    {
-        [JsonProperty("use")]
-        public string Use { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputMedicationReferenceType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputEncounterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputSupportingInformationTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputRequesterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputReasonCodeTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationRequestIdInputReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputReasonCodeTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItem
-    {
-        [JsonProperty("sequence")]
-        public int? Sequence { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("additionalInstruction")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
-
-        [JsonProperty("timing")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemTimingType Timing { get; set; }
-
-        [JsonProperty("route")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemRouteType Route { get; set; }
-
-        [JsonProperty("method")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemMethodType Method { get; set; }
-
-        [JsonProperty("doseAndRate")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemTimingType
-    {
-        [JsonProperty("repeat")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemTimingTypeRepeatType
-    {
-        [JsonProperty("frequency")]
-        public int? Frequency { get; set; }
-
-        [JsonProperty("period")]
-        public int? Period { get; set; }
-
-        [JsonProperty("periodUnit")]
-        public string PeriodUnit { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemRouteType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemRouteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemMethodType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemMethodTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItem
-    {
-        [JsonProperty("type")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
-
-        [JsonProperty("doseQuantity")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDispenseRequestType
-    {
-        [JsonProperty("validityPeriod")]
-        public PUTMedicationRequestIdInputDispenseRequestTypeValidityPeriodType ValidityPeriod { get; set; }
-
-        [JsonProperty("numberOfRepeatsAllowed")]
-        public int? NumberOfRepeatsAllowed { get; set; }
-
-        [JsonProperty("quantity")]
-        public PUTMedicationRequestIdInputDispenseRequestTypeQuantityType Quantity { get; set; }
-
-        [JsonProperty("expectedSupplyDuration")]
-        public PUTMedicationRequestIdInputDispenseRequestTypeExpectedSupplyDurationType ExpectedSupplyDuration { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDispenseRequestTypeValidityPeriodType
-    {
-        [JsonProperty("start")]
-        public string Start { get; set; }
-
-        [JsonProperty("end")]
-        public string End { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDispenseRequestTypeQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputDispenseRequestTypeExpectedSupplyDurationType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputSubstitutionType
-    {
-        [JsonProperty("allowedBoolean")]
-        public bool? AllowedBoolean { get; set; }
-
-        [JsonProperty("reason")]
-        public PUTMedicationRequestIdInputSubstitutionTypeReasonType Reason { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputSubstitutionTypeReasonType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationRequestIdInputSubstitutionTypeReasonTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationRequestIdInputSubstitutionTypeReasonTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
     }
 
     public class GETMedicationStatementResponse
@@ -12669,7 +10212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Mode { get; set; }
     }
 
-    public class POSTMedicationStatementInput
+    public class DELETEMedicationStatementIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12678,16 +10221,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTMedicationStatementInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public POSTMedicationStatementInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public DELETEMedicationStatementIdBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public POSTMedicationStatementInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -12696,31 +10239,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string DateAsserted { get; set; }
 
         [JsonProperty("informationSource")]
-        public POSTMedicationStatementInputInformationSourceType InformationSource { get; set; }
+        public BodyInputInformationSourceType InformationSource { get; set; }
 
         [JsonProperty("reasonReference")]
-        public POSTMedicationStatementInputReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public BodyInputReasonReferenceTypeItem[] ReasonReference { get; set; }
 
         [JsonProperty("note")]
-        public POSTMedicationStatementInputNoteTypeItem[] Note { get; set; }
+        public BodyInputNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosage")]
-        public POSTMedicationStatementInputDosageTypeItem[] Dosage { get; set; }
+        public BodyInputDosageTypeItem[] Dosage { get; set; }
     }
 
-    public class POSTMedicationStatementInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTMedicationStatementInputMedicationCodeableConceptType
+    public class DELETEMedicationStatementIdBodyInputMedicationCodeableConceptType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTMedicationStatementInputSubjectType
+    public class BodyInputInformationSourceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12729,28 +10266,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementInputInformationSourceType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTMedicationStatementInputReasonReferenceTypeItem
+    public class BodyInputReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTMedicationStatementInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class POSTMedicationStatementInputDosageTypeItem
+    public class BodyInputDosageTypeItem
     {
         [JsonProperty("sequence")]
         public int? Sequence { get; set; }
@@ -12762,22 +10284,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool? AsNeededBoolean { get; set; }
 
         [JsonProperty("route")]
-        public POSTMedicationStatementInputDosageTypeItemRouteType Route { get; set; }
+        public BodyInputDosageTypeItemRouteType Route { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
 
         [JsonProperty("maxDosePerPeriod")]
-        public POSTMedicationStatementInputDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
+        public BodyInputDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemRouteType
+    public class BodyInputDosageTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementInputDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemRouteTypeCodingTypeItem
+    public class BodyInputDosageTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12789,22 +10311,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItem
+    public class BodyInputDosageTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItemTypeType
+    public class BodyInputDosageTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class BodyInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12816,7 +10338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class BodyInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -12831,22 +10353,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemMaxDosePerPeriodType
+    public class BodyInputDosageTypeItemMaxDosePerPeriodType
     {
         [JsonProperty("numerator")]
-        public POSTMedicationStatementInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
+        public BodyInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public POSTMedicationStatementInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
+        public BodyInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType
+    public class BodyInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
     }
 
-    public class POSTMedicationStatementInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType
+    public class BodyInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -13410,195 +10932,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Mode { get; set; }
     }
 
-    public class DELETEMedicationStatementIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public DELETEMedicationStatementIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("medicationCodeableConcept")]
-        public DELETEMedicationStatementIdInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
-
-        [JsonProperty("subject")]
-        public DELETEMedicationStatementIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("effectiveDateTime")]
-        public string EffectiveDateTime { get; set; }
-
-        [JsonProperty("dateAsserted")]
-        public string DateAsserted { get; set; }
-
-        [JsonProperty("informationSource")]
-        public DELETEMedicationStatementIdInputInformationSourceType InformationSource { get; set; }
-
-        [JsonProperty("reasonReference")]
-        public DELETEMedicationStatementIdInputReasonReferenceTypeItem[] ReasonReference { get; set; }
-
-        [JsonProperty("note")]
-        public DELETEMedicationStatementIdInputNoteTypeItem[] Note { get; set; }
-
-        [JsonProperty("dosage")]
-        public DELETEMedicationStatementIdInputDosageTypeItem[] Dosage { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputMedicationCodeableConceptType
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputInformationSourceType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputReasonReferenceTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItem
-    {
-        [JsonProperty("sequence")]
-        public int? Sequence { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("asNeededBoolean")]
-        public bool? AsNeededBoolean { get; set; }
-
-        [JsonProperty("route")]
-        public DELETEMedicationStatementIdInputDosageTypeItemRouteType Route { get; set; }
-
-        [JsonProperty("doseAndRate")]
-        public DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
-
-        [JsonProperty("maxDosePerPeriod")]
-        public DELETEMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemRouteType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationStatementIdInputDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemRouteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItem
-    {
-        [JsonProperty("type")]
-        public DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
-
-        [JsonProperty("doseQuantity")]
-        public DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeType
-    {
-        [JsonProperty("coding")]
-        public DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodType
-    {
-        [JsonProperty("numerator")]
-        public DELETEMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
-
-        [JsonProperty("denominator")]
-        public DELETEMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-    }
-
-    public class DELETEMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
     public class PUTMedicationStatementIdResponse
     {
         [JsonProperty("resourceType")]
@@ -14151,195 +11484,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Mode { get; set; }
     }
 
-    public class PUTMedicationStatementIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public PUTMedicationStatementIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("medicationCodeableConcept")]
-        public PUTMedicationStatementIdInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTMedicationStatementIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("effectiveDateTime")]
-        public string EffectiveDateTime { get; set; }
-
-        [JsonProperty("dateAsserted")]
-        public string DateAsserted { get; set; }
-
-        [JsonProperty("informationSource")]
-        public PUTMedicationStatementIdInputInformationSourceType InformationSource { get; set; }
-
-        [JsonProperty("reasonReference")]
-        public PUTMedicationStatementIdInputReasonReferenceTypeItem[] ReasonReference { get; set; }
-
-        [JsonProperty("note")]
-        public PUTMedicationStatementIdInputNoteTypeItem[] Note { get; set; }
-
-        [JsonProperty("dosage")]
-        public PUTMedicationStatementIdInputDosageTypeItem[] Dosage { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputMedicationCodeableConceptType
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputInformationSourceType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputReasonReferenceTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItem
-    {
-        [JsonProperty("sequence")]
-        public int? Sequence { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-
-        [JsonProperty("asNeededBoolean")]
-        public bool? AsNeededBoolean { get; set; }
-
-        [JsonProperty("route")]
-        public PUTMedicationStatementIdInputDosageTypeItemRouteType Route { get; set; }
-
-        [JsonProperty("doseAndRate")]
-        public PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
-
-        [JsonProperty("maxDosePerPeriod")]
-        public PUTMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemRouteType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationStatementIdInputDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemRouteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItem
-    {
-        [JsonProperty("type")]
-        public PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
-
-        [JsonProperty("doseQuantity")]
-        public PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeType
-    {
-        [JsonProperty("coding")]
-        public PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemDoseAndRateTypeItemDoseQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodType
-    {
-        [JsonProperty("numerator")]
-        public PUTMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
-
-        [JsonProperty("denominator")]
-        public PUTMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeNumeratorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-    }
-
-    public class PUTMedicationStatementIdInputDosageTypeItemMaxDosePerPeriodTypeDenominatorType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
     public class GETObservationResponse
     {
         [JsonProperty("resourceType")]
@@ -14712,7 +11856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class POSTObservationInput
+    public class POSTObservationBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -14721,112 +11865,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTObservationInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public POSTObservationInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public POSTObservationInputCodeType Code { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTObservationInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public POSTObservationInputEncounterType Encounter { get; set; }
+        public POSTCarePlanBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public POSTObservationInputPerformerTypeItem[] Performer { get; set; }
+        public DELETEObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
-        public POSTObservationInputValueQuantityType ValueQuantity { get; set; }
+        public BodyInputValueQuantityType ValueQuantity { get; set; }
 
         [JsonProperty("interpretation")]
-        public POSTObservationInputInterpretationTypeItem[] Interpretation { get; set; }
+        public BodyInputInterpretationTypeItem[] Interpretation { get; set; }
 
         [JsonProperty("bodySite")]
-        public POSTObservationInputBodySiteType BodySite { get; set; }
+        public BodyInputBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public POSTObservationInputMethodType Method { get; set; }
+        public DELETEObservationIdBodyInputMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
-        public POSTObservationInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
+        public BodyInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
-    public class POSTObservationInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTObservationInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public POSTObservationInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTObservationInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTObservationInputCodeType
-    {
-        [JsonProperty("coding")]
-        public POSTObservationInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class POSTObservationInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTObservationInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTObservationInputEncounterType
+    public class DELETEObservationIdBodyInputPerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTObservationInputPerformerTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class POSTObservationInputValueQuantityType
+    public class BodyInputValueQuantityType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -14841,13 +11925,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTObservationInputInterpretationTypeItem
+    public class BodyInputInterpretationTypeItem
     {
         [JsonProperty("coding")]
-        public POSTObservationInputInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
+        public BodyInputInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTObservationInputInterpretationTypeItemCodingTypeItem
+    public class BodyInputInterpretationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14856,31 +11940,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTObservationInputBodySiteType
+    public class BodyInputBodySiteType
     {
         [JsonProperty("coding")]
-        public POSTObservationInputBodySiteTypeCodingTypeItem[] Coding { get; set; }
+        public BodyInputBodySiteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTObservationInputBodySiteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTObservationInputMethodType
-    {
-        [JsonProperty("coding")]
-        public POSTObservationInputMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTObservationInputMethodTypeCodingTypeItem
+    public class BodyInputBodySiteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14892,13 +11958,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTObservationInputReferenceRangeTypeItem
+    public class DELETEObservationIdBodyInputMethodType
+    {
+        [JsonProperty("coding")]
+        public DELETEObservationIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class DELETEObservationIdBodyInputMethodTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class BodyInputReferenceRangeTypeItem
     {
         [JsonProperty("high")]
-        public POSTObservationInputReferenceRangeTypeItemHighType High { get; set; }
+        public BodyInputReferenceRangeTypeItemHighType High { get; set; }
     }
 
-    public class POSTObservationInputReferenceRangeTypeItemHighType
+    public class BodyInputReferenceRangeTypeItemHighType
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
@@ -15303,7 +12387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class DELETEObservationIdInput
+    public class DELETEObservationIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -15312,181 +12396,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETEObservationIdInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEObservationIdInputCategoryTypeItem[] Category { get; set; }
+        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEObservationIdInputCodeType Code { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEObservationIdInputSubjectType Subject { get; set; }
+        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEObservationIdInputPerformerTypeItem[] Performer { get; set; }
+        public DELETEObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
-        public DELETEObservationIdInputValueQuantityType ValueQuantity { get; set; }
+        public BodyInputValueQuantityType ValueQuantity { get; set; }
 
         [JsonProperty("interpretation")]
-        public DELETEObservationIdInputInterpretationTypeItem[] Interpretation { get; set; }
+        public BodyInputInterpretationTypeItem[] Interpretation { get; set; }
 
         [JsonProperty("bodySite")]
-        public DELETEObservationIdInputBodySiteType BodySite { get; set; }
+        public BodyInputBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public DELETEObservationIdInputMethodType Method { get; set; }
+        public DELETEObservationIdBodyInputMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
-        public DELETEObservationIdInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
-    }
-
-    public class DELETEObservationIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETEObservationIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEObservationIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEObservationIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEObservationIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public DELETEObservationIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEObservationIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEObservationIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEObservationIdInputPerformerTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEObservationIdInputValueQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEObservationIdInputInterpretationTypeItem
-    {
-        [JsonProperty("coding")]
-        public DELETEObservationIdInputInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEObservationIdInputInterpretationTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETEObservationIdInputBodySiteType
-    {
-        [JsonProperty("coding")]
-        public DELETEObservationIdInputBodySiteTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEObservationIdInputBodySiteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEObservationIdInputMethodType
-    {
-        [JsonProperty("coding")]
-        public DELETEObservationIdInputMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEObservationIdInputMethodTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEObservationIdInputReferenceRangeTypeItem
-    {
-        [JsonProperty("high")]
-        public DELETEObservationIdInputReferenceRangeTypeItemHighType High { get; set; }
-    }
-
-    public class DELETEObservationIdInputReferenceRangeTypeItemHighType
-    {
-        [JsonProperty("value")]
-        public double? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
+        public BodyInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
     public class PUTObservationIdResponse
@@ -15682,192 +12625,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
         [JsonProperty("value")]
         public double Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-    }
-
-    public class PUTObservationIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public PUTObservationIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("category")]
-        public PUTObservationIdInputCategoryTypeItem[] Category { get; set; }
-
-        [JsonProperty("code")]
-        public PUTObservationIdInputCodeType Code { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTObservationIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("issued")]
-        public string Issued { get; set; }
-
-        [JsonProperty("performer")]
-        public PUTObservationIdInputPerformerTypeItem[] Performer { get; set; }
-
-        [JsonProperty("valueQuantity")]
-        public PUTObservationIdInputValueQuantityType ValueQuantity { get; set; }
-
-        [JsonProperty("interpretation")]
-        public PUTObservationIdInputInterpretationTypeItem[] Interpretation { get; set; }
-
-        [JsonProperty("bodySite")]
-        public PUTObservationIdInputBodySiteType BodySite { get; set; }
-
-        [JsonProperty("method")]
-        public PUTObservationIdInputMethodType Method { get; set; }
-
-        [JsonProperty("referenceRange")]
-        public PUTObservationIdInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
-    }
-
-    public class PUTObservationIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTObservationIdInputCategoryTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTObservationIdInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTObservationIdInputCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTObservationIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTObservationIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTObservationIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTObservationIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTObservationIdInputPerformerTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTObservationIdInputValueQuantityType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTObservationIdInputInterpretationTypeItem
-    {
-        [JsonProperty("coding")]
-        public PUTObservationIdInputInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTObservationIdInputInterpretationTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTObservationIdInputBodySiteType
-    {
-        [JsonProperty("coding")]
-        public PUTObservationIdInputBodySiteTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTObservationIdInputBodySiteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTObservationIdInputMethodType
-    {
-        [JsonProperty("coding")]
-        public PUTObservationIdInputMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTObservationIdInputMethodTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTObservationIdInputReferenceRangeTypeItem
-    {
-        [JsonProperty("high")]
-        public PUTObservationIdInputReferenceRangeTypeItemHighType High { get; set; }
-    }
-
-    public class PUTObservationIdInputReferenceRangeTypeItemHighType
-    {
-        [JsonProperty("value")]
-        public double? Value { get; set; }
 
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -16155,7 +12912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class POSTProcedureInput
+    public class POSTProcedureBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -16164,73 +12921,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTProcedureInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public POSTProcedureInputCodeType Code { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTProcedureInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("performedDateTime")]
         public string PerformedDateTime { get; set; }
 
         [JsonProperty("recorder")]
-        public POSTProcedureInputRecorderType Recorder { get; set; }
+        public DELETEProcedureIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("asserter")]
-        public POSTProcedureInputAsserterType Asserter { get; set; }
+        public BodyInputAsserterType Asserter { get; set; }
 
         [JsonProperty("performer")]
-        public POSTProcedureInputPerformerTypeItem[] Performer { get; set; }
+        public DELETEProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("reasonCode")]
-        public POSTProcedureInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DELETEProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("followUp")]
-        public POSTProcedureInputFollowUpTypeItem[] FollowUp { get; set; }
+        public BodyInputFollowUpTypeItem[] FollowUp { get; set; }
 
         [JsonProperty("note")]
-        public POSTProcedureInputNoteTypeItem[] Note { get; set; }
+        public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
-    public class POSTProcedureInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTProcedureInputCodeType
-    {
-        [JsonProperty("coding")]
-        public POSTProcedureInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class POSTProcedureInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTProcedureInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class POSTProcedureInputRecorderType
+    public class DELETEProcedureIdBodyInputRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -16239,7 +12963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTProcedureInputAsserterType
+    public class BodyInputAsserterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -16248,13 +12972,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTProcedureInputPerformerTypeItem
+    public class DELETEProcedureIdBodyInputPerformerTypeItem
     {
         [JsonProperty("actor")]
-        public POSTProcedureInputPerformerTypeItemActorType Actor { get; set; }
+        public BodyInputPerformerTypeItemActorType Actor { get; set; }
     }
 
-    public class POSTProcedureInputPerformerTypeItemActorType
+    public class BodyInputPerformerTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -16263,19 +12987,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTProcedureInputReasonCodeTypeItem
+    public class DELETEProcedureIdBodyInputReasonCodeTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTProcedureInputFollowUpTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class POSTProcedureInputNoteTypeItem
+    public class BodyInputFollowUpTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -16497,7 +13215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class DELETEProcedureIdInput
+    public class DELETEProcedureIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -16506,133 +13224,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEProcedureIdInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEProcedureIdInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public DELETEProcedureIdInputCodeType Code { get; set; }
+        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEProcedureIdInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("performedDateTime")]
         public string PerformedDateTime { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEProcedureIdInputRecorderType Recorder { get; set; }
+        public DELETEProcedureIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("asserter")]
-        public DELETEProcedureIdInputAsserterType Asserter { get; set; }
+        public BodyInputAsserterType Asserter { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEProcedureIdInputPerformerTypeItem[] Performer { get; set; }
+        public DELETEProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("reasonCode")]
-        public DELETEProcedureIdInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DELETEProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("followUp")]
-        public DELETEProcedureIdInputFollowUpTypeItem[] FollowUp { get; set; }
+        public BodyInputFollowUpTypeItem[] FollowUp { get; set; }
 
         [JsonProperty("note")]
-        public DELETEProcedureIdInputNoteTypeItem[] Note { get; set; }
-    }
-
-    public class DELETEProcedureIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class DELETEProcedureIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETEProcedureIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public DELETEProcedureIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEProcedureIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEProcedureIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETEProcedureIdInputRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEProcedureIdInputAsserterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEProcedureIdInputPerformerTypeItem
-    {
-        [JsonProperty("actor")]
-        public DELETEProcedureIdInputPerformerTypeItemActorType Actor { get; set; }
-    }
-
-    public class DELETEProcedureIdInputPerformerTypeItemActorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEProcedureIdInputReasonCodeTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEProcedureIdInputFollowUpTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETEProcedureIdInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
+        public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
     public class PUTProcedureIdResponse
@@ -16768,144 +13393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     }
 
     public class PUTProcedureIdResponseNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTProcedureIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("meta")]
-        public PUTProcedureIdInputMetaType Meta { get; set; }
-
-        [JsonProperty("text")]
-        public PUTProcedureIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("code")]
-        public PUTProcedureIdInputCodeType Code { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTProcedureIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("performedDateTime")]
-        public string PerformedDateTime { get; set; }
-
-        [JsonProperty("recorder")]
-        public PUTProcedureIdInputRecorderType Recorder { get; set; }
-
-        [JsonProperty("asserter")]
-        public PUTProcedureIdInputAsserterType Asserter { get; set; }
-
-        [JsonProperty("performer")]
-        public PUTProcedureIdInputPerformerTypeItem[] Performer { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public PUTProcedureIdInputReasonCodeTypeItem[] ReasonCode { get; set; }
-
-        [JsonProperty("followUp")]
-        public PUTProcedureIdInputFollowUpTypeItem[] FollowUp { get; set; }
-
-        [JsonProperty("note")]
-        public PUTProcedureIdInputNoteTypeItem[] Note { get; set; }
-    }
-
-    public class PUTProcedureIdInputMetaType
-    {
-        [JsonProperty("versionId")]
-        public string VersionId { get; set; }
-
-        [JsonProperty("lastUpdated")]
-        public string LastUpdated { get; set; }
-    }
-
-    public class PUTProcedureIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTProcedureIdInputCodeType
-    {
-        [JsonProperty("coding")]
-        public PUTProcedureIdInputCodeTypeCodingTypeItem[] Coding { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTProcedureIdInputCodeTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTProcedureIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTProcedureIdInputRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTProcedureIdInputAsserterType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTProcedureIdInputPerformerTypeItem
-    {
-        [JsonProperty("actor")]
-        public PUTProcedureIdInputPerformerTypeItemActorType Actor { get; set; }
-    }
-
-    public class PUTProcedureIdInputPerformerTypeItemActorType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTProcedureIdInputReasonCodeTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTProcedureIdInputFollowUpTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTProcedureIdInputNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -17187,7 +13674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class POSTRiskAssessmentInput
+    public class DELETERiskAssessmentIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -17196,88 +13683,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public POSTRiskAssessmentInputTextType Text { get; set; }
+        public DELETECarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("method")]
-        public POSTRiskAssessmentInputMethodType Method { get; set; }
+        public DELETERiskAssessmentIdBodyInputMethodType Method { get; set; }
 
         [JsonProperty("subject")]
-        public POSTRiskAssessmentInputSubjectType Subject { get; set; }
+        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("occurrenceDateTime")]
         public string OccurrenceDateTime { get; set; }
 
         [JsonProperty("basis")]
-        public POSTRiskAssessmentInputBasisTypeItem[] Basis { get; set; }
+        public BodyInputBasisTypeItem[] Basis { get; set; }
 
         [JsonProperty("prediction")]
-        public POSTRiskAssessmentInputPredictionTypeItem[] Prediction { get; set; }
+        public BodyInputPredictionTypeItem[] Prediction { get; set; }
 
         [JsonProperty("note")]
-        public POSTRiskAssessmentInputNoteTypeItem[] Note { get; set; }
+        public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
-    public class POSTRiskAssessmentInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class POSTRiskAssessmentInputMethodType
+    public class DELETERiskAssessmentIdBodyInputMethodType
     {
         [JsonProperty("coding")]
-        public POSTRiskAssessmentInputMethodTypeCodingTypeItem[] Coding { get; set; }
+        public DELETERiskAssessmentIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTRiskAssessmentInputMethodTypeCodingTypeItem
+    public class DELETERiskAssessmentIdBodyInputMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class POSTRiskAssessmentInputSubjectType
+    public class BodyInputBasisTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTRiskAssessmentInputBasisTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class POSTRiskAssessmentInputPredictionTypeItem
+    public class BodyInputPredictionTypeItem
     {
         [JsonProperty("outcome")]
-        public POSTRiskAssessmentInputPredictionTypeItemOutcomeType Outcome { get; set; }
+        public BodyInputPredictionTypeItemOutcomeType Outcome { get; set; }
 
         [JsonProperty("probabilityDecimal")]
         public double? ProbabilityDecimal { get; set; }
 
         [JsonProperty("whenRange")]
-        public POSTRiskAssessmentInputPredictionTypeItemWhenRangeType WhenRange { get; set; }
+        public BodyInputPredictionTypeItemWhenRangeType WhenRange { get; set; }
     }
 
-    public class POSTRiskAssessmentInputPredictionTypeItemOutcomeType
+    public class BodyInputPredictionTypeItemOutcomeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTRiskAssessmentInputPredictionTypeItemWhenRangeType
+    public class BodyInputPredictionTypeItemWhenRangeType
     {
         [JsonProperty("high")]
-        public POSTRiskAssessmentInputPredictionTypeItemWhenRangeTypeHighType High { get; set; }
+        public BodyInputPredictionTypeItemWhenRangeTypeHighType High { get; set; }
 
         [JsonProperty("low")]
-        public POSTRiskAssessmentInputPredictionTypeItemWhenRangeTypeLowType Low { get; set; }
+        public BodyInputPredictionTypeItemWhenRangeTypeLowType Low { get; set; }
     }
 
-    public class POSTRiskAssessmentInputPredictionTypeItemWhenRangeTypeHighType
+    public class BodyInputPredictionTypeItemWhenRangeTypeHighType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -17292,7 +13767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTRiskAssessmentInputPredictionTypeItemWhenRangeTypeLowType
+    public class BodyInputPredictionTypeItemWhenRangeTypeLowType
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -17305,12 +13780,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
 
         [JsonProperty("code")]
         public string Code { get; set; }
-    }
-
-    public class POSTRiskAssessmentInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
     }
 
     public class GETRiskAssessmentIdResponse
@@ -17589,132 +14058,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class DELETERiskAssessmentIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public DELETERiskAssessmentIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("method")]
-        public DELETERiskAssessmentIdInputMethodType Method { get; set; }
-
-        [JsonProperty("subject")]
-        public DELETERiskAssessmentIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("occurrenceDateTime")]
-        public string OccurrenceDateTime { get; set; }
-
-        [JsonProperty("basis")]
-        public DELETERiskAssessmentIdInputBasisTypeItem[] Basis { get; set; }
-
-        [JsonProperty("prediction")]
-        public DELETERiskAssessmentIdInputPredictionTypeItem[] Prediction { get; set; }
-
-        [JsonProperty("note")]
-        public DELETERiskAssessmentIdInputNoteTypeItem[] Note { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputMethodType
-    {
-        [JsonProperty("coding")]
-        public DELETERiskAssessmentIdInputMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputMethodTypeCodingTypeItem
-    {
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputBasisTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputPredictionTypeItem
-    {
-        [JsonProperty("outcome")]
-        public DELETERiskAssessmentIdInputPredictionTypeItemOutcomeType Outcome { get; set; }
-
-        [JsonProperty("probabilityDecimal")]
-        public double? ProbabilityDecimal { get; set; }
-
-        [JsonProperty("whenRange")]
-        public DELETERiskAssessmentIdInputPredictionTypeItemWhenRangeType WhenRange { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputPredictionTypeItemOutcomeType
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputPredictionTypeItemWhenRangeType
-    {
-        [JsonProperty("high")]
-        public DELETERiskAssessmentIdInputPredictionTypeItemWhenRangeTypeHighType High { get; set; }
-
-        [JsonProperty("low")]
-        public DELETERiskAssessmentIdInputPredictionTypeItemWhenRangeTypeLowType Low { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputPredictionTypeItemWhenRangeTypeHighType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputPredictionTypeItemWhenRangeTypeLowType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class DELETERiskAssessmentIdInputNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
     public class PUTRiskAssessmentIdResponse
     {
         [JsonProperty("resourceType")]
@@ -17848,132 +14191,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     }
 
     public class PUTRiskAssessmentIdResponseNoteTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInput
-    {
-        [JsonProperty("resourceType")]
-        public string ResourceType { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("text")]
-        public PUTRiskAssessmentIdInputTextType Text { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("method")]
-        public PUTRiskAssessmentIdInputMethodType Method { get; set; }
-
-        [JsonProperty("subject")]
-        public PUTRiskAssessmentIdInputSubjectType Subject { get; set; }
-
-        [JsonProperty("occurrenceDateTime")]
-        public string OccurrenceDateTime { get; set; }
-
-        [JsonProperty("basis")]
-        public PUTRiskAssessmentIdInputBasisTypeItem[] Basis { get; set; }
-
-        [JsonProperty("prediction")]
-        public PUTRiskAssessmentIdInputPredictionTypeItem[] Prediction { get; set; }
-
-        [JsonProperty("note")]
-        public PUTRiskAssessmentIdInputNoteTypeItem[] Note { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputTextType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputMethodType
-    {
-        [JsonProperty("coding")]
-        public PUTRiskAssessmentIdInputMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputMethodTypeCodingTypeItem
-    {
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputBasisTypeItem
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputPredictionTypeItem
-    {
-        [JsonProperty("outcome")]
-        public PUTRiskAssessmentIdInputPredictionTypeItemOutcomeType Outcome { get; set; }
-
-        [JsonProperty("probabilityDecimal")]
-        public double? ProbabilityDecimal { get; set; }
-
-        [JsonProperty("whenRange")]
-        public PUTRiskAssessmentIdInputPredictionTypeItemWhenRangeType WhenRange { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputPredictionTypeItemOutcomeType
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputPredictionTypeItemWhenRangeType
-    {
-        [JsonProperty("high")]
-        public PUTRiskAssessmentIdInputPredictionTypeItemWhenRangeTypeHighType High { get; set; }
-
-        [JsonProperty("low")]
-        public PUTRiskAssessmentIdInputPredictionTypeItemWhenRangeTypeLowType Low { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputPredictionTypeItemWhenRangeTypeHighType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputPredictionTypeItemWhenRangeTypeLowType
-    {
-        [JsonProperty("value")]
-        public int? Value { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-    }
-
-    public class PUTRiskAssessmentIdInputNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
     public class DatablendActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<GroupSearch, ApiConnectionActionConfiguration> GroupsSearch(Expression<Func<GroupsSearchInput>> body = null)
+        public IBodyWorkflowAction<GroupSearch, ApiConnectionActionConfiguration> GroupsSearch(Expression<Func<GroupsSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GroupSearch, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowExecutionsSearch, ApiConnectionActionConfiguration> WorkflowExecutionsSearch(Expression<Func<WorkflowExecutionsSearchInput>> body = null)
+        public IBodyWorkflowAction<WorkflowExecutionsSearch, ApiConnectionActionConfiguration> WorkflowExecutionsSearch(Expression<Func<WorkflowExecutionsSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<WorkflowExecutionsSearch, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowExecutions, ApiConnectionActionConfiguration> WorkflowExecutions(Expression<Func<WorkflowExecutionsInput>> body = null)
+        public IBodyWorkflowAction<WorkflowExecutions, ApiConnectionActionConfiguration> WorkflowExecutions(Expression<Func<WorkflowExecutionsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<WorkflowExecutions, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowsSearch, ApiConnectionActionConfiguration> WorkflowsSearch(Expression<Func<WorkflowsSearchInput>> body = null)
+        public IBodyWorkflowAction<WorkflowsSearch, ApiConnectionActionConfiguration> WorkflowsSearch(Expression<Func<WorkflowsSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<WorkflowsSearch, ApiConnectionActionConfiguration>(() =>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         public string Id { get; set; }
     }
 
-    public class GroupsSearchInput
+    public class GroupsSearchBodyInput
     {
         [JsonProperty("offset", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Offset { get; set; } = 0;
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         public int? Limit { get; set; } = 1;
 
         [JsonProperty("orders")]
-        public GroupsSearchInputOrdersTypeItem[] Orders { get; set; }
+        public GroupsSearchBodyInputOrdersTypeItem[] Orders { get; set; }
     }
 
-    public class GroupsSearchInputOrdersTypeItem
+    public class GroupsSearchBodyInputOrdersTypeItem
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; } = "name";
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         public string Id { get; set; }
     }
 
-    public class WorkflowExecutionsSearchInput
+    public class WorkflowExecutionsSearchBodyInput
     {
         [JsonProperty("limit", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Limit { get; set; } = 1;
@@ -429,13 +429,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         public int? Offset { get; set; } = 0;
 
         [JsonProperty("orders")]
-        public WorkflowExecutionsSearchInputOrdersTypeItem[] Orders { get; set; }
+        public WorkflowExecutionsSearchBodyInputOrdersTypeItem[] Orders { get; set; }
 
         [JsonProperty("predicate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkflowExecutionsSearchInputPredicateType Predicate { get; set; } = new WorkflowExecutionsSearchInputPredicateType();
+        public WorkflowExecutionsSearchBodyInputPredicateType Predicate { get; set; } = new WorkflowExecutionsSearchBodyInputPredicateType();
     }
 
-    public class WorkflowExecutionsSearchInputOrdersTypeItem
+    public class WorkflowExecutionsSearchBodyInputOrdersTypeItem
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; } = "created";
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         public string Direction { get; set; } = "Descending";
     }
 
-    public class WorkflowExecutionsSearchInputPredicateType
+    public class WorkflowExecutionsSearchBodyInputPredicateType
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; } = "parent.id";
@@ -510,13 +510,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         public string Id { get; set; }
     }
 
-    public class WorkflowExecutionsInput
+    public class WorkflowExecutionsBodyInput
     {
         [JsonProperty("parent")]
-        public WorkflowExecutionsInputParentType Parent { get; set; }
+        public BodyInputParentType Parent { get; set; }
     }
 
-    public class WorkflowExecutionsInputParentType
+    public class BodyInputParentType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -579,28 +579,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         public string Id { get; set; }
     }
 
-    public class WorkflowsSearchInput
+    public class WorkflowsSearchBodyInput
     {
         [JsonProperty("offset", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Offset { get; set; } = 0;
 
         [JsonProperty("orders")]
-        public WorkflowsSearchInputOrdersTypeItem[] Orders { get; set; }
+        public GroupsSearchBodyInputOrdersTypeItem[] Orders { get; set; }
 
         [JsonProperty("predicate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WorkflowsSearchInputPredicateType Predicate { get; set; } = new WorkflowsSearchInputPredicateType();
+        public WorkflowsSearchBodyInputPredicateType Predicate { get; set; } = new WorkflowsSearchBodyInputPredicateType();
     }
 
-    public class WorkflowsSearchInputOrdersTypeItem
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; } = "name";
-
-        [JsonProperty("direction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Direction { get; set; } = "Ascending";
-    }
-
-    public class WorkflowsSearchInputPredicateType
+    public class WorkflowsSearchBodyInputPredicateType
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; } = "group.id";

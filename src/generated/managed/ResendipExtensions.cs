@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class ResendipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<EmailPostResponse, ApiConnectionActionConfiguration> Email(Expression<Func<EmailPostInput>> body = null)
+        public IBodyWorkflowAction<EmailResponse, ApiConnectionActionConfiguration> Email(Expression<Func<EmailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EmailPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<EmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emails";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<EmailPostResponse>(callPayload);
+                return new ApiConnectionAction<EmailResponse>(callPayload);
             });
         }
 
@@ -53,17 +53,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<DomainPostResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<DomainPostInput>> body = null)
+        public IBodyWorkflowAction<DomainResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<DomainBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DomainPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DomainResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/domains";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DomainPostResponse>(callPayload);
+                return new ApiConnectionAction<DomainResponse>(callPayload);
             });
         }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     {
     }
 
-    public class EmailPostResponse
+    public class EmailResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string CreatedAt { get; set; }
     }
 
-    public class EmailPostInput
+    public class EmailBodyInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -137,13 +137,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string Html { get; set; }
 
         [JsonProperty("attachments")]
-        public EmailPostInputAttachmentsTypeItem[] Attachments { get; set; }
+        public BodyInputAttachmentsTypeItem[] Attachments { get; set; }
 
         [JsonProperty("reply_to")]
         public string ReplyTo { get; set; }
     }
 
-    public class EmailPostInputAttachmentsTypeItem
+    public class BodyInputAttachmentsTypeItem
     {
         [JsonProperty("filename")]
         public string Filename { get; set; }
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string Region { get; set; }
     }
 
-    public class DomainPostResponse
+    public class DomainResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string Status { get; set; }
 
         [JsonProperty("records")]
-        public DomainPostResponseRecordsTypeItem[] Records { get; set; }
+        public DomainResponseRecordsTypeItem[] Records { get; set; }
 
         [JsonProperty("region")]
         public string Region { get; set; }
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string DnsProvider { get; set; }
     }
 
-    public class DomainPostResponseRecordsTypeItem
+    public class DomainResponseRecordsTypeItem
     {
         [JsonProperty("record")]
         public string Record { get; set; }
@@ -263,17 +263,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public int Priority { get; set; }
     }
 
-    public class DomainPostInput
+    public class DomainBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DomainPostInputRegionType? Region { get; set; } = DomainPostInputRegionType.UsEast1;
+        public BodyInputRegionType? Region { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Resendip.BodyInputRegionType.UsEast1;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DomainPostInputRegionType
+    public enum BodyInputRegionType
     {
         [EnumMember(Value = "us-east-1")]
         UsEast1,

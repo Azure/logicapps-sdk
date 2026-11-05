@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
     public class ServicedeskpluscloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateRequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateRequestInput>> body = null)
+        public IBodyWorkflowAction<CreateRequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateRequestBodyInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateRequestInput>> body = null)
+        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateRequestBodyInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateChangeResponse, ApiConnectionActionConfiguration> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateChangeInput>> body = null)
+        public IBodyWorkflowAction<CreateChangeResponse, ApiConnectionActionConfiguration> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<CreateChangeBodyInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateChangeResponse, ApiConnectionActionConfiguration> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateChangeInput>> body = null)
+        public IBodyWorkflowAction<UpdateChangeResponse, ApiConnectionActionConfiguration> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<UpdateChangeBodyInput>> body = null)
         {
             var __workflow_serviceDeskInstance = WorkflowExpression.Compile(serviceDeskInstance, nameof(serviceDeskInstance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -764,160 +764,160 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Id { get; set; }
     }
 
-    public class CreateRequestInput
+    public class CreateRequestBodyInput
     {
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRequestInputInputDataType InputData { get; set; }
+        public CreateRequestBodyInputInputDataType InputData { get; set; }
     }
 
-    public class CreateRequestInputInputDataType
+    public class CreateRequestBodyInputInputDataType
     {
         [JsonProperty("request", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateRequestInputInputDataTypeRequestType Request { get; set; }
+        public CreateRequestBodyInputInputDataTypeRequestType Request { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestType
+    public class CreateRequestBodyInputInputDataTypeRequestType
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
         [JsonProperty("template")]
-        public CreateRequestInputInputDataTypeRequestTypeTemplateType Template { get; set; }
+        public BodyInputInputDataTypeRequestTypeTemplateType Template { get; set; }
 
         [JsonProperty("request_type")]
-        public CreateRequestInputInputDataTypeRequestTypeRequestTypeType RequestType { get; set; }
+        public BodyInputInputDataTypeRequestTypeRequestTypeType RequestType { get; set; }
 
         [JsonProperty("requester")]
-        public CreateRequestInputInputDataTypeRequestTypeRequesterType Requester { get; set; }
+        public BodyInputInputDataTypeRequestTypeRequesterType Requester { get; set; }
 
         [JsonProperty("status")]
-        public CreateRequestInputInputDataTypeRequestTypeStatusType Status { get; set; }
+        public BodyInputInputDataTypeRequestTypeStatusType Status { get; set; }
 
         [JsonProperty("technician")]
-        public CreateRequestInputInputDataTypeRequestTypeTechnicianType Technician { get; set; }
+        public BodyInputInputDataTypeRequestTypeTechnicianType Technician { get; set; }
 
         [JsonProperty("site")]
-        public CreateRequestInputInputDataTypeRequestTypeSiteType Site { get; set; }
+        public BodyInputInputDataTypeRequestTypeSiteType Site { get; set; }
 
         [JsonProperty("group")]
-        public CreateRequestInputInputDataTypeRequestTypeGroupType Group { get; set; }
+        public BodyInputInputDataTypeRequestTypeGroupType Group { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("priority")]
-        public CreateRequestInputInputDataTypeRequestTypePriorityType Priority { get; set; }
+        public BodyInputInputDataTypeRequestTypePriorityType Priority { get; set; }
 
         [JsonProperty("urgency")]
-        public CreateRequestInputInputDataTypeRequestTypeUrgencyType Urgency { get; set; }
+        public BodyInputInputDataTypeRequestTypeUrgencyType Urgency { get; set; }
 
         [JsonProperty("impact")]
-        public CreateRequestInputInputDataTypeRequestTypeImpactType Impact { get; set; }
+        public BodyInputInputDataTypeRequestTypeImpactType Impact { get; set; }
 
         [JsonProperty("mode")]
-        public CreateRequestInputInputDataTypeRequestTypeModeType Mode { get; set; }
+        public BodyInputInputDataTypeRequestTypeModeType Mode { get; set; }
 
         [JsonProperty("category")]
-        public CreateRequestInputInputDataTypeRequestTypeCategoryType Category { get; set; }
+        public BodyInputInputDataTypeRequestTypeCategoryType Category { get; set; }
 
         [JsonProperty("subcategory")]
-        public CreateRequestInputInputDataTypeRequestTypeSubcategoryType Subcategory { get; set; }
+        public BodyInputInputDataTypeRequestTypeSubcategoryType Subcategory { get; set; }
 
         [JsonProperty("item")]
-        public CreateRequestInputInputDataTypeRequestTypeItemType Item { get; set; }
+        public BodyInputInputDataTypeRequestTypeItemType Item { get; set; }
 
         [JsonProperty("assets")]
-        public CreateRequestInputInputDataTypeRequestTypeAssetsTypeItem[] Assets { get; set; }
+        public BodyInputInputDataTypeRequestTypeAssetsTypeItem[] Assets { get; set; }
 
         [JsonProperty("udf_fields")]
         public string UdfFields { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeTemplateType
+    public class BodyInputInputDataTypeRequestTypeTemplateType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeRequestTypeType
+    public class BodyInputInputDataTypeRequestTypeRequestTypeType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeRequesterType
+    public class BodyInputInputDataTypeRequestTypeRequesterType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeStatusType
+    public class BodyInputInputDataTypeRequestTypeStatusType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeTechnicianType
+    public class BodyInputInputDataTypeRequestTypeTechnicianType
     {
         [JsonProperty("email_id")]
         public string EmailId { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeSiteType
+    public class BodyInputInputDataTypeRequestTypeSiteType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeGroupType
+    public class BodyInputInputDataTypeRequestTypeGroupType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypePriorityType
+    public class BodyInputInputDataTypeRequestTypePriorityType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeUrgencyType
+    public class BodyInputInputDataTypeRequestTypeUrgencyType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeImpactType
+    public class BodyInputInputDataTypeRequestTypeImpactType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeModeType
+    public class BodyInputInputDataTypeRequestTypeModeType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeCategoryType
+    public class BodyInputInputDataTypeRequestTypeCategoryType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeSubcategoryType
+    public class BodyInputInputDataTypeRequestTypeSubcategoryType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeItemType
+    public class BodyInputInputDataTypeRequestTypeItemType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateRequestInputInputDataTypeRequestTypeAssetsTypeItem
+    public class BodyInputInputDataTypeRequestTypeAssetsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1604,163 +1604,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Id { get; set; }
     }
 
-    public class UpdateRequestInput
+    public class UpdateRequestBodyInput
     {
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateRequestInputInputDataType InputData { get; set; }
+        public UpdateRequestBodyInputInputDataType InputData { get; set; }
     }
 
-    public class UpdateRequestInputInputDataType
+    public class UpdateRequestBodyInputInputDataType
     {
         [JsonProperty("request", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateRequestInputInputDataTypeRequestType Request { get; set; }
+        public UpdateRequestBodyInputInputDataTypeRequestType Request { get; set; }
     }
 
-    public class UpdateRequestInputInputDataTypeRequestType
+    public class UpdateRequestBodyInputInputDataTypeRequestType
     {
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("template")]
-        public UpdateRequestInputInputDataTypeRequestTypeTemplateType Template { get; set; }
+        public BodyInputInputDataTypeRequestTypeTemplateType Template { get; set; }
 
         [JsonProperty("request_type")]
-        public UpdateRequestInputInputDataTypeRequestTypeRequestTypeType RequestType { get; set; }
+        public BodyInputInputDataTypeRequestTypeRequestTypeType RequestType { get; set; }
 
         [JsonProperty("requester")]
-        public UpdateRequestInputInputDataTypeRequestTypeRequesterType Requester { get; set; }
+        public BodyInputInputDataTypeRequestTypeRequesterType Requester { get; set; }
 
         [JsonProperty("status")]
-        public UpdateRequestInputInputDataTypeRequestTypeStatusType Status { get; set; }
+        public BodyInputInputDataTypeRequestTypeStatusType Status { get; set; }
 
         [JsonProperty("technician")]
-        public UpdateRequestInputInputDataTypeRequestTypeTechnicianType Technician { get; set; }
+        public BodyInputInputDataTypeRequestTypeTechnicianType Technician { get; set; }
 
         [JsonProperty("site")]
-        public UpdateRequestInputInputDataTypeRequestTypeSiteType Site { get; set; }
+        public BodyInputInputDataTypeRequestTypeSiteType Site { get; set; }
 
         [JsonProperty("group")]
-        public UpdateRequestInputInputDataTypeRequestTypeGroupType Group { get; set; }
+        public BodyInputInputDataTypeRequestTypeGroupType Group { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateRequestInputInputDataTypeRequestTypePriorityType Priority { get; set; }
+        public BodyInputInputDataTypeRequestTypePriorityType Priority { get; set; }
 
         [JsonProperty("urgency")]
-        public UpdateRequestInputInputDataTypeRequestTypeUrgencyType Urgency { get; set; }
+        public BodyInputInputDataTypeRequestTypeUrgencyType Urgency { get; set; }
 
         [JsonProperty("impact")]
-        public UpdateRequestInputInputDataTypeRequestTypeImpactType Impact { get; set; }
+        public BodyInputInputDataTypeRequestTypeImpactType Impact { get; set; }
 
         [JsonProperty("mode")]
-        public UpdateRequestInputInputDataTypeRequestTypeModeType Mode { get; set; }
+        public BodyInputInputDataTypeRequestTypeModeType Mode { get; set; }
 
         [JsonProperty("category")]
-        public UpdateRequestInputInputDataTypeRequestTypeCategoryType Category { get; set; }
+        public BodyInputInputDataTypeRequestTypeCategoryType Category { get; set; }
 
         [JsonProperty("subcategory")]
-        public UpdateRequestInputInputDataTypeRequestTypeSubcategoryType Subcategory { get; set; }
+        public BodyInputInputDataTypeRequestTypeSubcategoryType Subcategory { get; set; }
 
         [JsonProperty("item")]
-        public UpdateRequestInputInputDataTypeRequestTypeItemType Item { get; set; }
+        public BodyInputInputDataTypeRequestTypeItemType Item { get; set; }
 
         [JsonProperty("assets")]
-        public UpdateRequestInputInputDataTypeRequestTypeAssetsTypeItem[] Assets { get; set; }
+        public BodyInputInputDataTypeRequestTypeAssetsTypeItem[] Assets { get; set; }
 
         [JsonProperty("udf_fields")]
         public string UdfFields { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeTemplateType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeRequestTypeType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeRequesterType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeStatusType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeTechnicianType
-    {
-        [JsonProperty("email_id")]
-        public string EmailId { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeSiteType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeGroupType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypePriorityType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeUrgencyType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeImpactType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeModeType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeCategoryType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeSubcategoryType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeItemType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateRequestInputInputDataTypeRequestTypeAssetsTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 
     public class CreateChangeResponse
@@ -2960,19 +2870,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Id { get; set; }
     }
 
-    public class CreateChangeInput
+    public class CreateChangeBodyInput
     {
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateChangeInputInputDataType InputData { get; set; }
+        public CreateChangeBodyInputInputDataType InputData { get; set; }
     }
 
-    public class CreateChangeInputInputDataType
+    public class CreateChangeBodyInputInputDataType
     {
         [JsonProperty("change", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateChangeInputInputDataTypeChangeType Change { get; set; }
+        public CreateChangeBodyInputInputDataTypeChangeType Change { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeType
+    public class CreateChangeBodyInputInputDataTypeChangeType
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -2981,142 +2891,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Comment { get; set; }
 
         [JsonProperty("template")]
-        public CreateChangeInputInputDataTypeChangeTypeTemplateType Template { get; set; }
+        public BodyInputInputDataTypeChangeTypeTemplateType Template { get; set; }
 
         [JsonProperty("change_requester")]
-        public CreateChangeInputInputDataTypeChangeTypeChangeRequesterType ChangeRequester { get; set; }
+        public BodyInputInputDataTypeChangeTypeChangeRequesterType ChangeRequester { get; set; }
 
         [JsonProperty("site")]
-        public CreateChangeInputInputDataTypeChangeTypeSiteType Site { get; set; }
+        public BodyInputInputDataTypeChangeTypeSiteType Site { get; set; }
 
         [JsonProperty("group")]
-        public CreateChangeInputInputDataTypeChangeTypeGroupType Group { get; set; }
+        public BodyInputInputDataTypeChangeTypeGroupType Group { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("change_owner")]
-        public CreateChangeInputInputDataTypeChangeTypeChangeOwnerType ChangeOwner { get; set; }
+        public BodyInputInputDataTypeChangeTypeChangeOwnerType ChangeOwner { get; set; }
 
         [JsonProperty("change_type")]
-        public CreateChangeInputInputDataTypeChangeTypeChangeTypeType ChangeType { get; set; }
+        public BodyInputInputDataTypeChangeTypeChangeTypeType ChangeType { get; set; }
 
         [JsonProperty("priority")]
-        public CreateChangeInputInputDataTypeChangeTypePriorityType Priority { get; set; }
+        public BodyInputInputDataTypeChangeTypePriorityType Priority { get; set; }
 
         [JsonProperty("urgency")]
-        public CreateChangeInputInputDataTypeChangeTypeUrgencyType Urgency { get; set; }
+        public BodyInputInputDataTypeChangeTypeUrgencyType Urgency { get; set; }
 
         [JsonProperty("impact")]
-        public CreateChangeInputInputDataTypeChangeTypeImpactType Impact { get; set; }
+        public BodyInputInputDataTypeChangeTypeImpactType Impact { get; set; }
 
         [JsonProperty("risk")]
-        public CreateChangeInputInputDataTypeChangeTypeRiskType Risk { get; set; }
+        public BodyInputInputDataTypeChangeTypeRiskType Risk { get; set; }
 
         [JsonProperty("reason_for_change")]
-        public CreateChangeInputInputDataTypeChangeTypeReasonForChangeType ReasonForChange { get; set; }
+        public BodyInputInputDataTypeChangeTypeReasonForChangeType ReasonForChange { get; set; }
 
         [JsonProperty("category")]
-        public CreateChangeInputInputDataTypeChangeTypeCategoryType Category { get; set; }
+        public BodyInputInputDataTypeChangeTypeCategoryType Category { get; set; }
 
         [JsonProperty("subcategory")]
-        public CreateChangeInputInputDataTypeChangeTypeSubcategoryType Subcategory { get; set; }
+        public BodyInputInputDataTypeChangeTypeSubcategoryType Subcategory { get; set; }
 
         [JsonProperty("item")]
-        public CreateChangeInputInputDataTypeChangeTypeItemType Item { get; set; }
+        public BodyInputInputDataTypeChangeTypeItemType Item { get; set; }
 
         [JsonProperty("assets")]
-        public CreateChangeInputInputDataTypeChangeTypeAssetsTypeItem[] Assets { get; set; }
+        public BodyInputInputDataTypeChangeTypeAssetsTypeItem[] Assets { get; set; }
 
         [JsonProperty("udf_fields")]
         public string UdfFields { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeTemplateType
+    public class BodyInputInputDataTypeChangeTypeTemplateType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeChangeRequesterType
+    public class BodyInputInputDataTypeChangeTypeChangeRequesterType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeSiteType
+    public class BodyInputInputDataTypeChangeTypeSiteType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeGroupType
+    public class BodyInputInputDataTypeChangeTypeGroupType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeChangeOwnerType
+    public class BodyInputInputDataTypeChangeTypeChangeOwnerType
     {
         [JsonProperty("email_id")]
         public string EmailId { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeChangeTypeType
+    public class BodyInputInputDataTypeChangeTypeChangeTypeType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypePriorityType
+    public class BodyInputInputDataTypeChangeTypePriorityType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeUrgencyType
+    public class BodyInputInputDataTypeChangeTypeUrgencyType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeImpactType
+    public class BodyInputInputDataTypeChangeTypeImpactType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeRiskType
+    public class BodyInputInputDataTypeChangeTypeRiskType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeReasonForChangeType
+    public class BodyInputInputDataTypeChangeTypeReasonForChangeType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeCategoryType
+    public class BodyInputInputDataTypeChangeTypeCategoryType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeSubcategoryType
+    public class BodyInputInputDataTypeChangeTypeSubcategoryType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeItemType
+    public class BodyInputInputDataTypeChangeTypeItemType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateChangeInputInputDataTypeChangeTypeAssetsTypeItem
+    public class BodyInputInputDataTypeChangeTypeAssetsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4319,19 +4229,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Id { get; set; }
     }
 
-    public class UpdateChangeInput
+    public class UpdateChangeBodyInput
     {
         [JsonProperty("input_data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateChangeInputInputDataType InputData { get; set; }
+        public UpdateChangeBodyInputInputDataType InputData { get; set; }
     }
 
-    public class UpdateChangeInputInputDataType
+    public class UpdateChangeBodyInputInputDataType
     {
         [JsonProperty("change", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateChangeInputInputDataTypeChangeType Change { get; set; }
+        public UpdateChangeBodyInputInputDataTypeChangeType Change { get; set; }
     }
 
-    public class UpdateChangeInputInputDataTypeChangeType
+    public class UpdateChangeBodyInputInputDataTypeChangeType
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -4340,145 +4250,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
         public string Comment { get; set; }
 
         [JsonProperty("template")]
-        public UpdateChangeInputInputDataTypeChangeTypeTemplateType Template { get; set; }
+        public BodyInputInputDataTypeChangeTypeTemplateType Template { get; set; }
 
         [JsonProperty("change_requester")]
-        public UpdateChangeInputInputDataTypeChangeTypeChangeRequesterType ChangeRequester { get; set; }
+        public BodyInputInputDataTypeChangeTypeChangeRequesterType ChangeRequester { get; set; }
 
         [JsonProperty("site")]
-        public UpdateChangeInputInputDataTypeChangeTypeSiteType Site { get; set; }
+        public BodyInputInputDataTypeChangeTypeSiteType Site { get; set; }
 
         [JsonProperty("group")]
-        public UpdateChangeInputInputDataTypeChangeTypeGroupType Group { get; set; }
+        public BodyInputInputDataTypeChangeTypeGroupType Group { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("change_owner")]
-        public UpdateChangeInputInputDataTypeChangeTypeChangeOwnerType ChangeOwner { get; set; }
+        public BodyInputInputDataTypeChangeTypeChangeOwnerType ChangeOwner { get; set; }
 
         [JsonProperty("change_type")]
-        public UpdateChangeInputInputDataTypeChangeTypeChangeTypeType ChangeType { get; set; }
+        public BodyInputInputDataTypeChangeTypeChangeTypeType ChangeType { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateChangeInputInputDataTypeChangeTypePriorityType Priority { get; set; }
+        public BodyInputInputDataTypeChangeTypePriorityType Priority { get; set; }
 
         [JsonProperty("urgency")]
-        public UpdateChangeInputInputDataTypeChangeTypeUrgencyType Urgency { get; set; }
+        public BodyInputInputDataTypeChangeTypeUrgencyType Urgency { get; set; }
 
         [JsonProperty("impact")]
-        public UpdateChangeInputInputDataTypeChangeTypeImpactType Impact { get; set; }
+        public BodyInputInputDataTypeChangeTypeImpactType Impact { get; set; }
 
         [JsonProperty("risk")]
-        public UpdateChangeInputInputDataTypeChangeTypeRiskType Risk { get; set; }
+        public BodyInputInputDataTypeChangeTypeRiskType Risk { get; set; }
 
         [JsonProperty("reason_for_change")]
-        public UpdateChangeInputInputDataTypeChangeTypeReasonForChangeType ReasonForChange { get; set; }
+        public BodyInputInputDataTypeChangeTypeReasonForChangeType ReasonForChange { get; set; }
 
         [JsonProperty("category")]
-        public UpdateChangeInputInputDataTypeChangeTypeCategoryType Category { get; set; }
+        public BodyInputInputDataTypeChangeTypeCategoryType Category { get; set; }
 
         [JsonProperty("subcategory")]
-        public UpdateChangeInputInputDataTypeChangeTypeSubcategoryType Subcategory { get; set; }
+        public BodyInputInputDataTypeChangeTypeSubcategoryType Subcategory { get; set; }
 
         [JsonProperty("item")]
-        public UpdateChangeInputInputDataTypeChangeTypeItemType Item { get; set; }
+        public BodyInputInputDataTypeChangeTypeItemType Item { get; set; }
 
         [JsonProperty("assets")]
-        public UpdateChangeInputInputDataTypeChangeTypeAssetsTypeItem[] Assets { get; set; }
+        public BodyInputInputDataTypeChangeTypeAssetsTypeItem[] Assets { get; set; }
 
         [JsonProperty("udf_fields")]
         public string UdfFields { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeTemplateType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeChangeRequesterType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeSiteType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeGroupType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeChangeOwnerType
-    {
-        [JsonProperty("email_id")]
-        public string EmailId { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeChangeTypeType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypePriorityType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeUrgencyType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeImpactType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeRiskType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeReasonForChangeType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeCategoryType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeSubcategoryType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeItemType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class UpdateChangeInputInputDataTypeChangeTypeAssetsTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 }
 

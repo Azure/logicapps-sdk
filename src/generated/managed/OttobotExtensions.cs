@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
     public class OttobotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendAttachmentsToUrl(Expression<Func<SendAttachmentsToUrlInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendAttachmentsToUrl(Expression<Func<SendAttachmentsToUrlBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<ReturnResultsToBotInput>> body = null)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<ReturnResultsToBotBodyInput>> body = null)
         {
             var __workflow_returnResultURL = WorkflowExpression.Compile(returnResultURL, nameof(returnResultURL), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
     {
     }
 
-    public class SendAttachmentsToUrlInput
+    public class SendAttachmentsToUrlBodyInput
     {
         [JsonProperty("additionalParameters", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken AdditionalParameters { get; set; } = JToken.Parse("{}");
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         public string ResultMessage { get; set; }
     }
 
-    public class ReturnResultsToBotInput
+    public class ReturnResultsToBotBodyInput
     {
         [JsonProperty("adaptiveCard")]
         public AdaptiveCard AdaptiveCard { get; set; }

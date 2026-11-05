@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList, ApiConnectionActionConfiguration> CreateToDoList(Expression<Func<CreateToDoListInput>> body)
+        public IBodyWorkflowAction<TodoList, ApiConnectionActionConfiguration> CreateToDoList(Expression<Func<CreateToDoListBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TodoList, ApiConnectionActionConfiguration>(() =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList, ApiConnectionActionConfiguration> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<UpdateToDoListInput>> body)
+        public IBodyWorkflowAction<TodoList, ApiConnectionActionConfiguration> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<CreateToDoListBodyInput>> body)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo, ApiConnectionActionConfiguration> CreateToDo(Expression<Func<string>> folderId, Expression<Func<CreateToDoInput>> body)
+        public IBodyWorkflowAction<ToDo, ApiConnectionActionConfiguration> CreateToDo(Expression<Func<string>> folderId, Expression<Func<CreateToDoBodyInput>> body)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo, ApiConnectionActionConfiguration> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<UpdateToDoInput>> body)
+        public IBodyWorkflowAction<ToDo, ApiConnectionActionConfiguration> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<UpdateToDoBodyInput>> body)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -203,13 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         public bool IsShared { get; set; }
     }
 
-    public class CreateToDoListInput
-    {
-        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class UpdateToDoListInput
+    public class CreateToDoListBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -313,31 +307,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         Deferred
     }
 
-    public class CreateToDoInput
+    public class CreateToDoBodyInput
     {
         [JsonProperty("dueDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateToDoInputDueDateTimeType DueDateTime { get; set; } = new CreateToDoInputDueDateTimeType();
+        public BodyInputDueDateTimeType DueDateTime { get; set; } = new BodyInputDueDateTimeType();
 
         [JsonProperty("reminderDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateToDoInputReminderDateTimeType ReminderDateTime { get; set; } = new CreateToDoInputReminderDateTimeType();
+        public BodyInputReminderDateTimeType ReminderDateTime { get; set; } = new BodyInputReminderDateTimeType();
 
         [JsonProperty("importance")]
-        public CreateToDoInputImportanceType? Importance { get; set; }
+        public BodyInputImportanceType? Importance { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; } = "DefaultToDo";
 
         [JsonProperty("status")]
-        public CreateToDoInputStatusType? Status { get; set; }
+        public BodyInputStatusType? Status { get; set; }
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateToDoInputBodyType Body { get; set; } = new CreateToDoInputBodyType();
+        public BodyInputBodyType Body { get; set; } = new BodyInputBodyType();
 
         [JsonProperty("isReminderOn")]
         public bool? IsReminderOn { get; set; }
     }
 
-    public class CreateToDoInputDueDateTimeType
+    public class BodyInputDueDateTimeType
     {
         [JsonProperty("dateTime")]
         public string DueDate { get; set; }
@@ -346,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         internal string DueTimeZone { get; set; } = "UTC";
     }
 
-    public class CreateToDoInputReminderDateTimeType
+    public class BodyInputReminderDateTimeType
     {
         [JsonProperty("dateTime")]
         public string ReminderDateTime { get; set; }
@@ -356,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateToDoInputImportanceType
+    public enum BodyInputImportanceType
     {
         [EnumMember(Value = "low")]
         Low,
@@ -367,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateToDoInputStatusType
+    public enum BodyInputStatusType
     {
         [EnumMember(Value = "notStarted")]
         NotStarted,
@@ -381,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         Deferred
     }
 
-    public class CreateToDoInputBodyType
+    public class BodyInputBodyType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "html";
@@ -390,81 +384,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         public string Content { get; set; }
     }
 
-    public class UpdateToDoInput
+    public class UpdateToDoBodyInput
     {
         [JsonProperty("dueDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateToDoInputDueDateTimeType DueDateTime { get; set; } = new UpdateToDoInputDueDateTimeType();
+        public BodyInputDueDateTimeType DueDateTime { get; set; } = new BodyInputDueDateTimeType();
 
         [JsonProperty("reminderDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateToDoInputReminderDateTimeType ReminderDateTime { get; set; } = new UpdateToDoInputReminderDateTimeType();
+        public BodyInputReminderDateTimeType ReminderDateTime { get; set; } = new BodyInputReminderDateTimeType();
 
         [JsonProperty("importance")]
-        public UpdateToDoInputImportanceType? Importance { get; set; }
+        public BodyInputImportanceType? Importance { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("status")]
-        public UpdateToDoInputStatusType? Status { get; set; }
+        public BodyInputStatusType? Status { get; set; }
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateToDoInputBodyType Body { get; set; } = new UpdateToDoInputBodyType();
+        public BodyInputBodyType Body { get; set; } = new BodyInputBodyType();
 
         [JsonProperty("isReminderOn")]
         public bool? IsReminderOn { get; set; }
-    }
-
-    public class UpdateToDoInputDueDateTimeType
-    {
-        [JsonProperty("dateTime")]
-        public string DueDate { get; set; }
-
-        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string DueTimeZone { get; set; } = "UTC";
-    }
-
-    public class UpdateToDoInputReminderDateTimeType
-    {
-        [JsonProperty("dateTime")]
-        public string ReminderDateTime { get; set; }
-
-        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReminderTimeZone { get; set; } = "UTC";
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateToDoInputImportanceType
-    {
-        [EnumMember(Value = "low")]
-        Low,
-        [EnumMember(Value = "normal")]
-        Normal,
-        [EnumMember(Value = "high")]
-        High
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateToDoInputStatusType
-    {
-        [EnumMember(Value = "notStarted")]
-        NotStarted,
-        [EnumMember(Value = "inProgress")]
-        InProgress,
-        [EnumMember(Value = "completed")]
-        Completed,
-        [EnumMember(Value = "waitingOnOthers")]
-        WaitingOnOthers,
-        [EnumMember(Value = "deferred")]
-        Deferred
-    }
-
-    public class UpdateToDoInputBodyType
-    {
-        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ContentType { get; set; } = "html";
-
-        [JsonProperty("content")]
-        public string Content { get; set; }
     }
 }
 

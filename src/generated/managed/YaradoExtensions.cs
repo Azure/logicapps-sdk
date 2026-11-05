@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateScheduleTaskRun(Expression<Func<CreateScheduleTaskRunInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateScheduleTaskRun(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         public string CreatedAt { get; set; }
     }
 
-    public class CreateScheduleTaskRunInput
+    public class BodyInput
     {
         [JsonProperty("robot_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RobotId { get; set; }

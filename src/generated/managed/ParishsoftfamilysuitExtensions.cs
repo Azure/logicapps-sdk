@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IBodyWorkflowAction<FamilySearchResponseDto[], ApiConnectionActionConfiguration> FamilySearch(Expression<Func<FamilySearchInput>> body)
+        public IBodyWorkflowAction<FamilySearchResponseDto[], ApiConnectionActionConfiguration> FamilySearch(Expression<Func<FamilySearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FamilySearchResponseDto[], ApiConnectionActionConfiguration>(() =>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FamilyUpdateContactInfo(Expression<Func<int>> familyId, Expression<Func<FamilyUpdateContactInfoInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FamilyUpdateContactInfo(Expression<Func<int>> familyId, Expression<Func<FamilyUpdateContactInfoBodyInput>> body = null)
         {
             var __workflow_familyId = WorkflowExpression.Compile(familyId, nameof(familyId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FamilyUpdateAutoFill(Expression<Func<int>> familyId, Expression<Func<FamilyUpdateAutoFillInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FamilyUpdateAutoFill(Expression<Func<int>> familyId, Expression<Func<FamilyUpdateAutoFillBodyInput>> body)
         {
             var __workflow_familyId = WorkflowExpression.Compile(familyId, nameof(familyId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IBodyWorkflowAction<MemberSearchResponseDto[], ApiConnectionActionConfiguration> MemberSearch(Expression<Func<MemberSearchInput>> body)
+        public IBodyWorkflowAction<MemberSearchResponseDto[], ApiConnectionActionConfiguration> MemberSearch(Expression<Func<MemberSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MemberSearchResponseDto[], ApiConnectionActionConfiguration>(() =>
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IBodyWorkflowAction<MemberContactListResponseDto[], ApiConnectionActionConfiguration> MemberContactList(Expression<Func<MemberContactListInput>> body)
+        public IBodyWorkflowAction<MemberContactListResponseDto[], ApiConnectionActionConfiguration> MemberContactList(Expression<Func<MemberContactListBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MemberContactListResponseDto[], ApiConnectionActionConfiguration>(() =>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MemberUpdateContact(Expression<Func<int>> memberId, Expression<Func<MemberUpdateContactInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MemberUpdateContact(Expression<Func<int>> memberId, Expression<Func<MemberUpdateContactBodyInput>> body)
         {
             var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IBodyWorkflowAction<FamilyContributionSummaryResponseDto[], ApiConnectionActionConfiguration> OfferingFamilyContributionSearch(Expression<Func<int>> organizationId, Expression<Func<OfferingFamilyContributionSearchInput>> body)
+        public IBodyWorkflowAction<FamilyContributionSummaryResponseDto[], ApiConnectionActionConfiguration> OfferingFamilyContributionSearch(Expression<Func<int>> organizationId, Expression<Func<OfferingFamilyContributionSearchBodyInput>> body)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parishsoftfamilysuit")]
-        public IBodyWorkflowAction<OrganizationDetailResponseDto[], ApiConnectionActionConfiguration> OrganizationSearch(Expression<Func<OrganizationSearchInput>> body)
+        public IBodyWorkflowAction<OrganizationDetailResponseDto[], ApiConnectionActionConfiguration> OrganizationSearch(Expression<Func<OrganizationSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrganizationDetailResponseDto[], ApiConnectionActionConfiguration>(() =>
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public int RowNumber { get; set; }
     }
 
-    public class FamilySearchInput
+    public class FamilySearchBodyInput
     {
         [JsonProperty("pageNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageNumber { get; set; } = 1;
@@ -888,7 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public int WorkGroupDioceseId { get; set; }
     }
 
-    public class FamilyUpdateContactInfoInput
+    public class FamilyUpdateContactInfoBodyInput
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -1002,7 +1002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public string SDiocesanId { get; set; }
     }
 
-    public class FamilyUpdateAutoFillInput
+    public class FamilyUpdateAutoFillBodyInput
     {
         [JsonProperty("organizationID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int OrganizationId { get; set; }
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public int RecordCount { get; set; }
     }
 
-    public class MemberSearchInput
+    public class MemberSearchBodyInput
     {
         [JsonProperty("startRowIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageNumber { get; set; } = 0;
@@ -1548,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public int OrganizationId { get; set; }
     }
 
-    public class MemberContactListInput
+    public class MemberContactListBodyInput
     {
         [JsonProperty("limit", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageSize { get; set; } = 100;
@@ -1572,7 +1572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public int[] OrganizationIdS { get; set; }
     }
 
-    public class MemberUpdateContactInput
+    public class MemberUpdateContactBodyInput
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -1785,7 +1785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public int AverageContributionAmount { get; set; }
     }
 
-    public class OfferingFamilyContributionSearchInput
+    public class OfferingFamilyContributionSearchBodyInput
     {
         [JsonProperty("startRowIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageNumber { get; set; } = 0;
@@ -1932,7 +1932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parishsoftfamilysuit
         public string LastModified { get; set; }
     }
 
-    public class OrganizationSearchInput
+    public class OrganizationSearchBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

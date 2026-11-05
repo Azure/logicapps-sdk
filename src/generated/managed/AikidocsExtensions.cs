@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class AikidocsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ValidateConnectionResponse, ApiConnectionActionConfiguration> ValidateConnectGoodService(Expression<Func<ValidateConnectGoodServiceInput>> body = null)
+        public IBodyWorkflowAction<ValidateConnectionResponse, ApiConnectionActionConfiguration> ValidateConnectGoodService(Expression<Func<ValidateConnectBadServiceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ValidateConnectionResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ValidateConnectionResponse, ApiConnectionActionConfiguration> ValidateConnectBadService(Expression<Func<ValidateConnectBadServiceInput>> body = null)
+        public IBodyWorkflowAction<ValidateConnectionResponse, ApiConnectionActionConfiguration> ValidateConnectBadService(Expression<Func<ValidateConnectBadServiceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ValidateConnectionResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<AppendDocumentResponse, ApiConnectionActionConfiguration> WordAppendDocuments(Expression<Func<WordAppendDocumentsInput>> body = null)
+        public IBodyWorkflowAction<AppendDocumentResponse, ApiConnectionActionConfiguration> WordAppendDocuments(Expression<Func<WordAppendDocumentsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AppendDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByHeadingResponse, ApiConnectionActionConfiguration> WordExtractContentByHeading(Expression<Func<WordExtractContentByHeadingInput>> body = null)
+        public IBodyWorkflowAction<ExtractContentByHeadingResponse, ApiConnectionActionConfiguration> WordExtractContentByHeading(Expression<Func<WordExtractContentByHeadingBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractContentByHeadingResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractSectionByTitleResponse, ApiConnectionActionConfiguration> WordExtractContentByTitle(Expression<Func<WordExtractContentByTitleInput>> body = null)
+        public IBodyWorkflowAction<ExtractSectionByTitleResponse, ApiConnectionActionConfiguration> WordExtractContentByTitle(Expression<Func<WordExtractContentByTitleBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractSectionByTitleResponse, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ExtractContentByBookMarksResponse, ApiConnectionActionConfiguration> WordExtractContentByBookmarks(Expression<Func<WordExtractContentByBookmarksInput>> body = null)
+        public IBodyWorkflowAction<ExtractContentByBookMarksResponse, ApiConnectionActionConfiguration> WordExtractContentByBookmarks(Expression<Func<WordExtractContentByBookmarksBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractContentByBookMarksResponse, ApiConnectionActionConfiguration>(() =>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> WordInsertDocuments(Expression<Func<WordInsertDocumentsInput>> body = null)
+        public IBodyWorkflowAction<InsertDocumentResponse, ApiConnectionActionConfiguration> WordInsertDocuments(Expression<Func<WordInsertDocumentsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InsertDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aikidocs")]
-        public IBodyWorkflowAction<ApplyStylesResponse, ApiConnectionActionConfiguration> WordApplyStyleToDocument(Expression<Func<WordApplyStyleToDocumentInput>> body = null)
+        public IBodyWorkflowAction<ApplyStylesResponse, ApiConnectionActionConfiguration> WordApplyStyleToDocument(Expression<Func<WordApplyStyleToDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApplyStylesResponse, ApiConnectionActionConfiguration>(() =>
@@ -143,13 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         public string ResultMessage { get; set; }
     }
 
-    public class ValidateConnectGoodServiceInput
-    {
-        [JsonProperty("message")]
-        public string Message { get; set; }
-    }
-
-    public class ValidateConnectBadServiceInput
+    public class ValidateConnectBadServiceBodyInput
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -158,13 +152,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class AppendDocumentResponse
     {
         [JsonProperty("resultDocument")]
-        public WordDocumentParameter ResultDocument { get; set; }
+        public WordAppendDocumentsWordDocumentParameterResponse ResultDocument { get; set; }
 
         [JsonProperty("count")]
         public int Count { get; set; }
     }
 
-    public class WordDocumentParameter
+    public class WordAppendDocumentsWordDocumentParameterResponse
     {
         [JsonProperty("documentContent")]
         public string DocumentContent { get; set; }
@@ -173,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         public string DocumentName { get; set; }
     }
 
-    public class WordAppendDocumentsInput
+    public class WordAppendDocumentsBodyInput
     {
         [JsonProperty("appendDocumentList")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] AppendDocumentList { get; set; }
@@ -182,19 +176,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class ExtractContentByHeadingResponse
     {
         [JsonProperty("resultDocuments")]
-        public WordDocumentParameter[] ResultDocuments { get; set; }
+        public WordAppendDocumentsWordDocumentParameterResponse[] ResultDocuments { get; set; }
     }
 
-    public class WordExtractContentByHeadingInput
+    public class WordExtractContentByHeadingBodyInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter2 SourceDocument { get; set; }
+        public WordApplyStyleToDocumentWordDocumentParameter SourceDocument { get; set; }
 
         [JsonProperty("headingStyleName")]
         public string HeadingStyleName { get; set; }
     }
 
-    public class WordDocumentParameter2
+    public class WordApplyStyleToDocumentWordDocumentParameter
     {
         [JsonProperty("documentContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
@@ -206,13 +200,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class ExtractSectionByTitleResponse
     {
         [JsonProperty("resultDocument")]
-        public WordDocumentParameter ResultDocument { get; set; }
+        public WordAppendDocumentsWordDocumentParameterResponse ResultDocument { get; set; }
     }
 
-    public class WordExtractContentByTitleInput
+    public class WordExtractContentByTitleBodyInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter2 SourceDocument { get; set; }
+        public WordApplyStyleToDocumentWordDocumentParameter SourceDocument { get; set; }
 
         [JsonProperty("headingText")]
         public string HeadingText { get; set; }
@@ -227,10 +221,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class ExtractContentByBookMarksResponse
     {
         [JsonProperty("resultDocument")]
-        public WordDocumentParameter ResultDocument { get; set; }
+        public WordAppendDocumentsWordDocumentParameterResponse ResultDocument { get; set; }
     }
 
-    public class WordExtractContentByBookmarksInput
+    public class WordExtractContentByBookmarksBodyInput
     {
         [JsonProperty("startBookMark")]
         public string StartBookMark { get; set; }
@@ -239,22 +233,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         public string EndBookMark { get; set; }
 
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter2 SourceDocument { get; set; }
+        public WordApplyStyleToDocumentWordDocumentParameter SourceDocument { get; set; }
     }
 
     public class InsertDocumentResponse
     {
         [JsonProperty("resultDocument")]
-        public WordDocumentParameter ResultDocument { get; set; }
+        public WordAppendDocumentsWordDocumentParameterResponse ResultDocument { get; set; }
 
         [JsonProperty("count")]
         public int Count { get; set; }
     }
 
-    public class WordInsertDocumentsInput
+    public class WordInsertDocumentsBodyInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter2 SourceDocument { get; set; }
+        public WordApplyStyleToDocumentWordDocumentParameter SourceDocument { get; set; }
 
         [JsonProperty("insertDocumentList")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] InsertDocumentList { get; set; }
@@ -269,19 +263,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class ApplyStylesResponse
     {
         [JsonProperty("resultDocument")]
-        public WordDocumentParameter ResultDocument { get; set; }
+        public WordAppendDocumentsWordDocumentParameterResponse ResultDocument { get; set; }
 
         [JsonProperty("count")]
         public int Count { get; set; }
     }
 
-    public class WordApplyStyleToDocumentInput
+    public class WordApplyStyleToDocumentBodyInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter2 SourceDocument { get; set; }
+        public WordApplyStyleToDocumentWordDocumentParameter SourceDocument { get; set; }
 
         [JsonProperty("destinationDocument")]
-        public WordDocumentParameter2 DestinationDocument { get; set; }
+        public WordApplyStyleToDocumentWordDocumentParameter DestinationDocument { get; set; }
     }
 }
 

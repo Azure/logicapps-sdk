@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        public IBodyWorkflowAction<DiscussionResponse, ApiConnectionActionConfiguration> AddDiscussionToSheet(Expression<Func<string>> sheetId, Expression<Func<AddDiscussionToSheetInput>> discussion)
+        public IBodyWorkflowAction<DiscussionResponse, ApiConnectionActionConfiguration> AddDiscussionToSheet(Expression<Func<string>> sheetId, Expression<Func<DiscussionInput>> discussion)
         {
             var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             var __workflow_discussion = WorkflowExpression.Compile(discussion, nameof(discussion), required: true);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        public IBodyWorkflowAction<DiscussionResponse, ApiConnectionActionConfiguration> AddDiscussionToRow(Expression<Func<string>> sheetId, Expression<Func<string>> rowId, Expression<Func<AddDiscussionToRowInput>> discussion)
+        public IBodyWorkflowAction<DiscussionResponse, ApiConnectionActionConfiguration> AddDiscussionToRow(Expression<Func<string>> sheetId, Expression<Func<string>> rowId, Expression<Func<DiscussionInput>> discussion)
         {
             var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
-        public IBodyWorkflowAction<CreateCommentResponse, ApiConnectionActionConfiguration> AddCommentToDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, Expression<Func<AddCommentToDiscussionInput>> comment)
+        public IBodyWorkflowAction<CreateCommentResponse, ApiConnectionActionConfiguration> AddCommentToDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, Expression<Func<CommentInput>> comment)
         {
             var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             var __workflow_discussionId = WorkflowExpression.Compile(discussionId, nameof(discussionId), required: true);
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         public string CreatedByEmail { get; set; }
     }
 
-    public class AddDiscussionToSheetInput
+    public class DiscussionInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -556,22 +556,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         public string Text { get; set; }
     }
 
-    public class AddDiscussionToRowInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("comment")]
-        public Comment Comment { get; set; }
-    }
-
     public class CreateCommentResponse
     {
         [JsonProperty("result")]
         public DiscussionComment Result { get; set; }
     }
 
-    public class AddCommentToDiscussionInput
+    public class CommentInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }

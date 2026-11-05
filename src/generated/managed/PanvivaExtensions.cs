@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<OperationsLiveCshInput>> postLiveCshRequest = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<PostLiveCshRequestInput>> postLiveCshRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_postLiveCshRequest = WorkflowExpression.Compile(postLiveCshRequest, nameof(postLiveCshRequest), required: false);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<OperationsLiveDocumentInput>> postLiveDocumentRequest = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<PostLiveDocumentRequestInput>> postLiveDocumentRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_postLiveDocumentRequest = WorkflowExpression.Compile(postLiveDocumentRequest, nameof(postLiveDocumentRequest), required: false);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<OperationsLiveSearchInput>> postLiveSearchRequest = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<PostLiveSearchRequestInput>> postLiveSearchRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_postLiveSearchRequest = WorkflowExpression.Compile(postLiveSearchRequest, nameof(postLiveSearchRequest), required: false);
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "panviva")]
-        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<ResourcesArtefactCategoryPostInput>> postArtefactCategoryRequest = null)
+        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<PostArtefactCategoryRequestInput>> postArtefactCategoryRequest = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_postArtefactCategoryRequest = WorkflowExpression.Compile(postArtefactCategoryRequest, nameof(postArtefactCategoryRequest), required: false);
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         public string Query { get; set; }
     }
 
-    public class OperationsLiveCshInput
+    public class PostLiveCshRequestInput
     {
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         public bool? MaximizeClient { get; set; }
     }
 
-    public class OperationsLiveDocumentInput
+    public class PostLiveDocumentRequestInput
     {
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         public bool? MaximizeClient { get; set; }
     }
 
-    public class OperationsLiveSearchInput
+    public class PostLiveSearchRequestInput
     {
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -1099,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         public string CategoryName { get; set; }
     }
 
-    public class ResourcesArtefactCategoryPostInput
+    public class PostArtefactCategoryRequestInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

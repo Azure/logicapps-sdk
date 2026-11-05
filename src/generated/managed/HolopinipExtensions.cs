@@ -13,18 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
     public class HolopinipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<IssuePostResponse, ApiConnectionActionConfiguration> Issue(Expression<Func<string>> id, Expression<Func<IssuePostInput>> body)
+        public IBodyWorkflowAction<IssueResponse, ApiConnectionActionConfiguration> Issue(Expression<Func<string>> id, Expression<Func<BodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<IssuePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IssueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sticker/share";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<IssuePostResponse>(callPayload);
+                return new ApiConnectionAction<IssueResponse>(callPayload);
             });
         }
 
@@ -61,16 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
     {
     }
 
-    public class IssuePostResponse
+    public class IssueResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("data")]
-        public IssuePostResponseDataType Data { get; set; }
+        public IssueResponseDataType Data { get; set; }
     }
 
-    public class IssuePostResponseDataType
+    public class IssueResponseDataType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         public string StickerId { get; set; }
     }
 
-    public class IssuePostInput
+    public class BodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }

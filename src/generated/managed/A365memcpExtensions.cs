@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365memcp
     public class A365memcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365memcp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpMeServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpMeServerInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpMeServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365memcp
     {
     }
 
-    public class McpMeServerInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

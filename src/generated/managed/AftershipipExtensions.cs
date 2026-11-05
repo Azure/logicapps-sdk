@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<DetectCourierResponse, ApiConnectionActionConfiguration> DetectCourier(Expression<Func<DetectCourierInput>> body)
+        public IBodyWorkflowAction<DetectCourierResponse, ApiConnectionActionConfiguration> DetectCourier(Expression<Func<DetectCourierBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DetectCourierResponse, ApiConnectionActionConfiguration>(() =>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<CreateTrackingResponse, ApiConnectionActionConfiguration> CreateTracking(Expression<Func<CreateTrackingInput>> body)
+        public IBodyWorkflowAction<CreateTrackingResponse, ApiConnectionActionConfiguration> CreateTracking(Expression<Func<CreateTrackingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTrackingResponse, ApiConnectionActionConfiguration>(() =>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<UpdateATrackingResponse, ApiConnectionActionConfiguration> UpdateATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<UpdateATrackingInput>> body)
+        public IBodyWorkflowAction<UpdateATrackingResponse, ApiConnectionActionConfiguration> UpdateATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<UpdateATrackingBodyInput>> body)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<MarkTrackingAsCompletedResponse, ApiConnectionActionConfiguration> MarkTrackingAsCompleted(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<MarkTrackingAsCompletedInput>> body)
+        public IBodyWorkflowAction<MarkTrackingAsCompletedResponse, ApiConnectionActionConfiguration> MarkTrackingAsCompleted(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<MarkTrackingAsCompletedBodyInput>> body)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<AddANotificationResponse, ApiConnectionActionConfiguration> AddANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<AddANotificationInput>> body)
+        public IBodyWorkflowAction<AddANotificationResponse, ApiConnectionActionConfiguration> AddANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<AddANotificationBodyInput>> body)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<RemoveANotificationResponse, ApiConnectionActionConfiguration> RemoveANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<RemoveANotificationInput>> body)
+        public IBodyWorkflowAction<RemoveANotificationResponse, ApiConnectionActionConfiguration> RemoveANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<AddANotificationBodyInput>> body)
         {
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
@@ -343,13 +343,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         public string[] ServiceFromCountryIso3 { get; set; }
     }
 
-    public class DetectCourierInput
+    public class DetectCourierBodyInput
     {
         [JsonProperty("tracking")]
-        public DetectCourierInputTrackingType Tracking { get; set; }
+        public DetectCourierBodyInputTrackingType Tracking { get; set; }
     }
 
-    public class DetectCourierInputTrackingType
+    public class DetectCourierBodyInputTrackingType
     {
         [JsonProperty("tracking_number")]
         public string TrackingNumber { get; set; }
@@ -871,13 +871,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         public string FirstAttemptedAt { get; set; }
     }
 
-    public class CreateTrackingInput
+    public class CreateTrackingBodyInput
     {
         [JsonProperty("tracking")]
-        public CreateTrackingInputTrackingType Tracking { get; set; }
+        public CreateTrackingBodyInputTrackingType Tracking { get; set; }
     }
 
-    public class CreateTrackingInputTrackingType
+    public class CreateTrackingBodyInputTrackingType
     {
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         public string OrderIdPath { get; set; }
 
         [JsonProperty("custom_fields")]
-        public CreateTrackingInputTrackingTypeCustomFieldsType CustomFields { get; set; }
+        public BodyInputTrackingTypeCustomFieldsType CustomFields { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         public string PickupNote { get; set; }
     }
 
-    public class CreateTrackingInputTrackingTypeCustomFieldsType
+    public class BodyInputTrackingTypeCustomFieldsType
     {
         [JsonProperty("product_name")]
         public string ProductName { get; set; }
@@ -1456,13 +1456,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         public string RawTag { get; set; }
     }
 
-    public class UpdateATrackingInput
+    public class UpdateATrackingBodyInput
     {
         [JsonProperty("tracking")]
-        public UpdateATrackingInputTrackingType Tracking { get; set; }
+        public UpdateATrackingBodyInputTrackingType Tracking { get; set; }
     }
 
-    public class UpdateATrackingInputTrackingType
+    public class UpdateATrackingBodyInputTrackingType
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1555,14 +1555,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         public string Type { get; set; }
     }
 
-    public class MarkTrackingAsCompletedInput
+    public class MarkTrackingAsCompletedBodyInput
     {
         [JsonProperty("reason")]
-        public MarkTrackingAsCompletedInputReasonType? Reason { get; set; }
+        public BodyInputReasonType? Reason { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MarkTrackingAsCompletedInputReasonType
+    public enum BodyInputReasonType
     {
         DELIVERED,
         LOST,
@@ -1630,13 +1630,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         public string[] Smses { get; set; }
     }
 
-    public class AddANotificationInput
+    public class AddANotificationBodyInput
     {
         [JsonProperty("notification")]
-        public AddANotificationInputNotificationType Notification { get; set; }
+        public BodyInputNotificationType Notification { get; set; }
     }
 
-    public class AddANotificationInputNotificationType
+    public class BodyInputNotificationType
     {
         [JsonProperty("emails")]
         public JToken Emails { get; set; }
@@ -1673,21 +1673,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
 
         [JsonProperty("smses")]
         public string[] Smses { get; set; }
-    }
-
-    public class RemoveANotificationInput
-    {
-        [JsonProperty("notification")]
-        public RemoveANotificationInputNotificationType Notification { get; set; }
-    }
-
-    public class RemoveANotificationInputNotificationType
-    {
-        [JsonProperty("emails")]
-        public JToken Emails { get; set; }
-
-        [JsonProperty("smses")]
-        public JToken Smses { get; set; }
     }
 
     public class GetLastCheckpointResponse

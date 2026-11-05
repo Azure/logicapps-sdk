@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
     public class LivetilesbotsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PromptString(Expression<Func<string>> resumptionToken, Expression<Func<PromptStringInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PromptString(Expression<Func<string>> resumptionToken, Expression<Func<PromptBooleanBodyInput>> body)
         {
             var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PromptNumber(Expression<Func<string>> resumptionToken, Expression<Func<PromptNumberInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PromptNumber(Expression<Func<string>> resumptionToken, Expression<Func<PromptBooleanBodyInput>> body)
         {
             var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PromptForm(Expression<Func<string>> resumptionToken, Expression<Func<PromptFormInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PromptForm(Expression<Func<string>> resumptionToken, Expression<Func<PromptFormBodyInput>> body)
         {
             var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PromptBoolean(Expression<Func<string>> resumptionToken, Expression<Func<PromptBooleanInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PromptBoolean(Expression<Func<string>> resumptionToken, Expression<Func<PromptBooleanBodyInput>> body)
         {
             var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PromptChoice(Expression<Func<string>> resumptionToken, Expression<Func<PromptChoiceInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PromptChoice(Expression<Func<string>> resumptionToken, Expression<Func<PromptChoiceBodyInput>> body)
         {
             var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PromptFile(Expression<Func<string>> resumptionToken, Expression<Func<PromptFileInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PromptFile(Expression<Func<string>> resumptionToken, Expression<Func<PromptFileBodyInput>> body)
         {
             var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> resumptionToken, Expression<Func<PostMessageInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> resumptionToken, Expression<Func<PostMessageBodyInput>> body)
         {
             var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 
     public class LivetilesbotsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IntentRecognized(Expression<Func<IntentRecognizedInput>> subscription, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IntentRecognized(Expression<Func<SubscriptionInput>> subscription, FlowRecurrence recurrence = null)
         {
             var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         }
     }
 
-    public class PromptStringInput
+    public class PromptBooleanBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
@@ -164,16 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class PromptNumberInput
-    {
-        [JsonProperty("prompt")]
-        public string Prompt { get; set; }
-
-        [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class PromptFormInput
+    public class PromptFormBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
@@ -185,13 +176,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         public string Title { get; set; }
 
         [JsonProperty("formFields", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PromptFormInputFormFieldsTypeItem[] FormFields { get; set; }
+        public BodyInputFormFieldsTypeItem[] FormFields { get; set; }
     }
 
-    public class PromptFormInputFormFieldsTypeItem
+    public class BodyInputFormFieldsTypeItem
     {
         [JsonProperty("fieldType")]
-        public PromptFormInputFormFieldsTypeItemFieldTypeType? FieldType { get; set; }
+        public BodyInputFormFieldsTypeItemFieldTypeType? FieldType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -215,11 +206,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         public bool? IsMultiSelect { get; set; }
 
         [JsonProperty("choices")]
-        public PromptFormInputFormFieldsTypeItemChoicesTypeItem[] Choices { get; set; }
+        public BodyInputFormFieldsTypeItemChoicesTypeItem[] Choices { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PromptFormInputFormFieldsTypeItemFieldTypeType
+    public enum BodyInputFormFieldsTypeItemFieldTypeType
     {
         Text,
         Number,
@@ -228,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         Boolean
     }
 
-    public class PromptFormInputFormFieldsTypeItemChoicesTypeItem
+    public class BodyInputFormFieldsTypeItemChoicesTypeItem
     {
         [JsonProperty("display")]
         public string Display { get; set; }
@@ -237,28 +228,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         public string Value { get; set; }
     }
 
-    public class PromptBooleanInput
-    {
-        [JsonProperty("prompt")]
-        public string Prompt { get; set; }
-
-        [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class PromptChoiceInput
+    public class PromptChoiceBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
 
         [JsonProperty("options")]
-        public PromptChoiceInputOptionsTypeItem[] Options { get; set; }
+        public BodyInputOptionsTypeItem[] Options { get; set; }
 
         [JsonProperty("callbackUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class PromptChoiceInputOptionsTypeItem
+    public class BodyInputOptionsTypeItem
     {
         [JsonProperty("display")]
         public string Display { get; set; }
@@ -267,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         public string Value { get; set; }
     }
 
-    public class PromptFileInput
+    public class PromptFileBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
@@ -279,16 +261,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class PostMessageInput
+    public class PostMessageBodyInput
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("attachments")]
-        public PostMessageInputAttachmentsTypeItem[] Attachments { get; set; }
+        public BodyInputAttachmentsTypeItem[] Attachments { get; set; }
     }
 
-    public class PostMessageInputAttachmentsTypeItem
+    public class BodyInputAttachmentsTypeItem
     {
         [JsonProperty("contentType")]
         public string ContentType { get; set; }
@@ -300,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         public string ContentUrl { get; set; }
     }
 
-    public class IntentRecognizedInput
+    public class SubscriptionInput
     {
         [JsonProperty("bot", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Bot { get; set; }

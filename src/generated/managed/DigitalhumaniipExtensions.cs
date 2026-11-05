@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
-        public IBodyWorkflowAction<TreePlantResponse, ApiConnectionActionConfiguration> TreePlant(Expression<Func<TreePlantInput>> body)
+        public IBodyWorkflowAction<TreePlantResponse, ApiConnectionActionConfiguration> TreePlant(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TreePlantResponse, ApiConnectionActionConfiguration>(() =>
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         public string User { get; set; }
     }
 
-    public class TreePlantInput
+    public class BodyInput
     {
         [JsonProperty("treeCount")]
         public int? TreeCount { get; set; }

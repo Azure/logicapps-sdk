@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryCreateSchema, ApiConnectionActionConfiguration> ActionAbEntryCreate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AbEntryCreateSchema, ApiConnectionActionConfiguration> ActionAbEntryCreate(Expression<Func<ApplyActionToInput>> applyActionTo, Expression<Func<object>> body = null)
         {
             var __workflow_applyActionTo = WorkflowExpression.Compile(applyActionTo, nameof(applyActionTo), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryUpdateSchema, ApiConnectionActionConfiguration> ActionAbEntryUpdate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AbEntryUpdateSchema, ApiConnectionActionConfiguration> ActionAbEntryUpdate(Expression<Func<ApplyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
         {
             var __workflow_applyActionTo = WorkflowExpression.Compile(applyActionTo, nameof(applyActionTo), required: true);
             var __workflow_udf1 = WorkflowExpression.Compile(udf1, nameof(udf1), required: false);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryFindSchema, ApiConnectionActionConfiguration> ActionAbEntryFindOrCreate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AbEntryFindSchema, ApiConnectionActionConfiguration> ActionAbEntryFindOrCreate(Expression<Func<ApplyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
         {
             var __workflow_applyActionTo = WorkflowExpression.Compile(applyActionTo, nameof(applyActionTo), required: true);
             var __workflow_udf1 = WorkflowExpression.Compile(udf1, nameof(udf1), required: false);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentCreateSchema, ApiConnectionActionConfiguration> ActionAppointmentCreate(Expression<Func<linkWithTypeInput>> linkWithType = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AppointmentCreateSchema, ApiConnectionActionConfiguration> ActionAppointmentCreate(Expression<Func<LinkWithTypeInput>> linkWithType = null, Expression<Func<object>> body = null)
         {
             var __workflow_linkWithType = WorkflowExpression.Compile(linkWithType, nameof(linkWithType), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<HotlistTaskCreateSchema, ApiConnectionActionConfiguration> ActionHTaskCreate(Expression<Func<parentTypeInput>> parentType, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<HotlistTaskCreateSchema, ApiConnectionActionConfiguration> ActionHTaskCreate(Expression<Func<ParentTypeInput>> parentType, Expression<Func<object>> body = null)
         {
             var __workflow_parentType = WorkflowExpression.Compile(parentType, nameof(parentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadConvertSchema, ApiConnectionActionConfiguration> ActionLeadConvert(Expression<Func<convertOptionInput>> convertOption = null, Expression<Func<doNotCreateAContactInput>> doNotCreateAContact = null, Expression<Func<doNotCreateAnOpportunityInput>> doNotCreateAnOpportunity = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<LeadConvertSchema, ApiConnectionActionConfiguration> ActionLeadConvert(Expression<Func<ConvertOptionInput>> convertOption = null, Expression<Func<DoNotCreateAContactInput>> doNotCreateAContact = null, Expression<Func<DoNotCreateAnOpportunityInput>> doNotCreateAnOpportunity = null, Expression<Func<object>> body = null)
         {
             var __workflow_convertOption = WorkflowExpression.Compile(convertOption, nameof(convertOption), required: false);
             var __workflow_doNotCreateAContact = WorkflowExpression.Compile(doNotCreateAContact, nameof(doNotCreateAContact), required: false);
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<NoteCreateSchema, ApiConnectionActionConfiguration> ActionNoteCreate(Expression<Func<parentTypeInput>> parentType, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<NoteCreateSchema, ApiConnectionActionConfiguration> ActionNoteCreate(Expression<Func<ParentTypeInput>> parentType, Expression<Func<object>> body = null)
         {
             var __workflow_parentType = WorkflowExpression.Compile(parentType, nameof(parentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -975,7 +975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum applyActionToInput
+    public enum ApplyActionToInput
     {
         Individual,
         Company,
@@ -1535,7 +1535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum linkWithTypeInput
+    public enum LinkWithTypeInput
     {
         Case,
         Opportunity
@@ -1833,7 +1833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum parentTypeInput
+    public enum ParentTypeInput
     {
         AbEntry,
         Opportunity,
@@ -3267,7 +3267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum convertOptionInput
+    public enum ConvertOptionInput
     {
         [EnumMember(Value = "newCompany")]
         CreateNewCompany,
@@ -3282,7 +3282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum doNotCreateAContactInput
+    public enum DoNotCreateAContactInput
     {
         [EnumMember(Value = "true")]
         Yes,
@@ -3291,7 +3291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum doNotCreateAnOpportunityInput
+    public enum DoNotCreateAnOpportunityInput
     {
         [EnumMember(Value = "true")]
         Yes,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
     public class AppsforopsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
-        public IBodyWorkflowAction<NPSCreateResponse, ApiConnectionActionConfiguration> ApiExtNPS(Expression<Func<ApiExtNPSPostInput>> model)
+        public IBodyWorkflowAction<NPSCreateResponse, ApiConnectionActionConfiguration> ApiExtNPS(Expression<Func<ApiExtNPSModelInput>> model)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             return new DeferredBodyAction<NPSCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
-        public IBodyWorkflowAction<TimelineCreateResponse, ApiConnectionActionConfiguration> ApiExtTimeline(Expression<Func<ApiExtTimelinePostInput>> model)
+        public IBodyWorkflowAction<TimelineCreateResponse, ApiConnectionActionConfiguration> ApiExtTimeline(Expression<Func<ApiExtTimelineModelInput>> model)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             return new DeferredBodyAction<TimelineCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         public string AdditionalData { get; set; }
     }
 
-    public class ApiExtNPSPostInput
+    public class ApiExtNPSModelInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         public string CreatedByDateTime { get; set; }
     }
 
-    public class ApiExtTimelinePostInput
+    public class ApiExtTimelineModelInput
     {
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Source { get; set; }

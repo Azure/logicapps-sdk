@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
     public class LnkbioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
-        public IBodyWorkflowAction<InlineResponse200, ApiConnectionActionConfiguration> Lnkadd(Expression<Func<LnkaddInput>> body)
+        public IBodyWorkflowAction<InlineResponse200, ApiConnectionActionConfiguration> Lnkadd(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InlineResponse200, ApiConnectionActionConfiguration>(() =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
         public string Url { get; set; }
     }
 
-    public class LnkaddInput
+    public class BodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }

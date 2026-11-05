@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
     public class WebexActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration> CreateSpaceMember(Expression<Func<CreateSpaceMemberInput>> body = null)
+        public IBodyWorkflowAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration> CreateSpaceMember(Expression<Func<CreateSpaceMemberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateSpaceMemberResponse, ApiConnectionActionConfiguration>(() =>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> body)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetSpacesResponse, ApiConnectionActionConfiguration> GetSpaces(Expression<Func<int>> max = null, Expression<Func<typeInput>> type = null, Expression<Func<sortByInput>> sortBy = null)
+        public IBodyWorkflowAction<GetSpacesResponse, ApiConnectionActionConfiguration> GetSpaces(Expression<Func<int>> max = null, Expression<Func<TypeInput>> type = null, Expression<Func<SortByInput>> sortBy = null)
         {
             var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceResponse, ApiConnectionActionConfiguration> CreateSpace(Expression<Func<CreateSpaceInput>> body)
+        public IBodyWorkflowAction<CreateSpaceResponse, ApiConnectionActionConfiguration> CreateSpace(Expression<Func<CreateSpaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSpaceResponse, ApiConnectionActionConfiguration>(() =>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration> CreateTeamMember(Expression<Func<CreateTeamMemberInput>> body = null)
+        public IBodyWorkflowAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration> CreateTeamMember(Expression<Func<CreateTeamMemberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateTeamMemberResponse, ApiConnectionActionConfiguration>(() =>
@@ -177,93 +177,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class WebexTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration> MembershipsUpdated(Expression<Func<MembershipsUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration> MembershipsUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MembershipsUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new MembershipsUpdatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration> MembershipsDeleted(Expression<Func<MembershipsDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration> MembershipsDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MembershipsDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new MembershipsDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration> MembershipsCreated(Expression<Func<MembershipsCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration> MembershipsCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MembershipsCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new MembershipsCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration> MessagesCreated(Expression<Func<MessagesCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration> MessagesCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MessagesCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/4";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new MessagesCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration> MessagesDeleted(Expression<Func<MessagesDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration> MessagesDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MessagesDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/5";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new MessagesDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration> SpaceCreated(Expression<Func<SpaceCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration> SpaceCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<SpaceCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/6";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new SpaceCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration> SpaceUpdated(Expression<Func<SpaceUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration> SpaceUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<SpaceUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhooks/7";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new SpaceUpdatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<SpaceUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -299,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string RoomId { get; set; }
     }
 
-    public class CreateSpaceMemberInput
+    public class CreateSpaceMemberBodyInput
     {
         [JsonProperty("isModerator", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsModerator { get; set; } = false;
@@ -371,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string ToPersonEmail { get; set; }
     }
 
-    public class SendMessageInput
+    public class SendMessageBodyInput
     {
         [JsonProperty("files")]
         public string[] Files { get; set; }
@@ -576,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "group")]
         Group,
@@ -585,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortByInput
+    public enum SortByInput
     {
         [EnumMember(Value = "lastactivity")]
         Lastactivity,
@@ -617,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Type { get; set; }
     }
 
-    public class CreateSpaceInput
+    public class CreateSpaceBodyInput
     {
         [JsonProperty("teamId")]
         public string TeamId { get; set; }
@@ -677,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string TeamId { get; set; }
     }
 
-    public class CreateTeamMemberInput
+    public class CreateTeamMemberBodyInput
     {
         [JsonProperty("isModerator", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsModerator { get; set; } = false;
@@ -722,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
-    public class MembershipsUpdatedInput
+    public class MembershipsUpdatedBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "updated";
@@ -767,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
-    public class MembershipsDeletedInput
+    public class MembershipsDeletedBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "deleted";
@@ -812,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
-    public class MembershipsCreatedInput
+    public class MembershipsCreatedBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "created";
@@ -857,7 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
-    public class MessagesCreatedInput
+    public class MessagesCreatedBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "created";
@@ -902,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
-    public class MessagesDeletedInput
+    public class MessagesDeletedBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "deleted";
@@ -947,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
-    public class SpaceCreatedInput
+    public class SpaceCreatedBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "created";
@@ -992,7 +985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Status { get; set; }
     }
 
-    public class SpaceUpdatedInput
+    public class SpaceUpdatedBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "updated";

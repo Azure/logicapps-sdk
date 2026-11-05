@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChannelsPost(Expression<Func<string>> channelId, Expression<Func<ChannelsPostPostInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChannelsPost(Expression<Func<string>> channelId, Expression<Func<ChannelsPostBodyInput>> body = null)
         {
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -130,22 +130,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<NotificationPostResponse, ApiConnectionActionConfiguration> Notification(Expression<Func<NotificationPostInput>> body = null)
+        public IBodyWorkflowAction<NotificationResponse, ApiConnectionActionConfiguration> Notification(Expression<Func<NotificationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<NotificationPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NotificationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notifications";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NotificationPostResponse>(callPayload);
+                return new ApiConnectionAction<NotificationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<PostsGetAllResponse, ApiConnectionActionConfiguration> PostsGetAll(Expression<Func<string>> query = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> manageable = null, Expression<Func<contentTypeInput>> contentType = null)
+        public IBodyWorkflowAction<PostsGetAllResponse, ApiConnectionActionConfiguration> PostsGetAll(Expression<Func<string>> query = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> manageable = null, Expression<Func<ContentTypeInput>> contentType = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostsPut(Expression<Func<string>> pageId, Expression<Func<PostsPutInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostsPut(Expression<Func<string>> pageId, Expression<Func<PostsPutBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> User(Expression<Func<UserPostInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> User(Expression<Func<UserBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffbase")]
-        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userId, Expression<Func<UserPutInput>> body = null)
+        public IBodyWorkflowAction<UserData, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userId, Expression<Func<UserPutBodyInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -610,19 +610,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Locale { get; set; }
     }
 
-    public class ChannelsPostPostInput
+    public class ChannelsPostBodyInput
     {
         [JsonProperty("externalID")]
         public string ExternalId { get; set; }
 
         [JsonProperty("contents")]
-        public ChannelsPostPostInputContentsTypeItem[] Contents { get; set; }
+        public ChannelsPostBodyInputContentsTypeItem[] Contents { get; set; }
 
         [JsonProperty("published")]
         public string Published { get; set; }
     }
 
-    public class ChannelsPostPostInputContentsTypeItem
+    public class ChannelsPostBodyInputContentsTypeItem
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -777,16 +777,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string MimeType { get; set; }
     }
 
-    public class NotificationPostResponse
+    public class NotificationResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("recipients")]
-        public NotificationPostResponseRecipientsType Recipients { get; set; }
+        public NotificationResponseRecipientsType Recipients { get; set; }
 
         [JsonProperty("content")]
-        public NotificationPostResponseContentTypeItem[] Content { get; set; }
+        public NotificationResponseContentTypeItem[] Content { get; set; }
 
         [JsonProperty("link")]
         public string Link { get; set; }
@@ -801,13 +801,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Created { get; set; }
     }
 
-    public class NotificationPostResponseRecipientsType
+    public class NotificationResponseRecipientsType
     {
         [JsonProperty("accessorIds")]
         public string[] AccessorIds { get; set; }
     }
 
-    public class NotificationPostResponseContentTypeItem
+    public class NotificationResponseContentTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -816,25 +816,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Locale { get; set; }
     }
 
-    public class NotificationPostInput
+    public class NotificationBodyInput
     {
         [JsonProperty("recipients")]
-        public NotificationPostInputRecipientsType Recipients { get; set; }
+        public BodyInputRecipientsType Recipients { get; set; }
 
         [JsonProperty("content")]
-        public NotificationPostInputContentTypeItem[] Content { get; set; }
+        public BodyInputContentTypeItem[] Content { get; set; }
 
         [JsonProperty("link")]
         public string Link { get; set; }
     }
 
-    public class NotificationPostInputRecipientsType
+    public class BodyInputRecipientsType
     {
         [JsonProperty("accessorIds")]
         public string[] AccessorIds { get; set; }
     }
 
-    public class NotificationPostInputContentTypeItem
+    public class BodyInputContentTypeItem
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentTypeInput
+    public enum ContentTypeInput
     {
         [EnumMember(Value = "articles")]
         Articles,
@@ -884,16 +884,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Type { get; set; }
     }
 
-    public class PostsPutInput
+    public class PostsPutBodyInput
     {
         [JsonProperty("externalID")]
         public string ExternalId { get; set; }
 
         [JsonProperty("contents")]
-        public PostsPutInputContentsTypeItem[] Contents { get; set; }
+        public PostsPutBodyInputContentsTypeItem[] Contents { get; set; }
     }
 
-    public class PostsPutInputContentsTypeItem
+    public class PostsPutBodyInputContentsTypeItem
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -914,7 +914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Published { get; set; }
     }
 
-    public class UserPostInput
+    public class UserBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -989,7 +989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public bool Primary { get; set; }
     }
 
-    public class UserPutInput
+    public class UserPutBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1007,10 +1007,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string PublicEmailAddress { get; set; }
 
         [JsonProperty("config")]
-        public UserPutInputConfigType Config { get; set; }
+        public BodyInputConfigType Config { get; set; }
 
         [JsonProperty("emails")]
-        public UserPutInputEmailsTypeItem[] Emails { get; set; }
+        public BodyInputEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("groupIDs")]
         public string[] GroupIDs { get; set; }
@@ -1037,13 +1037,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public string Activated { get; set; }
     }
 
-    public class UserPutInputConfigType
+    public class BodyInputConfigType
     {
         [JsonProperty("locale")]
         public string Locale { get; set; }
     }
 
-    public class UserPutInputEmailsTypeItem
+    public class BodyInputEmailsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }

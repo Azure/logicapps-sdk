@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     public class PdfcrossActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<MergePDFInput>> files)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePDF(Expression<Func<FilesInput>> files)
         {
             var __workflow_files = WorkflowExpression.Compile(files, nameof(files), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddWatermarkText(Expression<Func<AddWatermarkTextInput>> @file)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddWatermarkText(Expression<Func<AddWatermarkTextFileInput>> @file)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPassword(Expression<Func<AddPasswordInput>> @file)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddPassword(Expression<Func<AddPasswordFileInput>> @file)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddImage(Expression<Func<AddImageInput>> @file)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddImage(Expression<Func<AddImageFileInput>> @file)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     {
     }
 
-    public class MergePDFInput
+    public class FilesInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] FileContent { get; set; }
     }
 
-    public class AddWatermarkTextInput
+    public class AddWatermarkTextFileInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         public string WatermarkText { get; set; }
     }
 
-    public class AddPasswordInput
+    public class AddPasswordFileInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         public string Password { get; set; }
     }
 
-    public class AddImageInput
+    public class AddImageFileInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }

@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Updateablock(Expression<Func<string>> blockId, Expression<Func<UpdateablockInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Updateablock(Expression<Func<string>> blockId, Expression<Func<UpdateablockBodyInput>> body = null)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Appendblockchildren(Expression<Func<string>> blockId, Expression<Func<AppendblockchildrenInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Appendblockchildren(Expression<Func<string>> blockId, Expression<Func<AppendblockchildrenBodyInput>> body)
         {
             var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchInput>> body = null)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<CreateaPageResponse, ApiConnectionActionConfiguration> CreateaPage(Expression<Func<CreateaPageInput>> body)
+        public IBodyWorkflowAction<CreateaPageResponse, ApiConnectionActionConfiguration> CreateaPage(Expression<Func<CreateaPageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateaPageResponse, ApiConnectionActionConfiguration>(() =>
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
-        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> Createcomment(Expression<Func<CreatecommentInput>> body = null)
+        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> Createcomment(Expression<Func<CreatecommentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CommentResponse, ApiConnectionActionConfiguration>(() =>
@@ -406,160 +406,160 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         public string Id { get; set; }
     }
 
-    public class UpdateablockInput
+    public class UpdateablockBodyInput
     {
         [JsonProperty("paragraph")]
-        public UpdateablockInputParagraphType Paragraph { get; set; }
+        public BodyInputParagraphType Paragraph { get; set; }
 
         [JsonProperty("heading_1")]
-        public UpdateablockInputHeading1Type Heading1 { get; set; }
+        public BodyInputHeading1Type Heading1 { get; set; }
 
         [JsonProperty("heading_2")]
-        public UpdateablockInputHeading2Type Heading2 { get; set; }
+        public BodyInputHeading2Type Heading2 { get; set; }
 
         [JsonProperty("heading_3")]
-        public UpdateablockInputHeading3Type Heading3 { get; set; }
+        public BodyInputHeading3Type Heading3 { get; set; }
 
         [JsonProperty("bulleted_list_item")]
-        public UpdateablockInputBulletedListItemType BulletedListItem { get; set; }
+        public BodyInputBulletedListItemType BulletedListItem { get; set; }
 
         [JsonProperty("numbered_list_item")]
-        public UpdateablockInputNumberedListItemType NumberedListItem { get; set; }
+        public BodyInputNumberedListItemType NumberedListItem { get; set; }
 
         [JsonProperty("to_do")]
-        public UpdateablockInputToDoType ToDo { get; set; }
+        public BodyInputToDoType ToDo { get; set; }
     }
 
-    public class UpdateablockInputParagraphType
+    public class BodyInputParagraphType
     {
         [JsonProperty("rich_text")]
-        public UpdateablockInputParagraphTypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputParagraphTypeRichTextTypeItem[] RichText { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
     }
 
-    public class UpdateablockInputParagraphTypeRichTextTypeItem
+    public class BodyInputParagraphTypeRichTextTypeItem
     {
         [JsonProperty("text")]
-        public UpdateablockInputParagraphTypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputParagraphTypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class UpdateablockInputParagraphTypeRichTextTypeItemTextType
+    public class BodyInputParagraphTypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class UpdateablockInputHeading1Type
+    public class BodyInputHeading1Type
     {
         [JsonProperty("rich_text")]
-        public UpdateablockInputHeading1TypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputHeading1TypeRichTextTypeItem[] RichText { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
     }
 
-    public class UpdateablockInputHeading1TypeRichTextTypeItem
+    public class BodyInputHeading1TypeRichTextTypeItem
     {
         [JsonProperty("text")]
-        public UpdateablockInputHeading1TypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputHeading1TypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class UpdateablockInputHeading1TypeRichTextTypeItemTextType
+    public class BodyInputHeading1TypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class UpdateablockInputHeading2Type
+    public class BodyInputHeading2Type
     {
         [JsonProperty("rich_text")]
-        public UpdateablockInputHeading2TypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputHeading2TypeRichTextTypeItem[] RichText { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
     }
 
-    public class UpdateablockInputHeading2TypeRichTextTypeItem
+    public class BodyInputHeading2TypeRichTextTypeItem
     {
         [JsonProperty("text")]
-        public UpdateablockInputHeading2TypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputHeading2TypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class UpdateablockInputHeading2TypeRichTextTypeItemTextType
+    public class BodyInputHeading2TypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class UpdateablockInputHeading3Type
+    public class BodyInputHeading3Type
     {
         [JsonProperty("rich_text")]
-        public UpdateablockInputHeading3TypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputHeading3TypeRichTextTypeItem[] RichText { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
     }
 
-    public class UpdateablockInputHeading3TypeRichTextTypeItem
+    public class BodyInputHeading3TypeRichTextTypeItem
     {
         [JsonProperty("text")]
-        public UpdateablockInputHeading3TypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputHeading3TypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class UpdateablockInputHeading3TypeRichTextTypeItemTextType
+    public class BodyInputHeading3TypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class UpdateablockInputBulletedListItemType
+    public class BodyInputBulletedListItemType
     {
         [JsonProperty("rich_text")]
-        public UpdateablockInputBulletedListItemTypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputBulletedListItemTypeRichTextTypeItem[] RichText { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
     }
 
-    public class UpdateablockInputBulletedListItemTypeRichTextTypeItem
+    public class BodyInputBulletedListItemTypeRichTextTypeItem
     {
         [JsonProperty("text")]
-        public UpdateablockInputBulletedListItemTypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputBulletedListItemTypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class UpdateablockInputBulletedListItemTypeRichTextTypeItemTextType
+    public class BodyInputBulletedListItemTypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class UpdateablockInputNumberedListItemType
+    public class BodyInputNumberedListItemType
     {
         [JsonProperty("rich_text")]
-        public UpdateablockInputNumberedListItemTypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputNumberedListItemTypeRichTextTypeItem[] RichText { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
     }
 
-    public class UpdateablockInputNumberedListItemTypeRichTextTypeItem
+    public class BodyInputNumberedListItemTypeRichTextTypeItem
     {
         [JsonProperty("text")]
-        public UpdateablockInputNumberedListItemTypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputNumberedListItemTypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class UpdateablockInputNumberedListItemTypeRichTextTypeItemTextType
+    public class BodyInputNumberedListItemTypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class UpdateablockInputToDoType
+    public class BodyInputToDoType
     {
         [JsonProperty("rich_text")]
-        public UpdateablockInputToDoTypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputToDoTypeRichTextTypeItem[] RichText { get; set; }
 
         [JsonProperty("checked")]
         public bool? Checked { get; set; }
@@ -568,13 +568,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         public string Color { get; set; }
     }
 
-    public class UpdateablockInputToDoTypeRichTextTypeItem
+    public class BodyInputToDoTypeRichTextTypeItem
     {
         [JsonProperty("text")]
-        public UpdateablockInputToDoTypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputToDoTypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class UpdateablockInputToDoTypeRichTextTypeItemTextType
+    public class BodyInputToDoTypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -619,13 +619,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         public string Type { get; set; }
     }
 
-    public class AppendblockchildrenInput
+    public class AppendblockchildrenBodyInput
     {
         [JsonProperty("children")]
-        public AppendblockchildrenInputChildrenTypeItem[] Children { get; set; }
+        public BodyInputChildrenTypeItem[] Children { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItem
+    public class BodyInputChildrenTypeItem
     {
         [JsonProperty("object")]
         public string ObjectEntity { get; set; }
@@ -634,58 +634,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         public string Type { get; set; }
 
         [JsonProperty("heading_1")]
-        public AppendblockchildrenInputChildrenTypeItemHeading1Type Heading1 { get; set; }
+        public BodyInputChildrenTypeItemHeading1Type Heading1 { get; set; }
 
         [JsonProperty("paragraph")]
-        public AppendblockchildrenInputChildrenTypeItemParagraphType Paragraph { get; set; }
+        public BodyInputChildrenTypeItemParagraphType Paragraph { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItemHeading1Type
+    public class BodyInputChildrenTypeItemHeading1Type
     {
         [JsonProperty("rich_text")]
-        public AppendblockchildrenInputChildrenTypeItemHeading1TypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputChildrenTypeItemHeading1TypeRichTextTypeItem[] RichText { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItemHeading1TypeRichTextTypeItem
+    public class BodyInputChildrenTypeItemHeading1TypeRichTextTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("text")]
-        public AppendblockchildrenInputChildrenTypeItemHeading1TypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputChildrenTypeItemHeading1TypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItemHeading1TypeRichTextTypeItemTextType
+    public class BodyInputChildrenTypeItemHeading1TypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItemParagraphType
+    public class BodyInputChildrenTypeItemParagraphType
     {
         [JsonProperty("rich_text")]
-        public AppendblockchildrenInputChildrenTypeItemParagraphTypeRichTextTypeItem[] RichText { get; set; }
+        public BodyInputChildrenTypeItemParagraphTypeRichTextTypeItem[] RichText { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItemParagraphTypeRichTextTypeItem
+    public class BodyInputChildrenTypeItemParagraphTypeRichTextTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("text")]
-        public AppendblockchildrenInputChildrenTypeItemParagraphTypeRichTextTypeItemTextType Text { get; set; }
+        public BodyInputChildrenTypeItemParagraphTypeRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItemParagraphTypeRichTextTypeItemTextType
+    public class BodyInputChildrenTypeItemParagraphTypeRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }
 
         [JsonProperty("link")]
-        public AppendblockchildrenInputChildrenTypeItemParagraphTypeRichTextTypeItemTextTypeLinkType Link { get; set; }
+        public BodyInputChildrenTypeItemParagraphTypeRichTextTypeItemTextTypeLinkType Link { get; set; }
     }
 
-    public class AppendblockchildrenInputChildrenTypeItemParagraphTypeRichTextTypeItemTextTypeLinkType
+    public class BodyInputChildrenTypeItemParagraphTypeRichTextTypeItemTextTypeLinkType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -773,16 +773,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         public bool HasMore { get; set; }
     }
 
-    public class SearchInput
+    public class SearchBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
 
         [JsonProperty("sort")]
-        public SearchInputSortType Sort { get; set; }
+        public BodyInputSortType Sort { get; set; }
     }
 
-    public class SearchInputSortType
+    public class BodyInputSortType
     {
         [JsonProperty("direction")]
         public string Direction { get; set; }
@@ -962,40 +962,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         public string DatabaseId { get; set; }
     }
 
-    public class CreateaPageInput
+    public class CreateaPageBodyInput
     {
         [JsonProperty("parent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateaPageInputParentType Parent { get; set; }
+        public CreateaPageBodyInputParentType Parent { get; set; }
 
         [JsonProperty("icon")]
-        public CreateaPageInputIconType Icon { get; set; }
+        public BodyInputIconType Icon { get; set; }
 
         [JsonProperty("cover")]
-        public CreateaPageInputCoverType Cover { get; set; }
+        public BodyInputCoverType Cover { get; set; }
 
         [JsonProperty("properties")]
         public JToken Properties { get; set; }
     }
 
-    public class CreateaPageInputParentType
+    public class CreateaPageBodyInputParentType
     {
         [JsonProperty("database_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DatabaseId { get; set; }
     }
 
-    public class CreateaPageInputIconType
+    public class BodyInputIconType
     {
         [JsonProperty("emoji")]
         public string Emoji { get; set; }
     }
 
-    public class CreateaPageInputCoverType
+    public class BodyInputCoverType
     {
         [JsonProperty("external")]
-        public CreateaPageInputCoverTypeExternalType External { get; set; }
+        public BodyInputCoverTypeExternalType External { get; set; }
     }
 
-    public class CreateaPageInputCoverTypeExternalType
+    public class BodyInputCoverTypeExternalType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1064,31 +1064,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         public string Link { get; set; }
     }
 
-    public class CreatecommentInput
+    public class CreatecommentBodyInput
     {
         [JsonProperty("parent")]
-        public CreatecommentInputParentType Parent { get; set; }
+        public CreatecommentBodyInputParentType Parent { get; set; }
 
         [JsonProperty("discussion_id")]
         public string DiscussionId { get; set; }
 
         [JsonProperty("rich_text")]
-        public CreatecommentInputRichTextTypeItem[] RichText { get; set; }
+        public BodyInputRichTextTypeItem[] RichText { get; set; }
     }
 
-    public class CreatecommentInputParentType
+    public class CreatecommentBodyInputParentType
     {
         [JsonProperty("page_id")]
         public string PageId { get; set; }
     }
 
-    public class CreatecommentInputRichTextTypeItem
+    public class BodyInputRichTextTypeItem
     {
         [JsonProperty("text")]
-        public CreatecommentInputRichTextTypeItemTextType Text { get; set; }
+        public BodyInputRichTextTypeItemTextType Text { get; set; }
     }
 
-    public class CreatecommentInputRichTextTypeItemTextType
+    public class BodyInputRichTextTypeItemTextType
     {
         [JsonProperty("content")]
         public string Content { get; set; }

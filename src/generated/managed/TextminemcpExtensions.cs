@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textminemcp
     public class TextminemcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "textminemcp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeTextMineMcp(Expression<Func<string>> mcpSessionId = null, Expression<Func<InvokeTextMineMcpInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeTextMineMcp(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textminemcp
     {
     }
 
-    public class InvokeTextMineMcpInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

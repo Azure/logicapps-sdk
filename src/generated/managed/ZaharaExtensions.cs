@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
     public class ZaharaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<CreateInvoiceInput>> model)
+        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<CreateInvoiceModelInput>> model)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             return new DeferredBodyAction<int, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreatePurchaseOrder(Expression<Func<CreatePurchaseOrderInput>> model)
+        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreatePurchaseOrder(Expression<Func<CreatePurchaseOrderModelInput>> model)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             return new DeferredBodyAction<int, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreateSupplier(Expression<Func<CreateSupplierInput>> model)
+        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> CreateSupplier(Expression<Func<CreateSupplierModelInput>> model)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             return new DeferredBodyAction<int, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateSupplier(Expression<Func<int>> id, Expression<Func<UpdateSupplierInput>> model)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateSupplier(Expression<Func<int>> id, Expression<Func<UpdateSupplierModelInput>> model)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
             });
         }
 
-        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[], ApiConnectionTriggerConfiguration> NewDocumentApproved(Expression<Func<documentTypeInput>> documentType, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[], ApiConnectionTriggerConfiguration> NewDocumentApproved(Expression<Func<DocumentTypeInput>> documentType, FlowRecurrence recurrence = null)
         {
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
             return new DeferredBodyTrigger<ProcessLogIntegrationModel[], ApiConnectionTriggerConfiguration>(() =>
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         }
     }
 
-    public class CreateInvoiceInput
+    public class CreateInvoiceModelInput
     {
         public string InvoiceNumber { get; set; }
         public string PurchaseOrderNumber { get; set; }
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string ProjectCode { get; set; }
     }
 
-    public class CreatePurchaseOrderInput
+    public class CreatePurchaseOrderModelInput
     {
         public string RequisitorName { get; set; }
         public string RequiredDate { get; set; }
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public LineItemAddIntegrationModel[] LineItems { get; set; }
     }
 
-    public class CreateSupplierInput
+    public class CreateSupplierModelInput
     {
         public string AddressLines { get; set; }
         public string ContactName { get; set; }
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string Type { get; set; }
     }
 
-    public class UpdateSupplierInput
+    public class UpdateSupplierModelInput
     {
         public int? Id { get; set; }
         public string AddressLines { get; set; }
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum documentTypeInput
+    public enum DocumentTypeInput
     {
         PurchaseOrder,
         Invoice,

@@ -25,18 +25,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
-        public IBodyWorkflowAction<ActionPostResponse, ApiConnectionActionConfiguration> Action(Expression<Func<string>> actionId, Expression<Func<ActionPostInput>> body = null)
+        public IBodyWorkflowAction<ActionResponse, ApiConnectionActionConfiguration> Action(Expression<Func<string>> actionId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ActionPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ActionPostResponse>(callPayload);
+                return new ApiConnectionAction<ActionResponse>(callPayload);
             });
         }
     }
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         public JToken Params { get; set; }
     }
 
-    public class ActionPostResponse
+    public class ActionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         public string Error { get; set; }
     }
 
-    public class ActionPostInput
+    public class BodyInput
     {
         [JsonProperty("instructions", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Instructions { get; set; }

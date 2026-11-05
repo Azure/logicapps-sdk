@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteusgov
 
     public class AsiteusgovTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<ASITETRIGGEREVENTInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteusgov
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<ASITETRIGGEREVENTAPPFORMInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -102,19 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteusgov
         }
     }
 
-    public class ASITETRIGGEREVENTInput
-    {
-        [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("resourceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TriggerName { get; set; }
-
-        [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal int ResourceType { get; set; } = 1;
-    }
-
-    public class ASITETRIGGEREVENTAPPFORMInput
+    public class BodyInput
     {
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";

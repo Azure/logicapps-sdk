@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
-        public IBodyWorkflowAction<PredictionPostResponse, ApiConnectionActionConfiguration> Prediction(Expression<Func<PredictionPostInput>> body)
+        public IBodyWorkflowAction<PredictionResponse, ApiConnectionActionConfiguration> Prediction(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PredictionPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PredictionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/predictions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PredictionPostResponse>(callPayload);
+                return new ApiConnectionAction<PredictionResponse>(callPayload);
             });
         }
 
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         public string Cancel { get; set; }
     }
 
-    public class PredictionPostResponse
+    public class PredictionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         public string Version { get; set; }
 
         [JsonProperty("urls")]
-        public PredictionPostResponseUrlsType Urls { get; set; }
+        public PredictionResponseUrlsType Urls { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         public string Status { get; set; }
 
         [JsonProperty("input")]
-        public PredictionPostResponseInputType Input { get; set; }
+        public PredictionResponseInputType Input { get; set; }
 
         [JsonProperty("output")]
         public string Output { get; set; }
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         public string Logs { get; set; }
     }
 
-    public class PredictionPostResponseUrlsType
+    public class PredictionResponseUrlsType
     {
         [JsonProperty("get")]
         public string Get { get; set; }
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         public string Cancel { get; set; }
     }
 
-    public class PredictionPostResponseInputType
+    public class PredictionResponseInputType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -216,19 +216,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         public int Seed { get; set; }
     }
 
-    public class PredictionPostInput
+    public class BodyInput
     {
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Version { get; set; }
 
         [JsonProperty("input")]
-        public PredictionPostInputInputType Input { get; set; }
+        public BodyInputInputType Input { get; set; }
 
         [JsonProperty("webhook_completed")]
         public string WebhookCompleted { get; set; }
     }
 
-    public class PredictionPostInputInputType
+    public class BodyInputInputType
     {
         [JsonProperty("text")]
         public string Text { get; set; }

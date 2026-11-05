@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     public class CloudpkimanagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryCertificatesResponseItem[], ApiConnectionActionConfiguration> QueryCertificates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<timevalidInput>> timevalid = null, Expression<Func<string>> important = null, Expression<Func<string>> renewalstatus = null, Expression<Func<int>> expiring = null, Expression<Func<string>> subject = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> serialnumber = null, Expression<Func<string>> ski = null, Expression<Func<string>> aki = null, Expression<Func<string>> keytype = null, Expression<Func<int>> keylength = null, Expression<Func<string>> owneremail = null)
+        public IBodyWorkflowAction<QueryCertificatesResponseItem[], ApiConnectionActionConfiguration> QueryCertificates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<TimevalidInput>> timevalid = null, Expression<Func<string>> important = null, Expression<Func<string>> renewalstatus = null, Expression<Func<int>> expiring = null, Expression<Func<string>> subject = null, Expression<Func<QueryCertificatesStatusInput>> status = null, Expression<Func<string>> serialnumber = null, Expression<Func<string>> ski = null, Expression<Func<string>> aki = null, Expression<Func<string>> keytype = null, Expression<Func<int>> keylength = null, Expression<Func<string>> owneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateCertificateResponse, ApiConnectionActionConfiguration> UpdateCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint, Expression<Func<powerappsInput>> powerapps, Expression<Func<UpdateCertificateInput>> body = null)
+        public IBodyWorkflowAction<UpdateCertificateResponse, ApiConnectionActionConfiguration> UpdateCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint, Expression<Func<PowerappsInput>> powerapps, Expression<Func<UpdateCertificateBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateTemplateResponse, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid, Expression<Func<powerappsInput>> powerapps, Expression<Func<UpdateTemplateInput>> body = null)
+        public IBodyWorkflowAction<UpdateTemplateResponse, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<UpdateTemplateBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryTemplatesResponseItem[], ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput2>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> templateoid = null, Expression<Func<keytypeInput>> keytype = null, Expression<Func<int>> minMinkeylength = null, Expression<Func<int>> maxMinkeylength = null, Expression<Func<int>> minValidity = null, Expression<Func<int>> maxValidity = null)
+        public IBodyWorkflowAction<QueryTemplatesResponseItem[], ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<QueryTemplatesStatusInput>> status = null, Expression<Func<QueryTemplatesTypeInput>> type = null, Expression<Func<VersionInput>> version = null, Expression<Func<string>> templateoid = null, Expression<Func<KeytypeInput>> keytype = null, Expression<Func<int>> minMinkeylength = null, Expression<Func<int>> maxMinkeylength = null, Expression<Func<int>> minValidity = null, Expression<Func<int>> maxValidity = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<statusInput3>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
+        public IBodyWorkflowAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<QueryCRLsStatusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryRequestsResponseItem[], ApiConnectionActionConfiguration> QueryRequests(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput4>> status = null, Expression<Func<string>> source = null, Expression<Func<string>> approverid = null, Expression<Func<string>> approveremail = null, Expression<Func<string>> submitterid = null, Expression<Func<string>> submitteremail = null, Expression<Func<string>> owneremail = null)
+        public IBodyWorkflowAction<QueryRequestsResponseItem[], ApiConnectionActionConfiguration> QueryRequests(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<QueryRequestsStatusInput>> status = null, Expression<Func<string>> source = null, Expression<Func<string>> approverid = null, Expression<Func<string>> approveremail = null, Expression<Func<string>> submitterid = null, Expression<Func<string>> submitteremail = null, Expression<Func<string>> owneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewRequestResponse, ApiConnectionActionConfiguration> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<NewRequestInput>> body = null)
+        public IBodyWorkflowAction<NewRequestResponse, ApiConnectionActionConfiguration> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewRequestBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid, Expression<Func<powerappsInput>> powerapps, Expression<Func<UpdateRequestInput>> body = null)
+        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<UpdateRequestBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryHooksResponseItem[], ApiConnectionActionConfiguration> QueryHooks(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput5>> status = null, Expression<Func<typeInput2>> type = null, Expression<Func<@eventInput>> @event = null)
+        public IBodyWorkflowAction<QueryHooksResponseItem[], ApiConnectionActionConfiguration> QueryHooks(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<QueryHooksStatusInput>> status = null, Expression<Func<QueryHooksTypeInput>> type = null, Expression<Func<EventInput>> @event = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewHookResponse, ApiConnectionActionConfiguration> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<NewHookInput>> body = null)
+        public IBodyWorkflowAction<NewHookResponse, ApiConnectionActionConfiguration> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewHookBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -459,321 +459,312 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
+        public IBodyWorkflowAction<GetUserDeploymentsResponseItem[], ApiConnectionActionConfiguration> GetUserDeployments()
+        {
+            return new DeferredBodyAction<GetUserDeploymentsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/userdeployments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetUserDeploymentsResponseItem[]>(callPayload);
+            });
+        }
     }
 
     public class CloudpkimanagementTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<AddedHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/added-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new AddedHookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<AddedHookResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<RemovedHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/removed-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new RemovedHookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<RemovedHookResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<IssuedCertificateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new IssuedCertificateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<IssuedCertificateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<RevokedCertificateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/revoked-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new RevokedCertificateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<RevokedCertificateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<UpdatedCertificateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new UpdatedCertificateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<UpdatedCertificateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<ExpiringCertificateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expiring-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new ExpiringCertificateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<ExpiringCertificateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<ExpiredCertificateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expired-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new ExpiredCertificateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<ExpiredCertificateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<RenewingCertificateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/renewing-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new RenewingCertificateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<RenewingCertificateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PendingRequestInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/pending-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new PendingRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger<PendingRequestResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<ApprovedRequestInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/approved-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new ApprovedRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger<ApprovedRequestResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<DeniedRequestInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/denied-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new DeniedRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger<DeniedRequestResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<UpdatedRequestInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new UpdatedRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger<UpdatedRequestResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<FailedRequestInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FailedRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger<FailedRequestResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PublishedTemplateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/published-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new PublishedTemplateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<PublishedTemplateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<UnpublishedTemplateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/unpublished-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new UnpublishedTemplateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<UnpublishedTemplateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<UpdatedTemplateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new UpdatedTemplateBodyInput().ToJToken();
                 return new ApiConnectionTrigger<UpdatedTemplateResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<IssuedCRLInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-crl", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new IssuedCRLBodyInput().ToJToken();
                 return new ApiConnectionTrigger<IssuedCRLResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<NewConnectorActionInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/new-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NewConnectorActionBodyInput().ToJToken();
                 return new ApiConnectionTrigger<NewConnectorActionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<CompletedConnectorActionInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/completed-action", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CompletedConnectorActionBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CompletedConnectorActionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<FailedConnectorActionInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FailedConnectorActionBodyInput().ToJToken();
                 return new ApiConnectionTrigger<FailedConnectorActionResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<StalledConnectorActionInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/stalled-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new StalledConnectorActionBodyInput().ToJToken();
                 return new ApiConnectionTrigger<StalledConnectorActionResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -840,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum timevalidInput
+    public enum TimevalidInput
     {
         [EnumMember(Value = "true")]
         True,
@@ -849,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum QueryCertificatesStatusInput
     {
         Issued,
         Revoked
@@ -1060,7 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum powerappsInput
+    public enum PowerappsInput
     {
         [EnumMember(Value = "false")]
         False,
@@ -1068,16 +1059,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         True
     }
 
-    public class UpdateCertificateInput
+    public class UpdateCertificateBodyInput
     {
         [JsonProperty("important")]
-        public UpdateCertificateInputImportantType? Important { get; set; }
+        public NewRequestBodyInputImportantType? Important { get; set; }
 
         [JsonProperty("status")]
-        public UpdateCertificateInputStatusType? Status { get; set; }
+        public UpdateCertificateBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("renewalstatus")]
-        public UpdateCertificateInputRenewalstatusType? Renewalstatus { get; set; }
+        public UpdateCertificateBodyInputRenewalstatusType? Renewalstatus { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -1090,7 +1081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateCertificateInputImportantType
+    public enum NewRequestBodyInputImportantType
     {
         [EnumMember(Value = "")]
         None,
@@ -1101,14 +1092,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateCertificateInputStatusType
+    public enum UpdateCertificateBodyInputStatusType
     {
         Revoked,
         Unrevoked
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateCertificateInputRenewalstatusType
+    public enum UpdateCertificateBodyInputRenewalstatusType
     {
         [EnumMember(Value = "approved")]
         Approved,
@@ -1391,16 +1382,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Templateid { get; set; }
     }
 
-    public class UpdateTemplateInput
+    public class UpdateTemplateBodyInput
     {
         [JsonProperty("important")]
-        public UpdateTemplateInputImportantType? Important { get; set; }
+        public NewRequestBodyInputImportantType? Important { get; set; }
 
         [JsonProperty("renewalstatus")]
-        public UpdateTemplateInputRenewalstatusType? Renewalstatus { get; set; }
+        public UpdateCertificateBodyInputRenewalstatusType? Renewalstatus { get; set; }
 
         [JsonProperty("hidden")]
-        public UpdateTemplateInputHiddenType? Hidden { get; set; }
+        public BodyInputHiddenType? Hidden { get; set; }
 
         [JsonProperty("owneremail")]
         public string Owneremail { get; set; }
@@ -1410,29 +1401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTemplateInputImportantType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTemplateInputRenewalstatusType
-    {
-        [EnumMember(Value = "approved")]
-        Approved,
-        [EnumMember(Value = "denied")]
-        Denied,
-        [EnumMember(Value = "none")]
-        None
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTemplateInputHiddenType
+    public enum BodyInputHiddenType
     {
         [EnumMember(Value = "")]
         None,
@@ -1733,21 +1702,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput2
+    public enum QueryTemplatesStatusInput
     {
         Published,
         Unpublished
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum QueryTemplatesTypeInput
     {
         User,
         Computer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum versionInput
+    public enum VersionInput
     {
         [EnumMember(Value = "1")]
         _1,
@@ -1760,7 +1729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum keytypeInput
+    public enum KeytypeInput
     {
         RSA,
         ECC
@@ -1863,7 +1832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput3
+    public enum QueryCRLsStatusInput
     {
         [EnumMember(Value = "valid")]
         Valid,
@@ -1935,7 +1904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput4
+    public enum QueryRequestsStatusInput
     {
         [EnumMember(Value = "pending")]
         Pending,
@@ -1962,7 +1931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class NewRequestInput
+    public class NewRequestBodyInput
     {
         [JsonProperty("csr", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Csr { get; set; }
@@ -1980,23 +1949,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Comment { get; set; }
 
         [JsonProperty("urgent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewRequestInputUrgentType? Urgent { get; set; } = NewRequestInputUrgentType.False;
+        public NewRequestBodyInputUrgentType? Urgent { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.NewRequestBodyInputUrgentType.False;
 
         [JsonProperty("important", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewRequestInputImportantType? Important { get; set; } = NewRequestInputImportantType.False;
+        public NewRequestBodyInputImportantType? Important { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.NewRequestBodyInputImportantType.False;
 
         [JsonProperty("renewal", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewRequestInputRenewalType? Renewal { get; set; } = NewRequestInputRenewalType.False;
+        public BodyInputRenewalType? Renewal { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.BodyInputRenewalType.False;
 
         [JsonProperty("previouscertificate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Previouscertificate { get; set; } = "";
 
         [JsonProperty("renewalstatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewRequestInputRenewalstatusType? Renewalstatus { get; set; } = NewRequestInputRenewalstatusType.False;
+        public NewRequestBodyInputRenewalstatusType? Renewalstatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.NewRequestBodyInputRenewalstatusType.False;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewRequestInputUrgentType
+    public enum NewRequestBodyInputUrgentType
     {
         [EnumMember(Value = "")]
         None,
@@ -2007,7 +1976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewRequestInputImportantType
+    public enum BodyInputRenewalType
     {
         [EnumMember(Value = "")]
         None,
@@ -2018,18 +1987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewRequestInputRenewalType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewRequestInputRenewalstatusType
+    public enum NewRequestBodyInputRenewalstatusType
     {
         [EnumMember(Value = "")]
         None,
@@ -2249,10 +2207,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Connectoractionid { get; set; }
     }
 
-    public class UpdateRequestInput
+    public class UpdateRequestBodyInput
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateRequestInputStatusType Status { get; set; } = UpdateRequestInputStatusType.UpdateOnly;
+        public UpdateRequestBodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.UpdateRequestBodyInputStatusType.UpdateOnly;
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -2261,13 +2219,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Reference { get; set; }
 
         [JsonProperty("urgent")]
-        public UpdateRequestInputUrgentType? Urgent { get; set; }
+        public UpdateRequestBodyInputUrgentType? Urgent { get; set; }
 
         [JsonProperty("important")]
-        public UpdateRequestInputImportantType? Important { get; set; }
+        public UpdateRequestBodyInputImportantType? Important { get; set; }
 
         [JsonProperty("renewalstatus")]
-        public UpdateRequestInputRenewalstatusType? Renewalstatus { get; set; }
+        public UpdateCertificateBodyInputRenewalstatusType? Renewalstatus { get; set; }
 
         [JsonProperty("templateid")]
         public string Templateid { get; set; }
@@ -2277,7 +2235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateRequestInputStatusType
+    public enum UpdateRequestBodyInputStatusType
     {
         Approved,
         Denied,
@@ -2285,30 +2243,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateRequestInputUrgentType
+    public enum UpdateRequestBodyInputUrgentType
     {
         True,
         False
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateRequestInputImportantType
+    public enum UpdateRequestBodyInputImportantType
     {
         [EnumMember(Value = "true")]
         True,
         [EnumMember(Value = "false")]
         False
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateRequestInputRenewalstatusType
-    {
-        [EnumMember(Value = "approved")]
-        Approved,
-        [EnumMember(Value = "denied")]
-        Denied,
-        [EnumMember(Value = "none")]
-        None
     }
 
     public class QueryHooksResponseItem
@@ -2372,14 +2319,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput5
+    public enum QueryHooksStatusInput
     {
         Enabled,
         Disabled
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput2
+    public enum QueryHooksTypeInput
     {
         Email,
         Web,
@@ -2387,7 +2334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum @eventInput
+    public enum EventInput
     {
         [EnumMember(Value = "issued-certificate")]
         IssuedCertificate,
@@ -2433,7 +2380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Hookid { get; set; }
     }
 
-    public class NewHookInput
+    public class NewHookBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -2442,14 +2389,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Callbackurl { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewHookInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewHookInputEventsTypeItem[] Events { get; set; }
+        public BodyInputEventsTypeItem[] Events { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewHookInputTypeType
+    public enum BodyInputTypeType
     {
         Web,
         Email,
@@ -2457,7 +2404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewHookInputEventsTypeItem
+    public enum BodyInputEventsTypeItem
     {
         [EnumMember(Value = "issued-certificate")]
         IssuedCertificate,
@@ -2644,6 +2591,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Displaysubject { get; set; }
     }
 
+    public class GetUserDeploymentsResponseItem
+    {
+        [JsonProperty("default")]
+        public string Default { get; set; }
+
+        [JsonProperty("regionid")]
+        public string Regionid { get; set; }
+
+        [JsonProperty("deploymentid")]
+        public string Deploymentid { get; set; }
+
+        [JsonProperty("friendlyname")]
+        public string Friendlyname { get; set; }
+    }
+
     public class AddedHookResponse
     {
         [JsonProperty("status")]
@@ -2656,7 +2618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class AddedHookInput
+    public class AddedHookBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2680,7 +2642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class RemovedHookInput
+    public class RemovedHookBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2704,7 +2666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class IssuedCertificateInput
+    public class IssuedCertificateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2728,7 +2690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class RevokedCertificateInput
+    public class RevokedCertificateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2752,7 +2714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class UpdatedCertificateInput
+    public class UpdatedCertificateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2776,7 +2738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class ExpiringCertificateInput
+    public class ExpiringCertificateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2800,7 +2762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class ExpiredCertificateInput
+    public class ExpiredCertificateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2824,7 +2786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class RenewingCertificateInput
+    public class RenewingCertificateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2848,7 +2810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class PendingRequestInput
+    public class PendingRequestBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2872,7 +2834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class ApprovedRequestInput
+    public class ApprovedRequestBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2896,7 +2858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class DeniedRequestInput
+    public class DeniedRequestBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2920,7 +2882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class UpdatedRequestInput
+    public class UpdatedRequestBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2944,7 +2906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class FailedRequestInput
+    public class FailedRequestBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2968,7 +2930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class PublishedTemplateInput
+    public class PublishedTemplateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -2992,7 +2954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class UnpublishedTemplateInput
+    public class UnpublishedTemplateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -3016,7 +2978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class UpdatedTemplateInput
+    public class UpdatedTemplateBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -3040,7 +3002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class IssuedCRLInput
+    public class IssuedCRLBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -3064,7 +3026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class NewConnectorActionInput
+    public class NewConnectorActionBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -3088,7 +3050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class CompletedConnectorActionInput
+    public class CompletedConnectorActionBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -3112,7 +3074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class FailedConnectorActionInput
+    public class FailedConnectorActionBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
@@ -3136,7 +3098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    public class StalledConnectorActionInput
+    public class StalledConnectorActionBodyInput
     {
         [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";

@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fliplet")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateDataSourceRows(Expression<Func<int>> dataSourceId, Expression<Func<CreateDataSourceRowsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateDataSourceRows(Expression<Func<int>> dataSourceId, Expression<Func<BodyInput>> body)
         {
             var __workflow_dataSourceId = WorkflowExpression.Compile(dataSourceId, nameof(dataSourceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fliplet
         public JToken[] Entries { get; set; }
     }
 
-    public class CreateDataSourceRowsInput
+    public class BodyInput
     {
         [JsonProperty("append", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Append { get; set; }

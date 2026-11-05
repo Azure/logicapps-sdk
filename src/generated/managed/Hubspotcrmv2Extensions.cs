@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
     public class Hubspotcrmv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfCompaniesById(Expression<Func<ArchiveABatchOfCompaniesByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfCompaniesById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateResponse, ApiConnectionActionConfiguration> Create(Expression<Func<CreateInput>> body)
+        public IBodyWorkflowAction<CreateResponse, ApiConnectionActionConfiguration> Create(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<UpdateResponse, ApiConnectionActionConfiguration> Update(Expression<Func<string>> companyId, Expression<Func<UpdateInput>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<UpdateResponse, ApiConnectionActionConfiguration> Update(Expression<Func<string>> companyId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoCompaniesWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoCompaniesWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoCompaniesWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete(Expression<Func<GdprDeleteInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsCompaniesSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsCompaniesSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsCompaniesSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfContactsById(Expression<Func<ArchiveABatchOfContactsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfContactsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create17Response, ApiConnectionActionConfiguration> Create17(Expression<Func<Create17Input>> body)
+        public IBodyWorkflowAction<Create17Response, ApiConnectionActionConfiguration> Create17(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create17Response, ApiConnectionActionConfiguration>(() =>
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update20Response, ApiConnectionActionConfiguration> Update20(Expression<Func<string>> contactId, Expression<Func<Update20Input>> body)
+        public IBodyWorkflowAction<Update20Response, ApiConnectionActionConfiguration> Update20(Expression<Func<string>> contactId, Expression<Func<Update18BodyInput>> body)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoContactsWithSameType(Expression<Func<MergeTwoContactsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoContactsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoContactsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete22(Expression<Func<GdprDelete22Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete22(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsContactsSearch(Expression<Func<PostCrmV3ObjectsContactsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsContactsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsContactsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfDealsById(Expression<Func<ArchiveABatchOfDealsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfDealsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create29Response, ApiConnectionActionConfiguration> Create29(Expression<Func<Create29Input>> body)
+        public IBodyWorkflowAction<Create29Response, ApiConnectionActionConfiguration> Create29(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create29Response, ApiConnectionActionConfiguration>(() =>
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update32Response, ApiConnectionActionConfiguration> Update32(Expression<Func<string>> dealId, Expression<Func<Update32Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update32Response, ApiConnectionActionConfiguration> Update32(Expression<Func<string>> dealId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoDealsWithSameType(Expression<Func<MergeTwoDealsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoDealsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoDealsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete34(Expression<Func<GdprDelete34Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete34(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsDealsSearch(Expression<Func<PostCrmV3ObjectsDealsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsDealsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsDealsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfFeesById(Expression<Func<ArchiveABatchOfFeesByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfFeesById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update42Response, ApiConnectionActionConfiguration> Update42(Expression<Func<string>> feeId, Expression<Func<Update42Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update42Response, ApiConnectionActionConfiguration> Update42(Expression<Func<string>> feeId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_feeId = WorkflowExpression.Compile(feeId, nameof(feeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create44Response, ApiConnectionActionConfiguration> Create44(Expression<Func<Create44Input>> body)
+        public IBodyWorkflowAction<Create44Response, ApiConnectionActionConfiguration> Create44(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create44Response, ApiConnectionActionConfiguration>(() =>
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoFeesWithSameType(Expression<Func<MergeTwoFeesWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoFeesWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoFeesWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete46(Expression<Func<GdprDelete46Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete46(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsFeesSearch(Expression<Func<PostCrmV3ObjectsFeesSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsFeesSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsFeesSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfGoalTargetsById(Expression<Func<ArchiveABatchOfGoalTargetsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfGoalTargetsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update54Response, ApiConnectionActionConfiguration> Update54(Expression<Func<string>> goalTargetId, Expression<Func<Update54Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update54Response, ApiConnectionActionConfiguration> Update54(Expression<Func<string>> goalTargetId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_goalTargetId = WorkflowExpression.Compile(goalTargetId, nameof(goalTargetId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create56Response, ApiConnectionActionConfiguration> Create56(Expression<Func<Create56Input>> body)
+        public IBodyWorkflowAction<Create56Response, ApiConnectionActionConfiguration> Create56(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create56Response, ApiConnectionActionConfiguration>(() =>
@@ -760,7 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoGoalTargetsWithSameType(Expression<Func<MergeTwoGoalTargetsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoGoalTargetsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoGoalTargetsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete58(Expression<Func<GdprDelete58Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete58(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsGoalTargetsSearch(Expression<Func<PostCrmV3ObjectsGoalTargetsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsGoalTargetsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsGoalTargetsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -802,7 +802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfLineItemsById(Expression<Func<ArchiveABatchOfLineItemsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfLineItemsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create65Response, ApiConnectionActionConfiguration> Create65(Expression<Func<Create65Input>> body)
+        public IBodyWorkflowAction<Create65Response, ApiConnectionActionConfiguration> Create65(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create65Response, ApiConnectionActionConfiguration>(() =>
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update68Response, ApiConnectionActionConfiguration> Update68(Expression<Func<string>> lineItemId, Expression<Func<Update68Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update68Response, ApiConnectionActionConfiguration> Update68(Expression<Func<string>> lineItemId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoLineItemsWithSameType(Expression<Func<MergeTwoLineItemsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoLineItemsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoLineItemsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete70(Expression<Func<GdprDelete70Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete70(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -947,7 +947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsLineItemsSearch(Expression<Func<PostCrmV3ObjectsLineItemsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsLineItemsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsLineItemsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfProductsById(Expression<Func<ArchiveABatchOfProductsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfProductsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1047,7 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create79Response, ApiConnectionActionConfiguration> Create79(Expression<Func<Create79Input>> body)
+        public IBodyWorkflowAction<Create79Response, ApiConnectionActionConfiguration> Create79(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create79Response, ApiConnectionActionConfiguration>(() =>
@@ -1102,7 +1102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update82Response, ApiConnectionActionConfiguration> Update82(Expression<Func<string>> productId, Expression<Func<Update82Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update82Response, ApiConnectionActionConfiguration> Update82(Expression<Func<string>> productId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1120,7 +1120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoProductsWithSameType(Expression<Func<MergeTwoProductsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoProductsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoProductsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -1134,7 +1134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete84(Expression<Func<GdprDelete84Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDelete84(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1148,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsProductsSearch(Expression<Func<PostCrmV3ObjectsProductsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsProductsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsProductsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1162,7 +1162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfObjectsById(Expression<Func<string>> objectType, Expression<Func<ArchiveABatchOfObjectsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfObjectsById(Expression<Func<string>> objectType, Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1220,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<UpdateObjectIdResponse, ApiConnectionActionConfiguration> UpdateObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<UpdateObjectIdInput>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<UpdateObjectIdResponse, ApiConnectionActionConfiguration> UpdateObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
@@ -1270,7 +1270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateObjectIdResponse, ApiConnectionActionConfiguration> CreateObjectId(Expression<Func<string>> objectType, Expression<Func<CreateObjectIdInput>> body)
+        public IBodyWorkflowAction<CreateObjectIdResponse, ApiConnectionActionConfiguration> CreateObjectId(Expression<Func<string>> objectType, Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1285,7 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoObjectsWithSameType(Expression<Func<string>> objectType, Expression<Func<MergeTwoObjectsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoObjectsWithSameType(Expression<Func<string>> objectType, Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1300,7 +1300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteObjectType(Expression<Func<string>> objectType, Expression<Func<GdprDeleteObjectTypeInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteObjectType(Expression<Func<string>> objectType, Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1315,7 +1315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsObjectTypeSearch(Expression<Func<string>> objectType, Expression<Func<PostCrmV3ObjectsObjectTypeSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsObjectTypeSearch(Expression<Func<string>> objectType, Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1330,7 +1330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfDiscountsById(Expression<Func<ArchiveABatchOfDiscountsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfDiscountsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1385,7 +1385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update18Response, ApiConnectionActionConfiguration> Update18(Expression<Func<string>> discountId, Expression<Func<Update18Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update18Response, ApiConnectionActionConfiguration> Update18(Expression<Func<string>> discountId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_discountId = WorkflowExpression.Compile(discountId, nameof(discountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1433,7 +1433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create20Response, ApiConnectionActionConfiguration> Create20(Expression<Func<Create20Input>> body)
+        public IBodyWorkflowAction<Create20Response, ApiConnectionActionConfiguration> Create20(Expression<Func<Create20BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create20Response, ApiConnectionActionConfiguration>(() =>
@@ -1447,7 +1447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoDiscountsWithSameType(Expression<Func<MergeTwoDiscountsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoDiscountsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoDiscountsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -1461,7 +1461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteDiscounts(Expression<Func<GdprDeleteDiscountsInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteDiscounts(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1475,7 +1475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsDiscountsSearch(Expression<Func<PostCrmV3ObjectsDiscountsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsDiscountsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsDiscountsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1489,7 +1489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfFeedbackSubmissionsById(Expression<Func<ArchiveABatchOfFeedbackSubmissionsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfFeedbackSubmissionsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1544,7 +1544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update30Response, ApiConnectionActionConfiguration> Update30(Expression<Func<string>> feedbackSubmissionId, Expression<Func<Update30Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update30Response, ApiConnectionActionConfiguration> Update30(Expression<Func<string>> feedbackSubmissionId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_feedbackSubmissionId = WorkflowExpression.Compile(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1592,7 +1592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create32Response, ApiConnectionActionConfiguration> Create32(Expression<Func<Create32Input>> body)
+        public IBodyWorkflowAction<Create32Response, ApiConnectionActionConfiguration> Create32(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create32Response, ApiConnectionActionConfiguration>(() =>
@@ -1606,7 +1606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoFeedbackSubmissionsWithSameType(Expression<Func<MergeTwoFeedbackSubmissionsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoFeedbackSubmissionsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -1620,7 +1620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteFeedback(Expression<Func<GdprDeleteFeedbackInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteFeedback(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1634,7 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsFeedbackSubmissionsSearch(Expression<Func<PostCrmV3ObjectsFeedbackSubmissionsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsFeedbackSubmissionsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1648,7 +1648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfQuotesById(Expression<Func<ArchiveABatchOfQuotesByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfQuotesById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1692,7 +1692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create41Response, ApiConnectionActionConfiguration> Create41(Expression<Func<Create41Input>> body)
+        public IBodyWorkflowAction<Create41Response, ApiConnectionActionConfiguration> Create41(Expression<Func<Create41BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create41Response, ApiConnectionActionConfiguration>(() =>
@@ -1747,7 +1747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update44Response, ApiConnectionActionConfiguration> Update44(Expression<Func<string>> quoteId, Expression<Func<Update44Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update44Response, ApiConnectionActionConfiguration> Update44(Expression<Func<string>> quoteId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_quoteId = WorkflowExpression.Compile(quoteId, nameof(quoteId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1765,7 +1765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoQuotesWithSameType(Expression<Func<MergeTwoQuotesWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoQuotesWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoQuotesWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -1779,7 +1779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteQuotes(Expression<Func<GdprDeleteQuotesInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteQuotes(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1793,7 +1793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsQuotesSearch(Expression<Func<PostCrmV3ObjectsQuotesSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsQuotesSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsQuotesSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1807,7 +1807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfTaxesById(Expression<Func<ArchiveABatchOfTaxesByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfTaxesById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1851,7 +1851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create53Response, ApiConnectionActionConfiguration> Create53(Expression<Func<Create53Input>> body)
+        public IBodyWorkflowAction<Create53Response, ApiConnectionActionConfiguration> Create53(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create53Response, ApiConnectionActionConfiguration>(() =>
@@ -1906,7 +1906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update56Response, ApiConnectionActionConfiguration> Update56(Expression<Func<string>> taxId, Expression<Func<Update56Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update56Response, ApiConnectionActionConfiguration> Update56(Expression<Func<string>> taxId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_taxId = WorkflowExpression.Compile(taxId, nameof(taxId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1924,7 +1924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoTaxesWithSameType(Expression<Func<MergeTwoTaxesWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoTaxesWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoTaxesWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -1938,7 +1938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteTaxes(Expression<Func<GdprDeleteTaxesInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteTaxes(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -1952,7 +1952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsTaxesSearch(Expression<Func<PostCrmV3ObjectsTaxesSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsTaxesSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsTaxesSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1966,7 +1966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfTicketsById(Expression<Func<ArchiveABatchOfTicketsByIdInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ArchiveABatchOfTicketsById(Expression<Func<ArchiveABatchOfCompaniesByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -2021,7 +2021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update66Response, ApiConnectionActionConfiguration> Update66(Expression<Func<string>> ticketId, Expression<Func<Update66Input>> body, Expression<Func<string>> idProperty = null)
+        public IBodyWorkflowAction<Update66Response, ApiConnectionActionConfiguration> Update66(Expression<Func<string>> ticketId, Expression<Func<Update18BodyInput>> body, Expression<Func<string>> idProperty = null)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -2069,7 +2069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create68Response, ApiConnectionActionConfiguration> Create68(Expression<Func<Create68Input>> body)
+        public IBodyWorkflowAction<Create68Response, ApiConnectionActionConfiguration> Create68(Expression<Func<Create17BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Create68Response, ApiConnectionActionConfiguration>(() =>
@@ -2083,7 +2083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoTicketsWithSameType(Expression<Func<MergeTwoTicketsWithSameTypeInput>> body)
+        public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse, ApiConnectionActionConfiguration> MergeTwoTicketsWithSameType(Expression<Func<MergeTwoCompaniesWithSameTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergeTwoTicketsWithSameTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -2097,7 +2097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteTickets(Expression<Func<GdprDeleteTicketsInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GdprDeleteTickets(Expression<Func<GdprDelete22BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -2111,7 +2111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsTicketsSearch(Expression<Func<PostCrmV3ObjectsTicketsSearchInput>> body)
+        public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse, ApiConnectionActionConfiguration> PostCrmV3ObjectsTicketsSearch(Expression<Func<PostCrmV3ObjectsCompaniesSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostCrmV3ObjectsTicketsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -2139,7 +2139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteSpecificLabels(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<DeleteSpecificLabelsInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DeleteSpecificLabels(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<DeleteSpecificLabelsBodyInput>> body)
         {
             var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
             var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
@@ -2155,7 +2155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Delete(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<DeleteInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Delete(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<DeleteBodyInput>> body)
         {
             var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
             var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
@@ -2171,7 +2171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateDefaultAssociationsResponse, ApiConnectionActionConfiguration> CreateDefaultAssociations(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<CreateDefaultAssociationsInput>> body)
+        public IBodyWorkflowAction<CreateDefaultAssociationsResponse, ApiConnectionActionConfiguration> CreateDefaultAssociations(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<CreateDefaultAssociationsBodyInput>> body)
         {
             var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
             var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
@@ -2203,7 +2203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create7Response, ApiConnectionActionConfiguration> Create7(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<Create7Response, ApiConnectionActionConfiguration> Create7(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
@@ -2271,7 +2271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateANewCardResponse, ApiConnectionActionConfiguration> CreateANewCard(Expression<Func<string>> appId, Expression<Func<CreateANewCardInput>> body)
+        public IBodyWorkflowAction<CreateANewCardResponse, ApiConnectionActionConfiguration> CreateANewCard(Expression<Func<string>> appId, Expression<Func<CreateANewCardBodyInput>> body)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -2314,7 +2314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<UpdateACardResponse, ApiConnectionActionConfiguration> UpdateACard(Expression<Func<string>> appId, Expression<Func<string>> cardId, Expression<Func<UpdateACardInput>> body)
+        public IBodyWorkflowAction<UpdateACardResponse, ApiConnectionActionConfiguration> UpdateACard(Expression<Func<string>> appId, Expression<Func<string>> cardId, Expression<Func<CreateANewCardBodyInput>> body)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
@@ -2355,7 +2355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<StartAnExportResponse, ApiConnectionActionConfiguration> StartAnExport(Expression<Func<StartAnExportInput>> body)
+        public IBodyWorkflowAction<StartAnExportResponse, ApiConnectionActionConfiguration> StartAnExport(Expression<Func<StartAnExportBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StartAnExportResponse, ApiConnectionActionConfiguration>(() =>
@@ -2449,7 +2449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse, ApiConnectionActionConfiguration> AddAndOrRemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<AddAndOrRemoveRecordsFromAListInput>> body)
+        public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse, ApiConnectionActionConfiguration> AddAndOrRemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<AddAndOrRemoveRecordsFromAListBodyInput>> body)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -2543,7 +2543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<SearchListsResponse, ApiConnectionActionConfiguration> SearchLists(Expression<Func<SearchListsInput>> body)
+        public IBodyWorkflowAction<SearchListsResponse, ApiConnectionActionConfiguration> SearchLists(Expression<Func<SearchListsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchListsResponse, ApiConnectionActionConfiguration>(() =>
@@ -2561,13 +2561,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
     {
     }
 
-    public class ArchiveABatchOfCompaniesByIdInput
+    public class ArchiveABatchOfCompaniesByIdBodyInput
     {
         [JsonProperty("inputs")]
-        public ArchiveABatchOfCompaniesByIdInputInputsTypeItem[] Inputs { get; set; }
+        public ArchiveABatchOfCompaniesByIdBodyInputInputsTypeItem[] Inputs { get; set; }
     }
 
-    public class ArchiveABatchOfCompaniesByIdInputInputsTypeItem
+    public class ArchiveABatchOfCompaniesByIdBodyInputInputsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2648,31 +2648,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class CreateInput
+    public class Create17BodyInput
     {
         [JsonProperty("associations")]
-        public CreateInputAssociationsTypeItem[] Associations { get; set; }
+        public BodyInputAssociationsTypeItem[] Associations { get; set; }
 
         [JsonProperty("properties")]
         public JToken Properties { get; set; }
     }
 
-    public class CreateInputAssociationsTypeItem
+    public class BodyInputAssociationsTypeItem
     {
         [JsonProperty("to")]
-        public CreateInputAssociationsTypeItemToType To { get; set; }
+        public BodyInputAssociationsTypeItemToType To { get; set; }
 
         [JsonProperty("types")]
-        public CreateInputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
+        public BodyInputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
     }
 
-    public class CreateInputAssociationsTypeItemToType
+    public class BodyInputAssociationsTypeItemToType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateInputAssociationsTypeItemTypesTypeItem
+    public class BodyInputAssociationsTypeItemTypesTypeItem
     {
         [JsonProperty("associationCategory")]
         public string AssociationCategory { get; set; }
@@ -2732,7 +2732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class UpdateInput
+    public class Update18BodyInput
     {
         [JsonProperty("properties")]
         public JToken Properties { get; set; }
@@ -2762,7 +2762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class MergeTwoCompaniesWithSameTypeInput
+    public class MergeTwoCompaniesWithSameTypeBodyInput
     {
         [JsonProperty("objectIdToMerge")]
         public string ObjectIdToMerge { get; set; }
@@ -2771,7 +2771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string PrimaryObjectId { get; set; }
     }
 
-    public class GdprDeleteInput
+    public class GdprDelete22BodyInput
     {
         [JsonProperty("objectId")]
         public string ObjectId { get; set; }
@@ -2831,13 +2831,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsCompaniesSearchInput
+    public class PostCrmV3ObjectsCompaniesSearchBodyInput
     {
         [JsonProperty("after")]
         public string After { get; set; }
 
         [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsCompaniesSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
+        public BodyInputFilterGroupsTypeItem[] FilterGroups { get; set; }
 
         [JsonProperty("limit")]
         public string Limit { get; set; }
@@ -2852,13 +2852,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Query { get; set; }
     }
 
-    public class PostCrmV3ObjectsCompaniesSearchInputFilterGroupsTypeItem
+    public class BodyInputFilterGroupsTypeItem
     {
         [JsonProperty("filters")]
-        public PostCrmV3ObjectsCompaniesSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
+        public BodyInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
     }
 
-    public class PostCrmV3ObjectsCompaniesSearchInputFilterGroupsTypeItemFiltersTypeItem
+    public class BodyInputFilterGroupsTypeItemFiltersTypeItem
     {
         [JsonProperty("operator")]
         public string Operator { get; set; }
@@ -2874,18 +2874,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("values")]
         public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfContactsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfContactsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfContactsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class List16Response
@@ -2961,39 +2949,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class Create17Input
-    {
-        [JsonProperty("associations")]
-        public Create17InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create17InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create17InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create17InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create17InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create17InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
     }
 
     public class Read18Response
@@ -3098,12 +3053,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Update20Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
     public class MergeTwoContactsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -3126,24 +3075,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoContactsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDelete22Input
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsContactsSearchResponse
@@ -3195,63 +3126,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("link")]
         public string Link { get; set; }
-    }
-
-    public class PostCrmV3ObjectsContactsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsContactsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsContactsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsContactsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsContactsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfDealsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfDealsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfDealsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class List28Response
@@ -3329,39 +3203,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create29Input
-    {
-        [JsonProperty("associations")]
-        public Create29InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create29InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create29InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create29InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create29InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create29InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class Read30Response
     {
         [JsonProperty("createdAt")]
@@ -3413,12 +3254,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Update32Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
     public class MergeTwoDealsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -3441,24 +3276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoDealsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDelete34Input
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsDealsSearchResponse
@@ -3512,63 +3329,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsDealsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsDealsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsDealsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsDealsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsDealsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfFeesByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfFeesByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfFeesByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class Read40Response
     {
         [JsonProperty("createdAt")]
@@ -3618,12 +3378,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class Update42Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
     }
 
     public class List43Response
@@ -3701,39 +3455,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create44Input
-    {
-        [JsonProperty("associations")]
-        public Create44InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create44InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create44InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create44InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create44InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create44InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class MergeTwoFeesWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -3756,24 +3477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoFeesWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDelete46Input
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsFeesSearchResponse
@@ -3827,63 +3530,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsFeesSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsFeesSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsFeesSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsFeesSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsFeesSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfGoalTargetsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfGoalTargetsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfGoalTargetsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class Read52Response
     {
         [JsonProperty("createdAt")]
@@ -3933,12 +3579,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class Update54Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
     }
 
     public class List55Response
@@ -4016,39 +3656,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create56Input
-    {
-        [JsonProperty("associations")]
-        public Create56InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create56InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create56InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create56InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create56InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create56InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class MergeTwoGoalTargetsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -4071,24 +3678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoGoalTargetsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDelete58Input
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsGoalTargetsSearchResponse
@@ -4140,63 +3729,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("link")]
         public string Link { get; set; }
-    }
-
-    public class PostCrmV3ObjectsGoalTargetsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsGoalTargetsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsGoalTargetsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsGoalTargetsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsGoalTargetsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfLineItemsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfLineItemsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfLineItemsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class List64Response
@@ -4274,39 +3806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create65Input
-    {
-        [JsonProperty("associations")]
-        public Create65InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create65InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create65InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create65InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create65InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create65InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class Read66Response
     {
         [JsonProperty("createdAt")]
@@ -4358,12 +3857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Update68Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
     public class MergeTwoLineItemsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -4386,24 +3879,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoLineItemsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDelete70Input
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsLineItemsSearchResponse
@@ -4455,51 +3930,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("link")]
         public string Link { get; set; }
-    }
-
-    public class PostCrmV3ObjectsLineItemsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsLineItemsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsLineItemsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsLineItemsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsLineItemsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
     }
 
     public class GetAPageOfOwnersResponse
@@ -4610,18 +4040,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Primary { get; set; }
     }
 
-    public class ArchiveABatchOfProductsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfProductsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfProductsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class List78Response
     {
         [JsonProperty("results")]
@@ -4697,39 +4115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create79Input
-    {
-        [JsonProperty("associations")]
-        public Create79InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create79InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create79InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create79InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create79InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create79InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class Read80Response
     {
         [JsonProperty("createdAt")]
@@ -4781,12 +4166,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Update82Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
     public class MergeTwoProductsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -4809,24 +4188,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoProductsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDelete84Input
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsProductsSearchResponse
@@ -4880,63 +4241,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsProductsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsProductsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsProductsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsProductsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsProductsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfObjectsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfObjectsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfObjectsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class ReadObjectResponse
     {
         [JsonProperty("createdAt")]
@@ -4986,12 +4290,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class UpdateObjectIdInput
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
     }
 
     public class ListObjectResponse
@@ -5069,39 +4367,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class CreateObjectIdInput
-    {
-        [JsonProperty("associations")]
-        public CreateObjectIdInputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class CreateObjectIdInputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public CreateObjectIdInputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public CreateObjectIdInputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class CreateObjectIdInputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class CreateObjectIdInputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class MergeTwoObjectsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -5124,24 +4389,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoObjectsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDeleteObjectTypeInput
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsObjectTypeSearchResponse
@@ -5195,63 +4442,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsObjectTypeSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsObjectTypeSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsObjectTypeSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsObjectTypeSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsObjectTypeSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfDiscountsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfDiscountsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfDiscountsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class Read16Response
     {
         [JsonProperty("createdAt")]
@@ -5301,12 +4491,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class Update18Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
     }
 
     public class List19Response
@@ -5384,40 +4568,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create20Input
+    public class Create20BodyInput
     {
         [JsonProperty("associations")]
-        public Create20InputAssociationsTypeItem[] Associations { get; set; }
+        public BodyInputAssociationsTypeItem[] Associations { get; set; }
 
         [JsonProperty("properties")]
-        public Create20InputPropertiesType Properties { get; set; }
+        public Create20BodyInputPropertiesType Properties { get; set; }
     }
 
-    public class Create20InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create20InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create20InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create20InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create20InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
-    public class Create20InputPropertiesType
+    public class Create20BodyInputPropertiesType
     {
         [JsonProperty("nostrudcf")]
         public string Nostrudcf { get; set; }
@@ -5445,24 +4605,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoDiscountsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDeleteDiscountsInput
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsDiscountsSearchResponse
@@ -5516,63 +4658,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsDiscountsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsDiscountsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsDiscountsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsDiscountsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsDiscountsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfFeedbackSubmissionsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfFeedbackSubmissionsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfFeedbackSubmissionsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class Read28Response
     {
         [JsonProperty("createdAt")]
@@ -5622,12 +4707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class Update30Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
     }
 
     public class List31Response
@@ -5705,39 +4784,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create32Input
-    {
-        [JsonProperty("associations")]
-        public Create32InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create32InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create32InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create32InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create32InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create32InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class MergeTwoFeedbackSubmissionsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -5760,24 +4806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoFeedbackSubmissionsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDeleteFeedbackInput
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsFeedbackSubmissionsSearchResponse
@@ -5829,63 +4857,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("link")]
         public string Link { get; set; }
-    }
-
-    public class PostCrmV3ObjectsFeedbackSubmissionsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsFeedbackSubmissionsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsFeedbackSubmissionsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsFeedbackSubmissionsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsFeedbackSubmissionsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfQuotesByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfQuotesByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfQuotesByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class List40Response
@@ -5963,40 +4934,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create41Input
+    public class Create41BodyInput
     {
         [JsonProperty("associations")]
-        public Create41InputAssociationsTypeItem[] Associations { get; set; }
+        public BodyInputAssociationsTypeItem[] Associations { get; set; }
 
         [JsonProperty("properties")]
-        public Create41InputPropertiesType Properties { get; set; }
+        public Create41BodyInputPropertiesType Properties { get; set; }
     }
 
-    public class Create41InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create41InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create41InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create41InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create41InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
-    public class Create41InputPropertiesType
+    public class Create41BodyInputPropertiesType
     {
         [JsonProperty("elit_26")]
         public string Elit26 { get; set; }
@@ -6053,12 +5000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Update44Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
     public class MergeTwoQuotesWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -6081,24 +5022,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoQuotesWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDeleteQuotesInput
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsQuotesSearchResponse
@@ -6150,63 +5073,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("link")]
         public string Link { get; set; }
-    }
-
-    public class PostCrmV3ObjectsQuotesSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsQuotesSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsQuotesSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsQuotesSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsQuotesSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfTaxesByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfTaxesByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfTaxesByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
     }
 
     public class List52Response
@@ -6284,39 +5150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create53Input
-    {
-        [JsonProperty("associations")]
-        public Create53InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create53InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create53InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create53InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create53InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create53InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class Read54Response
     {
         [JsonProperty("createdAt")]
@@ -6368,12 +5201,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Update56Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
     public class MergeTwoTaxesWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -6396,24 +5223,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoTaxesWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDeleteTaxesInput
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsTaxesSearchResponse
@@ -6467,63 +5276,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsTaxesSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsTaxesSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsTaxesSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsTaxesSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsTaxesSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
-    public class ArchiveABatchOfTicketsByIdInput
-    {
-        [JsonProperty("inputs")]
-        public ArchiveABatchOfTicketsByIdInputInputsTypeItem[] Inputs { get; set; }
-    }
-
-    public class ArchiveABatchOfTicketsByIdInputInputsTypeItem
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
     public class Read64Response
     {
         [JsonProperty("createdAt")]
@@ -6573,12 +5325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class Update66Input
-    {
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
     }
 
     public class List67Response
@@ -6656,39 +5402,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ArchivedAt { get; set; }
     }
 
-    public class Create68Input
-    {
-        [JsonProperty("associations")]
-        public Create68InputAssociationsTypeItem[] Associations { get; set; }
-
-        [JsonProperty("properties")]
-        public JToken Properties { get; set; }
-    }
-
-    public class Create68InputAssociationsTypeItem
-    {
-        [JsonProperty("to")]
-        public Create68InputAssociationsTypeItemToType To { get; set; }
-
-        [JsonProperty("types")]
-        public Create68InputAssociationsTypeItemTypesTypeItem[] Types { get; set; }
-    }
-
-    public class Create68InputAssociationsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class Create68InputAssociationsTypeItemTypesTypeItem
-    {
-        [JsonProperty("associationCategory")]
-        public string AssociationCategory { get; set; }
-
-        [JsonProperty("associationTypeId")]
-        public string AssociationTypeId { get; set; }
-    }
-
     public class MergeTwoTicketsWithSameTypeResponse
     {
         [JsonProperty("createdAt")]
@@ -6711,24 +5424,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("archivedAt")]
         public string ArchivedAt { get; set; }
-    }
-
-    public class MergeTwoTicketsWithSameTypeInput
-    {
-        [JsonProperty("objectIdToMerge")]
-        public string ObjectIdToMerge { get; set; }
-
-        [JsonProperty("primaryObjectId")]
-        public string PrimaryObjectId { get; set; }
-    }
-
-    public class GdprDeleteTicketsInput
-    {
-        [JsonProperty("objectId")]
-        public string ObjectId { get; set; }
-
-        [JsonProperty("idProperty")]
-        public string IdProperty { get; set; }
     }
 
     public class PostCrmV3ObjectsTicketsSearchResponse
@@ -6782,51 +5477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Link { get; set; }
     }
 
-    public class PostCrmV3ObjectsTicketsSearchInput
-    {
-        [JsonProperty("after")]
-        public string After { get; set; }
-
-        [JsonProperty("filterGroups")]
-        public PostCrmV3ObjectsTicketsSearchInputFilterGroupsTypeItem[] FilterGroups { get; set; }
-
-        [JsonProperty("limit")]
-        public string Limit { get; set; }
-
-        [JsonProperty("properties")]
-        public string[] Properties { get; set; }
-
-        [JsonProperty("sorts")]
-        public string[] Sorts { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-    }
-
-    public class PostCrmV3ObjectsTicketsSearchInputFilterGroupsTypeItem
-    {
-        [JsonProperty("filters")]
-        public PostCrmV3ObjectsTicketsSearchInputFilterGroupsTypeItemFiltersTypeItem[] Filters { get; set; }
-    }
-
-    public class PostCrmV3ObjectsTicketsSearchInputFilterGroupsTypeItemFiltersTypeItem
-    {
-        [JsonProperty("operator")]
-        public string Operator { get; set; }
-
-        [JsonProperty("propertyName")]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-
-        [JsonProperty("highValue")]
-        public string HighValue { get; set; }
-
-        [JsonProperty("values")]
-        public string[] Values { get; set; }
-    }
-
     public class ListAssociationTypesResponse
     {
         [JsonProperty("results")]
@@ -6842,37 +5492,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Name { get; set; }
     }
 
-    public class DeleteSpecificLabelsInput
+    public class DeleteSpecificLabelsBodyInput
     {
         [JsonProperty("inputs")]
-        public DeleteSpecificLabelsInputInputsTypeItem[] Inputs { get; set; }
+        public DeleteSpecificLabelsBodyInputInputsTypeItem[] Inputs { get; set; }
     }
 
-    public class DeleteSpecificLabelsInputInputsTypeItem
+    public class DeleteSpecificLabelsBodyInputInputsTypeItem
     {
         [JsonProperty("from")]
-        public DeleteSpecificLabelsInputInputsTypeItemFromType From { get; set; }
+        public BodyInputInputsTypeItemFromType From { get; set; }
 
         [JsonProperty("to")]
-        public DeleteSpecificLabelsInputInputsTypeItemToType To { get; set; }
+        public BodyInputInputsTypeItemToType To { get; set; }
 
         [JsonProperty("types")]
-        public DeleteSpecificLabelsInputInputsTypeItemTypesTypeItem[] Types { get; set; }
+        public BodyInputInputsTypeItemTypesTypeItem[] Types { get; set; }
     }
 
-    public class DeleteSpecificLabelsInputInputsTypeItemFromType
+    public class BodyInputInputsTypeItemFromType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class DeleteSpecificLabelsInputInputsTypeItemToType
+    public class BodyInputInputsTypeItemToType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class DeleteSpecificLabelsInputInputsTypeItemTypesTypeItem
+    public class BodyInputInputsTypeItemTypesTypeItem
     {
         [JsonProperty("associationCategory")]
         public string AssociationCategory { get; set; }
@@ -6881,28 +5531,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string AssociationTypeId { get; set; }
     }
 
-    public class DeleteInput
+    public class DeleteBodyInput
     {
         [JsonProperty("inputs")]
-        public DeleteInputInputsTypeItem[] Inputs { get; set; }
+        public DeleteBodyInputInputsTypeItem[] Inputs { get; set; }
     }
 
-    public class DeleteInputInputsTypeItem
+    public class DeleteBodyInputInputsTypeItem
     {
         [JsonProperty("from")]
-        public DeleteInputInputsTypeItemFromType From { get; set; }
+        public BodyInputInputsTypeItemFromType From { get; set; }
 
         [JsonProperty("to")]
-        public DeleteInputInputsTypeItemToTypeItem[] To { get; set; }
+        public BodyInputInputsTypeItemToTypeItem[] To { get; set; }
     }
 
-    public class DeleteInputInputsTypeItemFromType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class DeleteInputInputsTypeItemToTypeItem
+    public class BodyInputInputsTypeItemToTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -7013,31 +5657,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public JToken Context { get; set; }
     }
 
-    public class CreateDefaultAssociationsInput
+    public class CreateDefaultAssociationsBodyInput
     {
         [JsonProperty("inputs")]
-        public CreateDefaultAssociationsInputInputsTypeItem[] Inputs { get; set; }
+        public CreateDefaultAssociationsBodyInputInputsTypeItem[] Inputs { get; set; }
     }
 
-    public class CreateDefaultAssociationsInputInputsTypeItem
+    public class CreateDefaultAssociationsBodyInputInputsTypeItem
     {
         [JsonProperty("from")]
-        public CreateDefaultAssociationsInputInputsTypeItemFromType From { get; set; }
+        public BodyInputInputsTypeItemFromType From { get; set; }
 
         [JsonProperty("to")]
-        public CreateDefaultAssociationsInputInputsTypeItemToType To { get; set; }
-    }
-
-    public class CreateDefaultAssociationsInputInputsTypeItemFromType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
-
-    public class CreateDefaultAssociationsInputInputsTypeItemToType
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        public BodyInputInputsTypeItemToType To { get; set; }
     }
 
     public class Create7Response
@@ -7058,7 +5690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ToObjectTypeId { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("associationCategory")]
         public string AssociationCategory { get; set; }
@@ -7433,34 +6065,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string[] PropertiesToSend { get; set; }
     }
 
-    public class CreateANewCardInput
+    public class CreateANewCardBodyInput
     {
         [JsonProperty("actions")]
-        public CreateANewCardInputActionsType Actions { get; set; }
+        public BodyInputActionsType Actions { get; set; }
 
         [JsonProperty("display")]
-        public CreateANewCardInputDisplayType Display { get; set; }
+        public BodyInputDisplayType Display { get; set; }
 
         [JsonProperty("fetch")]
-        public CreateANewCardInputFetchType Fetch { get; set; }
+        public BodyInputFetchType Fetch { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
     }
 
-    public class CreateANewCardInputActionsType
+    public class BodyInputActionsType
     {
         [JsonProperty("baseUrls")]
         public string[] BaseUrls { get; set; }
     }
 
-    public class CreateANewCardInputDisplayType
+    public class BodyInputDisplayType
     {
         [JsonProperty("properties")]
-        public CreateANewCardInputDisplayTypePropertiesTypeItem[] Properties { get; set; }
+        public BodyInputDisplayTypePropertiesTypeItem[] Properties { get; set; }
     }
 
-    public class CreateANewCardInputDisplayTypePropertiesTypeItem
+    public class BodyInputDisplayTypePropertiesTypeItem
     {
         [JsonProperty("dataType")]
         public string DataType { get; set; }
@@ -7472,10 +6104,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Name { get; set; }
 
         [JsonProperty("options")]
-        public CreateANewCardInputDisplayTypePropertiesTypeItemOptionsTypeItem[] Options { get; set; }
+        public BodyInputDisplayTypePropertiesTypeItemOptionsTypeItem[] Options { get; set; }
     }
 
-    public class CreateANewCardInputDisplayTypePropertiesTypeItemOptionsTypeItem
+    public class BodyInputDisplayTypePropertiesTypeItemOptionsTypeItem
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -7487,10 +6119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string Type { get; set; }
     }
 
-    public class CreateANewCardInputFetchType
+    public class BodyInputFetchType
     {
         [JsonProperty("objectTypes")]
-        public CreateANewCardInputFetchTypeObjectTypesTypeItem[] ObjectTypes { get; set; }
+        public BodyInputFetchTypeObjectTypesTypeItem[] ObjectTypes { get; set; }
 
         [JsonProperty("targetUrl")]
         public string TargetUrl { get; set; }
@@ -7502,7 +6134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string ServerlessFunction { get; set; }
     }
 
-    public class CreateANewCardInputFetchTypeObjectTypesTypeItem
+    public class BodyInputFetchTypeObjectTypesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -7719,84 +6351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 
         [JsonProperty("propertiesToSend")]
         public string[] PropertiesToSend { get; set; }
-    }
-
-    public class UpdateACardInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("fetch")]
-        public UpdateACardInputFetchType Fetch { get; set; }
-
-        [JsonProperty("display")]
-        public UpdateACardInputDisplayType Display { get; set; }
-
-        [JsonProperty("actions")]
-        public UpdateACardInputActionsType Actions { get; set; }
-    }
-
-    public class UpdateACardInputFetchType
-    {
-        [JsonProperty("objectTypes")]
-        public UpdateACardInputFetchTypeObjectTypesTypeItem[] ObjectTypes { get; set; }
-
-        [JsonProperty("cardType")]
-        public string CardType { get; set; }
-
-        [JsonProperty("targetUrl")]
-        public string TargetUrl { get; set; }
-
-        [JsonProperty("serverlessFunction")]
-        public string ServerlessFunction { get; set; }
-    }
-
-    public class UpdateACardInputFetchTypeObjectTypesTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("propertiesToSend")]
-        public string[] PropertiesToSend { get; set; }
-    }
-
-    public class UpdateACardInputDisplayType
-    {
-        [JsonProperty("properties")]
-        public UpdateACardInputDisplayTypePropertiesTypeItem[] Properties { get; set; }
-    }
-
-    public class UpdateACardInputDisplayTypePropertiesTypeItem
-    {
-        [JsonProperty("dataType")]
-        public string DataType { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("options")]
-        public UpdateACardInputDisplayTypePropertiesTypeItemOptionsTypeItem[] Options { get; set; }
-    }
-
-    public class UpdateACardInputDisplayTypePropertiesTypeItemOptionsTypeItem
-    {
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
-    }
-
-    public class UpdateACardInputActionsType
-    {
-        [JsonProperty("baseUrls")]
-        public string[] BaseUrls { get; set; }
     }
 
     public class GetSampleCardDetailResponseResponse
@@ -8066,7 +6620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public JToken Links { get; set; }
     }
 
-    public class StartAnExportInput
+    public class StartAnExportBodyInput
     {
         [JsonProperty("exportName")]
         public string ExportName { get; set; }
@@ -8090,13 +6644,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string AssociatedObjectType { get; set; }
 
         [JsonProperty("publicCrmSearchRequest")]
-        public StartAnExportInputPublicCrmSearchRequestType PublicCrmSearchRequest { get; set; }
+        public BodyInputPublicCrmSearchRequestType PublicCrmSearchRequest { get; set; }
     }
 
-    public class StartAnExportInputPublicCrmSearchRequestType
+    public class BodyInputPublicCrmSearchRequestType
     {
         [JsonProperty("filters")]
-        public StartAnExportInputPublicCrmSearchRequestTypeFiltersTypeItem[] Filters { get; set; }
+        public BodyInputPublicCrmSearchRequestTypeFiltersTypeItem[] Filters { get; set; }
 
         [JsonProperty("query")]
         public string Query { get; set; }
@@ -8105,7 +6659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string[] Sorts { get; set; }
     }
 
-    public class StartAnExportInputPublicCrmSearchRequestTypeFiltersTypeItem
+    public class BodyInputPublicCrmSearchRequestTypeFiltersTypeItem
     {
         [JsonProperty("operator")]
         public string Operator { get; set; }
@@ -8447,7 +7001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string[] RecordsIdsAdded { get; set; }
     }
 
-    public class AddAndOrRemoveRecordsFromAListInput
+    public class AddAndOrRemoveRecordsFromAListBodyInput
     {
         [JsonProperty("recordIdsToAdd")]
         public string[] RecordIdsToAdd { get; set; }
@@ -8573,7 +7127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         public string UpdatedAt { get; set; }
     }
 
-    public class SearchListsInput
+    public class SearchListsBodyInput
     {
         [JsonProperty("additionalProperties")]
         public string[] AdditionalProperties { get; set; }

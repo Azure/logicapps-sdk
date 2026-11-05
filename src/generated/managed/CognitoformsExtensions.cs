@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
-                callPayload.Body = new NewEntryInput().ToJToken();
+                callPayload.Body = new EndpointInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
-                callPayload.Body = new UpdateEntryInput().ToJToken();
+                callPayload.Body = new EndpointInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -56,25 +56,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["module"] = Convert.ToString("forms");
                 callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
-                callPayload.Body = new EntryDeletedInput().ToJToken();
+                callPayload.Body = new EndpointInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class NewEntryInput
-    {
-        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class UpdateEntryInput
-    {
-        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EntryDeletedInput
+    public class EndpointInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";

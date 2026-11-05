@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
     public class ProjectplaceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
-        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<int>> boardId, Expression<Func<CreateCardInput>> body = null)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<int>> boardId, Expression<Func<CreateCardBodyInput>> body = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectplace")]
-        public IBodyWorkflowAction<MoveCardResponse, ApiConnectionActionConfiguration> MoveCard(Expression<Func<int>> boardId, Expression<Func<MoveCardInput>> body = null)
+        public IBodyWorkflowAction<MoveCardResponse, ApiConnectionActionConfiguration> MoveCard(Expression<Func<int>> boardId, Expression<Func<MoveCardBodyInput>> body = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
 
     public class ProjectplaceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardCreate(Expression<Func<SetWebhookCardCreateInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardCreate(Expression<Func<SetWebhookCardCreateBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookPropertiesChange(Expression<Func<SetWebhookPropertiesChangeInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookPropertiesChange(Expression<Func<SetWebhookPropertiesChangeBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardDueDate(Expression<Func<SetWebhookCardDueDateInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SetWebhookCardDueDate(Expression<Func<SetWebhookCardDueDateBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         public string Title { get; set; }
     }
 
-    public class CreateCardInput
+    public class CreateCardBodyInput
     {
         [JsonProperty("column_id")]
         public int? ColumnId { get; set; }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         public string Title { get; set; }
     }
 
-    public class MoveCardInput
+    public class MoveCardBodyInput
     {
         [JsonProperty("card_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CardId { get; set; }
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         public int? ColumnId { get; set; }
     }
 
-    public class SetWebhookCardCreateInput
+    public class SetWebhookCardCreateBodyInput
     {
         [JsonProperty("card_create", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CardCreate { get; set; } = true;
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         public int BoardId { get; set; }
     }
 
-    public class SetWebhookPropertiesChangeInput
+    public class SetWebhookPropertiesChangeBodyInput
     {
         [JsonProperty("card_blocked", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool CardBlocked { get; set; } = true;
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectplace
         public int BoardId { get; set; }
     }
 
-    public class SetWebhookCardDueDateInput
+    public class SetWebhookCardDueDateBodyInput
     {
         [JsonProperty("due_today", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool DueToday { get; set; } = true;

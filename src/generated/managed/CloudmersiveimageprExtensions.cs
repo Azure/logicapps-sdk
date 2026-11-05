@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
     public class CloudmersiveimageprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawPolygon(Expression<Func<EditDrawPolygonInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawPolygon(Expression<Func<EditDrawPolygonRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawRectangle(Expression<Func<EditDrawRectangleInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawRectangle(Expression<Func<EditDrawRectangleRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveimagepr")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawText(Expression<Func<EditDrawTextInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDrawText(Expression<Func<EditDrawTextRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
     {
     }
 
-    public class EditDrawPolygonInput
+    public class EditDrawPolygonRequestInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseImageBytes { get; set; }
         public string BaseImageUrl { get; set; }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         public double? Y { get; set; }
     }
 
-    public class EditDrawRectangleInput
+    public class EditDrawRectangleRequestInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseImageBytes { get; set; }
         public string BaseImageUrl { get; set; }
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
         public double? Y { get; set; }
     }
 
-    public class EditDrawTextInput
+    public class EditDrawTextRequestInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseImageBytes { get; set; }
         public string BaseImageUrl { get; set; }

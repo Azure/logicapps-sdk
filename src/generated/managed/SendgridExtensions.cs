@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     public class SendgridActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse, ApiConnectionActionConfiguration> AddGlobalSuppression(Expression<Func<AddGlobalSuppressionInput>> recipientEmails)
+        public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse, ApiConnectionActionConfiguration> AddGlobalSuppression(Expression<Func<RecipientEmailsInput>> recipientEmails)
         {
             var __workflow_recipientEmails = WorkflowExpression.Compile(recipientEmails, nameof(recipientEmails), required: true);
             return new DeferredBodyAction<AddGlobalSuppressRequestAndResponse, ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmail(Expression<Func<SendEmailV4Input>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmail(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         public string[] RecipientEmail { get; set; }
     }
 
-    public class AddGlobalSuppressionInput
+    public class RecipientEmailsInput
     {
         [JsonProperty("recipient_emails")]
         public string[] RecipientEmail { get; set; }
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         public bool IsEmailUnsubscribed { get; set; }
     }
 
-    public class SendEmailV4Input
+    public class RequestInput
     {
         [JsonProperty("attachments")]
         public EmailAttachment[] Attachment { get; set; }

@@ -2177,7 +2177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActiveDirectoryGetADUserByIdentityInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = ActiveDirectoryGetADUserByIdentityInputFilterPropertyComparisonType.EqualsExactMatch;
+        public ActiveDirectoryGetADUserByIdentityInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ActiveDirectoryGetADUserByIdentityInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
         public string SearchOUBase { get; set; }
 
@@ -2254,7 +2254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActiveDirectoryGetADGroupByIdentityInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = ActiveDirectoryGetADGroupByIdentityInputFilterPropertyComparisonType.EqualsExactMatch;
+        public ActiveDirectoryGetADGroupByIdentityInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ActiveDirectoryGetADGroupByIdentityInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
         public string SearchOUBase { get; set; }
 
@@ -2843,7 +2843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class ActiveDirectorySetADServerInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActiveDirectorySetADServerInputPredefinedADServerChoiceType? PredefinedADServerChoice { get; set; } = ActiveDirectorySetADServerInputPredefinedADServerChoiceType.ManualSpecifyInADServerField;
+        public ActiveDirectorySetADServerInputPredefinedADServerChoiceType? PredefinedADServerChoice { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ActiveDirectorySetADServerInputPredefinedADServerChoiceType.ManualSpecifyInADServerField;
         public string ADServer { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2884,7 +2884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ADServer { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActiveDirectoryGetDomainInfoInputPredefinedIdentityType? PredefinedIdentity { get; set; } = ActiveDirectoryGetDomainInfoInputPredefinedIdentityType.ManualSpecifyInDomainIdentityField;
+        public ActiveDirectoryGetDomainInfoInputPredefinedIdentityType? PredefinedIdentity { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ActiveDirectoryGetDomainInfoInputPredefinedIdentityType.ManualSpecifyInDomainIdentityField;
         public string Identity { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2920,10 +2920,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string DisplayName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActiveDirectoryAddADGroupInputGroupCategoryType GroupCategory { get; set; } = ActiveDirectoryAddADGroupInputGroupCategoryType.SecurityGroup;
+        public ActiveDirectoryAddADGroupInputGroupCategoryType GroupCategory { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ActiveDirectoryAddADGroupInputGroupCategoryType.SecurityGroup;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActiveDirectoryAddADGroupInputGroupScopeType GroupScope { get; set; } = ActiveDirectoryAddADGroupInputGroupScopeType.Global;
+        public ActiveDirectoryAddADGroupInputGroupScopeType GroupScope { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ActiveDirectoryAddADGroupInputGroupScopeType.Global;
         public string HomePage { get; set; }
         public string ManagedBy { get; set; }
 
@@ -3099,16 +3099,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public bool? UseSSL { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenExchangePowerShellRunspaceInputConnectionMethodType? ConnectionMethod { get; set; } = OpenExchangePowerShellRunspaceInputConnectionMethodType.RemoteCommandsRunInRemoteExchangeRunspace;
+        public OpenExchangePowerShellRunspaceInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenExchangePowerShellRunspaceInputConnectionMethodType.RemoteCommandsRunInRemoteExchangeRunspace;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenExchangePowerShellRunspaceInputAuthenticationMechanismType? AuthenticationMechanism { get; set; } = OpenExchangePowerShellRunspaceInputAuthenticationMechanismType.Kerberos;
+        public OpenExchangePowerShellRunspaceInputAuthenticationMechanismType? AuthenticationMechanism { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenExchangePowerShellRunspaceInputAuthenticationMechanismType.Kerberos;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyConnectIfNotAlreadyConnected { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenExchangePowerShellRunspaceInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = OpenExchangePowerShellRunspaceInputCommandTypesToImportLocallyType.AllAllExchangePSCommands;
+        public OpenExchangePowerShellRunspaceInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenExchangePowerShellRunspaceInputCommandTypesToImportLocallyType.AllAllExchangePSCommands;
         public string AdditionalCommandsToImportLocallyCSV { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3248,7 +3248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeGetMailboxInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = ExchangeGetMailboxInputFilterPropertyComparisonType.EqualsExactMatch;
+        public ExchangeGetMailboxInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeGetMailboxInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
         public ExchangeGetMailboxInputRecipientTypeDetailsType? RecipientTypeDetails { get; set; }
 
@@ -3305,7 +3305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeDoesMailboxExistInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = ExchangeDoesMailboxExistInputFilterPropertyComparisonType.EqualsExactMatch;
+        public ExchangeDoesMailboxExistInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeDoesMailboxExistInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
         public ExchangeDoesMailboxExistInputRecipientTypeDetailsType? RecipientTypeDetails { get; set; }
 
@@ -3399,7 +3399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeGetDistributionGroupInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = ExchangeGetDistributionGroupInputFilterPropertyComparisonType.EqualsExactMatch;
+        public ExchangeGetDistributionGroupInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeGetDistributionGroupInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3479,16 +3479,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string PrimarySmtpAddress { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeNewDistributionGroupInputMemberDepartRestrictionType? MemberDepartRestriction { get; set; } = ExchangeNewDistributionGroupInputMemberDepartRestrictionType.Open;
+        public ExchangeNewDistributionGroupInputMemberDepartRestrictionType? MemberDepartRestriction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeNewDistributionGroupInputMemberDepartRestrictionType.Open;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeNewDistributionGroupInputMemberJoinRestrictionType? MemberJoinRestriction { get; set; } = ExchangeNewDistributionGroupInputMemberJoinRestrictionType.Closed;
+        public ExchangeNewDistributionGroupInputMemberJoinRestrictionType? MemberJoinRestriction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeNewDistributionGroupInputMemberJoinRestrictionType.Closed;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RequireSenderAuthenticationEnabled { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeNewDistributionGroupInputTypeType? Type { get; set; } = ExchangeNewDistributionGroupInputTypeType.Distribution;
+        public ExchangeNewDistributionGroupInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeNewDistributionGroupInputTypeType.Distribution;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ErrorIfGroupAlreadyExists { get; set; } = true;
@@ -3672,7 +3672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeGetRemoteMailboxInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = ExchangeGetRemoteMailboxInputFilterPropertyComparisonType.EqualsExactMatch;
+        public ExchangeGetRemoteMailboxInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeGetRemoteMailboxInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3712,7 +3712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeDoesRemoteMailboxExistInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = ExchangeDoesRemoteMailboxExistInputFilterPropertyComparisonType.EqualsExactMatch;
+        public ExchangeDoesRemoteMailboxExistInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeDoesRemoteMailboxExistInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4160,11 +4160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string Identity { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeSetMailboxAutoReplyConfigurationInputAutoReplyStateType AutoReplyState { get; set; } = ExchangeSetMailboxAutoReplyConfigurationInputAutoReplyStateType.EnabledAutomaticRepliesAreSent;
+        public ExchangeSetMailboxAutoReplyConfigurationInputAutoReplyStateType AutoReplyState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeSetMailboxAutoReplyConfigurationInputAutoReplyStateType.EnabledAutomaticRepliesAreSent;
         public string InternalMessage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExchangeSetMailboxAutoReplyConfigurationInputExternalAudienceType? ExternalAudience { get; set; } = ExchangeSetMailboxAutoReplyConfigurationInputExternalAudienceType.AllRepliesAreSentToAllSenders;
+        public ExchangeSetMailboxAutoReplyConfigurationInputExternalAudienceType? ExternalAudience { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.ExchangeSetMailboxAutoReplyConfigurationInputExternalAudienceType.AllRepliesAreSentToAllSenders;
         public string ExternalMessage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4219,7 +4219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string TenantId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenAzureADv2PowerShellRunspaceInputAPIToUseType? APIToUse { get; set; } = OpenAzureADv2PowerShellRunspaceInputAPIToUseType.AutoDetect;
+        public OpenAzureADv2PowerShellRunspaceInputAPIToUseType? APIToUse { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenAzureADv2PowerShellRunspaceInputAPIToUseType.AutoDetect;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AuthenticationScope { get; set; } = "User.ReadWrite.All Group.ReadWrite.All LicenseAssignment.ReadWrite.All";
@@ -4257,7 +4257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string TenantId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenAzureADv2PowerShellRunspaceWithCertificateInputAPIToUseType? APIToUse { get; set; } = OpenAzureADv2PowerShellRunspaceWithCertificateInputAPIToUseType.AutoDetect;
+        public OpenAzureADv2PowerShellRunspaceWithCertificateInputAPIToUseType? APIToUse { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenAzureADv2PowerShellRunspaceWithCertificateInputAPIToUseType.AutoDetect;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -4373,7 +4373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AzureADv2GetAzureADUsersInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = AzureADv2GetAzureADUsersInputFilterPropertyComparisonType.EqualsExactMatch;
+        public AzureADv2GetAzureADUsersInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2GetAzureADUsersInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4679,7 +4679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class AzureADv2GetAzureADLicenseSKUsInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AzureADv2GetAzureADLicenseSKUsInputExpandPropertyType? ExpandProperty { get; set; } = AzureADv2GetAzureADLicenseSKUsInputExpandPropertyType.None;
+        public AzureADv2GetAzureADLicenseSKUsInputExpandPropertyType? ExpandProperty { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2GetAzureADLicenseSKUsInputExpandPropertyType.None;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -4706,7 +4706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string LicenseToAdd { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AzureADv2SetAzureADUserLicenseInputLicensePlansChoiceType? LicensePlansChoice { get; set; } = AzureADv2SetAzureADUserLicenseInputLicensePlansChoiceType.AllEnableAllPlans;
+        public AzureADv2SetAzureADUserLicenseInputLicensePlansChoiceType? LicensePlansChoice { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2SetAzureADUserLicenseInputLicensePlansChoiceType.AllEnableAllPlans;
         public string LicensePlansCSV { get; set; }
         public string LicensesToRemoveCSV { get; set; }
         public string UsageLocation { get; set; }
@@ -4969,7 +4969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string MailNickname { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AzureADv2NewMicrosoft365GroupInputGroupVisibilityType? GroupVisibility { get; set; } = AzureADv2NewMicrosoft365GroupInputGroupVisibilityType.PublicAnyoneCanViewOrJoin;
+        public AzureADv2NewMicrosoft365GroupInputGroupVisibilityType? GroupVisibility { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2NewMicrosoft365GroupInputGroupVisibilityType.PublicAnyoneCanViewOrJoin;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CheckGroupExists { get; set; } = true;
@@ -4999,7 +4999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AzureADv2GetGroupsInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = AzureADv2GetGroupsInputFilterPropertyComparisonType.EqualsExactMatch;
+        public AzureADv2GetGroupsInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.AzureADv2GetGroupsInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -5256,13 +5256,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ExchangeURL { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenO365PowerShellRunspaceInputConnectionMethodType? ConnectionMethod { get; set; } = OpenO365PowerShellRunspaceInputConnectionMethodType.EXOV1LocalRemoteExchangeOnlineIsImportedLocally;
+        public OpenO365PowerShellRunspaceInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceInputConnectionMethodType.EXOV1LocalRemoteExchangeOnlineIsImportedLocally;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyConnectIfNotAlreadyConnected { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenO365PowerShellRunspaceInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = OpenO365PowerShellRunspaceInputCommandTypesToImportLocallyType.AllAllO365ExchangePSCommands;
+        public OpenO365PowerShellRunspaceInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceInputCommandTypesToImportLocallyType.AllAllO365ExchangePSCommands;
         public string AdditionalCommandsToImportLocallyCSV { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -5310,13 +5310,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ExchangeURL { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType? ConnectionMethod { get; set; } = OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType.EXOV2ExchangeOnlinePowerShellV2;
+        public OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType? ConnectionMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceWithCertificateInputConnectionMethodType.EXOV2ExchangeOnlinePowerShellV2;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? OnlyConnectIfNotAlreadyConnected { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenO365PowerShellRunspaceWithCertificateInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = OpenO365PowerShellRunspaceWithCertificateInputCommandTypesToImportLocallyType.AllAllO365ExchangePSCommands;
+        public OpenO365PowerShellRunspaceWithCertificateInputCommandTypesToImportLocallyType? CommandTypesToImportLocally { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.OpenO365PowerShellRunspaceWithCertificateInputCommandTypesToImportLocallyType.AllAllO365ExchangePSCommands;
         public string AdditionalCommandsToImportLocallyCSV { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -5444,7 +5444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public O365GetO365MailboxInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = O365GetO365MailboxInputFilterPropertyComparisonType.EqualsExactMatch;
+        public O365GetO365MailboxInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.O365GetO365MailboxInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
         public O365GetO365MailboxInputRecipientTypeDetailsType? RecipientTypeDetails { get; set; }
 
@@ -5568,7 +5568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string FilterPropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public O365GetO365DistributionGroupInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = O365GetO365DistributionGroupInputFilterPropertyComparisonType.EqualsExactMatch;
+        public O365GetO365DistributionGroupInputFilterPropertyComparisonType? FilterPropertyComparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.O365GetO365DistributionGroupInputFilterPropertyComparisonType.EqualsExactMatch;
         public string FilterPropertyValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -5619,10 +5619,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string PrimarySmtpAddress { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public O365NewO365DistributionGroupInputMemberDepartRestrictionType? MemberDepartRestriction { get; set; } = O365NewO365DistributionGroupInputMemberDepartRestrictionType.Open;
+        public O365NewO365DistributionGroupInputMemberDepartRestrictionType? MemberDepartRestriction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.O365NewO365DistributionGroupInputMemberDepartRestrictionType.Open;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public O365NewO365DistributionGroupInputMemberJoinRestrictionType? MemberJoinRestriction { get; set; } = O365NewO365DistributionGroupInputMemberJoinRestrictionType.Closed;
+        public O365NewO365DistributionGroupInputMemberJoinRestrictionType? MemberJoinRestriction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.O365NewO365DistributionGroupInputMemberJoinRestrictionType.Closed;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RequireSenderAuthenticationEnabled { get; set; } = false;
@@ -5759,11 +5759,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string Identity { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public O365SetO365MailboxAutoReplyConfigurationInputAutoReplyStateType AutoReplyState { get; set; } = O365SetO365MailboxAutoReplyConfigurationInputAutoReplyStateType.EnabledAutomaticRepliesAreSent;
+        public O365SetO365MailboxAutoReplyConfigurationInputAutoReplyStateType AutoReplyState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.O365SetO365MailboxAutoReplyConfigurationInputAutoReplyStateType.EnabledAutomaticRepliesAreSent;
         public string InternalMessage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public O365SetO365MailboxAutoReplyConfigurationInputExternalAudienceType? ExternalAudience { get; set; } = O365SetO365MailboxAutoReplyConfigurationInputExternalAudienceType.AllRepliesAreSentToAllSenders;
+        public O365SetO365MailboxAutoReplyConfigurationInputExternalAudienceType? ExternalAudience { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.O365SetO365MailboxAutoReplyConfigurationInputExternalAudienceType.AllRepliesAreSentToAllSenders;
         public string ExternalMessage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -6045,14 +6045,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
     public class JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType? PropertyToCheck { get; set; } = JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType.ActiveDirectorySAMAccountName;
+        public JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType? PropertyToCheck { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyToCheckType.ActiveDirectorySAMAccountName;
         public string PropertyNameFormat { get; set; }
         public string PropertyNameFallbackFormat { get; set; }
         public string PropertyNameFallbackFormat2 { get; set; }
         public int? PropertyNameMaxLength { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType? PropertyNameMaxLengthFieldToCut { get; set; } = JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType.LastName;
+        public JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType? PropertyNameMaxLengthFieldToCut { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml.JMLGetNextAvailableAccountNameInputPropertiesToCheckListTypeItemPropertyNameMaxLengthFieldToCutType.LastName;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

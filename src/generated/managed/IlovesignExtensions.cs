@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
     public class IlovesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovesign")]
-        public IBodyWorkflowAction<SignResponse, ApiConnectionActionConfiguration> Sign(Expression<Func<SignInput>> body)
+        public IBodyWorkflowAction<SignResponse, ApiConnectionActionConfiguration> Sign(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SignResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
         public string Status { get; set; }
     }
 
-    public class SignInput
+    public class BodyInput
     {
         [JsonProperty("file_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignInputFileSourceType FileSource { get; set; }
+        public BodyInputFileSourceType FileSource { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -64,13 +64,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
         public string SignsPositions { get; set; }
 
         [JsonProperty("sign_type")]
-        public SignInputSignTypeType? SignType { get; set; }
+        public BodyInputSignTypeType? SignType { get; set; }
 
         [JsonProperty("expiration_days")]
         public string ExpirationDays { get; set; }
 
         [JsonProperty("signer_reminders")]
-        public SignInputSignerRemindersType? SignerReminders { get; set; }
+        public BodyInputSignerRemindersType? SignerReminders { get; set; }
 
         [JsonProperty("signer_reminder_days_cycle")]
         public string SignerReminderDaysCycle { get; set; }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignInputFileSourceType
+    public enum BodyInputFileSourceType
     {
         [EnumMember(Value = "binary")]
         Binary,
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignInputSignTypeType
+    public enum BodyInputSignTypeType
     {
         [EnumMember(Value = "signer")]
         Signer,
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignInputSignerRemindersType
+    public enum BodyInputSignerRemindersType
     {
         [EnumMember(Value = "true")]
         True,

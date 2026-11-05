@@ -3023,7 +3023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool? CreateNoWindow { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RunProcessInputWindowStyleType? WindowStyle { get; set; } = RunProcessInputWindowStyleType.Normal;
+        public RunProcessInputWindowStyleType? WindowStyle { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.RunProcessInputWindowStyleType.Normal;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? WaitForProcess { get; set; } = false;
@@ -3110,7 +3110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool? CreateNoWindow { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RunPowerShellProcessInputWindowStyleType? WindowStyle { get; set; } = RunPowerShellProcessInputWindowStyleType.Normal;
+        public RunPowerShellProcessInputWindowStyleType? WindowStyle { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.RunPowerShellProcessInputWindowStyleType.Normal;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? WaitForProcess { get; set; } = true;
@@ -4026,7 +4026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool? AttemptUniquePasswords { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GeneratePasswordInputGenerateAtType? GenerateAt { get; set; } = GeneratePasswordInputGenerateAtType.Agent;
+        public GeneratePasswordInputGenerateAtType? GenerateAt { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.GeneratePasswordInputGenerateAtType.Agent;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MinimumLowercase { get; set; } = 0;
@@ -4132,7 +4132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public CredentialWriteInputCredentialTypeType CredentialType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CredentialWriteInputCredentialPersistenceType? CredentialPersistence { get; set; } = CredentialWriteInputCredentialPersistenceType.LocalMachine;
+        public CredentialWriteInputCredentialPersistenceType? CredentialPersistence { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.CredentialWriteInputCredentialPersistenceType.LocalMachine;
         public string SymmetricKey { get; set; }
         public string StorePasswordAsIdentifier { get; set; }
 
@@ -4238,10 +4238,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Password { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateRDPFileInputCredentialTypeType? CredentialType { get; set; } = GenerateRDPFileInputCredentialTypeType.Windows;
+        public GenerateRDPFileInputCredentialTypeType? CredentialType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.GenerateRDPFileInputCredentialTypeType.Windows;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateRDPFileInputCredentialPersistenceType? CredentialPersistence { get; set; } = GenerateRDPFileInputCredentialPersistenceType.Session;
+        public GenerateRDPFileInputCredentialPersistenceType? CredentialPersistence { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.GenerateRDPFileInputCredentialPersistenceType.Session;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RedirectPrinters { get; set; } = false;
@@ -4536,7 +4536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string URL { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageToWebAPIInputMethodType? Method { get; set; } = SendMessageToWebAPIInputMethodType.GET;
+        public SendMessageToWebAPIInputMethodType? Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebAPIInputMethodType.GET;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? TimeoutInSeconds { get; set; } = 20;
@@ -4549,10 +4549,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string MessageBody { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageToWebAPIInputTransmitEncodingType? TransmitEncoding { get; set; } = SendMessageToWebAPIInputTransmitEncodingType.UTF8;
+        public SendMessageToWebAPIInputTransmitEncodingType? TransmitEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebAPIInputTransmitEncodingType.UTF8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageToWebAPIInputResponseEncodingType? ResponseEncoding { get; set; } = SendMessageToWebAPIInputResponseEncodingType.UTF8;
+        public SendMessageToWebAPIInputResponseEncodingType? ResponseEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SendMessageToWebAPIInputResponseEncodingType.UTF8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? BufferSize { get; set; } = 16384;
@@ -4645,7 +4645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class TasksAddNewTaskInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public TasksAddNewTaskInputSetAutomationNameType? SetAutomationName { get; set; } = TasksAddNewTaskInputSetAutomationNameType.AutoUseNameOfTheFlow;
+        public TasksAddNewTaskInputSetAutomationNameType? SetAutomationName { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.TasksAddNewTaskInputSetAutomationNameType.AutoUseNameOfTheFlow;
         public string AutomationName { get; set; }
         public string TaskInputData { get; set; }
         public string ProcessStage { get; set; }
@@ -4682,7 +4682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class TasksAddNewDeferralInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public TasksAddNewDeferralInputSetAutomationNameType? SetAutomationName { get; set; } = TasksAddNewDeferralInputSetAutomationNameType.AutoUseNameOfTheFlow;
+        public TasksAddNewDeferralInputSetAutomationNameType? SetAutomationName { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.TasksAddNewDeferralInputSetAutomationNameType.AutoUseNameOfTheFlow;
         public string AutomationName { get; set; }
         public int? DeferralTimeInMinutes { get; set; }
         public string TaskInputData { get; set; }
@@ -4852,7 +4852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int TaskId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public TasksGetTaskInputStatusChangeType? StatusChange { get; set; } = TasksGetTaskInputStatusChangeType.Retrieved;
+        public TasksGetTaskInputStatusChangeType? StatusChange { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.TasksGetTaskInputStatusChangeType.Retrieved;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -4896,7 +4896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int? MinimumPriorityLevel { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public TasksGetNextTaskInputStatusChangeType? StatusChange { get; set; } = TasksGetNextTaskInputStatusChangeType.Retrieved;
+        public TasksGetNextTaskInputStatusChangeType? StatusChange { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.TasksGetNextTaskInputStatusChangeType.Retrieved;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MinutesUntilDeferralDate { get; set; } = 0;
@@ -4964,7 +4964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string NoteText { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public TasksAddNoteInputNoteTypeType? NoteType { get; set; } = TasksAddNoteInputNoteTypeType.WorkNote;
+        public TasksAddNoteInputNoteTypeType? NoteType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.TasksAddNoteInputNoteTypeType.WorkNote;
         public string NoteTypeOther { get; set; }
     }
 
@@ -5896,13 +5896,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
     public class SetAgentGlobalCoordinateConfigurationInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAgentGlobalCoordinateConfigurationInputMultiMonitorFunctionalityType? MultiMonitorFunctionality { get; set; } = SetAgentGlobalCoordinateConfigurationInputMultiMonitorFunctionalityType.NotSet;
+        public SetAgentGlobalCoordinateConfigurationInputMultiMonitorFunctionalityType? MultiMonitorFunctionality { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputMultiMonitorFunctionalityType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAgentGlobalCoordinateConfigurationInputAutoSetMouseInspectionMultiplierType? AutoSetMouseInspectionMultiplier { get; set; } = SetAgentGlobalCoordinateConfigurationInputAutoSetMouseInspectionMultiplierType.NotSet;
+        public SetAgentGlobalCoordinateConfigurationInputAutoSetMouseInspectionMultiplierType? AutoSetMouseInspectionMultiplier { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputAutoSetMouseInspectionMultiplierType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAgentGlobalCoordinateConfigurationInputAutoSetGlobalMouseMultiplierType? AutoSetGlobalMouseMultiplier { get; set; } = SetAgentGlobalCoordinateConfigurationInputAutoSetGlobalMouseMultiplierType.NotSet;
+        public SetAgentGlobalCoordinateConfigurationInputAutoSetGlobalMouseMultiplierType? AutoSetGlobalMouseMultiplier { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputAutoSetGlobalMouseMultiplierType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double? MouseInspectionXMultiplier { get; set; } = 0;
@@ -5926,10 +5926,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool? GlobalMouseMultiplierApplyToCurrentMouseMoveMethod { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType? JavaCoordinateSystem { get; set; } = SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType.NotSet;
+        public SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType? JavaCoordinateSystem { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputJavaCoordinateSystemType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType? SAPGUICoordinateSystem { get; set; } = SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType.NotSet;
+        public SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType? SAPGUICoordinateSystem { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.SetAgentGlobalCoordinateConfigurationInputSAPGUICoordinateSystemType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6588,7 +6588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string CSVFilePath { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public WriteCollectionToCSVFileInputOutputEncodingType? OutputEncoding { get; set; } = WriteCollectionToCSVFileInputOutputEncodingType.UTF8;
+        public WriteCollectionToCSVFileInputOutputEncodingType? OutputEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.WriteCollectionToCSVFileInputOutputEncodingType.UTF8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -6636,7 +6636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Identity { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPermissionToFolderInputPermissionType Permission { get; set; } = AddPermissionToFolderInputPermissionType.Read;
+        public AddPermissionToFolderInputPermissionType Permission { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.AddPermissionToFolderInputPermissionType.Read;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ApplyToFolder { get; set; } = false;
@@ -6672,7 +6672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Identity { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPermissionToFileInputPermissionType Permission { get; set; } = AddPermissionToFileInputPermissionType.Read;
+        public AddPermissionToFileInputPermissionType Permission { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.AddPermissionToFileInputPermissionType.Read;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Deny { get; set; } = false;
@@ -6853,7 +6853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool? ReturnContentsAsString { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public DownloadHTTPFileInputReturnContentEncodingType? ReturnContentEncoding { get; set; } = DownloadHTTPFileInputReturnContentEncodingType.UTF8;
+        public DownloadHTTPFileInputReturnContentEncodingType? ReturnContentEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession.DownloadHTTPFileInputReturnContentEncodingType.UTF8;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class AzureagentserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<ListAgentsResponse, ApiConnectionActionConfiguration> ListAgents(Expression<Func<apiVersionInput>> apiVersion)
+        public IBodyWorkflowAction<ListAgentsResponse, ApiConnectionActionConfiguration> ListAgents(Expression<Func<CreateRunApiVersionInput>> apiVersion)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ListAgentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<CreateThreadResponse, ApiConnectionActionConfiguration> CreateThread(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<CreateThreadInput>> requestBody)
+        public IBodyWorkflowAction<CreateThreadResponse, ApiConnectionActionConfiguration> CreateThread(Expression<Func<CreateRunApiVersionInput>> apiVersion, Expression<Func<CreateThreadRequestBodyInput>> requestBody)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<CreateRunInput>> requestBody)
+        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<CreateRunApiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<CreateRunRequestBodyInput>> requestBody)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<GetRunResponse, ApiConnectionActionConfiguration> GetRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<GetRunResponse, ApiConnectionActionConfiguration> GetRun(Expression<Func<CreateRunApiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<ListMessageResponse, ApiConnectionActionConfiguration> ListMessages(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<ListMessageResponse, ApiConnectionActionConfiguration> ListMessages(Expression<Func<CreateRunApiVersionInput>> apiVersion, Expression<Func<string>> threadId)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeAgent(Expression<Func<apiVersionInput2>> apiVersion, Expression<Func<InvokeAgentInput>> body)
+        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeAgent(Expression<Func<InvokeAgentApiVersionInput>> apiVersion, Expression<Func<BodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Instructions { get; set; }
 
         [JsonProperty("tools")]
-        public Tools[] Tools { get; set; }
+        public CreateRunToolsResponse[] Tools { get; set; }
 
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
@@ -217,14 +217,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public JToken ToolResources { get; set; }
     }
 
-    public class Tools
+    public class CreateRunToolsResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum apiVersionInput
+    public enum CreateRunApiVersionInput
     {
         [EnumMember(Value = "2025-05-01")]
         _20250501
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public JToken Metadata { get; set; }
     }
 
-    public class CreateThreadInput
+    public class CreateThreadRequestBodyInput
     {
         [JsonProperty("messages")]
         public Messages[] Messages { get; set; }
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Instructions { get; set; }
 
         [JsonProperty("tools")]
-        public Tools[] Tools { get; set; }
+        public CreateRunToolsResponse[] Tools { get; set; }
 
         [JsonProperty("file_ids")]
         public FileIds[] FileIds { get; set; }
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Name { get; set; }
     }
 
-    public class CreateRunInput
+    public class CreateRunRequestBodyInput
     {
         [JsonProperty("assistant_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AssistantId { get; set; }
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public Messages[] AdditionalMessages { get; set; }
 
         [JsonProperty("tools")]
-        public Tools[] Tools { get; set; }
+        public CreateRunTools[] Tools { get; set; }
 
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
@@ -438,6 +438,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
         [JsonProperty("response_format")]
         public JToken ResponseFormat { get; set; }
+    }
+
+    public class CreateRunTools
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class GetRunResponse
@@ -488,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Instructions { get; set; }
 
         [JsonProperty("tools")]
-        public Tools[] Tools { get; set; }
+        public CreateRunToolsResponse[] Tools { get; set; }
 
         [JsonProperty("file_ids")]
         public FileIds[] FileIds { get; set; }
@@ -575,13 +581,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public OpenAIResponseTextType Text { get; set; }
 
         [JsonProperty("tools")]
-        public OpenAITool[] Tools { get; set; }
+        public InvokeAgentOpenAIToolResponse[] Tools { get; set; }
 
         [JsonProperty("tool_choice")]
         public JToken ToolChoice { get; set; }
 
         [JsonProperty("prompt")]
-        public OpenAIPrompt Prompt { get; set; }
+        public InvokeAgentOpenAIPromptResponse Prompt { get; set; }
 
         [JsonProperty("truncation")]
         public OpenAIResponseTruncationType Truncation { get; set; }
@@ -689,17 +695,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class OpenAIResponseTextType
     {
         [JsonProperty("format")]
-        public OpenAIResponseTextFormatConfiguration Format { get; set; }
+        public InvokeAgentOpenAIResponseTextFormatConfigurationResponse Format { get; set; }
     }
 
-    public class OpenAIResponseTextFormatConfiguration
+    public class InvokeAgentOpenAIResponseTextFormatConfigurationResponse
     {
         [JsonProperty("type")]
-        public OpenAIResponseTextFormatConfigurationType Type { get; set; }
+        public InvokeAgentOpenAIResponseTextFormatConfigurationTypeResponse Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OpenAIResponseTextFormatConfigurationType
+    public enum InvokeAgentOpenAIResponseTextFormatConfigurationTypeResponse
     {
         [EnumMember(Value = "text")]
         Text,
@@ -709,14 +715,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         JsonObject
     }
 
-    public class OpenAITool
+    public class InvokeAgentOpenAIToolResponse
     {
         [JsonProperty("type")]
-        public OpenAIToolType Type { get; set; }
+        public InvokeAgentOpenAIToolTypeResponse Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OpenAIToolType
+    public enum InvokeAgentOpenAIToolTypeResponse
     {
         [EnumMember(Value = "file_search")]
         FileSearch,
@@ -760,7 +766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         MemorySearch
     }
 
-    public class OpenAIPrompt
+    public class InvokeAgentOpenAIPromptResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -984,13 +990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum apiVersionInput2
+    public enum InvokeAgentApiVersionInput
     {
         [EnumMember(Value = "2025-11-15-preview")]
         _20251115Preview
     }
 
-    public class InvokeAgentInput
+    public class BodyInput
     {
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
@@ -1014,19 +1020,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public int? MaxToolCalls { get; set; }
 
         [JsonProperty("text")]
-        public InvokeAgentInputTextType Text { get; set; }
+        public BodyInputTextType Text { get; set; }
 
         [JsonProperty("tools")]
-        public OpenAITool2[] Tools { get; set; }
+        public InvokeAgentOpenAITool[] Tools { get; set; }
 
         [JsonProperty("tool_choice")]
         public JToken ToolChoice { get; set; }
 
         [JsonProperty("prompt")]
-        public OpenAIPrompt2 Prompt { get; set; }
+        public InvokeAgentOpenAIPrompt Prompt { get; set; }
 
         [JsonProperty("truncation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InvokeAgentInputTruncationType? Truncation { get; set; } = InvokeAgentInputTruncationType.Disabled;
+        public BodyInputTruncationType? Truncation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice.BodyInputTruncationType.Disabled;
 
         [JsonProperty("input")]
         public JToken Input { get; set; }
@@ -1044,31 +1050,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Instructions { get; set; }
 
         [JsonProperty("conversation")]
-        public InvokeAgentInputConversationType Conversation { get; set; }
+        public BodyInputConversationType Conversation { get; set; }
 
         [JsonProperty("agent")]
         public AgentReference Agent { get; set; }
     }
 
-    public class InvokeAgentInputTextType
+    public class BodyInputTextType
     {
         [JsonProperty("format")]
-        public OpenAIResponseTextFormatConfiguration2 Format { get; set; }
+        public InvokeAgentOpenAIResponseTextFormatConfiguration Format { get; set; }
     }
 
-    public class OpenAIResponseTextFormatConfiguration2
+    public class InvokeAgentOpenAIResponseTextFormatConfiguration
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenAIResponseTextFormatConfigurationType Type { get; set; }
+        public InvokeAgentOpenAIResponseTextFormatConfigurationType Type { get; set; }
     }
 
-    public class OpenAITool2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum InvokeAgentOpenAIResponseTextFormatConfigurationType
+    {
+        [EnumMember(Value = "text")]
+        Text,
+        [EnumMember(Value = "json_schema")]
+        JsonSchema,
+        [EnumMember(Value = "json_object")]
+        JsonObject
+    }
+
+    public class InvokeAgentOpenAITool
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OpenAIToolType Type { get; set; }
+        public InvokeAgentOpenAIToolType Type { get; set; }
     }
 
-    public class OpenAIPrompt2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum InvokeAgentOpenAIToolType
+    {
+        [EnumMember(Value = "file_search")]
+        FileSearch,
+        [EnumMember(Value = "function")]
+        Function,
+        [EnumMember(Value = "computer_use_preview")]
+        ComputerUsePreview,
+        [EnumMember(Value = "web_search_preview")]
+        WebSearchPreview,
+        [EnumMember(Value = "mcp")]
+        Mcp,
+        [EnumMember(Value = "code_interpreter")]
+        CodeInterpreter,
+        [EnumMember(Value = "image_generation")]
+        ImageGeneration,
+        [EnumMember(Value = "local_shell")]
+        LocalShell,
+        [EnumMember(Value = "bing_grounding")]
+        BingGrounding,
+        [EnumMember(Value = "browser_automation_preview")]
+        BrowserAutomationPreview,
+        [EnumMember(Value = "fabric_dataagent_preview")]
+        FabricDataagentPreview,
+        [EnumMember(Value = "sharepoint_grounding_preview")]
+        SharepointGroundingPreview,
+        [EnumMember(Value = "azure_ai_search")]
+        AzureAiSearch,
+        [EnumMember(Value = "openapi")]
+        Openapi,
+        [EnumMember(Value = "bing_custom_search_preview")]
+        BingCustomSearchPreview,
+        [EnumMember(Value = "capture_structured_outputs")]
+        CaptureStructuredOutputs,
+        [EnumMember(Value = "capture_semantic_events")]
+        CaptureSemanticEvents,
+        [EnumMember(Value = "a2a_preview")]
+        A2aPreview,
+        [EnumMember(Value = "azure_function")]
+        AzureFunction,
+        [EnumMember(Value = "memory_search")]
+        MemorySearch
+    }
+
+    public class InvokeAgentOpenAIPrompt
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -1081,7 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InvokeAgentInputTruncationType
+    public enum BodyInputTruncationType
     {
         [EnumMember(Value = "auto")]
         Auto,
@@ -1108,14 +1170,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         MemorySearchCallResults
     }
 
-    public class InvokeAgentInputConversationType
+    public class BodyInputConversationType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InvokeAgentInputConversationTypeConversationIdType ConversationId { get; set; }
+        public BodyInputConversationTypeConversationIdType ConversationId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InvokeAgentInputConversationTypeConversationIdType
+    public enum BodyInputConversationTypeConversationIdType
     {
         [EnumMember(Value = "Create new Conversation")]
         CreateNewConversation

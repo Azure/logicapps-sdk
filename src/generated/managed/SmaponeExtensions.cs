@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi[], ApiConnectionActionConfiguration> GETSmapDataFormat(Expression<Func<string>> smapId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<DataRecordApi[], ApiConnectionActionConfiguration> GETSmapDataFormat(Expression<Func<string>> smapId, Expression<Func<GETSmapDataFormatFormatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<DELETESmapVersionDataStateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapDataReport(Expression<Func<string>> smapId, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapDataReport(Expression<Func<string>> smapId, Expression<Func<bool>> markAsExported = null, Expression<Func<DELETESmapVersionDataStateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_markAsExported = WorkflowExpression.Compile(markAsExported, nameof(markAsExported), required: false);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi[], ApiConnectionActionConfiguration> GETSmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<formatInput>> format = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<DataRecordApi[], ApiConnectionActionConfiguration> GETSmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<GETSmapDataFormatFormatInput>> format = null, Expression<Func<DELETESmapVersionDataStateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DELETESmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<stateInput>> state = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DELETESmapVersionData(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<DELETESmapVersionDataStateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> POSTSmapsDataVersion(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<POSTSmapsDataVersionInput>> task)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> POSTSmapsDataVersion(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<TaskInput>> task)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionDataReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<stateInput>> state = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionDataReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<bool>> markAsExported = null, Expression<Func<DELETESmapVersionDataStateInput>> state = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionRecordReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput2>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<bool>> useDefault = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionRecordReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<GETSmapVersionRecordReportFormatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<bool>> useDefault = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> GETSmapVersionRecordFormat(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format = null, Expression<Func<bool>> markAsExported = null)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> GETSmapVersionRecordFormat(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<GETSmapDataFormatFormatInput>> format = null, Expression<Func<bool>> markAsExported = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> PUTSmapVersionTaskState(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> taskId, Expression<Func<PUTSmapVersionTaskStateInput>> state)
+        public IBodyWorkflowAction<DataRecordApi, ApiConnectionActionConfiguration> PUTSmapVersionTaskState(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> taskId, Expression<Func<PUTSmapVersionTaskStateStateInput>> state)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -846,21 +846,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum GETSmapDataFormatFormatInput
     {
         Json,
         Xml
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stateInput
+    public enum DELETESmapVersionDataStateInput
     {
         New,
         Exported,
         Incomplete
     }
 
-    public class POSTSmapsDataVersionInput
+    public class TaskInput
     {
         [JsonProperty("userEmail")]
         public string UserEmail { get; set; }
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput2
+    public enum GETSmapVersionRecordReportFormatInput
     {
         Pdf,
         Doc,
@@ -921,17 +921,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public string AudioDuration { get; set; }
     }
 
-    public class PUTSmapVersionTaskStateInput
+    public class PUTSmapVersionTaskStateStateInput
     {
         [JsonProperty("action")]
-        public PUTSmapVersionTaskStateInputActionType? Action { get; set; }
+        public StateInputActionType? Action { get; set; }
 
         [JsonProperty("userEmail")]
         public string UserEmail { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PUTSmapVersionTaskStateInputActionType
+    public enum StateInputActionType
     {
         Assign,
         Remove

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
     public class CloudmersivefileprocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<GetDocxCommentsResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetComments(Expression<Func<EditDocumentDocxGetCommentsInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxCommentsResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetComments(Expression<Func<ReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxCommentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64DetectResponse, ApiConnectionActionConfiguration> EditTextBase64Detect(Expression<Func<EditTextBase64DetectInput>> request)
+        public IBodyWorkflowAction<Base64DetectResponse, ApiConnectionActionConfiguration> EditTextBase64Detect(Expression<Func<EditTextBase64DetectRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<Base64DetectResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64EncodeResponse, ApiConnectionActionConfiguration> EditTextBase64Encode(Expression<Func<EditTextBase64EncodeInput>> request)
+        public IBodyWorkflowAction<Base64EncodeResponse, ApiConnectionActionConfiguration> EditTextBase64Encode(Expression<Func<EditTextBase64EncodeRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<Base64EncodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<Base64DecodeResponse, ApiConnectionActionConfiguration> EditTextBase64Decode(Expression<Func<EditTextBase64DecodeInput>> request)
+        public IBodyWorkflowAction<Base64DecodeResponse, ApiConnectionActionConfiguration> EditTextBase64Decode(Expression<Func<EditTextBase64DecodeRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<Base64DecodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<FindStringSimpleResponse, ApiConnectionActionConfiguration> EditTextFindSimple(Expression<Func<EditTextFindSimpleInput>> request)
+        public IBodyWorkflowAction<FindStringSimpleResponse, ApiConnectionActionConfiguration> EditTextFindSimple(Expression<Func<EditTextFindSimpleRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<FindStringSimpleResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<FindStringRegexResponse, ApiConnectionActionConfiguration> EditTextFindRegex(Expression<Func<EditTextFindRegexInput>> request)
+        public IBodyWorkflowAction<FindStringRegexResponse, ApiConnectionActionConfiguration> EditTextFindRegex(Expression<Func<EditTextFindRegexRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<FindStringRegexResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ReplaceStringSimpleResponse, ApiConnectionActionConfiguration> EditTextReplaceSimple(Expression<Func<EditTextReplaceSimpleInput>> request)
+        public IBodyWorkflowAction<ReplaceStringSimpleResponse, ApiConnectionActionConfiguration> EditTextReplaceSimple(Expression<Func<EditTextReplaceSimpleRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ReplaceStringSimpleResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<ReplaceStringRegexResponse, ApiConnectionActionConfiguration> EditTextReplaceRegex(Expression<Func<EditTextReplaceRegexInput>> request)
+        public IBodyWorkflowAction<ReplaceStringRegexResponse, ApiConnectionActionConfiguration> EditTextReplaceRegex(Expression<Func<EditTextReplaceRegexRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ReplaceStringRegexResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveHtmlFromTextResponse, ApiConnectionActionConfiguration> EditTextRemoveHtml(Expression<Func<EditTextRemoveHtmlInput>> request)
+        public IBodyWorkflowAction<RemoveHtmlFromTextResponse, ApiConnectionActionConfiguration> EditTextRemoveHtml(Expression<Func<EditTextRemoveHtmlRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<RemoveHtmlFromTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration> EditTextRemoveAllWhitespace(Expression<Func<EditTextRemoveAllWhitespaceInput>> request)
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration> EditTextRemoveAllWhitespace(Expression<Func<EditTextRemoveAllWhitespaceRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration> EditTextTrimWhitespace(Expression<Func<EditTextTrimWhitespaceInput>> request)
+        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration> EditTextTrimWhitespace(Expression<Func<EditTextRemoveAllWhitespaceRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipCreateAdvanced(Expression<Func<ZipArchiveZipCreateAdvancedInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipCreateAdvanced(Expression<Func<ZipArchiveZipCreateAdvancedRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipEncryptAdvanced(Expression<Func<ZipArchiveZipEncryptAdvancedInput>> encryptionRequest)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ZipArchiveZipEncryptAdvanced(Expression<Func<EncryptionRequestInput>> encryptionRequest)
         {
             var __workflow_encryptionRequest = WorkflowExpression.Compile(encryptionRequest, nameof(encryptionRequest), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public bool Done { get; set; }
     }
 
-    public class EditDocumentDocxGetCommentsInput
+    public class ReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public bool IsBase64Encoded { get; set; }
     }
 
-    public class EditTextBase64DetectInput
+    public class EditTextBase64DetectRequestInput
     {
         public string Base64ContentToDetect { get; set; }
     }
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string Base64TextContentResult { get; set; }
     }
 
-    public class EditTextBase64EncodeInput
+    public class EditTextBase64EncodeRequestInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentToEncode { get; set; }
     }
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string ContentResult { get; set; }
     }
 
-    public class EditTextBase64DecodeInput
+    public class EditTextBase64DecodeRequestInput
     {
         public string Base64ContentToDecode { get; set; }
     }
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string ContainingLine { get; set; }
     }
 
-    public class EditTextFindSimpleInput
+    public class EditTextFindSimpleRequestInput
     {
         public string TextContent { get; set; }
         public string TargetString { get; set; }
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string[] MatchGroups { get; set; }
     }
 
-    public class EditTextFindRegexInput
+    public class EditTextFindRegexRequestInput
     {
         public string TextContent { get; set; }
         public string TargetRegex { get; set; }
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string TextContentResult { get; set; }
     }
 
-    public class EditTextReplaceSimpleInput
+    public class EditTextReplaceSimpleRequestInput
     {
         public string TextContent { get; set; }
         public string TargetString { get; set; }
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string TextContentResult { get; set; }
     }
 
-    public class EditTextReplaceRegexInput
+    public class EditTextReplaceRegexRequestInput
     {
         public string TextContent { get; set; }
         public string RegularExpressionString { get; set; }
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string TextContentResult { get; set; }
     }
 
-    public class EditTextRemoveHtmlInput
+    public class EditTextRemoveHtmlRequestInput
     {
         public string TextContainingHtml { get; set; }
     }
@@ -344,17 +344,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string TextContentResult { get; set; }
     }
 
-    public class EditTextRemoveAllWhitespaceInput
+    public class EditTextRemoveAllWhitespaceRequestInput
     {
         public string TextContainingWhitespace { get; set; }
     }
 
-    public class EditTextTrimWhitespaceInput
-    {
-        public string TextContainingWhitespace { get; set; }
-    }
-
-    public class ZipArchiveZipCreateAdvancedInput
+    public class ZipArchiveZipCreateAdvancedRequestInput
     {
         public ZipFile[] FilesInZip { get; set; }
         public ZipDirectory[] DirectoriesInZip { get; set; }
@@ -373,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public ZipFile[] FilesInDirectory { get; set; }
     }
 
-    public class ZipArchiveZipEncryptAdvancedInput
+    public class EncryptionRequestInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileContents { get; set; }
         public string Password { get; set; }

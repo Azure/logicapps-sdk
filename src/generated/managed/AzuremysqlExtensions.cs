@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremysql")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<ExecutePassThroughNativeQueryInput>> query)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<QueryInput>> query)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremysql
         public JToken DynamicProperties { get; set; }
     }
 
-    public class ExecutePassThroughNativeQueryInput
+    public class QueryInput
     {
         [JsonProperty("actualParameters")]
         public JToken ActualParameters { get; set; }

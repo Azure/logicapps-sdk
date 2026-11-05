@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
     public class OpenaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
-        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<ChatCompletionInput>> body = null)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<ChatCompletionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ChatCompletionResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
-        public IBodyWorkflowAction<EmbeddingsResponse, ApiConnectionActionConfiguration> Embeddings(Expression<Func<EmbeddingsInput>> body = null)
+        public IBodyWorkflowAction<EmbeddingsResponse, ApiConnectionActionConfiguration> Embeddings(Expression<Func<EmbeddingsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<EmbeddingsResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
-        public IBodyWorkflowAction<CreateImageResponse, ApiConnectionActionConfiguration> CreateImage(Expression<Func<CreateImageInput>> body = null)
+        public IBodyWorkflowAction<CreateImageResponse, ApiConnectionActionConfiguration> CreateImage(Expression<Func<CreateImageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateImageResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,16 +58,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
-        public IBodyWorkflowAction<CompletionV2Response, ApiConnectionActionConfiguration> Completion(Expression<Func<CompletionV2Input>> body)
+        public IBodyWorkflowAction<CompletionResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<CompletionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CompletionV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CompletionV2Response>(callPayload);
+                return new ApiConnectionAction<CompletionResponse>(callPayload);
             });
         }
     }
@@ -127,13 +127,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public int TotalTokens { get; set; }
     }
 
-    public class ChatCompletionInput
+    public class ChatCompletionBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; }
 
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ChatCompletionInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("n", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? N { get; set; } = 1;
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public string[] Stop { get; set; }
     }
 
-    public class ChatCompletionInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; }
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public int TotalTokens { get; set; }
     }
 
-    public class EmbeddingsInput
+    public class EmbeddingsBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; } = "text-embedding-ada-002";
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public string B64Json { get; set; }
     }
 
-    public class CreateImageInput
+    public class CreateImageBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; } = "An elephant with a fedora in a dark room, digital art";
@@ -238,14 +238,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public int? N { get; set; } = 1;
 
         [JsonProperty("size", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateImageInputSizeType? Size { get; set; } = CreateImageInputSizeType._1024x1024;
+        public BodyInputSizeType? Size { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip.BodyInputSizeType._1024x1024;
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateImageInputResponseFormatType? ResponseFormat { get; set; } = CreateImageInputResponseFormatType.Url;
+        public BodyInputResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip.BodyInputResponseFormatType.Url;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateImageInputSizeType
+    public enum BodyInputSizeType
     {
         [EnumMember(Value = "256x256")]
         _256x256,
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateImageInputResponseFormatType
+    public enum BodyInputResponseFormatType
     {
         [EnumMember(Value = "url")]
         Url,
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         B64Json
     }
 
-    public class CompletionV2Response
+    public class CompletionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -279,10 +279,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public string Model { get; set; }
 
         [JsonProperty("choices")]
-        public CompletionV2ResponseChoicesTypeItem[] Choices { get; set; }
+        public CompletionResponseChoicesTypeItem[] Choices { get; set; }
     }
 
-    public class CompletionV2ResponseChoicesTypeItem
+    public class CompletionResponseChoicesTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -294,10 +294,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public string FinishReason { get; set; }
 
         [JsonProperty("usage")]
-        public CompletionV2ResponseChoicesTypeItemUsageType Usage { get; set; }
+        public CompletionResponseChoicesTypeItemUsageType Usage { get; set; }
     }
 
-    public class CompletionV2ResponseChoicesTypeItemUsageType
+    public class CompletionResponseChoicesTypeItemUsageType
     {
         [JsonProperty("prompt_tokens")]
         public int PromptTokens { get; set; }
@@ -309,10 +309,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public int TotalTokens { get; set; }
     }
 
-    public class CompletionV2Input
+    public class CompletionBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompletionV2InputEngineType Engine { get; set; } = CompletionV2InputEngineType.DaVinciMostExpensive;
+        public BodyInputEngineType Engine { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip.BodyInputEngineType.DaVinciMostExpensive;
 
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; } = "What is your favorite animal and why? Tell me also about the size and weight of this animal.";
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CompletionV2InputEngineType
+    public enum BodyInputEngineType
     {
         [EnumMember(Value = "text-davinci-002")]
         DaVinciMostExpensive,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     public class BizzyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReply(Expression<Func<SendReplyInput>> content)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReply(Expression<Func<SendReplyContentInput>> content)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCardSet(Expression<Func<SendReplyWithAdaptiveCardSetInput>> cardSet)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> SendReplyWithAdaptiveCardSet(Expression<Func<CardSetInput>> cardSet)
         {
             var __workflow_cardSet = WorkflowExpression.Compile(cardSet, nameof(cardSet), required: true);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> UpdateAdaptiveCard(Expression<Func<UpdateAdaptiveCardInput>> cardInfo)
+        public IBodyWorkflowAction<BotReplyResponse, ApiConnectionActionConfiguration> UpdateAdaptiveCard(Expression<Func<CardInfoInput>> cardInfo)
         {
             var __workflow_cardInfo = WorkflowExpression.Compile(cardInfo, nameof(cardInfo), required: true);
             return new DeferredBodyAction<BotReplyResponse, ApiConnectionActionConfiguration>(() =>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotConversationStartResponse, ApiConnectionActionConfiguration> StartConversation(Expression<Func<StartConversationInput>> content)
+        public IBodyWorkflowAction<BotConversationStartResponse, ApiConnectionActionConfiguration> StartConversation(Expression<Func<StartConversationContentInput>> content)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<BotConversationStartResponse, ApiConnectionActionConfiguration>(() =>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration> StartGroupConversation(Expression<Func<StartGroupConversationInput>> content)
+        public IBodyWorkflowAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration> StartGroupConversation(Expression<Func<StartGroupConversationContentInput>> content)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<BotGroupConversationStartResponse, ApiConnectionActionConfiguration>(() =>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendBridgeEvent(Expression<Func<SendBridgeEventInput>> content)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendBridgeEvent(Expression<Func<SendBridgeEventContentInput>> content)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponse(Expression<Func<WebHookRegistrationsInputResponseInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponse(Expression<Func<WebHookRegistrationsInputResponseWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseDATE(Expression<Func<WebHookRegistrationsInputResponseDATEInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseDATE(Expression<Func<WebHookRegistrationsInputResponseDATEWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICE(Expression<Func<WebHookRegistrationsInputResponseCHOICEInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICE(Expression<Func<WebHookRegistrationsInputResponseCHOICEWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<WebHookRegistrationsInputResponseCHOICELISTInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<WebHookRegistrationsInputResponseCHOICELISTWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<WebHookRegistrationsInputResponsePEOPLEInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<WebHookRegistrationsInputResponsePEOPLEWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<WebHookRegistrationsInputResponseINTENTVECTORInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<WebHookRegistrationsInputResponseINTENTVECTORWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseMEMORY(Expression<Func<WebHookRegistrationsInputResponseMEMORYInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseMEMORY(Expression<Func<WebHookRegistrationsInputResponseMEMORYWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInitiateBridge(Expression<Func<WebHookRegistrationsInitiateBridgeInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInitiateBridge(Expression<Func<WebHookRegistrationsInitiateBridgeWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration> SaveBotMemory(Expression<Func<SaveBotMemoryInput>> content)
+        public IBodyWorkflowAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration> SaveBotMemory(Expression<Func<SaveBotMemoryContentInput>> content)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<ResponseSaveBotMemory, ApiConnectionActionConfiguration>(() =>
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration> DeleteBotMemory(Expression<Func<DeleteBotMemoryInput>> content)
+        public IBodyWorkflowAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration> DeleteBotMemory(Expression<Func<DeleteBotMemoryContentInput>> content)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<ResponseDeleteBotMemory, ApiConnectionActionConfiguration>(() =>
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<MemoryItem[], ApiConnectionActionConfiguration> GetMemoryItemsByType(Expression<Func<GetMemoryItemsByTypeInput>> checkMemoryInfo)
+        public IBodyWorkflowAction<MemoryItem[], ApiConnectionActionConfiguration> GetMemoryItemsByType(Expression<Func<CheckMemoryInfoInput>> checkMemoryInfo)
         {
             var __workflow_checkMemoryInfo = WorkflowExpression.Compile(checkMemoryInfo, nameof(checkMemoryInfo), required: true);
             return new DeferredBodyAction<MemoryItem[], ApiConnectionActionConfiguration>(() =>
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class BizzyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<WebHookRegistrationsPostInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPost(Expression<Func<WebHookRegistrationsPostWebHookInput>> webHook, FlowRecurrence recurrence = null)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
             });
         }
 
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsVectorPost(Expression<Func<WebHookRegistrationsVectorPostInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsVectorPost(Expression<Func<WebHookRegistrationsVectorPostWebHookInput>> webHook, FlowRecurrence recurrence = null)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MessageId { get; set; }
     }
 
-    public class SendReplyInput
+    public class SendReplyContentInput
     {
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyText { get; set; }
@@ -355,13 +355,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MessageId { get; set; }
     }
 
-    public class SendReplyWithAdaptiveCardSetInput
+    public class CardSetInput
     {
         [JsonProperty("cards", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken AdaptiveCardSet { get; set; }
 
         [JsonProperty("displayStyle", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendReplyWithAdaptiveCardSetInputDisplayStyleType DisplayStyle { get; set; } = SendReplyWithAdaptiveCardSetInputDisplayStyleType.Carousel;
+        public CardSetInputDisplayStyleType DisplayStyle { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.CardSetInputDisplayStyleType.Carousel;
 
         [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyActivity { get; set; }
@@ -377,13 +377,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendReplyWithAdaptiveCardSetInputDisplayStyleType
+    public enum CardSetInputDisplayStyleType
     {
         Carousel,
         List
     }
 
-    public class UpdateAdaptiveCardInput
+    public class CardInfoInput
     {
         [JsonProperty("card", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken AdaptiveCard { get; set; }
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
     }
 
-    public class StartConversationInput
+    public class StartConversationContentInput
     {
         [JsonProperty("EnterpriseBot", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetBot { get; set; } = "AtBot";
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
     }
 
-    public class StartGroupConversationInput
+    public class StartGroupConversationContentInput
     {
         [JsonProperty("EnterpriseBot", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetBot { get; set; } = "AtBot";
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ConversationText { get; set; }
     }
 
-    public class SendBridgeEventInput
+    public class SendBridgeEventContentInput
     {
         [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyActivity { get; set; }
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public JToken Properties { get; set; }
     }
 
-    public class WebHookRegistrationsInputResponseInput
+    public class WebHookRegistrationsInputResponseWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -497,14 +497,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = WebHookRegistrationsInputResponseInputAcceptResponseFromType.OriginalUser;
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
 
         [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowInChat { get; set; } = true;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseInputAcceptResponseFromType
+    public enum WebHookInputAcceptResponseFromType
     {
         [EnumMember(Value = "Original User")]
         OriginalUser,
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         AnyUser
     }
 
-    public class WebHookRegistrationsInputResponseDATEInput
+    public class WebHookRegistrationsInputResponseDATEWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public JToken Properties { get; set; }
 
         [JsonProperty("dateScope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseDATEInputDateScopeType DateScope { get; set; } = WebHookRegistrationsInputResponseDATEInputDateScopeType.DateOnly;
+        public WebHookInputDateScopeType DateScope { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputDateScopeType.DateOnly;
 
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -536,17 +536,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseDATEInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = WebHookRegistrationsInputResponseDATEInputAcceptResponseFromType.OriginalUser;
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseDATEInputAllowBranchingType? AllowBranching { get; set; } = WebHookRegistrationsInputResponseDATEInputAllowBranchingType.No;
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
 
         [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowInChat { get; set; } = true;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseDATEInputDateScopeType
+    public enum WebHookInputDateScopeType
     {
         [EnumMember(Value = "Date Only")]
         DateOnly,
@@ -557,22 +557,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseDATEInputAcceptResponseFromType
-    {
-        [EnumMember(Value = "Original User")]
-        OriginalUser,
-        [EnumMember(Value = "Any User")]
-        AnyUser
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseDATEInputAllowBranchingType
+    public enum WebHookInputAllowBranchingType
     {
         No,
         Yes
     }
 
-    public class WebHookRegistrationsInputResponseCHOICEInput
+    public class WebHookRegistrationsInputResponseCHOICEWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -596,10 +587,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseCHOICEInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = WebHookRegistrationsInputResponseCHOICEInputAcceptResponseFromType.OriginalUser;
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseCHOICEInputAllowBranchingType? AllowBranching { get; set; } = WebHookRegistrationsInputResponseCHOICEInputAllowBranchingType.No;
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
 
         [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowInChat { get; set; } = true;
@@ -608,23 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public bool? ListenForVoiceResponse { get; set; } = false;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseCHOICEInputAcceptResponseFromType
-    {
-        [EnumMember(Value = "Original User")]
-        OriginalUser,
-        [EnumMember(Value = "Any User")]
-        AnyUser
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseCHOICEInputAllowBranchingType
-    {
-        No,
-        Yes
-    }
-
-    public class WebHookRegistrationsInputResponseCHOICELISTInput
+    public class WebHookRegistrationsInputResponseCHOICELISTWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -651,10 +626,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseCHOICELISTInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = WebHookRegistrationsInputResponseCHOICELISTInputAcceptResponseFromType.OriginalUser;
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseCHOICELISTInputAllowBranchingType? AllowBranching { get; set; } = WebHookRegistrationsInputResponseCHOICELISTInputAllowBranchingType.No;
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
 
         [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowInChat { get; set; } = true;
@@ -663,23 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public bool? ListenForVoiceResponse { get; set; } = false;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseCHOICELISTInputAcceptResponseFromType
-    {
-        [EnumMember(Value = "Original User")]
-        OriginalUser,
-        [EnumMember(Value = "Any User")]
-        AnyUser
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseCHOICELISTInputAllowBranchingType
-    {
-        No,
-        Yes
-    }
-
-    public class WebHookRegistrationsInputResponsePEOPLEInput
+    public class WebHookRegistrationsInputResponsePEOPLEWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -697,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string Message { get; set; }
 
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponsePEOPLEInputModeType Mode { get; set; } = WebHookRegistrationsInputResponsePEOPLEInputModeType.Single;
+        public WebHookInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputModeType.Single;
 
         [JsonProperty("searchstr")]
         public string SearchString { get; set; }
@@ -706,10 +665,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponsePEOPLEInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = WebHookRegistrationsInputResponsePEOPLEInputAcceptResponseFromType.OriginalUser;
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponsePEOPLEInputAllowBranchingType? AllowBranching { get; set; } = WebHookRegistrationsInputResponsePEOPLEInputAllowBranchingType.No;
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
 
         [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowInChat { get; set; } = true;
@@ -719,29 +678,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponsePEOPLEInputModeType
+    public enum WebHookInputModeType
     {
         Single,
         Multiple
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponsePEOPLEInputAcceptResponseFromType
-    {
-        [EnumMember(Value = "Original User")]
-        OriginalUser,
-        [EnumMember(Value = "Any User")]
-        AnyUser
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponsePEOPLEInputAllowBranchingType
-    {
-        No,
-        Yes
-    }
-
-    public class WebHookRegistrationsInputResponseINTENTVECTORInput
+    public class WebHookRegistrationsInputResponseINTENTVECTORWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -765,32 +708,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseINTENTVECTORInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = WebHookRegistrationsInputResponseINTENTVECTORInputAcceptResponseFromType.OriginalUser;
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseINTENTVECTORInputAllowBranchingType? AllowBranching { get; set; } = WebHookRegistrationsInputResponseINTENTVECTORInputAllowBranchingType.No;
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
 
         [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowInChat { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseINTENTVECTORInputAcceptResponseFromType
-    {
-        [EnumMember(Value = "Original User")]
-        OriginalUser,
-        [EnumMember(Value = "Any User")]
-        AnyUser
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseINTENTVECTORInputAllowBranchingType
-    {
-        No,
-        Yes
-    }
-
-    public class WebHookRegistrationsInputResponseMEMORYInput
+    public class WebHookRegistrationsInputResponseMEMORYWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -817,35 +744,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string IconURL { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseMEMORYInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = WebHookRegistrationsInputResponseMEMORYInputAcceptResponseFromType.OriginalUser;
+        public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
 
         [JsonProperty("targetUserMemory")]
         public string TargetUser { get; set; }
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInputResponseMEMORYInputAllowBranchingType? AllowBranching { get; set; } = WebHookRegistrationsInputResponseMEMORYInputAllowBranchingType.No;
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
 
         [JsonProperty("showInChat", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowInChat { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseMEMORYInputAcceptResponseFromType
-    {
-        [EnumMember(Value = "Original User")]
-        OriginalUser,
-        [EnumMember(Value = "Any User")]
-        AnyUser
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsInputResponseMEMORYInputAllowBranchingType
-    {
-        No,
-        Yes
-    }
-
-    public class WebHookRegistrationsInitiateBridgeInput
+    public class WebHookRegistrationsInitiateBridgeWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -860,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public JToken Properties { get; set; }
 
         [JsonProperty("participants", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsInitiateBridgeInputParticipantsTypeItem[] Participants { get; set; }
+        public WebHookInputParticipantsTypeItem[] Participants { get; set; }
 
         [JsonProperty("endBridgeCommand", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndChatCommand { get; set; } = "#stop";
@@ -869,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public int IdleTimeout { get; set; } = 3;
     }
 
-    public class WebHookRegistrationsInitiateBridgeInputParticipantsTypeItem
+    public class WebHookInputParticipantsTypeItem
     {
         [JsonProperty("chatUserName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
@@ -887,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string BotMemorySaveResult { get; set; }
     }
 
-    public class SaveBotMemoryInput
+    public class SaveBotMemoryContentInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
@@ -908,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string BotMemoryDeleteResult { get; set; }
     }
 
-    public class DeleteBotMemoryInput
+    public class DeleteBotMemoryContentInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
@@ -929,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MemoryItemValue { get; set; }
     }
 
-    public class GetMemoryItemsByTypeInput
+    public class CheckMemoryInfoInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
@@ -938,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MemoryType { get; set; }
     }
 
-    public class WebHookRegistrationsPostInput
+    public class WebHookRegistrationsPostWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -956,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string TriggerDescription { get; set; }
 
         [JsonProperty("triggerType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsPostInputBotTriggerTypeType BotTriggerType { get; set; } = WebHookRegistrationsPostInputBotTriggerTypeType.Shared;
+        public WebHookInputBotTriggerTypeType BotTriggerType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputBotTriggerTypeType.Shared;
 
         [JsonProperty("keywords")]
         public string Keywords { get; set; }
@@ -972,13 +883,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsPostInputBotTriggerTypeType
+    public enum WebHookInputBotTriggerTypeType
     {
         Shared,
         Personal
     }
 
-    public class WebHookRegistrationsVectorPostInput
+    public class WebHookRegistrationsVectorPostWebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
@@ -996,27 +907,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string TriggerDescription { get; set; }
 
         [JsonProperty("triggerType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsVectorPostInputBotTriggerTypeType BotTriggerType { get; set; } = WebHookRegistrationsVectorPostInputBotTriggerTypeType.Shared;
+        public WebHookInputBotTriggerTypeType BotTriggerType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputBotTriggerTypeType.Shared;
 
         [JsonProperty("intentVector")]
         public string LUISIntentVector { get; set; }
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebHookRegistrationsVectorPostInputAllowBranchingType? AllowBranching { get; set; } = WebHookRegistrationsVectorPostInputAllowBranchingType.No;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsVectorPostInputBotTriggerTypeType
-    {
-        Shared,
-        Personal
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebHookRegistrationsVectorPostInputAllowBranchingType
-    {
-        No,
-        Yes
+        public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;
     }
 }
 

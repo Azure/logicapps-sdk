@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskListEntry, ApiConnectionActionConfiguration> CreateTaskList(Expression<Func<CreateTaskListInput>> list)
+        public IBodyWorkflowAction<TaskListEntry, ApiConnectionActionConfiguration> CreateTaskList(Expression<Func<ListInput>> list)
         {
             var __workflow_list = WorkflowExpression.Compile(list, nameof(list), required: true);
             return new DeferredBodyAction<TaskListEntry, ApiConnectionActionConfiguration>(() =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CraeteTask(Expression<Func<string>> taskListId, Expression<Func<CraeteTaskInput>> task)
+        public IBodyWorkflowAction<TaskObject, ApiConnectionActionConfiguration> CraeteTask(Expression<Func<string>> taskListId, Expression<Func<TaskInput>> task)
         {
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         public string UpdatedTime { get; set; }
     }
 
-    public class CreateTaskListInput
+    public class ListInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         public string Completed { get; set; }
     }
 
-    public class CraeteTaskInput
+    public class TaskInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }

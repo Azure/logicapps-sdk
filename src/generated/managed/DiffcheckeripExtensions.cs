@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
     public class DiffcheckeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckTextResponse, ApiConnectionActionConfiguration> CheckText(Expression<Func<CheckTextInput>> body, Expression<Func<diffLevelInput>> diffLevel = null)
+        public IBodyWorkflowAction<CheckTextResponse, ApiConnectionActionConfiguration> CheckText(Expression<Func<CheckTextBodyInput>> body, Expression<Func<DiffLevelInput>> diffLevel = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_diffLevel = WorkflowExpression.Compile(diffLevel, nameof(diffLevel), required: false);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckImageResponse, ApiConnectionActionConfiguration> CheckImage(Expression<Func<CheckImageInput>> body)
+        public IBodyWorkflowAction<CheckImageResponse, ApiConnectionActionConfiguration> CheckImage(Expression<Func<CheckImageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CheckImageResponse, ApiConnectionActionConfiguration>(() =>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         public string Type { get; set; }
     }
 
-    public class CheckTextInput
+    public class CheckTextBodyInput
     {
         [JsonProperty("left", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Left { get; set; }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum diffLevelInput
+    public enum DiffLevelInput
     {
         [EnumMember(Value = "character")]
         Character,
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         public string DataUrl { get; set; }
     }
 
-    public class CheckImageInput
+    public class CheckImageBodyInput
     {
         [JsonProperty("left_image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LeftImage { get; set; }

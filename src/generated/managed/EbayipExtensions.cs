@@ -88,6 +88,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        public IBodyWorkflowAction<GetPaymentPoliciesResponse, ApiConnectionActionConfiguration> GetPaymentPolicies(Expression<Func<string>> marketplaceId = null)
+        {
+            var __workflow_marketplaceId = WorkflowExpression.Compile(marketplaceId, nameof(marketplaceId), required: false);
+            return new DeferredBodyAction<GetPaymentPoliciesResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/sell/account/v1/payment_policy";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_marketplaceId != null)
+                    callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(__workflow_marketplaceId);
+                return new ApiConnectionAction<GetPaymentPoliciesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
         public IBodyWorkflowAction<GetPaymentPolicyResponse, ApiConnectionActionConfiguration> GetPaymentPolicy(Expression<Func<string>> paymentPolicyId)
         {
             var __workflow_paymentPolicyId = WorkflowExpression.Compile(paymentPolicyId, nameof(paymentPolicyId), required: true);
@@ -142,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse, ApiConnectionActionConfiguration> CreateOrReplaceInventoryItem(Expression<Func<string>> sku, Expression<Func<string>> contentLanguage, Expression<Func<CreateOrReplaceInventoryItemInput>> body = null)
+        public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse, ApiConnectionActionConfiguration> CreateOrReplaceInventoryItem(Expression<Func<string>> sku, Expression<Func<string>> contentLanguage, Expression<Func<CreateOrReplaceInventoryItemBodyInput>> body = null)
         {
             var __workflow_sku = WorkflowExpression.Compile(sku, nameof(sku), required: true);
             var __workflow_contentLanguage = WorkflowExpression.Compile(contentLanguage, nameof(contentLanguage), required: true);
@@ -194,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateInventoryLocation(Expression<Func<string>> merchantLocationKey, Expression<Func<CreateInventoryLocationInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateInventoryLocation(Expression<Func<string>> merchantLocationKey, Expression<Func<CreateInventoryLocationBodyInput>> body = null)
         {
             var __workflow_merchantLocationKey = WorkflowExpression.Compile(merchantLocationKey, nameof(merchantLocationKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -272,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<CreateOfferResponse, ApiConnectionActionConfiguration> CreateOffer(Expression<Func<CreateOfferInput>> body = null)
+        public IBodyWorkflowAction<CreateOfferResponse, ApiConnectionActionConfiguration> CreateOffer(Expression<Func<CreateOfferBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateOfferResponse, ApiConnectionActionConfiguration>(() =>
@@ -318,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<UpdateOfferResponse, ApiConnectionActionConfiguration> UpdateOffer(Expression<Func<string>> offerId, Expression<Func<UpdateOfferInput>> body = null)
+        public IBodyWorkflowAction<UpdateOfferResponse, ApiConnectionActionConfiguration> UpdateOffer(Expression<Func<string>> offerId, Expression<Func<UpdateOfferBodyInput>> body = null)
         {
             var __workflow_offerId = WorkflowExpression.Compile(offerId, nameof(offerId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -943,6 +958,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string RegionType { get; set; }
     }
 
+    public class GetPaymentPoliciesResponse
+    {
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("limit")]
+        public int Limit { get; set; }
+
+        [JsonProperty("next")]
+        public string Next { get; set; }
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; }
+
+        [JsonProperty("paymentPolicies")]
+        public GetPaymentPoliciesResponsePaymentPoliciesTypeItem[] PaymentPolicies { get; set; }
+
+        [JsonProperty("prev")]
+        public string Prev { get; set; }
+
+        [JsonProperty("total")]
+        public int Total { get; set; }
+    }
+
+    public class GetPaymentPoliciesResponsePaymentPoliciesTypeItem
+    {
+        [JsonProperty("categoryTypes")]
+        public GetPaymentPoliciesResponsePaymentPoliciesTypeItemCategoryTypesTypeItem[] CategoryTypes { get; set; }
+
+        [JsonProperty("deposit")]
+        public GetPaymentPoliciesResponsePaymentPoliciesTypeItemDepositType Deposit { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("fullPaymentDueIn")]
+        public GetPaymentPoliciesResponsePaymentPoliciesTypeItemFullPaymentDueInType FullPaymentDueIn { get; set; }
+
+        [JsonProperty("immediatePay")]
+        public bool ImmediatePay { get; set; }
+
+        [JsonProperty("marketplaceId")]
+        public string MarketplaceId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("paymentInstructions")]
+        public string PaymentInstructions { get; set; }
+
+        [JsonProperty("paymentMethods")]
+        public GetPaymentPoliciesResponsePaymentPoliciesTypeItemPaymentMethodsTypeItem[] PaymentMethods { get; set; }
+
+        [JsonProperty("paymentPolicyId")]
+        public string PaymentPolicyId { get; set; }
+    }
+
+    public class GetPaymentPoliciesResponsePaymentPoliciesTypeItemCategoryTypesTypeItem
+    {
+        [JsonProperty("default")]
+        public bool Default { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class GetPaymentPoliciesResponsePaymentPoliciesTypeItemDepositType
+    {
+        [JsonProperty("amount")]
+        public GetPaymentPoliciesResponsePaymentPoliciesTypeItemDepositTypeAmountType Amount { get; set; }
+
+        [JsonProperty("dueIn")]
+        public GetPaymentPoliciesResponsePaymentPoliciesTypeItemDepositTypeDueInType DueIn { get; set; }
+    }
+
+    public class GetPaymentPoliciesResponsePaymentPoliciesTypeItemDepositTypeAmountType
+    {
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class GetPaymentPoliciesResponsePaymentPoliciesTypeItemDepositTypeDueInType
+    {
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("value")]
+        public int Value { get; set; }
+    }
+
+    public class GetPaymentPoliciesResponsePaymentPoliciesTypeItemFullPaymentDueInType
+    {
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("value")]
+        public int Value { get; set; }
+    }
+
+    public class GetPaymentPoliciesResponsePaymentPoliciesTypeItemPaymentMethodsTypeItem
+    {
+        [JsonProperty("paymentMethodType")]
+        public string PaymentMethodType { get; set; }
+    }
+
     public class GetPaymentPolicyResponse
     {
         [JsonProperty("categoryTypes")]
@@ -1429,40 +1552,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOrReplaceInventoryItemInput
+    public class CreateOrReplaceInventoryItemBodyInput
     {
         [JsonProperty("availability")]
-        public CreateOrReplaceInventoryItemInputAvailabilityType Availability { get; set; }
+        public BodyInputAvailabilityType Availability { get; set; }
 
         [JsonProperty("condition")]
-        public CreateOrReplaceInventoryItemInputConditionType? Condition { get; set; }
+        public BodyInputConditionType? Condition { get; set; }
 
         [JsonProperty("conditionDescription")]
         public string ConditionDescription { get; set; }
 
         [JsonProperty("packageWeightAndSize")]
-        public CreateOrReplaceInventoryItemInputPackageWeightAndSizeType PackageWeightAndSize { get; set; }
+        public BodyInputPackageWeightAndSizeType PackageWeightAndSize { get; set; }
 
         [JsonProperty("product")]
-        public CreateOrReplaceInventoryItemInputProductType Product { get; set; }
+        public BodyInputProductType Product { get; set; }
     }
 
-    public class CreateOrReplaceInventoryItemInputAvailabilityType
+    public class BodyInputAvailabilityType
     {
         [JsonProperty("pickupAtLocationAvailability")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItem[] PickupAtLocationAvailability { get; set; }
+        public BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItem[] PickupAtLocationAvailability { get; set; }
 
         [JsonProperty("shipToLocationAvailability")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityType ShipToLocationAvailability { get; set; }
+        public BodyInputAvailabilityTypeShipToLocationAvailabilityType ShipToLocationAvailability { get; set; }
     }
 
-    public class CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItem
+    public class BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItem
     {
         [JsonProperty("availabilityType")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItemAvailabilityTypeType? AvailabilityType { get; set; }
+        public BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemAvailabilityTypeType? AvailabilityType { get; set; }
 
         [JsonProperty("fulfillmentTime")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeType FulfillmentTime { get; set; }
+        public BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeType FulfillmentTime { get; set; }
 
         [JsonProperty("merchantLocationKey")]
         public string MerchantLocationKey { get; set; }
@@ -1472,7 +1595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItemAvailabilityTypeType
+    public enum BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemAvailabilityTypeType
     {
         [EnumMember(Value = "IN_STOCK")]
         INSTOCK,
@@ -1482,17 +1605,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         SHIPTOSTORE
     }
 
-    public class CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeType
+    public class BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeType
     {
         [JsonProperty("unit")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeTypeUnitType? Unit { get; set; }
+        public BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeTypeUnitType? Unit { get; set; }
 
         [JsonProperty("value")]
         public int? Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrReplaceInventoryItemInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeTypeUnitType
+    public enum BodyInputAvailabilityTypePickupAtLocationAvailabilityTypeItemFulfillmentTimeTypeUnitType
     {
         YEAR,
         MONTH,
@@ -1507,19 +1630,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         MILLISECOND
     }
 
-    public class CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityType
+    public class BodyInputAvailabilityTypeShipToLocationAvailabilityType
     {
         [JsonProperty("availabilityDistributions")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItem[] AvailabilityDistributions { get; set; }
+        public BodyInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItem[] AvailabilityDistributions { get; set; }
 
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
     }
 
-    public class CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItem
+    public class BodyInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItem
     {
         [JsonProperty("fulfillmentTime")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeType FulfillmentTime { get; set; }
+        public BodyInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeType FulfillmentTime { get; set; }
 
         [JsonProperty("merchantLocationKey")]
         public string MerchantLocationKey { get; set; }
@@ -1528,17 +1651,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public int? Quantity { get; set; }
     }
 
-    public class CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeType
+    public class BodyInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeType
     {
         [JsonProperty("unit")]
-        public CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeTypeUnitType? Unit { get; set; }
+        public BodyInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeTypeUnitType? Unit { get; set; }
 
         [JsonProperty("value")]
         public int? Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrReplaceInventoryItemInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeTypeUnitType
+    public enum BodyInputAvailabilityTypeShipToLocationAvailabilityTypeAvailabilityDistributionsTypeItemFulfillmentTimeTypeUnitType
     {
         YEAR,
         MONTH,
@@ -1554,7 +1677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrReplaceInventoryItemInputConditionType
+    public enum BodyInputConditionType
     {
         NEW,
         [EnumMember(Value = "LIKE_NEW")]
@@ -1587,19 +1710,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         FORPARTSORNOTWORKING
     }
 
-    public class CreateOrReplaceInventoryItemInputPackageWeightAndSizeType
+    public class BodyInputPackageWeightAndSizeType
     {
         [JsonProperty("dimensions")]
-        public CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeDimensionsType Dimensions { get; set; }
+        public BodyInputPackageWeightAndSizeTypeDimensionsType Dimensions { get; set; }
 
         [JsonProperty("packageType")]
-        public CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypePackageTypeType? PackageType { get; set; }
+        public BodyInputPackageWeightAndSizeTypePackageTypeType? PackageType { get; set; }
 
         [JsonProperty("weight")]
-        public CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeWeightType Weight { get; set; }
+        public BodyInputPackageWeightAndSizeTypeWeightType Weight { get; set; }
     }
 
-    public class CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeDimensionsType
+    public class BodyInputPackageWeightAndSizeTypeDimensionsType
     {
         [JsonProperty("height")]
         public double? Height { get; set; }
@@ -1608,14 +1731,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public double? Length { get; set; }
 
         [JsonProperty("unit")]
-        public CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeDimensionsTypeUnitType? Unit { get; set; }
+        public BodyInputPackageWeightAndSizeTypeDimensionsTypeUnitType? Unit { get; set; }
 
         [JsonProperty("width")]
         public double? Width { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeDimensionsTypeUnitType
+    public enum BodyInputPackageWeightAndSizeTypeDimensionsTypeUnitType
     {
         INCH,
         FEET,
@@ -1624,7 +1747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypePackageTypeType
+    public enum BodyInputPackageWeightAndSizeTypePackageTypeType
     {
         LETTER,
         [EnumMember(Value = "BULKY_GOODS")]
@@ -1677,17 +1800,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         WINEPAK
     }
 
-    public class CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeWeightType
+    public class BodyInputPackageWeightAndSizeTypeWeightType
     {
         [JsonProperty("unit")]
-        public CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeWeightTypeUnitType? Unit { get; set; }
+        public BodyInputPackageWeightAndSizeTypeWeightTypeUnitType? Unit { get; set; }
 
         [JsonProperty("value")]
         public double? Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrReplaceInventoryItemInputPackageWeightAndSizeTypeWeightTypeUnitType
+    public enum BodyInputPackageWeightAndSizeTypeWeightTypeUnitType
     {
         POUND,
         KILOGRAM,
@@ -1695,7 +1818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         GRAM
     }
 
-    public class CreateOrReplaceInventoryItemInputProductType
+    public class BodyInputProductType
     {
         [JsonProperty("aspects")]
         public JToken Aspects { get; set; }
@@ -2055,10 +2178,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Open { get; set; }
     }
 
-    public class CreateInventoryLocationInput
+    public class CreateInventoryLocationBodyInput
     {
         [JsonProperty("location")]
-        public CreateInventoryLocationInputLocationType Location { get; set; }
+        public BodyInputLocationType Location { get; set; }
 
         [JsonProperty("locationAdditionalInformation")]
         public string LocationAdditionalInformation { get; set; }
@@ -2067,7 +2190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string LocationInstructions { get; set; }
 
         [JsonProperty("locationTypes")]
-        public CreateInventoryLocationInputLocationTypesTypeItem[] LocationTypes { get; set; }
+        public BodyInputLocationTypesTypeItem[] LocationTypes { get; set; }
 
         [JsonProperty("locationWebUrl")]
         public string LocationWebUrl { get; set; }
@@ -2079,25 +2202,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Name { get; set; }
 
         [JsonProperty("operatingHours")]
-        public CreateInventoryLocationInputOperatingHoursTypeItem[] OperatingHours { get; set; }
+        public BodyInputOperatingHoursTypeItem[] OperatingHours { get; set; }
 
         [JsonProperty("phone")]
         public string Phone { get; set; }
 
         [JsonProperty("specialHours")]
-        public CreateInventoryLocationInputSpecialHoursTypeItem[] SpecialHours { get; set; }
+        public BodyInputSpecialHoursTypeItem[] SpecialHours { get; set; }
     }
 
-    public class CreateInventoryLocationInputLocationType
+    public class BodyInputLocationType
     {
         [JsonProperty("address")]
-        public CreateInventoryLocationInputLocationTypeAddressType Address { get; set; }
+        public BodyInputLocationTypeAddressType Address { get; set; }
 
         [JsonProperty("geoCoordinates")]
-        public CreateInventoryLocationInputLocationTypeGeoCoordinatesType GeoCoordinates { get; set; }
+        public BodyInputLocationTypeGeoCoordinatesType GeoCoordinates { get; set; }
     }
 
-    public class CreateInventoryLocationInputLocationTypeAddressType
+    public class BodyInputLocationTypeAddressType
     {
         [JsonProperty("addressLine1")]
         public string AddressLine1 { get; set; }
@@ -2121,7 +2244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string StateOrProvince { get; set; }
     }
 
-    public class CreateInventoryLocationInputLocationTypeGeoCoordinatesType
+    public class BodyInputLocationTypeGeoCoordinatesType
     {
         [JsonProperty("latitude")]
         public string Latitude { get; set; }
@@ -2131,23 +2254,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateInventoryLocationInputLocationTypesTypeItem
+    public enum BodyInputLocationTypesTypeItem
     {
         STORE,
         WAREHOUSE
     }
 
-    public class CreateInventoryLocationInputOperatingHoursTypeItem
+    public class BodyInputOperatingHoursTypeItem
     {
         [JsonProperty("dayOfWeekEnum")]
-        public CreateInventoryLocationInputOperatingHoursTypeItemDayOfWeekEnumType? DayOfWeekEnum { get; set; }
+        public BodyInputOperatingHoursTypeItemDayOfWeekEnumType? DayOfWeekEnum { get; set; }
 
         [JsonProperty("intervals")]
-        public CreateInventoryLocationInputOperatingHoursTypeItemIntervalsTypeItem[] Intervals { get; set; }
+        public BodyInputOperatingHoursTypeItemIntervalsTypeItem[] Intervals { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateInventoryLocationInputOperatingHoursTypeItemDayOfWeekEnumType
+    public enum BodyInputOperatingHoursTypeItemDayOfWeekEnumType
     {
         MONDAY,
         TUESDAY,
@@ -2159,7 +2282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         SUNDAY
     }
 
-    public class CreateInventoryLocationInputOperatingHoursTypeItemIntervalsTypeItem
+    public class BodyInputOperatingHoursTypeItemIntervalsTypeItem
     {
         [JsonProperty("close")]
         public string Close { get; set; }
@@ -2168,16 +2291,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Open { get; set; }
     }
 
-    public class CreateInventoryLocationInputSpecialHoursTypeItem
+    public class BodyInputSpecialHoursTypeItem
     {
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("intervals")]
-        public CreateInventoryLocationInputSpecialHoursTypeItemIntervalsTypeItem[] Intervals { get; set; }
+        public BodyInputSpecialHoursTypeItemIntervalsTypeItem[] Intervals { get; set; }
     }
 
-    public class CreateInventoryLocationInputSpecialHoursTypeItemIntervalsTypeItem
+    public class BodyInputSpecialHoursTypeItemIntervalsTypeItem
     {
         [JsonProperty("close")]
         public string Close { get; set; }
@@ -2765,7 +2888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOfferInput
+    public class CreateOfferBodyInput
     {
         [JsonProperty("availableQuantity")]
         public int? AvailableQuantity { get; set; }
@@ -2774,13 +2897,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string CategoryId { get; set; }
 
         [JsonProperty("charity")]
-        public CreateOfferInputCharityType Charity { get; set; }
+        public BodyInputCharityType Charity { get; set; }
 
         [JsonProperty("extendedProducerResponsibility")]
-        public CreateOfferInputExtendedProducerResponsibilityType ExtendedProducerResponsibility { get; set; }
+        public BodyInputExtendedProducerResponsibilityType ExtendedProducerResponsibility { get; set; }
 
         [JsonProperty("format")]
-        public CreateOfferInputFormatType? Format { get; set; }
+        public BodyInputFormatType? Format { get; set; }
 
         [JsonProperty("hideBuyerDetails")]
         public bool? HideBuyerDetails { get; set; }
@@ -2792,10 +2915,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string ListingDescription { get; set; }
 
         [JsonProperty("listingDuration")]
-        public CreateOfferInputListingDurationType? ListingDuration { get; set; }
+        public BodyInputListingDurationType? ListingDuration { get; set; }
 
         [JsonProperty("listingPolicies")]
-        public CreateOfferInputListingPoliciesType ListingPolicies { get; set; }
+        public BodyInputListingPoliciesType ListingPolicies { get; set; }
 
         [JsonProperty("listingStartDate")]
         public string ListingStartDate { get; set; }
@@ -2810,7 +2933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string MerchantLocationKey { get; set; }
 
         [JsonProperty("pricingSummary")]
-        public CreateOfferInputPricingSummaryType PricingSummary { get; set; }
+        public BodyInputPricingSummaryType PricingSummary { get; set; }
 
         [JsonProperty("quantityLimitPerBuyer")]
         public int? QuantityLimitPerBuyer { get; set; }
@@ -2825,10 +2948,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string[] StoreCategoryNames { get; set; }
 
         [JsonProperty("tax")]
-        public CreateOfferInputTaxType Tax { get; set; }
+        public BodyInputTaxType Tax { get; set; }
     }
 
-    public class CreateOfferInputCharityType
+    public class BodyInputCharityType
     {
         [JsonProperty("charityId")]
         public string CharityId { get; set; }
@@ -2837,7 +2960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string DonationPercentage { get; set; }
     }
 
-    public class CreateOfferInputExtendedProducerResponsibilityType
+    public class BodyInputExtendedProducerResponsibilityType
     {
         [JsonProperty("producerProductId")]
         public string ProducerProductId { get; set; }
@@ -2852,10 +2975,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string ProductDocumentationId { get; set; }
 
         [JsonProperty("ecoParticipationFee")]
-        public CreateOfferInputExtendedProducerResponsibilityTypeEcoParticipationFeeType EcoParticipationFee { get; set; }
+        public BodyInputExtendedProducerResponsibilityTypeEcoParticipationFeeType EcoParticipationFee { get; set; }
     }
 
-    public class CreateOfferInputExtendedProducerResponsibilityTypeEcoParticipationFeeType
+    public class BodyInputExtendedProducerResponsibilityTypeEcoParticipationFeeType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -2865,7 +2988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOfferInputFormatType
+    public enum BodyInputFormatType
     {
         AUCTION,
         [EnumMember(Value = "FIXED_PRICE")]
@@ -2873,7 +2996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOfferInputListingDurationType
+    public enum BodyInputListingDurationType
     {
         [EnumMember(Value = "DAYS_1")]
         DAYS1,
@@ -2892,10 +3015,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         GTC
     }
 
-    public class CreateOfferInputListingPoliciesType
+    public class BodyInputListingPoliciesType
     {
         [JsonProperty("bestOfferTerms")]
-        public CreateOfferInputListingPoliciesTypeBestOfferTermsType BestOfferTerms { get; set; }
+        public BodyInputListingPoliciesTypeBestOfferTermsType BestOfferTerms { get; set; }
 
         [JsonProperty("eBayPlusIfEligible")]
         public bool? EBayPlusIfEligible { get; set; }
@@ -2913,25 +3036,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string ReturnPolicyId { get; set; }
 
         [JsonProperty("shippingCostOverrides")]
-        public CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItem[] ShippingCostOverrides { get; set; }
+        public BodyInputListingPoliciesTypeShippingCostOverridesTypeItem[] ShippingCostOverrides { get; set; }
 
         [JsonProperty("takeBackPolicyId")]
         public string TakeBackPolicyId { get; set; }
     }
 
-    public class CreateOfferInputListingPoliciesTypeBestOfferTermsType
+    public class BodyInputListingPoliciesTypeBestOfferTermsType
     {
         [JsonProperty("autoAcceptPrice")]
-        public CreateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoAcceptPriceType AutoAcceptPrice { get; set; }
+        public BodyInputListingPoliciesTypeBestOfferTermsTypeAutoAcceptPriceType AutoAcceptPrice { get; set; }
 
         [JsonProperty("autoDeclinePrice")]
-        public CreateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoDeclinePriceType AutoDeclinePrice { get; set; }
+        public BodyInputListingPoliciesTypeBestOfferTermsTypeAutoDeclinePriceType AutoDeclinePrice { get; set; }
 
         [JsonProperty("bestOfferEnabled")]
         public bool? BestOfferEnabled { get; set; }
     }
 
-    public class CreateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoAcceptPriceType
+    public class BodyInputListingPoliciesTypeBestOfferTermsTypeAutoAcceptPriceType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -2940,7 +3063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoDeclinePriceType
+    public class BodyInputListingPoliciesTypeBestOfferTermsTypeAutoDeclinePriceType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -2949,22 +3072,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItem
+    public class BodyInputListingPoliciesTypeShippingCostOverridesTypeItem
     {
         [JsonProperty("additionalShippingCost")]
-        public CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemAdditionalShippingCostType AdditionalShippingCost { get; set; }
+        public BodyInputListingPoliciesTypeShippingCostOverridesTypeItemAdditionalShippingCostType AdditionalShippingCost { get; set; }
 
         [JsonProperty("priority")]
         public int? Priority { get; set; }
 
         [JsonProperty("shippingCost")]
-        public CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingCostType ShippingCost { get; set; }
+        public BodyInputListingPoliciesTypeShippingCostOverridesTypeItemShippingCostType ShippingCost { get; set; }
 
         [JsonProperty("shippingServiceType")]
-        public CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingServiceTypeType? ShippingServiceType { get; set; }
+        public BodyInputListingPoliciesTypeShippingCostOverridesTypeItemShippingServiceTypeType? ShippingServiceType { get; set; }
     }
 
-    public class CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemAdditionalShippingCostType
+    public class BodyInputListingPoliciesTypeShippingCostOverridesTypeItemAdditionalShippingCostType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -2973,7 +3096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingCostType
+    public class BodyInputListingPoliciesTypeShippingCostOverridesTypeItemShippingCostType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -2983,37 +3106,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingServiceTypeType
+    public enum BodyInputListingPoliciesTypeShippingCostOverridesTypeItemShippingServiceTypeType
     {
         DOMESTIC,
         INTERNATIONAL
     }
 
-    public class CreateOfferInputPricingSummaryType
+    public class BodyInputPricingSummaryType
     {
         [JsonProperty("auctionReservePrice")]
-        public CreateOfferInputPricingSummaryTypeAuctionReservePriceType AuctionReservePrice { get; set; }
+        public BodyInputPricingSummaryTypeAuctionReservePriceType AuctionReservePrice { get; set; }
 
         [JsonProperty("auctionStartPrice")]
-        public CreateOfferInputPricingSummaryTypeAuctionStartPriceType AuctionStartPrice { get; set; }
+        public BodyInputPricingSummaryTypeAuctionStartPriceType AuctionStartPrice { get; set; }
 
         [JsonProperty("minimumAdvertisedPrice")]
-        public CreateOfferInputPricingSummaryTypeMinimumAdvertisedPriceType MinimumAdvertisedPrice { get; set; }
+        public BodyInputPricingSummaryTypeMinimumAdvertisedPriceType MinimumAdvertisedPrice { get; set; }
 
         [JsonProperty("originallySoldForRetailPriceOn")]
-        public CreateOfferInputPricingSummaryTypeOriginallySoldForRetailPriceOnType? OriginallySoldForRetailPriceOn { get; set; }
+        public BodyInputPricingSummaryTypeOriginallySoldForRetailPriceOnType? OriginallySoldForRetailPriceOn { get; set; }
 
         [JsonProperty("originalRetailPrice")]
-        public CreateOfferInputPricingSummaryTypeOriginalRetailPriceType OriginalRetailPrice { get; set; }
+        public BodyInputPricingSummaryTypeOriginalRetailPriceType OriginalRetailPrice { get; set; }
 
         [JsonProperty("price")]
-        public CreateOfferInputPricingSummaryTypePriceType Price { get; set; }
+        public BodyInputPricingSummaryTypePriceType Price { get; set; }
 
         [JsonProperty("pricingVisibility")]
-        public CreateOfferInputPricingSummaryTypePricingVisibilityType? PricingVisibility { get; set; }
+        public BodyInputPricingSummaryTypePricingVisibilityType? PricingVisibility { get; set; }
     }
 
-    public class CreateOfferInputPricingSummaryTypeAuctionReservePriceType
+    public class BodyInputPricingSummaryTypeAuctionReservePriceType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -3022,7 +3145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOfferInputPricingSummaryTypeAuctionStartPriceType
+    public class BodyInputPricingSummaryTypeAuctionStartPriceType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -3031,7 +3154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOfferInputPricingSummaryTypeMinimumAdvertisedPriceType
+    public class BodyInputPricingSummaryTypeMinimumAdvertisedPriceType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -3041,7 +3164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOfferInputPricingSummaryTypeOriginallySoldForRetailPriceOnType
+    public enum BodyInputPricingSummaryTypeOriginallySoldForRetailPriceOnType
     {
         [EnumMember(Value = "ON_EBAY")]
         ONEBAY,
@@ -3051,7 +3174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         ONANDOFFEBAY
     }
 
-    public class CreateOfferInputPricingSummaryTypeOriginalRetailPriceType
+    public class BodyInputPricingSummaryTypeOriginalRetailPriceType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -3060,7 +3183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class CreateOfferInputPricingSummaryTypePriceType
+    public class BodyInputPricingSummaryTypePriceType
     {
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -3070,7 +3193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOfferInputPricingSummaryTypePricingVisibilityType
+    public enum BodyInputPricingSummaryTypePricingVisibilityType
     {
         NONE,
         [EnumMember(Value = "PRE_CHECKOUT")]
@@ -3079,7 +3202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         DURINGCHECKOUT
     }
 
-    public class CreateOfferInputTaxType
+    public class BodyInputTaxType
     {
         [JsonProperty("applyTax")]
         public bool? ApplyTax { get; set; }
@@ -3430,7 +3553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
-    public class UpdateOfferInput
+    public class UpdateOfferBodyInput
     {
         [JsonProperty("availableQuantity")]
         public int? AvailableQuantity { get; set; }
@@ -3439,10 +3562,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string CategoryId { get; set; }
 
         [JsonProperty("charity")]
-        public UpdateOfferInputCharityType Charity { get; set; }
+        public BodyInputCharityType Charity { get; set; }
 
         [JsonProperty("extendedProducerResponsibility")]
-        public UpdateOfferInputExtendedProducerResponsibilityType ExtendedProducerResponsibility { get; set; }
+        public BodyInputExtendedProducerResponsibilityType ExtendedProducerResponsibility { get; set; }
 
         [JsonProperty("hideBuyerDetails")]
         public bool? HideBuyerDetails { get; set; }
@@ -3454,10 +3577,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string ListingDescription { get; set; }
 
         [JsonProperty("listingDuration")]
-        public UpdateOfferInputListingDurationType? ListingDuration { get; set; }
+        public BodyInputListingDurationType? ListingDuration { get; set; }
 
         [JsonProperty("listingPolicies")]
-        public UpdateOfferInputListingPoliciesType ListingPolicies { get; set; }
+        public BodyInputListingPoliciesType ListingPolicies { get; set; }
 
         [JsonProperty("listingStartDate")]
         public string ListingStartDate { get; set; }
@@ -3469,7 +3592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string MerchantLocationKey { get; set; }
 
         [JsonProperty("pricingSummary")]
-        public UpdateOfferInputPricingSummaryType PricingSummary { get; set; }
+        public BodyInputPricingSummaryType PricingSummary { get; set; }
 
         [JsonProperty("quantityLimitPerBuyer")]
         public int? QuantityLimitPerBuyer { get; set; }
@@ -3481,262 +3604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string[] StoreCategoryNames { get; set; }
 
         [JsonProperty("tax")]
-        public UpdateOfferInputTaxType Tax { get; set; }
-    }
-
-    public class UpdateOfferInputCharityType
-    {
-        [JsonProperty("charityId")]
-        public string CharityId { get; set; }
-
-        [JsonProperty("donationPercentage")]
-        public string DonationPercentage { get; set; }
-    }
-
-    public class UpdateOfferInputExtendedProducerResponsibilityType
-    {
-        [JsonProperty("producerProductId")]
-        public string ProducerProductId { get; set; }
-
-        [JsonProperty("productPackageId")]
-        public string ProductPackageId { get; set; }
-
-        [JsonProperty("shipmentPackageId")]
-        public string ShipmentPackageId { get; set; }
-
-        [JsonProperty("productDocumentationId")]
-        public string ProductDocumentationId { get; set; }
-
-        [JsonProperty("ecoParticipationFee")]
-        public UpdateOfferInputExtendedProducerResponsibilityTypeEcoParticipationFeeType EcoParticipationFee { get; set; }
-    }
-
-    public class UpdateOfferInputExtendedProducerResponsibilityTypeEcoParticipationFeeType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOfferInputListingDurationType
-    {
-        [EnumMember(Value = "DAYS_1")]
-        DAYS1,
-        [EnumMember(Value = "DAYS_3")]
-        DAYS3,
-        [EnumMember(Value = "DAYS_5")]
-        DAYS5,
-        [EnumMember(Value = "DAYS_7")]
-        DAYS7,
-        [EnumMember(Value = "DAYS_10")]
-        DAYS10,
-        [EnumMember(Value = "DAYS_21")]
-        DAYS21,
-        [EnumMember(Value = "DAYS_30")]
-        DAYS30,
-        GTC
-    }
-
-    public class UpdateOfferInputListingPoliciesType
-    {
-        [JsonProperty("bestOfferTerms")]
-        public UpdateOfferInputListingPoliciesTypeBestOfferTermsType BestOfferTerms { get; set; }
-
-        [JsonProperty("eBayPlusIfEligible")]
-        public bool? EBayPlusIfEligible { get; set; }
-
-        [JsonProperty("fulfillmentPolicyId")]
-        public string FulfillmentPolicyId { get; set; }
-
-        [JsonProperty("paymentPolicyId")]
-        public string PaymentPolicyId { get; set; }
-
-        [JsonProperty("productCompliancePolicyIds")]
-        public string[] ProductCompliancePolicyIds { get; set; }
-
-        [JsonProperty("returnPolicyId")]
-        public string ReturnPolicyId { get; set; }
-
-        [JsonProperty("shippingCostOverrides")]
-        public UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItem[] ShippingCostOverrides { get; set; }
-
-        [JsonProperty("takeBackPolicyId")]
-        public string TakeBackPolicyId { get; set; }
-    }
-
-    public class UpdateOfferInputListingPoliciesTypeBestOfferTermsType
-    {
-        [JsonProperty("autoAcceptPrice")]
-        public UpdateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoAcceptPriceType AutoAcceptPrice { get; set; }
-
-        [JsonProperty("autoDeclinePrice")]
-        public UpdateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoDeclinePriceType AutoDeclinePrice { get; set; }
-
-        [JsonProperty("bestOfferEnabled")]
-        public bool? BestOfferEnabled { get; set; }
-    }
-
-    public class UpdateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoAcceptPriceType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateOfferInputListingPoliciesTypeBestOfferTermsTypeAutoDeclinePriceType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItem
-    {
-        [JsonProperty("additionalShippingCost")]
-        public UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemAdditionalShippingCostType AdditionalShippingCost { get; set; }
-
-        [JsonProperty("priority")]
-        public int? Priority { get; set; }
-
-        [JsonProperty("shippingCost")]
-        public UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingCostType ShippingCost { get; set; }
-
-        [JsonProperty("shippingServiceType")]
-        public UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingServiceTypeType? ShippingServiceType { get; set; }
-    }
-
-    public class UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemAdditionalShippingCostType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingCostType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOfferInputListingPoliciesTypeShippingCostOverridesTypeItemShippingServiceTypeType
-    {
-        DOMESTIC,
-        INTERNATIONAL
-    }
-
-    public class UpdateOfferInputPricingSummaryType
-    {
-        [JsonProperty("auctionReservePrice")]
-        public UpdateOfferInputPricingSummaryTypeAuctionReservePriceType AuctionReservePrice { get; set; }
-
-        [JsonProperty("auctionStartPrice")]
-        public UpdateOfferInputPricingSummaryTypeAuctionStartPriceType AuctionStartPrice { get; set; }
-
-        [JsonProperty("minimumAdvertisedPrice")]
-        public UpdateOfferInputPricingSummaryTypeMinimumAdvertisedPriceType MinimumAdvertisedPrice { get; set; }
-
-        [JsonProperty("originallySoldForRetailPriceOn")]
-        public UpdateOfferInputPricingSummaryTypeOriginallySoldForRetailPriceOnType? OriginallySoldForRetailPriceOn { get; set; }
-
-        [JsonProperty("originalRetailPrice")]
-        public UpdateOfferInputPricingSummaryTypeOriginalRetailPriceType OriginalRetailPrice { get; set; }
-
-        [JsonProperty("price")]
-        public UpdateOfferInputPricingSummaryTypePriceType Price { get; set; }
-
-        [JsonProperty("pricingVisibility")]
-        public UpdateOfferInputPricingSummaryTypePricingVisibilityType? PricingVisibility { get; set; }
-    }
-
-    public class UpdateOfferInputPricingSummaryTypeAuctionReservePriceType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateOfferInputPricingSummaryTypeAuctionStartPriceType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateOfferInputPricingSummaryTypeMinimumAdvertisedPriceType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOfferInputPricingSummaryTypeOriginallySoldForRetailPriceOnType
-    {
-        [EnumMember(Value = "ON_EBAY")]
-        ONEBAY,
-        [EnumMember(Value = "OFF_EBAY")]
-        OFFEBAY,
-        [EnumMember(Value = "ON_AND_OFF_EBAY")]
-        ONANDOFFEBAY
-    }
-
-    public class UpdateOfferInputPricingSummaryTypeOriginalRetailPriceType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateOfferInputPricingSummaryTypePriceType
-    {
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOfferInputPricingSummaryTypePricingVisibilityType
-    {
-        NONE,
-        [EnumMember(Value = "PRE_CHECKOUT")]
-        PRECHECKOUT,
-        [EnumMember(Value = "DURING_CHECKOUT")]
-        DURINGCHECKOUT
-    }
-
-    public class UpdateOfferInputTaxType
-    {
-        [JsonProperty("applyTax")]
-        public bool? ApplyTax { get; set; }
-
-        [JsonProperty("thirdPartyTaxCategory")]
-        public string ThirdPartyTaxCategory { get; set; }
-
-        [JsonProperty("vatPercentage")]
-        public double? VatPercentage { get; set; }
+        public BodyInputTaxType Tax { get; set; }
     }
 
     public class WithdrawOfferResponse

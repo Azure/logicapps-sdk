@@ -13,32 +13,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     public class KagiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SummarizePostResponse, ApiConnectionActionConfiguration> Summarize(Expression<Func<SummarizePostInput>> body = null)
+        public IBodyWorkflowAction<SummarizeResponse, ApiConnectionActionConfiguration> Summarize(Expression<Func<SummarizeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SummarizePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SummarizeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/summarize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SummarizePostResponse>(callPayload);
+                return new ApiConnectionAction<SummarizeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<FastGPTPostResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<FastGPTPostInput>> body = null)
+        public IBodyWorkflowAction<FastGPTResponse, ApiConnectionActionConfiguration> FastGPT(Expression<Func<FastGPTBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<FastGPTPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FastGPTResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v0/fastgpt";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FastGPTPostResponse>(callPayload);
+                return new ApiConnectionAction<FastGPTResponse>(callPayload);
             });
         }
 
@@ -107,19 +107,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     {
     }
 
-    public class SummarizePostResponse
+    public class SummarizeResponse
     {
         [JsonProperty("meta")]
-        public SummarizePostResponseMetaType Meta { get; set; }
+        public SummarizeResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public SummarizePostResponseDataTypeItem[] Data { get; set; }
+        public SummarizeResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("error")]
-        public SummarizePostResponseErrorTypeItem[] Error { get; set; }
+        public SummarizeResponseErrorTypeItem[] Error { get; set; }
     }
 
-    public class SummarizePostResponseMetaType
+    public class SummarizeResponseMetaType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public double ApiBalance { get; set; }
     }
 
-    public class SummarizePostResponseDataTypeItem
+    public class SummarizeResponseDataTypeItem
     {
         [JsonProperty("t")]
         public int T { get; set; }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Snippet { get; set; }
     }
 
-    public class SummarizePostResponseErrorTypeItem
+    public class SummarizeResponseErrorTypeItem
     {
         [JsonProperty("code")]
         public int Code { get; set; }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Ref { get; set; }
     }
 
-    public class SummarizePostInput
+    public class SummarizeBodyInput
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -170,20 +170,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Text { get; set; }
 
         [JsonProperty("engine", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SummarizePostInputEngineType? Engine { get; set; } = SummarizePostInputEngineType.Cecil;
+        public BodyInputEngineType? Engine { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Kagi.BodyInputEngineType.Cecil;
 
         [JsonProperty("summary_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SummarizePostInputSummaryTypeType? SummaryType { get; set; } = SummarizePostInputSummaryTypeType.Summary;
+        public BodyInputSummaryTypeType? SummaryType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Kagi.BodyInputSummaryTypeType.Summary;
 
         [JsonProperty("target_language")]
-        public SummarizePostInputTargetLanguageType? TargetLanguage { get; set; }
+        public BodyInputTargetLanguageType? TargetLanguage { get; set; }
 
         [JsonProperty("cache")]
         public bool? Cache { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SummarizePostInputEngineType
+    public enum BodyInputEngineType
     {
         [EnumMember(Value = "cecil")]
         Cecil,
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SummarizePostInputSummaryTypeType
+    public enum BodyInputSummaryTypeType
     {
         [EnumMember(Value = "summary")]
         Summary,
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SummarizePostInputTargetLanguageType
+    public enum BodyInputTargetLanguageType
     {
         BG,
         CS,
@@ -241,16 +241,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         ZHHANT
     }
 
-    public class FastGPTPostResponse
+    public class FastGPTResponse
     {
         [JsonProperty("meta")]
-        public FastGPTPostResponseMetaType Meta { get; set; }
+        public FastGPTResponseMetaType Meta { get; set; }
 
         [JsonProperty("data")]
-        public FastGPTPostResponseDataType Data { get; set; }
+        public FastGPTResponseDataType Data { get; set; }
     }
 
-    public class FastGPTPostResponseMetaType
+    public class FastGPTResponseMetaType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public int Ms { get; set; }
     }
 
-    public class FastGPTPostResponseDataType
+    public class FastGPTResponseDataType
     {
         [JsonProperty("output")]
         public string Output { get; set; }
@@ -271,10 +271,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public int Tokens { get; set; }
 
         [JsonProperty("references")]
-        public FastGPTPostResponseDataTypeReferencesTypeItem[] References { get; set; }
+        public FastGPTResponseDataTypeReferencesTypeItem[] References { get; set; }
     }
 
-    public class FastGPTPostResponseDataTypeReferencesTypeItem
+    public class FastGPTResponseDataTypeReferencesTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Url { get; set; }
     }
 
-    public class FastGPTPostInput
+    public class FastGPTBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }

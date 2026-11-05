@@ -31,15 +31,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 
     public class NitroTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Error, ApiConnectionTriggerConfiguration> WebhookDocumentSignedTrigger(Expression<Func<WebhookDocumentSignedTriggerV2Input>> request, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Error, ApiConnectionTriggerConfiguration> WebhookDocumentSignedTrigger(FlowRecurrence recurrence = null)
         {
-            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyTrigger<Error, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
+                callPayload.Body = new RequestInput().ToJToken();
                 return new ApiConnectionTrigger<Error>(callPayload, recurrence: recurrence);
             });
         }
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
         public string Message { get; set; }
     }
 
-    public class WebhookDocumentSignedTriggerV2Input
+    public class RequestInput
     {
         [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Endpoint { get; set; } = "#{listCallbackUrl()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
     public class ApppowerformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddForm(Expression<Func<AddFormInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddForm(Expression<Func<AddFormBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddFormField(Expression<Func<AddFormFieldInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddFormField(Expression<Func<AddFormFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddAdaptiveCard(Expression<Func<AddAdaptiveCardInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddAdaptiveCard(Expression<Func<AddAdaptiveCardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         }
     }
 
-    public class AddFormInput
+    public class AddFormBodyInput
     {
         [JsonProperty("formTitle", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormName { get; set; }
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         public string ThankYouText { get; set; }
     }
 
-    public class AddFormFieldInput
+    public class AddFormFieldBodyInput
     {
         [JsonProperty("instanceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormId { get; set; }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
         public JToken FieldConfiguration { get; set; }
     }
 
-    public class AddAdaptiveCardInput
+    public class AddAdaptiveCardBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

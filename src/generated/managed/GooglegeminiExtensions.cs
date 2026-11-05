@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
     public class GooglegeminiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateTextContentResponse, ApiConnectionActionConfiguration> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateTextContentInput>> body)
+        public IBodyWorkflowAction<GenerateTextContentResponse, ApiConnectionActionConfiguration> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateTextContentBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateStreamContentResponseItem[], ApiConnectionActionConfiguration> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateStreamContentInput>> body)
+        public IBodyWorkflowAction<GenerateStreamContentResponseItem[], ApiConnectionActionConfiguration> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateStreamContentBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateMultiModalContentResponse, ApiConnectionActionConfiguration> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateMultiModalContentInput>> body)
+        public IBodyWorkflowAction<GenerateMultiModalContentResponse, ApiConnectionActionConfiguration> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateMultiModalContentBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<CountTokensResponse, ApiConnectionActionConfiguration> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<CountTokensInput>> body)
+        public IBodyWorkflowAction<CountTokensResponse, ApiConnectionActionConfiguration> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<CountTokensBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateEmbeddingResponse, ApiConnectionActionConfiguration> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateEmbeddingInput>> body)
+        public IBodyWorkflowAction<GenerateEmbeddingResponse, ApiConnectionActionConfiguration> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<GenerateEmbeddingBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<BatchEmbedContentsResponse, ApiConnectionActionConfiguration> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<BatchEmbedContentsInput>> body)
+        public IBodyWorkflowAction<BatchEmbedContentsResponse, ApiConnectionActionConfiguration> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<BatchEmbedContentsBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
@@ -200,34 +200,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public string Probability { get; set; }
     }
 
-    public class GenerateTextContentInput
+    public class GenerateTextContentBodyInput
     {
         [JsonProperty("contents")]
-        public GenerateTextContentInputContentsTypeItem[] Contents { get; set; }
+        public GenerateTextContentBodyInputContentsTypeItem[] Contents { get; set; }
 
         [JsonProperty("safetySettings")]
-        public GenerateTextContentInputSafetySettingsTypeItem[] SafetySettings { get; set; }
+        public BodyInputSafetySettingsTypeItem[] SafetySettings { get; set; }
 
         [JsonProperty("generationConfig")]
-        public GenerateTextContentInputGenerationConfigType GenerationConfig { get; set; }
+        public GenerateStreamContentBodyInputGenerationConfigType GenerationConfig { get; set; }
     }
 
-    public class GenerateTextContentInputContentsTypeItem
+    public class GenerateTextContentBodyInputContentsTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; } = "user";
 
         [JsonProperty("parts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateTextContentInputContentsTypeItemPartsTypeItem[] Parts { get; set; }
+        public GenerateTextContentBodyInputContentsTypeItemPartsTypeItem[] Parts { get; set; }
     }
 
-    public class GenerateTextContentInputContentsTypeItemPartsTypeItem
+    public class GenerateTextContentBodyInputContentsTypeItemPartsTypeItem
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
 
-    public class GenerateTextContentInputSafetySettingsTypeItem
+    public class BodyInputSafetySettingsTypeItem
     {
         [JsonProperty("category")]
         public string Category { get; set; }
@@ -236,13 +236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public string Threshold { get; set; }
     }
 
-    public class GenerateTextContentInputGenerationConfigType
+    public class GenerateStreamContentBodyInputGenerationConfigType
     {
-        [JsonProperty("maxOutputTokens")]
-        public int? MaxOutputTokens { get; set; }
-
         [JsonProperty("temperature")]
         public double? Temperature { get; set; }
+
+        [JsonProperty("maxOutputTokens")]
+        public int? MaxOutputTokens { get; set; }
 
         [JsonProperty("topP")]
         public double? TopP { get; set; }
@@ -320,61 +320,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public string Probability { get; set; }
     }
 
-    public class GenerateStreamContentInput
+    public class GenerateStreamContentBodyInput
     {
         [JsonProperty("contents")]
-        public GenerateStreamContentInputContentsTypeItem[] Contents { get; set; }
+        public GenerateStreamContentBodyInputContentsTypeItem[] Contents { get; set; }
 
         [JsonProperty("safetySettings")]
-        public GenerateStreamContentInputSafetySettingsTypeItem[] SafetySettings { get; set; }
+        public BodyInputSafetySettingsTypeItem[] SafetySettings { get; set; }
 
         [JsonProperty("generationConfig")]
-        public GenerateStreamContentInputGenerationConfigType GenerationConfig { get; set; }
+        public GenerateStreamContentBodyInputGenerationConfigType GenerationConfig { get; set; }
     }
 
-    public class GenerateStreamContentInputContentsTypeItem
+    public class GenerateStreamContentBodyInputContentsTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; } = "user";
 
         [JsonProperty("parts")]
-        public GenerateStreamContentInputContentsTypeItemPartsTypeItem[] Parts { get; set; }
+        public CountTokensBodyInputContentsTypeItemPartsTypeItem[] Parts { get; set; }
     }
 
-    public class GenerateStreamContentInputContentsTypeItemPartsTypeItem
+    public class CountTokensBodyInputContentsTypeItemPartsTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
-    }
-
-    public class GenerateStreamContentInputSafetySettingsTypeItem
-    {
-        [JsonProperty("category")]
-        public string Category { get; set; }
-
-        [JsonProperty("threshold")]
-        public string Threshold { get; set; }
-    }
-
-    public class GenerateStreamContentInputGenerationConfigType
-    {
-        [JsonProperty("temperature")]
-        public double? Temperature { get; set; }
-
-        [JsonProperty("maxOutputTokens")]
-        public int? MaxOutputTokens { get; set; }
-
-        [JsonProperty("topP")]
-        public double? TopP { get; set; }
-
-        [JsonProperty("topK")]
-        public int? TopK { get; set; }
-
-        [JsonProperty("candidateCount")]
-        public int? CandidateCount { get; set; }
-
-        [JsonProperty("stopSequences")]
-        public string[] StopSequences { get; set; }
     }
 
     public class GenerateMultiModalContentResponse
@@ -431,19 +401,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public string Probability { get; set; }
     }
 
-    public class GenerateMultiModalContentInput
+    public class GenerateMultiModalContentBodyInput
     {
         [JsonProperty("contents")]
-        public GenerateMultiModalContentInputContentsTypeItem[] Contents { get; set; }
+        public GenerateMultiModalContentBodyInputContentsTypeItem[] Contents { get; set; }
 
         [JsonProperty("safetySettings")]
-        public GenerateMultiModalContentInputSafetySettingsTypeItem[] SafetySettings { get; set; }
+        public BodyInputSafetySettingsTypeItem[] SafetySettings { get; set; }
 
         [JsonProperty("generationConfig")]
-        public GenerateMultiModalContentInputGenerationConfigType GenerationConfig { get; set; }
+        public GenerateMultiModalContentBodyInputGenerationConfigType GenerationConfig { get; set; }
     }
 
-    public class GenerateMultiModalContentInputContentsTypeItem
+    public class GenerateMultiModalContentBodyInputContentsTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Role { get; set; } = "user";
@@ -452,16 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public JToken[] Parts { get; set; }
     }
 
-    public class GenerateMultiModalContentInputSafetySettingsTypeItem
-    {
-        [JsonProperty("category")]
-        public string Category { get; set; }
-
-        [JsonProperty("threshold")]
-        public string Threshold { get; set; }
-    }
-
-    public class GenerateMultiModalContentInputGenerationConfigType
+    public class GenerateMultiModalContentBodyInputGenerationConfigType
     {
         [JsonProperty("maxOutputTokens")]
         public int? MaxOutputTokens { get; set; }
@@ -485,22 +446,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public int TotalTokens { get; set; }
     }
 
-    public class CountTokensInput
+    public class CountTokensBodyInput
     {
         [JsonProperty("contents")]
-        public CountTokensInputContentsTypeItem[] Contents { get; set; }
+        public CountTokensBodyInputContentsTypeItem[] Contents { get; set; }
     }
 
-    public class CountTokensInputContentsTypeItem
+    public class CountTokensBodyInputContentsTypeItem
     {
         [JsonProperty("parts")]
-        public CountTokensInputContentsTypeItemPartsTypeItem[] Parts { get; set; }
-    }
-
-    public class CountTokensInputContentsTypeItemPartsTypeItem
-    {
-        [JsonProperty("text")]
-        public string Text { get; set; }
+        public CountTokensBodyInputContentsTypeItemPartsTypeItem[] Parts { get; set; }
     }
 
     public class GetAllModelsResponse
@@ -587,35 +542,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public double[] Values { get; set; }
     }
 
-    public class GenerateEmbeddingInput
+    public class GenerateEmbeddingBodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ModelResourceName { get; set; } = "models/embedding-001";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateEmbeddingInputContentType Content { get; set; }
+        public BodyInputContentType Content { get; set; }
 
         [JsonProperty("taskType")]
-        public GenerateEmbeddingInputTaskTypeType? TaskType { get; set; }
+        public BodyInputTaskTypeType? TaskType { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
     }
 
-    public class GenerateEmbeddingInputContentType
+    public class BodyInputContentType
     {
         [JsonProperty("parts")]
-        public GenerateEmbeddingInputContentTypePartsTypeItem[] Parts { get; set; }
+        public BodyInputContentTypePartsTypeItem[] Parts { get; set; }
     }
 
-    public class GenerateEmbeddingInputContentTypePartsTypeItem
+    public class BodyInputContentTypePartsTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerateEmbeddingInputTaskTypeType
+    public enum BodyInputTaskTypeType
     {
         [EnumMember(Value = "RETRIEVAL_QUERY")]
         RETRIEVALQUERY,
@@ -641,28 +596,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public double[] Values { get; set; }
     }
 
-    public class BatchEmbedContentsInput
+    public class BatchEmbedContentsBodyInput
     {
         [JsonProperty("requests", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BatchEmbedContentsInputRequestsTypeItem[] Requests { get; set; }
+        public BodyInputRequestsTypeItem[] Requests { get; set; }
     }
 
-    public class BatchEmbedContentsInputRequestsTypeItem
+    public class BodyInputRequestsTypeItem
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Model { get; set; } = "models/embedding-001";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BatchEmbedContentsInputRequestsTypeItemContentType Content { get; set; }
+        public BodyInputRequestsTypeItemContentType Content { get; set; }
     }
 
-    public class BatchEmbedContentsInputRequestsTypeItemContentType
+    public class BodyInputRequestsTypeItemContentType
     {
         [JsonProperty("parts")]
-        public BatchEmbedContentsInputRequestsTypeItemContentTypePartsTypeItem[] Parts { get; set; }
+        public BodyInputRequestsTypeItemContentTypePartsTypeItem[] Parts { get; set; }
     }
 
-    public class BatchEmbedContentsInputRequestsTypeItemContentTypePartsTypeItem
+    public class BodyInputRequestsTypeItemContentTypePartsTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }

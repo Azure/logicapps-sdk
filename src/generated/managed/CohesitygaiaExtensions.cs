@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
-        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> SendQuery(Expression<Func<SendQueryInput>> body)
+        public IBodyWorkflowAction<QueryResponse, ApiConnectionActionConfiguration> SendQuery(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryResponse, ApiConnectionActionConfiguration>(() =>
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         public string RegionId { get; set; }
     }
 
-    public class SendQueryInput
+    public class BodyInput
     {
         [JsonProperty("llmName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LlmName { get; set; }

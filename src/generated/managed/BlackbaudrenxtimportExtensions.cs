@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
     public class BlackbaudrenxtimportActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IBodyWorkflowAction<ImportApiImportJobSummaryCollection, ApiConnectionActionConfiguration> ListImportJobs(Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<string>> continuationToken = null)
+        public IBodyWorkflowAction<ImportApiImportJobSummaryCollection, ApiConnectionActionConfiguration> ListImportJobs(Expression<Func<StatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<string>> continuationToken = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IBodyWorkflowAction<ImportApiCreateImportJobResponse, ApiConnectionActionConfiguration> CreateImportJob(Expression<Func<CreateImportJobInput>> body)
+        public IBodyWorkflowAction<ImportApiCreateImportJobResponse, ApiConnectionActionConfiguration> CreateImportJob(Expression<Func<CreateImportJobBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImportApiCreateImportJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditImportJob(Expression<Func<string>> jobId, Expression<Func<EditImportJobInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditImportJob(Expression<Func<string>> jobId, Expression<Func<EditImportJobBodyInput>> body)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IBodyWorkflowAction<ImportApiStartImportJobResponse, ApiConnectionActionConfiguration> StartImportJob(Expression<Func<StartImportJobInput>> body)
+        public IBodyWorkflowAction<ImportApiStartImportJobResponse, ApiConnectionActionConfiguration> StartImportJob(Expression<Func<StartImportJobBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImportApiStartImportJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         Pending,
         Enqueued,
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         Warning
     }
 
-    public class CreateImportJobInput
+    public class CreateImportJobBodyInput
     {
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         Failed
     }
 
-    public class EditImportJobInput
+    public class EditImportJobBodyInput
     {
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         Failed
     }
 
-    public class StartImportJobInput
+    public class StartImportJobBodyInput
     {
         [JsonProperty("job_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JobId { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
     public class AfricastalkingvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
-        public IBodyWorkflowAction<CallResponse, ApiConnectionActionConfiguration> Call(Expression<Func<CallInput>> body)
+        public IBodyWorkflowAction<CallResponse, ApiConnectionActionConfiguration> Call(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CallResponse, ApiConnectionActionConfiguration>(() =>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         public string SessionId { get; set; }
     }
 
-    public class CallInput
+    public class BodyInput
     {
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
@@ -66,13 +66,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         public string[] To { get; set; }
 
         [JsonProperty("actions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CallInputActionsTypeItem[] Actions { get; set; }
+        public BodyInputActionsTypeItem[] Actions { get; set; }
     }
 
-    public class CallInputActionsTypeItem
+    public class BodyInputActionsTypeItem
     {
         [JsonProperty("actionType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CallInputActionsTypeItemActionTypeType ActionType { get; set; }
+        public BodyInputActionsTypeItemActionTypeType ActionType { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -81,21 +81,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         public string Url { get; set; }
 
         [JsonProperty("voice")]
-        public CallInputActionsTypeItemVoiceType? Voice { get; set; }
+        public BodyInputActionsTypeItemVoiceType? Voice { get; set; }
 
         [JsonProperty("playBeep")]
         public bool? PlayBeep { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CallInputActionsTypeItemActionTypeType
+    public enum BodyInputActionsTypeItemActionTypeType
     {
         Play,
         Say
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CallInputActionsTypeItemVoiceType
+    public enum BodyInputActionsTypeItemVoiceType
     {
         [EnumMember(Value = "man")]
         Man,

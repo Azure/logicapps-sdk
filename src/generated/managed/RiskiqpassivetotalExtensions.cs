@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ArticlesListResponse, ApiConnectionActionConfiguration> GetArticles(Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ArticlesListResponse, ApiConnectionActionConfiguration> GetArticles(Expression<Func<string>> sort = null, Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null)
         {
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindProject(Expression<Func<string>> project = null, Expression<Func<string>> owner = null, Expression<Func<string>> creator = null, Expression<Func<string>> organization = null, Expression<Func<visibilityInput>> visibility = null, Expression<Func<bool>> featured = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FindProject(Expression<Func<string>> project = null, Expression<Func<string>> owner = null, Expression<Func<string>> creator = null, Expression<Func<string>> organization = null, Expression<Func<VisibilityInput>> visibility = null, Expression<Func<bool>> featured = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: false);
             var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SSLSearchResponse, ApiConnectionActionConfiguration> SearchSSLCertificates(Expression<Func<fieldInput>> field, Expression<Func<string>> query)
+        public IBodyWorkflowAction<SSLSearchResponse, ApiConnectionActionConfiguration> SearchSSLCertificates(Expression<Func<SearchSSLCertificatesFieldInput>> field, Expression<Func<string>> query)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<TrackersSearchResponse, ApiConnectionActionConfiguration> SearchTrackers(Expression<Func<string>> query, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<TrackersSearchResponse, ApiConnectionActionConfiguration> SearchTrackers(Expression<Func<string>> query, Expression<Func<TypeInput>> type)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<PairInfo, ApiConnectionActionConfiguration> GetPairs(Expression<Func<string>> query, Expression<Func<directionInput>> direction, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<PairInfo, ApiConnectionActionConfiguration> GetPairs(Expression<Func<string>> query, Expression<Func<DirectionInput>> direction, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> page = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: true);
@@ -1007,7 +1007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetAddressesByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1057,7 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieDomain(Expression<Func<string>> domain, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<CookiesSearchResponse, ApiConnectionActionConfiguration> GetHostsByCookieName(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1107,7 +1107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ComponentsSearchAddressesResponse, ApiConnectionActionConfiguration> GetAddressesByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<ComponentsSearchAddressesResponse, ApiConnectionActionConfiguration> GetAddressesByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
@@ -1138,7 +1138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ComponentsSearchHostsResponse, ApiConnectionActionConfiguration> GetHostsByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<orderInput>> order = null)
+        public IBodyWorkflowAction<ComponentsSearchHostsResponse, ApiConnectionActionConfiguration> GetHostsByComponentName(Expression<Func<string>> name, Expression<Func<string>> version = null, Expression<Func<string>> category = null, Expression<Func<int>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<OrderInput>> order = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWHOIS(Expression<Func<string>> query, Expression<Func<fieldInput2>> field)
+        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWHOIS(Expression<Func<string>> query, Expression<Func<SearchWHOISFieldInput>> field)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
@@ -1436,7 +1436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetAttackSurfaceByLevel(Expression<Func<levelInput>> level)
+        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetAttackSurfaceByLevel(Expression<Func<LevelInput>> level)
         {
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: true);
             return new DeferredBodyAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration>(() =>
@@ -1510,7 +1510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetVendorsByLevel(Expression<Func<int>> id, Expression<Func<levelInput>> level)
+        public IBodyWorkflowAction<AttackSurfacePriorityResponse, ApiConnectionActionConfiguration> GetVendorsByLevel(Expression<Func<int>> id, Expression<Func<LevelInput>> level)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: true);
@@ -2859,7 +2859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         [EnumMember(Value = "desc")]
         Desc,
@@ -3384,7 +3384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum visibilityInput
+    public enum VisibilityInput
     {
         [EnumMember(Value = "public")]
         Public,
@@ -3614,7 +3614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldInput
+    public enum SearchSSLCertificatesFieldInput
     {
         [EnumMember(Value = "issuerSurname")]
         IssuerSurname,
@@ -3745,7 +3745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "51laId")]
         _51laId,
@@ -3903,7 +3903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum directionInput
+    public enum DirectionInput
     {
         [EnumMember(Value = "children")]
         Children,
@@ -4005,7 +4005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "lastSeen")]
         LastSeen,
@@ -4269,7 +4269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldInput2
+    public enum SearchWHOISFieldInput
     {
         [EnumMember(Value = "email")]
         Email,
@@ -4510,7 +4510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum levelInput
+    public enum LevelInput
     {
         [EnumMember(Value = "high")]
         High,

@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oracle")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<ExecutePassThroughNativeQueryInput>> query)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<QueryInput>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oracle
         public JToken DynamicProperties { get; set; }
     }
 
-    public class ExecutePassThroughNativeQueryInput
+    public class QueryInput
     {
         [JsonProperty("query")]
         public string Query { get; set; }

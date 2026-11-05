@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IBodyWorkflowAction<RenewExpirationResponse, ApiConnectionActionConfiguration> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<RenewExpirationInput>> body)
+        public IBodyWorkflowAction<RenewExpirationResponse, ApiConnectionActionConfiguration> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<RenewExpirationBodyInput>> body)
         {
             var __workflow_expirationItemId = WorkflowExpression.Compile(expirationItemId, nameof(expirationItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IBodyWorkflowAction<CreateExpirationItemResponse, ApiConnectionActionConfiguration> CreateExpirationItem(Expression<Func<CreateExpirationItemInput>> body)
+        public IBodyWorkflowAction<CreateExpirationItemResponse, ApiConnectionActionConfiguration> CreateExpirationItem(Expression<Func<CreateExpirationItemBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateExpirationItemResponse, ApiConnectionActionConfiguration>(() =>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         public string TeamId { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         public string TeamId { get; set; }
     }
 
-    public class RenewExpirationInput
+    public class RenewExpirationBodyInput
     {
         [JsonProperty("expiration_date")]
         public string ExpirationDate { get; set; }
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
         public string TeamId { get; set; }
     }
 
-    public class CreateExpirationItemInput
+    public class CreateExpirationItemBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

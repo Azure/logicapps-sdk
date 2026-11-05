@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/formapi/api/forms/{0}/webhooks", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CreateFormWebhookInput().ToJToken();
+                callPayload.Body = new RequestBodyOfWebhookInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
         public string CreatedBy { get; set; }
     }
 
-    public class CreateFormWebhookInput
+    public class RequestBodyOfWebhookInput
     {
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EventType { get; set; } = "responseAdded";

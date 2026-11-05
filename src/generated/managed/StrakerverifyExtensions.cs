@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetKeyResponse, ApiConnectionActionConfiguration> CreateKey(Expression<Func<CreateKeyInput>> body)
+        public IBodyWorkflowAction<GetKeyResponse, ApiConnectionActionConfiguration> CreateKey(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetKeyResponse, ApiConnectionActionConfiguration>(() =>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         public string Name { get; set; }
     }
 
-    public class CreateKeyInput
+    public class BodyInput
     {
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; } = "";

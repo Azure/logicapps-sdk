@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccess, ApiConnectionActionConfiguration> TemplateUpdate(Expression<Func<TemplateUpdateInput>> body)
+        public IBodyWorkflowAction<ResponseSuccess, ApiConnectionActionConfiguration> TemplateUpdate(Expression<Func<TemplateUpdateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccess, ApiConnectionActionConfiguration>(() =>
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<PDFMergeInput>> body, Expression<Func<string>> meta = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<PDFMergeBodyInput>> body, Expression<Func<string>> meta = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         public string Status { get; set; }
     }
 
-    public class TemplateUpdateInput
+    public class TemplateUpdateBodyInput
     {
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         public string TransactionRef { get; set; }
     }
 
-    public class PDFMergeInput
+    public class PDFMergeBodyInput
     {
         [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Urls { get; set; }

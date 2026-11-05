@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
     public class KnowledgelakeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
-        public IBodyWorkflowAction<ImportJobsPostResponse, ApiConnectionActionConfiguration> ImportJobs(Expression<Func<ImportJobsPostInput>> batch)
+        public IBodyWorkflowAction<ImportJobsResponse, ApiConnectionActionConfiguration> ImportJobs(Expression<Func<BatchInput>> batch)
         {
             var __workflow_batch = WorkflowExpression.Compile(batch, nameof(batch), required: true);
-            return new DeferredBodyAction<ImportJobsPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ImportJobsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ImportJobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_batch);
-                return new ApiConnectionAction<ImportJobsPostResponse>(callPayload);
+                return new ApiConnectionAction<ImportJobsResponse>(callPayload);
             });
         }
     }
@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
     {
     }
 
-    public class ImportJobsPostResponse
+    public class ImportJobsResponse
     {
         [JsonProperty("$id")]
         public string Id { get; set; }
-        public ImportJobsPostResponseDataType Data { get; set; }
+        public ImportJobsResponseDataType Data { get; set; }
         public string[] Errors { get; set; }
         public bool Success { get; set; }
     }
 
-    public class ImportJobsPostResponseDataType
+    public class ImportJobsResponseDataType
     {
         [JsonProperty("$id")]
         public string Id { get; set; }
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         public string JobId { get; set; }
     }
 
-    public class ImportJobsPostInput
+    public class BatchInput
     {
         [JsonProperty("Data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImportData { get; set; }
@@ -60,11 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         public string SecurityToken { get; set; }
 
         [JsonProperty("Version", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImportJobsPostInputRPAEnvironmentType RPAEnvironment { get; set; }
+        public BatchInputRPAEnvironmentType RPAEnvironment { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImportJobsPostInputRPAEnvironmentType
+    public enum BatchInputRPAEnvironmentType
     {
         [EnumMember(Value = "0")]
         _0,

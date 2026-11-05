@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var action = new MsnweatherActions("connection").CurrentWeather(
                 () => "98058",
-                () => unitsInput.Imperial);
+                () => UnitsInput.Imperial);
 
             Assert.Equal(
                 """#{"/current/" + (encodeURIComponent("98058"))}""",
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var compose = WorkflowActions.BuiltIn.Compose(() => "message").WithName("Message");
             var action = new ServicebusActions("connection").SendMessage(
                 () => "queue",
-                () => new SendMessageInput
+                () => new MessageInput
                 {
                     Content = WorkflowBinaryContent.FromWorkflowContent(compose.Output),
                 });
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             AssertReturnExpression(
                 """
-                new global::Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus.SendMessageInput
+                new global::Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus.MessageInput
                 {
                     Content = global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent.FromWorkflowContent(
                         outputs("Message"))

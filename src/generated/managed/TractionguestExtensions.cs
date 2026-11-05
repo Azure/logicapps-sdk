@@ -28,54 +28,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
 
     public class TractionguestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateInviteWebhook(Expression<Func<CreateInviteWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateInviteWebhook(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/invite";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateInviteWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateSigninWebhook(Expression<Func<CreateSigninWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateSigninWebhook(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/signin";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateSigninWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateSignoutWebhook(Expression<Func<CreateSignoutWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateSignoutWebhook(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/signout";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateSignoutWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateWatchlistWebhook(Expression<Func<CreateWatchlistWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration> CreateWatchlistWebhook(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/watchlist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateWatchlistWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -87,17 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
         public string Id { get; set; }
     }
 
-    public class CreateInviteWebhookInput
+    public class CreateInviteWebhookBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateInviteWebhookInputEventType Event { get; set; } = CreateInviteWebhookInputEventType.Invite;
+        internal BodyInputEventType Event { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest.BodyInputEventType.Invite;
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateInviteWebhookInputEventType
+    public enum BodyInputEventType
     {
         [EnumMember(Value = "signin")]
         Signin,
@@ -109,70 +105,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
         Invite
     }
 
-    public class CreateSigninWebhookInput
+    public class CreateSigninWebhookBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateSigninWebhookInputEventType Event { get; set; } = CreateSigninWebhookInputEventType.Signin;
+        internal BodyInputEventType Event { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest.BodyInputEventType.Signin;
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSigninWebhookInputEventType
-    {
-        [EnumMember(Value = "signin")]
-        Signin,
-        [EnumMember(Value = "signout")]
-        Signout,
-        [EnumMember(Value = "watchlist")]
-        Watchlist,
-        [EnumMember(Value = "invite")]
-        Invite
-    }
-
-    public class CreateSignoutWebhookInput
+    public class CreateSignoutWebhookBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateSignoutWebhookInputEventType Event { get; set; } = CreateSignoutWebhookInputEventType.Signout;
+        internal BodyInputEventType Event { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest.BodyInputEventType.Signout;
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSignoutWebhookInputEventType
-    {
-        [EnumMember(Value = "signin")]
-        Signin,
-        [EnumMember(Value = "signout")]
-        Signout,
-        [EnumMember(Value = "watchlist")]
-        Watchlist,
-        [EnumMember(Value = "invite")]
-        Invite
-    }
-
-    public class CreateWatchlistWebhookInput
+    public class CreateWatchlistWebhookBodyInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWatchlistWebhookInputEventType Event { get; set; } = CreateWatchlistWebhookInputEventType.Watchlist;
+        internal BodyInputEventType Event { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest.BodyInputEventType.Watchlist;
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWatchlistWebhookInputEventType
-    {
-        [EnumMember(Value = "signin")]
-        Signin,
-        [EnumMember(Value = "signout")]
-        Signout,
-        [EnumMember(Value = "watchlist")]
-        Watchlist,
-        [EnumMember(Value = "invite")]
-        Invite
     }
 }
 

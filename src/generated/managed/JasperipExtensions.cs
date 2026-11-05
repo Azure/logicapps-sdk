@@ -13,32 +13,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     public class JasperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<CommandPostResponse, ApiConnectionActionConfiguration> Command(Expression<Func<CommandPostInput>> body = null)
+        public IBodyWorkflowAction<CommandResponse, ApiConnectionActionConfiguration> Command(Expression<Func<CommandBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CommandPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CommandResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/command";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CommandPostResponse>(callPayload);
+                return new ApiConnectionAction<CommandResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KeepWritingPostResponse, ApiConnectionActionConfiguration> KeepWriting(Expression<Func<KeepWritingPostInput>> body = null)
+        public IBodyWorkflowAction<KeepWritingResponse, ApiConnectionActionConfiguration> KeepWriting(Expression<Func<KeepWritingBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<KeepWritingPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<KeepWritingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/keep-writing";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<KeepWritingPostResponse>(callPayload);
+                return new ApiConnectionAction<KeepWritingResponse>(callPayload);
             });
         }
 
@@ -68,18 +68,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TemplatePostResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> templateId, Expression<Func<TemplatePostInput>> body = null)
+        public IBodyWorkflowAction<TemplateResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> templateId, Expression<Func<TemplateBodyInput>> body = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TemplatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/templates/{0}/run", __workflow_templateId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+                return new ApiConnectionAction<TemplateResponse>(callPayload);
             });
         }
 
@@ -102,17 +102,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePostResponse, ApiConnectionActionConfiguration> Knowledge(Expression<Func<KnowledgePostInput>> body = null)
+        public IBodyWorkflowAction<KnowledgeResponse, ApiConnectionActionConfiguration> Knowledge(Expression<Func<KnowledgeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<KnowledgePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<KnowledgeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/knowledge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<KnowledgePostResponse>(callPayload);
+                return new ApiConnectionAction<KnowledgeResponse>(callPayload);
             });
         }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePatchResponse, ApiConnectionActionConfiguration> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<KnowledgePatchInput>> body = null)
+        public IBodyWorkflowAction<KnowledgePatchResponse, ApiConnectionActionConfiguration> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<KnowledgePatchBodyInput>> body = null)
         {
             var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -171,17 +171,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonePostResponse, ApiConnectionActionConfiguration> Tone(Expression<Func<TonePostInput>> body = null)
+        public IBodyWorkflowAction<ToneResponse, ApiConnectionActionConfiguration> Tone(Expression<Func<ToneBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TonePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ToneResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/tones";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TonePostResponse>(callPayload);
+                return new ApiConnectionAction<ToneResponse>(callPayload);
             });
         }
 
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonePatchResponse, ApiConnectionActionConfiguration> TonePatch(Expression<Func<string>> toneId, Expression<Func<TonePatchInput>> body = null)
+        public IBodyWorkflowAction<TonePatchResponse, ApiConnectionActionConfiguration> TonePatch(Expression<Func<string>> toneId, Expression<Func<TonePatchBodyInput>> body = null)
         {
             var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     {
     }
 
-    public class CommandPostResponse
+    public class CommandResponse
     {
         [JsonProperty("requestId")]
         public string RequestId { get; set; }
@@ -241,10 +241,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Resource { get; set; }
 
         [JsonProperty("data")]
-        public CommandPostResponseDataTypeItem[] Data { get; set; }
+        public CommandResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class CommandPostResponseDataTypeItem
+    public class CommandResponseDataTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -253,16 +253,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Text { get; set; }
     }
 
-    public class CommandPostInput
+    public class CommandBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommandPostInputInputsType Inputs { get; set; }
+        public CommandBodyInputInputsType Inputs { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommandPostInputOptionsType Options { get; set; } = new CommandPostInputOptionsType();
+        public CommandBodyInputOptionsType Options { get; set; } = new CommandBodyInputOptionsType();
     }
 
-    public class CommandPostInputInputsType
+    public class CommandBodyInputInputsType
     {
         [JsonProperty("command", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Command { get; set; }
@@ -271,26 +271,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Context { get; set; }
     }
 
-    public class CommandPostInputOptionsType
+    public class CommandBodyInputOptionsType
     {
         [JsonProperty("outputCount", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? OutputCount { get; set; } = 3;
 
         [JsonProperty("inputLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommandPostInputOptionsTypeInputLanguageType? InputLanguage { get; set; } = CommandPostInputOptionsTypeInputLanguageType.English;
+        public BodyInputOptionsTypeInputLanguageType? InputLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeInputLanguageType.English;
 
         [JsonProperty("outputLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommandPostInputOptionsTypeOutputLanguageType? OutputLanguage { get; set; } = CommandPostInputOptionsTypeOutputLanguageType.English;
+        public BodyInputOptionsTypeOutputLanguageType? OutputLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeOutputLanguageType.English;
 
         [JsonProperty("languageFormality", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommandPostInputOptionsTypeLanguageFormalityType? LanguageFormality { get; set; } = CommandPostInputOptionsTypeLanguageFormalityType.Default;
+        public BodyInputOptionsTypeLanguageFormalityType? LanguageFormality { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeLanguageFormalityType.Default;
 
         [JsonProperty("completionType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommandPostInputOptionsTypeCompletionTypeType? CompletionType { get; set; } = CommandPostInputOptionsTypeCompletionTypeType.Performance;
+        public BodyInputOptionsTypeCompletionTypeType? CompletionType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeCompletionTypeType.Performance;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CommandPostInputOptionsTypeInputLanguageType
+    public enum BodyInputOptionsTypeInputLanguageType
     {
         English,
         French,
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CommandPostInputOptionsTypeOutputLanguageType
+    public enum BodyInputOptionsTypeOutputLanguageType
     {
         English,
         French,
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CommandPostInputOptionsTypeLanguageFormalityType
+    public enum BodyInputOptionsTypeLanguageFormalityType
     {
         [EnumMember(Value = "default")]
         Default,
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CommandPostInputOptionsTypeCompletionTypeType
+    public enum BodyInputOptionsTypeCompletionTypeType
     {
         [EnumMember(Value = "performance")]
         Performance,
@@ -331,10 +331,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         Quality
     }
 
-    public class KeepWritingPostResponse
+    public class KeepWritingResponse
     {
         [JsonProperty("data")]
-        public KeepWritingPostResponseDataTypeItem[] Data { get; set; }
+        public KeepWritingResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("requestId")]
         public string RequestId { get; set; }
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Resource { get; set; }
     }
 
-    public class KeepWritingPostResponseDataTypeItem
+    public class KeepWritingResponseDataTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -352,26 +352,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Text { get; set; }
     }
 
-    public class KeepWritingPostInput
+    public class KeepWritingBodyInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingPostInputInputsType Inputs { get; set; } = new KeepWritingPostInputInputsType();
+        public KeepWritingBodyInputInputsType Inputs { get; set; } = new KeepWritingBodyInputInputsType();
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingPostInputOptionsType Options { get; set; } = new KeepWritingPostInputOptionsType();
+        public KeepWritingBodyInputOptionsType Options { get; set; } = new KeepWritingBodyInputOptionsType();
     }
 
-    public class KeepWritingPostInputInputsType
+    public class KeepWritingBodyInputInputsType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingPostInputInputsTypeTypeType Type { get; set; } = KeepWritingPostInputInputsTypeTypeType.Text;
+        public BodyInputInputsTypeTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputInputsTypeTypeType.Text;
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum KeepWritingPostInputInputsTypeTypeType
+    public enum BodyInputInputsTypeTypeType
     {
         [EnumMember(Value = "text")]
         Text,
@@ -379,49 +379,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         Id
     }
 
-    public class KeepWritingPostInputOptionsType
+    public class KeepWritingBodyInputOptionsType
     {
         [JsonProperty("inputLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingPostInputOptionsTypeInputLanguageType? InputLanguage { get; set; } = KeepWritingPostInputOptionsTypeInputLanguageType.English;
+        public BodyInputOptionsTypeInputLanguageType? InputLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeInputLanguageType.English;
 
         [JsonProperty("outputLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingPostInputOptionsTypeOutputLanguageType? OutputLanguage { get; set; } = KeepWritingPostInputOptionsTypeOutputLanguageType.English;
+        public BodyInputOptionsTypeOutputLanguageType? OutputLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeOutputLanguageType.English;
 
         [JsonProperty("languageFormality", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingPostInputOptionsTypeLanguageFormalityType? LanguageFormality { get; set; } = KeepWritingPostInputOptionsTypeLanguageFormalityType.Default;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum KeepWritingPostInputOptionsTypeInputLanguageType
-    {
-        English,
-        French,
-        Italian,
-        Spanish,
-        Portuguese,
-        German
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum KeepWritingPostInputOptionsTypeOutputLanguageType
-    {
-        English,
-        French,
-        Italian,
-        Spanish,
-        Portuguese,
-        German
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum KeepWritingPostInputOptionsTypeLanguageFormalityType
-    {
-        [EnumMember(Value = "default")]
-        Default,
-        [EnumMember(Value = "more")]
-        More,
-        [EnumMember(Value = "less")]
-        Less
+        public BodyInputOptionsTypeLanguageFormalityType? LanguageFormality { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeLanguageFormalityType.Default;
     }
 
     public class TemplatesGetResponse
@@ -523,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Placeholder { get; set; }
     }
 
-    public class TemplatePostResponse
+    public class TemplateResponse
     {
         [JsonProperty("requestId")]
         public string RequestId { get; set; }
@@ -532,10 +499,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Resource { get; set; }
 
         [JsonProperty("data")]
-        public TemplatePostResponseDataTypeItem[] Data { get; set; }
+        public TemplateResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class TemplatePostResponseDataTypeItem
+    public class TemplateResponseDataTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -544,61 +511,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Text { get; set; }
     }
 
-    public class TemplatePostInput
+    public class TemplateBodyInput
     {
         [JsonProperty("inputs")]
         public JToken Inputs { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TemplatePostInputOptionsType Options { get; set; } = new TemplatePostInputOptionsType();
+        public TemplateBodyInputOptionsType Options { get; set; } = new TemplateBodyInputOptionsType();
     }
 
-    public class TemplatePostInputOptionsType
+    public class TemplateBodyInputOptionsType
     {
         [JsonProperty("outputCount")]
         public int? OutputCount { get; set; }
 
         [JsonProperty("inputLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TemplatePostInputOptionsTypeInputLanguageType? InputLanguage { get; set; } = TemplatePostInputOptionsTypeInputLanguageType.English;
+        public BodyInputOptionsTypeInputLanguageType? InputLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeInputLanguageType.English;
 
         [JsonProperty("outputLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TemplatePostInputOptionsTypeOutputLanguageType? OutputLanguage { get; set; } = TemplatePostInputOptionsTypeOutputLanguageType.English;
+        public BodyInputOptionsTypeOutputLanguageType? OutputLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeOutputLanguageType.English;
 
         [JsonProperty("languageFormality", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TemplatePostInputOptionsTypeLanguageFormalityType? LanguageFormality { get; set; } = TemplatePostInputOptionsTypeLanguageFormalityType.Default;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TemplatePostInputOptionsTypeInputLanguageType
-    {
-        English,
-        French,
-        Italian,
-        Spanish,
-        Portuguese,
-        German
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TemplatePostInputOptionsTypeOutputLanguageType
-    {
-        English,
-        French,
-        Italian,
-        Spanish,
-        Portuguese,
-        German
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TemplatePostInputOptionsTypeLanguageFormalityType
-    {
-        [EnumMember(Value = "default")]
-        Default,
-        [EnumMember(Value = "more")]
-        More,
-        [EnumMember(Value = "less")]
-        Less
+        public BodyInputOptionsTypeLanguageFormalityType? LanguageFormality { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputOptionsTypeLanguageFormalityType.Default;
     }
 
     public class KnowledgesGetResponse
@@ -667,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Prev { get; set; }
     }
 
-    public class KnowledgePostResponse
+    public class KnowledgeResponse
     {
         [JsonProperty("requestId")]
         public string RequestId { get; set; }
@@ -676,10 +610,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Resource { get; set; }
 
         [JsonProperty("data")]
-        public KnowledgePostResponseDataTypeItem[] Data { get; set; }
+        public KnowledgeResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class KnowledgePostResponseDataTypeItem
+    public class KnowledgeResponseDataTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -691,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public JToken Metadata { get; set; }
 
         [JsonProperty("settings")]
-        public KnowledgePostResponseDataTypeItemSettingsType Settings { get; set; }
+        public KnowledgeResponseDataTypeItemSettingsType Settings { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -706,19 +640,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string ProcessingState { get; set; }
     }
 
-    public class KnowledgePostResponseDataTypeItemSettingsType
+    public class KnowledgeResponseDataTypeItemSettingsType
     {
         [JsonProperty("appVisibility")]
         public string AppVisibility { get; set; }
     }
 
-    public class KnowledgePostInput
+    public class KnowledgeBodyInput
     {
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KnowledgePostInputSettingsType Settings { get; set; } = new KnowledgePostInputSettingsType();
+        public KnowledgeBodyInputSettingsType Settings { get; set; } = new KnowledgeBodyInputSettingsType();
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -727,14 +661,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string File { get; set; }
     }
 
-    public class KnowledgePostInputSettingsType
+    public class KnowledgeBodyInputSettingsType
     {
         [JsonProperty("appVisibility", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KnowledgePostInputSettingsTypeAppVisibilityType? AppVisibility { get; set; } = KnowledgePostInputSettingsTypeAppVisibilityType.Visible;
+        public BodyInputSettingsTypeAppVisibilityType? AppVisibility { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip.BodyInputSettingsTypeAppVisibilityType.Visible;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum KnowledgePostInputSettingsTypeAppVisibilityType
+    public enum BodyInputSettingsTypeAppVisibilityType
     {
         [EnumMember(Value = "visible")]
         Visible,
@@ -850,13 +784,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string AppVisibility { get; set; }
     }
 
-    public class KnowledgePatchInput
+    public class KnowledgePatchBodyInput
     {
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 
         [JsonProperty("settings")]
-        public KnowledgePatchInputSettingsType Settings { get; set; }
+        public KnowledgePatchBodyInputSettingsType Settings { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -865,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string File { get; set; }
     }
 
-    public class KnowledgePatchInputSettingsType
+    public class KnowledgePatchBodyInputSettingsType
     {
         [JsonProperty("appVisibility")]
         public string AppVisibility { get; set; }
@@ -934,7 +868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Prev { get; set; }
     }
 
-    public class TonePostResponse
+    public class ToneResponse
     {
         [JsonProperty("requestId")]
         public string RequestId { get; set; }
@@ -943,10 +877,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Resource { get; set; }
 
         [JsonProperty("data")]
-        public TonePostResponseDataType Data { get; set; }
+        public ToneResponseDataType Data { get; set; }
     }
 
-    public class TonePostResponseDataType
+    public class ToneResponseDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -958,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public JToken Metadata { get; set; }
 
         [JsonProperty("settings")]
-        public TonePostResponseDataTypeSettingsType Settings { get; set; }
+        public ToneResponseDataTypeSettingsType Settings { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -970,40 +904,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string UpdatedAt { get; set; }
     }
 
-    public class TonePostResponseDataTypeSettingsType
+    public class ToneResponseDataTypeSettingsType
     {
         [JsonProperty("appVisibility")]
         public string AppVisibility { get; set; }
     }
 
-    public class TonePostInput
+    public class ToneBodyInput
     {
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TonePostInputSettingsType Settings { get; set; } = new TonePostInputSettingsType();
+        public KnowledgeBodyInputSettingsType Settings { get; set; } = new KnowledgeBodyInputSettingsType();
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
-    }
-
-    public class TonePostInputSettingsType
-    {
-        [JsonProperty("appVisibility", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TonePostInputSettingsTypeAppVisibilityType? AppVisibility { get; set; } = TonePostInputSettingsTypeAppVisibilityType.Visible;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TonePostInputSettingsTypeAppVisibilityType
-    {
-        [EnumMember(Value = "visible")]
-        Visible,
-        [EnumMember(Value = "hidden")]
-        Hidden
     }
 
     public class ToneGetResponse
@@ -1090,25 +1009,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string AppVisibility { get; set; }
     }
 
-    public class TonePatchInput
+    public class TonePatchBodyInput
     {
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 
         [JsonProperty("settings")]
-        public TonePatchInputSettingsType Settings { get; set; }
+        public KnowledgePatchBodyInputSettingsType Settings { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
-    }
-
-    public class TonePatchInputSettingsType
-    {
-        [JsonProperty("appVisibility")]
-        public string AppVisibility { get; set; }
     }
 
     public class ToneDeleteResponse

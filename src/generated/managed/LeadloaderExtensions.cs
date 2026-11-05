@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadloader
     public class LeadloaderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leadloader")]
-        public IBodyWorkflowAction<UploadLeadsV3Response, ApiConnectionActionConfiguration> UploadLeads(Expression<Func<UploadLeadsV3Input>> body = null)
+        public IBodyWorkflowAction<UploadLeadsResponse, ApiConnectionActionConfiguration> UploadLeads(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<UploadLeadsV3Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UploadLeadsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UploadLeadsV3Response>(callPayload);
+                return new ApiConnectionAction<UploadLeadsResponse>(callPayload);
             });
         }
     }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadloader
     {
     }
 
-    public class UploadLeadsV3Response
+    public class UploadLeadsResponse
     {
         [JsonProperty("API-Status")]
         public string APIStatus { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadloader
         public string OpportunityLink { get; set; }
     }
 
-    public class UploadLeadsV3Input
+    public class BodyInput
     {
         [JsonProperty("company")]
         public string Company { get; set; }

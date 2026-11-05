@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
     public class LoginllamaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
-        public IBodyWorkflowAction<LoginPostResponse, ApiConnectionActionConfiguration> Login(Expression<Func<LoginPostInput>> body = null)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<LoginPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LoginResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/login/check";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<LoginPostResponse>(callPayload);
+                return new ApiConnectionAction<LoginResponse>(callPayload);
             });
         }
     }
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
     {
     }
 
-    public class LoginPostResponse
+    public class LoginResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
         public string[] Codes { get; set; }
     }
 
-    public class LoginPostInput
+    public class BodyInput
     {
         [JsonProperty("ip_address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IpAddress { get; set; }

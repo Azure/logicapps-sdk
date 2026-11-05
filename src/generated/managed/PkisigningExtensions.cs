@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<ExtendedSignerModel, ApiConnectionActionConfiguration> ActorsCreate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<ActorsCreateInput>> actorModel)
+        public IBodyWorkflowAction<ExtendedSignerModel, ApiConnectionActionConfiguration> ActorsCreate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<ActorModelInput>> actorModel)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<ExtendedSignerModel, ApiConnectionActionConfiguration> ActorsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId, Expression<Func<ActorsUpdateInput>> actorModelModel)
+        public IBodyWorkflowAction<ExtendedSignerModel, ApiConnectionActionConfiguration> ActorsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId, Expression<Func<ActorModelModelInput>> actorModelModel)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<DocumentMetaDataModel, ApiConnectionActionConfiguration> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<DocumentsUpdateInput>> metadata)
+        public IBodyWorkflowAction<DocumentMetaDataModel, ApiConnectionActionConfiguration> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<MetadataInput>> metadata)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<OrganisationWorkgroup[], ApiConnectionActionConfiguration> OrganisationsGetWorkgroupsByUser(Expression<Func<string>> organisationId, Expression<Func<OrganisationsGetWorkgroupsByUserInput>> model)
+        public IBodyWorkflowAction<OrganisationWorkgroup[], ApiConnectionActionConfiguration> OrganisationsGetWorkgroupsByUser(Expression<Func<string>> organisationId, Expression<Func<OrganisationsGetWorkgroupsByUserModelInput>> model)
         {
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<RequestModel, ApiConnectionActionConfiguration> RequestsCreate(Expression<Func<RequestsCreateInput>> model)
+        public IBodyWorkflowAction<RequestModel, ApiConnectionActionConfiguration> RequestsCreate(Expression<Func<RequestsCreateModelInput>> model)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             return new DeferredBodyAction<RequestModel, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
-        public IBodyWorkflowAction<RequestModel, ApiConnectionActionConfiguration> RequestsUpdate(Expression<Func<string>> requestId, Expression<Func<RequestsUpdateInput>> model)
+        public IBodyWorkflowAction<RequestModel, ApiConnectionActionConfiguration> RequestsUpdate(Expression<Func<string>> requestId, Expression<Func<RequestsCreateModelInput>> model)
         {
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
 
     public class PkisigningTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponseModel, ApiConnectionTriggerConfiguration> WebhooksCreateWebhook(Expression<Func<WebhooksCreateWebhookInput>> model, Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponseModel, ApiConnectionTriggerConfiguration> WebhooksCreateWebhook(Expression<Func<WebhooksCreateWebhookModelInput>> model, Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
             var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
@@ -416,10 +416,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Email { get; set; }
     }
 
-    public class ActorsCreateInput
+    public class ActorModelInput
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActorsCreateInputActionType Action { get; set; }
+        public ActorModelInputActionType Action { get; set; }
 
         [JsonProperty("firstname", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Firstname { get; set; }
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Deadline { get; set; } = "@{addDays(utcNow(),7)}";
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActorsCreateInputLanguageType Language { get; set; } = ActorsCreateInputLanguageType.NL;
+        public ActorModelInputLanguageType Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning.ActorModelInputLanguageType.NL;
 
         [JsonProperty("validateRealIdentity", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ValidateRealIdentity { get; set; } = false;
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ActorsCreateInputActionType
+    public enum ActorModelInputActionType
     {
         Sign,
         Download,
@@ -479,16 +479,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ActorsCreateInputLanguageType
+    public enum ActorModelInputLanguageType
     {
         NL,
         EN
     }
 
-    public class ActorsUpdateInput
+    public class ActorModelModelInput
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActorsUpdateInputActionType Action { get; set; }
+        public ActorModelModelInputActionType Action { get; set; }
 
         [JsonProperty("firstname", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Firstname { get; set; }
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Deadline { get; set; } = "@{addDays(utcNow(),7)}";
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ActorsUpdateInputLanguageType Language { get; set; } = ActorsUpdateInputLanguageType.NL;
+        public ActorModelModelInputLanguageType Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning.ActorModelModelInputLanguageType.NL;
 
         [JsonProperty("validateRealIdentity", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ValidateRealIdentity { get; set; } = false;
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ActorsUpdateInputActionType
+    public enum ActorModelModelInputActionType
     {
         Sign,
         Download,
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ActorsUpdateInputLanguageType
+    public enum ActorModelModelInputLanguageType
     {
         NL,
         EN
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         Unspecified
     }
 
-    public class DocumentsUpdateInput
+    public class MetadataInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -728,11 +728,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Filename { get; set; }
 
         [JsonProperty("documentType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DocumentsUpdateInputDocumentTypeType DocumentType { get; set; }
+        public MetadataInputDocumentTypeType DocumentType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentsUpdateInputDocumentTypeType
+    public enum MetadataInputDocumentTypeType
     {
         RegularPdf,
         XbrlPublicationVersionAnnualReport,
@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Name { get; set; }
     }
 
-    public class OrganisationsGetWorkgroupsByUserInput
+    public class OrganisationsGetWorkgroupsByUserModelInput
     {
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
@@ -1016,22 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         AnnualFinancialFiles
     }
 
-    public class RequestsCreateInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("workgroupId")]
-        public string WorkgroupId { get; set; }
-
-        [JsonProperty("clearancelevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Clearancelevel { get; set; } = 1;
-
-        [JsonProperty("owner")]
-        public string Owner { get; set; }
-    }
-
-    public class RequestsUpdateInput
+    public class RequestsCreateModelInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1073,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Url { get; set; }
     }
 
-    public class WebhooksCreateWebhookInput
+    public class WebhooksCreateWebhookModelInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Events { get; set; } = new string[]
@@ -1082,13 +1067,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         };
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhooksCreateWebhookInputConfigType Config { get; set; } = new WebhooksCreateWebhookInputConfigType();
+        public ModelInputConfigType Config { get; set; } = new ModelInputConfigType();
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;
     }
 
-    public class WebhooksCreateWebhookInputConfigType
+    public class ModelInputConfigType
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

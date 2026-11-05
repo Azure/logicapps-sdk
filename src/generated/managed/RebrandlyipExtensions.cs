@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        public IBodyWorkflowAction<ListLinksResponseItem[], ApiConnectionActionConfiguration> ListLinks(Expression<Func<string>> domainId = null, Expression<Func<string>> slashtag = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null, Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ListLinksResponseItem[], ApiConnectionActionConfiguration> ListLinks(Expression<Func<string>> domainId = null, Expression<Func<string>> slashtag = null, Expression<Func<ListLinksOrderByInput>> orderBy = null, Expression<Func<OrderDirInput>> orderDir = null, Expression<Func<int>> limit = null, Expression<Func<string>> workspace = null)
         {
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: false);
             var __workflow_slashtag = WorkflowExpression.Compile(slashtag, nameof(slashtag), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<CreateLinkInput>> body = null)
+        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<CreateLinkBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateLinkResponse, ApiConnectionActionConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        public IBodyWorkflowAction<ListWorkspacesResponseItem[], ApiConnectionActionConfiguration> ListWorkspaces(Expression<Func<orderByInput2>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<ListWorkspacesResponseItem[], ApiConnectionActionConfiguration> ListWorkspaces(Expression<Func<ListWorkspacesOrderByInput>> orderBy = null, Expression<Func<OrderDirInput>> orderDir = null, Expression<Func<int>> limit = null)
         {
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             var __workflow_orderDir = WorkflowExpression.Compile(orderDir, nameof(orderDir), required: false);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null, Expression<Func<UpdateLinkInput>> body = null)
+        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null, Expression<Func<UpdateLinkBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderByInput
+    public enum ListLinksOrderByInput
     {
         [EnumMember(Value = "createdAt")]
         CreatedAt,
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderDirInput
+    public enum OrderDirInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         public string FullName { get; set; }
     }
 
-    public class CreateLinkInput
+    public class CreateLinkBodyInput
     {
         [JsonProperty("destination")]
         public string Destination { get; set; }
@@ -376,13 +376,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         public string Slashtag { get; set; }
 
         [JsonProperty("domain")]
-        public CreateLinkInputDomainType Domain { get; set; }
+        public BodyInputDomainType Domain { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
     }
 
-    public class CreateLinkInputDomainType
+    public class BodyInputDomainType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderByInput2
+    public enum ListWorkspacesOrderByInput
     {
         [EnumMember(Value = "createdAt")]
         CreatedAt,
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         public string FullName { get; set; }
     }
 
-    public class UpdateLinkInput
+    public class UpdateLinkBodyInput
     {
         [JsonProperty("destination")]
         public string DestinationURL { get; set; }

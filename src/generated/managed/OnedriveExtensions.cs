@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFile(Expression<Func<string>> id, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFile(Expression<Func<string>> id, Expression<Func<ConvertFileByPathTypeInput>> type = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFileByPath(Expression<Func<string>> path, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFileByPath(Expression<Func<string>> path, Expression<Func<ConvertFileByPathTypeInput>> type = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<Thumbnail, ApiConnectionActionConfiguration> GetFileThumbnail(Expression<Func<string>> id, Expression<Func<sizeInput>> size)
+        public IBodyWorkflowAction<Thumbnail, ApiConnectionActionConfiguration> GetFileThumbnail(Expression<Func<string>> id, Expression<Func<SizeInput>> size)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: true);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFiles(Expression<Func<string>> query, Expression<Func<string>> id, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFiles(Expression<Func<string>> query, Expression<Func<string>> id, Expression<Func<FindModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFilesByPath(Expression<Func<string>> query, Expression<Func<string>> path, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFilesByPath(Expression<Func<string>> query, Expression<Func<string>> path, Expression<Func<FindModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLink(Expression<Func<string>> id, Expression<Func<typeInput2>> type)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLink(Expression<Func<string>> id, Expression<Func<CreateShareLinkByPathTypeInput>> type)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedrive")]
-        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<typeInput3>> type)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<CreateShareLinkByPathTypeInput>> type)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum ConvertFileByPathTypeInput
     {
         PDF,
         GLB,
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sizeInput
+    public enum SizeInput
     {
         Small,
         Medium,
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum findModeInput
+    public enum FindModeInput
     {
         OneDriveSearch,
         Pattern
@@ -606,15 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput2
-    {
-        View,
-        Edit,
-        Embed
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput3
+    public enum CreateShareLinkByPathTypeInput
     {
         View,
         Edit,

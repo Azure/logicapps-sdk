@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
                 callPayload.Queries["businesseventcategory"] = ExpressionConverter.Convert(__workflow_businesseventcategory);
                 if (__workflow_legalEntity != null)
                     callPayload.Queries["legalEntity"] = ExpressionConverter.Convert(__workflow_legalEntity);
-                callPayload.Body = new SubscribeOnABusinessEventInput().ToJToken();
+                callPayload.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<BusinessEventSubscriptionResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
         public string NotificationUrl { get; set; }
     }
 
-    public class SubscribeOnABusinessEventInput
+    public class SubscriptionInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";

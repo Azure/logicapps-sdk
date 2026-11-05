@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     public class BlackbaudrenxtqueryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiQueryExecutionJob, ApiConnectionActionConfiguration> GetQueryJobStatus(Expression<Func<string>> jobId, Expression<Func<includeReadUrlInput>> includeReadUrl = null, Expression<Func<contentDispositionInput>> contentDisposition = null)
+        public IBodyWorkflowAction<QueryApiQueryExecutionJob, ApiConnectionActionConfiguration> GetQueryJobStatus(Expression<Func<string>> jobId, Expression<Func<IncludeReadUrlInput>> includeReadUrl = null, Expression<Func<ContentDispositionInput>> contentDisposition = null)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_includeReadUrl = WorkflowExpression.Compile(includeReadUrl, nameof(includeReadUrl), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartAdHocQueryExecutionJob(Expression<Func<StartAdHocQueryExecutionJobInput>> body)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartAdHocQueryExecutionJob(Expression<Func<StartAdHocQueryExecutionJobBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartQueryExecutionJob(Expression<Func<StartQueryExecutionJobInput>> body)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartQueryExecutionJob(Expression<Func<StartQueryExecutionJobBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartRefreshStaticQueryExecutionJob(Expression<Func<StartRefreshStaticQueryExecutionJobInput>> body)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration> StartRefreshStaticQueryExecutionJob(Expression<Func<StartRefreshStaticQueryExecutionJobBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<QueryApiExecuteQueryResponse, ApiConnectionActionConfiguration>(() =>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtquery")]
-        public IBodyWorkflowAction<QueryApiQuerySummaryV2Collection, ApiConnectionActionConfiguration> ListQueries(Expression<Func<int>> queryTypeIds = null, Expression<Func<int>> category = null, Expression<Func<queryFormatInput>> queryFormat = null, Expression<Func<resultLayoutInput>> resultLayout = null, Expression<Func<string>> searchText = null, Expression<Func<bool>> myFavQueriesOnly = null, Expression<Func<bool>> myQueriesOnly = null, Expression<Func<bool>> mergedQueriesOnly = null, Expression<Func<listQueriesInput>> listQueries = null, Expression<Func<sortColumnInput>> sortColumn = null, Expression<Func<bool>> sortDescending = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> addedBy = null, Expression<Func<int>> limit = null, Expression<Func<string>> continuationToken = null)
+        public IBodyWorkflowAction<QueryApiQuerySummaryV2Collection, ApiConnectionActionConfiguration> ListQueries(Expression<Func<int>> queryTypeIds = null, Expression<Func<int>> category = null, Expression<Func<QueryFormatInput>> queryFormat = null, Expression<Func<ResultLayoutInput>> resultLayout = null, Expression<Func<string>> searchText = null, Expression<Func<bool>> myFavQueriesOnly = null, Expression<Func<bool>> myQueriesOnly = null, Expression<Func<bool>> mergedQueriesOnly = null, Expression<Func<ListQueriesInput>> listQueries = null, Expression<Func<SortColumnInput>> sortColumn = null, Expression<Func<bool>> sortDescending = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> addedBy = null, Expression<Func<int>> limit = null, Expression<Func<string>> continuationToken = null)
         {
             var __workflow_queryTypeIds = WorkflowExpression.Compile(queryTypeIds, nameof(queryTypeIds), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeReadUrlInput
+    public enum IncludeReadUrlInput
     {
         Never,
         OnceRunning,
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentDispositionInput
+    public enum ContentDispositionInput
     {
         Inline,
         Attachment
@@ -244,16 +244,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         Throttled
     }
 
-    public class StartAdHocQueryExecutionJobInput
+    public class StartAdHocQueryExecutionJobBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken QueryDefinition { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartAdHocQueryExecutionJobInputOutputFormatType? OutputFormat { get; set; } = StartAdHocQueryExecutionJobInputOutputFormatType.Csv;
+        public BodyInputOutputFormatType? OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputOutputFormatType.Csv;
 
         [JsonProperty("formatting_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartAdHocQueryExecutionJobInputFormattingModeType? FormattingMode { get; set; } = StartAdHocQueryExecutionJobInputFormattingModeType.None;
+        public BodyInputFormattingModeType? FormattingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputFormattingModeType.None;
 
         [JsonProperty("results_file_name")]
         public string Filename { get; set; }
@@ -265,11 +265,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         public bool? UseLongDescriptions { get; set; }
 
         [JsonProperty("ux_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal StartAdHocQueryExecutionJobInputUXModeType UXMode { get; set; } = StartAdHocQueryExecutionJobInputUXModeType.Asynchronous;
+        internal BodyInputUXModeType UXMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputUXModeType.Asynchronous;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartAdHocQueryExecutionJobInputOutputFormatType
+    public enum BodyInputOutputFormatType
     {
         Csv,
         Json,
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartAdHocQueryExecutionJobInputFormattingModeType
+    public enum BodyInputFormattingModeType
     {
         None,
         UI,
@@ -286,13 +286,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartAdHocQueryExecutionJobInputUXModeType
+    public enum BodyInputUXModeType
     {
         Synchronous,
         Asynchronous
     }
 
-    public class StartQueryExecutionJobInput
+    public class StartQueryExecutionJobBodyInput
     {
         [JsonProperty("v_query_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Type { get; set; }
@@ -301,13 +301,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         public int Query { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartQueryExecutionJobInputOutputFormatType? OutputFormat { get; set; } = StartQueryExecutionJobInputOutputFormatType.Csv;
+        public BodyInputOutputFormatType? OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputOutputFormatType.Csv;
 
         [JsonProperty("formatting_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartQueryExecutionJobInputFormattingModeType? FormattingMode { get; set; } = StartQueryExecutionJobInputFormattingModeType.None;
+        public BodyInputFormattingModeType? FormattingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputFormattingModeType.None;
 
         [JsonProperty("sql_generation_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartQueryExecutionJobInputSQLGenerationModeType? SQLGenerationMode { get; set; } = StartQueryExecutionJobInputSQLGenerationModeType.Query;
+        public BodyInputSQLGenerationModeType? SQLGenerationMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputSQLGenerationModeType.Query;
 
         [JsonProperty("use_static_query_id_set")]
         public bool? UseStaticQuery { get; set; }
@@ -325,28 +325,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         public QueryApiAskFieldInformation[] AskField { get; set; }
 
         [JsonProperty("ux_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal StartQueryExecutionJobInputUXModeType UXMode { get; set; } = StartQueryExecutionJobInputUXModeType.Asynchronous;
+        internal BodyInputUXModeType UXMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputUXModeType.Asynchronous;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartQueryExecutionJobInputOutputFormatType
-    {
-        Csv,
-        Json,
-        Jsonl,
-        Xlsx
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartQueryExecutionJobInputFormattingModeType
-    {
-        None,
-        UI,
-        Export
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartQueryExecutionJobInputSQLGenerationModeType
+    public enum BodyInputSQLGenerationModeType
     {
         Query,
         Export,
@@ -389,14 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         OneOfEach
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartQueryExecutionJobInputUXModeType
-    {
-        Synchronous,
-        Asynchronous
-    }
-
-    public class StartRefreshStaticQueryExecutionJobInput
+    public class StartRefreshStaticQueryExecutionJobBodyInput
     {
         [JsonProperty("v_query_type_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Type { get; set; }
@@ -414,14 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
         public QueryApiAskFieldInformation[] AskField { get; set; }
 
         [JsonProperty("ux_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal StartRefreshStaticQueryExecutionJobInputUXModeType UXMode { get; set; } = StartRefreshStaticQueryExecutionJobInputUXModeType.Asynchronous;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartRefreshStaticQueryExecutionJobInputUXModeType
-    {
-        Synchronous,
-        Asynchronous
+        internal BodyInputUXModeType UXMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery.BodyInputUXModeType.Asynchronous;
     }
 
     public class QueryApiQuerySummaryV2Collection
@@ -591,28 +560,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum queryFormatInput
+    public enum QueryFormatInput
     {
         Dynamic,
         Static
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum resultLayoutInput
+    public enum ResultLayoutInput
     {
         MultiRow,
         SingleRow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum listQueriesInput
+    public enum ListQueriesInput
     {
         Unset,
         NoListQueries
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortColumnInput
+    public enum SortColumnInput
     {
         Name,
         DateLastRun,

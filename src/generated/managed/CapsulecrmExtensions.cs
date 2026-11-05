@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOpportunityResponse, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<CreateOpportunityInput>> body)
+        public IBodyWorkflowAction<CreateOpportunityResponse, ApiConnectionActionConfiguration> CreateOpportunity(Expression<Func<CreateOpportunityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateOpportunityResponse, ApiConnectionActionConfiguration>(() =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOpportunityResponse, ApiConnectionActionConfiguration> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<UpdateOpportunityInput>> body)
+        public IBodyWorkflowAction<UpdateOpportunityResponse, ApiConnectionActionConfiguration> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<UpdateOpportunityBodyInput>> body)
         {
             var __workflow_opportunityId = WorkflowExpression.Compile(opportunityId, nameof(opportunityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOrganisationResponse, ApiConnectionActionConfiguration> CreateOrganisation(Expression<Func<CreateOrganisationInput>> body)
+        public IBodyWorkflowAction<CreateOrganisationResponse, ApiConnectionActionConfiguration> CreateOrganisation(Expression<Func<CreateOrganisationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateOrganisationResponse, ApiConnectionActionConfiguration>(() =>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOrganisationResponse, ApiConnectionActionConfiguration> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<UpdateOrganisationInput>> body)
+        public IBodyWorkflowAction<UpdateOrganisationResponse, ApiConnectionActionConfiguration> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<UpdateOrganisationBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CompleteTaskResponse, ApiConnectionActionConfiguration> CompleteTask(Expression<Func<string>> taskId, Expression<Func<CompleteTaskInput>> body)
+        public IBodyWorkflowAction<CompleteTaskResponse, ApiConnectionActionConfiguration> CompleteTask(Expression<Func<string>> taskId, Expression<Func<CompleteTaskBodyInput>> body)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -175,29 +175,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreatePersonV2Response, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<CreatePersonV2Input>> body)
+        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<CreatePersonBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CreatePersonV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CreatePersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/person/parties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CreatePersonV2Response>(callPayload);
+                return new ApiConnectionAction<CreatePersonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<GetPartyV2Response, ApiConnectionActionConfiguration> GetParty(Expression<Func<string>> personId)
+        public IBodyWorkflowAction<GetPartyResponse, ApiConnectionActionConfiguration> GetParty(Expression<Func<string>> personId)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
-            return new DeferredBodyAction<GetPartyV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetPartyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/parties/{0}", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetPartyV2Response>(callPayload);
+                return new ApiConnectionAction<GetPartyResponse>(callPayload);
             });
         }
 
@@ -226,17 +226,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdatePersonV2Response, ApiConnectionActionConfiguration> UpdatePerson(Expression<Func<string>> personId, Expression<Func<UpdatePersonV2Input>> body)
+        public IBodyWorkflowAction<UpdatePersonResponse, ApiConnectionActionConfiguration> UpdatePerson(Expression<Func<string>> personId, Expression<Func<UpdatePersonBodyInput>> body)
         {
             var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<UpdatePersonV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UpdatePersonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/person/parties/{0}", __workflow_personId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UpdatePersonV2Response>(callPayload);
+                return new ApiConnectionAction<UpdatePersonResponse>(callPayload);
             });
         }
     }
@@ -393,28 +393,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public OpportunityResponse Opportunity { get; set; }
     }
 
-    public class CreateOpportunityInput
+    public class CreateOpportunityBodyInput
     {
         [JsonProperty("opportunity", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOpportunityInputOpportunityType Opportunity { get; set; }
+        public CreateOpportunityBodyInputOpportunityType Opportunity { get; set; }
     }
 
-    public class CreateOpportunityInputOpportunityType
+    public class CreateOpportunityBodyInputOpportunityType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOpportunityInputOpportunityTypePartyType Party { get; set; }
+        public BodyInputOpportunityTypePartyType Party { get; set; }
 
         [JsonProperty("milestone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOpportunityInputOpportunityTypeMilestoneType Milestone { get; set; }
+        public CreateOpportunityBodyInputOpportunityTypeMilestoneType Milestone { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("durationBasis")]
-        public CreateOpportunityInputOpportunityTypeDurationBasisType? DurationBasis { get; set; }
+        public BodyInputOpportunityTypeDurationBasisType? DurationBasis { get; set; }
 
         [JsonProperty("duration")]
         public string Duration { get; set; }
@@ -426,23 +426,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public int? WinningProbability { get; set; }
 
         [JsonProperty("value")]
-        public CreateOpportunityInputOpportunityTypeExpectedType Expected { get; set; }
+        public BodyInputOpportunityTypeExpectedType Expected { get; set; }
     }
 
-    public class CreateOpportunityInputOpportunityTypePartyType
+    public class BodyInputOpportunityTypePartyType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PartyId { get; set; }
     }
 
-    public class CreateOpportunityInputOpportunityTypeMilestoneType
+    public class CreateOpportunityBodyInputOpportunityTypeMilestoneType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOpportunityInputOpportunityTypeDurationBasisType
+    public enum BodyInputOpportunityTypeDurationBasisType
     {
         FIXED,
         HOUR,
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         QUARTER
     }
 
-    public class CreateOpportunityInputOpportunityTypeExpectedType
+    public class BodyInputOpportunityTypeExpectedType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -474,28 +474,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public OpportunityResponse Opportunity { get; set; }
     }
 
-    public class UpdateOpportunityInput
+    public class UpdateOpportunityBodyInput
     {
         [JsonProperty("opportunity")]
-        public UpdateOpportunityInputOpportunityType Opportunity { get; set; }
+        public UpdateOpportunityBodyInputOpportunityType Opportunity { get; set; }
     }
 
-    public class UpdateOpportunityInputOpportunityType
+    public class UpdateOpportunityBodyInputOpportunityType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("party")]
-        public UpdateOpportunityInputOpportunityTypePartyType Party { get; set; }
+        public BodyInputOpportunityTypePartyType Party { get; set; }
 
         [JsonProperty("milestone")]
-        public UpdateOpportunityInputOpportunityTypeMilestoneType Milestone { get; set; }
+        public UpdateOpportunityBodyInputOpportunityTypeMilestoneType Milestone { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("durationBasis")]
-        public UpdateOpportunityInputOpportunityTypeDurationBasisType? DurationBasis { get; set; }
+        public BodyInputOpportunityTypeDurationBasisType? DurationBasis { get; set; }
 
         [JsonProperty("duration")]
         public string Duration { get; set; }
@@ -507,40 +507,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public int? WinningProbability { get; set; }
 
         [JsonProperty("value")]
-        public UpdateOpportunityInputOpportunityTypeExpectedType Expected { get; set; }
+        public BodyInputOpportunityTypeExpectedType Expected { get; set; }
     }
 
-    public class UpdateOpportunityInputOpportunityTypePartyType
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int PartyId { get; set; }
-    }
-
-    public class UpdateOpportunityInputOpportunityTypeMilestoneType
+    public class UpdateOpportunityBodyInputOpportunityTypeMilestoneType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int MilestoneId { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOpportunityInputOpportunityTypeDurationBasisType
-    {
-        FIXED,
-        HOUR,
-        DAY,
-        MONTH,
-        YEAR,
-        WEEK,
-        QUARTER
-    }
-
-    public class UpdateOpportunityInputOpportunityTypeExpectedType
-    {
-        [JsonProperty("amount")]
-        public int? Amount { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
     }
 
     public class CreateOrganisationResponse
@@ -654,13 +627,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string WebsiteType { get; set; }
     }
 
-    public class CreateOrganisationInput
+    public class CreateOrganisationBodyInput
     {
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOrganisationInputPartyType Party { get; set; } = new CreateOrganisationInputPartyType();
+        public CreateOrganisationBodyInputPartyType Party { get; set; } = new CreateOrganisationBodyInputPartyType();
     }
 
-    public class CreateOrganisationInputPartyType
+    public class CreateOrganisationBodyInputPartyType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -669,16 +642,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string About { get; set; }
 
         [JsonProperty("phoneNumbers")]
-        public CreateOrganisationInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
 
         [JsonProperty("emailAddresses")]
-        public CreateOrganisationInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
 
         [JsonProperty("websites")]
-        public CreateOrganisationInputPartyTypeWebsitesType Websites { get; set; }
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
 
         [JsonProperty("addresses")]
-        public CreateOrganisationInputPartyTypeAddressesType Addresses { get; set; }
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
 
         [JsonProperty("tags")]
         public string Tags { get; set; }
@@ -687,17 +660,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         internal string Type { get; set; } = "organisation";
     }
 
-    public class CreateOrganisationInputPartyTypePhoneNumbersType
+    public class BodyInputPartyTypePhoneNumbersType
     {
         [JsonProperty("number")]
         public string PhoneNumber { get; set; }
 
         [JsonProperty("type")]
-        public CreateOrganisationInputPartyTypePhoneNumbersTypePhoneTypeType? PhoneType { get; set; }
+        public BodyInputPartyTypePhoneNumbersTypePhoneTypeType? PhoneType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrganisationInputPartyTypePhoneNumbersTypePhoneTypeType
+    public enum BodyInputPartyTypePhoneNumbersTypePhoneTypeType
     {
         Home,
         Work,
@@ -706,36 +679,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         Direct
     }
 
-    public class CreateOrganisationInputPartyTypeEmailAddressesType
+    public class BodyInputPartyTypeEmailAddressesType
     {
         [JsonProperty("address")]
         public string EmailAddress { get; set; }
 
         [JsonProperty("type")]
-        public CreateOrganisationInputPartyTypeEmailAddressesTypeEmailTypeType? EmailType { get; set; }
+        public BodyInputPartyTypeEmailAddressesTypeEmailTypeType? EmailType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrganisationInputPartyTypeEmailAddressesTypeEmailTypeType
+    public enum BodyInputPartyTypeEmailAddressesTypeEmailTypeType
     {
         Home,
         Work
     }
 
-    public class CreateOrganisationInputPartyTypeWebsitesType
+    public class BodyInputPartyTypeWebsitesType
     {
         [JsonProperty("address")]
         public string WebsiteAddress { get; set; }
 
         [JsonProperty("service")]
-        public CreateOrganisationInputPartyTypeWebsitesTypeWebsiteServiceType? WebsiteService { get; set; }
+        public BodyInputPartyTypeWebsitesTypeWebsiteServiceType? WebsiteService { get; set; }
 
         [JsonProperty("type")]
-        public CreateOrganisationInputPartyTypeWebsitesTypeWebsiteTypeType? WebsiteType { get; set; }
+        public BodyInputPartyTypeWebsitesTypeWebsiteTypeType? WebsiteType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrganisationInputPartyTypeWebsitesTypeWebsiteServiceType
+    public enum BodyInputPartyTypeWebsitesTypeWebsiteServiceType
     {
         FEED,
         FACEBOOK,
@@ -755,13 +728,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrganisationInputPartyTypeWebsitesTypeWebsiteTypeType
+    public enum BodyInputPartyTypeWebsitesTypeWebsiteTypeType
     {
         Home,
         Work
     }
 
-    public class CreateOrganisationInputPartyTypeAddressesType
+    public class BodyInputPartyTypeAddressesType
     {
         [JsonProperty("street")]
         public string AddressStreet { get; set; }
@@ -779,11 +752,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string AddressCountry { get; set; }
 
         [JsonProperty("type")]
-        public CreateOrganisationInputPartyTypeAddressesTypeAddressTypeType? AddressType { get; set; }
+        public BodyInputPartyTypeAddressesTypeAddressTypeType? AddressType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrganisationInputPartyTypeAddressesTypeAddressTypeType
+    public enum BodyInputPartyTypeAddressesTypeAddressTypeType
     {
         Home,
         Postal,
@@ -796,13 +769,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public PartyResponse Party { get; set; }
     }
 
-    public class UpdateOrganisationInput
+    public class UpdateOrganisationBodyInput
     {
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateOrganisationInputPartyType Party { get; set; } = new UpdateOrganisationInputPartyType();
+        public UpdateOrganisationBodyInputPartyType Party { get; set; } = new UpdateOrganisationBodyInputPartyType();
     }
 
-    public class UpdateOrganisationInputPartyType
+    public class UpdateOrganisationBodyInputPartyType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -811,125 +784,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string About { get; set; }
 
         [JsonProperty("phoneNumbers")]
-        public UpdateOrganisationInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
 
         [JsonProperty("emailAddresses")]
-        public UpdateOrganisationInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
 
         [JsonProperty("websites")]
-        public UpdateOrganisationInputPartyTypeWebsitesType Websites { get; set; }
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
 
         [JsonProperty("addresses")]
-        public UpdateOrganisationInputPartyTypeAddressesType Addresses { get; set; }
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
 
         [JsonProperty("tags")]
         public string Tags { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "organisation";
-    }
-
-    public class UpdateOrganisationInputPartyTypePhoneNumbersType
-    {
-        [JsonProperty("number")]
-        public string PhoneNumber { get; set; }
-
-        [JsonProperty("type")]
-        public UpdateOrganisationInputPartyTypePhoneNumbersTypePhoneTypeType? PhoneType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOrganisationInputPartyTypePhoneNumbersTypePhoneTypeType
-    {
-        Home,
-        Work,
-        Mobile,
-        Fax,
-        Direct
-    }
-
-    public class UpdateOrganisationInputPartyTypeEmailAddressesType
-    {
-        [JsonProperty("address")]
-        public string EmailAddress { get; set; }
-
-        [JsonProperty("type")]
-        public UpdateOrganisationInputPartyTypeEmailAddressesTypeEmailTypeType? EmailType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOrganisationInputPartyTypeEmailAddressesTypeEmailTypeType
-    {
-        Home,
-        Work
-    }
-
-    public class UpdateOrganisationInputPartyTypeWebsitesType
-    {
-        [JsonProperty("address")]
-        public string WebsiteAddress { get; set; }
-
-        [JsonProperty("service")]
-        public UpdateOrganisationInputPartyTypeWebsitesTypeWebsiteServiceType? WebsiteService { get; set; }
-
-        [JsonProperty("type")]
-        public UpdateOrganisationInputPartyTypeWebsitesTypeWebsiteTypeType? WebsiteType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOrganisationInputPartyTypeWebsitesTypeWebsiteServiceType
-    {
-        FEED,
-        FACEBOOK,
-        FLICKR,
-        GITHUB,
-        [EnumMember(Value = "GOOGLE_PLUS")]
-        GOOGLEPLUS,
-        INSTAGRAM,
-        [EnumMember(Value = "LINKED_IN")]
-        LINKEDIN,
-        PINTEREST,
-        SKYPE,
-        TWITTER,
-        URL,
-        XING,
-        YOUTUBE
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOrganisationInputPartyTypeWebsitesTypeWebsiteTypeType
-    {
-        Home,
-        Work
-    }
-
-    public class UpdateOrganisationInputPartyTypeAddressesType
-    {
-        [JsonProperty("street")]
-        public string AddressStreet { get; set; }
-
-        [JsonProperty("city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("zip")]
-        public string AddressZip { get; set; }
-
-        [JsonProperty("country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("type")]
-        public UpdateOrganisationInputPartyTypeAddressesTypeAddressTypeType? AddressType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateOrganisationInputPartyTypeAddressesTypeAddressTypeType
-    {
-        Home,
-        Postal,
-        Office
     }
 
     public class ListpartiesResponse
@@ -1076,13 +946,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public TaskResponse TaskObject { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskInputTaskObjectType TaskObject { get; set; }
+        public CreateTaskBodyInputTaskObjectType TaskObject { get; set; }
     }
 
-    public class CreateTaskInputTaskObjectType
+    public class CreateTaskBodyInputTaskObjectType
     {
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
@@ -1097,10 +967,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string Details { get; set; }
 
         [JsonProperty("party")]
-        public CreateTaskInputTaskObjectTypePartyType Party { get; set; }
+        public BodyInputTaskObjectTypePartyType Party { get; set; }
     }
 
-    public class CreateTaskInputTaskObjectTypePartyType
+    public class BodyInputTaskObjectTypePartyType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1112,19 +982,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public TaskResponse TaskObject { get; set; }
     }
 
-    public class CompleteTaskInput
+    public class CompleteTaskBodyInput
     {
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompleteTaskInputTaskObjectType TaskObject { get; set; } = new CompleteTaskInputTaskObjectType();
+        public CompleteTaskBodyInputTaskObjectType TaskObject { get; set; } = new CompleteTaskBodyInputTaskObjectType();
     }
 
-    public class CompleteTaskInputTaskObjectType
+    public class CompleteTaskBodyInputTaskObjectType
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Status { get; set; } = "completed";
     }
 
-    public class CreatePersonV2Response
+    public class CreatePersonResponse
     {
         [JsonProperty("party")]
         public PartyResponseV2 Party { get; set; }
@@ -1247,13 +1117,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string WebsiteType { get; set; }
     }
 
-    public class CreatePersonV2Input
+    public class CreatePersonBodyInput
     {
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePersonV2InputPartyType Party { get; set; } = new CreatePersonV2InputPartyType();
+        public CreatePersonBodyInputPartyType Party { get; set; } = new CreatePersonBodyInputPartyType();
     }
 
-    public class CreatePersonV2InputPartyType
+    public class CreatePersonBodyInputPartyType
     {
         [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
@@ -1262,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string FirstName { get; set; }
 
         [JsonProperty("title")]
-        public CreatePersonV2InputPartyTypeTitleType? Title { get; set; }
+        public BodyInputPartyTypeTitleType? Title { get; set; }
 
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }
@@ -1271,19 +1141,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string About { get; set; }
 
         [JsonProperty("organisation")]
-        public CreatePersonV2InputPartyTypeOrganisationType Organisation { get; set; }
+        public BodyInputPartyTypeOrganisationType Organisation { get; set; }
 
         [JsonProperty("phoneNumbers")]
-        public CreatePersonV2InputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
 
         [JsonProperty("emailAddresses")]
-        public CreatePersonV2InputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
 
         [JsonProperty("websites")]
-        public CreatePersonV2InputPartyTypeWebsitesType Websites { get; set; }
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
 
         [JsonProperty("addresses")]
-        public CreatePersonV2InputPartyTypeAddressesType Addresses { get; set; }
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
 
         [JsonProperty("tags")]
         public string Tags { get; set; }
@@ -1293,7 +1163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePersonV2InputPartyTypeTitleType
+    public enum BodyInputPartyTypeTitleType
     {
         Mr,
         Master,
@@ -1304,116 +1174,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         Prof
     }
 
-    public class CreatePersonV2InputPartyTypeOrganisationType
+    public class BodyInputPartyTypeOrganisationType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
     }
 
-    public class CreatePersonV2InputPartyTypePhoneNumbersType
-    {
-        [JsonProperty("number")]
-        public string PhoneNumber { get; set; }
-
-        [JsonProperty("type")]
-        public CreatePersonV2InputPartyTypePhoneNumbersTypePhoneTypeType? PhoneType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePersonV2InputPartyTypePhoneNumbersTypePhoneTypeType
-    {
-        Home,
-        Work,
-        Mobile,
-        Fax,
-        Direct
-    }
-
-    public class CreatePersonV2InputPartyTypeEmailAddressesType
-    {
-        [JsonProperty("address")]
-        public string EmailAddress { get; set; }
-
-        [JsonProperty("type")]
-        public CreatePersonV2InputPartyTypeEmailAddressesTypeEmailTypeType? EmailType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePersonV2InputPartyTypeEmailAddressesTypeEmailTypeType
-    {
-        Home,
-        Work
-    }
-
-    public class CreatePersonV2InputPartyTypeWebsitesType
-    {
-        [JsonProperty("address")]
-        public string WebsiteAddress { get; set; }
-
-        [JsonProperty("service")]
-        public CreatePersonV2InputPartyTypeWebsitesTypeWebsiteServiceType? WebsiteService { get; set; }
-
-        [JsonProperty("type")]
-        public CreatePersonV2InputPartyTypeWebsitesTypeWebsiteTypeType? WebsiteType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePersonV2InputPartyTypeWebsitesTypeWebsiteServiceType
-    {
-        FEED,
-        FACEBOOK,
-        FLICKR,
-        GITHUB,
-        [EnumMember(Value = "GOOGLE_PLUS")]
-        GOOGLEPLUS,
-        INSTAGRAM,
-        [EnumMember(Value = "LINKED_IN")]
-        LINKEDIN,
-        PINTEREST,
-        SKYPE,
-        TWITTER,
-        URL,
-        XING,
-        YOUTUBE
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePersonV2InputPartyTypeWebsitesTypeWebsiteTypeType
-    {
-        Home,
-        Work
-    }
-
-    public class CreatePersonV2InputPartyTypeAddressesType
-    {
-        [JsonProperty("street")]
-        public string AddressStreet { get; set; }
-
-        [JsonProperty("city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("zip")]
-        public string AddressZip { get; set; }
-
-        [JsonProperty("country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("type")]
-        public CreatePersonV2InputPartyTypeAddressesTypeAddressTypeType? AddressType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePersonV2InputPartyTypeAddressesTypeAddressTypeType
-    {
-        Home,
-        Postal,
-        Office
-    }
-
-    public class GetPartyV2Response
+    public class GetPartyResponse
     {
         [JsonProperty("party")]
         public PartyResponseV2 Party { get; set; }
@@ -1479,19 +1246,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string PictureURL { get; set; }
     }
 
-    public class UpdatePersonV2Response
+    public class UpdatePersonResponse
     {
         [JsonProperty("party")]
         public PartyResponseV2 Party { get; set; }
     }
 
-    public class UpdatePersonV2Input
+    public class UpdatePersonBodyInput
     {
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdatePersonV2InputPartyType Party { get; set; } = new UpdatePersonV2InputPartyType();
+        public UpdatePersonBodyInputPartyType Party { get; set; } = new UpdatePersonBodyInputPartyType();
     }
 
-    public class UpdatePersonV2InputPartyType
+    public class UpdatePersonBodyInputPartyType
     {
         [JsonProperty("lastName")]
         public string LastName { get; set; }
@@ -1500,7 +1267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string FirstName { get; set; }
 
         [JsonProperty("title")]
-        public UpdatePersonV2InputPartyTypeTitleType? Title { get; set; }
+        public BodyInputPartyTypeTitleType? Title { get; set; }
 
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }
@@ -1509,146 +1276,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string About { get; set; }
 
         [JsonProperty("organisation")]
-        public UpdatePersonV2InputPartyTypeOrganisationType Organisation { get; set; }
+        public BodyInputPartyTypeOrganisationType Organisation { get; set; }
 
         [JsonProperty("phoneNumbers")]
-        public UpdatePersonV2InputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
+        public BodyInputPartyTypePhoneNumbersType PhoneNumbers { get; set; }
 
         [JsonProperty("emailAddresses")]
-        public UpdatePersonV2InputPartyTypeEmailAddressesType EmailAddresses { get; set; }
+        public BodyInputPartyTypeEmailAddressesType EmailAddresses { get; set; }
 
         [JsonProperty("websites")]
-        public UpdatePersonV2InputPartyTypeWebsitesType Websites { get; set; }
+        public BodyInputPartyTypeWebsitesType Websites { get; set; }
 
         [JsonProperty("addresses")]
-        public UpdatePersonV2InputPartyTypeAddressesType Addresses { get; set; }
+        public BodyInputPartyTypeAddressesType Addresses { get; set; }
 
         [JsonProperty("tags")]
         public string Tags { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "person";
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePersonV2InputPartyTypeTitleType
-    {
-        Mr,
-        Master,
-        Mrs,
-        Miss,
-        Ms,
-        Dr,
-        Prof
-    }
-
-    public class UpdatePersonV2InputPartyTypeOrganisationType
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Id { get; set; }
-    }
-
-    public class UpdatePersonV2InputPartyTypePhoneNumbersType
-    {
-        [JsonProperty("number")]
-        public string PhoneNumber { get; set; }
-
-        [JsonProperty("type")]
-        public UpdatePersonV2InputPartyTypePhoneNumbersTypePhoneTypeType? PhoneType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePersonV2InputPartyTypePhoneNumbersTypePhoneTypeType
-    {
-        Home,
-        Work,
-        Mobile,
-        Fax,
-        Direct
-    }
-
-    public class UpdatePersonV2InputPartyTypeEmailAddressesType
-    {
-        [JsonProperty("address")]
-        public string EmailAddress { get; set; }
-
-        [JsonProperty("type")]
-        public UpdatePersonV2InputPartyTypeEmailAddressesTypeEmailTypeType? EmailType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePersonV2InputPartyTypeEmailAddressesTypeEmailTypeType
-    {
-        Home,
-        Work
-    }
-
-    public class UpdatePersonV2InputPartyTypeWebsitesType
-    {
-        [JsonProperty("address")]
-        public string WebsiteAddress { get; set; }
-
-        [JsonProperty("service")]
-        public UpdatePersonV2InputPartyTypeWebsitesTypeWebsiteServiceType? WebsiteService { get; set; }
-
-        [JsonProperty("type")]
-        public UpdatePersonV2InputPartyTypeWebsitesTypeWebsiteTypeType? WebsiteType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePersonV2InputPartyTypeWebsitesTypeWebsiteServiceType
-    {
-        FEED,
-        FACEBOOK,
-        FLICKR,
-        GITHUB,
-        [EnumMember(Value = "GOOGLE_PLUS")]
-        GOOGLEPLUS,
-        INSTAGRAM,
-        [EnumMember(Value = "LINKED_IN")]
-        LINKEDIN,
-        PINTEREST,
-        SKYPE,
-        TWITTER,
-        URL,
-        XING,
-        YOUTUBE
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePersonV2InputPartyTypeWebsitesTypeWebsiteTypeType
-    {
-        Home,
-        Work
-    }
-
-    public class UpdatePersonV2InputPartyTypeAddressesType
-    {
-        [JsonProperty("street")]
-        public string AddressStreet { get; set; }
-
-        [JsonProperty("city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("zip")]
-        public string AddressZip { get; set; }
-
-        [JsonProperty("country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("type")]
-        public UpdatePersonV2InputPartyTypeAddressesTypeAddressTypeType? AddressType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePersonV2InputPartyTypeAddressesTypeAddressTypeType
-    {
-        Home,
-        Postal,
-        Office
     }
 }
 

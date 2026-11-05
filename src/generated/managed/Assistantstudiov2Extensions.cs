@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
     public class Assistantstudiov2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateActionCard(Expression<Func<string>> organization, Expression<Func<CreateActionCardInput>> body, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateActionCard(Expression<Func<string>> organization, Expression<Func<BodyInput>> body, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
         {
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
     {
     }
 
-    public class CreateActionCardInput
+    public class BodyInput
     {
         [JsonProperty("cardname", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Cardname { get; set; }

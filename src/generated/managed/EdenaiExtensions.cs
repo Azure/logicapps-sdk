@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
     public class EdenaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextToSpeechResponse, ApiConnectionActionConfiguration> TextToSpeech(Expression<Func<TextToSpeechInput>> body)
+        public IBodyWorkflowAction<TextToSpeechResponse, ApiConnectionActionConfiguration> TextToSpeech(Expression<Func<TextToSpeechBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TextToSpeechResponse, ApiConnectionActionConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextGenerationResponse, ApiConnectionActionConfiguration> TextGeneration(Expression<Func<TextGenerationInput>> body)
+        public IBodyWorkflowAction<TextGenerationResponse, ApiConnectionActionConfiguration> TextGeneration(Expression<Func<TextGenerationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TextGenerationResponse, ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatInput>> body)
+        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatResponse, ApiConnectionActionConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TopicExtractionResponse, ApiConnectionActionConfiguration> TopicExtraction(Expression<Func<TopicExtractionInput>> body)
+        public IBodyWorkflowAction<TopicExtractionResponse, ApiConnectionActionConfiguration> TopicExtraction(Expression<Func<TopicExtractionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TopicExtractionResponse, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<KeywordExtractionResponse, ApiConnectionActionConfiguration> KeywordExtraction(Expression<Func<KeywordExtractionInput>> body)
+        public IBodyWorkflowAction<KeywordExtractionResponse, ApiConnectionActionConfiguration> KeywordExtraction(Expression<Func<KeywordExtractionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<KeywordExtractionResponse, ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration> NamedEntityRecognition(Expression<Func<NamedEntityRecognitionInput>> body)
+        public IBodyWorkflowAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration> NamedEntityRecognition(Expression<Func<NamedEntityRecognitionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NamedEntityRecognitionResponse, ApiConnectionActionConfiguration>(() =>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<ImageGenerationResponse, ApiConnectionActionConfiguration> ImageGeneration(Expression<Func<ImageGenerationInput>> body)
+        public IBodyWorkflowAction<ImageGenerationResponse, ApiConnectionActionConfiguration> ImageGeneration(Expression<Func<ImageGenerationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageGenerationResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TranslationResponse, ApiConnectionActionConfiguration> Translation(Expression<Func<TranslationInput>> body)
+        public IBodyWorkflowAction<TranslationResponse, ApiConnectionActionConfiguration> Translation(Expression<Func<TranslationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TranslationResponse, ApiConnectionActionConfiguration>(() =>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<TextModerationResponse, ApiConnectionActionConfiguration> TextModeration(Expression<Func<TextModerationInput>> body)
+        public IBodyWorkflowAction<TextModerationResponse, ApiConnectionActionConfiguration> TextModeration(Expression<Func<TextModerationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TextModerationResponse, ApiConnectionActionConfiguration>(() =>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SummarizationResponse, ApiConnectionActionConfiguration> Summarization(Expression<Func<SummarizationInput>> body)
+        public IBodyWorkflowAction<SummarizationResponse, ApiConnectionActionConfiguration> Summarization(Expression<Func<SummarizationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SummarizationResponse, ApiConnectionActionConfiguration>(() =>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<LanguageDetectionResponse, ApiConnectionActionConfiguration> LanguageDetection(Expression<Func<LanguageDetectionInput>> body)
+        public IBodyWorkflowAction<LanguageDetectionResponse, ApiConnectionActionConfiguration> LanguageDetection(Expression<Func<LanguageDetectionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LanguageDetectionResponse, ApiConnectionActionConfiguration>(() =>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> SentimentAnalysis(Expression<Func<SentimentAnalysisInput>> body)
+        public IBodyWorkflowAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration> SentimentAnalysis(Expression<Func<SentimentAnalysisBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SentimentAnalysisResponse, ApiConnectionActionConfiguration>(() =>
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string AudioResourceUrl { get; set; }
     }
 
-    public class TextToSpeechInput
+    public class TextToSpeechBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "google, microsoft, lovoai, ibm, amazon";
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string GeneratedText { get; set; }
     }
 
-    public class TextGenerationInput
+    public class TextGenerationBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "openai, cohere";
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string Status { get; set; }
     }
 
-    public class ChatInput
+    public class ChatBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "openai";
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public double Importance { get; set; }
     }
 
-    public class TopicExtractionInput
+    public class TopicExtractionBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "google, openai, ibm";
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public double Importance { get; set; }
     }
 
-    public class KeywordExtractionInput
+    public class KeywordExtractionBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "amazon, openai, microsoft, ibm, oneai, emvista";
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public double Importance { get; set; }
     }
 
-    public class NamedEntityRecognitionInput
+    public class NamedEntityRecognitionBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "amazon, google, openai, lettria, neuralspace, microsoft, ibm, oneai";
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string ImageResourceUrl { get; set; }
     }
 
-    public class ImageGenerationInput
+    public class ImageGenerationBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "stabilityai, openai, deepai";
@@ -926,7 +926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string Text { get; set; }
     }
 
-    public class TranslationInput
+    public class TranslationBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "google, amazon, neuralspace, modernmt, phedone, deepl, openai, microsoft, ibm";
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public double Likelihood { get; set; }
     }
 
-    public class TextModerationInput
+    public class TextModerationBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "microsoft, openai";
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public string Result { get; set; }
     }
 
-    public class SummarizationInput
+    public class SummarizationBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "cohere, openai, microsoft, emvista, oneai, connexun";
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public double Confidence { get; set; }
     }
 
-    public class LanguageDetectionInput
+    public class LanguageDetectionBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "google, oneai, neuralspace, modernmt, amazon, ibm, openai, microsoft";
@@ -1499,7 +1499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         public double SentimentRate { get; set; }
     }
 
-    public class SentimentAnalysisInput
+    public class SentimentAnalysisBodyInput
     {
         [JsonProperty("providers", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Providers { get; set; } = "connexun, amazon, google, microsoft, oneai, emvista, openai, ibm, lettria";

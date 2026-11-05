@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateWordFileWithContent(Expression<Func<CreateWordFileWithContentInput>> content, Expression<Func<string>> fileName = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateWordFileWithContent(Expression<Func<ContentInput>> content, Expression<Func<string>> fileName = null)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
     {
     }
 
-    public class CreateWordFileWithContentInput
+    public class ContentInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }

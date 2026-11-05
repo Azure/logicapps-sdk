@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<ContactsNewContactResponse, ApiConnectionActionConfiguration> ContactsNewContact(Expression<Func<ContactsNewContactInput>> parameters)
+        public IBodyWorkflowAction<ContactsNewContactResponse, ApiConnectionActionConfiguration> ContactsNewContact(Expression<Func<ContactsNewContactParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<ContactsNewContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<ImagesNewImageResponse, ApiConnectionActionConfiguration> ImagesNewImage(Expression<Func<ImagesNewImageInput>> parameters)
+        public IBodyWorkflowAction<ImagesNewImageResponse, ApiConnectionActionConfiguration> ImagesNewImage(Expression<Func<ImagesNewImageParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<ImagesNewImageResponse, ApiConnectionActionConfiguration>(() =>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<ListsAddEmailsByIdResponse, ApiConnectionActionConfiguration> ListsAddEmailsById(Expression<Func<int>> id, Expression<Func<ListsAddEmailsByIdInput>> parameters = null)
+        public IBodyWorkflowAction<ListsAddEmailsByIdResponse, ApiConnectionActionConfiguration> ListsAddEmailsById(Expression<Func<int>> id, Expression<Func<ListsAddEmailsByIdParametersInput>> parameters = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<ListsRemoveEmailsByIdResponse, ApiConnectionActionConfiguration> ListsRemoveEmailsById(Expression<Func<int>> id, Expression<Func<ListsRemoveEmailsByIdInput>> parameters = null)
+        public IBodyWorkflowAction<ListsRemoveEmailsByIdResponse, ApiConnectionActionConfiguration> ListsRemoveEmailsById(Expression<Func<int>> id, Expression<Func<ListsAddEmailsByIdParametersInput>> parameters = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<ListsNewListResponse, ApiConnectionActionConfiguration> ListsNewList(Expression<Func<ListsNewListInput>> parameters)
+        public IBodyWorkflowAction<ListsNewListResponse, ApiConnectionActionConfiguration> ListsNewList(Expression<Func<CampaignsNewCampaignParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<ListsNewListResponse, ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<TemplatesNewTemplateResponse, ApiConnectionActionConfiguration> TemplatesNewTemplate(Expression<Func<TemplatesNewTemplateInput>> parameters)
+        public IBodyWorkflowAction<TemplatesNewTemplateResponse, ApiConnectionActionConfiguration> TemplatesNewTemplate(Expression<Func<TemplatesNewTemplateParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<TemplatesNewTemplateResponse, ApiConnectionActionConfiguration>(() =>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<SentMessagesSendResponse, ApiConnectionActionConfiguration> SentMessagesSend(Expression<Func<SentMessagesSendInput>> parameters)
+        public IBodyWorkflowAction<SentMessagesSendResponse, ApiConnectionActionConfiguration> SentMessagesSend(Expression<Func<SentMessagesSendParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<SentMessagesSendResponse, ApiConnectionActionConfiguration>(() =>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<SmartAttachmentsNewAttachmentResponse, ApiConnectionActionConfiguration> SmartAttachmentsNewAttachment(Expression<Func<SmartAttachmentsNewAttachmentInput>> parameters)
+        public IBodyWorkflowAction<SmartAttachmentsNewAttachmentResponse, ApiConnectionActionConfiguration> SmartAttachmentsNewAttachment(Expression<Func<ImagesNewImageParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<SmartAttachmentsNewAttachmentResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "politemail")]
-        public IBodyWorkflowAction<CampaignsNewCampaignResponse, ApiConnectionActionConfiguration> CampaignsNewCampaign(Expression<Func<CampaignsNewCampaignInput>> parameters)
+        public IBodyWorkflowAction<CampaignsNewCampaignResponse, ApiConnectionActionConfiguration> CampaignsNewCampaign(Expression<Func<CampaignsNewCampaignParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<CampaignsNewCampaignResponse, ApiConnectionActionConfiguration>(() =>
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public int Value { get; set; }
     }
 
-    public class ContactsNewContactInput
+    public class ContactsNewContactParametersInput
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public int Value { get; set; }
     }
 
-    public class ImagesNewImageInput
+    public class ImagesNewImageParametersInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public bool Value { get; set; }
     }
 
-    public class ListsAddEmailsByIdInput
+    public class ListsAddEmailsByIdParametersInput
     {
         [JsonProperty("emails")]
         public string[] Emails { get; set; }
@@ -393,12 +393,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public bool Value { get; set; }
     }
 
-    public class ListsRemoveEmailsByIdInput
-    {
-        [JsonProperty("emails")]
-        public string[] Emails { get; set; }
-    }
-
     public class ListsNewListResponse
     {
         [JsonProperty("odata.metadata")]
@@ -408,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public int Value { get; set; }
     }
 
-    public class ListsNewListInput
+    public class CampaignsNewCampaignParametersInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -434,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public int Value { get; set; }
     }
 
-    public class TemplatesNewTemplateInput
+    public class TemplatesNewTemplateParametersInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -465,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public bool Value { get; set; }
     }
 
-    public class SentMessagesSendInput
+    public class SentMessagesSendParametersInput
     {
         [JsonProperty("Campaign")]
         public int? SelectCampaign { get; set; }
@@ -488,11 +482,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public bool? IsHTML { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SentMessagesSendInputSendModeType? SendMode { get; set; } = SentMessagesSendInputSendModeType._2;
+        public ParametersInputSendModeType? SendMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Politemail.ParametersInputSendModeType._2;
         public string SendLater { get; set; }
     }
 
-    public enum SentMessagesSendInputSendModeType
+    public enum ParametersInputSendModeType
     {
         _1 = 1,
         _2 = 2,
@@ -508,27 +502,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public int Value { get; set; }
     }
 
-    public class SmartAttachmentsNewAttachmentInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-        public string ContentType { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
-
-        [JsonProperty("OwnerID")]
-        public int? SelectOwner { get; set; }
-        public bool? Shared { get; set; }
-        public int? Privacy { get; set; }
-
-        [JsonProperty("BusinessID")]
-        public int? SelectBusiness { get; set; }
-
-        [JsonProperty("RegionID")]
-        public int? SelectRegion { get; set; }
-    }
-
     public class CampaignsNewCampaignResponse
     {
         [JsonProperty("odata.metadata")]
@@ -536,23 +509,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
 
         [JsonProperty("value")]
         public int Value { get; set; }
-    }
-
-    public class CampaignsNewCampaignInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        [JsonProperty("OwnerID")]
-        public int? SelectOwner { get; set; }
-        public bool? Shared { get; set; }
-
-        [JsonProperty("BusinessID")]
-        public int? SelectBusiness { get; set; }
-
-        [JsonProperty("RegionID")]
-        public int? SelectRegion { get; set; }
     }
 
     public class OnNewContactResponse

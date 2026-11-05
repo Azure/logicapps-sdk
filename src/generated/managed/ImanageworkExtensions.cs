@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     public class ImanageworkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetTrusteesResponse, ApiConnectionActionConfiguration> GetTrustees(Expression<Func<GetTrusteesInput>> body)
+        public IBodyWorkflowAction<GetTrusteesResponse, ApiConnectionActionConfiguration> GetTrustees(Expression<Func<GetPermissionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetTrusteesResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<UpdateDefaultSecurityResponse, ApiConnectionActionConfiguration> UpdateDefaultSecurity(Expression<Func<UpdateDefaultSecurityInput>> body)
+        public IBodyWorkflowAction<UpdateDefaultSecurityResponse, ApiConnectionActionConfiguration> UpdateDefaultSecurity(Expression<Func<UpdateDefaultSecurityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateDefaultSecurityResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<UpdatePermissionsResponse, ApiConnectionActionConfiguration> UpdatePermissions(Expression<Func<UpdatePermissionsInput>> body)
+        public IBodyWorkflowAction<UpdatePermissionsResponse, ApiConnectionActionConfiguration> UpdatePermissions(Expression<Func<UpdatePermissionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdatePermissionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetPermissionsResponse, ApiConnectionActionConfiguration> GetPermissions(Expression<Func<GetPermissionsInput>> body)
+        public IBodyWorkflowAction<GetPermissionsResponse, ApiConnectionActionConfiguration> GetPermissions(Expression<Func<GetPermissionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetPermissionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<UpdatePermissionsResponse, ApiConnectionActionConfiguration> CopyPermissions(Expression<Func<CopyPermissionsInput>> body)
+        public IBodyWorkflowAction<UpdatePermissionsResponse, ApiConnectionActionConfiguration> CopyPermissions(Expression<Func<CopyPermissionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdatePermissionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration> CreateWorkspace(Expression<Func<CreateWorkspaceInput>> body)
+        public IBodyWorkflowAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration> CreateWorkspace(Expression<Func<CreateWorkspaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration> UpdateWorkspace(Expression<Func<UpdateWorkspaceInput>> body)
+        public IBodyWorkflowAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration> UpdateWorkspace(Expression<Func<UpdateWorkspaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetClassesResponse, ApiConnectionActionConfiguration> GetClasses(Expression<Func<string>> libraryId, Expression<Func<string>> alias = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<string>> description = null, Expression<Func<bool>> echo = null, Expression<Func<bool>> hipaa = null, Expression<Func<bool>> indexable = null, Expression<Func<string>> query = null, Expression<Func<bool>> subclassRequired = null)
+        public IBodyWorkflowAction<GetClassesResponse, ApiConnectionActionConfiguration> GetClasses(Expression<Func<string>> libraryId, Expression<Func<string>> alias = null, Expression<Func<DefaultSecurityInput>> defaultSecurity = null, Expression<Func<string>> description = null, Expression<Func<bool>> echo = null, Expression<Func<bool>> hipaa = null, Expression<Func<bool>> indexable = null, Expression<Func<string>> query = null, Expression<Func<bool>> subclassRequired = null)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
             var __workflow_alias = WorkflowExpression.Compile(alias, nameof(alias), required: false);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetSubclassesResponse, ApiConnectionActionConfiguration> GetSubclasses(Expression<Func<string>> libraryId, Expression<Func<string>> classId, Expression<Func<string>> alias = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<string>> description = null, Expression<Func<bool>> echo = null, Expression<Func<bool>> hipaa = null, Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<GetSubclassesResponse, ApiConnectionActionConfiguration> GetSubclasses(Expression<Func<string>> libraryId, Expression<Func<string>> classId, Expression<Func<string>> alias = null, Expression<Func<DefaultSecurityInput>> defaultSecurity = null, Expression<Func<string>> description = null, Expression<Func<bool>> echo = null, Expression<Func<bool>> hipaa = null, Expression<Func<string>> query = null)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
             var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditNVP(Expression<Func<EditNVPInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditNVP(Expression<Func<EditNVPBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<SearchFoldersResponseBody, ApiConnectionActionConfiguration> SearchFolders(Expression<Func<SearchFoldersInput>> body)
+        public IBodyWorkflowAction<SearchFoldersResponseBody, ApiConnectionActionConfiguration> SearchFolders(Expression<Func<SearchFoldersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchFoldersResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<DownloadDocumentInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<DownloadDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetUserDetailsResponse, ApiConnectionActionConfiguration> GetUserDetails(Expression<Func<GetUserDetailsInput>> body)
+        public IBodyWorkflowAction<GetUserDetailsResponse, ApiConnectionActionConfiguration> GetUserDetails(Expression<Func<GetUserDetailsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetUserDetailsResponse, ApiConnectionActionConfiguration>(() =>
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration> GetWorkspaceProfile(Expression<Func<GetWorkspaceProfileInput>> body)
+        public IBodyWorkflowAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration> GetWorkspaceProfile(Expression<Func<GetWorkspaceProfileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkspaceProfileResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetContainerChildrenResponse, ApiConnectionActionConfiguration> GetContainerChildren(Expression<Func<GetContainerChildrenInput>> body)
+        public IBodyWorkflowAction<GetContainerChildrenResponse, ApiConnectionActionConfiguration> GetContainerChildren(Expression<Func<GetContainerChildrenBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetContainerChildrenResponse, ApiConnectionActionConfiguration>(() =>
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetContainerProfileResponseBody, ApiConnectionActionConfiguration> GetContainerProfile(Expression<Func<GetContainerProfileInput>> body)
+        public IBodyWorkflowAction<GetContainerProfileResponseBody, ApiConnectionActionConfiguration> GetContainerProfile(Expression<Func<GetContainerProfileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetContainerProfileResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<FullDocumentProfileResponseBody, ApiConnectionActionConfiguration> GetDocumentProfile(Expression<Func<GetDocumentProfileInput>> body)
+        public IBodyWorkflowAction<FullDocumentProfileResponseBody, ApiConnectionActionConfiguration> GetDocumentProfile(Expression<Func<DownloadDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FullDocumentProfileResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<ShortDocumentProfileResponseBody, ApiConnectionActionConfiguration> UpdateDocumentProfile(Expression<Func<UpdateDocumentProfileInput>> body)
+        public IBodyWorkflowAction<ShortDocumentProfileResponseBody, ApiConnectionActionConfiguration> UpdateDocumentProfile(Expression<Func<UpdateDocumentProfileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShortDocumentProfileResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetGroupMembersResponse, ApiConnectionActionConfiguration> GetGroupMembers(Expression<Func<string>> libraryId, Expression<Func<string>> groupId, Expression<Func<logonStatusInput>> logonStatus = null, Expression<Func<int>> limit = null, Expression<Func<string>> preferredLibrary = null, Expression<Func<string>> location = null)
+        public IBodyWorkflowAction<GetGroupMembersResponse, ApiConnectionActionConfiguration> GetGroupMembers(Expression<Func<string>> libraryId, Expression<Func<string>> groupId, Expression<Func<LogonStatusInput>> logonStatus = null, Expression<Func<int>> limit = null, Expression<Func<string>> preferredLibrary = null, Expression<Func<string>> location = null)
         {
             var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<SearchWorkspacesResponseBody, ApiConnectionActionConfiguration> SearchWorkspaces(Expression<Func<SearchWorkspacesInput>> body)
+        public IBodyWorkflowAction<SearchWorkspacesResponseBody, ApiConnectionActionConfiguration> SearchWorkspaces(Expression<Func<SearchWorkspacesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchWorkspacesResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<AddDocumentReferenceResponse, ApiConnectionActionConfiguration> AddDocumentReference(Expression<Func<AddDocumentReferenceInput>> body)
+        public IBodyWorkflowAction<AddDocumentReferenceResponse, ApiConnectionActionConfiguration> AddDocumentReference(Expression<Func<AddDocumentReferenceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddDocumentReferenceResponse, ApiConnectionActionConfiguration>(() =>
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<MoveDocumentResponseBody, ApiConnectionActionConfiguration> MoveDocument(Expression<Func<MoveDocumentInput>> body)
+        public IBodyWorkflowAction<MoveDocumentResponseBody, ApiConnectionActionConfiguration> MoveDocument(Expression<Func<MoveDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveDocumentResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<CopyDocumentResponse, ApiConnectionActionConfiguration> CopyDocument(Expression<Func<CopyDocumentInput>> body)
+        public IBodyWorkflowAction<CopyDocumentResponse, ApiConnectionActionConfiguration> CopyDocument(Expression<Func<AddDocumentReferenceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CopyDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<CreateFormLinkResponse, ApiConnectionActionConfiguration> CreateFormLink(Expression<Func<CreateFormLinkInput>> body)
+        public IBodyWorkflowAction<CreateFormLinkResponse, ApiConnectionActionConfiguration> CreateFormLink(Expression<Func<CreateFormLinkBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateFormLinkResponse, ApiConnectionActionConfiguration>(() =>
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateWorkflowState(Expression<Func<UpdateWorkflowStateInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateWorkflowState(Expression<Func<UpdateWorkflowStateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<CoreEMPropertiesResponseBody, ApiConnectionActionConfiguration> GetCoreEMPropertiesForDocument(Expression<Func<GetCoreEMPropertiesForDocumentInput>> body)
+        public IBodyWorkflowAction<CoreEMPropertiesResponseBody, ApiConnectionActionConfiguration> GetCoreEMPropertiesForDocument(Expression<Func<DownloadDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CoreEMPropertiesResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<PromoteDocumentVersionResponseBody, ApiConnectionActionConfiguration> PromoteDocumentVersion(Expression<Func<PromoteDocumentVersionInput>> body)
+        public IBodyWorkflowAction<PromoteDocumentVersionResponseBody, ApiConnectionActionConfiguration> PromoteDocumentVersion(Expression<Func<PromoteDocumentVersionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PromoteDocumentVersionResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<GetDocumentVersionsResponse, ApiConnectionActionConfiguration> GetDocumentVersions(Expression<Func<GetDocumentVersionsInput>> body)
+        public IBodyWorkflowAction<GetDocumentVersionsResponse, ApiConnectionActionConfiguration> GetDocumentVersions(Expression<Func<GetDocumentVersionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetDocumentVersionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<CoreEMPropertiesResponseBody, ApiConnectionActionConfiguration> SetCoreEMPropertiesForDocument(Expression<Func<SetCoreEMPropertiesForDocumentInput>> body)
+        public IBodyWorkflowAction<CoreEMPropertiesResponseBody, ApiConnectionActionConfiguration> SetCoreEMPropertiesForDocument(Expression<Func<SetCoreEMPropertiesForDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CoreEMPropertiesResponseBody, ApiConnectionActionConfiguration>(() =>
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<SearchCoreEMTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration> SearchCoreEMTaxonomyNodeValues(Expression<Func<SearchCoreEMTaxonomyNodeValuesInput>> body)
+        public IBodyWorkflowAction<SearchCoreEMTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration> SearchCoreEMTaxonomyNodeValues(Expression<Func<SearchCoreEMTaxonomyNodeValuesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchCoreEMTaxonomyNodeValuesResponse, ApiConnectionActionConfiguration>(() =>
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<AddDocumentHistoryEntryResponse, ApiConnectionActionConfiguration> AddDocumentHistoryEntry(Expression<Func<AddDocumentHistoryEntryInput>> body)
+        public IBodyWorkflowAction<AddDocumentHistoryEntryResponse, ApiConnectionActionConfiguration> AddDocumentHistoryEntry(Expression<Func<AddDocumentHistoryEntryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddDocumentHistoryEntryResponse, ApiConnectionActionConfiguration>(() =>
@@ -695,7 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateDocumentRelation(Expression<Func<CreateDocumentRelationInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateDocumentRelation(Expression<Func<CreateDocumentRelationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
     public class ImanageworkTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse, ApiConnectionTriggerConfiguration> SingleSelectedDocument(Expression<Func<SingleSelectedDocumentInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse, ApiConnectionTriggerConfiguration> SingleSelectedDocument(Expression<Func<SingleSelectedDocumentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<SingleSelectedDocumentResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -740,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             });
         }
 
-        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse, ApiConnectionTriggerConfiguration> MultipleSelectedDocuments(Expression<Func<MultipleSelectedDocumentsInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse, ApiConnectionTriggerConfiguration> MultipleSelectedDocuments(Expression<Func<MultipleSelectedDocumentsBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MultipleSelectedDocumentsResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             });
         }
 
-        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse, ApiConnectionTriggerConfiguration> SingleSelectedWorkspace(Expression<Func<SingleSelectedWorkspaceInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse, ApiConnectionTriggerConfiguration> SingleSelectedWorkspace(Expression<Func<RegisterGenericWorkflowBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<SingleSelectedWorkspaceResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             });
         }
 
-        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration> MultipleSelectedWorkspaces(Expression<Func<MultipleSelectedWorkspacesInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration> MultipleSelectedWorkspaces(Expression<Func<MultipleSelectedWorkspacesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<MultipleSelectedWorkspacesResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             });
         }
 
-        public IBodyWorkflowTrigger<RegisterGenericWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterGenericWorkflow(Expression<Func<RegisterGenericWorkflowInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegisterGenericWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterGenericWorkflow(Expression<Func<RegisterGenericWorkflowBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<RegisterGenericWorkflowResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             });
         }
 
-        public IBodyWorkflowTrigger<RegisterFormWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterFormWorkflow(Expression<Func<RegisterFormWorkflowInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegisterFormWorkflowResponse, ApiConnectionTriggerConfiguration> RegisterFormWorkflow(Expression<Func<RegisterFormWorkflowBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<RegisterFormWorkflowResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -836,17 +836,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Group
     }
 
-    public class GetTrusteesInput
+    public class GetPermissionsBodyInput
     {
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetTrusteesInputObjectTypeType ObjectType { get; set; } = GetTrusteesInputObjectTypeType.Document;
+        public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
         [JsonProperty("objectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetTrusteesInputObjectTypeType
+    public enum BodyInputObjectTypeType
     {
         [EnumMember(Value = "document")]
         Document,
@@ -959,27 +959,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         ChangeSecurity
     }
 
-    public class UpdateDefaultSecurityInput
+    public class UpdateDefaultSecurityBodyInput
     {
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDefaultSecurityInputObjectTypeType ObjectType { get; set; } = UpdateDefaultSecurityInputObjectTypeType.Document;
+        public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
         [JsonProperty("objectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
         [JsonProperty("default_security", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DefaultSecurity { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDefaultSecurityInputObjectTypeType
-    {
-        [EnumMember(Value = "document")]
-        Document,
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "workspace")]
-        Workspace
     }
 
     public class UpdatePermissionsResponse
@@ -994,7 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public UpdatePermissionsResponseDataTypeDefaultSecurityType DefaultSecurity { get; set; }
 
         [JsonProperty("acl")]
-        public AccessPermissionsItem2[] Acl { get; set; }
+        public AccessPermissionsItem[] Acl { get; set; }
 
         [JsonProperty("all_user_ids")]
         public string AllUserIds { get; set; }
@@ -1016,52 +1005,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Private
     }
 
-    public class AccessPermissionsItem2
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("sid")]
-        public string Sid { get; set; }
-
-        [JsonProperty("type")]
-        public AccessPermissionsItemTypeType Type { get; set; }
-
-        [JsonProperty("access_level")]
-        public AccessPermissionsItemAccessLevelType AccessLevel { get; set; }
-
-        [JsonProperty("access_level_display_name")]
-        public AccessPermissionsItemAccessLevelDisplayNameType AccessLevelDisplayName { get; set; }
-
-        [JsonProperty("access")]
-        public int Access { get; set; }
-
-        [JsonProperty("is_external")]
-        public bool IsExternal { get; set; }
-
-        [JsonProperty("allow_logon")]
-        public bool AllowLogon { get; set; }
-
-        [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
-
-        [JsonProperty("has_restricted_member")]
-        public bool HasRestrictedMember { get; set; }
-    }
-
-    public class UpdatePermissionsInput
+    public class UpdatePermissionsBodyInput
     {
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdatePermissionsInputObjectTypeType ObjectType { get; set; } = UpdatePermissionsInputObjectTypeType.Document;
+        public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
         [JsonProperty("objectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
         [JsonProperty("access_level", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdatePermissionsInputAccessLevelType AccessLevel { get; set; }
+        public BodyInputAccessLevelType AccessLevel { get; set; }
 
         [JsonProperty("users")]
         public string Users { get; set; }
@@ -1071,18 +1024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePermissionsInputObjectTypeType
-    {
-        [EnumMember(Value = "document")]
-        Document,
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "workspace")]
-        Workspace
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePermissionsInputAccessLevelType
+    public enum BodyInputAccessLevelType
     {
         [EnumMember(Value = "No Access")]
         NoAccess,
@@ -1110,7 +1052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public GetPermissionsResponseDataTypeInheritedDefaultSecurityType InheritedDefaultSecurity { get; set; }
 
         [JsonProperty("acl")]
-        public AccessPermissionsItem22[] Acl { get; set; }
+        public AccessPermissionsItem[] Acl { get; set; }
 
         [JsonProperty("all_user_ids")]
         public string AllUserIds { get; set; }
@@ -1143,85 +1085,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Private
     }
 
-    public class AccessPermissionsItem22
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("sid")]
-        public string Sid { get; set; }
-
-        [JsonProperty("type")]
-        public AccessPermissionsItemTypeType Type { get; set; }
-
-        [JsonProperty("access_level")]
-        public AccessPermissionsItemAccessLevelType AccessLevel { get; set; }
-
-        [JsonProperty("access_level_display_name")]
-        public AccessPermissionsItemAccessLevelDisplayNameType AccessLevelDisplayName { get; set; }
-
-        [JsonProperty("access")]
-        public int Access { get; set; }
-
-        [JsonProperty("is_external")]
-        public bool IsExternal { get; set; }
-
-        [JsonProperty("allow_logon")]
-        public bool AllowLogon { get; set; }
-
-        [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
-
-        [JsonProperty("has_restricted_member")]
-        public bool HasRestrictedMember { get; set; }
-    }
-
-    public class GetPermissionsInput
-    {
-        [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetPermissionsInputObjectTypeType ObjectType { get; set; } = GetPermissionsInputObjectTypeType.Document;
-
-        [JsonProperty("objectId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ObjectId { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetPermissionsInputObjectTypeType
-    {
-        [EnumMember(Value = "document")]
-        Document,
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "workspace")]
-        Workspace
-    }
-
-    public class CopyPermissionsInput
+    public class CopyPermissionsBodyInput
     {
         [JsonProperty("sourceObjectType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CopyPermissionsInputSourceObjectTypeType SourceObjectType { get; set; }
+        public BodyInputSourceObjectTypeType SourceObjectType { get; set; }
 
         [JsonProperty("sourceObjectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceObjectId { get; set; }
 
         [JsonProperty("targetObjectType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CopyPermissionsInputTargetObjectTypeType TargetObjectType { get; set; }
+        public BodyInputTargetObjectTypeType TargetObjectType { get; set; }
 
         [JsonProperty("targetObjectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetObjectId { get; set; }
 
         [JsonProperty("copyType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CopyPermissionsInputCopyTypeType CopyType { get; set; } = CopyPermissionsInputCopyTypeType.Overwrite;
+        public BodyInputCopyTypeType CopyType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputCopyTypeType.Overwrite;
 
         [JsonProperty("copyDefaultSecurity", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool CopyDefaultSecurity { get; set; } = true;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CopyPermissionsInputSourceObjectTypeType
+    public enum BodyInputSourceObjectTypeType
     {
         [EnumMember(Value = "document")]
         Document,
@@ -1232,7 +1118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CopyPermissionsInputTargetObjectTypeType
+    public enum BodyInputTargetObjectTypeType
     {
         [EnumMember(Value = "document")]
         Document,
@@ -1243,7 +1129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CopyPermissionsInputCopyTypeType
+    public enum BodyInputCopyTypeType
     {
         Overwrite,
         [EnumMember(Value = "Merge (Pessimistic)")]
@@ -1521,7 +1407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class CreateWorkspaceInput
+    public class CreateWorkspaceBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -1533,13 +1419,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Name { get; set; }
 
         [JsonProperty("createChildren", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWorkspaceInputCreateChildrenType CreateChildren { get; set; } = CreateWorkspaceInputCreateChildrenType.OnlyRequiredFolders;
+        public BodyInputCreateChildrenType CreateChildren { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputCreateChildrenType.OnlyRequiredFolders;
 
         [JsonProperty("owner")]
         public string Owner { get; set; }
 
         [JsonProperty("default_security")]
-        public CreateWorkspaceInputDefaultSecurityType? DefaultSecurity { get; set; }
+        public CreateWorkspaceBodyInputDefaultSecurityType? DefaultSecurity { get; set; }
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; } = "Created from iManage Work Connector";
@@ -1651,7 +1537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWorkspaceInputCreateChildrenType
+    public enum BodyInputCreateChildrenType
     {
         [EnumMember(Value = "All Folders")]
         AllFolders,
@@ -1660,7 +1546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWorkspaceInputDefaultSecurityType
+    public enum CreateWorkspaceBodyInputDefaultSecurityType
     {
         [EnumMember(Value = "private")]
         Private,
@@ -1670,7 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
-    public class UpdateWorkspaceInput
+    public class UpdateWorkspaceBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -1772,7 +1658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Custom30 { get; set; }
 
         [JsonProperty("default_security")]
-        public UpdateWorkspaceInputDefaultSecurityType? DefaultSecurity { get; set; }
+        public CreateWorkspaceBodyInputDefaultSecurityType? DefaultSecurity { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1791,17 +1677,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         [JsonProperty("subclass")]
         public string Subclass { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateWorkspaceInputDefaultSecurityType
-    {
-        [EnumMember(Value = "private")]
-        Private,
-        [EnumMember(Value = "view")]
-        View,
-        [EnumMember(Value = "public")]
-        Public
     }
 
     public class GetClassesResponse
@@ -1864,7 +1739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum defaultSecurityInput
+    public enum DefaultSecurityInput
     {
         [EnumMember(Value = "private")]
         Private,
@@ -1963,27 +1838,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Name { get; set; }
     }
 
-    public class EditNVPInput
+    public class EditNVPBodyInput
     {
         [JsonProperty("objectType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EditNVPInputObjectTypeType ObjectType { get; set; } = EditNVPInputObjectTypeType.Document;
+        public BodyInputObjectTypeType ObjectType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputObjectTypeType.Document;
 
         [JsonProperty("objectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectId { get; set; }
 
         [JsonProperty("nameValuePairs")]
         public JToken NameValuePairs { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditNVPInputObjectTypeType
-    {
-        [EnumMember(Value = "document")]
-        Document,
-        [EnumMember(Value = "folder")]
-        Folder,
-        [EnumMember(Value = "workspace")]
-        Workspace
     }
 
     public class SearchFoldersResponseBody
@@ -2135,7 +1999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         WorkspaceShortcut
     }
 
-    public class SearchFoldersInput
+    public class SearchFoldersBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -2159,7 +2023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string WorkspaceName { get; set; }
     }
 
-    public class DownloadDocumentInput
+    public class DownloadDocumentBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -2261,7 +2125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public int UserNum { get; set; }
     }
 
-    public class GetUserDetailsInput
+    public class GetUserDetailsBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -2270,7 +2134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string UserId { get; set; }
     }
 
-    public class GetWorkspaceProfileInput
+    public class GetWorkspaceProfileBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -2315,7 +2179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Subclass { get; set; }
     }
 
-    public class GetContainerChildrenInput
+    public class GetContainerChildrenBodyInput
     {
         [JsonProperty("containerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContainerId { get; set; }
@@ -2531,7 +2395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
-    public class GetContainerProfileInput
+    public class GetContainerProfileBodyInput
     {
         [JsonProperty("containerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContainerId { get; set; }
@@ -2953,15 +2817,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class GetDocumentProfileInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-
-        [JsonProperty("latest", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Latest { get; set; } = false;
-    }
-
     public class ShortDocumentProfileResponseBody
     {
         [JsonProperty("data")]
@@ -3278,7 +3133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class UpdateDocumentProfileInput
+    public class UpdateDocumentProfileBodyInput
     {
         [JsonProperty("alias")]
         public string Alias { get; set; }
@@ -3290,7 +3145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Comment { get; set; }
 
         [JsonProperty("default_security")]
-        public UpdateDocumentProfileInputDefaultSecurityType? DefaultSecurity { get; set; }
+        public UpdateDocumentProfileBodyInputDefaultSecurityType? DefaultSecurity { get; set; }
 
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -3411,7 +3266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDocumentProfileInputDefaultSecurityType
+    public enum UpdateDocumentProfileBodyInputDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
         Inherit,
@@ -3517,7 +3372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum logonStatusInput
+    public enum LogonStatusInput
     {
         Any,
         Disabled,
@@ -3777,7 +3632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class SearchWorkspacesInput
+    public class SearchWorkspacesBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -3926,7 +3781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Email
     }
 
-    public class AddDocumentReferenceInput
+    public class AddDocumentReferenceBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -4285,7 +4140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class MoveDocumentInput
+    public class MoveDocumentBodyInput
     {
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
@@ -4527,15 +4382,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class CopyDocumentInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-
-        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderId { get; set; }
-    }
-
     public class CreateFormLinkResponse
     {
         [JsonProperty("data")]
@@ -4548,7 +4394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string LinkUrl { get; set; }
     }
 
-    public class CreateFormLinkInput
+    public class CreateFormLinkBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -4566,7 +4412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public JToken LinkData { get; set; }
     }
 
-    public class UpdateWorkflowStateInput
+    public class UpdateWorkflowStateBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -6057,15 +5903,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Ssid { get; set; }
     }
 
-    public class GetCoreEMPropertiesForDocumentInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-
-        [JsonProperty("latest", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Latest { get; set; } = false;
-    }
-
     public class PromoteDocumentVersionResponseBody
     {
         [JsonProperty("data")]
@@ -6340,7 +6177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class PromoteDocumentVersionInput
+    public class PromoteDocumentVersionBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -6364,7 +6201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Class { get; set; }
 
         [JsonProperty("default_security")]
-        public PromoteDocumentVersionInputDefaultSecurityType? DefaultSecurity { get; set; }
+        public CreateWorkspaceBodyInputDefaultSecurityType? DefaultSecurity { get; set; }
 
         [JsonProperty("is_declared")]
         public bool? IsDeclared { get; set; }
@@ -6473,17 +6310,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         [JsonProperty("custom30")]
         public string Custom30 { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PromoteDocumentVersionInputDefaultSecurityType
-    {
-        [EnumMember(Value = "private")]
-        Private,
-        [EnumMember(Value = "view")]
-        View,
-        [EnumMember(Value = "public")]
-        Public
     }
 
     public class GetDocumentVersionsResponse
@@ -6760,22 +6586,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
-    public class GetDocumentVersionsInput
+    public class GetDocumentVersionsBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
     }
 
-    public class SetCoreEMPropertiesForDocumentInput
+    public class SetCoreEMPropertiesForDocumentBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
         [JsonProperty("emProperties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetCoreEMPropertiesForDocumentInputEmPropertiesTypeItem[] EmProperties { get; set; }
+        public BodyInputEmPropertiesTypeItem[] EmProperties { get; set; }
     }
 
-    public class SetCoreEMPropertiesForDocumentInputEmPropertiesTypeItem
+    public class BodyInputEmPropertiesTypeItem
     {
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
@@ -6922,7 +6748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Ssid { get; set; }
     }
 
-    public class SearchCoreEMTaxonomyNodeValuesInput
+    public class SearchCoreEMTaxonomyNodeValuesBodyInput
     {
         [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LibraryId { get; set; }
@@ -6937,7 +6763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Query { get; set; }
 
         [JsonProperty("enabled_state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SearchCoreEMTaxonomyNodeValuesInputEnabledStateType? EnabledState { get; set; } = SearchCoreEMTaxonomyNodeValuesInputEnabledStateType.Enabled;
+        public BodyInputEnabledStateType? EnabledState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework.BodyInputEnabledStateType.Enabled;
 
         [JsonProperty("include_path", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludePath { get; set; } = false;
@@ -6950,7 +6776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchCoreEMTaxonomyNodeValuesInputEnabledStateType
+    public enum BodyInputEnabledStateType
     {
         Enabled,
         Disabled,
@@ -6964,7 +6790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public JToken Data { get; set; }
     }
 
-    public class AddDocumentHistoryEntryInput
+    public class AddDocumentHistoryEntryBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -7120,7 +6946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string CodeMessage { get; set; }
     }
 
-    public class CreateDocumentRelationInput
+    public class CreateDocumentRelationBodyInput
     {
         [JsonProperty("primaryDocumentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PrimaryDocumentId { get; set; }
@@ -7135,7 +6961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Data { get; set; }
     }
 
-    public class SingleSelectedDocumentInput
+    public class SingleSelectedDocumentBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -7177,7 +7003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public JToken Data { get; set; }
     }
 
-    public class MultipleSelectedDocumentsInput
+    public class MultipleSelectedDocumentsBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -7216,7 +7042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Data { get; set; }
     }
 
-    public class SingleSelectedWorkspaceInput
+    public class RegisterGenericWorkflowBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -7249,7 +7075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public JToken Data { get; set; }
     }
 
-    public class MultipleSelectedWorkspacesInput
+    public class MultipleSelectedWorkspacesBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -7285,40 +7111,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Data { get; set; }
     }
 
-    public class RegisterGenericWorkflowInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("workflowName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkflowName { get; set; }
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Description { get; set; }
-
-        [JsonProperty("libraryId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LibraryId { get; set; }
-
-        [JsonProperty("formId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("users")]
-        public string Users { get; set; }
-
-        [JsonProperty("groups")]
-        public string Groups { get; set; }
-
-        [JsonProperty("waitForCompletion", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? WaitForCompletion { get; set; } = false;
-    }
-
     public class RegisterFormWorkflowResponse
     {
         [JsonProperty("data")]
         public string Data { get; set; }
     }
 
-    public class RegisterFormWorkflowInput
+    public class RegisterFormWorkflowBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

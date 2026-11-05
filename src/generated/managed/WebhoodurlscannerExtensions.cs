@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
     public class WebhoodurlscannerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IBodyWorkflowAction<Scan[], ApiConnectionActionConfiguration> GetScans(Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<Scan[], ApiConnectionActionConfiguration> GetScans(Expression<Func<StatusInput>> status = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             return new DeferredBodyAction<Scan[], ApiConnectionActionConfiguration>(() =>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "pending")]
         Pending,

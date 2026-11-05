@@ -16,22 +16,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
 
     public class DatascopeformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> FormAnswer(Expression<Func<FormAnswerInput>> body, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> FormAnswer(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hooks_flow/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class FormAnswerInput
+    public class BodyInput
     {
         [JsonProperty("subscription_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string SubscriptionUrl { get; set; } = "#{listCallbackUrl()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
     public class HellosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        public IBodyWorkflowAction<RequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> templateId, Expression<Func<object>> signers, Expression<Func<testModeInput>> testMode = null, Expression<Func<string>> subject = null, Expression<Func<string>> message = null, Expression<Func<string>> signingRedirectUrl = null, Expression<Func<bool>> allowDecline = null)
+        public IBodyWorkflowAction<RequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> templateId, Expression<Func<object>> signers, Expression<Func<TestModeInput>> testMode = null, Expression<Func<string>> subject = null, Expression<Func<string>> message = null, Expression<Func<string>> signingRedirectUrl = null, Expression<Func<bool>> allowDecline = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_signers = WorkflowExpression.Compile(signers, nameof(signers), required: true);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum testModeInput
+    public enum TestModeInput
     {
         Free,
         Paid

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateOrUpdateTask(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<payloadInput>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateOrUpdateTask(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateOrUpdateTaskPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceTask(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<tasksReplaceRequestInput>> tasksReplaceRequest)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceTask(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<TasksReplaceRequestInput>> tasksReplaceRequest)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<MilestoneResponse, ApiConnectionActionConfiguration> CreateMilestone(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateMilestoneInput>> payload)
+        public IBodyWorkflowAction<MilestoneResponse, ApiConnectionActionConfiguration> CreateMilestone(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateMilestonePayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceMilestones(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<ReplaceMilestonesInput>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceMilestones(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<ReplaceMilestonesPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<FinancialsResponse, ApiConnectionActionConfiguration> CreateFinancials(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateFinancialsInput>> payload)
+        public IBodyWorkflowAction<FinancialsResponse, ApiConnectionActionConfiguration> CreateFinancials(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateFinancialsPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceFinancials(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<ReplaceFinancialsInput>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceFinancials(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<ReplaceFinancialsPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<FinancialActualsResponse, ApiConnectionActionConfiguration> CreateFinancialActuals(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateFinancialActualsInput>> payload)
+        public IBodyWorkflowAction<FinancialActualsResponse, ApiConnectionActionConfiguration> CreateFinancialActuals(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateFinancialActualsPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceFinancialActuals(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<ReplaceFinancialActualsInput>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceFinancialActuals(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<ReplaceFinancialActualsPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<AllocationResponse, ApiConnectionActionConfiguration> CreateOrUpdateAllocation(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateOrUpdateAllocationInput>> allocationCreateOrUpdateRequest)
+        public IBodyWorkflowAction<AllocationResponse, ApiConnectionActionConfiguration> CreateOrUpdateAllocation(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<AllocationCreateOrUpdateRequestInput>> allocationCreateOrUpdateRequest)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceAllocation(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<ReplaceAllocationInput>> allocationReplaceRequest)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceAllocation(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<AllocationReplaceRequestInput>> allocationReplaceRequest)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<AbsenceResponse, ApiConnectionActionConfiguration> CreateAbsences(Expression<Func<string>> resourceId, Expression<Func<CreateAbsencesInput>> payload)
+        public IBodyWorkflowAction<AbsenceResponse, ApiConnectionActionConfiguration> CreateAbsences(Expression<Func<string>> resourceId, Expression<Func<CreateAbsencesPayloadInput>> payload)
         {
             var __workflow_resourceId = WorkflowExpression.Compile(resourceId, nameof(resourceId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceAbsences(Expression<Func<string>> resourceId, Expression<Func<ReplaceAbsencesInput>> absences, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplaceAbsences(Expression<Func<string>> resourceId, Expression<Func<AbsencesInput>> absences, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
             var __workflow_resourceId = WorkflowExpression.Compile(resourceId, nameof(resourceId), required: true);
             var __workflow_absences = WorkflowExpression.Compile(absences, nameof(absences), required: true);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<TeamResponse, ApiConnectionActionConfiguration> CreateTeam(Expression<Func<payloadInput2>> payload)
+        public IBodyWorkflowAction<TeamResponse, ApiConnectionActionConfiguration> CreateTeam(Expression<Func<CreateTeamPayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredBodyAction<TeamResponse, ApiConnectionActionConfiguration>(() =>
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ListResponseRoleCapacityResponse, ApiConnectionActionConfiguration> UpdateRoleCapacities(Expression<Func<string>> scenarioId, Expression<Func<string>> roleId, Expression<Func<UpdateRoleCapacitiesInput>> payload)
+        public IBodyWorkflowAction<ListResponseRoleCapacityResponse, ApiConnectionActionConfiguration> UpdateRoleCapacities(Expression<Func<string>> scenarioId, Expression<Func<string>> roleId, Expression<Func<UpdateRoleCapacitiesPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_roleId = WorkflowExpression.Compile(roleId, nameof(roleId), required: true);
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> scenarioId, Expression<Func<payloadInput22>> payload)
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> scenarioId, Expression<Func<CreateProjectPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<TaskManagementLinkResponse, ApiConnectionActionConfiguration> CreateOrUpdateTaskManagementLink(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<payloadInput222>> payload)
+        public IBodyWorkflowAction<TaskManagementLinkResponse, ApiConnectionActionConfiguration> CreateOrUpdateTaskManagementLink(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateOrUpdateTaskManagementLinkPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ActualTimeWorkedResponse, ApiConnectionActionConfiguration> CreateOrUpdateActualTimeWorked(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateOrUpdateActualTimeWorkedInput>> payload)
+        public IBodyWorkflowAction<ActualTimeWorkedResponse, ApiConnectionActionConfiguration> CreateOrUpdateActualTimeWorked(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<CreateOrUpdateActualTimeWorkedPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ProgramResponse, ApiConnectionActionConfiguration> CreateProgram(Expression<Func<string>> scenarioId, Expression<Func<payloadInput2222>> payload)
+        public IBodyWorkflowAction<ProgramResponse, ApiConnectionActionConfiguration> CreateProgram(Expression<Func<string>> scenarioId, Expression<Func<CreateProgramPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatePriorities(Expression<Func<string>> scenarioId, Expression<Func<UpdatePrioritiesInput>> prioritiesUpdateRequest)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatePriorities(Expression<Func<string>> scenarioId, Expression<Func<PrioritiesUpdateRequestInput>> prioritiesUpdateRequest)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_prioritiesUpdateRequest = WorkflowExpression.Compile(prioritiesUpdateRequest, nameof(prioritiesUpdateRequest), required: true);
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<MilestoneDependencyCreateResponse, ApiConnectionActionConfiguration> CreateMilestoneDependency(Expression<Func<string>> scenarioId, Expression<Func<CreateMilestoneDependencyInput>> payload)
+        public IBodyWorkflowAction<MilestoneDependencyCreateResponse, ApiConnectionActionConfiguration> CreateMilestoneDependency(Expression<Func<string>> scenarioId, Expression<Func<CreateMilestoneDependencyPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<RoleResponse, ApiConnectionActionConfiguration> CreateRole(Expression<Func<CreateRoleInput>> payload)
+        public IBodyWorkflowAction<RoleResponse, ApiConnectionActionConfiguration> CreateRole(Expression<Func<CreateRolePayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredBodyAction<RoleResponse, ApiConnectionActionConfiguration>(() =>
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ResourceResponse, ApiConnectionActionConfiguration> CreateResource(Expression<Func<CreateResourceInput>> payload)
+        public IBodyWorkflowAction<ResourceResponse, ApiConnectionActionConfiguration> CreateResource(Expression<Func<CreateResourcePayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredBodyAction<ResourceResponse, ApiConnectionActionConfiguration>(() =>
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ListResponseCalendarDeviationResponse, ApiConnectionActionConfiguration> UpdateCalendarDeviations(Expression<Func<string>> resourceId, Expression<Func<UpdateCalendarDeviationsInput>> payload)
+        public IBodyWorkflowAction<ListResponseCalendarDeviationResponse, ApiConnectionActionConfiguration> UpdateCalendarDeviations(Expression<Func<string>> resourceId, Expression<Func<UpdateCalendarDeviationsPayloadInput>> payload)
         {
             var __workflow_resourceId = WorkflowExpression.Compile(resourceId, nameof(resourceId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ObsTypeResponse, ApiConnectionActionConfiguration> CreateObsType(Expression<Func<CreateObsTypeInput>> payload)
+        public IBodyWorkflowAction<ObsTypeResponse, ApiConnectionActionConfiguration> CreateObsType(Expression<Func<CreateObsTypePayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredBodyAction<ObsTypeResponse, ApiConnectionActionConfiguration>(() =>
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ObsUnitResponse, ApiConnectionActionConfiguration> CreateObsUnit(Expression<Func<string>> obsTypeId, Expression<Func<CreateObsUnitInput>> obsUnitCreateRequest)
+        public IBodyWorkflowAction<ObsUnitResponse, ApiConnectionActionConfiguration> CreateObsUnit(Expression<Func<string>> obsTypeId, Expression<Func<ObsUnitCreateRequestInput>> obsUnitCreateRequest)
         {
             var __workflow_obsTypeId = WorkflowExpression.Compile(obsTypeId, nameof(obsTypeId), required: true);
             var __workflow_obsUnitCreateRequest = WorkflowExpression.Compile(obsUnitCreateRequest, nameof(obsUnitCreateRequest), required: true);
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<CalendarResponse, ApiConnectionActionConfiguration> CreateCalendar(Expression<Func<CreateCalendarInput>> payload)
+        public IBodyWorkflowAction<CalendarResponse, ApiConnectionActionConfiguration> CreateCalendar(Expression<Func<CreateCalendarPayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredBodyAction<CalendarResponse, ApiConnectionActionConfiguration>(() =>
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCalendarExceptions(Expression<Func<string>> calendarId, Expression<Func<CreateCalendarExceptionsInput>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCalendarExceptions(Expression<Func<string>> calendarId, Expression<Func<CreateCalendarExceptionsPayloadInput>> payload)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetDefaultCalendar(Expression<Func<SetDefaultCalendarInput>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetDefaultCalendar(Expression<Func<SetDefaultCalendarPayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<TeamResponse, ApiConnectionActionConfiguration> UpdateTeam(Expression<Func<string>> teamId, Expression<Func<payloadInput2>> payload)
+        public IBodyWorkflowAction<TeamResponse, ApiConnectionActionConfiguration> UpdateTeam(Expression<Func<string>> teamId, Expression<Func<UpdateTeamPayloadInput>> payload)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<payloadInput22222>> payload)
+        public IBodyWorkflowAction<ProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<UpdateProjectPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<MilestoneResponse, ApiConnectionActionConfiguration> UpdateMilestone(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> milestoneId, Expression<Func<UpdateMilestoneInput>> payload)
+        public IBodyWorkflowAction<MilestoneResponse, ApiConnectionActionConfiguration> UpdateMilestone(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> milestoneId, Expression<Func<UpdateMilestonePayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<FinancialsResponse, ApiConnectionActionConfiguration> UpdateFinancials(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> financialsId, Expression<Func<UpdateFinancialsInput>> payload)
+        public IBodyWorkflowAction<FinancialsResponse, ApiConnectionActionConfiguration> UpdateFinancials(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> financialsId, Expression<Func<UpdateFinancialsPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -1034,7 +1034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<FinancialActualsResponse, ApiConnectionActionConfiguration> UpdateFinancialActuals(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> actualFinancialEventId, Expression<Func<UpdateFinancialActualsInput>> payload)
+        public IBodyWorkflowAction<FinancialActualsResponse, ApiConnectionActionConfiguration> UpdateFinancialActuals(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> actualFinancialEventId, Expression<Func<UpdateFinancialActualsPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<AllocationResponse, ApiConnectionActionConfiguration> UpdateAllocation(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> allocationId, Expression<Func<UpdateAllocationInput>> allocationUpdateRequest)
+        public IBodyWorkflowAction<AllocationResponse, ApiConnectionActionConfiguration> UpdateAllocation(Expression<Func<string>> scenarioId, Expression<Func<string>> projectId, Expression<Func<string>> allocationId, Expression<Func<AllocationUpdateRequestInput>> allocationUpdateRequest)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -1126,7 +1126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ProgramResponse, ApiConnectionActionConfiguration> UpdateProgram(Expression<Func<string>> scenarioId, Expression<Func<string>> programId, Expression<Func<payloadInput2222>> payload)
+        public IBodyWorkflowAction<ProgramResponse, ApiConnectionActionConfiguration> UpdateProgram(Expression<Func<string>> scenarioId, Expression<Func<string>> programId, Expression<Func<UpdateProgramPayloadInput>> payload)
         {
             var __workflow_scenarioId = WorkflowExpression.Compile(scenarioId, nameof(scenarioId), required: true);
             var __workflow_programId = WorkflowExpression.Compile(programId, nameof(programId), required: true);
@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<RoleResponse, ApiConnectionActionConfiguration> UpdateRole(Expression<Func<string>> roleId, Expression<Func<UpdateRoleInput>> payload)
+        public IBodyWorkflowAction<RoleResponse, ApiConnectionActionConfiguration> UpdateRole(Expression<Func<string>> roleId, Expression<Func<UpdateRolePayloadInput>> payload)
         {
             var __workflow_roleId = WorkflowExpression.Compile(roleId, nameof(roleId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -1209,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ResourceResponse, ApiConnectionActionConfiguration> UpdateResource(Expression<Func<string>> resourceId, Expression<Func<UpdateResourceInput>> payload)
+        public IBodyWorkflowAction<ResourceResponse, ApiConnectionActionConfiguration> UpdateResource(Expression<Func<string>> resourceId, Expression<Func<UpdateResourcePayloadInput>> payload)
         {
             var __workflow_resourceId = WorkflowExpression.Compile(resourceId, nameof(resourceId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -1252,7 +1252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<AbsenceResponse, ApiConnectionActionConfiguration> UpdateAbsences(Expression<Func<string>> resourceId, Expression<Func<string>> absenceId, Expression<Func<UpdateAbsencesInput>> payload)
+        public IBodyWorkflowAction<AbsenceResponse, ApiConnectionActionConfiguration> UpdateAbsences(Expression<Func<string>> resourceId, Expression<Func<string>> absenceId, Expression<Func<UpdateAbsencesPayloadInput>> payload)
         {
             var __workflow_resourceId = WorkflowExpression.Compile(resourceId, nameof(resourceId), required: true);
             var __workflow_absenceId = WorkflowExpression.Compile(absenceId, nameof(absenceId), required: true);
@@ -1294,7 +1294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ObsTypeResponse, ApiConnectionActionConfiguration> UpdateObsType(Expression<Func<string>> obsTypeId, Expression<Func<UpdateObsTypeInput>> payload)
+        public IBodyWorkflowAction<ObsTypeResponse, ApiConnectionActionConfiguration> UpdateObsType(Expression<Func<string>> obsTypeId, Expression<Func<CreateObsTypePayloadInput>> payload)
         {
             var __workflow_obsTypeId = WorkflowExpression.Compile(obsTypeId, nameof(obsTypeId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -1337,7 +1337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<ObsUnitResponse, ApiConnectionActionConfiguration> UpdateObsUnit(Expression<Func<string>> obsTypeId, Expression<Func<string>> obsUnitId, Expression<Func<UpdateObsUnitInput>> obsUnitUpdateRequest)
+        public IBodyWorkflowAction<ObsUnitResponse, ApiConnectionActionConfiguration> UpdateObsUnit(Expression<Func<string>> obsTypeId, Expression<Func<string>> obsUnitId, Expression<Func<ObsUnitUpdateRequestInput>> obsUnitUpdateRequest)
         {
             var __workflow_obsTypeId = WorkflowExpression.Compile(obsTypeId, nameof(obsTypeId), required: true);
             var __workflow_obsUnitId = WorkflowExpression.Compile(obsUnitId, nameof(obsUnitId), required: true);
@@ -1379,7 +1379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meisterplan")]
-        public IBodyWorkflowAction<CalendarResponse, ApiConnectionActionConfiguration> UpdateCalendar(Expression<Func<string>> calendarId, Expression<Func<UpdateCalendarInput>> payload)
+        public IBodyWorkflowAction<CalendarResponse, ApiConnectionActionConfiguration> UpdateCalendar(Expression<Func<string>> calendarId, Expression<Func<UpdateCalendarPayloadInput>> payload)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
@@ -1652,7 +1652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class MeisterplanTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookInput>> payload, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookPayloadInput>> payload, FlowRecurrence recurrence = null)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1833,22 +1833,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Cursor { get; set; }
     }
 
-    public class payloadInput
+    public class CreateOrUpdateTaskPayloadInput
     {
-        [JsonProperty("key")]
+        [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("status")]
-        public payloadInputStatusType Status { get; set; }
+        public PayloadInputStatusType? Status { get; set; }
 
         [JsonProperty("externalViewUrl")]
         public string ExternalViewUrl { get; set; }
 
         [JsonProperty("rank")]
-        public int Rank { get; set; }
+        public int? Rank { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -1863,14 +1863,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Sprint Sprint { get; set; }
 
         [JsonProperty("dependencies")]
-        public TaskDependencies Dependencies { get; set; }
+        public TaskDependencies TaskDependencies { get; set; }
 
         [JsonProperty("type")]
-        public payloadInputTypeType Type { get; set; }
+        public CreateOrUpdateTaskPayloadInputTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum payloadInputStatusType
+    public enum PayloadInputStatusType
     {
         OPEN,
         [EnumMember(Value = "IN_PROGRESS")]
@@ -1884,31 +1884,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Assignment[] Assignments { get; set; }
 
         [JsonProperty("remainingEffort")]
-        public EffortValue RemainingEffort { get; set; }
+        public EffortValue EffortValue { get; set; }
 
         [JsonProperty("completedEffort")]
-        public EffortValue CompletedEffort { get; set; }
+        public EffortValue EffortValue2 { get; set; }
     }
 
     public class Assignment
     {
         [JsonProperty("entity")]
-        public AssignmentEntity Entity { get; set; }
+        public AssignmentEntity AssignmentEntity { get; set; }
 
         [JsonProperty("remainingEffort")]
-        public EffortValue RemainingEffort { get; set; }
+        public EffortValue EffortValue { get; set; }
 
         [JsonProperty("completedEffort")]
-        public EffortValue CompletedEffort { get; set; }
+        public EffortValue EffortValue2 { get; set; }
     }
 
     public class AssignmentEntity
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("type")]
-        public AssignmentEntityTypeType Type { get; set; }
+        public AssignmentEntityTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1924,18 +1924,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public class EffortValue
     {
         [JsonProperty("hours")]
-        public double Hours { get; set; }
+        public double? Hours { get; set; }
 
         [JsonProperty("storyPoints")]
-        public double StoryPoints { get; set; }
+        public double? StoryPoints { get; set; }
     }
 
     public class Sprint
     {
-        [JsonProperty("key")]
+        [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("startDateTime")]
@@ -1956,7 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class TaskDependency
     {
-        [JsonProperty("taskKey")]
+        [JsonProperty("taskKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskKey { get; set; }
 
         [JsonProperty("projectKey")]
@@ -1964,35 +1964,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum payloadInputTypeType
+    public enum CreateOrUpdateTaskPayloadInputTypeType
     {
         [EnumMember(Value = "TASK")]
         TaskObject,
         MILESTONE
     }
 
-    public class tasksReplaceRequestInput
+    public class TasksReplaceRequestInput
     {
-        [JsonProperty("items")]
+        [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public TaskReplaceRequestItem[] Items { get; set; }
     }
 
     public class TaskReplaceRequestItem
     {
-        [JsonProperty("key")]
+        [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("status")]
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
         public TaskReplaceRequestItemStatusType Status { get; set; }
 
         [JsonProperty("externalViewUrl")]
         public string ExternalViewUrl { get; set; }
 
         [JsonProperty("rank")]
-        public int Rank { get; set; }
+        public int? Rank { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -2007,10 +2007,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Sprint Sprint { get; set; }
 
         [JsonProperty("dependencies")]
-        public TaskDependencies Dependencies { get; set; }
+        public TaskDependencies TaskDependencies { get; set; }
 
         [JsonProperty("type")]
-        public TaskReplaceRequestItemTypeType Type { get; set; }
+        public TaskReplaceRequestItemTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2081,7 +2081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         DONE
     }
 
-    public class CreateMilestoneInput
+    public class CreateMilestonePayloadInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -2120,7 +2120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         DONE
     }
 
-    public class ReplaceMilestonesInput
+    public class ReplaceMilestonesPayloadInput
     {
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public Milestone[] Milestones { get; set; }
@@ -2203,10 +2203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Name { get; set; }
     }
 
-    public class CreateFinancialsInput
+    public class CreateFinancialsPayloadInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateFinancialsInputTypeType Type { get; set; }
+        public CreateFinancialActualsPayloadInputTypeType Type { get; set; }
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
@@ -2222,7 +2222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateFinancialsInputTypeType
+    public enum CreateFinancialActualsPayloadInputTypeType
     {
         CAPEX,
         OPEX,
@@ -2256,7 +2256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Name { get; set; }
     }
 
-    public class ReplaceFinancialsInput
+    public class ReplaceFinancialsPayloadInput
     {
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialEvent[] Financials { get; set; }
@@ -2323,10 +2323,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         BENEFIT
     }
 
-    public class CreateFinancialActualsInput
+    public class CreateFinancialActualsPayloadInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateFinancialActualsInputTypeType Type { get; set; }
+        public CreateFinancialActualsPayloadInputTypeType Type { get; set; }
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
@@ -2341,15 +2341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Category Category { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateFinancialActualsInputTypeType
-    {
-        CAPEX,
-        OPEX,
-        BENEFIT
-    }
-
-    public class ReplaceFinancialActualsInput
+    public class ReplaceFinancialActualsPayloadInput
     {
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialActualsCreateOrReplaceRequest[] FinancialActuals { get; set; }
@@ -2433,7 +2425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public double Hours { get; set; }
     }
 
-    public class CreateOrUpdateAllocationInput
+    public class AllocationCreateOrUpdateRequestInput
     {
         [JsonProperty("allocatedEntity", DefaultValueHandling = DefaultValueHandling.Include)]
         public AllocatedEntity AllocatedEntity { get; set; }
@@ -2482,7 +2474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public double? Hours { get; set; }
     }
 
-    public class ReplaceAllocationInput
+    public class AllocationReplaceRequestInput
     {
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public Allocation[] Items { get; set; }
@@ -2539,7 +2531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         HALFDAY
     }
 
-    public class CreateAbsencesInput
+    public class CreateAbsencesPayloadInput
     {
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Start { get; set; }
@@ -2548,14 +2540,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Finish { get; set; }
 
         [JsonProperty("startDayType")]
-        public CreateAbsencesInputStartDayTypeType? StartDayType { get; set; }
+        public PayloadInputStartDayTypeType? StartDayType { get; set; }
 
         [JsonProperty("finishDayType")]
-        public CreateAbsencesInputFinishDayTypeType? FinishDayType { get; set; }
+        public PayloadInputFinishDayTypeType? FinishDayType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAbsencesInputStartDayTypeType
+    public enum PayloadInputStartDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
         FULLDAY,
@@ -2564,7 +2556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAbsencesInputFinishDayTypeType
+    public enum PayloadInputFinishDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
         FULLDAY,
@@ -2572,7 +2564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         HALFDAY
     }
 
-    public class ReplaceAbsencesInput
+    public class AbsencesInput
     {
         [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateAbsenceRequest[] Absences { get; set; }
@@ -2712,12 +2704,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string FinishDate { get; set; }
     }
 
-    public class payloadInput2
+    public class CreateTeamPayloadInput
     {
         [JsonProperty("resourceKey")]
         public string ResourceKey { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("primaryRole")]
@@ -2733,7 +2725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public ResourceManager ResourceManager { get; set; }
 
         [JsonProperty("costPerHour")]
-        public double CostPerHour { get; set; }
+        public double? CostPerHour { get; set; }
 
         [JsonProperty("costPerHourValidFrom")]
         public string CostPerHourValidFrom { get; set; }
@@ -2742,7 +2734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public CostRate[] CostRates { get; set; }
 
         [JsonProperty("standardBillingRatePerHour")]
-        public double StandardBillingRatePerHour { get; set; }
+        public double? StandardBillingRatePerHour { get; set; }
 
         [JsonProperty("velocity")]
         public Velocity Velocity { get; set; }
@@ -2765,16 +2757,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CostRate
     {
-        [JsonProperty("costPerHour")]
+        [JsonProperty("costPerHour", DefaultValueHandling = DefaultValueHandling.Include)]
         public double CostPerHour { get; set; }
 
-        [JsonProperty("costPerHourValidFrom")]
+        [JsonProperty("costPerHourValidFrom", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CostPerHourValidFrom { get; set; }
     }
 
     public class Velocity
     {
-        [JsonProperty("storyPointsPerPersonDay")]
+        [JsonProperty("storyPointsPerPersonDay", DefaultValueHandling = DefaultValueHandling.Include)]
         public double StoryPointsPerPersonDay { get; set; }
     }
 
@@ -2796,7 +2788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public double Fte { get; set; }
     }
 
-    public class UpdateRoleCapacitiesInput
+    public class UpdateRoleCapacitiesPayloadInput
     {
         [JsonProperty("segments", DefaultValueHandling = DefaultValueHandling.Include)]
         public CapacitySegment[] Segments { get; set; }
@@ -3058,12 +3050,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         REGULAR
     }
 
-    public class payloadInput22
+    public class CreateProjectPayloadInput
     {
         [JsonProperty("projectKey")]
         public string ProjectKey { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("projectType")]
@@ -3079,7 +3071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string ExternalId { get; set; }
 
         [JsonProperty("costType")]
-        public payloadInputCostTypeType CostType { get; set; }
+        public PayloadInputCostTypeType? CostType { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -3091,19 +3083,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Status Status { get; set; }
 
         [JsonProperty("businessGoal")]
-        public BusinessGoal BusinessGoal { get; set; }
+        public BusinessGoal Goal { get; set; }
 
         [JsonProperty("approvedTotalEffort")]
         public ApprovedTotalEffort ApprovedTotalEffort { get; set; }
 
         [JsonProperty("approvedBudget")]
-        public double ApprovedBudget { get; set; }
+        public double? ApprovedBudget { get; set; }
 
         [JsonProperty("approvedCapexBudget")]
-        public double ApprovedCapExBudget { get; set; }
+        public double? ApprovedCapExBudget { get; set; }
 
         [JsonProperty("approvedOpexBudget")]
-        public double ApprovedOpExBudget { get; set; }
+        public double? ApprovedOpExBudget { get; set; }
 
         [JsonProperty("customFields")]
         public JToken CustomFields { get; set; }
@@ -3125,7 +3117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum payloadInputCostTypeType
+    public enum PayloadInputCostTypeType
     {
         CAPEX,
         OPEX
@@ -3172,16 +3164,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Priority
     {
-        [JsonProperty("rankCategory")]
+        [JsonProperty("rankCategory", DefaultValueHandling = DefaultValueHandling.Include)]
         public RankCategory RankCategory { get; set; }
     }
 
     public class RankCategory
     {
-        [JsonProperty("category")]
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
         public RankCategoryCategoryType Category { get; set; }
 
-        [JsonProperty("position")]
+        [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public RankCategoryPositionType Position { get; set; }
     }
 
@@ -3217,9 +3209,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string LinkType { get; set; }
     }
 
-    public class payloadInput222
+    public class CreateOrUpdateTaskManagementLinkPayloadInput
     {
-        [JsonProperty("toolKey")]
+        [JsonProperty("toolKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ToolKey { get; set; }
 
         [JsonProperty("externalViewUrl")]
@@ -3290,7 +3282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         OPEX
     }
 
-    public class CreateOrUpdateActualTimeWorkedInput
+    public class CreateOrUpdateActualTimeWorkedPayloadInput
     {
         [JsonProperty("bookedEntity", DefaultValueHandling = DefaultValueHandling.Include)]
         public BookedEntity BookedEntity { get; set; }
@@ -3299,7 +3291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Bookings[] Bookings { get; set; }
 
         [JsonProperty("mode")]
-        public CreateOrUpdateActualTimeWorkedInputModeType? Mode { get; set; }
+        public PayloadInputModeType? Mode { get; set; }
     }
 
     public class BookedEntity
@@ -3346,7 +3338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateOrUpdateActualTimeWorkedInputModeType
+    public enum PayloadInputModeType
     {
         ADD,
         REPLACE
@@ -3421,12 +3413,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Value { get; set; }
     }
 
-    public class payloadInput2222
+    public class CreateProgramPayloadInput
     {
         [JsonProperty("goal")]
         public BusinessGoal Goal { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("programKey")]
@@ -3460,7 +3452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Value { get; set; }
     }
 
-    public class UpdatePrioritiesInput
+    public class PrioritiesUpdateRequestInput
     {
         [JsonProperty("aboveMustHave")]
         public Priorities BelowCutOff { get; set; }
@@ -3530,7 +3522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Id { get; set; }
     }
 
-    public class CreateMilestoneDependencyInput
+    public class CreateMilestoneDependencyPayloadInput
     {
         [JsonProperty("fromMilestoneId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromMilestoneId { get; set; }
@@ -3579,7 +3571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         OPEX
     }
 
-    public class CreateRoleInput
+    public class CreateRolePayloadInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3588,7 +3580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string ExternalId { get; set; }
 
         [JsonProperty("costType")]
-        public CreateRoleInputCostTypeType? CostType { get; set; }
+        public PayloadInputCostTypeType? CostType { get; set; }
 
         [JsonProperty("obsUnits")]
         public JToken ObsUnits { get; set; }
@@ -3603,23 +3595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate2[] CostRates { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateRoleInputCostTypeType
-    {
-        CAPEX,
-        OPEX
-    }
-
-    public class CostRate2
-    {
-        [JsonProperty("costPerHour", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double CostPerHour { get; set; }
-
-        [JsonProperty("costPerHourValidFrom", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CostPerHourValidFrom { get; set; }
+        public CostRate[] CostRates { get; set; }
     }
 
     public class PaginatedResponseResourceResponse
@@ -3740,7 +3716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Path { get; set; }
     }
 
-    public class CreateResourceInput
+    public class CreateResourcePayloadInput
     {
         [JsonProperty("resourceKey")]
         public string ResourceKey { get; set; }
@@ -3788,7 +3764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate2[] CostRates { get; set; }
+        public CostRate[] CostRates { get; set; }
     }
 
     public class PostalAddress
@@ -3839,7 +3815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public double RelativeCapacity { get; set; }
     }
 
-    public class UpdateCalendarDeviationsInput
+    public class UpdateCalendarDeviationsPayloadInput
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -3878,7 +3854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Name { get; set; }
     }
 
-    public class CreateObsTypeInput
+    public class CreateObsTypePayloadInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3908,7 +3884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string ParentId { get; set; }
     }
 
-    public class CreateObsUnitInput
+    public class ObsUnitCreateRequestInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3965,7 +3941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public double Sunday { get; set; }
     }
 
-    public class CreateCalendarInput
+    public class CreateCalendarPayloadInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -4022,7 +3998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string SourceCalendarId { get; set; }
     }
 
-    public class CreateCalendarExceptionsInput
+    public class CreateCalendarExceptionsPayloadInput
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -4046,13 +4022,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Description { get; set; }
     }
 
-    public class SetDefaultCalendarInput
+    public class SetDefaultCalendarPayloadInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
-    public class payloadInput22222
+    public class UpdateTeamPayloadInput
+    {
+        [JsonProperty("resourceKey")]
+        public string ResourceKey { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("primaryRole")]
+        public PrimaryRole PrimaryRole { get; set; }
+
+        [JsonProperty("obsUnits")]
+        public JToken ObsUnits { get; set; }
+
+        [JsonProperty("skills")]
+        public string[] Skills { get; set; }
+
+        [JsonProperty("resourceManager")]
+        public ResourceManager ResourceManager { get; set; }
+
+        [JsonProperty("costPerHour")]
+        public double? CostPerHour { get; set; }
+
+        [JsonProperty("costPerHourValidFrom")]
+        public string CostPerHourValidFrom { get; set; }
+
+        [JsonProperty("costRates")]
+        public CostRate[] CostRates { get; set; }
+
+        [JsonProperty("standardBillingRatePerHour")]
+        public double? StandardBillingRatePerHour { get; set; }
+
+        [JsonProperty("velocity")]
+        public Velocity Velocity { get; set; }
+    }
+
+    public class UpdateProjectPayloadInput
     {
         [JsonProperty("projectKey")]
         public string ProjectKey { get; set; }
@@ -4073,7 +4085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Manager Manager { get; set; }
 
         [JsonProperty("costType")]
-        public payloadInputCostTypeType CostType { get; set; }
+        public PayloadInputCostTypeType? CostType { get; set; }
 
         [JsonProperty("status")]
         public Status Status { get; set; }
@@ -4082,19 +4094,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Notes { get; set; }
 
         [JsonProperty("businessGoal")]
-        public BusinessGoal BusinessGoal { get; set; }
+        public BusinessGoal Goal { get; set; }
 
         [JsonProperty("approvedTotalEffort")]
         public ApprovedTotalEffort ApprovedTotalEffort { get; set; }
 
         [JsonProperty("approvedBudget")]
-        public double ApprovedBudget { get; set; }
+        public double? ApprovedBudget { get; set; }
 
         [JsonProperty("approvedCapexBudget")]
-        public double ApprovedCapExBudget { get; set; }
+        public double? ApprovedCapExBudget { get; set; }
 
         [JsonProperty("approvedOpexBudget")]
-        public double ApprovedOpExBudget { get; set; }
+        public double? ApprovedOpExBudget { get; set; }
 
         [JsonProperty("customFields")]
         public JToken CustomFields { get; set; }
@@ -4109,7 +4121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Priority Priority { get; set; }
     }
 
-    public class UpdateMilestoneInput
+    public class UpdateMilestonePayloadInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4124,10 +4136,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public MilestoneStatus Status { get; set; }
     }
 
-    public class UpdateFinancialsInput
+    public class UpdateFinancialsPayloadInput
     {
         [JsonProperty("type")]
-        public UpdateFinancialsInputTypeType? Type { get; set; }
+        public CreateFinancialActualsPayloadInputTypeType? Type { get; set; }
 
         [JsonProperty("amount")]
         public double? Amount { get; set; }
@@ -4142,18 +4154,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Category Category { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateFinancialsInputTypeType
-    {
-        CAPEX,
-        OPEX,
-        BENEFIT
-    }
-
-    public class UpdateFinancialActualsInput
+    public class UpdateFinancialActualsPayloadInput
     {
         [JsonProperty("type")]
-        public UpdateFinancialActualsInputTypeType? Type { get; set; }
+        public CreateFinancialActualsPayloadInputTypeType? Type { get; set; }
 
         [JsonProperty("amount")]
         public double? Amount { get; set; }
@@ -4168,21 +4172,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public Category Category { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateFinancialActualsInputTypeType
-    {
-        CAPEX,
-        OPEX,
-        BENEFIT
-    }
-
-    public class UpdateAllocationInput
+    public class AllocationUpdateRequestInput
     {
         [JsonProperty("segments", DefaultValueHandling = DefaultValueHandling.Include)]
         public AllocationSegment[] Segments { get; set; }
     }
 
-    public class UpdateRoleInput
+    public class UpdateProgramPayloadInput
+    {
+        [JsonProperty("goal")]
+        public BusinessGoal Goal { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("programKey")]
+        public string ProgramKey { get; set; }
+
+        [JsonProperty("manager")]
+        public GenericResourceReferenceRequest Manager { get; set; }
+
+        [JsonProperty("status")]
+        public SingleValueFieldRequest Status { get; set; }
+
+        [JsonProperty("customFields")]
+        public JToken CustomFields { get; set; }
+
+        [JsonProperty("obsUnits")]
+        public JToken ObsUnits { get; set; }
+    }
+
+    public class UpdateRolePayloadInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4191,7 +4211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string ExternalId { get; set; }
 
         [JsonProperty("costType")]
-        public UpdateRoleInputCostTypeType? CostType { get; set; }
+        public PayloadInputCostTypeType? CostType { get; set; }
 
         [JsonProperty("obsUnits")]
         public JToken ObsUnits { get; set; }
@@ -4206,17 +4226,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate2[] CostRates { get; set; }
+        public CostRate[] CostRates { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateRoleInputCostTypeType
-    {
-        CAPEX,
-        OPEX
-    }
-
-    public class UpdateResourceInput
+    public class UpdateResourcePayloadInput
     {
         [JsonProperty("resourceKey")]
         public string ResourceKey { get; set; }
@@ -4264,10 +4277,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate2[] CostRates { get; set; }
+        public CostRate[] CostRates { get; set; }
     }
 
-    public class UpdateAbsencesInput
+    public class UpdateAbsencesPayloadInput
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -4276,37 +4289,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Finish { get; set; }
 
         [JsonProperty("startDayType")]
-        public UpdateAbsencesInputStartDayTypeType? StartDayType { get; set; }
+        public PayloadInputStartDayTypeType? StartDayType { get; set; }
 
         [JsonProperty("finishDayType")]
-        public UpdateAbsencesInputFinishDayTypeType? FinishDayType { get; set; }
+        public PayloadInputFinishDayTypeType? FinishDayType { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateAbsencesInputStartDayTypeType
-    {
-        [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
-        [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateAbsencesInputFinishDayTypeType
-    {
-        [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
-        [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
-    }
-
-    public class UpdateObsTypeInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class UpdateObsUnitInput
+    public class ObsUnitUpdateRequestInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4315,7 +4304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string ParentId { get; set; }
     }
 
-    public class UpdateCalendarInput
+    public class UpdateCalendarPayloadInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4647,13 +4636,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         ACTIVE
     }
 
-    public class CreateWebhookInput
+    public class CreateWebhookPayloadInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("eventTypes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookInputEventTypesTypeItem[] EventTypes { get; set; }
+        public PayloadInputEventTypesTypeItem[] EventTypes { get; set; }
 
         [JsonProperty("scenarioId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScenarioId { get; set; }
@@ -4663,7 +4652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookInputEventTypesTypeItem
+    public enum PayloadInputEventTypesTypeItem
     {
         [EnumMember(Value = "PROJECT_CREATE")]
         PROJECTCREATE,

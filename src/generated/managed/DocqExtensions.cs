@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
     public class DocqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<ExtractInformationResponse, ApiConnectionActionConfiguration> ExtractInformation(Expression<Func<ExtractInformationInput>> body = null)
+        public IBodyWorkflowAction<ExtractInformationResponse, ApiConnectionActionConfiguration> ExtractInformation(Expression<Func<ExtractInformationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ExtractInformationResponse, ApiConnectionActionConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateDocument(Expression<Func<GenerateDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         public bool IsSuccess { get; set; }
     }
 
-    public class ExtractInformationInput
+    public class ExtractInformationBodyInput
     {
         [JsonProperty("Image Content Type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ImageContentType { get; set; } = "image/jpeg";
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFileContent { get; set; }
     }
 
-    public class GenerateDocumentInput
+    public class GenerateDocumentBodyInput
     {
         [JsonProperty("documentInformation", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentInformation { get; set; }

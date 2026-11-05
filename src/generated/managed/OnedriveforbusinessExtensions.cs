@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFile(Expression<Func<string>> id, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFile(Expression<Func<string>> id, Expression<Func<ConvertFileByPathTypeInput>> type = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFileByPath(Expression<Func<string>> path, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertFileByPath(Expression<Func<string>> path, Expression<Func<ConvertFileByPathTypeInput>> type = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<Thumbnail, ApiConnectionActionConfiguration> GetFileThumbnail(Expression<Func<string>> id, Expression<Func<sizeInput>> size)
+        public IBodyWorkflowAction<Thumbnail, ApiConnectionActionConfiguration> GetFileThumbnail(Expression<Func<string>> id, Expression<Func<SizeInput>> size)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: true);
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFiles(Expression<Func<string>> query, Expression<Func<string>> id, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFiles(Expression<Func<string>> query, Expression<Func<string>> id, Expression<Func<FindModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFilesByPath(Expression<Func<string>> query, Expression<Func<string>> path, Expression<Func<findModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
+        public IBodyWorkflowAction<BlobMetadata[], ApiConnectionActionConfiguration> FindFilesByPath(Expression<Func<string>> query, Expression<Func<string>> path, Expression<Func<FindModeInput>> findMode, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLink(Expression<Func<string>> id, Expression<Func<typeInput2>> type, Expression<Func<scopeInput>> scope = null)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLink(Expression<Func<string>> id, Expression<Func<CreateShareLinkByPathTypeInput>> type, Expression<Func<ScopeInput>> scope = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedriveforbusiness")]
-        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<typeInput3>> type, Expression<Func<scopeInput>> scope = null)
+        public IBodyWorkflowAction<SharingLink, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> path, Expression<Func<CreateShareLinkByPathTypeInput>> type, Expression<Func<ScopeInput>> scope = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum ConvertFileByPathTypeInput
     {
         PDF,
         GLB,
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sizeInput
+    public enum SizeInput
     {
         Small,
         Medium,
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum findModeInput
+    public enum FindModeInput
     {
         OneDriveSearch,
         Pattern
@@ -548,24 +548,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedriveforbusiness
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput2
+    public enum CreateShareLinkByPathTypeInput
     {
         View,
         Edit
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum scopeInput
+    public enum ScopeInput
     {
         Anonymous,
         Organization
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput3
-    {
-        View,
-        Edit
     }
 
     public class BlobMetadataPage

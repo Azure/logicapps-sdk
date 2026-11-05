@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
     public class MaintenancerequestoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maintenancerequestox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MaintenanceRequestOxmaint(Expression<Func<MaintenanceRequestOxmaintInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MaintenanceRequestOxmaint(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
     {
     }
 
-    public class MaintenanceRequestOxmaintInput
+    public class BodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }

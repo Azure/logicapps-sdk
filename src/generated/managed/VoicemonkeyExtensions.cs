@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     public class VoicemonkeyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<MakeAnnouncementResponse, ApiConnectionActionConfiguration> MakeAnnouncement(Expression<Func<MakeAnnouncementInput>> body)
+        public IBodyWorkflowAction<MakeAnnouncementResponse, ApiConnectionActionConfiguration> MakeAnnouncement(Expression<Func<MakeAnnouncementBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MakeAnnouncementResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerRoutineResponse, ApiConnectionActionConfiguration> TriggerRoutine(Expression<Func<TriggerRoutineInput>> body)
+        public IBodyWorkflowAction<TriggerRoutineResponse, ApiConnectionActionConfiguration> TriggerRoutine(Expression<Func<TriggerRoutineBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TriggerRoutineResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerFlowResponse, ApiConnectionActionConfiguration> TriggerFlow(Expression<Func<TriggerFlowInput>> body)
+        public IBodyWorkflowAction<TriggerFlowResponse, ApiConnectionActionConfiguration> TriggerFlow(Expression<Func<TriggerFlowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TriggerFlowResponse, ApiConnectionActionConfiguration>(() =>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         public string Message { get; set; }
     }
 
-    public class MakeAnnouncementInput
+    public class MakeAnnouncementBodyInput
     {
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
@@ -77,13 +77,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         public string Text { get; set; }
 
         [JsonProperty("voice")]
-        public MakeAnnouncementInputVoiceType? Voice { get; set; }
+        public BodyInputVoiceType? Voice { get; set; }
 
         [JsonProperty("language")]
-        public MakeAnnouncementInputLanguageType? Language { get; set; }
+        public BodyInputLanguageType? Language { get; set; }
 
         [JsonProperty("chime")]
-        public MakeAnnouncementInputChimeType? Chime { get; set; }
+        public BodyInputChimeType? Chime { get; set; }
 
         [JsonProperty("audio")]
         public string Audio { get; set; }
@@ -107,10 +107,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         public int? MediaHeight { get; set; }
 
         [JsonProperty("media_scaling")]
-        public MakeAnnouncementInputMediaScalingType? MediaScaling { get; set; }
+        public BodyInputMediaScalingType? MediaScaling { get; set; }
 
         [JsonProperty("media_align")]
-        public MakeAnnouncementInputMediaAlignmentType? MediaAlignment { get; set; }
+        public BodyInputMediaAlignmentType? MediaAlignment { get; set; }
 
         [JsonProperty("media_radius")]
         public int? MediaRadius { get; set; }
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MakeAnnouncementInputVoiceType
+    public enum BodyInputVoiceType
     {
         Nicole,
         Russell,
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MakeAnnouncementInputLanguageType
+    public enum BodyInputLanguageType
     {
         [EnumMember(Value = "de-DE")]
         DeDE,
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MakeAnnouncementInputChimeType
+    public enum BodyInputChimeType
     {
         [EnumMember(Value = "soundbank://soundlibrary/alarms/air_horns/air_horn_01")]
         SoundbankSoundlibraryAlarmsAirHornsAirHorn01,
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MakeAnnouncementInputMediaScalingType
+    public enum BodyInputMediaScalingType
     {
         [EnumMember(Value = "none")]
         None,
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MakeAnnouncementInputMediaAlignmentType
+    public enum BodyInputMediaAlignmentType
     {
         [EnumMember(Value = "bottom")]
         Bottom,
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         public string Message { get; set; }
     }
 
-    public class TriggerRoutineInput
+    public class TriggerRoutineBodyInput
     {
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         public string Message { get; set; }
     }
 
-    public class TriggerFlowInput
+    public class TriggerFlowBodyInput
     {
         [JsonProperty("flow", DefaultValueHandling = DefaultValueHandling.Include)]
         public int FlowId { get; set; }

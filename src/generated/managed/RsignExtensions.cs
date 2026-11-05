@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
     public class RsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetAuthTokenResponse, ApiConnectionActionConfiguration> GetAuthToken(Expression<Func<GetAuthTokenInput>> body)
+        public IBodyWorkflowAction<GetAuthTokenResponse, ApiConnectionActionConfiguration> GetAuthToken(Expression<Func<GetAuthTokenBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAuthTokenResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse, ApiConnectionActionConfiguration> SendEnvelopeFromTemplate(Expression<Func<string>> authToken, Expression<Func<SendEnvelopeFromTemplateInput>> body)
+        public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse, ApiConnectionActionConfiguration> SendEnvelopeFromTemplate(Expression<Func<string>> authToken, Expression<Func<SendEnvelopeFromTemplateBodyInput>> body)
         {
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<SendEnvelopeFromRuleResponse, ApiConnectionActionConfiguration> SendEnvelopeFromRule(Expression<Func<string>> authToken, Expression<Func<SendEnvelopeFromRuleInput>> body)
+        public IBodyWorkflowAction<SendEnvelopeFromRuleResponse, ApiConnectionActionConfiguration> SendEnvelopeFromRule(Expression<Func<string>> authToken, Expression<Func<SendEnvelopeFromRuleBodyInput>> body)
         {
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse, ApiConnectionActionConfiguration> GetEnvelopeStatusInfo(Expression<Func<string>> authToken, Expression<Func<GetEnvelopeStatusInfoInput>> body)
+        public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse, ApiConnectionActionConfiguration> GetEnvelopeStatusInfo(Expression<Func<string>> authToken, Expression<Func<GetEnvelopeStatusInfoBodyInput>> body)
         {
             var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         public string APIId { get; set; }
     }
 
-    public class GetAuthTokenInput
+    public class GetAuthTokenBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceKey { get; set; }
@@ -179,17 +179,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         public string SigningURL { get; set; }
     }
 
-    public class SendEnvelopeFromTemplateInput
+    public class SendEnvelopeFromTemplateBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateCode { get; set; }
         public string AppKey { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEnvelopeFromTemplateInputTemplateRoleRecipientMappingTypeItem[] TemplateRoleRecipientMapping { get; set; }
+        public BodyInputTemplateRoleRecipientMappingTypeItem[] TemplateRoleRecipientMapping { get; set; }
     }
 
-    public class SendEnvelopeFromTemplateInputTemplateRoleRecipientMappingTypeItem
+    public class BodyInputTemplateRoleRecipientMappingTypeItem
     {
         [JsonProperty("RoleID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleId { get; set; }
@@ -242,19 +242,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         public string SigningUrl { get; set; }
     }
 
-    public class SendEnvelopeFromRuleInput
+    public class SendEnvelopeFromRuleBodyInput
     {
         [JsonProperty("TemplateCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RuleCode { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEnvelopeFromRuleInputDocumentsTypeItem[] Documents { get; set; }
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEnvelopeFromRuleInputTemplateRoleRecipientMappingTypeItem[] TemplateRoleRecipientMapping { get; set; }
+        public BodyInputTemplateRoleRecipientMappingTypeItem[] TemplateRoleRecipientMapping { get; set; }
     }
 
-    public class SendEnvelopeFromRuleInputDocumentsTypeItem
+    public class BodyInputDocumentsTypeItem
     {
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentName { get; set; }
@@ -262,21 +262,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [JsonProperty("DocumentBase64Data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentBase64String { get; set; }
         public string AppKey { get; set; }
-    }
-
-    public class SendEnvelopeFromRuleInputTemplateRoleRecipientMappingTypeItem
-    {
-        [JsonProperty("RoleID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RoleId { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RecipientEmail { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RecipientName { get; set; }
-
-        [JsonProperty("Mobile")]
-        public string MobileNumber { get; set; }
     }
 
     public class GetEnvelopeStatusInfoResponse
@@ -324,17 +309,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         public string LastModifiedDate { get; set; }
     }
 
-    public class GetEnvelopeStatusInfoInput
+    public class GetEnvelopeStatusInfoBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnvelopeCode { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetEnvelopeStatusInfoInputDetailOrSummaryType DetailOrSummary { get; set; }
+        public BodyInputDetailOrSummaryType DetailOrSummary { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetEnvelopeStatusInfoInputDetailOrSummaryType
+    public enum BodyInputDetailOrSummaryType
     {
         Detail,
         Summary

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class Pdf4meconvertActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<ConvertHtmlToPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<ConvertHtmlToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<ConvertJsonToExcelV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<ConvertJsonToExcelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<ConvertMdToPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertMdToPdf(Expression<Func<ConvertMdToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<ConvertToPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertToPdf(Expression<Func<ConvertToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertUrlToPdf(Expression<Func<ConvertUrlToPdfV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertUrlToPdf(Expression<Func<ConvertUrlToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<SchemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
             var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<ConvertWordToPdfFormV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWordToPdfForm(Expression<Func<ConvertToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<CreatePdfAV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreatePdfA(Expression<Func<CreatePdfABodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<PdfToExcelV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToExcel(Expression<Func<PdfToExcelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<PdfToPowerPointV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToPowerPoint(Expression<Func<PdfToPowerPointBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<PdfToWordV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PdfToWord(Expression<Func<PdfToWordBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     {
     }
 
-    public class ConvertHtmlToPdfV1Input
+    public class ConvertHtmlToPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -215,10 +215,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         public string IndexFilePath { get; set; }
 
         [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlToPdfV1InputLayoutType? Layout { get; set; } = ConvertHtmlToPdfV1InputLayoutType.Portrait;
+        public BodyInputLayoutType? Layout { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputLayoutType.Portrait;
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlToPdfV1InputFormatType? Format { get; set; } = ConvertHtmlToPdfV1InputFormatType.A4;
+        public BodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputFormatType.A4;
 
         [JsonProperty("scale", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Scale { get; set; } = 0.8;
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlToPdfV1InputLayoutType
+    public enum BodyInputLayoutType
     {
         [EnumMember(Value = "")]
         None,
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlToPdfV1InputFormatType
+    public enum BodyInputFormatType
     {
         [EnumMember(Value = "")]
         None,
@@ -266,13 +266,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         A6
     }
 
-    public class ConvertJsonToExcelV1Input
+    public class ConvertJsonToExcelBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertJsonToExcelV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("firstRow", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FirstRow { get; set; } = 0;
@@ -302,13 +302,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         public bool? IsTitleWrapText { get; set; } = true;
     }
 
-    public class ConvertJsonToExcelV1InputDocumentType
+    public class BodyInputDocumentType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
-    public class ConvertMdToPdfV1Input
+    public class ConvertMdToPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -320,28 +320,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         public string MdFilePath { get; set; }
     }
 
-    public class ConvertToPdfV1Input
+    public class ConvertToPdfBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertToPdfV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
     }
 
-    public class ConvertToPdfV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ConvertUrlToPdfV1Input
+    public class ConvertUrlToPdfBodyInput
     {
         [JsonProperty("webUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WebUrl { get; set; }
 
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertUrlToPdfV1InputAuthTypeType? AuthType { get; set; } = ConvertUrlToPdfV1InputAuthTypeType.NoAuth;
+        public BodyInputAuthTypeType? AuthType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputAuthTypeType.NoAuth;
 
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -351,14 +345,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertUrlToPdfV1InputAuthTypeType
+    public enum BodyInputAuthTypeType
     {
         NoAuth,
         SharePointLogin
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum schemaValInput
+    public enum SchemaValInput
     {
         PDF,
         BMP,
@@ -371,31 +365,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         VSDX
     }
 
-    public class ConvertWordToPdfFormV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertWordToPdfFormV1InputDocumentType Document { get; set; }
-    }
-
-    public class ConvertWordToPdfFormV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class CreatePdfAV1Input
+    public class CreatePdfABodyInput
     {
         [JsonProperty("compliance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePdfAV1InputComplianceType Compliance { get; set; } = CreatePdfAV1InputComplianceType.PdfA1b;
+        public BodyInputComplianceType Compliance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputComplianceType.PdfA1b;
 
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePdfAV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("allowUpgrade", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AllowUpgrade { get; set; } = true;
@@ -405,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePdfAV1InputComplianceType
+    public enum BodyInputComplianceType
     {
         PdfA1b,
         PdfA1a,
@@ -417,22 +396,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         PdfA3a
     }
 
-    public class CreatePdfAV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class PdfToExcelV1Input
+    public class PdfToExcelBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfToExcelV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("qualityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfToExcelV1InputQualityTypeType QualityType { get; set; } = PdfToExcelV1InputQualityTypeType.Draft;
+        public BodyInputQualityTypeType QualityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputQualityTypeType.Draft;
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -441,27 +414,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         public bool? MergeAllSheets { get; set; } = false;
 
         [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfToExcelV1InputOutputFormatType? OutputFormat { get; set; } = PdfToExcelV1InputOutputFormatType.None;
+        public BodyInputOutputFormatType? OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputOutputFormatType.None;
 
         [JsonProperty("isAsync", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IsAsync { get; set; } = false;
     }
 
-    public class PdfToExcelV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfToExcelV1InputQualityTypeType
+    public enum BodyInputQualityTypeType
     {
         Draft,
         High
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfToExcelV1InputOutputFormatType
+    public enum BodyInputOutputFormatType
     {
         [EnumMember(Value = "")]
         None,
@@ -469,16 +436,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         CSV
     }
 
-    public class PdfToPowerPointV1Input
+    public class PdfToPowerPointBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfToPowerPointV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("qualityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfToPowerPointV1InputQualityTypeType? QualityType { get; set; } = PdfToPowerPointV1InputQualityTypeType.High;
+        public BodyInputQualityTypeType? QualityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputQualityTypeType.High;
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -487,48 +454,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         public bool? IsAsync { get; set; } = false;
     }
 
-    public class PdfToPowerPointV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfToPowerPointV1InputQualityTypeType
-    {
-        Draft,
-        High
-    }
-
-    public class PdfToWordV1Input
+    public class PdfToWordBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfToWordV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("qualityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfToWordV1InputQualityTypeType QualityType { get; set; } = PdfToWordV1InputQualityTypeType.Draft;
+        public BodyInputQualityTypeType QualityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert.BodyInputQualityTypeType.Draft;
 
         [JsonProperty("language")]
         public string Language { get; set; }
 
         [JsonProperty("isAsync", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IsAsync { get; set; } = false;
-    }
-
-    public class PdfToWordV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfToWordV1InputQualityTypeType
-    {
-        Draft,
-        High
     }
 }
 

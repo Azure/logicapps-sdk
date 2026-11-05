@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<SurveyMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<SendMessageInput>> body = null)
+        public IBodyWorkflowAction<SurveyMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             var __workflow_collectorId = WorkflowExpression.Compile(collectorId, nameof(collectorId), required: true);
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
         public string Type { get; set; }
     }
 
-    public class SendMessageInput
+    public class BodyInput
     {
         [JsonProperty("scheduled_date")]
         public string ScheduledDate { get; set; }

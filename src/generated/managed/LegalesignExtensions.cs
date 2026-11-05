@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostAttachment(Expression<Func<PostAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostAttachment(Expression<Func<PostAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostSignerReminder(Expression<Func<string>> recipientId, Expression<Func<PostSignerReminderInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostSignerReminder(Expression<Func<string>> recipientId, Expression<Func<PostSignerReminderBodyInput>> body)
         {
             var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostDocument(Expression<Func<PostDocumentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostDocument(Expression<Func<PostDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "legalesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostPdfTemplate(Expression<Func<PostPdfTemplateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostPdfTemplate(Expression<Func<PostPdfTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class LegalesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RecipientTrigger(Expression<Func<RecipientTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RecipientTrigger(Expression<Func<RecipientTriggerBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentTrigger(Expression<Func<DocumentTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentTrigger(Expression<Func<DocumentTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Uuid { get; set; }
     }
 
-    public class PostAttachmentInput
+    public class PostAttachmentBodyInput
     {
         [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Group { get; set; }
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         _60 = 60
     }
 
-    public class PostSignerReminderInput
+    public class PostSignerReminderBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         _1 = 1
     }
 
-    public class PostDocumentInput
+    public class PostDocumentBodyInput
     {
         [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Group { get; set; }
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string PdfPassword { get; set; }
 
         [JsonProperty("pdf_password_type")]
-        public PostDocumentInputPdfPasswordTypeType? PdfPasswordType { get; set; }
+        public BodyInputPdfPasswordTypeType? PdfPasswordType { get; set; }
 
         [JsonProperty("pdftext")]
         public JToken Pdftext { get; set; }
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public bool? IncludeLink { get; set; } = false;
     }
 
-    public enum PostDocumentInputPdfPasswordTypeType
+    public enum BodyInputPdfPasswordTypeType
     {
         _1 = 1,
         _2 = 2
@@ -1141,7 +1141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public TemplatePdfResponse[] Objects { get; set; }
     }
 
-    public class PostPdfTemplateInput
+    public class PostPdfTemplateBodyInput
     {
         [JsonProperty("archive_upon_send", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ArchiveUponSend { get; set; } = false;
@@ -1204,7 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public bool XframeAllowPdfEdit { get; set; }
     }
 
-    public class RecipientTriggerInput
+    public class RecipientTriggerBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -1213,14 +1213,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         internal string Notify { get; set; } = "realtime";
 
         [JsonProperty("eventFilter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecipientTriggerInputEventFilterType EventFilter { get; set; } = RecipientTriggerInputEventFilterType.Recipient;
+        public RecipientTriggerBodyInputEventFilterType EventFilter { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign.RecipientTriggerBodyInputEventFilterType.Recipient;
 
         [JsonProperty("group")]
         public string Group { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RecipientTriggerInputEventFilterType
+    public enum RecipientTriggerBodyInputEventFilterType
     {
         [EnumMember(Value = "recipient.*")]
         Recipient,
@@ -1236,7 +1236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         RecipientBounced
     }
 
-    public class DocumentTriggerInput
+    public class DocumentTriggerBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -1245,14 +1245,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         internal string Notify { get; set; } = "realtime";
 
         [JsonProperty("eventFilter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DocumentTriggerInputEventFilterType EventFilter { get; set; } = DocumentTriggerInputEventFilterType.Document;
+        public DocumentTriggerBodyInputEventFilterType EventFilter { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign.DocumentTriggerBodyInputEventFilterType.Document;
 
         [JsonProperty("group")]
         public string Group { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentTriggerInputEventFilterType
+    public enum DocumentTriggerBodyInputEventFilterType
     {
         [EnumMember(Value = "document.*")]
         Document,

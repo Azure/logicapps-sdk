@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
     public class InfoshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonResponse, ApiConnectionActionConfiguration> Logon(Expression<Func<LogonInput>> body)
+        public IBodyWorkflowAction<LogonResponse, ApiConnectionActionConfiguration> Logon(Expression<Func<LogonBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LogonResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse, ApiConnectionActionConfiguration> CloseTaskAndAssignToUsers(Expression<Func<CloseTaskAndAssignToUsersInput>> body)
+        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse, ApiConnectionActionConfiguration> CloseTaskAndAssignToUsers(Expression<Func<CloseTaskAndAssignToUsersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CloseTaskAndAssignToUsersResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogoffResponse, ApiConnectionActionConfiguration> Logoff(Expression<Func<LogoffInput>> body)
+        public IBodyWorkflowAction<LogoffResponse, ApiConnectionActionConfiguration> Logoff(Expression<Func<LogoffBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LogoffResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[], ApiConnectionActionConfiguration> GetDocumentProperties(Expression<Func<GetDocumentPropertiesInput>> body)
+        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[], ApiConnectionActionConfiguration> GetDocumentProperties(Expression<Func<GetDocumentPropertiesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetDocumentPropertiesResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[], ApiConnectionActionConfiguration> GetProcessProperties(Expression<Func<GetProcessPropertiesInput>> body)
+        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[], ApiConnectionActionConfiguration> GetProcessProperties(Expression<Func<GetProcessPropertiesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetProcessPropertiesResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFileContent(Expression<Func<GetFileContentInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFileContent(Expression<Func<GetFileContentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseProcessResponse, ApiConnectionActionConfiguration> CloseProcess(Expression<Func<string>> archiveUrl, Expression<Func<CloseProcessInput>> body)
+        public IBodyWorkflowAction<CloseProcessResponse, ApiConnectionActionConfiguration> CloseProcess(Expression<Func<string>> archiveUrl, Expression<Func<CloseProcessBodyInput>> body)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonWithHashedPasswordResponse, ApiConnectionActionConfiguration> LogonWithHashedPassword(Expression<Func<string>> archiveUrl, Expression<Func<LogonWithHashedPasswordInput>> body)
+        public IBodyWorkflowAction<LogonWithHashedPasswordResponse, ApiConnectionActionConfiguration> LogonWithHashedPassword(Expression<Func<string>> archiveUrl, Expression<Func<LogonWithHashedPasswordBodyInput>> body)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskResponse, ApiConnectionActionConfiguration> CloseTask(Expression<Func<string>> archiveUrl, Expression<Func<CloseTaskInput>> body)
+        public IBodyWorkflowAction<CloseTaskResponse, ApiConnectionActionConfiguration> CloseTask(Expression<Func<string>> archiveUrl, Expression<Func<CloseTaskBodyInput>> body)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentResponse, ApiConnectionActionConfiguration> GetDocument(Expression<Func<string>> archiveUrl, Expression<Func<GetDocumentInput>> body)
+        public IBodyWorkflowAction<GetDocumentResponse, ApiConnectionActionConfiguration> GetDocument(Expression<Func<string>> archiveUrl, Expression<Func<GetDocumentBodyInput>> body)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessResponse, ApiConnectionActionConfiguration> GetProcess(Expression<Func<string>> archiveUrl, Expression<Func<GetProcessInput>> body)
+        public IBodyWorkflowAction<GetProcessResponse, ApiConnectionActionConfiguration> GetProcess(Expression<Func<string>> archiveUrl, Expression<Func<GetProcessBodyInput>> body)
         {
             var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFileContentConverted(Expression<Func<GetFileContentConvertedInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetFileContentConverted(Expression<Func<GetFileContentConvertedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateProcessResponse, ApiConnectionActionConfiguration> CreateProcess(Expression<Func<CreateProcessInput>> body)
+        public IBodyWorkflowAction<CreateProcessResponse, ApiConnectionActionConfiguration> CreateProcess(Expression<Func<CreateProcessBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProcessResponse, ApiConnectionActionConfiguration>(() =>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableGetRecordsResponse, ApiConnectionActionConfiguration> UserTableGetRecords(Expression<Func<UserTableGetRecordsInput>> body)
+        public IBodyWorkflowAction<UserTableGetRecordsResponse, ApiConnectionActionConfiguration> UserTableGetRecords(Expression<Func<UserTableGetRecordsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserTableGetRecordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableImportDataResponse, ApiConnectionActionConfiguration> UserTableImportData(Expression<Func<UserTableImportDataInput>> body)
+        public IBodyWorkflowAction<UserTableImportDataResponse, ApiConnectionActionConfiguration> UserTableImportData(Expression<Func<UserTableImportDataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserTableImportDataResponse, ApiConnectionActionConfiguration>(() =>
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableCreateTableResponse, ApiConnectionActionConfiguration> UserTableCreateTable(Expression<Func<UserTableCreateTableInput>> body)
+        public IBodyWorkflowAction<UserTableCreateTableResponse, ApiConnectionActionConfiguration> UserTableCreateTable(Expression<Func<UserTableCreateTableBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserTableCreateTableResponse, ApiConnectionActionConfiguration>(() =>
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableDeleteRecordsResponse, ApiConnectionActionConfiguration> UserTableDeleteRecords(Expression<Func<UserTableDeleteRecordsInput>> body)
+        public IBodyWorkflowAction<UserTableDeleteRecordsResponse, ApiConnectionActionConfiguration> UserTableDeleteRecords(Expression<Func<UserTableDeleteRecordsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserTableDeleteRecordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse, ApiConnectionActionConfiguration> MergePDFDocumentsToVersion(Expression<Func<MergePDFDocumentsToVersionInput>> body)
+        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse, ApiConnectionActionConfiguration> MergePDFDocumentsToVersion(Expression<Func<MergePDFDocumentsToVersionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MergePDFDocumentsToVersionResponse, ApiConnectionActionConfiguration>(() =>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<ProcessSearchResponse, ApiConnectionActionConfiguration> ProcessSearch(Expression<Func<ProcessSearchInput>> body)
+        public IBodyWorkflowAction<ProcessSearchResponse, ApiConnectionActionConfiguration> ProcessSearch(Expression<Func<ProcessSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProcessSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableUpdateRowResponse, ApiConnectionActionConfiguration> UserTableUpdateRow(Expression<Func<UserTableUpdateRowInput>> body)
+        public IBodyWorkflowAction<UserTableUpdateRowResponse, ApiConnectionActionConfiguration> UserTableUpdateRow(Expression<Func<UserTableUpdateRowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserTableUpdateRowResponse, ApiConnectionActionConfiguration>(() =>
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetSelectionResponse, ApiConnectionActionConfiguration> GetSelection(Expression<Func<GetSelectionInput>> body)
+        public IBodyWorkflowAction<GetSelectionResponse, ApiConnectionActionConfiguration> GetSelection(Expression<Func<GetSelectionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetSelectionResponse, ApiConnectionActionConfiguration>(() =>
@@ -317,58 +317,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateDocumentV2Response, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<CreateDocumentV2Input>> body)
+        public IBodyWorkflowAction<CreateDocumentResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<CreateDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CreateDocumentV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CreateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/CreateDocumentV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CreateDocumentV2Response>(callPayload);
+                return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<DocumentSearchV2Response, ApiConnectionActionConfiguration> DocumentSearch(Expression<Func<DocumentSearchV2Input>> body)
+        public IBodyWorkflowAction<DocumentSearchResponse, ApiConnectionActionConfiguration> DocumentSearch(Expression<Func<DocumentSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<DocumentSearchV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DocumentSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/DocumentSearchV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DocumentSearchV2Response>(callPayload);
+                return new ApiConnectionAction<DocumentSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateDocumentV2Response, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<UpdateDocumentV2Input>> body)
+        public IBodyWorkflowAction<UpdateDocumentResponse, ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<UpdateDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<UpdateDocumentV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UpdateDocumentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateDocumentV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UpdateDocumentV2Response>(callPayload);
+                return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateProcessV2Response, ApiConnectionActionConfiguration> UpdateProcess(Expression<Func<UpdateProcessV2Input>> body)
+        public IBodyWorkflowAction<UpdateProcessResponse, ApiConnectionActionConfiguration> UpdateProcess(Expression<Func<UpdateProcessBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<UpdateProcessV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UpdateProcessResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/UpdateProcessV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UpdateProcessV2Response>(callPayload);
+                return new ApiConnectionAction<UpdateProcessResponse>(callPayload);
             });
         }
     }
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string TwoWayAuthenticationTargetMail { get; set; }
     }
 
-    public class LogonInput
+    public class LogonBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string UserId { get; set; }
     }
 
-    public class CloseTaskAndAssignToUsersInput
+    public class CloseTaskAndAssignToUsersBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -500,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string LogoffResult { get; set; }
     }
 
-    public class LogoffInput
+    public class LogoffBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class GetDocumentPropertiesInput
+    public class GetDocumentPropertiesBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[] Values { get; set; }
     }
 
-    public class GetProcessPropertiesInput
+    public class GetProcessPropertiesBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Culture { get; set; }
     }
 
-    public class GetFileContentInput
+    public class GetFileContentBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class CloseProcessInput
+    public class CloseProcessBodyInput
     {
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string TwoWayAuthenticationTargetMail { get; set; }
     }
 
-    public class LogonWithHashedPasswordInput
+    public class LogonWithHashedPasswordBodyInput
     {
         [JsonProperty("userName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
@@ -829,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string UserId { get; set; }
     }
 
-    public class CloseTaskInput
+    public class CloseTaskBodyInput
     {
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool UseUserFromProcessTemplate { get; set; }
     }
 
-    public class GetDocumentInput
+    public class GetDocumentBodyInput
     {
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class GetProcessInput
+    public class GetProcessBodyInput
     {
         [JsonProperty("connectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConnectionId { get; set; }
@@ -1194,7 +1194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string ProcessId { get; set; }
     }
 
-    public class GetFileContentConvertedInput
+    public class GetFileContentConvertedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1404,7 +1404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class CreateProcessInput
+    public class CreateProcessBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1418,13 +1418,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessTemplateName { get; set; }
         public string DueDate { get; set; }
-        public CreateProcessInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
         public string Comment { get; set; }
         public string Culture { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateProcessInputPriorityType
+    public enum BodyInputPriorityType
     {
         Low,
         Normal,
@@ -1436,7 +1436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[][] UserTableGetRecordsResult { get; set; }
     }
 
-    public class UserTableGetRecordsInput
+    public class UserTableGetRecordsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1460,7 +1460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int InsertedRows { get; set; }
     }
 
-    public class UserTableImportDataInput
+    public class UserTableImportDataBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1487,7 +1487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string UserTable { get; set; }
     }
 
-    public class UserTableCreateTableInput
+    public class UserTableCreateTableBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1508,7 +1508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int UserTableDeleteRecordsResult { get; set; }
     }
 
-    public class UserTableDeleteRecordsInput
+    public class UserTableDeleteRecordsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1776,7 +1776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool DeleteAfterExpiration { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionInput
+    public class MergePDFDocumentsToVersionBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1885,7 +1885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class ProcessSearchInput
+    public class ProcessSearchBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1906,7 +1906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int UserTableUpdateRowResult { get; set; }
     }
 
-    public class UserTableUpdateRowInput
+    public class UserTableUpdateRowBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1972,7 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string ObjectTypeEnum { get; set; }
     }
 
-    public class GetSelectionInput
+    public class GetSelectionBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -1984,7 +1984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string SelectionId { get; set; }
     }
 
-    public class CreateDocumentV2Response
+    public class CreateDocumentResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2011,13 +2011,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string CheckOutUserId { get; set; }
 
         [JsonProperty("properties")]
-        public CreateDocumentV2ResponsePropertiesTypeItem[] Properties { get; set; }
+        public CreateDocumentResponsePropertiesTypeItem[] Properties { get; set; }
 
         [JsonProperty("importTemplateId")]
         public string ImportTemplateId { get; set; }
 
         [JsonProperty("blogs")]
-        public CreateDocumentV2ResponseBlogsTypeItem[] Blogs { get; set; }
+        public CreateDocumentResponseBlogsTypeItem[] Blogs { get; set; }
 
         [JsonProperty("accessRightsEnumList")]
         public string[] AccessRightsEnumList { get; set; }
@@ -2035,16 +2035,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] Abonnements { get; set; }
 
         [JsonProperty("annotationManager")]
-        public CreateDocumentV2ResponseAnnotationManagerType AnnotationManager { get; set; }
+        public CreateDocumentResponseAnnotationManagerType AnnotationManager { get; set; }
 
         [JsonProperty("documentData")]
-        public CreateDocumentV2ResponseDocumentDataTypeItem[] DocumentData { get; set; }
+        public CreateDocumentResponseDocumentDataTypeItem[] DocumentData { get; set; }
 
         [JsonProperty("signingProfileId")]
         public string SigningProfileId { get; set; }
 
         [JsonProperty("lifeCycleManager")]
-        public CreateDocumentV2ResponseLifeCycleManagerType LifeCycleManager { get; set; }
+        public CreateDocumentResponseLifeCycleManagerType LifeCycleManager { get; set; }
 
         [JsonProperty("hasOverlay")]
         public bool HasOverlay { get; set; }
@@ -2074,7 +2074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool HasAbonnement { get; set; }
     }
 
-    public class CreateDocumentV2ResponsePropertiesTypeItem
+    public class CreateDocumentResponsePropertiesTypeItem
     {
         [JsonProperty("propertyTypeId")]
         public string PropertyTypeId { get; set; }
@@ -2083,7 +2083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[] Values { get; set; }
 
         [JsonProperty("globalValues")]
-        public CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+        public CreateDocumentResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
 
         [JsonProperty("propertyTypeName")]
         public string PropertyTypeName { get; set; }
@@ -2092,13 +2092,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string PropertyName { get; set; }
     }
 
-    public class CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem
+    public class CreateDocumentResponsePropertiesTypeItemGlobalValuesTypeItem
     {
         [JsonProperty("values")]
-        public CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+        public CreateDocumentResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
     }
 
-    public class CreateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    public class CreateDocumentResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -2107,7 +2107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class CreateDocumentV2ResponseBlogsTypeItem
+    public class CreateDocumentResponseBlogsTypeItem
     {
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
@@ -2122,7 +2122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Id { get; set; }
     }
 
-    public class CreateDocumentV2ResponseAnnotationManagerType
+    public class CreateDocumentResponseAnnotationManagerType
     {
         [JsonProperty("textAnnotations")]
         public JToken[] TextAnnotations { get; set; }
@@ -2137,7 +2137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] StampAnnotations { get; set; }
     }
 
-    public class CreateDocumentV2ResponseDocumentDataTypeItem
+    public class CreateDocumentResponseDocumentDataTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2146,10 +2146,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Name { get; set; }
 
         [JsonProperty("renditions")]
-        public CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItem[] Renditions { get; set; }
+        public CreateDocumentResponseDocumentDataTypeItemRenditionsTypeItem[] Renditions { get; set; }
     }
 
-    public class CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItem
+    public class CreateDocumentResponseDocumentDataTypeItemRenditionsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2158,7 +2158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Size { get; set; }
 
         [JsonProperty("files")]
-        public CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem[] Files { get; set; }
+        public CreateDocumentResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem[] Files { get; set; }
 
         [JsonProperty("pageCount")]
         public string PageCount { get; set; }
@@ -2173,7 +2173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] ContentProtections { get; set; }
     }
 
-    public class CreateDocumentV2ResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem
+    public class CreateDocumentResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem
     {
         [JsonProperty("blobStoreId")]
         public string BlobStoreId { get; set; }
@@ -2182,7 +2182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string BlobPath { get; set; }
     }
 
-    public class CreateDocumentV2ResponseLifeCycleManagerType
+    public class CreateDocumentResponseLifeCycleManagerType
     {
         [JsonProperty("lifeCycleId")]
         public string LifeCycleId { get; set; }
@@ -2206,10 +2206,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string NextAutomaticLifeCycleStateId { get; set; }
 
         [JsonProperty("lifeCycleProtections")]
-        public CreateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
+        public CreateDocumentResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
     }
 
-    public class CreateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
+    public class CreateDocumentResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2239,7 +2239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool DeleteAfterExpiration { get; set; }
     }
 
-    public class CreateDocumentV2Input
+    public class CreateDocumentBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -2260,7 +2260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string ProtectionDomain { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDocumentV2InputUploadMethodType? UploadMethod { get; set; } = CreateDocumentV2InputUploadMethodType.UploadFileBytesLarge;
+        public BodyInputUploadMethodType? UploadMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare.BodyInputUploadMethodType.UploadFileBytesLarge;
         public string OriginalFileFormat { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2271,7 +2271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateDocumentV2InputUploadMethodType
+    public enum BodyInputUploadMethodType
     {
         UploadFileBytesLarge,
         UploadStreamChunks,
@@ -2279,10 +2279,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         UploadFileBase64
     }
 
-    public class DocumentSearchV2Response
+    public class DocumentSearchResponse
     {
         [JsonProperty("documents")]
-        public DocumentSearchV2ResponseDocumentsTypeItem[] Documents { get; set; }
+        public DocumentSearchResponseDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("hasMore")]
         public bool HasMore { get; set; }
@@ -2291,7 +2291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string ResumePoint { get; set; }
     }
 
-    public class DocumentSearchV2ResponseDocumentsTypeItem
+    public class DocumentSearchResponseDocumentsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2318,7 +2318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool HasLinks { get; set; }
 
         [JsonProperty("properties")]
-        public DocumentSearchV2ResponseDocumentsTypeItemPropertiesTypeItem[] Properties { get; set; }
+        public DocumentSearchResponseDocumentsTypeItemPropertiesTypeItem[] Properties { get; set; }
 
         [JsonProperty("hasTempAccess")]
         public bool HasTempAccess { get; set; }
@@ -2342,7 +2342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool HasOverlay { get; set; }
     }
 
-    public class DocumentSearchV2ResponseDocumentsTypeItemPropertiesTypeItem
+    public class DocumentSearchResponseDocumentsTypeItemPropertiesTypeItem
     {
         [JsonProperty("propertyTypeId")]
         public string PropertyTypeId { get; set; }
@@ -2351,7 +2351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[] Values { get; set; }
 
         [JsonProperty("globalValues")]
-        public DocumentSearchV2ResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+        public DocumentSearchResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
 
         [JsonProperty("propertyTypeName")]
         public string PropertyTypeName { get; set; }
@@ -2360,13 +2360,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string PropertyName { get; set; }
     }
 
-    public class DocumentSearchV2ResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItem
+    public class DocumentSearchResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItem
     {
         [JsonProperty("values")]
-        public DocumentSearchV2ResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+        public DocumentSearchResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
     }
 
-    public class DocumentSearchV2ResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    public class DocumentSearchResponseDocumentsTypeItemPropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -2375,7 +2375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class DocumentSearchV2Input
+    public class DocumentSearchBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -2391,19 +2391,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Stores { get; set; }
     }
 
-    public class UpdateDocumentV2Response
+    public class UpdateDocumentResponse
     {
         [JsonProperty("abonnements")]
-        public UpdateDocumentV2ResponseAbonnementsTypeItem[] Abonnements { get; set; }
+        public UpdateDocumentResponseAbonnementsTypeItem[] Abonnements { get; set; }
 
         [JsonProperty("accessRightsEnumList")]
         public string[] AccessRightsEnumList { get; set; }
 
         [JsonProperty("annotationManager")]
-        public UpdateDocumentV2ResponseAnnotationManagerType AnnotationManager { get; set; }
+        public UpdateDocumentResponseAnnotationManagerType AnnotationManager { get; set; }
 
         [JsonProperty("blogs")]
-        public UpdateDocumentV2ResponseBlogsTypeItem[] Blogs { get; set; }
+        public UpdateDocumentResponseBlogsTypeItem[] Blogs { get; set; }
 
         [JsonProperty("checkOutStateEnum")]
         public string CheckOutStateEnum { get; set; }
@@ -2412,7 +2412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string CheckOutUserId { get; set; }
 
         [JsonProperty("documentData")]
-        public UpdateDocumentV2ResponseDocumentDataTypeItem[] DocumentData { get; set; }
+        public UpdateDocumentResponseDocumentDataTypeItem[] DocumentData { get; set; }
 
         [JsonProperty("hasOverlay")]
         public bool HasOverlay { get; set; }
@@ -2427,7 +2427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string InfoStoreId { get; set; }
 
         [JsonProperty("lifeCycleManager")]
-        public UpdateDocumentV2ResponseLifeCycleManagerType LifeCycleManager { get; set; }
+        public UpdateDocumentResponseLifeCycleManagerType LifeCycleManager { get; set; }
 
         [JsonProperty("mainFileLength")]
         public int MainFileLength { get; set; }
@@ -2439,13 +2439,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int PageCount { get; set; }
 
         [JsonProperty("properties")]
-        public UpdateDocumentV2ResponsePropertiesTypeItem[] Properties { get; set; }
+        public UpdateDocumentResponsePropertiesTypeItem[] Properties { get; set; }
 
         [JsonProperty("protectionDomainId")]
         public string ProtectionDomainId { get; set; }
 
         [JsonProperty("reminders")]
-        public UpdateDocumentV2ResponseRemindersTypeItem[] Reminders { get; set; }
+        public UpdateDocumentResponseRemindersTypeItem[] Reminders { get; set; }
 
         [JsonProperty("signingProfileId")]
         public string SigningProfileId { get; set; }
@@ -2454,7 +2454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string VersionId { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseAbonnementsTypeItem
+    public class UpdateDocumentResponseAbonnementsTypeItem
     {
         [JsonProperty("onContentChange")]
         public bool OnContentChange { get; set; }
@@ -2469,19 +2469,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string UserId { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseAnnotationManagerType
+    public class UpdateDocumentResponseAnnotationManagerType
     {
         [JsonProperty("postItAnnotations")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItem[] PostItAnnotations { get; set; }
+        public UpdateDocumentResponseAnnotationManagerTypePostItAnnotationsTypeItem[] PostItAnnotations { get; set; }
 
         [JsonProperty("rectangleAnnotations")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypeRectangleAnnotationsTypeItem[] RectangleAnnotations { get; set; }
+        public UpdateDocumentResponseAnnotationManagerTypeRectangleAnnotationsTypeItem[] RectangleAnnotations { get; set; }
 
         [JsonProperty("textAnnotations")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItem[] TextAnnotations { get; set; }
+        public UpdateDocumentResponseAnnotationManagerTypeTextAnnotationsTypeItem[] TextAnnotations { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItem
+    public class UpdateDocumentResponseAnnotationManagerTypePostItAnnotationsTypeItem
     {
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
@@ -2490,7 +2490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string CreatorId { get; set; }
 
         [JsonProperty("fontInfo")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType FontInfo { get; set; }
+        public UpdateDocumentResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType FontInfo { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2517,7 +2517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int Y { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType
+    public class UpdateDocumentResponseAnnotationManagerTypePostItAnnotationsTypeItemFontInfoType
     {
         [JsonProperty("isItalic")]
         public bool IsItalic { get; set; }
@@ -2541,7 +2541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int Weight { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseAnnotationManagerTypeRectangleAnnotationsTypeItem
+    public class UpdateDocumentResponseAnnotationManagerTypeRectangleAnnotationsTypeItem
     {
         [JsonProperty("color")]
         public int Color { get; set; }
@@ -2584,7 +2584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int Y { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItem
+    public class UpdateDocumentResponseAnnotationManagerTypeTextAnnotationsTypeItem
     {
         [JsonProperty("backgroundColor")]
         public int BackgroundColor { get; set; }
@@ -2599,7 +2599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string CreatorId { get; set; }
 
         [JsonProperty("fontInfo")]
-        public UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType FontInfo { get; set; }
+        public UpdateDocumentResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType FontInfo { get; set; }
 
         [JsonProperty("foregroundColor")]
         public int ForegroundColor { get; set; }
@@ -2644,7 +2644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int Y { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType
+    public class UpdateDocumentResponseAnnotationManagerTypeTextAnnotationsTypeItemFontInfoType
     {
         [JsonProperty("isItalic")]
         public bool IsItalic { get; set; }
@@ -2668,7 +2668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int Weight { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseBlogsTypeItem
+    public class UpdateDocumentResponseBlogsTypeItem
     {
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
@@ -2683,7 +2683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseDocumentDataTypeItem
+    public class UpdateDocumentResponseDocumentDataTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2695,7 +2695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] Renditions { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseLifeCycleManagerType
+    public class UpdateDocumentResponseLifeCycleManagerType
     {
         [JsonProperty("checkOutLifeCycleStateId")]
         public string CheckOutLifeCycleStateId { get; set; }
@@ -2716,13 +2716,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[] NextLifeCycleStates { get; set; }
 
         [JsonProperty("lifeCycleProtections")]
-        public UpdateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
+        public UpdateDocumentResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
 
         [JsonProperty("lifeCycleId")]
         public string LifeCycleId { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
+    public class UpdateDocumentResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
     {
         [JsonProperty("deleteAfterExpiration")]
         public bool DeleteAfterExpiration { get; set; }
@@ -2752,10 +2752,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int ProtectionDurationTicks { get; set; }
     }
 
-    public class UpdateDocumentV2ResponsePropertiesTypeItem
+    public class UpdateDocumentResponsePropertiesTypeItem
     {
         [JsonProperty("globalValues")]
-        public UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+        public UpdateDocumentResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
 
         [JsonProperty("propertyName")]
         public string PropertyName { get; set; }
@@ -2767,13 +2767,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[] Values { get; set; }
     }
 
-    public class UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItem
+    public class UpdateDocumentResponsePropertiesTypeItemGlobalValuesTypeItem
     {
         [JsonProperty("values")]
-        public UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+        public UpdateDocumentResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateDocumentV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    public class UpdateDocumentResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -2782,7 +2782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateDocumentV2ResponseRemindersTypeItem
+    public class UpdateDocumentResponseRemindersTypeItem
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -2806,7 +2806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool UseUserFromProcessTemplate { get; set; }
     }
 
-    public class UpdateDocumentV2Input
+    public class UpdateDocumentBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -2826,7 +2826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Blog { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDocumentV2InputUploadMethodType? UploadMethod { get; set; } = UpdateDocumentV2InputUploadMethodType.UploadFileBytesLarge;
+        public BodyInputUploadMethodType? UploadMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare.BodyInputUploadMethodType.UploadFileBytesLarge;
         public string FileContent { get; set; }
         public bool? ForceUndoCheckout { get; set; }
 
@@ -2834,22 +2834,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int? ChunkSize { get; set; } = 262144;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDocumentV2InputUploadMethodType
-    {
-        UploadFileBytesLarge,
-        UploadStreamChunks,
-        UploadStreamDirect,
-        UploadFileBase64
-    }
-
-    public class UpdateProcessV2Response
+    public class UpdateProcessResponse
     {
         [JsonProperty("name")]
-        public UpdateProcessV2ResponseNameType Name { get; set; }
+        public UpdateProcessResponseNameType Name { get; set; }
 
         [JsonProperty("description")]
-        public UpdateProcessV2ResponseDescriptionType Description { get; set; }
+        public UpdateProcessResponseDescriptionType Description { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2861,7 +2852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string ProcessTemplateId { get; set; }
 
         [JsonProperty("properties")]
-        public UpdateProcessV2ResponsePropertiesTypeItem[] Properties { get; set; }
+        public UpdateProcessResponsePropertiesTypeItem[] Properties { get; set; }
 
         [JsonProperty("priorityEnum")]
         public string PriorityEnum { get; set; }
@@ -2879,7 +2870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string CompletedDate { get; set; }
 
         [JsonProperty("comments")]
-        public UpdateProcessV2ResponseCommentsTypeItem[] Comments { get; set; }
+        public UpdateProcessResponseCommentsTypeItem[] Comments { get; set; }
 
         [JsonProperty("accessRightsEnumList")]
         public string[] AccessRightsEnumList { get; set; }
@@ -2888,13 +2879,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string StatusEnum { get; set; }
 
         [JsonProperty("customProperties")]
-        public UpdateProcessV2ResponseCustomPropertiesTypeItem[] CustomProperties { get; set; }
+        public UpdateProcessResponseCustomPropertiesTypeItem[] CustomProperties { get; set; }
 
         [JsonProperty("currentTask")]
-        public UpdateProcessV2ResponseCurrentTaskType CurrentTask { get; set; }
+        public UpdateProcessResponseCurrentTaskType CurrentTask { get; set; }
 
         [JsonProperty("completedTasks")]
-        public UpdateProcessV2ResponseCompletedTasksTypeItem[] CompletedTasks { get; set; }
+        public UpdateProcessResponseCompletedTasksTypeItem[] CompletedTasks { get; set; }
 
         [JsonProperty("documentIds")]
         public string[] DocumentIds { get; set; }
@@ -2909,13 +2900,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public int SessionCount { get; set; }
     }
 
-    public class UpdateProcessV2ResponseNameType
+    public class UpdateProcessResponseNameType
     {
         [JsonProperty("values")]
-        public UpdateProcessV2ResponseNameTypeValuesTypeItem[] Values { get; set; }
+        public UpdateProcessResponseNameTypeValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateProcessV2ResponseNameTypeValuesTypeItem
+    public class UpdateProcessResponseNameTypeValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -2924,13 +2915,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2ResponseDescriptionType
+    public class UpdateProcessResponseDescriptionType
     {
         [JsonProperty("values")]
-        public UpdateProcessV2ResponseDescriptionTypeValuesTypeItem[] Values { get; set; }
+        public UpdateProcessResponseDescriptionTypeValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateProcessV2ResponseDescriptionTypeValuesTypeItem
+    public class UpdateProcessResponseDescriptionTypeValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -2939,7 +2930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2ResponsePropertiesTypeItem
+    public class UpdateProcessResponsePropertiesTypeItem
     {
         [JsonProperty("propertyTypeId")]
         public string PropertyTypeId { get; set; }
@@ -2948,7 +2939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[] Values { get; set; }
 
         [JsonProperty("globalValues")]
-        public UpdateProcessV2ResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+        public UpdateProcessResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
 
         [JsonProperty("propertyTypeName")]
         public string PropertyTypeName { get; set; }
@@ -2957,13 +2948,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string PropertyName { get; set; }
     }
 
-    public class UpdateProcessV2ResponsePropertiesTypeItemGlobalValuesTypeItem
+    public class UpdateProcessResponsePropertiesTypeItemGlobalValuesTypeItem
     {
         [JsonProperty("values")]
-        public UpdateProcessV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+        public UpdateProcessResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateProcessV2ResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    public class UpdateProcessResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -2972,7 +2963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCommentsTypeItem
+    public class UpdateProcessResponseCommentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2987,7 +2978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCustomPropertiesTypeItem
+    public class UpdateProcessResponseCustomPropertiesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2999,7 +2990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string CustomPropertyTypeEnum { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCurrentTaskType
+    public class UpdateProcessResponseCurrentTaskType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3050,10 +3041,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] IntendedUserIds { get; set; }
 
         [JsonProperty("nameGlobal")]
-        public UpdateProcessV2ResponseCurrentTaskTypeNameGlobalType NameGlobal { get; set; }
+        public UpdateProcessResponseCurrentTaskTypeNameGlobalType NameGlobal { get; set; }
 
         [JsonProperty("descriptionGlobal")]
-        public UpdateProcessV2ResponseCurrentTaskTypeDescriptionGlobalType DescriptionGlobal { get; set; }
+        public UpdateProcessResponseCurrentTaskTypeDescriptionGlobalType DescriptionGlobal { get; set; }
 
         [JsonProperty("assignedUserCCIds")]
         public JToken[] AssignedUserCCIds { get; set; }
@@ -3065,13 +3056,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string TaskActionEnum { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCurrentTaskTypeNameGlobalType
+    public class UpdateProcessResponseCurrentTaskTypeNameGlobalType
     {
         [JsonProperty("values")]
-        public UpdateProcessV2ResponseCurrentTaskTypeNameGlobalTypeValuesTypeItem[] Values { get; set; }
+        public UpdateProcessResponseCurrentTaskTypeNameGlobalTypeValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCurrentTaskTypeNameGlobalTypeValuesTypeItem
+    public class UpdateProcessResponseCurrentTaskTypeNameGlobalTypeValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -3080,13 +3071,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCurrentTaskTypeDescriptionGlobalType
+    public class UpdateProcessResponseCurrentTaskTypeDescriptionGlobalType
     {
         [JsonProperty("values")]
-        public UpdateProcessV2ResponseCurrentTaskTypeDescriptionGlobalTypeValuesTypeItem[] Values { get; set; }
+        public UpdateProcessResponseCurrentTaskTypeDescriptionGlobalTypeValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCurrentTaskTypeDescriptionGlobalTypeValuesTypeItem
+    public class UpdateProcessResponseCurrentTaskTypeDescriptionGlobalTypeValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -3095,7 +3086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCompletedTasksTypeItem
+    public class UpdateProcessResponseCompletedTasksTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3146,10 +3137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] IntendedUserIds { get; set; }
 
         [JsonProperty("nameGlobal")]
-        public UpdateProcessV2ResponseCompletedTasksTypeItemNameGlobalType NameGlobal { get; set; }
+        public UpdateProcessResponseCompletedTasksTypeItemNameGlobalType NameGlobal { get; set; }
 
         [JsonProperty("descriptionGlobal")]
-        public UpdateProcessV2ResponseCompletedTasksTypeItemDescriptionGlobalType DescriptionGlobal { get; set; }
+        public UpdateProcessResponseCompletedTasksTypeItemDescriptionGlobalType DescriptionGlobal { get; set; }
 
         [JsonProperty("assignedUserCCIds")]
         public JToken[] AssignedUserCCIds { get; set; }
@@ -3161,13 +3152,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string TaskActionEnum { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCompletedTasksTypeItemNameGlobalType
+    public class UpdateProcessResponseCompletedTasksTypeItemNameGlobalType
     {
         [JsonProperty("values")]
-        public UpdateProcessV2ResponseCompletedTasksTypeItemNameGlobalTypeValuesTypeItem[] Values { get; set; }
+        public UpdateProcessResponseCompletedTasksTypeItemNameGlobalTypeValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCompletedTasksTypeItemNameGlobalTypeValuesTypeItem
+    public class UpdateProcessResponseCompletedTasksTypeItemNameGlobalTypeValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -3176,13 +3167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCompletedTasksTypeItemDescriptionGlobalType
+    public class UpdateProcessResponseCompletedTasksTypeItemDescriptionGlobalType
     {
         [JsonProperty("values")]
-        public UpdateProcessV2ResponseCompletedTasksTypeItemDescriptionGlobalTypeValuesTypeItem[] Values { get; set; }
+        public UpdateProcessResponseCompletedTasksTypeItemDescriptionGlobalTypeValuesTypeItem[] Values { get; set; }
     }
 
-    public class UpdateProcessV2ResponseCompletedTasksTypeItemDescriptionGlobalTypeValuesTypeItem
+    public class UpdateProcessResponseCompletedTasksTypeItemDescriptionGlobalTypeValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -3191,7 +3182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class UpdateProcessV2Input
+    public class UpdateProcessBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
@@ -3211,7 +3202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string DueDate { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateProcessV2InputPriorityType? Priority { get; set; } = UpdateProcessV2InputPriorityType.Normal;
+        public BodyInputPriorityType? Priority { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare.BodyInputPriorityType.Normal;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Culture { get; set; } = "de";
@@ -3219,14 +3210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ForceUndoCheckout { get; set; } = true;
         public string ProtectionDomain { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateProcessV2InputPriorityType
-    {
-        Low,
-        Normal,
-        High
     }
 }
 

@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddFieldToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<AddFieldToDocumentInput>> body, Expression<Func<string>> method = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddFieldToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<AddFieldToDocumentBodyInput>> body, Expression<Func<string>> method = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateFieldOnDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<UpdateFieldOnDocumentInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateFieldOnDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<AddFieldToDocumentBodyInput>> body = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryDocumentsResponse, ApiConnectionActionConfiguration> QueryDocuments(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryDocumentsInput>> body)
+        public IBodyWorkflowAction<QueryDocumentsResponse, ApiConnectionActionConfiguration> QueryDocuments(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryDocumentsBodyInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetMultipleTagsResponseItem[], ApiConnectionActionConfiguration> GetMultipleTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<GetMultipleTagsInput>> body = null)
+        public IBodyWorkflowAction<GetMultipleTagsResponseItem[], ApiConnectionActionConfiguration> GetMultipleTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<GetMultipleTagsBodyInput>> body = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryTagsResponse, ApiConnectionActionConfiguration> QueryTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryTagsInput>> body)
+        public IBodyWorkflowAction<QueryTagsResponse, ApiConnectionActionConfiguration> QueryTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryTagsBodyInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> exaAuthPlugin, Expression<Func<CreateFieldInput>> body, Expression<Func<string>> method = null)
+        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> exaAuthPlugin, Expression<Func<CreateFieldBodyInput>> body, Expression<Func<string>> method = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryUsersResponse, ApiConnectionActionConfiguration> QueryUsers(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryUsersInput>> body)
+        public IBodyWorkflowAction<QueryUsersResponse, ApiConnectionActionConfiguration> QueryUsers(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryUsersBodyInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<ResolveContextResponse, ApiConnectionActionConfiguration> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<ResolveContextInput>> body)
+        public IBodyWorkflowAction<ResolveContextResponse, ApiConnectionActionConfiguration> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<ResolveContextBodyInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<InsertExternalFileResponse, ApiConnectionActionConfiguration> InsertExternalFile(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> filename, Expression<Func<InsertExternalFileInput>> body)
+        public IBodyWorkflowAction<InsertExternalFileResponse, ApiConnectionActionConfiguration> InsertExternalFile(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> filename, Expression<Func<InsertExternalFileBodyInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddSiteToStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSiteToStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> name, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> body)
+        public IBodyWorkflowAction<UploadDocumentResponse, ApiConnectionActionConfiguration> UploadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> name, Expression<Func<ContentTypeInput>> contentType, Expression<Func<string>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
@@ -561,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryTemplatesResponse, ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryTemplatesInput>> body = null)
+        public IBodyWorkflowAction<QueryTemplatesResponse, ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> exaAuthPlugin, Expression<Func<QueryTemplatesBodyInput>> body = null)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<DetachDocumentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<DetachDocumentBodyInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetOrCreateTag(Expression<Func<string>> exaAuthPlugin, Expression<Func<methodInput>> method, Expression<Func<GetOrCreateTagInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetOrCreateTag(Expression<Func<string>> exaAuthPlugin, Expression<Func<MethodInput>> method, Expression<Func<GetOrCreateTagBodyInput>> body)
         {
             var __workflow_exaAuthPlugin = WorkflowExpression.Compile(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -652,16 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
     {
     }
 
-    public class AddFieldToDocumentInput
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class UpdateFieldOnDocumentInput
+    public class AddFieldToDocumentBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -763,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
-    public class QueryDocumentsInput
+    public class QueryDocumentsBodyInput
     {
         [JsonProperty("obligatoryTags")]
         public string[] ObligatoryTags { get; set; }
@@ -787,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ContainsName { get; set; }
 
         [JsonProperty("orderBy")]
-        public QueryDocumentsInputOrderByType? OrderBy { get; set; }
+        public BodyInputOrderByType? OrderBy { get; set; }
 
         [JsonProperty("orderAscending")]
         public bool? OrderAscending { get; set; }
@@ -796,7 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ContinuationToken { get; set; }
     }
 
-    public enum QueryDocumentsInputOrderByType
+    public enum BodyInputOrderByType
     {
         _0 = 0,
         _1 = 1,
@@ -993,7 +984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string LastSyncedOn { get; set; }
     }
 
-    public class GetMultipleTagsInput
+    public class GetMultipleTagsBodyInput
     {
         [JsonProperty("ids")]
         public string[] Ids { get; set; }
@@ -1071,7 +1062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string LastSyncedOn { get; set; }
     }
 
-    public class QueryTagsInput
+    public class QueryTagsBodyInput
     {
         [JsonProperty("parentTagId")]
         public string ParentTagId { get; set; }
@@ -1152,7 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Value { get; set; }
     }
 
-    public class CreateFieldInput
+    public class CreateFieldBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1176,13 +1167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string DefaultValue { get; set; }
 
         [JsonProperty("labels")]
-        public CreateFieldInputLabelsTypeItem[] Labels { get; set; }
+        public CreateFieldBodyInputLabelsTypeItem[] Labels { get; set; }
 
         [JsonProperty("validatingRegExp")]
         public string ValidatingRegExp { get; set; }
 
         [JsonProperty("validationMessage")]
-        public CreateFieldInputValidationMessageTypeItem[] ValidationMessage { get; set; }
+        public BodyInputValidationMessageTypeItem[] ValidationMessage { get; set; }
 
         [JsonProperty("rowAmount")]
         public int? RowAmount { get; set; }
@@ -1191,7 +1182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ParentTagId { get; set; }
     }
 
-    public class CreateFieldInputLabelsTypeItem
+    public class CreateFieldBodyInputLabelsTypeItem
     {
         [JsonProperty("languageId")]
         public int? LanguageId { get; set; }
@@ -1200,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Value { get; set; }
     }
 
-    public class CreateFieldInputValidationMessageTypeItem
+    public class BodyInputValidationMessageTypeItem
     {
         [JsonProperty("languageId")]
         public int? LanguageId { get; set; }
@@ -1704,7 +1695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Manager { get; set; }
     }
 
-    public class QueryUsersInput
+    public class QueryUsersBodyInput
     {
         [JsonProperty("excludeActiveUsers")]
         public bool? ExcludeActiveUsers { get; set; }
@@ -1782,7 +1773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Value { get; set; }
     }
 
-    public class ResolveContextInput
+    public class ResolveContextBodyInput
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -1938,7 +1929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string UploadTimestamp { get; set; }
     }
 
-    public class InsertExternalFileInput
+    public class InsertExternalFileBodyInput
     {
         [JsonProperty("body")]
         public string Body { get; set; }
@@ -2022,7 +2013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -2137,7 +2128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentTypeInput
+    public enum ContentTypeInput
     {
         [EnumMember(Value = "application/octet-stream")]
         ApplicationOctetStream
@@ -2326,7 +2317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Template { get; set; }
     }
 
-    public class QueryTemplatesInput
+    public class QueryTemplatesBodyInput
     {
         [JsonProperty("languageCode")]
         public int? LanguageCode { get; set; }
@@ -2452,7 +2443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
-    public class DetachDocumentInput
+    public class DetachDocumentBodyInput
     {
         [JsonProperty("azureDirectoryId")]
         public string AzureDirectoryId { get; set; }
@@ -2465,7 +2456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         [EnumMember(Value = "get-or-create")]
         GetOrCreate,
@@ -2475,28 +2466,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         CreateNew
     }
 
-    public class GetOrCreateTagInput
+    public class GetOrCreateTagBodyInput
     {
         [JsonProperty("code")]
         public string Code { get; set; }
 
         [JsonProperty("labels")]
-        public GetOrCreateTagInputLabelsTypeItem[] Labels { get; set; }
+        public GetOrCreateTagBodyInputLabelsTypeItem[] Labels { get; set; }
 
         [JsonProperty("parentTagId")]
         public string ParentTagId { get; set; }
     }
 
-    public class GetOrCreateTagInputLabelsTypeItem
+    public class GetOrCreateTagBodyInputLabelsTypeItem
     {
         [JsonProperty("languageId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetOrCreateTagInputLabelsTypeItemLanguageIdType? LanguageId { get; set; } = GetOrCreateTagInputLabelsTypeItemLanguageIdType._1033;
+        public BodyInputLabelsTypeItemLanguageIdType? LanguageId { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement.BodyInputLabelsTypeItemLanguageIdType._1033;
 
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public enum GetOrCreateTagInputLabelsTypeItemLanguageIdType
+    public enum BodyInputLabelsTypeItemLanguageIdType
     {
         _1031 = 1031,
         _1033 = 1033,

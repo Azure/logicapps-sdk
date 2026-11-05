@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
     public class TesseronasmticketActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<CreateTicketResponse, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketInput>> body)
+        public IBodyWorkflowAction<CreateTicketResponse, ApiConnectionActionConfiguration> CreateTicket(Expression<Func<CreateTicketBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTicketResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<CreateTicketPositionResponse, ApiConnectionActionConfiguration> CreateTicketPosition(Expression<Func<CreateTicketPositionInput>> body)
+        public IBodyWorkflowAction<CreateTicketPositionResponse, ApiConnectionActionConfiguration> CreateTicketPosition(Expression<Func<CreateTicketPositionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTicketPositionResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<AddAssetRelationResponse, ApiConnectionActionConfiguration> AddAssetRelation(Expression<Func<AddAssetRelationInput>> body)
+        public IBodyWorkflowAction<AddAssetRelationResponse, ApiConnectionActionConfiguration> AddAssetRelation(Expression<Func<AddAssetRelationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddAssetRelationResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetTicketResponse, ApiConnectionActionConfiguration> GetTicket(Expression<Func<GetTicketInput>> body)
+        public IBodyWorkflowAction<GetTicketResponse, ApiConnectionActionConfiguration> GetTicket(Expression<Func<GetTicketBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetTicketResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<SearchTicketResponse, ApiConnectionActionConfiguration> SearchTicket(Expression<Func<SearchTicketInput>> body)
+        public IBodyWorkflowAction<SearchTicketResponse, ApiConnectionActionConfiguration> SearchTicket(Expression<Func<SearchTicketBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchTicketResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<SearchTicketbyParameterResponse, ApiConnectionActionConfiguration> SearchTicketbyParameter(Expression<Func<SearchTicketbyParameterInput>> body)
+        public IBodyWorkflowAction<SearchTicketbyParameterResponse, ApiConnectionActionConfiguration> SearchTicketbyParameter(Expression<Func<SearchTicketbyParameterBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchTicketbyParameterResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse, ApiConnectionActionConfiguration> GetTicketFieldGroupConfig(Expression<Func<GetTicketFieldGroupConfigInput>> body)
+        public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse, ApiConnectionActionConfiguration> GetTicketFieldGroupConfig(Expression<Func<GetTicketFieldGroupConfigBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetTicketFieldGroupConfigResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllTicketTypesResponse, ApiConnectionActionConfiguration> GetAllTicketTypes(Expression<Func<GetAllTicketTypesInput>> body)
+        public IBodyWorkflowAction<GetAllTicketTypesResponse, ApiConnectionActionConfiguration> GetAllTicketTypes(Expression<Func<GetAllAreasBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAllTicketTypesResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllAreasResponse, ApiConnectionActionConfiguration> GetAllAreas(Expression<Func<GetAllAreasInput>> body)
+        public IBodyWorkflowAction<GetAllAreasResponse, ApiConnectionActionConfiguration> GetAllAreas(Expression<Func<GetAllAreasBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAllAreasResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllStartingAreasResponse, ApiConnectionActionConfiguration> GetAllStartingAreas(Expression<Func<GetAllStartingAreasInput>> body)
+        public IBodyWorkflowAction<GetAllStartingAreasResponse, ApiConnectionActionConfiguration> GetAllStartingAreas(Expression<Func<GetAllAreasBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAllStartingAreasResponse, ApiConnectionActionConfiguration>(() =>
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string ParkStatusText { get; set; }
     }
 
-    public class CreateTicketInput
+    public class CreateTicketBodyInput
     {
         [JsonProperty("ticketType", DefaultValueHandling = DefaultValueHandling.Include)]
         public int TicketType { get; set; } = 1;
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         [JsonProperty("contactId")]
         public int? ContactId { get; set; }
         public int[] RelatedAssetIds { get; set; }
-        public CreateTicketInputFieldGroupsTypeItem[] FieldGroups { get; set; }
+        public CreateTicketBodyInputFieldGroupsTypeItem[] FieldGroups { get; set; }
 
         [JsonProperty("referenceNumber")]
         public string ReferenceNumber { get; set; }
@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public bool InternalOption { get; set; } = false;
 
         [JsonProperty("urgencyType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTicketInputUrgencyTypeType UrgencyType { get; set; } = CreateTicketInputUrgencyTypeType._1;
+        public BodyInputUrgencyTypeType UrgencyType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket.BodyInputUrgencyTypeType._1;
 
         [JsonProperty("effectsType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTicketInputEffectsTypeType EffectsType { get; set; } = CreateTicketInputEffectsTypeType._1;
+        public BodyInputEffectsTypeType EffectsType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket.BodyInputEffectsTypeType._1;
 
         [JsonProperty("projectId")]
         public string ProjectId { get; set; }
@@ -231,16 +231,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public int? DelegatedTicketEditor { get; set; }
     }
 
-    public class CreateTicketInputFieldGroupsTypeItem
+    public class CreateTicketBodyInputFieldGroupsTypeItem
     {
         public string TicketFieldGroupSettingsId { get; set; }
         public string TicketFieldGroupId { get; set; }
 
         [JsonProperty("properties")]
-        public CreateTicketInputFieldGroupsTypeItemPropertiesTypeItem[] Properties { get; set; }
+        public CreateTicketBodyInputFieldGroupsTypeItemPropertiesTypeItem[] Properties { get; set; }
     }
 
-    public class CreateTicketInputFieldGroupsTypeItemPropertiesTypeItem
+    public class CreateTicketBodyInputFieldGroupsTypeItemPropertiesTypeItem
     {
         public string TicketFieldSettingsId { get; set; }
 
@@ -248,14 +248,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string Value { get; set; }
     }
 
-    public enum CreateTicketInputUrgencyTypeType
+    public enum BodyInputUrgencyTypeType
     {
         _0 = 0,
         _1 = 1,
         _2 = 2
     }
 
-    public enum CreateTicketInputEffectsTypeType
+    public enum BodyInputEffectsTypeType
     {
         _0 = 0,
         _1 = 1,
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string ParkStatusText { get; set; }
     }
 
-    public class CreateTicketPositionInput
+    public class CreateTicketPositionBodyInput
     {
         [JsonProperty("referenceNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceNumber { get; set; }
@@ -289,15 +289,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string TicketPositionText { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTicketPositionInputTicketPositionTypeType TicketPositionType { get; set; } = CreateTicketPositionInputTicketPositionTypeType._0;
+        public BodyInputTicketPositionTypeType TicketPositionType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket.BodyInputTicketPositionTypeType._0;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTicketPositionInputTicketPositionVisibilityType TicketPositionVisibility { get; set; } = CreateTicketPositionInputTicketPositionVisibilityType._0;
-        public CreateTicketPositionInputFieldGroupsTypeItem[] FieldGroups { get; set; }
-        public CreateTicketPositionInputParkTicketType ParkTicket { get; set; }
+        public BodyInputTicketPositionVisibilityType TicketPositionVisibility { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket.BodyInputTicketPositionVisibilityType._0;
+        public CreateTicketPositionBodyInputFieldGroupsTypeItem[] FieldGroups { get; set; }
+        public BodyInputParkTicketType ParkTicket { get; set; }
     }
 
-    public enum CreateTicketPositionInputTicketPositionTypeType
+    public enum BodyInputTicketPositionTypeType
     {
         _0 = 0,
         _1 = 1,
@@ -305,22 +305,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         _3 = 3
     }
 
-    public enum CreateTicketPositionInputTicketPositionVisibilityType
+    public enum BodyInputTicketPositionVisibilityType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public class CreateTicketPositionInputFieldGroupsTypeItem
+    public class CreateTicketPositionBodyInputFieldGroupsTypeItem
     {
         public string TicketFieldGroupSettingsId { get; set; }
         public string TicketFieldGroupId { get; set; }
 
         [JsonProperty("properties")]
-        public CreateTicketPositionInputFieldGroupsTypeItemPropertiesTypeItem[] Properties { get; set; }
+        public CreateTicketPositionBodyInputFieldGroupsTypeItemPropertiesTypeItem[] Properties { get; set; }
     }
 
-    public class CreateTicketPositionInputFieldGroupsTypeItemPropertiesTypeItem
+    public class CreateTicketPositionBodyInputFieldGroupsTypeItemPropertiesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -329,15 +329,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string Value { get; set; }
     }
 
-    public class CreateTicketPositionInputParkTicketType
+    public class BodyInputParkTicketType
     {
         public string ParkUntil { get; set; }
-        public CreateTicketPositionInputParkTicketTypeParkingReasonType? ParkingReason { get; set; }
+        public BodyInputParkTicketTypeParkingReasonType? ParkingReason { get; set; }
         public string ParkingPositionText { get; set; }
-        public CreateTicketPositionInputParkTicketTypeAfterParkingActionType? AfterParkingAction { get; set; }
+        public BodyInputParkTicketTypeAfterParkingActionType? AfterParkingAction { get; set; }
     }
 
-    public enum CreateTicketPositionInputParkTicketTypeParkingReasonType
+    public enum BodyInputParkTicketTypeParkingReasonType
     {
         _0 = 0,
         _1 = 1,
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         _3 = 3
     }
 
-    public enum CreateTicketPositionInputParkTicketTypeAfterParkingActionType
+    public enum BodyInputParkTicketTypeAfterParkingActionType
     {
         _0 = 0,
         _1 = 1,
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public int StatusCode { get; set; }
     }
 
-    public class AddAssetRelationInput
+    public class AddAssetRelationBodyInput
     {
         [JsonProperty("referenceNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceNumber { get; set; }
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string Value { get; set; }
     }
 
-    public class GetTicketInput
+    public class GetTicketBodyInput
     {
         [JsonProperty("referenceNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReferenceNumber { get; set; }
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string ParkStatusText { get; set; }
     }
 
-    public class SearchTicketInput
+    public class SearchTicketBodyInput
     {
         [JsonProperty("referencenumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Referencenumber { get; set; }
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string TicketStatus { get; set; }
     }
 
-    public class SearchTicketbyParameterInput
+    public class SearchTicketbyParameterBodyInput
     {
         [JsonProperty("searchParam", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchParam { get; set; }
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string Value { get; set; }
     }
 
-    public class GetTicketFieldGroupConfigInput
+    public class GetTicketFieldGroupConfigBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int TicketTypeId { get; set; }
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string TicketDescrpitionDe { get; set; }
     }
 
-    public class GetAllTicketTypesInput
+    public class GetAllAreasBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ResponseType { get; set; }
@@ -578,20 +578,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string TicketDescrpitionDe { get; set; }
     }
 
-    public class GetAllAreasInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int ResponseType { get; set; }
-        public string Search { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int PageSize { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Skip { get; set; }
-        public bool? OrderByAsc { get; set; }
-    }
-
     public class GetAllStartingAreasResponse
     {
         public string Message { get; set; }
@@ -621,20 +607,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
         [JsonProperty("TicketDescrpition_de")]
         public string TicketDescrpitionDe { get; set; }
-    }
-
-    public class GetAllStartingAreasInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int ResponseType { get; set; }
-        public string Search { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int PageSize { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Skip { get; set; }
-        public bool? OrderByAsc { get; set; }
     }
 }
 

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<ApiProject, ApiConnectionActionConfiguration> PostProjects(Expression<Func<PostProjectsInput>> body)
+        public IBodyWorkflowAction<ApiProject, ApiConnectionActionConfiguration> PostProjects(Expression<Func<PostProjectsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApiProject, ApiConnectionActionConfiguration>(() =>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> projectId, Expression<Func<UpdateProjectInput>> body)
+        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> projectId, Expression<Func<PostProjectsBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddProjectMember(Expression<Func<string>> projectId, Expression<Func<AddProjectMemberInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddProjectMember(Expression<Func<string>> projectId, Expression<Func<AddProjectMemberBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<ApiTask, ApiConnectionActionConfiguration> PostTask(Expression<Func<PostTaskInput>> body)
+        public IBodyWorkflowAction<ApiTask, ApiConnectionActionConfiguration> PostTask(Expression<Func<PostTaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApiTask, ApiConnectionActionConfiguration>(() =>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> taskId, Expression<Func<UpdateTaskInput>> body)
+        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> taskId, Expression<Func<PostTaskBodyInput>> body)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         public string ProjectId { get; set; }
     }
 
-    public class PostProjectsInput
+    public class PostProjectsBodyInput
     {
         public string ClientId { get; set; }
         public string DescriptionHTML { get; set; }
@@ -260,29 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         public ApiProject[] Value { get; set; }
     }
 
-    public class UpdateProjectInput
-    {
-        public string ClientId { get; set; }
-        public string DescriptionHTML { get; set; }
-        public string DivisionId { get; set; }
-        public string EndDate { get; set; }
-        public bool? IsArchived { get; set; }
-        public bool? IsRecycled { get; set; }
-        public int? LockMode { get; set; }
-        public string Name { get; set; }
-        public int? NumberIncremential { get; set; }
-        public string NumberPrefix { get; set; }
-        public string NumberSuffix { get; set; }
-        public string PortfolioId { get; set; }
-        public int? Priority { get; set; }
-        public string ProjectStatusId { get; set; }
-        public int? RiskScore { get; set; }
-        public int? SizeScore { get; set; }
-        public string StartDate { get; set; }
-        public int? ValueScore { get; set; }
-    }
-
-    public class AddProjectMemberInput
+    public class AddProjectMemberBodyInput
     {
         [JsonProperty("contactId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactId { get; set; }
@@ -307,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         public string TaskId { get; set; }
     }
 
-    public class PostTaskInput
+    public class PostTaskBodyInput
     {
         public string DescriptionHTML { get; set; }
         public string EndDateTime { get; set; }
@@ -328,17 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
     {
         [JsonProperty("value")]
         public ApiTask[] Value { get; set; }
-    }
-
-    public class UpdateTaskInput
-    {
-        public string DescriptionHTML { get; set; }
-        public string EndDateTime { get; set; }
-        public string GroupId { get; set; }
-        public string Name { get; set; }
-        public string ProjectId { get; set; }
-        public string StartDateTime { get; set; }
-        public double? WorkAmount { get; set; }
     }
 }
 

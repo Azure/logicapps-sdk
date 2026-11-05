@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CampaignPostValue(Expression<Func<CampaignPostValueInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CampaignPostValue(Expression<Func<CampaignPostValueBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CampaignPutValue(Expression<Func<string>> id, Expression<Func<CampaignPutValueInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CampaignPutValue(Expression<Func<string>> id, Expression<Func<CampaignPutValueBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ComLogPostValue(Expression<Func<ComLogPostValueInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ComLogPostValue(Expression<Func<ComLogPostValueBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ComLogPutValue(Expression<Func<string>> id, Expression<Func<ComLogPutValueInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ComLogPutValue(Expression<Func<string>> id, Expression<Func<ComLogPutValueBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ContactPostValue(Expression<Func<ContactPostValueInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ContactPostValue(Expression<Func<ContactPostValueBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ContactPutValue(Expression<Func<string>> id, Expression<Func<ContactPutValueInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ContactPutValue(Expression<Func<string>> id, Expression<Func<ContactPutValueBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FollowUpPostValue(Expression<Func<FollowUpPostValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FollowUpPostValue(Expression<Func<FollowUpPostValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FollowUpPutValue(Expression<Func<string>> id, Expression<Func<FollowUpPutValueInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FollowUpPutValue(Expression<Func<string>> id, Expression<Func<FollowUpPutValueBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -247,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<ItemListPostValueResponse, ApiConnectionActionConfiguration> ItemListPostValue(Expression<Func<ItemListPostValueInput>> body = null)
+        public IBodyWorkflowAction<ItemListPostValueResponse, ApiConnectionActionConfiguration> ItemListPostValue(Expression<Func<ItemListPostValueBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ItemListPostValueResponse, ApiConnectionActionConfiguration>(() =>
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ItemListPutValue(Expression<Func<string>> id, Expression<Func<ItemListPutValueInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ItemListPutValue(Expression<Func<string>> id, Expression<Func<ItemListPutValueBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> LeadPostValue(Expression<Func<LeadPostValueInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> LeadPostValue(Expression<Func<LeadPostValueBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> LeadPutValue(Expression<Func<string>> id, Expression<Func<LeadPutValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> LeadPutValue(Expression<Func<string>> id, Expression<Func<LeadPostValueBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> MembersGetValues(Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> MembersGetValues(Expression<Func<TypeInput>> type)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> MembersPostValue(Expression<Func<MembersPostValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> MembersPostValue(Expression<Func<MembersPostValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> MembersPutValue(Expression<Func<string>> id, Expression<Func<MembersPutValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> MembersPutValue(Expression<Func<string>> id, Expression<Func<MembersPutValueBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShippingPostValue(Expression<Func<ShippingPostValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShippingPostValue(Expression<Func<ShippingPostValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ShippingPutValue(Expression<Func<string>> id, Expression<Func<ShippingPutValueInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ShippingPutValue(Expression<Func<string>> id, Expression<Func<ShippingPutValueBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SOPostValue(Expression<Func<SOPostValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SOPostValue(Expression<Func<SOPostValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SOPutValue(Expression<Func<string>> id, Expression<Func<SOPutValueInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SOPutValue(Expression<Func<string>> id, Expression<Func<SOPutValueBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> WorkOrderPostValue(Expression<Func<WorkOrderPostValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> WorkOrderPostValue(Expression<Func<WorkOrderPostValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imprezian")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> WorkOrderPutValue(Expression<Func<string>> id, Expression<Func<WorkOrderPutValueInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> WorkOrderPutValue(Expression<Func<string>> id, Expression<Func<WorkOrderPutValueBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -729,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         }
     }
 
-    public class CampaignPostValueInput
+    public class CampaignPostValueBodyInput
     {
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
@@ -790,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Revenue { get; set; }
     }
 
-    public class CampaignPutValueInput
+    public class CampaignPutValueBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public bool? History { get; set; }
     }
 
-    public class ComLogPostValueInput
+    public class ComLogPostValueBodyInput
     {
         [JsonProperty("contactid")]
         public string Contactid { get; set; }
@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Leadid { get; set; }
 
         [JsonProperty("type")]
-        public ComLogPostValueInputTypeType? Type { get; set; }
+        public BodyInputTypeType? Type { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ComLogPostValueInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "E-mail")]
         EMail,
@@ -921,10 +921,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string CompanyName { get; set; }
     }
 
-    public class ComLogPutValueInput
+    public class ComLogPutValueBodyInput
     {
         [JsonProperty("type")]
-        public ComLogPutValueInputTypeType? Type { get; set; }
+        public BodyInputTypeType? Type { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -960,20 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public bool? Inbound { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ComLogPutValueInputTypeType
-    {
-        [EnumMember(Value = "E-mail")]
-        EMail,
-        [EnumMember(Value = "Phone-Call")]
-        PhoneCall,
-        Fax,
-        Tweet,
-        Facebook,
-        Other
-    }
-
-    public class ContactPostValueInput
+    public class ContactPostValueBodyInput
     {
         [JsonProperty("account")]
         public string Account { get; set; }
@@ -1072,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Lastcontact { get; set; }
     }
 
-    public class ContactPutValueInput
+    public class ContactPutValueBodyInput
     {
         [JsonProperty("sal")]
         public string Sal { get; set; }
@@ -1168,7 +1155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Lastcontact { get; set; }
     }
 
-    public class FollowUpPostValueInput
+    public class FollowUpPostValueBodyInput
     {
         [JsonProperty("contactid")]
         public string Contactid { get; set; }
@@ -1264,7 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string ProjectId { get; set; }
     }
 
-    public class FollowUpPutValueInput
+    public class FollowUpPutValueBodyInput
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1297,7 +1284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string NewCodeId { get; set; }
     }
 
-    public class ItemListPostValueInput
+    public class ItemListPostValueBodyInput
     {
         [JsonProperty("modelno")]
         public string Modelno { get; set; }
@@ -1306,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Descrip { get; set; }
 
         [JsonProperty("itemtype")]
-        public ItemListPostValueInputItemtypeType? Itemtype { get; set; }
+        public BodyInputItemtypeType? Itemtype { get; set; }
 
         [JsonProperty("price")]
         public double? Price { get; set; }
@@ -1319,7 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ItemListPostValueInputItemtypeType
+    public enum BodyInputItemtypeType
     {
         I,
         N,
@@ -1697,7 +1684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string QuantityPriceLevel10 { get; set; }
     }
 
-    public class ItemListPutValueInput
+    public class ItemListPutValueBodyInput
     {
         [JsonProperty("descrip")]
         public string Descrip { get; set; }
@@ -1712,7 +1699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Vendor { get; set; }
     }
 
-    public class LeadPostValueInput
+    public class LeadPostValueBodyInput
     {
         [JsonProperty("sal")]
         public string Sal { get; set; }
@@ -1911,127 +1898,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string AssignedToRep { get; set; }
     }
 
-    public class LeadPutValueInput
-    {
-        [JsonProperty("sal")]
-        public string Sal { get; set; }
-
-        [JsonProperty("firstname")]
-        public string Firstname { get; set; }
-
-        [JsonProperty("middlename")]
-        public string Middlename { get; set; }
-
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("lastname")]
-        public string Lastname { get; set; }
-
-        [JsonProperty("company")]
-        public string Company { get; set; }
-
-        [JsonProperty("addr1")]
-        public string Addr1 { get; set; }
-
-        [JsonProperty("addr2")]
-        public string Addr2 { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("postal")]
-        public string Postal { get; set; }
-
-        [JsonProperty("email1")]
-        public string Email1 { get; set; }
-
-        [JsonProperty("email2")]
-        public string Email2 { get; set; }
-
-        [JsonProperty("email3")]
-        public string Email3 { get; set; }
-
-        [JsonProperty("email4")]
-        public string Email4 { get; set; }
-
-        [JsonProperty("phonetype1")]
-        public string Phonetype1 { get; set; }
-
-        [JsonProperty("phone1")]
-        public string Phone1 { get; set; }
-
-        [JsonProperty("phonetype2")]
-        public string Phonetype2 { get; set; }
-
-        [JsonProperty("phone2")]
-        public string Phone2 { get; set; }
-
-        [JsonProperty("phonetype3")]
-        public string Phonetype3 { get; set; }
-
-        [JsonProperty("phone3")]
-        public string Phone3 { get; set; }
-
-        [JsonProperty("phonetype4")]
-        public string Phonetype4 { get; set; }
-
-        [JsonProperty("phone4")]
-        public string Phone4 { get; set; }
-
-        [JsonProperty("remark")]
-        public string Remark { get; set; }
-
-        [JsonProperty("notes")]
-        public string Notes { get; set; }
-
-        [JsonProperty("campaign")]
-        public string Campaign { get; set; }
-
-        [JsonProperty("category")]
-        public string Category { get; set; }
-
-        [JsonProperty("role")]
-        public string Role { get; set; }
-
-        [JsonProperty("market")]
-        public string Market { get; set; }
-
-        [JsonProperty("territory")]
-        public string Territory { get; set; }
-
-        [JsonProperty("salesrep")]
-        public string Salesrep { get; set; }
-
-        [JsonProperty("lastcontact")]
-        public string Lastcontact { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         C,
         L,
         B
     }
 
-    public class MembersPostValueInput
+    public class MembersPostValueBodyInput
     {
         [JsonProperty("promoid")]
         public string Promoid { get; set; }
 
         [JsonProperty("recordtype")]
-        public MembersPostValueInputRecordtypeType? Recordtype { get; set; }
+        public BodyInputRecordtypeType? Recordtype { get; set; }
 
         [JsonProperty("recordid")]
         public string Recordid { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MembersPostValueInputRecordtypeType
+    public enum BodyInputRecordtypeType
     {
         C,
         L
@@ -2091,13 +1979,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Phone4 { get; set; }
     }
 
-    public class MembersPutValueInput
+    public class MembersPutValueBodyInput
     {
         [JsonProperty("operation")]
-        public MembersPutValueInputOperationType? Operation { get; set; }
+        public BodyInputOperationType? Operation { get; set; }
 
         [JsonProperty("recordtype")]
-        public MembersPutValueInputRecordtypeType? Recordtype { get; set; }
+        public BodyInputRecordtypeType? Recordtype { get; set; }
 
         [JsonProperty("promoid")]
         public string Promoid { get; set; }
@@ -2107,20 +1995,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MembersPutValueInputOperationType
+    public enum BodyInputOperationType
     {
         [EnumMember(Value = "remove")]
         Remove
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MembersPutValueInputRecordtypeType
-    {
-        L,
-        C
-    }
-
-    public class ShippingPostValueInput
+    public class ShippingPostValueBodyInput
     {
         [JsonProperty("orderid")]
         public string Orderid { get; set; }
@@ -2216,7 +2097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string ItemId { get; set; }
     }
 
-    public class ShippingPutValueInput
+    public class ShippingPutValueBodyInput
     {
         [JsonProperty("shipdate")]
         public string Shipdate { get; set; }
@@ -2249,7 +2130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public double? Shippingcost { get; set; }
     }
 
-    public class SOPostValueInput
+    public class SOPostValueBodyInput
     {
         [JsonProperty("orderid")]
         public string Orderid { get; set; }
@@ -2333,7 +2214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Shipemail { get; set; }
 
         [JsonProperty("orderstatus")]
-        public SOPostValueInputOrderstatusType? Orderstatus { get; set; }
+        public BodyInputOrderstatusType? Orderstatus { get; set; }
 
         [JsonProperty("customstatus")]
         public string Customstatus { get; set; }
@@ -2369,11 +2250,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Comments { get; set; }
 
         [JsonProperty("linedata")]
-        public SOPostValueInputLinedataTypeItem[] Linedata { get; set; }
+        public BodyInputLinedataTypeItem[] Linedata { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SOPostValueInputOrderstatusType
+    public enum BodyInputOrderstatusType
     {
         [EnumMember(Value = "quote")]
         Quote,
@@ -2385,7 +2266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         History
     }
 
-    public class SOPostValueInputLinedataTypeItem
+    public class BodyInputLinedataTypeItem
     {
         [JsonProperty("qty")]
         public double? Qty { get; set; }
@@ -2576,7 +2457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Total { get; set; }
     }
 
-    public class SOPutValueInput
+    public class SOPutValueBodyInput
     {
         [JsonProperty("comments")]
         public string Comments { get; set; }
@@ -2585,23 +2466,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Customstatus { get; set; }
 
         [JsonProperty("orderstatus")]
-        public SOPutValueInputOrderstatusType? Orderstatus { get; set; }
+        public BodyInputOrderstatusType? Orderstatus { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SOPutValueInputOrderstatusType
-    {
-        [EnumMember(Value = "quote")]
-        Quote,
-        [EnumMember(Value = "confirmed")]
-        Confirmed,
-        [EnumMember(Value = "shipping")]
-        Shipping,
-        [EnumMember(Value = "history")]
-        History
-    }
-
-    public class WorkOrderPostValueInput
+    public class WorkOrderPostValueBodyInput
     {
         [JsonProperty("fromaddress")]
         public string Fromaddress { get; set; }
@@ -2682,7 +2550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Backup { get; set; }
 
         [JsonProperty("priority")]
-        public WorkOrderPostValueInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("duedate")]
         public string Duedate { get; set; }
@@ -2695,7 +2563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WorkOrderPostValueInputPriorityType
+    public enum BodyInputPriorityType
     {
         [EnumMember(Value = "0")]
         _0,
@@ -2817,7 +2685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string TimeSpent { get; set; }
     }
 
-    public class WorkOrderPutValueInput
+    public class WorkOrderPutValueBodyInput
     {
         [JsonProperty("ponumber")]
         public string Ponumber { get; set; }
@@ -2838,7 +2706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Backup { get; set; }
 
         [JsonProperty("priority")]
-        public WorkOrderPutValueInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("duedate")]
         public string Duedate { get; set; }
@@ -2851,21 +2719,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         [JsonProperty("history")]
         public bool? History { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WorkOrderPutValueInputPriorityType
-    {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4
     }
 
     public class NewSalesLeadResponseItem

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
     public class CardplatformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> cardbody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SendMessage(Expression<Func<CardbodyInput>> cardbody)
         {
             var __workflow_cardbody = WorkflowExpression.Compile(cardbody, nameof(cardbody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
     {
     }
 
-    public class SendMessageInput
+    public class CardbodyInput
     {
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Recipients { get; set; }

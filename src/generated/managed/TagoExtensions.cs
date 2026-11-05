@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     public class TagoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetData(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<queryInput>> query = null, Expression<Func<int>> qty = null, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> serie = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetData(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<QueryInput>> query = null, Expression<Func<int>> qty = null, Expression<Func<TimezoneInput>> timezone = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> serie = null)
         {
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: true);
             var __workflow_variable = WorkflowExpression.Compile(variable, nameof(variable), required: true);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        public IBodyWorkflowAction<PostDataResponse, ApiConnectionActionConfiguration> PostData(Expression<Func<PostDataInput>> body)
+        public IBodyWorkflowAction<PostDataResponse, ApiConnectionActionConfiguration> PostData(Expression<Func<PostDataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PostDataResponse, ApiConnectionActionConfiguration>(() =>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
 
     public class TagoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostDataResponse, ApiConnectionTriggerConfiguration> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<DataTriggerInput>> body, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse, ApiConnectionTriggerConfiguration> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<ConditionInput>> condition, Expression<Func<DataTriggerBodyInput>> body, Expression<Func<string>> value = null, FlowRecurrence recurrence = null)
         {
             var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: true);
             var __workflow_variable = WorkflowExpression.Compile(variable, nameof(variable), required: true);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum queryInput
+    public enum QueryInput
     {
         [EnumMember(Value = "default")]
         Default,
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum timezoneInput
+    public enum TimezoneInput
     {
         [EnumMember(Value = "(GMT+00:00) UTC")]
         GMT0000UTC,
@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         public string Result { get; set; }
     }
 
-    public class PostDataInput
+    public class PostDataBodyInput
     {
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceId { get; set; }
@@ -958,7 +958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         public string Value { get; set; }
 
         [JsonProperty("timezone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostDataInputTimezoneType? Timezone { get; set; } = PostDataInputTimezoneType.GMT0000UTC;
+        public BodyInputTimezoneType? Timezone { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tago.BodyInputTimezoneType.GMT0000UTC;
 
         [JsonProperty("time")]
         public string Timestamp { get; set; }
@@ -971,7 +971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostDataInputTimezoneType
+    public enum BodyInputTimezoneType
     {
         [EnumMember(Value = "(GMT+00:00) UTC")]
         GMT0000UTC,
@@ -1810,7 +1810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum conditionInput
+    public enum ConditionInput
     {
         Any,
         [EnumMember(Value = "Greater than")]
@@ -1823,13 +1823,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         DifferentFrom
     }
 
-    public class DataTriggerInput
+    public class DataTriggerBodyInput
     {
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DataTriggerInputConfigType Config { get; set; } = new DataTriggerInputConfigType();
+        public BodyInputConfigType Config { get; set; } = new BodyInputConfigType();
     }
 
-    public class DataTriggerInputConfigType
+    public class BodyInputConfigType
     {
         [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";

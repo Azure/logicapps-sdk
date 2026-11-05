@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365copilotchatmcp
     public class A365copilotchatmcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365copilotchatmcp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpM365copilot(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpM365copilotInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpM365copilot(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365copilotchatmcp
     {
     }
 
-    public class McpM365copilotInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

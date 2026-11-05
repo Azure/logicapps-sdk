@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
     public class RowshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rowshare")]
-        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> AssignRow(Expression<Func<AssignRowInput>> body)
+        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> AssignRow(Expression<Func<AssignRowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Row, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rowshare")]
-        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> CreateRow(Expression<Func<CreateRowInput>> body)
+        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> CreateRow(Expression<Func<CreateRowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Row, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rowshare")]
-        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> EditRow(Expression<Func<EditRowInput>> body)
+        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> EditRow(Expression<Func<EditRowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Row, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rowshare")]
-        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> LinkRow(Expression<Func<LinkRowInput>> body)
+        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> LinkRow(Expression<Func<LinkRowBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Row, ApiConnectionActionConfiguration>(() =>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rowshare")]
-        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> LoadRowById(Expression<Func<LoadRowByIdInput>> body, Expression<Func<string>> rowId)
+        public IBodyWorkflowAction<Row, ApiConnectionActionConfiguration> LoadRowById(Expression<Func<LoadRowByIdBodyInput>> body, Expression<Func<string>> rowId)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rowshare")]
-        public IBodyWorkflowAction<Row[], ApiConnectionActionConfiguration> FindRows(Expression<Func<FindRowsInput>> body)
+        public IBodyWorkflowAction<Row[], ApiConnectionActionConfiguration> FindRows(Expression<Func<FindRowsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Row[], ApiConnectionActionConfiguration>(() =>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
             });
         }
 
-        public IBodyWorkflowTrigger<RowStatusChangedResponse, ApiConnectionTriggerConfiguration> RowStatusChanged(Expression<Func<RowStatusChangedInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RowStatusChangedResponse, ApiConnectionTriggerConfiguration> RowStatusChanged(Expression<Func<RowStatusChangedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<RowStatusChangedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
             });
         }
 
-        public IBodyWorkflowTrigger<ColumnChangedResponse, ApiConnectionTriggerConfiguration> ColumnChanged(Expression<Func<ColumnChangedInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ColumnChangedResponse, ApiConnectionTriggerConfiguration> ColumnChanged(Expression<Func<ColumnChangedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<ColumnChangedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         public string DisplayName { get; set; }
     }
 
-    public class AssignRowInput
+    public class AssignRowBodyInput
     {
         public string ListId { get; set; }
 
@@ -216,13 +216,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         internal string Version { get; set; } = "0000000000000000";
     }
 
-    public class CreateRowInput
+    public class CreateRowBodyInput
     {
         public string ListId { get; set; }
         public JToken Values { get; set; }
     }
 
-    public class EditRowInput
+    public class EditRowBodyInput
     {
         public string ListId { get; set; }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         public JToken Values { get; set; }
     }
 
-    public class LinkRowInput
+    public class LinkRowBodyInput
     {
         public string ListId { get; set; }
 
@@ -248,22 +248,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         internal JToken Values { get; set; } = JToken.Parse("{}");
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinkRowInputParentRowsTypeItem[] ParentRows { get; set; }
+        public BodyInputParentRowsTypeItem[] ParentRows { get; set; }
     }
 
-    public class LinkRowInputParentRowsTypeItem
+    public class BodyInputParentRowsTypeItem
     {
         public string ChildRowId { get; set; }
         public string ParentRowId { get; set; }
         public string RelationColumnId { get; set; }
     }
 
-    public class LoadRowByIdInput
+    public class LoadRowByIdBodyInput
     {
         public string ListId { get; set; }
     }
 
-    public class FindRowsInput
+    public class FindRowsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListId { get; set; }
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         public string SubscriptionId { get; set; }
     }
 
-    public class RowStatusChangedInput
+    public class RowStatusChangedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         public string SubscriptionId { get; set; }
     }
 
-    public class ColumnChangedInput
+    public class ColumnChangedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";

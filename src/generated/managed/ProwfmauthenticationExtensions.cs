@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
     public class ProwfmauthenticationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
-        public IBodyWorkflowAction<GetAccessTokenResponse, ApiConnectionActionConfiguration> GetAccessToken(Expression<Func<GetAccessTokenInput>> body)
+        public IBodyWorkflowAction<GetAccessTokenResponse, ApiConnectionActionConfiguration> GetAccessToken(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAccessTokenResponse, ApiConnectionActionConfiguration>(() =>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
         public int ExpiresIn { get; set; }
     }
 
-    public class GetAccessTokenInput
+    public class BodyInput
     {
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }

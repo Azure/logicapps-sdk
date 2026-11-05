@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
     public class Transform2allActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Transform(Expression<Func<TransformInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Transform(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
     {
     }
 
-    public class TransformInput
+    public class BodyInput
     {
         [JsonProperty("configId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConfigId { get; set; }

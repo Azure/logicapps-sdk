@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerGroup, ApiConnectionActionConfiguration> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<ContainerGroupsUpdateInput>> resource)
+        public IBodyWorkflowAction<ContainerGroup, ApiConnectionActionConfiguration> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<ResourceInput>> resource)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
-        public IBodyWorkflowAction<ContainerExecResponse, ApiConnectionActionConfiguration> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<ContainersExecuteCommandInput>> containerExecRequest)
+        public IBodyWorkflowAction<ContainerExecResponse, ApiConnectionActionConfiguration> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<ContainerExecRequestInput>> containerExecRequest)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         Spot
     }
 
-    public class ContainerGroupsUpdateInput
+    public class ResourceInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1039,16 +1039,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public string Password { get; set; }
     }
 
-    public class ContainersExecuteCommandInput
+    public class ContainerExecRequestInput
     {
         [JsonProperty("command")]
         public string Command { get; set; }
 
         [JsonProperty("terminalSize")]
-        public ContainersExecuteCommandInputTerminalSizeType TerminalSize { get; set; }
+        public ContainerExecRequestInputTerminalSizeType TerminalSize { get; set; }
     }
 
-    public class ContainersExecuteCommandInputTerminalSizeType
+    public class ContainerExecRequestInputTerminalSizeType
     {
         [JsonProperty("rows")]
         public int? Rows { get; set; }

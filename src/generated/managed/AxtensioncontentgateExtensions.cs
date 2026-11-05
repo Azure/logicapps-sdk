@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContentEntityRequirements(Expression<Func<string>> providerReferenceId, Expression<Func<string>> externalType, Expression<Func<string>> externalId, Expression<Func<CreateContentEntityRequirementsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContentEntityRequirements(Expression<Func<string>> providerReferenceId, Expression<Func<string>> externalType, Expression<Func<string>> externalId, Expression<Func<CreateContentEntityRequirementsBodyInput>> body = null)
         {
             var __workflow_providerReferenceId = WorkflowExpression.Compile(providerReferenceId, nameof(providerReferenceId), required: true);
             var __workflow_externalType = WorkflowExpression.Compile(externalType, nameof(externalType), required: true);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
-        public IBodyWorkflowAction<SearchContentEntitiesResponse, ApiConnectionActionConfiguration> SearchContentEntities(Expression<Func<SearchContentEntitiesInput>> searchRequest)
+        public IBodyWorkflowAction<SearchContentEntitiesResponse, ApiConnectionActionConfiguration> SearchContentEntities(Expression<Func<SearchRequestInput>> searchRequest)
         {
             var __workflow_searchRequest = WorkflowExpression.Compile(searchRequest, nameof(searchRequest), required: true);
             return new DeferredBodyAction<SearchContentEntitiesResponse, ApiConnectionActionConfiguration>(() =>
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "axtensioncontentgate")]
-        public IBodyWorkflowAction<ExceptionResponse, ApiConnectionActionConfiguration> AddBusinessEntityReference(Expression<Func<int>> contentEntityId, Expression<Func<AddBusinessEntityReferenceInput>> body = null)
+        public IBodyWorkflowAction<ExceptionResponse, ApiConnectionActionConfiguration> AddBusinessEntityReference(Expression<Func<int>> contentEntityId, Expression<Func<AddBusinessEntityReferenceBodyInput>> body = null)
         {
             var __workflow_contentEntityId = WorkflowExpression.Compile(contentEntityId, nameof(contentEntityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
 
     public class AxtensioncontentgateTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentAdded(Expression<Func<WhenContentAddedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentAdded(Expression<Func<WhenContentAddedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentUpdated(Expression<Func<WhenContentUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentUpdated(Expression<Func<WhenContentUpdatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentDeleted(Expression<Func<WhenContentDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentDeleted(Expression<Func<WhenContentDeletedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -310,49 +310,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementAdded(Expression<Func<WhenContentRequirementAddedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementAdded(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentrequirementcreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new WhenContentRequirementAddedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementUpdated(Expression<Func<WhenContentRequirementUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentrequirementupdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new WhenContentRequirementUpdatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementDeleted(Expression<Func<WhenContentRequirementDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenContentRequirementDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/subscriptions/contentrequirementdeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Subscription-Client"] = Convert.ToString("PowerAutomate");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new WhenContentRequirementDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTemplateNotificationTriggered(Expression<Func<WhenTemplateNotificationTriggeredInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenTemplateNotificationTriggered(Expression<Func<WhenTemplateNotificationTriggeredBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -388,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         public string CreatedBy { get; set; }
     }
 
-    public class CreateContentEntityRequirementsInput
+    public class CreateContentEntityRequirementsBodyInput
     {
         public int? ContentEntityTemplateId { get; set; }
         public int? ContentEntityTemplateGroupId { get; set; }
@@ -877,17 +874,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         public QueryResultContentEntityItem[] Items { get; set; }
     }
 
-    public class SearchContentEntitiesInput
+    public class SearchRequestInput
     {
         public int[] Templates { get; set; }
         public int[] StorageProviders { get; set; }
         public int[] BusinessEntities { get; set; }
         public int[] BusinessEntityTypes { get; set; }
-        public SearchContentEntitiesInputPropertiesTypeItem[] Properties { get; set; }
-        public SearchContentEntitiesInputPagingType Paging { get; set; }
+        public SearchRequestInputPropertiesTypeItem[] Properties { get; set; }
+        public SearchRequestInputPagingType Paging { get; set; }
     }
 
-    public class SearchContentEntitiesInputPropertiesTypeItem
+    public class SearchRequestInputPropertiesTypeItem
     {
         public string Property { get; set; }
         public string Operator { get; set; }
@@ -895,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         public JToken Value { get; set; }
     }
 
-    public class SearchContentEntitiesInputPagingType
+    public class SearchRequestInputPagingType
     {
         public int? Page { get; set; }
         public int? PageSize { get; set; }
@@ -942,7 +939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         public JToken ContextInfo { get; set; }
     }
 
-    public class AddBusinessEntityReferenceInput
+    public class AddBusinessEntityReferenceBodyInput
     {
         [JsonProperty("businessEntityId")]
         public int? BusinessEntityId { get; set; }
@@ -957,7 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         public string ExternalId { get; set; }
     }
 
-    public class WhenContentAddedInput
+    public class WhenContentAddedBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Trigger";
@@ -981,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         internal string Resource { get; set; } = "Content";
     }
 
-    public class WhenContentUpdatedInput
+    public class WhenContentUpdatedBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Trigger";
@@ -1005,7 +1002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         internal string Resource { get; set; } = "Content";
     }
 
-    public class WhenContentDeletedInput
+    public class WhenContentDeletedBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Trigger";
@@ -1029,7 +1026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         internal string Resource { get; set; } = "Content";
     }
 
-    public class WhenContentRequirementAddedInput
+    public class WhenContentRequirementAddedBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Trigger";
@@ -1050,7 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         internal string Resource { get; set; } = "ContentRequirement";
     }
 
-    public class WhenContentRequirementUpdatedInput
+    public class WhenContentRequirementUpdatedBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Trigger";
@@ -1071,7 +1068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         internal string Resource { get; set; } = "ContentRequirement";
     }
 
-    public class WhenContentRequirementDeletedInput
+    public class WhenContentRequirementDeletedBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "Power Automate Trigger";
@@ -1092,7 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Axtensioncontentgate
         internal string Resource { get; set; } = "ContentRequirement";
     }
 
-    public class WhenTemplateNotificationTriggeredInput
+    public class WhenTemplateNotificationTriggeredBodyInput
     {
         [JsonProperty("templateId")]
         public int? TemplateId { get; set; }

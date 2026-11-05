@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
-        public IBodyWorkflowAction<CreateMeetingResponse, ApiConnectionActionConfiguration> CreateMeeting(Expression<Func<CreateMeetingInput>> body = null)
+        public IBodyWorkflowAction<CreateMeetingResponse, ApiConnectionActionConfiguration> CreateMeeting(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateMeetingResponse, ApiConnectionActionConfiguration>(() =>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         public string JoinUrl { get; set; }
     }
 
-    public class CreateMeetingInput
+    public class BodyInput
     {
         [JsonProperty("topic")]
         public string Topic { get; set; }
@@ -165,10 +165,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         public string Duration { get; set; }
 
         [JsonProperty("settings")]
-        public CreateMeetingInputSettingsType Settings { get; set; }
+        public BodyInputSettingsType Settings { get; set; }
     }
 
-    public class CreateMeetingInputSettingsType
+    public class BodyInputSettingsType
     {
         [JsonProperty("host_video")]
         public bool? HostVideo { get; set; }

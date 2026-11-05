@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<Application, ApiConnectionActionConfiguration> PostApplication(Expression<Func<PostApplicationInput>> body = null)
+        public IBodyWorkflowAction<Application, ApiConnectionActionConfiguration> PostApplication(Expression<Func<PostApplicationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Application, ApiConnectionActionConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<PermissionGrant, ApiConnectionActionConfiguration> PostPermissionGrant(Expression<Func<PostPermissionGrantInput>> body = null)
+        public IBodyWorkflowAction<PermissionGrant, ApiConnectionActionConfiguration> PostPermissionGrant(Expression<Func<PostPermissionGrantBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PermissionGrant, ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<UserFlow, ApiConnectionActionConfiguration> PostUserflow(Expression<Func<PostUserflowInput>> body = null)
+        public IBodyWorkflowAction<UserFlow, ApiConnectionActionConfiguration> PostUserflow(Expression<Func<PostUserflowBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UserFlow, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<UserFlow, ApiConnectionActionConfiguration> PostB2cUserflow(Expression<Func<PostB2cUserflowInput>> body = null)
+        public IBodyWorkflowAction<UserFlow, ApiConnectionActionConfiguration> PostB2cUserflow(Expression<Func<PostB2cUserflowBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UserFlow, ApiConnectionActionConfiguration>(() =>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
-        public IBodyWorkflowAction<ServicePrinciple, ApiConnectionActionConfiguration> PostServicePrinciple(Expression<Func<PostServicePrincipleV1Input>> body = null)
+        public IBodyWorkflowAction<ServicePrinciple, ApiConnectionActionConfiguration> PostServicePrinciple(Expression<Func<PostServicePrincipleBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ServicePrinciple, ApiConnectionActionConfiguration>(() =>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public bool EnableIdTokenIssuance { get; set; }
     }
 
-    public class PostApplicationInput
+    public class PostApplicationBodyInput
     {
         [JsonProperty("displayName")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DisplayName { get; set; }
@@ -401,19 +401,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public bool? IsFallbackPublicClient { get; set; }
 
         [JsonProperty("web")]
-        public PostApplicationInputWebType Web { get; set; }
+        public BodyInputWebType Web { get; set; }
     }
 
-    public class PostApplicationInputWebType
+    public class BodyInputWebType
     {
         [JsonProperty("redirectUris")]
         public string[] RedirectUris { get; set; }
 
         [JsonProperty("implicitGrantSettings")]
-        public PostApplicationInputWebTypeImplicitGrantSettingsType ImplicitGrantSettings { get; set; }
+        public BodyInputWebTypeImplicitGrantSettingsType ImplicitGrantSettings { get; set; }
     }
 
-    public class PostApplicationInputWebTypeImplicitGrantSettingsType
+    public class BodyInputWebTypeImplicitGrantSettingsType
     {
         [JsonProperty("enableIdTokenIssuance")]
         public bool? EnableIdTokenIssuance { get; set; }
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public string Scope { get; set; }
     }
 
-    public class PostPermissionGrantInput
+    public class PostPermissionGrantBodyInput
     {
         [JsonProperty("clientId")]
         public string ClientId { get; set; }
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public int UserFlowTypeVersion { get; set; }
     }
 
-    public class PostUserflowInput
+    public class PostUserflowBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public int? UserFlowTypeVersion { get; set; }
     }
 
-    public class PostB2cUserflowInput
+    public class PostB2cUserflowBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -509,10 +509,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public int? UserFlowTypeVersion { get; set; } = 1;
 
         [JsonProperty("tokenClaimsConfiguration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostB2cUserflowInputTokenClaimsConfigurationType TokenClaimsConfiguration { get; set; } = new PostB2cUserflowInputTokenClaimsConfigurationType();
+        public BodyInputTokenClaimsConfigurationType TokenClaimsConfiguration { get; set; } = new BodyInputTokenClaimsConfigurationType();
     }
 
-    public class PostB2cUserflowInputTokenClaimsConfigurationType
+    public class BodyInputTokenClaimsConfigurationType
     {
         [JsonProperty("isIssuerEntityUserFlow", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IsIssuerEntityUserFlow { get; set; } = true;
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         public string LogoUrl { get; set; }
     }
 
-    public class PostServicePrincipleV1Input
+    public class PostServicePrincipleBodyInput
     {
         [JsonProperty("accountEnabled")]
         public bool? AccountEnabled { get; set; }

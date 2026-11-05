@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
     public class EcologiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseTreesResponse, ApiConnectionActionConfiguration> PurchaseTrees(Expression<Func<PurchaseTreesInput>> body)
+        public IBodyWorkflowAction<PurchaseTreesResponse, ApiConnectionActionConfiguration> PurchaseTrees(Expression<Func<PurchaseTreesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PurchaseTreesResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration> PurchaseOffsets(Expression<Func<PurchaseOffsetsInput>> body)
+        public IBodyWorkflowAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration> PurchaseOffsets(Expression<Func<PurchaseOffsetsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PurchaseOffsetsResponse, ApiConnectionActionConfiguration>(() =>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         public string Name { get; set; }
     }
 
-    public class PurchaseTreesInput
+    public class PurchaseTreesBodyInput
     {
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Number { get; set; }
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         public string Currency { get; set; }
     }
 
-    public class PurchaseOffsetsInput
+    public class PurchaseOffsetsBodyInput
     {
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Number { get; set; }

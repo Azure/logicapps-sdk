@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<CreateJobInput>> body, Expression<Func<string>> runbookName = null, Expression<Func<bool>> wait = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<BodyInput>> body, Expression<Func<string>> runbookName = null, Expression<Func<bool>> wait = null)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
@@ -112,13 +112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         public string StatusDetails { get; set; }
     }
 
-    public class CreateJobInput
+    public class BodyInput
     {
         [JsonProperty("properties")]
-        public CreateJobInputPropertiesType Properties { get; set; }
+        public BodyInputPropertiesType Properties { get; set; }
     }
 
-    public class CreateJobInputPropertiesType
+    public class BodyInputPropertiesType
     {
         [JsonProperty("parameters")]
         public JToken RunbookParameters { get; set; }

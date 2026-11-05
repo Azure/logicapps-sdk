@@ -27,16 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formstackforms
 
     public class FormstackformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormstackFormSubmittedResponse, ApiConnectionTriggerConfiguration> FormstackFormSubmitted(Expression<Func<int>> formId, Expression<Func<FormstackFormSubmittedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormstackFormSubmittedResponse, ApiConnectionTriggerConfiguration> FormstackFormSubmitted(Expression<Func<int>> formId, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<FormstackFormSubmittedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/form/{0}/webhook/", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<FormstackFormSubmittedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formstackforms
         public string Id { get; set; }
     }
 
-    public class FormstackFormSubmittedInput
+    public class BodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

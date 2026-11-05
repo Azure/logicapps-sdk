@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteSoqlQuery(Expression<Func<ExecuteSoqlQueryInput>> queryParameters)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecuteSoqlQuery(Expression<Func<QueryParametersInput>> queryParameters)
         {
             var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<GetAllJobsResponse, ApiConnectionActionConfiguration> GetAllJobs(Expression<Func<concurrenyModeInput>> concurrenyMode = null, Expression<Func<bool>> isPkChunkingEnabled = null, Expression<Func<jobTypeInput>> jobType = null, Expression<Func<string>> queryLocator = null)
+        public IBodyWorkflowAction<GetAllJobsResponse, ApiConnectionActionConfiguration> GetAllJobs(Expression<Func<ConcurrenyModeInput>> concurrenyMode = null, Expression<Func<bool>> isPkChunkingEnabled = null, Expression<Func<JobTypeInput>> jobType = null, Expression<Func<string>> queryLocator = null)
         {
             var __workflow_concurrenyMode = WorkflowExpression.Compile(concurrenyMode, nameof(concurrenyMode), required: false);
             var __workflow_isPkChunkingEnabled = WorkflowExpression.Compile(isPkChunkingEnabled, nameof(isPkChunkingEnabled), required: false);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JobInfo, ApiConnectionActionConfiguration> CloseJob(Expression<Func<string>> jobId, Expression<Func<CloseJobInput>> body)
+        public IBodyWorkflowAction<JobInfo, ApiConnectionActionConfiguration> CloseJob(Expression<Func<string>> jobId, Expression<Func<BodyInput>> body)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetJobRecordResults(Expression<Func<string>> jobId, Expression<Func<resultTypeInput>> resultType)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetJobRecordResults(Expression<Func<string>> jobId, Expression<Func<ResultTypeInput>> resultType)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_resultType = WorkflowExpression.Compile(resultType, nameof(resultType), required: true);
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpSalesforceManagement(Expression<Func<McpSalesforceManagementInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpSalesforceManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<CreateJobV2Input>> parameters)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<ParametersInput>> parameters)
         {
             var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public JToken DynamicProperties { get; set; }
     }
 
-    public class ExecuteSoqlQueryInput
+    public class QueryParametersInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SOQLQuery { get; set; }
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum concurrenyModeInput
+    public enum ConcurrenyModeInput
     {
         BACKQUOTE,
         CARET,
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum jobTypeInput
+    public enum JobTypeInput
     {
         BigObjectInjest,
         Classic,
@@ -836,21 +836,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         Failed
     }
 
-    public class CloseJobInput
+    public class BodyInput
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CloseJobInputStateType State { get; set; }
+        public BodyInputStateType State { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CloseJobInputStateType
+    public enum BodyInputStateType
     {
         UploadComplete,
         Aborted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum resultTypeInput
+    public enum ResultTypeInput
     {
         Successful,
         Failed,
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public JToken Error { get; set; }
     }
 
-    public class McpSalesforceManagementInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -982,13 +982,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string SystemModstamp { get; set; }
     }
 
-    public class CreateJobV2Input
+    public class ParametersInput
     {
         [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectEntity { get; set; }
 
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateJobV2InputOperationType Operation { get; set; }
+        public ParametersInputOperationType Operation { get; set; }
 
         [JsonProperty("columnDelimiter")]
         public string ColumnDelimiter { get; set; }
@@ -1004,7 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateJobV2InputOperationType
+    public enum ParametersInputOperationType
     {
         [EnumMember(Value = "insert")]
         Insert,

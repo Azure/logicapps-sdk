@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
     public class NunifyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
-        public IBodyWorkflowAction<ADDREGISTRANTResponse, ApiConnectionActionConfiguration> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<ADDREGISTRANTInput>> body = null)
+        public IBodyWorkflowAction<ADDREGISTRANTResponse, ApiConnectionActionConfiguration> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<ADDREGISTRANTBodyInput>> body = null)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
@@ -36,12 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
     public class NunifyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<NEWREGISTRATIONInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
@@ -49,18 +48,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NEWREGISTRATIONBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<NEWCHECKINInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
         {
             var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", __workflow_platformId.WithUrlEncoding(1), __workflow_domainId.WithUrlEncoding(1), __workflow_appId.WithUrlEncoding(1)));
@@ -68,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NEWCHECKINBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -99,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         public string Email { get; set; }
     }
 
-    public class ADDREGISTRANTInput
+    public class ADDREGISTRANTBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -120,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         public string TicketTypeId { get; set; } = "Default";
     }
 
-    public class NEWREGISTRATIONInput
+    public class NEWREGISTRATIONBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -129,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         internal string Kind { get; set; } = "ticket_create";
     }
 
-    public class NEWCHECKINInput
+    public class NEWCHECKINBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

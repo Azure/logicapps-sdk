@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
     public class SinchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsInput>> body)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<SendMmsInput>> body)
+        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<SendMmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMmsResponse, ApiConnectionActionConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
     public class SinchTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MessageArrived(Expression<Func<MessageArrivedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MessageArrived(Expression<Func<MessageArrivedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GetDeliveryReceipt(Expression<Func<GetDeliveryReceiptInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GetDeliveryReceipt(Expression<Func<GetDeliveryReceiptBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         public string Source { get; set; }
     }
 
-    public class SendSmsInput
+    public class SendSmsBodyInput
     {
         [JsonProperty("source_number")]
         public string SourceNumber { get; set; }
@@ -183,10 +183,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         public string CallbackUrl { get; set; }
 
         [JsonProperty("metadata")]
-        public SendSmsInputMetadataTypeItem[] Metadata { get; set; }
+        public BodyInputMetadataTypeItem[] Metadata { get; set; }
     }
 
-    public class SendSmsInputMetadataTypeItem
+    public class BodyInputMetadataTypeItem
     {
         [JsonProperty("metadata_key")]
         public string MetadataKey { get; set; }
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         public string Source { get; set; }
     }
 
-    public class SendMmsInput
+    public class SendMmsBodyInput
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -344,16 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         public string SourceNumber { get; set; }
 
         [JsonProperty("metadata")]
-        public SendMmsInputMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class SendMmsInputMetadataTypeItem
-    {
-        [JsonProperty("metadata_key")]
-        public string MetadataKey { get; set; }
-
-        [JsonProperty("metadata_value")]
-        public string MetadataValue { get; set; }
+        public BodyInputMetadataTypeItem[] Metadata { get; set; }
     }
 
     public class Message
@@ -406,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         public string Source { get; set; }
     }
 
-    public class MessageArrivedInput
+    public class MessageArrivedBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -418,19 +409,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         internal string Encoding { get; set; } = "JSON";
 
         [JsonProperty("headers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessageArrivedInputHeadersType Headers { get; set; } = new MessageArrivedInputHeadersType();
+        public BodyInputHeadersType Headers { get; set; } = new BodyInputHeadersType();
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Template { get; set; } = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end#if($messageId)\"message_id\": \"$messageId\",#end\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
     }
 
-    public class MessageArrivedInputHeadersType
+    public class BodyInputHeadersType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Platform { get; set; } = "PowerAutomate";
     }
 
-    public class GetDeliveryReceiptInput
+    public class GetDeliveryReceiptBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -442,16 +433,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         internal string Encoding { get; set; } = "JSON";
 
         [JsonProperty("headers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDeliveryReceiptInputHeadersType Headers { get; set; } = new GetDeliveryReceiptInputHeadersType();
+        public BodyInputHeadersType Headers { get; set; } = new BodyInputHeadersType();
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Template { get; set; } = "{\"delivery_report_id\":\"$drId\",#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"type\":\"$type\",\"message_id\":\"$messageId\",\"source_address\":\"$sourceAddress\",\"content\":\"$esc.json($mtContent)\",\"attachments\":[#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if( $foreach.hasNext ),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if( $foreach.hasNext ),#end#end]}";
-    }
-
-    public class GetDeliveryReceiptInputHeadersType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Platform { get; set; } = "PowerAutomate";
     }
 }
 

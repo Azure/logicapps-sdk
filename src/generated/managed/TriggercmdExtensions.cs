@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
     public class TriggercmdActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RunCommand(Expression<Func<RunCommandInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RunCommand(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
     {
     }
 
-    public class RunCommandInput
+    public class BodyInput
     {
         [JsonProperty("computer", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Computer { get; set; }

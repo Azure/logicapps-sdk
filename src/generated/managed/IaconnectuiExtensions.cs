@@ -3605,7 +3605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAGlobalMouseClickElementSearchColourRegionInputMouseButtonType? MouseButton { get; set; } = UIAGlobalMouseClickElementSearchColourRegionInputMouseButtonType.Left;
+        public UIAGlobalMouseClickElementSearchColourRegionInputMouseButtonType? MouseButton { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAGlobalMouseClickElementSearchColourRegionInputMouseButtonType.Left;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetX { get; set; } = 0;
@@ -3614,7 +3614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? ClickOffsetY { get; set; } = 0;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType? OffsetRelativeTo { get; set; } = UIAGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType.Center;
+        public UIAGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType? OffsetRelativeTo { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType.Center;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DelayInMilliseconds { get; set; } = 10;
@@ -3839,13 +3839,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlTypesNotToTraverse { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAMoveElementInputHorizontalMovementTypeType? HorizontalMovementType { get; set; } = UIAMoveElementInputHorizontalMovementTypeType.Absolute;
+        public UIAMoveElementInputHorizontalMovementTypeType? HorizontalMovementType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAMoveElementInputHorizontalMovementTypeType.Absolute;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int HorizontalPosition { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAMoveElementInputVerticalMovementTypeType? VerticalMovementType { get; set; } = UIAMoveElementInputVerticalMovementTypeType.Absolute;
+        public UIAMoveElementInputVerticalMovementTypeType? VerticalMovementType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAMoveElementInputVerticalMovementTypeType.Absolute;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int VerticalPosition { get; set; }
@@ -3905,13 +3905,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlTypesNotToTraverse { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAResizeElementInputResizeWidthTypeType? ResizeWidthType { get; set; } = UIAResizeElementInputResizeWidthTypeType.Relative;
+        public UIAResizeElementInputResizeWidthTypeType? ResizeWidthType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAResizeElementInputResizeWidthTypeType.Relative;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int NewWidth { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAResizeElementInputResizeHeightTypeType? ResizeHeightType { get; set; } = UIAResizeElementInputResizeHeightTypeType.Relative;
+        public UIAResizeElementInputResizeHeightTypeType? ResizeHeightType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAResizeElementInputResizeHeightTypeType.Relative;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int NewHeight { get; set; }
@@ -3985,7 +3985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string SearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = UIALocateVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
+        public UIALocateVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
         public string AltSearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4002,16 +4002,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = UIALocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
+        public UIALocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = UIALocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
+        public UIALocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchImageIndex { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = UIALocateVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
+        public UIALocateVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideAgent { get; set; } = true;
@@ -4121,7 +4121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string SearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = UIAWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
+        public UIAWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
         public string AltSearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4138,16 +4138,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = UIAWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
+        public UIAWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = UIAWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
+        public UIAWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchImageIndex { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = UIAWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
+        public UIAWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideAgent { get; set; } = true;
@@ -4259,7 +4259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string SearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = UIAWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType.None;
+        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType.None;
         public string AltSearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4276,16 +4276,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType.Pixel;
+        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType.Pixel;
+        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchImageIndex { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = UIAWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType.FromTop;
+        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType.FromTop;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideAgent { get; set; } = true;

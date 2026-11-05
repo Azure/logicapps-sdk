@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<NewMessage, ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> roomId, Expression<Func<PostMessageInput>> body)
+        public IBodyWorkflowAction<NewMessage, ApiConnectionActionConfiguration> PostMessage(Expression<Func<string>> roomId, Expression<Func<BodyInput>> body)
         {
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         public string DatePosted { get; set; }
     }
 
-    public class PostMessageInput
+    public class BodyInput
     {
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }

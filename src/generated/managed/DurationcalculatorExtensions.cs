@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     public class DurationcalculatorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<BusinessDaysResponse, ApiConnectionActionConfiguration> CalculateBusinessDays(Expression<Func<CalculateBusinessDaysInput>> body)
+        public IBodyWorkflowAction<BusinessDaysResponse, ApiConnectionActionConfiguration> CalculateBusinessDays(Expression<Func<CalculateBusinessDaysBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BusinessDaysResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<AgeCalculationResponse, ApiConnectionActionConfiguration> CalculateAge(Expression<Func<CalculateAgeInput>> body)
+        public IBodyWorkflowAction<AgeCalculationResponse, ApiConnectionActionConfiguration> CalculateAge(Expression<Func<CalculateAgeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AgeCalculationResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<WorkingHoursResponse, ApiConnectionActionConfiguration> CalculateWorkingHours(Expression<Func<CalculateWorkingHoursInput>> body)
+        public IBodyWorkflowAction<WorkingHoursResponse, ApiConnectionActionConfiguration> CalculateWorkingHours(Expression<Func<CalculateWorkingHoursBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkingHoursResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<TimeZoneConversionResponse, ApiConnectionActionConfiguration> ConvertTimeZones(Expression<Func<ConvertTimeZonesInput>> body)
+        public IBodyWorkflowAction<TimeZoneConversionResponse, ApiConnectionActionConfiguration> ConvertTimeZones(Expression<Func<ConvertTimeZonesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TimeZoneConversionResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<ProjectDurationResponse, ApiConnectionActionConfiguration> CalculateProjectDuration(Expression<Func<CalculateProjectDurationInput>> body)
+        public IBodyWorkflowAction<ProjectDurationResponse, ApiConnectionActionConfiguration> CalculateProjectDuration(Expression<Func<CalculateProjectDurationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProjectDurationResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<PayrollPeriodsResponse, ApiConnectionActionConfiguration> CalculatePayrollPeriods(Expression<Func<CalculatePayrollPeriodsInput>> body)
+        public IBodyWorkflowAction<PayrollPeriodsResponse, ApiConnectionActionConfiguration> CalculatePayrollPeriods(Expression<Func<CalculatePayrollPeriodsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PayrollPeriodsResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<TimeZoneInfoResponse, ApiConnectionActionConfiguration> GetTimeZoneInfo(Expression<Func<GetTimeZoneInfoInput>> body)
+        public IBodyWorkflowAction<TimeZoneInfoResponse, ApiConnectionActionConfiguration> GetTimeZoneInfo(Expression<Func<GetTimeZoneInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TimeZoneInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<DeadlineCalculationResponse, ApiConnectionActionConfiguration> DeadlineCalculation(Expression<Func<DeadlineCalculationInput>> body)
+        public IBodyWorkflowAction<DeadlineCalculationResponse, ApiConnectionActionConfiguration> DeadlineCalculation(Expression<Func<DeadlineCalculationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeadlineCalculationResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<CrossTzDurationResponse, ApiConnectionActionConfiguration> CrossTzDuration(Expression<Func<CrossTzDurationInput>> body)
+        public IBodyWorkflowAction<CrossTzDurationResponse, ApiConnectionActionConfiguration> CrossTzDuration(Expression<Func<CrossTzDurationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CrossTzDurationResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<GlobalWorkingHoursResponse, ApiConnectionActionConfiguration> CalculateGlobalWorkingHours(Expression<Func<CalculateGlobalWorkingHoursInput>> body)
+        public IBodyWorkflowAction<GlobalWorkingHoursResponse, ApiConnectionActionConfiguration> CalculateGlobalWorkingHours(Expression<Func<CalculateGlobalWorkingHoursBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GlobalWorkingHoursResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<MeetingTimesResponse, ApiConnectionActionConfiguration> CalculateMeetingTimes(Expression<Func<CalculateMeetingTimesInput>> body)
+        public IBodyWorkflowAction<MeetingTimesResponse, ApiConnectionActionConfiguration> CalculateMeetingTimes(Expression<Func<CalculateMeetingTimesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MeetingTimesResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<DstValidationResponse, ApiConnectionActionConfiguration> ValidateDstCalculations(Expression<Func<ValidateDstCalculationsInput>> body)
+        public IBodyWorkflowAction<DstValidationResponse, ApiConnectionActionConfiguration> ValidateDstCalculations(Expression<Func<ValidateDstCalculationsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DstValidationResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<DstTransitionResponse, ApiConnectionActionConfiguration> CalculateDstTransition(Expression<Func<CalculateDstTransitionInput>> body)
+        public IBodyWorkflowAction<DstTransitionResponse, ApiConnectionActionConfiguration> CalculateDstTransition(Expression<Func<CalculateDstTransitionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DstTransitionResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "durationcalculator")]
-        public IBodyWorkflowAction<DstHistoryResponse, ApiConnectionActionConfiguration> GetDstHistory(Expression<Func<GetDstHistoryInput>> body)
+        public IBodyWorkflowAction<DstHistoryResponse, ApiConnectionActionConfiguration> GetDstHistory(Expression<Func<GetDstHistoryBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DstHistoryResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string[] HolidaysInRange { get; set; }
     }
 
-    public class CalculateBusinessDaysInput
+    public class CalculateBusinessDaysBodyInput
     {
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string FormattedAge { get; set; }
     }
 
-    public class CalculateAgeInput
+    public class CalculateAgeBodyInput
     {
         [JsonProperty("birthDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BirthDate { get; set; }
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public int WorkingDays { get; set; }
     }
 
-    public class CalculateWorkingHoursInput
+    public class CalculateWorkingHoursBodyInput
     {
         [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string EndDateTime { get; set; }
 
         [JsonProperty("workingHours")]
-        public CalculateWorkingHoursInputWorkingHoursType WorkingHours { get; set; }
+        public BodyInputWorkingHoursType WorkingHours { get; set; }
 
         [JsonProperty("overtimeRate", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? OvertimeRate { get; set; } = 1.5;
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public double? BreakHours { get; set; } = 1;
     }
 
-    public class CalculateWorkingHoursInputWorkingHoursType
+    public class BodyInputWorkingHoursType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -366,20 +366,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public bool IsDstActive { get; set; }
     }
 
-    public class ConvertTimeZonesInput
+    public class ConvertTimeZonesBodyInput
     {
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
 
         [JsonProperty("fromTimeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TimeZoneEnum FromTimeZone { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum FromTimeZone { get; set; }
 
         [JsonProperty("toTimeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TimeZoneEnum ToTimeZone { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum ToTimeZone { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TimeZoneEnum
+    public enum CalculateGlobalWorkingHoursTimeZoneEnum
     {
         [EnumMember(Value = "Pacific/Fiji")]
         PacificFiji,
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string RecommendedFocus { get; set; }
     }
 
-    public class CalculateProjectDurationInput
+    public class CalculateProjectDurationBodyInput
     {
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string EndDate { get; set; }
 
         [JsonProperty("projectStatus", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateProjectDurationInputProjectStatusType? ProjectStatus { get; set; } = CalculateProjectDurationInputProjectStatusType.Active;
+        public BodyInputProjectStatusType? ProjectStatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.BodyInputProjectStatusType.Active;
 
         [JsonProperty("milestones")]
         public Milestone[] Milestones { get; set; }
@@ -671,14 +671,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public bool? IncludeWeekends { get; set; } = false;
 
         [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateProjectDurationInputOutputFormatType? OutputFormat { get; set; } = CalculateProjectDurationInputOutputFormatType.Detailed;
+        public BodyInputOutputFormatType? OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.BodyInputOutputFormatType.Detailed;
 
         [JsonProperty("workingHoursPeriod", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateProjectDurationInputWorkingHoursPeriodType? WorkingHoursPeriod { get; set; } = CalculateProjectDurationInputWorkingHoursPeriodType.Standard;
+        public BodyInputWorkingHoursPeriodType? WorkingHoursPeriod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.BodyInputWorkingHoursPeriodType.Standard;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculateProjectDurationInputProjectStatusType
+    public enum BodyInputProjectStatusType
     {
         [EnumMember(Value = "planning")]
         Planning,
@@ -716,10 +716,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string Name { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HolidayTypeType? Type { get; set; } = HolidayTypeType.Federal;
+        public HolidayTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.HolidayTypeType.Federal;
 
         [JsonProperty("observance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HolidayObservanceType? Observance { get; set; } = HolidayObservanceType.FullDay;
+        public HolidayObservanceType? Observance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.HolidayObservanceType.FullDay;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculateProjectDurationInputOutputFormatType
+    public enum BodyInputOutputFormatType
     {
         [EnumMember(Value = "hours")]
         Hours,
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculateProjectDurationInputWorkingHoursPeriodType
+    public enum BodyInputWorkingHoursPeriodType
     {
         [EnumMember(Value = "standard")]
         Standard,
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public bool IsPartial { get; set; }
     }
 
-    public class CalculatePayrollPeriodsInput
+    public class CalculatePayrollPeriodsBodyInput
     {
         [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
@@ -849,14 +849,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string EndDate { get; set; }
 
         [JsonProperty("periodType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculatePayrollPeriodsInputPeriodTypeType PeriodType { get; set; }
+        public BodyInputPeriodTypeType PeriodType { get; set; }
 
         [JsonProperty("includePartialPeriods", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludePartialPeriods { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculatePayrollPeriodsInputPeriodTypeType
+    public enum BodyInputPeriodTypeType
     {
         [EnumMember(Value = "weekly")]
         Weekly,
@@ -943,10 +943,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public bool SameSeasonalPattern { get; set; }
     }
 
-    public class GetTimeZoneInfoInput
+    public class GetTimeZoneInfoBodyInput
     {
         [JsonProperty("timeZones", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TimeZoneEnum[] TimeZones { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum[] TimeZones { get; set; }
 
         [JsonProperty("referenceDate")]
         public string ReferenceDate { get; set; }
@@ -964,7 +964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string CurrentDate { get; set; }
 
         [JsonProperty("timeRemaining")]
-        public DurationBreakdown TimeRemaining { get; set; }
+        public CrossTzDurationDurationBreakdownResponse TimeRemaining { get; set; }
 
         [JsonProperty("businessDaysRemaining")]
         public int BusinessDaysRemaining { get; set; }
@@ -976,7 +976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public DeadlineCalculationResponseCriticalStatusType CriticalStatus { get; set; }
     }
 
-    public class DurationBreakdown
+    public class CrossTzDurationDurationBreakdownResponse
     {
         [JsonProperty("totalDays")]
         public int TotalDays { get; set; }
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         Overdue
     }
 
-    public class DeadlineCalculationInput
+    public class DeadlineCalculationBodyInput
     {
         [JsonProperty("deadlineDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeadlineDate { get; set; }
@@ -1046,7 +1046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string EndDateTimeUtc { get; set; }
 
         [JsonProperty("duration")]
-        public DurationBreakdown Duration { get; set; }
+        public CrossTzDurationDurationBreakdownResponse Duration { get; set; }
 
         [JsonProperty("dstTransitions")]
         public DstTransition[] DstTransitions { get; set; }
@@ -1094,19 +1094,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string EndOffset { get; set; }
     }
 
-    public class CrossTzDurationInput
+    public class CrossTzDurationBodyInput
     {
         [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
 
         [JsonProperty("startTimeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TimeZoneEnum StartTimeZone { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum StartTimeZone { get; set; }
 
         [JsonProperty("endDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndDateTime { get; set; }
 
         [JsonProperty("endTimeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TimeZoneEnum EndTimeZone { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum EndTimeZone { get; set; }
 
         [JsonProperty("accountForDst", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AccountForDst { get; set; } = true;
@@ -1136,7 +1136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public int BusinessDays { get; set; }
     }
 
-    public class CalculateGlobalWorkingHoursInput
+    public class CalculateGlobalWorkingHoursBodyInput
     {
         [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
@@ -1145,7 +1145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string EndDateTime { get; set; }
 
         [JsonProperty("timeZones", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TimeZoneEnum[] TimeZones { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum[] TimeZones { get; set; }
 
         [JsonProperty("workingHours", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkingHours WorkingHours { get; set; } = new WorkingHours();
@@ -1165,11 +1165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         [JsonProperty("workingDays", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkingHoursWorkingDaysTypeItem[] WorkingDays { get; set; } = new WorkingHoursWorkingDaysTypeItem[]
         {
-            (WorkingHoursWorkingDaysTypeItem)0,
-            (WorkingHoursWorkingDaysTypeItem)1,
-            (WorkingHoursWorkingDaysTypeItem)2,
-            (WorkingHoursWorkingDaysTypeItem)3,
-            (WorkingHoursWorkingDaysTypeItem)4
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.WorkingHoursWorkingDaysTypeItem.Monday,
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.WorkingHoursWorkingDaysTypeItem.Tuesday,
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.WorkingHoursWorkingDaysTypeItem.Wednesday,
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.WorkingHoursWorkingDaysTypeItem.Thursday,
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.WorkingHoursWorkingDaysTypeItem.Friday
         };
     }
 
@@ -1213,13 +1213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public double SuitabilityScore { get; set; }
 
         [JsonProperty("participantTimes")]
-        public ParticipantLocalTime[] ParticipantTimes { get; set; }
+        public CalculateMeetingTimesParticipantLocalTimeResponse[] ParticipantTimes { get; set; }
 
         [JsonProperty("conflicts")]
         public MeetingTimesResponseOptimalTimesTypeItemConflictsTypeItem[] Conflicts { get; set; }
     }
 
-    public class ParticipantLocalTime
+    public class CalculateMeetingTimesParticipantLocalTimeResponse
     {
         [JsonProperty("participantName")]
         public string ParticipantName { get; set; }
@@ -1228,17 +1228,232 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string LocalDateTime { get; set; }
 
         [JsonProperty("timeZone")]
-        public TimeZoneEnum TimeZone { get; set; }
+        public CalculateMeetingTimesTimeZoneEnumResponse TimeZone { get; set; }
 
         [JsonProperty("isWithinWorkingHours")]
         public bool IsWithinWorkingHours { get; set; }
 
         [JsonProperty("conflictLevel")]
-        public ParticipantLocalTimeConflictLevelType ConflictLevel { get; set; }
+        public CalculateMeetingTimesParticipantLocalTimeConflictLevelTypeResponse ConflictLevel { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ParticipantLocalTimeConflictLevelType
+    public enum CalculateMeetingTimesTimeZoneEnumResponse
+    {
+        [EnumMember(Value = "Pacific/Fiji")]
+        PacificFiji,
+        [EnumMember(Value = "Pacific/Auckland")]
+        PacificAuckland,
+        [EnumMember(Value = "Asia/Magadan")]
+        AsiaMagadan,
+        [EnumMember(Value = "Asia/Vladivostok")]
+        AsiaVladivostok,
+        [EnumMember(Value = "Australia/Hobart")]
+        AustraliaHobart,
+        [EnumMember(Value = "Australia/Melbourne")]
+        AustraliaMelbourne,
+        [EnumMember(Value = "Australia/Sydney")]
+        AustraliaSydney,
+        [EnumMember(Value = "Australia/Brisbane")]
+        AustraliaBrisbane,
+        [EnumMember(Value = "Australia/Adelaide")]
+        AustraliaAdelaide,
+        [EnumMember(Value = "Australia/Darwin")]
+        AustraliaDarwin,
+        [EnumMember(Value = "Asia/Irkutsk")]
+        AsiaIrkutsk,
+        [EnumMember(Value = "Asia/Krasnoyarsk")]
+        AsiaKrasnoyarsk,
+        [EnumMember(Value = "Asia/Tokyo")]
+        AsiaTokyo,
+        [EnumMember(Value = "Asia/Seoul")]
+        AsiaSeoul,
+        [EnumMember(Value = "Australia/Perth")]
+        AustraliaPerth,
+        [EnumMember(Value = "Asia/Kuala_Lumpur")]
+        AsiaKualaLumpur,
+        [EnumMember(Value = "Asia/Singapore")]
+        AsiaSingapore,
+        [EnumMember(Value = "Asia/Manila")]
+        AsiaManila,
+        [EnumMember(Value = "Asia/Taipei")]
+        AsiaTaipei,
+        [EnumMember(Value = "Asia/Hong_Kong")]
+        AsiaHongKong,
+        [EnumMember(Value = "Asia/Shanghai")]
+        AsiaShanghai,
+        [EnumMember(Value = "Asia/Novosibirsk")]
+        AsiaNovosibirsk,
+        [EnumMember(Value = "Asia/Almaty")]
+        AsiaAlmaty,
+        [EnumMember(Value = "Asia/Jakarta")]
+        AsiaJakarta,
+        [EnumMember(Value = "Asia/Phnom_Penh")]
+        AsiaPhnomPenh,
+        [EnumMember(Value = "Asia/Ho_Chi_Minh")]
+        AsiaHoChiMinh,
+        [EnumMember(Value = "Asia/Bangkok")]
+        AsiaBangkok,
+        [EnumMember(Value = "Asia/Yangon")]
+        AsiaYangon,
+        [EnumMember(Value = "Asia/Dhaka")]
+        AsiaDhaka,
+        [EnumMember(Value = "Asia/Kolkata")]
+        AsiaKolkata,
+        [EnumMember(Value = "Asia/Tashkent")]
+        AsiaTashkent,
+        [EnumMember(Value = "Asia/Karachi")]
+        AsiaKarachi,
+        [EnumMember(Value = "Indian/Maldives")]
+        IndianMaldives,
+        [EnumMember(Value = "Indian/Mauritius")]
+        IndianMauritius,
+        [EnumMember(Value = "Asia/Dubai")]
+        AsiaDubai,
+        [EnumMember(Value = "Asia/Tehran")]
+        AsiaTehran,
+        [EnumMember(Value = "Asia/Baghdad")]
+        AsiaBaghdad,
+        [EnumMember(Value = "Asia/Kuwait")]
+        AsiaKuwait,
+        [EnumMember(Value = "Asia/Riyadh")]
+        AsiaRiyadh,
+        [EnumMember(Value = "Europe/Moscow")]
+        EuropeMoscow,
+        [EnumMember(Value = "Africa/Addis_Ababa")]
+        AfricaAddisAbaba,
+        [EnumMember(Value = "Africa/Nairobi")]
+        AfricaNairobi,
+        [EnumMember(Value = "Africa/Khartoum")]
+        AfricaKhartoum,
+        [EnumMember(Value = "Asia/Amman")]
+        AsiaAmman,
+        [EnumMember(Value = "Asia/Damascus")]
+        AsiaDamascus,
+        [EnumMember(Value = "Asia/Beirut")]
+        AsiaBeirut,
+        [EnumMember(Value = "Asia/Jerusalem")]
+        AsiaJerusalem,
+        [EnumMember(Value = "Europe/Istanbul")]
+        EuropeIstanbul,
+        [EnumMember(Value = "Europe/Kiev")]
+        EuropeKiev,
+        [EnumMember(Value = "Africa/Cairo")]
+        AfricaCairo,
+        [EnumMember(Value = "Europe/Sofia")]
+        EuropeSofia,
+        [EnumMember(Value = "Europe/Bucharest")]
+        EuropeBucharest,
+        [EnumMember(Value = "Europe/Athens")]
+        EuropeAthens,
+        [EnumMember(Value = "Africa/Lagos")]
+        AfricaLagos,
+        [EnumMember(Value = "Africa/Tripoli")]
+        AfricaTripoli,
+        [EnumMember(Value = "Africa/Tunis")]
+        AfricaTunis,
+        [EnumMember(Value = "Africa/Algiers")]
+        AfricaAlgiers,
+        [EnumMember(Value = "Europe/Helsinki")]
+        EuropeHelsinki,
+        [EnumMember(Value = "Europe/Oslo")]
+        EuropeOslo,
+        [EnumMember(Value = "Europe/Copenhagen")]
+        EuropeCopenhagen,
+        [EnumMember(Value = "Europe/Stockholm")]
+        EuropeStockholm,
+        [EnumMember(Value = "Europe/Budapest")]
+        EuropeBudapest,
+        [EnumMember(Value = "Europe/Warsaw")]
+        EuropeWarsaw,
+        [EnumMember(Value = "Europe/Prague")]
+        EuropePrague,
+        [EnumMember(Value = "Europe/Zurich")]
+        EuropeZurich,
+        [EnumMember(Value = "Europe/Vienna")]
+        EuropeVienna,
+        [EnumMember(Value = "Europe/Brussels")]
+        EuropeBrussels,
+        [EnumMember(Value = "Europe/Amsterdam")]
+        EuropeAmsterdam,
+        [EnumMember(Value = "Europe/Madrid")]
+        EuropeMadrid,
+        [EnumMember(Value = "Europe/Rome")]
+        EuropeRome,
+        [EnumMember(Value = "Europe/Berlin")]
+        EuropeBerlin,
+        [EnumMember(Value = "Europe/Paris")]
+        EuropeParis,
+        [EnumMember(Value = "Africa/Casablanca")]
+        AfricaCasablanca,
+        [EnumMember(Value = "Europe/Lisbon")]
+        EuropeLisbon,
+        [EnumMember(Value = "Europe/Dublin")]
+        EuropeDublin,
+        [EnumMember(Value = "Europe/London")]
+        EuropeLondon,
+        [EnumMember(Value = "Atlantic/Reykjavik")]
+        AtlanticReykjavik,
+        GMT,
+        UTC,
+        [EnumMember(Value = "Atlantic/Azores")]
+        AtlanticAzores,
+        [EnumMember(Value = "Atlantic/Cape_Verde")]
+        AtlanticCapeVerde,
+        [EnumMember(Value = "America/Buenos_Aires")]
+        AmericaBuenosAires,
+        [EnumMember(Value = "America/Sao_Paulo")]
+        AmericaSaoPaulo,
+        [EnumMember(Value = "America/St_Johns")]
+        AmericaStJohns,
+        [EnumMember(Value = "America/Caracas")]
+        AmericaCaracas,
+        [EnumMember(Value = "America/Halifax")]
+        AmericaHalifax,
+        [EnumMember(Value = "America/Lima")]
+        AmericaLima,
+        [EnumMember(Value = "America/Bogota")]
+        AmericaBogota,
+        [EnumMember(Value = "America/Cancun")]
+        AmericaCancun,
+        [EnumMember(Value = "America/Montreal")]
+        AmericaMontreal,
+        [EnumMember(Value = "America/Toronto")]
+        AmericaToronto,
+        [EnumMember(Value = "America/New_York")]
+        AmericaNewYork,
+        [EnumMember(Value = "America/Mexico_City")]
+        AmericaMexicoCity,
+        [EnumMember(Value = "America/Chicago")]
+        AmericaChicago,
+        [EnumMember(Value = "America/Phoenix")]
+        AmericaPhoenix,
+        [EnumMember(Value = "America/Denver")]
+        AmericaDenver,
+        [EnumMember(Value = "America/Vancouver")]
+        AmericaVancouver,
+        [EnumMember(Value = "America/Los_Angeles")]
+        AmericaLosAngeles,
+        [EnumMember(Value = "America/Anchorage")]
+        AmericaAnchorage,
+        [EnumMember(Value = "America/Honolulu")]
+        AmericaHonolulu,
+        [EnumMember(Value = "Pacific/Tahiti")]
+        PacificTahiti,
+        [EnumMember(Value = "Pacific/Marquesas")]
+        PacificMarquesas,
+        [EnumMember(Value = "Pacific/Guam")]
+        PacificGuam,
+        [EnumMember(Value = "Pacific/Port_Moresby")]
+        PacificPortMoresby,
+        [EnumMember(Value = "Pacific/Noumea")]
+        PacificNoumea,
+        [EnumMember(Value = "Africa/Johannesburg")]
+        AfricaJohannesburg
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CalculateMeetingTimesParticipantLocalTimeConflictLevelTypeResponse
     {
         [EnumMember(Value = "none")]
         None,
@@ -1295,19 +1510,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public double MaxTimeOffset { get; set; }
     }
 
-    public class CalculateMeetingTimesInput
+    public class CalculateMeetingTimesBodyInput
     {
         [JsonProperty("participants", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParticipantLocalTime2[] Participants { get; set; }
+        public CalculateMeetingTimesParticipantLocalTime[] Participants { get; set; }
 
         [JsonProperty("durationMinutes", DefaultValueHandling = DefaultValueHandling.Include)]
         public int DurationMinutes { get; set; }
 
         [JsonProperty("meetingType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateMeetingTimesInputMeetingTypeType? MeetingType { get; set; } = CalculateMeetingTimesInputMeetingTypeType.TeamMeeting;
+        public BodyInputMeetingTypeType? MeetingType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.BodyInputMeetingTypeType.TeamMeeting;
 
         [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateMeetingTimesInputPriorityType? Priority { get; set; } = CalculateMeetingTimesInputPriorityType.Normal;
+        public BodyInputPriorityType? Priority { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.BodyInputPriorityType.Normal;
 
         [JsonProperty("dateRange")]
         public DateRange DateRange { get; set; }
@@ -1319,7 +1534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public TimeSlot[] PreferredTimes { get; set; }
     }
 
-    public class ParticipantLocalTime2
+    public class CalculateMeetingTimesParticipantLocalTime
     {
         [JsonProperty("participantName")]
         public string ParticipantName { get; set; }
@@ -1328,17 +1543,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string LocalDateTime { get; set; }
 
         [JsonProperty("timeZone")]
-        public TimeZoneEnum? TimeZone { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum? TimeZone { get; set; }
 
         [JsonProperty("isWithinWorkingHours")]
         public bool? IsWithinWorkingHours { get; set; }
 
         [JsonProperty("conflictLevel")]
-        public ParticipantLocalTimeConflictLevelType? ConflictLevel { get; set; }
+        public CalculateMeetingTimesParticipantLocalTimeConflictLevelType? ConflictLevel { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculateMeetingTimesInputMeetingTypeType
+    public enum CalculateMeetingTimesParticipantLocalTimeConflictLevelType
+    {
+        [EnumMember(Value = "none")]
+        None,
+        [EnumMember(Value = "minor")]
+        Minor,
+        [EnumMember(Value = "moderate")]
+        Moderate,
+        [EnumMember(Value = "major")]
+        Major
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputMeetingTypeType
     {
         [EnumMember(Value = "stand-up")]
         StandUp,
@@ -1367,7 +1595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculateMeetingTimesInputPriorityType
+    public enum BodyInputPriorityType
     {
         [EnumMember(Value = "low")]
         Low,
@@ -1426,7 +1654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public bool IsValid { get; set; }
 
         [JsonProperty("actualResult")]
-        public DurationBreakdown ActualResult { get; set; }
+        public CrossTzDurationDurationBreakdownResponse ActualResult { get; set; }
 
         [JsonProperty("deviations")]
         public ValidationDeviation[] Deviations { get; set; }
@@ -1463,16 +1691,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         Warning
     }
 
-    public class ValidateDstCalculationsInput
+    public class ValidateDstCalculationsBodyInput
     {
         [JsonProperty("calculations", DefaultValueHandling = DefaultValueHandling.Include)]
         public DstCalculation[] Calculations { get; set; }
 
         [JsonProperty("validationRules")]
-        public ValidateDstCalculationsInputValidationRulesTypeItem[] ValidationRules { get; set; }
+        public BodyInputValidationRulesTypeItem[] ValidationRules { get; set; }
 
         [JsonProperty("complianceStandard", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ValidateDstCalculationsInputComplianceStandardType? ComplianceStandard { get; set; } = ValidateDstCalculationsInputComplianceStandardType.Iana;
+        public BodyInputComplianceStandardType? ComplianceStandard { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator.BodyInputComplianceStandardType.Iana;
     }
 
     public class DstCalculation
@@ -1490,7 +1718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string EndDateTime { get; set; }
 
         [JsonProperty("expectedResult")]
-        public DurationBreakdown2 ExpectedResult { get; set; }
+        public ValidateDstCalculationsDurationBreakdown ExpectedResult { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1710,7 +1938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         IndianMauritius
     }
 
-    public class DurationBreakdown2
+    public class ValidateDstCalculationsDurationBreakdown
     {
         [JsonProperty("totalDays")]
         public int? TotalDays { get; set; }
@@ -1744,7 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ValidateDstCalculationsInputValidationRulesTypeItem
+    public enum BodyInputValidationRulesTypeItem
     {
         [EnumMember(Value = "standard_compliance")]
         StandardCompliance,
@@ -1757,7 +1985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ValidateDstCalculationsInputComplianceStandardType
+    public enum BodyInputComplianceStandardType
     {
         [EnumMember(Value = "iana")]
         Iana,
@@ -2060,10 +2288,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         Critical
     }
 
-    public class CalculateDstTransitionInput
+    public class CalculateDstTransitionBodyInput
     {
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CalculateDstTransitionInputTimeZoneType TimeZone { get; set; }
+        public BodyInputTimeZoneType TimeZone { get; set; }
 
         [JsonProperty("year", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Year { get; set; }
@@ -2076,7 +2304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CalculateDstTransitionInputTimeZoneType
+    public enum BodyInputTimeZoneType
     {
         UTC,
         GMT,
@@ -2389,10 +2617,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         public string[] GlobalPatterns { get; set; }
     }
 
-    public class GetDstHistoryInput
+    public class GetDstHistoryBodyInput
     {
         [JsonProperty("timeZones", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TimeZoneEnum[] TimeZones { get; set; }
+        public CalculateGlobalWorkingHoursTimeZoneEnum[] TimeZones { get; set; }
 
         [JsonProperty("startYear", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? StartYear { get; set; } = 2000;

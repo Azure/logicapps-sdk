@@ -1071,10 +1071,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public BrowseMessageInputGetMessageOptionsTypeFormatType? Format { get; set; }
 
         [JsonProperty("messageId")]
-        public string MessageId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent MessageId { get; set; }
 
         [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent CorrelationId { get; set; }
 
         [JsonProperty("waitIntervalInSeconds")]
         public int? WaitIntervalInSeconds { get; set; }
@@ -1490,10 +1490,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public ReceiveMessageInputGetMessageOptionsTypeFormatType? Format { get; set; }
 
         [JsonProperty("messageId")]
-        public string MessageId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent MessageId { get; set; }
 
         [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent CorrelationId { get; set; }
 
         [JsonProperty("waitIntervalInSeconds")]
         public int? WaitIntervalInSeconds { get; set; }
@@ -1753,10 +1753,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? CodePage { get; set; }
 
         [JsonProperty("messageId")]
-        public string MessageId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent MessageId { get; set; }
 
         [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent CorrelationId { get; set; }
 
         [JsonProperty("priority")]
         public SendMessageInputSendMessageOptionsTypePriorityType? Priority { get; set; }
@@ -1777,7 +1777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public SendMessageInputSendMessageOptionsTypeFlagsType? Flags { get; set; }
 
         [JsonProperty("groupId")]
-        public string GroupId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent GroupId { get; set; }
 
         [JsonProperty("putApplicationName")]
         public string PutApplicationName { get; set; }
@@ -1918,10 +1918,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public SendBatchInputMessageListTypeItemFormatType? Format { get; set; }
 
         [JsonProperty("messageId")]
-        public string MessageId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent MessageId { get; set; }
 
         [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent CorrelationId { get; set; }
 
         [JsonProperty("cicsBridgeHeader")]
         public JToken CicsBridgeHeader { get; set; }
@@ -1970,7 +1970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public SendBatchInputSendMessageOptionsTypeFlagsType? Flags { get; set; }
 
         [JsonProperty("groupId")]
-        public string GroupId { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent GroupId { get; set; }
 
         [JsonProperty("putApplicationName")]
         public string PutApplicationName { get; set; }
@@ -2182,7 +2182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 
         [JsonProperty("putApplicationType", DefaultValueHandling = DefaultValueHandling.Include)]
         [System.ComponentModel.DefaultValue(MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType.NoContext)]
-        public MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType? PutApplicationType { get; set; } = MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType.NoContext;
+        public MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType? PutApplicationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq.MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType.NoContext;
 
         [JsonProperty("putDateTime")]
         public string PutDateTime { get; set; }

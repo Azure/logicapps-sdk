@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     public class VineforceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<AlertResponse, ApiConnectionActionConfiguration> Alert(Expression<Func<AlertInput>> body)
+        public IBodyWorkflowAction<AlertResponse, ApiConnectionActionConfiguration> Alert(Expression<Func<AlertBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AlertResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectInput>> body = null)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<UpdateTaskInput>> body)
+        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<UpdateTaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateTaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactNote(Expression<Func<CreateContactNoteInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactNote(Expression<Func<CreateContactNoteBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCompany(Expression<Func<CreateCompanyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateCompany(Expression<Func<CreateCompanyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactPhone(Expression<Func<CreateContactPhoneInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactPhone(Expression<Func<CreateContactPhoneBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactAddress(Expression<Func<CreateContactAddressInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactAddress(Expression<Func<CreateContactAddressBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactFamily(Expression<Func<CreateContactFamilyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateContactFamily(Expression<Func<CreateContactFamilyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<GetCompanyDetailExternalResponse, ApiConnectionActionConfiguration> GetCompanyDetailExternal(Expression<Func<string>> apiKey, Expression<Func<matchByInput>> matchBy, Expression<Func<string>> matchValue)
+        public IBodyWorkflowAction<GetCompanyDetailExternalResponse, ApiConnectionActionConfiguration> GetCompanyDetailExternal(Expression<Func<string>> apiKey, Expression<Func<MatchByInput>> matchBy, Expression<Func<string>> matchValue)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_matchBy = WorkflowExpression.Compile(matchBy, nameof(matchBy), required: true);
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<CreateTaskCommentExtResponse, ApiConnectionActionConfiguration> CreateTaskCommentExt(Expression<Func<CreateTaskCommentExtInput>> body)
+        public IBodyWorkflowAction<CreateTaskCommentExtResponse, ApiConnectionActionConfiguration> CreateTaskCommentExt(Expression<Func<CreateTaskCommentExtBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskCommentExtResponse, ApiConnectionActionConfiguration>(() =>
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<UpdateProjectInput>> body)
+        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<UpdateProjectBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<GetTaskExtResponse, ApiConnectionActionConfiguration> GetTaskExt(Expression<Func<string>> apiKey, Expression<Func<getByInput>> getBy, Expression<Func<string>> id, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<GetTaskExtResponse, ApiConnectionActionConfiguration> GetTaskExt(Expression<Func<string>> apiKey, Expression<Func<GetByInput>> getBy, Expression<Func<string>> id, Expression<Func<string>> source = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_getBy = WorkflowExpression.Compile(getBy, nameof(getBy), required: true);
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<GetProjectExtResponse, ApiConnectionActionConfiguration> GetProjectExt(Expression<Func<string>> apiKey, Expression<Func<getByInput>> getBy, Expression<Func<string>> id, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<GetProjectExtResponse, ApiConnectionActionConfiguration> GetProjectExt(Expression<Func<string>> apiKey, Expression<Func<GetByInput>> getBy, Expression<Func<string>> id, Expression<Func<string>> source = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_getBy = WorkflowExpression.Compile(getBy, nameof(getBy), required: true);
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<GetProjectRolesExtResponse, ApiConnectionActionConfiguration> GetProjectRolesExt(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<roleTypeInput>> roleType = null)
+        public IBodyWorkflowAction<GetProjectRolesExtResponse, ApiConnectionActionConfiguration> GetProjectRolesExt(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<RoleTypeInput>> roleType = null)
         {
             var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: true);
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
-        public IBodyWorkflowAction<CreateProjectFromTemplateExtResponse, ApiConnectionActionConfiguration> CreateProjectFromTemplateExt(Expression<Func<CreateProjectFromTemplateExtInput>> body)
+        public IBodyWorkflowAction<CreateProjectFromTemplateExtResponse, ApiConnectionActionConfiguration> CreateProjectFromTemplateExt(Expression<Func<CreateProjectFromTemplateExtBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProjectFromTemplateExtResponse, ApiConnectionActionConfiguration>(() =>
@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -548,13 +548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string DueDate { get; set; }
 
         [JsonProperty("priorityText")]
-        public CreateTaskInputPriorityTextType? PriorityText { get; set; }
+        public BodyInputPriorityTextType? PriorityText { get; set; }
 
         [JsonProperty("associatedContactEmail")]
         public string AssociatedContactEmail { get; set; }
 
         [JsonProperty("resourceAppName")]
-        public CreateTaskInputResourceAppNameType? ResourceAppName { get; set; }
+        public BodyInputResourceAppNameType? ResourceAppName { get; set; }
 
         [JsonProperty("resourceAppUrl")]
         public string ResourceAppUrl { get; set; }
@@ -584,14 +584,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ProjectTags { get; set; }
 
         [JsonProperty("checklists")]
-        public CreateTaskInputChecklistsTypeItem[] Checklists { get; set; }
+        public BodyInputChecklistsTypeItem[] Checklists { get; set; }
 
         [JsonProperty("files")]
-        public CreateTaskInputFilesTypeItem[] Files { get; set; }
+        public CreateTaskBodyInputFilesTypeItem[] Files { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskInputPriorityTextType
+    public enum BodyInputPriorityTextType
     {
         Normal,
         Important,
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskInputResourceAppNameType
+    public enum BodyInputResourceAppNameType
     {
         [EnumMember(Value = "Adobe Cloud")]
         AdobeCloud,
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Zendesk
     }
 
-    public class CreateTaskInputChecklistsTypeItem
+    public class BodyInputChecklistsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string Description { get; set; }
     }
 
-    public class CreateTaskInputFilesTypeItem
+    public class CreateTaskBodyInputFilesTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -661,11 +661,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FilePath { get; set; }
 
         [JsonProperty("fileType")]
-        public CreateTaskInputFilesTypeItemFileTypeType? FileType { get; set; }
+        public BodyInputFilesTypeItemFileTypeType? FileType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskInputFilesTypeItemFileTypeType
+    public enum BodyInputFilesTypeItemFileTypeType
     {
         Word,
         Excel,
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
-    public class AlertInput
+    public class AlertBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -739,12 +739,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string Message { get; set; }
 
         [JsonProperty("resourceName")]
-        public AlertInputResourceNameType? ResourceName { get; set; }
+        public BodyInputResourceNameType? ResourceName { get; set; }
         public string ResourceUrl { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AlertInputResourceNameType
+    public enum BodyInputResourceNameType
     {
         [EnumMember(Value = "Adobe Cloud")]
         AdobeCloud,
@@ -833,7 +833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool Abp { get; set; }
     }
 
-    public class CreateProjectInput
+    public class CreateProjectBodyInput
     {
         [JsonProperty("projectName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectName { get; set; }
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string Sections { get; set; }
 
         [JsonProperty("files", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectInputFilesTypeItem[] Files { get; set; }
+        public CreateProjectBodyInputFilesTypeItem[] Files { get; set; }
 
         [JsonProperty("referenceId")]
         public string ReferenceId { get; set; }
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ReferenceSource { get; set; }
     }
 
-    public class CreateProjectInputFilesTypeItem
+    public class CreateProjectBodyInputFilesTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -884,7 +884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FilePath { get; set; }
 
         [JsonProperty("fileType")]
-        public CreateProjectInputFilesTypeItemFileTypeType? FileType { get; set; }
+        public BodyInputFilesTypeItemFileTypeType? FileType { get; set; }
 
         [JsonProperty("fileItemId")]
         public string FileItemId { get; set; }
@@ -894,21 +894,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
         [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; } = false;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateProjectInputFilesTypeItemFileTypeType
-    {
-        Word,
-        Excel,
-        PowerPoint,
-        PDF,
-        Photo,
-        OneNote,
-        Visio,
-        Folder,
-        Link,
-        Other
     }
 
     public class UpdateTaskResponse
@@ -965,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
-    public class UpdateTaskInput
+    public class UpdateTaskBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -978,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 
         [JsonProperty("toEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ToEmail { get; set; }
-        public UpdateTaskInputTaskStatusType? TaskStatus { get; set; }
+        public BodyInputTaskStatusType? TaskStatus { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -993,13 +978,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string DueDate { get; set; }
 
         [JsonProperty("priorityText")]
-        public UpdateTaskInputPriorityTextType? PriorityText { get; set; }
+        public BodyInputPriorityTextType? PriorityText { get; set; }
 
         [JsonProperty("associatedContactEmail")]
         public string AssociatedContactEmail { get; set; }
 
         [JsonProperty("resourceAppName")]
-        public UpdateTaskInputResourceAppNameType? ResourceAppName { get; set; }
+        public BodyInputResourceAppNameType? ResourceAppName { get; set; }
 
         [JsonProperty("resourceAppUrl")]
         public string ResourceAppUrl { get; set; }
@@ -1029,109 +1014,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ProjectTags { get; set; }
 
         [JsonProperty("checklists")]
-        public UpdateTaskInputChecklistsTypeItem[] Checklists { get; set; }
+        public BodyInputChecklistsTypeItem[] Checklists { get; set; }
 
         [JsonProperty("files")]
-        public UpdateTaskInputFilesTypeItem[] Files { get; set; }
+        public CreateTaskBodyInputFilesTypeItem[] Files { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputTaskStatusType
+    public enum BodyInputTaskStatusType
     {
         Completed,
         Unfinished
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputPriorityTextType
-    {
-        Normal,
-        Important,
-        Urgent
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputResourceAppNameType
-    {
-        [EnumMember(Value = "Adobe Cloud")]
-        AdobeCloud,
-        [EnumMember(Value = "Adobe Sign")]
-        AdobeSign,
-        Asana,
-        [EnumMember(Value = "Azure DevOps")]
-        AzureDevOps,
-        Bitbucket,
-        [EnumMember(Value = "Contact Manager")]
-        ContactManager,
-        Docusign,
-        Excel,
-        HelloSign,
-        Hubspot,
-        Jira,
-        Dataverse,
-        [EnumMember(Value = "Dynamics 365")]
-        Dynamics365,
-        Forms,
-        LinkedIn,
-        List,
-        [EnumMember(Value = "To Do")]
-        ToDo,
-        OneDrive,
-        OneNote,
-        Outlook,
-        Pdf,
-        Photo,
-        Planner,
-        [EnumMember(Value = "Power Apps")]
-        PowerApps,
-        [EnumMember(Value = "Power Automate")]
-        PowerAutomate,
-        PowerPoint,
-        Teams,
-        Twitter,
-        Typeform,
-        Visio,
-        Word,
-        Zendesk
-    }
-
-    public class UpdateTaskInputChecklistsTypeItem
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-    }
-
-    public class UpdateTaskInputFilesTypeItem
-    {
-        [JsonProperty("fileName")]
-        public string FileName { get; set; }
-
-        [JsonProperty("filePath")]
-        public string FilePath { get; set; }
-
-        [JsonProperty("fileType")]
-        public UpdateTaskInputFilesTypeItemFileTypeType? FileType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputFilesTypeItemFileTypeType
-    {
-        Word,
-        Excel,
-        PowerPoint,
-        PDF,
-        Photo,
-        OneNote,
-        Visio,
-        Folder,
-        Link,
-        Other
-    }
-
-    public class CreateContactNoteInput
+    public class CreateContactNoteBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1146,7 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string Notes { get; set; }
     }
 
-    public class CreateCompanyInput
+    public class CreateCompanyBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1227,7 +1123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ContactId { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1281,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string SocialSecurityNumber { get; set; }
     }
 
-    public class CreateContactPhoneInput
+    public class CreateContactPhoneBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1296,14 +1192,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string Phone { get; set; }
 
         [JsonProperty("phoneType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactPhoneInputPhoneTypeType PhoneType { get; set; }
+        public BodyInputPhoneTypeType PhoneType { get; set; }
 
         [JsonProperty("extension")]
         public string Extension { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactPhoneInputPhoneTypeType
+    public enum BodyInputPhoneTypeType
     {
         Mobile,
         Work,
@@ -1312,7 +1208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Other
     }
 
-    public class CreateContactAddressInput
+    public class CreateContactAddressBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1324,7 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string UserEmail { get; set; }
 
         [JsonProperty("addressType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactAddressInputAddressTypeType AddressType { get; set; }
+        public BodyInputAddressTypeType AddressType { get; set; }
 
         [JsonProperty("street")]
         public string Street { get; set; }
@@ -1346,7 +1242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactAddressInputAddressTypeType
+    public enum BodyInputAddressTypeType
     {
         Home,
         Physical,
@@ -1355,7 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Other
     }
 
-    public class CreateContactFamilyInput
+    public class CreateContactFamilyBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1373,7 +1269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string LastName { get; set; }
 
         [JsonProperty("relationship", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactFamilyInputRelationshipType Relationship { get; set; }
+        public BodyInputRelationshipType Relationship { get; set; }
 
         [JsonProperty("birthDate")]
         public string BirthDate { get; set; }
@@ -1389,7 +1285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactFamilyInputRelationshipType
+    public enum BodyInputRelationshipType
     {
         Spouse,
         Son,
@@ -1528,7 +1424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum matchByInput
+    public enum MatchByInput
     {
         [EnumMember(Value = "Account No.")]
         AccountNo,
@@ -1667,7 +1563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string TaskId { get; set; }
     }
 
-    public class CreateTaskCommentExtInput
+    public class CreateTaskCommentExtBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1727,7 +1623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool Abp { get; set; }
     }
 
-    public class UpdateProjectInput
+    public class UpdateProjectBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -1751,7 +1647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string Description { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateProjectInputStatusType? Status { get; set; } = UpdateProjectInputStatusType.Active;
+        public BodyInputStatusType? Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce.BodyInputStatusType.Active;
 
         [JsonProperty("isPrivate", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IsPrivate { get; set; } = false;
@@ -1767,7 +1663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateProjectInputStatusType
+    public enum BodyInputStatusType
     {
         Active,
         Inactive
@@ -1861,7 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum getByInput
+    public enum GetByInput
     {
         [EnumMember(Value = "Trovve Id")]
         TrovveId,
@@ -2011,7 +1907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum roleTypeInput
+    public enum RoleTypeInput
     {
         Member,
         Manager
@@ -2050,7 +1946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ProjectName { get; set; }
     }
 
-    public class CreateProjectFromTemplateExtInput
+    public class CreateProjectFromTemplateExtBodyInput
     {
         [JsonProperty("apiKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }
@@ -2077,13 +1973,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool IsPrivate { get; set; } = false;
 
         [JsonProperty("members")]
-        public CreateProjectFromTemplateExtInputMembersTypeItem[] Members { get; set; }
+        public BodyInputMembersTypeItem[] Members { get; set; }
 
         [JsonProperty("filesLinks")]
-        public CreateProjectFromTemplateExtInputFilesLinksTypeItem[] FilesLinks { get; set; }
+        public BodyInputFilesLinksTypeItem[] FilesLinks { get; set; }
     }
 
-    public class CreateProjectFromTemplateExtInputMembersTypeItem
+    public class BodyInputMembersTypeItem
     {
         [JsonProperty("roleId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RoleId { get; set; }
@@ -2092,7 +1988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string MemberEmail { get; set; }
     }
 
-    public class CreateProjectFromTemplateExtInputFilesLinksTypeItem
+    public class BodyInputFilesLinksTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -2101,7 +1997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FilePath { get; set; }
 
         [JsonProperty("fileType")]
-        public CreateProjectFromTemplateExtInputFilesLinksTypeItemFileTypeType? FileType { get; set; }
+        public BodyInputFilesLinksTypeItemFileTypeType? FileType { get; set; }
 
         [JsonProperty("fileItemId")]
         public string FileItemId { get; set; }
@@ -2114,7 +2010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateProjectFromTemplateExtInputFilesLinksTypeItemFileTypeType
+    public enum BodyInputFilesLinksTypeItemFileTypeType
     {
         Word,
         Excel,

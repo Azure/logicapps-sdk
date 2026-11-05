@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     public class TelephonyxtendedsrvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Raw(Expression<Func<RawInput>> body = null, Expression<Func<acceptInput>> accept = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Raw(Expression<Func<RawBodyInput>> body = null, Expression<Func<AcceptInput>> accept = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IBodyWorkflowAction<UserCallsResponseItem[], ApiConnectionActionConfiguration> UserCalls(Expression<Func<UserCallsInput>> body)
+        public IBodyWorkflowAction<UserCallsResponseItem[], ApiConnectionActionConfiguration> UserCalls(Expression<Func<UserCallsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserCallsResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IBodyWorkflowAction<UserProfileResponse, ApiConnectionActionConfiguration> UserProfile(Expression<Func<UserProfileInput>> body)
+        public IBodyWorkflowAction<UserProfileResponse, ApiConnectionActionConfiguration> UserProfile(Expression<Func<UserCallsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserProfileResponse, ApiConnectionActionConfiguration>(() =>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallRecording(Expression<Func<CallRecordingInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallRecording(Expression<Func<CallRecordingBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentACDState(Expression<Func<ToggleAgentACDStateInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ToggleAgentACDState(Expression<Func<ToggleAgentACDStateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallNew(Expression<Func<CallNewInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallNew(Expression<Func<CallNewBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallHold(Expression<Func<CallHoldInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallHold(Expression<Func<CallHoldBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallEnd(Expression<Func<CallEndInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallEnd(Expression<Func<CallEndBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfertoVoicemail(Expression<Func<CallTransfertoVoicemailInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfertoVoicemail(Expression<Func<CallTransfertoVoicemailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfer(Expression<Func<CallTransferInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallTransfer(Expression<Func<CallTransferBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CallAnswer(Expression<Func<CallAnswerInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CallAnswer(Expression<Func<CallAnswerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
     public class TelephonyxtendedsrvTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Events(Expression<Func<EventsInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Events(Expression<Func<EventsBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsDoNotDisturb(Expression<Func<EventsDoNotDisturbInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsDoNotDisturb(Expression<Func<EventsDoNotDisturbBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCallCenterMonitoring(Expression<Func<EventsCallCenterMonitoringInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCallCenterMonitoring(Expression<Func<EventsCallCenterMonitoringBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCallCenterQueue(Expression<Func<EventsCallCenterQueueInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCallCenterQueue(Expression<Func<EventsCallCenterQueueBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCallCenterAgent(Expression<Func<EventsCallCenterAgentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCallCenterAgent(Expression<Func<EventsCallCenterAgentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsVoicemail(Expression<Func<EventsVoicemailInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsVoicemail(Expression<Func<EventsVoicemailBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCall(Expression<Func<EventsCallInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> EventsCall(Expression<Func<EventsCallBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         }
     }
 
-    public class RawInput
+    public class RawBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum acceptInput
+    public enum AcceptInput
     {
         [EnumMember(Value = "application/json")]
         ApplicationJson,
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string Uri { get; set; }
     }
 
-    public class UserCallsInput
+    public class UserCallsBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -410,13 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string ImpId { get; set; }
     }
 
-    public class UserProfileInput
-    {
-        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UserId { get; set; }
-    }
-
-    public class CallRecordingInput
+    public class CallRecordingBodyInput
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Action { get; set; } = "record";
@@ -428,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string UserId { get; set; }
     }
 
-    public class ToggleAgentACDStateInput
+    public class ToggleAgentACDStateBodyInput
     {
         [JsonProperty("agentACDState", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentACDState { get; set; }
@@ -437,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string UserId { get; set; }
     }
 
-    public class CallNewInput
+    public class CallNewBodyInput
     {
         [JsonProperty("userID")]
         public string UserId { get; set; }
@@ -446,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string Address { get; set; }
     }
 
-    public class CallHoldInput
+    public class CallHoldBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -455,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string CallId { get; set; }
     }
 
-    public class CallEndInput
+    public class CallEndBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -464,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string CallId { get; set; }
     }
 
-    public class CallTransfertoVoicemailInput
+    public class CallTransfertoVoicemailBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -473,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string CallId { get; set; }
     }
 
-    public class CallTransferInput
+    public class CallTransferBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -485,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string Address { get; set; }
     }
 
-    public class CallAnswerInput
+    public class CallAnswerBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -494,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         public string CallId { get; set; }
     }
 
-    public class EventsInput
+    public class EventsBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -515,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class EventsDoNotDisturbInput
+    public class EventsDoNotDisturbBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -533,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class EventsCallCenterMonitoringInput
+    public class EventsCallCenterMonitoringBodyInput
     {
         [JsonProperty("groupId")]
         public string GroupId { get; set; }
@@ -548,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class EventsCallCenterQueueInput
+    public class EventsCallCenterQueueBodyInput
     {
         [JsonProperty("groupId")]
         public string GroupId { get; set; }
@@ -563,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class EventsCallCenterAgentInput
+    public class EventsCallCenterAgentBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -581,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class EventsVoicemailInput
+    public class EventsVoicemailBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -599,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class EventsCallInput
+    public class EventsCallBodyInput
     {
         [JsonProperty("userId")]
         public string UserId { get; set; }

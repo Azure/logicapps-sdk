@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneflow
 
     public class OneflowTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookRegister(Expression<Func<WebhookRegisterInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookRegister(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -30,20 +30,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneflow
         }
     }
 
-    public class WebhookRegisterInput
+    public class BodyInput
     {
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("filters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookRegisterInputUpdateTypeTypeItem[] UpdateType { get; set; }
+        public BodyInputUpdateTypeTypeItem[] UpdateType { get; set; }
 
         [JsonProperty("template_group_id")]
         public int? TemplateGroupId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebhookRegisterInputUpdateTypeTypeItem
+    public enum BodyInputUpdateTypeTypeItem
     {
         [EnumMember(Value = "contract:publish")]
         ContractPublish,

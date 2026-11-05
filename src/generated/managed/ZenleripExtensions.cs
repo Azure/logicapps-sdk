@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
     public class ZenleripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserListResponse, ApiConnectionActionConfiguration> UserList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> role = null)
+        public IBodyWorkflowAction<UserListResponse, ApiConnectionActionConfiguration> UserList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> role = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -45,16 +45,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserPostInput>> body)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UserPostResponse>(callPayload);
+                return new ApiConnectionAction<UserResponse>(callPayload);
             });
         }
 
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserPutResponse, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userId, Expression<Func<UserPutInput>> body)
+        public IBodyWorkflowAction<UserPutResponse, ApiConnectionActionConfiguration> UserPut(Expression<Func<string>> userId, Expression<Func<UserBodyInput>> body)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserEnrollResponse, ApiConnectionActionConfiguration> UserEnroll(Expression<Func<string>> userId, Expression<Func<UserEnrollInput>> body)
+        public IBodyWorkflowAction<UserEnrollResponse, ApiConnectionActionConfiguration> UserEnroll(Expression<Func<string>> userId, Expression<Func<UserEnrollBodyInput>> body)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserUnenrollResponse, ApiConnectionActionConfiguration> UserUnenroll(Expression<Func<string>> userId, Expression<Func<UserUnenrollInput>> body)
+        public IBodyWorkflowAction<UserUnenrollResponse, ApiConnectionActionConfiguration> UserUnenroll(Expression<Func<string>> userId, Expression<Func<UserUnenrollBodyInput>> body)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<FunnelSubscribeResponse, ApiConnectionActionConfiguration> FunnelSubscribe(Expression<Func<string>> funnelId, Expression<Func<FunnelSubscribeInput>> body = null)
+        public IBodyWorkflowAction<FunnelSubscribeResponse, ApiConnectionActionConfiguration> FunnelSubscribe(Expression<Func<string>> funnelId, Expression<Func<FunnelSubscribeBodyInput>> body = null)
         {
             var __workflow_funnelId = WorkflowExpression.Compile(funnelId, nameof(funnelId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<FunnelUnsubscribeResponse, ApiConnectionActionConfiguration> FunnelUnsubscribe(Expression<Func<string>> funnelId, Expression<Func<FunnelUnsubscribeInput>> body = null)
+        public IBodyWorkflowAction<FunnelUnsubscribeResponse, ApiConnectionActionConfiguration> FunnelUnsubscribe(Expression<Func<string>> funnelId, Expression<Func<ClassUnregisterBodyInput>> body = null)
         {
             var __workflow_funnelId = WorkflowExpression.Compile(funnelId, nameof(funnelId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ClassListResponse, ApiConnectionActionConfiguration> ClassList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<ClassListResponse, ApiConnectionActionConfiguration> ClassList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> search = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ClassRegisterResponse, ApiConnectionActionConfiguration> ClassRegister(Expression<Func<string>> liveclassId, Expression<Func<ClassRegisterInput>> body)
+        public IBodyWorkflowAction<ClassRegisterResponse, ApiConnectionActionConfiguration> ClassRegister(Expression<Func<string>> liveclassId, Expression<Func<ClassRegisterBodyInput>> body)
         {
             var __workflow_liveclassId = WorkflowExpression.Compile(liveclassId, nameof(liveclassId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ClassUnregisterResponse, ApiConnectionActionConfiguration> ClassUnregister(Expression<Func<string>> liveclassId, Expression<Func<ClassUnregisterInput>> body = null)
+        public IBodyWorkflowAction<ClassUnregisterResponse, ApiConnectionActionConfiguration> ClassUnregister(Expression<Func<string>> liveclassId, Expression<Func<ClassUnregisterBodyInput>> body = null)
         {
             var __workflow_liveclassId = WorkflowExpression.Compile(liveclassId, nameof(liveclassId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<WebinarListResponse, ApiConnectionActionConfiguration> WebinarList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<WebinarListResponse, ApiConnectionActionConfiguration> WebinarList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> search = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<WebinarRegisterResponse, ApiConnectionActionConfiguration> WebinarRegister(Expression<Func<string>> webinarId, Expression<Func<WebinarRegisterInput>> body = null)
+        public IBodyWorkflowAction<WebinarRegisterResponse, ApiConnectionActionConfiguration> WebinarRegister(Expression<Func<string>> webinarId, Expression<Func<WebinarRegisterBodyInput>> body = null)
         {
             var __workflow_webinarId = WorkflowExpression.Compile(webinarId, nameof(webinarId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<WebinarUnregisterResponse, ApiConnectionActionConfiguration> WebinarUnregister(Expression<Func<string>> webinarId, Expression<Func<WebinarUnregisterInput>> body)
+        public IBodyWorkflowAction<WebinarUnregisterResponse, ApiConnectionActionConfiguration> WebinarUnregister(Expression<Func<string>> webinarId, Expression<Func<WebinarUnregisterBodyInput>> body)
         {
             var __workflow_webinarId = WorkflowExpression.Compile(webinarId, nameof(webinarId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         [EnumMember(Value = "desc")]
         Desc,
@@ -706,7 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         Asc
     }
 
-    public class UserPostResponse
+    public class UserResponse
     {
         [JsonProperty("response_code")]
         public int ResponseCode { get; set; }
@@ -715,10 +715,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Message { get; set; }
 
         [JsonProperty("data")]
-        public UserPostResponseDataType Data { get; set; }
+        public UserResponseDataType Data { get; set; }
     }
 
-    public class UserPostResponseDataType
+    public class UserResponseDataType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Email { get; set; }
     }
 
-    public class UserPostInput
+    public class UserBodyInput
     {
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
@@ -853,48 +853,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Message { get; set; }
     }
 
-    public class UserPutInput
-    {
-        [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FirstName { get; set; }
-
-        [JsonProperty("last_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LastName { get; set; }
-
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Password { get; set; }
-
-        [JsonProperty("commission", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Commission { get; set; }
-
-        [JsonProperty("roles", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Roles { get; set; }
-
-        [JsonProperty("address")]
-        public string Address { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-
-        [JsonProperty("zip_code")]
-        public int? ZipCode { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("gdpr_consent_status")]
-        public int? GdprConsentStatus { get; set; }
-    }
-
     public class UserEnrollResponse
     {
         [JsonProperty("response_code")]
@@ -907,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Data { get; set; }
     }
 
-    public class UserEnrollInput
+    public class UserEnrollBodyInput
     {
         [JsonProperty("course_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CourseId { get; set; }
@@ -934,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Message { get; set; }
     }
 
-    public class UserUnenrollInput
+    public class UserUnenrollBodyInput
     {
         [JsonProperty("course_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CourseId { get; set; }
@@ -1165,7 +1123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Funnel { get; set; }
     }
 
-    public class FunnelSubscribeInput
+    public class FunnelSubscribeBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1210,7 +1168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Data { get; set; }
     }
 
-    public class FunnelUnsubscribeInput
+    public class ClassUnregisterBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -1306,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Message { get; set; }
     }
 
-    public class ClassRegisterInput
+    public class ClassRegisterBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1328,12 +1286,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
 
         [JsonProperty("data")]
         public string Data { get; set; }
-    }
-
-    public class ClassUnregisterInput
-    {
-        [JsonProperty("email")]
-        public string Email { get; set; }
     }
 
     public class WebinarListResponse
@@ -1426,7 +1378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Message { get; set; }
     }
 
-    public class WebinarRegisterInput
+    public class WebinarRegisterBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1465,7 +1417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public string Data { get; set; }
     }
 
-    public class WebinarUnregisterInput
+    public class WebinarUnregisterBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }

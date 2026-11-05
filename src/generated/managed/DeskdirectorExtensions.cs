@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
 
     public class DeskdirectorTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<CreateChatWebhookInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<CreateChatWebhookReqInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateTicketWorkflow(Expression<Func<string>> type, Expression<Func<CreateTicketWorkflowInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> CreateTicketWorkflow(Expression<Func<string>> type, Expression<Func<CreateTicketWorkflowReqInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeToWorkflow(Expression<Func<string>> type, Expression<Func<string>> workflowId, Expression<Func<SubscribeToWorkflowInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> SubscribeToWorkflow(Expression<Func<string>> type, Expression<Func<string>> workflowId, Expression<Func<AdvancedEventSubscribeReqInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AdvancedEventSubscribe(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<AdvancedEventSubscribeInput>> req, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> AdvancedEventSubscribe(Expression<Func<string>> category, Expression<Func<string>> eventType, Expression<Func<AdvancedEventSubscribeReqInput>> req, FlowRecurrence recurrence = null)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
     }
 
-    public class CreateChatWebhookInput
+    public class CreateChatWebhookReqInput
     {
         [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Parameters { get; set; }
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         internal string URL { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CreateTicketWorkflowInput
+    public class CreateTicketWorkflowReqInput
     {
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
@@ -451,16 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         internal string URL { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class SubscribeToWorkflowInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Parameters { get; set; }
-    }
-
-    public class AdvancedEventSubscribeInput
+    public class AdvancedEventSubscribeReqInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

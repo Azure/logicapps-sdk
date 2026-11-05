@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4Contacts(Expression<Func<FlowV4ContactsPostInput>> contact = null, Expression<Func<bool>> updateIfExists = null)
+        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4Contacts(Expression<Func<ContactInput>> contact = null, Expression<Func<bool>> updateIfExists = null)
         {
             var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: false);
             var __workflow_updateIfExists = WorkflowExpression.Compile(updateIfExists, nameof(updateIfExists), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByEmailByEmailPut(Expression<Func<string>> email, Expression<Func<FlowV4ContactsByEmailByEmailPutInput>> contact = null)
+        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByEmailByEmailPut(Expression<Func<string>> email, Expression<Func<ContactInput>> contact = null)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: false);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByIdPut(Expression<Func<int>> id, Expression<Func<FlowV4ContactsByIdPutInput>> contact = null)
+        public IBodyWorkflowAction<ContactRead, ApiConnectionActionConfiguration> FlowV4ContactsByIdPut(Expression<Func<int>> id, Expression<Func<ContactInput>> contact = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: false);
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4Organizations(Expression<Func<FlowV4OrganizationsPostInput>> organization = null)
+        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4Organizations(Expression<Func<OrganizationInput>> organization = null)
         {
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
             return new DeferredBodyAction<OrganizationRead, ApiConnectionActionConfiguration>(() =>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByTitleByTitlePut(Expression<Func<string>> title, Expression<Func<FlowV4OrganizationsByTitleByTitlePutInput>> organization = null)
+        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByTitleByTitlePut(Expression<Func<string>> title, Expression<Func<OrganizationInput>> organization = null)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByIdPut(Expression<Func<int>> id, Expression<Func<FlowV4OrganizationsByIdPutInput>> organization = null)
+        public IBodyWorkflowAction<OrganizationRead, ApiConnectionActionConfiguration> FlowV4OrganizationsByIdPut(Expression<Func<int>> id, Expression<Func<OrganizationInput>> organization = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4Tickets(Expression<Func<FlowV4TicketsPostInput>> ticket = null)
+        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4Tickets(Expression<Func<TicketInput>> ticket = null)
         {
             var __workflow_ticket = WorkflowExpression.Compile(ticket, nameof(ticket), required: false);
             return new DeferredBodyAction<TicketRead, ApiConnectionActionConfiguration>(() =>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4TicketsByIdPut(Expression<Func<int>> id, Expression<Func<FlowV4TicketsByIdPutInput>> ticket = null)
+        public IBodyWorkflowAction<TicketRead, ApiConnectionActionConfiguration> FlowV4TicketsByIdPut(Expression<Func<int>> id, Expression<Func<TicketInput>> ticket = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_ticket = WorkflowExpression.Compile(ticket, nameof(ticket), required: false);
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<CommentRead, ApiConnectionActionConfiguration> FlowV4TicketsByTicketIdComments(Expression<Func<int>> ticketId, Expression<Func<FlowV4TicketsByTicketIdCommentsPostInput>> comment = null)
+        public IBodyWorkflowAction<CommentRead, ApiConnectionActionConfiguration> FlowV4TicketsByTicketIdComments(Expression<Func<int>> ticketId, Expression<Func<CommentInput>> comment = null)
         {
             var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
@@ -482,49 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         public string ContactFullName { get; set; }
     }
 
-    public class FlowV4ContactsPostInput
-    {
-        [JsonProperty("customFields")]
-        public JToken ContactCustomFields { get; set; }
-
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContactEmail { get; set; }
-
-        [JsonProperty("emailAlternate")]
-        public string ContactAlternateEmail { get; set; }
-
-        [JsonProperty("role")]
-        public string ContactRole { get; set; }
-
-        [JsonProperty("spUserId")]
-        public int? ContactSPUserId { get; set; }
-
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContactName { get; set; }
-    }
-
-    public class FlowV4ContactsByEmailByEmailPutInput
-    {
-        [JsonProperty("customFields")]
-        public JToken ContactCustomFields { get; set; }
-
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContactEmail { get; set; }
-
-        [JsonProperty("emailAlternate")]
-        public string ContactAlternateEmail { get; set; }
-
-        [JsonProperty("role")]
-        public string ContactRole { get; set; }
-
-        [JsonProperty("spUserId")]
-        public int? ContactSPUserId { get; set; }
-
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContactName { get; set; }
-    }
-
-    public class FlowV4ContactsByIdPutInput
+    public class ContactInput
     {
         [JsonProperty("customFields")]
         public JToken ContactCustomFields { get; set; }
@@ -557,25 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         public string OrganizationTitle { get; set; }
     }
 
-    public class FlowV4OrganizationsPostInput
-    {
-        [JsonProperty("customFields")]
-        public JToken OrganizationCustomFields { get; set; }
-
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OrganizationTitle { get; set; }
-    }
-
-    public class FlowV4OrganizationsByTitleByTitlePutInput
-    {
-        [JsonProperty("customFields")]
-        public JToken OrganizationCustomFields { get; set; }
-
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string OrganizationTitle { get; set; }
-    }
-
-    public class FlowV4OrganizationsByIdPutInput
+    public class OrganizationInput
     {
         [JsonProperty("customFields")]
         public JToken OrganizationCustomFields { get; set; }
@@ -716,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         public string TagTitle { get; set; }
     }
 
-    public class FlowV4TicketsPostInput
+    public class TicketInput
     {
         [JsonProperty("assignedToEmail")]
         public string TicketAssigneeEmailOrSharePointGroupName { get; set; }
@@ -767,48 +707,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         public string AttachmentFileName { get; set; }
     }
 
-    public class FlowV4TicketsByIdPutInput
-    {
-        [JsonProperty("assignedToEmail")]
-        public string TicketAssigneeEmailOrSharePointGroupName { get; set; }
-
-        [JsonProperty("attachments")]
-        public Attachment[] TicketAttachments { get; set; }
-
-        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TicketBody { get; set; }
-
-        [JsonProperty("category")]
-        public string TicketCategory { get; set; }
-
-        [JsonProperty("ccEmails")]
-        public string[] TicketCcEmails { get; set; }
-
-        [JsonProperty("customFields")]
-        public JToken TicketCustomFields { get; set; }
-
-        [JsonProperty("dueDate")]
-        public string TicketDueDate { get; set; }
-
-        [JsonProperty("priority")]
-        public string TicketPriority { get; set; }
-
-        [JsonProperty("requesterEmail", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TicketRequesterEmail { get; set; }
-
-        [JsonProperty("status")]
-        public string TicketStatus { get; set; }
-
-        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TicketSubject { get; set; }
-
-        [JsonProperty("supportChannel")]
-        public string TicketSupportChannel { get; set; }
-
-        [JsonProperty("tagTitles")]
-        public string[] TicketTagsTitles { get; set; }
-    }
-
     public class CommentRead
     {
         [JsonProperty("body")]
@@ -833,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         public string CommentMessageId { get; set; }
     }
 
-    public class FlowV4TicketsByTicketIdCommentsPostInput
+    public class CommentInput
     {
         [JsonProperty("attachments")]
         public Attachment[] Attachments { get; set; }

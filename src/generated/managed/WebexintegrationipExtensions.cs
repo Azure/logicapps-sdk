@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IBodyWorkflowAction<CreateAMeetingResponse, ApiConnectionActionConfiguration> CreateAMeeting(Expression<Func<string>> contentType, Expression<Func<CreateAMeetingInput>> body)
+        public IBodyWorkflowAction<CreateAMeetingResponse, ApiConnectionActionConfiguration> CreateAMeeting(Expression<Func<string>> contentType, Expression<Func<CreateAMeetingBodyInput>> body)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAInvitee(Expression<Func<string>> contentType = null, Expression<Func<CreateAInviteeInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAInvitee(Expression<Func<string>> contentType = null, Expression<Func<CreateAInviteeBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> contentType = null, Expression<Func<UpdateAMeetingInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> contentType = null, Expression<Func<UpdateAMeetingBodyInput>> body = null)
         {
             var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -947,7 +947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool MuteAttendeeUponEntry { get; set; }
     }
 
-    public class CreateAMeetingInput
+    public class CreateAMeetingBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -974,7 +974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool? AllowAnyUserToBeCoHost { get; set; } = false;
     }
 
-    public class CreateAInviteeInput
+    public class CreateAInviteeBodyInput
     {
         [JsonProperty("meetingId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MeetingId { get; set; }
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public string Panelist { get; set; }
     }
 
-    public class UpdateAMeetingInput
+    public class UpdateAMeetingBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1067,10 +1067,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public string SiteUrl { get; set; }
 
         [JsonProperty("meetingOptions")]
-        public UpdateAMeetingInputMeetingOptionsType MeetingOptions { get; set; }
+        public BodyInputMeetingOptionsType MeetingOptions { get; set; }
 
         [JsonProperty("attendeePrivileges")]
-        public UpdateAMeetingInputAttendeePrivilegesType AttendeePrivileges { get; set; }
+        public BodyInputAttendeePrivilegesType AttendeePrivileges { get; set; }
 
         [JsonProperty("integrationTags")]
         public string[] IntegrationTags { get; set; }
@@ -1079,13 +1079,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool? EnabledBreakoutSessions { get; set; }
 
         [JsonProperty("trackingCodes")]
-        public UpdateAMeetingInputTrackingCodesTypeItem[] TrackingCodes { get; set; }
+        public BodyInputTrackingCodesTypeItem[] TrackingCodes { get; set; }
 
         [JsonProperty("audioConnectionOptions")]
-        public UpdateAMeetingInputAudioConnectionOptionsType AudioConnectionOptions { get; set; }
+        public BodyInputAudioConnectionOptionsType AudioConnectionOptions { get; set; }
     }
 
-    public class UpdateAMeetingInputMeetingOptionsType
+    public class BodyInputMeetingOptionsType
     {
         [JsonProperty("enabledChat")]
         public bool? EnabledChat { get; set; }
@@ -1112,7 +1112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool? EnabledUCFRichMedia { get; set; }
     }
 
-    public class UpdateAMeetingInputAttendeePrivilegesType
+    public class BodyInputAttendeePrivilegesType
     {
         [JsonProperty("enabledShareContent")]
         public bool? EnabledShareContent { get; set; }
@@ -1154,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public bool? EnabledChatOtherParticipants { get; set; }
     }
 
-    public class UpdateAMeetingInputTrackingCodesTypeItem
+    public class BodyInputTrackingCodesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         public string Value { get; set; }
     }
 
-    public class UpdateAMeetingInputAudioConnectionOptionsType
+    public class BodyInputAudioConnectionOptionsType
     {
         [JsonProperty("audioConnectionType")]
         public string AudioConnectionType { get; set; }

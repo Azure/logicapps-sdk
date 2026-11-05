@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
     public class As2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<MicUpdateResponse[], ApiConnectionActionConfiguration> AddOrUpdateMicValues(Expression<Func<As2ReplicableMicContent[]>> micContent)
+        public IBodyWorkflowAction<MicUpdateResponse[], ApiConnectionActionConfiguration> AddOrUpdateMicValues(Expression<Func<AddOrUpdateMicValuesAs2ReplicableMicContent[]>> micContent)
         {
             var __workflow_micContent = WorkflowExpression.Compile(micContent, nameof(micContent), required: true);
             return new DeferredBodyAction<MicUpdateResponse[], ApiConnectionActionConfiguration>(() =>
@@ -83,17 +83,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 
     public class As2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<As2ReplicableMicContent[], ApiConnectionTriggerConfiguration> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionTriggerConfiguration> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, FlowRecurrence recurrence = null)
         {
             var __workflow_startSyncTime = WorkflowExpression.Compile(startSyncTime, nameof(startSyncTime), required: false);
-            return new DeferredBodyTrigger<As2ReplicableMicContent[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[], ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/onCreatedMicValues";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_startSyncTime != null)
                     callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(__workflow_startSyncTime);
-                return new ApiConnectionTrigger<As2ReplicableMicContent[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<OnCreatedMicValuesAs2ReplicableMicContentResponse[]>(callPayload, recurrence: recurrence);
             });
         }
     }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         HttpVersionNotSupported
     }
 
-    public class As2ReplicableMicContent
+    public class AddOrUpdateMicValuesAs2ReplicableMicContent
     {
         public string AgreementName { get; set; }
         public string MicValue { get; set; }
@@ -340,6 +340,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         NotConfigured,
         Sync,
         Async
+    }
+
+    public class OnCreatedMicValuesAs2ReplicableMicContentResponse
+    {
+        public string AgreementName { get; set; }
+        public string MicValue { get; set; }
+        public string MicHashAlgorithm { get; set; }
+        public string MicChangedTime { get; set; }
+        public string MessageId { get; set; }
+        public string As2From { get; set; }
+        public string As2To { get; set; }
     }
 }
 

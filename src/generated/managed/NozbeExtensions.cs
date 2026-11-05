@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateCommentResponse, ApiConnectionActionConfiguration> CreateComment(Expression<Func<CreateCommentInput>> body)
+        public IBodyWorkflowAction<CreateCommentResponse, ApiConnectionActionConfiguration> CreateComment(Expression<Func<CreateCommentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCommentResponse, ApiConnectionActionConfiguration>(() =>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateReminderResponse, ApiConnectionActionConfiguration> CreateReminder(Expression<Func<CreateReminderInput>> body = null)
+        public IBodyWorkflowAction<CreateReminderResponse, ApiConnectionActionConfiguration> CreateReminder(Expression<Func<CreateReminderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateReminderResponse, ApiConnectionActionConfiguration>(() =>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         public string Name { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         public string Body { get; set; }
     }
 
-    public class CreateCommentInput
+    public class CreateCommentBodyInput
     {
         [JsonProperty("body")]
         public string Body { get; set; }
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
         public bool IsAllDay { get; set; }
     }
 
-    public class CreateReminderInput
+    public class CreateReminderBodyInput
     {
         [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskId { get; set; }

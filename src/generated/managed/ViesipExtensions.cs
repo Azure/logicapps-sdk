@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
     public class ViesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
-        public IBodyWorkflowAction<CheckVATValidityResponse, ApiConnectionActionConfiguration> CheckVATValidity(Expression<Func<CheckVATValidityInput>> body = null)
+        public IBodyWorkflowAction<CheckVATValidityResponse, ApiConnectionActionConfiguration> CheckVATValidity(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CheckVATValidityResponse, ApiConnectionActionConfiguration>(() =>
@@ -53,17 +53,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
         public string Address { get; set; }
     }
 
-    public class CheckVATValidityInput
+    public class BodyInput
     {
         [JsonProperty("countryCode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CheckVATValidityInputCountryCodeType CountryCode { get; set; }
+        public BodyInputCountryCodeType CountryCode { get; set; }
 
         [JsonProperty("vatNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string VatNumber { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CheckVATValidityInputCountryCodeType
+    public enum BodyInputCountryCodeType
     {
         AT,
         BE,

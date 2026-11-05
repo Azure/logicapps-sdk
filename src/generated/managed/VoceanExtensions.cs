@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<GetActivitiesResponseItem[], ApiConnectionActionConfiguration> GetActivities(Expression<Func<string>> networkId, Expression<Func<activityTypeInput>> activityType)
+        public IBodyWorkflowAction<GetActivitiesResponseItem[], ApiConnectionActionConfiguration> GetActivities(Expression<Func<string>> networkId, Expression<Func<ActivityTypeInput>> activityType)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityType = WorkflowExpression.Compile(activityType, nameof(activityType), required: true);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<AddIdeaResponse, ApiConnectionActionConfiguration> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<AddIdeaInput>> body)
+        public IBodyWorkflowAction<AddIdeaResponse, ApiConnectionActionConfiguration> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<AddIdeaBodyInput>> body)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<AddIdeasResponseItem[], ApiConnectionActionConfiguration> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<AddIdeasResponseItem[], ApiConnectionActionConfiguration> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 
     public class VoceanTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<IdeaTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<IdeaTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserActivityTrigger(Expression<Func<UserActivityTriggerInput>> body, Expression<Func<string>> networkId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UserActivityTrigger(Expression<Func<IdeaTriggerBodyInput>> body, Expression<Func<string>> networkId = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum activityTypeInput
+    public enum ActivityTypeInput
     {
         Innovate,
         Prioritize,
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public string IdeaId { get; set; }
     }
 
-    public class AddIdeaInput
+    public class AddIdeaBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -344,37 +344,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public string IdeaId { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class IdeaTriggerInput
+    public class IdeaTriggerBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("eventTypes")]
-        public IdeaTriggerInputEventTypesTypeItem[] EventTypes { get; set; }
+        public BodyInputEventTypesTypeItem[] EventTypes { get; set; }
     }
 
-    public class IdeaTriggerInputEventTypesTypeItem
-    {
-        [JsonProperty("eventType")]
-        public string EventType { get; set; }
-    }
-
-    public class UserActivityTriggerInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("eventTypes")]
-        public UserActivityTriggerInputEventTypesTypeItem[] EventTypes { get; set; }
-    }
-
-    public class UserActivityTriggerInputEventTypesTypeItem
+    public class BodyInputEventTypesTypeItem
     {
         [JsonProperty("eventType")]
         public string EventType { get; set; }

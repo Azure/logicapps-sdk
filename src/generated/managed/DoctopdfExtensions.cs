@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
     public class DoctopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
-        public IBodyWorkflowAction<DocToPDFResponse, ApiConnectionActionConfiguration> DocToPDF(Expression<Func<DocToPDFInput>> body, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
+        public IBodyWorkflowAction<DocToPDFResponse, ApiConnectionActionConfiguration> DocToPDF(Expression<Func<BodyInput>> body, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_publickey = WorkflowExpression.Compile(publickey, nameof(publickey), required: false);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
         public JToken FileContent { get; set; }
     }
 
-    public class DocToPDFInput
+    public class BodyInput
     {
         [JsonProperty("File Name")]
         public string FileName { get; set; }

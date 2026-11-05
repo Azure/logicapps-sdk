@@ -13,21 +13,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     public class QuickchartipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartPostResponse, ApiConnectionActionConfiguration> Chart(Expression<Func<ChartPostInput>> body)
+        public IBodyWorkflowAction<ChartResponse, ApiConnectionActionConfiguration> Chart(Expression<Func<ChartBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<ChartPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ChartResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/chart";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ChartPostResponse>(callPayload);
+                return new ApiConnectionAction<ChartResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<ChartURLResponse, ApiConnectionActionConfiguration> ChartURL(Expression<Func<ChartURLInput>> body)
+        public IBodyWorkflowAction<ChartURLResponse, ApiConnectionActionConfiguration> ChartURL(Expression<Func<ChartBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChartURLResponse, ApiConnectionActionConfiguration>(() =>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<QRCodeResponse, ApiConnectionActionConfiguration> QRCode(Expression<Func<string>> text = null, Expression<Func<int>> margin = null, Expression<Func<int>> size = null, Expression<Func<string>> dark = null, Expression<Func<string>> light = null, Expression<Func<ecLevelInput>> ecLevel = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> centerImageUrl = null, Expression<Func<double>> centerImageSizeRatio = null, Expression<Func<int>> centerImageWidth = null, Expression<Func<int>> centerImageHeight = null)
+        public IBodyWorkflowAction<QRCodeResponse, ApiConnectionActionConfiguration> QRCode(Expression<Func<string>> text = null, Expression<Func<int>> margin = null, Expression<Func<int>> size = null, Expression<Func<string>> dark = null, Expression<Func<string>> light = null, Expression<Func<EcLevelInput>> ecLevel = null, Expression<Func<FormatInput>> format = null, Expression<Func<string>> centerImageUrl = null, Expression<Func<double>> centerImageSizeRatio = null, Expression<Func<int>> centerImageWidth = null, Expression<Func<int>> centerImageHeight = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             var __workflow_margin = WorkflowExpression.Compile(margin, nameof(margin), required: false);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<GraphVizResponse, ApiConnectionActionConfiguration> GraphViz(Expression<Func<GraphVizInput>> body)
+        public IBodyWorkflowAction<GraphVizResponse, ApiConnectionActionConfiguration> GraphViz(Expression<Func<GraphVizBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GraphVizResponse, ApiConnectionActionConfiguration>(() =>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
-        public IBodyWorkflowAction<WordCloudResponse, ApiConnectionActionConfiguration> WordCloud(Expression<Func<string>> text = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> backgroundColor = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> fontFamily = null, Expression<Func<string>> loadGoogleFonts = null, Expression<Func<int>> fontScale = null, Expression<Func<scaleInput>> scale = null, Expression<Func<int>> padding = null, Expression<Func<int>> rotation = null, Expression<Func<int>> maxNumWords = null, Expression<Func<int>> minWordLength = null, Expression<Func<@caseInput>> @case = null, Expression<Func<string>> colors = null, Expression<Func<bool>> removeStopwords = null, Expression<Func<string>> language = null, Expression<Func<bool>> useWordList = null)
+        public IBodyWorkflowAction<WordCloudResponse, ApiConnectionActionConfiguration> WordCloud(Expression<Func<string>> text = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> backgroundColor = null, Expression<Func<FormatInput>> format = null, Expression<Func<string>> fontFamily = null, Expression<Func<string>> loadGoogleFonts = null, Expression<Func<int>> fontScale = null, Expression<Func<ScaleInput>> scale = null, Expression<Func<int>> padding = null, Expression<Func<int>> rotation = null, Expression<Func<int>> maxNumWords = null, Expression<Func<int>> minWordLength = null, Expression<Func<CaseInput>> @case = null, Expression<Func<string>> colors = null, Expression<Func<bool>> removeStopwords = null, Expression<Func<string>> language = null, Expression<Func<bool>> useWordList = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: false);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     {
     }
 
-    public class ChartPostResponse
+    public class ChartResponse
     {
         [JsonProperty("$content-type")]
         public string ContentType { get; set; }
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
-    public class ChartPostInput
+    public class ChartBodyInput
     {
         [JsonProperty("chart", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Chart { get; set; }
@@ -241,17 +241,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string BackgroundColor { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ChartPostInputFormatType? Format { get; set; } = ChartPostInputFormatType.Png;
+        public ChartBodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip.ChartBodyInputFormatType.Png;
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ChartPostInputEncodingType? Encoding { get; set; } = ChartPostInputEncodingType.Url;
+        public BodyInputEncodingType? Encoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip.BodyInputEncodingType.Url;
 
         [JsonProperty("version")]
         public string Version { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChartPostInputFormatType
+    public enum ChartBodyInputFormatType
     {
         [EnumMember(Value = "png")]
         Png,
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChartPostInputEncodingType
+    public enum BodyInputEncodingType
     {
         [EnumMember(Value = "url")]
         Url,
@@ -279,55 +279,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
 
         [JsonProperty("url")]
         public string Url { get; set; }
-    }
-
-    public class ChartURLInput
-    {
-        [JsonProperty("chart", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Chart { get; set; }
-
-        [JsonProperty("width")]
-        public int? Width { get; set; }
-
-        [JsonProperty("height")]
-        public int? Height { get; set; }
-
-        [JsonProperty("devicePixelRatio")]
-        public string DevicePixelRatio { get; set; }
-
-        [JsonProperty("backgroundColor")]
-        public string BackgroundColor { get; set; }
-
-        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ChartURLInputFormatType? Format { get; set; } = ChartURLInputFormatType.Png;
-
-        [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ChartURLInputEncodingType? Encoding { get; set; } = ChartURLInputEncodingType.Url;
-
-        [JsonProperty("version")]
-        public string Version { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChartURLInputFormatType
-    {
-        [EnumMember(Value = "png")]
-        Png,
-        [EnumMember(Value = "webp")]
-        Webp,
-        [EnumMember(Value = "svg")]
-        Svg,
-        [EnumMember(Value = "pdf")]
-        Pdf
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChartURLInputEncodingType
-    {
-        [EnumMember(Value = "url")]
-        Url,
-        [EnumMember(Value = "base64")]
-        Base64
     }
 
     public class ChartTemplateResponse
@@ -349,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ecLevelInput
+    public enum EcLevelInput
     {
         L,
         M,
@@ -358,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "png")]
         Png,
@@ -375,16 +326,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
-    public class GraphVizInput
+    public class GraphVizBodyInput
     {
         [JsonProperty("graph", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Graph { get; set; }
 
         [JsonProperty("layout", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GraphVizInputLayoutType? Layout { get; set; } = GraphVizInputLayoutType.Dot;
+        public BodyInputLayoutType? Layout { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip.BodyInputLayoutType.Dot;
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GraphVizInputFormatType? Format { get; set; } = GraphVizInputFormatType.Svg;
+        public GraphVizBodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip.GraphVizBodyInputFormatType.Svg;
 
         [JsonProperty("width")]
         public int? Width { get; set; }
@@ -394,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GraphVizInputLayoutType
+    public enum BodyInputLayoutType
     {
         [EnumMember(Value = "dot")]
         Dot,
@@ -411,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GraphVizInputFormatType
+    public enum GraphVizBodyInputFormatType
     {
         [EnumMember(Value = "svg")]
         Svg,
@@ -429,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum scaleInput
+    public enum ScaleInput
     {
         [EnumMember(Value = "linear")]
         Linear,
@@ -440,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum @caseInput
+    public enum CaseInput
     {
         [EnumMember(Value = "lower")]
         Lower,

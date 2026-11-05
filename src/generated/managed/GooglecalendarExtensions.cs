@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     public class GooglecalendarActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
-        public IBodyWorkflowAction<CalendarList, ApiConnectionActionConfiguration> ListCalendars(Expression<Func<minAccessRoleInput>> minAccessRole = null)
+        public IBodyWorkflowAction<CalendarList, ApiConnectionActionConfiguration> ListCalendars(Expression<Func<MinAccessRoleInput>> minAccessRole = null)
         {
             var __workflow_minAccessRole = WorkflowExpression.Compile(minAccessRole, nameof(minAccessRole), required: false);
             return new DeferredBodyAction<CalendarList, ApiConnectionActionConfiguration>(() =>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
-        public IBodyWorkflowAction<ResponseEvent, ApiConnectionActionConfiguration> CreateEvent(Expression<Func<string>> calendarId, Expression<Func<CreateEventInput>> newEvent)
+        public IBodyWorkflowAction<ResponseEvent, ApiConnectionActionConfiguration> CreateEvent(Expression<Func<string>> calendarId, Expression<Func<NewEventInput>> newEvent)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             var __workflow_newEvent = WorkflowExpression.Compile(newEvent, nameof(newEvent), required: true);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
-        public IBodyWorkflowAction<ResponseEvent, ApiConnectionActionConfiguration> UpdateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId, Expression<Func<UpdateEventInput>> updatedEvent)
+        public IBodyWorkflowAction<ResponseEvent, ApiConnectionActionConfiguration> UpdateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId, Expression<Func<UpdatedEventInput>> updatedEvent)
         {
             var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum minAccessRoleInput
+    public enum MinAccessRoleInput
     {
         [EnumMember(Value = "freeBusyReader")]
         FreeBusyReader,
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public bool EndTimeUnspecified { get; set; }
     }
 
-    public class CreateEventInput
+    public class NewEventInput
     {
         [JsonProperty("summary")]
         public string Title { get; set; }
@@ -284,14 +284,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public string Attendees { get; set; }
 
         [JsonProperty("status")]
-        public CreateEventInputStatusType? Status { get; set; }
+        public NewEventInputStatusType? Status { get; set; }
 
         [JsonProperty("isAllDay")]
         public bool? IsAllDay { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEventInputStatusType
+    public enum NewEventInputStatusType
     {
         [EnumMember(Value = "confirmed")]
         Confirmed,
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         Cancelled
     }
 
-    public class UpdateEventInput
+    public class UpdatedEventInput
     {
         [JsonProperty("summary")]
         public string Title { get; set; }
@@ -322,14 +322,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public string Attendees { get; set; }
 
         [JsonProperty("status")]
-        public UpdateEventInputStatusType? Status { get; set; }
+        public UpdatedEventInputStatusType? Status { get; set; }
 
         [JsonProperty("isAllDay")]
         public bool? IsAllDay { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateEventInputStatusType
+    public enum UpdatedEventInputStatusType
     {
         [EnumMember(Value = "confirmed")]
         Confirmed,

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GenerateText(Expression<Func<string>> aPIVersion, Expression<Func<string>> modelType, Expression<Func<string>> modelName, Expression<Func<GenerateTextInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GenerateText(Expression<Func<string>> aPIVersion, Expression<Func<string>> modelType, Expression<Func<string>> modelName, Expression<Func<GenerateTextBodyInput>> body)
         {
             var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
             var __workflow_modelType = WorkflowExpression.Compile(modelType, nameof(modelType), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GenerateMessage(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<GenerateMessageInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GenerateMessage(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<GenerateMessageBodyInput>> body)
         {
             var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CountTextTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<CountTextTokensInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CountTextTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<CountTextTokensBodyInput>> body)
         {
             var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CountMessageTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<CountMessageTokensInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CountMessageTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<CountMessageTokensBodyInput>> body)
         {
             var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
-        public IBodyWorkflowAction<EmbedTextResponse, ApiConnectionActionConfiguration> EmbedText(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<EmbedTextInput>> body)
+        public IBodyWorkflowAction<EmbedTextResponse, ApiConnectionActionConfiguration> EmbedText(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<EmbedTextBodyInput>> body)
         {
             var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -131,10 +131,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
     {
     }
 
-    public class GenerateTextInput
+    public class GenerateTextBodyInput
     {
         [JsonProperty("prompt")]
-        public GenerateTextInputPromptType Prompt { get; set; }
+        public GenerateTextBodyInputPromptType Prompt { get; set; }
 
         [JsonProperty("temperature")]
         public double? Temperature { get; set; }
@@ -158,16 +158,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         public string[] StopSequences { get; set; }
     }
 
-    public class GenerateTextInputPromptType
+    public class GenerateTextBodyInputPromptType
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
     }
 
-    public class GenerateMessageInput
+    public class GenerateMessageBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateMessageInputPromptType Prompt { get; set; }
+        public CountMessageTokensBodyInputPromptType Prompt { get; set; }
 
         [JsonProperty("temperature")]
         public double? Temperature { get; set; }
@@ -179,46 +179,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         public int? TopK { get; set; }
     }
 
-    public class GenerateMessageInputPromptType
+    public class CountMessageTokensBodyInputPromptType
     {
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerateMessageInputPromptTypeMessagesTypeItem[] Messages { get; set; }
+        public BodyInputPromptTypeMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class GenerateMessageInputPromptTypeMessagesTypeItem
+    public class BodyInputPromptTypeMessagesTypeItem
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
-    public class CountTextTokensInput
+    public class CountTextTokensBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CountTextTokensInputPromptType Prompt { get; set; }
+        public CountTextTokensBodyInputPromptType Prompt { get; set; }
     }
 
-    public class CountTextTokensInputPromptType
+    public class CountTextTokensBodyInputPromptType
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
 
-    public class CountMessageTokensInput
+    public class CountMessageTokensBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CountMessageTokensInputPromptType Prompt { get; set; }
-    }
-
-    public class CountMessageTokensInputPromptType
-    {
-        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CountMessageTokensInputPromptTypeMessagesTypeItem[] Messages { get; set; }
-    }
-
-    public class CountMessageTokensInputPromptTypeMessagesTypeItem
-    {
-        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Content { get; set; }
+        public CountMessageTokensBodyInputPromptType Prompt { get; set; }
     }
 
     public class EmbedTextResponse
@@ -233,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         public double[] Value { get; set; }
     }
 
-    public class EmbedTextInput
+    public class EmbedTextBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }

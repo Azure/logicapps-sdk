@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
     public class PrioritymatrixActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrix")]
-        public IBodyWorkflowAction<AddCommentToItemResponse, ApiConnectionActionConfiguration> AddCommentToItem(Expression<Func<int>> project, Expression<Func<AddCommentToItemInput>> body)
+        public IBodyWorkflowAction<AddCommentToItemResponse, ApiConnectionActionConfiguration> AddCommentToItem(Expression<Func<int>> project, Expression<Func<AddCommentToItemBodyInput>> body)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrix")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectInput>> body = null)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrix")]
-        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<int>> projectId, Expression<Func<UpdateProjectInput>> body = null)
+        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<int>> projectId, Expression<Func<UpdateProjectBodyInput>> body = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
 
     public class PrioritymatrixTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemCompletedHookResponse, ApiConnectionTriggerConfiguration> ItemCompletedHook(Expression<Func<ItemCompletedHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemCompletedHookResponse, ApiConnectionTriggerConfiguration> ItemCompletedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ItemCompletedHookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
             });
         }
 
-        public IBodyWorkflowTrigger<ItemCreatedHookResponse, ApiConnectionTriggerConfiguration> ItemCreatedHook(Expression<Func<ItemCreatedHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemCreatedHookResponse, ApiConnectionTriggerConfiguration> ItemCreatedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ItemCreatedHookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDelegatedHookResponse, ApiConnectionTriggerConfiguration> ItemDelegatedHook(Expression<Func<ItemDelegatedHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDelegatedHookResponse, ApiConnectionTriggerConfiguration> ItemDelegatedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ItemDelegatedHookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDeletedHookResponse, ApiConnectionTriggerConfiguration> ItemDeletedHook(Expression<Func<ItemDeletedHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDeletedHookResponse, ApiConnectionTriggerConfiguration> ItemDeletedHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ItemDeletedHookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDueHookResponse, ApiConnectionTriggerConfiguration> ItemDueHook(Expression<Func<ItemDueHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDueHookResponse, ApiConnectionTriggerConfiguration> ItemDueHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ItemDueHookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
             });
         }
 
-        public IBodyWorkflowTrigger<ItemStartHookResponse, ApiConnectionTriggerConfiguration> ItemStartHook(Expression<Func<ItemStartHookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemStartHookResponse, ApiConnectionTriggerConfiguration> ItemStartHook(Expression<Func<ItemCompletedHookBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<ItemStartHookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string Tooltip { get; set; }
     }
 
-    public class AddCommentToItemInput
+    public class AddCommentToItemBodyInput
     {
         [JsonProperty("item", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Item { get; set; }
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string Slug { get; set; }
     }
 
-    public class CreateProjectInput
+    public class CreateProjectBodyInput
     {
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string Slug { get; set; }
     }
 
-    public class UpdateProjectInput
+    public class UpdateProjectBodyInput
     {
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string User { get; set; }
     }
 
-    public class ItemCompletedHookInput
+    public class ItemCompletedHookBodyInput
     {
         [JsonProperty("project")]
         public string Project { get; set; }
@@ -972,15 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string User { get; set; }
     }
 
-    public class ItemCreatedHookInput
-    {
-        [JsonProperty("project")]
-        public string Project { get; set; }
-
-        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Target { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class ItemDelegatedHookResponse
     {
         [JsonProperty("account")]
@@ -1000,15 +991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
 
         [JsonProperty("user")]
         public string User { get; set; }
-    }
-
-    public class ItemDelegatedHookInput
-    {
-        [JsonProperty("project")]
-        public string Project { get; set; }
-
-        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Target { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class ItemDeletedHookResponse
@@ -1032,15 +1014,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string User { get; set; }
     }
 
-    public class ItemDeletedHookInput
-    {
-        [JsonProperty("project")]
-        public string Project { get; set; }
-
-        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Target { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class ItemDueHookResponse
     {
         [JsonProperty("account")]
@@ -1062,15 +1035,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
         public string User { get; set; }
     }
 
-    public class ItemDueHookInput
-    {
-        [JsonProperty("project")]
-        public string Project { get; set; }
-
-        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Target { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class ItemStartHookResponse
     {
         [JsonProperty("account")]
@@ -1090,15 +1054,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrix
 
         [JsonProperty("user")]
         public string User { get; set; }
-    }
-
-    public class ItemStartHookInput
-    {
-        [JsonProperty("project")]
-        public string Project { get; set; }
-
-        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Target { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

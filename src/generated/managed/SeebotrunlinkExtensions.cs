@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
     public class SeebotrunlinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<GetLinksResponse, ApiConnectionActionConfiguration> GetLinks(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<searchTypesInput>> searchTypes, Expression<Func<int>> domainId)
+        public IBodyWorkflowAction<GetLinksResponse, ApiConnectionActionConfiguration> GetLinks(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<SearchTypesInput>> searchTypes, Expression<Func<int>> domainId)
         {
             var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
             var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreateLinkInput>> body)
+        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreateLinkBodyInput>> body)
         {
             var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
             var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<int>> id, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<UpdateLinkInput>> body = null)
+        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<int>> id, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<UpdateLinkBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration> CreatePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreatePredefinedLinkInput>> body)
+        public IBodyWorkflowAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration> CreatePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreatePredefinedLinkBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchTypesInput
+    public enum SearchTypesInput
     {
         [EnumMember(Value = "default")]
         Default,
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         public string Sort { get; set; }
     }
 
-    public class CreateLinkInput
+    public class CreateLinkBodyInput
     {
         [JsonProperty("cache", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Cache { get; set; } = true;
@@ -377,14 +377,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         public string Redirect { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLinkInputStatusType Status { get; set; } = CreateLinkInputStatusType.Active;
+        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink.BodyInputStatusType.Active;
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLinkInputTypeType Type { get; set; } = CreateLinkInputTypeType.Default;
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink.BodyInputTypeType.Default;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLinkInputStatusType
+    public enum BodyInputStatusType
     {
         [EnumMember(Value = "active")]
         Active,
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLinkInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "default")]
         Default,
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         public string Sort { get; set; }
     }
 
-    public class UpdateLinkInput
+    public class UpdateLinkBodyInput
     {
         [JsonProperty("cache", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Cache { get; set; } = true;
@@ -576,16 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         public string Redirect { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateLinkInputStatusType Status { get; set; } = UpdateLinkInputStatusType.Active;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateLinkInputStatusType
-    {
-        [EnumMember(Value = "active")]
-        Active,
-        [EnumMember(Value = "inactive")]
-        Inactive
+        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink.BodyInputStatusType.Active;
     }
 
     public class CreatePredefinedLinkResponse
@@ -621,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         public string UpdatedAt { get; set; }
     }
 
-    public class CreatePredefinedLinkInput
+    public class CreatePredefinedLinkBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }

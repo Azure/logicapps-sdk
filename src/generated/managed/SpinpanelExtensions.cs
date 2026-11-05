@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchGraphUserPassword(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PatchGraphUserPasswordInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchGraphUserPassword(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PatchGraphUserPasswordBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<PostGraphUserResponse, ApiConnectionActionConfiguration> PostGraphUser(Expression<Func<string>> organizationId, Expression<Func<PostGraphUserInput>> body = null)
+        public IBodyWorkflowAction<PostGraphUserResponse, ApiConnectionActionConfiguration> PostGraphUser(Expression<Func<string>> organizationId, Expression<Func<PostGraphUserBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PostUserLicenseInput>> body = null)
+        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PostUserLicenseBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<PostGraphGroupResponse, ApiConnectionActionConfiguration> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<PostGraphGroupInput>> body = null)
+        public IBodyWorkflowAction<PostGraphGroupResponse, ApiConnectionActionConfiguration> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<PostGraphGroupBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<PatchSubscriptionQuantityInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<PatchSubscriptionQuantityBodyInput>> body = null)
         {
             var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
@@ -467,13 +467,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         public string Country { get; set; }
     }
 
-    public class PatchGraphUserPasswordInput
+    public class PatchGraphUserPasswordBodyInput
     {
         [JsonProperty("passwordProfile")]
-        public PatchGraphUserPasswordInputPasswordProfileType PasswordProfile { get; set; }
+        public BodyInputPasswordProfileType PasswordProfile { get; set; }
     }
 
-    public class PatchGraphUserPasswordInputPasswordProfileType
+    public class BodyInputPasswordProfileType
     {
         [JsonProperty("forceChangePasswordNextSignIn")]
         public bool? ForceChangePasswordNextSignIn { get; set; }
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         public string UserPrincipalName { get; set; }
     }
 
-    public class PostGraphUserInput
+    public class PostGraphUserBodyInput
     {
         [JsonProperty("accountEnabled")]
         public bool? AccountEnabled { get; set; }
@@ -563,16 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         public string UserPrincipalName { get; set; }
 
         [JsonProperty("passwordProfile")]
-        public PostGraphUserInputPasswordProfileType PasswordProfile { get; set; }
-    }
-
-    public class PostGraphUserInputPasswordProfileType
-    {
-        [JsonProperty("forceChangePasswordNextSignIn")]
-        public bool? ForceChangePasswordNextSignIn { get; set; }
-
-        [JsonProperty("password")]
-        public string Password { get; set; }
+        public BodyInputPasswordProfileType PasswordProfile { get; set; }
     }
 
     public class GetUserLicenseDetailsResponse
@@ -707,16 +698,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         public string AppliesTo { get; set; }
     }
 
-    public class PostUserLicenseInput
+    public class PostUserLicenseBodyInput
     {
         [JsonProperty("addLicenses")]
-        public PostUserLicenseInputAddLicensesTypeItem[] AddLicenses { get; set; }
+        public BodyInputAddLicensesTypeItem[] AddLicenses { get; set; }
 
         [JsonProperty("removeLicenses")]
         public JToken[] RemoveLicenses { get; set; }
     }
 
-    public class PostUserLicenseInputAddLicensesTypeItem
+    public class BodyInputAddLicensesTypeItem
     {
         [JsonProperty("disabledPlans")]
         public JToken[] DisabledPlans { get; set; }
@@ -881,7 +872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         public string[] OnPremisesProvisioningErrors { get; set; }
     }
 
-    public class PostGraphGroupInput
+    public class PostGraphGroupBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -947,7 +938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         public string State { get; set; }
     }
 
-    public class AddGraphGroupMemberInput
+    public class AddGraphGroupMemberBodyInput
     {
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -1061,7 +1052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         public string ObjectType { get; set; }
     }
 
-    public class PatchSubscriptionQuantityInput
+    public class PatchSubscriptionQuantityBodyInput
     {
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class Csvconverterbypower2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A000AV01CV01ConvertAllFormats, ApiConnectionActionConfiguration> T01A000AV01CV01ConvertAllFormats(Expression<Func<T01A000AV01CV01ConvertAllFormatsInput>> dtoRequestT01A000AV01CV01ConvertAllFormats)
+        public IBodyWorkflowAction<DtoResponseT01A000AV01CV01ConvertAllFormats, ApiConnectionActionConfiguration> T01A000AV01CV01ConvertAllFormats(Expression<Func<DtoRequestT01A000AV01CV01ConvertAllFormatsInput>> dtoRequestT01A000AV01CV01ConvertAllFormats)
         {
             var __workflow_dtoRequestT01A000AV01CV01ConvertAllFormats = WorkflowExpression.Compile(dtoRequestT01A000AV01CV01ConvertAllFormats, nameof(dtoRequestT01A000AV01CV01ConvertAllFormats), required: true);
             return new DeferredBodyAction<DtoResponseT01A000AV01CV01ConvertAllFormats, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A001AV01CV01ConvertCsvToJson, ApiConnectionActionConfiguration> T01A001AV01CV01ConvertCsvToJson(Expression<Func<T01A001AV01CV01ConvertCsvToJsonInput>> dtoRequestT01A001AV01CV01ConvertCsvToJson)
+        public IBodyWorkflowAction<DtoResponseT01A001AV01CV01ConvertCsvToJson, ApiConnectionActionConfiguration> T01A001AV01CV01ConvertCsvToJson(Expression<Func<DtoRequestT01A001AV01CV01ConvertCsvToJsonInput>> dtoRequestT01A001AV01CV01ConvertCsvToJson)
         {
             var __workflow_dtoRequestT01A001AV01CV01ConvertCsvToJson = WorkflowExpression.Compile(dtoRequestT01A001AV01CV01ConvertCsvToJson, nameof(dtoRequestT01A001AV01CV01ConvertCsvToJson), required: true);
             return new DeferredBodyAction<DtoResponseT01A001AV01CV01ConvertCsvToJson, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv, ApiConnectionActionConfiguration> T01A002AV01CV01ConvertJsonToCsv(Expression<Func<T01A002AV01CV01ConvertJsonToCsvInput>> dtoRequestT01A002AV01CV01ConvertJsonToCsv)
+        public IBodyWorkflowAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv, ApiConnectionActionConfiguration> T01A002AV01CV01ConvertJsonToCsv(Expression<Func<DtoRequestT01A002AV01CV01ConvertJsonToCsvInput>> dtoRequestT01A002AV01CV01ConvertJsonToCsv)
         {
             var __workflow_dtoRequestT01A002AV01CV01ConvertJsonToCsv = WorkflowExpression.Compile(dtoRequestT01A002AV01CV01ConvertJsonToCsv, nameof(dtoRequestT01A002AV01CV01ConvertJsonToCsv), required: true);
             return new DeferredBodyAction<DtoResponseT01A002AV01CV01ConvertJsonToCsv, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel, ApiConnectionActionConfiguration> T01A003AV01CV01ConvertCsvToExcel(Expression<Func<T01A003AV01CV01ConvertCsvToExcelInput>> dtoRequestT01A003AV01CV01ConvertCsvToExcel)
+        public IBodyWorkflowAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel, ApiConnectionActionConfiguration> T01A003AV01CV01ConvertCsvToExcel(Expression<Func<DtoRequestT01A003AV01CV01ConvertCsvToExcelInput>> dtoRequestT01A003AV01CV01ConvertCsvToExcel)
         {
             var __workflow_dtoRequestT01A003AV01CV01ConvertCsvToExcel = WorkflowExpression.Compile(dtoRequestT01A003AV01CV01ConvertCsvToExcel, nameof(dtoRequestT01A003AV01CV01ConvertCsvToExcel), required: true);
             return new DeferredBodyAction<DtoResponseT01A003AV01CV01ConvertCsvToExcel, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration> T01A004AV01CV01ConvertExcelToCsv(Expression<Func<T01A004AV01CV01ConvertExcelToCsvInput>> dtoRequestT01A004AV01CV01ConvertExcelToCsv)
+        public IBodyWorkflowAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration> T01A004AV01CV01ConvertExcelToCsv(Expression<Func<DtoRequestT01A004AV01CV01ConvertExcelToCsvInput>> dtoRequestT01A004AV01CV01ConvertExcelToCsv)
         {
             var __workflow_dtoRequestT01A004AV01CV01ConvertExcelToCsv = WorkflowExpression.Compile(dtoRequestT01A004AV01CV01ConvertExcelToCsv, nameof(dtoRequestT01A004AV01CV01ConvertExcelToCsv), required: true);
             return new DeferredBodyAction<DtoResponseT01A004AV01CV01ConvertExcelToCsv, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml, ApiConnectionActionConfiguration> T01A005AV01CV01ConvertCsvToHtml(Expression<Func<T01A005AV01CV01ConvertCsvToHtmlInput>> dtoRequestT01A005AV01CV01ConvertCsvToHtml)
+        public IBodyWorkflowAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml, ApiConnectionActionConfiguration> T01A005AV01CV01ConvertCsvToHtml(Expression<Func<DtoRequestT01A005AV01CV01ConvertCsvToHtmlInput>> dtoRequestT01A005AV01CV01ConvertCsvToHtml)
         {
             var __workflow_dtoRequestT01A005AV01CV01ConvertCsvToHtml = WorkflowExpression.Compile(dtoRequestT01A005AV01CV01ConvertCsvToHtml, nameof(dtoRequestT01A005AV01CV01ConvertCsvToHtml), required: true);
             return new DeferredBodyAction<DtoResponseT01A005AV01CV01ConvertCsvToHtml, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv, ApiConnectionActionConfiguration> T01A006AV01CV01ConvertHtmlToCsv(Expression<Func<T01A006AV01CV01ConvertHtmlToCsvInput>> dtoRequestT01A006AV01CV01ConvertHtmlToCsv)
+        public IBodyWorkflowAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv, ApiConnectionActionConfiguration> T01A006AV01CV01ConvertHtmlToCsv(Expression<Func<DtoRequestT01A006AV01CV01ConvertHtmlToCsvInput>> dtoRequestT01A006AV01CV01ConvertHtmlToCsv)
         {
             var __workflow_dtoRequestT01A006AV01CV01ConvertHtmlToCsv = WorkflowExpression.Compile(dtoRequestT01A006AV01CV01ConvertHtmlToCsv, nameof(dtoRequestT01A006AV01CV01ConvertHtmlToCsv), required: true);
             return new DeferredBodyAction<DtoResponseT01A006AV01CV01ConvertHtmlToCsv, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A007AV01CV01ConvertCsvToXml, ApiConnectionActionConfiguration> T01A007AV01CV01ConvertCsvToXml(Expression<Func<T01A007AV01CV01ConvertCsvToXmlInput>> dtoRequestT01A007AV01CV01ConvertCsvToXml)
+        public IBodyWorkflowAction<DtoResponseT01A007AV01CV01ConvertCsvToXml, ApiConnectionActionConfiguration> T01A007AV01CV01ConvertCsvToXml(Expression<Func<DtoRequestT01A007AV01CV01ConvertCsvToXmlInput>> dtoRequestT01A007AV01CV01ConvertCsvToXml)
         {
             var __workflow_dtoRequestT01A007AV01CV01ConvertCsvToXml = WorkflowExpression.Compile(dtoRequestT01A007AV01CV01ConvertCsvToXml, nameof(dtoRequestT01A007AV01CV01ConvertCsvToXml), required: true);
             return new DeferredBodyAction<DtoResponseT01A007AV01CV01ConvertCsvToXml, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv, ApiConnectionActionConfiguration> T01A008AV01CV01ConvertXmlToCsv(Expression<Func<T01A008AV01CV01ConvertXmlToCsvInput>> dtoRequestT01A008AV01CV01ConvertXmlToCsv)
+        public IBodyWorkflowAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv, ApiConnectionActionConfiguration> T01A008AV01CV01ConvertXmlToCsv(Expression<Func<DtoRequestT01A008AV01CV01ConvertXmlToCsvInput>> dtoRequestT01A008AV01CV01ConvertXmlToCsv)
         {
             var __workflow_dtoRequestT01A008AV01CV01ConvertXmlToCsv = WorkflowExpression.Compile(dtoRequestT01A008AV01CV01ConvertXmlToCsv, nameof(dtoRequestT01A008AV01CV01ConvertXmlToCsv), required: true);
             return new DeferredBodyAction<DtoResponseT01A008AV01CV01ConvertXmlToCsv, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml, ApiConnectionActionConfiguration> T01A009AV01CV01ConvertCsvToYaml(Expression<Func<T01A009AV01CV01ConvertCsvToYamlInput>> dtoRequestT01A009AV01CV01ConvertCsvToYaml)
+        public IBodyWorkflowAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml, ApiConnectionActionConfiguration> T01A009AV01CV01ConvertCsvToYaml(Expression<Func<DtoRequestT01A009AV01CV01ConvertCsvToYamlInput>> dtoRequestT01A009AV01CV01ConvertCsvToYaml)
         {
             var __workflow_dtoRequestT01A009AV01CV01ConvertCsvToYaml = WorkflowExpression.Compile(dtoRequestT01A009AV01CV01ConvertCsvToYaml, nameof(dtoRequestT01A009AV01CV01ConvertCsvToYaml), required: true);
             return new DeferredBodyAction<DtoResponseT01A009AV01CV01ConvertCsvToYaml, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv, ApiConnectionActionConfiguration> T01A010AV01CV01ConvertYamlToCsv(Expression<Func<T01A010AV01CV01ConvertYamlToCsvInput>> dtoRequestT01A010AV01CV01ConvertYamlToCsv)
+        public IBodyWorkflowAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv, ApiConnectionActionConfiguration> T01A010AV01CV01ConvertYamlToCsv(Expression<Func<DtoRequestT01A010AV01CV01ConvertYamlToCsvInput>> dtoRequestT01A010AV01CV01ConvertYamlToCsv)
         {
             var __workflow_dtoRequestT01A010AV01CV01ConvertYamlToCsv = WorkflowExpression.Compile(dtoRequestT01A010AV01CV01ConvertYamlToCsv, nameof(dtoRequestT01A010AV01CV01ConvertYamlToCsv), required: true);
             return new DeferredBodyAction<DtoResponseT01A010AV01CV01ConvertYamlToCsv, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "csvconverterbypower2")]
-        public IBodyWorkflowAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable, ApiConnectionActionConfiguration> T01A011AV01CV01ConvertCsvToTextTable(Expression<Func<T01A011AV01CV01ConvertCsvToTextTableInput>> dtoRequestT01A011AV01CV01ConvertCsvToTextTable)
+        public IBodyWorkflowAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable, ApiConnectionActionConfiguration> T01A011AV01CV01ConvertCsvToTextTable(Expression<Func<DtoRequestT01A011AV01CV01ConvertCsvToTextTableInput>> dtoRequestT01A011AV01CV01ConvertCsvToTextTable)
         {
             var __workflow_dtoRequestT01A011AV01CV01ConvertCsvToTextTable = WorkflowExpression.Compile(dtoRequestT01A011AV01CV01ConvertCsvToTextTable, nameof(dtoRequestT01A011AV01CV01ConvertCsvToTextTable), required: true);
             return new DeferredBodyAction<DtoResponseT01A011AV01CV01ConvertCsvToTextTable, ApiConnectionActionConfiguration>(() =>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string ExcelResult { get; set; }
     }
 
-    public class T01A000AV01CV01ConvertAllFormatsInput
+    public class DtoRequestT01A000AV01CV01ConvertAllFormatsInput
     {
         [JsonProperty("inputData", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputData { get; set; }
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string JSONResponse { get; set; }
     }
 
-    public class T01A001AV01CV01ConvertCsvToJsonInput
+    public class DtoRequestT01A001AV01CV01ConvertCsvToJsonInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string FirstCSVTable { get; set; }
     }
 
-    public class T01A002AV01CV01ConvertJsonToCsvInput
+    public class DtoRequestT01A002AV01CV01ConvertJsonToCsvInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string ExcelResponse { get; set; }
     }
 
-    public class T01A003AV01CV01ConvertCsvToExcelInput
+    public class DtoRequestT01A003AV01CV01ConvertCsvToExcelInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string FirstCSVTable { get; set; }
     }
 
-    public class T01A004AV01CV01ConvertExcelToCsvInput
+    public class DtoRequestT01A004AV01CV01ConvertExcelToCsvInput
     {
         [JsonProperty("excel", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExcelFile { get; set; }
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string FirstHTMLTable { get; set; }
     }
 
-    public class T01A005AV01CV01ConvertCsvToHtmlInput
+    public class DtoRequestT01A005AV01CV01ConvertCsvToHtmlInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string FirstCSVTable { get; set; }
     }
 
-    public class T01A006AV01CV01ConvertHtmlToCsvInput
+    public class DtoRequestT01A006AV01CV01ConvertHtmlToCsvInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTMLTable { get; set; }
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string XMLResponse { get; set; }
     }
 
-    public class T01A007AV01CV01ConvertCsvToXmlInput
+    public class DtoRequestT01A007AV01CV01ConvertCsvToXmlInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string FirstCSVTable { get; set; }
     }
 
-    public class T01A008AV01CV01ConvertXmlToCsvInput
+    public class DtoRequestT01A008AV01CV01ConvertXmlToCsvInput
     {
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
         public string XML { get; set; }
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string YAMLResponse { get; set; }
     }
 
-    public class T01A009AV01CV01ConvertCsvToYamlInput
+    public class DtoRequestT01A009AV01CV01ConvertCsvToYamlInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string FirstCSVTable { get; set; }
     }
 
-    public class T01A010AV01CV01ConvertYamlToCsvInput
+    public class DtoRequestT01A010AV01CV01ConvertYamlToCsvInput
     {
         [JsonProperty("yaml", DefaultValueHandling = DefaultValueHandling.Include)]
         public string YAML { get; set; }
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
         public string FirstTextTable { get; set; }
     }
 
-    public class T01A011AV01CV01ConvertCsvToTextTableInput
+    public class DtoRequestT01A011AV01CV01ConvertCsvToTextTableInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }

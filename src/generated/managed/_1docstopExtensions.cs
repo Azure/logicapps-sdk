@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
     public class _1docstopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PalibrariesAdd(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PalibrariesAddInput>> library = null)
+        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PalibrariesAdd(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<LibraryInput>> library = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution, ApiConnectionActionConfiguration> PasolutionsAdd(Expression<Func<int>> solutionid = null, Expression<Func<PasolutionsAddInput>> solution = null)
+        public IBodyWorkflowAction<Solution, ApiConnectionActionConfiguration> PasolutionsAdd(Expression<Func<int>> solutionid = null, Expression<Func<SolutionInput>> solution = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solution = WorkflowExpression.Compile(solution, nameof(solution), required: false);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution, ApiConnectionActionConfiguration> PasolutionsUpdate(Expression<Func<int>> solutionid = null, Expression<Func<int>> functionsolutionid = null, Expression<Func<PasolutionsUpdateInput>> solution = null)
+        public IBodyWorkflowAction<Solution, ApiConnectionActionConfiguration> PasolutionsUpdate(Expression<Func<int>> solutionid = null, Expression<Func<int>> functionsolutionid = null, Expression<Func<SolutionInput>> solution = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_functionsolutionid = WorkflowExpression.Compile(functionsolutionid, nameof(functionsolutionid), required: false);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Document, ApiConnectionActionConfiguration> PadocumentsAdd(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PadocumentsAddInput>> document = null)
+        public IBodyWorkflowAction<Document, ApiConnectionActionConfiguration> PadocumentsAdd(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<DocumentInput>> document = null)
         {
             var __workflow_libraryid = WorkflowExpression.Compile(libraryid, nameof(libraryid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
@@ -145,12 +145,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType, ApiConnectionActionConfiguration> PadocumenttypesGet(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<PadocumentpropertiesListDocumentTypeResponse, ApiConnectionActionConfiguration> PadocumenttypesGet(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documenttypeid = WorkflowExpression.Compile(documenttypeid, nameof(documenttypeid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<DocumentType, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PadocumentpropertiesListDocumentTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumenttypes/get";
                 var apiCallHttpMethod = "get";
@@ -160,16 +160,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
-                return new ApiConnectionAction<DocumentType>(callPayload);
+                return new ApiConnectionAction<PadocumentpropertiesListDocumentTypeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType[], ApiConnectionActionConfiguration> PadocumenttypesList(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<PadocumentpropertiesListDocumentTypeResponse[], ApiConnectionActionConfiguration> PadocumenttypesList(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
         {
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
-            return new DeferredBodyAction<DocumentType[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PadocumentpropertiesListDocumentTypeResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumenttypes/list";
                 var apiCallHttpMethod = "get";
@@ -177,12 +177,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                 callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 if (__workflow_solutionid != null)
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
-                return new ApiConnectionAction<DocumentType[]>(callPayload);
+                return new ApiConnectionAction<PadocumentpropertiesListDocumentTypeResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PadocumenttypesAdd(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null, Expression<Func<PadocumenttypesAddInput>> library = null)
+        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PadocumenttypesAdd(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null, Expression<Func<LibraryInput>> library = null)
         {
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
@@ -202,13 +202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType, ApiConnectionActionConfiguration> PadocumenttypesUpdate(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PadocumenttypesUpdateInput>> documentType = null)
+        public IBodyWorkflowAction<PadocumentpropertiesListDocumentTypeResponse, ApiConnectionActionConfiguration> PadocumenttypesUpdate(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<DocumentTypeInput>> documentType = null)
         {
             var __workflow_documenttypeid = WorkflowExpression.Compile(documenttypeid, nameof(documenttypeid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
             var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: false);
-            return new DeferredBodyAction<DocumentType, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PadocumentpropertiesListDocumentTypeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumenttypes/update";
                 var apiCallHttpMethod = "put";
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 if (__workflow_documentType != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_documentType);
-                return new ApiConnectionAction<DocumentType>(callPayload);
+                return new ApiConnectionAction<PadocumentpropertiesListDocumentTypeResponse>(callPayload);
             });
         }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PalibrariesUpdate(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PalibrariesUpdateInput>> library = null)
+        public IBodyWorkflowAction<Library, ApiConnectionActionConfiguration> PalibrariesUpdate(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<LibraryInput>> library = null)
         {
             var __workflow_libraryid = WorkflowExpression.Compile(libraryid, nameof(libraryid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
@@ -306,11 +306,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DataType[], ApiConnectionActionConfiguration> PadatatypesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<PadatatypesListDataTypeResponse[], ApiConnectionActionConfiguration> PadatatypesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<DataType[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PadatatypesListDataTypeResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padatatypes/list";
                 var apiCallHttpMethod = "get";
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
-                return new ApiConnectionAction<DataType[]>(callPayload);
+                return new ApiConnectionAction<PadatatypesListDataTypeResponse[]>(callPayload);
             });
         }
 
@@ -344,12 +344,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<PropertyValue[], ApiConnectionActionConfiguration> PapropertyvaluesGet(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<PadocumentsAddPropertyValueResponse[], ApiConnectionActionConfiguration> PapropertyvaluesGet(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documentkey = WorkflowExpression.Compile(documentkey, nameof(documentkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<PropertyValue[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PadocumentsAddPropertyValueResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/papropertyvalues/get";
                 var apiCallHttpMethod = "get";
@@ -359,18 +359,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
-                return new ApiConnectionAction<PropertyValue[]>(callPayload);
+                return new ApiConnectionAction<PadocumentsAddPropertyValueResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<PropertyValue[], ApiConnectionActionConfiguration> PapropertyvaluesUpdate(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PropertyValue[]>> propertyValueArray = null)
+        public IBodyWorkflowAction<PadocumentsAddPropertyValueResponse[], ApiConnectionActionConfiguration> PapropertyvaluesUpdate(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PadocumentsAddPropertyValue[]>> propertyValueArray = null)
         {
             var __workflow_documentkey = WorkflowExpression.Compile(documentkey, nameof(documentkey), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
             var __workflow_propertyValueArray = WorkflowExpression.Compile(propertyValueArray, nameof(propertyValueArray), required: false);
-            return new DeferredBodyAction<PropertyValue[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PadocumentsAddPropertyValueResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/papropertyvalues/update";
                 var apiCallHttpMethod = "put";
@@ -382,17 +382,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
                 if (__workflow_propertyValueArray != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_propertyValueArray);
-                return new ApiConnectionAction<PropertyValue[]>(callPayload);
+                return new ApiConnectionAction<PadocumentsAddPropertyValueResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentProperty[], ApiConnectionActionConfiguration> PadocumentpropertiesList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<PadocumentpropertiesListDocumentPropertyResponse[], ApiConnectionActionConfiguration> PadocumentpropertiesList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
         {
             var __workflow_documenttypeid = WorkflowExpression.Compile(documenttypeid, nameof(documenttypeid), required: true);
             var __workflow_solutionid = WorkflowExpression.Compile(solutionid, nameof(solutionid), required: false);
             var __workflow_solutionkey = WorkflowExpression.Compile(solutionkey, nameof(solutionkey), required: false);
-            return new DeferredBodyAction<DocumentProperty[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PadocumentpropertiesListDocumentPropertyResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/padocumentproperties-list";
                 var apiCallHttpMethod = "get";
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
                     callPayload.Queries["solutionid"] = ExpressionConverter.Convert(__workflow_solutionid);
                 if (__workflow_solutionkey != null)
                     callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(__workflow_solutionkey);
-                return new ApiConnectionAction<DocumentProperty[]>(callPayload);
+                return new ApiConnectionAction<PadocumentpropertiesListDocumentPropertyResponse[]>(callPayload);
             });
         }
     }
@@ -420,13 +420,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int RepositoryId { get; set; }
 
         [JsonProperty("repository")]
-        public Repository Repository { get; set; }
+        public PadocumenttypesAddRepositoryResponse Repository { get; set; }
 
         [JsonProperty("documentTypeId")]
         public int DocumentTypeId { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentType DocumentType { get; set; }
+        public PadocumentpropertiesListDocumentTypeResponse DocumentType { get; set; }
 
         [JsonProperty("internalName")]
         public string InternalName { get; set; }
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public bool Ocr { get; set; }
     }
 
-    public class Repository
+    public class PadocumenttypesAddRepositoryResponse
     {
         [JsonProperty("repositoryId")]
         public int RepositoryId { get; set; }
@@ -459,13 +459,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int RepositoryTypeId { get; set; }
 
         [JsonProperty("repositoryType")]
-        public RepositoryType RepositoryType { get; set; }
+        public PadocumenttypesAddRepositoryTypeResponse RepositoryType { get; set; }
 
         [JsonProperty("repositoryURI")]
         public string RepositoryURI { get; set; }
     }
 
-    public class RepositoryType
+    public class PadocumenttypesAddRepositoryTypeResponse
     {
         [JsonProperty("repositoryTypeId")]
         public int RepositoryTypeId { get; set; }
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string Name { get; set; }
     }
 
-    public class DocumentType
+    public class PadocumentpropertiesListDocumentTypeResponse
     {
         [JsonProperty("documentTypeId")]
         public int DocumentTypeId { get; set; }
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string Description { get; set; }
     }
 
-    public class PalibrariesAddInput
+    public class LibraryInput
     {
         [JsonProperty("libraryId")]
         public int? LibraryId { get; set; }
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int? DocumentTypeId { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentType2 DocumentType { get; set; }
+        public PadocumentsAddDocumentType DocumentType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public bool? Ocr { get; set; }
     }
 
-    public class DocumentType2
+    public class PadocumentsAddDocumentType
     {
         [JsonProperty("documentTypeId")]
         public int? DocumentTypeId { get; set; }
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int DepartmentId { get; set; }
 
         [JsonProperty("department")]
-        public Department Department { get; set; }
+        public PasolutionsAddDepartmentResponse Department { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string SearchService { get; set; }
     }
 
-    public class Department
+    public class PasolutionsAddDepartmentResponse
     {
         [JsonProperty("departmentId")]
         public int DepartmentId { get; set; }
@@ -564,13 +564,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int CustomerId { get; set; }
 
         [JsonProperty("customer")]
-        public Customer Customer { get; set; }
+        public PasolutionsAddCustomerResponse Customer { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class Customer
+    public class PasolutionsAddCustomerResponse
     {
         [JsonProperty("customerId")]
         public int CustomerId { get; set; }
@@ -582,19 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string Name { get; set; }
     }
 
-    public class PasolutionsAddInput
-    {
-        [JsonProperty("solutionId")]
-        public int? SolutionId { get; set; }
-
-        [JsonProperty("solutionKey")]
-        public string SolutionKey { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-    }
-
-    public class PasolutionsUpdateInput
+    public class SolutionInput
     {
         [JsonProperty("solutionId")]
         public int? SolutionId { get; set; }
@@ -648,13 +636,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int Status { get; set; }
 
         [JsonProperty("propertyValues")]
-        public PropertyValue[] PropertyValues { get; set; }
+        public PadocumentsAddPropertyValueResponse[] PropertyValues { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class PropertyValue
+    public class PadocumentsAddPropertyValueResponse
     {
         [JsonProperty("documentId")]
         public int DocumentId { get; set; }
@@ -663,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int DocumentPropertyId { get; set; }
 
         [JsonProperty("documentProperty")]
-        public DocumentProperty DocumentProperty { get; set; }
+        public PadocumentpropertiesListDocumentPropertyResponse DocumentProperty { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -672,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string ColumnName { get; set; }
     }
 
-    public class DocumentProperty
+    public class PadocumentpropertiesListDocumentPropertyResponse
     {
         [JsonProperty("documentPropertyId")]
         public int DocumentPropertyId { get; set; }
@@ -681,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int DocumentTypeId { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentType DocumentType { get; set; }
+        public PadocumentpropertiesListDocumentTypeResponse DocumentType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -696,13 +684,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string DataTypeName { get; set; }
 
         [JsonProperty("dataType")]
-        public DataType DataType { get; set; }
+        public PadatatypesListDataTypeResponse DataType { get; set; }
 
         [JsonProperty("optionSetId")]
         public int OptionSetId { get; set; }
 
         [JsonProperty("optionSet")]
-        public OptionSet OptionSet { get; set; }
+        public PadocumentpropertiesListOptionSetResponse OptionSet { get; set; }
 
         [JsonProperty("externalOptionSet")]
         public string ExternalOptionSet { get; set; }
@@ -714,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string InternalName { get; set; }
     }
 
-    public class DataType
+    public class PadatatypesListDataTypeResponse
     {
         [JsonProperty("dataTypeId")]
         public int DataTypeId { get; set; }
@@ -723,7 +711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string Name { get; set; }
     }
 
-    public class OptionSet
+    public class PadocumentpropertiesListOptionSetResponse
     {
         [JsonProperty("optionSetId")]
         public int OptionSetId { get; set; }
@@ -732,10 +720,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string Name { get; set; }
 
         [JsonProperty("optionSetValues")]
-        public OptionSetValue[] OptionSetValues { get; set; }
+        public PadocumentpropertiesListOptionSetValueResponse[] OptionSetValues { get; set; }
     }
 
-    public class OptionSetValue
+    public class PadocumentpropertiesListOptionSetValueResponse
     {
         [JsonProperty("optionSetValueId")]
         public int OptionSetValueId { get; set; }
@@ -744,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int OptionSetId { get; set; }
 
         [JsonProperty("optionSet")]
-        public OptionSet OptionSet { get; set; }
+        public PadocumentpropertiesListOptionSetResponse OptionSet { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -756,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int DisplayOrder { get; set; }
     }
 
-    public class PadocumentsAddInput
+    public class DocumentInput
     {
         [JsonProperty("documentKey")]
         public string DocumentKey { get; set; }
@@ -771,13 +759,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int? Status { get; set; }
 
         [JsonProperty("propertyValues")]
-        public PropertyValue2[] PropertyValues { get; set; }
+        public PadocumentsAddPropertyValue[] PropertyValues { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class PropertyValue2
+    public class PadocumentsAddPropertyValue
     {
         [JsonProperty("documentId")]
         public int? DocumentId { get; set; }
@@ -786,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int? DocumentPropertyId { get; set; }
 
         [JsonProperty("documentProperty")]
-        public DocumentProperty2 DocumentProperty { get; set; }
+        public PadocumentsAddDocumentProperty DocumentProperty { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -795,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string ColumnName { get; set; }
     }
 
-    public class DocumentProperty2
+    public class PadocumentsAddDocumentProperty
     {
         [JsonProperty("documentPropertyId")]
         public int? DocumentPropertyId { get; set; }
@@ -804,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int? DocumentTypeId { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentType2 DocumentType { get; set; }
+        public PadocumentsAddDocumentType DocumentType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -816,7 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int? DataTypeId { get; set; }
 
         [JsonProperty("dataType")]
-        public DataType2 DataType { get; set; }
+        public PadocumentsAddDataType DataType { get; set; }
 
         [JsonProperty("optionSetId")]
         public int? OptionSetId { get; set; }
@@ -831,37 +819,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public string InternalName { get; set; }
     }
 
-    public class DataType2
+    public class PadocumentsAddDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class PadocumenttypesAddInput
-    {
-        [JsonProperty("libraryId")]
-        public int? LibraryId { get; set; }
-
-        [JsonProperty("repositoryId")]
-        public int? RepositoryId { get; set; }
-
-        [JsonProperty("documentTypeId")]
-        public int? DocumentTypeId { get; set; }
-
-        [JsonProperty("documentType")]
-        public DocumentType2 DocumentType { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("ocr")]
-        public bool? Ocr { get; set; }
-    }
-
-    public class PadocumenttypesUpdateInput
+    public class DocumentTypeInput
     {
         [JsonProperty("documentTypeId")]
         public int? DocumentTypeId { get; set; }
@@ -871,30 +835,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
 
         [JsonProperty("description")]
         public string Description { get; set; }
-    }
-
-    public class PalibrariesUpdateInput
-    {
-        [JsonProperty("libraryId")]
-        public int? LibraryId { get; set; }
-
-        [JsonProperty("repositoryId")]
-        public int? RepositoryId { get; set; }
-
-        [JsonProperty("documentTypeId")]
-        public int? DocumentTypeId { get; set; }
-
-        [JsonProperty("documentType")]
-        public DocumentType2 DocumentType { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("ocr")]
-        public bool? Ocr { get; set; }
     }
 }
 

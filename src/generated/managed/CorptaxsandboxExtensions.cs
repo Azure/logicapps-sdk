@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     public class CorptaxsandboxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CorptaxEntityViews(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<CorptaxEntityViewsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CorptaxEntityViews(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<CorptaxEntityViewsBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DataExchangeLookup(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<lookupTypeInput>> lookupType, Expression<Func<DataExchangeLookupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DataExchangeLookup(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<LookupTypeInput>> lookupType, Expression<Func<DataExchangeLookupBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EntityList(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<EntityListInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EntityList(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<EntityListBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ExportDataInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ExportDataBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExportDataWithDataSource(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ExportDataWithDataSourceInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExportDataWithDataSource(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ExportDataWithDataSourceBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerCartResponse, ApiConnectionActionConfiguration> TriggerCart(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<TriggerCartInput>> body)
+        public IBodyWorkflowAction<TriggerCartResponse, ApiConnectionActionConfiguration> TriggerCart(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<TriggerCartBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerReturnResponse, ApiConnectionActionConfiguration> TriggerReturn(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<TriggerReturnInput>> body)
+        public IBodyWorkflowAction<TriggerReturnResponse, ApiConnectionActionConfiguration> TriggerReturn(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<TriggerReturnBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<DownloadContentsResponseItem[], ApiConnectionActionConfiguration> DownloadContents(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<DownloadContentsInput>> body)
+        public IBodyWorkflowAction<DownloadContentsResponseItem[], ApiConnectionActionConfiguration> DownloadContents(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<TypeOfActionInput>> typeOfAction, Expression<Func<CheckTriggerStatusBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<CheckTriggerStatusResponse, ApiConnectionActionConfiguration> CheckTriggerStatus(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<CheckTriggerStatusInput>> body)
+        public IBodyWorkflowAction<CheckTriggerStatusResponse, ApiConnectionActionConfiguration> CheckTriggerStatus(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<TypeOfActionInput>> typeOfAction, Expression<Func<CheckTriggerStatusBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<ImportDataResponse, ApiConnectionActionConfiguration> ImportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ImportDataInput>> body)
+        public IBodyWorkflowAction<ImportDataResponse, ApiConnectionActionConfiguration> ImportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ImportDataBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CorptaxEfilePackage(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup, Expression<Func<CorptaxEfilePackageInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CorptaxEfilePackage(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup, Expression<Func<CorptaxEfilePackageBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<GetJobHistoryResponse, ApiConnectionActionConfiguration> GetJobHistory(Expression<Func<string>> environmentName, Expression<Func<GetJobHistoryInput>> body)
+        public IBodyWorkflowAction<GetJobHistoryResponse, ApiConnectionActionConfiguration> GetJobHistory(Expression<Func<string>> environmentName, Expression<Func<GetJobHistoryBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetGmtDiagnostics(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<GetGmtDiagnosticsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetGmtDiagnostics(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<GetGmtDiagnosticsBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ReturnCalculationDetailsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<ReturnCalculationDetailsBodyInput>> body)
         {
             var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
             var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
@@ -294,14 +294,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     {
     }
 
-    public class CorptaxEntityViewsInput
+    public class CorptaxEntityViewsBodyInput
     {
         [JsonProperty("qualifiedviewName")]
         public string QualifiedviewName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum lookupTypeInput
+    public enum LookupTypeInput
     {
         Account,
         Entity,
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         Jurisdiction
     }
 
-    public class DataExchangeLookupInput
+    public class DataExchangeLookupBodyInput
     {
         [JsonProperty("lookupName")]
         public string LookupName { get; set; }
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public bool Details { get; set; }
     }
 
-    public class EntityListInput
+    public class EntityListBodyInput
     {
         [JsonProperty("active")]
         public bool? Active { get; set; }
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string ViewName { get; set; }
     }
 
-    public class ExportDataInput
+    public class ExportDataBodyInput
     {
         [JsonProperty("namedContext")]
         public string NamedContext { get; set; }
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string ProvisionName { get; set; }
     }
 
-    public class ExportDataWithDataSourceInput
+    public class ExportDataWithDataSourceBodyInput
     {
         [JsonProperty("namedContext")]
         public string NamedContext { get; set; }
@@ -392,13 +392,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Message { get; set; }
     }
 
-    public class TriggerCartInput
+    public class TriggerCartBodyInput
     {
         [JsonProperty("cartName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CartName { get; set; }
 
         [JsonProperty("typeOfAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerCartInputTypeOfActionType TypeOfAction { get; set; }
+        public BodyInputTypeOfActionType TypeOfAction { get; set; }
 
         [JsonProperty("namedContext")]
         public string NamedContext { get; set; }
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerCartInputTypeOfActionType
+    public enum BodyInputTypeOfActionType
     {
         Post,
         Print,
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Message { get; set; }
     }
 
-    public class TriggerReturnInput
+    public class TriggerReturnBodyInput
     {
         [JsonProperty("returnName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReturnName { get; set; }
@@ -456,13 +456,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeOfActionInput
+    public enum TypeOfActionInput
     {
         Cart,
         Return
     }
 
-    public class DownloadContentsInput
+    public class CheckTriggerStatusBodyInput
     {
         [JsonProperty("returnOrCartName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReturnOrCartName { get; set; }
@@ -472,12 +472,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     {
         public string OperationId { get; set; }
         public string Status { get; set; }
-    }
-
-    public class CheckTriggerStatusInput
-    {
-        [JsonProperty("returnOrCartName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ReturnOrCartName { get; set; }
     }
 
     public class ImportDataResponse
@@ -493,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Message { get; set; }
     }
 
-    public class ImportDataInput
+    public class ImportDataBodyInput
     {
         [JsonProperty("entityCode")]
         public string EntityCode { get; set; }
@@ -517,7 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string FileName { get; set; }
 
         [JsonProperty("importTransactionType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImportDataInputImportTransactionTypeType ImportTransactionType { get; set; }
+        public BodyInputImportTransactionTypeType ImportTransactionType { get; set; }
 
         [JsonProperty("chartOfAccountsName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChartOfAccountsName { get; set; } = "Corptax.ChartOfAccounts.System";
@@ -529,14 +523,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public bool StopOnLookupErrors { get; set; }
 
         [JsonProperty("ledgerAmountType")]
-        public ImportDataInputLedgerAmountTypeType? LedgerAmountType { get; set; }
+        public BodyInputLedgerAmountTypeType? LedgerAmountType { get; set; }
 
         [JsonProperty("functionalCurrencyValue")]
         public string FunctionalCurrencyValue { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImportDataInputImportTransactionTypeType
+    public enum BodyInputImportTransactionTypeType
     {
         Transaction,
         [EnumMember(Value = "Balance Replace")]
@@ -560,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImportDataInputLedgerAmountTypeType
+    public enum BodyInputLedgerAmountTypeType
     {
         None,
         Gross,
@@ -568,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         TaxEffected
     }
 
-    public class CorptaxEfilePackageInput
+    public class CorptaxEfilePackageBodyInput
     {
         [JsonProperty("entityCode")]
         public string EntityCode { get; set; }
@@ -602,20 +596,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Message { get; set; }
     }
 
-    public class GetJobHistoryInput
+    public class GetJobHistoryBodyInput
     {
         [JsonProperty("jobToken", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JobToken { get; set; }
 
         [JsonProperty("report", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetJobHistoryInputReportType? Report { get; set; } = GetJobHistoryInputReportType.Summary;
+        public BodyInputReportType? Report { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox.BodyInputReportType.Summary;
 
         [JsonProperty("reportFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetJobHistoryInputReportFormatType? ReportFormat { get; set; } = GetJobHistoryInputReportFormatType.Pdf;
+        public BodyInputReportFormatType? ReportFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox.BodyInputReportFormatType.Pdf;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetJobHistoryInputReportType
+    public enum BodyInputReportType
     {
         Summary,
         Reject,
@@ -623,13 +617,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetJobHistoryInputReportFormatType
+    public enum BodyInputReportFormatType
     {
         Xml,
         Pdf
     }
 
-    public class GetGmtDiagnosticsInput
+    public class GetGmtDiagnosticsBodyInput
     {
         [JsonProperty("gmtSetting", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GmtSetting { get; set; }
@@ -638,17 +632,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string GmtDiagnosticName { get; set; }
     }
 
-    public class ReturnCalculationDetailsInput
+    public class ReturnCalculationDetailsBodyInput
     {
         [JsonProperty("returnName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReturnName { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReturnCalculationDetailsInputFormatType? Format { get; set; } = ReturnCalculationDetailsInputFormatType.JSON;
+        public BodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox.BodyInputFormatType.JSON;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReturnCalculationDetailsInputFormatType
+    public enum BodyInputFormatType
     {
         JSON,
         CSV

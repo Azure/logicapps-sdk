@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
     public class EnveloopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
-        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<MessagePostInput>> body = null)
+        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                return new ApiConnectionAction<MessageResponse>(callPayload);
             });
         }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
     {
     }
 
-    public class MessagePostResponse
+    public class MessageResponse
     {
         [JsonProperty("messageId")]
         public string MessageId { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
         public string Body { get; set; }
     }
 
-    public class MessagePostInput
+    public class BodyInput
     {
         [JsonProperty("template")]
         public string Template { get; set; }
@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
         public string Subject { get; set; }
 
         [JsonProperty("templateVariables")]
-        public MessagePostInputTemplateVariablesTypeItem[] TemplateVariables { get; set; }
+        public BodyInputTemplateVariablesTypeItem[] TemplateVariables { get; set; }
     }
 
-    public class MessagePostInputTemplateVariablesTypeItem
+    public class BodyInputTemplateVariablesTypeItem
     {
         [JsonProperty("variableName")]
         public string VariableName { get; set; }

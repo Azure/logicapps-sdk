@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
     public class IntegrablepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LockPdf(Expression<Func<LockPdfInput>> lockPdfInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LockPdf(Expression<Func<LockPdfInputInput>> lockPdfInput)
         {
             var __workflow_lockPdfInput = WorkflowExpression.Compile(lockPdfInput, nameof(lockPdfInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePdf(Expression<Func<MergePdfInput>> mergePdfInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> MergePdf(Expression<Func<MergePdfInputInput>> mergePdfInput)
         {
             var __workflow_mergePdfInput = WorkflowExpression.Compile(mergePdfInput, nameof(mergePdfInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PasswordProtectPdf(Expression<Func<PasswordProtectPdfInput>> passwordProtectPdfInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PasswordProtectPdf(Expression<Func<PasswordProtectPdfInputInput>> passwordProtectPdfInput)
         {
             var __workflow_passwordProtectPdfInput = WorkflowExpression.Compile(passwordProtectPdfInput, nameof(passwordProtectPdfInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfInput>> splitPdfInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfInputInput>> splitPdfInput)
         {
             var __workflow_splitPdfInput = WorkflowExpression.Compile(splitPdfInput, nameof(splitPdfInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnlockPdf(Expression<Func<UnlockPdfInput>> unlockPdfInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UnlockPdf(Expression<Func<UnlockPdfInputInput>> unlockPdfInput)
         {
             var __workflow_unlockPdfInput = WorkflowExpression.Compile(unlockPdfInput, nameof(unlockPdfInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfBackground(Expression<Func<WatermarkPdfBackgroundInput>> watermarkPdfBackgroundInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfBackground(Expression<Func<WatermarkPdfBackgroundInputInput>> watermarkPdfBackgroundInput)
         {
             var __workflow_watermarkPdfBackgroundInput = WorkflowExpression.Compile(watermarkPdfBackgroundInput, nameof(watermarkPdfBackgroundInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfCustom(Expression<Func<WatermarkPdfCustomInput>> watermarkPdfCustomInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfCustom(Expression<Func<WatermarkPdfCustomInputInput>> watermarkPdfCustomInput)
         {
             var __workflow_watermarkPdfCustomInput = WorkflowExpression.Compile(watermarkPdfCustomInput, nameof(watermarkPdfCustomInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfOverlay(Expression<Func<WatermarkPdfOverlayInput>> watermarkPdfOverlayInput)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WatermarkPdfOverlay(Expression<Func<WatermarkPdfOverlayInputInput>> watermarkPdfOverlayInput)
         {
             var __workflow_watermarkPdfOverlayInput = WorkflowExpression.Compile(watermarkPdfOverlayInput, nameof(watermarkPdfOverlayInput), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
     {
     }
 
-    public class LockPdfInput
+    public class LockPdfInputInput
     {
         [JsonProperty("allowAccessibility")]
         public bool? AllowAccessibility { get; set; }
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public string PermissionsPassword { get; set; }
     }
 
-    public class MergePdfInput
+    public class MergePdfInputInput
     {
         [JsonProperty("fileContent1", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent _1stFileContent { get; set; }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent _4thFileContent { get; set; }
     }
 
-    public class PasswordProtectPdfInput
+    public class PasswordProtectPdfInputInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public string Password { get; set; }
     }
 
-    public class SplitPdfInput
+    public class SplitPdfInputInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public int? LastPage { get; set; }
     }
 
-    public class UnlockPdfInput
+    public class UnlockPdfInputInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -215,10 +215,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public string Password { get; set; }
     }
 
-    public class WatermarkPdfBackgroundInput
+    public class WatermarkPdfBackgroundInputInput
     {
         [JsonProperty("color")]
-        public WatermarkPdfBackgroundInputColorType? Color { get; set; }
+        public WatermarkPdfBackgroundInputInputColorType? Color { get; set; }
 
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -236,17 +236,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public double? Margin { get; set; }
 
         [JsonProperty("orientation")]
-        public WatermarkPdfBackgroundInputOrientationType? Orientation { get; set; }
+        public WatermarkPdfBackgroundInputInputOrientationType? Orientation { get; set; }
 
         [JsonProperty("style")]
-        public WatermarkPdfBackgroundInputStyleType? Style { get; set; }
+        public WatermarkPdfBackgroundInputInputStyleType? Style { get; set; }
 
         [JsonProperty("transparency")]
         public double? Transparency { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkPdfBackgroundInputColorType
+    public enum WatermarkPdfBackgroundInputInputColorType
     {
         Gray,
         Red,
@@ -254,20 +254,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkPdfBackgroundInputOrientationType
+    public enum WatermarkPdfBackgroundInputInputOrientationType
     {
         Upward,
         Downward
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkPdfBackgroundInputStyleType
+    public enum WatermarkPdfBackgroundInputInputStyleType
     {
         Solid,
         Outline
     }
 
-    public class WatermarkPdfCustomInput
+    public class WatermarkPdfCustomInputInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -291,10 +291,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public string TemplateId { get; set; }
     }
 
-    public class WatermarkPdfOverlayInput
+    public class WatermarkPdfOverlayInputInput
     {
         [JsonProperty("color")]
-        public WatermarkPdfOverlayInputColorType? Color { get; set; }
+        public WatermarkPdfOverlayInputInputColorType? Color { get; set; }
 
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -312,17 +312,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         public double? Margin { get; set; }
 
         [JsonProperty("orientation")]
-        public WatermarkPdfOverlayInputOrientationType? Orientation { get; set; }
+        public WatermarkPdfOverlayInputInputOrientationType? Orientation { get; set; }
 
         [JsonProperty("style")]
-        public WatermarkPdfOverlayInputStyleType? Style { get; set; }
+        public WatermarkPdfOverlayInputInputStyleType? Style { get; set; }
 
         [JsonProperty("transparency")]
         public double? Transparency { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkPdfOverlayInputColorType
+    public enum WatermarkPdfOverlayInputInputColorType
     {
         Gray,
         Red,
@@ -330,14 +330,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkPdfOverlayInputOrientationType
+    public enum WatermarkPdfOverlayInputInputOrientationType
     {
         Upward,
         Downward
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WatermarkPdfOverlayInputStyleType
+    public enum WatermarkPdfOverlayInputInputStyleType
     {
         Solid,
         Outline

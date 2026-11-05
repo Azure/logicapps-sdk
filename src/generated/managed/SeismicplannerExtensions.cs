@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<CreateCommentInput>> body)
+        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<CreateCommentBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> UpdateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<string>> commentId, Expression<Func<UpdateCommentInput>> body)
+        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> UpdateComment(Expression<Func<string>> spaceId, Expression<Func<string>> nodeId, Expression<Func<string>> commentId, Expression<Func<CreateCommentBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> spaceId, Expression<Func<CreateProjectInput>> body)
+        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> spaceId, Expression<Func<CreateProjectBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> spaceId, Expression<Func<string>> projectId, Expression<Func<UpdateProjectInput>> body)
+        public IBodyWorkflowAction<PlannerProject, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> spaceId, Expression<Func<string>> projectId, Expression<Func<UpdateProjectBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerRequestQueryResponse, ApiConnectionActionConfiguration> GetRequests(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<prioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> contentRefs = null, Expression<Func<bool>> includeRequestFormCustomProperties = null)
+        public IBodyWorkflowAction<PlannerRequestQueryResponse, ApiConnectionActionConfiguration> GetRequests(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<PrioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> contentRefs = null, Expression<Func<bool>> includeRequestFormCustomProperties = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_plannedEndDateFrom = WorkflowExpression.Compile(plannedEndDateFrom, nameof(plannedEndDateFrom), required: false);
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<AsyncOperationResponse, ApiConnectionActionConfiguration> DeleteRequests(Expression<Func<string>> spaceId, Expression<Func<DeleteRequestsInput>> body, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<AsyncOperationResponse, ApiConnectionActionConfiguration> DeleteRequests(Expression<Func<string>> spaceId, Expression<Func<DeleteRequestsBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> spaceId, Expression<Func<CreateRequestInput>> body)
+        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> spaceId, Expression<Func<CreateRequestBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> spaceId, Expression<Func<string>> requestId, Expression<Func<UpdateRequestInput>> body)
+        public IBodyWorkflowAction<PlannerRequest, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> spaceId, Expression<Func<string>> requestId, Expression<Func<UpdateRequestBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<StatusSchemaQueryResponse, ApiConnectionActionConfiguration> GetStatusSchemas(Expression<Func<string>> spaceId, Expression<Func<bool>> isDefault = null, Expression<Func<typeInput>> type = null, Expression<Func<string[]>> ids = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<StatusSchemaQueryResponse, ApiConnectionActionConfiguration> GetStatusSchemas(Expression<Func<string>> spaceId, Expression<Func<bool>> isDefault = null, Expression<Func<TypeInput>> type = null, Expression<Func<string[]>> ids = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_isDefault = WorkflowExpression.Compile(isDefault, nameof(isDefault), required: false);
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerTaskQueryResponse, ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string>> description = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<prioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<bool>> recursive = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<bool>> includeAssociations = null, Expression<Func<string>> parentId = null)
+        public IBodyWorkflowAction<PlannerTaskQueryResponse, ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> spaceId, Expression<Func<string>> plannedEndDateFrom = null, Expression<Func<string>> plannedEndDateTo = null, Expression<Func<string>> plannedStartDateFrom = null, Expression<Func<string>> plannedStartDateTo = null, Expression<Func<string>> createdAtFrom = null, Expression<Func<string>> createdAtTo = null, Expression<Func<string>> updatedAtFrom = null, Expression<Func<string>> updatedAtTo = null, Expression<Func<string[]>> ids = null, Expression<Func<string>> title = null, Expression<Func<string>> description = null, Expression<Func<string[]>> assigneeIds = null, Expression<Func<PrioritiesInputItem[]>> priorities = null, Expression<Func<string>> keywords = null, Expression<Func<string[]>> assignerIds = null, Expression<Func<int[]>> stepIds = null, Expression<Func<string>> statusSchemaId = null, Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<string[]>> sort = null, Expression<Func<bool>> recursive = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> hasProject = null, Expression<Func<string>> customProperties = null, Expression<Func<string[]>> followerIds = null, Expression<Func<string[]>> associatedNodeIds = null, Expression<Func<string[]>> creatorIds = null, Expression<Func<bool>> includeAssociations = null, Expression<Func<string>> parentId = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_plannedEndDateFrom = WorkflowExpression.Compile(plannedEndDateFrom, nameof(plannedEndDateFrom), required: false);
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> spaceId, Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> spaceId, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicplanner")]
-        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> spaceId, Expression<Func<string>> taskId, Expression<Func<UpdateTaskInput>> body)
+        public IBodyWorkflowAction<PlannerTask, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> spaceId, Expression<Func<string>> taskId, Expression<Func<UpdateTaskBodyInput>> body)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
@@ -718,22 +718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string[] Sort { get; set; }
     }
 
-    public class CreateCommentInput
-    {
-        [JsonProperty("annotationPayload")]
-        public string AnnotationPayload { get; set; }
-
-        [JsonProperty("annotationType")]
-        public string AnnotationType { get; set; }
-
-        [JsonProperty("commentContent")]
-        public string CommentContent { get; set; }
-
-        [JsonProperty("isResolved")]
-        public bool? IsResolved { get; set; }
-    }
-
-    public class UpdateCommentInput
+    public class CreateCommentBodyInput
     {
         [JsonProperty("annotationPayload")]
         public string AnnotationPayload { get; set; }
@@ -793,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -906,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         Content
     }
 
-    public class CustomPropertyValues
+    public class CreateProjectCustomPropertyValuesResponse
     {
         [JsonProperty("id")]
         public string CustomPropertyId { get; set; }
@@ -921,10 +906,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Name { get; set; }
 
         [JsonProperty("values")]
-        public CustomPropertyValuesValues[] Values { get; set; }
+        public CreateProjectCustomPropertyValuesValuesResponse[] Values { get; set; }
     }
 
-    public class CustomPropertyValuesValues
+    public class CreateProjectCustomPropertyValuesValuesResponse
     {
         [JsonProperty("id")]
         public string ValueId { get; set; }
@@ -981,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1093,7 +1078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1193,7 +1178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string[] AsyncOperationIDs { get; set; }
     }
 
-    public class CreateProjectInput
+    public class CreateProjectBodyInput
     {
         [JsonProperty("associations")]
         public AssociationReq[] Associations { get; set; }
@@ -1251,13 +1236,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CustomPropertyId { get; set; }
 
         [JsonProperty("values")]
-        public CustomPropertyValuesValues[] Values { get; set; }
+        public CreateProjectCustomPropertyValuesValues[] Values { get; set; }
     }
 
-    public class UpdateProjectInput
+    public class CreateProjectCustomPropertyValuesValues
+    {
+        [JsonProperty("id")]
+        public string ValueId { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+    }
+
+    public class UpdateProjectBodyInput
     {
         [JsonProperty("customProperties")]
-        public CustomPropertyValues2[] CustomProperties { get; set; }
+        public UpdateProjectCustomPropertyValues[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1287,7 +1281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Title { get; set; }
     }
 
-    public class CustomPropertyValues2
+    public class UpdateProjectCustomPropertyValues
     {
         [JsonProperty("id")]
         public string CustomPropertyId { get; set; }
@@ -1302,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Name { get; set; }
 
         [JsonProperty("values")]
-        public CustomPropertyValuesValues[] Values { get; set; }
+        public CreateProjectCustomPropertyValuesValues[] Values { get; set; }
     }
 
     public class PlannerRequestQueryResponse
@@ -1335,7 +1329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public Association[] Associations { get; set; }
 
         [JsonProperty("contentRefs")]
-        public ContentRef[] ContentReferenceObjects { get; set; }
+        public CreateRequestContentRefResponse[] ContentReferenceObjects { get; set; }
 
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; }
@@ -1344,7 +1338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string CreatorId { get; set; }
 
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CreateProjectCustomPropertyValuesResponse[] CustomProperties { get; set; }
 
         [JsonProperty("followers")]
         public Follower[] Followers { get; set; }
@@ -1395,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string UpdatedAt { get; set; }
     }
 
-    public class ContentRef
+    public class CreateRequestContentRefResponse
     {
         [JsonProperty("contentId")]
         public string ContentId { get; set; }
@@ -1422,7 +1416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string ProfileVersionId { get; set; }
 
         [JsonProperty("source")]
-        public ContentRefSourceType Source { get; set; }
+        public CreateRequestContentRefSourceTypeResponse Source { get; set; }
 
         [JsonProperty("teamSiteId")]
         public string TeamSiteId { get; set; }
@@ -1435,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContentRefSourceType
+    public enum CreateRequestContentRefSourceTypeResponse
     {
         Library,
         DocCenter,
@@ -1603,7 +1597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum prioritiesInputItem
+    public enum PrioritiesInputItem
     {
         [EnumMember(Value = "critical")]
         Critical,
@@ -1617,13 +1611,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         NoPriority
     }
 
-    public class DeleteRequestsInput
+    public class DeleteRequestsBodyInput
     {
         [JsonProperty("ids")]
         public string[] RequestIDs { get; set; }
     }
 
-    public class CreateRequestInput
+    public class CreateRequestBodyInput
     {
         [JsonProperty("assigneeId")]
         public string AssigneeId { get; set; }
@@ -1632,7 +1626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public AssociationReq[] Associations { get; set; }
 
         [JsonProperty("contentRefs")]
-        public ContentRef2[] ContentReferences { get; set; }
+        public CreateRequestContentRef[] ContentReferences { get; set; }
 
         [JsonProperty("customProperties")]
         public CustomPropertyValuesInput[] CustomProperties { get; set; }
@@ -1650,7 +1644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string PlannedStartDate { get; set; }
 
         [JsonProperty("priority")]
-        public CreateRequestInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("projectId")]
         public string ProjectId { get; set; }
@@ -1662,7 +1656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Title { get; set; }
     }
 
-    public class ContentRef2
+    public class CreateRequestContentRef
     {
         [JsonProperty("contentId")]
         public string ContentId { get; set; }
@@ -1689,7 +1683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string ProfileVersionId { get; set; }
 
         [JsonProperty("source")]
-        public ContentRefSourceType? Source { get; set; }
+        public CreateRequestContentRefSourceType? Source { get; set; }
 
         [JsonProperty("teamSiteId")]
         public string TeamSiteId { get; set; }
@@ -1702,7 +1696,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateRequestInputPriorityType
+    public enum CreateRequestContentRefSourceType
+    {
+        Library,
+        DocCenter,
+        NewsCenter,
+        Workspace
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputPriorityType
     {
         [EnumMember(Value = "low")]
         Low,
@@ -1714,13 +1717,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         Critical
     }
 
-    public class UpdateRequestInput
+    public class UpdateRequestBodyInput
     {
         [JsonProperty("assigneeId")]
         public string AssigneeId { get; set; }
 
         [JsonProperty("contentRefs")]
-        public ContentRef2[] ContentReferenceObjects { get; set; }
+        public CreateRequestContentRef[] ContentReferenceObjects { get; set; }
 
         [JsonProperty("customProperties")]
         public CustomPropertyValuesInput[] CustomProperties { get; set; }
@@ -1741,7 +1744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string PlannedStartDate { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateRequestInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("projectId")]
         public string ProjectId { get; set; }
@@ -1751,19 +1754,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
 
         [JsonProperty("title")]
         public string Title { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateRequestInputPriorityType
-    {
-        [EnumMember(Value = "low")]
-        Low,
-        [EnumMember(Value = "medium")]
-        Medium,
-        [EnumMember(Value = "high")]
-        High,
-        [EnumMember(Value = "critical")]
-        Critical
     }
 
     public class StatusSchemaQueryResponse
@@ -1827,7 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "task")]
         TaskObject,
@@ -1853,7 +1843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public Meta Meta { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("assigneeId")]
         public string AssigneeId { get; set; }
@@ -1880,7 +1870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string PlannedStartDate { get; set; }
 
         [JsonProperty("priority")]
-        public CreateTaskInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("projectId")]
         public string ProjectId { get; set; }
@@ -1889,20 +1879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Title { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskInputPriorityType
-    {
-        [EnumMember(Value = "low")]
-        Low,
-        [EnumMember(Value = "medium")]
-        Medium,
-        [EnumMember(Value = "high")]
-        High,
-        [EnumMember(Value = "critical")]
-        Critical
-    }
-
-    public class UpdateTaskInput
+    public class UpdateTaskBodyInput
     {
         [JsonProperty("assigneeId")]
         public string AssigneeId { get; set; }
@@ -1926,7 +1903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string PlannedStartDate { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateTaskInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("projectId")]
         public string ProjectId { get; set; }
@@ -1936,19 +1913,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
 
         [JsonProperty("title")]
         public string Title { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputPriorityType
-    {
-        [EnumMember(Value = "low")]
-        Low,
-        [EnumMember(Value = "medium")]
-        Medium,
-        [EnumMember(Value = "high")]
-        High,
-        [EnumMember(Value = "critical")]
-        Critical
     }
 }
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
     public class SendansmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<SendSmsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_xTopMessageKey = WorkflowExpression.Compile(xTopMessageKey, nameof(xTopMessageKey), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
     {
     }
 
-    public class SendSmsInput
+    public class BodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSmsInputDataType Data { get; set; }
+        public BodyInputDataType Data { get; set; }
     }
 
-    public class SendSmsInputDataType
+    public class BodyInputDataType
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }

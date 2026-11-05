@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<CreateIncidentInput>> body)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<CreateIncidentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration>(() =>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> UpdateIncident(Expression<Func<string>> id, Expression<Func<UpdateIncidentInput>> body = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> UpdateIncident(Expression<Func<string>> id, Expression<Func<UpdateIncidentBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> CreateServiceRequest(Expression<Func<CreateServiceRequestInput>> body)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> CreateServiceRequest(Expression<Func<CreateServiceRequestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<UpdateServiceRequestInput>> body = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<UpdateIncidentBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> CreateChangeRequest(Expression<Func<CreateChangeRequestInput>> body)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> CreateChangeRequest(Expression<Func<CreateChangeRequestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration>(() =>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<UpdateChangeRequestInput>> body = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<CreateChangeRequestBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> CreateProblem(Expression<Func<CreateProblemInput>> body)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> CreateProblem(Expression<Func<CreateProblemBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration>(() =>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> UpdateProblem(Expression<Func<string>> id, Expression<Func<UpdateProblemInput>> body = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse, ApiConnectionActionConfiguration> UpdateProblem(Expression<Func<string>> id, Expression<Func<CreateProblemBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> CreateReleaseRecord(Expression<Func<CreateReleaseRecordInput>> body)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> CreateReleaseRecord(Expression<Func<CreateReleaseRecordBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration>(() =>
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<UpdateReleaseRecordInput>> body = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse, ApiConnectionActionConfiguration> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<CreateReleaseRecordBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemActionLogResponse, ApiConnectionActionConfiguration> AddCommentLog(Expression<Func<string>> id, Expression<Func<AddCommentLogInput>> body = null)
+        public IBodyWorkflowAction<WorkItemActionLogResponse, ApiConnectionActionConfiguration> AddCommentLog(Expression<Func<string>> id, Expression<Func<AddCommentLogBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 
     public class CiresonservicemanageTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<CreateWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<WebhookSettings, ApiConnectionTriggerConfiguration>(() =>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateActionLogWebhook(Expression<Func<CreateActionLogWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings, ApiConnectionTriggerConfiguration> CreateActionLogWebhook(Expression<Func<CreateActionLogWebhookBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<WebhookSettings, ApiConnectionTriggerConfiguration>(() =>
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public JToken RequestedWorkItem { get; set; }
     }
 
-    public class CreateIncidentInput
+    public class CreateIncidentBodyInput
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public string AssignedUser { get; set; }
     }
 
-    public class UpdateIncidentInput
+    public class UpdateIncidentBodyInput
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public JToken RequestedWorkItem { get; set; }
     }
 
-    public class CreateServiceRequestInput
+    public class CreateServiceRequestBodyInput
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -371,26 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public string AssignedUser { get; set; }
     }
 
-    public class UpdateServiceRequestInput
-    {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public int? Priority { get; set; }
-        public string Classification { get; set; }
-        public string Urgency { get; set; }
-        public string Impact { get; set; }
-        public string Source { get; set; }
-        public string SupportGroup { get; set; }
-        public string Status { get; set; }
-
-        [JsonProperty("RequestedWorkItem")]
-        public string AffectedUser { get; set; }
-
-        [JsonProperty("AssignedWorkItem")]
-        public string AssignedUser { get; set; }
-    }
-
-    public class CreateChangeRequestInput
+    public class CreateChangeRequestBodyInput
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -404,21 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public string AssignedUser { get; set; }
     }
 
-    public class UpdateChangeRequestInput
-    {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Priority { get; set; }
-        public string Area { get; set; }
-        public string Impact { get; set; }
-        public string Risk { get; set; }
-        public string Status { get; set; }
-
-        [JsonProperty("AssignedWorkItem")]
-        public string AssignedUser { get; set; }
-    }
-
-    public class CreateProblemInput
+    public class CreateProblemBodyInput
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -433,37 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public string AssignedUser { get; set; }
     }
 
-    public class UpdateProblemInput
-    {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Priority { get; set; }
-        public string Source { get; set; }
-        public string Category { get; set; }
-        public string Impact { get; set; }
-        public string Urgency { get; set; }
-        public string Status { get; set; }
-
-        [JsonProperty("AssignedWorkItem")]
-        public string AssignedUser { get; set; }
-    }
-
-    public class CreateReleaseRecordInput
-    {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public string Type { get; set; }
-        public string Category { get; set; }
-        public string Impact { get; set; }
-        public string Risk { get; set; }
-        public string Priority { get; set; }
-        public string Status { get; set; }
-
-        [JsonProperty("AssignedWorkItem")]
-        public string AssignedUser { get; set; }
-    }
-
-    public class UpdateReleaseRecordInput
+    public class CreateReleaseRecordBodyInput
     {
         public string Title { get; set; }
         public string Description { get; set; }
@@ -486,16 +423,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public JToken AppliesToWorkItem { get; set; }
     }
 
-    public class AddCommentLogInput
+    public class AddCommentLogBodyInput
     {
         public string Description { get; set; }
         public string EnteredBy { get; set; }
         public bool? IsPrivate { get; set; }
-        public AddCommentLogInputActionTypeType? ActionType { get; set; }
+        public BodyInputActionTypeType? ActionType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddCommentLogInputActionTypeType
+    public enum BodyInputActionTypeType
     {
         [EnumMember(Value = "Analyst Comment")]
         AnalystComment,
@@ -521,23 +458,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public string CreatedDate { get; set; }
     }
 
-    public class CreateWebhookInput
+    public class CreateWebhookBodyInput
     {
         [JsonProperty("webhookSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookInputWebhookSettingsType WebhookSettings { get; set; } = new CreateWebhookInputWebhookSettingsType();
+        public CreateWebhookBodyInputWebhookSettingsType WebhookSettings { get; set; } = new CreateWebhookBodyInputWebhookSettingsType();
     }
 
-    public class CreateWebhookInputWebhookSettingsType
+    public class CreateWebhookBodyInputWebhookSettingsType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookInputWebhookSettingsTypeWorkItemClassTypeType WorkItemClassType { get; set; } = CreateWebhookInputWebhookSettingsTypeWorkItemClassTypeType.Incident;
+        public CreateWebhookBodyInputWebhookSettingsTypeWorkItemClassTypeType WorkItemClassType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage.CreateWebhookBodyInputWebhookSettingsTypeWorkItemClassTypeType.Incident;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookInputWebhookSettingsTypeWorkItemClassTypeType
+    public enum CreateWebhookBodyInputWebhookSettingsTypeWorkItemClassTypeType
     {
         Incident,
         [EnumMember(Value = "Service Request")]
@@ -549,23 +486,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         ReleaseRecord
     }
 
-    public class CreateActionLogWebhookInput
+    public class CreateActionLogWebhookBodyInput
     {
         [JsonProperty("webhookSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateActionLogWebhookInputWebhookSettingsType WebhookSettings { get; set; } = new CreateActionLogWebhookInputWebhookSettingsType();
+        public CreateActionLogWebhookBodyInputWebhookSettingsType WebhookSettings { get; set; } = new CreateActionLogWebhookBodyInputWebhookSettingsType();
     }
 
-    public class CreateActionLogWebhookInputWebhookSettingsType
+    public class CreateActionLogWebhookBodyInputWebhookSettingsType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateActionLogWebhookInputWebhookSettingsTypeWorkItemClassTypeType WorkItemClassType { get; set; } = CreateActionLogWebhookInputWebhookSettingsTypeWorkItemClassTypeType.AnalystComment;
+        public CreateActionLogWebhookBodyInputWebhookSettingsTypeWorkItemClassTypeType WorkItemClassType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage.CreateActionLogWebhookBodyInputWebhookSettingsTypeWorkItemClassTypeType.AnalystComment;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateActionLogWebhookInputWebhookSettingsTypeWorkItemClassTypeType
+    public enum CreateActionLogWebhookBodyInputWebhookSettingsTypeWorkItemClassTypeType
     {
         [EnumMember(Value = "Analyst Comment")]
         AnalystComment,

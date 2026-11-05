@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<GetQuestionResponse, ApiConnectionActionConfiguration> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<difficultyInput>> difficulty = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<GetQuestionResponse, ApiConnectionActionConfiguration> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<DifficultyInput>> difficulty = null, Expression<Func<TypeInput>> type = null)
         {
             var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum difficultyInput
+    public enum DifficultyInput
     {
         [EnumMember(Value = "easy")]
         Easy,
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "boolean")]
         Boolean,

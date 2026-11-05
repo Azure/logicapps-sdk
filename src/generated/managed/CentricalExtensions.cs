@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
     public class CentricalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostLearning(Expression<Func<string>> learningType, Expression<Func<PostLearningInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostLearning(Expression<Func<string>> learningType, Expression<Func<PostLearningBodyInput>> body)
         {
             var __workflow_learningType = WorkflowExpression.Compile(learningType, nameof(learningType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostPerformance(Expression<Func<string>> performanceType, Expression<Func<PostPerformanceInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostPerformance(Expression<Func<string>> performanceType, Expression<Func<PostPerformanceBodyInput>> body)
         {
             var __workflow_performanceType = WorkflowExpression.Compile(performanceType, nameof(performanceType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
     {
     }
 
-    public class PostLearningInput
+    public class PostLearningBodyInput
     {
         [JsonProperty("event_time", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
         public string ContentCategory { get; set; }
     }
 
-    public class PostPerformanceInput
+    public class PostPerformanceBodyInput
     {
         [JsonProperty("event_time", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }

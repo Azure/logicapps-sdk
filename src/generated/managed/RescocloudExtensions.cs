@@ -32,11 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
 
     public class RescocloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCreate(Expression<Func<string>> entity, Expression<Func<actionInput>> action, Expression<Func<TriggerCreateInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCreate(Expression<Func<string>> entity, Expression<Func<ActionInput>> action, FlowRecurrence recurrence = null)
         {
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_action = WorkflowExpression.Compile(action, nameof(action), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/$hook";
@@ -44,8 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$entity"] = ExpressionConverter.Convert(__workflow_entity);
                 callPayload.Queries["$action"] = ExpressionConverter.Convert(__workflow_action);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -88,14 +86,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum actionInput
+    public enum ActionInput
     {
         Create,
         Update,
         Delete
     }
 
-    public class TriggerCreateInput
+    public class BodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

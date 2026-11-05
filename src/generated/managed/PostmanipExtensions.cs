@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
     public class PostmanipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ListWorkspacesResponse, ApiConnectionActionConfiguration> ListWorkspaces(Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<ListWorkspacesResponse, ApiConnectionActionConfiguration> ListWorkspaces(Expression<Func<TypeInput>> type = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<ListWorkspacesResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration> CreateAWorkspace(Expression<Func<CreateAWorkspaceInput>> body)
+        public IBodyWorkflowAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration> CreateAWorkspace(Expression<Func<CreateAWorkspaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAWorkspaceResponse, ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
-        public IBodyWorkflowAction<ImportOpenApiResponse, ApiConnectionActionConfiguration> ImportOpenApi(Expression<Func<ImportOpenApiInput>> body, Expression<Func<string>> workspace = null)
+        public IBodyWorkflowAction<ImportOpenApiResponse, ApiConnectionActionConfiguration> ImportOpenApi(Expression<Func<ImportOpenApiBodyInput>> body, Expression<Func<string>> workspace = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "personal")]
         Personal,
@@ -200,13 +200,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Name { get; set; }
     }
 
-    public class CreateAWorkspaceInput
+    public class CreateAWorkspaceBodyInput
     {
         [JsonProperty("workspace")]
-        public CreateAWorkspaceInputWorkspaceType Workspace { get; set; }
+        public BodyInputWorkspaceType Workspace { get; set; }
     }
 
-    public class CreateAWorkspaceInputWorkspaceType
+    public class BodyInputWorkspaceType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -215,11 +215,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Description { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAWorkspaceInputWorkspaceTypeTypeType Type { get; set; }
+        public BodyInputWorkspaceTypeTypeType Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAWorkspaceInputWorkspaceTypeTypeType
+    public enum BodyInputWorkspaceTypeTypeType
     {
         [EnumMember(Value = "personal")]
         Personal,
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Uid { get; set; }
     }
 
-    public class ImportOpenApiInput
+    public class ImportOpenApiBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "json";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
     public class TesseroninvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse, ApiConnectionActionConfiguration> GetServiceAssignmentsDispatcher(Expression<Func<GetServiceAssignmentsDispatcherInput>> body)
+        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse, ApiConnectionActionConfiguration> GetServiceAssignmentsDispatcher(Expression<Func<GetServiceAssignmentsDispatcherBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetServiceAssignmentsDispatcherResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateActivityRecordingResponse, ApiConnectionActionConfiguration> CreateActivityRecording(Expression<Func<CreateActivityRecordingInput>> body)
+        public IBodyWorkflowAction<CreateActivityRecordingResponse, ApiConnectionActionConfiguration> CreateActivityRecording(Expression<Func<CreateActivityRecordingBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateActivityRecordingResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse, ApiConnectionActionConfiguration> CreateInvoicePositionNote(Expression<Func<CreateInvoicePositionNoteInput>> body)
+        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse, ApiConnectionActionConfiguration> CreateInvoicePositionNote(Expression<Func<CreateInvoicePositionNoteBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateInvoicePositionNoteResponse, ApiConnectionActionConfiguration>(() =>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         public string ArticleName { get; set; }
     }
 
-    public class GetServiceAssignmentsDispatcherInput
+    public class GetServiceAssignmentsDispatcherBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Skip { get; set; } = 0;
@@ -160,10 +160,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         public bool? TakeAll { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetServiceAssignmentsDispatcherInputAdditionalSearchDataType AdditionalSearchData { get; set; }
+        public BodyInputAdditionalSearchDataType AdditionalSearchData { get; set; }
     }
 
-    public class GetServiceAssignmentsDispatcherInputAdditionalSearchDataType
+    public class BodyInputAdditionalSearchDataType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTimeFrom { get; set; }
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         public string ActivityRecordingId { get; set; }
     }
 
-    public class CreateActivityRecordingInput
+    public class CreateActivityRecordingBodyInput
     {
         [JsonProperty("dateFrom", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateFrom { get; set; }
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         public bool Success { get; set; }
     }
 
-    public class CreateInvoicePositionNoteInput
+    public class CreateInvoicePositionNoteBodyInput
     {
         [JsonProperty("dateFrom", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateFrom { get; set; }

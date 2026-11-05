@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
     public class FaceapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<AddPersonFaceResponse, ApiConnectionActionConfiguration> AddFaceToFaceList(Expression<Func<string>> subdomain, Expression<Func<AddFaceToFaceListV2Input>> body, Expression<Func<string>> faceListId, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
+        public IBodyWorkflowAction<AddPersonFaceResponse, ApiConnectionActionConfiguration> AddFaceToFaceList(Expression<Func<string>> subdomain, Expression<Func<AddFaceToFaceListBodyInput>> body, Expression<Func<string>> faceListId, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<AddPersonFaceResponse, ApiConnectionActionConfiguration> AddPersonFace(Expression<Func<string>> subdomain, Expression<Func<string>> personGroupId, Expression<Func<string>> personId, Expression<Func<AddPersonFaceV2Input>> body, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
+        public IBodyWorkflowAction<AddPersonFaceResponse, ApiConnectionActionConfiguration> AddPersonFace(Expression<Func<string>> subdomain, Expression<Func<string>> personGroupId, Expression<Func<string>> personId, Expression<Func<AddPersonFaceBodyInput>> body, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             var __workflow_personGroupId = WorkflowExpression.Compile(personGroupId, nameof(personGroupId), required: true);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateFaceList(Expression<Func<string>> subdomain, Expression<Func<string>> faceListId, Expression<Func<CreateFaceListV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateFaceList(Expression<Func<string>> subdomain, Expression<Func<string>> faceListId, Expression<Func<CreateFaceListBodyInput>> body)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             var __workflow_faceListId = WorkflowExpression.Compile(faceListId, nameof(faceListId), required: true);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<string>> subdomain, Expression<Func<string>> personGroupId, Expression<Func<CreatePersonV2Input>> body)
+        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<string>> subdomain, Expression<Func<string>> personGroupId, Expression<Func<CreatePersonBodyInput>> body)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             var __workflow_personGroupId = WorkflowExpression.Compile(personGroupId, nameof(personGroupId), required: true);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreatePersonGroup(Expression<Func<string>> subdomain, Expression<Func<string>> personGroupId, Expression<Func<CreatePersonGroupV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreatePersonGroup(Expression<Func<string>> subdomain, Expression<Func<string>> personGroupId, Expression<Func<CreatePersonBodyInput>> body)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             var __workflow_personGroupId = WorkflowExpression.Compile(personGroupId, nameof(personGroupId), required: true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<DetectResponseItem[], ApiConnectionActionConfiguration> Detect(Expression<Func<string>> subdomain, Expression<Func<DetectV2Input>> body)
+        public IBodyWorkflowAction<DetectResponseItem[], ApiConnectionActionConfiguration> Detect(Expression<Func<string>> subdomain, Expression<Func<AddPersonFaceBodyInput>> body)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<VerifyResponse, ApiConnectionActionConfiguration> Verify(Expression<Func<string>> subdomain, Expression<Func<VerifyV2Input>> body)
+        public IBodyWorkflowAction<VerifyResponse, ApiConnectionActionConfiguration> Verify(Expression<Func<string>> subdomain, Expression<Func<VerifyBodyInput>> body)
         {
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -208,19 +208,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         public string PersistedFaceId { get; set; }
     }
 
-    public class AddFaceToFaceListV2Input
+    public class AddFaceToFaceListBodyInput
     {
         [JsonProperty("url")]
         public string ImageUrl { get; set; }
     }
 
-    public class AddPersonFaceV2Input
+    public class AddPersonFaceBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImageUrl { get; set; }
     }
 
-    public class CreateFaceListV2Input
+    public class CreateFaceListBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FaceListName { get; set; }
@@ -235,16 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         public string PersonId { get; set; }
     }
 
-    public class CreatePersonV2Input
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("userData")]
-        public string UserData { get; set; }
-    }
-
-    public class CreatePersonGroupV2Input
+    public class CreatePersonBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -631,12 +622,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         public double HeadPoseYaw { get; set; }
     }
 
-    public class DetectV2Input
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageUrl { get; set; }
-    }
-
     public class GetFaceListResponse
     {
         [JsonProperty("persistedFaces")]
@@ -712,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         public double Confidence { get; set; }
     }
 
-    public class VerifyV2Input
+    public class VerifyBodyInput
     {
         [JsonProperty("faceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FaceId { get; set; }

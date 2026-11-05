@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactId, Expression<Func<UpdateContactInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactId, Expression<Func<UpdateContactBodyInput>> body)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateInvoice(Expression<Func<string>> id, Expression<Func<UpdateInvoiceInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateInvoice(Expression<Func<string>> id, Expression<Func<UpdateInvoiceBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<CreateInvoiceResponse, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<CreateInvoiceInput>> body)
+        public IBodyWorkflowAction<CreateInvoiceResponse, ApiConnectionActionConfiguration> CreateInvoice(Expression<Func<CreateInvoiceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateInvoiceResponse, ApiConnectionActionConfiguration>(() =>
@@ -318,13 +318,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string UpdatedAt { get; set; }
     }
 
-    public class UpdateContactInput
+    public class UpdateContactBodyInput
     {
         [JsonProperty("contact")]
-        public UpdateContactInputContactType Contact { get; set; }
+        public UpdateContactBodyInputContactType Contact { get; set; }
     }
 
-    public class UpdateContactInputContactType
+    public class UpdateContactBodyInputContactType
     {
         [JsonProperty("contact_name_on_invoices")]
         public bool? ContactNameOnInvoices { get; set; }
@@ -450,13 +450,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string Quantity { get; set; }
     }
 
-    public class UpdateInvoiceInput
+    public class UpdateInvoiceBodyInput
     {
         [JsonProperty("invoice")]
-        public UpdateInvoiceInputInvoiceType Invoice { get; set; }
+        public UpdateInvoiceBodyInputInvoiceType Invoice { get; set; }
     }
 
-    public class UpdateInvoiceInputInvoiceType
+    public class UpdateInvoiceBodyInputInvoiceType
     {
         [JsonProperty("dated_on")]
         public string DatedOn { get; set; }
@@ -474,16 +474,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string Status { get; set; }
 
         [JsonProperty("invoice_items")]
-        public UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItem[] InvoiceItems { get; set; }
+        public BodyInputInvoiceTypeInvoiceItemsTypeItem[] InvoiceItems { get; set; }
     }
 
-    public class UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItem
+    public class BodyInputInvoiceTypeInvoiceItemsTypeItem
     {
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("item_type")]
-        public UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItemItemTypeType? ItemType { get; set; }
+        public BodyInputInvoiceTypeInvoiceItemsTypeItemItemTypeType? ItemType { get; set; }
 
         [JsonProperty("price")]
         public string Price { get; set; }
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateInvoiceInputInvoiceTypeInvoiceItemsTypeItemItemTypeType
+    public enum BodyInputInvoiceTypeInvoiceItemsTypeItemItemTypeType
     {
         Hours,
         Days,
@@ -692,13 +692,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string UpdatedAt { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("contact")]
-        public CreateContactInputContactType Contact { get; set; }
+        public CreateContactBodyInputContactType Contact { get; set; }
     }
 
-    public class CreateContactInputContactType
+    public class CreateContactBodyInputContactType
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1001,13 +1001,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string Quantity { get; set; }
     }
 
-    public class CreateInvoiceInput
+    public class CreateInvoiceBodyInput
     {
         [JsonProperty("invoice")]
-        public CreateInvoiceInputInvoiceType Invoice { get; set; }
+        public CreateInvoiceBodyInputInvoiceType Invoice { get; set; }
     }
 
-    public class CreateInvoiceInputInvoiceType
+    public class CreateInvoiceBodyInputInvoiceType
     {
         [JsonProperty("contact")]
         public string Contact { get; set; }

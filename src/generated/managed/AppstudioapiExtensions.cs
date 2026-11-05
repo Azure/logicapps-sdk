@@ -16,23 +16,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 
     public class AppstudioapiTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ApiHooksSubscribePost(Expression<Func<string>> solutionId, Expression<Func<ApiHooksSubscribePostInput>> data, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ApiHooksSubscribePost(Expression<Func<string>> solutionId, FlowRecurrence recurrence = null)
         {
             var __workflow_solutionId = WorkflowExpression.Compile(solutionId, nameof(solutionId), required: true);
-            var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/Hooks/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["solutionId"] = ExpressionConverter.Convert(__workflow_solutionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
+                callPayload.Body = new DataInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class ApiHooksSubscribePostInput
+    public class DataInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

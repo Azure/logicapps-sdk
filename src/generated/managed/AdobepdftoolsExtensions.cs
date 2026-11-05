@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
     public class AdobepdftoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
-        public IBodyWorkflowAction<CombinePDFResponse, ApiConnectionActionConfiguration> CombinePDF(Expression<Func<CombinePDFInput>> filesArray, Expression<Func<xRegionValueInput>> xRegionValue = null)
+        public IBodyWorkflowAction<CombinePDFResponse, ApiConnectionActionConfiguration> CombinePDF(Expression<Func<FilesArrayInput>> filesArray, Expression<Func<XRegionValueInput>> xRegionValue = null)
         {
             var __workflow_filesArray = WorkflowExpression.Compile(filesArray, nameof(filesArray), required: true);
             var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
-    public class CombinePDFInput
+    public class FilesArrayInput
     {
         [JsonProperty("outputFileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MergedPDFFileName { get; set; }
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum xRegionValueInput
+    public enum XRegionValueInput
     {
         [EnumMember(Value = "-ue1")]
         USEastNVirginia,

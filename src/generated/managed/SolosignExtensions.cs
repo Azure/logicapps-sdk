@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     public class SolosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateHMAC(Expression<Func<CreateHMACInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateHMAC(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     {
     }
 
-    public class CreateHMACInput
+    public class BodyInput
     {
         [JsonProperty("request_string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestString { get; set; }
@@ -42,17 +42,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
         public string SecretKey { get; set; }
 
         [JsonProperty("output_format")]
-        public CreateHMACInputOutputFormatType? OutputFormat { get; set; }
+        public BodyInputOutputFormatType? OutputFormat { get; set; }
 
         [JsonProperty("encode_type")]
-        public CreateHMACInputEncodeTypeType? EncodeType { get; set; }
+        public BodyInputEncodeTypeType? EncodeType { get; set; }
 
         [JsonProperty("hash_algorithm")]
-        public CreateHMACInputHashAlgorithmType? HashAlgorithm { get; set; }
+        public BodyInputHashAlgorithmType? HashAlgorithm { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateHMACInputOutputFormatType
+    public enum BodyInputOutputFormatType
     {
         [EnumMember(Value = "hex")]
         Hex,
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateHMACInputEncodeTypeType
+    public enum BodyInputEncodeTypeType
     {
         [EnumMember(Value = "utf-7")]
         Utf7,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateHMACInputHashAlgorithmType
+    public enum BodyInputHashAlgorithmType
     {
         [EnumMember(Value = "sha1")]
         Sha1,

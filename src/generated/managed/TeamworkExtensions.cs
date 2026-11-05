@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectInput>> body)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<UpsertTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> projectId, Expression<Func<string>> taskListId, Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<UpsertTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> projectId, Expression<Func<string>> taskListId, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<UpsertTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> taskId, Expression<Func<UpdateTaskInput>> body)
+        public IBodyWorkflowAction<UpsertTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> taskId, Expression<Func<UpdateTaskBodyInput>> body)
         {
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class TeamworkTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateProject(Expression<Func<WebhookCreateProjectInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateProject(Expression<Func<WebhookCreateProjectBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateTask(Expression<Func<WebhookCreateTaskInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateTask(Expression<Func<WebhookCreateTaskBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateUser(Expression<Func<WebhookCreateUserInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookCreateUser(Expression<Func<WebhookCreateUserBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
@@ -297,13 +297,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string ProjectId { get; set; }
     }
 
-    public class CreateProjectInput
+    public class CreateProjectBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectInputProjectType Project { get; set; }
+        public BodyInputProjectType Project { get; set; }
     }
 
-    public class CreateProjectInputProjectType
+    public class BodyInputProjectType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -459,13 +459,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string TaskId { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("todo-item", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskInputTodoItemType TodoItem { get; set; }
+        public CreateTaskBodyInputTodoItemType TodoItem { get; set; }
     }
 
-    public class CreateTaskInputTodoItemType
+    public class CreateTaskBodyInputTodoItemType
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string EstimatedMinutes { get; set; }
 
         [JsonProperty("priority")]
-        public CreateTaskInputTodoItemTypePriorityType? Priority { get; set; }
+        public BodyInputTodoItemTypePriorityType? Priority { get; set; }
 
         [JsonProperty("notify")]
         public bool? NotifyPeople { get; set; }
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskInputTodoItemTypePriorityType
+    public enum BodyInputTodoItemTypePriorityType
     {
         [EnumMember(Value = "not set")]
         NotSet,
@@ -520,13 +520,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public TaskResponse TodoItem { get; set; }
     }
 
-    public class UpdateTaskInput
+    public class UpdateTaskBodyInput
     {
         [JsonProperty("todo-item")]
-        public UpdateTaskInputTodoItemType TodoItem { get; set; }
+        public UpdateTaskBodyInputTodoItemType TodoItem { get; set; }
     }
 
-    public class UpdateTaskInputTodoItemType
+    public class UpdateTaskBodyInputTodoItemType
     {
         [JsonProperty("content")]
         public string Name { get; set; }
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string EstimatedTime { get; set; }
 
         [JsonProperty("priority")]
-        public UpdateTaskInputTodoItemTypePriorityType? Priority { get; set; }
+        public BodyInputTodoItemTypePriorityType? Priority { get; set; }
 
         [JsonProperty("notify")]
         public bool? NotifyPeople { get; set; }
@@ -560,19 +560,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
         [JsonProperty("tags")]
         public string Tags { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputTodoItemTypePriorityType
-    {
-        [EnumMember(Value = "not set")]
-        NotSet,
-        [EnumMember(Value = "low")]
-        Low,
-        [EnumMember(Value = "medium")]
-        Medium,
-        [EnumMember(Value = "high")]
-        High
     }
 
     public class DeleteTaskResponse
@@ -671,13 +658,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string UserId { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("person", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputPersonType Person { get; set; }
+        public BodyInputPersonType Person { get; set; }
     }
 
-    public class CreateUserInputPersonType
+    public class BodyInputPersonType
     {
         [JsonProperty("email-address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
@@ -719,16 +706,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public UserResponse Person { get; set; }
     }
 
-    public class WebhookCreateProjectInput
+    public class WebhookCreateProjectBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string STATUS { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookCreateProjectInputWebhookType Webhook { get; set; } = new WebhookCreateProjectInputWebhookType();
+        public WebhookCreateProjectBodyInputWebhookType Webhook { get; set; } = new WebhookCreateProjectBodyInputWebhookType();
     }
 
-    public class WebhookCreateProjectInputWebhookType
+    public class WebhookCreateProjectBodyInputWebhookType
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "PROJECT.CREATED";
@@ -740,16 +727,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class WebhookCreateTaskInput
+    public class WebhookCreateTaskBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string STATUS { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookCreateTaskInputWebhookType Webhook { get; set; } = new WebhookCreateTaskInputWebhookType();
+        public WebhookCreateTaskBodyInputWebhookType Webhook { get; set; } = new WebhookCreateTaskBodyInputWebhookType();
     }
 
-    public class WebhookCreateTaskInputWebhookType
+    public class WebhookCreateTaskBodyInputWebhookType
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "TASK.CREATED";
@@ -761,16 +748,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class WebhookCreateUserInput
+    public class WebhookCreateUserBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string STATUS { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookCreateUserInputWebhookType Webhook { get; set; } = new WebhookCreateUserInputWebhookType();
+        public WebhookCreateUserBodyInputWebhookType Webhook { get; set; } = new WebhookCreateUserBodyInputWebhookType();
     }
 
-    public class WebhookCreateUserInputWebhookType
+    public class WebhookCreateUserBodyInputWebhookType
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "USER.CREATED";

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipath")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetJobUpdate(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<GetJobUpdateInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetJobUpdate(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<double>> processId, Expression<Func<BodyInput>> body)
         {
             var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
             var __workflow_processId = WorkflowExpression.Compile(processId, nameof(processId), required: true);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipath")]
-        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<object>> dynamicListSchema, Expression<Func<int>> queueId, Expression<Func<string>> deferDate = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> riskSlaDate = null, Expression<Func<string>> reference = null, Expression<Func<string>> progress = null, Expression<Func<string>> parentOperationId = null, Expression<Func<priorityInput>> priority = null)
+        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<object>> dynamicListSchema, Expression<Func<int>> queueId, Expression<Func<string>> deferDate = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> riskSlaDate = null, Expression<Func<string>> reference = null, Expression<Func<string>> progress = null, Expression<Func<string>> parentOperationId = null, Expression<Func<PriorityInput>> priority = null)
         {
             var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
             var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: true);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
     {
     }
 
-    public class GetJobUpdateInput
+    public class BodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipath
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum priorityInput
+    public enum PriorityInput
     {
         High,
         Normal,

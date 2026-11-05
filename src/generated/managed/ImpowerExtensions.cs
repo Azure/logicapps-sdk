@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<ErrorCodeDetailsDto, ApiConnectionActionConfiguration> ErrorCodeUsingGET(Expression<Func<valueInput>> value)
+        public IBodyWorkflowAction<ErrorCodeDetailsDto, ApiConnectionActionConfiguration> ErrorCodeUsingGET(Expression<Func<ValueInput>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<ErrorCodeDetailsDto, ApiConnectionActionConfiguration>(() =>
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<ConnectionDto, ApiConnectionActionConfiguration> UpdateConnectionUsingPUT(Expression<Func<int>> connectionIdX, Expression<Func<UpdateConnectionUsingPUTInput>> connectionUpdateDto = null)
+        public IBodyWorkflowAction<ConnectionDto, ApiConnectionActionConfiguration> UpdateConnectionUsingPUT(Expression<Func<int>> connectionIdX, Expression<Func<ConnectionUpdateDtoInput>> connectionUpdateDto = null)
         {
             var __workflow_connectionIdX = WorkflowExpression.Compile(connectionIdX, nameof(connectionIdX), required: true);
             var __workflow_connectionUpdateDto = WorkflowExpression.Compile(connectionUpdateDto, nameof(connectionUpdateDto), required: false);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<PageOfContactDto, ApiConnectionActionConfiguration> GetContactsByFilterUsingGET(Expression<Func<int[]>> contactIds = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<PageOfContactDto, ApiConnectionActionConfiguration> GetContactsByFilterUsingGET(Expression<Func<int[]>> contactIds = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null, Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
             var __workflow_contactIds = WorkflowExpression.Compile(contactIds, nameof(contactIds), required: false);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<PageOfContractDto, ApiConnectionActionConfiguration> GetContractsByFilterUsingGET(Expression<Func<int>> contactId = null, Expression<Func<int[]>> contractIds = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> propertyId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null, Expression<Func<typeInputItem[]>> type = null, Expression<Func<int>> unitId = null, Expression<Func<string>> validAtDate = null)
+        public IBodyWorkflowAction<PageOfContractDto, ApiConnectionActionConfiguration> GetContractsByFilterUsingGET(Expression<Func<int>> contactId = null, Expression<Func<int[]>> contractIds = null, Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> propertyId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null, Expression<Func<TypeInputItem[]>> type = null, Expression<Func<int>> unitId = null, Expression<Func<string>> validAtDate = null)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
             var __workflow_contractIds = WorkflowExpression.Compile(contractIds, nameof(contractIds), required: false);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> CreateDocumentTagUsingPOST(Expression<Func<CreateDocumentTagUsingPOSTInput>> createDto)
+        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> CreateDocumentTagUsingPOST(Expression<Func<CreateDtoInput>> createDto)
         {
             var __workflow_createDto = WorkflowExpression.Compile(createDto, nameof(createDto), required: true);
             return new DeferredBodyAction<DocumentTagDto, ApiConnectionActionConfiguration>(() =>
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> UpdateDocumentTagUsingPUT(Expression<Func<int>> tagId, Expression<Func<UpdateDocumentTagUsingPUTInput>> updateDto)
+        public IBodyWorkflowAction<DocumentTagDto, ApiConnectionActionConfiguration> UpdateDocumentTagUsingPUT(Expression<Func<int>> tagId, Expression<Func<UpdateDocumentTagUsingPUTUpdateDtoInput>> updateDto)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_updateDto = WorkflowExpression.Compile(updateDto, nameof(updateDto), required: true);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<PageOfDocumentDto, ApiConnectionActionConfiguration> GetDocumentsByFilterUsingGET(Expression<Func<string>> accountant = null, Expression<Func<string>> administrator = null, Expression<Func<int>> contactId = null, Expression<Func<string>> contractName = null, Expression<Func<int[]>> documentIds = null, Expression<Func<string>> documentName = null, Expression<Func<string>> issuedDate = null, Expression<Func<string>> maxIssuedDate = null, Expression<Func<string>> minIssuedDate = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<string>> propertyHrId = null, Expression<Func<int>> propertyId = null, Expression<Func<string>> propertyName = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null, Expression<Func<int>> sourceId = null, Expression<Func<sourceTypeInputItem[]>> sourceType = null, Expression<Func<int[]>> tagIds = null, Expression<Func<string>> tagName = null, Expression<Func<int>> unitId = null)
+        public IBodyWorkflowAction<PageOfDocumentDto, ApiConnectionActionConfiguration> GetDocumentsByFilterUsingGET(Expression<Func<string>> accountant = null, Expression<Func<string>> administrator = null, Expression<Func<int>> contactId = null, Expression<Func<string>> contractName = null, Expression<Func<int[]>> documentIds = null, Expression<Func<string>> documentName = null, Expression<Func<string>> issuedDate = null, Expression<Func<string>> maxIssuedDate = null, Expression<Func<string>> minIssuedDate = null, Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<string>> propertyHrId = null, Expression<Func<int>> propertyId = null, Expression<Func<string>> propertyName = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null, Expression<Func<int>> sourceId = null, Expression<Func<SourceTypeInputItem[]>> sourceType = null, Expression<Func<int[]>> tagIds = null, Expression<Func<string>> tagName = null, Expression<Func<int>> unitId = null)
         {
             var __workflow_accountant = WorkflowExpression.Compile(accountant, nameof(accountant), required: false);
             var __workflow_administrator = WorkflowExpression.Compile(administrator, nameof(administrator), required: false);
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DownloadDocumentsByFilterUsingGET(Expression<Func<string>> accountant = null, Expression<Func<string>> administrator = null, Expression<Func<int>> contactId = null, Expression<Func<string>> contractName = null, Expression<Func<int[]>> documentIds = null, Expression<Func<string>> documentName = null, Expression<Func<string>> issuedDate = null, Expression<Func<string>> maxIssuedDate = null, Expression<Func<string>> minIssuedDate = null, Expression<Func<string>> propertyHrId = null, Expression<Func<int>> propertyId = null, Expression<Func<string>> propertyName = null, Expression<Func<int>> sourceId = null, Expression<Func<sourceTypeInputItem[]>> sourceType = null, Expression<Func<int[]>> tagIds = null, Expression<Func<string>> tagName = null, Expression<Func<int>> unitId = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DownloadDocumentsByFilterUsingGET(Expression<Func<string>> accountant = null, Expression<Func<string>> administrator = null, Expression<Func<int>> contactId = null, Expression<Func<string>> contractName = null, Expression<Func<int[]>> documentIds = null, Expression<Func<string>> documentName = null, Expression<Func<string>> issuedDate = null, Expression<Func<string>> maxIssuedDate = null, Expression<Func<string>> minIssuedDate = null, Expression<Func<string>> propertyHrId = null, Expression<Func<int>> propertyId = null, Expression<Func<string>> propertyName = null, Expression<Func<int>> sourceId = null, Expression<Func<SourceTypeInputItem[]>> sourceType = null, Expression<Func<int[]>> tagIds = null, Expression<Func<string>> tagName = null, Expression<Func<int>> unitId = null)
         {
             var __workflow_accountant = WorkflowExpression.Compile(accountant, nameof(accountant), required: false);
             var __workflow_administrator = WorkflowExpression.Compile(administrator, nameof(administrator), required: false);
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<InvoiceItemDto, ApiConnectionActionConfiguration> UpdateInvoiceItemUsingPUT(Expression<Func<int>> invoiceItemId, Expression<Func<UpdateInvoiceItemUsingPUTInput>> updateDto)
+        public IBodyWorkflowAction<InvoiceItemDto, ApiConnectionActionConfiguration> UpdateInvoiceItemUsingPUT(Expression<Func<int>> invoiceItemId, Expression<Func<UpdateInvoiceItemUsingPUTUpdateDtoInput>> updateDto)
         {
             var __workflow_invoiceItemId = WorkflowExpression.Compile(invoiceItemId, nameof(invoiceItemId), required: true);
             var __workflow_updateDto = WorkflowExpression.Compile(updateDto, nameof(updateDto), required: true);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<PageOfInvoiceDto, ApiConnectionActionConfiguration> GetInvoicesByFilterUsingGET(Expression<Func<int>> counterpartContactId = null, Expression<Func<string>> issuedDate = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> propertyId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null, Expression<Func<statesInputItem[]>> states = null)
+        public IBodyWorkflowAction<PageOfInvoiceDto, ApiConnectionActionConfiguration> GetInvoicesByFilterUsingGET(Expression<Func<int>> counterpartContactId = null, Expression<Func<string>> issuedDate = null, Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> propertyId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null, Expression<Func<StatesInputItem[]>> states = null)
         {
             var __workflow_counterpartContactId = WorkflowExpression.Compile(counterpartContactId, nameof(counterpartContactId), required: false);
             var __workflow_issuedDate = WorkflowExpression.Compile(issuedDate, nameof(issuedDate), required: false);
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<InvoiceDto, ApiConnectionActionConfiguration> UpdateInvoiceUsingPUT(Expression<Func<int>> invoiceId, Expression<Func<UpdateInvoiceUsingPUTInput>> updateDto)
+        public IBodyWorkflowAction<InvoiceDto, ApiConnectionActionConfiguration> UpdateInvoiceUsingPUT(Expression<Func<int>> invoiceId, Expression<Func<UpdateInvoiceUsingPUTUpdateDtoInput>> updateDto)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
             var __workflow_updateDto = WorkflowExpression.Compile(updateDto, nameof(updateDto), required: true);
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<PageOfPropertyDto, ApiConnectionActionConfiguration> GetPropertiesByFilterUsingGET(Expression<Func<string>> name = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<string>> propertyHrId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<PageOfPropertyDto, ApiConnectionActionConfiguration> GetPropertiesByFilterUsingGET(Expression<Func<string>> name = null, Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<string>> propertyHrId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "impower")]
-        public IBodyWorkflowAction<PageOfUnitDto, ApiConnectionActionConfiguration> GetUnitsByFilterUsingGET(Expression<Func<orderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> propertyId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<PageOfUnitDto, ApiConnectionActionConfiguration> GetUnitsByFilterUsingGET(Expression<Func<OrderInput>> order = null, Expression<Func<int>> page = null, Expression<Func<int>> propertyId = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
             var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -594,15 +594,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
 
     public class ImpowerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ConnectionDto, ApiConnectionTriggerConfiguration> CreateConnectionUsingPOST(Expression<Func<CreateConnectionUsingPOSTInput>> connectionCreateDto, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ConnectionDto, ApiConnectionTriggerConfiguration> CreateConnectionUsingPOST(FlowRecurrence recurrence = null)
         {
-            var __workflow_connectionCreateDto = WorkflowExpression.Compile(connectionCreateDto, nameof(connectionCreateDto), required: true);
             return new DeferredBodyTrigger<ConnectionDto, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v2/connections";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_connectionCreateDto);
+                callPayload.Body = new ConnectionCreateDtoInput().ToJToken();
                 return new ApiConnectionTrigger<ConnectionDto>(callPayload, recurrence: recurrence);
             });
         }
@@ -661,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum valueInput
+    public enum ValueInput
     {
         [EnumMember(Value = "BAD_CONTACT_ADDRESS")]
         BADCONTACTADDRESS,
@@ -727,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         public string WebhookUrl { get; set; }
     }
 
-    public class UpdateConnectionUsingPUTInput
+    public class ConnectionUpdateDtoInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -887,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         ASC,
         DESC
@@ -987,7 +986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInputItem
+    public enum TypeInputItem
     {
         OWNER,
         TENANT,
@@ -1007,7 +1006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         public string NameOfTheDocumentTag { get; set; }
     }
 
-    public class CreateDocumentTagUsingPOSTInput
+    public class CreateDtoInput
     {
         [JsonProperty("description")]
         public string DescriptionOfTheNewlyCreatedDocumentTag { get; set; }
@@ -1016,7 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         public string NameOfTheNewlyCreatedDocumentTag { get; set; }
     }
 
-    public class UpdateDocumentTagUsingPUTInput
+    public class UpdateDocumentTagUsingPUTUpdateDtoInput
     {
         [JsonProperty("description")]
         public string NewDescriptionOfTheDocumentTag { get; set; }
@@ -1174,7 +1173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sourceTypeInputItem
+    public enum SourceTypeInputItem
     {
         [EnumMember(Value = "HOUSE_MONEY_SETTLEMENT")]
         HOUSEMONEYSETTLEMENT,
@@ -1212,18 +1211,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
     public class DocumentUpdateDto
     {
         [JsonProperty("amount")]
-        public double NewValueTheDocumentAmountToBeUpdatedTo { get; set; }
+        public double? NewValueTheDocumentAmountToBeUpdatedTo { get; set; }
 
         [JsonProperty("buildingId")]
-        public int NewBuildingBuildingTheDocumentToBeAssignedTo { get; set; }
+        public int? NewBuildingBuildingTheDocumentToBeAssignedTo { get; set; }
 
         [JsonProperty("contactId")]
-        public int NewContactTheDocumentToBeAssignedTo { get; set; }
+        public int? NewContactTheDocumentToBeAssignedTo { get; set; }
 
         [JsonProperty("contractId")]
-        public int NewContractTheDocumentToBeAssignedTo { get; set; }
+        public int? NewContractTheDocumentToBeAssignedTo { get; set; }
 
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int TheUniqueIdentifierOfTheDocumentToBeUpdated { get; set; }
 
         [JsonProperty("issuedDate")]
@@ -1233,16 +1232,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         public string NewValueTheDocumentNameToBeUpdatedTo { get; set; }
 
         [JsonProperty("propertyId")]
-        public int NewPropertyTheDocumentToBeAssignedTo { get; set; }
+        public int? NewPropertyTheDocumentToBeAssignedTo { get; set; }
 
         [JsonProperty("sourceId")]
-        public int NewSourceProcessIdTheDocumentToBeAssignedTo { get; set; }
+        public int? NewSourceProcessIdTheDocumentToBeAssignedTo { get; set; }
 
         [JsonProperty("tagIds")]
         public int[] IdentifiersOfTagsToBeAssignedToTheDocument { get; set; }
 
         [JsonProperty("unitId")]
-        public int NewUnitTheDocumentToBeAssignedTo { get; set; }
+        public int? NewUnitTheDocumentToBeAssignedTo { get; set; }
     }
 
     public class InvoiceItemDto
@@ -1297,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         INSURABLEEMPLOYMENT
     }
 
-    public class UpdateInvoiceItemUsingPUTInput
+    public class UpdateInvoiceItemUsingPUTUpdateDtoInput
     {
         [JsonProperty("bookingText")]
         public string BookingTextOfTheInvoiceItem { get; set; }
@@ -1416,7 +1415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statesInputItem
+    public enum StatesInputItem
     {
         DRAFT,
         READY,
@@ -1425,7 +1424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         REVERSED
     }
 
-    public class UpdateInvoiceUsingPUTInput
+    public class UpdateInvoiceUsingPUTUpdateDtoInput
     {
         [JsonProperty("issuedDate")]
         public string NewIssuedDateOfTheInvoice { get; set; }
@@ -1664,7 +1663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impower
         DELETED
     }
 
-    public class CreateConnectionUsingPOSTInput
+    public class ConnectionCreateDtoInput
     {
         [JsonProperty("appId", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int IdOfTheApplicationToConnectToTheDomain { get; set; } = 4;

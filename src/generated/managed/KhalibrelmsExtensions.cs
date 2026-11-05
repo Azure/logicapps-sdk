@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "khalibrelms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BookCourse(Expression<Func<BookCourseInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BookCourse(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Khalibrelms
         public string Name { get; set; }
     }
 
-    public class BookCourseInput
+    public class BodyInput
     {
         [JsonProperty("communityId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CommunityId { get; set; }

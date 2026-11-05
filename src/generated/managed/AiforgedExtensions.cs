@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[], ApiConnectionActionConfiguration> ParametersGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<categoryInput>> category = null, Expression<Func<groupingInput>> grouping = null, Expression<Func<bool>> includeverification = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentParameterViewModel[], ApiConnectionActionConfiguration> ParametersGet(Expression<Func<string>> xApiVersion, Expression<Func<int>> docId = null, Expression<Func<int>> stpdId = null, Expression<Func<CategoryInput>> category = null, Expression<Func<GroupingInput>> grouping = null, Expression<Func<bool>> includeverification = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: false);
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DocumentGetBlob(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> DocumentGetBlob(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> id = null, Expression<Func<TypeInput>> type = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[], ApiConnectionActionConfiguration> DocumentGetData(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string>> text = null, Expression<Func<int>> blobid = null, Expression<Func<int>> pageindex = null, Expression<Func<int>> imagesCount = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentDataViewModel[], ApiConnectionActionConfiguration> DocumentGetData(Expression<Func<string>> xApiVersion, Expression<Func<int>> id = null, Expression<Func<TypeInput>> type = null, Expression<Func<string>> contentType = null, Expression<Func<string>> text = null, Expression<Func<int>> blobid = null, Expression<Func<int>> pageindex = null, Expression<Func<int>> imagesCount = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<usageInput>> usage = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<UsageInput>> usage = null, Expression<Func<StatusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<SortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
@@ -1687,7 +1687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _1024 = 1024
     }
 
-    public enum categoryInput
+    public enum CategoryInput
     {
         _0 = 0,
         _1 = 1,
@@ -1703,7 +1703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _40 = 40
     }
 
-    public enum groupingInput
+    public enum GroupingInput
     {
         _0 = 0,
         _1 = 1,
@@ -2159,7 +2159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _6 = 6
     }
 
-    public enum typeInput
+    public enum TypeInput
     {
         _0 = 0,
         _1 = 1,
@@ -2168,7 +2168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _11 = 11
     }
 
-    public enum usageInput
+    public enum UsageInput
     {
         _0 = 0,
         _1 = 1,
@@ -2181,7 +2181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99 = 99
     }
 
-    public enum statusInput
+    public enum StatusInput
     {
         _0 = 0,
         _3 = 3,
@@ -2201,7 +2201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _190 = 190
     }
 
-    public enum sortFieldInput
+    public enum SortFieldInput
     {
         _0 = 0,
         _1 = 1,
@@ -2211,7 +2211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _5 = 5
     }
 
-    public enum sortDirectionInput
+    public enum SortDirectionInput
     {
         _0 = 0,
         _1 = 1

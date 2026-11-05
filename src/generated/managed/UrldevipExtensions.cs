@@ -13,22 +13,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
     public class UrldevipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<LinkPostResponse, ApiConnectionActionConfiguration> Link(Expression<Func<LinkPostInput>> body = null)
+        public IBodyWorkflowAction<LinkResponse, ApiConnectionActionConfiguration> Link(Expression<Func<LinkBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<LinkPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<LinkPostResponse>(callPayload);
+                return new ApiConnectionAction<LinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<LinkDeleteInput>> body = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<LinkDeleteBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
@@ -43,17 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<MessagePostInput>> body = null)
+        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<MessageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages/create/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                return new ApiConnectionAction<MessageResponse>(callPayload);
             });
         }
     }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
     {
     }
 
-    public class LinkPostResponse
+    public class LinkResponse
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         public string LinkUrl { get; set; }
     }
 
-    public class LinkPostInput
+    public class LinkBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -86,13 +86,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         public int? Ttl { get; set; }
     }
 
-    public class LinkDeleteInput
+    public class LinkDeleteBodyInput
     {
         [JsonProperty("key")]
         public string Key { get; set; }
     }
 
-    public class MessagePostResponse
+    public class MessageResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         public string MessageUrl { get; set; }
     }
 
-    public class MessagePostInput
+    public class MessageBodyInput
     {
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }

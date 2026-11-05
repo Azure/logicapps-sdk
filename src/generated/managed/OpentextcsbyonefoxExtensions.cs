@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
     public class OpentextcsbyonefoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<UpdateDocumentContentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<UpdateDocumentContentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IBodyWorkflowAction<ResultItem[], ApiConnectionActionConfiguration> SimpleSearch(Expression<Func<string>> configurationKey, Expression<Func<SimpleSearchInput>> body)
+        public IBodyWorkflowAction<ResultItem[], ApiConnectionActionConfiguration> SimpleSearch(Expression<Func<string>> configurationKey, Expression<Func<SimpleSearchBodyInput>> body)
         {
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IBodyWorkflowAction<ResultItem[], ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<AdvancedSearchInput>> body)
+        public IBodyWorkflowAction<ResultItem[], ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<AdvancedSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResultItem[], ApiConnectionActionConfiguration>(() =>
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExecuteWebReport(Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExecuteWebReport(Expression<Func<string>> id, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateBusinessWorkspace(Expression<Func<string>> configurationKey, Expression<Func<CreateBusinessWorkspaceV2Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateBusinessWorkspace(Expression<Func<string>> configurationKey, Expression<Func<CreateBusinessWorkspaceBodyInput>> body)
         {
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationKey, Expression<Func<CreateDocumentV2Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationKey, Expression<Func<CreateDocumentBodyInput>> body)
         {
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> configurationKey, Expression<Func<CreateFolderV2Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> configurationKey, Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateBusinessWorkspace(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateBusinessWorkspaceV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateBusinessWorkspace(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateBusinessWorkspaceBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateDocumentV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateDocumentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateDocumentPropertiesV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateDocumentPropertiesBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateFolderV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<UpdateFolderBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class OpentextcsbyonefoxTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentCreated(Expression<Func<DocumentCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentCreated(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentUpdated(Expression<Func<DocumentUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentUpdated(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentDeleted(Expression<Func<DocumentDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DocumentDeleted(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderCreated(Expression<Func<FolderCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderCreated(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderUpdated(Expression<Func<FolderUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderUpdated(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderDeleted(Expression<Func<FolderDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderDeleted(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BusinessWorkspaceCreated(Expression<Func<BusinessWorkspaceCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BusinessWorkspaceCreated(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -535,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BusinessWorkspaceUpdated(Expression<Func<BusinessWorkspaceUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BusinessWorkspaceUpdated(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BusinessWorkspaceDeleted(Expression<Func<BusinessWorkspaceDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> BusinessWorkspaceDeleted(Expression<Func<BusinessWorkspaceCreatedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         }
     }
 
-    public class UpdateDocumentContentInput
+    public class UpdateDocumentContentBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -703,13 +703,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public string Type { get; set; }
     }
 
-    public class SimpleSearchInput
+    public class SimpleSearchBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
-    public class AdvancedSearchInput
+    public class AdvancedSearchBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
@@ -721,12 +721,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public string Limit { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
-        [JsonProperty("key")]
+        [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
@@ -744,13 +744,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class TrusteeWrite
     {
-        [JsonProperty("trusteeId")]
+        [JsonProperty("trusteeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("trusteeType")]
-        public string Type { get; set; }
+        [JsonProperty("trusteeType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "custom";
 
-        [JsonProperty("accessRights")]
+        [JsonProperty("accessRights", DefaultValueHandling = DefaultValueHandling.Include)]
         public TrusteeWriteAccessRightsTypeItem[] AccessRights { get; set; }
     }
 
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public JToken Fields { get; set; }
     }
 
-    public class CreateBusinessWorkspaceV2Input
+    public class CreateBusinessWorkspaceBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public JToken Fields { get; set; }
     }
 
-    public class CreateDocumentV2Input
+    public class CreateDocumentBodyInput
     {
         [JsonProperty("parentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentId { get; set; }
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
-    public class CreateFolderV2Input
+    public class CreateFolderBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -857,7 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public JToken Fields { get; set; }
     }
 
-    public class UpdateBusinessWorkspaceV2Input
+    public class UpdateBusinessWorkspaceBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public JToken Fields { get; set; }
     }
 
-    public class UpdateDocumentV2Input
+    public class UpdateDocumentBodyInput
     {
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public DocumentMetadataV2 Metadata { get; set; }
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public File File { get; set; }
     }
 
-    public class UpdateDocumentPropertiesV2Input
+    public class UpdateDocumentPropertiesBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public JToken Fields { get; set; }
     }
 
-    public class UpdateFolderV2Input
+    public class UpdateFolderBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -899,14 +899,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public JToken Fields { get; set; }
     }
 
-    public class DocumentCreatedInput
+    public class BusinessWorkspaceCreatedBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public DocumentCreatedInputFilterType Filter { get; set; }
+        public BodyInputFilterType Filter { get; set; }
     }
 
-    public class DocumentCreatedInputFilterType
+    public class BodyInputFilterType
     {
         [JsonProperty("parentId")]
         public string ParentId { get; set; }
@@ -915,234 +915,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public string AncestorId { get; set; }
 
         [JsonProperty("metadata")]
-        public DocumentCreatedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
+        public BodyInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
     }
 
-    public class DocumentCreatedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class DocumentUpdatedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public DocumentUpdatedInputFilterType Filter { get; set; }
-    }
-
-    public class DocumentUpdatedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public DocumentUpdatedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class DocumentUpdatedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class DocumentDeletedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public DocumentDeletedInputFilterType Filter { get; set; }
-    }
-
-    public class DocumentDeletedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public DocumentDeletedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class DocumentDeletedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class FolderCreatedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public FolderCreatedInputFilterType Filter { get; set; }
-    }
-
-    public class FolderCreatedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public FolderCreatedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class FolderCreatedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class FolderUpdatedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public FolderUpdatedInputFilterType Filter { get; set; }
-    }
-
-    public class FolderUpdatedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public FolderUpdatedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class FolderUpdatedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class FolderDeletedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public FolderDeletedInputFilterType Filter { get; set; }
-    }
-
-    public class FolderDeletedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public FolderDeletedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class FolderDeletedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class BusinessWorkspaceCreatedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public BusinessWorkspaceCreatedInputFilterType Filter { get; set; }
-    }
-
-    public class BusinessWorkspaceCreatedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public BusinessWorkspaceCreatedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class BusinessWorkspaceCreatedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class BusinessWorkspaceUpdatedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public BusinessWorkspaceUpdatedInputFilterType Filter { get; set; }
-    }
-
-    public class BusinessWorkspaceUpdatedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public BusinessWorkspaceUpdatedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class BusinessWorkspaceUpdatedInputFilterTypeMetadataTypeItem
-    {
-        [JsonProperty("column")]
-        public string Column { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class BusinessWorkspaceDeletedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-        public BusinessWorkspaceDeletedInputFilterType Filter { get; set; }
-    }
-
-    public class BusinessWorkspaceDeletedInputFilterType
-    {
-        [JsonProperty("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonProperty("ancestorId")]
-        public string AncestorId { get; set; }
-
-        [JsonProperty("metadata")]
-        public BusinessWorkspaceDeletedInputFilterTypeMetadataTypeItem[] Metadata { get; set; }
-    }
-
-    public class BusinessWorkspaceDeletedInputFilterTypeMetadataTypeItem
+    public class BodyInputFilterTypeMetadataTypeItem
     {
         [JsonProperty("column")]
         public string Column { get; set; }

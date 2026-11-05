@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cxcardsbysurveyapp
     public class CxcardsbysurveyappActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cxcardsbysurveyapp")]
-        public IBodyWorkflowAction<SendSurveyResponse, ApiConnectionActionConfiguration> SendSurvey(Expression<Func<SendSurveyInput>> body)
+        public IBodyWorkflowAction<SendSurveyResponse, ApiConnectionActionConfiguration> SendSurvey(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSurveyResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cxcardsbysurveyapp
         public string Message { get; set; }
     }
 
-    public class SendSurveyInput
+    public class BodyInput
     {
         [JsonProperty("api_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ApiKey { get; set; }

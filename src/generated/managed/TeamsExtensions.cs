@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     public class TeamsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<NewMeetingRespone, ApiConnectionActionConfiguration> CreateTeamsMeeting(Expression<Func<calendaridInput>> calendarid, Expression<Func<CreateTeamsMeetingInput>> item)
+        public IBodyWorkflowAction<NewMeetingRespone, ApiConnectionActionConfiguration> CreateTeamsMeeting(Expression<Func<CalendaridInput>> calendarid, Expression<Func<CreateTeamsMeetingItemInput>> item)
         {
             var __workflow_calendarid = WorkflowExpression.Compile(calendarid, nameof(calendarid), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateChannelResponse, ApiConnectionActionConfiguration> CreateChannel(Expression<Func<string>> groupId, Expression<Func<CreateChannelInput>> body)
+        public IBodyWorkflowAction<CreateChannelResponse, ApiConnectionActionConfiguration> CreateChannel(Expression<Func<string>> groupId, Expression<Func<CreateChannelBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateChannelProperties(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<UpdateChannelPropertiesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateChannelProperties(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<UpdateChannelPropertiesBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<AsyncOperationResponse, ApiConnectionActionConfiguration> ArchiveChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<ArchiveChannelInput>> body = null)
+        public IBodyWorkflowAction<AsyncOperationResponse, ApiConnectionActionConfiguration> ArchiveChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<ArchiveChannelBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetChatsResponse, ApiConnectionActionConfiguration> GetChats(Expression<Func<chatTypeInput>> chatType, Expression<Func<topicInput>> topic)
+        public IBodyWorkflowAction<GetChatsResponse, ApiConnectionActionConfiguration> GetChats(Expression<Func<ChatTypeInput>> chatType, Expression<Func<TopicInput>> topic)
         {
             var __workflow_chatType = WorkflowExpression.Compile(chatType, nameof(chatType), required: true);
             var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: true);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostFeedNotification(Expression<Func<posterInput>> poster, Expression<Func<notificationTypeInput>> notificationType, Expression<Func<object>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostFeedNotification(Expression<Func<PostFeedNotificationPosterInput>> poster, Expression<Func<NotificationTypeInput>> notificationType, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_notificationType = WorkflowExpression.Compile(notificationType, nameof(notificationType), required: true);
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetMessageDetails(Expression<Func<string>> messageId, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetMessageDetails(Expression<Func<string>> messageId, Expression<Func<ThreadTypeInput>> threadType, Expression<Func<object>> body)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<ListMembersResponseSchema, ApiConnectionActionConfiguration> ListMembers(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> body, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<ListMembersResponseSchema, ApiConnectionActionConfiguration> ListMembers(Expression<Func<ThreadTypeInput>> threadType, Expression<Func<object>> body, Expression<Func<string>> filter = null)
         {
             var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<NewChatResponse, ApiConnectionActionConfiguration> CreateChat(Expression<Func<CreateChatInput>> item)
+        public IBodyWorkflowAction<NewChatResponse, ApiConnectionActionConfiguration> CreateChat(Expression<Func<CreateChatItemInput>> item)
         {
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             return new DeferredBodyAction<NewChatResponse, ApiConnectionActionConfiguration>(() =>
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<ChatMessage, ApiConnectionActionConfiguration> PostMessageToSelf(Expression<Func<PostMessageToSelfInput>> body)
+        public IBodyWorkflowAction<ChatMessage, ApiConnectionActionConfiguration> PostMessageToSelf(Expression<Func<PostMessageToSelfBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatMessage, ApiConnectionActionConfiguration>(() =>
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateATeamResponse, ApiConnectionActionConfiguration> CreateATeam(Expression<Func<CreateATeamInput>> body)
+        public IBodyWorkflowAction<CreateATeamResponse, ApiConnectionActionConfiguration> CreateATeam(Expression<Func<CreateATeamBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateATeamResponse, ApiConnectionActionConfiguration>(() =>
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddMemberToTeam(Expression<Func<string>> teamId, Expression<Func<AddMemberToTeamInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddMemberToTeam(Expression<Func<string>> teamId, Expression<Func<AddMemberToTeamBodyInput>> body)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddMemberToChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<AddMemberToChannelInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddMemberToChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<AddMemberToChannelBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostMessageToConversation(Expression<Func<posterInput2>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostMessageToConversation(Expression<Func<PostMessageToConversationPosterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithMessageToConversation(Expression<Func<posterInput3>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithMessageToConversation(Expression<Func<ReplyWithCardToConversationPosterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostCardToConversation(Expression<Func<posterInput4>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostCardToConversation(Expression<Func<PostCardToConversationPosterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostCardAndWaitForResponse(Expression<Func<posterInput5>> poster, Expression<Func<string>> location, Expression<Func<PostCardAndWaitForResponseInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostCardAndWaitForResponse(Expression<Func<PostCardAndWaitForResponsePosterInput>> poster, Expression<Func<string>> location, Expression<Func<PostCardAndWaitForResponseBodyInput>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithCardToConversation(Expression<Func<posterInput6>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithCardToConversation(Expression<Func<ReplyWithCardToConversationPosterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> UpdateCardInConversation(Expression<Func<posterInput7>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> UpdateCardInConversation(Expression<Func<ReplyWithCardToConversationPosterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddMemberToChat(Expression<Func<string>> chatId, Expression<Func<AddMemberToChatInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddMemberToChat(Expression<Func<string>> chatId, Expression<Func<AddMemberToChatBodyInput>> body)
         {
             var __workflow_chatId = WorkflowExpression.Compile(chatId, nameof(chatId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetOnlineMeetingResponse, ApiConnectionActionConfiguration> GetOnlineMeeting(Expression<Func<lookupTypeInput>> lookupType, Expression<Func<string>> lookupValue)
+        public IBodyWorkflowAction<GetOnlineMeetingResponse, ApiConnectionActionConfiguration> GetOnlineMeeting(Expression<Func<LookupTypeInput>> lookupType, Expression<Func<string>> lookupValue)
         {
             var __workflow_lookupType = WorkflowExpression.Compile(lookupType, nameof(lookupType), required: true);
             var __workflow_lookupValue = WorkflowExpression.Compile(lookupValue, nameof(lookupValue), required: true);
@@ -719,7 +719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<SectionResponse, ApiConnectionActionConfiguration> CreateSection(Expression<Func<string>> ifMatch, Expression<Func<CreateSectionInput>> body)
+        public IBodyWorkflowAction<SectionResponse, ApiConnectionActionConfiguration> CreateSection(Expression<Func<string>> ifMatch, Expression<Func<CreateSectionBodyInput>> body)
         {
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<SectionResponse, ApiConnectionActionConfiguration> UpdateSection(Expression<Func<string>> sectionId, Expression<Func<string>> ifMatch, Expression<Func<UpdateSectionInput>> body)
+        public IBodyWorkflowAction<SectionResponse, ApiConnectionActionConfiguration> UpdateSection(Expression<Func<string>> sectionId, Expression<Func<string>> ifMatch, Expression<Func<UpdateSectionBodyInput>> body)
         {
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: true);
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<SectionItemResponse, ApiConnectionActionConfiguration> MoveSectionItem(Expression<Func<string>> sectionId, Expression<Func<string>> sectionItemId, Expression<Func<string>> ifMatch, Expression<Func<MoveSectionItemInput>> body)
+        public IBodyWorkflowAction<SectionItemResponse, ApiConnectionActionConfiguration> MoveSectionItem(Expression<Func<string>> sectionId, Expression<Func<string>> sectionItemId, Expression<Func<string>> ifMatch, Expression<Func<MoveSectionItemBodyInput>> body)
         {
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_sectionItemId = WorkflowExpression.Compile(sectionItemId, nameof(sectionItemId), required: true);
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateTagResponseSchema, ApiConnectionActionConfiguration> CreateTag(Expression<Func<string>> groupId, Expression<Func<CreateTagInput>> body)
+        public IBodyWorkflowAction<CreateTagResponseSchema, ApiConnectionActionConfiguration> CreateTag(Expression<Func<string>> groupId, Expression<Func<CreateTagBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -869,7 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateTagResponseSchema, ApiConnectionActionConfiguration> UpdateTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<UpdateTagInput>> body)
+        public IBodyWorkflowAction<CreateTagResponseSchema, ApiConnectionActionConfiguration> UpdateTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<UpdateTagBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
@@ -899,7 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<AddMemberToTagResponseSchema, ApiConnectionActionConfiguration> AddMemberToTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<AddMemberToTagInput>> body)
+        public IBodyWorkflowAction<AddMemberToTagResponseSchema, ApiConnectionActionConfiguration> AddMemberToTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<AddMemberToTagBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
@@ -1137,7 +1137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookAtMentionTrigger(Expression<Func<ThreadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
             var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
@@ -1152,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<FrequencyInput>> frequency, Expression<Func<RunningPolicyInput>> runningPolicy, Expression<Func<ThreadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
             var __workflow_reactionKey = WorkflowExpression.Compile(reactionKey, nameof(reactionKey), required: true);
             var __workflow_frequency = WorkflowExpression.Compile(frequency, nameof(frequency), required: true);
@@ -1173,7 +1173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TranscriptTrigger(Expression<Func<scopeTypeInput>> scopeType, Expression<Func<TranscriptTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TranscriptTrigger(Expression<Func<ScopeTypeInput>> scopeType, Expression<Func<RecordingTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_scopeType = WorkflowExpression.Compile(scopeType, nameof(scopeType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RecordingTrigger(Expression<Func<scopeTypeInput>> scopeType, Expression<Func<RecordingTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> RecordingTrigger(Expression<Func<ScopeTypeInput>> scopeType, Expression<Func<RecordingTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_scopeType = WorkflowExpression.Compile(scopeType, nameof(scopeType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1203,20 +1203,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookChatMessageTrigger(Expression<Func<WebhookChatMessageTriggerInput>> chatMessageSubscriptionRequest, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookChatMessageTrigger(FlowRecurrence recurrence = null)
         {
-            var __workflow_chatMessageSubscriptionRequest = WorkflowExpression.Compile(chatMessageSubscriptionRequest, nameof(chatMessageSubscriptionRequest), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/beta/subscriptions/chatmessagetrigger";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_chatMessageSubscriptionRequest);
+                callPayload.Body = new ChatMessageSubscriptionRequestInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookKeywordTrigger(Expression<Func<ThreadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
             var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: true);
@@ -1233,7 +1232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookNewMessageTrigger(Expression<Func<ThreadTypeInput>> threadType, Expression<Func<object>> requestBody = null, FlowRecurrence recurrence = null)
         {
             var __workflow_threadType = WorkflowExpression.Compile(threadType, nameof(threadType), required: true);
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
@@ -1467,7 +1466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum calendaridInput
+    public enum CalendaridInput
     {
         Birthdays,
         Calendar,
@@ -1475,22 +1474,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         UnitedStatesHolidays
     }
 
-    public class CreateTeamsMeetingInput
+    public class CreateTeamsMeetingItemInput
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTeamsMeetingInputBodyType Body { get; set; } = new CreateTeamsMeetingInputBodyType();
+        public ItemInputBodyType Body { get; set; } = new ItemInputBodyType();
 
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeZone { get; set; }
 
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTeamsMeetingInputStartType Start { get; set; }
+        public ItemInputStartType Start { get; set; }
 
         [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTeamsMeetingInputEndType End { get; set; }
+        public ItemInputEndType End { get; set; }
 
         [JsonProperty("requiredAttendees")]
         public string RequiredAttendees { get; set; }
@@ -1499,13 +1498,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string OptionalAttendees { get; set; }
 
         [JsonProperty("location")]
-        public CreateTeamsMeetingInputLocationType Location { get; set; }
+        public ItemInputLocationType Location { get; set; }
 
         [JsonProperty("importance")]
-        public CreateTeamsMeetingInputImportanceType? Importance { get; set; }
+        public ItemInputImportanceType? Importance { get; set; }
 
         [JsonProperty("recurrence")]
-        public CreateTeamsMeetingInputRecurrenceType Recurrence { get; set; }
+        public ItemInputRecurrenceType Recurrence { get; set; }
 
         [JsonProperty("isAllDay")]
         public bool? AllDayEvent { get; set; }
@@ -1517,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public bool? EnableReminders { get; set; }
 
         [JsonProperty("showAs")]
-        public CreateTeamsMeetingInputStatusShowAsType? StatusShowAs { get; set; }
+        public ItemInputStatusShowAsType? StatusShowAs { get; set; }
 
         [JsonProperty("responseRequested")]
         public bool? RequestResponse { get; set; }
@@ -1529,7 +1528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         internal string OnlineMeetingProvider { get; set; } = "teamsForBusiness";
     }
 
-    public class CreateTeamsMeetingInputBodyType
+    public class ItemInputBodyType
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventMessageContent { get; set; }
@@ -1538,26 +1537,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         internal string ContentType { get; set; } = "html";
     }
 
-    public class CreateTeamsMeetingInputStartType
+    public class ItemInputStartType
     {
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
     }
 
-    public class CreateTeamsMeetingInputEndType
+    public class ItemInputEndType
     {
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
     }
 
-    public class CreateTeamsMeetingInputLocationType
+    public class ItemInputLocationType
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTeamsMeetingInputImportanceType
+    public enum ItemInputImportanceType
     {
         [EnumMember(Value = "low")]
         Low,
@@ -1567,19 +1566,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         High
     }
 
-    public class CreateTeamsMeetingInputRecurrenceType
+    public class ItemInputRecurrenceType
     {
         [JsonProperty("pattern")]
-        public CreateTeamsMeetingInputRecurrenceTypePatternType Pattern { get; set; }
+        public ItemInputRecurrenceTypePatternType Pattern { get; set; }
 
         [JsonProperty("range")]
-        public CreateTeamsMeetingInputRecurrenceTypeRangeType Range { get; set; }
+        public ItemInputRecurrenceTypeRangeType Range { get; set; }
     }
 
-    public class CreateTeamsMeetingInputRecurrenceTypePatternType
+    public class ItemInputRecurrenceTypePatternType
     {
         [JsonProperty("type")]
-        public CreateTeamsMeetingInputRecurrenceTypePatternTypeRecurrencePatternType? RecurrencePattern { get; set; }
+        public ItemInputRecurrenceTypePatternTypeRecurrencePatternType? RecurrencePattern { get; set; }
 
         [JsonProperty("interval")]
         public int? RecurrenceInterval { get; set; }
@@ -1588,11 +1587,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string[] DaysOfWeek { get; set; }
 
         [JsonProperty("index")]
-        public CreateTeamsMeetingInputRecurrenceTypePatternTypeWeekIndexType? WeekIndex { get; set; }
+        public ItemInputRecurrenceTypePatternTypeWeekIndexType? WeekIndex { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTeamsMeetingInputRecurrenceTypePatternTypeRecurrencePatternType
+    public enum ItemInputRecurrenceTypePatternTypeRecurrencePatternType
     {
         [EnumMember(Value = "")]
         None,
@@ -1607,7 +1606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTeamsMeetingInputRecurrenceTypePatternTypeWeekIndexType
+    public enum ItemInputRecurrenceTypePatternTypeWeekIndexType
     {
         [EnumMember(Value = "")]
         None,
@@ -1623,7 +1622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         Last
     }
 
-    public class CreateTeamsMeetingInputRecurrenceTypeRangeType
+    public class ItemInputRecurrenceTypeRangeType
     {
         [JsonProperty("startDate")]
         public string RecurrenceStartDate { get; set; }
@@ -1633,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTeamsMeetingInputStatusShowAsType
+    public enum ItemInputStatusShowAsType
     {
         [EnumMember(Value = "free")]
         Free,
@@ -1758,7 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string MembershipType { get; set; }
     }
 
-    public class CreateChannelInput
+    public class CreateChannelBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1767,11 +1766,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Name { get; set; }
 
         [JsonProperty("membershipType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateChannelInputMembershipTypeType? MembershipType { get; set; } = CreateChannelInputMembershipTypeType.Standard;
+        public BodyInputMembershipTypeType? MembershipType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Teams.BodyInputMembershipTypeType.Standard;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateChannelInputMembershipTypeType
+    public enum BodyInputMembershipTypeType
     {
         [EnumMember(Value = "standard")]
         Standard,
@@ -1781,7 +1780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         Shared
     }
 
-    public class UpdateChannelPropertiesInput
+    public class UpdateChannelPropertiesBodyInput
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -1811,7 +1810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         Failed
     }
 
-    public class ArchiveChannelInput
+    public class ArchiveChannelBodyInput
     {
         [JsonProperty("shouldSetSpoSiteReadOnlyForMembers")]
         public bool? SetSharePointSiteToReadOnlyForMembers { get; set; }
@@ -1851,7 +1850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum chatTypeInput
+    public enum ChatTypeInput
     {
         [EnumMember(Value = "all")]
         AllChatTypes,
@@ -1864,7 +1863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum topicInput
+    public enum TopicInput
     {
         [EnumMember(Value = "all")]
         AllChats,
@@ -1875,14 +1874,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterInput
+    public enum PostFeedNotificationPosterInput
     {
         [EnumMember(Value = "Flow bot")]
         FlowBot
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum notificationTypeInput
+    public enum NotificationTypeInput
     {
         [EnumMember(Value = "groupchat")]
         GroupChat,
@@ -1996,7 +1995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum threadTypeInput
+    public enum ThreadTypeInput
     {
         [EnumMember(Value = "groupchat")]
         GroupChat,
@@ -2271,7 +2270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ConversationId { get; set; }
     }
 
-    public class CreateChatInput
+    public class CreateChatItemInput
     {
         [JsonProperty("topic")]
         public string Title { get; set; }
@@ -2280,23 +2279,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string MembersToAdd { get; set; }
     }
 
-    public class PostMessageToSelfInput
+    public class PostMessageToSelfBodyInput
     {
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostMessageToSelfInputBodyType Body { get; set; } = new PostMessageToSelfInputBodyType();
+        public PostMessageToSelfBodyInputBodyType Body { get; set; } = new PostMessageToSelfBodyInputBodyType();
     }
 
-    public class PostMessageToSelfInputBodyType
+    public class PostMessageToSelfBodyInputBodyType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostMessageToSelfInputBodyTypeContentTypeType? ContentType { get; set; } = PostMessageToSelfInputBodyTypeContentTypeType.Text;
+        public BodyInputBodyTypeContentTypeType? ContentType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Teams.BodyInputBodyTypeContentTypeType.Text;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostMessageToSelfInputBodyTypeContentTypeType
+    public enum BodyInputBodyTypeContentTypeType
     {
         [EnumMember(Value = "text")]
         Text,
@@ -2310,7 +2309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string NewTeamId { get; set; }
     }
 
-    public class CreateATeamInput
+    public class CreateATeamBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TeamName { get; set; }
@@ -2319,17 +2318,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Description { get; set; }
 
         [JsonProperty("visibility", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateATeamInputVisibilityType? Visibility { get; set; } = CreateATeamInputVisibilityType.Public;
+        public BodyInputVisibilityType? Visibility { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Teams.BodyInputVisibilityType.Public;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateATeamInputVisibilityType
+    public enum BodyInputVisibilityType
     {
         Private,
         Public
     }
 
-    public class AddMemberToTeamInput
+    public class AddMemberToTeamBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
@@ -2338,7 +2337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public bool? SetUserAsTeamOwner { get; set; }
     }
 
-    public class AddMemberToChannelInput
+    public class AddMemberToChannelBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
@@ -2360,7 +2359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterInput2
+    public enum PostMessageToConversationPosterInput
     {
         [EnumMember(Value = "Power Virtual Agents")]
         MicrosoftCopilotStudioAgent,
@@ -2370,7 +2369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterInput3
+    public enum ReplyWithCardToConversationPosterInput
     {
         [EnumMember(Value = "Flow bot")]
         FlowBot,
@@ -2378,7 +2377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterInput4
+    public enum PostCardToConversationPosterInput
     {
         [EnumMember(Value = "Power Apps")]
         PowerApps,
@@ -2390,7 +2389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterInput5
+    public enum PostCardAndWaitForResponsePosterInput
     {
         [EnumMember(Value = "Power Virtual Agents")]
         MicrosoftCopilotStudioAgent,
@@ -2398,16 +2397,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         FlowBot
     }
 
-    public class PostCardAndWaitForResponseInput
+    public class PostCardAndWaitForResponseBodyInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCardAndWaitForResponseInputBodyType Body { get; set; } = new PostCardAndWaitForResponseInputBodyType();
+        public PostCardAndWaitForResponseBodyInputBodyType Body { get; set; } = new PostCardAndWaitForResponseBodyInputBodyType();
     }
 
-    public class PostCardAndWaitForResponseInputBodyType
+    public class PostCardAndWaitForResponseBodyInputBodyType
     {
         [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Recipient { get; set; }
@@ -2420,23 +2419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterInput6
-    {
-        [EnumMember(Value = "Flow bot")]
-        FlowBot,
-        User
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterInput7
-    {
-        [EnumMember(Value = "Flow bot")]
-        FlowBot,
-        User
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,
@@ -2445,7 +2428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         DELETE
     }
 
-    public class AddMemberToChatInput
+    public class AddMemberToChatBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
@@ -2572,7 +2555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum lookupTypeInput
+    public enum LookupTypeInput
     {
         [EnumMember(Value = "meetingId")]
         MeetingId,
@@ -2733,29 +2716,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         SystemDefined
     }
 
-    public class CreateSectionInput
+    public class CreateSectionBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
         [JsonProperty("displayIcon")]
-        public CreateSectionInputDisplayIconType DisplayIcon { get; set; }
+        public BodyInputDisplayIconType DisplayIcon { get; set; }
 
         [JsonProperty("isExpanded")]
         public bool? IsExpanded { get; set; }
 
         [JsonProperty("sortType")]
-        public CreateSectionInputSortTypeType? SortType { get; set; }
+        public BodyInputSortTypeType? SortType { get; set; }
     }
 
-    public class CreateSectionInputDisplayIconType
+    public class BodyInputDisplayIconType
     {
         [JsonProperty("iconType")]
         public string IconType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSectionInputSortTypeType
+    public enum BodyInputSortTypeType
     {
         [EnumMember(Value = "mostRecent")]
         MostRecent,
@@ -2767,38 +2750,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         UserDefinedCustomOrder
     }
 
-    public class UpdateSectionInput
+    public class UpdateSectionBodyInput
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
 
         [JsonProperty("displayIcon")]
-        public UpdateSectionInputDisplayIconType DisplayIcon { get; set; }
+        public BodyInputDisplayIconType DisplayIcon { get; set; }
 
         [JsonProperty("isExpanded")]
         public bool? IsExpanded { get; set; }
 
         [JsonProperty("sortType")]
-        public UpdateSectionInputSortTypeType? SortType { get; set; }
-    }
-
-    public class UpdateSectionInputDisplayIconType
-    {
-        [JsonProperty("iconType")]
-        public string IconType { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateSectionInputSortTypeType
-    {
-        [EnumMember(Value = "mostRecent")]
-        MostRecent,
-        [EnumMember(Value = "unreadThenMostRecent")]
-        UnreadThenMostRecent,
-        [EnumMember(Value = "nameAlphabetical")]
-        NameAlphabetical,
-        [EnumMember(Value = "userDefinedCustomOrder")]
-        UserDefinedCustomOrder
+        public BodyInputSortTypeType? SortType { get; set; }
     }
 
     public class ListSectionItemsResponse
@@ -2841,7 +2805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         Community
     }
 
-    public class MoveSectionItemInput
+    public class MoveSectionItemBodyInput
     {
         [JsonProperty("targetSectionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetSectionId { get; set; }
@@ -2889,7 +2853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public int MemberCount { get; set; }
     }
 
-    public class CreateTagInput
+    public class CreateTagBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -2898,7 +2862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string MembersIDs { get; set; }
     }
 
-    public class UpdateTagInput
+    public class UpdateTagBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -2910,7 +2874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Id { get; set; }
     }
 
-    public class AddMemberToTagInput
+    public class AddMemberToTagBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserSId { get; set; }
@@ -3073,7 +3037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum frequencyInput
+    public enum FrequencyInput
     {
         [EnumMember(Value = "Multiple")]
         EveryReactionMultiple,
@@ -3082,14 +3046,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum runningPolicyInput
+    public enum RunningPolicyInput
     {
         Myself,
         Everyone
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum scopeTypeInput
+    public enum ScopeTypeInput
     {
         [EnumMember(Value = "user")]
         MeetingsThatYouOrganized,
@@ -3099,7 +3063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         AdHocCallsYouReIn
     }
 
-    public class TranscriptTriggerInput
+    public class RecordingTriggerBodyInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
@@ -3108,16 +3072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public JToken Scope { get; set; }
     }
 
-    public class RecordingTriggerInput
-    {
-        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Scope { get; set; }
-    }
-
-    public class WebhookChatMessageTriggerInput
+    public class ChatMessageSubscriptionRequestInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Informix
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "informix")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> table, Expression<Func<itemInput>> item)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PostItem(Expression<Func<string>> table, Expression<Func<ItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Informix
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "informix")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<itemInput>> item)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<ItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Informix
         public JToken DynamicProperties { get; set; }
     }
 
-    public class itemInput
+    public class ItemInput
     {
         [JsonProperty("dynamicProperties")]
         public JToken DynamicProperties { get; set; }

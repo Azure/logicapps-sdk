@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<UserBasicResponse, ApiConnectionActionConfiguration> UpdateMe(Expression<Func<UpdateMeInput>> body)
+        public IBodyWorkflowAction<UserBasicResponse, ApiConnectionActionConfiguration> UpdateMe(Expression<Func<UpdateMeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserBasicResponse, ApiConnectionActionConfiguration>(() =>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> CreateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<CreateTimeEntryInput>> body, Expression<Func<bool>> meta = null)
+        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> CreateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<CreateTimeEntryBodyInput>> body, Expression<Func<bool>> meta = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> UpdateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<int>> timeEntryId, Expression<Func<UpdateTimeEntryInput>> body, Expression<Func<bool>> meta = null, Expression<Func<bool>> includeSharing = null)
+        public IBodyWorkflowAction<TimeEntry, ApiConnectionActionConfiguration> UpdateTimeEntry(Expression<Func<int>> workspaceId, Expression<Func<int>> timeEntryId, Expression<Func<CreateTimeEntryBodyInput>> body, Expression<Func<bool>> meta = null, Expression<Func<bool>> includeSharing = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_timeEntryId = WorkflowExpression.Compile(timeEntryId, nameof(timeEntryId), required: true);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<Rate[], ApiConnectionActionConfiguration> GetWorkspaceRates(Expression<Func<int>> workspaceId, Expression<Func<levelInput>> level, Expression<Func<int>> levelId, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<Rate[], ApiConnectionActionConfiguration> GetWorkspaceRates(Expression<Func<int>> workspaceId, Expression<Func<LevelInput>> level, Expression<Func<int>> levelId, Expression<Func<TypeInput>> type = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: true);
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toggltrack")]
-        public IBodyWorkflowAction<Project[], ApiConnectionActionConfiguration> GetWorkspaceProjects(Expression<Func<int>> workspaceId, Expression<Func<bool>> sortPinned, Expression<Func<string>> sortField, Expression<Func<sortOrderInput>> sortOrder, Expression<Func<bool>> onlyTemplates, Expression<Func<bool>> active = null, Expression<Func<int>> since = null, Expression<Func<bool>> billable = null, Expression<Func<int[]>> userIds = null, Expression<Func<int[]>> clientIds = null, Expression<Func<int[]>> groupIds = null, Expression<Func<string>> projectIds = null, Expression<Func<string[]>> statuses = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<bool>> onlyMe = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<Project[], ApiConnectionActionConfiguration> GetWorkspaceProjects(Expression<Func<int>> workspaceId, Expression<Func<bool>> sortPinned, Expression<Func<string>> sortField, Expression<Func<SortOrderInput>> sortOrder, Expression<Func<bool>> onlyTemplates, Expression<Func<bool>> active = null, Expression<Func<int>> since = null, Expression<Func<bool>> billable = null, Expression<Func<int[]>> userIds = null, Expression<Func<int[]>> clientIds = null, Expression<Func<int[]>> groupIds = null, Expression<Func<string>> projectIds = null, Expression<Func<string[]>> statuses = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<bool>> onlyMe = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_sortPinned = WorkflowExpression.Compile(sortPinned, nameof(sortPinned), required: true);
@@ -604,72 +604,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
     public class ToggltrackTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryCreated(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryCreated(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_created", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryUpdated(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryUpdated(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_updated", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryDeleted(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryDeleted(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_deleted", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStarted(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryStartedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStarted(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_started", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStopped(Expression<Func<int>> workspaceId, Expression<Func<OnTimeEntryStoppedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> OnTimeEntryStopped(Expression<Func<int>> workspaceId, FlowRecurrence recurrence = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/api/v1/subscriptions/{0}/time_entry_stopped", __workflow_workspaceId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnTimeEntryCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
             });
         }
@@ -1314,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string UpdatedAt { get; set; }
     }
 
-    public class UpdateMeInput
+    public class UpdateMeBodyInput
     {
         [JsonProperty("beginning_of_week")]
         public int? BeginningOfWeek { get; set; }
@@ -1482,7 +1477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int WorkspaceId { get; set; }
     }
 
-    public class CreateTimeEntryInput
+    public class CreateTimeEntryBodyInput
     {
         [JsonProperty("billable")]
         public bool? Billable { get; set; }
@@ -1524,7 +1519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string StopTime { get; set; }
 
         [JsonProperty("tag_action")]
-        public CreateTimeEntryInputTagActionType? TagAction { get; set; }
+        public BodyInputTagActionType? TagAction { get; set; }
 
         [JsonProperty("tag_ids")]
         public int[] TagIDs { get; set; }
@@ -1561,85 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTimeEntryInputTagActionType
-    {
-        [EnumMember(Value = "add")]
-        Add,
-        [EnumMember(Value = "delete")]
-        Delete
-    }
-
-    public class UpdateTimeEntryInput
-    {
-        [JsonProperty("billable")]
-        public bool? Billable { get; set; }
-
-        [JsonProperty("created_with")]
-        public string CreatedWith { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("duration")]
-        public int? Duration { get; set; }
-
-        [JsonProperty("duronly")]
-        public bool? DurationOnly { get; set; }
-
-        [JsonProperty("event_metadata")]
-        public EventMetadata EventMetadata { get; set; }
-
-        [JsonProperty("expense_ids")]
-        public int[] ExpenseIDs { get; set; }
-
-        [JsonProperty("pid")]
-        public int? ProjectIdLegacy { get; set; }
-
-        [JsonProperty("project_id")]
-        public int? ProjectId { get; set; }
-
-        [JsonProperty("shared_with_user_ids")]
-        public int[] SharedWithUserIDs { get; set; }
-
-        [JsonProperty("start")]
-        public string StartTime { get; set; }
-
-        [JsonProperty("start_date")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("stop")]
-        public string StopTime { get; set; }
-
-        [JsonProperty("tag_action")]
-        public UpdateTimeEntryInputTagActionType? TagAction { get; set; }
-
-        [JsonProperty("tag_ids")]
-        public int[] TagIDs { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
-
-        [JsonProperty("task_id")]
-        public int? TaskId { get; set; }
-
-        [JsonProperty("tid")]
-        public int? TaskIdLegacy { get; set; }
-
-        [JsonProperty("uid")]
-        public int? UserIdLegacy { get; set; }
-
-        [JsonProperty("user_id")]
-        public int? UserId { get; set; }
-
-        [JsonProperty("wid")]
-        public int? WorkspaceIdLegacy { get; set; }
-
-        [JsonProperty("workspace_id")]
-        public int? WorkspaceId { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTimeEntryInputTagActionType
+    public enum BodyInputTagActionType
     {
         [EnumMember(Value = "add")]
         Add,
@@ -1667,10 +1584,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
     public class PatchOperation
     {
-        [JsonProperty("op")]
+        [JsonProperty("op", DefaultValueHandling = DefaultValueHandling.Include)]
         public PatchOperationOperationType Operation { get; set; }
 
-        [JsonProperty("path")]
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
         [JsonProperty("value")]
@@ -1824,7 +1741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum levelInput
+    public enum LevelInput
     {
         [EnumMember(Value = "workspace")]
         Workspace,
@@ -1837,7 +1754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "billable_rates")]
         BillableRates,
@@ -1954,7 +1871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOrderInput
+    public enum SortOrderInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -1998,55 +1915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string Action { get; set; }
     }
 
-    public class OnTimeEntryCreatedInput
-    {
-        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
-
-        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal bool Enabled { get; set; } = true;
-    }
-
-    public class OnTimeEntryUpdatedInput
-    {
-        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
-
-        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal bool Enabled { get; set; } = true;
-    }
-
-    public class OnTimeEntryDeletedInput
-    {
-        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
-
-        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal bool Enabled { get; set; } = true;
-    }
-
-    public class OnTimeEntryStartedInput
-    {
-        [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Description { get; set; } = "Power Automate Time Tracking Trigger";
-
-        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal bool Enabled { get; set; } = true;
-    }
-
-    public class OnTimeEntryStoppedInput
+    public class OnTimeEntryCreatedBodyInput
     {
         [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";

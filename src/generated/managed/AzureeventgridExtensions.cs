@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
 
     public class AzureeventgridTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceType, Expression<Func<CreateSubscriptionInput>> body, Expression<Func<string>> subscriptionName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateSubscription(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceType, Expression<Func<BodyInput>> body, Expression<Func<string>> subscriptionName = null, FlowRecurrence recurrence = null)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceType = WorkflowExpression.Compile(resourceType, nameof(resourceType), required: true);
@@ -36,40 +36,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
         }
     }
 
-    public class CreateSubscriptionInput
+    public class BodyInput
     {
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSubscriptionInputPropertiesType Properties { get; set; } = new CreateSubscriptionInputPropertiesType();
+        public BodyInputPropertiesType Properties { get; set; } = new BodyInputPropertiesType();
     }
 
-    public class CreateSubscriptionInputPropertiesType
+    public class BodyInputPropertiesType
     {
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceName { get; set; }
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSubscriptionInputPropertiesTypeDestinationType Destination { get; set; } = new CreateSubscriptionInputPropertiesTypeDestinationType();
+        public BodyInputPropertiesTypeDestinationType Destination { get; set; } = new BodyInputPropertiesTypeDestinationType();
 
         [JsonProperty("filter")]
-        public CreateSubscriptionInputPropertiesTypeFilterType Filter { get; set; }
+        public BodyInputPropertiesTypeFilterType Filter { get; set; }
     }
 
-    public class CreateSubscriptionInputPropertiesTypeDestinationType
+    public class BodyInputPropertiesTypeDestinationType
     {
         [JsonProperty("endpointType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EndpointType { get; set; } = "webhook";
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSubscriptionInputPropertiesTypeDestinationTypePropertiesType Properties { get; set; } = new CreateSubscriptionInputPropertiesTypeDestinationTypePropertiesType();
+        public BodyInputPropertiesTypeDestinationTypePropertiesType Properties { get; set; } = new BodyInputPropertiesTypeDestinationTypePropertiesType();
     }
 
-    public class CreateSubscriptionInputPropertiesTypeDestinationTypePropertiesType
+    public class BodyInputPropertiesTypeDestinationTypePropertiesType
     {
         [JsonProperty("endpointUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class CreateSubscriptionInputPropertiesTypeFilterType
+    public class BodyInputPropertiesTypeFilterType
     {
         [JsonProperty("subjectBeginsWith")]
         public string PrefixFilter { get; set; }

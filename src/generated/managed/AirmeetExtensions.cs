@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateAirmeetResponse, ApiConnectionActionConfiguration> CreateAirmeet(Expression<Func<CreateAirmeetInput>> body = null)
+        public IBodyWorkflowAction<CreateAirmeetResponse, ApiConnectionActionConfiguration> CreateAirmeet(Expression<Func<CreateAirmeetBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateAirmeetResponse, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateSpeakerResponse, ApiConnectionActionConfiguration> CreateSpeaker(Expression<Func<string>> airmeetId, Expression<Func<CreateSpeakerInput>> body = null)
+        public IBodyWorkflowAction<CreateSpeakerResponse, ApiConnectionActionConfiguration> CreateSpeaker(Expression<Func<string>> airmeetId, Expression<Func<CreateSpeakerBodyInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<StartAndEndAirmeetResponse, ApiConnectionActionConfiguration> StartAndEndAirmeet(Expression<Func<string>> airmeetId, Expression<Func<StartAndEndAirmeetInput>> body)
+        public IBodyWorkflowAction<StartAndEndAirmeetResponse, ApiConnectionActionConfiguration> StartAndEndAirmeet(Expression<Func<string>> airmeetId, Expression<Func<StartAndEndAirmeetBodyInput>> body)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<AirmeetParticipantsResponse, ApiConnectionActionConfiguration> AirmeetParticipants(Expression<Func<string>> airmeetId, Expression<Func<int>> resultSize = null, Expression<Func<int>> pageNumber = null, Expression<Func<sortingKeyInput>> sortingKey = null, Expression<Func<sortingDirectionInput>> sortingDirection = null)
+        public IBodyWorkflowAction<AirmeetParticipantsResponse, ApiConnectionActionConfiguration> AirmeetParticipants(Expression<Func<string>> airmeetId, Expression<Func<int>> resultSize = null, Expression<Func<int>> pageNumber = null, Expression<Func<SortingKeyInput>> sortingKey = null, Expression<Func<SortingDirectionInput>> sortingDirection = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
             var __workflow_resultSize = WorkflowExpression.Compile(resultSize, nameof(resultSize), required: false);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateBoothResponse, ApiConnectionActionConfiguration> CreateBooth(Expression<Func<string>> airmeetId, Expression<Func<CreateBoothInput>> body = null)
+        public IBodyWorkflowAction<CreateBoothResponse, ApiConnectionActionConfiguration> CreateBooth(Expression<Func<string>> airmeetId, Expression<Func<CreateBoothBodyInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration> AddAuthorizedAttendee(Expression<Func<string>> airmeetId, Expression<Func<AddAuthorizedAttendeeInput>> body = null)
+        public IBodyWorkflowAction<AddAuthorizedAttendeeResponse, ApiConnectionActionConfiguration> AddAuthorizedAttendee(Expression<Func<string>> airmeetId, Expression<Func<AddAuthorizedAttendeeBodyInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airmeet")]
-        public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession(Expression<Func<string>> airmeetId, Expression<Func<CreateSessionInput>> body = null)
+        public IBodyWorkflowAction<CreateSessionResponse, ApiConnectionActionConfiguration> CreateSession(Expression<Func<string>> airmeetId, Expression<Func<CreateSessionBodyInput>> body = null)
         {
             var __workflow_airmeetId = WorkflowExpression.Compile(airmeetId, nameof(airmeetId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Status { get; set; }
     }
 
-    public class CreateAirmeetInput
+    public class CreateAirmeetBodyInput
     {
         [JsonProperty("hostEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HostEmail { get; set; }
@@ -310,20 +310,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string LongDesc { get; set; }
 
         [JsonProperty("access", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAirmeetInputAccessType? Access { get; set; } = CreateAirmeetInputAccessType.INVITEDONLY;
+        public BodyInputAccessType? Access { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputAccessType.INVITEDONLY;
 
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EventType { get; set; } = "MEETUP";
 
         [JsonProperty("timing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAirmeetInputTimingType Timing { get; set; } = new CreateAirmeetInputTimingType();
+        public BodyInputTimingType Timing { get; set; } = new BodyInputTimingType();
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAirmeetInputConfigType Config { get; set; } = new CreateAirmeetInputConfigType();
+        public BodyInputConfigType Config { get; set; } = new BodyInputConfigType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAirmeetInputAccessType
+    public enum BodyInputAccessType
     {
         [EnumMember(Value = "INVITED_ONLY")]
         INVITEDONLY,
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         WITHOUTVERIFIEDEMAIL
     }
 
-    public class CreateAirmeetInputTimingType
+    public class BodyInputTimingType
     {
         [JsonProperty("startTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public int StartTime { get; set; }
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Timezone { get; set; } = "Asia/Kolkata";
     }
 
-    public class CreateAirmeetInputConfigType
+    public class BodyInputConfigType
     {
         [JsonProperty("networking", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Networking { get; set; } = true;
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Status { get; set; }
     }
 
-    public class CreateSpeakerInput
+    public class CreateSpeakerBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -438,14 +438,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public bool StatusUpdated { get; set; }
     }
 
-    public class StartAndEndAirmeetInput
+    public class StartAndEndAirmeetBodyInput
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartAndEndAirmeetInputStatusType Status { get; set; } = StartAndEndAirmeetInputStatusType.ONGOING;
+        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputStatusType.ONGOING;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartAndEndAirmeetInputStatusType
+    public enum BodyInputStatusType
     {
         ONGOING,
         FINISHED
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortingKeyInput
+    public enum SortingKeyInput
     {
         [EnumMember(Value = "name")]
         Name,
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortingDirectionInput
+    public enum SortingDirectionInput
     {
         ASC,
         DESC
@@ -741,39 +741,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Uuid { get; set; }
     }
 
-    public class CreateBoothInput
+    public class CreateBoothBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("exhibitorInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateBoothInputExhibitorInfoTypeItem[] ExhibitorInfo { get; set; }
+        public BodyInputExhibitorInfoTypeItem[] ExhibitorInfo { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
 
         [JsonProperty("metaData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateBoothInputMetaDataType MetaData { get; set; } = new CreateBoothInputMetaDataType();
+        public BodyInputMetaDataType MetaData { get; set; } = new BodyInputMetaDataType();
     }
 
-    public class CreateBoothInputExhibitorInfoTypeItem
+    public class BodyInputExhibitorInfoTypeItem
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("exhibitorAttendanceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateBoothInputExhibitorInfoTypeItemExhibitorAttendanceTypeType? ExhibitorAttendanceType { get; set; } = CreateBoothInputExhibitorInfoTypeItemExhibitorAttendanceTypeType.HYBRId;
+        public BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType? ExhibitorAttendanceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType.HYBRId;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoothInputExhibitorInfoTypeItemExhibitorAttendanceTypeType
+    public enum BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType
     {
         [EnumMember(Value = "HYBRID")]
         HYBRId,
         ONLINE
     }
 
-    public class CreateBoothInputMetaDataType
+    public class BodyInputMetaDataType
     {
         [JsonProperty("chatEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ChatEnabled { get; set; } = false;
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string EntryLink { get; set; }
     }
 
-    public class AddAuthorizedAttendeeInput
+    public class AddAuthorizedAttendeeBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -809,7 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string LastName { get; set; }
 
         [JsonProperty("attendance_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddAuthorizedAttendeeInputAttendanceTypeType? AttendanceType { get; set; } = AddAuthorizedAttendeeInputAttendanceTypeType.INPERSON;
+        public BodyInputAttendanceTypeType? AttendanceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputAttendanceTypeType.INPERSON;
 
         [JsonProperty("city")]
         public string City { get; set; }
@@ -830,18 +830,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public bool SendEmailInvite { get; set; } = false;
 
         [JsonProperty("customFieldMapping")]
-        public AddAuthorizedAttendeeInputCustomFieldMappingTypeItem[] CustomFieldMapping { get; set; }
+        public BodyInputCustomFieldMappingTypeItem[] CustomFieldMapping { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddAuthorizedAttendeeInputAttendanceTypeType
+    public enum BodyInputAttendanceTypeType
     {
         VIRTUAL,
         [EnumMember(Value = "IN-PERSON")]
         INPERSON
     }
 
-    public class AddAuthorizedAttendeeInputCustomFieldMappingTypeItem
+    public class BodyInputCustomFieldMappingTypeItem
     {
         [JsonProperty("fieldId")]
         public string FieldId { get; set; }
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Uuid { get; set; }
     }
 
-    public class CreateSessionInput
+    public class CreateSessionBodyInput
     {
         [JsonProperty("sessionTitle")]
         public string SessionTitle { get; set; }
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string[] CohostEmails { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSessionInputTypeType? Type { get; set; } = CreateSessionInputTypeType.HOSTING;
+        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputTypeType.HOSTING;
 
         [JsonProperty("tracks")]
         public string[] Tracks { get; set; }
@@ -892,14 +892,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string BoothId { get; set; }
 
         [JsonProperty("speedNetworkingData")]
-        public CreateSessionInputSpeedNetworkingDataType SpeedNetworkingData { get; set; }
+        public BodyInputSpeedNetworkingDataType SpeedNetworkingData { get; set; }
 
         [JsonProperty("sessionMeta")]
-        public CreateSessionInputSessionMetaType SessionMeta { get; set; }
+        public BodyInputSessionMetaType SessionMeta { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSessionInputTypeType
+    public enum BodyInputTypeType
     {
         HOSTING,
         [EnumMember(Value = "FLUID_LOUNGE")]
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         STREAMING
     }
 
-    public class CreateSessionInputSpeedNetworkingDataType
+    public class BodyInputSpeedNetworkingDataType
     {
         [JsonProperty("conversationTime")]
         public int? ConversationTime { get; set; }
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public int? ExtendNetworkingTime { get; set; }
     }
 
-    public class CreateSessionInputSessionMetaType
+    public class BodyInputSessionMetaType
     {
         [JsonProperty("hideHost")]
         public bool? HideHost { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
     public class PlivoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plivo")]
-        public IBodyWorkflowAction<MakeCallResponse, ApiConnectionActionConfiguration> MakeCall(Expression<Func<MakeCallInput>> callRequestBody)
+        public IBodyWorkflowAction<MakeCallResponse, ApiConnectionActionConfiguration> MakeCall(Expression<Func<CallRequestBodyInput>> callRequestBody)
         {
             var __workflow_callRequestBody = WorkflowExpression.Compile(callRequestBody, nameof(callRequestBody), required: true);
             return new DeferredBodyAction<MakeCallResponse, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plivo")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<SendSMSInput>> sMSRequestBody)
+        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<SMSRequestBodyInput>> sMSRequestBody)
         {
             var __workflow_sMSRequestBody = WorkflowExpression.Compile(sMSRequestBody, nameof(sMSRequestBody), required: true);
             return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         public string CallUUID { get; set; }
     }
 
-    public class MakeCallInput
+    public class CallRequestBodyInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plivo
         public string[] MessageUUID { get; set; }
     }
 
-    public class SendSMSInput
+    public class SMSRequestBodyInput
     {
         [JsonProperty("src", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }

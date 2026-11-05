@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration> Unix2DateTimeTimezone(Expression<Func<Unix2DateTimeTimezoneInput>> body = null)
+        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration> Unix2DateTimeTimezone(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Unix2DateTimeTimezoneResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         public string Datetime { get; set; }
     }
 
-    public class Unix2DateTimeTimezoneInput
+    public class BodyInput
     {
         public string UnixTimeStamp { get; set; }
         public string Timezone { get; set; }

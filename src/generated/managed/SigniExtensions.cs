@@ -13,24 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     public class SigniActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RegisterWebhookV2New(Expression<Func<string>> workspaceId, Expression<Func<string>> contractId, Expression<Func<RegisterWebhookV2NewInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RegisterWebhookV2New(Expression<Func<string>> workspaceId, Expression<Func<string>> contractId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_contractId = WorkflowExpression.Compile(contractId, nameof(contractId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/registerwebhook/{0}", __workflow_contractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new RegisterWebhookV2NewBodyInput().ToJToken();
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse, ApiConnectionActionConfiguration> SignContractFromProvidedFileV2New(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromProvidedFileV2NewInput>> body)
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse, ApiConnectionActionConfiguration> SignContractFromProvidedFileV2New(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromProvidedFileV2NewBodyInput>> body)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewWaitResponse, ApiConnectionActionConfiguration> SignContractFromProvidedFileV2NewWait(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromProvidedFileV2NewWaitInput>> body)
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewWaitResponse, ApiConnectionActionConfiguration> SignContractFromProvidedFileV2NewWait(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromProvidedFileV2NewWaitBodyInput>> body)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -62,17 +61,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<GetContractDetailV2Response, ApiConnectionActionConfiguration> GetContractDetail(Expression<Func<string>> workspaceId, Expression<Func<string>> contractId)
+        public IBodyWorkflowAction<GetContractDetailResponse, ApiConnectionActionConfiguration> GetContractDetail(Expression<Func<string>> workspaceId, Expression<Func<string>> contractId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_contractId = WorkflowExpression.Compile(contractId, nameof(contractId), required: true);
-            return new DeferredBodyAction<GetContractDetailV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetContractDetailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/contract/{0}", __workflow_contractId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
-                return new ApiConnectionAction<GetContractDetailV2Response>(callPayload);
+                return new ApiConnectionAction<GetContractDetailResponse>(callPayload);
             });
         }
 
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRevisionListPdf(Expression<Func<string>> workspaceId, Expression<Func<GetRevisionListPdfV2Input>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetRevisionListPdf(Expression<Func<string>> workspaceId, Expression<Func<GetRevisionListPdfBodyInput>> body)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -108,60 +107,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<GetTemplatesV2Response, ApiConnectionActionConfiguration> GetTemplates(Expression<Func<string>> workspaceId)
+        public IBodyWorkflowAction<GetTemplatesResponse, ApiConnectionActionConfiguration> GetTemplates(Expression<Func<string>> workspaceId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
-            return new DeferredBodyAction<GetTemplatesV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetTemplatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/contract/templates";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
-                return new ApiConnectionAction<GetTemplatesV2Response>(callPayload);
+                return new ApiConnectionAction<GetTemplatesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<GetWorkspacesV2ResponseItem[], ApiConnectionActionConfiguration> GetWorkspaces()
+        public IBodyWorkflowAction<GetWorkspacesResponseItem[], ApiConnectionActionConfiguration> GetWorkspaces()
         {
-            return new DeferredBodyAction<GetWorkspacesV2ResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetWorkspacesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/workspaces";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetWorkspacesV2ResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetWorkspacesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromProvidedFileV2Response, ApiConnectionActionConfiguration> SignContractFromProvidedFile(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromProvidedFileV2Input>> body)
+        public IBodyWorkflowAction<SignContractFromProvidedFileResponse, ApiConnectionActionConfiguration> SignContractFromProvidedFile(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromProvidedFileBodyInput>> body)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SignContractFromProvidedFileV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SignContractFromProvidedFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/contract/sign/provided";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SignContractFromProvidedFileV2Response>(callPayload);
+                return new ApiConnectionAction<SignContractFromProvidedFileResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromTemplateV2Response, ApiConnectionActionConfiguration> SignContractFromTemplate(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromTemplateV2Input>> body)
+        public IBodyWorkflowAction<SignContractFromTemplateResponse, ApiConnectionActionConfiguration> SignContractFromTemplate(Expression<Func<string>> workspaceId, Expression<Func<SignContractFromTemplateBodyInput>> body)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SignContractFromTemplateV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SignContractFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/contract/sign/template";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(__workflow_workspaceId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SignContractFromTemplateV2Response>(callPayload);
+                return new ApiConnectionAction<SignContractFromTemplateResponse>(callPayload);
             });
         }
     }
@@ -170,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     {
     }
 
-    public class RegisterWebhookV2NewInput
+    public class RegisterWebhookV2NewBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -206,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Contract { get; set; }
     }
 
-    public class SignContractFromProvidedFileV2NewInput
+    public class SignContractFromProvidedFileV2NewBodyInput
     {
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -215,23 +214,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string ContractNumber { get; set; }
 
         [JsonProperty("locale")]
-        public SignContractFromProvidedFileV2NewInputLanguageType? Language { get; set; }
+        public BodyInputLanguageType? Language { get; set; }
 
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("people", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromProvidedFileV2NewInputPeopleTypeItem[] People { get; set; }
+        public BodyInputPeopleTypeItem[] People { get; set; }
 
         [JsonProperty("settings")]
-        public SignContractFromProvidedFileV2NewInputSettingsType Settings { get; set; }
+        public BodyInputSettingsType Settings { get; set; }
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string File { get; set; } = "uploaded_file_key";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewInputLanguageType
+    public enum BodyInputLanguageType
     {
         [EnumMember(Value = "cs")]
         Cs,
@@ -249,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         Hu
     }
 
-    public class SignContractFromProvidedFileV2NewInputPeopleTypeItem
+    public class BodyInputPeopleTypeItem
     {
         [JsonProperty("street")]
         public string SignerStreet { get; set; }
@@ -270,13 +269,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string SignerCompanyId { get; set; }
 
         [JsonProperty("positions")]
-        public SignContractFromProvidedFileV2NewInputPeopleTypeItemPositionsTypeItem[] Positions { get; set; }
+        public BodyInputPeopleTypeItemPositionsTypeItem[] Positions { get; set; }
 
         [JsonProperty("contract_role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromProvidedFileV2NewInputPeopleTypeItemContractRoleType ContractRole { get; set; }
+        public BodyInputPeopleTypeItemContractRoleType ContractRole { get; set; }
 
         [JsonProperty("person_type")]
-        public SignContractFromProvidedFileV2NewInputPeopleTypeItemTypeOfPersonType? TypeOfPerson { get; set; }
+        public BodyInputPeopleTypeItemTypeOfPersonType? TypeOfPerson { get; set; }
 
         [JsonProperty("zip_code")]
         public string SignerZIP { get; set; }
@@ -303,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string SignerPhone { get; set; }
     }
 
-    public class SignContractFromProvidedFileV2NewInputPeopleTypeItemPositionsTypeItem
+    public class BodyInputPeopleTypeItemPositionsTypeItem
     {
         [JsonProperty("y")]
         public double? Y { get; set; }
@@ -319,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewInputPeopleTypeItemContractRoleType
+    public enum BodyInputPeopleTypeItemContractRoleType
     {
         [EnumMember(Value = "sign")]
         Sign,
@@ -330,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewInputPeopleTypeItemTypeOfPersonType
+    public enum BodyInputPeopleTypeItemTypeOfPersonType
     {
         [EnumMember(Value = "legal")]
         Legal,
@@ -340,20 +339,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         Citizen
     }
 
-    public class SignContractFromProvidedFileV2NewInputSettingsType
+    public class BodyInputSettingsType
     {
         [JsonProperty("signing_order")]
-        public SignContractFromProvidedFileV2NewInputSettingsTypeRulesForSendingEMailsAndSignaturesType? RulesForSendingEMailsAndSignatures { get; set; }
+        public BodyInputSettingsTypeRulesForSendingEMailsAndSignaturesType? RulesForSendingEMailsAndSignatures { get; set; }
 
         [JsonProperty("autosign_proposers")]
         public string AutosignByProposer { get; set; }
 
         [JsonProperty("missing_positions")]
-        public SignContractFromProvidedFileV2NewInputSettingsTypeAutomaticSignPlacementType? AutomaticSignPlacement { get; set; }
+        public BodyInputSettingsTypeAutomaticSignPlacementType? AutomaticSignPlacement { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewInputSettingsTypeRulesForSendingEMailsAndSignaturesType
+    public enum BodyInputSettingsTypeRulesForSendingEMailsAndSignaturesType
     {
         [EnumMember(Value = "all_at_once")]
         AllAtOnce,
@@ -364,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewInputSettingsTypeAutomaticSignPlacementType
+    public enum BodyInputSettingsTypeAutomaticSignPlacementType
     {
         [EnumMember(Value = "error")]
         Error,
@@ -402,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Contract { get; set; }
     }
 
-    public class SignContractFromProvidedFileV2NewWaitInput
+    public class SignContractFromProvidedFileV2NewWaitBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -414,167 +413,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string ContractNumber { get; set; }
 
         [JsonProperty("locale")]
-        public SignContractFromProvidedFileV2NewWaitInputLanguageType? Language { get; set; }
+        public BodyInputLanguageType? Language { get; set; }
 
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("people", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromProvidedFileV2NewWaitInputPeopleTypeItem[] People { get; set; }
+        public BodyInputPeopleTypeItem[] People { get; set; }
 
         [JsonProperty("settings")]
-        public SignContractFromProvidedFileV2NewWaitInputSettingsType Settings { get; set; }
+        public BodyInputSettingsType Settings { get; set; }
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string File { get; set; } = "uploaded_file_key";
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewWaitInputLanguageType
-    {
-        [EnumMember(Value = "cs")]
-        Cs,
-        [EnumMember(Value = "en")]
-        En,
-        [EnumMember(Value = "sk")]
-        Sk,
-        [EnumMember(Value = "ru")]
-        Ru,
-        [EnumMember(Value = "vi")]
-        Vi,
-        [EnumMember(Value = "pl")]
-        Pl,
-        [EnumMember(Value = "hu")]
-        Hu
-    }
-
-    public class SignContractFromProvidedFileV2NewWaitInputPeopleTypeItem
-    {
-        [JsonProperty("street")]
-        public string SignerStreet { get; set; }
-
-        [JsonProperty("company_name")]
-        public string SignerCompanyName { get; set; }
-
-        [JsonProperty("party_order")]
-        public double? OrderOfParty { get; set; }
-
-        [JsonProperty("dic")]
-        public string SignerVATId { get; set; }
-
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SignerEmail { get; set; }
-
-        [JsonProperty("ic")]
-        public string SignerCompanyId { get; set; }
-
-        [JsonProperty("positions")]
-        public SignContractFromProvidedFileV2NewWaitInputPeopleTypeItemPositionsTypeItem[] Positions { get; set; }
-
-        [JsonProperty("contract_role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromProvidedFileV2NewWaitInputPeopleTypeItemContractRoleType ContractRole { get; set; }
-
-        [JsonProperty("person_type")]
-        public SignContractFromProvidedFileV2NewWaitInputPeopleTypeItemTypeOfPersonType? TypeOfPerson { get; set; }
-
-        [JsonProperty("zip_code")]
-        public string SignerZIP { get; set; }
-
-        [JsonProperty("is_proposer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool ProposerOrNot { get; set; }
-
-        [JsonProperty("city")]
-        public string SignerCity { get; set; }
-
-        [JsonProperty("last_name")]
-        public string SignerLastName { get; set; }
-
-        [JsonProperty("date_of_birth")]
-        public string SignerDateOfBirth { get; set; }
-
-        [JsonProperty("autosign_place")]
-        public string PlaceOfAutosign { get; set; }
-
-        [JsonProperty("first_name")]
-        public string SignerFirstName { get; set; }
-
-        [JsonProperty("phone")]
-        public string SignerPhone { get; set; }
-    }
-
-    public class SignContractFromProvidedFileV2NewWaitInputPeopleTypeItemPositionsTypeItem
-    {
-        [JsonProperty("y")]
-        public double? Y { get; set; }
-
-        [JsonProperty("page")]
-        public double? NumberOfPage { get; set; }
-
-        [JsonProperty("anchor")]
-        public string Anchor { get; set; }
-
-        [JsonProperty("x")]
-        public double? X { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewWaitInputPeopleTypeItemContractRoleType
-    {
-        [EnumMember(Value = "sign")]
-        Sign,
-        [EnumMember(Value = "approve")]
-        Approve,
-        [EnumMember(Value = "stamp")]
-        Stamp
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewWaitInputPeopleTypeItemTypeOfPersonType
-    {
-        [EnumMember(Value = "legal")]
-        Legal,
-        [EnumMember(Value = "nature")]
-        Nature,
-        [EnumMember(Value = "citizen")]
-        Citizen
-    }
-
-    public class SignContractFromProvidedFileV2NewWaitInputSettingsType
-    {
-        [JsonProperty("signing_order")]
-        public SignContractFromProvidedFileV2NewWaitInputSettingsTypeRulesForSendingEMailsAndSignaturesType? RulesForSendingEMailsAndSignatures { get; set; }
-
-        [JsonProperty("autosign_proposers")]
-        public string AutosignByProposer { get; set; }
-
-        [JsonProperty("missing_positions")]
-        public SignContractFromProvidedFileV2NewWaitInputSettingsTypeAutomaticSignPlacementType? AutomaticSignPlacement { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewWaitInputSettingsTypeRulesForSendingEMailsAndSignaturesType
-    {
-        [EnumMember(Value = "all_at_once")]
-        AllAtOnce,
-        [EnumMember(Value = "proposers_before_counterparties")]
-        ProposersBeforeCounterparties,
-        [EnumMember(Value = "one_at_a_time")]
-        OneAtATime
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2NewWaitInputSettingsTypeAutomaticSignPlacementType
-    {
-        [EnumMember(Value = "error")]
-        Error,
-        [EnumMember(Value = "append_to_the_end")]
-        AppendToTheEnd
-    }
-
-    public class GetContractDetailV2Response
+    public class GetContractDetailResponse
     {
         [JsonProperty("signer_data")]
-        public GetContractDetailV2ResponseSignerDataType SignerData { get; set; }
+        public GetContractDetailResponseSignerDataType SignerData { get; set; }
 
         [JsonProperty("contract_id")]
         public string ContractId { get; set; }
@@ -586,13 +443,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Modified { get; set; }
 
         [JsonProperty("attachments")]
-        public GetContractDetailV2ResponseAttachmentsTypeItem[] Attachments { get; set; }
+        public GetContractDetailResponseAttachmentsTypeItem[] Attachments { get; set; }
 
         [JsonProperty("file")]
         public string File { get; set; }
     }
 
-    public class GetContractDetailV2ResponseSignerDataType
+    public class GetContractDetailResponseSignerDataType
     {
         [JsonProperty("birthdate")]
         public string Birthday { get; set; }
@@ -607,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Surname { get; set; }
     }
 
-    public class GetContractDetailV2ResponseAttachmentsTypeItem
+    public class GetContractDetailResponseAttachmentsTypeItem
     {
         [JsonProperty("file")]
         public string File { get; set; }
@@ -616,19 +473,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string ContractId { get; set; }
     }
 
-    public class GetRevisionListPdfV2Input
+    public class GetRevisionListPdfBodyInput
     {
         [JsonProperty("contract_id")]
         public string ContractId { get; set; }
     }
 
-    public class GetTemplatesV2Response
+    public class GetTemplatesResponse
     {
         [JsonProperty("templates")]
-        public GetTemplatesV2ResponseTemplatesTypeItem[] Templates { get; set; }
+        public GetTemplatesResponseTemplatesTypeItem[] Templates { get; set; }
     }
 
-    public class GetTemplatesV2ResponseTemplatesTypeItem
+    public class GetTemplatesResponseTemplatesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -637,10 +494,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Id { get; set; }
 
         [JsonProperty("parameters")]
-        public GetTemplatesV2ResponseTemplatesTypeItemParametersTypeItem[] Parameters { get; set; }
+        public GetTemplatesResponseTemplatesTypeItemParametersTypeItem[] Parameters { get; set; }
     }
 
-    public class GetTemplatesV2ResponseTemplatesTypeItemParametersTypeItem
+    public class GetTemplatesResponseTemplatesTypeItemParametersTypeItem
     {
         [JsonProperty("values")]
         public string[] Values { get; set; }
@@ -655,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Type { get; set; }
     }
 
-    public class GetWorkspacesV2ResponseItem
+    public class GetWorkspacesResponseItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -664,13 +521,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string Name { get; set; }
     }
 
-    public class SignContractFromProvidedFileV2Response
+    public class SignContractFromProvidedFileResponse
     {
         [JsonProperty("contract_id")]
         public string ContractId { get; set; }
     }
 
-    public class SignContractFromProvidedFileV2Input
+    public class SignContractFromProvidedFileBodyInput
     {
         [JsonProperty("sign_negotiator[position][page]", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SignatureSignerPage { get; set; }
@@ -679,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string SignerEMail { get; set; }
 
         [JsonProperty("person_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromProvidedFileV2InputSignerTypeType SignerType { get; set; }
+        public BodyInputSignerTypeType SignerType { get; set; }
 
         [JsonProperty("sign_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContractSignDate { get; set; }
@@ -776,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromProvidedFileV2InputSignerTypeType
+    public enum BodyInputSignerTypeType
     {
         [EnumMember(Value = "legal")]
         Legal,
@@ -786,19 +643,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         Citizen
     }
 
-    public class SignContractFromTemplateV2Response
+    public class SignContractFromTemplateResponse
     {
         [JsonProperty("contract_id")]
         public string ContractId { get; set; }
     }
 
-    public class SignContractFromTemplateV2Input
+    public class SignContractFromTemplateBodyInput
     {
         [JsonProperty("street")]
         public string Street { get; set; }
 
         [JsonProperty("person_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputPersonTypeType PersonType { get; set; }
+        public BodyInputPersonTypeType PersonType { get; set; }
 
         [JsonProperty("email_signer", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailSigner { get; set; }
@@ -807,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string LastnameSigner { get; set; }
 
         [JsonProperty("webhooks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType Webhooks { get; set; } = new SignContractFromTemplateV2InputWebhooksType();
+        public BodyInputWebhooksType Webhooks { get; set; } = new BodyInputWebhooksType();
 
         [JsonProperty("last_document", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool LastDocument { get; set; } = true;
@@ -865,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignContractFromTemplateV2InputPersonTypeType
+    public enum BodyInputPersonTypeType
     {
         [EnumMember(Value = "legal")]
         Legal,
@@ -875,19 +732,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         Citizen
     }
 
-    public class SignContractFromTemplateV2InputWebhooksType
+    public class BodyInputWebhooksType
     {
         [JsonProperty("2", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType_2Type _2 { get; set; } = new SignContractFromTemplateV2InputWebhooksType_2Type();
+        public BodyInputWebhooksType_2Type _2 { get; set; } = new BodyInputWebhooksType_2Type();
 
         [JsonProperty("1", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType_1Type _1 { get; set; } = new SignContractFromTemplateV2InputWebhooksType_1Type();
+        public BodyInputWebhooksType_1Type _1 { get; set; } = new BodyInputWebhooksType_1Type();
 
         [JsonProperty("0", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType_0Type _0 { get; set; } = new SignContractFromTemplateV2InputWebhooksType_0Type();
+        public BodyInputWebhooksType_0Type _0 { get; set; } = new BodyInputWebhooksType_0Type();
     }
 
-    public class SignContractFromTemplateV2InputWebhooksType_2Type
+    public class BodyInputWebhooksType_2Type
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "expired";
@@ -896,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class SignContractFromTemplateV2InputWebhooksType_1Type
+    public class BodyInputWebhooksType_1Type
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "rejected";
@@ -905,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class SignContractFromTemplateV2InputWebhooksType_0Type
+    public class BodyInputWebhooksType_0Type
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "signed";

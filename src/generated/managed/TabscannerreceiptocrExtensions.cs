@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
     public class TabscannerreceiptocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Process, ApiConnectionActionConfiguration> Process(Expression<Func<ProcessInput>> body)
+        public IBodyWorkflowAction<Process, ApiConnectionActionConfiguration> Process(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Process, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
         public string DuplicateToken { get; set; }
     }
 
-    public class ProcessInput
+    public class BodyInput
     {
         [JsonProperty("image")]
         public string Image { get; set; }

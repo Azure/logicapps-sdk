@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     public class BitlyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
-        public IBodyWorkflowAction<BitlinkV2, ApiConnectionActionConfiguration> CreateBitlink(Expression<Func<CreateBitlinkV2Input>> body)
+        public IBodyWorkflowAction<BitlinkV2, ApiConnectionActionConfiguration> CreateBitlink(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BitlinkV2, ApiConnectionActionConfiguration>(() =>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
         public string LongURL { get; set; }
     }
 
-    public class CreateBitlinkV2Input
+    public class BodyInput
     {
         [JsonProperty("long_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string URL { get; set; }

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceGroup, ApiConnectionActionConfiguration> DeviceGroupsSet(Expression<Func<string>> application, Expression<Func<string>> deviceGroupId, Expression<Func<DeviceGroupsSetInput>> body)
+        public IBodyWorkflowAction<DeviceGroup, ApiConnectionActionConfiguration> DeviceGroupsSet(Expression<Func<string>> application, Expression<Func<string>> deviceGroupId, Expression<Func<DeviceGroupsSetBodyInput>> body)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceGroupId = WorkflowExpression.Compile(deviceGroupId, nameof(deviceGroupId), required: true);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceCommand, ApiConnectionActionConfiguration> DevicesExecuteComponentCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> componentName, Expression<Func<string>> commandName, Expression<Func<bodyInput>> body, Expression<Func<string>> instanceOf = null)
+        public IBodyWorkflowAction<DeviceCommand, ApiConnectionActionConfiguration> DevicesExecuteComponentCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> componentName, Expression<Func<string>> commandName, Expression<Func<DevicesExecuteComponentCommandBodyInput>> body, Expression<Func<string>> instanceOf = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceRelationshipStatic, ApiConnectionActionConfiguration> DeviceRelationshipsSet(Expression<Func<string>> application, Expression<Func<string>> relationshipId, Expression<Func<string>> deviceId, Expression<Func<DeviceRelationshipsSetInput>> body)
+        public IBodyWorkflowAction<DeviceRelationshipStatic, ApiConnectionActionConfiguration> DeviceRelationshipsSet(Expression<Func<string>> application, Expression<Func<string>> relationshipId, Expression<Func<string>> deviceId, Expression<Func<DeviceRelationshipsSetBodyInput>> body)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceRelationshipStatic, ApiConnectionActionConfiguration> DeviceRelationshipsUpdate(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> relationshipId, Expression<Func<DeviceRelationshipsUpdateInput>> body)
+        public IBodyWorkflowAction<DeviceRelationshipStatic, ApiConnectionActionConfiguration> DeviceRelationshipsUpdate(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> relationshipId, Expression<Func<DeviceRelationshipsSetBodyInput>> body)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<Job, ApiConnectionActionConfiguration> JobsSet(Expression<Func<string>> application, Expression<Func<string>> jobId, Expression<Func<bodyInput2>> body, Expression<Func<jobTypeInput>> jobType = null)
+        public IBodyWorkflowAction<Job, ApiConnectionActionConfiguration> JobsSet(Expression<Func<string>> application, Expression<Func<string>> jobId, Expression<Func<JobsSetBodyInput>> body, Expression<Func<JobTypeInput>> jobType = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<Organization, ApiConnectionActionConfiguration> OrganizationsSet(Expression<Func<string>> application, Expression<Func<string>> organizationId, Expression<Func<OrganizationsSetInput>> body)
+        public IBodyWorkflowAction<Organization, ApiConnectionActionConfiguration> OrganizationsSet(Expression<Func<string>> application, Expression<Func<string>> organizationId, Expression<Func<OrganizationsSetBodyInput>> body)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<ScheduledJob, ApiConnectionActionConfiguration> ScheduledJobsSet(Expression<Func<string>> application, Expression<Func<string>> scheduledJobId, Expression<Func<bodyInput22>> body, Expression<Func<jobTypeInput>> jobType = null, Expression<Func<scheduledJobEndTypeInput>> scheduledJobEndType = null)
+        public IBodyWorkflowAction<ScheduledJob, ApiConnectionActionConfiguration> ScheduledJobsSet(Expression<Func<string>> application, Expression<Func<string>> scheduledJobId, Expression<Func<ScheduledJobsSetBodyInput>> body, Expression<Func<JobTypeInput>> jobType = null, Expression<Func<ScheduledJobEndTypeInput>> scheduledJobEndType = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_scheduledJobId = WorkflowExpression.Compile(scheduledJobId, nameof(scheduledJobId), required: true);
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<ScheduledJobStatic, ApiConnectionActionConfiguration> ScheduledJobsUpdate(Expression<Func<string>> application, Expression<Func<string>> scheduledJobId, Expression<Func<bodyInput222>> body, Expression<Func<scheduledJobEndTypeInput>> scheduledJobEndType = null)
+        public IBodyWorkflowAction<ScheduledJobStatic, ApiConnectionActionConfiguration> ScheduledJobsUpdate(Expression<Func<string>> application, Expression<Func<string>> scheduledJobId, Expression<Func<ScheduledJobsUpdateBodyInput>> body, Expression<Func<ScheduledJobEndTypeInput>> scheduledJobEndType = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_scheduledJobId = WorkflowExpression.Compile(scheduledJobId, nameof(scheduledJobId), required: true);
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceCommandV1, ApiConnectionActionConfiguration> DevicesRunCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> commandName, Expression<Func<bodyInput>> body, Expression<Func<string>> template = null)
+        public IBodyWorkflowAction<DeviceCommandV1, ApiConnectionActionConfiguration> DevicesRunCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> commandName, Expression<Func<DevicesExecuteComponentCommandBodyInput>> body, Expression<Func<string>> template = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceComponentCommandV1, ApiConnectionActionConfiguration> DevicesRunComponentCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> componentName, Expression<Func<string>> commandName, Expression<Func<bodyInput>> body, Expression<Func<string>> template = null)
+        public IBodyWorkflowAction<DeviceComponentCommandV1, ApiConnectionActionConfiguration> DevicesRunComponentCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> componentName, Expression<Func<string>> commandName, Expression<Func<DevicesExecuteComponentCommandBodyInput>> body, Expression<Func<string>> template = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceModuleCommandV1, ApiConnectionActionConfiguration> DevicesRunModuleCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> module, Expression<Func<string>> commandName, Expression<Func<bodyInput>> body, Expression<Func<string>> template = null)
+        public IBodyWorkflowAction<DeviceModuleCommandV1, ApiConnectionActionConfiguration> DevicesRunModuleCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> module, Expression<Func<string>> commandName, Expression<Func<DevicesExecuteComponentCommandBodyInput>> body, Expression<Func<string>> template = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceModuleComponentCommandV1, ApiConnectionActionConfiguration> DevicesRunModuleComponentCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> module, Expression<Func<string>> componentName, Expression<Func<string>> commandName, Expression<Func<bodyInput>> body, Expression<Func<string>> template = null)
+        public IBodyWorkflowAction<DeviceModuleComponentCommandV1, ApiConnectionActionConfiguration> DevicesRunModuleComponentCommand(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<string>> module, Expression<Func<string>> componentName, Expression<Func<string>> commandName, Expression<Func<DevicesExecuteComponentCommandBodyInput>> body, Expression<Func<string>> template = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<DeviceV2, ApiConnectionActionConfiguration> DevicesSet(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<DevicesSetV2Input>> body)
+        public IBodyWorkflowAction<DeviceV2, ApiConnectionActionConfiguration> DevicesSet(Expression<Func<string>> application, Expression<Func<string>> deviceId, Expression<Func<DevicesSetBodyInput>> body)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
@@ -965,7 +965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UsersCreate(Expression<Func<string>> application, Expression<Func<string>> userId, Expression<Func<object>> body, Expression<Func<userTypeInput>> userType = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UsersCreate(Expression<Func<string>> application, Expression<Func<string>> userId, Expression<Func<object>> body, Expression<Func<UserTypeInput>> userType = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureiotcentral")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UsersUpdate(Expression<Func<string>> application, Expression<Func<string>> userId, Expression<Func<object>> body, Expression<Func<userTypeInput>> userType = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UsersUpdate(Expression<Func<string>> application, Expression<Func<string>> userId, Expression<Func<object>> body, Expression<Func<UserTypeInput>> userType = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
 
     public class AzureiotcentralTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WorkflowTrigger, ApiConnectionTriggerConfiguration> WorkflowCreateTrigger(Expression<Func<string>> application, Expression<Func<WorkflowCreateTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkflowTrigger, ApiConnectionTriggerConfiguration> WorkflowCreateTrigger(Expression<Func<string>> application, Expression<Func<WorkflowCreateTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string[] Organizations { get; set; }
     }
 
-    public class DeviceGroupsSetInput
+    public class DeviceGroupsSetBodyInput
     {
         [JsonProperty("id")]
         public string DeviceGroupId { get; set; }
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public int DeviceCommandResponseStatus { get; set; }
     }
 
-    public class bodyInput
+    public class DevicesExecuteComponentCommandBodyInput
     {
         [JsonProperty("id")]
         public string DeviceCommandRequestId { get; set; }
@@ -1184,13 +1184,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public JToken DeviceCommandResponsePayload { get; set; }
 
         [JsonProperty("connectionTimeout")]
-        public int DeviceCommandConnectionTimeout { get; set; }
+        public int? DeviceCommandConnectionTimeout { get; set; }
 
         [JsonProperty("responseTimeout")]
-        public int DeviceCommandResponseTimeout { get; set; }
+        public int? DeviceCommandResponseTimeout { get; set; }
 
         [JsonProperty("responseCode")]
-        public int DeviceCommandResponseStatus { get; set; }
+        public int? DeviceCommandResponseStatus { get; set; }
     }
 
     public class DeviceRelationshipCollection
@@ -1214,16 +1214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string DeviceRelationshipTargetId { get; set; }
     }
 
-    public class DeviceRelationshipsSetInput
-    {
-        [JsonProperty("id")]
-        public string DeviceRelationshipId { get; set; }
-
-        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DeviceRelationshipTargetId { get; set; }
-    }
-
-    public class DeviceRelationshipsUpdateInput
+    public class DeviceRelationshipsSetBodyInput
     {
         [JsonProperty("id")]
         public string DeviceRelationshipId { get; set; }
@@ -1256,10 +1247,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string DeviceGroup { get; set; }
 
         [JsonProperty("batch")]
-        public JobBatch Batch { get; set; }
+        public JobsGetJobBatchResponse Batch { get; set; }
 
         [JsonProperty("cancellationThreshold")]
-        public JobCancellationThreshold CancellationThreshold { get; set; }
+        public JobsGetJobCancellationThresholdResponse CancellationThreshold { get; set; }
 
         [JsonProperty("data")]
         public JToken[] Data { get; set; }
@@ -1271,17 +1262,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string ScheduledJobId { get; set; }
     }
 
-    public class JobBatch
+    public class JobsGetJobBatchResponse
     {
         [JsonProperty("type")]
-        public JobBatchBatchTypeType BatchType { get; set; }
+        public JobsGetJobBatchBatchTypeTypeResponse BatchType { get; set; }
 
         [JsonProperty("value")]
         public double BatchValue { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JobBatchBatchTypeType
+    public enum JobsGetJobBatchBatchTypeTypeResponse
     {
         [EnumMember(Value = "number")]
         Number,
@@ -1289,10 +1280,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         Percentage
     }
 
-    public class JobCancellationThreshold
+    public class JobsGetJobCancellationThresholdResponse
     {
         [JsonProperty("type")]
-        public JobCancellationThresholdCancellationThresholdTypeType CancellationThresholdType { get; set; }
+        public JobsGetJobCancellationThresholdCancellationThresholdTypeTypeResponse CancellationThresholdType { get; set; }
 
         [JsonProperty("value")]
         public double CancellationThresholdValue { get; set; }
@@ -1302,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JobCancellationThresholdCancellationThresholdTypeType
+    public enum JobsGetJobCancellationThresholdCancellationThresholdTypeTypeResponse
     {
         [EnumMember(Value = "number")]
         Number,
@@ -1325,10 +1316,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string DeviceGroup { get; set; }
 
         [JsonProperty("batch")]
-        public JobBatch Batch { get; set; }
+        public JobsGetJobBatchResponse Batch { get; set; }
 
         [JsonProperty("cancellationThreshold")]
-        public JobCancellationThreshold CancellationThreshold { get; set; }
+        public JobsGetJobCancellationThresholdResponse CancellationThreshold { get; set; }
 
         [JsonProperty("organizations")]
         public string[] Organizations { get; set; }
@@ -1337,25 +1328,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string ScheduledJobId { get; set; }
     }
 
-    public class bodyInput2
+    public class JobsSetBodyInput
     {
         [JsonProperty("id")]
         public string JobId { get; set; }
 
-        [JsonProperty("displayName")]
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("group")]
+        [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceGroup { get; set; }
 
         [JsonProperty("batch")]
-        public JobBatch Batch { get; set; }
+        public JobsSetJobBatch Batch { get; set; }
 
         [JsonProperty("cancellationThreshold")]
-        public JobCancellationThreshold CancellationThreshold { get; set; }
+        public JobsSetJobCancellationThreshold CancellationThreshold { get; set; }
 
         [JsonProperty("organizations")]
         public string[] Organizations { get; set; }
@@ -1364,8 +1355,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string ScheduledJobId { get; set; }
     }
 
+    public class JobsSetJobBatch
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JobsSetJobBatchBatchTypeType BatchType { get; set; }
+
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double BatchValue { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum jobTypeInput
+    public enum JobsSetJobBatchBatchTypeType
+    {
+        [EnumMember(Value = "number")]
+        Number,
+        [EnumMember(Value = "percentage")]
+        Percentage
+    }
+
+    public class JobsSetJobCancellationThreshold
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JobsSetJobCancellationThresholdCancellationThresholdTypeType CancellationThresholdType { get; set; }
+
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double CancellationThresholdValue { get; set; }
+
+        [JsonProperty("batch")]
+        public bool? CancellationThresholdBatch { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum JobsSetJobCancellationThresholdCancellationThresholdTypeType
+    {
+        [EnumMember(Value = "number")]
+        Number,
+        [EnumMember(Value = "percentage")]
+        Percentage
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum JobTypeInput
     {
         [EnumMember(Value = "cloudProperty")]
         CloudProperty,
@@ -1416,7 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string Parent { get; set; }
     }
 
-    public class OrganizationsSetInput
+    public class OrganizationsSetBodyInput
     {
         [JsonProperty("id")]
         public string OrganizationId { get; set; }
@@ -1455,10 +1485,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string DeviceGroup { get; set; }
 
         [JsonProperty("batch")]
-        public JobBatch Batch { get; set; }
+        public JobsGetJobBatchResponse Batch { get; set; }
 
         [JsonProperty("cancellationThreshold")]
-        public JobCancellationThreshold CancellationThreshold { get; set; }
+        public JobsGetJobCancellationThresholdResponse CancellationThreshold { get; set; }
 
         [JsonProperty("organizations")]
         public string[] Organizations { get; set; }
@@ -1473,7 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public bool Completed { get; set; }
     }
 
-    public class bodyInput22
+    public class ScheduledJobsSetBodyInput
     {
         [JsonProperty("etag")]
         public string ETag { get; set; }
@@ -1481,36 +1511,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         [JsonProperty("id")]
         public string ScheduledJobId { get; set; }
 
-        [JsonProperty("displayName")]
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("group")]
+        [JsonProperty("group", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeviceGroup { get; set; }
 
         [JsonProperty("batch")]
-        public JobBatch Batch { get; set; }
+        public JobsSetJobBatch Batch { get; set; }
 
         [JsonProperty("cancellationThreshold")]
-        public JobCancellationThreshold CancellationThreshold { get; set; }
+        public JobsSetJobCancellationThreshold CancellationThreshold { get; set; }
 
         [JsonProperty("organizations")]
         public string[] Organizations { get; set; }
 
-        [JsonProperty("schedule")]
+        [JsonProperty("schedule", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Schedule { get; set; }
 
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
 
         [JsonProperty("completed")]
-        public bool Completed { get; set; }
+        public bool? Completed { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum scheduledJobEndTypeInput
+    public enum ScheduledJobEndTypeInput
     {
         [EnumMember(Value = "date")]
         Date,
@@ -1536,10 +1566,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string DeviceGroup { get; set; }
 
         [JsonProperty("batch")]
-        public JobBatch Batch { get; set; }
+        public JobsGetJobBatchResponse Batch { get; set; }
 
         [JsonProperty("cancellationThreshold")]
-        public JobCancellationThreshold CancellationThreshold { get; set; }
+        public JobsGetJobCancellationThresholdResponse CancellationThreshold { get; set; }
 
         [JsonProperty("data")]
         public JToken[] Data { get; set; }
@@ -1557,7 +1587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public bool Completed { get; set; }
     }
 
-    public class bodyInput222
+    public class ScheduledJobsUpdateBodyInput
     {
         [JsonProperty("etag")]
         public string ETag { get; set; }
@@ -1565,14 +1595,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         [JsonProperty("id")]
         public string ScheduledJobId { get; set; }
 
-        [JsonProperty("schedule")]
+        [JsonProperty("schedule", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Schedule { get; set; }
 
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
 
         [JsonProperty("completed")]
-        public bool Completed { get; set; }
+        public bool? Completed { get; set; }
     }
 
     public class ScheduledJobJobCollection
@@ -1740,7 +1770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public bool Provisioned { get; set; }
     }
 
-    public class DevicesSetV2Input
+    public class DevicesSetBodyInput
     {
         [JsonProperty("id")]
         public string DeviceId { get; set; }
@@ -1810,7 +1840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum userTypeInput
+    public enum UserTypeInput
     {
         [EnumMember(Value = "email")]
         Email,
@@ -1854,7 +1884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string WorkflowTriggerURL { get; set; }
     }
 
-    public class WorkflowCreateTriggerInput
+    public class WorkflowCreateTriggerBodyInput
     {
         [JsonProperty("id")]
         public string WorkflowTriggerId { get; set; }

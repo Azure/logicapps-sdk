@@ -13,47 +13,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     public class BywordActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlePostResponse, ApiConnectionActionConfiguration> Article(Expression<Func<ArticlePostInput>> body = null)
+        public IBodyWorkflowAction<ArticleResponse, ApiConnectionActionConfiguration> Article(Expression<Func<ArticleBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ArticlePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ArticleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create_article";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ArticlePostResponse>(callPayload);
+                return new ApiConnectionAction<ArticleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleGetPostResponse, ApiConnectionActionConfiguration> ArticleGet(Expression<Func<ArticleGetPostInput>> body = null)
+        public IBodyWorkflowAction<ArticleGetResponse, ApiConnectionActionConfiguration> ArticleGet(Expression<Func<ArticleGetBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ArticleGetPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ArticleGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/get_article";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ArticleGetPostResponse>(callPayload);
+                return new ApiConnectionAction<ArticleGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlesPostResponseItem[], ApiConnectionActionConfiguration> Articles(Expression<Func<ArticlesPostInput>> body = null)
+        public IBodyWorkflowAction<ArticlesResponseItem[], ApiConnectionActionConfiguration> Articles(Expression<Func<ArticlesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ArticlesPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ArticlesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/list_articles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ArticlesPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<ArticlesResponseItem[]>(callPayload);
             });
         }
     }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     {
     }
 
-    public class ArticlePostResponse
+    public class ArticleResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -71,10 +71,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string ArticleId { get; set; }
     }
 
-    public class ArticlePostInput
+    public class ArticleBodyInput
     {
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArticlePostInputModeType Mode { get; set; } = ArticlePostInputModeType.Keyword;
+        public BodyInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Byword.BodyInputModeType.Keyword;
 
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Input { get; set; }
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArticlePostInputModeType
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "keyword")]
         Keyword,
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         Title
     }
 
-    public class ArticleGetPostResponse
+    public class ArticleGetResponse
     {
         public string Body { get; set; }
 
@@ -137,13 +137,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string Id { get; set; }
     }
 
-    public class ArticleGetPostInput
+    public class ArticleGetBodyInput
     {
         [JsonProperty("articleID")]
         public string ArticleId { get; set; }
     }
 
-    public class ArticlesPostResponseItem
+    public class ArticlesResponseItem
     {
         public string Body { get; set; }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string Id { get; set; }
     }
 
-    public class ArticlesPostInput
+    public class ArticlesBodyInput
     {
         [JsonProperty("cursor", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Cursor { get; set; } = 0;

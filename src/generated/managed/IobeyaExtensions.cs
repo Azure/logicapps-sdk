@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateRoomsResponse, ApiConnectionActionConfiguration> CreateRooms(Expression<Func<CreateRoomsInput>> body)
+        public IBodyWorkflowAction<CreateRoomsResponse, ApiConnectionActionConfiguration> CreateRooms(Expression<Func<CreateRoomsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateRoomsResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListBoardsResponse, ApiConnectionActionConfiguration> ListBoards(Expression<Func<string>> search = null, Expression<Func<sortDirectionInput>> sortDirection = null)
+        public IBodyWorkflowAction<ListBoardsResponse, ApiConnectionActionConfiguration> ListBoards(Expression<Func<string>> search = null, Expression<Func<SortDirectionInput>> sortDirection = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<typeCardInput>> typeCard, Expression<Func<object>> dynamicSchema = null)
+        public IBodyWorkflowAction<CreateCardResponse, ApiConnectionActionConfiguration> CreateCard(Expression<Func<TypeCardInput>> typeCard, Expression<Func<object>> dynamicSchema = null)
         {
             var __workflow_typeCard = WorkflowExpression.Compile(typeCard, nameof(typeCard), required: true);
             var __workflow_dynamicSchema = WorkflowExpression.Compile(dynamicSchema, nameof(dynamicSchema), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateQCDIndicatorsValue(Expression<Func<UpdateQCDIndicatorsValueInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateQCDIndicatorsValue(Expression<Func<UpdateQCDIndicatorsValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<wedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<WedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
         {
             var __workflow_letterName = WorkflowExpression.Compile(letterName, nameof(letterName), required: true);
             var __workflow_indicatorName = WorkflowExpression.Compile(indicatorName, nameof(indicatorName), required: true);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<UpdateGaugeInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<UpdateGaugeBodyInput>> body)
         {
             var __workflow_gaugeId = WorkflowExpression.Compile(gaugeId, nameof(gaugeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         public string DomainId { get; set; }
     }
 
-    public class CreateRoomsInput
+    public class CreateRoomsBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortDirectionInput
+    public enum SortDirectionInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeCardInput
+    public enum TypeCardInput
     {
         Standard,
         Activity,
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         QCDAction
     }
 
-    public class UpdateQCDIndicatorsValueInput
+    public class UpdateQCDIndicatorsValueBodyInput
     {
         [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BoardId { get; set; }
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum wedgeRingInput
+    public enum WedgeRingInput
     {
         [EnumMember(Value = "inner")]
         Inner,
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         public string EndDate { get; set; }
     }
 
-    public class UpdateGaugeInput
+    public class UpdateGaugeBodyInput
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }

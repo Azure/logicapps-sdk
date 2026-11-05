@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
     public class XbridgerdocumentmanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration> Convert2ModernPage(Expression<Func<Convert2ModernPageInput>> request)
+        public IBodyWorkflowAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration> Convert2ModernPage(Expression<Func<Convert2ModernPageRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration> Convert2NonModernPage(Expression<Func<Convert2NonModernPageInput>> request)
+        public IBodyWorkflowAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration> Convert2NonModernPage(Expression<Func<Convert2NonModernPageRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExportList2PDFResponse, ApiConnectionActionConfiguration> ExportList2PDF(Expression<Func<ExportList2PDFInput>> request)
+        public IBodyWorkflowAction<ExportList2PDFResponse, ApiConnectionActionConfiguration> ExportList2PDF(Expression<Func<ExportList2PDFRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ExportList2PDFResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration> ExtractWordImages(Expression<Func<ExtractWordImagesInput>> request)
+        public IBodyWorkflowAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration> ExtractWordImages(Expression<Func<Convert2NonModernPageRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<PDFMergeResponse, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<PDFMergeInput>> request)
+        public IBodyWorkflowAction<PDFMergeResponse, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<PDFMergeRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PDFMergeResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordMergeResponse, ApiConnectionActionConfiguration> WordMerge(Expression<Func<WordMergeInput>> request)
+        public IBodyWorkflowAction<WordMergeResponse, ApiConnectionActionConfiguration> WordMerge(Expression<Func<PDFMergeRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WordMergeResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordtopdfResponse, ApiConnectionActionConfiguration> Wordtopdf(Expression<Func<WordtopdfInput>> request)
+        public IBodyWorkflowAction<WordtopdfResponse, ApiConnectionActionConfiguration> Wordtopdf(Expression<Func<WordtopdfRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WordtopdfResponse, ApiConnectionActionConfiguration>(() =>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         public string SiteUrl { get; set; }
     }
 
-    public class Convert2ModernPageInput
+    public class Convert2ModernPageRequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         public string FileContent { get; set; }
     }
 
-    public class Convert2NonModernPageInput
+    public class Convert2NonModernPageRequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         public string FileContent { get; set; }
     }
 
-    public class ExportList2PDFInput
+    public class ExportList2PDFRequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentTitle { get; set; }
@@ -181,18 +181,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         public string ImageContent { get; set; }
     }
 
-    public class ExtractWordImagesInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
-    }
-
     public class PDFMergeResponse
     {
         public string FileContent { get; set; }
     }
 
-    public class PDFMergeInput
+    public class PDFMergeRequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContentArray { get; set; }
@@ -203,19 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         public string FileContent { get; set; }
     }
 
-    public class WordMergeInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContentArray { get; set; }
-    }
-
     public class WordtopdfResponse
     {
         public string FileContent { get; set; }
         public string FileName { get; set; }
     }
 
-    public class WordtopdfInput
+    public class WordtopdfRequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }

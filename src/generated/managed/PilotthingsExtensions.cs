@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     public class PilotthingsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageAlertRo, ApiConnectionActionConfiguration> GetAlerts(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> dateStart = null, Expression<Func<int>> dateEnd = null)
+        public IBodyWorkflowAction<PageAlertRo, ApiConnectionActionConfiguration> GetAlerts(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> dateStart = null, Expression<Func<int>> dateEnd = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMeasureRo, ApiConnectionActionConfiguration> GetMeasures(Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageMeasureRo, ApiConnectionActionConfiguration> GetMeasures(Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<CountRo, ApiConnectionActionConfiguration> GetCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<CountRo, ApiConnectionActionConfiguration> GetCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMessageRo, ApiConnectionActionConfiguration> GetMessages(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageMessageRo, ApiConnectionActionConfiguration> GetMessages(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMessageRo, ApiConnectionActionConfiguration> GetMessagesAndMeasurements(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageMessageRo, ApiConnectionActionConfiguration> GetMessagesAndMeasurements(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_thingId = WorkflowExpression.Compile(thingId, nameof(thingId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> AddMessage(Expression<Func<string>> thingId, Expression<Func<AddMessageInput>> messageRo)
+        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> AddMessage(Expression<Func<string>> thingId, Expression<Func<AddMessageMessageRoInput>> messageRo)
         {
             var __workflow_thingId = WorkflowExpression.Compile(thingId, nameof(thingId), required: true);
             var __workflow_messageRo = WorkflowExpression.Compile(messageRo, nameof(messageRo), required: true);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageSiteRo, ApiConnectionActionConfiguration> GetSites(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageSiteRo, ApiConnectionActionConfiguration> GetSites(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -297,29 +297,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SiteRo[], ApiConnectionActionConfiguration> CreateSite(Expression<Func<CreateSiteInput>> node)
+        public IBodyWorkflowAction<AssociateThingProductSiteRoResponse[], ApiConnectionActionConfiguration> CreateSite(Expression<Func<NodeInput>> node)
         {
             var __workflow_node = WorkflowExpression.Compile(node, nameof(node), required: true);
-            return new DeferredBodyAction<SiteRo[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AssociateThingProductSiteRoResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/sites";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_node);
-                return new ApiConnectionAction<SiteRo[]>(callPayload);
+                return new ApiConnectionAction<AssociateThingProductSiteRoResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SiteRo, ApiConnectionActionConfiguration> GetSite(Expression<Func<string>> id)
+        public IBodyWorkflowAction<AssociateThingProductSiteRoResponse, ApiConnectionActionConfiguration> GetSite(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<SiteRo, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AssociateThingProductSiteRoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sites/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SiteRo>(callPayload);
+                return new ApiConnectionAction<AssociateThingProductSiteRoResponse>(callPayload);
             });
         }
 
@@ -337,22 +337,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SiteRo, ApiConnectionActionConfiguration> UpdateSite(Expression<Func<string>> id, Expression<Func<UpdateSiteInput>> siteRo)
+        public IBodyWorkflowAction<AssociateThingProductSiteRoResponse, ApiConnectionActionConfiguration> UpdateSite(Expression<Func<string>> id, Expression<Func<SiteRoInput>> siteRo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_siteRo = WorkflowExpression.Compile(siteRo, nameof(siteRo), required: true);
-            return new DeferredBodyAction<SiteRo, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AssociateThingProductSiteRoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/sites/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_siteRo);
-                return new ApiConnectionAction<SiteRo>(callPayload);
+                return new ApiConnectionAction<AssociateThingProductSiteRoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageThingTagRo, ApiConnectionActionConfiguration> GetTags(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageThingTagRo, ApiConnectionActionConfiguration> GetTags(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -385,49 +385,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<TagRo, ApiConnectionActionConfiguration> UpdateThingTag(Expression<Func<UpdateThingTagInput>> thingTagRo)
+        public IBodyWorkflowAction<AddThingTagTagRoResponse, ApiConnectionActionConfiguration> UpdateThingTag(Expression<Func<ThingTagRoInput>> thingTagRo)
         {
             var __workflow_thingTagRo = WorkflowExpression.Compile(thingTagRo, nameof(thingTagRo), required: true);
-            return new DeferredBodyAction<TagRo, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AddThingTagTagRoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/tags";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_thingTagRo);
-                return new ApiConnectionAction<TagRo>(callPayload);
+                return new ApiConnectionAction<AddThingTagTagRoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<TagRo, ApiConnectionActionConfiguration> AddThingTag(Expression<Func<string>> thingId, Expression<Func<AddThingTagInput>> thingTagRo)
+        public IBodyWorkflowAction<AddThingTagTagRoResponse, ApiConnectionActionConfiguration> AddThingTag(Expression<Func<string>> thingId, Expression<Func<ThingTagRoInput>> thingTagRo)
         {
             var __workflow_thingId = WorkflowExpression.Compile(thingId, nameof(thingId), required: true);
             var __workflow_thingTagRo = WorkflowExpression.Compile(thingTagRo, nameof(thingTagRo), required: true);
-            return new DeferredBodyAction<TagRo, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AddThingTagTagRoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tags/thing/{0}", __workflow_thingId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_thingTagRo);
-                return new ApiConnectionAction<TagRo>(callPayload);
+                return new ApiConnectionAction<AddThingTagTagRoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<TagRo, ApiConnectionActionConfiguration> GetThingTag(Expression<Func<string>> id)
+        public IBodyWorkflowAction<AddThingTagTagRoResponse, ApiConnectionActionConfiguration> GetThingTag(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TagRo, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AddThingTagTagRoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/tags/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<TagRo>(callPayload);
+                return new ApiConnectionAction<AddThingTagTagRoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageSingleThingRo, ApiConnectionActionConfiguration> GetThings(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<PageSingleThingRo, ApiConnectionActionConfiguration> GetThings(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<bool>> detailed = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo[], ApiConnectionActionConfiguration> AssociateThingsWithProduct(Expression<Func<AssociateThingsWithProductInput>> json)
+        public IBodyWorkflowAction<SingleThingRo[], ApiConnectionActionConfiguration> AssociateThingsWithProduct(Expression<Func<JsonInput>> json)
         {
             var __workflow_json = WorkflowExpression.Compile(json, nameof(json), required: true);
             return new DeferredBodyAction<SingleThingRo[], ApiConnectionActionConfiguration>(() =>
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ThingRo, ApiConnectionActionConfiguration> PutThing(Expression<Func<string>> id, Expression<Func<PutThingInput>> thingRo)
+        public IBodyWorkflowAction<ThingRo, ApiConnectionActionConfiguration> PutThing(Expression<Func<string>> id, Expression<Func<PutThingThingRoInput>> thingRo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_thingRo = WorkflowExpression.Compile(thingRo, nameof(thingRo), required: true);
@@ -566,32 +566,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<CustomFieldRo, ApiConnectionActionConfiguration> CreateCustomField(Expression<Func<string>> id, Expression<Func<CreateCustomFieldInput>> customFieldRo)
+        public IBodyWorkflowAction<AssociateThingProductCustomFieldRoResponse, ApiConnectionActionConfiguration> CreateCustomField(Expression<Func<string>> id, Expression<Func<CustomFieldRoInput>> customFieldRo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_customFieldRo = WorkflowExpression.Compile(customFieldRo, nameof(customFieldRo), required: true);
-            return new DeferredBodyAction<CustomFieldRo, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AssociateThingProductCustomFieldRoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_customFieldRo);
-                return new ApiConnectionAction<CustomFieldRo>(callPayload);
+                return new ApiConnectionAction<AssociateThingProductCustomFieldRoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<CustomFieldRo, ApiConnectionActionConfiguration> UpdateCustomField(Expression<Func<string>> id, Expression<Func<UpdateCustomFieldInput>> customFieldRo)
+        public IBodyWorkflowAction<AssociateThingProductCustomFieldRoResponse, ApiConnectionActionConfiguration> UpdateCustomField(Expression<Func<string>> id, Expression<Func<CustomFieldRoInput>> customFieldRo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_customFieldRo = WorkflowExpression.Compile(customFieldRo, nameof(customFieldRo), required: true);
-            return new DeferredBodyAction<CustomFieldRo, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AssociateThingProductCustomFieldRoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/things/{0}/custom_fields", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_customFieldRo);
-                return new ApiConnectionAction<CustomFieldRo>(callPayload);
+                return new ApiConnectionAction<AssociateThingProductCustomFieldRoResponse>(callPayload);
             });
         }
 
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMeasureRo, ApiConnectionActionConfiguration> GetThingMeasures(Expression<Func<string>> id, Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageMeasureRo, ApiConnectionActionConfiguration> GetThingMeasures(Expression<Func<string>> id, Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMessageRo, ApiConnectionActionConfiguration> GetThingMessages(Expression<Func<string>> id, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageMessageRo, ApiConnectionActionConfiguration> GetThingMessages(Expression<Func<string>> id, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> CreateThingMessages(Expression<Func<string>> id, Expression<Func<CreateThingMessagesInput>> messageRo)
+        public IBodyWorkflowAction<MessageRo, ApiConnectionActionConfiguration> CreateThingMessages(Expression<Func<string>> id, Expression<Func<CreateThingMessagesMessageRoInput>> messageRo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_messageRo = WorkflowExpression.Compile(messageRo, nameof(messageRo), required: true);
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity, ApiConnectionActionConfiguration> ExecuteThingOperation(Expression<Func<string>> id, Expression<Func<string>> operationId, Expression<Func<ExecuteThingOperationInput>> placeholdersValues)
+        public IBodyWorkflowAction<ResponseEntity, ApiConnectionActionConfiguration> ExecuteThingOperation(Expression<Func<string>> id, Expression<Func<string>> operationId, Expression<Func<PlaceholdersValuesInput>> placeholdersValues)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_operationId = WorkflowExpression.Compile(operationId, nameof(operationId), required: true);
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo, ApiConnectionActionConfiguration> UpdateThingFixedPosition(Expression<Func<string>> id, Expression<Func<UpdateThingFixedPositionInput>> thingRo)
+        public IBodyWorkflowAction<SingleThingRo, ApiConnectionActionConfiguration> UpdateThingFixedPosition(Expression<Func<string>> id, Expression<Func<UpdateThingFixedPositionThingRoInput>> thingRo)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_thingRo = WorkflowExpression.Compile(thingRo, nameof(thingRo), required: true);
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo, ApiConnectionActionConfiguration> AssociateThingProduct(Expression<Func<string>> id, Expression<Func<AssociateThingProductInput>> product)
+        public IBodyWorkflowAction<SingleThingRo, ApiConnectionActionConfiguration> AssociateThingProduct(Expression<Func<string>> id, Expression<Func<ProductInput>> product)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsAvg(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsAvg(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -926,7 +926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsCountRo, ApiConnectionActionConfiguration> GetStatsCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<StatsCountRo, ApiConnectionActionConfiguration> GetStatsCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -965,7 +965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsLast(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsLast(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetThingStatsLast(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetThingStatsLast(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null)
         {
             var __workflow_thingId = WorkflowExpression.Compile(thingId, nameof(thingId), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsMax(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsMax(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -1071,7 +1071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsGraphRo[], ApiConnectionActionConfiguration> GetStatsMeasurements(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
+        public IBodyWorkflowAction<StatsGraphRo[], ApiConnectionActionConfiguration> GetStatsMeasurements(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
         {
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: true);
@@ -1114,7 +1114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsMin(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo, ApiConnectionActionConfiguration> GetStatsMin(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
@@ -1153,7 +1153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsCountRo[], ApiConnectionActionConfiguration> GetStatsRepartition(Expression<Func<string>> attribute, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<StatsCountRo[], ApiConnectionActionConfiguration> GetStatsRepartition(Expression<Func<string>> attribute, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
         {
             var __workflow_attribute = WorkflowExpression.Compile(attribute, nameof(attribute), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -1194,7 +1194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsGraphRo[], ApiConnectionActionConfiguration> GetStatsSum(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
+        public IBodyWorkflowAction<StatsGraphRo[], ApiConnectionActionConfiguration> GetStatsSum(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<DirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
         {
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: true);
@@ -1289,7 +1289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public AlertRoStateType State { get; set; }
 
         [JsonProperty("thing")]
-        public ThingTinyRo Thing { get; set; }
+        public AddMessageThingTinyRoResponse Thing { get; set; }
 
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -1325,7 +1325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         RESOLVED
     }
 
-    public class ThingTinyRo
+    public class AddMessageThingTinyRoResponse
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -1343,10 +1343,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int NbAlerts { get; set; }
 
         [JsonProperty("tags")]
-        public ThingTagRo[] Tags { get; set; }
+        public AddMessageThingTagRoResponse[] Tags { get; set; }
     }
 
-    public class ThingTagRo
+    public class AddMessageThingTagRoResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1356,7 +1356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dirInput
+    public enum DirInput
     {
         ASC,
         DESC
@@ -1395,13 +1395,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Id { get; set; }
 
         [JsonProperty("model")]
-        public ModelTinyRo Model { get; set; }
+        public AssociateThingProductModelTinyRoResponse Model { get; set; }
 
         [JsonProperty("product")]
-        public ProductTinyRo Product { get; set; }
+        public AssociateThingProductProductTinyRoResponse Product { get; set; }
 
         [JsonProperty("thing")]
-        public ThingTinyRo Thing { get; set; }
+        public AddMessageThingTinyRoResponse Thing { get; set; }
 
         [JsonProperty("timestamp")]
         public int Timestamp { get; set; }
@@ -1437,7 +1437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Type { get; set; }
     }
 
-    public class ModelTinyRo
+    public class AssociateThingProductModelTinyRoResponse
     {
         [JsonProperty("color")]
         public string Color { get; set; }
@@ -1455,13 +1455,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool IsCustomModel { get; set; }
 
         [JsonProperty("link")]
-        public URI Link { get; set; }
+        public AddMessageURIResponse Link { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class URI
+    public class AddMessageURIResponse
     {
         [JsonProperty("absolute")]
         public bool Absolute { get; set; }
@@ -1515,10 +1515,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string UserInfo { get; set; }
     }
 
-    public class ProductTinyRo
+    public class AssociateThingProductProductTinyRoResponse
     {
         [JsonProperty("connectivityTypes")]
-        public ProductTinyRoConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
+        public AssociateThingProductProductTinyRoConnectivityTypesTypeItemResponse[] ConnectivityTypes { get; set; }
 
         [JsonProperty("generateLinks")]
         public bool GenerateLinks { get; set; }
@@ -1530,10 +1530,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Link { get; set; }
 
         [JsonProperty("manufacturer")]
-        public ManufacturerTinyRo Manufacturer { get; set; }
+        public AssociateThingProductManufacturerTinyRoResponse Manufacturer { get; set; }
 
         [JsonProperty("model")]
-        public ModelTinyRo Model { get; set; }
+        public AssociateThingProductModelTinyRoResponse Model { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProductTinyRoConnectivityTypesTypeItem
+    public enum AssociateThingProductProductTinyRoConnectivityTypesTypeItemResponse
     {
         LORA,
         SIGFOX,
@@ -1569,7 +1569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
-    public class ManufacturerTinyRo
+    public class AssociateThingProductManufacturerTinyRoResponse
     {
         [JsonProperty("generateLinks")]
         public bool GenerateLinks { get; set; }
@@ -1629,13 +1629,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public URI Link { get; set; }
+        public AddMessageURIResponse Link { get; set; }
 
         [JsonProperty("longitude")]
         public double Longitude { get; set; }
 
         [JsonProperty("measurements")]
-        public JsonNode Measurements { get; set; }
+        public AddMessageJsonNodeResponse Measurements { get; set; }
 
         [JsonProperty("metadata")]
         public string Metadata { get; set; }
@@ -1647,10 +1647,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public MessageRoProcessedType Processed { get; set; }
 
         [JsonProperty("rawMeasurements")]
-        public JsonNode RawMeasurements { get; set; }
+        public AddMessageJsonNodeResponse RawMeasurements { get; set; }
 
         [JsonProperty("thing")]
-        public ThingTinyRo Thing { get; set; }
+        public AddMessageThingTinyRoResponse Thing { get; set; }
 
         [JsonProperty("timestamp")]
         public string Timestamp { get; set; }
@@ -1659,7 +1659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Topic { get; set; }
     }
 
-    public class JsonNode
+    public class AddMessageJsonNodeResponse
     {
         [JsonProperty("array")]
         public bool Array { get; set; }
@@ -1701,7 +1701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool MissingNode { get; set; }
 
         [JsonProperty("nodeType")]
-        public JsonNodeNodeTypeType NodeType { get; set; }
+        public AddMessageJsonNodeNodeTypeTypeResponse NodeType { get; set; }
 
         [JsonProperty("null")]
         public bool Null { get; set; }
@@ -1726,7 +1726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JsonNodeNodeTypeType
+    public enum AddMessageJsonNodeNodeTypeTypeResponse
     {
         ARRAY,
         BINARY,
@@ -1757,7 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         ERROR
     }
 
-    public class AddMessageInput
+    public class AddMessageMessageRoInput
     {
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
@@ -1775,7 +1775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public URI2 Link { get; set; }
+        public AddMessageURI Link { get; set; }
 
         [JsonProperty("longitude", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Longitude { get; set; }
@@ -1790,13 +1790,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int Number { get; set; }
 
         [JsonProperty("processed", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddMessageInputProcessedType Processed { get; set; }
+        public MessageRoInputProcessedType Processed { get; set; }
 
         [JsonProperty("rawMeasurements")]
-        public JsonNode2 RawMeasurements { get; set; }
+        public AddMessageJsonNode RawMeasurements { get; set; }
 
         [JsonProperty("thing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ThingTinyRo2 Thing { get; set; }
+        public AddMessageThingTinyRo Thing { get; set; }
 
         [JsonProperty("timestamp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Timestamp { get; set; }
@@ -1805,7 +1805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Topic { get; set; }
     }
 
-    public class URI2
+    public class AddMessageURI
     {
         [JsonProperty("absolute")]
         public bool? Absolute { get; set; }
@@ -1860,7 +1860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddMessageInputProcessedType
+    public enum MessageRoInputProcessedType
     {
         TODO,
         DONE,
@@ -1876,7 +1876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         ERROR
     }
 
-    public class JsonNode2
+    public class AddMessageJsonNode
     {
         [JsonProperty("array")]
         public bool? Array { get; set; }
@@ -1918,139 +1918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool? MissingNode { get; set; }
 
         [JsonProperty("nodeType")]
-        public JsonNodeNodeTypeType? NodeType { get; set; }
-
-        [JsonProperty("null")]
-        public bool? Null { get; set; }
-
-        [JsonProperty("number")]
-        public bool? Number { get; set; }
-
-        [JsonProperty("object")]
-        public bool? ObjectEntity { get; set; }
-
-        [JsonProperty("pojo")]
-        public bool? Pojo { get; set; }
-
-        [JsonProperty("short")]
-        public bool? Short { get; set; }
-
-        [JsonProperty("textual")]
-        public bool? Textual { get; set; }
-
-        [JsonProperty("valueNode")]
-        public bool? ValueNode { get; set; }
-    }
-
-    public class ThingTinyRo2
-    {
-        [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
-
-        [JsonProperty("fixedName")]
-        public string FixedName { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("nbAlerts")]
-        public int? NbAlerts { get; set; }
-
-        [JsonProperty("tags")]
-        public ThingTagRo[] Tags { get; set; }
-    }
-
-    public class PageSiteRo
-    {
-        [JsonProperty("data")]
-        public SiteRo[] Data { get; set; }
-
-        [JsonProperty("end")]
-        public int End { get; set; }
-
-        [JsonProperty("page")]
-        public int Page { get; set; }
-
-        [JsonProperty("pageSize")]
-        public int PageSize { get; set; }
-
-        [JsonProperty("start")]
-        public int Start { get; set; }
-
-        [JsonProperty("totalSize")]
-        public int TotalSize { get; set; }
-    }
-
-    public class SiteRo
-    {
-        [JsonProperty("address")]
-        public string Address { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("latitude")]
-        public double Latitude { get; set; }
-
-        [JsonProperty("longitude")]
-        public double Longitude { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("postalCode")]
-        public string PostalCode { get; set; }
-    }
-
-    public class CreateSiteInput
-    {
-        [JsonProperty("array")]
-        public bool? Array { get; set; }
-
-        [JsonProperty("bigDecimal")]
-        public bool? BigDecimal { get; set; }
-
-        [JsonProperty("bigInteger")]
-        public bool? BigInteger { get; set; }
-
-        [JsonProperty("binary")]
-        public bool? Binary { get; set; }
-
-        [JsonProperty("boolean")]
-        public bool? Boolean { get; set; }
-
-        [JsonProperty("containerNode")]
-        public bool? ContainerNode { get; set; }
-
-        [JsonProperty("double")]
-        public bool? Double { get; set; }
-
-        [JsonProperty("float")]
-        public bool? Float { get; set; }
-
-        [JsonProperty("floatingPointNumber")]
-        public bool? FloatingPointNumber { get; set; }
-
-        [JsonProperty("int")]
-        public bool? Int { get; set; }
-
-        [JsonProperty("integralNumber")]
-        public bool? IntegralNumber { get; set; }
-
-        [JsonProperty("long")]
-        public bool? Long { get; set; }
-
-        [JsonProperty("missingNode")]
-        public bool? MissingNode { get; set; }
-
-        [JsonProperty("nodeType")]
-        public CreateSiteInputNodeTypeType? NodeType { get; set; }
+        public AddMessageJsonNodeNodeTypeType? NodeType { get; set; }
 
         [JsonProperty("null")]
         public bool? Null { get; set; }
@@ -2075,7 +1943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateSiteInputNodeTypeType
+    public enum AddMessageJsonNodeNodeTypeType
     {
         ARRAY,
         BINARY,
@@ -2089,7 +1957,163 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         STRING
     }
 
-    public class UpdateSiteInput
+    public class AddMessageThingTinyRo
+    {
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("fixedName")]
+        public string FixedName { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("nbAlerts")]
+        public int? NbAlerts { get; set; }
+
+        [JsonProperty("tags")]
+        public AddMessageThingTagRo[] Tags { get; set; }
+    }
+
+    public class AddMessageThingTagRo
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("tag")]
+        public string Tag { get; set; }
+    }
+
+    public class PageSiteRo
+    {
+        [JsonProperty("data")]
+        public AssociateThingProductSiteRoResponse[] Data { get; set; }
+
+        [JsonProperty("end")]
+        public int End { get; set; }
+
+        [JsonProperty("page")]
+        public int Page { get; set; }
+
+        [JsonProperty("pageSize")]
+        public int PageSize { get; set; }
+
+        [JsonProperty("start")]
+        public int Start { get; set; }
+
+        [JsonProperty("totalSize")]
+        public int TotalSize { get; set; }
+    }
+
+    public class AssociateThingProductSiteRoResponse
+    {
+        [JsonProperty("address")]
+        public string Address { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("latitude")]
+        public double Latitude { get; set; }
+
+        [JsonProperty("longitude")]
+        public double Longitude { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
+    }
+
+    public class NodeInput
+    {
+        [JsonProperty("array")]
+        public bool? Array { get; set; }
+
+        [JsonProperty("bigDecimal")]
+        public bool? BigDecimal { get; set; }
+
+        [JsonProperty("bigInteger")]
+        public bool? BigInteger { get; set; }
+
+        [JsonProperty("binary")]
+        public bool? Binary { get; set; }
+
+        [JsonProperty("boolean")]
+        public bool? Boolean { get; set; }
+
+        [JsonProperty("containerNode")]
+        public bool? ContainerNode { get; set; }
+
+        [JsonProperty("double")]
+        public bool? Double { get; set; }
+
+        [JsonProperty("float")]
+        public bool? Float { get; set; }
+
+        [JsonProperty("floatingPointNumber")]
+        public bool? FloatingPointNumber { get; set; }
+
+        [JsonProperty("int")]
+        public bool? Int { get; set; }
+
+        [JsonProperty("integralNumber")]
+        public bool? IntegralNumber { get; set; }
+
+        [JsonProperty("long")]
+        public bool? Long { get; set; }
+
+        [JsonProperty("missingNode")]
+        public bool? MissingNode { get; set; }
+
+        [JsonProperty("nodeType")]
+        public NodeInputNodeTypeType? NodeType { get; set; }
+
+        [JsonProperty("null")]
+        public bool? Null { get; set; }
+
+        [JsonProperty("number")]
+        public bool? Number { get; set; }
+
+        [JsonProperty("object")]
+        public bool? ObjectEntity { get; set; }
+
+        [JsonProperty("pojo")]
+        public bool? Pojo { get; set; }
+
+        [JsonProperty("short")]
+        public bool? Short { get; set; }
+
+        [JsonProperty("textual")]
+        public bool? Textual { get; set; }
+
+        [JsonProperty("valueNode")]
+        public bool? ValueNode { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum NodeInputNodeTypeType
+    {
+        ARRAY,
+        BINARY,
+        BOOLEAN,
+        MISSING,
+        NULL,
+        NUMBER,
+        [EnumMember(Value = "OBJECT")]
+        ObjectEntity,
+        POJO,
+        STRING
+    }
+
+    public class SiteRoInput
     {
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
@@ -2116,7 +2140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     public class PageThingTagRo
     {
         [JsonProperty("data")]
-        public ThingTagRo[] Data { get; set; }
+        public AddMessageThingTagRoResponse[] Data { get; set; }
 
         [JsonProperty("end")]
         public int End { get; set; }
@@ -2134,7 +2158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int TotalSize { get; set; }
     }
 
-    public class TagRo
+    public class AddThingTagTagRoResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2143,16 +2167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Tag { get; set; }
     }
 
-    public class UpdateThingTagInput
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("tag")]
-        public string Tag { get; set; }
-    }
-
-    public class AddThingTagInput
+    public class ThingTagRoInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2185,22 +2200,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     public class SingleThingRo
     {
         [JsonProperty("application")]
-        public ApplicationTinyRo Application { get; set; }
+        public AssociateThingProductApplicationTinyRoResponse Application { get; set; }
 
         [JsonProperty("connectivity")]
-        public ConnectivityRo Connectivity { get; set; }
+        public AssociateThingProductConnectivityRoResponse Connectivity { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomFieldRo[] CustomFields { get; set; }
+        public AssociateThingProductCustomFieldRoResponse[] CustomFields { get; set; }
 
         [JsonProperty("customModel")]
-        public CustomModelTinyRo CustomModel { get; set; }
+        public AssociateThingProductCustomModelTinyRoResponse CustomModel { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("device")]
-        public DeviceRo Device { get; set; }
+        public AssociateThingProductDeviceRoResponse Device { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -2230,10 +2245,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double LastLongitude { get; set; }
 
         [JsonProperty("lastMeasurements")]
-        public JsonNode LastMeasurements { get; set; }
+        public AddMessageJsonNodeResponse LastMeasurements { get; set; }
 
         [JsonProperty("lastMeasurementsTimestamps")]
-        public JsonNode LastMeasurementsTimestamps { get; set; }
+        public AddMessageJsonNodeResponse LastMeasurementsTimestamps { get; set; }
 
         [JsonProperty("lastMessageDate")]
         public int LastMessageDate { get; set; }
@@ -2248,10 +2263,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int NbAlerts { get; set; }
 
         [JsonProperty("product")]
-        public ProductTinyRo Product { get; set; }
+        public AssociateThingProductProductTinyRoResponse Product { get; set; }
 
         [JsonProperty("site")]
-        public SiteRo Site { get; set; }
+        public AssociateThingProductSiteRoResponse Site { get; set; }
 
         [JsonProperty("sourceId")]
         public string SourceId { get; set; }
@@ -2260,10 +2275,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public SingleThingRoStatusType Status { get; set; }
 
         [JsonProperty("tags")]
-        public ThingTagRo[] Tags { get; set; }
+        public AddMessageThingTagRoResponse[] Tags { get; set; }
     }
 
-    public class ApplicationTinyRo
+    public class AssociateThingProductApplicationTinyRoResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2275,7 +2290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Name { get; set; }
     }
 
-    public class ConnectivityRo
+    public class AssociateThingProductConnectivityRoResponse
     {
         [JsonProperty("additionalProperties")]
         public JToken AdditionalProperties { get; set; }
@@ -2287,14 +2302,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string RawStatus { get; set; }
 
         [JsonProperty("status")]
-        public ConnectivityRoStatusType Status { get; set; }
+        public AssociateThingProductConnectivityRoStatusTypeResponse Status { get; set; }
 
         [JsonProperty("type")]
-        public ConnectivityRoTypeType Type { get; set; }
+        public AssociateThingProductConnectivityRoTypeTypeResponse Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConnectivityRoStatusType
+    public enum AssociateThingProductConnectivityRoStatusTypeResponse
     {
         INACTIVE,
         ONLINE,
@@ -2304,7 +2319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConnectivityRoTypeType
+    public enum AssociateThingProductConnectivityRoTypeTypeResponse
     {
         LORA,
         SIGFOX,
@@ -2330,7 +2345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
-    public class CustomFieldRo
+    public class AssociateThingProductCustomFieldRoResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2345,21 +2360,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public CustomFieldRoTypeType Type { get; set; }
+        public AssociateThingProductCustomFieldRoTypeTypeResponse Type { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CustomFieldRoTypeType
+    public enum AssociateThingProductCustomFieldRoTypeTypeResponse
     {
         TEXT,
         TEXTEREA,
         FILE
     }
 
-    public class CustomModelTinyRo
+    public class AssociateThingProductCustomModelTinyRoResponse
     {
         [JsonProperty("color")]
         public string Color { get; set; }
@@ -2377,13 +2392,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Name { get; set; }
     }
 
-    public class DeviceRo
+    public class AssociateThingProductDeviceRoResponse
     {
         [JsonProperty("batteryLevel")]
         public int BatteryLevel { get; set; }
 
         [JsonProperty("batteryStatus")]
-        public DeviceRoBatteryStatusType BatteryStatus { get; set; }
+        public AssociateThingProductDeviceRoBatteryStatusTypeResponse BatteryStatus { get; set; }
 
         [JsonProperty("deviceType")]
         public string DeviceType { get; set; }
@@ -2413,11 +2428,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string SerialNumber { get; set; }
 
         [JsonProperty("status")]
-        public DeviceRoStatusType Status { get; set; }
+        public AssociateThingProductDeviceRoStatusTypeResponse Status { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeviceRoBatteryStatusType
+    public enum AssociateThingProductDeviceRoBatteryStatusTypeResponse
     {
         NORMAL,
         CHARGING,
@@ -2432,7 +2447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeviceRoStatusType
+    public enum AssociateThingProductDeviceRoStatusTypeResponse
     {
         RUNNING,
         HALTED,
@@ -2460,7 +2475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         VIRTUAL
     }
 
-    public class AssociateThingsWithProductInput
+    public class JsonInput
     {
         [JsonProperty("array")]
         public bool? Array { get; set; }
@@ -2502,7 +2517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool? MissingNode { get; set; }
 
         [JsonProperty("nodeType")]
-        public AssociateThingsWithProductInputNodeTypeType? NodeType { get; set; }
+        public JsonInputNodeTypeType? NodeType { get; set; }
 
         [JsonProperty("null")]
         public bool? Null { get; set; }
@@ -2527,7 +2542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AssociateThingsWithProductInputNodeTypeType
+    public enum JsonInputNodeTypeType
     {
         ARRAY,
         BINARY,
@@ -2544,7 +2559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     public class ThingRo
     {
         [JsonProperty("customFields")]
-        public CustomFieldRo[] CustomFields { get; set; }
+        public AssociateThingProductCustomFieldRoResponse[] CustomFields { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -2577,10 +2592,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double LastLongitude { get; set; }
 
         [JsonProperty("lastMeasurements")]
-        public JsonNode LastMeasurements { get; set; }
+        public AddMessageJsonNodeResponse LastMeasurements { get; set; }
 
         [JsonProperty("lastMeasurementsTimestamps")]
-        public JsonNode LastMeasurementsTimestamps { get; set; }
+        public AddMessageJsonNodeResponse LastMeasurementsTimestamps { get; set; }
 
         [JsonProperty("lastMessageDate")]
         public int LastMessageDate { get; set; }
@@ -2595,13 +2610,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int NbAlerts { get; set; }
 
         [JsonProperty("site")]
-        public SiteRo Site { get; set; }
+        public AssociateThingProductSiteRoResponse Site { get; set; }
 
         [JsonProperty("status")]
         public ThingRoStatusType Status { get; set; }
 
         [JsonProperty("tags")]
-        public ThingTagRo[] Tags { get; set; }
+        public AddMessageThingTagRoResponse[] Tags { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2624,25 +2639,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         VIRTUAL
     }
 
-    public class PutThingInput
+    public class PutThingThingRoInput
     {
         [JsonProperty("application", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ApplicationTinyRo Application { get; set; }
+        public PutThingApplicationTinyRo Application { get; set; }
 
         [JsonProperty("connectivity", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConnectivityRo2 Connectivity { get; set; }
+        public PutThingConnectivityRo Connectivity { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomFieldRo2[] CustomFields { get; set; }
+        public PutThingCustomFieldRo[] CustomFields { get; set; }
 
         [JsonProperty("customModel")]
-        public CustomModelTinyRo CustomModel { get; set; }
+        public PutThingCustomModelTinyRo CustomModel { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeviceRo2 Device { get; set; }
+        public PutThingDeviceRo Device { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -2672,10 +2687,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double? LastLongitude { get; set; }
 
         [JsonProperty("lastMeasurements")]
-        public JsonNode2 LastMeasurements { get; set; }
+        public AddMessageJsonNode LastMeasurements { get; set; }
 
         [JsonProperty("lastMeasurementsTimestamps")]
-        public JsonNode2 LastMeasurementsTimestamps { get; set; }
+        public AddMessageJsonNode LastMeasurementsTimestamps { get; set; }
 
         [JsonProperty("lastMessageDate")]
         public int? LastMessageDate { get; set; }
@@ -2690,22 +2705,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int? NbAlerts { get; set; }
 
         [JsonProperty("product")]
-        public ProductTinyRo2 Product { get; set; }
+        public PutThingProductTinyRo Product { get; set; }
 
         [JsonProperty("site")]
-        public SiteRo2 Site { get; set; }
+        public PutThingSiteRo Site { get; set; }
 
         [JsonProperty("sourceId")]
         public string SourceId { get; set; }
 
         [JsonProperty("status")]
-        public PutThingInputStatusType? Status { get; set; }
+        public ThingRoInputStatusType? Status { get; set; }
 
         [JsonProperty("tags")]
-        public ThingTagRo[] Tags { get; set; }
+        public AddMessageThingTagRo[] Tags { get; set; }
     }
 
-    public class ConnectivityRo2
+    public class PutThingApplicationTinyRo
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class PutThingConnectivityRo
     {
         [JsonProperty("additionalProperties")]
         public JToken AdditionalProperties { get; set; }
@@ -2717,13 +2744,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string RawStatus { get; set; }
 
         [JsonProperty("status")]
-        public ConnectivityRoStatusType? Status { get; set; }
+        public PutThingConnectivityRoStatusType? Status { get; set; }
 
         [JsonProperty("type")]
-        public ConnectivityRoTypeType? Type { get; set; }
+        public PutThingConnectivityRoTypeType? Type { get; set; }
     }
 
-    public class CustomFieldRo2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutThingConnectivityRoStatusType
+    {
+        INACTIVE,
+        ONLINE,
+        OFFLINE,
+        ERROR,
+        UNKNOWN
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutThingConnectivityRoTypeType
+    {
+        LORA,
+        SIGFOX,
+        MQTT,
+        CELLULAR,
+        ETHERNET,
+        WIFI,
+        BLUETOOTH,
+        BACNET,
+        MODBUS,
+        [EnumMember(Value = "IO_ANALOG")]
+        IOANALOG,
+        [EnumMember(Value = "IO_DIGITAL")]
+        IODIGITAL,
+        ENOCEAN,
+        ZIGBEE,
+        ZWAVE,
+        NFC,
+        USB,
+        [EnumMember(Value = "IEEE_LR_WPAN")]
+        IEEELRWPAN,
+        DALI,
+        UNKNOWN
+    }
+
+    public class PutThingCustomFieldRo
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2738,19 +2802,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public CustomFieldRoTypeType? Type { get; set; }
+        public PutThingCustomFieldRoTypeType? Type { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class DeviceRo2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutThingCustomFieldRoTypeType
+    {
+        TEXT,
+        TEXTEREA,
+        FILE
+    }
+
+    public class PutThingCustomModelTinyRo
+    {
+        [JsonProperty("color")]
+        public string Color { get; set; }
+
+        [JsonProperty("icon")]
+        public string Icon { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class PutThingDeviceRo
     {
         [JsonProperty("batteryLevel")]
         public int? BatteryLevel { get; set; }
 
         [JsonProperty("batteryStatus")]
-        public DeviceRoBatteryStatusType? BatteryStatus { get; set; }
+        public PutThingDeviceRoBatteryStatusType? BatteryStatus { get; set; }
 
         [JsonProperty("deviceType")]
         public string DeviceType { get; set; }
@@ -2780,13 +2870,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string SerialNumber { get; set; }
 
         [JsonProperty("status")]
-        public DeviceRoStatusType? Status { get; set; }
+        public PutThingDeviceRoStatusType? Status { get; set; }
     }
 
-    public class ProductTinyRo2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutThingDeviceRoBatteryStatusType
+    {
+        NORMAL,
+        CHARGING,
+        [EnumMember(Value = "CHARGE_COMPLETE")]
+        CHARGECOMPLETE,
+        DAMAGED,
+        [EnumMember(Value = "LOW_BATTERY")]
+        LOWBATTERY,
+        [EnumMember(Value = "NOT_INSTALLED")]
+        NOTINSTALLED,
+        UNKNOWN
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutThingDeviceRoStatusType
+    {
+        RUNNING,
+        HALTED,
+        ERROR,
+        UNKNOWN
+    }
+
+    public class PutThingProductTinyRo
     {
         [JsonProperty("connectivityTypes")]
-        public ProductTinyRoConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
+        public PutThingProductTinyRoConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
 
         [JsonProperty("generateLinks")]
         public bool? GenerateLinks { get; set; }
@@ -2798,10 +2912,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Link { get; set; }
 
         [JsonProperty("manufacturer")]
-        public ManufacturerTinyRo2 Manufacturer { get; set; }
+        public AssociateThingProductManufacturerTinyRo Manufacturer { get; set; }
 
         [JsonProperty("model")]
-        public ModelTinyRo2 Model { get; set; }
+        public AssociateThingProductModelTinyRo Model { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2810,7 +2924,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Reference { get; set; }
     }
 
-    public class ManufacturerTinyRo2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PutThingProductTinyRoConnectivityTypesTypeItem
+    {
+        LORA,
+        SIGFOX,
+        MQTT,
+        CELLULAR,
+        ETHERNET,
+        WIFI,
+        BLUETOOTH,
+        BACNET,
+        MODBUS,
+        [EnumMember(Value = "IO_ANALOG")]
+        IOANALOG,
+        [EnumMember(Value = "IO_DIGITAL")]
+        IODIGITAL,
+        ENOCEAN,
+        ZIGBEE,
+        ZWAVE,
+        NFC,
+        USB,
+        [EnumMember(Value = "IEEE_LR_WPAN")]
+        IEEELRWPAN,
+        DALI,
+        UNKNOWN
+    }
+
+    public class AssociateThingProductManufacturerTinyRo
     {
         [JsonProperty("generateLinks")]
         public bool? GenerateLinks { get; set; }
@@ -2825,7 +2966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Name { get; set; }
     }
 
-    public class ModelTinyRo2
+    public class AssociateThingProductModelTinyRo
     {
         [JsonProperty("color")]
         public string Color { get; set; }
@@ -2843,13 +2984,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool? IsCustomModel { get; set; }
 
         [JsonProperty("link")]
-        public URI2 Link { get; set; }
+        public AddMessageURI Link { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class SiteRo2
+    public class PutThingSiteRo
     {
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
@@ -2874,7 +3015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PutThingInputStatusType
+    public enum ThingRoInputStatusType
     {
         PROVISIONED,
         PENDING,
@@ -2911,7 +3052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool IsCustomModel { get; set; }
 
         [JsonProperty("link")]
-        public URI Link { get; set; }
+        public AddMessageURIResponse Link { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2974,7 +3115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int TotalSize { get; set; }
     }
 
-    public class CreateCustomFieldInput
+    public class CustomFieldRoInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2989,43 +3130,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public CreateCustomFieldInputTypeType? Type { get; set; }
+        public CustomFieldRoInputTypeType? Type { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCustomFieldInputTypeType
-    {
-        TEXT,
-        TEXTEREA,
-        FILE
-    }
-
-    public class UpdateCustomFieldInput
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("imageLink")]
-        public string ImageLink { get; set; }
-
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("type")]
-        public UpdateCustomFieldInputTypeType? Type { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateCustomFieldInputTypeType
+    public enum CustomFieldRoInputTypeType
     {
         TEXT,
         TEXTEREA,
@@ -3201,13 +3313,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Id { get; set; }
 
         [JsonProperty("link")]
-        public URI Link { get; set; }
+        public AddMessageURIResponse Link { get; set; }
 
         [JsonProperty("number")]
         public int Number { get; set; }
     }
 
-    public class CreateThingMessagesInput
+    public class CreateThingMessagesMessageRoInput
     {
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
@@ -3225,13 +3337,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public URI2 Link { get; set; }
+        public AddMessageURI Link { get; set; }
 
         [JsonProperty("longitude", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Longitude { get; set; }
 
         [JsonProperty("measurements")]
-        public JsonNode2 Measurements { get; set; }
+        public AddMessageJsonNode Measurements { get; set; }
 
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Metadata { get; set; }
@@ -3240,36 +3352,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int Number { get; set; }
 
         [JsonProperty("processed", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateThingMessagesInputProcessedType Processed { get; set; }
+        public MessageRoInputProcessedType Processed { get; set; }
 
         [JsonProperty("rawMeasurements")]
-        public JsonNode2 RawMeasurements { get; set; }
+        public AddMessageJsonNode RawMeasurements { get; set; }
 
         [JsonProperty("thing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ThingTinyRo2 Thing { get; set; }
+        public AddMessageThingTinyRo Thing { get; set; }
 
         [JsonProperty("timestamp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Timestamp { get; set; }
 
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateThingMessagesInputProcessedType
-    {
-        TODO,
-        DONE,
-        [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS,
-        ASSOCIATED,
-        [EnumMember(Value = "TO_BE_FORWARDED")]
-        TOBEFORWARDED,
-        [EnumMember(Value = "ERROR_CUSTOM")]
-        ERRORCUSTOM,
-        [EnumMember(Value = "TODO_CUSTOM")]
-        TODOCUSTOM,
-        ERROR
     }
 
     public class PageOperationRo
@@ -3293,7 +3388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int TotalSize { get; set; }
     }
 
-    public class ExecuteThingOperationInput
+    public class PlaceholdersValuesInput
     {
         [JsonProperty("array")]
         public bool? Array { get; set; }
@@ -3335,7 +3430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool? MissingNode { get; set; }
 
         [JsonProperty("nodeType")]
-        public ExecuteThingOperationInputNodeTypeType? NodeType { get; set; }
+        public PlaceholdersValuesInputNodeTypeType? NodeType { get; set; }
 
         [JsonProperty("null")]
         public bool? Null { get; set; }
@@ -3360,7 +3455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExecuteThingOperationInputNodeTypeType
+    public enum PlaceholdersValuesInputNodeTypeType
     {
         ARRAY,
         BINARY,
@@ -3374,10 +3469,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         STRING
     }
 
-    public class UpdateThingFixedPositionInput
+    public class UpdateThingFixedPositionThingRoInput
     {
         [JsonProperty("customFields")]
-        public CustomFieldRo2[] CustomFields { get; set; }
+        public PutThingCustomFieldRo[] CustomFields { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -3410,10 +3505,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double? LastLongitude { get; set; }
 
         [JsonProperty("lastMeasurements")]
-        public JsonNode2 LastMeasurements { get; set; }
+        public AddMessageJsonNode LastMeasurements { get; set; }
 
         [JsonProperty("lastMeasurementsTimestamps")]
-        public JsonNode2 LastMeasurementsTimestamps { get; set; }
+        public AddMessageJsonNode LastMeasurementsTimestamps { get; set; }
 
         [JsonProperty("lastMessageDate")]
         public int? LastMessageDate { get; set; }
@@ -3428,33 +3523,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int? NbAlerts { get; set; }
 
         [JsonProperty("site")]
-        public SiteRo2 Site { get; set; }
+        public PutThingSiteRo Site { get; set; }
 
         [JsonProperty("status")]
-        public UpdateThingFixedPositionInputStatusType? Status { get; set; }
+        public ThingRoInputStatusType? Status { get; set; }
 
         [JsonProperty("tags")]
-        public ThingTagRo[] Tags { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateThingFixedPositionInputStatusType
-    {
-        PROVISIONED,
-        PENDING,
-        INACTIVE,
-        ACTIVE,
-        WARNING,
-        SUSPENDED,
-        DELETED,
-        [EnumMember(Value = "IN_ASSOCIATION")]
-        INASSOCIATION,
-        [EnumMember(Value = "IN_DISSOCIATION")]
-        INDISSOCIATION,
-        [EnumMember(Value = "OUT_OF_ORDER")]
-        OUTOFORDER,
-        CREATED,
-        VIRTUAL
+        public AddMessageThingTagRo[] Tags { get; set; }
     }
 
     public class ProductRo
@@ -3466,13 +3541,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public ProductRoConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
 
         [JsonProperty("decoder")]
-        public DecoderTinyRo Decoder { get; set; }
+        public GetThingProductDecoderTinyRoResponse Decoder { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("encoder")]
-        public EncoderTinyRo Encoder { get; set; }
+        public GetThingProductEncoderTinyRoResponse Encoder { get; set; }
 
         [JsonProperty("generateLinks")]
         public bool GenerateLinks { get; set; }
@@ -3493,16 +3568,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Link { get; set; }
 
         [JsonProperty("manufacturer")]
-        public ManufacturerTinyRo Manufacturer { get; set; }
+        public AssociateThingProductManufacturerTinyRoResponse Manufacturer { get; set; }
 
         [JsonProperty("manufacturerCategory")]
         public string ManufacturerCategory { get; set; }
 
         [JsonProperty("model")]
-        public ModelTinyRo Model { get; set; }
+        public AssociateThingProductModelTinyRoResponse Model { get; set; }
 
         [JsonProperty("modelManufacturer")]
-        public ManufacturerTinyRo ModelManufacturer { get; set; }
+        public AssociateThingProductManufacturerTinyRoResponse ModelManufacturer { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3514,10 +3589,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Reference { get; set; }
 
         [JsonProperty("tags")]
-        public TagRo[] Tags { get; set; }
+        public AddThingTagTagRoResponse[] Tags { get; set; }
 
         [JsonProperty("things")]
-        public ThingTinyRo[] Things { get; set; }
+        public AddMessageThingTinyRoResponse[] Things { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3547,7 +3622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
-    public class DecoderTinyRo
+    public class GetThingProductDecoderTinyRoResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3559,7 +3634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool Visible { get; set; }
     }
 
-    public class EncoderTinyRo
+    public class GetThingProductEncoderTinyRoResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3568,22 +3643,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Link { get; set; }
     }
 
-    public class AssociateThingProductInput
+    public class ProductInput
     {
         [JsonProperty("certification")]
         public string Certification { get; set; }
 
         [JsonProperty("connectivityTypes")]
-        public AssociateThingProductInputConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
+        public ProductInputConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
 
         [JsonProperty("decoder")]
-        public DecoderTinyRo2 Decoder { get; set; }
+        public AssociateThingProductDecoderTinyRo Decoder { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("encoder")]
-        public EncoderTinyRo Encoder { get; set; }
+        public AssociateThingProductEncoderTinyRo Encoder { get; set; }
 
         [JsonProperty("generateLinks")]
         public bool? GenerateLinks { get; set; }
@@ -3604,16 +3679,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Link { get; set; }
 
         [JsonProperty("manufacturer")]
-        public ManufacturerTinyRo2 Manufacturer { get; set; }
+        public AssociateThingProductManufacturerTinyRo Manufacturer { get; set; }
 
         [JsonProperty("manufacturerCategory")]
         public string ManufacturerCategory { get; set; }
 
         [JsonProperty("model")]
-        public ModelTinyRo2 Model { get; set; }
+        public AssociateThingProductModelTinyRo Model { get; set; }
 
         [JsonProperty("modelManufacturer")]
-        public ManufacturerTinyRo2 ModelManufacturer { get; set; }
+        public AssociateThingProductManufacturerTinyRo ModelManufacturer { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3625,14 +3700,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Reference { get; set; }
 
         [JsonProperty("tags")]
-        public TagRo[] Tags { get; set; }
+        public AssociateThingProductTagRo[] Tags { get; set; }
 
         [JsonProperty("things")]
-        public ThingTinyRo2[] Things { get; set; }
+        public AddMessageThingTinyRo[] Things { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AssociateThingProductInputConnectivityTypesTypeItem
+    public enum ProductInputConnectivityTypesTypeItem
     {
         LORA,
         SIGFOX,
@@ -3658,7 +3733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
-    public class DecoderTinyRo2
+    public class AssociateThingProductDecoderTinyRo
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3668,6 +3743,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
         [JsonProperty("visible")]
         public bool? Visible { get; set; }
+    }
+
+    public class AssociateThingProductEncoderTinyRo
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+    }
+
+    public class AssociateThingProductTagRo
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("tag")]
+        public string Tag { get; set; }
     }
 
     public class PageFlowRo

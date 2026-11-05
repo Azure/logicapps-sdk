@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
     public class HuddleforusgovhealthActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse, ApiConnectionActionConfiguration> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<UploadFormSubmissionAsNewFileInput>> requestBody = null)
+        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse, ApiConnectionActionConfiguration> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<UploadFormSubmissionAsNewFileRequestBodyInput>> requestBody = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<Folder, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> folderId, Expression<Func<CreateFolderInput>> requestBody = null)
+        public IBodyWorkflowAction<Folder, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<string>> folderId, Expression<Func<CreateFolderRequestBodyInput>> requestBody = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<UploadFileInput>> requestBody = null)
+        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<UploadFileRequestBodyInput>> requestBody = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<CreateWorkspaceTaskInput>> requestBody = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse, ApiConnectionActionConfiguration> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<CreateWorkspaceTaskRequestBodyInput>> requestBody = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         public string WorkspaceId { get; set; }
     }
 
-    public class UploadFormSubmissionAsNewFileInput
+    public class UploadFormSubmissionAsNewFileRequestBodyInput
     {
         [JsonProperty("content")]
         public string TextContent { get; set; }
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         public string Title { get; set; }
     }
 
-    public class CreateFolderInput
+    public class CreateFolderRequestBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         public File File { get; set; }
     }
 
-    public class UploadFileInput
+    public class UploadFileRequestBodyInput
     {
         [JsonProperty("content")]
         public string FileContent { get; set; }
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
         public string Id { get; set; }
     }
 
-    public class CreateWorkspaceTaskInput
+    public class CreateWorkspaceTaskRequestBodyInput
     {
         [JsonProperty("assignee")]
         public string Assignee { get; set; }

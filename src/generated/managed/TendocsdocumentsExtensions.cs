@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     public class TendocsdocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiCompareResponse, ApiConnectionActionConfiguration> AiCompare(Expression<Func<V1AiComparePostInput>> request)
+        public IBodyWorkflowAction<AiCompareResponse, ApiConnectionActionConfiguration> AiCompare(Expression<Func<AiCompareRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<AiCompareResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiSummaryResponse, ApiConnectionActionConfiguration> AiSummary(Expression<Func<V1AiSummaryPostInput>> request)
+        public IBodyWorkflowAction<AiSummaryResponse, ApiConnectionActionConfiguration> AiSummary(Expression<Func<AiSummaryRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<AiSummaryResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration> AiTemplateBuilder(Expression<Func<V1AiTemplateBuilderPostInput>> request)
+        public IBodyWorkflowAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration> AiTemplateBuilder(Expression<Func<AiTemplateBuilderRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<AiTemplateBuilderResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConversionConvert(Expression<Func<V1ConversionConvertPostInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConversionConvert(Expression<Func<ConversionConvertRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentJsonTemplate(Expression<Func<V1DocumentJsonTemplatePostInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentJsonTemplate(Expression<Func<DocumentJsonTemplateRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentTemplate(Expression<Func<V1DocumentTemplatePostInput>> request)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DocumentTemplate(Expression<Func<DocumentTemplateRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<InstancesResponse, ApiConnectionActionConfiguration> EnvelopesInstances(Expression<Func<V1EnvelopesInstancesPostInput>> request)
+        public IBodyWorkflowAction<InstancesResponse, ApiConnectionActionConfiguration> EnvelopesInstances(Expression<Func<EnvelopesInstancesRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<InstancesResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,41 +148,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string DocumentSummary { get; set; }
     }
 
-    public class V1AiComparePostInput
+    public class AiCompareRequestInput
     {
         [JsonProperty("sourceDocument", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1AiComparePostInputSourceDocumentType SourceDocument { get; set; }
+        public RequestInputSourceDocumentType SourceDocument { get; set; }
 
         [JsonProperty("comparisonDocument", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1AiComparePostInputComparisonDocumentType ComparisonDocument { get; set; }
+        public RequestInputComparisonDocumentType ComparisonDocument { get; set; }
 
         [JsonProperty("configuration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1AiComparePostInputConfigurationType Configuration { get; set; }
+        public AiCompareRequestInputConfigurationType Configuration { get; set; }
     }
 
-    public class V1AiComparePostInputSourceDocumentType
+    public class RequestInputSourceDocumentType
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstFile { get; set; }
     }
 
-    public class V1AiComparePostInputComparisonDocumentType
+    public class RequestInputComparisonDocumentType
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SecondFile { get; set; }
     }
 
-    public class V1AiComparePostInputConfigurationType
+    public class AiCompareRequestInputConfigurationType
     {
         [JsonProperty("profession", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1AiComparePostInputConfigurationTypeProfessionType Profession { get; set; }
+        public RequestInputConfigurationTypeProfessionType Profession { get; set; }
 
         [JsonProperty("keys")]
         public JToken ConfigurationKeys { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V1AiComparePostInputConfigurationTypeProfessionType
+    public enum RequestInputConfigurationTypeProfessionType
     {
         Doctor,
         Editor,
@@ -205,22 +205,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public double Length { get; set; }
     }
 
-    public class V1AiSummaryPostInput
+    public class AiSummaryRequestInput
     {
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1AiSummaryPostInputDocumentType Document { get; set; }
+        public AiSummaryRequestInputDocumentType Document { get; set; }
 
         [JsonProperty("configuration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1AiSummaryPostInputConfigurationType Configuration { get; set; }
+        public AiSummaryRequestInputConfigurationType Configuration { get; set; }
     }
 
-    public class V1AiSummaryPostInputDocumentType
+    public class AiSummaryRequestInputDocumentType
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string File { get; set; }
     }
 
-    public class V1AiSummaryPostInputConfigurationType
+    public class AiSummaryRequestInputConfigurationType
     {
         [JsonProperty("targetWords", DefaultValueHandling = DefaultValueHandling.Include)]
         public int TargetWordCount { get; set; }
@@ -271,115 +271,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public JToken[] Subsections { get; set; }
     }
 
-    public class V1AiTemplateBuilderPostInput
+    public class AiTemplateBuilderRequestInput
     {
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DescribeTheDocument1000Chars { get; set; }
 
         [JsonProperty("configuration")]
-        public V1AiTemplateBuilderPostInputConfigurationType Configuration { get; set; }
+        public AiTemplateBuilderRequestInputConfigurationType Configuration { get; set; }
     }
 
-    public class V1AiTemplateBuilderPostInputConfigurationType
+    public class AiTemplateBuilderRequestInputConfigurationType
     {
         [JsonProperty("keys")]
         public JToken ConfigurationKeys { get; set; }
     }
 
-    public class V1ConversionConvertPostInput
+    public class ConversionConvertRequestInput
     {
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1ConversionConvertPostInputDocumentType Document { get; set; }
+        public AiSummaryRequestInputDocumentType Document { get; set; }
 
         [JsonProperty("configuration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1ConversionConvertPostInputConfigurationType Configuration { get; set; }
+        public ConversionConvertRequestInputConfigurationType Configuration { get; set; }
     }
 
-    public class V1ConversionConvertPostInputDocumentType
-    {
-        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
-    }
-
-    public class V1ConversionConvertPostInputConfigurationType
+    public class ConversionConvertRequestInputConfigurationType
     {
         [JsonProperty("documentResponseFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1ConversionConvertPostInputConfigurationTypeDocumentFormatType DocumentFormat { get; set; }
+        public ConversionConvertRequestInputConfigurationTypeDocumentFormatType DocumentFormat { get; set; }
 
         [JsonProperty("keys")]
         public JToken ConfigurationKeys { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V1ConversionConvertPostInputConfigurationTypeDocumentFormatType
+    public enum ConversionConvertRequestInputConfigurationTypeDocumentFormatType
     {
         PDF,
         HTML
     }
 
-    public class V1DocumentJsonTemplatePostInput
+    public class DocumentJsonTemplateRequestInput
     {
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1DocumentJsonTemplatePostInputTemplateType Template { get; set; }
+        public RequestInputTemplateType Template { get; set; }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken JSONObject { get; set; }
 
         [JsonProperty("configuration")]
-        public V1DocumentJsonTemplatePostInputConfigurationType Configuration { get; set; }
+        public DocumentJsonTemplateRequestInputConfigurationType Configuration { get; set; }
     }
 
-    public class V1DocumentJsonTemplatePostInputTemplateType
+    public class RequestInputTemplateType
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateFile { get; set; }
     }
 
-    public class V1DocumentJsonTemplatePostInputConfigurationType
+    public class DocumentJsonTemplateRequestInputConfigurationType
     {
         [JsonProperty("documentResponseFormat")]
-        public V1DocumentJsonTemplatePostInputConfigurationTypeDocumentFormatType? DocumentFormat { get; set; }
+        public DocumentJsonTemplateRequestInputConfigurationTypeDocumentFormatType? DocumentFormat { get; set; }
 
         [JsonProperty("keys")]
         public JToken ConfigurationKeys { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V1DocumentJsonTemplatePostInputConfigurationTypeDocumentFormatType
+    public enum DocumentJsonTemplateRequestInputConfigurationTypeDocumentFormatType
     {
         Original,
         PDF,
         HTML
     }
 
-    public class V1DocumentTemplatePostInput
+    public class DocumentTemplateRequestInput
     {
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1DocumentTemplatePostInputTemplateType Template { get; set; }
+        public RequestInputTemplateType Template { get; set; }
 
         [JsonProperty("images")]
-        public V1DocumentTemplatePostInputImageTypeItem[] Image { get; set; }
+        public RequestInputImageTypeItem[] Image { get; set; }
 
         [JsonProperty("text")]
         public JToken Text { get; set; }
 
         [JsonProperty("substituteDocuments")]
-        public V1DocumentTemplatePostInputDocumentTypeItem[] Document { get; set; }
+        public RequestInputDocumentTypeItem[] Document { get; set; }
 
         [JsonProperty("tables")]
-        public V1DocumentTemplatePostInputTableTypeItem[] Table { get; set; }
+        public RequestInputTableTypeItem[] Table { get; set; }
 
         [JsonProperty("configuration")]
-        public V1DocumentTemplatePostInputConfigurationType Configuration { get; set; }
+        public DocumentTemplateRequestInputConfigurationType Configuration { get; set; }
     }
 
-    public class V1DocumentTemplatePostInputTemplateType
-    {
-        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplateFile { get; set; }
-    }
-
-    public class V1DocumentTemplatePostInputImageTypeItem
+    public class RequestInputImageTypeItem
     {
         [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
@@ -388,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string FileContent { get; set; }
     }
 
-    public class V1DocumentTemplatePostInputDocumentTypeItem
+    public class RequestInputDocumentTypeItem
     {
         [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
@@ -397,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string FileContent { get; set; }
     }
 
-    public class V1DocumentTemplatePostInputTableTypeItem
+    public class RequestInputTableTypeItem
     {
         [JsonProperty("token", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Token { get; set; }
@@ -406,21 +394,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public JToken Rows { get; set; }
     }
 
-    public class V1DocumentTemplatePostInputConfigurationType
+    public class DocumentTemplateRequestInputConfigurationType
     {
         [JsonProperty("documentresponseformat")]
-        public V1DocumentTemplatePostInputConfigurationTypeDocumentFormatType? DocumentFormat { get; set; }
+        public DocumentJsonTemplateRequestInputConfigurationTypeDocumentFormatType? DocumentFormat { get; set; }
 
         [JsonProperty("keys")]
         public JToken ConfigurationKeys { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V1DocumentTemplatePostInputConfigurationTypeDocumentFormatType
-    {
-        Original,
-        PDF,
-        HTML
     }
 
     public class InstancesResponse
@@ -429,13 +409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string DocumentUrl { get; set; }
     }
 
-    public class V1EnvelopesInstancesPostInput
+    public class EnvelopesInstancesRequestInput
     {
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public V1EnvelopesInstancesPostInputDocumentType Document { get; set; }
+        public EnvelopesInstancesRequestInputDocumentType Document { get; set; }
 
         [JsonProperty("configuration")]
-        public V1EnvelopesInstancesPostInputConfigurationType Configuration { get; set; }
+        public AiTemplateBuilderRequestInputConfigurationType Configuration { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentTitle { get; set; }
@@ -498,16 +478,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string IncompleteDocumentLabel { get; set; }
     }
 
-    public class V1EnvelopesInstancesPostInputDocumentType
+    public class EnvelopesInstancesRequestInputDocumentType
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PDFDocument { get; set; }
-    }
-
-    public class V1EnvelopesInstancesPostInputConfigurationType
-    {
-        [JsonProperty("keys")]
-        public JToken ConfigurationKeys { get; set; }
     }
 }
 

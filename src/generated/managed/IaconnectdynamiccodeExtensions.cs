@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string PropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateJSONFromInputVariablesInputInputVariablesTypeItemDataTypeType? DataType { get; set; } = CreateJSONFromInputVariablesInputInputVariablesTypeItemDataTypeType.String;
+        public CreateJSONFromInputVariablesInputInputVariablesTypeItemDataTypeType? DataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.CreateJSONFromInputVariablesInputInputVariablesTypeItemDataTypeType.String;
         public string Value { get; set; }
     }
 
@@ -1304,7 +1304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string PropertyName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType? DataType { get; set; } = InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType.String;
+        public InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType? DataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.InsertRowInJSONTableFromInputVariablesInputRowToInsertInputVariablesTypeItemDataTypeType.String;
         public string Value { get; set; }
     }
 
@@ -1635,7 +1635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public bool? ReturnBlankCells { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public LookupColumnsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = LookupColumnsFromIAConnectLookupTableInputReturnFormatType.JSON;
+        public LookupColumnsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.LookupColumnsFromIAConnectLookupTableInputReturnFormatType.JSON;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -1700,7 +1700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string FallbackValue { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetColumnFromIAConnectListInputReturnFormatType? ReturnFormat { get; set; } = GetColumnFromIAConnectListInputReturnFormatType.JSON;
+        public GetColumnFromIAConnectListInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetColumnFromIAConnectListInputReturnFormatType.JSON;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1726,7 +1726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string ListName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIAConnectListContentsInputReturnFormatType? ReturnFormat { get; set; } = GetIAConnectListContentsInputReturnFormatType.JSON;
+        public GetIAConnectListContentsInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetIAConnectListContentsInputReturnFormatType.JSON;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1757,7 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public bool? ReturnBlankCells { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public LookupDataCellsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = LookupDataCellsFromIAConnectLookupTableInputReturnFormatType.JSON;
+        public LookupDataCellsFromIAConnectLookupTableInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.LookupDataCellsFromIAConnectLookupTableInputReturnFormatType.JSON;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1782,7 +1782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string LookupTableName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIAConnectLookupTableContentsInputReturnFormatType? ReturnFormat { get; set; } = GetIAConnectLookupTableContentsInputReturnFormatType.JSON;
+        public GetIAConnectLookupTableContentsInputReturnFormatType? ReturnFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode.GetIAConnectLookupTableContentsInputReturnFormatType.JSON;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

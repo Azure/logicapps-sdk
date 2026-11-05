@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
     public class ApyhubgenerateicalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> File(Expression<Func<string>> output = null, Expression<Func<FilePostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> File(Expression<Func<string>> output = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
-        public IBodyWorkflowAction<URLPostResponse, ApiConnectionActionConfiguration> URL(Expression<Func<string>> output = null, Expression<Func<URLPostInput>> body = null)
+        public IBodyWorkflowAction<URLResponse, ApiConnectionActionConfiguration> URL(Expression<Func<string>> output = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<URLPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<URLResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/url";
                 var apiCallHttpMethod = "post";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<URLPostResponse>(callPayload);
+                return new ApiConnectionAction<URLResponse>(callPayload);
             });
         }
     }
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
     {
     }
 
-    public class FilePostInput
+    public class BodyInput
     {
         [JsonProperty("summary")]
         public string Summary { get; set; }
@@ -86,20 +86,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         public bool? Recurring { get; set; }
 
         [JsonProperty("recurrence")]
-        public FilePostInputRecurrenceType Recurrence { get; set; }
+        public BodyInputRecurrenceType Recurrence { get; set; }
     }
 
-    public class FilePostInputRecurrenceType
+    public class BodyInputRecurrenceType
     {
         [JsonProperty("frequency")]
-        public FilePostInputRecurrenceTypeFrequencyType? Frequency { get; set; }
+        public BodyInputRecurrenceTypeFrequencyType? Frequency { get; set; }
 
         [JsonProperty("count")]
         public int? Count { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FilePostInputRecurrenceTypeFrequencyType
+    public enum BodyInputRecurrenceTypeFrequencyType
     {
         DAILY,
         WEEKLY,
@@ -107,64 +107,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         YEARLY
     }
 
-    public class URLPostResponse
+    public class URLResponse
     {
         [JsonProperty("data")]
         public string Data { get; set; }
-    }
-
-    public class URLPostInput
-    {
-        [JsonProperty("summary")]
-        public string Summary { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("organizer_email")]
-        public string OrganizerEmail { get; set; }
-
-        [JsonProperty("attendees_emails")]
-        public string[] AttendeesEmails { get; set; }
-
-        [JsonProperty("location")]
-        public string Location { get; set; }
-
-        [JsonProperty("time_zone")]
-        public string TimeZone { get; set; }
-
-        [JsonProperty("start_time")]
-        public string StartTime { get; set; }
-
-        [JsonProperty("end_time")]
-        public string EndTime { get; set; }
-
-        [JsonProperty("meeting_date")]
-        public string MeetingDate { get; set; }
-
-        [JsonProperty("recurring")]
-        public bool? Recurring { get; set; }
-
-        [JsonProperty("recurrence")]
-        public URLPostInputRecurrenceType Recurrence { get; set; }
-    }
-
-    public class URLPostInputRecurrenceType
-    {
-        [JsonProperty("frequency")]
-        public URLPostInputRecurrenceTypeFrequencyType? Frequency { get; set; }
-
-        [JsonProperty("count")]
-        public int? Count { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum URLPostInputRecurrenceTypeFrequencyType
-    {
-        DAILY,
-        WEEKLY,
-        MONTHLY,
-        YEARLY
     }
 }
 

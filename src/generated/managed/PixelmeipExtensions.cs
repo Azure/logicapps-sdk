@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        public IBodyWorkflowAction<RedirectPostResponse, ApiConnectionActionConfiguration> Redirect(Expression<Func<RedirectPostInput>> body = null)
+        public IBodyWorkflowAction<RedirectResponse, ApiConnectionActionConfiguration> Redirect(Expression<Func<RedirectBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<RedirectPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RedirectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/redirects";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<RedirectPostResponse>(callPayload);
+                return new ApiConnectionAction<RedirectResponse>(callPayload);
             });
         }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelmeip")]
-        public IBodyWorkflowAction<RedirectPatchResponse, ApiConnectionActionConfiguration> RedirectPatch(Expression<Func<string>> id, Expression<Func<RedirectPatchInput>> body = null)
+        public IBodyWorkflowAction<RedirectPatchResponse, ApiConnectionActionConfiguration> RedirectPatch(Expression<Func<string>> id, Expression<Func<RedirectPatchBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         public string[] UtmsSource { get; set; }
     }
 
-    public class RedirectPostResponse
+    public class RedirectResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         public string Url { get; set; }
 
         [JsonProperty("pixels")]
-        public RedirectPostResponsePixelsTypeItem[] Pixels { get; set; }
+        public RedirectResponsePixelsTypeItem[] Pixels { get; set; }
 
         [JsonProperty("domain")]
         public string Domain { get; set; }
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         public string SubCampaignId { get; set; }
     }
 
-    public class RedirectPostResponsePixelsTypeItem
+    public class RedirectResponsePixelsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         public string CreatedAt { get; set; }
     }
 
-    public class RedirectPostInput
+    public class RedirectBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -226,10 +226,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         public string SubCampaignId { get; set; }
 
         [JsonProperty("dynamic_urls")]
-        public RedirectPostInputDynamicUrlsTypeItem[] DynamicUrls { get; set; }
+        public BodyInputDynamicUrlsTypeItem[] DynamicUrls { get; set; }
     }
 
-    public class RedirectPostInputDynamicUrlsTypeItem
+    public class BodyInputDynamicUrlsTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelmeip
         public string CreatedAt { get; set; }
     }
 
-    public class RedirectPatchInput
+    public class RedirectPatchBodyInput
     {
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Key { get; set; }

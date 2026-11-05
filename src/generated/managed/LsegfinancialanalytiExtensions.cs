@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     public class LsegfinancialanalytiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<CreateJobInput>> body = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<CreateJobBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkPyAnalyticsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkPyAnalyticsBodyInput>> body = null)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkIndicDataInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkIndicDataBodyInput>> body = null)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse, ApiConnectionActionConfiguration> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<UploadSecuritiesListInput>> body = null)
+        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse, ApiConnectionActionConfiguration> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<UploadSecuritiesListBodyInput>> body = null)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<CreateUdisResponse, ApiConnectionActionConfiguration> CreateUdis(Expression<Func<string>> jobName, Expression<Func<CreateUdisInput>> body)
+        public IBodyWorkflowAction<CreateUdisResponse, ApiConnectionActionConfiguration> CreateUdis(Expression<Func<string>> jobName, Expression<Func<CreateUdisBodyInput>> body)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<RetrieveBulkResultsResponse, ApiConnectionActionConfiguration> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<outputFormatInput>> outputFormat, Expression<Func<RetrieveBulkResultsInput>> body = null)
+        public IBodyWorkflowAction<RetrieveBulkResultsResponse, ApiConnectionActionConfiguration> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<OutputFormatInput>> outputFormat, Expression<Func<RetrieveBulkResultsBodyInput>> body = null)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_outputFormat = WorkflowExpression.Compile(outputFormat, nameof(outputFormat), required: true);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<IndicDataResponse, ApiConnectionActionConfiguration> IndicData(Expression<Func<IndicDataInput>> body = null)
+        public IBodyWorkflowAction<IndicDataResponse, ApiConnectionActionConfiguration> IndicData(Expression<Func<IndicDataBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IndicDataResponse, ApiConnectionActionConfiguration>(() =>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<PyAnalyticResponse, ApiConnectionActionConfiguration> PyAnalytics(Expression<Func<PyAnalyticsInput>> body = null)
+        public IBodyWorkflowAction<PyAnalyticResponse, ApiConnectionActionConfiguration> PyAnalytics(Expression<Func<PyAnalyticsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PyAnalyticResponse, ApiConnectionActionConfiguration>(() =>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BulkScenarioAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkScenarioAnalyticsV3Input>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BulkScenarioAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<BulkScenarioAnalyticsBodyInput>> body = null)
         {
             var __workflow_jobName = WorkflowExpression.Compile(jobName, nameof(jobName), required: true);
             var __workflow_batchSize = WorkflowExpression.Compile(batchSize, nameof(batchSize), required: true);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public int Priority { get; set; }
     }
 
-    public class CreateJobInput
+    public class CreateJobBodyInput
     {
         [JsonProperty("priority")]
         public int? Priority { get; set; }
@@ -226,16 +226,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool OnHold { get; set; }
     }
 
-    public class BulkPyAnalyticsInput
+    public class BulkPyAnalyticsBodyInput
     {
         [JsonProperty("requestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestId { get; set; }
 
         [JsonProperty("curveType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BulkPyAnalyticsInputCurveTypeType CurveType { get; set; } = BulkPyAnalyticsInputCurveTypeType.TreasuryModelCurve;
+        public BodyInputCurveTypeType CurveType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BodyInputCurveTypeType.TreasuryModelCurve;
 
         [JsonProperty("currency")]
-        public BulkPyAnalyticsInputCurrencyType? Currency { get; set; }
+        public BodyInputCurrencyType? Currency { get; set; }
 
         [JsonProperty("pricingDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PricingDate { get; set; } = "Previous Close";
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public string SettlementType { get; set; } = "Market";
 
         [JsonProperty("prepayType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BulkPyAnalyticsInputPrepayTypeType PrepayType { get; set; } = BulkPyAnalyticsInputPrepayTypeType.Default;
+        public BodyInputPrepayTypeType PrepayType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BodyInputPrepayTypeType.Default;
 
         [JsonProperty("prepayRate")]
         public int? PrepayRate { get; set; }
@@ -262,10 +262,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool? RetrieveOas { get; set; }
 
         [JsonProperty("optionModel")]
-        public BulkPyAnalyticsInputOptionModelType? OptionModel { get; set; }
+        public BodyInputOptionModelType? OptionModel { get; set; }
 
         [JsonProperty("volatilityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BulkPyAnalyticsInputVolatilityTypeType? VolatilityType { get; set; } = BulkPyAnalyticsInputVolatilityTypeType.Default;
+        public BulkPyAnalyticsBodyInputVolatilityTypeType? VolatilityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BulkPyAnalyticsBodyInputVolatilityTypeType.Default;
 
         [JsonProperty("prepayDuration", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? PrepayDuration { get; set; } = false;
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkPyAnalyticsInputCurveTypeType
+    public enum BodyInputCurveTypeType
     {
         [EnumMember(Value = "On The Run Curve")]
         OnTheRunCurve,
@@ -288,14 +288,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkPyAnalyticsInputCurrencyType
+    public enum BodyInputCurrencyType
     {
         USD,
         EUR
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkPyAnalyticsInputPrepayTypeType
+    public enum BodyInputPrepayTypeType
     {
         Default,
         Model,
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkPyAnalyticsInputOptionModelType
+    public enum BodyInputOptionModelType
     {
         OAS,
         OASEDUR,
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkPyAnalyticsInputVolatilityTypeType
+    public enum BulkPyAnalyticsBodyInputVolatilityTypeType
     {
         MarketWSkew,
         LMMSOFR,
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         Default
     }
 
-    public class BulkIndicDataInput
+    public class BulkIndicDataBodyInput
     {
         [JsonProperty("requestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestId { get; set; }
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public string RequestId { get; set; }
     }
 
-    public class UploadSecuritiesListInput
+    public class UploadSecuritiesListBodyInput
     {
         [JsonProperty("securitiesList", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SecuritiesList { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public string UdiIdentifiers { get; set; }
     }
 
-    public class CreateUdisInput
+    public class CreateUdisBodyInput
     {
         [JsonProperty("userInstruments", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserInstruments { get; set; }
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum outputFormatInput
+    public enum OutputFormatInput
     {
         [EnumMember(Value = "csv")]
         Csv,
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         Json
     }
 
-    public class RetrieveBulkResultsInput
+    public class RetrieveBulkResultsBodyInput
     {
         [JsonProperty("payload", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Payload { get; set; }
@@ -798,17 +798,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public double Price { get; set; }
     }
 
-    public class IndicDataInput
+    public class IndicDataBodyInput
     {
         [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identifier { get; set; }
 
         [JsonProperty("idType")]
-        public IndicDataInputIdTypeType? IdType { get; set; }
+        public BodyInputIdTypeType? IdType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IndicDataInputIdTypeType
+    public enum BodyInputIdTypeType
     {
         [EnumMember(Value = "SecurityIDEntry")]
         SecurityIdEntry,
@@ -1204,13 +1204,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public double PartialDurationPriceDown { get; set; }
     }
 
-    public class PyAnalyticsInput
+    public class PyAnalyticsBodyInput
     {
         [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identifier { get; set; }
 
         [JsonProperty("idType")]
-        public PyAnalyticsInputIdTypeType? IdType { get; set; }
+        public BodyInputIdTypeType? IdType { get; set; }
 
         [JsonProperty("level", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Level { get; set; }
@@ -1219,13 +1219,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool? RetrieveOas { get; set; }
 
         [JsonProperty("optionModel")]
-        public PyAnalyticsInputOptionModelType? OptionModel { get; set; }
+        public BodyInputOptionModelType? OptionModel { get; set; }
 
         [JsonProperty("curveType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PyAnalyticsInputCurveTypeType CurveType { get; set; } = PyAnalyticsInputCurveTypeType.TreasuryModelCurve;
+        public BodyInputCurveTypeType CurveType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BodyInputCurveTypeType.TreasuryModelCurve;
 
         [JsonProperty("currency")]
-        public PyAnalyticsInputCurrencyType? Currency { get; set; }
+        public BodyInputCurrencyType? Currency { get; set; }
 
         [JsonProperty("pricingDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PricingDate { get; set; } = "Previous Close";
@@ -1234,7 +1234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public string SettlementType { get; set; } = "Market";
 
         [JsonProperty("prepayType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PyAnalyticsInputPrepayTypeType PrepayType { get; set; } = PyAnalyticsInputPrepayTypeType.Default;
+        public BodyInputPrepayTypeType PrepayType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BodyInputPrepayTypeType.Default;
 
         [JsonProperty("prepayRate")]
         public int? PrepayRate { get; set; }
@@ -1249,7 +1249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool RetrieveModelProjections { get; set; } = false;
 
         [JsonProperty("volatilityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PyAnalyticsInputVolatilityTypeType VolatilityType { get; set; } = PyAnalyticsInputVolatilityTypeType.Default;
+        public BulkPyAnalyticsBodyInputVolatilityTypeType VolatilityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BulkPyAnalyticsBodyInputVolatilityTypeType.Default;
 
         [JsonProperty("prepayDuration", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? PrepayDuration { get; set; } = false;
@@ -1258,82 +1258,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool? VolatilityDuration { get; set; } = false;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PyAnalyticsInputIdTypeType
-    {
-        [EnumMember(Value = "SecurityIDEntry")]
-        SecurityIdEntry,
-        [EnumMember(Value = "SecurityID")]
-        SecurityId,
-        CUSIP,
-        ISIN,
-        REGSISIN,
-        SEDOL,
-        Identifier,
-        ChinaInterbankCode,
-        ShanghaiExchangeCode,
-        ShenzhenExchangeCode,
-        [EnumMember(Value = "MXTickerID")]
-        MXTickerId
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PyAnalyticsInputOptionModelType
-    {
-        OAS,
-        OASEDUR,
-        YCMARGIN
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PyAnalyticsInputCurveTypeType
-    {
-        [EnumMember(Value = "On The Run Curve")]
-        OnTheRunCurve,
-        [EnumMember(Value = "Treasury Model Curve")]
-        TreasuryModelCurve,
-        [EnumMember(Value = "Swap Curve")]
-        SwapCurve,
-        [EnumMember(Value = "Swap RFR Curve")]
-        SwapRFRCurve
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PyAnalyticsInputCurrencyType
-    {
-        USD,
-        EUR
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PyAnalyticsInputPrepayTypeType
-    {
-        Default,
-        Model,
-        CPR,
-        PSA,
-        PreExpModel
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PyAnalyticsInputVolatilityTypeType
-    {
-        MarketWSkew,
-        LMMSOFR,
-        LMMSOFRFLAT,
-        Default
-    }
-
-    public class BulkScenarioAnalyticsV3Input
+    public class BulkScenarioAnalyticsBodyInput
     {
         [JsonProperty("requestId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RequestId { get; set; }
 
         [JsonProperty("curveType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BulkScenarioAnalyticsV3InputCurveTypeType CurveType { get; set; } = BulkScenarioAnalyticsV3InputCurveTypeType.TreasuryModelCurve;
+        public BodyInputCurveTypeType CurveType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BodyInputCurveTypeType.TreasuryModelCurve;
 
         [JsonProperty("currency")]
-        public BulkScenarioAnalyticsV3InputCurrencyType? Currency { get; set; }
+        public BodyInputCurrencyType? Currency { get; set; }
 
         [JsonProperty("pricingDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PricingDate { get; set; } = "Previous Close";
@@ -1342,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public string SettlementType { get; set; } = "Market";
 
         [JsonProperty("prepayType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BulkScenarioAnalyticsV3InputPrepayTypeType PrepayType { get; set; } = BulkScenarioAnalyticsV3InputPrepayTypeType.Default;
+        public BodyInputPrepayTypeType PrepayType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BodyInputPrepayTypeType.Default;
 
         [JsonProperty("prepayRate")]
         public int? PrepayRate { get; set; }
@@ -1357,7 +1291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool RetrieveModelProjections { get; set; } = false;
 
         [JsonProperty("volatilityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BulkScenarioAnalyticsV3InputVolatilityTypeType VolatilityType { get; set; } = BulkScenarioAnalyticsV3InputVolatilityTypeType.Default;
+        public BulkScenarioAnalyticsBodyInputVolatilityTypeType VolatilityType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BulkScenarioAnalyticsBodyInputVolatilityTypeType.Default;
 
         [JsonProperty("horizonMonths")]
         public int? HorizonMonths { get; set; }
@@ -1384,42 +1318,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public bool? CalcPrepaySensitivity { get; set; } = false;
 
         [JsonProperty("horizonPYMethod", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BulkScenarioAnalyticsV3InputHorizonPYMethodType HorizonPYMethod { get; set; } = BulkScenarioAnalyticsV3InputHorizonPYMethodType.Default;
+        public BodyInputHorizonPYMethodType HorizonPYMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.BodyInputHorizonPYMethodType.Default;
         public ScenarioV3[] Scenarios { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkScenarioAnalyticsV3InputCurveTypeType
-    {
-        [EnumMember(Value = "On The Run Curve")]
-        OnTheRunCurve,
-        [EnumMember(Value = "Treasury Model Curve")]
-        TreasuryModelCurve,
-        [EnumMember(Value = "Swap Curve")]
-        SwapCurve,
-        [EnumMember(Value = "Swap RFR Curve")]
-        SwapRFRCurve
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkScenarioAnalyticsV3InputCurrencyType
-    {
-        USD,
-        EUR
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkScenarioAnalyticsV3InputPrepayTypeType
-    {
-        Default,
-        Model,
-        CPR,
-        PSA,
-        PreExpModel
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkScenarioAnalyticsV3InputVolatilityTypeType
+    public enum BulkScenarioAnalyticsBodyInputVolatilityTypeType
     {
         MarketWSkew,
         LMMSOFR,
@@ -1429,7 +1333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BulkScenarioAnalyticsV3InputHorizonPYMethodType
+    public enum BodyInputHorizonPYMethodType
     {
         [EnumMember(Value = "OAS Change")]
         OASChange,
@@ -1450,19 +1354,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         public string ScenarioId { get; set; }
 
         [JsonProperty("scenarioType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ScenarioV3ScenarioTypeType? ScenarioType { get; set; } = ScenarioV3ScenarioTypeType.ParShiftUserScenario;
+        public ScenarioV3ScenarioTypeType? ScenarioType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.ScenarioV3ScenarioTypeType.ParShiftUserScenario;
 
         [JsonProperty("scenarioTiming", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ScenarioV3ScenarioTimingType? ScenarioTiming { get; set; } = ScenarioV3ScenarioTimingType.Gradual;
+        public ScenarioV3ScenarioTimingType? ScenarioTiming { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.ScenarioV3ScenarioTimingType.Gradual;
 
         [JsonProperty("reinvestmentRate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReinvestmentRate { get; set; } = "Default";
 
         [JsonProperty("swapSpreadConstant", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ScenarioV3SwapSpreadConstantType? SwapSpreadConstant { get; set; } = ScenarioV3SwapSpreadConstantType.No;
+        public ScenarioV3SwapSpreadConstantType? SwapSpreadConstant { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.ScenarioV3SwapSpreadConstantType.No;
 
         [JsonProperty("interpolationType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ScenarioV3InterpolationTypeType? InterpolationType { get; set; } = ScenarioV3InterpolationTypeType.Years;
+        public ScenarioV3InterpolationTypeType? InterpolationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti.ScenarioV3InterpolationTypeType.Years;
 
         [JsonProperty("curveShifts")]
         public CurveShiftV3[] CurveShifts { get; set; }

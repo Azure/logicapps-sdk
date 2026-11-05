@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "profisee")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateRecordsByEntityName(Expression<Func<string>> entityName, Expression<Func<bodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateRecordsByEntityName(Expression<Func<string>> entityName, Expression<Func<CreateRecordsByEntityNameBodyInputItem[]>> body)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "profisee")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecordsByEntityName(Expression<Func<string>> entityName, Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateRecordsByEntityName(Expression<Func<string>> entityName, Expression<Func<UpdateRecordsByEntityNameBodyInputItem[]>> body = null)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "profisee")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateEntity(Expression<Func<bodyInputItem2[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateEntity(Expression<Func<CreateEntityBodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "profisee")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAttribute(Expression<Func<bodyInputItem22[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAttribute(Expression<Func<CreateAttributeBodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "profisee")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTheme(Expression<Func<string>> name, Expression<Func<UpdateThemeInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTheme(Expression<Func<string>> name, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -188,7 +188,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
     {
     }
 
-    public class bodyInputItem
+    public class CreateRecordsByEntityNameBodyInputItem
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string Attribute1 { get; set; }
+        public string Attribute2 { get; set; }
+    }
+
+    public class UpdateRecordsByEntityNameBodyInputItem
     {
         public string Code { get; set; }
         public string Name { get; set; }
@@ -196,10 +205,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         public string Attribute2 { get; set; }
     }
 
-    public class bodyInputItem2
+    public class CreateEntityBodyInputItem
     {
-        [JsonProperty("identifier")]
-        public bodyInputItemIdentifierType Identifier { get; set; }
+        [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateEntityBodyInputItemIdentifierType Identifier { get; set; }
 
         [JsonProperty("longDescription")]
         public string LongDescription { get; set; }
@@ -208,77 +217,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         public string IconName { get; set; }
 
         [JsonProperty("isCodeGenerationEnabled")]
-        public bool IsCodeGenerationEnabled { get; set; }
+        public bool? IsCodeGenerationEnabled { get; set; }
 
-        [JsonProperty("codeGenerationSeed")]
-        public int CodeGenerationSeed { get; set; }
+        [JsonProperty("codeGenerationSeed", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? CodeGenerationSeed { get; set; } = 1;
 
         [JsonProperty("fileCategories")]
-        public bodyInputItemFileCategoriesTypeItem[] FileCategories { get; set; }
+        public BodyInputItemFileCategoriesTypeItem[] FileCategories { get; set; }
     }
 
-    public class bodyInputItemIdentifierType
+    public class CreateEntityBodyInputItemIdentifierType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
-    public class bodyInputItemFileCategoriesTypeItem
+    public class BodyInputItemFileCategoriesTypeItem
     {
         [JsonProperty("identifier")]
-        public bodyInputItemFileCategoriesTypeItemIdentifierType Identifier { get; set; }
+        public BodyInputItemFileCategoriesTypeItemIdentifierType Identifier { get; set; }
 
         [JsonProperty("extensions")]
         public string Extensions { get; set; }
     }
 
-    public class bodyInputItemFileCategoriesTypeItemIdentifierType
+    public class BodyInputItemFileCategoriesTypeItemIdentifierType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
-    public class bodyInputItem22
+    public class CreateAttributeBodyInputItem
     {
-        public bodyInputItemIdentifierType2 Identifier { get; set; }
-        public bodyInputItemAttributeTypeType AttributeType { get; set; }
-        public bodyInputItemDataTypeType DataType { get; set; }
-        public int DataTypeInformation { get; set; }
-        public bool IsUnique { get; set; }
-        public bool IsRestricted { get; set; }
-        public bool IsIndexed { get; set; }
-        public int DisplayWidth { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAttributeBodyInputItemIdentifierType Identifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemAttributeTypeType AttributeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Profisee.BodyInputItemAttributeTypeType._1;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemDataTypeType DataType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Profisee.BodyInputItemDataTypeType._1;
+        public int? DataTypeInformation { get; set; }
+        public bool? IsUnique { get; set; }
+        public bool? IsRestricted { get; set; }
+        public bool? IsIndexed { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public int DisplayWidth { get; set; } = 200;
         public string LongDescription { get; set; }
-        public bool HasDefault { get; set; }
+        public bool? HasDefault { get; set; }
         public string DefaultValue { get; set; }
-        public bool IsCascadeDeleteEnabled { get; set; }
-        public bodyInputItemDomainEntityIdType DomainEntityId { get; set; }
+        public bool? IsCascadeDeleteEnabled { get; set; }
+        public BodyInputItemDomainEntityIdType DomainEntityId { get; set; }
     }
 
-    public class bodyInputItemIdentifierType2
+    public class CreateAttributeBodyInputItemIdentifierType
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
-        public bodyInputItemIdentifierTypeEntityIdType EntityId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemIdentifierTypeEntityIdType EntityId { get; set; }
     }
 
-    public class bodyInputItemIdentifierTypeEntityIdType
+    public class BodyInputItemIdentifierTypeEntityIdType
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
-    public enum bodyInputItemAttributeTypeType
+    public enum BodyInputItemAttributeTypeType
     {
         _1 = 1,
         _2 = 2
     }
 
-    public enum bodyInputItemDataTypeType
+    public enum BodyInputItemDataTypeType
     {
         _1 = 1,
         _2 = 2,
@@ -287,12 +307,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Profisee
         _6 = 6
     }
 
-    public class bodyInputItemDomainEntityIdType
+    public class BodyInputItemDomainEntityIdType
     {
         public string Name { get; set; }
     }
 
-    public class UpdateThemeInput
+    public class BodyInput
     {
         [JsonProperty("bannerPrimary")]
         public string BannerPrimary { get; set; }

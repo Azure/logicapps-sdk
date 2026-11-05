@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
-        public IBodyWorkflowAction<UpdateAThreadResponse, ApiConnectionActionConfiguration> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<UpdateAThreadInput>> body, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<UpdateAThreadResponse, ApiConnectionActionConfiguration> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<BodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         public bool Archived { get; set; }
     }
 
-    public class UpdateAThreadInput
+    public class BodyInput
     {
         [JsonProperty("status")]
         public string Status { get; set; }

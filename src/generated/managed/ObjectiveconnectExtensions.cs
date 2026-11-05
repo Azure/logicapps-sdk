@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "objectiveconnect")]
-        public IBodyWorkflowAction<AddParticipantResponseItem[], ApiConnectionActionConfiguration> AddParticipant(Expression<Func<AddParticipantInput>> body)
+        public IBodyWorkflowAction<AddParticipantResponseItem[], ApiConnectionActionConfiguration> AddParticipant(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddParticipantResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         public string Uuid { get; set; }
     }
 
-    public class AddParticipantInput
+    public class BodyInput
     {
         [JsonProperty("emails", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Emails { get; set; }
@@ -199,17 +199,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         public string Message { get; set; }
 
         [JsonProperty("roles")]
-        public AddParticipantInputRolesTypeItem[] Roles { get; set; }
+        public BodyInputRolesTypeItem[] Roles { get; set; }
 
         [JsonProperty("shareUuid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ShareUuid { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddParticipantInputTypeType? Type { get; set; } = AddParticipantInputTypeType.STANDARD;
+        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect.BodyInputTypeType.STANDARD;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddParticipantInputRolesTypeItem
+    public enum BodyInputRolesTypeItem
     {
         READER,
         DOWNLOADER,
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddParticipantInputTypeType
+    public enum BodyInputTypeType
     {
         STANDARD,
         BCC

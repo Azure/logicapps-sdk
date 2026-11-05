@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
 
     public class GroopitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<SubscribeToReportsInput>> subscribe, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<SubscribeToReports2Input>> subscribe, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToReports2(Expression<Func<string>> groupId, Expression<Func<SubscribeToReports2SubscribeInput>> subscribe, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
             });
         }
 
-        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<SubscribeToLinkedMembersInput>> subscribe, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GroopItWebhookDTO, ApiConnectionTriggerConfiguration> SubscribeToLinkedMembers(Expression<Func<string>> groupId, Expression<Func<SubscribeToLinkedMembersSubscribeInput>> subscribe, FlowRecurrence recurrence = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: true);
@@ -346,46 +346,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groopit
         _2 = 2
     }
 
-    public class SubscribeToReportsInput
+    public class SubscribeToReports2SubscribeInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("EventType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SubscribeToReportsInputUpdateType0Created1EditedType UpdateType0Created1Edited { get; set; }
+        public SubscribeInputUpdateType0Created1EditedType UpdateType0Created1Edited { get; set; }
     }
 
-    public enum SubscribeToReportsInputUpdateType0Created1EditedType
+    public enum SubscribeInputUpdateType0Created1EditedType
     {
         _0 = 0,
         _1 = 1
     }
 
-    public class SubscribeToReports2Input
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Callback { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("EventType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SubscribeToReports2InputUpdateType0Created1EditedType UpdateType0Created1Edited { get; set; }
-    }
-
-    public enum SubscribeToReports2InputUpdateType0Created1EditedType
-    {
-        _0 = 0,
-        _1 = 1
-    }
-
-    public class SubscribeToLinkedMembersInput
+    public class SubscribeToLinkedMembersSubscribeInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SubscribeToLinkedMembersInputEventTypeType EventType { get; set; }
+        public SubscribeInputEventTypeType EventType { get; set; }
     }
 
-    public enum SubscribeToLinkedMembersInputEventTypeType
+    public enum SubscribeInputEventTypeType
     {
         _0 = 0,
         _1 = 1,

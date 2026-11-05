@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostInvoiceResponse, ApiConnectionActionConfiguration> PostInvoice(Expression<Func<string>> xeroTenantId, Expression<Func<PostInvoiceInput>> body)
+        public IBodyWorkflowAction<PostInvoiceResponse, ApiConnectionActionConfiguration> PostInvoice(Expression<Func<string>> xeroTenantId, Expression<Func<PostInvoiceBodyInput>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostContactsResponse, ApiConnectionActionConfiguration> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<PostContactsInput>> body = null)
+        public IBodyWorkflowAction<PostContactsResponse, ApiConnectionActionConfiguration> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<PostContactsBodyInput>> body = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public string LineItemId { get; set; }
     }
 
-    public class PostInvoiceInput
+    public class PostInvoiceBodyInput
     {
         public string Date { get; set; }
         public string DueDate { get; set; }
@@ -285,25 +285,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public string Reference { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostInvoiceInputContactType Contact { get; set; }
+        public BodyInputContactType Contact { get; set; }
         public string LineAmountTypes { get; set; }
         public string InvoiceNumber { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostInvoiceInputLineItemsTypeItem[] LineItems { get; set; }
+        public BodyInputLineItemsTypeItem[] LineItems { get; set; }
         public string CurrencyCode { get; set; }
         public double? CurrencyRate { get; set; }
         public string Status { get; set; }
         public string ExpectedPaymentDate { get; set; }
     }
 
-    public class PostInvoiceInputContactType
+    public class BodyInputContactType
     {
         [JsonProperty("ContactID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactId { get; set; }
     }
 
-    public class PostInvoiceInputLineItemsTypeItem
+    public class BodyInputLineItemsTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
@@ -410,13 +410,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         public string EmailAddress { get; set; }
     }
 
-    public class PostContactsInput
+    public class PostContactsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostContactsInputContactsTypeItem[] Contacts { get; set; }
+        public BodyInputContactsTypeItem[] Contacts { get; set; }
     }
 
-    public class PostContactsInputContactsTypeItem
+    public class BodyInputContactsTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

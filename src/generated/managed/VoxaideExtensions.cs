@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
-        public IBodyWorkflowAction<CreateReasonResponse, ApiConnectionActionConfiguration> CreateReason(Expression<Func<CreateReasonInput>> body)
+        public IBodyWorkflowAction<CreateReasonResponse, ApiConnectionActionConfiguration> CreateReason(Expression<Func<CreateReasonBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateReasonResponse, ApiConnectionActionConfiguration>(() =>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateReason(Expression<Func<string>> id, Expression<Func<UpdateReasonInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateReason(Expression<Func<string>> id, Expression<Func<CreateReasonBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voxaide")]
-        public IBodyWorkflowAction<PlaceCallResponse, ApiConnectionActionConfiguration> PlaceCall(Expression<Func<PlaceCallInput>> body)
+        public IBodyWorkflowAction<PlaceCallResponse, ApiConnectionActionConfiguration> PlaceCall(Expression<Func<PlaceCallBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PlaceCallResponse, ApiConnectionActionConfiguration>(() =>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         public string Id { get; set; }
     }
 
-    public class CreateReasonInput
+    public class CreateReasonBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -217,30 +217,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
     {
         [JsonProperty("reason")]
         public Reason Reason { get; set; }
-    }
-
-    public class UpdateReasonInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("dayOfWeek", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? DayOfWeek { get; set; } = 1;
-
-        [JsonProperty("questions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Questions { get; set; }
-
-        [JsonProperty("smsOnNoAnswer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? SmsOnNoAnswer { get; set; } = true;
-
-        [JsonProperty("smsMessage")]
-        public string SmsMessage { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
     }
 
     public class ListCallsResponse
@@ -306,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         public string Status { get; set; }
     }
 
-    public class PlaceCallInput
+    public class PlaceCallBodyInput
     {
         [JsonProperty("reasonId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReasonId { get; set; }

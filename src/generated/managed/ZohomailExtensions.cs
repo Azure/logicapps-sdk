@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SendMailResponse, ApiConnectionActionConfiguration> SendMail(Expression<Func<string>> accountId, Expression<Func<SendMailInput>> body)
+        public IBodyWorkflowAction<SendMailResponse, ApiConnectionActionConfiguration> SendMail(Expression<Func<string>> accountId, Expression<Func<SendMailBodyInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SaveDraftResponse, ApiConnectionActionConfiguration> SaveDraft(Expression<Func<string>> accountId, Expression<Func<SaveDraftInput>> body)
+        public IBodyWorkflowAction<SaveDraftResponse, ApiConnectionActionConfiguration> SaveDraft(Expression<Func<string>> accountId, Expression<Func<SaveDraftBodyInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
-        public IBodyWorkflowAction<SearchMailResponse, ApiConnectionActionConfiguration> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<SearchMailInput>> body)
+        public IBodyWorkflowAction<SearchMailResponse, ApiConnectionActionConfiguration> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<SearchMailBodyInput>> body)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
@@ -159,11 +159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
     public class ZohomailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewMailTriggerResponse, ApiConnectionTriggerConfiguration> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, Expression<Func<NewMailTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMailTriggerResponse, ApiConnectionTriggerConfiguration> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, FlowRecurrence recurrence = null)
         {
             var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
             var __workflow_criterias = WorkflowExpression.Compile(criterias, nameof(criterias), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<NewMailTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
@@ -175,12 +174,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                 callPayload.Queries["metaOnly"] = Convert.ToString(false);
                 callPayload.Queries["matchingCondition"] = Convert.ToString("and");
                 callPayload.Queries["criterias"] = ExpressionConverter.Convert(__workflow_criterias);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NewMailTriggerBodyInput().ToJToken();
                 return new ApiConnectionTrigger<NewMailTriggerResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse, ApiConnectionTriggerConfiguration> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<NEWCONDITIONALMAILInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse, ApiConnectionTriggerConfiguration> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<NEWCONDITIONALMAILBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -251,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string CcAddress { get; set; }
     }
 
-    public class SendMailInput
+    public class SendMailBodyInput
     {
         [JsonProperty("fromAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromAddress { get; set; }
@@ -272,24 +271,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Content { get; set; }
 
         [JsonProperty("askReceipt")]
-        public SendMailInputAskReceiptType? AskReceipt { get; set; }
+        public BodyInputAskReceiptType? AskReceipt { get; set; }
 
         [JsonProperty("mailFormat")]
-        public SendMailInputMailFormatType? MailFormat { get; set; }
+        public BodyInputMailFormatType? MailFormat { get; set; }
 
         [JsonProperty("attachmentDetails")]
-        public SendMailInputAttachmentTypeItem[] Attachment { get; set; }
+        public BodyInputAttachmentTypeItem[] Attachment { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMailInputAskReceiptType
+    public enum BodyInputAskReceiptType
     {
         No,
         Yes
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMailInputMailFormatType
+    public enum BodyInputMailFormatType
     {
         [EnumMember(Value = "html")]
         RichText,
@@ -297,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         PlainText
     }
 
-    public class SendMailInputAttachmentTypeItem
+    public class BodyInputAttachmentTypeItem
     {
         [JsonProperty("attachmentContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
@@ -339,10 +338,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string CcAddress { get; set; }
     }
 
-    public class SaveDraftInput
+    public class SaveDraftBodyInput
     {
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SaveDraftInputModeType Mode { get; set; } = SaveDraftInputModeType.Draft;
+        public BodyInputModeType Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail.BodyInputModeType.Draft;
 
         [JsonProperty("fromAddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromAddress { get; set; }
@@ -363,47 +362,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Content { get; set; }
 
         [JsonProperty("askReceipt")]
-        public SaveDraftInputAskReceiptType? AskReceipt { get; set; }
+        public BodyInputAskReceiptType? AskReceipt { get; set; }
 
         [JsonProperty("mailFormat")]
-        public SaveDraftInputMailFormatType? MailFormat { get; set; }
+        public BodyInputMailFormatType? MailFormat { get; set; }
 
         [JsonProperty("attachmentDetails")]
-        public SaveDraftInputAttachmentTypeItem[] Attachment { get; set; }
+        public BodyInputAttachmentTypeItem[] Attachment { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SaveDraftInputModeType
+    public enum BodyInputModeType
     {
         [EnumMember(Value = "draft")]
         Draft,
         [EnumMember(Value = "template")]
         Template
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SaveDraftInputAskReceiptType
-    {
-        No,
-        Yes
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SaveDraftInputMailFormatType
-    {
-        [EnumMember(Value = "html")]
-        RichText,
-        [EnumMember(Value = "plaintext")]
-        PlainText
-    }
-
-    public class SaveDraftInputAttachmentTypeItem
-    {
-        [JsonProperty("attachmentContent")]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
-
-        [JsonProperty("attachmentName")]
-        public string AttachmentName { get; set; }
     }
 
     public class GetSenderDetailsResponse
@@ -490,7 +464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Status { get; set; }
     }
 
-    public class SearchMailInput
+    public class SearchMailBodyInput
     {
         [JsonProperty("entire")]
         public string Entire { get; set; }
@@ -766,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public int Zuid { get; set; }
     }
 
-    public class NewMailTriggerInput
+    public class NewMailTriggerBodyInput
     {
         [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
@@ -892,29 +866,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public int Zuid { get; set; }
     }
 
-    public class NEWCONDITIONALMAILInput
+    public class NEWCONDITIONALMAILBodyInput
     {
         [JsonProperty("criterias", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NEWCONDITIONALMAILInputCriteriasTypeItem[] Criterias { get; set; }
+        public BodyInputCriteriasTypeItem[] Criterias { get; set; }
 
         [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class NEWCONDITIONALMAILInputCriteriasTypeItem
+    public class BodyInputCriteriasTypeItem
     {
         [JsonProperty("lhs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NEWCONDITIONALMAILInputCriteriasTypeItemLhsType Lhs { get; set; }
+        public BodyInputCriteriasTypeItemLhsType Lhs { get; set; }
 
         [JsonProperty("operator", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NEWCONDITIONALMAILInputCriteriasTypeItemOperatorType Operator { get; set; }
+        public BodyInputCriteriasTypeItemOperatorType Operator { get; set; }
 
         [JsonProperty("rhs", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Rhs { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NEWCONDITIONALMAILInputCriteriasTypeItemLhsType
+    public enum BodyInputCriteriasTypeItemLhsType
     {
         [EnumMember(Value = "sender")]
         From,
@@ -929,7 +903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NEWCONDITIONALMAILInputCriteriasTypeItemOperatorType
+    public enum BodyInputCriteriasTypeItemOperatorType
     {
         [EnumMember(Value = "contains")]
         Contains,

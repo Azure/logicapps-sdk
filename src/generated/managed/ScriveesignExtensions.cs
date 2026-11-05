@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     public class ScriveesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDocJson(Expression<Func<GetDocJsonInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDocJson(Expression<Func<CancelBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetDocStatus(Expression<Func<GetDocStatusInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetDocStatus(Expression<Func<CancelBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetPartyStatus(Expression<Func<GetPartyStatusInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetPartyStatus(Expression<Func<GetPartyStatusBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdatePartyEmail(Expression<Func<UpdatePartyEmailInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdatePartyEmail(Expression<Func<UpdatePartyEmailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendReminder(Expression<Func<SendReminderInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendReminder(Expression<Func<CancelBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetDocumentPdfContent(Expression<Func<GetDocumentPdfContentInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetDocumentPdfContent(Expression<Func<CancelBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> StartSigning(Expression<Func<StartSigningInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> StartSigning(Expression<Func<CancelBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocJson(Expression<Func<UpdateDocJsonInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocJson(Expression<Func<UpdateDocJsonBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetFile(Expression<Func<SetFileInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetFile(Expression<Func<AppendFileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> NewFromPdf(Expression<Func<NewFromPdfInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> NewFromPdf(Expression<Func<NewFromPdfBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendFile(Expression<Func<AppendFileInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendFile(Expression<Func<AppendFileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Cancel(Expression<Func<CancelInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Cancel(Expression<Func<CancelBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddParty(Expression<Func<AddPartyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddParty(Expression<Func<AddPartyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetAuthorAttachment(Expression<Func<SetAuthorAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetAuthorAttachment(Expression<Func<SetAuthorAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
     public class ScriveesignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> StartAndOnDocumentSign(Expression<Func<StartAndOnDocumentSignInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> StartAndOnDocumentSign(Expression<Func<StartAndOnDocumentSignBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
@@ -282,16 +282,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, Expression<Func<WebhookFromTemplateSignInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, FlowRecurrence recurrence = null)
         {
             var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhooks/signedfromtemplate/create/{0}", __workflow_templateIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new WebhookFromTemplateSignBodyInput().ToJToken();
                 return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
             });
         }
@@ -308,19 +307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
     }
 
-    public class GetDocJsonInput
+    public class CancelBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
     }
 
-    public class GetDocStatusInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-    }
-
-    public class GetPartyStatusInput
+    public class GetPartyStatusBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -329,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string PartyId { get; set; }
     }
 
-    public class UpdatePartyEmailInput
+    public class UpdatePartyEmailBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -341,25 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string PartyEmail { get; set; }
     }
 
-    public class SendReminderInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-    }
-
-    public class GetDocumentPdfContentInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-    }
-
-    public class StartSigningInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-    }
-
-    public class UpdateDocJsonInput
+    public class UpdateDocJsonBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -368,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string DocumentJson { get; set; }
     }
 
-    public class SetFileInput
+    public class AppendFileBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -377,17 +352,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
     }
 
-    public class NewFromPdfInput
+    public class NewFromPdfBodyInput
     {
         [JsonProperty("pdfContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
 
         [JsonProperty("authorRole", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewFromPdfInputAuthorRoleType AuthorRole { get; set; } = NewFromPdfInputAuthorRoleType.SigningParty;
+        public BodyInputAuthorRoleType AuthorRole { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign.BodyInputAuthorRoleType.SigningParty;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NewFromPdfInputAuthorRoleType
+    public enum BodyInputAuthorRoleType
     {
         [EnumMember(Value = "signing_party")]
         SigningParty,
@@ -395,22 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         Viewer
     }
 
-    public class AppendFileInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-
-        [JsonProperty("pdfContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
-    }
-
-    public class CancelInput
-    {
-        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentId { get; set; }
-    }
-
-    public class AddPartyInput
+    public class AddPartyBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -419,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string PartyEmail { get; set; }
 
         [JsonProperty("partyRole", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPartyInputPartyRoleType PartyRole { get; set; } = AddPartyInputPartyRoleType.SigningParty;
+        public BodyInputPartyRoleType PartyRole { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign.BodyInputPartyRoleType.SigningParty;
 
         [JsonProperty("firstname")]
         public string Firstname { get; set; }
@@ -440,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public double? SignOrder { get; set; }
 
         [JsonProperty("deliveryMethod", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPartyInputDeliveryMethodType? DeliveryMethod { get; set; } = AddPartyInputDeliveryMethodType.Email;
+        public BodyInputDeliveryMethodType? DeliveryMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign.BodyInputDeliveryMethodType.Email;
 
         [JsonProperty("authenticationToView", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AuthenticationToView { get; set; } = "standard";
@@ -452,11 +412,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string AuthenticationToSign { get; set; } = "standard";
 
         [JsonProperty("confirmation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddPartyInputConfirmationType? Confirmation { get; set; } = AddPartyInputConfirmationType.Email;
+        public BodyInputConfirmationType? Confirmation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign.BodyInputConfirmationType.Email;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPartyInputPartyRoleType
+    public enum BodyInputPartyRoleType
     {
         [EnumMember(Value = "signing_party")]
         SigningParty,
@@ -467,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPartyInputDeliveryMethodType
+    public enum BodyInputDeliveryMethodType
     {
         [EnumMember(Value = "email")]
         Email,
@@ -482,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddPartyInputConfirmationType
+    public enum BodyInputConfirmationType
     {
         [EnumMember(Value = "email")]
         Email,
@@ -498,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         None
     }
 
-    public class SetAuthorAttachmentInput
+    public class SetAuthorAttachmentBodyInput
     {
         [JsonProperty("fileId")]
         public string FileId { get; set; }
@@ -510,30 +470,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string AttachmentName { get; set; }
 
         [JsonProperty("required", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAuthorAttachmentInputRequiredType Required { get; set; }
+        public BodyInputRequiredType Required { get; set; }
 
         [JsonProperty("addToSealedFile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetAuthorAttachmentInputAddToSealedFileType AddToSealedFile { get; set; }
+        public BodyInputAddToSealedFileType AddToSealedFile { get; set; }
 
         [JsonProperty("pdfContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetAuthorAttachmentInputRequiredType
+    public enum BodyInputRequiredType
     {
         Yes,
         No
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetAuthorAttachmentInputAddToSealedFileType
+    public enum BodyInputAddToSealedFileType
     {
         Yes,
         No
     }
 
-    public class StartAndOnDocumentSignInput
+    public class StartAndOnDocumentSignBodyInput
     {
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
@@ -542,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class WebhookFromTemplateSignInput
+    public class WebhookFromTemplateSignBodyInput
     {
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";

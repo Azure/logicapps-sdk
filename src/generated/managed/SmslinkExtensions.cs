@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
     public class SmslinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smslink")]
-        public IBodyWorkflowAction<SMSLinkSendSMSResponse, ApiConnectionActionConfiguration> SMSLinkSendSMS(Expression<Func<SMSLinkSendSMSInput>> body)
+        public IBodyWorkflowAction<SMSLinkSendSMSResponse, ApiConnectionActionConfiguration> SMSLinkSendSMS(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SMSLinkSendSMSResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
         public string ResponseMessage { get; set; }
     }
 
-    public class SMSLinkSendSMSInput
+    public class BodyInput
     {
         [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }

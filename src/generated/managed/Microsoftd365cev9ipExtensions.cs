@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
     public class Microsoftd365cev9ipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertContactResponse, ApiConnectionActionConfiguration> UpsertContact(Expression<Func<string>> contactGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertContactInput>> body)
+        public IBodyWorkflowAction<UpsertContactResponse, ApiConnectionActionConfiguration> UpsertContact(Expression<Func<string>> contactGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertContactBodyInput>> body)
         {
             var __workflow_contactGUID = WorkflowExpression.Compile(contactGUID, nameof(contactGUID), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertAccountResponse, ApiConnectionActionConfiguration> UpsertAccount(Expression<Func<string>> accountGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertAccountInput>> body)
+        public IBodyWorkflowAction<UpsertAccountResponse, ApiConnectionActionConfiguration> UpsertAccount(Expression<Func<string>> accountGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertAccountBodyInput>> body)
         {
             var __workflow_accountGUID = WorkflowExpression.Compile(accountGUID, nameof(accountGUID), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertLeadResponse, ApiConnectionActionConfiguration> UpsertLead(Expression<Func<string>> leadGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertLeadInput>> body)
+        public IBodyWorkflowAction<UpsertLeadResponse, ApiConnectionActionConfiguration> UpsertLead(Expression<Func<string>> leadGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertLeadBodyInput>> body)
         {
             var __workflow_leadGUID = WorkflowExpression.Compile(leadGUID, nameof(leadGUID), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         public string Id { get; set; }
     }
 
-    public class UpsertContactInput
+    public class UpsertContactBodyInput
     {
         [JsonProperty("firstname")]
         public string Firstname { get; set; }
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         public StatusDetails StatusDetails { get; set; }
     }
 
-    public class UpsertAccountInput
+    public class UpsertAccountBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         public StatusDetails StatusDetails { get; set; }
     }
 
-    public class UpsertLeadInput
+    public class UpsertLeadBodyInput
     {
         [JsonProperty("fullname")]
         public string Fullname { get; set; }

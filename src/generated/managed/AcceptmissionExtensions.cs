@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PostcategoriesResponse, ApiConnectionActionConfiguration> Postcategories(Expression<Func<PostcategoriesInput>> body = null)
+        public IBodyWorkflowAction<PostcategoriesResponse, ApiConnectionActionConfiguration> Postcategories(Expression<Func<PostcategoriesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostcategoriesResponse, ApiConnectionActionConfiguration>(() =>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PutcategoriesIdResponse, ApiConnectionActionConfiguration> PutcategoriesId(Expression<Func<string>> id, Expression<Func<PutcategoriesIdInput>> body = null)
+        public IBodyWorkflowAction<PutcategoriesIdResponse, ApiConnectionActionConfiguration> PutcategoriesId(Expression<Func<string>> id, Expression<Func<PostcategoriesBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PatchcategoriesIdResponse, ApiConnectionActionConfiguration> PatchcategoriesId(Expression<Func<string>> id, Expression<Func<PatchcategoriesIdInput>> body = null)
+        public IBodyWorkflowAction<PatchcategoriesIdResponse, ApiConnectionActionConfiguration> PatchcategoriesId(Expression<Func<string>> id, Expression<Func<PatchcategoriesIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PostdepartmentsResponse, ApiConnectionActionConfiguration> Postdepartments(Expression<Func<PostdepartmentsInput>> body = null)
+        public IBodyWorkflowAction<PostdepartmentsResponse, ApiConnectionActionConfiguration> Postdepartments(Expression<Func<PatchdepartmentsIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostdepartmentsResponse, ApiConnectionActionConfiguration>(() =>
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PutdepartmentsIdResponse, ApiConnectionActionConfiguration> PutdepartmentsId(Expression<Func<string>> id, Expression<Func<PutdepartmentsIdInput>> body = null)
+        public IBodyWorkflowAction<PutdepartmentsIdResponse, ApiConnectionActionConfiguration> PutdepartmentsId(Expression<Func<string>> id, Expression<Func<PutdepartmentsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PatchdepartmentsIdResponse, ApiConnectionActionConfiguration> PatchdepartmentsId(Expression<Func<string>> id, Expression<Func<PatchdepartmentsIdInput>> body = null)
+        public IBodyWorkflowAction<PatchdepartmentsIdResponse, ApiConnectionActionConfiguration> PatchdepartmentsId(Expression<Func<string>> id, Expression<Func<PatchdepartmentsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PostfunnelLanesResponse, ApiConnectionActionConfiguration> PostfunnelLanes(Expression<Func<PostfunnelLanesInput>> body = null)
+        public IBodyWorkflowAction<PostfunnelLanesResponse, ApiConnectionActionConfiguration> PostfunnelLanes(Expression<Func<PatchcategoriesIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostfunnelLanesResponse, ApiConnectionActionConfiguration>(() =>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PutfunnelLanesIdResponse, ApiConnectionActionConfiguration> PutfunnelLanesId(Expression<Func<string>> id, Expression<Func<PutfunnelLanesIdInput>> body = null)
+        public IBodyWorkflowAction<PutfunnelLanesIdResponse, ApiConnectionActionConfiguration> PutfunnelLanesId(Expression<Func<string>> id, Expression<Func<PutfunnelLanesIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PatchfunnelLanesIdResponse, ApiConnectionActionConfiguration> PatchfunnelLanesId(Expression<Func<string>> id, Expression<Func<PatchfunnelLanesIdInput>> body = null)
+        public IBodyWorkflowAction<PatchfunnelLanesIdResponse, ApiConnectionActionConfiguration> PatchfunnelLanesId(Expression<Func<string>> id, Expression<Func<PatchcategoriesIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Postfunnels(Expression<Func<PostfunnelsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Postfunnels(Expression<Func<PatchfunnelsIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutfunnelsId(Expression<Func<string>> id, Expression<Func<PutfunnelsIdInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutfunnelsId(Expression<Func<string>> id, Expression<Func<PutfunnelsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PatchfunnelsIdResponse, ApiConnectionActionConfiguration> PatchfunnelsId(Expression<Func<string>> id, Expression<Func<PatchfunnelsIdInput>> body = null)
+        public IBodyWorkflowAction<PatchfunnelsIdResponse, ApiConnectionActionConfiguration> PatchfunnelsId(Expression<Func<string>> id, Expression<Func<PatchfunnelsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Postideas(Expression<Func<PostideasInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Postideas(Expression<Func<PostideasBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PostideasIdeaIdTasksResponse, ApiConnectionActionConfiguration> PostideasIdeaIdTasks(Expression<Func<string>> ideaId, Expression<Func<PostideasIdeaIdTasksInput>> body = null)
+        public IBodyWorkflowAction<PostideasIdeaIdTasksResponse, ApiConnectionActionConfiguration> PostideasIdeaIdTasks(Expression<Func<string>> ideaId, Expression<Func<PostideasIdeaIdTasksBodyInput>> body = null)
         {
             var __workflow_ideaId = WorkflowExpression.Compile(ideaId, nameof(ideaId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutideasId(Expression<Func<string>> id, Expression<Func<PutideasIdInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutideasId(Expression<Func<string>> id, Expression<Func<PutideasIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchideasId(Expression<Func<string>> id, Expression<Func<PatchideasIdInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchideasId(Expression<Func<string>> id, Expression<Func<PatchideasIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Postmissions(Expression<Func<PostmissionsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Postmissions(Expression<Func<PostmissionsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PutmissionsIdResponse, ApiConnectionActionConfiguration> PutmissionsId(Expression<Func<string>> id, Expression<Func<PutmissionsIdInput>> body = null)
+        public IBodyWorkflowAction<PutmissionsIdResponse, ApiConnectionActionConfiguration> PutmissionsId(Expression<Func<string>> id, Expression<Func<PutmissionsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PatchmissionsIdResponse, ApiConnectionActionConfiguration> PatchmissionsId(Expression<Func<string>> id, Expression<Func<PatchmissionsIdInput>> body = null)
+        public IBodyWorkflowAction<PatchmissionsIdResponse, ApiConnectionActionConfiguration> PatchmissionsId(Expression<Func<string>> id, Expression<Func<PatchmissionsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PostprojectsResponse, ApiConnectionActionConfiguration> Postprojects(Expression<Func<PostprojectsInput>> body = null)
+        public IBodyWorkflowAction<PostprojectsResponse, ApiConnectionActionConfiguration> Postprojects(Expression<Func<PostprojectsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostprojectsResponse, ApiConnectionActionConfiguration>(() =>
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PutprojectsIdResponse, ApiConnectionActionConfiguration> PutprojectsId(Expression<Func<string>> id, Expression<Func<PutprojectsIdInput>> body = null)
+        public IBodyWorkflowAction<PutprojectsIdResponse, ApiConnectionActionConfiguration> PutprojectsId(Expression<Func<string>> id, Expression<Func<PutprojectsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PatchprojectsIdResponse, ApiConnectionActionConfiguration> PatchprojectsId(Expression<Func<string>> id, Expression<Func<PatchprojectsIdInput>> body = null)
+        public IBodyWorkflowAction<PatchprojectsIdResponse, ApiConnectionActionConfiguration> PatchprojectsId(Expression<Func<string>> id, Expression<Func<PatchprojectsIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PostprojectsProjectIdTasksResponse, ApiConnectionActionConfiguration> PostprojectsProjectIdTasks(Expression<Func<string>> projectId, Expression<Func<PostprojectsProjectIdTasksInput>> body = null)
+        public IBodyWorkflowAction<PostprojectsProjectIdTasksResponse, ApiConnectionActionConfiguration> PostprojectsProjectIdTasks(Expression<Func<string>> projectId, Expression<Func<PostideasIdeaIdTasksBodyInput>> body = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PosttasksResponse, ApiConnectionActionConfiguration> Posttasks(Expression<Func<PosttasksInput>> body = null)
+        public IBodyWorkflowAction<PosttasksResponse, ApiConnectionActionConfiguration> Posttasks(Expression<Func<PostideasIdeaIdTasksBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PosttasksResponse, ApiConnectionActionConfiguration>(() =>
@@ -722,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PatchtasksIdResponse, ApiConnectionActionConfiguration> PatchtasksId(Expression<Func<string>> id, Expression<Func<PatchtasksIdInput>> body = null)
+        public IBodyWorkflowAction<PatchtasksIdResponse, ApiConnectionActionConfiguration> PatchtasksId(Expression<Func<string>> id, Expression<Func<PatchtasksIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PostusersResponse, ApiConnectionActionConfiguration> Postusers(Expression<Func<PostusersInput>> body = null)
+        public IBodyWorkflowAction<PostusersResponse, ApiConnectionActionConfiguration> Postusers(Expression<Func<PostusersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostusersResponse, ApiConnectionActionConfiguration>(() =>
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
-        public IBodyWorkflowAction<PutusersIdResponse, ApiConnectionActionConfiguration> PutusersId(Expression<Func<string>> id, Expression<Func<PutusersIdInput>> body = null)
+        public IBodyWorkflowAction<PutusersIdResponse, ApiConnectionActionConfiguration> PutusersId(Expression<Func<string>> id, Expression<Func<PutusersIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -846,422 +846,362 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
 
     public class AcceptmissionTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaCreated(Expression<Func<TriggerIdeaCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/ideas/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerIdeaCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaUpdated(Expression<Func<TriggerIdeaUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/ideas/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerIdeaCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaDeleted(Expression<Func<TriggerIdeaDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerIdeaDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/ideas/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerIdeaCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectCreated(Expression<Func<TriggerProjectCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/projects/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerIdeaCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectUpdated(Expression<Func<TriggerProjectUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/projects/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerIdeaCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectDelete(Expression<Func<TriggerProjectDeleteInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerProjectDelete(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/projects/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerIdeaCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskCreated(Expression<Func<TriggertaskCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/tasks/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerIdeaCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggercategoryCreated(Expression<Func<TriggercategoryCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggercategoryCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/categories/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCategoryUpdated(Expression<Func<TriggerCategoryUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCategoryUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/categories/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCategoryDeleted(Expression<Func<TriggerCategoryDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerCategoryDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/categories/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentCreated(Expression<Func<TriggerdepartmentCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/departments/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentUpdated(Expression<Func<TriggerdepartmentUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/departments/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentDeleted(Expression<Func<TriggerdepartmentDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerdepartmentDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/departments/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneCreated(Expression<Func<TriggerfunnellaneCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/funnel_lanes/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneUpdated(Expression<Func<TriggerfunnellaneUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/funnel_lanes/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneDeleted(Expression<Func<TriggerfunnellaneDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnellaneDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/funnel_lanes/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelCreated(Expression<Func<TriggerfunnelCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/funnels/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelUpdated(Expression<Func<TriggerfunnelUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/funnels/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelDeleted(Expression<Func<TriggerfunnelDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerfunnelDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/funnels/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionCreated(Expression<Func<TriggermissionCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/missions/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionUpdated(Expression<Func<TriggermissionUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/missions/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionDeleted(Expression<Func<TriggermissionDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggermissionDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/missions/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicCreated(Expression<Func<TriggertopicCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/topics/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicUpdated(Expression<Func<TriggertopicUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/topics/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicDeleted(Expression<Func<TriggertopicDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertopicDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/topics/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskUpdated(Expression<Func<TriggertaskUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/tasks/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskDeleted(Expression<Func<TriggertaskDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggertaskDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/tasks/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserCreated(Expression<Func<TriggeruserCreatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/users/add_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserUpdated(Expression<Func<TriggeruserUpdatedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/users/edit_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserDeleted(Expression<Func<TriggeruserDeletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggeruserDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/general/v1/users/delete_redirect_url";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerCategoryDeletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -1396,7 +1336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PostcategoriesInput
+    public class PostcategoriesBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1483,51 +1423,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PutcategoriesIdInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("position")]
-        public int? Position { get; set; }
-
-        [JsonProperty("chip_color")]
-        public string ChipColor { get; set; }
-
-        [JsonProperty("missions_id")]
-        public string MissionsId { get; set; }
-
-        [JsonProperty("company_id")]
-        public int? CompanyId { get; set; }
-
-        [JsonProperty("image")]
-        public string Image { get; set; }
-
-        [JsonProperty("user_id")]
-        public int? UserId { get; set; }
-
-        [JsonProperty("temp_image")]
-        public string TempImage { get; set; }
-
-        [JsonProperty("main_image")]
-        public string MainImage { get; set; }
-
-        [JsonProperty("image_configs")]
-        public string ImageConfigs { get; set; }
-
-        [JsonProperty("owner_id")]
-        public string OwnerId { get; set; }
-
-        [JsonProperty("updated_by")]
-        public string UpdatedBy { get; set; }
-
-        [JsonProperty("record_url")]
-        public string RecordUrl { get; set; }
-
-        [JsonProperty("sync_id")]
-        public string SyncId { get; set; }
-    }
-
     public class PatchcategoriesIdResponse
     {
         [JsonProperty("id")]
@@ -1549,7 +1444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PatchcategoriesIdInput
+    public class PatchcategoriesIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1633,7 +1528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PostdepartmentsInput
+    public class PatchdepartmentsIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1714,7 +1609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PutdepartmentsIdInput
+    public class PutdepartmentsIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1793,15 +1688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
 
         [JsonProperty("resource_url")]
         public string ResourceUrl { get; set; }
-    }
-
-    public class PatchdepartmentsIdInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("position")]
-        public int? Position { get; set; }
     }
 
     public class GetfunnelLanesResponse
@@ -1924,12 +1810,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public int ProjectsCount { get; set; }
     }
 
-    public class PostfunnelLanesInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-    }
-
     public class GetfunnelLanesIdResponse
     {
         [JsonProperty("id")]
@@ -2044,7 +1924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public int ProjectsCount { get; set; }
     }
 
-    public class PutfunnelLanesIdInput
+    public class PutfunnelLanesIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2167,12 +2047,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public int ProjectsCount { get; set; }
     }
 
-    public class PatchfunnelLanesIdInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-    }
-
     public class GetfunnelsResponse
     {
         [JsonProperty("value")]
@@ -2227,7 +2101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PostfunnelsInput
+    public class PatchfunnelsIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2284,7 +2158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PutfunnelsIdInput
+    public class PutfunnelsIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2369,15 +2243,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
 
         [JsonProperty("resource_url")]
         public string ResourceUrl { get; set; }
-    }
-
-    public class PatchfunnelsIdInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("funnel_type")]
-        public int? FunnelType { get; set; }
     }
 
     public class GetideasResponse
@@ -2503,7 +2368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string DescriptionEnriched { get; set; }
     }
 
-    public class PostideasInput
+    public class PostideasBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2656,7 +2521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PostideasIdeaIdTasksInput
+    public class PostideasIdeaIdTasksBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2665,7 +2530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public int? Status { get; set; }
     }
 
-    public class PutideasIdInput
+    public class PutideasIdBodyInput
     {
         [JsonProperty("user_id")]
         public int? UserId { get; set; }
@@ -2905,7 +2770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string DescriptionEnriched { get; set; }
     }
 
-    public class PatchideasIdInput
+    public class PatchideasIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -2992,7 +2857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PostmissionsInput
+    public class PostmissionsBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3112,7 +2977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PutmissionsIdInput
+    public class PutmissionsIdBodyInput
     {
         [JsonProperty("user_id")]
         public int? UserId { get; set; }
@@ -3307,7 +3172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string UpdatedAt { get; set; }
     }
 
-    public class PatchmissionsIdInput
+    public class PatchmissionsIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3529,7 +3394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string DescriptionEnriched { get; set; }
     }
 
-    public class PostprojectsInput
+    public class PostprojectsBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3748,7 +3613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string DescriptionEnriched { get; set; }
     }
 
-    public class PutprojectsIdInput
+    public class PutprojectsIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -4003,7 +3868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string DescriptionEnriched { get; set; }
     }
 
-    public class PatchprojectsIdInput
+    public class PatchprojectsIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -4150,15 +4015,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PostprojectsProjectIdTasksInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("status")]
-        public int? Status { get; set; }
-    }
-
     public class GetTaskBySyncIdResponse
     {
         [JsonProperty("value")]
@@ -4294,15 +4150,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PosttasksInput
-    {
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("status")]
-        public int? Status { get; set; }
-    }
-
     public class GettasksIdResponse
     {
         [JsonProperty("id")]
@@ -4435,7 +4282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string ResourceUrl { get; set; }
     }
 
-    public class PatchtasksIdInput
+    public class PatchtasksIdBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -4555,7 +4402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string DepartmentName { get; set; }
     }
 
-    public class PostusersInput
+    public class PostusersBodyInput
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -4708,7 +4555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string DepartmentName { get; set; }
     }
 
-    public class PutusersIdInput
+    public class PutusersIdBodyInput
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -4861,181 +4708,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         public string CompletedChecklist { get; set; }
     }
 
-    public class TriggerIdeaCreatedInput
+    public class TriggerIdeaCreatedBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class TriggerIdeaUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerIdeaDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerProjectCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerProjectUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerProjectDeleteInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggertaskCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggercategoryCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerCategoryUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerCategoryDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerdepartmentCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerdepartmentUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerdepartmentDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerfunnellaneCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerfunnellaneUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerfunnellaneDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerfunnelCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerfunnelUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerfunnelDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggermissionCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggermissionUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggermissionDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggertopicCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggertopicUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggertopicDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggertaskUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggertaskDeletedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggeruserCreatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggeruserUpdatedInput
-    {
-        [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggeruserDeletedInput
+    public class TriggerCategoryDeletedBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";

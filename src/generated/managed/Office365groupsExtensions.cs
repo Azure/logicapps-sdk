@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
-        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<UpdateCalendarEventInput>> body)
+        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<BodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: true);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
-        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> CreateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<CreateCalendarEventV2Input>> body)
+        public IBodyWorkflowAction<CreateCalendarEventResponse, ApiConnectionActionConfiguration> CreateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<BodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -462,25 +462,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public string Name { get; set; }
     }
 
-    public class UpdateCalendarEventInput
+    public class BodyInput
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateCalendarEventInputStartType Start { get; set; } = new UpdateCalendarEventInputStartType();
+        public BodyInputStartType Start { get; set; } = new BodyInputStartType();
 
         [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateCalendarEventInputEndType End { get; set; } = new UpdateCalendarEventInputEndType();
+        public BodyInputEndType End { get; set; } = new BodyInputEndType();
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateCalendarEventInputBodyType Body { get; set; } = new UpdateCalendarEventInputBodyType();
+        public BodyInputBodyType Body { get; set; } = new BodyInputBodyType();
 
         [JsonProperty("location")]
-        public UpdateCalendarEventInputLocationType Location { get; set; }
+        public BodyInputLocationType Location { get; set; }
 
         [JsonProperty("importance")]
-        public UpdateCalendarEventInputImportanceType? Importance { get; set; }
+        public BodyInputImportanceType? Importance { get; set; }
 
         [JsonProperty("isAllDay")]
         public bool? IsAllDay { get; set; }
@@ -492,13 +492,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public int? ReminderStartDuration { get; set; }
 
         [JsonProperty("showAs")]
-        public UpdateCalendarEventInputShowAsType? ShowAs { get; set; }
+        public BodyInputShowAsType? ShowAs { get; set; }
 
         [JsonProperty("responseRequested")]
         public bool? ResponseRequested { get; set; }
     }
 
-    public class UpdateCalendarEventInputStartType
+    public class BodyInputStartType
     {
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         internal string TimeZone { get; set; } = "UTC";
     }
 
-    public class UpdateCalendarEventInputEndType
+    public class BodyInputEndType
     {
         [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         internal string TimeZone { get; set; } = "UTC";
     }
 
-    public class UpdateCalendarEventInputBodyType
+    public class BodyInputBodyType
     {
         [JsonProperty("content")]
         public string Body { get; set; }
@@ -525,14 +525,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         internal string BodyContentType { get; set; } = "Html";
     }
 
-    public class UpdateCalendarEventInputLocationType
+    public class BodyInputLocationType
     {
         [JsonProperty("displayName")]
         public string Location { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateCalendarEventInputImportanceType
+    public enum BodyInputImportanceType
     {
         Low,
         Normal,
@@ -540,95 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateCalendarEventInputShowAsType
-    {
-        Free,
-        Tentative,
-        Busy,
-        Oof,
-        WorkingElsewhere,
-        Unknown
-    }
-
-    public class CreateCalendarEventV2Input
-    {
-        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Subject { get; set; }
-
-        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCalendarEventV2InputStartType Start { get; set; } = new CreateCalendarEventV2InputStartType();
-
-        [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCalendarEventV2InputEndType End { get; set; } = new CreateCalendarEventV2InputEndType();
-
-        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCalendarEventV2InputBodyType Body { get; set; } = new CreateCalendarEventV2InputBodyType();
-
-        [JsonProperty("location")]
-        public CreateCalendarEventV2InputLocationType Location { get; set; }
-
-        [JsonProperty("importance")]
-        public CreateCalendarEventV2InputImportanceType? Importance { get; set; }
-
-        [JsonProperty("isAllDay")]
-        public bool? IsAllDay { get; set; }
-
-        [JsonProperty("isReminderOn")]
-        public bool? IsReminderOn { get; set; }
-
-        [JsonProperty("reminderMinutesBeforeStart")]
-        public int? ReminderStartDuration { get; set; }
-
-        [JsonProperty("showAs")]
-        public CreateCalendarEventV2InputShowAsType? ShowAs { get; set; }
-
-        [JsonProperty("responseRequested")]
-        public bool? ResponseRequested { get; set; }
-    }
-
-    public class CreateCalendarEventV2InputStartType
-    {
-        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string StartTime { get; set; }
-
-        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TimeZone { get; set; } = "UTC";
-    }
-
-    public class CreateCalendarEventV2InputEndType
-    {
-        [JsonProperty("dateTime", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EndTime { get; set; }
-
-        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string TimeZone { get; set; } = "UTC";
-    }
-
-    public class CreateCalendarEventV2InputBodyType
-    {
-        [JsonProperty("content")]
-        public string Body { get; set; }
-
-        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string BodyContentType { get; set; } = "Html";
-    }
-
-    public class CreateCalendarEventV2InputLocationType
-    {
-        [JsonProperty("displayName")]
-        public string Location { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCalendarEventV2InputImportanceType
-    {
-        Low,
-        Normal,
-        High
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCalendarEventV2InputShowAsType
+    public enum BodyInputShowAsType
     {
         Free,
         Tentative,
@@ -639,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse, ApiConnectionActionConfiguration> AddWorkspaceItemComments(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<AddWorkspaceItemCommentsInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse, ApiConnectionActionConfiguration> AddWorkspaceItemComments(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<AddWorkspaceItemCommentsBodyInput>> body = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse, ApiConnectionActionConfiguration> AddReplyToComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId, Expression<Func<AddReplyToCommentInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse, ApiConnectionActionConfiguration> AddReplyToComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId, Expression<Func<AddReplyToCommentBodyInput>> body = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> CreateWorkspaceFolder(Expression<Func<CreateWorkspaceFolderInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> CreateWorkspaceFolder(Expression<Func<CreateWorkspaceFolderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration>(() =>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> UpdateWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<UpdateWorkspaceFolderInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> UpdateWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<CreateWorkspaceFolderBodyInput>> body = null)
         {
             var __workflow_workspaceFolderId = WorkflowExpression.Compile(workspaceFolderId, nameof(workspaceFolderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> CopyWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<CopyWorkspaceFolderInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> CopyWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<CopyWorkspaceFileBodyInput>> body = null)
         {
             var __workflow_workspaceFolderId = WorkflowExpression.Compile(workspaceFolderId, nameof(workspaceFolderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> CreateWorkspaceContextualFolder(Expression<Func<CreateWorkspaceContextualFolderInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration> CreateWorkspaceContextualFolder(Expression<Func<CreateWorkspaceContextualFolderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI, ApiConnectionActionConfiguration>(() =>
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration> UpdateWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<UpdateWorkspaceFileInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration> UpdateWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<CreateWorkspaceFolderBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration> CopyWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<CopyWorkspaceFileInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp, ApiConnectionActionConfiguration> CopyWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<CopyWorkspaceFileBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp, ApiConnectionActionConfiguration> CreateWorkspaceUrl(Expression<Func<bool>> openInNewWindow = null, Expression<Func<CreateWorkspaceUrlInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp, ApiConnectionActionConfiguration> CreateWorkspaceUrl(Expression<Func<bool>> openInNewWindow = null, Expression<Func<CreateWorkspaceUrlBodyInput>> body = null)
         {
             var __workflow_openInNewWindow = WorkflowExpression.Compile(openInNewWindow, nameof(openInNewWindow), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp, ApiConnectionActionConfiguration> UpdateWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<UpdateWorkspaceUrlInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp, ApiConnectionActionConfiguration> UpdateWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<CreateWorkspaceUrlBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp, ApiConnectionActionConfiguration> CopyWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<CopyWorkspaceUrlInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp, ApiConnectionActionConfiguration> CopyWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<CopyWorkspaceFileBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> UpdateWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<UpdateWorkspaceItemInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> UpdateWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<CreateWorkspaceFolderBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> CopyWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<CopyWorkspaceItemInput>> body = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp, ApiConnectionActionConfiguration> CopyWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<CopyWorkspaceFileBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<CollaboratorResponse, ApiConnectionActionConfiguration> AddCollaboratorAsync(Expression<Func<string>> workspaceContentId, Expression<Func<AddCollaboratorAsyncInput>> body = null)
+        public IBodyWorkflowAction<CollaboratorResponse, ApiConnectionActionConfiguration> AddCollaboratorAsync(Expression<Func<string>> workspaceContentId, Expression<Func<AddCollaboratorAsyncBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TransferOwnerAsync(Expression<Func<string>> workspaceContentId, Expression<Func<TransferOwnerAsyncInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TransferOwnerAsync(Expression<Func<string>> workspaceContentId, Expression<Func<TransferOwnerAsyncBodyInput>> body = null)
         {
             var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
     public class SeismicWorkspaceCommentsWorkspaceAnnotation
     {
         [JsonProperty("type")]
-        public SeismicLibraryCommentingAnnotationType Type { get; set; }
+        public AddWorkspaceItemCommentsSeismicLibraryCommentingAnnotationTypeResponse Type { get; set; }
 
         [JsonProperty("page")]
         public int Page { get; set; }
@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SeismicLibraryCommentingAnnotationType
+    public enum AddWorkspaceItemCommentsSeismicLibraryCommentingAnnotationTypeResponse
     {
         [EnumMember(Value = "pen")]
         Pen,
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string Id { get; set; }
 
         [JsonProperty("type")]
-        public SeismicLibraryCommentingAnnotationType Type { get; set; }
+        public AddWorkspaceItemCommentsSeismicLibraryCommentingAnnotationTypeResponse Type { get; set; }
 
         [JsonProperty("page")]
         public int Page { get; set; }
@@ -718,10 +718,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string Color { get; set; }
 
         [JsonProperty("points")]
-        public SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[] Points { get; set; }
+        public AddWorkspaceItemCommentsSeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModelResponse[] Points { get; set; }
     }
 
-    public class SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel
+    public class AddWorkspaceItemCommentsSeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModelResponse
     {
         [JsonProperty("x")]
         public double X { get; set; }
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         File
     }
 
-    public class AddWorkspaceItemCommentsInput
+    public class AddWorkspaceItemCommentsBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
     public class SeismicLibraryCommentingAnnotation
     {
         [JsonProperty("type")]
-        public SeismicLibraryCommentingAnnotationType? Type { get; set; }
+        public AddWorkspaceItemCommentsSeismicLibraryCommentingAnnotationType? Type { get; set; }
 
         [JsonProperty("page")]
         public int? Page { get; set; }
@@ -783,10 +783,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string Color { get; set; }
 
         [JsonProperty("points")]
-        public SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel2[] Points { get; set; }
+        public AddWorkspaceItemCommentsSeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[] Points { get; set; }
     }
 
-    public class SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel2
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddWorkspaceItemCommentsSeismicLibraryCommentingAnnotationType
+    {
+        [EnumMember(Value = "pen")]
+        Pen,
+        [EnumMember(Value = "text")]
+        Text,
+        [EnumMember(Value = "pin")]
+        Pin,
+        [EnumMember(Value = "line")]
+        Line,
+        [EnumMember(Value = "rectangle")]
+        Rectangle,
+        [EnumMember(Value = "oval")]
+        Oval,
+        [EnumMember(Value = "arrow")]
+        Arrow
+    }
+
+    public class AddWorkspaceItemCommentsSeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel
     {
         [JsonProperty("x")]
         public double? X { get; set; }
@@ -816,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public SeismicWorkspaceCommentsWorkspaceContent Content { get; set; }
     }
 
-    public class AddReplyToCommentInput
+    public class AddReplyToCommentBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -888,16 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string Id { get; set; }
     }
 
-    public class CreateWorkspaceFolderInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-    }
-
-    public class UpdateWorkspaceFolderInput
+    public class CreateWorkspaceFolderBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -984,13 +994,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string Id { get; set; }
     }
 
-    public class CopyWorkspaceFolderInput
+    public class CopyWorkspaceFileBodyInput
     {
         [JsonProperty("parentFolderId")]
         public string ParentFolderId { get; set; }
     }
 
-    public class CreateWorkspaceContextualFolderInput
+    public class CreateWorkspaceContextualFolderBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1062,21 +1072,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string ParentFolderId { get; set; }
     }
 
-    public class UpdateWorkspaceFileInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-    }
-
-    public class CopyWorkspaceFileInput
-    {
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-    }
-
     public class SeismicCommonDownloadLocationResp
     {
         [JsonProperty("downloadUrl")]
@@ -1140,7 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string ParentFolderId { get; set; }
     }
 
-    public class CreateWorkspaceUrlInput
+    public class CreateWorkspaceUrlBodyInput
     {
         [JsonProperty("url")]
         public SeismicWorkSpaceContentManagerWsUrlInfoReq Url { get; set; }
@@ -1215,39 +1210,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string ParentFolderId { get; set; }
     }
 
-    public class UpdateWorkspaceUrlInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-
-        [JsonProperty("url")]
-        public SeismicWorkSpaceContentManagerWsUrlInfoReq Url { get; set; }
-    }
-
-    public class CopyWorkspaceUrlInput
-    {
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-    }
-
-    public class UpdateWorkspaceItemInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-    }
-
-    public class CopyWorkspaceItemInput
-    {
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-    }
-
     public class SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse
     {
         [JsonProperty("id")]
@@ -1284,7 +1246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string CreatedAt { get; set; }
     }
 
-    public class AddCollaboratorAsyncInput
+    public class AddCollaboratorAsyncBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1293,7 +1255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public string Role { get; set; }
     }
 
-    public class TransferOwnerAsyncInput
+    public class TransferOwnerAsyncBodyInput
     {
         [JsonProperty("ownerId")]
         public string OwnerId { get; set; }

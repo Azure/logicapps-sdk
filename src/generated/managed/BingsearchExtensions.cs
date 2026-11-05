@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
     public class BingsearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingsearch")]
-        public IBodyWorkflowAction<NewsArticle[], ApiConnectionActionConfiguration> GetNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
+        public IBodyWorkflowAction<NewsArticle[], ApiConnectionActionConfiguration> GetNews(Expression<Func<string>> q, Expression<Func<MktInput>> mkt = null, Expression<Func<SafeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_mkt = WorkflowExpression.Compile(mkt, nameof(mkt), required: false);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
 
     public class BingsearchTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewsArticle[], ApiConnectionTriggerConfiguration> TrigNewNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewsArticle[], ApiConnectionTriggerConfiguration> TrigNewNews(Expression<Func<string>> q, Expression<Func<MktInput>> mkt = null, Expression<Func<SafeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, FlowRecurrence recurrence = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_mkt = WorkflowExpression.Compile(mkt, nameof(mkt), required: false);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum mktInput
+    public enum MktInput
     {
         [EnumMember(Value = "es-AR")]
         EsAR,
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum safeSearchInput
+    public enum SafeSearchInput
     {
         Moderate,
         Off,

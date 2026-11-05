@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
     public class MyhoursActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> CreateClient(Expression<Func<CreateClientInput>> body)
+        public IBodyWorkflowAction<Client, ApiConnectionActionConfiguration> CreateClient(Expression<Func<CreateClientBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Client, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectInput>> body)
+        public IBodyWorkflowAction<Project, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Project, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ProjectTask, ApiConnectionActionConfiguration> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<CreateProjectTaskInput>> body)
+        public IBodyWorkflowAction<ProjectTask, ApiConnectionActionConfiguration> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<CreateProjectTaskBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Tag, ApiConnectionActionConfiguration> CreateTag(Expression<Func<CreateTagInput>> body)
+        public IBodyWorkflowAction<Tag, ApiConnectionActionConfiguration> CreateTag(Expression<Func<CreateTagBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Tag, ApiConnectionActionConfiguration>(() =>
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<TimeLog, ApiConnectionActionConfiguration> CreateLog(Expression<Func<CreateLogInput>> body)
+        public IBodyWorkflowAction<TimeLog, ApiConnectionActionConfiguration> CreateLog(Expression<Func<CreateLogBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TimeLog, ApiConnectionActionConfiguration>(() =>
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
-    public class CreateClientInput
+    public class CreateClientBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
-    public class CreateProjectInput
+    public class CreateProjectBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
-    public class CreateProjectTaskInput
+    public class CreateProjectTaskBodyInput
     {
         [JsonProperty("listName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; } = "Task list";
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
-    public class CreateTagInput
+    public class CreateTagBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         public int Id { get; set; }
     }
 
-    public class CreateLogInput
+    public class CreateLogBodyInput
     {
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }

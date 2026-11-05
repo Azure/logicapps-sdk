@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
     public class InoreaderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IBodyWorkflowAction<AddSubscriptionResponse, ApiConnectionActionConfiguration> AddSubscription(Expression<Func<AddSubscriptionInput>> body)
+        public IBodyWorkflowAction<AddSubscriptionResponse, ApiConnectionActionConfiguration> AddSubscription(Expression<Func<AddSubscriptionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddSubscriptionResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditSubscription(Expression<Func<string>> streamId, Expression<Func<EditSubscriptionInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditSubscription(Expression<Func<string>> streamId, Expression<Func<EditSubscriptionBodyInput>> body)
         {
             var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -186,13 +186,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         public string StreamName { get; set; }
     }
 
-    public class AddSubscriptionInput
+    public class AddSubscriptionBodyInput
     {
         [JsonProperty("quickadd")]
         public string Quickadd { get; set; }
     }
 
-    public class EditSubscriptionInput
+    public class EditSubscriptionBodyInput
     {
         [JsonProperty("t", DefaultValueHandling = DefaultValueHandling.Include)]
         public string T { get; set; }

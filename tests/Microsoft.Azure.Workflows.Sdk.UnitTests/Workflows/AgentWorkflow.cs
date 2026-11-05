@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 {
                     return WorkflowActions.Managed.Msnweather("msnweather").CurrentWeather(
                         location: () => toolContext.Parameters.Location,
-                        units: () => unitsInput.Imperial
+                        units: () => UnitsInput.Imperial
                     );
                 },
                 description: "This tool gets the weather",
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             agent.AddTool(toolContext =>
                 {
                     return WorkflowActions.Managed.Office365("outlook").SendEmail(
-                        emailMessage: () => new SendEmailV2Input
+                        emailMessage: () => new SendEmailEmailMessageInput
                         {
                             To = toolContext.Parameters.Recipient,
                             Subject = toolContext.Parameters.Subject,

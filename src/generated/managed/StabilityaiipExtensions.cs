@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationTextImagePostResponse, ApiConnectionActionConfiguration> GenerationTextImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationTextImagePostInput>> body = null)
+        public IBodyWorkflowAction<GenerationTextImageResponse, ApiConnectionActionConfiguration> GenerationTextImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationTextImageBodyInput>> body = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GenerationTextImagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerationTextImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/text-to-image", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -68,17 +68,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GenerationTextImagePostResponse>(callPayload);
+                return new ApiConnectionAction<GenerationTextImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationImageImagePostResponse, ApiConnectionActionConfiguration> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationImageImagePostInput>> body = null)
+        public IBodyWorkflowAction<GenerationImageImageResponse, ApiConnectionActionConfiguration> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationImageImageBodyInput>> body = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GenerationImageImagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerationImageImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -89,17 +89,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GenerationImageImagePostResponse>(callPayload);
+                return new ApiConnectionAction<GenerationImageImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationUpscalePostResponse, ApiConnectionActionConfiguration> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationUpscalePostInput>> body = null)
+        public IBodyWorkflowAction<GenerationUpscaleResponse, ApiConnectionActionConfiguration> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationUpscaleBodyInput>> body = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GenerationUpscalePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerationUpscaleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/upscale", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -110,17 +110,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GenerationUpscalePostResponse>(callPayload);
+                return new ApiConnectionAction<GenerationUpscaleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationMaskPostResponse, ApiConnectionActionConfiguration> GenerationMask(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationMaskPostInput>> body = null)
+        public IBodyWorkflowAction<GenerationMaskResponse, ApiConnectionActionConfiguration> GenerationMask(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationMaskBodyInput>> body = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GenerationMaskPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerationMaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/masking", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -131,37 +131,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GenerationMaskPostResponse>(callPayload);
+                return new ApiConnectionAction<GenerationMaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableImageCorePostResponse, ApiConnectionActionConfiguration> StableImageCore(Expression<Func<StableImageCorePostInput>> body = null)
+        public IBodyWorkflowAction<StableImageCoreResponse, ApiConnectionActionConfiguration> StableImageCore(Expression<Func<StableImageCoreBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<StableImageCorePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StableImageCoreResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/core";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<StableImageCorePostResponse>(callPayload);
+                return new ApiConnectionAction<StableImageCoreResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableDiffusionPostResponse, ApiConnectionActionConfiguration> StableDiffusion(Expression<Func<StableDiffusionPostInput>> body = null)
+        public IBodyWorkflowAction<StableDiffusionResponse, ApiConnectionActionConfiguration> StableDiffusion(Expression<Func<StableDiffusionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<StableDiffusionPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StableDiffusionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/sd3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<StableDiffusionPostResponse>(callPayload);
+                return new ApiConnectionAction<StableDiffusionResponse>(callPayload);
             });
         }
     }
@@ -221,13 +221,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public double Credits { get; set; }
     }
 
-    public class GenerationTextImagePostResponse
+    public class GenerationTextImageResponse
     {
         [JsonProperty("artifacts")]
-        public GenerationTextImagePostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationTextImageResponseArtifactsTypeItem[] Artifacts { get; set; }
     }
 
-    public class GenerationTextImagePostResponseArtifactsTypeItem
+    public class GenerationTextImageResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
-    public class GenerationTextImagePostInput
+    public class GenerationTextImageBodyInput
     {
         [JsonProperty("height")]
         public int? Height { get; set; }
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int? Width { get; set; }
 
         [JsonProperty("text_prompts")]
-        public GenerationTextImagePostInputTextPromptsTypeItem[] TextPrompts { get; set; }
+        public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
 
         [JsonProperty("cfg_scale")]
         public int? CfgScale { get; set; }
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int? Steps { get; set; }
     }
 
-    public class GenerationTextImagePostInputTextPromptsTypeItem
+    public class BodyInputTextPromptsTypeItem
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -278,13 +278,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int? Weight { get; set; }
     }
 
-    public class GenerationImageImagePostResponse
+    public class GenerationImageImageResponse
     {
         [JsonProperty("artifacts")]
-        public GenerationImageImagePostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationImageImageResponseArtifactsTypeItem[] Artifacts { get; set; }
     }
 
-    public class GenerationImageImagePostResponseArtifactsTypeItem
+    public class GenerationImageImageResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -296,16 +296,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
-    public class GenerationImageImagePostInput
+    public class GenerationImageImageBodyInput
     {
         [JsonProperty("text_prompts")]
-        public GenerationImageImagePostInputTextPromptsTypeItem[] TextPrompts { get; set; }
+        public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
 
         [JsonProperty("init_image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InitImage { get; set; }
 
         [JsonProperty("init_image_mode")]
-        public GenerationImageImagePostInputInitImageModeType? InitImageMode { get; set; }
+        public BodyInputInitImageModeType? InitImageMode { get; set; }
 
         [JsonProperty("image_strength")]
         public double? ImageStrength { get; set; }
@@ -335,17 +335,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int? Steps { get; set; }
     }
 
-    public class GenerationImageImagePostInputTextPromptsTypeItem
-    {
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
-
-        [JsonProperty("weight")]
-        public int? Weight { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerationImageImagePostInputInitImageModeType
+    public enum BodyInputInitImageModeType
     {
         [EnumMember(Value = "image_strength")]
         ImageStrength,
@@ -353,13 +344,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         StepSchedule
     }
 
-    public class GenerationUpscalePostResponse
+    public class GenerationUpscaleResponse
     {
         [JsonProperty("artifacts")]
-        public GenerationUpscalePostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationUpscaleResponseArtifactsTypeItem[] Artifacts { get; set; }
     }
 
-    public class GenerationUpscalePostResponseArtifactsTypeItem
+    public class GenerationUpscaleResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -371,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
-    public class GenerationUpscalePostInput
+    public class GenerationUpscaleBodyInput
     {
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Image { get; set; }
@@ -383,13 +374,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int? Width { get; set; }
     }
 
-    public class GenerationMaskPostResponse
+    public class GenerationMaskResponse
     {
         [JsonProperty("artifacts")]
-        public GenerationMaskPostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationMaskResponseArtifactsTypeItem[] Artifacts { get; set; }
     }
 
-    public class GenerationMaskPostResponseArtifactsTypeItem
+    public class GenerationMaskResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -401,16 +392,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
-    public class GenerationMaskPostInput
+    public class GenerationMaskBodyInput
     {
         [JsonProperty("text_prompts")]
-        public GenerationMaskPostInputTextPromptsTypeItem[] TextPrompts { get; set; }
+        public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
 
         [JsonProperty("init_image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InitImage { get; set; }
 
         [JsonProperty("mask_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GenerationMaskPostInputMaskSourceType MaskSource { get; set; } = GenerationMaskPostInputMaskSourceType.MASKIMAGEWHITE;
+        public BodyInputMaskSourceType MaskSource { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputMaskSourceType.MASKIMAGEWHITE;
 
         [JsonProperty("mask_image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MaskImage { get; set; }
@@ -440,17 +431,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int? Steps { get; set; }
     }
 
-    public class GenerationMaskPostInputTextPromptsTypeItem
-    {
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
-
-        [JsonProperty("weight")]
-        public int? Weight { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GenerationMaskPostInputMaskSourceType
+    public enum BodyInputMaskSourceType
     {
         [EnumMember(Value = "MASK_IMAGE_WHITE")]
         MASKIMAGEWHITE,
@@ -460,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         INITIMAGEALPHA
     }
 
-    public class StableImageCorePostResponse
+    public class StableImageCoreResponse
     {
         [JsonProperty("image")]
         public string Image { get; set; }
@@ -472,13 +454,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int Seed { get; set; }
     }
 
-    public class StableImageCorePostInput
+    public class StableImageCoreBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 
         [JsonProperty("aspect_ratio", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StableImageCorePostInputAspectRatioType? AspectRatio { get; set; } = StableImageCorePostInputAspectRatioType._11;
+        public BodyInputAspectRatioType? AspectRatio { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputAspectRatioType._11;
 
         [JsonProperty("negative_prompt")]
         public string NegativePrompt { get; set; }
@@ -487,11 +469,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int? Seed { get; set; }
 
         [JsonProperty("style_preset")]
-        public StableImageCorePostInputStylePresetType? StylePreset { get; set; }
+        public BodyInputStylePresetType? StylePreset { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StableImageCorePostInputAspectRatioType
+    public enum BodyInputAspectRatioType
     {
         [EnumMember(Value = "1:1")]
         _11,
@@ -514,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StableImageCorePostInputStylePresetType
+    public enum BodyInputStylePresetType
     {
         [EnumMember(Value = "3d-model")]
         _3dModel,
@@ -552,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         TileTexture
     }
 
-    public class StableDiffusionPostResponse
+    public class StableDiffusionResponse
     {
         [JsonProperty("image")]
         public string Image { get; set; }
@@ -564,13 +546,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int Seed { get; set; }
     }
 
-    public class StableDiffusionPostInput
+    public class StableDiffusionBodyInput
     {
         [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prompt { get; set; }
 
         [JsonProperty("aspect_ratio", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StableDiffusionPostInputAspectRatioType? AspectRatio { get; set; } = StableDiffusionPostInputAspectRatioType._11;
+        public BodyInputAspectRatioType? AspectRatio { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputAspectRatioType._11;
 
         [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Mode { get; set; } = "text-to-image";
@@ -579,84 +561,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string NegativePrompt { get; set; }
 
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StableDiffusionPostInputModelType? Model { get; set; } = StableDiffusionPostInputModelType.Sd3;
+        public BodyInputModelType? Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputModelType.Sd3;
 
         [JsonProperty("seed")]
         public int? Seed { get; set; }
 
         [JsonProperty("style_preset")]
-        public StableDiffusionPostInputStylePresetType? StylePreset { get; set; }
+        public BodyInputStylePresetType? StylePreset { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StableDiffusionPostInputAspectRatioType
-    {
-        [EnumMember(Value = "1:1")]
-        _11,
-        [EnumMember(Value = "16:9")]
-        _169,
-        [EnumMember(Value = "21:9")]
-        _219,
-        [EnumMember(Value = "2:3")]
-        _23,
-        [EnumMember(Value = "3:2")]
-        _32,
-        [EnumMember(Value = "4:5")]
-        _45,
-        [EnumMember(Value = "5:4")]
-        _54,
-        [EnumMember(Value = "9:16")]
-        _916,
-        [EnumMember(Value = "9:21")]
-        _921
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StableDiffusionPostInputModelType
+    public enum BodyInputModelType
     {
         [EnumMember(Value = "sd3")]
         Sd3,
         [EnumMember(Value = "sd3-turbo")]
         Sd3Turbo
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StableDiffusionPostInputStylePresetType
-    {
-        [EnumMember(Value = "3d-model")]
-        _3dModel,
-        [EnumMember(Value = "analog-film")]
-        AnalogFilm,
-        [EnumMember(Value = "anime")]
-        Anime,
-        [EnumMember(Value = "cinematic")]
-        Cinematic,
-        [EnumMember(Value = "comic-book")]
-        ComicBook,
-        [EnumMember(Value = "digital-art")]
-        DigitalArt,
-        [EnumMember(Value = "enhance")]
-        Enhance,
-        [EnumMember(Value = "fantasy-art")]
-        FantasyArt,
-        [EnumMember(Value = "isometric")]
-        Isometric,
-        [EnumMember(Value = "line-art")]
-        LineArt,
-        [EnumMember(Value = "low-poly")]
-        LowPoly,
-        [EnumMember(Value = "modeling-compound")]
-        ModelingCompound,
-        [EnumMember(Value = "neon-punk")]
-        NeonPunk,
-        [EnumMember(Value = "origami")]
-        Origami,
-        [EnumMember(Value = "photographic")]
-        Photographic,
-        [EnumMember(Value = "pixel-art")]
-        PixelArt,
-        [EnumMember(Value = "tile-texture")]
-        TileTexture
     }
 }
 

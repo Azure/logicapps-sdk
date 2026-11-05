@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
     public class RecordedfutureidentiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfutureidenti")]
-        public IBodyWorkflowAction<LookupResponse, ApiConnectionActionConfiguration> CredentialLookup(Expression<Func<CredentialLookupV2Input>> body = null)
+        public IBodyWorkflowAction<LookupResponse, ApiConnectionActionConfiguration> CredentialLookup(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<LookupResponse, ApiConnectionActionConfiguration>(() =>
@@ -358,10 +358,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string[] Subjects { get; set; }
     }
 
-    public class CredentialLookupV2Input
+    public class BodyInput
     {
         [JsonProperty("filter")]
-        public CredentialLookupV2InputFilterType Filter { get; set; }
+        public BodyInputFilterType Filter { get; set; }
 
         [JsonProperty("organization_id")]
         public string OrganizationId { get; set; }
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string[] SubjectsSha1 { get; set; }
     }
 
-    public class CredentialLookupV2InputFilterType
+    public class BodyInputFilterType
     {
         [JsonProperty("authorization_protocols")]
         public string[] AuthorizationProtocols { get; set; }
@@ -385,10 +385,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string[] AuthorizationTechnologies { get; set; }
 
         [JsonProperty("breach_properties")]
-        public CredentialLookupV2InputFilterTypeBreachPropertiesType BreachProperties { get; set; }
+        public BodyInputFilterTypeBreachPropertiesType BreachProperties { get; set; }
 
         [JsonProperty("dump_properties")]
-        public CredentialLookupV2InputFilterTypeDumpPropertiesType DumpProperties { get; set; }
+        public BodyInputFilterTypeDumpPropertiesType DumpProperties { get; set; }
 
         [JsonProperty("exfiltration_date_gte")]
         public string ExfiltrationDateGte { get; set; }
@@ -403,13 +403,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string[] MalwareFamilies { get; set; }
 
         [JsonProperty("properties")]
-        public CredentialLookupV2InputFilterTypePropertiesTypeItem[] Properties { get; set; }
+        public BodyInputFilterTypePropertiesTypeItem[] Properties { get; set; }
 
         [JsonProperty("username_properties")]
-        public CredentialLookupV2InputFilterTypeUsernamePropertiesTypeItem[] UsernameProperties { get; set; }
+        public BodyInputFilterTypeUsernamePropertiesTypeItem[] UsernameProperties { get; set; }
     }
 
-    public class CredentialLookupV2InputFilterTypeBreachPropertiesType
+    public class BodyInputFilterTypeBreachPropertiesType
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string Name { get; set; }
     }
 
-    public class CredentialLookupV2InputFilterTypeDumpPropertiesType
+    public class BodyInputFilterTypeDumpPropertiesType
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CredentialLookupV2InputFilterTypePropertiesTypeItem
+    public enum BodyInputFilterTypePropertiesTypeItem
     {
         Letter,
         Number,
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CredentialLookupV2InputFilterTypeUsernamePropertiesTypeItem
+    public enum BodyInputFilterTypeUsernamePropertiesTypeItem
     {
         Email
     }

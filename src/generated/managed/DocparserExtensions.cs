@@ -33,16 +33,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
     public class DocparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreateReponse, ApiConnectionTriggerConfiguration> WebhookCreate(Expression<Func<string>> parserId, Expression<Func<WebhookCreateInput>> targetUrl, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreateReponse, ApiConnectionTriggerConfiguration> WebhookCreate(Expression<Func<string>> parserId, FlowRecurrence recurrence = null)
         {
             var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
-            var __workflow_targetUrl = WorkflowExpression.Compile(targetUrl, nameof(targetUrl), required: true);
             return new DeferredBodyTrigger<WebhookCreateReponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/subscribe/{0}/flow", __workflow_parserId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_targetUrl);
+                callPayload.Body = new TargetUrlInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
         public string ParserId { get; set; }
     }
 
-    public class WebhookCreateInput
+    public class TargetUrlInput
     {
         [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";

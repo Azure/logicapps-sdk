@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel, ApiConnectionActionConfiguration> Create(Expression<Func<string>> siteId, Expression<Func<CreatePostInput>> post)
+        public IBodyWorkflowAction<PostModel, ApiConnectionActionConfiguration> Create(Expression<Func<string>> siteId, Expression<Func<PostInput>> post)
         {
             var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
             var __workflow_post = WorkflowExpression.Compile(post, nameof(post), required: true);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         public bool Geo { get; set; }
     }
 
-    public class CreatePostInput
+    public class PostInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -227,14 +227,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         public string Content { get; set; }
 
         [JsonProperty("status")]
-        public CreatePostInputStatusType? Status { get; set; }
+        public PostInputStatusType? Status { get; set; }
 
         [JsonProperty("tags")]
         public string Tags { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePostInputStatusType
+    public enum PostInputStatusType
     {
         [EnumMember(Value = "draft")]
         Draft,

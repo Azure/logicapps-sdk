@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> StoreReturnDocumentConfiguration(Expression<Func<StoreReturnDocumentConfigurationInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> StoreReturnDocumentConfiguration(Expression<Func<StoreReturnDocumentConfigurationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnDocument(Expression<Func<string>> documentId, Expression<Func<ReturnDocumentInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReturnDocument(Expression<Func<string>> documentId, Expression<Func<ReturnDocumentBodyInput>> body = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<ApiDocumentApiListResult, ApiConnectionActionConfiguration> ListAllDocuments(Expression<Func<ListAllDocumentsInput>> body = null)
+        public IBodyWorkflowAction<ApiDocumentApiListResult, ApiConnectionActionConfiguration> ListAllDocuments(Expression<Func<ListAllDocumentsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiDocumentApiListResult, ApiConnectionActionConfiguration>(() =>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<RedQueStatus, ApiConnectionActionConfiguration> UpdateDocuments(Expression<Func<string>> documentId, Expression<Func<UpdateDocumentsInput>> body = null)
+        public IBodyWorkflowAction<RedQueStatus, ApiConnectionActionConfiguration> UpdateDocuments(Expression<Func<string>> documentId, Expression<Func<UpdateDocumentsBodyInput>> body = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GrantDocumentAccess(Expression<Func<string>> documentId, Expression<Func<string>> userId, Expression<Func<GrantDocumentAccessInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GrantDocumentAccess(Expression<Func<string>> documentId, Expression<Func<string>> userId, Expression<Func<GrantDocumentAccessBodyInput>> body = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<StringApiValue, ApiConnectionActionConfiguration> CreateEnum(Expression<Func<CreateEnumInput>> body = null)
+        public IBodyWorkflowAction<StringApiValue, ApiConnectionActionConfiguration> CreateEnum(Expression<Func<CreateEnumBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<StringApiValue, ApiConnectionActionConfiguration>(() =>
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnum(Expression<Func<string>> id, Expression<Func<UpdateEnumInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateEnum(Expression<Func<string>> id, Expression<Func<CreateEnumBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContainerData(Expression<Func<string>> folderId, Expression<Func<UpdateContainerDataInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateContainerData(Expression<Func<string>> folderId, Expression<Func<UpdateContainerDataBodyInput>> body = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IBodyWorkflowAction<ApiUserApiListResult, ApiConnectionActionConfiguration> ListOfUsers(Expression<Func<ListOfUsersInput>> body = null)
+        public IBodyWorkflowAction<ApiUserApiListResult, ApiConnectionActionConfiguration> ListOfUsers(Expression<Func<ListOfUsersBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ApiUserApiListResult, ApiConnectionActionConfiguration>(() =>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ForceUserPasswordChange(Expression<Func<string>> userId, Expression<Func<ForceUserPasswordChangeInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ForceUserPasswordChange(Expression<Func<string>> userId, Expression<Func<ForceUserPasswordChangeBodyInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> userId, Expression<Func<UpdateUserInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> userId, Expression<Func<UpdateUserBodyInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserPermissions(Expression<Func<string>> userId, Expression<Func<AddUserPermissionsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserPermissions(Expression<Func<string>> userId, Expression<Func<AddUserPermissionsBodyInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redquesmartinvoiceca")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUserPermissions(Expression<Func<string>> userId, Expression<Func<RemoveUserPermissionsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RemoveUserPermissions(Expression<Func<string>> userId, Expression<Func<AddUserPermissionsBodyInput>> body = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     {
     }
 
-    public class StoreReturnDocumentConfigurationInput
+    public class StoreReturnDocumentConfigurationBodyInput
     {
         [JsonProperty("template")]
         public string Template { get; set; }
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Subject { get; set; }
     }
 
-    public class ReturnDocumentInput
+    public class ReturnDocumentBodyInput
     {
         [JsonProperty("additionalDocuments")]
         public string[] AdditionalDocuments { get; set; }
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public ApiUser Owner { get; set; }
 
         [JsonProperty("state")]
-        public DocumentState State { get; set; }
+        public GetDocumentDocumentStateResponse State { get; set; }
 
         [JsonProperty("error")]
         public string Error { get; set; }
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string ContentType { get; set; }
 
         [JsonProperty("source")]
-        public DocumentSource Source { get; set; }
+        public GetDocumentDocumentSourceResponse Source { get; set; }
 
         [JsonProperty("sourceInfo")]
         public string SourceInfo { get; set; }
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public int Version { get; set; }
 
         [JsonProperty("approvalState")]
-        public ApprovalState ApprovalState { get; set; }
+        public GetDocumentApprovalStateResponse ApprovalState { get; set; }
 
         [JsonProperty("currentApproverId")]
         public string CurrentApproverId { get; set; }
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentState
+    public enum GetDocumentDocumentStateResponse
     {
         Uploading,
         Uploaded,
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentSource
+    public enum GetDocumentDocumentSourceResponse
     {
         WebApp,
         Mail,
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ApprovalState
+    public enum GetDocumentApprovalStateResponse
     {
         UNAPPROVED,
         PREAPPROVED,
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string ApprovalStepTime { get; set; }
 
         [JsonProperty("approvalState")]
-        public ApprovalState ApprovalState { get; set; }
+        public GetDocumentApprovalStateResponse ApprovalState { get; set; }
 
         [JsonProperty("delegatedTo")]
         public ApiUser DelegatedTo { get; set; }
@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Note { get; set; }
     }
 
-    public class ListAllDocumentsInput
+    public class ListAllDocumentsBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -996,13 +996,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     public class DocumentStateApiFilterMultipleChoice
     {
         [JsonProperty("values")]
-        public DocumentState[] Values { get; set; }
+        public ListAllDocumentsDocumentState[] Values { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ListAllDocumentsDocumentState
+    {
+        Uploading,
+        Uploaded,
+        PreProcessed,
+        Extracting,
+        Extracted,
+        Validated,
+        Exported,
+        Failed,
+        UnsupportedType,
+        NoLicense
     }
 
     public class ApprovalStateApiFilterMultipleChoice
     {
         [JsonProperty("values")]
-        public ApprovalState[] Values { get; set; }
+        public ListAllDocumentsApprovalState[] Values { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ListAllDocumentsApprovalState
+    {
+        UNAPPROVED,
+        PREAPPROVED,
+        PREREJECTED,
+        DELEGATED,
+        ABANDONED,
+        APPROVED,
+        REJECTED
     }
 
     public class StringApiFilterNotEqual
@@ -1020,7 +1047,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     public class DocumentSourceApiFilterMultipleChoice
     {
         [JsonProperty("values")]
-        public DocumentSource[] Values { get; set; }
+        public ListAllDocumentsDocumentSource[] Values { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ListAllDocumentsDocumentSource
+    {
+        WebApp,
+        Mail,
+        API,
+        Plugin
     }
 
     public class StringApiFilterMultipleChoice
@@ -1092,7 +1128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Message { get; set; }
     }
 
-    public class UpdateDocumentsInput
+    public class UpdateDocumentsBodyInput
     {
         [JsonProperty("documentId")]
         public string DocumentId { get; set; }
@@ -1155,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     public class DocumentSourceApiValueUpdate
     {
         [JsonProperty("value")]
-        public DocumentSource? Value { get; set; }
+        public ListAllDocumentsDocumentSource? Value { get; set; }
     }
 
     public class BooleanApiValueUpdate
@@ -1219,7 +1255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string UserId { get; set; }
 
         [JsonProperty("state")]
-        public ApprovalState? State { get; set; }
+        public ListAllDocumentsApprovalState? State { get; set; }
     }
 
     public class StringApiListValueUpdate
@@ -1231,7 +1267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public ApiListValueOperation? Operation { get; set; }
     }
 
-    public class GrantDocumentAccessInput
+    public class GrantDocumentAccessBodyInput
     {
         [JsonProperty("documentId")]
         public string DocumentId { get; set; }
@@ -1270,22 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Value { get; set; }
     }
 
-    public class CreateEnumInput
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("values")]
-        public JToken Values { get; set; }
-
-        [JsonProperty("isEditable")]
-        public bool? IsEditable { get; set; }
-    }
-
-    public class UpdateEnumInput
+    public class CreateEnumBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1324,7 +1345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public ApiDocument[] Members { get; set; }
     }
 
-    public class UpdateContainerDataInput
+    public class UpdateContainerDataBodyInput
     {
         [JsonProperty("folderId")]
         public string FolderId { get; set; }
@@ -1605,7 +1626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public int Offset { get; set; }
     }
 
-    public class ListOfUsersInput
+    public class ListOfUsersBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -1649,7 +1670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         Email
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -1664,7 +1685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Email { get; set; }
     }
 
-    public class ForceUserPasswordChangeInput
+    public class ForceUserPasswordChangeBodyInput
     {
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1676,7 +1697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Activationkey { get; set; }
     }
 
-    public class UpdateUserInput
+    public class UpdateUserBodyInput
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -1685,13 +1706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string LastName { get; set; }
     }
 
-    public class AddUserPermissionsInput
-    {
-        [JsonProperty("permissions")]
-        public string[] Permissions { get; set; }
-    }
-
-    public class RemoveUserPermissionsInput
+    public class AddUserPermissionsBodyInput
     {
         [JsonProperty("permissions")]
         public string[] Permissions { get; set; }

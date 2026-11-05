@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> BookATimeSlot(Expression<Func<string>> id, Expression<Func<BookATimeSlotInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> BookATimeSlot(Expression<Func<string>> id, Expression<Func<BodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         Phone
     }
 
-    public class BookATimeSlotInput
+    public class BodyInput
     {
         [JsonProperty("start_time", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
@@ -86,16 +86,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         public string GuestTimeZone { get; set; }
 
         [JsonProperty("booking_form", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BookATimeSlotInputBookingFormType BookingForm { get; set; }
+        public BodyInputBookingFormType BookingForm { get; set; }
 
         [JsonProperty("location_type")]
-        public BookATimeSlotInputLocationTypeType? LocationType { get; set; }
+        public BodyInputLocationTypeType? LocationType { get; set; }
 
         [JsonProperty("location_value")]
         public string LocationValue { get; set; }
     }
 
-    public class BookATimeSlotInputBookingFormType
+    public class BodyInputBookingFormType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BookATimeSlotInputLocationTypeType
+    public enum BodyInputLocationTypeType
     {
         [EnumMember(Value = "physical")]
         Physical,

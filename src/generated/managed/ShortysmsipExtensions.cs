@@ -40,16 +40,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shortysmsip")]
-        public IBodyWorkflowAction<ContactsPostResponse, ApiConnectionActionConfiguration> Contacts(Expression<Func<ContactsPostInput>> body)
+        public IBodyWorkflowAction<ContactsResponse, ApiConnectionActionConfiguration> Contacts(Expression<Func<ContactsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<ContactsPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ContactsPostResponse>(callPayload);
+                return new ApiConnectionAction<ContactsResponse>(callPayload);
             });
         }
 
@@ -69,16 +69,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shortysmsip")]
-        public IBodyWorkflowAction<ContactListsPostResponse, ApiConnectionActionConfiguration> ContactLists(Expression<Func<ContactListsPostInput>> body)
+        public IBodyWorkflowAction<ContactListsResponse, ApiConnectionActionConfiguration> ContactLists(Expression<Func<ContactListsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<ContactListsPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ContactListsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/contact-lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ContactListsPostResponse>(callPayload);
+                return new ApiConnectionAction<ContactListsResponse>(callPayload);
             });
         }
 
@@ -98,16 +98,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shortysmsip")]
-        public IBodyWorkflowAction<TriggersPostResponse, ApiConnectionActionConfiguration> Triggers(Expression<Func<TriggersPostInput>> body)
+        public IBodyWorkflowAction<TriggersResponse, ApiConnectionActionConfiguration> Triggers(Expression<Func<TriggersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<TriggersPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TriggersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/contact-list-triggers";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TriggersPostResponse>(callPayload);
+                return new ApiConnectionAction<TriggersResponse>(callPayload);
             });
         }
 
@@ -272,13 +272,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         public bool Active { get; set; }
     }
 
-    public class ContactsPostResponse
+    public class ContactsResponse
     {
         [JsonProperty("contact")]
-        public ContactsPostResponseContactType Contact { get; set; }
+        public ContactsResponseContactType Contact { get; set; }
     }
 
-    public class ContactsPostResponseContactType
+    public class ContactsResponseContactType
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         public string PhoneFormatted { get; set; }
     }
 
-    public class ContactsPostInput
+    public class ContactsBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -401,13 +401,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         public bool Active { get; set; }
     }
 
-    public class ContactListsPostResponse
+    public class ContactListsResponse
     {
         [JsonProperty("contactList")]
-        public ContactListsPostResponseContactListType ContactList { get; set; }
+        public ContactListsResponseContactListType ContactList { get; set; }
     }
 
-    public class ContactListsPostResponseContactListType
+    public class ContactListsResponseContactListType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         public int Id { get; set; }
     }
 
-    public class ContactListsPostInput
+    public class ContactListsBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -524,13 +524,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         public bool Active { get; set; }
     }
 
-    public class TriggersPostResponse
+    public class TriggersResponse
     {
         [JsonProperty("contactListTrigger")]
-        public TriggersPostResponseContactListTriggerType ContactListTrigger { get; set; }
+        public TriggersResponseContactListTriggerType ContactListTrigger { get; set; }
     }
 
-    public class TriggersPostResponseContactListTriggerType
+    public class TriggersResponseContactListTriggerType
     {
         [JsonProperty("active")]
         public bool Active { get; set; }
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         public int Id { get; set; }
     }
 
-    public class TriggersPostInput
+    public class TriggersBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -563,10 +563,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip
         public int ContactListId { get; set; }
 
         [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggersPostInputActiveType? Active { get; set; } = TriggersPostInputActiveType._0;
+        public BodyInputActiveType? Active { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Shortysmsip.BodyInputActiveType._0;
     }
 
-    public enum TriggersPostInputActiveType
+    public enum BodyInputActiveType
     {
         _0 = 0,
         _1 = 1

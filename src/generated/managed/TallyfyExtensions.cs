@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
     public class TallyfyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<GetUserTasksResponse, ApiConnectionActionConfiguration> GetUserTasks(Expression<Func<string>> org, Expression<Func<int>> userId, Expression<Func<string>> q = null, Expression<Func<statusInput>> status = null, Expression<Func<sortInput>> sort = null, Expression<Func<string>> tag = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<GetUserTasksResponse, ApiConnectionActionConfiguration> GetUserTasks(Expression<Func<string>> org, Expression<Func<int>> userId, Expression<Func<string>> q = null, Expression<Func<StatusInput>> status = null, Expression<Func<SortInput>> sort = null, Expression<Func<string>> tag = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<InviteUserToOrganizationResponse, ApiConnectionActionConfiguration> InviteUserToOrganization(Expression<Func<string>> org, Expression<Func<InviteUserToOrganizationInput>> body)
+        public IBodyWorkflowAction<InviteUserToOrganizationResponse, ApiConnectionActionConfiguration> InviteUserToOrganization(Expression<Func<string>> org, Expression<Func<InviteUserToOrganizationBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> org, Expression<Func<CreateRunInput>> body)
+        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> org, Expression<Func<CreateRunBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedOneOffTask(Expression<Func<string>> org, Expression<Func<CompletedOneOffTaskInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedOneOffTask(Expression<Func<string>> org, Expression<Func<CompletedOneOffTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedProcessTask(Expression<Func<string>> org, Expression<Func<string>> run, Expression<Func<CompletedProcessTaskInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedProcessTask(Expression<Func<string>> org, Expression<Func<string>> run, Expression<Func<CompletedOneOffTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_run = WorkflowExpression.Compile(run, nameof(run), required: true);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CommentTask(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<CommentTaskInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CommentTask(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<CommentTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> org, Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> org, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditTaskDeadline(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<EditTaskDeadlineInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditTaskDeadline(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<EditTaskDeadlineBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditStepType(Expression<Func<string>> org, Expression<Func<string>> blueprint, Expression<Func<string>> step, Expression<Func<EditStepTypeInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditStepType(Expression<Func<string>> org, Expression<Func<string>> blueprint, Expression<Func<string>> step, Expression<Func<EditStepTypeBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_blueprint = WorkflowExpression.Compile(blueprint, nameof(blueprint), required: true);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "hasproblem")]
         Hasproblem,
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "deadline")]
         Deadline,
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Iso2 { get; set; }
     }
 
-    public class InviteUserToOrganizationInput
+    public class InviteUserToOrganizationBodyInput
     {
         [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
@@ -471,11 +471,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Message { get; set; }
 
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InviteUserToOrganizationInputRoleType Role { get; set; }
+        public BodyInputRoleType Role { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteUserToOrganizationInputRoleType
+    public enum BodyInputRoleType
     {
         [EnumMember(Value = "standard")]
         Standard,
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Value { get; set; }
     }
 
-    public class CreateRunInput
+    public class CreateRunBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Summary { get; set; }
     }
 
-    public class CompletedOneOffTaskInput
+    public class CompletedOneOffTaskBodyInput
     {
         [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskId { get; set; }
@@ -615,26 +615,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public bool? IsApproved { get; set; }
     }
 
-    public class CompletedProcessTaskInput
-    {
-        [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TaskId { get; set; }
-
-        [JsonProperty("is_approved")]
-        public bool? IsApproved { get; set; }
-    }
-
-    public class CommentTaskInput
+    public class CommentTaskBodyInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
 
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommentTaskInputLabelType Label { get; set; } = CommentTaskInputLabelType.Comment;
+        public BodyInputLabelType Label { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy.BodyInputLabelType.Comment;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CommentTaskInputLabelType
+    public enum BodyInputLabelType
     {
         [EnumMember(Value = "comment")]
         Comment,
@@ -671,13 +662,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public int OwnerId { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("owners")]
-        public CreateTaskInputOwnersType Owners { get; set; }
+        public BodyInputOwnersType Owners { get; set; }
 
         [JsonProperty("task_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskInputTaskTypeType TaskType { get; set; } = CreateTaskInputTaskTypeType.TaskObject;
+        public BodyInputTaskTypeType TaskType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy.BodyInputTaskTypeType.TaskObject;
 
         [JsonProperty("deadline", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Deadline { get; set; } = "addDays(utcNow(), 1, 'yyyy-MM-dd HH:mm:ss')";
@@ -689,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Name { get; set; }
     }
 
-    public class CreateTaskInputOwnersType
+    public class BodyInputOwnersType
     {
         [JsonProperty("users")]
         public int[] Users { get; set; }
@@ -699,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskInputTaskTypeType
+    public enum BodyInputTaskTypeType
     {
         [EnumMember(Value = "task")]
         TaskObject,
@@ -711,19 +702,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         Expiring
     }
 
-    public class EditTaskDeadlineInput
+    public class EditTaskDeadlineBodyInput
     {
         public string Deadline { get; set; }
     }
 
-    public class EditStepTypeInput
+    public class EditStepTypeBodyInput
     {
         [JsonProperty("stepType")]
-        public EditStepTypeInputStepTypeType? StepType { get; set; }
+        public BodyInputStepTypeType? StepType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditStepTypeInputStepTypeType
+    public enum BodyInputStepTypeType
     {
         [EnumMember(Value = "all")]
         All,

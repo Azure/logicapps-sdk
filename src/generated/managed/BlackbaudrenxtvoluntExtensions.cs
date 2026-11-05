@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerEmergencyContact(Expression<Func<string>> constituentId, Expression<Func<EditVolunteerEmergencyContactInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerEmergencyContact(Expression<Func<string>> constituentId, Expression<Func<EditVolunteerEmergencyContactBodyInput>> body)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerInterest, ApiConnectionActionConfiguration> CreateVolunteerInterest(Expression<Func<CreateVolunteerInterestInput>> body)
+        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerInterest, ApiConnectionActionConfiguration> CreateVolunteerInterest(Expression<Func<CreateVolunteerInterestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VolunteerApiCreatedVolunteerInterest, ApiConnectionActionConfiguration>(() =>
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerSkill, ApiConnectionActionConfiguration> CreateVolunteerSkill(Expression<Func<CreateVolunteerSkillInput>> body)
+        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerSkill, ApiConnectionActionConfiguration> CreateVolunteerSkill(Expression<Func<CreateVolunteerSkillBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VolunteerApiCreatedVolunteerSkill, ApiConnectionActionConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerSkill(Expression<Func<string>> volunteerSkillId, Expression<Func<EditVolunteerSkillInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerSkill(Expression<Func<string>> volunteerSkillId, Expression<Func<EditVolunteerSkillBodyInput>> body)
         {
             var __workflow_volunteerSkillId = WorkflowExpression.Compile(volunteerSkillId, nameof(volunteerSkillId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerType, ApiConnectionActionConfiguration> CreateVolunteerType(Expression<Func<CreateVolunteerTypeInput>> body)
+        public IBodyWorkflowAction<VolunteerApiCreatedVolunteerType, ApiConnectionActionConfiguration> CreateVolunteerType(Expression<Func<CreateVolunteerTypeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VolunteerApiCreatedVolunteerType, ApiConnectionActionConfiguration>(() =>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtvolunt")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerType(Expression<Func<string>> volunteerTypeId, Expression<Func<EditVolunteerTypeInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditVolunteerType(Expression<Func<string>> volunteerTypeId, Expression<Func<EditVolunteerTypeBodyInput>> body)
         {
             var __workflow_volunteerTypeId = WorkflowExpression.Compile(volunteerTypeId, nameof(volunteerTypeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public string Phone { get; set; }
     }
 
-    public class EditVolunteerEmergencyContactInput
+    public class EditVolunteerEmergencyContactBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public int Id { get; set; }
     }
 
-    public class CreateVolunteerInterestInput
+    public class CreateVolunteerInterestBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public int Id { get; set; }
     }
 
-    public class CreateVolunteerSkillInput
+    public class CreateVolunteerSkillBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
@@ -713,13 +713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public string LicenseType { get; set; }
 
         [JsonProperty("expiration_date")]
-        public CreateVolunteerSkillInputExpirationDateType ExpirationDate { get; set; }
+        public BodyInputExpirationDateType ExpirationDate { get; set; }
 
         [JsonProperty("comments")]
         public string Comments { get; set; }
     }
 
-    public class CreateVolunteerSkillInputExpirationDateType
+    public class BodyInputExpirationDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public int? Year { get; set; }
     }
 
-    public class EditVolunteerSkillInput
+    public class EditVolunteerSkillBodyInput
     {
         [JsonProperty("skill_description")]
         public string Description { get; set; }
@@ -743,22 +743,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public string LicenseType { get; set; }
 
         [JsonProperty("expiration_date")]
-        public EditVolunteerSkillInputExpirationDateType ExpirationDate { get; set; }
+        public BodyInputExpirationDateType ExpirationDate { get; set; }
 
         [JsonProperty("comments")]
         public string Comments { get; set; }
-    }
-
-    public class EditVolunteerSkillInputExpirationDateType
-    {
-        [JsonProperty("d")]
-        public int? Day { get; set; }
-
-        [JsonProperty("m")]
-        public int? Month { get; set; }
-
-        [JsonProperty("y")]
-        public int? Year { get; set; }
     }
 
     public class VolunteerApiCreatedVolunteerType
@@ -767,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public int Id { get; set; }
     }
 
-    public class CreateVolunteerTypeInput
+    public class CreateVolunteerTypeBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
@@ -779,16 +767,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public string Status { get; set; }
 
         [JsonProperty("date_started")]
-        public CreateVolunteerTypeInputDateStartedType DateStarted { get; set; }
+        public BodyInputDateStartedType DateStarted { get; set; }
 
         [JsonProperty("date_finished")]
-        public CreateVolunteerTypeInputDateFinishedType DateFinished { get; set; }
+        public BodyInputDateFinishedType DateFinished { get; set; }
 
         [JsonProperty("reason_finished")]
         public string ReasonFinished { get; set; }
     }
 
-    public class CreateVolunteerTypeInputDateStartedType
+    public class BodyInputDateStartedType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -800,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public int? Year { get; set; }
     }
 
-    public class CreateVolunteerTypeInputDateFinishedType
+    public class BodyInputDateFinishedType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -812,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public int? Year { get; set; }
     }
 
-    public class EditVolunteerTypeInput
+    public class EditVolunteerTypeBodyInput
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -821,37 +809,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtvolunt
         public string Status { get; set; }
 
         [JsonProperty("date_started")]
-        public EditVolunteerTypeInputDateStartedType DateStarted { get; set; }
+        public BodyInputDateStartedType DateStarted { get; set; }
 
         [JsonProperty("date_finished")]
-        public EditVolunteerTypeInputDateFinishedType DateFinished { get; set; }
+        public BodyInputDateFinishedType DateFinished { get; set; }
 
         [JsonProperty("reason_finished")]
         public string ReasonFinished { get; set; }
-    }
-
-    public class EditVolunteerTypeInputDateStartedType
-    {
-        [JsonProperty("d")]
-        public int? Day { get; set; }
-
-        [JsonProperty("m")]
-        public int? Month { get; set; }
-
-        [JsonProperty("y")]
-        public int? Year { get; set; }
-    }
-
-    public class EditVolunteerTypeInputDateFinishedType
-    {
-        [JsonProperty("d")]
-        public int? Day { get; set; }
-
-        [JsonProperty("m")]
-        public int? Month { get; set; }
-
-        [JsonProperty("y")]
-        public int? Year { get; set; }
     }
 }
 

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<CreateWorkflowRunResponse, ApiConnectionActionConfiguration> CreateWorkflowRun(Expression<Func<CreateWorkflowRunInput>> body)
+        public IBodyWorkflowAction<CreateWorkflowRunResponse, ApiConnectionActionConfiguration> CreateWorkflowRun(Expression<Func<CreateWorkflowRunBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateWorkflowRunResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<WorkflowRunResponse, ApiConnectionActionConfiguration> UpdateWorkflowRun(Expression<Func<string>> workflowRunId, Expression<Func<UpdateWorkflowRunInput>> body)
+        public IBodyWorkflowAction<WorkflowRunResponse, ApiConnectionActionConfiguration> UpdateWorkflowRun(Expression<Func<string>> workflowRunId, Expression<Func<UpdateWorkflowRunBodyInput>> body)
         {
             var __workflow_workflowRunId = WorkflowExpression.Compile(workflowRunId, nameof(workflowRunId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<FindWorkflowRunsResponse, ApiConnectionActionConfiguration> FindWorkflowRuns(Expression<Func<string>> workflowId, Expression<Func<FindWorkflowRunsInput>> body)
+        public IBodyWorkflowAction<FindWorkflowRunsResponse, ApiConnectionActionConfiguration> FindWorkflowRuns(Expression<Func<string>> workflowId, Expression<Func<FindWorkflowRunsBodyInput>> body)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
     public class ProcessstreetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTaskStateChangedTrigger(Expression<Func<CreateTaskStateChangedTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTaskStateChangedTrigger(Expression<Func<CreateTaskStateChangedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWorkflowRunCompletedTrigger(Expression<Func<CreateWorkflowRunCompletedTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWorkflowRunCompletedTrigger(Expression<Func<CreateWorkflowRunCompletedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWorkflowRunCreatedTrigger(Expression<Func<CreateWorkflowRunCreatedTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWorkflowRunCreatedTrigger(Expression<Func<CreateWorkflowRunCompletedTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         Deleted
     }
 
-    public class CreateWorkflowRunInput
+    public class CreateWorkflowRunBodyInput
     {
         [JsonProperty("dueDate")]
         public string DueDate { get; set; }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string WorkflowId { get; set; }
     }
 
-    public class UpdateWorkflowRunInput
+    public class UpdateWorkflowRunBodyInput
     {
         [JsonProperty("dueDate")]
         public string DueDate { get; set; }
@@ -257,11 +257,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public bool Shared { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateWorkflowRunInputStatusType Status { get; set; }
+        public BodyInputStatusType Status { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateWorkflowRunInputStatusType
+    public enum BodyInputStatusType
     {
         Active,
         Completed,
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public WorkflowRunResponse[] WorkflowRuns { get; set; }
     }
 
-    public class FindWorkflowRunsInput
+    public class FindWorkflowRunsBodyInput
     {
         [JsonProperty("assignees")]
         public string[] Assignees { get; set; }
@@ -353,13 +353,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string Username { get; set; }
     }
 
-    public class CreateTaskStateChangedTriggerInput
+    public class CreateTaskStateChangedTriggerBodyInput
     {
         [JsonProperty("taskId")]
         public string TaskId { get; set; }
 
         [JsonProperty("triggerType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskStateChangedTriggerInputTaskStateType TaskState { get; set; }
+        public BodyInputTaskStateType TaskState { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskStateChangedTriggerInputTaskStateType
+    public enum BodyInputTaskStateType
     {
         [EnumMember(Value = "Task Checked")]
         TaskChecked,
@@ -381,16 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         TaskReady
     }
 
-    public class CreateWorkflowRunCompletedTriggerInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("workflowId")]
-        public string WorkflowId { get; set; }
-    }
-
-    public class CreateWorkflowRunCreatedTriggerInput
+    public class CreateWorkflowRunCompletedTriggerBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

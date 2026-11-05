@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     public class DeepgramActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<TranscribePostResponse, ApiConnectionActionConfiguration> Transcribe(Expression<Func<modelInput>> model = null, Expression<Func<tierInput>> tier = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<redactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null, Expression<Func<TranscribePostInput>> body = null)
+        public IBodyWorkflowAction<TranscribeResponse, ApiConnectionActionConfiguration> Transcribe(Expression<Func<ModelInput>> model = null, Expression<Func<TierInput>> tier = null, Expression<Func<VersionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<RedactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null, Expression<Func<TranscribeBodyInput>> body = null)
         {
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
             var __workflow_tier = WorkflowExpression.Compile(tier, nameof(tier), required: false);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
             var __workflow_measurements = WorkflowExpression.Compile(measurements, nameof(measurements), required: false);
             var __workflow_dictation = WorkflowExpression.Compile(dictation, nameof(dictation), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TranscribePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TranscribeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/listen";
                 var apiCallHttpMethod = "post";
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
                     callPayload.Queries["dictation"] = ExpressionConverter.Convert(__workflow_dictation);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TranscribePostResponse>(callPayload);
+                return new ApiConnectionAction<TranscribeResponse>(callPayload);
             });
         }
 
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<ProjectPatchResponse, ApiConnectionActionConfiguration> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<ProjectPatchInput>> body = null)
+        public IBodyWorkflowAction<ProjectPatchResponse, ApiConnectionActionConfiguration> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<ProjectPatchBodyInput>> body = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<RequestsGetResponse, ApiConnectionActionConfiguration> RequestsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> limit = null, Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<RequestsGetResponse, ApiConnectionActionConfiguration> RequestsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> limit = null, Expression<Func<StatusInput>> status = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<UsageGetResponse, ApiConnectionActionConfiguration> UsageGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> accessor = null, Expression<Func<string>> tag = null, Expression<Func<methodInput>> method = null, Expression<Func<string>> model = null, Expression<Func<bool>> multichannel = null, Expression<Func<bool>> interimResults = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> utterances = null, Expression<Func<bool>> replace = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<bool>> keywords = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> diarize = null, Expression<Func<bool>> search = null, Expression<Func<bool>> redact = null, Expression<Func<bool>> alternatives = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> smartFormat = null)
+        public IBodyWorkflowAction<UsageGetResponse, ApiConnectionActionConfiguration> UsageGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> accessor = null, Expression<Func<string>> tag = null, Expression<Func<MethodInput>> method = null, Expression<Func<string>> model = null, Expression<Func<bool>> multichannel = null, Expression<Func<bool>> interimResults = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> utterances = null, Expression<Func<bool>> replace = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<bool>> keywords = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> diarize = null, Expression<Func<bool>> search = null, Expression<Func<bool>> redact = null, Expression<Func<bool>> alternatives = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> smartFormat = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
@@ -304,16 +304,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     {
     }
 
-    public class TranscribePostResponse
+    public class TranscribeResponse
     {
         [JsonProperty("metadata")]
-        public TranscribePostResponseMetadataType Metadata { get; set; }
+        public TranscribeResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("results")]
-        public TranscribePostResponseResultsType Results { get; set; }
+        public TranscribeResponseResultsType Results { get; set; }
     }
 
-    public class TranscribePostResponseMetadataType
+    public class TranscribeResponseMetadataType
     {
         [JsonProperty("transaction_key")]
         public string TransactionKey { get; set; }
@@ -340,19 +340,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public JToken ModelInfo { get; set; }
     }
 
-    public class TranscribePostResponseResultsType
+    public class TranscribeResponseResultsType
     {
         [JsonProperty("channels")]
-        public TranscribePostResponseResultsTypeChannelsTypeItem[] Channels { get; set; }
+        public TranscribeResponseResultsTypeChannelsTypeItem[] Channels { get; set; }
     }
 
-    public class TranscribePostResponseResultsTypeChannelsTypeItem
+    public class TranscribeResponseResultsTypeChannelsTypeItem
     {
         [JsonProperty("alternatives")]
-        public TranscribePostResponseResultsTypeChannelsTypeItemAlternativesTypeItem[] Alternatives { get; set; }
+        public TranscribeResponseResultsTypeChannelsTypeItemAlternativesTypeItem[] Alternatives { get; set; }
     }
 
-    public class TranscribePostResponseResultsTypeChannelsTypeItemAlternativesTypeItem
+    public class TranscribeResponseResultsTypeChannelsTypeItemAlternativesTypeItem
     {
         [JsonProperty("transcript")]
         public string Transcript { get; set; }
@@ -361,10 +361,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public double Confidence { get; set; }
 
         [JsonProperty("words")]
-        public TranscribePostResponseResultsTypeChannelsTypeItemAlternativesTypeItemWordsTypeItem[] Words { get; set; }
+        public TranscribeResponseResultsTypeChannelsTypeItemAlternativesTypeItemWordsTypeItem[] Words { get; set; }
     }
 
-    public class TranscribePostResponseResultsTypeChannelsTypeItemAlternativesTypeItemWordsTypeItem
+    public class TranscribeResponseResultsTypeChannelsTypeItemAlternativesTypeItemWordsTypeItem
     {
         [JsonProperty("word")]
         public string Word { get; set; }
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modelInput
+    public enum ModelInput
     {
         [EnumMember(Value = "general")]
         General,
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum tierInput
+    public enum TierInput
     {
         [EnumMember(Value = "base")]
         Base,
@@ -410,14 +410,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum versionInput
+    public enum VersionInput
     {
         [EnumMember(Value = "latest")]
         Latest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum redactInput
+    public enum RedactInput
     {
         [EnumMember(Value = "pci")]
         Pci,
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         Ssn
     }
 
-    public class TranscribePostInput
+    public class TranscribeBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public string Message { get; set; }
     }
 
-    public class ProjectPatchInput
+    public class ProjectPatchBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "succeeded")]
         Succeeded,
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         [EnumMember(Value = "sync")]
         Sync,

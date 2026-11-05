@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IBodyWorkflowAction<File, ApiConnectionActionConfiguration> GetDocumentContent(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetDocumentFileResponse, ApiConnectionActionConfiguration> GetDocumentContent(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<File, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetDocumentFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/document/get-content/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<File>(callPayload);
+                return new ApiConnectionAction<GetDocumentFileResponse>(callPayload);
             });
         }
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<UpdateDocumentContentInput>> fileDto)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<FileDtoInput>> fileDto)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_fileDto = WorkflowExpression.Compile(fileDto, nameof(fileDto), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationSet, Expression<Func<CreateDocumentV2Input>> documentDto)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> configurationSet, Expression<Func<CreateDocumentDocumentDtoInput>> documentDto)
         {
             var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
             var __workflow_documentDto = WorkflowExpression.Compile(documentDto, nameof(documentDto), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<UpdateDocumentV2Input>> documentDto)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<UpdateDocumentDocumentDtoInput>> documentDto)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<UpdateDocumentPropertiesV2Input>> metadataDto)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<MetadataDtoInput>> metadataDto)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
@@ -142,13 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         public string ParentId { get; set; }
 
         [JsonProperty("file")]
-        public File File { get; set; }
+        public GetDocumentFileResponse File { get; set; }
 
         [JsonProperty("metadata")]
         public DocumentMetadataRead Metadata { get; set; }
     }
 
-    public class File
+    public class GetDocumentFileResponse
     {
         [JsonProperty("name")]
         public string FileName { get; set; }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         public JToken Fields { get; set; }
     }
 
-    public class UpdateDocumentContentInput
+    public class FileDtoInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -184,19 +184,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
-    public class CreateDocumentV2Input
+    public class CreateDocumentDocumentDtoInput
     {
         [JsonProperty("parentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentId { get; set; }
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public File2 File { get; set; }
+        public CreateDocumentFile File { get; set; }
 
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public DocumentMetadataWriteV2 Metadata { get; set; }
     }
 
-    public class File2
+    public class CreateDocumentFile
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -217,16 +217,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         public JToken Fields { get; set; }
     }
 
-    public class UpdateDocumentV2Input
+    public class UpdateDocumentDocumentDtoInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public File2 File { get; set; }
+        public CreateDocumentFile File { get; set; }
 
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public DocumentMetadataWriteV2 Metadata { get; set; }
     }
 
-    public class UpdateDocumentPropertiesV2Input
+    public class MetadataDtoInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }

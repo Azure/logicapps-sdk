@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateClients(Expression<Func<CreateClientsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateClients(Expression<Func<CreateClientsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAClient(Expression<Func<int>> clientId, Expression<Func<UpdateAClientInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAClient(Expression<Func<int>> clientId, Expression<Func<CreateClientsBodyInput>> body)
         {
             var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateClientGroup(Expression<Func<CreateClientGroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateClientGroup(Expression<Func<CreateClientGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateClientGroup(Expression<Func<string>> groupCode, Expression<Func<UpdateClientGroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateClientGroup(Expression<Func<string>> groupCode, Expression<Func<CreateClientGroupBodyInput>> body)
         {
             var __workflow_groupCode = WorkflowExpression.Compile(groupCode, nameof(groupCode), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAContact(Expression<Func<int>> contactId, Expression<Func<UpdateAContactInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAContact(Expression<Func<int>> contactId, Expression<Func<UpdateAContactBodyInput>> body)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTimesheet(Expression<Func<CreateTimesheetInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTimesheet(Expression<Func<CreateTimesheetBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateJobs(Expression<Func<CreateJobsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateJobs(Expression<Func<CreateJobsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateJobStatuses(Expression<Func<UpdateJobStatusesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateJobStatuses(Expression<Func<UpdateJobStatusesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kc")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAJob(Expression<Func<int>> jobId, Expression<Func<UpdateAJobInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateAJob(Expression<Func<int>> jobId, Expression<Func<CreateJobsBodyInput>> body)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -544,10 +544,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string DateOfBirth { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo[] Email { get; set; }
+        public GetAClientEmailInfoResponse[] Email { get; set; }
 
         [JsonProperty("phone")]
-        public Phone[] Phone { get; set; }
+        public GetAClientPhoneResponse[] Phone { get; set; }
 
         [JsonProperty("division")]
         public Division Division { get; set; }
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public Contact[] Contacts { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public GetAClientAddressResponse[] Addresses { get; set; }
 
         [JsonProperty("acn")]
         public string Acn { get; set; }
@@ -613,10 +613,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public int Id { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public GetAClientCustomFieldResponse[] CustomFields { get; set; }
     }
 
-    public class EmailInfo
+    public class GetAClientEmailInfoResponse
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public bool FeeSynergy { get; set; }
     }
 
-    public class Phone
+    public class GetAClientPhoneResponse
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -685,13 +685,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string ContactType { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo[] Email { get; set; }
+        public GetAClientEmailInfoResponse[] Email { get; set; }
 
         [JsonProperty("phone")]
-        public Phone[] Phone { get; set; }
+        public GetAClientPhoneResponse[] Phone { get; set; }
     }
 
-    public class Address
+    public class GetAClientAddressResponse
     {
         [JsonProperty("addressType")]
         public string AddressType { get; set; }
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Name { get; set; }
     }
 
-    public class CustomField
+    public class GetAClientCustomFieldResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string PrevPageurl { get; set; }
     }
 
-    public class CreateClientsInput
+    public class CreateClientsBodyInput
     {
         [JsonProperty("entityType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntityType { get; set; }
@@ -838,10 +838,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Gender { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo2[] Email { get; set; }
+        public CreateClientsEmailInfo[] Email { get; set; }
 
         [JsonProperty("phone")]
-        public Phone2[] Phone { get; set; }
+        public CreateClientsPhone[] Phone { get; set; }
 
         [JsonProperty("linkedInProfileId")]
         public string LinkedInProfileId { get; set; }
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string FormationDate { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public CreateClientsAddress[] Addresses { get; set; }
 
         [JsonProperty("industry")]
         public string Industry { get; set; }
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public ContactModel[] ContactIds { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField2[] CustomFields { get; set; }
+        public CreateClientsCustomField[] CustomFields { get; set; }
 
         [JsonProperty("enumEntityTypes")]
         public EntityTypeNames? EnumEntityTypes { get; set; }
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public AddressType? EnumAddressTypes { get; set; }
     }
 
-    public class EmailInfo2
+    public class CreateClientsEmailInfo
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public bool? FeeSynergy { get; set; }
     }
 
-    public class Phone2
+    public class CreateClientsPhone
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -967,6 +967,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public bool? FeeSynergy { get; set; }
     }
 
+    public class CreateClientsAddress
+    {
+        [JsonProperty("addressType")]
+        public string AddressType { get; set; }
+
+        [JsonProperty("unit")]
+        public string Unit { get; set; }
+
+        [JsonProperty("careOf")]
+        public string CareOf { get; set; }
+
+        [JsonProperty("addressLine1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("addressLine2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("suburb")]
+        public string Suburb { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("postCode")]
+        public string PostCode { get; set; }
+    }
+
     public class ContactModel
     {
         [JsonProperty("contactId")]
@@ -976,7 +1006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string ContactType { get; set; }
     }
 
-    public class CustomField2
+    public class CreateClientsCustomField
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1103,10 +1133,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string DateOfBirth { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo[] Email { get; set; }
+        public GetAClientEmailInfoResponse[] Email { get; set; }
 
         [JsonProperty("phone")]
-        public Phone[] Phone { get; set; }
+        public GetAClientPhoneResponse[] Phone { get; set; }
 
         [JsonProperty("division")]
         public Division Division { get; set; }
@@ -1124,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public Contact[] Contacts { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public GetAClientAddressResponse[] Addresses { get; set; }
 
         [JsonProperty("acn")]
         public string Acn { get; set; }
@@ -1169,7 +1199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public int Id { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public GetAClientCustomFieldResponse[] CustomFields { get; set; }
 
         [JsonProperty("din")]
         public string Din { get; set; }
@@ -1190,175 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string BankAccountNumber { get; set; }
     }
 
-    public class UpdateAClientInput
-    {
-        [JsonProperty("entityType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EntityType { get; set; }
-
-        [JsonProperty("clientCode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ClientCode { get; set; }
-
-        [JsonProperty("salutation")]
-        public string Salutation { get; set; }
-
-        [JsonProperty("firstName")]
-        public string FirstName { get; set; }
-
-        [JsonProperty("middleName")]
-        public string MiddleName { get; set; }
-
-        [JsonProperty("lastName")]
-        public string LastName { get; set; }
-
-        [JsonProperty("trustName")]
-        public string TrustName { get; set; }
-
-        [JsonProperty("trustType")]
-        public string TrustType { get; set; }
-
-        [JsonProperty("companyName")]
-        public string CompanyName { get; set; }
-
-        [JsonProperty("tradingName")]
-        public string TradingName { get; set; }
-
-        [JsonProperty("partnershipName")]
-        public string PartnershipName { get; set; }
-
-        [JsonProperty("smsfName")]
-        public string SmsfName { get; set; }
-
-        [JsonProperty("softwareType")]
-        public string SoftwareType { get; set; }
-
-        [JsonProperty("softwareName")]
-        public string SoftwareName { get; set; }
-
-        [JsonProperty("partnerId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PartnerId { get; set; }
-
-        [JsonProperty("managerId")]
-        public string ManagerId { get; set; }
-
-        [JsonProperty("divisionId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int DivisionId { get; set; }
-
-        [JsonProperty("prospect")]
-        public bool? Prospect { get; set; }
-
-        [JsonProperty("preferredName")]
-        public string PreferredName { get; set; }
-
-        [JsonProperty("dateofbirth")]
-        public string Dateofbirth { get; set; }
-
-        [JsonProperty("placeOfBirth")]
-        public string PlaceOfBirth { get; set; }
-
-        [JsonProperty("gender")]
-        public string Gender { get; set; }
-
-        [JsonProperty("email")]
-        public EmailInfo2[] Email { get; set; }
-
-        [JsonProperty("phone")]
-        public Phone2[] Phone { get; set; }
-
-        [JsonProperty("linkedInProfileId")]
-        public string LinkedInProfileId { get; set; }
-
-        [JsonProperty("website")]
-        public string Website { get; set; }
-
-        [JsonProperty("annualReviewDate")]
-        public string AnnualReviewDate { get; set; }
-
-        [JsonProperty("formationDate")]
-        public string FormationDate { get; set; }
-
-        [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
-
-        [JsonProperty("industry")]
-        public string Industry { get; set; }
-
-        [JsonProperty("role")]
-        public string Role { get; set; }
-
-        [JsonProperty("salary")]
-        public string Salary { get; set; }
-
-        [JsonProperty("annualIncome")]
-        public string AnnualIncome { get; set; }
-
-        [JsonProperty("isTaxClient")]
-        public bool? IsTaxClient { get; set; }
-
-        [JsonProperty("isLodgeActivity")]
-        public bool? IsLodgeActivity { get; set; }
-
-        [JsonProperty("tfn")]
-        public int? Tfn { get; set; }
-
-        [JsonProperty("abn")]
-        public int? Abn { get; set; }
-
-        [JsonProperty("acn")]
-        public int? Acn { get; set; }
-
-        [JsonProperty("din")]
-        public int? Din { get; set; }
-
-        [JsonProperty("taxAgent")]
-        public string TaxAgent { get; set; }
-
-        [JsonProperty("gst")]
-        public bool? Gst { get; set; }
-
-        [JsonProperty("resident")]
-        public bool? Resident { get; set; }
-
-        [JsonProperty("bankName")]
-        public string BankName { get; set; }
-
-        [JsonProperty("bankAccountName")]
-        public string BankAccountName { get; set; }
-
-        [JsonProperty("bankBSB")]
-        public int? BankBSB { get; set; }
-
-        [JsonProperty("bankAccountNumber")]
-        public int? BankAccountNumber { get; set; }
-
-        [JsonProperty("contactIds")]
-        public ContactModel[] ContactIds { get; set; }
-
-        [JsonProperty("customFields")]
-        public CustomField2[] CustomFields { get; set; }
-
-        [JsonProperty("enumEntityTypes")]
-        public EntityTypeNames? EnumEntityTypes { get; set; }
-
-        [JsonProperty("enumTrustTypes")]
-        public TrustTypes? EnumTrustTypes { get; set; }
-
-        [JsonProperty("enumGender")]
-        public GenderNames? EnumGender { get; set; }
-
-        [JsonProperty("enumEmailTypes")]
-        public EmailType? EnumEmailTypes { get; set; }
-
-        [JsonProperty("enumPhoneTypes")]
-        public PhoneType? EnumPhoneTypes { get; set; }
-
-        [JsonProperty("enumContactTypes")]
-        public ContactTypes? EnumContactTypes { get; set; }
-
-        [JsonProperty("enumAddressTypes")]
-        public AddressType? EnumAddressTypes { get; set; }
-    }
-
-    public class CreateClientGroupInput
+    public class CreateClientGroupBodyInput
     {
         [JsonProperty("groupName")]
         public string GroupName { get; set; }
@@ -1386,24 +1248,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
 
         [JsonProperty("relationIds")]
         public int[] RelationIds { get; set; }
-    }
-
-    public class UpdateClientGroupInput
-    {
-        [JsonProperty("groupName")]
-        public string GroupName { get; set; }
-
-        [JsonProperty("partnerId")]
-        public string PartnerId { get; set; }
-
-        [JsonProperty("tags")]
-        public int[] Tags { get; set; }
-
-        [JsonProperty("groupClients")]
-        public GroupClient[] GroupClients { get; set; }
-
-        [JsonProperty("contactId")]
-        public int? ContactId { get; set; }
     }
 
     public class RelationshipsResult
@@ -1490,10 +1334,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Gender { get; set; }
 
         [JsonProperty("phone")]
-        public Phone[] Phone { get; set; }
+        public GetAClientPhoneResponse[] Phone { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo[] Email { get; set; }
+        public GetAClientEmailInfoResponse[] Email { get; set; }
 
         [JsonProperty("companyName")]
         public string CompanyName { get; set; }
@@ -1523,7 +1367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string LastModified { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public GetAClientAddressResponse[] Addresses { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1535,10 +1379,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Context { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public GetAClientCustomFieldResponse[] CustomFields { get; set; }
     }
 
-    public class UpdateAContactInput
+    public class UpdateAContactBodyInput
     {
         [JsonProperty("salutation")]
         public string Salutation { get; set; }
@@ -1556,10 +1400,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Gender { get; set; }
 
         [JsonProperty("phone")]
-        public Phone2[] Phone { get; set; }
+        public CreateClientsPhone[] Phone { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo2[] Email { get; set; }
+        public CreateClientsEmailInfo[] Email { get; set; }
 
         [JsonProperty("companyName")]
         public string CompanyName { get; set; }
@@ -1583,10 +1427,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public bool? IsImportent { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public CreateClientsAddress[] Addresses { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField2[] CustomFields { get; set; }
+        public CreateClientsCustomField[] CustomFields { get; set; }
 
         [JsonProperty("enumAddressTypes")]
         public AddressType? EnumAddressTypes { get; set; }
@@ -1787,7 +1631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string LastModifiedAt { get; set; }
     }
 
-    public class CreateTimesheetInput
+    public class CreateTimesheetBodyInput
     {
         [JsonProperty("isbillable")]
         public bool? Isbillable { get; set; }
@@ -1838,7 +1682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string RoleName { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo Email { get; set; }
+        public GetAClientEmailInfoResponse Email { get; set; }
 
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -1847,10 +1691,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string LastName { get; set; }
 
         [JsonProperty("phone")]
-        public Phone Phone { get; set; }
+        public GetAClientPhoneResponse Phone { get; set; }
 
         [JsonProperty("address")]
-        public Address Address { get; set; }
+        public GetAClientAddressResponse Address { get; set; }
 
         [JsonProperty("created")]
         public string Created { get; set; }
@@ -1973,7 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public TaskDetail Team { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public GetAClientCustomFieldResponse[] CustomFields { get; set; }
     }
 
     public class DebtorClient
@@ -2006,7 +1850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Name { get; set; }
     }
 
-    public class CreateJobsInput
+    public class CreateJobsBodyInput
     {
         [JsonProperty("clientId")]
         public int? ClientId { get; set; }
@@ -2066,7 +1910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public int? StatusId { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField2[] CustomFields { get; set; }
+        public CreateClientsCustomField[] CustomFields { get; set; }
 
         [JsonProperty("enumJobCategoryTypes")]
         public JobCategory? EnumJobCategoryTypes { get; set; }
@@ -2117,7 +1961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         Low
     }
 
-    public class UpdateJobStatusesInput
+    public class UpdateJobStatusesBodyInput
     {
         [JsonProperty("jobId")]
         public int? JobId { get; set; }
@@ -2130,81 +1974,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
 
         [JsonProperty("statusOwner")]
         public string StatusOwner { get; set; }
-    }
-
-    public class UpdateAJobInput
-    {
-        [JsonProperty("clientId")]
-        public int? ClientId { get; set; }
-
-        [JsonProperty("divisionId")]
-        public int? DivisionId { get; set; }
-
-        [JsonProperty("debtorclientId")]
-        public int? DebtorclientId { get; set; }
-
-        [JsonProperty("jobTypeId")]
-        public int? JobTypeId { get; set; }
-
-        [JsonProperty("jobCategory")]
-        public string JobCategory { get; set; }
-
-        [JsonProperty("jobName")]
-        public string JobName { get; set; }
-
-        [JsonProperty("financialYear")]
-        public int? FinancialYear { get; set; }
-
-        [JsonProperty("templateId")]
-        public int? TemplateId { get; set; }
-
-        [JsonProperty("managerId")]
-        public string ManagerId { get; set; }
-
-        [JsonProperty("partnerId")]
-        public string PartnerId { get; set; }
-
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("dueDate")]
-        public string DueDate { get; set; }
-
-        [JsonProperty("estimateType")]
-        public string EstimateType { get; set; }
-
-        [JsonProperty("priority")]
-        public string Priority { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("billingMethod")]
-        public string BillingMethod { get; set; }
-
-        [JsonProperty("teamId")]
-        public int? TeamId { get; set; }
-
-        [JsonProperty("quoteAmount")]
-        public double? QuoteAmount { get; set; }
-
-        [JsonProperty("statusId")]
-        public int? StatusId { get; set; }
-
-        [JsonProperty("customFields")]
-        public CustomField2[] CustomFields { get; set; }
-
-        [JsonProperty("enumJobCategoryTypes")]
-        public JobCategory? EnumJobCategoryTypes { get; set; }
-
-        [JsonProperty("enumEstimateTypes")]
-        public EstimateType? EnumEstimateTypes { get; set; }
-
-        [JsonProperty("enumBillingMethods")]
-        public BillingMethod? EnumBillingMethods { get; set; }
-
-        [JsonProperty("enumPriorityTypes")]
-        public Priority? EnumPriorityTypes { get; set; }
     }
 
     public class JobType

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alertrelay
     public class AlertrelayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alertrelay")]
-        public IBodyWorkflowAction<GetItemOrFileVersionHistoryResponse, ApiConnectionActionConfiguration> GetItemOrFileVersionHistory(Expression<Func<GetItemOrFileVersionHistoryInput>> body)
+        public IBodyWorkflowAction<GetItemOrFileVersionHistoryResponse, ApiConnectionActionConfiguration> GetItemOrFileVersionHistory(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetItemOrFileVersionHistoryResponse, ApiConnectionActionConfiguration>(() =>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alertrelay
         public bool HistoryChangedDuringPaging { get; set; }
     }
 
-    public class GetItemOrFileVersionHistoryInput
+    public class BodyInput
     {
         [JsonProperty("siteUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteURL { get; set; }

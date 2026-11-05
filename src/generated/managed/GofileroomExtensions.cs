@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     public class GofileroomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateGroupInput>> body = null)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateGroupBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupDocSecurityResponse, ApiConnectionActionConfiguration> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<SetGroupDocSecurityInput>> body = null)
+        public IBodyWorkflowAction<SetGroupDocSecurityResponse, ApiConnectionActionConfiguration> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<SetGroupDocSecurityBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyGroupResponse, ApiConnectionActionConfiguration> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<ModifyGroupInput>> body = null)
+        public IBodyWorkflowAction<ModifyGroupResponse, ApiConnectionActionConfiguration> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<ModifyGroupBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupPermissionsResponse, ApiConnectionActionConfiguration> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<SetGroupPermissionsInput>> body = null)
+        public IBodyWorkflowAction<SetGroupPermissionsResponse, ApiConnectionActionConfiguration> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<SetGroupPermissionsBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateUsersResponse, ApiConnectionActionConfiguration> CreateUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<CreateUsersInput>> body = null)
+        public IBodyWorkflowAction<CreateUsersResponse, ApiConnectionActionConfiguration> CreateUsers(Expression<Func<CreateUsersUserTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<CreateUsersBodyInput>> body = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteUserResponse, ApiConnectionActionConfiguration> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<DeleteUserInput>> body = null)
+        public IBodyWorkflowAction<DeleteUserResponse, ApiConnectionActionConfiguration> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<DeleteUserBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserDocSecurityResponse, ApiConnectionActionConfiguration> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<SetUserDocSecurityInput>> body = null)
+        public IBodyWorkflowAction<SetUserDocSecurityResponse, ApiConnectionActionConfiguration> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<SetUserDocSecurityBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetLicensesResponse, ApiConnectionActionConfiguration> GetLicenses(Expression<Func<licenseInput>> license = null, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetLicensesResponse, ApiConnectionActionConfiguration> GetLicenses(Expression<Func<LicenseInput>> license = null, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_license = WorkflowExpression.Compile(license, nameof(license), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyUserResponse, ApiConnectionActionConfiguration> ModifyUser(Expression<Func<userTypeInput2>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<ModifyUserInput>> body = null)
+        public IBodyWorkflowAction<ModifyUserResponse, ApiConnectionActionConfiguration> ModifyUser(Expression<Func<GetUsersUserTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<ModifyUserBodyInput>> body = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserPermissionsResponse, ApiConnectionActionConfiguration> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<SetUserPermissionsInput>> body = null)
+        public IBodyWorkflowAction<SetUserPermissionsResponse, ApiConnectionActionConfiguration> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<SetUserPermissionsBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUsersResponseItem[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<userTypeInput3>> userType = null, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUsersResponseItem[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<GetUsersUserTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateDocumentResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateDocumentInput>> body = null)
+        public IBodyWorkflowAction<CreateDocumentResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateDocumentBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CopyDocumentResponseItem[], ApiConnectionActionConfiguration> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<CopyDocumentInput>> body = null)
+        public IBodyWorkflowAction<CopyDocumentResponseItem[], ApiConnectionActionConfiguration> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<CopyDocumentBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentReindexResponseItem[], ApiConnectionActionConfiguration> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<DocumentReindexInput>> body = null)
+        public IBodyWorkflowAction<DocumentReindexResponseItem[], ApiConnectionActionConfiguration> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<CopyDocumentBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentSearchResponse, ApiConnectionActionConfiguration> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<DocumentSearchInput>> body = null)
+        public IBodyWorkflowAction<DocumentSearchResponse, ApiConnectionActionConfiguration> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<DocumentSearchBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[], ApiConnectionActionConfiguration> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null, Expression<Func<PublishDocumentStatusInput>> body = null)
+        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[], ApiConnectionActionConfiguration> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null, Expression<Func<PublishDocumentStatusBodyInput>> body = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse, ApiConnectionActionConfiguration> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<GetFirmFlowDeliverableReportInput>> body = null)
+        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse, ApiConnectionActionConfiguration> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<GetFirmFlowDeliverableReportBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -622,7 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ValidateIndexesResponse, ApiConnectionActionConfiguration> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<ValidateIndexesInput>> body = null)
+        public IBodyWorkflowAction<ValidateIndexesResponse, ApiConnectionActionConfiguration> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateDocumentBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<IndexLookupListFindResponseItem[], ApiConnectionActionConfiguration> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<IndexLookupListFindInput>> body = null)
+        public IBodyWorkflowAction<IndexLookupListFindResponseItem[], ApiConnectionActionConfiguration> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<IndexLookupListFindBodyInput>> body = null)
         {
             var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<LoginInput>> body)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<LoginBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LoginResponse, ApiConnectionActionConfiguration>(() =>
@@ -752,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateWorkflowResponse, ApiConnectionActionConfiguration> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateWorkflowInput>> body = null)
+        public IBodyWorkflowAction<CreateWorkflowResponse, ApiConnectionActionConfiguration> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<CreateWorkflowBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[], ApiConnectionActionConfiguration> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<DeleteMasterDeliverableInput>> body = null)
+        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[], ApiConnectionActionConfiguration> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<DeleteMasterDeliverableBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteWorkflowsResponse, ApiConnectionActionConfiguration> DeleteWorkflows(Expression<Func<string>> xAuthorization = null, Expression<Func<DeleteWorkflowsInput>> body = null)
+        public IBodyWorkflowAction<DeleteWorkflowsResponse, ApiConnectionActionConfiguration> DeleteWorkflows(Expression<Func<string>> xAuthorization = null, Expression<Func<DeleteWorkflowsBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<EditMasterDeliverableResponse, ApiConnectionActionConfiguration> EditMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<EditMasterDeliverableInput>> body = null)
+        public IBodyWorkflowAction<EditMasterDeliverableResponse, ApiConnectionActionConfiguration> EditMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<EditMasterDeliverableBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<EditWorkflowResponse, ApiConnectionActionConfiguration> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<EditWorkflowInput>> body = null)
+        public IBodyWorkflowAction<EditWorkflowResponse, ApiConnectionActionConfiguration> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<EditWorkflowBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetMasterDeliverableResponse, ApiConnectionActionConfiguration> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<GetMasterDeliverableInput>> body = null)
+        public IBodyWorkflowAction<GetMasterDeliverableResponse, ApiConnectionActionConfiguration> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<GetMasterDeliverableBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByWorkflowResponse, ApiConnectionActionConfiguration> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<TrackingReportByWorkflowInput>> body = null)
+        public IBodyWorkflowAction<TrackingReportByWorkflowResponse, ApiConnectionActionConfiguration> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<TrackingReportByWorkflowBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<AddMasterDeliverableResponse, ApiConnectionActionConfiguration> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<AddMasterDeliverableInput>> body = null)
+        public IBodyWorkflowAction<AddMasterDeliverableResponse, ApiConnectionActionConfiguration> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<AddMasterDeliverableBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -896,11 +896,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserInfoV2Response, ApiConnectionActionConfiguration> GetUserInfo(Expression<Func<string>> xAuthorization = null, Expression<Func<GetUserInfoV2Input>> body = null)
+        public IBodyWorkflowAction<GetUserInfoResponse, ApiConnectionActionConfiguration> GetUserInfo(Expression<Func<string>> xAuthorization = null, Expression<Func<GetUserInfoBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<GetUserInfoV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetUserInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/administration/user/getuser";
                 var apiCallHttpMethod = "post";
@@ -909,16 +909,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GetUserInfoV2Response>(callPayload);
+                return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<RouteWorkflowV2Response, ApiConnectionActionConfiguration> RouteWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<RouteWorkflowV2Input>> body = null)
+        public IBodyWorkflowAction<RouteWorkflowResponse, ApiConnectionActionConfiguration> RouteWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<RouteWorkflowBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<RouteWorkflowV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RouteWorkflowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/firmflow/api/V2/Route";
                 var apiCallHttpMethod = "post";
@@ -927,16 +927,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<RouteWorkflowV2Response>(callPayload);
+                return new ApiConnectionAction<RouteWorkflowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response, ApiConnectionActionConfiguration> TrackingReportByDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<TrackingReportByDeliverableV2Input>> body = null)
+        public IBodyWorkflowAction<TrackingReportByDeliverableResponse, ApiConnectionActionConfiguration> TrackingReportByDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<TrackingReportByDeliverableBodyInput>> body = null)
         {
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TrackingReportByDeliverableV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TrackingReportByDeliverableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";
                 var apiCallHttpMethod = "post";
@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
                     callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(__workflow_xAuthorization);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TrackingReportByDeliverableV2Response>(callPayload);
+                return new ApiConnectionAction<TrackingReportByDeliverableResponse>(callPayload);
             });
         }
     }
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string MfaException { get; set; }
     }
 
-    public class CreateGroupInput
+    public class CreateGroupBodyInput
     {
         public string AccessToApproveDocsOnly { get; set; }
         public string AllowAccessToReports { get; set; }
@@ -981,12 +981,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string GroupName { get; set; }
         public string MfaRequired { get; set; }
         public string PermissonToApproveDocs { get; set; }
-        public CreateGroupInputReportsTypeItem[] Reports { get; set; }
+        public BodyInputReportsTypeItem[] Reports { get; set; }
         public string UploadLocation { get; set; }
         public string[] Users { get; set; }
     }
 
-    public class CreateGroupInputReportsTypeItem
+    public class BodyInputReportsTypeItem
     {
         public string[] Allow { get; set; }
         public string[] Deny { get; set; }
@@ -1007,24 +1007,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string SetGroupDocSecurityException { get; set; }
     }
 
-    public class SetGroupDocSecurityInput
+    public class SetGroupDocSecurityBodyInput
     {
         public string CabinetName { get; set; }
-        public SetGroupDocSecurityInputDocumentSecurityTypeItem[] DocumentSecurity { get; set; }
+        public BodyInputDocumentSecurityTypeItem[] DocumentSecurity { get; set; }
         public string DrawerName { get; set; }
         public string GroupName { get; set; }
     }
 
-    public class SetGroupDocSecurityInputDocumentSecurityTypeItem
+    public class BodyInputDocumentSecurityTypeItem
     {
-        public SetGroupDocSecurityInputDocumentSecurityTypeItemDocSecurityTypeType? DocSecurityType { get; set; }
+        public BodyInputDocumentSecurityTypeItemDocSecurityTypeType? DocSecurityType { get; set; }
         public string IndexName { get; set; }
-        public SetGroupDocSecurityInputDocumentSecurityTypeItemOperationType? Operation { get; set; }
+        public BodyInputDocumentSecurityTypeItemOperationType? Operation { get; set; }
         public string[] Values { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetGroupDocSecurityInputDocumentSecurityTypeItemDocSecurityTypeType
+    public enum BodyInputDocumentSecurityTypeItemDocSecurityTypeType
     {
         [EnumMember(Value = "DENY ACCESS")]
         DENYACCESS,
@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetGroupDocSecurityInputDocumentSecurityTypeItemOperationType
+    public enum BodyInputDocumentSecurityTypeItemOperationType
     {
         ADD,
         REMOVE,
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ModifyGroupException { get; set; }
     }
 
-    public class ModifyGroupInput
+    public class ModifyGroupBodyInput
     {
         public string AccessToApproveDocsOnly { get; set; }
         public string AllowAccessToReports { get; set; }
@@ -1071,18 +1071,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string MfaRequired { get; set; }
         public string PermissonToApproveDocs { get; set; }
         public string RenameGroup { get; set; }
-        public ModifyGroupInputReportsTypeItem[] Reports { get; set; }
+        public BodyInputReportsTypeItem[] Reports { get; set; }
         public string UploadLocation { get; set; }
         public string[] Users { get; set; }
-    }
-
-    public class ModifyGroupInputReportsTypeItem
-    {
-        public string[] Allow { get; set; }
-        public string[] Deny { get; set; }
-        public string IsAllowAll { get; set; }
-        public string IsDenyAll { get; set; }
-        public string ReportType { get; set; }
     }
 
     public class GetGroupPermissionsResponse
@@ -1166,15 +1157,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool IsSet { get; set; }
     }
 
-    public class SetGroupPermissionsInput
+    public class SetGroupPermissionsBodyInput
     {
         public string Cabinet { get; set; }
-        public SetGroupPermissionsInputCabinetPermissionType CabinetPermission { get; set; }
-        public SetGroupPermissionsInputDrawerPermissionsTypeItem[] DrawerPermissions { get; set; }
+        public BodyInputCabinetPermissionType CabinetPermission { get; set; }
+        public BodyInputDrawerPermissionsTypeItem[] DrawerPermissions { get; set; }
         public string GroupName { get; set; }
     }
 
-    public class SetGroupPermissionsInputCabinetPermissionType
+    public class BodyInputCabinetPermissionType
     {
         public string Add { get; set; }
         public string Delete { get; set; }
@@ -1184,13 +1175,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Read { get; set; }
     }
 
-    public class SetGroupPermissionsInputDrawerPermissionsTypeItem
+    public class BodyInputDrawerPermissionsTypeItem
     {
         public string Drawer { get; set; }
-        public SetGroupPermissionsInputDrawerPermissionsTypeItemPermissionType Permission { get; set; }
+        public BodyInputDrawerPermissionsTypeItemPermissionType Permission { get; set; }
     }
 
-    public class SetGroupPermissionsInputDrawerPermissionsTypeItemPermissionType
+    public class BodyInputDrawerPermissionsTypeItemPermissionType
     {
         public string Add { get; set; }
         public string Delete { get; set; }
@@ -1261,12 +1252,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum userTypeInput
+    public enum CreateUsersUserTypeInput
     {
         GFRUSERS
     }
 
-    public class CreateUsersInput
+    public class CreateUsersBodyInput
     {
         public string AccountExpiresDate { get; set; }
         public string DisabledComments { get; set; }
@@ -1287,17 +1278,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string LoginName { get; set; }
         public string ManagerEmail { get; set; }
         public string Password { get; set; }
-        public CreateUsersInputReportsTypeItem[] Reports { get; set; }
+        public BodyInputReportsTypeItem[] Reports { get; set; }
         public string UploadLocation { get; set; }
-    }
-
-    public class CreateUsersInputReportsTypeItem
-    {
-        public string[] Allow { get; set; }
-        public string[] Deny { get; set; }
-        public string IsAllowAll { get; set; }
-        public string IsDenyAll { get; set; }
-        public string ReportType { get; set; }
     }
 
     public class DeleteUserResponse
@@ -1312,14 +1294,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string LoginId { get; set; }
     }
 
-    public class DeleteUserInput
+    public class DeleteUserBodyInput
     {
         public string LoginId { get; set; }
-        public DeleteUserInputUserTypeType? UserType { get; set; }
+        public BodyInputUserTypeType? UserType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeleteUserInputUserTypeType
+    public enum BodyInputUserTypeType
     {
         GFRUSERS,
         CLIENTFLOWUSERS
@@ -1337,40 +1319,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string SetUserDocSecurityException { get; set; }
     }
 
-    public class SetUserDocSecurityInput
+    public class SetUserDocSecurityBodyInput
     {
         public string CabinetName { get; set; }
-        public SetUserDocSecurityInputDocumentSecurityTypeItem[] DocumentSecurity { get; set; }
+        public BodyInputDocumentSecurityTypeItem[] DocumentSecurity { get; set; }
         public string DrawerName { get; set; }
         public string LoginId { get; set; }
-    }
-
-    public class SetUserDocSecurityInputDocumentSecurityTypeItem
-    {
-        public SetUserDocSecurityInputDocumentSecurityTypeItemDocSecurityTypeType? DocSecurityType { get; set; }
-        public string IndexName { get; set; }
-        public SetUserDocSecurityInputDocumentSecurityTypeItemOperationType? Operation { get; set; }
-        public string[] Values { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetUserDocSecurityInputDocumentSecurityTypeItemDocSecurityTypeType
-    {
-        [EnumMember(Value = "DENY ACCESS")]
-        DENYACCESS,
-        [EnumMember(Value = "ALLOW ACCESS")]
-        ALLOWACCESS,
-        [EnumMember(Value = "NO EDIT")]
-        NOEDIT
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetUserDocSecurityInputDocumentSecurityTypeItemOperationType
-    {
-        ADD,
-        REMOVE,
-        [EnumMember(Value = "CLEAR ALL")]
-        CLEARALL
     }
 
     public class GetLicensesResponse
@@ -1392,7 +1346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum licenseInput
+    public enum LicenseInput
     {
         DEDICATED,
         CONCURRENT,
@@ -1415,13 +1369,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum userTypeInput2
+    public enum GetUsersUserTypeInput
     {
         GFRUSERS,
         CLIENTFLOWUSERS
     }
 
-    public class ModifyUserInput
+    public class ModifyUserBodyInput
     {
         public string AccountExpiresDate { get; set; }
         public string DisabledComments { get; set; }
@@ -1443,17 +1397,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string LoginName { get; set; }
         public string ManagerEmail { get; set; }
         public string Password { get; set; }
-        public ModifyUserInputReportsTypeItem[] Reports { get; set; }
+        public BodyInputReportsTypeItem[] Reports { get; set; }
         public string UploadLocation { get; set; }
-    }
-
-    public class ModifyUserInputReportsTypeItem
-    {
-        public string[] Allow { get; set; }
-        public string[] Deny { get; set; }
-        public string IsAllowAll { get; set; }
-        public string IsDenyAll { get; set; }
-        public string ReportType { get; set; }
     }
 
     public class GetPasswordPolicyResponse
@@ -1525,38 +1470,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string SetUserPermissionException { get; set; }
     }
 
-    public class SetUserPermissionsInput
+    public class SetUserPermissionsBodyInput
     {
         public string Cabinet { get; set; }
-        public SetUserPermissionsInputCabinetPermissionType CabinetPermission { get; set; }
-        public SetUserPermissionsInputDrawerPermissionsTypeItem[] DrawerPermissions { get; set; }
+        public BodyInputCabinetPermissionType CabinetPermission { get; set; }
+        public BodyInputDrawerPermissionsTypeItem[] DrawerPermissions { get; set; }
         public string LoginId { get; set; }
-    }
-
-    public class SetUserPermissionsInputCabinetPermissionType
-    {
-        public string Add { get; set; }
-        public string Delete { get; set; }
-        public string Deny { get; set; }
-        public string Edit { get; set; }
-        public string LookUp { get; set; }
-        public string Read { get; set; }
-    }
-
-    public class SetUserPermissionsInputDrawerPermissionsTypeItem
-    {
-        public string Drawer { get; set; }
-        public SetUserPermissionsInputDrawerPermissionsTypeItemPermissionType Permission { get; set; }
-    }
-
-    public class SetUserPermissionsInputDrawerPermissionsTypeItemPermissionType
-    {
-        public string Add { get; set; }
-        public string Delete { get; set; }
-        public string Deny { get; set; }
-        public string Edit { get; set; }
-        public string LookUp { get; set; }
-        public string Read { get; set; }
     }
 
     public class GetListOfReportsResponse
@@ -1691,13 +1610,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string LoginId { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum userTypeInput3
-    {
-        GFRUSERS,
-        CLIENTFLOWUSERS
-    }
-
     public class GetLookupListResponseItem
     {
         [JsonProperty("clientName")]
@@ -1737,13 +1649,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool IsValid { get; set; }
     }
 
-    public class CreateDocumentInput
+    public class CreateDocumentBodyInput
     {
         public string DrawerId { get; set; }
-        public CreateDocumentInputIndexesTypeItem[] Indexes { get; set; }
+        public BodyInputIndexesTypeItem[] Indexes { get; set; }
     }
 
-    public class CreateDocumentInputIndexesTypeItem
+    public class BodyInputIndexesTypeItem
     {
         public string IndexId { get; set; }
         public string IndexValue { get; set; }
@@ -1764,13 +1676,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string NewDocumentId { get; set; }
     }
 
-    public class CopyDocumentInput
+    public class CopyDocumentBodyInput
     {
         public string[] DocumentIds { get; set; }
-        public CopyDocumentInputIndexValuesTypeItem[] IndexValues { get; set; }
+        public BodyInputIndexValuesTypeItem[] IndexValues { get; set; }
     }
 
-    public class CopyDocumentInputIndexValuesTypeItem
+    public class BodyInputIndexValuesTypeItem
     {
         public string IndexId { get; set; }
         public string IndexValue { get; set; }
@@ -1854,18 +1766,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ReIndexDocumentException { get; set; }
     }
 
-    public class DocumentReindexInput
-    {
-        public string[] DocumentIds { get; set; }
-        public DocumentReindexInputIndexValuesTypeItem[] IndexValues { get; set; }
-    }
-
-    public class DocumentReindexInputIndexValuesTypeItem
-    {
-        public string IndexId { get; set; }
-        public string IndexValue { get; set; }
-    }
-
     public class DocumentSearchResponse
     {
         [JsonProperty("documentIds")]
@@ -1875,29 +1775,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public int DocumentSearchCount { get; set; }
     }
 
-    public class DocumentSearchInput
+    public class DocumentSearchBodyInput
     {
         public string DrawerId { get; set; }
-        public DocumentSearchInputFilterType Filter { get; set; }
+        public BodyInputFilterType Filter { get; set; }
         public int? NumberOfRows { get; set; }
         public int? PageNumber { get; set; }
         public string SortField { get; set; }
-        public DocumentSearchInputSortOrderType? SortOrder { get; set; }
+        public BodyInputSortOrderType? SortOrder { get; set; }
     }
 
-    public class DocumentSearchInputFilterType
+    public class BodyInputFilterType
     {
-        public DocumentSearchInputFilterTypeIndexValuesTypeItem[] IndexValues { get; set; }
+        public BodyInputFilterTypeIndexValuesTypeItem[] IndexValues { get; set; }
     }
 
-    public class DocumentSearchInputFilterTypeIndexValuesTypeItem
+    public class BodyInputFilterTypeIndexValuesTypeItem
     {
         public string IndexId { get; set; }
         public string IndexValue { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentSearchInputSortOrderType
+    public enum BodyInputSortOrderType
     {
         ASC,
         DESC
@@ -1963,7 +1863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool IsPublished { get; set; }
     }
 
-    public class PublishDocumentStatusInput
+    public class PublishDocumentStatusBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string IsPublished { get; set; }
@@ -2182,7 +2082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Value { get; set; }
     }
 
-    public class GetFirmFlowDeliverableReportInput
+    public class GetFirmFlowDeliverableReportBodyInput
     {
         public string Accountable { get; set; }
         public string AssignedOn { get; set; }
@@ -2230,18 +2130,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool IsValid { get; set; }
     }
 
-    public class ValidateIndexesInput
-    {
-        public string DrawerId { get; set; }
-        public ValidateIndexesInputIndexesTypeItem[] Indexes { get; set; }
-    }
-
-    public class ValidateIndexesInputIndexesTypeItem
-    {
-        public string IndexId { get; set; }
-        public string IndexValue { get; set; }
-    }
-
     public class GetDynamicRulesForIndexResponseItem
     {
         [JsonProperty("condition")]
@@ -2284,15 +2172,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string IndexValue { get; set; }
     }
 
-    public class IndexLookupListFindInput
+    public class IndexLookupListFindBodyInput
     {
-        public IndexLookupListFindInputActionTypeType? ActionType { get; set; }
+        public BodyInputActionTypeType? ActionType { get; set; }
         public int? Count { get; set; }
         public string IndexValue { get; set; }
-        public IndexLookupListFindInputSearchTypeType? SearchType { get; set; }
+        public BodyInputSearchTypeType? SearchType { get; set; }
     }
 
-    public enum IndexLookupListFindInputActionTypeType
+    public enum BodyInputActionTypeType
     {
         _1 = 1,
         _2 = 2,
@@ -2302,7 +2190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         _6 = 6
     }
 
-    public enum IndexLookupListFindInputSearchTypeType
+    public enum BodyInputSearchTypeType
     {
         _0 = 0,
         _1 = 1,
@@ -2385,7 +2273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string UserName { get; set; }
     }
 
-    public class LoginInput
+    public class LoginBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LoginName { get; set; }
@@ -2415,7 +2303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string[] ErrorMessage { get; set; }
     }
 
-    public class CreateWorkflowInput
+    public class CreateWorkflowBodyInput
     {
         public string Drawer { get; set; }
         public string ServiceType { get; set; }
@@ -2424,24 +2312,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string FolderId { get; set; }
 
         [JsonProperty("headers")]
-        public CreateWorkflowInputHeadersType Headers { get; set; }
+        public BodyInputHeadersType Headers { get; set; }
 
         [JsonProperty("filing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWorkflowInputFilingType Filing { get; set; }
+        public BodyInputFilingType Filing { get; set; }
 
         [JsonProperty("deliverable")]
-        public CreateWorkflowInputDeliverableType Deliverable { get; set; }
-        public CreateWorkflowInputDeliveryInstructionsType DeliveryInstructions { get; set; }
+        public BodyInputDeliverableType Deliverable { get; set; }
+        public BodyInputDeliveryInstructionsType DeliveryInstructions { get; set; }
 
         [JsonProperty("notes")]
-        public CreateWorkflowInputNotesType Notes { get; set; }
+        public CreateWorkflowBodyInputNotesType Notes { get; set; }
 
         [JsonProperty("informationFields")]
-        public CreateWorkflowInputInformationFieldsType InformationFields { get; set; }
-        public CreateWorkflowInputRoutingSummaryType RoutingSummary { get; set; }
+        public BodyInputInformationFieldsType InformationFields { get; set; }
+        public CreateWorkflowBodyInputRoutingSummaryType RoutingSummary { get; set; }
     }
 
-    public class CreateWorkflowInputHeadersType
+    public class BodyInputHeadersType
     {
         public string ClientName { get; set; }
         public string ClientNumber { get; set; }
@@ -2451,7 +2339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string PeriodEnd { get; set; }
     }
 
-    public class CreateWorkflowInputFilingType
+    public class BodyInputFilingType
     {
         [JsonProperty("workflowName")]
         public string WorkflowName { get; set; }
@@ -2463,7 +2351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string StatusName { get; set; }
     }
 
-    public class CreateWorkflowInputDeliverableType
+    public class BodyInputDeliverableType
     {
         [JsonProperty("action")]
         public string Action { get; set; }
@@ -2478,7 +2366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Form { get; set; }
     }
 
-    public class CreateWorkflowInputDeliveryInstructionsType
+    public class BodyInputDeliveryInstructionsType
     {
         public string Delivery { get; set; }
         public string Destination { get; set; }
@@ -2487,7 +2375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string SourceDocument { get; set; }
     }
 
-    public class CreateWorkflowInputNotesType
+    public class CreateWorkflowBodyInputNotesType
     {
         [JsonProperty("action")]
         public string Action { get; set; }
@@ -2499,7 +2387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Note { get; set; }
     }
 
-    public class CreateWorkflowInputInformationFieldsType
+    public class BodyInputInformationFieldsType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2508,7 +2396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Value { get; set; }
     }
 
-    public class CreateWorkflowInputRoutingSummaryType
+    public class CreateWorkflowBodyInputRoutingSummaryType
     {
         public string ResponsibleField { get; set; }
 
@@ -2525,7 +2413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ResponseMessage { get; set; }
     }
 
-    public class DeleteMasterDeliverableInput
+    public class DeleteMasterDeliverableBodyInput
     {
         public string ServiceType { get; set; }
         public string DrawerName { get; set; }
@@ -2541,7 +2429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string FilingId { get; set; }
     }
 
-    public class DeleteWorkflowsInput
+    public class DeleteWorkflowsBodyInput
     {
         [JsonProperty("filingId")]
         public int[] FilingId { get; set; }
@@ -2556,7 +2444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ResponseMessage { get; set; }
     }
 
-    public class EditMasterDeliverableInput
+    public class EditMasterDeliverableBodyInput
     {
         [JsonProperty("currentdeliverableName")]
         public string CurrentdeliverableName { get; set; }
@@ -2616,57 +2504,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ErrorComment { get; set; }
     }
 
-    public class EditWorkflowInput
+    public class EditWorkflowBodyInput
     {
         [JsonProperty("filingId")]
         public int? FilingId { get; set; }
-        public EditWorkflowInputHeadersType Headers { get; set; }
+        public BodyInputHeadersType Headers { get; set; }
 
         [JsonProperty("deliverable")]
-        public EditWorkflowInputDeliverableType Deliverable { get; set; }
+        public BodyInputDeliverableType Deliverable { get; set; }
 
         [JsonProperty("notes")]
-        public EditWorkflowInputNotesType Notes { get; set; }
+        public EditWorkflowBodyInputNotesType Notes { get; set; }
 
         [JsonProperty("informationFields")]
-        public EditWorkflowInputInformationFieldsType InformationFields { get; set; }
+        public BodyInputInformationFieldsType InformationFields { get; set; }
 
         [JsonProperty("deliveryInstructions")]
-        public EditWorkflowInputDeliveryInstructionsType DeliveryInstructions { get; set; }
+        public BodyInputDeliveryInstructionsType DeliveryInstructions { get; set; }
 
         [JsonProperty("routingSummary")]
-        public EditWorkflowInputRoutingSummaryType RoutingSummary { get; set; }
+        public EditWorkflowBodyInputRoutingSummaryType RoutingSummary { get; set; }
 
         [JsonProperty("reindexDocs")]
         public bool? ReindexDocs { get; set; }
     }
 
-    public class EditWorkflowInputHeadersType
-    {
-        public string ClientName { get; set; }
-        public string ClientNumber { get; set; }
-        public string EngagementType { get; set; }
-        public string PIC { get; set; }
-        public string Year { get; set; }
-        public string PeriodEnd { get; set; }
-    }
-
-    public class EditWorkflowInputDeliverableType
-    {
-        [JsonProperty("action")]
-        public string Action { get; set; }
-
-        [JsonProperty("currentduedate")]
-        public string Currentduedate { get; set; }
-
-        [JsonProperty("originalduedate")]
-        public string Originalduedate { get; set; }
-
-        [JsonProperty("form")]
-        public string Form { get; set; }
-    }
-
-    public class EditWorkflowInputNotesType
+    public class EditWorkflowBodyInputNotesType
     {
         [JsonProperty("action")]
         public string Action { get; set; }
@@ -2681,25 +2544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Note { get; set; }
     }
 
-    public class EditWorkflowInputInformationFieldsType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
-    }
-
-    public class EditWorkflowInputDeliveryInstructionsType
-    {
-        public string Delivery { get; set; }
-        public string Destination { get; set; }
-
-        [JsonProperty("sourceDocument")]
-        public string SourceDocument { get; set; }
-    }
-
-    public class EditWorkflowInputRoutingSummaryType
+    public class EditWorkflowBodyInputRoutingSummaryType
     {
         [JsonProperty("responsibleField")]
         public string ResponsibleField { get; set; }
@@ -2753,7 +2598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string FirmManagedOption { get; set; }
     }
 
-    public class GetMasterDeliverableInput
+    public class GetMasterDeliverableBodyInput
     {
         public int? PageNumber { get; set; }
 
@@ -2928,7 +2773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Value { get; set; }
     }
 
-    public class TrackingReportByWorkflowInput
+    public class TrackingReportByWorkflowBodyInput
     {
         public string DrawerId { get; set; }
         public string ServiceType { get; set; }
@@ -2972,7 +2817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string ResponseMessage { get; set; }
     }
 
-    public class AddMasterDeliverableInput
+    public class AddMasterDeliverableBodyInput
     {
         [JsonProperty("deliverableName")]
         public string DeliverableName { get; set; }
@@ -2998,7 +2843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string DrawerName { get; set; }
     }
 
-    public class GetUserInfoV2Response
+    public class GetUserInfoResponse
     {
         [JsonProperty("userID")]
         public string UserId { get; set; }
@@ -3106,13 +2951,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string[] Groups { get; set; }
     }
 
-    public class GetUserInfoV2Input
+    public class GetUserInfoBodyInput
     {
         public string LoginName { get; set; }
         public string UserType { get; set; }
     }
 
-    public class RouteWorkflowV2Response
+    public class RouteWorkflowResponse
     {
         [JsonProperty("filingId")]
         public string FilingId { get; set; }
@@ -3121,7 +2966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool IsRouted { get; set; }
     }
 
-    public class RouteWorkflowV2Input
+    public class RouteWorkflowBodyInput
     {
         [JsonProperty("filingId")]
         public int[] FilingId { get; set; }
@@ -3139,7 +2984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public bool? EmailNotify { get; set; }
     }
 
-    public class TrackingReportByDeliverableV2Response
+    public class TrackingReportByDeliverableResponse
     {
         [JsonProperty("totalRecords")]
         public int TotalRecords { get; set; }
@@ -3154,13 +2999,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public int TotalPages { get; set; }
 
         [JsonProperty("firmFlowReportResponse")]
-        public TrackingReportByDeliverableV2ResponseFirmFlowReportResponseTypeItem[] FirmFlowReportResponse { get; set; }
+        public TrackingReportByDeliverableResponseFirmFlowReportResponseTypeItem[] FirmFlowReportResponse { get; set; }
 
         [JsonProperty("getFirmFlowException")]
         public string GetFirmFlowException { get; set; }
     }
 
-    public class TrackingReportByDeliverableV2ResponseFirmFlowReportResponseTypeItem
+    public class TrackingReportByDeliverableResponseFirmFlowReportResponseTypeItem
     {
         [JsonProperty("clientName")]
         public string ClientName { get; set; }
@@ -3289,7 +3134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string LastUpdated { get; set; }
 
         [JsonProperty("informationFields")]
-        public TrackingReportByDeliverableV2ResponseFirmFlowReportResponseTypeItemInformationFieldsTypeItem[] InformationFields { get; set; }
+        public TrackingReportByDeliverableResponseFirmFlowReportResponseTypeItemInformationFieldsTypeItem[] InformationFields { get; set; }
 
         [JsonProperty("routingSummary")]
         public JToken[] RoutingSummary { get; set; }
@@ -3298,7 +3143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public JToken[] ResponsibleUserOrGroups { get; set; }
     }
 
-    public class TrackingReportByDeliverableV2ResponseFirmFlowReportResponseTypeItemInformationFieldsTypeItem
+    public class TrackingReportByDeliverableResponseFirmFlowReportResponseTypeItemInformationFieldsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3307,7 +3152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string Value { get; set; }
     }
 
-    public class TrackingReportByDeliverableV2Input
+    public class TrackingReportByDeliverableBodyInput
     {
         public string DrawerId { get; set; }
         public string ServiceType { get; set; }

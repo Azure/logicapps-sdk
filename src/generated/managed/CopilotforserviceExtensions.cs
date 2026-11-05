@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
     public class CopilotforserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> NaturalQueryTextSearch(Expression<Func<NaturalQueryTextSearchInput>> body = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> NaturalQueryTextSearch(Expression<Func<NaturalQueryTextSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> ExecuteSkill(Expression<Func<ExecuteSkillInput>> body = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration> ExecuteSkill(Expression<Func<ExecuteSkillBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse, ApiConnectionActionConfiguration>(() =>
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         public JToken[] AllowedValues { get; set; }
     }
 
-    public class NaturalQueryTextSearchInput
+    public class NaturalQueryTextSearchBodyInput
     {
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
     }
 
-    public class ExecuteSkillInput
+    public class ExecuteSkillBodyInput
     {
         public string SkillId { get; set; }
         public JToken InputParameters { get; set; }

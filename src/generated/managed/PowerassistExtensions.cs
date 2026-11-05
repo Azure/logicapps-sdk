@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
     public class PowerassistActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortResponse, ApiConnectionActionConfiguration> ArraySort(Expression<Func<ArraySortInput>> body)
+        public IBodyWorkflowAction<ArraySortResponse, ApiConnectionActionConfiguration> ArraySort(Expression<Func<ArrayReverseBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArraySortResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayReverseResponse, ApiConnectionActionConfiguration> ArrayReverse(Expression<Func<ArrayReverseInput>> body)
+        public IBodyWorkflowAction<ArrayReverseResponse, ApiConnectionActionConfiguration> ArrayReverse(Expression<Func<ArrayReverseBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayReverseResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortByPropertyResponse, ApiConnectionActionConfiguration> ArraySortByProperty(Expression<Func<ArraySortByPropertyInput>> body)
+        public IBodyWorkflowAction<ArraySortByPropertyResponse, ApiConnectionActionConfiguration> ArraySortByProperty(Expression<Func<ArraySortByPropertyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArraySortByPropertyResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFilterResponse, ApiConnectionActionConfiguration> ArrayFilter(Expression<Func<ArrayFilterInput>> body)
+        public IBodyWorkflowAction<ArrayFilterResponse, ApiConnectionActionConfiguration> ArrayFilter(Expression<Func<ArrayAnyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayFilterResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayPrependResponse, ApiConnectionActionConfiguration> ArrayPrepend(Expression<Func<ArrayPrependInput>> body)
+        public IBodyWorkflowAction<ArrayPrependResponse, ApiConnectionActionConfiguration> ArrayPrepend(Expression<Func<ArrayPrependBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayPrependResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayAnyResponse, ApiConnectionActionConfiguration> ArrayAny(Expression<Func<ArrayAnyInput>> body)
+        public IBodyWorkflowAction<ArrayAnyResponse, ApiConnectionActionConfiguration> ArrayAny(Expression<Func<ArrayAnyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayAnyResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayEveryResponse, ApiConnectionActionConfiguration> ArrayEvery(Expression<Func<ArrayEveryInput>> body)
+        public IBodyWorkflowAction<ArrayEveryResponse, ApiConnectionActionConfiguration> ArrayEvery(Expression<Func<ArrayAnyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayEveryResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayRemoveFirstResponse, ApiConnectionActionConfiguration> ArrayRemoveFirst(Expression<Func<ArrayRemoveFirstInput>> body)
+        public IBodyWorkflowAction<ArrayRemoveFirstResponse, ApiConnectionActionConfiguration> ArrayRemoveFirst(Expression<Func<ArrayAnyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayRemoveFirstResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayGroupByResponse, ApiConnectionActionConfiguration> ArrayGroupBy(Expression<Func<ArrayGroupByInput>> body)
+        public IBodyWorkflowAction<ArrayGroupByResponse, ApiConnectionActionConfiguration> ArrayGroupBy(Expression<Func<ArrayGroupByBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayGroupByResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFindFirstResponse, ApiConnectionActionConfiguration> ArrayFindFirst(Expression<Func<ArrayFindFirstInput>> body)
+        public IBodyWorkflowAction<ArrayFindFirstResponse, ApiConnectionActionConfiguration> ArrayFindFirst(Expression<Func<ArrayAnyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ArrayFindFirstResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<RoundResponse, ApiConnectionActionConfiguration> Round(Expression<Func<RoundInput>> body)
+        public IBodyWorkflowAction<RoundResponse, ApiConnectionActionConfiguration> Round(Expression<Func<MathCeilBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RoundResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathCeilResponse, ApiConnectionActionConfiguration> MathCeil(Expression<Func<MathCeilInput>> body)
+        public IBodyWorkflowAction<MathCeilResponse, ApiConnectionActionConfiguration> MathCeil(Expression<Func<MathCeilBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MathCeilResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathFloorResponse, ApiConnectionActionConfiguration> MathFloor(Expression<Func<MathFloorInput>> body)
+        public IBodyWorkflowAction<MathFloorResponse, ApiConnectionActionConfiguration> MathFloor(Expression<Func<MathCeilBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MathFloorResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathAverageResponse, ApiConnectionActionConfiguration> MathAverage(Expression<Func<MathAverageInput>> body)
+        public IBodyWorkflowAction<MathAverageResponse, ApiConnectionActionConfiguration> MathAverage(Expression<Func<MathAverageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MathAverageResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathMedianResponse, ApiConnectionActionConfiguration> MathMedian(Expression<Func<MathMedianInput>> body)
+        public IBodyWorkflowAction<MathMedianResponse, ApiConnectionActionConfiguration> MathMedian(Expression<Func<MathMedianBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MathMedianResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathModeResponse, ApiConnectionActionConfiguration> MathMode(Expression<Func<MathModeInput>> body)
+        public IBodyWorkflowAction<MathModeResponse, ApiConnectionActionConfiguration> MathMode(Expression<Func<MathMedianBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MathModeResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathRandomResponse, ApiConnectionActionConfiguration> MathRandom(Expression<Func<MathRandomInput>> body)
+        public IBodyWorkflowAction<MathRandomResponse, ApiConnectionActionConfiguration> MathRandom(Expression<Func<MathRandomBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MathRandomResponse, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringReplaceAllResponse, ApiConnectionActionConfiguration> StringReplaceAll(Expression<Func<StringReplaceAllInput>> body)
+        public IBodyWorkflowAction<StringReplaceAllResponse, ApiConnectionActionConfiguration> StringReplaceAll(Expression<Func<StringReplaceAllBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringReplaceAllResponse, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringRegexReplaceResponse, ApiConnectionActionConfiguration> StringRegexReplace(Expression<Func<StringRegexReplaceInput>> body)
+        public IBodyWorkflowAction<StringRegexReplaceResponse, ApiConnectionActionConfiguration> StringRegexReplace(Expression<Func<StringRegexReplaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringRegexReplaceResponse, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCapitalizeResponse, ApiConnectionActionConfiguration> StringCapitalize(Expression<Func<StringCapitalizeInput>> body)
+        public IBodyWorkflowAction<StringCapitalizeResponse, ApiConnectionActionConfiguration> StringCapitalize(Expression<Func<StringCapitalizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringCapitalizeResponse, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimResponse, ApiConnectionActionConfiguration> StringTrim(Expression<Func<StringTrimInput>> body)
+        public IBodyWorkflowAction<StringTrimResponse, ApiConnectionActionConfiguration> StringTrim(Expression<Func<StringTrimBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringTrimResponse, ApiConnectionActionConfiguration>(() =>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimStartResponse, ApiConnectionActionConfiguration> StringTrimStart(Expression<Func<StringTrimStartInput>> body)
+        public IBodyWorkflowAction<StringTrimStartResponse, ApiConnectionActionConfiguration> StringTrimStart(Expression<Func<StringTrimBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringTrimStartResponse, ApiConnectionActionConfiguration>(() =>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimEndResponse, ApiConnectionActionConfiguration> StringTrimEnd(Expression<Func<StringTrimEndInput>> body)
+        public IBodyWorkflowAction<StringTrimEndResponse, ApiConnectionActionConfiguration> StringTrimEnd(Expression<Func<StringTrimBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringTrimEndResponse, ApiConnectionActionConfiguration>(() =>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringSlugifyResponse, ApiConnectionActionConfiguration> StringSlugify(Expression<Func<StringSlugifyInput>> body)
+        public IBodyWorkflowAction<StringSlugifyResponse, ApiConnectionActionConfiguration> StringSlugify(Expression<Func<StringCapitalizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringSlugifyResponse, ApiConnectionActionConfiguration>(() =>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordsResponse, ApiConnectionActionConfiguration> StringWords(Expression<Func<StringWordsInput>> body)
+        public IBodyWorkflowAction<StringWordsResponse, ApiConnectionActionConfiguration> StringWords(Expression<Func<StringWordCountBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringWordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordCountResponse, ApiConnectionActionConfiguration> StringWordCount(Expression<Func<StringWordCountInput>> body)
+        public IBodyWorkflowAction<StringWordCountResponse, ApiConnectionActionConfiguration> StringWordCount(Expression<Func<StringWordCountBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringWordCountResponse, ApiConnectionActionConfiguration>(() =>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringStripHtmlResponse, ApiConnectionActionConfiguration> StringStripHtml(Expression<Func<StringStripHtmlInput>> body)
+        public IBodyWorkflowAction<StringStripHtmlResponse, ApiConnectionActionConfiguration> StringStripHtml(Expression<Func<StringCapitalizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringStripHtmlResponse, ApiConnectionActionConfiguration>(() =>
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanResponse, ApiConnectionActionConfiguration> StringClean(Expression<Func<StringCleanInput>> body)
+        public IBodyWorkflowAction<StringCleanResponse, ApiConnectionActionConfiguration> StringClean(Expression<Func<StringCapitalizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringCleanResponse, ApiConnectionActionConfiguration>(() =>
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration> StringCleanDiacritics(Expression<Func<StringCleanDiacriticsInput>> body)
+        public IBodyWorkflowAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration> StringCleanDiacritics(Expression<Func<StringCapitalizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringCleanDiacriticsResponse, ApiConnectionActionConfiguration>(() =>
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration> StringEscapeHtml(Expression<Func<StringEscapeHtmlInput>> body)
+        public IBodyWorkflowAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration> StringEscapeHtml(Expression<Func<StringCapitalizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringEscapeHtmlResponse, ApiConnectionActionConfiguration>(() =>
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration> StringUnescapeHtml(Expression<Func<StringUnescapeHtmlInput>> body)
+        public IBodyWorkflowAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration> StringUnescapeHtml(Expression<Func<StringCapitalizeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringUnescapeHtmlResponse, ApiConnectionActionConfiguration>(() =>
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCountInstancesResponse, ApiConnectionActionConfiguration> StringCountInstances(Expression<Func<StringCountInstancesInput>> body)
+        public IBodyWorkflowAction<StringCountInstancesResponse, ApiConnectionActionConfiguration> StringCountInstances(Expression<Func<StringCountInstancesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringCountInstancesResponse, ApiConnectionActionConfiguration>(() =>
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringChopResponse, ApiConnectionActionConfiguration> StringChop(Expression<Func<StringChopInput>> body)
+        public IBodyWorkflowAction<StringChopResponse, ApiConnectionActionConfiguration> StringChop(Expression<Func<StringChopBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<StringChopResponse, ApiConnectionActionConfiguration>(() =>
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsStringResponse, ApiConnectionActionConfiguration> TypesIsString(Expression<Func<TypesIsStringInput>> body)
+        public IBodyWorkflowAction<TypesIsStringResponse, ApiConnectionActionConfiguration> TypesIsString(Expression<Func<TypesIsArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TypesIsStringResponse, ApiConnectionActionConfiguration>(() =>
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNumberResponse, ApiConnectionActionConfiguration> TypesIsNumber(Expression<Func<TypesIsNumberInput>> body)
+        public IBodyWorkflowAction<TypesIsNumberResponse, ApiConnectionActionConfiguration> TypesIsNumber(Expression<Func<TypesIsNumberBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TypesIsNumberResponse, ApiConnectionActionConfiguration>(() =>
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse, ApiConnectionActionConfiguration> TypesIsNullOrEmpty(Expression<Func<TypesIsNullOrEmptyInput>> body)
+        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse, ApiConnectionActionConfiguration> TypesIsNullOrEmpty(Expression<Func<TypesIsArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TypesIsNullOrEmptyResponse, ApiConnectionActionConfiguration>(() =>
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsArrayResponse, ApiConnectionActionConfiguration> TypesIsArray(Expression<Func<TypesIsArrayInput>> body)
+        public IBodyWorkflowAction<TypesIsArrayResponse, ApiConnectionActionConfiguration> TypesIsArray(Expression<Func<TypesIsArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TypesIsArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsObjectResponse, ApiConnectionActionConfiguration> TypesIsObject(Expression<Func<TypesIsObjectInput>> body)
+        public IBodyWorkflowAction<TypesIsObjectResponse, ApiConnectionActionConfiguration> TypesIsObject(Expression<Func<TypesIsArrayBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TypesIsObjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateEmailResponse, ApiConnectionActionConfiguration> ValidateEmail(Expression<Func<ValidateEmailInput>> body)
+        public IBodyWorkflowAction<ValidateEmailResponse, ApiConnectionActionConfiguration> ValidateEmail(Expression<Func<ValidateEmailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ValidateEmailResponse, ApiConnectionActionConfiguration>(() =>
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateRegexResponse, ApiConnectionActionConfiguration> ValidateRegex(Expression<Func<ValidateRegexInput>> body)
+        public IBodyWorkflowAction<ValidateRegexResponse, ApiConnectionActionConfiguration> ValidateRegex(Expression<Func<ValidateRegexBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ValidateRegexResponse, ApiConnectionActionConfiguration>(() =>
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
-    public class ArraySortInput
+    public class ArrayReverseBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
@@ -593,18 +593,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
-    public class ArrayReverseInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] Array { get; set; }
-    }
-
     public class ArraySortByPropertyResponse
     {
         public JToken[] Result { get; set; }
     }
 
-    public class ArraySortByPropertyInput
+    public class ArraySortByPropertyBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
@@ -621,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
-    public class ArrayFilterInput
+    public class ArrayAnyBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
@@ -630,17 +624,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string PropertyName { get; set; }
 
         [JsonProperty("comparison", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayFilterInputComparisonType Comparison { get; set; } = ArrayFilterInputComparisonType.Equals;
+        public BodyInputComparisonType Comparison { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist.BodyInputComparisonType.Equals;
 
         [JsonProperty("value")]
         public JToken Value { get; set; }
 
         [JsonProperty("valueType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayFilterInputValueTypeType? ValueType { get; set; } = ArrayFilterInputValueTypeType.String;
+        public ArrayAnyBodyInputValueTypeType? ValueType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist.ArrayAnyBodyInputValueTypeType.String;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayFilterInputComparisonType
+    public enum BodyInputComparisonType
     {
         [EnumMember(Value = "equals")]
         Equals,
@@ -661,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayFilterInputValueTypeType
+    public enum ArrayAnyBodyInputValueTypeType
     {
         String,
         Boolean,
@@ -674,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
-    public class ArrayPrependInput
+    public class ArrayPrependBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
@@ -683,11 +677,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken Value { get; set; }
 
         [JsonProperty("valueType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayPrependInputValueTypeType? ValueType { get; set; } = ArrayPrependInputValueTypeType.String;
+        public ArrayPrependBodyInputValueTypeType? ValueType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist.ArrayPrependBodyInputValueTypeType.String;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayPrependInputValueTypeType
+    public enum ArrayPrependBodyInputValueTypeType
     {
         String,
         Boolean,
@@ -703,105 +697,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public bool Result { get; set; }
     }
 
-    public class ArrayAnyInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] Array { get; set; }
-
-        [JsonProperty("propertyName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("comparison", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayAnyInputComparisonType Comparison { get; set; } = ArrayAnyInputComparisonType.Equals;
-
-        [JsonProperty("value")]
-        public JToken Value { get; set; }
-
-        [JsonProperty("valueType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayAnyInputValueTypeType? ValueType { get; set; } = ArrayAnyInputValueTypeType.String;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayAnyInputComparisonType
-    {
-        [EnumMember(Value = "equals")]
-        Equals,
-        [EnumMember(Value = "does not equal")]
-        DoesNotEqual,
-        [EnumMember(Value = "is greater than")]
-        IsGreaterThan,
-        [EnumMember(Value = "is greater than or equal to")]
-        IsGreaterThanOrEqualTo,
-        [EnumMember(Value = "is less than")]
-        IsLessThan,
-        [EnumMember(Value = "is less than or equal to")]
-        IsLessThanOrEqualTo,
-        [EnumMember(Value = "is null or undefined")]
-        IsNullOrUndefined,
-        [EnumMember(Value = "is not null or undefined")]
-        IsNotNullOrUndefined
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayAnyInputValueTypeType
-    {
-        String,
-        Boolean,
-        Integer,
-        Float
-    }
-
     public class ArrayEveryResponse
     {
         public bool Result { get; set; }
-    }
-
-    public class ArrayEveryInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] Array { get; set; }
-
-        [JsonProperty("propertyName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("comparison", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayEveryInputComparisonType Comparison { get; set; } = ArrayEveryInputComparisonType.Equals;
-
-        [JsonProperty("value")]
-        public JToken Value { get; set; }
-
-        [JsonProperty("valueType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayEveryInputValueTypeType? ValueType { get; set; } = ArrayEveryInputValueTypeType.String;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayEveryInputComparisonType
-    {
-        [EnumMember(Value = "equals")]
-        Equals,
-        [EnumMember(Value = "does not equal")]
-        DoesNotEqual,
-        [EnumMember(Value = "is greater than")]
-        IsGreaterThan,
-        [EnumMember(Value = "is greater than or equal to")]
-        IsGreaterThanOrEqualTo,
-        [EnumMember(Value = "is less than")]
-        IsLessThan,
-        [EnumMember(Value = "is less than or equal to")]
-        IsLessThanOrEqualTo,
-        [EnumMember(Value = "is null or undefined")]
-        IsNullOrUndefined,
-        [EnumMember(Value = "is not null or undefined")]
-        IsNotNullOrUndefined
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayEveryInputValueTypeType
-    {
-        String,
-        Boolean,
-        Integer,
-        Float
     }
 
     public class ArrayRemoveFirstResponse
@@ -809,60 +707,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
-    public class ArrayRemoveFirstInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] Array { get; set; }
-
-        [JsonProperty("propertyName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("comparison", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayRemoveFirstInputComparisonType Comparison { get; set; } = ArrayRemoveFirstInputComparisonType.Equals;
-
-        [JsonProperty("value")]
-        public JToken Value { get; set; }
-
-        [JsonProperty("valueType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayRemoveFirstInputValueTypeType? ValueType { get; set; } = ArrayRemoveFirstInputValueTypeType.String;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayRemoveFirstInputComparisonType
-    {
-        [EnumMember(Value = "equals")]
-        Equals,
-        [EnumMember(Value = "does not equal")]
-        DoesNotEqual,
-        [EnumMember(Value = "is greater than")]
-        IsGreaterThan,
-        [EnumMember(Value = "is greater than or equal to")]
-        IsGreaterThanOrEqualTo,
-        [EnumMember(Value = "is less than")]
-        IsLessThan,
-        [EnumMember(Value = "is less than or equal to")]
-        IsLessThanOrEqualTo,
-        [EnumMember(Value = "is null or undefined")]
-        IsNullOrUndefined,
-        [EnumMember(Value = "is not null or undefined")]
-        IsNotNullOrUndefined
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayRemoveFirstInputValueTypeType
-    {
-        String,
-        Boolean,
-        Integer,
-        Float
-    }
-
     public class ArrayGroupByResponse
     {
         public JToken Result { get; set; }
     }
 
-    public class ArrayGroupByInput
+    public class ArrayGroupByBodyInput
     {
         [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Array { get; set; }
@@ -876,60 +726,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken Result { get; set; }
     }
 
-    public class ArrayFindFirstInput
-    {
-        [JsonProperty("array", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] Array { get; set; }
-
-        [JsonProperty("propertyName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PropertyName { get; set; }
-
-        [JsonProperty("comparison", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayFindFirstInputComparisonType Comparison { get; set; } = ArrayFindFirstInputComparisonType.Equals;
-
-        [JsonProperty("value")]
-        public JToken Value { get; set; }
-
-        [JsonProperty("valueType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ArrayFindFirstInputValueTypeType? ValueType { get; set; } = ArrayFindFirstInputValueTypeType.String;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayFindFirstInputComparisonType
-    {
-        [EnumMember(Value = "equals")]
-        Equals,
-        [EnumMember(Value = "does not equal")]
-        DoesNotEqual,
-        [EnumMember(Value = "is greater than")]
-        IsGreaterThan,
-        [EnumMember(Value = "is greater than or equal to")]
-        IsGreaterThanOrEqualTo,
-        [EnumMember(Value = "is less than")]
-        IsLessThan,
-        [EnumMember(Value = "is less than or equal to")]
-        IsLessThanOrEqualTo,
-        [EnumMember(Value = "is null or undefined")]
-        IsNullOrUndefined,
-        [EnumMember(Value = "is not null or undefined")]
-        IsNotNullOrUndefined
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ArrayFindFirstInputValueTypeType
-    {
-        String,
-        Boolean,
-        Integer,
-        Float
-    }
-
     public class RoundResponse
     {
         public int Result { get; set; }
     }
 
-    public class RoundInput
+    public class MathCeilBodyInput
     {
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Number { get; set; }
@@ -940,21 +742,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public int Result { get; set; }
     }
 
-    public class MathCeilInput
-    {
-        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Number { get; set; }
-    }
-
     public class MathFloorResponse
     {
         public int Result { get; set; }
-    }
-
-    public class MathFloorInput
-    {
-        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Number { get; set; }
     }
 
     public class MathAverageResponse
@@ -962,7 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public double Result { get; set; }
     }
 
-    public class MathAverageInput
+    public class MathAverageBodyInput
     {
         [JsonProperty("numbers", DefaultValueHandling = DefaultValueHandling.Include)]
         public double[] Numbers { get; set; }
@@ -973,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public double Result { get; set; }
     }
 
-    public class MathMedianInput
+    public class MathMedianBodyInput
     {
         [JsonProperty("numbers", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Numbers { get; set; }
@@ -984,18 +774,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public double Result { get; set; }
     }
 
-    public class MathModeInput
-    {
-        [JsonProperty("numbers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken[] Numbers { get; set; }
-    }
-
     public class MathRandomResponse
     {
         public double Result { get; set; }
     }
 
-    public class MathRandomInput
+    public class MathRandomBodyInput
     {
         [JsonProperty("maximum", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Maximum { get; set; }
@@ -1006,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringReplaceAllInput
+    public class StringReplaceAllBodyInput
     {
         [JsonProperty("sourceString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceString { get; set; }
@@ -1023,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringRegexReplaceInput
+    public class StringRegexReplaceBodyInput
     {
         [JsonProperty("sourceString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceString { get; set; }
@@ -1040,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringCapitalizeInput
+    public class StringCapitalizeBodyInput
     {
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
@@ -1051,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringTrimInput
+    public class StringTrimBodyInput
     {
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
@@ -1065,27 +849,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringTrimStartInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
-
-        [JsonProperty("characters")]
-        public string Characters { get; set; }
-    }
-
     public class StringTrimEndResponse
     {
         public string Result { get; set; }
-    }
-
-    public class StringTrimEndInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
-
-        [JsonProperty("characters")]
-        public string Characters { get; set; }
     }
 
     public class StringSlugifyResponse
@@ -1093,18 +859,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringSlugifyInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
-    }
-
     public class StringWordsResponse
     {
         public JToken[] Result { get; set; }
     }
 
-    public class StringWordsInput
+    public class StringWordCountBodyInput
     {
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
@@ -1118,24 +878,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public int Result { get; set; }
     }
 
-    public class StringWordCountInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
-
-        [JsonProperty("delimiter")]
-        public string Delimiter { get; set; }
-    }
-
     public class StringStripHtmlResponse
     {
         public string Result { get; set; }
-    }
-
-    public class StringStripHtmlInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
     }
 
     public class StringCleanResponse
@@ -1143,21 +888,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringCleanInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
-    }
-
     public class StringCleanDiacriticsResponse
     {
         public string Result { get; set; }
-    }
-
-    public class StringCleanDiacriticsInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
     }
 
     public class StringEscapeHtmlResponse
@@ -1165,21 +898,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public string Result { get; set; }
     }
 
-    public class StringEscapeHtmlInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
-    }
-
     public class StringUnescapeHtmlResponse
     {
         public string Result { get; set; }
-    }
-
-    public class StringUnescapeHtmlInput
-    {
-        [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string String { get; set; }
     }
 
     public class StringCountInstancesResponse
@@ -1187,7 +908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public int Result { get; set; }
     }
 
-    public class StringCountInstancesInput
+    public class StringCountInstancesBodyInput
     {
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
@@ -1204,7 +925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
-    public class StringChopInput
+    public class StringChopBodyInput
     {
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
@@ -1218,7 +939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public bool Result { get; set; }
     }
 
-    public class TypesIsStringInput
+    public class TypesIsArrayBodyInput
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Value { get; set; }
@@ -1229,7 +950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public bool Result { get; set; }
     }
 
-    public class TypesIsNumberInput
+    public class TypesIsNumberBodyInput
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Value { get; set; }
@@ -1243,21 +964,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public bool Result { get; set; }
     }
 
-    public class TypesIsNullOrEmptyInput
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Value { get; set; }
-    }
-
     public class TypesIsArrayResponse
     {
         public bool Result { get; set; }
-    }
-
-    public class TypesIsArrayInput
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Value { get; set; }
     }
 
     public class TypesIsObjectResponse
@@ -1265,18 +974,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public bool Result { get; set; }
     }
 
-    public class TypesIsObjectInput
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Value { get; set; }
-    }
-
     public class ValidateEmailResponse
     {
         public bool Result { get; set; }
     }
 
-    public class ValidateEmailInput
+    public class ValidateEmailBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -1287,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public bool Result { get; set; }
     }
 
-    public class ValidateRegexInput
+    public class ValidateRegexBodyInput
     {
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }

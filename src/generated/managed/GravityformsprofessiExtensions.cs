@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
 
     public class GravityformsprofessiTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryUpdate(Expression<Func<TriggerOnEntryUpdateInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryUpdate(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnFormSubmission(Expression<Func<TriggerOnFormSubmissionInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnFormSubmission(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryUpdateStatus(Expression<Func<TriggerOnEntryUpdateStatusInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryUpdateStatus(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryDelete(Expression<Func<TriggerOnEntryDeleteInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryDelete(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnPaymentAction(Expression<Func<TriggerOnPaymentActionInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnPaymentAction(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnNoteAdded(Expression<Func<TriggerOnNoteAddedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnNoteAdded(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryEntryApprovalUpdate(Expression<Func<TriggerOnEntryEntryApprovalUpdateInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerOnEntryEntryApprovalUpdate(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -326,106 +326,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsprofessi
         public int TotalCount { get; set; }
     }
 
-    public class TriggerOnEntryUpdateInput
+    public class BodyInput
     {
         [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormId { get; set; }
 
         [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal TriggerOnEntryUpdateInputMetaType Meta { get; set; } = new TriggerOnEntryUpdateInputMetaType();
+        internal BodyInputMetaType Meta { get; set; } = new BodyInputMetaType();
     }
 
-    public class TriggerOnEntryUpdateInputMetaType
-    {
-        [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerOnFormSubmissionInput
-    {
-        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal TriggerOnFormSubmissionInputMetaType Meta { get; set; } = new TriggerOnFormSubmissionInputMetaType();
-    }
-
-    public class TriggerOnFormSubmissionInputMetaType
-    {
-        [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerOnEntryUpdateStatusInput
-    {
-        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal TriggerOnEntryUpdateStatusInputMetaType Meta { get; set; } = new TriggerOnEntryUpdateStatusInputMetaType();
-    }
-
-    public class TriggerOnEntryUpdateStatusInputMetaType
-    {
-        [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerOnEntryDeleteInput
-    {
-        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal TriggerOnEntryDeleteInputMetaType Meta { get; set; } = new TriggerOnEntryDeleteInputMetaType();
-    }
-
-    public class TriggerOnEntryDeleteInputMetaType
-    {
-        [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerOnPaymentActionInput
-    {
-        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal TriggerOnPaymentActionInputMetaType Meta { get; set; } = new TriggerOnPaymentActionInputMetaType();
-    }
-
-    public class TriggerOnPaymentActionInputMetaType
-    {
-        [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerOnNoteAddedInput
-    {
-        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal TriggerOnNoteAddedInputMetaType Meta { get; set; } = new TriggerOnNoteAddedInputMetaType();
-    }
-
-    public class TriggerOnNoteAddedInputMetaType
-    {
-        [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class TriggerOnEntryEntryApprovalUpdateInput
-    {
-        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FormId { get; set; }
-
-        [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal TriggerOnEntryEntryApprovalUpdateInputMetaType Meta { get; set; } = new TriggerOnEntryEntryApprovalUpdateInputMetaType();
-    }
-
-    public class TriggerOnEntryEntryApprovalUpdateInputMetaType
+    public class BodyInputMetaType
     {
         [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";

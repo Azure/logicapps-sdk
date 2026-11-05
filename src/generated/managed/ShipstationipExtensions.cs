@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<RefreshStoreResponse, ApiConnectionActionConfiguration> StoresRefreshStore(Expression<Func<StoresRefreshStorePostInput>> body)
+        public IBodyWorkflowAction<RefreshStoreResponse, ApiConnectionActionConfiguration> StoresRefreshStore(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RefreshStoreResponse, ApiConnectionActionConfiguration>(() =>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         public string Message { get; set; }
     }
 
-    public class StoresRefreshStorePostInput
+    public class BodyInput
     {
         [JsonProperty("storeId")]
         public int? StoreId { get; set; }

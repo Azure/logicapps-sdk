@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PagesCreate(Expression<Func<PagesCreateInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PagesCreate(Expression<Func<PagesCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PagesUpdate(Expression<Func<string>> pageId, Expression<Func<PagesUpdateInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PagesUpdate(Expression<Func<string>> pageId, Expression<Func<PagesCreateBodyInput>> body = null)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PagesPublish(Expression<Func<string>> pageId, Expression<Func<PagesPublishInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PagesPublish(Expression<Func<string>> pageId, Expression<Func<PagesPublishBodyInput>> body)
         {
             var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TemplatesCreate(Expression<Func<TemplatesCreateInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TemplatesCreate(Expression<Func<TemplatesCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TemplatesUpdate(Expression<Func<string>> templateId, Expression<Func<TemplatesUpdateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TemplatesUpdate(Expression<Func<string>> templateId, Expression<Func<TemplatesUpdateBodyInput>> body)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
     {
     }
 
-    public class PagesCreateInput
+    public class PagesCreateBodyInput
     {
         [JsonProperty("campaign")]
         public string Campaign { get; set; }
@@ -212,62 +212,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         public string Widgets { get; set; }
     }
 
-    public class PagesUpdateInput
-    {
-        [JsonProperty("campaign")]
-        public string Campaign { get; set; }
-
-        [JsonProperty("campaign_name")]
-        public string CampaignName { get; set; }
-
-        [JsonProperty("footer_html")]
-        public string FooterHtml { get; set; }
-
-        [JsonProperty("head_html")]
-        public string HeadHtml { get; set; }
-
-        [JsonProperty("is_draft")]
-        public string IsDraft { get; set; }
-
-        [JsonProperty("meta_description")]
-        public string MetaDescription { get; set; }
-
-        [JsonProperty("meta_keywords")]
-        public string MetaKeywords { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("password")]
-        public string Password { get; set; }
-
-        [JsonProperty("publish_date")]
-        public string PublishDate { get; set; }
-
-        [JsonProperty("publish_immediately")]
-        public string PublishImmediately { get; set; }
-
-        [JsonProperty("slug")]
-        public string Slug { get; set; }
-
-        [JsonProperty("subcategory")]
-        public string Subcategory { get; set; }
-
-        [JsonProperty("widget_containers")]
-        public string WidgetContainers { get; set; }
-
-        [JsonProperty("widgets")]
-        public string Widgets { get; set; }
-    }
-
-    public class PagesPublishInput
+    public class PagesPublishBodyInput
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PagesPublishInputActionType Action { get; set; }
+        public BodyInputActionType Action { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PagesPublishInputActionType
+    public enum BodyInputActionType
     {
         [EnumMember(Value = "push-buffer-live")]
         PushBufferLive,
@@ -277,10 +229,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         CancelPublish
     }
 
-    public class TemplatesCreateInput
+    public class TemplatesCreateBodyInput
     {
         [JsonProperty("category_id")]
-        public TemplatesCreateInputCategoryIdType? CategoryId { get; set; }
+        public BodyInputCategoryIdType? CategoryId { get; set; }
 
         [JsonProperty("folder")]
         public string Folder { get; set; }
@@ -289,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         public bool? IsAvailableForNewContent { get; set; } = false;
 
         [JsonProperty("template_type")]
-        public TemplatesCreateInputTemplateTypeType? TemplateType { get; set; }
+        public BodyInputTemplateTypeType? TemplateType { get; set; }
 
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -298,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         public string Source { get; set; }
     }
 
-    public enum TemplatesCreateInputCategoryIdType
+    public enum BodyInputCategoryIdType
     {
         _0 = 0,
         _1 = 1,
@@ -307,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         _4 = 4
     }
 
-    public enum TemplatesCreateInputTemplateTypeType
+    public enum BodyInputTemplateTypeType
     {
         _2 = 2,
         _4 = 4,
@@ -319,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         _19 = 19
     }
 
-    public class TemplatesUpdateInput
+    public class TemplatesUpdateBodyInput
     {
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Source { get; set; }

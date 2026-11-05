@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     public class LinemessageipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linemessageip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -33,19 +33,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     {
     }
 
-    public class SendMessageInput
+    public class BodyInput
     {
         [JsonProperty("to")]
         public string To { get; set; }
 
         [JsonProperty("messages")]
-        public SendMessageInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class SendMessageInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendMessageInputMessagesTypeItemTypeType? Type { get; set; } = SendMessageInputMessagesTypeItemTypeType.Text;
+        public BodyInputMessagesTypeItemTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip.BodyInputMessagesTypeItemTypeType.Text;
 
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendMessageInputMessagesTypeItemTypeType
+    public enum BodyInputMessagesTypeItemTypeType
     {
         [EnumMember(Value = "text")]
         Text,

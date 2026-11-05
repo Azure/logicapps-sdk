@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
     public class AzureadActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateOffice365Group(Expression<Func<CreateOffice365GroupInput>> body)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateOffice365Group(Expression<Func<CreateOffice365GroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateSecurityGroup(Expression<Func<CreateSecurityGroupInput>> body)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateSecurityGroup(Expression<Func<CreateSecurityGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> id, Expression<Func<UpdateUserInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> id, Expression<Func<UpdateUserBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IBodyWorkflowAction<GetUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetUserResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> id, Expression<Func<AddUserToGroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> id, Expression<Func<AddUserToGroupBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AssignManager(Expression<Func<string>> id, Expression<Func<AssignManagerInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignManager(Expression<Func<string>> id, Expression<Func<AssignManagerBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<CreateGroupInput>> body)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<CreateGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IBodyWorkflowAction<GetMemberGroupsResponseV2, ApiConnectionActionConfiguration> CheckMemberGroups(Expression<Func<string>> id, Expression<Func<CheckMemberGroupsV2Input>> body)
+        public IBodyWorkflowAction<GetMemberGroupsResponseV2, ApiConnectionActionConfiguration> CheckMemberGroups(Expression<Func<string>> id, Expression<Func<CheckMemberGroupsBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuread")]
-        public IBodyWorkflowAction<GetMemberGroupsResponseV2, ApiConnectionActionConfiguration> GetMemberGroups(Expression<Func<string>> id, Expression<Func<GetMemberGroupsV2Input>> body)
+        public IBodyWorkflowAction<GetMemberGroupsResponseV2, ApiConnectionActionConfiguration> GetMemberGroups(Expression<Func<string>> id, Expression<Func<GetMemberGroupsBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public string Visibility { get; set; }
     }
 
-    public class CreateOffice365GroupInput
+    public class CreateOffice365GroupBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public bool MailEnabled { get; set; }
     }
 
-    public class CreateSecurityGroupInput
+    public class CreateSecurityGroupBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public string UserPrincipalName { get; set; }
     }
 
-    public class UpdateUserInput
+    public class UpdateUserBodyInput
     {
         [JsonProperty("userPrincipalName")]
         public string UserPrincipalName { get; set; }
@@ -433,10 +433,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public JToken AdditionalProperties { get; set; }
 
         [JsonProperty("onPremisesExtensionAttributes")]
-        public UpdateUserInputOnPremisesExtensionAttributesType OnPremisesExtensionAttributes { get; set; }
+        public BodyInputOnPremisesExtensionAttributesType OnPremisesExtensionAttributes { get; set; }
     }
 
-    public class UpdateUserInputOnPremisesExtensionAttributesType
+    public class BodyInputOnPremisesExtensionAttributesType
     {
         [JsonProperty("extensionAttribute1")]
         public string FirstCustomizableExtensionAttribute { get; set; }
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public string FifteenthCustomizableExtensionAttribute { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("accountEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AccountEnabled { get; set; }
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public string MailNickname { get; set; }
 
         [JsonProperty("passwordProfile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputPasswordProfileType PasswordProfile { get; set; }
+        public BodyInputPasswordProfileType PasswordProfile { get; set; }
 
         [JsonProperty("userPrincipalName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserPrincipalName { get; set; }
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public string PreferredLanguage { get; set; }
     }
 
-    public class CreateUserInputPasswordProfileType
+    public class BodyInputPasswordProfileType
     {
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
@@ -541,19 +541,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public GetUserResponse[] GroupMembers { get; set; }
     }
 
-    public class AddUserToGroupInput
+    public class AddUserToGroupBodyInput
     {
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
     }
 
-    public class AssignManagerInput
+    public class AssignManagerBodyInput
     {
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserIdOfTheManager { get; set; }
     }
 
-    public class CreateGroupInput
+    public class CreateGroupBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public string MailNickname { get; set; }
 
         [JsonProperty("groupTypes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGroupInputGroupTypesTypeItem[] GroupTypes { get; set; }
+        public BodyInputGroupTypesTypeItem[] GroupTypes { get; set; }
 
         [JsonProperty("securityEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool SecurityEnabled { get; set; }
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGroupInputGroupTypesTypeItem
+    public enum BodyInputGroupTypesTypeItem
     {
         Unified,
         None
@@ -587,13 +587,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuread
         public string[] Value { get; set; }
     }
 
-    public class CheckMemberGroupsV2Input
+    public class CheckMemberGroupsBodyInput
     {
         [JsonProperty("groupIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupIds { get; set; }
     }
 
-    public class GetMemberGroupsV2Input
+    public class GetMemberGroupsBodyInput
     {
         [JsonProperty("securityEnabledOnly", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool SecurityEnabledOnly { get; set; } = true;

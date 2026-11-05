@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
     public class HvivehicleinspectionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
-        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[], ApiConnectionActionConfiguration> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<InspectionPerVehicleInput>> body)
+        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[], ApiConnectionActionConfiguration> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<BodyInput>> body)
         {
             var __workflow_sv = WorkflowExpression.Compile(sv, nameof(sv), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
         public string Note { get; set; }
     }
 
-    public class InspectionPerVehicleInput
+    public class BodyInput
     {
         [JsonProperty("master_email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MasterEmail { get; set; }

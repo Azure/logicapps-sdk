@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
     public class AzureadapplicationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationListDefinition, ApiConnectionActionConfiguration> ListApplications(Expression<Func<string>> select = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<countInput>> count = null, Expression<Func<string>> expand = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ApplicationListDefinition, ApiConnectionActionConfiguration> ListApplications(Expression<Func<string>> select = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<CountInput>> count = null, Expression<Func<string>> expand = null, Expression<Func<int>> top = null)
         {
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countInput
+    public enum CountInput
     {
         [EnumMember(Value = "true")]
         True,

@@ -25,20 +25,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetTaskResponse[], ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> boardId)
+        public IBodyWorkflowAction<ArchiveTaskGetTaskResponse[], ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> boardId)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
-            return new DeferredBodyAction<GetTaskResponse[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ArchiveTaskGetTaskResponse[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks.json", __workflow_boardId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetTaskResponse[]>(callPayload);
+                return new ApiConnectionAction<ArchiveTaskGetTaskResponse[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> boardId, Expression<Func<CreateTaskInput>> task)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> boardId, Expression<Func<CreateTaskTaskInput>> task)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
@@ -53,16 +53,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetTaskResponse2, ApiConnectionActionConfiguration> GetTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetTaskGetTaskResponse, ApiConnectionActionConfiguration> GetTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
-            return new DeferredBodyAction<GetTaskResponse2, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetTaskGetTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", __workflow_boardId.WithUrlEncoding(1), __workflow_taskId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetTaskResponse2>(callPayload);
+                return new ApiConnectionAction<GetTaskGetTaskResponse>(callPayload);
             });
         }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<UpdateTaskInput>> task)
+        public IBodyWorkflowAction<UpdateTaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<UpdateTaskTaskInput>> task)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<MoveTaskResponse, ApiConnectionActionConfiguration> MoveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<MoveTaskInput>> task)
+        public IBodyWorkflowAction<MoveTaskResponse, ApiConnectionActionConfiguration> MoveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<MoveTaskTaskInput>> task)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetCommentResponse, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<CreateCommentInput>> comment)
+        public IBodyWorkflowAction<GetCommentResponse, ApiConnectionActionConfiguration> CreateComment(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<CommentInput>> comment)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse, ApiConnectionActionConfiguration> CreateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<CreateSubtaskInput>> subtask)
+        public IBodyWorkflowAction<GetSubtaskResponse, ApiConnectionActionConfiguration> CreateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<CreateSubtaskSubtaskInput>> subtask)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse, ApiConnectionActionConfiguration> UpdateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId, Expression<Func<UpdateSubtaskInput>> subtask)
+        public IBodyWorkflowAction<GetSubtaskResponse, ApiConnectionActionConfiguration> UpdateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId, Expression<Func<UpdateSubtaskSubtaskInput>> subtask)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         public string Name { get; set; }
     }
 
-    public class GetTaskResponse
+    public class ArchiveTaskGetTaskResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -506,10 +506,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
     public class CreateTaskResponse
     {
         [JsonProperty("task")]
-        public GetTaskResponse TaskObject { get; set; }
+        public ArchiveTaskGetTaskResponse TaskObject { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskTaskInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -530,25 +530,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         public string AssignedUserId { get; set; }
     }
 
-    public class GetTaskResponse2
+    public class GetTaskGetTaskResponse
     {
         [JsonProperty("task")]
-        public GetTaskResponse TaskObject { get; set; }
+        public ArchiveTaskGetTaskResponse TaskObject { get; set; }
     }
 
     public class DeleteTaskResponse
     {
         [JsonProperty("task")]
-        public GetTaskResponse TaskObject { get; set; }
+        public ArchiveTaskGetTaskResponse TaskObject { get; set; }
     }
 
     public class UpdateTaskResponse
     {
         [JsonProperty("task")]
-        public GetTaskResponse TaskObject { get; set; }
+        public ArchiveTaskGetTaskResponse TaskObject { get; set; }
     }
 
-    public class UpdateTaskInput
+    public class UpdateTaskTaskInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -566,13 +566,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
     public class MoveTaskResponse
     {
         [JsonProperty("task")]
-        public GetTaskResponse TaskObject { get; set; }
+        public ArchiveTaskGetTaskResponse TaskObject { get; set; }
     }
 
-    public class MoveTaskInput
+    public class MoveTaskTaskInput
     {
         [JsonProperty("direction")]
-        public MoveTaskInputDirectionType? Direction { get; set; }
+        public TaskInputDirectionType? Direction { get; set; }
 
         [JsonProperty("swimlane_id")]
         public string SwimlaneId { get; set; }
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MoveTaskInputDirectionType
+    public enum TaskInputDirectionType
     {
         [EnumMember(Value = "up")]
         Up,
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
     public class ArchiveTaskResponse
     {
         [JsonProperty("task")]
-        public GetTaskResponse TaskObject { get; set; }
+        public ArchiveTaskGetTaskResponse TaskObject { get; set; }
     }
 
     public class GetActivitiesResponseItem
@@ -787,7 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         public string Url { get; set; }
     }
 
-    public class CreateCommentInput
+    public class CommentInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         public string DeletedAt { get; set; }
     }
 
-    public class CreateSubtaskInput
+    public class CreateSubtaskSubtaskInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         public string AssignedUserId { get; set; }
     }
 
-    public class UpdateSubtaskInput
+    public class UpdateSubtaskSubtaskInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

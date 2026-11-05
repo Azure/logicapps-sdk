@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securitycopilot
     public class SecuritycopilotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securitycopilot")]
-        public IBodyWorkflowAction<ExecutionDetail, ApiConnectionActionConfiguration> ExecuteAgent(Expression<Func<string>> agentId, Expression<Func<string>> triggerName, Expression<Func<ExecuteAgentInput>> agentInputs = null)
+        public IBodyWorkflowAction<ExecutionDetail, ApiConnectionActionConfiguration> ExecuteAgent(Expression<Func<string>> agentId, Expression<Func<string>> triggerName, Expression<Func<AgentInputsInput>> agentInputs = null)
         {
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
             var __workflow_triggerName = WorkflowExpression.Compile(triggerName, nameof(triggerName), required: true);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securitycopilot
         public bool Retryable { get; set; }
     }
 
-    public class ExecuteAgentInput
+    public class AgentInputsInput
     {
         public JToken Inputs { get; set; }
     }

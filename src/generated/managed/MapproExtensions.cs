@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> UpdatePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId, Expression<Func<UpdatePlaceInput>> body)
+        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> UpdatePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId, Expression<Func<BodyInput>> body)
         {
             var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
             var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
-        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> CreateNewPlace(Expression<Func<string>> mapId, Expression<Func<CreateNewPlaceInput>> body)
+        public IBodyWorkflowAction<Place, ApiConnectionActionConfiguration> CreateNewPlace(Expression<Func<string>> mapId, Expression<Func<BodyInput>> body)
         {
             var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -113,25 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         public double Longitude { get; set; }
     }
 
-    public class UpdatePlaceInput
-    {
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Address { get; set; }
-
-        [JsonProperty("lat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Latitude { get; set; }
-
-        [JsonProperty("lng", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Longitude { get; set; }
-    }
-
-    public class CreateNewPlaceInput
+    public class BodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }

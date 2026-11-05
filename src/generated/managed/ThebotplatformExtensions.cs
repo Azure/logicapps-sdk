@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
     public class ThebotplatformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IBodyWorkflowAction<SimpleTextMessageResponse, ApiConnectionActionConfiguration> SimpleTextMessage(Expression<Func<SimpleTextMessageInput>> body)
+        public IBodyWorkflowAction<SimpleTextMessageResponse, ApiConnectionActionConfiguration> SimpleTextMessage(Expression<Func<SimpleTextMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SimpleTextMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IBodyWorkflowAction<CreateUserAttributeResponse, ApiConnectionActionConfiguration> CreateUserAttribute(Expression<Func<CreateUserAttributeInput>> body)
+        public IBodyWorkflowAction<CreateUserAttributeResponse, ApiConnectionActionConfiguration> CreateUserAttribute(Expression<Func<CreateUserAttributeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUserAttributeResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<SetUserAttributeInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<SetUserAttributeBodyInput>> body)
         {
             var __workflow_emailaddress = WorkflowExpression.Compile(emailaddress, nameof(emailaddress), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -66,38 +66,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         public JToken Data { get; set; }
     }
 
-    public class SimpleTextMessageInput
+    public class SimpleTextMessageBodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SimpleTextMessageInputDataType Data { get; set; } = new SimpleTextMessageInputDataType();
+        public SimpleTextMessageBodyInputDataType Data { get; set; } = new SimpleTextMessageBodyInputDataType();
     }
 
-    public class SimpleTextMessageInputDataType
+    public class SimpleTextMessageBodyInputDataType
     {
         [JsonProperty("attributes")]
-        public SimpleTextMessageInputDataTypeAttributesType Attributes { get; set; }
+        public SimpleTextMessageBodyInputDataTypeAttributesType Attributes { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal SimpleTextMessageInputDataTypeTypeType Type { get; set; } = SimpleTextMessageInputDataTypeTypeType.ExternalActivity;
+        internal SimpleTextMessageBodyInputDataTypeTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform.SimpleTextMessageBodyInputDataTypeTypeType.ExternalActivity;
     }
 
-    public class SimpleTextMessageInputDataTypeAttributesType
+    public class SimpleTextMessageBodyInputDataTypeAttributesType
     {
         [JsonProperty("messages")]
-        public SimpleTextMessageInputDataTypeAttributesTypeMessagesTypeItem[] Messages { get; set; }
+        public BodyInputDataTypeAttributesTypeMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("recipient")]
         public string Recipient { get; set; }
     }
 
-    public class SimpleTextMessageInputDataTypeAttributesTypeMessagesTypeItem
+    public class BodyInputDataTypeAttributesTypeMessagesTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SimpleTextMessageInputDataTypeTypeType
+    public enum SimpleTextMessageBodyInputDataTypeTypeType
     {
         [EnumMember(Value = "external-activity")]
         ExternalActivity
@@ -109,75 +109,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         public JToken Data { get; set; }
     }
 
-    public class CreateUserAttributeInput
+    public class CreateUserAttributeBodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserAttributeInputDataType Data { get; set; } = new CreateUserAttributeInputDataType();
+        public CreateUserAttributeBodyInputDataType Data { get; set; } = new CreateUserAttributeBodyInputDataType();
     }
 
-    public class CreateUserAttributeInputDataType
+    public class CreateUserAttributeBodyInputDataType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "userattribute";
 
         [JsonProperty("attributes")]
-        public CreateUserAttributeInputDataTypeAttributesType Attributes { get; set; }
+        public CreateUserAttributeBodyInputDataTypeAttributesType Attributes { get; set; }
     }
 
-    public class CreateUserAttributeInputDataTypeAttributesType
+    public class CreateUserAttributeBodyInputDataTypeAttributesType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("is_pii")]
-        public CreateUserAttributeInputDataTypeAttributesTypeIsPiiType? IsPii { get; set; }
+        public BodyInputDataTypeAttributesTypeIsPiiType? IsPii { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateUserAttributeInputDataTypeAttributesTypeIsPiiType
+    public enum BodyInputDataTypeAttributesTypeIsPiiType
     {
         Yes,
         No
     }
 
-    public class SetUserAttributeInput
+    public class SetUserAttributeBodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetUserAttributeInputDataType Data { get; set; } = new SetUserAttributeInputDataType();
+        public SetUserAttributeBodyInputDataType Data { get; set; } = new SetUserAttributeBodyInputDataType();
     }
 
-    public class SetUserAttributeInputDataType
+    public class SetUserAttributeBodyInputDataType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal SetUserAttributeInputDataTypeTypeType Type { get; set; } = SetUserAttributeInputDataTypeTypeType.User;
+        internal SetUserAttributeBodyInputDataTypeTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform.SetUserAttributeBodyInputDataTypeTypeType.User;
 
         [JsonProperty("attributes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetUserAttributeInputDataTypeAttributesType Attributes { get; set; }
+        public SetUserAttributeBodyInputDataTypeAttributesType Attributes { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetUserAttributeInputDataTypeTypeType
+    public enum SetUserAttributeBodyInputDataTypeTypeType
     {
         [EnumMember(Value = "user")]
         User
     }
 
-    public class SetUserAttributeInputDataTypeAttributesType
+    public class SetUserAttributeBodyInputDataTypeAttributesType
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetUserAttributeInputDataTypeAttributesTypeStateTypeItem[] State { get; set; }
+        public BodyInputDataTypeAttributesTypeStateTypeItem[] State { get; set; }
     }
 
-    public class SetUserAttributeInputDataTypeAttributesTypeStateTypeItem
+    public class BodyInputDataTypeAttributesTypeStateTypeItem
     {
         [JsonProperty("userattribute", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetUserAttributeInputDataTypeAttributesTypeStateTypeItemUserattributeType Userattribute { get; set; }
+        public BodyInputDataTypeAttributesTypeStateTypeItemUserattributeType Userattribute { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class SetUserAttributeInputDataTypeAttributesTypeStateTypeItemUserattributeType
+    public class BodyInputDataTypeAttributesTypeStateTypeItemUserattributeType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }

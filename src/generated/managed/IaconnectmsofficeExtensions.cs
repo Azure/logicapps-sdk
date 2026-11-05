@@ -2368,7 +2368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string DocumentName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MSWordSetDocumentSensitivityLabelInputAssignmentMethodType AssignmentMethod { get; set; } = MSWordSetDocumentSensitivityLabelInputAssignmentMethodType.NotSet;
+        public MSWordSetDocumentSensitivityLabelInputAssignmentMethodType AssignmentMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice.MSWordSetDocumentSensitivityLabelInputAssignmentMethodType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LabelId { get; set; }
@@ -2842,7 +2842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public bool? DeleteExistingSaveFilename { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MSExcelSaveWorkbookAsInputExcelFileFormatType? ExcelFileFormat { get; set; } = MSExcelSaveWorkbookAsInputExcelFileFormatType.AutomaticFromFileExtension;
+        public MSExcelSaveWorkbookAsInputExcelFileFormatType? ExcelFileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice.MSExcelSaveWorkbookAsInputExcelFileFormatType.AutomaticFromFileExtension;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -2916,7 +2916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public bool? DeleteExistingSaveFilename { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MSExcelSaveWorkbookAsWithPasswordInputExcelFileFormatType? ExcelFileFormat { get; set; } = MSExcelSaveWorkbookAsWithPasswordInputExcelFileFormatType.AutomaticFromFileExtension;
+        public MSExcelSaveWorkbookAsWithPasswordInputExcelFileFormatType? ExcelFileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice.MSExcelSaveWorkbookAsWithPasswordInputExcelFileFormatType.AutomaticFromFileExtension;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -2972,7 +2972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public bool? DeleteExistingSaveFilename { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MSExcelSaveCurrentWorkbookAsInputExcelFileFormatType? ExcelFileFormat { get; set; } = MSExcelSaveCurrentWorkbookAsInputExcelFileFormatType.AutomaticFromFileExtension;
+        public MSExcelSaveCurrentWorkbookAsInputExcelFileFormatType? ExcelFileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice.MSExcelSaveCurrentWorkbookAsInputExcelFileFormatType.AutomaticFromFileExtension;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
@@ -3903,7 +3903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string WorkbookName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MSExcelSetWorksheetSensitivityLabelInputAssignmentMethodType AssignmentMethod { get; set; } = MSExcelSetWorksheetSensitivityLabelInputAssignmentMethodType.NotSet;
+        public MSExcelSetWorksheetSensitivityLabelInputAssignmentMethodType AssignmentMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice.MSExcelSetWorksheetSensitivityLabelInputAssignmentMethodType.NotSet;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LabelId { get; set; }
@@ -3968,7 +3968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string ArrayToWriteJSON { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MSExcelWriteArrayInputDirectionType Direction { get; set; } = MSExcelWriteArrayInputDirectionType.R;
+        public MSExcelWriteArrayInputDirectionType Direction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice.MSExcelWriteArrayInputDirectionType.R;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";

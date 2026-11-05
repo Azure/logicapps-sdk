@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
     public class WqrmriskforecastservActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GroupReportBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<GroupReportBanksInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupReportBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GroupReportCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<GroupReportCUsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupReportCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReportManagementBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<ReportManagementBanksInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReportManagementBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReportManagementCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<ReportManagementCUsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReportManagementCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -113,34 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
     {
     }
 
-    public class GroupReportBanksInput
-    {
-        public string Name { get; set; }
-        public string TenantFirstName { get; set; }
-        public string TenantLastName { get; set; }
-        public string CompanyName { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class GroupReportCUsInput
-    {
-        public string Name { get; set; }
-        public string TenantFirstName { get; set; }
-        public string TenantLastName { get; set; }
-        public string CompanyName { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class ReportManagementBanksInput
-    {
-        public string Name { get; set; }
-        public string TenantFirstName { get; set; }
-        public string TenantLastName { get; set; }
-        public string CompanyName { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class ReportManagementCUsInput
+    public class BodyInput
     {
         public string Name { get; set; }
         public string TenantFirstName { get; set; }

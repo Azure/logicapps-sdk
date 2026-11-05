@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
     public class ClicksendpostcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<UploadMediaInput>> body)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<UploadMediaBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<SendPostcardInput>> body)
+        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<SendPostcardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendPostcardResponse, ApiConnectionActionConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         public string Url { get; set; }
     }
 
-    public class UploadMediaInput
+    public class UploadMediaBodyInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
@@ -223,10 +223,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         public string CurrencyNameLong { get; set; }
     }
 
-    public class SendPostcardInput
+    public class SendPostcardBodyInput
     {
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendPostcardInputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Source { get; set; } = "MSPowerAutomate-pc";
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         public string[] FileUrls { get; set; }
     }
 
-    public class SendPostcardInputRecipientsTypeItem
+    public class BodyInputRecipientsTypeItem
     {
         [JsonProperty("address_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddressName { get; set; }

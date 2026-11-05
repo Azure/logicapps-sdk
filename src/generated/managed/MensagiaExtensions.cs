@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
     public class MensagiaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mensagia")]
-        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsInput>> body)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<SendSmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mensagia")]
-        public IBodyWorkflowAction<SendSmsCampaignsResponse, ApiConnectionActionConfiguration> SendSmsCampaigns(Expression<Func<SendSmsCampaignsInput>> body)
+        public IBodyWorkflowAction<SendSmsCampaignsResponse, ApiConnectionActionConfiguration> SendSmsCampaigns(Expression<Func<SendSmsCampaignsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSmsCampaignsResponse, ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mensagia")]
-        public IBodyWorkflowAction<SendTransactionalEmailResponse, ApiConnectionActionConfiguration> SendTransactionalEmail(Expression<Func<SendTransactionalEmailInput>> body)
+        public IBodyWorkflowAction<SendTransactionalEmailResponse, ApiConnectionActionConfiguration> SendTransactionalEmail(Expression<Func<SendTransactionalEmailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTransactionalEmailResponse, ApiConnectionActionConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mensagia")]
-        public IBodyWorkflowAction<SendVoiceMessageResponse, ApiConnectionActionConfiguration> SendVoiceMessage(Expression<Func<SendVoiceMessageInput>> body)
+        public IBodyWorkflowAction<SendVoiceMessageResponse, ApiConnectionActionConfiguration> SendVoiceMessage(Expression<Func<SendVoiceMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendVoiceMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mensagia")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body, Expression<Func<bool>> inMailBlacklist = null, Expression<Func<bool>> inSmsBlacklist = null, Expression<Func<bool>> inVoiceBlacklist = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body, Expression<Func<bool>> inMailBlacklist = null, Expression<Func<bool>> inSmsBlacklist = null, Expression<Func<bool>> inVoiceBlacklist = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_inMailBlacklist = WorkflowExpression.Compile(inMailBlacklist, nameof(inMailBlacklist), required: false);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mensagia")]
-        public IBodyWorkflowAction<Send2WaySmsResponse, ApiConnectionActionConfiguration> Send2WaySms(Expression<Func<Send2WaySmsInput>> body)
+        public IBodyWorkflowAction<Send2WaySmsResponse, ApiConnectionActionConfiguration> Send2WaySms(Expression<Func<Send2WaySmsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Send2WaySmsResponse, ApiConnectionActionConfiguration>(() =>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public bool InSMSBlacklist { get; set; }
     }
 
-    public class SendSmsInput
+    public class SendSmsBodyInput
     {
         [JsonProperty("configuration_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConfigurationName { get; set; }
@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public bool InSMSBlacklist { get; set; }
     }
 
-    public class SendSmsCampaignsInput
+    public class SendSmsCampaignsBodyInput
     {
         [JsonProperty("configuration_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConfigurationName { get; set; }
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public string[] Blacklisteds { get; set; }
     }
 
-    public class SendTransactionalEmailInput
+    public class SendTransactionalEmailBodyInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public string VmValidatedPhoneId { get; set; }
     }
 
-    public class SendVoiceMessageInput
+    public class SendVoiceMessageBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -531,13 +531,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public int VmValidatedPhoneId { get; set; }
 
         [JsonProperty("type_locution", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendVoiceMessageInputTypeLocutionType TypeLocution { get; set; }
+        public BodyInputTypeLocutionType TypeLocution { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("message_language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendVoiceMessageInputMessageLanguageType? MessageLanguage { get; set; } = SendVoiceMessageInputMessageLanguageType.En;
+        public BodyInputMessageLanguageType? MessageLanguage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia.BodyInputMessageLanguageType.En;
 
         [JsonProperty("voice_file_id")]
         public string VoiceFileId { get; set; }
@@ -552,19 +552,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public int? VmTimeout { get; set; } = 30;
 
         [JsonProperty("max_retries", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendVoiceMessageInputMaxRetriesType? MaxRetries { get; set; } = SendVoiceMessageInputMaxRetriesType._0;
+        public BodyInputMaxRetriesType? MaxRetries { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia.BodyInputMaxRetriesType._0;
 
         [JsonProperty("minutes_retry_1")]
-        public SendVoiceMessageInputMinutesRetry1Type? MinutesRetry1 { get; set; }
+        public BodyInputMinutesRetry1Type? MinutesRetry1 { get; set; }
 
         [JsonProperty("minutes_retry_2")]
-        public SendVoiceMessageInputMinutesRetry2Type? MinutesRetry2 { get; set; }
+        public BodyInputMinutesRetry2Type? MinutesRetry2 { get; set; }
 
         [JsonProperty("minutes_retry_3")]
-        public SendVoiceMessageInputMinutesRetry3Type? MinutesRetry3 { get; set; }
+        public BodyInputMinutesRetry3Type? MinutesRetry3 { get; set; }
 
         [JsonProperty("minutes_retry_4")]
-        public SendVoiceMessageInputMinutesRetry4Type? MinutesRetry4 { get; set; }
+        public BodyInputMinutesRetry4Type? MinutesRetry4 { get; set; }
 
         [JsonProperty("ring_timeout")]
         public int? RingTimeout { get; set; }
@@ -585,20 +585,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public int? Minutesxblock { get; set; }
 
         [JsonProperty("days")]
-        public SendVoiceMessageInputDaysType? Days { get; set; }
+        public BodyInputDaysType? Days { get; set; }
 
         [JsonProperty("time_intervals")]
         public string TimeIntervals { get; set; }
     }
 
-    public class SendVoiceMessageInputTypeLocutionType
+    public class BodyInputTypeLocutionType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendVoiceMessageInputTypeLocutionTypeTypeType Type { get; set; }
+        public BodyInputTypeLocutionTypeTypeType Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendVoiceMessageInputTypeLocutionTypeTypeType
+    public enum BodyInputTypeLocutionTypeTypeType
     {
         [EnumMember(Value = "text2speech")]
         Text2speech,
@@ -607,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendVoiceMessageInputMessageLanguageType
+    public enum BodyInputMessageLanguageType
     {
         [EnumMember(Value = "en")]
         En,
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         Wls
     }
 
-    public enum SendVoiceMessageInputMaxRetriesType
+    public enum BodyInputMaxRetriesType
     {
         _0 = 0,
         _1 = 1,
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         _4 = 4
     }
 
-    public enum SendVoiceMessageInputMinutesRetry1Type
+    public enum BodyInputMinutesRetry1Type
     {
         _1 = 1,
         _2 = 2,
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         _1440 = 1440
     }
 
-    public enum SendVoiceMessageInputMinutesRetry2Type
+    public enum BodyInputMinutesRetry2Type
     {
         _1 = 1,
         _2 = 2,
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         _1440 = 1440
     }
 
-    public enum SendVoiceMessageInputMinutesRetry3Type
+    public enum BodyInputMinutesRetry3Type
     {
         _1 = 1,
         _2 = 2,
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         _1440 = 1440
     }
 
-    public enum SendVoiceMessageInputMinutesRetry4Type
+    public enum BodyInputMinutesRetry4Type
     {
         _1 = 1,
         _2 = 2,
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         _1440 = 1440
     }
 
-    public enum SendVoiceMessageInputDaysType
+    public enum BodyInputDaysType
     {
         _1 = 1,
         _2 = 2,
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public string UpdatedAt { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Number { get; set; }
@@ -846,14 +846,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public string City { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactInputLanguageType? Language { get; set; } = CreateContactInputLanguageType.En;
+        public BodyInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia.BodyInputLanguageType.En;
 
         [JsonProperty("groups")]
         public string Groups { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactInputLanguageType
+    public enum BodyInputLanguageType
     {
         [EnumMember(Value = "en")]
         En,
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagia
         public string CreatedAt { get; set; }
     }
 
-    public class Send2WaySmsInput
+    public class Send2WaySmsBodyInput
     {
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Number { get; set; }

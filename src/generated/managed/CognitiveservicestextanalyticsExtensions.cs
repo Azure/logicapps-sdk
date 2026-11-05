@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
     public class CognitiveservicestextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntityLinkingResult, ApiConnectionActionConfiguration> EntitiesLinking(Expression<Func<EntitiesLinkingV3Input>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntityLinkingResult, ApiConnectionActionConfiguration> EntitiesLinking(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntitiesResultV3, ApiConnectionActionConfiguration> EntitiesRecognitionGeneral(Expression<Func<EntitiesRecognitionGeneralV3Input>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntitiesResultV3, ApiConnectionActionConfiguration> EntitiesRecognitionGeneral(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseResultV3, ApiConnectionActionConfiguration> KeyPhrase(Expression<Func<KeyPhraseV3Input>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<KeyPhraseResultV3, ApiConnectionActionConfiguration> KeyPhrase(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<LanguageResultV3, ApiConnectionActionConfiguration> Languages(Expression<Func<LanguagesV3Input>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<LanguageResultV3, ApiConnectionActionConfiguration> Languages(Expression<Func<LanguagesInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<SentimentResponse, ApiConnectionActionConfiguration> Sentiment(Expression<Func<SentimentV3Input>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<SentimentResponse, ApiConnectionActionConfiguration> Sentiment(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public int TransactionsCount { get; set; }
     }
 
-    public class EntitiesLinkingV3Input
+    public class EntitiesLinkingInputInput
     {
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
         public MultiLanguageInputV3[] Documents { get; set; }
@@ -304,12 +304,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public double ConfidenceScore { get; set; }
     }
 
-    public class EntitiesRecognitionGeneralV3Input
-    {
-        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MultiLanguageInputV3[] Documents { get; set; }
-    }
-
     public class KeyPhraseResultV3
     {
         [JsonProperty("documents")]
@@ -338,12 +332,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
 
         [JsonProperty("statistics")]
         public DocumentStatistics Statistics { get; set; }
-    }
-
-    public class KeyPhraseV3Input
-    {
-        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MultiLanguageInputV3[] Documents { get; set; }
     }
 
     public class LanguageResultV3
@@ -388,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public double ConfidenceScore { get; set; }
     }
 
-    public class LanguagesV3Input
+    public class LanguagesInputInput
     {
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
         public LanguageInputV3[] Documents { get; set; }
@@ -494,12 +482,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         Neutral,
         [EnumMember(Value = "negative")]
         Negative
-    }
-
-    public class SentimentV3Input
-    {
-        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MultiLanguageInputV3[] Documents { get; set; }
     }
 }
 

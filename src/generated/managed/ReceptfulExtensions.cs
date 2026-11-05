@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
 
     public class ReceptfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration> VisitEvents(Expression<Func<VisitEventsInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration> VisitEvents(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<VisitEventsResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -36,13 +36,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
         public string Id { get; set; }
     }
 
-    public class VisitEventsInput
+    public class BodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
-        public VisitEventsInputEventType Event { get; set; } = VisitEventsInputEventType.CheckedIn;
+        public BodyInputEventType Event { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Receptful.BodyInputEventType.CheckedIn;
 
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Source { get; set; } = "microsoft";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum VisitEventsInputEventType
+    public enum BodyInputEventType
     {
         [EnumMember(Value = "checked_in")]
         CheckedIn,

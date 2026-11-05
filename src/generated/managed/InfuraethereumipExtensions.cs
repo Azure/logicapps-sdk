@@ -13,35 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
     public class InfuraethereumipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        public IBodyWorkflowAction<EthGasPriceResponse, ApiConnectionActionConfiguration> EthGasPrice(Expression<Func<EthGasPriceInput>> body)
+        public IBodyWorkflowAction<EthGasPriceResponse, ApiConnectionActionConfiguration> EthGasPrice()
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EthGasPriceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/eth_gasPrice";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new EthGasPriceBodyInput().ToJToken();
                 return new ApiConnectionAction<EthGasPriceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        public IBodyWorkflowAction<EthBlockNumberResponse, ApiConnectionActionConfiguration> EthBlockNumber(Expression<Func<EthBlockNumberInput>> body)
+        public IBodyWorkflowAction<EthBlockNumberResponse, ApiConnectionActionConfiguration> EthBlockNumber()
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EthBlockNumberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/eth_blockNumber";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new EthBlockNumberBodyInput().ToJToken();
                 return new ApiConnectionAction<EthBlockNumberResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        public IBodyWorkflowAction<EthGetBalanceResponse, ApiConnectionActionConfiguration> EthGetBalance(Expression<Func<EthGetBalanceInput>> body)
+        public IBodyWorkflowAction<EthGetBalanceResponse, ApiConnectionActionConfiguration> EthGetBalance(Expression<Func<EthGetBalanceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EthGetBalanceResponse, ApiConnectionActionConfiguration>(() =>
@@ -65,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         public int Result { get; set; }
     }
 
-    public class EthGasPriceInput
+    public class EthGasPriceBodyInput
     {
         [JsonProperty("jsonrpc", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Jsonrpc { get; set; } = "2.0";
@@ -83,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         public int Result { get; set; }
     }
 
-    public class EthBlockNumberInput
+    public class EthBlockNumberBodyInput
     {
         [JsonProperty("jsonrpc", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Jsonrpc { get; set; } = "2.0";
@@ -101,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         public int Result { get; set; }
     }
 
-    public class EthGetBalanceInput
+    public class EthGetBalanceBodyInput
     {
         [JsonProperty("jsonrpc", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Jsonrpc { get; set; } = "2.0";
@@ -113,19 +111,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         internal int Id { get; set; } = 1;
 
         [JsonProperty("params", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EthGetBalanceInputParamsType Params { get; set; } = new EthGetBalanceInputParamsType();
+        public BodyInputParamsType Params { get; set; } = new BodyInputParamsType();
     }
 
-    public class EthGetBalanceInputParamsType
+    public class BodyInputParamsType
     {
         public string Address { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public EthGetBalanceInputParamsTypeBlockType? Block { get; set; } = EthGetBalanceInputParamsTypeBlockType.Latest;
+        public BodyInputParamsTypeBlockType? Block { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip.BodyInputParamsTypeBlockType.Latest;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EthGetBalanceInputParamsTypeBlockType
+    public enum BodyInputParamsTypeBlockType
     {
         [EnumMember(Value = "latest")]
         Latest,

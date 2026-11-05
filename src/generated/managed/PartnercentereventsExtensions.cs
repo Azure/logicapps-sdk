@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EventRegistration(Expression<Func<EventRegistrationInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EventRegistration(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnercenterevents")]
-        public IBodyWorkflowAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration> UpdateRegistration(Expression<Func<UpdateRegistrationInput>> body)
+        public IBodyWorkflowAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration> UpdateRegistration(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateRegistrationResponse, ApiConnectionActionConfiguration>(() =>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
         public string WebhookUrl { get; set; }
     }
 
-    public class EventRegistrationInput
+    public class BodyInput
     {
         public string SignatureTokenToMsSignatureHeader { get; set; }
         public string[] WebhookEvents { get; set; }
@@ -76,13 +76,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterevents
     public class UpdateRegistrationResponse
     {
         public string SubscriberId { get; set; }
-        public string[] WebhookEvents { get; set; }
-        public string WebhookUrl { get; set; }
-    }
-
-    public class UpdateRegistrationInput
-    {
-        public string SignatureTokenToMsSignatureHeader { get; set; }
         public string[] WebhookEvents { get; set; }
         public string WebhookUrl { get; set; }
     }

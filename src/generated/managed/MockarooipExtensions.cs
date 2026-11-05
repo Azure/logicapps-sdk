@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
     public class MockarooipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GenerateDataFromExistingSchema(Expression<Func<GenerateDataFromExistingSchemaInput>> body)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GenerateDataFromExistingSchema(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
     {
     }
 
-    public class GenerateDataFromExistingSchemaInput
+    public class BodyInput
     {
         [JsonProperty("schema")]
         public string SchemaName { get; set; }

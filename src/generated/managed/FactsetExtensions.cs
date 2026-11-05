@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<NEREntitiesInput>> body = null)
+        public IBodyWorkflowAction<NEREntitiesResponse, ApiConnectionActionConfiguration> NEREntities(Expression<Func<NEREntitiesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<NEREntitiesResponse, ApiConnectionActionConfiguration>(() =>
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration> CreateBookFromTemplate(Expression<Func<CreateBookFromTemplateInput>> body = null)
+        public IBodyWorkflowAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration> CreateBookFromTemplate(Expression<Func<CreateBookFromTemplateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateBookFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         public string LookupUrl { get; set; }
     }
 
-    public class NEREntitiesInput
+    public class NEREntitiesBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         public string BookId { get; set; }
     }
 
-    public class CreateBookFromTemplateInput
+    public class CreateBookFromTemplateBodyInput
     {
         [JsonProperty("ticker")]
         public string Ticker { get; set; }

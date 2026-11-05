@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
     public class AbortionpolicyapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse, ApiConnectionActionConfiguration> GetGestationalLimitsbyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse, ApiConnectionActionConfiguration> GetGestationalLimitsbyState(Expression<Func<StateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             return new DeferredBodyAction<GetGestationalLimitsbyStateResponse, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse, ApiConnectionActionConfiguration> GetInsuranceCoveragebyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse, ApiConnectionActionConfiguration> GetInsuranceCoveragebyState(Expression<Func<StateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             return new DeferredBodyAction<GetInsuranceCoveragebyStateResponse, ApiConnectionActionConfiguration>(() =>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetMinorsInfobyStateResponse, ApiConnectionActionConfiguration> GetMinorsInfobyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetMinorsInfobyStateResponse, ApiConnectionActionConfiguration> GetMinorsInfobyState(Expression<Func<StateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             return new DeferredBodyAction<GetMinorsInfobyStateResponse, ApiConnectionActionConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse, ApiConnectionActionConfiguration> GetWaitingPeriodsInfobyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse, ApiConnectionActionConfiguration> GetWaitingPeriodsInfobyState(Expression<Func<StateInput>> state)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             return new DeferredBodyAction<GetWaitingPeriodsInfobyStateResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stateInput
+    public enum StateInput
     {
         Alabama,
         Alaska,

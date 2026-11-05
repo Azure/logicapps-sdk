@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
     public class Data8Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsUsableNameResponse, ApiConnectionActionConfiguration> IsUsableName(Expression<Func<IsUsableNameInput>> body)
+        public IBodyWorkflowAction<IsUsableNameResponse, ApiConnectionActionConfiguration> IsUsableName(Expression<Func<IsUsableNameBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsUsableNameResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableTPSResponse, ApiConnectionActionConfiguration> IsCallableTPS(Expression<Func<IsCallableTPSInput>> body)
+        public IBodyWorkflowAction<IsCallableTPSResponse, ApiConnectionActionConfiguration> IsCallableTPS(Expression<Func<IsCallableCTPSBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsCallableTPSResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration> IsCallableCTPS(Expression<Func<IsCallableCTPSInput>> body)
+        public IBodyWorkflowAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration> IsCallableCTPS(Expression<Func<IsCallableCTPSBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidBankAccountResponse, ApiConnectionActionConfiguration> IsValidBankAccount(Expression<Func<IsValidBankAccountInput>> body)
+        public IBodyWorkflowAction<IsValidBankAccountResponse, ApiConnectionActionConfiguration> IsValidBankAccount(Expression<Func<IsValidBankAccountBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidBankAccountResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidEmailResponse, ApiConnectionActionConfiguration> IsValidEmail(Expression<Func<IsValidEmailInput>> body)
+        public IBodyWorkflowAction<IsValidEmailResponse, ApiConnectionActionConfiguration> IsValidEmail(Expression<Func<IsValidEmailBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidEmailResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidTelephoneResponse, ApiConnectionActionConfiguration> IsValidTelephone(Expression<Func<IsValidTelephoneInput>> body)
+        public IBodyWorkflowAction<IsValidTelephoneResponse, ApiConnectionActionConfiguration> IsValidTelephone(Expression<Func<IsValidTelephoneBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidTelephoneResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<CleanAddressResponse, ApiConnectionActionConfiguration> CleanAddress(Expression<Func<CleanAddressInput>> body = null)
+        public IBodyWorkflowAction<CleanAddressResponse, ApiConnectionActionConfiguration> CleanAddress(Expression<Func<CleanAddressBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CleanAddressResponse, ApiConnectionActionConfiguration>(() =>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<GetFullAddressResponse, ApiConnectionActionConfiguration> GetFullAddress(Expression<Func<GetFullAddressInput>> body)
+        public IBodyWorkflowAction<GetFullAddressResponse, ApiConnectionActionConfiguration> GetFullAddress(Expression<Func<GetFullAddressBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetFullAddressResponse, ApiConnectionActionConfiguration>(() =>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsDeceasedResponse, ApiConnectionActionConfiguration> IsDeceased(Expression<Func<IsDeceasedInput>> body = null)
+        public IBodyWorkflowAction<IsDeceasedResponse, ApiConnectionActionConfiguration> IsDeceased(Expression<Func<IsDeceasedBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IsDeceasedResponse, ApiConnectionActionConfiguration>(() =>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<SearchPredictiveAddressResponse, ApiConnectionActionConfiguration> SearchPredictiveAddress(Expression<Func<SearchPredictiveAddressInput>> body = null)
+        public IBodyWorkflowAction<SearchPredictiveAddressResponse, ApiConnectionActionConfiguration> SearchPredictiveAddress(Expression<Func<SearchPredictiveAddressBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SearchPredictiveAddressResponse, ApiConnectionActionConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse, ApiConnectionActionConfiguration> DrilldownPredictiveAddress(Expression<Func<DrilldownPredictiveAddressInput>> body = null)
+        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse, ApiConnectionActionConfiguration> DrilldownPredictiveAddress(Expression<Func<DrilldownPredictiveAddressBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DrilldownPredictiveAddressResponse, ApiConnectionActionConfiguration>(() =>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<RetrievePredictiveAddressResponse, ApiConnectionActionConfiguration> RetrievePredictiveAddress(Expression<Func<RetrievePredictiveAddressInput>> body = null)
+        public IBodyWorkflowAction<RetrievePredictiveAddressResponse, ApiConnectionActionConfiguration> RetrievePredictiveAddress(Expression<Func<RetrievePredictiveAddressBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RetrievePredictiveAddressResponse, ApiConnectionActionConfiguration>(() =>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<CleanseEmailResponse, ApiConnectionActionConfiguration> CleanseEmail(Expression<Func<CleanseEmailInput>> body = null)
+        public IBodyWorkflowAction<CleanseEmailResponse, ApiConnectionActionConfiguration> CleanseEmail(Expression<Func<CleanseEmailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CleanseEmailResponse, ApiConnectionActionConfiguration>(() =>
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidPhoneResponse, ApiConnectionActionConfiguration> IsValidPhone(Expression<Func<IsValidPhoneInput>> body)
+        public IBodyWorkflowAction<IsValidPhoneResponse, ApiConnectionActionConfiguration> IsValidPhone(Expression<Func<IsValidPhoneBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<IsValidPhoneResponse, ApiConnectionActionConfiguration>(() =>
@@ -242,13 +242,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         SalaciousName
     }
 
-    public class IsUsableNameInput
+    public class IsUsableNameBodyInput
     {
         [JsonProperty("name")]
-        public IsUsableNameInputNameType Name { get; set; }
+        public BodyInputNameType Name { get; set; }
     }
 
-    public class IsUsableNameInputNameType
+    public class BodyInputNameType
     {
         public string Title { get; set; }
         public string Forename { get; set; }
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
-    public class IsCallableTPSInput
+    public class IsCallableCTPSBodyInput
     {
         [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Number { get; set; }
@@ -288,12 +288,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public bool Success { get; set; }
         public string ErrorMessage { get; set; }
         public double CreditsRemaining { get; set; }
-    }
-
-    public class IsCallableCTPSInput
-    {
-        [JsonProperty("number", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Number { get; set; }
     }
 
     public class IsValidBankAccountResponse
@@ -337,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string[] Lines { get; set; }
     }
 
-    public class IsValidBankAccountInput
+    public class IsValidBankAccountBodyInput
     {
         [JsonProperty("sortCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SortCode { get; set; }
@@ -359,17 +353,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
-    public class IsValidEmailInput
+    public class IsValidEmailBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("level", DefaultValueHandling = DefaultValueHandling.Include)]
-        public IsValidEmailInputLevelType Level { get; set; } = IsValidEmailInputLevelType.Server;
+        public BodyInputLevelType Level { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Data8.BodyInputLevelType.Server;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IsValidEmailInputLevelType
+    public enum BodyInputLevelType
     {
         Syntax,
         MX,
@@ -402,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string CountryName { get; set; }
     }
 
-    public class IsValidTelephoneInput
+    public class IsValidTelephoneBodyInput
     {
         [JsonProperty("telephoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TelephoneNumber { get; set; }
@@ -411,10 +405,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string DefaultCountry { get; set; }
 
         [JsonProperty("options")]
-        public IsValidTelephoneInputOptionsType Options { get; set; }
+        public IsValidTelephoneBodyInputOptionsType Options { get; set; }
     }
 
-    public class IsValidTelephoneInputOptionsType
+    public class IsValidTelephoneBodyInputOptionsType
     {
         public bool? UseLineValidation { get; set; }
         public bool? UseMobileValidation { get; set; }
@@ -445,22 +439,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string[] Lines { get; set; }
     }
 
-    public class CleanAddressInput
+    public class CleanAddressBodyInput
     {
         [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CleanAddressInputAddressType Address { get; set; }
+        public BodyInputAddressType Address { get; set; }
 
         [JsonProperty("options")]
-        public CleanAddressInputOptionsType Options { get; set; }
+        public CleanAddressBodyInputOptionsType Options { get; set; }
     }
 
-    public class CleanAddressInputAddressType
+    public class BodyInputAddressType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Lines { get; set; }
     }
 
-    public class CleanAddressInputOptionsType
+    public class CleanAddressBodyInputOptionsType
     {
         public string DefaultCountryCode { get; set; }
         public bool? DetectCountry { get; set; }
@@ -537,10 +531,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Country { get; set; }
     }
 
-    public class GetFullAddressInput
+    public class GetFullAddressBodyInput
     {
         [JsonProperty("licence", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetFullAddressInputLicenceType Licence { get; set; }
+        public BodyInputLicenceType Licence { get; set; }
 
         [JsonProperty("postcode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Postcode { get; set; }
@@ -549,11 +543,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Building { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetFullAddressInputOptionsType Options { get; set; } = new GetFullAddressInputOptionsType();
+        public GetFullAddressBodyInputOptionsType Options { get; set; } = new GetFullAddressBodyInputOptionsType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetFullAddressInputLicenceType
+    public enum BodyInputLicenceType
     {
         InternalUserFull,
         InternalUserFullArea,
@@ -565,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         FreeTrial
     }
 
-    public class GetFullAddressInputOptionsType
+    public class GetFullAddressBodyInputOptionsType
     {
         public bool? FixTownCounty { get; set; }
 
@@ -585,11 +579,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public bool? ReturnResultCount { get; set; }
         public bool? IncludeNYB { get; set; }
         public bool? IncludeMR { get; set; }
-        public GetFullAddressInputOptionsTypeFormatterType? Formatter { get; set; }
+        public BodyInputOptionsTypeFormatterType? Formatter { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetFullAddressInputOptionsTypeFormatterType
+    public enum BodyInputOptionsTypeFormatterType
     {
         DefaultFormatter,
         PAFStandardFormatter,
@@ -609,28 +603,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
-    public class IsDeceasedInput
+    public class IsDeceasedBodyInput
     {
         [JsonProperty("record", DefaultValueHandling = DefaultValueHandling.Include)]
-        public IsDeceasedInputRecordType Record { get; set; }
+        public BodyInputRecordType Record { get; set; }
 
         [JsonProperty("marketing", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Marketing { get; set; } = true;
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public IsDeceasedInputOptionsType Options { get; set; } = new IsDeceasedInputOptionsType();
+        public IsDeceasedBodyInputOptionsType Options { get; set; } = new IsDeceasedBodyInputOptionsType();
     }
 
-    public class IsDeceasedInputRecordType
+    public class BodyInputRecordType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public IsDeceasedInputRecordTypeNameType Name { get; set; }
+        public BodyInputRecordTypeNameType Name { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public IsDeceasedInputRecordTypeAddressType Address { get; set; }
+        public BodyInputRecordTypeAddressType Address { get; set; }
     }
 
-    public class IsDeceasedInputRecordTypeNameType
+    public class BodyInputRecordTypeNameType
     {
         public string Title { get; set; }
         public string Forename { get; set; }
@@ -640,20 +634,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Surname { get; set; }
     }
 
-    public class IsDeceasedInputRecordTypeAddressType
+    public class BodyInputRecordTypeAddressType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Lines { get; set; }
     }
 
-    public class IsDeceasedInputOptionsType
+    public class IsDeceasedBodyInputOptionsType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public IsDeceasedInputOptionsTypeMatchLevelType? MatchLevel { get; set; } = IsDeceasedInputOptionsTypeMatchLevelType.I;
+        public BodyInputOptionsTypeMatchLevelType? MatchLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Data8.BodyInputOptionsTypeMatchLevelType.I;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IsDeceasedInputOptionsTypeMatchLevelType
+    public enum BodyInputOptionsTypeMatchLevelType
     {
         S,
         I,
@@ -692,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public int Items { get; set; }
     }
 
-    public class SearchPredictiveAddressInput
+    public class SearchPredictiveAddressBodyInput
     {
         [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Country { get; set; }
@@ -707,10 +701,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Session { get; set; }
 
         [JsonProperty("options")]
-        public SearchPredictiveAddressInputOptionsType Options { get; set; }
+        public DrilldownPredictiveAddressBodyInputOptionsType Options { get; set; }
     }
 
-    public class SearchPredictiveAddressInputOptionsType
+    public class DrilldownPredictiveAddressBodyInputOptionsType
     {
         public bool? IncludeMR { get; set; }
         public bool? IncludeNYB { get; set; }
@@ -748,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public int Items { get; set; }
     }
 
-    public class DrilldownPredictiveAddressInput
+    public class DrilldownPredictiveAddressBodyInput
     {
         [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Country { get; set; }
@@ -757,13 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Id { get; set; }
 
         [JsonProperty("options")]
-        public DrilldownPredictiveAddressInputOptionsType Options { get; set; }
-    }
-
-    public class DrilldownPredictiveAddressInputOptionsType
-    {
-        public bool? IncludeMR { get; set; }
-        public bool? IncludeNYB { get; set; }
+        public DrilldownPredictiveAddressBodyInputOptionsType Options { get; set; }
     }
 
     public class RetrievePredictiveAddressResponse
@@ -835,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Country { get; set; }
     }
 
-    public class RetrievePredictiveAddressInput
+    public class RetrievePredictiveAddressBodyInput
     {
         [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Country { get; set; }
@@ -844,10 +832,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Id { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RetrievePredictiveAddressInputOptionsType Options { get; set; } = new RetrievePredictiveAddressInputOptionsType();
+        public RetrievePredictiveAddressBodyInputOptionsType Options { get; set; } = new RetrievePredictiveAddressBodyInputOptionsType();
     }
 
-    public class RetrievePredictiveAddressInputOptionsType
+    public class RetrievePredictiveAddressBodyInputOptionsType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxLineLength { get; set; } = 100;
@@ -866,21 +854,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string UnwantedPunctuation { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RetrievePredictiveAddressInputOptionsTypeFormatterType? Formatter { get; set; } = RetrievePredictiveAddressInputOptionsTypeFormatterType.DefaultFormatter;
+        public BodyInputOptionsTypeFormatterType? Formatter { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Data8.BodyInputOptionsTypeFormatterType.DefaultFormatter;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeUDPRN { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeUPRN { get; set; } = false;
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RetrievePredictiveAddressInputOptionsTypeFormatterType
-    {
-        DefaultFormatter,
-        PAFStandardFormatter,
-        NoOrganisationFormatter
     }
 
     public class CleanseEmailResponse
@@ -903,27 +883,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public int CreditsRemaining { get; set; }
     }
 
-    public class CleanseEmailInput
+    public class CleanseEmailBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CleanseEmailInputLevelType Level { get; set; } = CleanseEmailInputLevelType.Server;
+        public BodyInputLevelType Level { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Data8.BodyInputLevelType.Server;
         public string Title { get; set; }
         public string Forename { get; set; }
         public string MiddleName { get; set; }
         public string Surname { get; set; }
         public string Company { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CleanseEmailInputLevelType
-    {
-        Syntax,
-        MX,
-        Server,
-        Address
     }
 
     public class IsValidPhoneResponse
@@ -951,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string CountryName { get; set; }
     }
 
-    public class IsValidPhoneInput
+    public class IsValidPhoneBodyInput
     {
         [JsonProperty("telephoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TelephoneNumber { get; set; }

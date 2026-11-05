@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAcknowledgement(Expression<Func<string>> acknowledgementId, Expression<Func<EditGiftAcknowledgementInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAcknowledgement(Expression<Func<string>> acknowledgementId, Expression<Func<EditGiftAcknowledgementBodyInput>> body)
         {
             var __workflow_acknowledgementId = WorkflowExpression.Compile(acknowledgementId, nameof(acknowledgementId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftReceipt(Expression<Func<string>> receiptId, Expression<Func<EditGiftReceiptInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftReceipt(Expression<Func<string>> receiptId, Expression<Func<EditGiftReceiptBodyInput>> body)
         {
             var __workflow_receiptId = WorkflowExpression.Compile(receiptId, nameof(receiptId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateGift(Expression<Func<CreateGiftInput>> body)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateGift(Expression<Func<CreateGiftBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGift, ApiConnectionActionConfiguration>(() =>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration> CreateGiftAttachment(Expression<Func<CreateGiftAttachmentInput>> body)
+        public IBodyWorkflowAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration> CreateGiftAttachment(Expression<Func<CreateGiftAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGiftAttachment, ApiConnectionActionConfiguration>(() =>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditGiftAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditGiftAttachmentBodyInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGiftCustomField, ApiConnectionActionConfiguration> CreateGiftCustomField(Expression<Func<CreateGiftCustomFieldInput>> body)
+        public IBodyWorkflowAction<GiftApiCreatedGiftCustomField, ApiConnectionActionConfiguration> CreateGiftCustomField(Expression<Func<CreateGiftCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGiftCustomField, ApiConnectionActionConfiguration>(() =>
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditGiftCustomFieldInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditGiftCustomFieldBodyInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiBatchGiftAddResults, ApiConnectionActionConfiguration> AddGiftToBatch(Expression<Func<string>> batchId, Expression<Func<AddGiftToBatchInput>> body)
+        public IBodyWorkflowAction<GiftApiBatchGiftAddResults, ApiConnectionActionConfiguration> AddGiftToBatch(Expression<Func<string>> batchId, Expression<Func<AddGiftToBatchBodyInput>> body)
         {
             var __workflow_batchId = WorkflowExpression.Compile(batchId, nameof(batchId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftBatchApiCreatedBatch, ApiConnectionActionConfiguration> CreateGiftBatch(Expression<Func<CreateGiftBatchInput>> body)
+        public IBodyWorkflowAction<GiftBatchApiCreatedBatch, ApiConnectionActionConfiguration> CreateGiftBatch(Expression<Func<CreateGiftBatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftBatchApiCreatedBatch, ApiConnectionActionConfiguration>(() =>
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SellStockGift(Expression<Func<string>> giftId, Expression<Func<SellStockGiftInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SellStockGift(Expression<Func<string>> giftId, Expression<Func<SellStockGiftBodyInput>> body)
         {
             var __workflow_giftId = WorkflowExpression.Compile(giftId, nameof(giftId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledge(Expression<Func<CreatePledgeInput>> body)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledge(Expression<Func<CreatePledgeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGift, ApiConnectionActionConfiguration>(() =>
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledgePayment(Expression<Func<CreatePledgePaymentInput>> body)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreatePledgePayment(Expression<Func<CreatePledgePaymentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGift, ApiConnectionActionConfiguration>(() =>
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateStock(Expression<Func<CreateStockInput>> body)
+        public IBodyWorkflowAction<GiftApiCreatedGift, ApiConnectionActionConfiguration> CreateStock(Expression<Func<CreateStockBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GiftApiCreatedGift, ApiConnectionActionConfiguration>(() =>
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedTaxDeclaration, ApiConnectionActionConfiguration> CreateTaxDeclaration(Expression<Func<CreateTaxDeclarationInput>> body)
+        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedTaxDeclaration, ApiConnectionActionConfiguration> CreateTaxDeclaration(Expression<Func<CreateTaxDeclarationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NXTDataIntegrationApiCreatedTaxDeclaration, ApiConnectionActionConfiguration>(() =>
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditTaxDeclaration(Expression<Func<int>> taxDeclarationId, Expression<Func<EditTaxDeclarationInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditTaxDeclaration(Expression<Func<int>> taxDeclarationId, Expression<Func<EditTaxDeclarationBodyInput>> body)
         {
             var __workflow_taxDeclarationId = WorkflowExpression.Compile(taxDeclarationId, nameof(taxDeclarationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftNote, ApiConnectionActionConfiguration> CreateGiftNote(Expression<Func<CreateGiftNoteInput>> body)
+        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftNote, ApiConnectionActionConfiguration> CreateGiftNote(Expression<Func<CreateGiftNoteBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NXTDataIntegrationApiCreatedGiftNote, ApiConnectionActionConfiguration>(() =>
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftNote(Expression<Func<int>> id, Expression<Func<EditGiftNoteInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftNote(Expression<Func<int>> id, Expression<Func<EditGiftNoteBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftTribute, ApiConnectionActionConfiguration> CreateGiftTribute(Expression<Func<CreateGiftTributeInput>> body)
+        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftTribute, ApiConnectionActionConfiguration> CreateGiftTribute(Expression<Func<CreateGiftTributeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NXTDataIntegrationApiCreatedGiftTribute, ApiConnectionActionConfiguration>(() =>
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftTribute(Expression<Func<int>> giftTributeId, Expression<Func<EditGiftTributeInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftTribute(Expression<Func<int>> giftTributeId, Expression<Func<EditGiftTributeBodyInput>> body)
         {
             var __workflow_giftTributeId = WorkflowExpression.Compile(giftTributeId, nameof(giftTributeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftTributeAcknowledgee(Expression<Func<int>> giftTributeAcknowledgeeId, Expression<Func<EditGiftTributeAcknowledgeeInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditGiftTributeAcknowledgee(Expression<Func<int>> giftTributeAcknowledgeeId, Expression<Func<EditGiftTributeAcknowledgeeBodyInput>> body)
         {
             var __workflow_giftTributeAcknowledgeeId = WorkflowExpression.Compile(giftTributeAcknowledgeeId, nameof(giftTributeAcknowledgeeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -720,10 +720,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double Value { get; set; }
     }
 
-    public class EditGiftAcknowledgementInput
+    public class EditGiftAcknowledgementBodyInput
     {
         [JsonProperty("status")]
-        public EditGiftAcknowledgementInputStatusType? Status { get; set; }
+        public EditGiftAcknowledgementBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -733,20 +733,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditGiftAcknowledgementInputStatusType
+    public enum EditGiftAcknowledgementBodyInputStatusType
     {
         Acknowledged,
         NeedsAcknowledgement,
         DoNotAcknowledge
     }
 
-    public class EditGiftReceiptInput
+    public class EditGiftReceiptBodyInput
     {
         [JsonProperty("status")]
-        public EditGiftReceiptInputStatusType? Status { get; set; }
+        public EditGiftReceiptBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("amount")]
-        public EditGiftReceiptInputAmountType Amount { get; set; }
+        public EditGiftReceiptBodyInputAmountType Amount { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -756,14 +756,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditGiftReceiptInputStatusType
+    public enum EditGiftReceiptBodyInputStatusType
     {
         Receipted,
         NeedsReceipt,
         DoNotReceipt
     }
 
-    public class EditGiftReceiptInputAmountType
+    public class EditGiftReceiptBodyInputAmountType
     {
         [JsonProperty("value")]
         public double? Amount { get; set; }
@@ -1081,25 +1081,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Id { get; set; }
     }
 
-    public class CreateGiftInput
+    public class CreateGiftBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputAmountType Amount { get; set; }
+        public CreateGiftBodyInputAmountType Amount { get; set; }
 
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputTypeType Type { get; set; }
+        public CreateGiftBodyInputTypeType Type { get; set; }
 
         [JsonProperty("gift_splits", DefaultValueHandling = DefaultValueHandling.Include)]
         public GiftApiGiftSplitAdd[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputPaymentsType Payments { get; set; } = new CreateGiftInputPaymentsType();
+        public CreateGiftBodyInputPaymentsType Payments { get; set; } = new CreateGiftBodyInputPaymentsType();
 
         [JsonProperty("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -1129,7 +1129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string BatchNumber { get; set; }
 
         [JsonProperty("post_status")]
-        public CreateGiftInputPostStatusType? PostStatus { get; set; }
+        public CreateGiftBodyInputPostStatusType? PostStatus { get; set; }
 
         [JsonProperty("post_date")]
         public string PostDate { get; set; }
@@ -1138,17 +1138,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
         [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputReceiptsType Receipts { get; set; } = new CreateGiftInputReceiptsType();
+        public CreateGiftBodyInputReceiptsType Receipts { get; set; } = new CreateGiftBodyInputReceiptsType();
     }
 
-    public class CreateGiftInputAmountType
+    public class CreateGiftBodyInputAmountType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGiftInputTypeType
+    public enum CreateGiftBodyInputTypeType
     {
         Donation,
         Other,
@@ -1179,26 +1179,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double Amount { get; set; }
     }
 
-    public class CreateGiftInputPaymentsType
+    public class CreateGiftBodyInputPaymentsType
     {
         [JsonProperty("payment_method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputPaymentsTypePaymentMethodType PaymentMethod { get; set; } = CreateGiftInputPaymentsTypePaymentMethodType.Cash;
+        public CreateGiftBodyInputPaymentsTypePaymentMethodType PaymentMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts.CreateGiftBodyInputPaymentsTypePaymentMethodType.Cash;
 
         [JsonProperty("check_number")]
         public string CheckNumber { get; set; }
 
         [JsonProperty("check_date")]
-        public CreateGiftInputPaymentsTypeCheckDateType CheckDate { get; set; }
+        public BodyInputPaymentsTypeCheckDateType CheckDate { get; set; }
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         [JsonProperty("reference_date")]
-        public CreateGiftInputPaymentsTypeReferenceDateType ReferenceDate { get; set; }
+        public BodyInputPaymentsTypeReferenceDateType ReferenceDate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGiftInputPaymentsTypePaymentMethodType
+    public enum CreateGiftBodyInputPaymentsTypePaymentMethodType
     {
         Cash,
         CreditCard,
@@ -1209,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         Venmo
     }
 
-    public class CreateGiftInputPaymentsTypeCheckDateType
+    public class BodyInputPaymentsTypeCheckDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -1221,7 +1221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int? Year { get; set; }
     }
 
-    public class CreateGiftInputPaymentsTypeReferenceDateType
+    public class BodyInputPaymentsTypeReferenceDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -1234,34 +1234,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGiftInputPostStatusType
+    public enum CreateGiftBodyInputPostStatusType
     {
         Posted,
         NotPosted,
         DoNotPost
     }
 
-    public class CreateGiftInputReceiptsType
+    public class CreateGiftBodyInputReceiptsType
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = CreateGiftInputReceiptsTypeReceiptStatusType.NeedsReceipt;
+        public CreateGiftBodyInputReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts.CreateGiftBodyInputReceiptsTypeReceiptStatusType.NeedsReceipt;
 
         [JsonProperty("amount")]
-        public CreateGiftInputReceiptsTypeAmountType Amount { get; set; }
+        public BodyInputReceiptsTypeAmountType Amount { get; set; }
 
         [JsonProperty("date")]
         public string ReceiptDate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGiftInputReceiptsTypeReceiptStatusType
+    public enum CreateGiftBodyInputReceiptsTypeReceiptStatusType
     {
         Receipted,
         NeedsReceipt,
         DoNotReceipt
     }
 
-    public class CreateGiftInputReceiptsTypeAmountType
+    public class BodyInputReceiptsTypeAmountType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
@@ -1419,13 +1419,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Id { get; set; }
     }
 
-    public class CreateGiftAttachmentInput
+    public class CreateGiftAttachmentBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftAttachmentInputTypeType Type { get; set; }
+        public CreateGiftAttachmentBodyInputTypeType Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1450,13 +1450,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateGiftAttachmentInputTypeType
+    public enum CreateGiftAttachmentBodyInputTypeType
     {
         Link,
         Physical
     }
 
-    public class EditGiftAttachmentInput
+    public class EditGiftAttachmentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1477,7 +1477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Id { get; set; }
     }
 
-    public class CreateGiftCustomFieldInput
+    public class CreateGiftCustomFieldBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GiftId { get; set; }
@@ -1495,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Comment { get; set; }
     }
 
-    public class EditGiftCustomFieldInput
+    public class EditGiftCustomFieldBodyInput
     {
         [JsonProperty("category")]
         public string Category { get; set; }
@@ -1684,31 +1684,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double Value { get; set; }
     }
 
-    public class AddGiftToBatchInput
+    public class AddGiftToBatchBodyInput
     {
         [JsonProperty("gifts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsType Gifts { get; set; } = new AddGiftToBatchInputGiftsType();
+        public BodyInputGiftsType Gifts { get; set; } = new BodyInputGiftsType();
     }
 
-    public class AddGiftToBatchInputGiftsType
+    public class BodyInputGiftsType
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypeAmountType Amount { get; set; }
+        public BodyInputGiftsTypeAmountType Amount { get; set; }
 
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypeTypeType Type { get; set; }
+        public BodyInputGiftsTypeTypeType Type { get; set; }
 
         [JsonProperty("gift_splits", DefaultValueHandling = DefaultValueHandling.Include)]
         public GiftApiVirtualBatchGiftSplitAdd[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypePaymentsType Payments { get; set; } = new AddGiftToBatchInputGiftsTypePaymentsType();
+        public BodyInputGiftsTypePaymentsType Payments { get; set; } = new BodyInputGiftsTypePaymentsType();
 
         [JsonProperty("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -1732,7 +1732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Constituency { get; set; }
 
         [JsonProperty("post_status")]
-        public AddGiftToBatchInputGiftsTypePostStatusType? PostStatus { get; set; }
+        public BodyInputGiftsTypePostStatusType? PostStatus { get; set; }
 
         [JsonProperty("post_date")]
         public string PostDate { get; set; }
@@ -1741,17 +1741,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
         [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypeReceiptsType Receipts { get; set; } = new AddGiftToBatchInputGiftsTypeReceiptsType();
+        public BodyInputGiftsTypeReceiptsType Receipts { get; set; } = new BodyInputGiftsTypeReceiptsType();
     }
 
-    public class AddGiftToBatchInputGiftsTypeAmountType
+    public class BodyInputGiftsTypeAmountType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddGiftToBatchInputGiftsTypeTypeType
+    public enum BodyInputGiftsTypeTypeType
     {
         Donation,
         Other,
@@ -1782,26 +1782,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double Amount { get; set; }
     }
 
-    public class AddGiftToBatchInputGiftsTypePaymentsType
+    public class BodyInputGiftsTypePaymentsType
     {
         [JsonProperty("payment_method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypePaymentsTypePaymentMethodType PaymentMethod { get; set; } = AddGiftToBatchInputGiftsTypePaymentsTypePaymentMethodType.Cash;
+        public BodyInputGiftsTypePaymentsTypePaymentMethodType PaymentMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts.BodyInputGiftsTypePaymentsTypePaymentMethodType.Cash;
 
         [JsonProperty("check_number")]
         public string CheckNumber { get; set; }
 
         [JsonProperty("check_date")]
-        public AddGiftToBatchInputGiftsTypePaymentsTypeCheckDateType CheckDate { get; set; }
+        public BodyInputGiftsTypePaymentsTypeCheckDateType CheckDate { get; set; }
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         [JsonProperty("reference_date")]
-        public AddGiftToBatchInputGiftsTypePaymentsTypeReferenceDateType ReferenceDate { get; set; }
+        public BodyInputGiftsTypePaymentsTypeReferenceDateType ReferenceDate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddGiftToBatchInputGiftsTypePaymentsTypePaymentMethodType
+    public enum BodyInputGiftsTypePaymentsTypePaymentMethodType
     {
         Cash,
         CreditCard,
@@ -1812,7 +1812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         Venmo
     }
 
-    public class AddGiftToBatchInputGiftsTypePaymentsTypeCheckDateType
+    public class BodyInputGiftsTypePaymentsTypeCheckDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -1824,7 +1824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int? Year { get; set; }
     }
 
-    public class AddGiftToBatchInputGiftsTypePaymentsTypeReferenceDateType
+    public class BodyInputGiftsTypePaymentsTypeReferenceDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -1837,34 +1837,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddGiftToBatchInputGiftsTypePostStatusType
+    public enum BodyInputGiftsTypePostStatusType
     {
         Posted,
         NotPosted,
         DoNotPost
     }
 
-    public class AddGiftToBatchInputGiftsTypeReceiptsType
+    public class BodyInputGiftsTypeReceiptsType
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypeReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = AddGiftToBatchInputGiftsTypeReceiptsTypeReceiptStatusType.NeedsReceipt;
+        public BodyInputGiftsTypeReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts.BodyInputGiftsTypeReceiptsTypeReceiptStatusType.NeedsReceipt;
 
         [JsonProperty("amount")]
-        public AddGiftToBatchInputGiftsTypeReceiptsTypeAmountType Amount { get; set; }
+        public BodyInputGiftsTypeReceiptsTypeAmountType Amount { get; set; }
 
         [JsonProperty("date")]
         public string ReceiptDate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddGiftToBatchInputGiftsTypeReceiptsTypeReceiptStatusType
+    public enum BodyInputGiftsTypeReceiptsTypeReceiptStatusType
     {
         Receipted,
         NeedsReceipt,
         DoNotReceipt
     }
 
-    public class AddGiftToBatchInputGiftsTypeReceiptsTypeAmountType
+    public class BodyInputGiftsTypeReceiptsTypeAmountType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
@@ -1921,7 +1921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Id { get; set; }
     }
 
-    public class CreateGiftBatchInput
+    public class CreateGiftBatchBodyInput
     {
         [JsonProperty("batch_description")]
         public string Description { get; set; }
@@ -2022,7 +2022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double Value { get; set; }
     }
 
-    public class SellStockGiftInput
+    public class SellStockGiftBodyInput
     {
         [JsonProperty("stock_sale_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SaleDate { get; set; }
@@ -2034,7 +2034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double? BrokerFee { get; set; }
 
         [JsonProperty("post_status")]
-        public SellStockGiftInputPostStatusType? PostStatus { get; set; }
+        public CreateGiftBodyInputPostStatusType? PostStatus { get; set; }
 
         [JsonProperty("post_date")]
         public string PostDate { get; set; }
@@ -2043,18 +2043,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Notes { get; set; }
 
         [JsonProperty("stock_issuer")]
-        public SellStockGiftInputStockIssuerType StockIssuer { get; set; }
+        public BodyInputStockIssuerType StockIssuer { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SellStockGiftInputPostStatusType
-    {
-        Posted,
-        NotPosted,
-        DoNotPost
-    }
-
-    public class SellStockGiftInputStockIssuerType
+    public class BodyInputStockIssuerType
     {
         [JsonProperty("issuer")]
         public string Issuer { get; set; }
@@ -2069,13 +2061,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double? MedianPricePerUnit { get; set; }
     }
 
-    public class CreatePledgeInput
+    public class CreatePledgeBodyInput
     {
         [JsonProperty("constituent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputConstituentType Constituent { get; set; }
+        public BodyInputConstituentType Constituent { get; set; }
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputAmountType Amount { get; set; }
+        public CreateGiftBodyInputAmountType Amount { get; set; }
 
         [JsonProperty("gift_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
@@ -2084,13 +2076,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         internal string Type { get; set; } = "Pledge";
 
         [JsonProperty("schedule", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputScheduleType Schedule { get; set; }
+        public BodyInputScheduleType Schedule { get; set; }
 
         [JsonProperty("gift_splits", DefaultValueHandling = DefaultValueHandling.Include)]
         public Gift2ApiNewGiftSplit[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputPaymentsType Payments { get; set; } = new CreatePledgeInputPaymentsType();
+        public CreatePledgeBodyInputPaymentsType Payments { get; set; } = new CreatePledgeBodyInputPaymentsType();
 
         [JsonProperty("send_reminder")]
         public bool? SendReminder { get; set; }
@@ -2099,7 +2091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public bool? IsAnonymous { get; set; }
 
         [JsonProperty("gift_subtype")]
-        public CreatePledgeInputGiftSubtypeType GiftSubtype { get; set; }
+        public BodyInputGiftSubtypeType GiftSubtype { get; set; }
 
         [JsonProperty("comments")]
         public string Comment { get; set; }
@@ -2108,31 +2100,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string LookupId { get; set; }
 
         [JsonProperty("gift_code")]
-        public CreatePledgeInputGiftCodeType GiftCode { get; set; }
+        public BodyInputGiftCodeType GiftCode { get; set; }
 
         [JsonProperty("gift_constituency")]
-        public CreatePledgeInputGiftConstituencyType GiftConstituency { get; set; }
+        public BodyInputGiftConstituencyType GiftConstituency { get; set; }
 
         [JsonProperty("gift_post_status")]
-        public CreatePledgeInputPostStatusType? PostStatus { get; set; }
+        public CreatePledgeBodyInputPostStatusType? PostStatus { get; set; }
 
         [JsonProperty("gift_post_date")]
         public string PostDate { get; set; }
 
         [JsonProperty("gift_status")]
-        public CreatePledgeInputStatusType? Status { get; set; }
+        public CreatePledgeBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("gift_status_date")]
-        public CreatePledgeInputGiftStatusDateType GiftStatusDate { get; set; }
+        public BodyInputGiftStatusDateType GiftStatusDate { get; set; }
 
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
         [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputReceiptsType Receipts { get; set; } = new CreatePledgeInputReceiptsType();
+        public CreatePledgeBodyInputReceiptsType Receipts { get; set; } = new CreatePledgeBodyInputReceiptsType();
 
         [JsonProperty("acknowledgements", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputAcknowledgementsType Acknowledgements { get; set; } = new CreatePledgeInputAcknowledgementsType();
+        public BodyInputAcknowledgementsType Acknowledgements { get; set; } = new BodyInputAcknowledgementsType();
 
         [JsonProperty("recognition_credits")]
         public Gift2ApiNewRecognitionCredit[] Credits { get; set; }
@@ -2141,22 +2133,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public Gift2ApiNewInstallment[] Installments { get; set; }
     }
 
-    public class CreatePledgeInputConstituentType
+    public class BodyInputConstituentType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
     }
 
-    public class CreatePledgeInputAmountType
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Amount { get; set; }
-    }
-
-    public class CreatePledgeInputScheduleType
+    public class BodyInputScheduleType
     {
         [JsonProperty("frequency", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputScheduleTypeFrequencyType Frequency { get; set; }
+        public BodyInputScheduleTypeFrequencyType Frequency { get; set; }
 
         [JsonProperty("number_of_installments", DefaultValueHandling = DefaultValueHandling.Include)]
         public int OfInstallments { get; set; }
@@ -2166,7 +2152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgeInputScheduleTypeFrequencyType
+    public enum BodyInputScheduleTypeFrequencyType
     {
         Annually,
         Quarterly,
@@ -2201,10 +2187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double Amount { get; set; }
     }
 
-    public class CreatePledgeInputPaymentsType
+    public class CreatePledgeBodyInputPaymentsType
     {
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputPaymentsTypePaymentMethodType PaymentMethod { get; set; } = CreatePledgeInputPaymentsTypePaymentMethodType.Cash;
+        public CreatePledgeBodyInputPaymentsTypePaymentMethodType PaymentMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts.CreatePledgeBodyInputPaymentsTypePaymentMethodType.Cash;
 
         [JsonProperty("check_number")]
         public string CheckNumber { get; set; }
@@ -2214,7 +2200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgeInputPaymentsTypePaymentMethodType
+    public enum CreatePledgeBodyInputPaymentsTypePaymentMethodType
     {
         Cash,
         Check,
@@ -2227,26 +2213,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         Venmo
     }
 
-    public class CreatePledgeInputGiftSubtypeType
+    public class BodyInputGiftSubtypeType
     {
         [JsonProperty("name")]
         public string Subtype { get; set; }
     }
 
-    public class CreatePledgeInputGiftCodeType
+    public class BodyInputGiftCodeType
     {
         [JsonProperty("value")]
         public string GiftCode { get; set; }
     }
 
-    public class CreatePledgeInputGiftConstituencyType
+    public class BodyInputGiftConstituencyType
     {
         [JsonProperty("value")]
         public string Constituency { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgeInputPostStatusType
+    public enum CreatePledgeBodyInputPostStatusType
     {
         [EnumMember(Value = "NotPosted")]
         PostToLedger,
@@ -2255,7 +2241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgeInputStatusType
+    public enum CreatePledgeBodyInputStatusType
     {
         Active,
         Held,
@@ -2264,7 +2250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         Canceled
     }
 
-    public class CreatePledgeInputGiftStatusDateType
+    public class BodyInputGiftStatusDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -2276,13 +2262,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int? Year { get; set; }
     }
 
-    public class CreatePledgeInputReceiptsType
+    public class CreatePledgeBodyInputReceiptsType
     {
         [JsonProperty("receipt_status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = CreatePledgeInputReceiptsTypeReceiptStatusType.NeedsReceipt;
+        public CreatePledgeBodyInputReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts.CreatePledgeBodyInputReceiptsTypeReceiptStatusType.NeedsReceipt;
 
         [JsonProperty("receipt_amount")]
-        public CreatePledgeInputReceiptsTypeReceiptAmountType ReceiptAmount { get; set; }
+        public BodyInputReceiptsTypeReceiptAmountType ReceiptAmount { get; set; }
 
         [JsonProperty("receipt_date")]
         public string ReceiptDate { get; set; }
@@ -2291,11 +2277,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int? ReceiptNumber { get; set; }
 
         [JsonProperty("receipt_stack")]
-        public CreatePledgeInputReceiptsTypeReceiptStackType ReceiptStack { get; set; }
+        public BodyInputReceiptsTypeReceiptStackType ReceiptStack { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgeInputReceiptsTypeReceiptStatusType
+    public enum CreatePledgeBodyInputReceiptsTypeReceiptStatusType
     {
         [EnumMember(Value = "NotReceipted")]
         NeedsReceipt,
@@ -2303,32 +2289,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         Receipted
     }
 
-    public class CreatePledgeInputReceiptsTypeReceiptAmountType
+    public class BodyInputReceiptsTypeReceiptAmountType
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double ReceiptAmount { get; set; }
     }
 
-    public class CreatePledgeInputReceiptsTypeReceiptStackType
+    public class BodyInputReceiptsTypeReceiptStackType
     {
         [JsonProperty("value")]
         public string ReceiptStack { get; set; }
     }
 
-    public class CreatePledgeInputAcknowledgementsType
+    public class BodyInputAcknowledgementsType
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputAcknowledgementsTypeAcknowledgeStatusType AcknowledgeStatus { get; set; } = CreatePledgeInputAcknowledgementsTypeAcknowledgeStatusType.NeedsAcknowledgement;
+        public BodyInputAcknowledgementsTypeAcknowledgeStatusType AcknowledgeStatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts.BodyInputAcknowledgementsTypeAcknowledgeStatusType.NeedsAcknowledgement;
 
         [JsonProperty("acknowledgement_date")]
         public string AcknowledgeDate { get; set; }
 
         [JsonProperty("letter")]
-        public CreatePledgeInputAcknowledgementsTypeLetterType Letter { get; set; }
+        public BodyInputAcknowledgementsTypeLetterType Letter { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgeInputAcknowledgementsTypeAcknowledgeStatusType
+    public enum BodyInputAcknowledgementsTypeAcknowledgeStatusType
     {
         [EnumMember(Value = "NotAcknowledged")]
         NeedsAcknowledgement,
@@ -2336,7 +2322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         Acknowledged
     }
 
-    public class CreatePledgeInputAcknowledgementsTypeLetterType
+    public class BodyInputAcknowledgementsTypeLetterType
     {
         [JsonProperty("value")]
         public string Letter { get; set; }
@@ -2376,13 +2362,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double? Amount { get; set; }
     }
 
-    public class CreatePledgePaymentInput
+    public class CreatePledgePaymentBodyInput
     {
         [JsonProperty("constituent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputConstituentType Constituent { get; set; }
+        public BodyInputConstituentType Constituent { get; set; }
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputAmountType Amount { get; set; }
+        public CreateGiftBodyInputAmountType Amount { get; set; }
 
         [JsonProperty("gift_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
@@ -2394,7 +2380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public Gift2ApiNewGiftSplit[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputPaymentsType Payments { get; set; } = new CreatePledgePaymentInputPaymentsType();
+        public CreatePledgeBodyInputPaymentsType Payments { get; set; } = new CreatePledgeBodyInputPaymentsType();
 
         [JsonProperty("anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -2403,7 +2389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public Gift2ApiNewInstallmentPayment[] ApplyTo { get; set; }
 
         [JsonProperty("gift_subtype")]
-        public CreatePledgePaymentInputGiftSubtypeType GiftSubtype { get; set; }
+        public BodyInputGiftSubtypeType GiftSubtype { get; set; }
 
         [JsonProperty("comments")]
         public string Comment { get; set; }
@@ -2412,13 +2398,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string LookupId { get; set; }
 
         [JsonProperty("gift_code")]
-        public CreatePledgePaymentInputGiftCodeType GiftCode { get; set; }
+        public BodyInputGiftCodeType GiftCode { get; set; }
 
         [JsonProperty("gift_constituency")]
-        public CreatePledgePaymentInputGiftConstituencyType GiftConstituency { get; set; }
+        public BodyInputGiftConstituencyType GiftConstituency { get; set; }
 
         [JsonProperty("gift_post_status")]
-        public CreatePledgePaymentInputPostStatusType? PostStatus { get; set; }
+        public CreatePledgeBodyInputPostStatusType? PostStatus { get; set; }
 
         [JsonProperty("gift_post_date")]
         public string PostDate { get; set; }
@@ -2427,51 +2413,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
         [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputReceiptsType Receipts { get; set; } = new CreatePledgePaymentInputReceiptsType();
+        public CreatePledgeBodyInputReceiptsType Receipts { get; set; } = new CreatePledgeBodyInputReceiptsType();
 
         [JsonProperty("acknowledgements", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputAcknowledgementsType Acknowledgements { get; set; } = new CreatePledgePaymentInputAcknowledgementsType();
+        public BodyInputAcknowledgementsType Acknowledgements { get; set; } = new BodyInputAcknowledgementsType();
 
         [JsonProperty("recognition_credits")]
         public Gift2ApiNewRecognitionCredit[] Credits { get; set; }
-    }
-
-    public class CreatePledgePaymentInputConstituentType
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ConstituentId { get; set; }
-    }
-
-    public class CreatePledgePaymentInputAmountType
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Amount { get; set; }
-    }
-
-    public class CreatePledgePaymentInputPaymentsType
-    {
-        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputPaymentsTypePaymentMethodType PaymentMethod { get; set; } = CreatePledgePaymentInputPaymentsTypePaymentMethodType.Cash;
-
-        [JsonProperty("check_number")]
-        public string CheckNumber { get; set; }
-
-        [JsonProperty("reference_number")]
-        public string Reference { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgePaymentInputPaymentsTypePaymentMethodType
-    {
-        Cash,
-        Check,
-        CreditCard,
-        StandingOrder,
-        DirectDebit,
-        Voucher,
-        Other,
-        PayPal,
-        Venmo
     }
 
     public class Gift2ApiNewInstallmentPayment
@@ -2486,106 +2434,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double? Amount { get; set; }
     }
 
-    public class CreatePledgePaymentInputGiftSubtypeType
-    {
-        [JsonProperty("name")]
-        public string Subtype { get; set; }
-    }
-
-    public class CreatePledgePaymentInputGiftCodeType
-    {
-        [JsonProperty("value")]
-        public string GiftCode { get; set; }
-    }
-
-    public class CreatePledgePaymentInputGiftConstituencyType
-    {
-        [JsonProperty("value")]
-        public string Constituency { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgePaymentInputPostStatusType
-    {
-        [EnumMember(Value = "NotPosted")]
-        PostToLedger,
-        DoNotPost,
-        Posted
-    }
-
-    public class CreatePledgePaymentInputReceiptsType
-    {
-        [JsonProperty("receipt_status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = CreatePledgePaymentInputReceiptsTypeReceiptStatusType.NeedsReceipt;
-
-        [JsonProperty("receipt_amount")]
-        public CreatePledgePaymentInputReceiptsTypeReceiptAmountType ReceiptAmount { get; set; }
-
-        [JsonProperty("receipt_date")]
-        public string ReceiptDate { get; set; }
-
-        [JsonProperty("receipt_number")]
-        public int? ReceiptNumber { get; set; }
-
-        [JsonProperty("receipt_stack")]
-        public CreatePledgePaymentInputReceiptsTypeReceiptStackType ReceiptStack { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgePaymentInputReceiptsTypeReceiptStatusType
-    {
-        [EnumMember(Value = "NotReceipted")]
-        NeedsReceipt,
-        DoNotReceipt,
-        Receipted
-    }
-
-    public class CreatePledgePaymentInputReceiptsTypeReceiptAmountType
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double ReceiptAmount { get; set; }
-    }
-
-    public class CreatePledgePaymentInputReceiptsTypeReceiptStackType
-    {
-        [JsonProperty("value")]
-        public string ReceiptStack { get; set; }
-    }
-
-    public class CreatePledgePaymentInputAcknowledgementsType
-    {
-        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputAcknowledgementsTypeAcknowledgeStatusType AcknowledgeStatus { get; set; } = CreatePledgePaymentInputAcknowledgementsTypeAcknowledgeStatusType.NeedsAcknowledgement;
-
-        [JsonProperty("acknowledgement_date")]
-        public string AcknowledgeDate { get; set; }
-
-        [JsonProperty("letter")]
-        public CreatePledgePaymentInputAcknowledgementsTypeLetterType Letter { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePledgePaymentInputAcknowledgementsTypeAcknowledgeStatusType
-    {
-        [EnumMember(Value = "NotAcknowledged")]
-        NeedsAcknowledgement,
-        DoNotAcknowledge,
-        Acknowledged
-    }
-
-    public class CreatePledgePaymentInputAcknowledgementsTypeLetterType
-    {
-        [JsonProperty("value")]
-        public string Letter { get; set; }
-    }
-
-    public class CreateStockInput
+    public class CreateStockBodyInput
     {
         [JsonProperty("constituent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputConstituentType Constituent { get; set; }
+        public BodyInputConstituentType Constituent { get; set; }
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputAmountType Amount { get; set; }
+        public CreateGiftBodyInputAmountType Amount { get; set; }
 
         [JsonProperty("gift_date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
@@ -2594,19 +2449,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         internal string Type { get; set; } = "Stock";
 
         [JsonProperty("issuer_details")]
-        public CreateStockInputIssuerDetailsType IssuerDetails { get; set; }
+        public BodyInputIssuerDetailsType IssuerDetails { get; set; }
 
         [JsonProperty("gift_splits", DefaultValueHandling = DefaultValueHandling.Include)]
         public Gift2ApiNewGiftSplit[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputPaymentsType Payments { get; set; } = new CreateStockInputPaymentsType();
+        public CreatePledgeBodyInputPaymentsType Payments { get; set; } = new CreatePledgeBodyInputPaymentsType();
 
         [JsonProperty("anonymous")]
         public bool? IsAnonymous { get; set; }
 
         [JsonProperty("gift_subtype")]
-        public CreateStockInputGiftSubtypeType GiftSubtype { get; set; }
+        public BodyInputGiftSubtypeType GiftSubtype { get; set; }
 
         [JsonProperty("comments")]
         public string Comment { get; set; }
@@ -2615,13 +2470,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string LookupId { get; set; }
 
         [JsonProperty("gift_code")]
-        public CreateStockInputGiftCodeType GiftCode { get; set; }
+        public BodyInputGiftCodeType GiftCode { get; set; }
 
         [JsonProperty("gift_constituency")]
-        public CreateStockInputGiftConstituencyType GiftConstituency { get; set; }
+        public BodyInputGiftConstituencyType GiftConstituency { get; set; }
 
         [JsonProperty("gift_post_status")]
-        public CreateStockInputPostStatusType? PostStatus { get; set; }
+        public CreatePledgeBodyInputPostStatusType? PostStatus { get; set; }
 
         [JsonProperty("gift_post_date")]
         public string PostDate { get; set; }
@@ -2630,28 +2485,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
         [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputReceiptsType Receipts { get; set; } = new CreateStockInputReceiptsType();
+        public CreatePledgeBodyInputReceiptsType Receipts { get; set; } = new CreatePledgeBodyInputReceiptsType();
 
         [JsonProperty("acknowledgements", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputAcknowledgementsType Acknowledgements { get; set; } = new CreateStockInputAcknowledgementsType();
+        public BodyInputAcknowledgementsType Acknowledgements { get; set; } = new BodyInputAcknowledgementsType();
 
         [JsonProperty("recognition_credits")]
         public Gift2ApiNewRecognitionCredit[] Credits { get; set; }
     }
 
-    public class CreateStockInputConstituentType
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ConstituentId { get; set; }
-    }
-
-    public class CreateStockInputAmountType
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double Amount { get; set; }
-    }
-
-    public class CreateStockInputIssuerDetailsType
+    public class BodyInputIssuerDetailsType
     {
         [JsonProperty("issuer")]
         public string Issuer { get; set; }
@@ -2664,125 +2507,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
         [JsonProperty("unit_price")]
         public double? MedianPricePerUnit { get; set; }
-    }
-
-    public class CreateStockInputPaymentsType
-    {
-        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputPaymentsTypePaymentMethodType PaymentMethod { get; set; } = CreateStockInputPaymentsTypePaymentMethodType.Cash;
-
-        [JsonProperty("check_number")]
-        public string CheckNumber { get; set; }
-
-        [JsonProperty("reference_number")]
-        public string Reference { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateStockInputPaymentsTypePaymentMethodType
-    {
-        Cash,
-        Check,
-        CreditCard,
-        StandingOrder,
-        DirectDebit,
-        Voucher,
-        Other,
-        PayPal,
-        Venmo
-    }
-
-    public class CreateStockInputGiftSubtypeType
-    {
-        [JsonProperty("name")]
-        public string Subtype { get; set; }
-    }
-
-    public class CreateStockInputGiftCodeType
-    {
-        [JsonProperty("value")]
-        public string GiftCode { get; set; }
-    }
-
-    public class CreateStockInputGiftConstituencyType
-    {
-        [JsonProperty("value")]
-        public string Constituency { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateStockInputPostStatusType
-    {
-        [EnumMember(Value = "NotPosted")]
-        PostToLedger,
-        DoNotPost,
-        Posted
-    }
-
-    public class CreateStockInputReceiptsType
-    {
-        [JsonProperty("receipt_status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputReceiptsTypeReceiptStatusType ReceiptStatus { get; set; } = CreateStockInputReceiptsTypeReceiptStatusType.NeedsReceipt;
-
-        [JsonProperty("receipt_amount")]
-        public CreateStockInputReceiptsTypeReceiptAmountType ReceiptAmount { get; set; }
-
-        [JsonProperty("receipt_date")]
-        public string ReceiptDate { get; set; }
-
-        [JsonProperty("receipt_number")]
-        public int? ReceiptNumber { get; set; }
-
-        [JsonProperty("receipt_stack")]
-        public CreateStockInputReceiptsTypeReceiptStackType ReceiptStack { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateStockInputReceiptsTypeReceiptStatusType
-    {
-        [EnumMember(Value = "NotReceipted")]
-        NeedsReceipt,
-        DoNotReceipt,
-        Receipted
-    }
-
-    public class CreateStockInputReceiptsTypeReceiptAmountType
-    {
-        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
-        public double ReceiptAmount { get; set; }
-    }
-
-    public class CreateStockInputReceiptsTypeReceiptStackType
-    {
-        [JsonProperty("value")]
-        public string ReceiptStack { get; set; }
-    }
-
-    public class CreateStockInputAcknowledgementsType
-    {
-        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputAcknowledgementsTypeAcknowledgeStatusType AcknowledgeStatus { get; set; } = CreateStockInputAcknowledgementsTypeAcknowledgeStatusType.NeedsAcknowledgement;
-
-        [JsonProperty("acknowledgement_date")]
-        public string AcknowledgeDate { get; set; }
-
-        [JsonProperty("letter")]
-        public CreateStockInputAcknowledgementsTypeLetterType Letter { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateStockInputAcknowledgementsTypeAcknowledgeStatusType
-    {
-        [EnumMember(Value = "NotAcknowledged")]
-        NeedsAcknowledgement,
-        DoNotAcknowledge,
-        Acknowledged
-    }
-
-    public class CreateStockInputAcknowledgementsTypeLetterType
-    {
-        [JsonProperty("value")]
-        public string Letter { get; set; }
     }
 
     public class NXTDataIntegrationApiTaxDeclarationCollection
@@ -2856,7 +2580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Id { get; set; }
     }
 
-    public class CreateTaxDeclarationInput
+    public class CreateTaxDeclarationBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ConstituentId { get; set; }
@@ -2883,7 +2607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string ConfirmationReturned { get; set; }
 
         [JsonProperty("constituent_pays_tax")]
-        public CreateTaxDeclarationInputPaysTaxType? PaysTax { get; set; }
+        public BodyInputPaysTaxType? PaysTax { get; set; }
 
         [JsonProperty("tax_payer_status")]
         public string Status { get; set; }
@@ -2896,14 +2620,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaxDeclarationInputPaysTaxType
+    public enum BodyInputPaysTaxType
     {
         No,
         Yes,
         Unknown
     }
 
-    public class EditTaxDeclarationInput
+    public class EditTaxDeclarationBodyInput
     {
         [JsonProperty("declaration_starts")]
         public string DeclarationStarts { get; set; }
@@ -2927,7 +2651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string ConfirmationReturned { get; set; }
 
         [JsonProperty("constituent_pays_tax")]
-        public EditTaxDeclarationInputPaysTaxType? PaysTax { get; set; }
+        public BodyInputPaysTaxType? PaysTax { get; set; }
 
         [JsonProperty("tax_payer_status")]
         public string Status { get; set; }
@@ -2937,14 +2661,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
         [JsonProperty("sequence")]
         public int? Sequence { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditTaxDeclarationInputPaysTaxType
-    {
-        No,
-        Yes,
-        Unknown
     }
 
     public class NXTDataIntegrationApiGiftIdMap
@@ -2959,7 +2675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Id { get; set; }
     }
 
-    public class CreateGiftNoteInput
+    public class CreateGiftNoteBodyInput
     {
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GiftId { get; set; }
@@ -2968,7 +2684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int Type { get; set; }
 
         [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftNoteInputDateType Date { get; set; }
+        public BodyInputDateType Date { get; set; }
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
@@ -2980,7 +2696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Author { get; set; }
     }
 
-    public class CreateGiftNoteInputDateType
+    public class BodyInputDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -2992,13 +2708,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int? Year { get; set; }
     }
 
-    public class EditGiftNoteInput
+    public class EditGiftNoteBodyInput
     {
         [JsonProperty("note_type_id")]
         public int? Type { get; set; }
 
         [JsonProperty("date")]
-        public EditGiftNoteInputDateType Date { get; set; }
+        public BodyInputDateType Date { get; set; }
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
@@ -3008,18 +2724,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
         [JsonProperty("author")]
         public string Author { get; set; }
-    }
-
-    public class EditGiftNoteInputDateType
-    {
-        [JsonProperty("d")]
-        public int? Day { get; set; }
-
-        [JsonProperty("m")]
-        public int? Month { get; set; }
-
-        [JsonProperty("y")]
-        public int? Year { get; set; }
     }
 
     public class NXTDataIntegrationApiGiftNoteCollection
@@ -3070,7 +2774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Id { get; set; }
     }
 
-    public class CreateGiftTributeInput
+    public class CreateGiftTributeBodyInput
     {
         [JsonProperty("gift_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GiftId { get; set; }
@@ -3079,17 +2783,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int TributeId { get; set; }
     }
 
-    public class EditGiftTributeInput
+    public class EditGiftTributeBodyInput
     {
         [JsonProperty("tribute_type")]
         public int? TributeType { get; set; }
 
         [JsonProperty("acknowledge")]
-        public EditGiftTributeInputAcknowledgeStatusType? AcknowledgeStatus { get; set; }
+        public BodyInputAcknowledgeStatusType? AcknowledgeStatus { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EditGiftTributeInputAcknowledgeStatusType
+    public enum BodyInputAcknowledgeStatusType
     {
         Acknowledged,
         NotAcknowledged,
@@ -3164,7 +2868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         DoNotAcknowledge
     }
 
-    public class EditGiftTributeAcknowledgeeInput
+    public class EditGiftTributeAcknowledgeeBodyInput
     {
         [JsonProperty("letter")]
         public int? Letter { get; set; }

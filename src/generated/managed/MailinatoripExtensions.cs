@@ -99,19 +99,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<MessagePostInput>> body = null)
+        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/domains/{0}/inboxes/{1}/messages", __workflow_domain.WithUrlEncoding(1), __workflow_inbox.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                return new ApiConnectionAction<MessageResponse>(callPayload);
             });
         }
 
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         public string[] Links { get; set; }
     }
 
-    public class MessagePostResponse
+    public class MessageResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -307,19 +307,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         public string Id { get; set; }
     }
 
-    public class MessagePostInput
+    public class BodyInput
     {
         [JsonProperty("fromfull")]
         public string Fromfull { get; set; }
 
         [JsonProperty("headers")]
-        public MessagePostInputHeadersType Headers { get; set; }
+        public BodyInputHeadersType Headers { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("parts")]
-        public MessagePostInputPartsTypeItem[] Parts { get; set; }
+        public BodyInputPartsTypeItem[] Parts { get; set; }
 
         [JsonProperty("from")]
         public string From { get; set; }
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         public int? SecondsAgo { get; set; }
     }
 
-    public class MessagePostInputHeadersType
+    public class BodyInputHeadersType
     {
         [JsonProperty("mime-version")]
         public string MimeVersion { get; set; }
@@ -352,16 +352,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         public string ContentType { get; set; }
     }
 
-    public class MessagePostInputPartsTypeItem
+    public class BodyInputPartsTypeItem
     {
         [JsonProperty("headers")]
-        public MessagePostInputPartsTypeItemHeadersType Headers { get; set; }
+        public BodyInputPartsTypeItemHeadersType Headers { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
     }
 
-    public class MessagePostInputPartsTypeItemHeadersType
+    public class BodyInputPartsTypeItemHeadersType
     {
         [JsonProperty("content-type")]
         public string ContentType { get; set; }

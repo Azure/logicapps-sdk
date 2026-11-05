@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     public class ReversinglabstitaniuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<GetFileReputationBulkInput>> body, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileReputationBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<GetHistoricalAvRecordsBulkInput>> body, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetHistoricalAvRecordsBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<bool>> history = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisNonMaliciousSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisNonMaliciousSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisNonMaliciousBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<GetFileAnalysisNonMaliciousBulkInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileAnalysisNonMaliciousBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisMerged(Expression<Func<hashTypeInput2>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisMerged(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisLatest(Expression<Func<hashTypeInput3>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisLatest(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisSpecific(Expression<Func<hashTypeInput4>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisSpecific(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveMerged(Expression<Func<hashTypeInput5>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveMerged(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveLatest(Expression<Func<hashTypeInput6>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDynamicAnalysisArchiveLatest(Expression<Func<GetDynamicAnalysisArchiveLatestHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DownloadSample(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DownloadSample(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetSampleDownloadStatus(Expression<Func<postFormatInput>> postFormat, Expression<Func<GetSampleDownloadStatusInput>> body, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSampleDownloadStatus(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> deleteOn = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteSampleSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> deleteOn = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteSamplesBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<DeleteSamplesBulkInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteSamplesBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<DeleteSamplesBulkBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleSingle(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<ReanalyzeSampleBulkInput>> body, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReanalyzeSampleBulk(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SubscribeToReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<SubscribeToReputationChangesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubscribeToReputationChanges(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UnsubscribeFromReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<UnsubscribeFromReputationChangesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UnsubscribeFromReputationChanges(Expression<Func<PostFormatInput>> postFormat, Expression<Func<GetFileAnalysisBulkBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetStartTimeForReputationChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetStartTimeForReputationChanges(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetReputationDataChanges(Expression<Func<formatInput2>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetReputationDataChanges(Expression<Func<GetReputationDataChangesFormatInput>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetContinuousReputationDataChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetContinuousReputationDataChanges(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> events = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitSampleForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<SubmitSampleForDynamicAnalysisInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitSampleForDynamicAnalysis(Expression<Func<PostFormatInput>> postFormat, Expression<Func<SubmitSampleForDynamicAnalysisBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitArchiveForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<SubmitArchiveForDynamicAnalysisInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SubmitArchiveForDynamicAnalysis(Expression<Func<PostFormatInput>> postFormat, Expression<Func<SubmitArchiveForDynamicAnalysisBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> classification = null)
         {
             var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> classification = null)
         {
             var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
             var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<formatInput>> format = null, Expression<Func<URIToHashSearchTextPagingInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> URIToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<URIToHashSearchTextPagingBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLReport(Expression<Func<formatInput>> format, Expression<Func<GetURLReportInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLReport(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetURLReportBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromURL(Expression<Func<formatInput>> format, Expression<Func<ListFilesFromURLInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromURL(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<ListFilesFromURLBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesFirst(Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesFirst(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesPaging(Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetLatestURLAnalysesPaging(Expression<Func<string>> page, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesFirst(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesFirst(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
@@ -665,7 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesPaging(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetTimestampedURLAnalysesPaging(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AnalyzeURL(Expression<Func<formatInput>> format, Expression<Func<AnalyzeURLInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AnalyzeURL(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<AnalyzeURLBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainReport(Expression<Func<formatInput>> format, Expression<Func<GetDomainReportInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainReport(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainReportBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromDomain(Expression<Func<formatInput>> format, Expression<Func<ListFilesFromDomainInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromDomain(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<ListFilesFromDomainBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromDomain(Expression<Func<formatInput>> format, Expression<Func<GetURLFromDomainInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromDomain(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainResolutions(Expression<Func<formatInput>> format, Expression<Func<GetDomainResolutionsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainResolutions(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainRelatedDomains(Expression<Func<formatInput>> format, Expression<Func<GetDomainRelatedDomainsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDomainRelatedDomains(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetDomainRelatedDomainsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -777,7 +777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressReport(Expression<Func<formatInput>> format, Expression<Func<GetIPAddressReportInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressReport(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetIPAddressReportBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<ListFilesFromIPAddressInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListFilesFromIPAddress(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<ListFilesFromIPAddressBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<GetURLFromIPAddressInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetURLFromIPAddress(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetIPAddressResolutionsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressResolutions(Expression<Func<formatInput>> format, Expression<Func<GetIPAddressResolutionsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetIPAddressResolutions(Expression<Func<AnalyzeURLFormatInput>> format, Expression<Func<GetIPAddressResolutionsBodyInput>> body)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageUser(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DailyAPIUsageCompany(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
@@ -887,7 +887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageUser(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
@@ -912,7 +912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MonthlyAPIUsageCompany(Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageUser(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageUser(Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageCompany(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DateRangeAPIUsageCompany(Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -969,7 +969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetActiveYARARulesets(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetActiveYARARulesets(Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -985,7 +985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsUser(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsUser(Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsCompany(Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetAPIQuotaLimitsCompany(Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NetworkReputationApi(Expression<Func<postFormatInput>> postFormat, Expression<Func<NetworkReputationApiInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NetworkReputationApi(Expression<Func<PostFormatInput>> postFormat, Expression<Func<NetworkReputationApiBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NetworkReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<NetworkReputationUserOverrideInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NetworkReputationUserOverride(Expression<Func<PostFormatInput>> postFormat, Expression<Func<NetworkReputationUserOverrideBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1066,7 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
             var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_base64Value = WorkflowExpression.Compile(base64Value, nameof(base64Value), required: true);
             var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraMatchesFeed(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
@@ -1201,7 +1201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateYaraRuleset(Expression<Func<CreateYaraRulesetInput>> body, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateYaraRuleset(Expression<Func<CreateYaraRulesetBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -1232,7 +1232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRetroMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRetroMatchesFeed(Expression<Func<TimeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
             var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
@@ -1250,7 +1250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> StartYaraRetroHunt(Expression<Func<StartYaraRetroHuntInput>> body, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> StartYaraRetroHunt(Expression<Func<CancelYaraRetroHuntBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -1268,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CancelYaraRetroHunt(Expression<Func<CancelYaraRetroHuntInput>> body, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CancelYaraRetroHunt(Expression<Func<CancelYaraRetroHuntBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -1286,7 +1286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<AdvancedSearchInput>> body = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AdvancedSearch(Expression<Func<AdvancedSearchBodyInput>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<classificationInput>> classification = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeURLFormatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<ClassificationInput>> classification = null)
         {
             var __workflow_rha1Type = WorkflowExpression.Compile(rha1Type, nameof(rha1Type), required: true);
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
@@ -1338,7 +1338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -1358,7 +1358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
             var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
@@ -1379,7 +1379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<FileReputationUserOverrideInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationUserOverride(Expression<Func<PostFormatInput>> postFormat, Expression<Func<FileReputationUserOverrideBodyInput>> body)
         {
             var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1394,7 +1394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationListUserOverrides(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<formatInput>> format = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FileReputationListUserOverrides(Expression<Func<DeleteSampleSingleHashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<AnalyzeURLFormatInput>> format = null)
         {
             var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
             var __workflow_startHash = WorkflowExpression.Compile(startHash, nameof(startHash), required: false);
@@ -1419,7 +1419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hashTypeInput
+    public enum DeleteSampleSingleHashTypeInput
     {
         [EnumMember(Value = "md5")]
         Md5,
@@ -1430,7 +1430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum AnalyzeURLFormatInput
     {
         [EnumMember(Value = "xml")]
         Xml,
@@ -1439,133 +1439,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum postFormatInput
+    public enum PostFormatInput
     {
-        [EnumMember(Value = "xml")]
-        Xml,
         [EnumMember(Value = "json")]
-        Json
+        Json,
+        [EnumMember(Value = "xml")]
+        Xml
     }
 
-    public class GetFileReputationBulkInput
+    public class GetFileAnalysisBulkBodyInput
     {
         [JsonProperty("rl")]
-        public GetFileReputationBulkInputRlType Rl { get; set; }
+        public GetFileAnalysisBulkBodyInputRlType Rl { get; set; }
     }
 
-    public class GetFileReputationBulkInputRlType
+    public class GetFileAnalysisBulkBodyInputRlType
     {
         [JsonProperty("query")]
-        public GetFileReputationBulkInputRlTypeQueryType Query { get; set; }
+        public GetFileAnalysisBulkBodyInputRlTypeQueryType Query { get; set; }
     }
 
-    public class GetFileReputationBulkInputRlTypeQueryType
+    public class GetFileAnalysisBulkBodyInputRlTypeQueryType
     {
         [JsonProperty("hash_type")]
-        public GetFileReputationBulkInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
+        public BodyInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
 
         [JsonProperty("hashes")]
         public string[] Hashes { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetFileReputationBulkInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    public class GetHistoricalAvRecordsBulkInput
-    {
-        [JsonProperty("rl")]
-        public GetHistoricalAvRecordsBulkInputRlType Rl { get; set; }
-    }
-
-    public class GetHistoricalAvRecordsBulkInputRlType
-    {
-        [JsonProperty("query")]
-        public GetHistoricalAvRecordsBulkInputRlTypeQueryType Query { get; set; }
-    }
-
-    public class GetHistoricalAvRecordsBulkInputRlTypeQueryType
-    {
-        [JsonProperty("hash_type")]
-        public GetHistoricalAvRecordsBulkInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
-
-        [JsonProperty("hashes")]
-        public string[] Hashes { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetHistoricalAvRecordsBulkInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    public class GetFileAnalysisBulkInput
-    {
-        [JsonProperty("rl")]
-        public GetFileAnalysisBulkInputRlType Rl { get; set; }
-    }
-
-    public class GetFileAnalysisBulkInputRlType
-    {
-        [JsonProperty("query")]
-        public GetFileAnalysisBulkInputRlTypeQueryType Query { get; set; }
-    }
-
-    public class GetFileAnalysisBulkInputRlTypeQueryType
-    {
-        [JsonProperty("hash_type")]
-        public GetFileAnalysisBulkInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
-
-        [JsonProperty("hashes")]
-        public string[] Hashes { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetFileAnalysisBulkInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    public class GetFileAnalysisNonMaliciousBulkInput
-    {
-        [JsonProperty("rl")]
-        public GetFileAnalysisNonMaliciousBulkInputRlType Rl { get; set; }
-    }
-
-    public class GetFileAnalysisNonMaliciousBulkInputRlType
-    {
-        [JsonProperty("query")]
-        public GetFileAnalysisNonMaliciousBulkInputRlTypeQueryType Query { get; set; }
-    }
-
-    public class GetFileAnalysisNonMaliciousBulkInputRlTypeQueryType
-    {
-        [JsonProperty("hash_type")]
-        public GetFileAnalysisNonMaliciousBulkInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
-
-        [JsonProperty("hashes")]
-        public string[] Hashes { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetFileAnalysisNonMaliciousBulkInputRlTypeQueryTypeHashTypeType
+    public enum BodyInputRlTypeQueryTypeHashTypeType
     {
         [EnumMember(Value = "md5")]
         Md5,
@@ -1576,88 +1480,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hashTypeInput2
+    public enum GetDynamicAnalysisArchiveLatestHashTypeInput
     {
         [EnumMember(Value = "sha1")]
         Sha1
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hashTypeInput3
-    {
-        [EnumMember(Value = "sha1")]
-        Sha1
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hashTypeInput4
-    {
-        [EnumMember(Value = "sha1")]
-        Sha1
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hashTypeInput5
-    {
-        [EnumMember(Value = "sha1")]
-        Sha1
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum hashTypeInput6
-    {
-        [EnumMember(Value = "sha1")]
-        Sha1
-    }
-
-    public class GetSampleDownloadStatusInput
+    public class DeleteSamplesBulkBodyInput
     {
         [JsonProperty("rl")]
-        public GetSampleDownloadStatusInputRlType Rl { get; set; }
+        public DeleteSamplesBulkBodyInputRlType Rl { get; set; }
     }
 
-    public class GetSampleDownloadStatusInputRlType
+    public class DeleteSamplesBulkBodyInputRlType
     {
         [JsonProperty("query")]
-        public GetSampleDownloadStatusInputRlTypeQueryType Query { get; set; }
+        public DeleteSamplesBulkBodyInputRlTypeQueryType Query { get; set; }
     }
 
-    public class GetSampleDownloadStatusInputRlTypeQueryType
+    public class DeleteSamplesBulkBodyInputRlTypeQueryType
     {
         [JsonProperty("hash_type")]
-        public GetSampleDownloadStatusInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
-
-        [JsonProperty("hashes")]
-        public string[] Hashes { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetSampleDownloadStatusInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    public class DeleteSamplesBulkInput
-    {
-        [JsonProperty("rl")]
-        public DeleteSamplesBulkInputRlType Rl { get; set; }
-    }
-
-    public class DeleteSamplesBulkInputRlType
-    {
-        [JsonProperty("query")]
-        public DeleteSamplesBulkInputRlTypeQueryType Query { get; set; }
-    }
-
-    public class DeleteSamplesBulkInputRlTypeQueryType
-    {
-        [JsonProperty("hash_type")]
-        public DeleteSamplesBulkInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
+        public BodyInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
 
         [JsonProperty("delete_on")]
         public string DeleteOn { get; set; }
@@ -1667,114 +1511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeleteSamplesBulkInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    public class ReanalyzeSampleBulkInput
-    {
-        [JsonProperty("rl")]
-        public ReanalyzeSampleBulkInputRlType Rl { get; set; }
-    }
-
-    public class ReanalyzeSampleBulkInputRlType
-    {
-        [JsonProperty("query")]
-        public ReanalyzeSampleBulkInputRlTypeQueryType Query { get; set; }
-    }
-
-    public class ReanalyzeSampleBulkInputRlTypeQueryType
-    {
-        [JsonProperty("hash_type")]
-        public ReanalyzeSampleBulkInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
-
-        [JsonProperty("hashes")]
-        public string[] Hashes { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReanalyzeSampleBulkInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    public class SubscribeToReputationChangesInput
-    {
-        [JsonProperty("rl")]
-        public SubscribeToReputationChangesInputRlType Rl { get; set; }
-    }
-
-    public class SubscribeToReputationChangesInputRlType
-    {
-        [JsonProperty("query")]
-        public SubscribeToReputationChangesInputRlTypeQueryType Query { get; set; }
-    }
-
-    public class SubscribeToReputationChangesInputRlTypeQueryType
-    {
-        [JsonProperty("hash_type")]
-        public SubscribeToReputationChangesInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
-
-        [JsonProperty("hashes")]
-        public string[] Hashes { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SubscribeToReputationChangesInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    public class UnsubscribeFromReputationChangesInput
-    {
-        [JsonProperty("rl")]
-        public UnsubscribeFromReputationChangesInputRlType Rl { get; set; }
-    }
-
-    public class UnsubscribeFromReputationChangesInputRlType
-    {
-        [JsonProperty("query")]
-        public UnsubscribeFromReputationChangesInputRlTypeQueryType Query { get; set; }
-    }
-
-    public class UnsubscribeFromReputationChangesInputRlTypeQueryType
-    {
-        [JsonProperty("hash_type")]
-        public UnsubscribeFromReputationChangesInputRlTypeQueryTypeHashTypeType? HashType { get; set; }
-
-        [JsonProperty("hashes")]
-        public string[] Hashes { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UnsubscribeFromReputationChangesInputRlTypeQueryTypeHashTypeType
-    {
-        [EnumMember(Value = "md5")]
-        Md5,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum timeFormatInput
+    public enum TimeFormatInput
     {
         [EnumMember(Value = "timestamp")]
         Timestamp,
@@ -1783,7 +1520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput2
+    public enum GetReputationDataChangesFormatInput
     {
         [EnumMember(Value = "xml")]
         Xml,
@@ -1793,13 +1530,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Tsv
     }
 
-    public class SubmitSampleForDynamicAnalysisInput
+    public class SubmitSampleForDynamicAnalysisBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SubmitSampleForDynamicAnalysisInputRlType Rl { get; set; } = new SubmitSampleForDynamicAnalysisInputRlType();
+        public SubmitSampleForDynamicAnalysisBodyInputRlType Rl { get; set; } = new SubmitSampleForDynamicAnalysisBodyInputRlType();
     }
 
-    public class SubmitSampleForDynamicAnalysisInputRlType
+    public class SubmitSampleForDynamicAnalysisBodyInputRlType
     {
         [JsonProperty("sha1")]
         public string Sha1 { get; set; }
@@ -1811,14 +1548,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Platform { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SubmitSampleForDynamicAnalysisInputRlTypeResponseFormatType? ResponseFormat { get; set; } = SubmitSampleForDynamicAnalysisInputRlTypeResponseFormatType.Json;
+        public BodyInputRlTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeResponseFormatType.Json;
 
         [JsonProperty("optional_parameters")]
         public string OptionalParameters { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SubmitSampleForDynamicAnalysisInputRlTypeResponseFormatType
+    public enum BodyInputRlTypeResponseFormatType
     {
         [EnumMember(Value = "xml")]
         Xml,
@@ -1826,13 +1563,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Json
     }
 
-    public class SubmitArchiveForDynamicAnalysisInput
+    public class SubmitArchiveForDynamicAnalysisBodyInput
     {
         [JsonProperty("rl")]
-        public SubmitArchiveForDynamicAnalysisInputRlType Rl { get; set; }
+        public SubmitArchiveForDynamicAnalysisBodyInputRlType Rl { get; set; }
     }
 
-    public class SubmitArchiveForDynamicAnalysisInputRlType
+    public class SubmitArchiveForDynamicAnalysisBodyInputRlType
     {
         [JsonProperty("sha1")]
         public string Sha1 { get; set; }
@@ -1847,19 +1584,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string OptionalParameters { get; set; }
     }
 
-    public class URIToHashSearchTextPagingInput
+    public class URIToHashSearchTextPagingBodyInput
     {
         [JsonProperty("rl")]
-        public URIToHashSearchTextPagingInputRlType Rl { get; set; }
+        public URIToHashSearchTextPagingBodyInputRlType Rl { get; set; }
     }
 
-    public class URIToHashSearchTextPagingInputRlType
+    public class URIToHashSearchTextPagingBodyInputRlType
     {
         [JsonProperty("query")]
-        public URIToHashSearchTextPagingInputRlTypeQueryType Query { get; set; }
+        public URIToHashSearchTextPagingBodyInputRlTypeQueryType Query { get; set; }
     }
 
-    public class URIToHashSearchTextPagingInputRlTypeQueryType
+    public class URIToHashSearchTextPagingBodyInputRlTypeQueryType
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -1868,49 +1605,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string NextPageSha1 { get; set; }
     }
 
-    public class GetURLReportInput
+    public class GetURLReportBodyInput
     {
         [JsonProperty("rl")]
-        public GetURLReportInputRlType Rl { get; set; }
+        public GetURLReportBodyInputRlType Rl { get; set; }
     }
 
-    public class GetURLReportInputRlType
+    public class GetURLReportBodyInputRlType
     {
         [JsonProperty("query")]
-        public GetURLReportInputRlTypeQueryType Query { get; set; }
+        public GetURLReportBodyInputRlTypeQueryType Query { get; set; }
     }
 
-    public class GetURLReportInputRlTypeQueryType
+    public class GetURLReportBodyInputRlTypeQueryType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("response_format")]
-        public GetURLReportInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; }
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetURLReportInputRlTypeQueryTypeResponseFormatType
+    public enum BodyInputRlTypeQueryTypeResponseFormatType
     {
-        [EnumMember(Value = "json")]
-        Json,
         [EnumMember(Value = "xml")]
-        Xml
+        Xml,
+        [EnumMember(Value = "json")]
+        Json
     }
 
-    public class ListFilesFromURLInput
+    public class ListFilesFromURLBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromURLInputRlType Rl { get; set; } = new ListFilesFromURLInputRlType();
+        public ListFilesFromURLBodyInputRlType Rl { get; set; } = new ListFilesFromURLBodyInputRlType();
     }
 
-    public class ListFilesFromURLInputRlType
+    public class ListFilesFromURLBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromURLInputRlTypeQueryType Query { get; set; } = new ListFilesFromURLInputRlTypeQueryType();
+        public ListFilesFromURLBodyInputRlTypeQueryType Query { get; set; } = new ListFilesFromURLBodyInputRlTypeQueryType();
     }
 
-    public class ListFilesFromURLInputRlTypeQueryType
+    public class ListFilesFromURLBodyInputRlTypeQueryType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1922,7 +1659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public bool? LastAnalysis { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromURLInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = ListFilesFromURLInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
@@ -1937,94 +1674,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Page { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListFilesFromURLInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class AnalyzeURLInput
+    public class AnalyzeURLBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AnalyzeURLInputRlType Rl { get; set; } = new AnalyzeURLInputRlType();
+        public AnalyzeURLBodyInputRlType Rl { get; set; } = new AnalyzeURLBodyInputRlType();
     }
 
-    public class AnalyzeURLInputRlType
+    public class AnalyzeURLBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AnalyzeURLInputRlTypeQueryType Query { get; set; } = new AnalyzeURLInputRlTypeQueryType();
+        public AnalyzeURLBodyInputRlTypeQueryType Query { get; set; } = new AnalyzeURLBodyInputRlTypeQueryType();
     }
 
-    public class AnalyzeURLInputRlTypeQueryType
+    public class AnalyzeURLBodyInputRlTypeQueryType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AnalyzeURLInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = AnalyzeURLInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AnalyzeURLInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class GetDomainReportInput
+    public class GetDomainReportBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainReportInputRlType Rl { get; set; } = new GetDomainReportInputRlType();
+        public GetDomainReportBodyInputRlType Rl { get; set; } = new GetDomainReportBodyInputRlType();
     }
 
-    public class GetDomainReportInputRlType
+    public class GetDomainReportBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainReportInputRlTypeQueryType Query { get; set; } = new GetDomainReportInputRlTypeQueryType();
+        public GetDomainReportBodyInputRlTypeQueryType Query { get; set; } = new GetDomainReportBodyInputRlTypeQueryType();
     }
 
-    public class GetDomainReportInputRlTypeQueryType
+    public class GetDomainReportBodyInputRlTypeQueryType
     {
         [JsonProperty("domain")]
         public string Domain { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainReportInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = GetDomainReportInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetDomainReportInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class ListFilesFromDomainInput
+    public class ListFilesFromDomainBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromDomainInputRlType Rl { get; set; } = new ListFilesFromDomainInputRlType();
+        public ListFilesFromDomainBodyInputRlType Rl { get; set; } = new ListFilesFromDomainBodyInputRlType();
     }
 
-    public class ListFilesFromDomainInputRlType
+    public class ListFilesFromDomainBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromDomainInputRlTypeQueryType Query { get; set; } = new ListFilesFromDomainInputRlTypeQueryType();
+        public ListFilesFromDomainBodyInputRlTypeQueryType Query { get; set; } = new ListFilesFromDomainBodyInputRlTypeQueryType();
     }
 
-    public class ListFilesFromDomainInputRlTypeQueryType
+    public class ListFilesFromDomainBodyInputRlTypeQueryType
     {
         [JsonProperty("domain")]
         public string Domain { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromDomainInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = ListFilesFromDomainInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
@@ -2039,34 +1749,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Page { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListFilesFromDomainInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class GetURLFromDomainInput
+    public class GetDomainRelatedDomainsBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetURLFromDomainInputRlType Rl { get; set; } = new GetURLFromDomainInputRlType();
+        public GetDomainRelatedDomainsBodyInputRlType Rl { get; set; } = new GetDomainRelatedDomainsBodyInputRlType();
     }
 
-    public class GetURLFromDomainInputRlType
+    public class GetDomainRelatedDomainsBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetURLFromDomainInputRlTypeQueryType Query { get; set; } = new GetURLFromDomainInputRlTypeQueryType();
+        public GetDomainRelatedDomainsBodyInputRlTypeQueryType Query { get; set; } = new GetDomainRelatedDomainsBodyInputRlTypeQueryType();
     }
 
-    public class GetURLFromDomainInputRlTypeQueryType
+    public class GetDomainRelatedDomainsBodyInputRlTypeQueryType
     {
         [JsonProperty("domain")]
         public string Domain { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetURLFromDomainInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = GetURLFromDomainInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
@@ -2075,136 +1776,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Page { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetURLFromDomainInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class GetDomainResolutionsInput
+    public class GetIPAddressReportBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainResolutionsInputRlType Rl { get; set; } = new GetDomainResolutionsInputRlType();
+        public GetIPAddressReportBodyInputRlType Rl { get; set; } = new GetIPAddressReportBodyInputRlType();
     }
 
-    public class GetDomainResolutionsInputRlType
+    public class GetIPAddressReportBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainResolutionsInputRlTypeQueryType Query { get; set; } = new GetDomainResolutionsInputRlTypeQueryType();
+        public GetIPAddressReportBodyInputRlTypeQueryType Query { get; set; } = new GetIPAddressReportBodyInputRlTypeQueryType();
     }
 
-    public class GetDomainResolutionsInputRlTypeQueryType
-    {
-        [JsonProperty("domain")]
-        public string Domain { get; set; }
-
-        [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainResolutionsInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = GetDomainResolutionsInputRlTypeQueryTypeResponseFormatType.Json;
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("page")]
-        public string Page { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetDomainResolutionsInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class GetDomainRelatedDomainsInput
-    {
-        [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainRelatedDomainsInputRlType Rl { get; set; } = new GetDomainRelatedDomainsInputRlType();
-    }
-
-    public class GetDomainRelatedDomainsInputRlType
-    {
-        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainRelatedDomainsInputRlTypeQueryType Query { get; set; } = new GetDomainRelatedDomainsInputRlTypeQueryType();
-    }
-
-    public class GetDomainRelatedDomainsInputRlTypeQueryType
-    {
-        [JsonProperty("domain")]
-        public string Domain { get; set; }
-
-        [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDomainRelatedDomainsInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = GetDomainRelatedDomainsInputRlTypeQueryTypeResponseFormatType.Json;
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("page")]
-        public string Page { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetDomainRelatedDomainsInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class GetIPAddressReportInput
-    {
-        [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIPAddressReportInputRlType Rl { get; set; } = new GetIPAddressReportInputRlType();
-    }
-
-    public class GetIPAddressReportInputRlType
-    {
-        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIPAddressReportInputRlTypeQueryType Query { get; set; } = new GetIPAddressReportInputRlTypeQueryType();
-    }
-
-    public class GetIPAddressReportInputRlTypeQueryType
+    public class GetIPAddressReportBodyInputRlTypeQueryType
     {
         [JsonProperty("ip")]
         public string Ip { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIPAddressReportInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = GetIPAddressReportInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetIPAddressReportInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class ListFilesFromIPAddressInput
+    public class ListFilesFromIPAddressBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromIPAddressInputRlType Rl { get; set; } = new ListFilesFromIPAddressInputRlType();
+        public ListFilesFromIPAddressBodyInputRlType Rl { get; set; } = new ListFilesFromIPAddressBodyInputRlType();
     }
 
-    public class ListFilesFromIPAddressInputRlType
+    public class ListFilesFromIPAddressBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromIPAddressInputRlTypeQueryType Query { get; set; } = new ListFilesFromIPAddressInputRlTypeQueryType();
+        public ListFilesFromIPAddressBodyInputRlTypeQueryType Query { get; set; } = new ListFilesFromIPAddressBodyInputRlTypeQueryType();
     }
 
-    public class ListFilesFromIPAddressInputRlTypeQueryType
+    public class ListFilesFromIPAddressBodyInputRlTypeQueryType
     {
         [JsonProperty("ip")]
         public string Ip { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListFilesFromIPAddressInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = ListFilesFromIPAddressInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
@@ -2219,34 +1830,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Page { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListFilesFromIPAddressInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class GetURLFromIPAddressInput
+    public class GetIPAddressResolutionsBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetURLFromIPAddressInputRlType Rl { get; set; } = new GetURLFromIPAddressInputRlType();
+        public GetIPAddressResolutionsBodyInputRlType Rl { get; set; } = new GetIPAddressResolutionsBodyInputRlType();
     }
 
-    public class GetURLFromIPAddressInputRlType
+    public class GetIPAddressResolutionsBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetURLFromIPAddressInputRlTypeQueryType Query { get; set; } = new GetURLFromIPAddressInputRlTypeQueryType();
+        public GetIPAddressResolutionsBodyInputRlTypeQueryType Query { get; set; } = new GetIPAddressResolutionsBodyInputRlTypeQueryType();
     }
 
-    public class GetURLFromIPAddressInputRlTypeQueryType
+    public class GetIPAddressResolutionsBodyInputRlTypeQueryType
     {
         [JsonProperty("ip")]
         public string Ip { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetURLFromIPAddressInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = GetURLFromIPAddressInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
@@ -2255,83 +1857,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Page { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetURLFromIPAddressInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class GetIPAddressResolutionsInput
+    public class NetworkReputationApiBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIPAddressResolutionsInputRlType Rl { get; set; } = new GetIPAddressResolutionsInputRlType();
+        public NetworkReputationApiBodyInputRlType Rl { get; set; } = new NetworkReputationApiBodyInputRlType();
     }
 
-    public class GetIPAddressResolutionsInputRlType
+    public class NetworkReputationApiBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIPAddressResolutionsInputRlTypeQueryType Query { get; set; } = new GetIPAddressResolutionsInputRlTypeQueryType();
+        public NetworkReputationApiBodyInputRlTypeQueryType Query { get; set; } = new NetworkReputationApiBodyInputRlTypeQueryType();
     }
 
-    public class GetIPAddressResolutionsInputRlTypeQueryType
-    {
-        [JsonProperty("ip")]
-        public string Ip { get; set; }
-
-        [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetIPAddressResolutionsInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = GetIPAddressResolutionsInputRlTypeQueryTypeResponseFormatType.Json;
-
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("page")]
-        public string Page { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetIPAddressResolutionsInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "xml")]
-        Xml,
-        [EnumMember(Value = "json")]
-        Json
-    }
-
-    public class NetworkReputationApiInput
-    {
-        [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationApiInputRlType Rl { get; set; } = new NetworkReputationApiInputRlType();
-    }
-
-    public class NetworkReputationApiInputRlType
-    {
-        [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationApiInputRlTypeQueryType Query { get; set; } = new NetworkReputationApiInputRlTypeQueryType();
-    }
-
-    public class NetworkReputationApiInputRlTypeQueryType
+    public class NetworkReputationApiBodyInputRlTypeQueryType
     {
         [JsonProperty("network_locations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationApiInputRlTypeQueryTypeNetworkLocationsTypeItem[] NetworkLocations { get; set; }
+        public BodyInputRlTypeQueryTypeNetworkLocationsTypeItem[] NetworkLocations { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationApiInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = NetworkReputationApiInputRlTypeQueryTypeResponseFormatType.Json;
+        public BodyInputRlTypeQueryTypeResponseFormatType? ResponseFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu.BodyInputRlTypeQueryTypeResponseFormatType.Json;
     }
 
-    public class NetworkReputationApiInputRlTypeQueryTypeNetworkLocationsTypeItem
+    public class BodyInputRlTypeQueryTypeNetworkLocationsTypeItem
     {
         [JsonProperty("network_location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NetworkLocation { get; set; }
 
         [JsonProperty("type")]
-        public NetworkReputationApiInputRlTypeQueryTypeNetworkLocationsTypeItemTypeType? Type { get; set; }
+        public BodyInputRlTypeQueryTypeNetworkLocationsTypeItemTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NetworkReputationApiInputRlTypeQueryTypeNetworkLocationsTypeItemTypeType
+    public enum BodyInputRlTypeQueryTypeNetworkLocationsTypeItemTypeType
     {
         [EnumMember(Value = "url")]
         Url,
@@ -2341,49 +1898,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Domain
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NetworkReputationApiInputRlTypeQueryTypeResponseFormatType
-    {
-        [EnumMember(Value = "json")]
-        Json,
-        [EnumMember(Value = "xml")]
-        Xml
-    }
-
-    public class NetworkReputationUserOverrideInput
+    public class NetworkReputationUserOverrideBodyInput
     {
         [JsonProperty("rl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationUserOverrideInputRlType Rl { get; set; } = new NetworkReputationUserOverrideInputRlType();
+        public NetworkReputationUserOverrideBodyInputRlType Rl { get; set; } = new NetworkReputationUserOverrideBodyInputRlType();
     }
 
-    public class NetworkReputationUserOverrideInputRlType
+    public class NetworkReputationUserOverrideBodyInputRlType
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationUserOverrideInputRlTypeQueryType Query { get; set; }
+        public NetworkReputationUserOverrideBodyInputRlTypeQueryType Query { get; set; }
 
         [JsonProperty("response_format", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResponseFormat { get; set; } = "json";
     }
 
-    public class NetworkReputationUserOverrideInputRlTypeQueryType
+    public class NetworkReputationUserOverrideBodyInputRlTypeQueryType
     {
         [JsonProperty("user_override", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationUserOverrideInputRlTypeQueryTypeUserOverrideType UserOverride { get; set; }
+        public BodyInputRlTypeQueryTypeUserOverrideType UserOverride { get; set; }
     }
 
-    public class NetworkReputationUserOverrideInputRlTypeQueryTypeUserOverrideType
+    public class BodyInputRlTypeQueryTypeUserOverrideType
     {
         [JsonProperty("override_network_locations", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationUserOverrideInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem[] OverrideNetworkLocations { get; set; }
+        public BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem[] OverrideNetworkLocations { get; set; }
     }
 
-    public class NetworkReputationUserOverrideInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem
+    public class BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItem
     {
         [JsonProperty("network_location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NetworkLocation { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NetworkReputationUserOverrideInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItemTypeType Type { get; set; }
+        public BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItemTypeType Type { get; set; }
 
         [JsonProperty("classification", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Classification { get; set; }
@@ -2393,13 +1941,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NetworkReputationUserOverrideInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItemTypeType
+    public enum BodyInputRlTypeQueryTypeUserOverrideTypeOverrideNetworkLocationsTypeItemTypeType
     {
         [EnumMember(Value = "url")]
         Url
     }
 
-    public class CreateYaraRulesetInput
+    public class CreateYaraRulesetBodyInput
     {
         [JsonProperty("ruleset_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RulesetName { get; set; }
@@ -2411,25 +1959,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public bool SampleAvailable { get; set; }
     }
 
-    public class StartYaraRetroHuntInput
+    public class CancelYaraRetroHuntBodyInput
     {
         [JsonProperty("ruleset_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RulesetName { get; set; }
     }
 
-    public class CancelYaraRetroHuntInput
-    {
-        [JsonProperty("ruleset_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RulesetName { get; set; }
-    }
-
-    public class AdvancedSearchInput
+    public class AdvancedSearchBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AdvancedSearchInputQueryTypeItem[] Query { get; set; }
+        public BodyInputQueryTypeItem[] Query { get; set; }
 
         [JsonProperty("format")]
-        public AdvancedSearchInputFormatType? Format { get; set; }
+        public BodyInputFormatType? Format { get; set; }
 
         [JsonProperty("records_per_page", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? RecordsPerPage { get; set; } = 1000;
@@ -2441,20 +1983,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Sort { get; set; } = "firstseen desc";
     }
 
-    public class AdvancedSearchInputQueryTypeItem
+    public class BodyInputQueryTypeItem
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("criteria", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AdvancedSearchInputQueryTypeItemCriteriaType Criteria { get; set; }
+        public BodyInputQueryTypeItemCriteriaType Criteria { get; set; }
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AdvancedSearchInputQueryTypeItemCriteriaType
+    public enum BodyInputQueryTypeItemCriteriaType
     {
         [EnumMember(Value = "eq")]
         Eq,
@@ -2477,7 +2019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AdvancedSearchInputFormatType
+    public enum BodyInputFormatType
     {
         [EnumMember(Value = "json")]
         Json,
@@ -2486,7 +2028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum classificationInput
+    public enum ClassificationInput
     {
         [EnumMember(Value = "known")]
         Known,
@@ -2498,28 +2040,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Unknown
     }
 
-    public class FileReputationUserOverrideInput
+    public class FileReputationUserOverrideBodyInput
     {
         [JsonProperty("rl")]
-        public FileReputationUserOverrideInputRlType Rl { get; set; }
+        public FileReputationUserOverrideBodyInputRlType Rl { get; set; }
     }
 
-    public class FileReputationUserOverrideInputRlType
+    public class FileReputationUserOverrideBodyInputRlType
     {
         [JsonProperty("query")]
-        public FileReputationUserOverrideInputRlTypeQueryType Query { get; set; }
+        public FileReputationUserOverrideBodyInputRlTypeQueryType Query { get; set; }
     }
 
-    public class FileReputationUserOverrideInputRlTypeQueryType
+    public class FileReputationUserOverrideBodyInputRlTypeQueryType
     {
         [JsonProperty("override_samples")]
-        public FileReputationUserOverrideInputRlTypeQueryTypeOverrideSamplesTypeItem[] OverrideSamples { get; set; }
+        public BodyInputRlTypeQueryTypeOverrideSamplesTypeItem[] OverrideSamples { get; set; }
 
         [JsonProperty("remove_override")]
-        public FileReputationUserOverrideInputRlTypeQueryTypeRemoveOverrideTypeItem[] RemoveOverride { get; set; }
+        public BodyInputRlTypeQueryTypeRemoveOverrideTypeItem[] RemoveOverride { get; set; }
     }
 
-    public class FileReputationUserOverrideInputRlTypeQueryTypeOverrideSamplesTypeItem
+    public class BodyInputRlTypeQueryTypeOverrideSamplesTypeItem
     {
         [JsonProperty("sha1")]
         public string Sha1 { get; set; }
@@ -2543,7 +2085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string ThreatName { get; set; }
     }
 
-    public class FileReputationUserOverrideInputRlTypeQueryTypeRemoveOverrideTypeItem
+    public class BodyInputRlTypeQueryTypeRemoveOverrideTypeItem
     {
         [JsonProperty("sha1")]
         public string Sha1 { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     public class MondayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<CreateItemInput>> body)
+        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<CreateItemBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateItemResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<DuplicateBoardResponse, ApiConnectionActionConfiguration> DuplicateBoard(Expression<Func<DuplicateBoardInput>> body)
+        public IBodyWorkflowAction<DuplicateBoardResponse, ApiConnectionActionConfiguration> DuplicateBoard(Expression<Func<DuplicateBoardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DuplicateBoardResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardInput>> body)
+        public IBodyWorkflowAction<CreateBoardResponse, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateBoardResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateColumnResponse, ApiConnectionActionConfiguration> CreateColumn(Expression<Func<CreateColumnInput>> body)
+        public IBodyWorkflowAction<CreateColumnResponse, ApiConnectionActionConfiguration> CreateColumn(Expression<Func<CreateColumnBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateColumnResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<CreateGroupInput>> body)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<CreateGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration> UpdateItemColumn(Expression<Func<UpdateItemColumnInput>> body)
+        public IBodyWorkflowAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration> UpdateItemColumn(Expression<Func<UpdateItemColumnBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateItemColumnResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration> UpdateMultipleItemColumns(Expression<Func<UpdateMultipleItemColumnsInput>> body)
+        public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration> UpdateMultipleItemColumns(Expression<Func<UpdateMultipleItemColumnsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateMultipleItemColumnsResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration> MoveItemToGroup(Expression<Func<MoveItemToGroupInput>> body)
+        public IBodyWorkflowAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration> MoveItemToGroup(Expression<Func<MoveItemToGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveItemToGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateNotificationResponse, ApiConnectionActionConfiguration> CreateNotification(Expression<Func<CreateNotificationInput>> body)
+        public IBodyWorkflowAction<CreateNotificationResponse, ApiConnectionActionConfiguration> CreateNotification(Expression<Func<CreateNotificationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateNotificationResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateSubitemResponse, ApiConnectionActionConfiguration> CreateSubitem(Expression<Func<CreateSubitemInput>> body)
+        public IBodyWorkflowAction<CreateSubitemResponse, ApiConnectionActionConfiguration> CreateSubitem(Expression<Func<CreateSubitemBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSubitemResponse, ApiConnectionActionConfiguration>(() =>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<CreateUpdateInput>> body)
+        public IBodyWorkflowAction<CreateUpdateResponse, ApiConnectionActionConfiguration> CreateUpdate(Expression<Func<CreateUpdateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUpdateResponse, ApiConnectionActionConfiguration>(() =>
@@ -203,16 +203,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<CreateWorkspaceV2Response, ApiConnectionActionConfiguration> CreateWorkspace(Expression<Func<CreateWorkspaceV2Input>> body)
+        public IBodyWorkflowAction<CreateWorkspaceResponse, ApiConnectionActionConfiguration> CreateWorkspace(Expression<Func<CreateWorkspaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CreateWorkspaceV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CreateWorkspaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateWorkspaceV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CreateWorkspaceV2Response>(callPayload);
+                return new ApiConnectionAction<CreateWorkspaceResponse>(callPayload);
             });
         }
 
@@ -271,33 +271,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<GetTagsV2Response, ApiConnectionActionConfiguration> GetTags()
+        public IBodyWorkflowAction<GetTagsResponse, ApiConnectionActionConfiguration> GetTags()
         {
-            return new DeferredBodyAction<GetTagsV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetTagsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getData/getTagsV2";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetTagsV2Response>(callPayload);
+                return new ApiConnectionAction<GetTagsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
-        public IBodyWorkflowAction<GetUsersV2Response, ApiConnectionActionConfiguration> GetUsers()
+        public IBodyWorkflowAction<GetUsersResponse, ApiConnectionActionConfiguration> GetUsers()
         {
-            return new DeferredBodyAction<GetUsersV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetUsersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getData/getUsersV2";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetUsersV2Response>(callPayload);
+                return new ApiConnectionAction<GetUsersResponse>(callPayload);
             });
         }
     }
 
     public class MondayTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateItem(Expression<Func<WebhookCreateItemInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateItem(Expression<Func<WebhookAnyColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateUpdate(Expression<Func<WebhookCreateUpdateInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateUpdate(Expression<Func<WebhookAnyColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeName(Expression<Func<WebhookChangeNameInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeName(Expression<Func<WebhookAnyColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeSubitemName(Expression<Func<WebhookChangeSubitemNameInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookChangeSubitemName(Expression<Func<WebhookAnyColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateSubitem(Expression<Func<WebhookCreateSubitemInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookCreateSubitem(Expression<Func<WebhookAnyColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookColumnChanges(Expression<Func<WebhookColumnChangesInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookColumnChanges(Expression<Func<WebhookColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookAnyColumnChanges(Expression<Func<WebhookAnyColumnChangesInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookAnyColumnChanges(Expression<Func<WebhookAnyColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookSubitemColumnChanges(Expression<Func<WebhookSubitemColumnChangesInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> WebhookSubitemColumnChanges(Expression<Func<WebhookAnyColumnChangesBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class CreateItemInput
+    public class CreateItemBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class DuplicateBoardInput
+    public class DuplicateBoardBodyInput
     {
         [JsonProperty("sourceWorkspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceWorkspaceId { get; set; }
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string DuplicatedBoardName { get; set; }
 
         [JsonProperty("duplicationType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DuplicateBoardInputDuplicationTypeType DuplicationType { get; set; } = DuplicateBoardInputDuplicationTypeType.DuplicateBoardWithStructure;
+        public BodyInputDuplicationTypeType DuplicationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Monday.BodyInputDuplicationTypeType.DuplicateBoardWithStructure;
 
         [JsonProperty("destinationWorkspaceId")]
         public string DestinationWorkspaceId { get; set; }
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DuplicateBoardInputDuplicationTypeType
+    public enum BodyInputDuplicationTypeType
     {
         [EnumMember(Value = "Duplicate board with structure")]
         DuplicateBoardWithStructure,
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class CreateBoardInput
+    public class CreateBoardBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Description { get; set; }
     }
 
-    public class CreateColumnInput
+    public class CreateColumnBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -545,11 +545,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Description { get; set; }
 
         [JsonProperty("columnType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateColumnInputColumnTypeType ColumnType { get; set; }
+        public BodyInputColumnTypeType ColumnType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateColumnInputColumnTypeType
+    public enum BodyInputColumnTypeType
     {
         [EnumMember(Value = "auto_number")]
         AutoNumber,
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class CreateGroupInput
+    public class CreateGroupBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class UpdateItemColumnInput
+    public class UpdateItemColumnBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class UpdateMultipleItemColumnsInput
+    public class UpdateMultipleItemColumnsBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class MoveItemToGroupInput
+    public class MoveItemToGroupBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Text { get; set; }
     }
 
-    public class CreateNotificationInput
+    public class CreateNotificationBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class CreateSubitemInput
+    public class CreateSubitemBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -841,7 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
-    public class CreateUpdateInput
+    public class CreateUpdateBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -859,25 +859,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Body { get; set; }
     }
 
-    public class CreateWorkspaceV2Response
+    public class CreateWorkspaceResponse
     {
         [JsonProperty("data")]
-        public CreateWorkspaceV2ResponseDataType Data { get; set; }
+        public CreateWorkspaceResponseDataType Data { get; set; }
     }
 
-    public class CreateWorkspaceV2ResponseDataType
+    public class CreateWorkspaceResponseDataType
     {
         [JsonProperty("create_workspace")]
-        public CreateWorkspaceV2ResponseDataTypeCreateWorkspaceType CreateWorkspace { get; set; }
+        public CreateWorkspaceResponseDataTypeCreateWorkspaceType CreateWorkspace { get; set; }
     }
 
-    public class CreateWorkspaceV2ResponseDataTypeCreateWorkspaceType
+    public class CreateWorkspaceResponseDataTypeCreateWorkspaceType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateWorkspaceV2Input
+    public class CreateWorkspaceBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -886,19 +886,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Description { get; set; }
     }
 
-    public class GetTagsV2Response
+    public class GetTagsResponse
     {
         [JsonProperty("data")]
-        public GetTagsV2ResponseDataType Data { get; set; }
+        public GetTagsResponseDataType Data { get; set; }
     }
 
-    public class GetTagsV2ResponseDataType
+    public class GetTagsResponseDataType
     {
         [JsonProperty("tags")]
-        public GetTagsV2ResponseDataTypeTagsTypeItem[] Tags { get; set; }
+        public GetTagsResponseDataTypeTagsTypeItem[] Tags { get; set; }
     }
 
-    public class GetTagsV2ResponseDataTypeTagsTypeItem
+    public class GetTagsResponseDataTypeTagsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -907,19 +907,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Name { get; set; }
     }
 
-    public class GetUsersV2Response
+    public class GetUsersResponse
     {
         [JsonProperty("data")]
-        public GetUsersV2ResponseDataType Data { get; set; }
+        public GetUsersResponseDataType Data { get; set; }
     }
 
-    public class GetUsersV2ResponseDataType
+    public class GetUsersResponseDataType
     {
         [JsonProperty("users")]
-        public GetUsersV2ResponseDataTypeUsersTypeItem[] Users { get; set; }
+        public GetUsersResponseDataTypeUsersTypeItem[] Users { get; set; }
     }
 
-    public class GetUsersV2ResponseDataTypeUsersTypeItem
+    public class GetUsersResponseDataTypeUsersTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -931,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Email { get; set; }
     }
 
-    public class WebhookCreateItemInput
+    public class WebhookAnyColumnChangesBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -943,55 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class WebhookCreateUpdateInput
-    {
-        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkspaceId { get; set; }
-
-        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BoardId { get; set; }
-
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookChangeNameInput
-    {
-        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkspaceId { get; set; }
-
-        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BoardId { get; set; }
-
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookChangeSubitemNameInput
-    {
-        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkspaceId { get; set; }
-
-        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BoardId { get; set; }
-
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookCreateSubitemInput
-    {
-        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkspaceId { get; set; }
-
-        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BoardId { get; set; }
-
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookColumnChangesInput
+    public class WebhookColumnChangesBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -1001,30 +953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         [JsonProperty("columnId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ColumnId { get; set; }
-
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookAnyColumnChangesInput
-    {
-        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkspaceId { get; set; }
-
-        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BoardId { get; set; }
-
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookSubitemColumnChangesInput
-    {
-        [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkspaceId { get; set; }
-
-        [JsonProperty("boardId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string BoardId { get; set; }
 
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

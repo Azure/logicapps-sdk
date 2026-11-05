@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
     public class RepliconActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IBodyWorkflowAction<ProjectDetailsResponse, ApiConnectionActionConfiguration> BulkGetProjectDetails3(Expression<Func<string>> hostUrl, Expression<Func<BulkGetProjectDetails3Input>> body = null)
+        public IBodyWorkflowAction<ProjectDetailsResponse, ApiConnectionActionConfiguration> BulkGetProjectDetails3(Expression<Func<string>> hostUrl, Expression<Func<BulkGetProjectDetails3BodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IBodyWorkflowAction<CreateProjectOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateProjectOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<CreateProjectOrApplyModificationsInput>> body = null)
+        public IBodyWorkflowAction<CreateProjectOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateProjectOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<CreateProjectOrApplyModificationsBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IBodyWorkflowAction<UserListServiceGetDataResponse, ApiConnectionActionConfiguration> UserListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<UserListServiceGetDataInput>> body = null)
+        public IBodyWorkflowAction<UserListServiceGetDataResponse, ApiConnectionActionConfiguration> UserListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<TaskListServiceGetDataBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetDescendantTaskDetails(Expression<Func<string>> hostUrl, Expression<Func<GetDescendantTaskDetailsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetDescendantTaskDetails(Expression<Func<string>> hostUrl, Expression<Func<GetDescendantTaskDetailsBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IBodyWorkflowAction<CreateTaskHierarchyOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateTaskHierarchyOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<CreateTaskHierarchyOrApplyModificationsInput>> body = null)
+        public IBodyWorkflowAction<CreateTaskHierarchyOrApplyModificationsResponse, ApiConnectionActionConfiguration> CreateTaskHierarchyOrApplyModifications(Expression<Func<string>> hostUrl, Expression<Func<CreateTaskHierarchyOrApplyModificationsBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTask(Expression<Func<string>> hostUrl, Expression<Func<MoveTaskInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTask(Expression<Func<string>> hostUrl, Expression<Func<MoveTaskBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IBodyWorkflowAction<TaskListServiceGetDataResponse, ApiConnectionActionConfiguration> TaskListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<TaskListServiceGetDataInput>> body = null)
+        public IBodyWorkflowAction<TaskListServiceGetDataResponse, ApiConnectionActionConfiguration> TaskListServiceGetData(Expression<Func<string>> hostUrl, Expression<Func<TaskListServiceGetDataBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IBodyWorkflowAction<GetTimesheetSummaryResponse, ApiConnectionActionConfiguration> GetTimesheetSummary(Expression<Func<string>> hostUrl, Expression<Func<GetTimesheetSummaryInput>> body = null)
+        public IBodyWorkflowAction<GetTimesheetSummaryResponse, ApiConnectionActionConfiguration> GetTimesheetSummary(Expression<Func<string>> hostUrl, Expression<Func<GetTimesheetSummaryBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IBodyWorkflowAction<BulkGetTimeEnteredSummaryResponse, ApiConnectionActionConfiguration> BulkGetTimeEnteredSummary(Expression<Func<string>> hostUrl, Expression<Func<BulkGetTimeEnteredSummaryInput>> body = null)
+        public IBodyWorkflowAction<BulkGetTimeEnteredSummaryResponse, ApiConnectionActionConfiguration> BulkGetTimeEnteredSummary(Expression<Func<string>> hostUrl, Expression<Func<BulkGetTimeEnteredSummaryBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutProjectTeamMemberAssignments(Expression<Func<string>> hostUrl, Expression<Func<PutProjectTeamMemberAssignmentsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutProjectTeamMemberAssignments(Expression<Func<string>> hostUrl, Expression<Func<PutProjectTeamMemberAssignmentsBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicon")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutResourceAssignments(Expression<Func<string>> hostUrl, Expression<Func<PutResourceAssignmentsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutResourceAssignments(Expression<Func<string>> hostUrl, Expression<Func<PutResourceAssignmentsBodyInput>> body = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
 
     public class RepliconTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> WebhookSubscriptionsRestAPI(Expression<Func<string>> hostUrl, Expression<Func<WebhookSubscriptionsRestAPIInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionTriggerConfiguration> WebhookSubscriptionsRestAPI(Expression<Func<string>> hostUrl, Expression<Func<WebhookSubscriptionsRestAPIBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -548,13 +548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string Uri { get; set; }
     }
 
-    public class BulkGetProjectDetails3Input
+    public class BulkGetProjectDetails3BodyInput
     {
         [JsonProperty("projects")]
-        public BulkGetProjectDetails3InputProjectsTypeItem[] Projects { get; set; }
+        public BodyInputProjectsTypeItem[] Projects { get; set; }
     }
 
-    public class BulkGetProjectDetails3InputProjectsTypeItem
+    public class BodyInputProjectsTypeItem
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -593,13 +593,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string Uri { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInput
+    public class CreateProjectOrApplyModificationsBodyInput
     {
         [JsonProperty("target")]
         public JToken Target { get; set; }
 
         [JsonProperty("modifications")]
-        public CreateProjectOrApplyModificationsInputModificationsType Modifications { get; set; }
+        public BodyInputModificationsType Modifications { get; set; }
 
         [JsonProperty("projectModificationOptionUri")]
         public string ProjectModificationOptionUri { get; set; }
@@ -608,13 +608,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string UnitOfWorkId { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsType
+    public class BodyInputModificationsType
     {
         [JsonProperty("nameToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeNameToApplyType NameToApply { get; set; }
+        public BodyInputModificationsTypeNameToApplyType NameToApply { get; set; }
 
         [JsonProperty("codeToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeCodeToApplyType CodeToApply { get; set; }
+        public BodyInputModificationsTypeCodeToApplyType CodeToApply { get; set; }
 
         [JsonProperty("descriptionToApply")]
         public JToken DescriptionToApply { get; set; }
@@ -623,13 +623,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string PercentCompletedToApply { get; set; }
 
         [JsonProperty("startDateToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyType StartDateToApply { get; set; }
+        public BodyInputModificationsTypeStartDateToApplyType StartDateToApply { get; set; }
 
         [JsonProperty("endDateToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyType EndDateToApply { get; set; }
+        public BodyInputModificationsTypeEndDateToApplyType EndDateToApply { get; set; }
 
         [JsonProperty("billingTypeToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeBillingTypeToApplyType BillingTypeToApply { get; set; }
+        public BodyInputModificationsTypeBillingTypeToApplyType BillingTypeToApply { get; set; }
 
         [JsonProperty("projectLeaderToApply")]
         public JToken ProjectLeaderToApply { get; set; }
@@ -641,34 +641,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string IsTimeEntryAllowed { get; set; }
 
         [JsonProperty("defaultBillingCurrencyToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyType DefaultBillingCurrencyToApply { get; set; }
+        public BodyInputModificationsTypeDefaultBillingCurrencyToApplyType DefaultBillingCurrencyToApply { get; set; }
 
         [JsonProperty("billingContractToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeBillingContractToApplyType BillingContractToApply { get; set; }
+        public BodyInputModificationsTypeBillingContractToApplyType BillingContractToApply { get; set; }
 
         [JsonProperty("keyValuesToApply")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItem[] KeyValuesToApply { get; set; }
+        public BodyInputModificationsTypeKeyValuesToApplyTypeItem[] KeyValuesToApply { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeNameToApplyType
+    public class BodyInputModificationsTypeNameToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeCodeToApplyType
+    public class BodyInputModificationsTypeCodeToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyType
+    public class BodyInputModificationsTypeStartDateToApplyType
     {
         [JsonProperty("date")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyTypeDateType Date { get; set; }
+        public BodyInputModificationsTypeStartDateToApplyTypeDateType Date { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeStartDateToApplyTypeDateType
+    public class BodyInputModificationsTypeStartDateToApplyTypeDateType
     {
         [JsonProperty("year")]
         public int? Year { get; set; }
@@ -680,13 +680,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public int? Day { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyType
+    public class BodyInputModificationsTypeEndDateToApplyType
     {
         [JsonProperty("date")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyTypeDateType Date { get; set; }
+        public BodyInputModificationsTypeEndDateToApplyTypeDateType Date { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeEndDateToApplyTypeDateType
+    public class BodyInputModificationsTypeEndDateToApplyTypeDateType
     {
         [JsonProperty("year")]
         public int? Year { get; set; }
@@ -698,49 +698,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public int? Day { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeBillingTypeToApplyType
+    public class BodyInputModificationsTypeBillingTypeToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyType
+    public class BodyInputModificationsTypeDefaultBillingCurrencyToApplyType
     {
         [JsonProperty("currency")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyTypeCurrencyType Currency { get; set; }
+        public BodyInputModificationsTypeDefaultBillingCurrencyToApplyTypeCurrencyType Currency { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeDefaultBillingCurrencyToApplyTypeCurrencyType
+    public class BodyInputModificationsTypeDefaultBillingCurrencyToApplyTypeCurrencyType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeBillingContractToApplyType
+    public class BodyInputModificationsTypeBillingContractToApplyType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItem
+    public class BodyInputModificationsTypeKeyValuesToApplyTypeItem
     {
         [JsonProperty("keyUri")]
         public string KeyUri { get; set; }
 
         [JsonProperty("value")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueType Value { get; set; }
+        public BodyInputModificationsTypeKeyValuesToApplyTypeItemValueType Value { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueType
+    public class BodyInputModificationsTypeKeyValuesToApplyTypeItemValueType
     {
         [JsonProperty("collection")]
-        public CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueTypeCollectionTypeItem[] Collection { get; set; }
+        public BodyInputModificationsTypeKeyValuesToApplyTypeItemValueTypeCollectionTypeItem[] Collection { get; set; }
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
     }
 
-    public class CreateProjectOrApplyModificationsInputModificationsTypeKeyValuesToApplyTypeItemValueTypeCollectionTypeItem
+    public class BodyInputModificationsTypeKeyValuesToApplyTypeItemValueTypeCollectionTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string Uri { get; set; }
     }
 
-    public class UserListServiceGetDataInput
+    public class TaskListServiceGetDataBodyInput
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public JToken FilterExpression { get; set; }
     }
 
-    public class GetDescendantTaskDetailsInput
+    public class GetDescendantTaskDetailsBodyInput
     {
         [JsonProperty("parentUri")]
         public string ParentUri { get; set; }
@@ -851,13 +851,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string Uri { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInput
+    public class CreateTaskHierarchyOrApplyModificationsBodyInput
     {
         [JsonProperty("project")]
-        public CreateTaskHierarchyOrApplyModificationsInputProjectType Project { get; set; }
+        public BodyInputProjectType Project { get; set; }
 
         [JsonProperty("taskHierarchy")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItem[] TaskHierarchy { get; set; }
+        public BodyInputTaskHierarchyTypeItem[] TaskHierarchy { get; set; }
 
         [JsonProperty("taskModificationOptionUri")]
         public string TaskModificationOptionUri { get; set; }
@@ -866,7 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string UnitOfWorkId { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputProjectType
+    public class BodyInputProjectType
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -881,7 +881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string ParameterCorrelationId { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItem
+    public class BodyInputTaskHierarchyTypeItem
     {
         [JsonProperty("target")]
         public JToken Target { get; set; }
@@ -890,31 +890,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string ParameterCorrelationId { get; set; }
 
         [JsonProperty("taskModificationToApply")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyType TaskModificationToApply { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyType TaskModificationToApply { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("codeToApply")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeCodeToApplyType CodeToApply { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeCodeToApplyType CodeToApply { get; set; }
 
         [JsonProperty("descriptionToApply")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeDescriptionToApplyType DescriptionToApply { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeDescriptionToApplyType DescriptionToApply { get; set; }
 
         [JsonProperty("isClosed")]
         public string IsClosed { get; set; }
 
         [JsonProperty("timeEntryStartDateToApply")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType TimeEntryStartDateToApply { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType TimeEntryStartDateToApply { get; set; }
 
         [JsonProperty("timeEntryEndDateToApply")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType TimeEntryEndDateToApply { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType TimeEntryEndDateToApply { get; set; }
 
         [JsonProperty("timeAndExpenseEntryTypeToApply")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType TimeAndExpenseEntryTypeToApply { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType TimeAndExpenseEntryTypeToApply { get; set; }
 
         [JsonProperty("isTimeEntryAllowed")]
         public string IsTimeEntryAllowed { get; set; }
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public JToken EstimatedCostToApply { get; set; }
 
         [JsonProperty("resourceAssignmentModifications")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeResourceAssignmentModificationsType ResourceAssignmentModifications { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeResourceAssignmentModificationsType ResourceAssignmentModifications { get; set; }
 
         [JsonProperty("customFieldsToApply")]
         public JToken[] CustomFieldsToApply { get; set; }
@@ -941,25 +941,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public JToken[] ObjectExtensionFieldsToApply { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeCodeToApplyType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeCodeToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeDescriptionToApplyType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeDescriptionToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyType
     {
         [JsonProperty("date")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType Date { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType Date { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryStartDateToApplyTypeDateType
     {
         [JsonProperty("year")]
         public int? Year { get; set; }
@@ -971,13 +971,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public int? Day { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyType
     {
         [JsonProperty("date")]
-        public CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType Date { get; set; }
+        public BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType Date { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeEntryEndDateToApplyTypeDateType
     {
         [JsonProperty("year")]
         public int? Year { get; set; }
@@ -989,13 +989,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public int? Day { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeTimeAndExpenseEntryTypeToApplyType
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class CreateTaskHierarchyOrApplyModificationsInputTaskHierarchyTypeItemTaskModificationToApplyTypeResourceAssignmentModificationsType
+    public class BodyInputTaskHierarchyTypeItemTaskModificationToApplyTypeResourceAssignmentModificationsType
     {
         [JsonProperty("resourcesToAdd")]
         public string[] ResourcesToAdd { get; set; }
@@ -1004,7 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string[] ResourcesToRemove { get; set; }
     }
 
-    public class MoveTaskInput
+    public class MoveTaskBodyInput
     {
         [JsonProperty("taskUri")]
         public string TaskUri { get; set; }
@@ -1083,24 +1083,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
-    }
-
-    public class TaskListServiceGetDataInput
-    {
-        [JsonProperty("page")]
-        public string Page { get; set; }
-
-        [JsonProperty("pagesize")]
-        public string Pagesize { get; set; }
-
-        [JsonProperty("columnUris")]
-        public string[] ColumnUris { get; set; }
-
-        [JsonProperty("sort")]
-        public JToken[] Sort { get; set; }
-
-        [JsonProperty("filterExpression")]
-        public JToken FilterExpression { get; set; }
     }
 
     public class GetTimesheetSummaryResponse
@@ -1454,7 +1436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string Uri { get; set; }
     }
 
-    public class GetTimesheetSummaryInput
+    public class GetTimesheetSummaryBodyInput
     {
         [JsonProperty("timesheetUri")]
         public string TimesheetUri { get; set; }
@@ -1481,13 +1463,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public Duration TimeEnteredTotalEstimatedAtCompletion { get; set; }
     }
 
-    public class BulkGetTimeEnteredSummaryInput
+    public class BulkGetTimeEnteredSummaryBodyInput
     {
         [JsonProperty("taskUris")]
         public string[] TaskUris { get; set; }
     }
 
-    public class PutProjectTeamMemberAssignmentsInput
+    public class PutProjectTeamMemberAssignmentsBodyInput
     {
         [JsonProperty("projectUri")]
         public string ProjectUri { get; set; }
@@ -1496,7 +1478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string[] ResourceUris { get; set; }
     }
 
-    public class PutResourceAssignmentsInput
+    public class PutResourceAssignmentsBodyInput
     {
         [JsonProperty("taskUri")]
         public string TaskUri { get; set; }
@@ -1574,7 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string AuthType { get; set; }
     }
 
-    public class WebhookSubscriptionsRestAPIInput
+    public class WebhookSubscriptionsRestAPIBodyInput
     {
         [JsonProperty("eventType")]
         public string EventType { get; set; }

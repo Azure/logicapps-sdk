@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<GroupUserAddResponse, ApiConnectionActionConfiguration> GroupUserAdd(Expression<Func<string>> groupId, Expression<Func<GroupUserAddInput>> body)
+        public IBodyWorkflowAction<GroupUserAddResponse, ApiConnectionActionConfiguration> GroupUserAdd(Expression<Func<string>> groupId, Expression<Func<BodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         public bool Success { get; set; }
     }
 
-    public class GroupUserAddInput
+    public class BodyInput
     {
         [JsonProperty("emailaddress", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Emailaddress { get; set; }

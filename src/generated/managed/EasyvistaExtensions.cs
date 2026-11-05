@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class EasyvistaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<FinishActionResponse, ApiConnectionActionConfiguration> FinishAction(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<FinishActionInput>> body = null)
+        public IBodyWorkflowAction<FinishActionResponse, ApiConnectionActionConfiguration> FinishAction(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<FinishActionBodyInput>> body = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<CreateAssetResponse, ApiConnectionActionConfiguration> CreateAsset(Expression<Func<string>> account, Expression<Func<CreateAssetInput>> body)
+        public IBodyWorkflowAction<CreateAssetResponse, ApiConnectionActionConfiguration> CreateAsset(Expression<Func<string>> account, Expression<Func<CreateAssetBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<UpdateAssetInput>> body = null)
+        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<UpdateAssetBodyInput>> body = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<CreateAssetLinkResponse, ApiConnectionActionConfiguration> CreateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<CreateAssetLinkInput>> body)
+        public IBodyWorkflowAction<CreateAssetLinkResponse, ApiConnectionActionConfiguration> CreateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<CreateAssetLinkBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<UpdateAssetLinkResponse, ApiConnectionActionConfiguration> UpdateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<UpdateAssetLinkInput>> body)
+        public IBodyWorkflowAction<UpdateAssetLinkResponse, ApiConnectionActionConfiguration> UpdateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<CreateAssetLinkBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> CreateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<CreateConfigurationItemLinkInput>> body)
+        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> CreateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<CreateConfigurationItemLinkBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> UpdateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<UpdateConfigurationItemLinkInput>> body)
+        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse, ApiConnectionActionConfiguration> UpdateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<UpdateConfigurationItemLinkBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<CreateEmployeeResponse, ApiConnectionActionConfiguration> CreateEmployee(Expression<Func<string>> account, Expression<Func<CreateEmployeeInput>> body)
+        public IBodyWorkflowAction<CreateEmployeeResponse, ApiConnectionActionConfiguration> CreateEmployee(Expression<Func<string>> account, Expression<Func<CreateEmployeeBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<UpdateEmployeeResponse, ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId, Expression<Func<UpdateEmployeeInput>> body = null)
+        public IBodyWorkflowAction<UpdateEmployeeResponse, ApiConnectionActionConfiguration> UpdateEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId, Expression<Func<UpdateEmployeeBodyInput>> body = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<CreateRequestIncidentResponse, ApiConnectionActionConfiguration> CreateRequestIncident(Expression<Func<string>> account, Expression<Func<CreateRequestIncidentInput>> body)
+        public IBodyWorkflowAction<CreateRequestIncidentResponse, ApiConnectionActionConfiguration> CreateRequestIncident(Expression<Func<string>> account, Expression<Func<CreateRequestIncidentBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<CloseRequestIncidentResponse, ApiConnectionActionConfiguration> CloseRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<CloseRequestIncidentInput>> body)
+        public IBodyWorkflowAction<CloseRequestIncidentResponse, ApiConnectionActionConfiguration> CloseRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<CloseRequestIncidentBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<UpdateRequestIncidentResponse, ApiConnectionActionConfiguration> UpdateRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<UpdateRequestIncidentInput>> body = null)
+        public IBodyWorkflowAction<UpdateRequestIncidentResponse, ApiConnectionActionConfiguration> UpdateRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<UpdateRequestIncidentBodyInput>> body = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<UploadAndAttachADocumentToARequestIncidentResponse, ApiConnectionActionConfiguration> UploadAndAttachADocumentToARequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<UploadAndAttachADocumentToARequestIncidentInput>> body)
+        public IBodyWorkflowAction<UploadAndAttachADocumentToARequestIncidentResponse, ApiConnectionActionConfiguration> UploadAndAttachADocumentToARequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<UploadAndAttachADocumentToARequestIncidentBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<RestartRequestIncidentResponse, ApiConnectionActionConfiguration> RestartRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<RestartRequestIncidentInput>> body = null)
+        public IBodyWorkflowAction<RestartRequestIncidentResponse, ApiConnectionActionConfiguration> RestartRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<RestartRequestIncidentBodyInput>> body = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
@@ -782,7 +782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IBodyWorkflowAction<SuspendRequestIncidentResponse, ApiConnectionActionConfiguration> SuspendRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<SuspendRequestIncidentInput>> body = null)
+        public IBodyWorkflowAction<SuspendRequestIncidentResponse, ApiConnectionActionConfiguration> SuspendRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<SuspendRequestIncidentBodyInput>> body = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<CreateTaskInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<CreateTaskBodyInput>> body = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
@@ -864,13 +864,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class FinishActionInput
+    public class FinishActionBodyInput
     {
         [JsonProperty("end_action")]
-        public FinishActionInputEndActionType EndAction { get; set; }
+        public BodyInputEndActionType EndAction { get; set; }
     }
 
-    public class FinishActionInputEndActionType
+    public class BodyInputEndActionType
     {
         public string Choice { get; set; }
         public string Description { get; set; }
@@ -1012,13 +1012,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class CreateAssetInput
+    public class CreateAssetBodyInput
     {
         [JsonProperty("assets")]
-        public CreateAssetInputAssetsTypeItem[] Assets { get; set; }
+        public BodyInputAssetsTypeItem[] Assets { get; set; }
     }
 
-    public class CreateAssetInputAssetsTypeItem
+    public class BodyInputAssetsTypeItem
     {
         [JsonProperty("Acquisition_Type_ID")]
         public string AcquisitionTypeId { get; set; }
@@ -1564,7 +1564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class UpdateAssetInput
+    public class UpdateAssetBodyInput
     {
         [JsonProperty("BEFORE_LOAN_DEPARTMENT_ID")]
         public string BEFORELOANDEPARTMENTId { get; set; }
@@ -1877,7 +1877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class CreateAssetLinkInput
+    public class CreateAssetLinkBodyInput
     {
         [JsonProperty("Contract_Row")]
         public string ContractRow { get; set; }
@@ -1889,15 +1889,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
     public class UpdateAssetLinkResponse
     {
         public string HREF { get; set; }
-    }
-
-    public class UpdateAssetLinkInput
-    {
-        [JsonProperty("Contract_Row")]
-        public string ContractRow { get; set; }
-
-        [JsonProperty("Monthly_Payment")]
-        public string MonthlyPayment { get; set; }
     }
 
     public class ViewAssetLinkResponse
@@ -3233,7 +3224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class CreateConfigurationItemLinkInput
+    public class CreateConfigurationItemLinkBodyInput
     {
         public string Blocking { get; set; }
 
@@ -3246,7 +3237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class UpdateConfigurationItemLinkInput
+    public class UpdateConfigurationItemLinkBodyInput
     {
         public string Blocking { get; set; }
 
@@ -3520,13 +3511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class CreateEmployeeInput
+    public class CreateEmployeeBodyInput
     {
         [JsonProperty("employees")]
-        public CreateEmployeeInputEmployeesTypeItem[] Employees { get; set; }
+        public BodyInputEmployeesTypeItem[] Employees { get; set; }
     }
 
-    public class CreateEmployeeInputEmployeesTypeItem
+    public class BodyInputEmployeesTypeItem
     {
         [JsonProperty("Begin_of_Contract")]
         public string BeginOfContract { get; set; }
@@ -3803,7 +3794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class UpdateEmployeeInput
+    public class UpdateEmployeeBodyInput
     {
         [JsonProperty("APPROVED_TO_VALIDATE")]
         public string APPROVEDTOVALIdATE { get; set; }
@@ -4578,13 +4569,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class CreateRequestIncidentInput
+    public class CreateRequestIncidentBodyInput
     {
         [JsonProperty("requests")]
-        public CreateRequestIncidentInputRequestsTypeItem[] Requests { get; set; }
+        public BodyInputRequestsTypeItem[] Requests { get; set; }
     }
 
-    public class CreateRequestIncidentInputRequestsTypeItem
+    public class BodyInputRequestsTypeItem
     {
         [JsonProperty("Asset_ID")]
         public string AssetId { get; set; }
@@ -5139,13 +5130,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class CloseRequestIncidentInput
+    public class CloseRequestIncidentBodyInput
     {
         [JsonProperty("closed")]
-        public CloseRequestIncidentInputClosedTypeItem[] Closed { get; set; }
+        public BodyInputClosedTypeItem[] Closed { get; set; }
     }
 
-    public class CloseRequestIncidentInputClosedTypeItem
+    public class BodyInputClosedTypeItem
     {
         [JsonProperty("catalog_GUID")]
         public string CatalogGUID { get; set; }
@@ -5168,7 +5159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class UpdateRequestIncidentInput
+    public class UpdateRequestIncidentBodyInput
     {
         [JsonProperty("Analytical_Charge_Id")]
         public string AnalyticalChargeId { get; set; }
@@ -5382,13 +5373,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class UploadAndAttachADocumentToARequestIncidentInput
+    public class UploadAndAttachADocumentToARequestIncidentBodyInput
     {
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UploadAndAttachADocumentToARequestIncidentInputDocumentsTypeItem[] Documents { get; set; }
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
     }
 
-    public class UploadAndAttachADocumentToARequestIncidentInputDocumentsTypeItem
+    public class BodyInputDocumentsTypeItem
     {
         [JsonProperty("filedata", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filedata { get; set; }
@@ -5402,7 +5393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class RestartRequestIncidentInput
+    public class RestartRequestIncidentBodyInput
     {
         public string Comment { get; set; }
 
@@ -5415,7 +5406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string HREF { get; set; }
     }
 
-    public class SuspendRequestIncidentInput
+    public class SuspendRequestIncidentBodyInput
     {
         public string Comment { get; set; }
 
@@ -5423,7 +5414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         public string DoneById { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("Elapsed_Time")]
         public string ElapsedTime { get; set; }

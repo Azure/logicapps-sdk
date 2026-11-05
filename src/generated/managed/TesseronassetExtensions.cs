@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     public class TesseronassetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<AddAssetResponse, ApiConnectionActionConfiguration> AddAsset(Expression<Func<AddAssetInput>> body)
+        public IBodyWorkflowAction<AddAssetResponse, ApiConnectionActionConfiguration> AddAsset(Expression<Func<AddAssetBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddAssetResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<UpdateAssetInput>> body)
+        public IBodyWorkflowAction<UpdateAssetResponse, ApiConnectionActionConfiguration> UpdateAsset(Expression<Func<UpdateAssetBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateAssetResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetSearchResponse, ApiConnectionActionConfiguration> GetAssetSearch(Expression<Func<GetAssetSearchInput>> body)
+        public IBodyWorkflowAction<GetAssetSearchResponse, ApiConnectionActionConfiguration> GetAssetSearch(Expression<Func<GetAssetSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAssetSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetInfoResponse, ApiConnectionActionConfiguration> GetAssetInfo(Expression<Func<GetAssetInfoInput>> body)
+        public IBodyWorkflowAction<GetAssetInfoResponse, ApiConnectionActionConfiguration> GetAssetInfo(Expression<Func<GetAssetInfoBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetAssetInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetConfigResponse, ApiConnectionActionConfiguration> GetConfig(Expression<Func<GetConfigInput>> body)
+        public IBodyWorkflowAction<GetConfigResponse, ApiConnectionActionConfiguration> GetConfig(Expression<Func<GetConfigBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetConfigResponse, ApiConnectionActionConfiguration>(() =>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public bool Success { get; set; }
     }
 
-    public class AddAssetInput
+    public class AddAssetBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetTemplateId { get; set; }
@@ -110,11 +110,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public string LiveCycleName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddAssetInputFieldsTypeItem[] Fields { get; set; }
-        public AddAssetInputAttachmentsTypeItem[] Attachments { get; set; }
+        public BodyInputFieldsTypeItem[] Fields { get; set; }
+        public BodyInputAttachmentsTypeItem[] Attachments { get; set; }
     }
 
-    public class AddAssetInputFieldsTypeItem
+    public class BodyInputFieldsTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public string Value { get; set; }
     }
 
-    public class AddAssetInputAttachmentsTypeItem
+    public class BodyInputAttachmentsTypeItem
     {
         public string FileName { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public bool Success { get; set; }
     }
 
-    public class UpdateAssetInput
+    public class UpdateAssetBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetId { get; set; }
@@ -155,23 +155,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public string LiveCycleState { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateAssetInputFieldsTypeItem[] Fields { get; set; }
-        public UpdateAssetInputAttachmentsTypeItem[] Attachments { get; set; }
-    }
-
-    public class UpdateAssetInputFieldsTypeItem
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FieldName { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Value { get; set; }
-    }
-
-    public class UpdateAssetInputAttachmentsTypeItem
-    {
-        public string FileName { get; set; }
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
+        public BodyInputFieldsTypeItem[] Fields { get; set; }
+        public BodyInputAttachmentsTypeItem[] Attachments { get; set; }
     }
 
     public class GetAssetSearchResponse
@@ -225,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public string Data { get; set; }
     }
 
-    public class GetAssetSearchInput
+    public class GetAssetSearchBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int Skip { get; set; } = 0;
@@ -292,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public string Data { get; set; }
     }
 
-    public class GetAssetInfoInput
+    public class GetAssetInfoBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetId { get; set; }
@@ -344,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         public string Data { get; set; }
     }
 
-    public class GetConfigInput
+    public class GetConfigBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetTemplateId { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<WebsiteScanResult, ApiConnectionActionConfiguration> ScanWebsite(Expression<Func<ScanWebsiteInput>> input)
+        public IBodyWorkflowAction<WebsiteScanResult, ApiConnectionActionConfiguration> ScanWebsite(Expression<Func<InputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<WebsiteScanResult, ApiConnectionActionConfiguration>(() =>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         UnableToConnect
     }
 
-    public class ScanWebsiteInput
+    public class InputInput
     {
         public string Url { get; set; }
     }

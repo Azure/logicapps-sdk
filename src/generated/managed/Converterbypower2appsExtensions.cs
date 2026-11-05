@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class Converterbypower2appsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5102AddHtmlToWord, ApiConnectionActionConfiguration> AddHtmlToWord(Expression<Func<V5102AddHtmlToWordInput>> dtoRequest = null)
+        public IBodyWorkflowAction<DtoResponseV5102AddHtmlToWord, ApiConnectionActionConfiguration> AddHtmlToWord(Expression<Func<AddHtmlToWordDtoRequestInput>> dtoRequest = null)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: false);
             return new DeferredBodyAction<DtoResponseV5102AddHtmlToWord, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5032AddImageToWord, ApiConnectionActionConfiguration> AddImageToWord(Expression<Func<V5032AddImageToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5032AddImageToWord, ApiConnectionActionConfiguration> AddImageToWord(Expression<Func<AddImageToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5032AddImageToWord, ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5043AddImageWithinTableToWord, ApiConnectionActionConfiguration> AddImageWithinTableToWord(Expression<Func<V5043AddImageWithinTableToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5043AddImageWithinTableToWord, ApiConnectionActionConfiguration> AddImageWithinTableToWord(Expression<Func<AddImageWithinTableToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5043AddImageWithinTableToWord, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5053AddTableToWord, ApiConnectionActionConfiguration> AddTableToWord(Expression<Func<V5053AddTableToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5053AddTableToWord, ApiConnectionActionConfiguration> AddTableToWord(Expression<Func<AddTableToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5053AddTableToWord, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5062AddTextToWord, ApiConnectionActionConfiguration> AddTextToWord(Expression<Func<V5062AddTextToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5062AddTextToWord, ApiConnectionActionConfiguration> AddTextToWord(Expression<Func<AddTextToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5062AddTextToWord, ApiConnectionActionConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2081CombineCsvs, ApiConnectionActionConfiguration> CombineCsvs(Expression<Func<V2081CombineCsvsInput>> dtoRequestV2081CombineCsvs)
+        public IBodyWorkflowAction<DtoResponseV2081CombineCsvs, ApiConnectionActionConfiguration> CombineCsvs(Expression<Func<DtoRequestV2081CombineCsvsInput>> dtoRequestV2081CombineCsvs)
         {
             var __workflow_dtoRequestV2081CombineCsvs = WorkflowExpression.Compile(dtoRequestV2081CombineCsvs, nameof(dtoRequestV2081CombineCsvs), required: true);
             return new DeferredBodyAction<DtoResponseV2081CombineCsvs, ApiConnectionActionConfiguration>(() =>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2091CombineJsonArrays, ApiConnectionActionConfiguration> CombineJsonArrays(Expression<Func<V2091CombineJsonArraysInput>> dtoRequestV2091CombineJsonArrays)
+        public IBodyWorkflowAction<DtoResponseV2091CombineJsonArrays, ApiConnectionActionConfiguration> CombineJsonArrays(Expression<Func<DtoRequestV2091CombineJsonArraysInput>> dtoRequestV2091CombineJsonArrays)
         {
             var __workflow_dtoRequestV2091CombineJsonArrays = WorkflowExpression.Compile(dtoRequestV2091CombineJsonArrays, nameof(dtoRequestV2091CombineJsonArrays), required: true);
             return new DeferredBodyAction<DtoResponseV2091CombineJsonArrays, ApiConnectionActionConfiguration>(() =>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3042CompressImage, ApiConnectionActionConfiguration> CompressImage(Expression<Func<V3042CompressImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3042CompressImage, ApiConnectionActionConfiguration> CompressImage(Expression<Func<CompressImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3042CompressImage, ApiConnectionActionConfiguration>(() =>
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4081CompressPdf, ApiConnectionActionConfiguration> CompressPdf(Expression<Func<V4081CompressPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4081CompressPdf, ApiConnectionActionConfiguration> CompressPdf(Expression<Func<CompressPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4081CompressPdf, ApiConnectionActionConfiguration>(() =>
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2071ConvertColor, ApiConnectionActionConfiguration> ConvertColor(Expression<Func<V2071ConvertColorInput>> dtoRequestV2071ConvertColor)
+        public IBodyWorkflowAction<DtoResponseV2071ConvertColor, ApiConnectionActionConfiguration> ConvertColor(Expression<Func<DtoRequestV2071ConvertColorInput>> dtoRequestV2071ConvertColor)
         {
             var __workflow_dtoRequestV2071ConvertColor = WorkflowExpression.Compile(dtoRequestV2071ConvertColor, nameof(dtoRequestV2071ConvertColor), required: true);
             return new DeferredBodyAction<DtoResponseV2071ConvertColor, ApiConnectionActionConfiguration>(() =>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1035ConvertCsvToExcel, ApiConnectionActionConfiguration> ConvertCsvToExcel(Expression<Func<V1035ConvertCsvToExcelInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1035ConvertCsvToExcel, ApiConnectionActionConfiguration> ConvertCsvToExcel(Expression<Func<ConvertCsvToExcelDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1035ConvertCsvToExcel, ApiConnectionActionConfiguration>(() =>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseHtml, ApiConnectionActionConfiguration> ConvertCsvToHtmlTable(Expression<Func<V7061ConvertCsvToHtmlTableInput>> dtoRequestV7061ConvertCsvToHtmlTable)
+        public IBodyWorkflowAction<DtoResponseHtml, ApiConnectionActionConfiguration> ConvertCsvToHtmlTable(Expression<Func<DtoRequestV7061ConvertCsvToHtmlTableInput>> dtoRequestV7061ConvertCsvToHtmlTable)
         {
             var __workflow_dtoRequestV7061ConvertCsvToHtmlTable = WorkflowExpression.Compile(dtoRequestV7061ConvertCsvToHtmlTable, nameof(dtoRequestV7061ConvertCsvToHtmlTable), required: true);
             return new DeferredBodyAction<DtoResponseHtml, ApiConnectionActionConfiguration>(() =>
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1022ConvertCsvToJson, ApiConnectionActionConfiguration> ConvertCsvToJson(Expression<Func<V1022ConvertCsvToJsonInput>> dtoRequestV1022ConvertCsvToJson)
+        public IBodyWorkflowAction<DtoResponseV1022ConvertCsvToJson, ApiConnectionActionConfiguration> ConvertCsvToJson(Expression<Func<DtoRequestV1022ConvertCsvToJsonInput>> dtoRequestV1022ConvertCsvToJson)
         {
             var __workflow_dtoRequestV1022ConvertCsvToJson = WorkflowExpression.Compile(dtoRequestV1022ConvertCsvToJson, nameof(dtoRequestV1022ConvertCsvToJson), required: true);
             return new DeferredBodyAction<DtoResponseV1022ConvertCsvToJson, ApiConnectionActionConfiguration>(() =>
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1150ConvertCsvToMarkdown, ApiConnectionActionConfiguration> ConvertCsvToMarkdown(Expression<Func<V1150ConvertCsvToMarkdownInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1150ConvertCsvToMarkdown, ApiConnectionActionConfiguration> ConvertCsvToMarkdown(Expression<Func<ConvertCsvToMarkdownDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1150ConvertCsvToMarkdown, ApiConnectionActionConfiguration>(() =>
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson, ApiConnectionActionConfiguration> ConvertExcelToJson(Expression<Func<V1100ConvertExcelToJsonInput>> dtoRequestV1100ConvertExcelToJson)
+        public IBodyWorkflowAction<DtoResponseV1100ConvertExcelToJson, ApiConnectionActionConfiguration> ConvertExcelToJson(Expression<Func<DtoRequestV1100ConvertExcelToJsonInput>> dtoRequestV1100ConvertExcelToJson)
         {
             var __workflow_dtoRequestV1100ConvertExcelToJson = WorkflowExpression.Compile(dtoRequestV1100ConvertExcelToJson, nameof(dtoRequestV1100ConvertExcelToJson), required: true);
             return new DeferredBodyAction<DtoResponseV1100ConvertExcelToJson, ApiConnectionActionConfiguration>(() =>
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1140ConvertExcelToMarkdown, ApiConnectionActionConfiguration> ConvertExcelToMarkdown(Expression<Func<V1140ConvertExcelToMarkdownInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1140ConvertExcelToMarkdown, ApiConnectionActionConfiguration> ConvertExcelToMarkdown(Expression<Func<ConvertExcelToMarkdownDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1140ConvertExcelToMarkdown, ApiConnectionActionConfiguration>(() =>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4014ConvertFileToPdf, ApiConnectionActionConfiguration> ConvertFileToPdf(Expression<Func<V4014ConvertFileToPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4014ConvertFileToPdf, ApiConnectionActionConfiguration> ConvertFileToPdf(Expression<Func<ConvertFileToPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4014ConvertFileToPdf, ApiConnectionActionConfiguration>(() =>
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7070ConvertHtmlTableToCsv, ApiConnectionActionConfiguration> ConvertHtmlTableToCsv(Expression<Func<V7070ConvertHtmlTableToCsvInput>> dtoRequestV7070ConvertHtmlTableToCsv)
+        public IBodyWorkflowAction<DtoResponseV7070ConvertHtmlTableToCsv, ApiConnectionActionConfiguration> ConvertHtmlTableToCsv(Expression<Func<DtoRequestV7070ConvertHtmlTableToCsvInput>> dtoRequestV7070ConvertHtmlTableToCsv)
         {
             var __workflow_dtoRequestV7070ConvertHtmlTableToCsv = WorkflowExpression.Compile(dtoRequestV7070ConvertHtmlTableToCsv, nameof(dtoRequestV7070ConvertHtmlTableToCsv), required: true);
             return new DeferredBodyAction<DtoResponseV7070ConvertHtmlTableToCsv, ApiConnectionActionConfiguration>(() =>
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7082ConvertHtmlTableToExcel, ApiConnectionActionConfiguration> ConvertHtmlTableToExcel(Expression<Func<V7082ConvertHtmlTableToExcelInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV7082ConvertHtmlTableToExcel, ApiConnectionActionConfiguration> ConvertHtmlTableToExcel(Expression<Func<ConvertHtmlTableToExcelDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV7082ConvertHtmlTableToExcel, ApiConnectionActionConfiguration>(() =>
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7013ConvertHtmlTableToJson, ApiConnectionActionConfiguration> ConvertHtmlTableToJson(Expression<Func<V7013ConvertHtmlTableToJsonInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV7013ConvertHtmlTableToJson, ApiConnectionActionConfiguration> ConvertHtmlTableToJson(Expression<Func<ConvertHtmlTableToJsonDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV7013ConvertHtmlTableToJson, ApiConnectionActionConfiguration>(() =>
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7032ConvertHtmlToImage, ApiConnectionActionConfiguration> ConvertHtmlToImage(Expression<Func<V7032ConvertHtmlToImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV7032ConvertHtmlToImage, ApiConnectionActionConfiguration> ConvertHtmlToImage(Expression<Func<ConvertHtmlToImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV7032ConvertHtmlToImage, ApiConnectionActionConfiguration>(() =>
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7090ConvertHtmlToMarkdown, ApiConnectionActionConfiguration> ConvertHtmlToMarkdown(Expression<Func<V7090ConvertHtmlToMarkdownInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV7090ConvertHtmlToMarkdown, ApiConnectionActionConfiguration> ConvertHtmlToMarkdown(Expression<Func<ConvertHtmlToMarkdownDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV7090ConvertHtmlToMarkdown, ApiConnectionActionConfiguration>(() =>
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV7023ConvertHtmlToPdf, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<V7023ConvertHtmlToPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV7023ConvertHtmlToPdf, ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<ConvertHtmlToPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV7023ConvertHtmlToPdf, ApiConnectionActionConfiguration>(() =>
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> ConvertHtmlToWord(Expression<Func<V7041ConvertHtmlToWordInput>> dtoRequestV7041ConvertHtmlToWord)
+        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> ConvertHtmlToWord(Expression<Func<DtoRequestV7041ConvertHtmlToWordInput>> dtoRequestV7041ConvertHtmlToWord)
         {
             var __workflow_dtoRequestV7041ConvertHtmlToWord = WorkflowExpression.Compile(dtoRequestV7041ConvertHtmlToWord, nameof(dtoRequestV7041ConvertHtmlToWord), required: true);
             return new DeferredBodyAction<DtoResponseFile, ApiConnectionActionConfiguration>(() =>
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> ConvertImage(Expression<Func<V3012ConvertImageInput>> dtoRequestV3012ConvertImage)
+        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> ConvertImage(Expression<Func<DtoRequestV3012ConvertImageInput>> dtoRequestV3012ConvertImage)
         {
             var __workflow_dtoRequestV3012ConvertImage = WorkflowExpression.Compile(dtoRequestV3012ConvertImage, nameof(dtoRequestV3012ConvertImage), required: true);
             return new DeferredBodyAction<DtoResponseFile, ApiConnectionActionConfiguration>(() =>
@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1013ConvertJsonToCsv, ApiConnectionActionConfiguration> ConvertJsonToCsv(Expression<Func<V1013ConvertJsonToCsvInput>> dtoRequestV1013ConvertJsonToCsv)
+        public IBodyWorkflowAction<DtoResponseV1013ConvertJsonToCsv, ApiConnectionActionConfiguration> ConvertJsonToCsv(Expression<Func<DtoRequestV1013ConvertJsonToCsvInput>> dtoRequestV1013ConvertJsonToCsv)
         {
             var __workflow_dtoRequestV1013ConvertJsonToCsv = WorkflowExpression.Compile(dtoRequestV1013ConvertJsonToCsv, nameof(dtoRequestV1013ConvertJsonToCsv), required: true);
             return new DeferredBodyAction<DtoResponseV1013ConvertJsonToCsv, ApiConnectionActionConfiguration>(() =>
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1064ConvertJsonToExcel, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<V1064ConvertJsonToExcelInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1064ConvertJsonToExcel, ApiConnectionActionConfiguration> ConvertJsonToExcel(Expression<Func<ConvertJsonToExcelDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1064ConvertJsonToExcel, ApiConnectionActionConfiguration>(() =>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseHtml, ApiConnectionActionConfiguration> ConvertJsonToHtmlTable(Expression<Func<V7051ConvertJsonToHtmlTableInput>> dtoRequestV7051ConvertJsonToHtmlTable)
+        public IBodyWorkflowAction<DtoResponseHtml, ApiConnectionActionConfiguration> ConvertJsonToHtmlTable(Expression<Func<DtoRequestV7051ConvertJsonToHtmlTableInput>> dtoRequestV7051ConvertJsonToHtmlTable)
         {
             var __workflow_dtoRequestV7051ConvertJsonToHtmlTable = WorkflowExpression.Compile(dtoRequestV7051ConvertJsonToHtmlTable, nameof(dtoRequestV7051ConvertJsonToHtmlTable), required: true);
             return new DeferredBodyAction<DtoResponseHtml, ApiConnectionActionConfiguration>(() =>
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1090ConvertJsonToTextTable, ApiConnectionActionConfiguration> ConvertJsonToTextTable(Expression<Func<V1090ConvertJsonToTextTableInput>> dtoRequestV1090ConvertJsonToTextTable)
+        public IBodyWorkflowAction<DtoResponseV1090ConvertJsonToTextTable, ApiConnectionActionConfiguration> ConvertJsonToTextTable(Expression<Func<DtoRequestV1090ConvertJsonToTextTableInput>> dtoRequestV1090ConvertJsonToTextTable)
         {
             var __workflow_dtoRequestV1090ConvertJsonToTextTable = WorkflowExpression.Compile(dtoRequestV1090ConvertJsonToTextTable, nameof(dtoRequestV1090ConvertJsonToTextTable), required: true);
             return new DeferredBodyAction<DtoResponseV1090ConvertJsonToTextTable, ApiConnectionActionConfiguration>(() =>
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1042ConvertJsonToXml, ApiConnectionActionConfiguration> ConvertJsonToXml(Expression<Func<V1042ConvertJsonToXmlInput>> dtoRequestV1042ConvertJsonToXml)
+        public IBodyWorkflowAction<DtoResponseV1042ConvertJsonToXml, ApiConnectionActionConfiguration> ConvertJsonToXml(Expression<Func<DtoRequestV1042ConvertJsonToXmlInput>> dtoRequestV1042ConvertJsonToXml)
         {
             var __workflow_dtoRequestV1042ConvertJsonToXml = WorkflowExpression.Compile(dtoRequestV1042ConvertJsonToXml, nameof(dtoRequestV1042ConvertJsonToXml), required: true);
             return new DeferredBodyAction<DtoResponseV1042ConvertJsonToXml, ApiConnectionActionConfiguration>(() =>
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1081ConvertJsonToYaml, ApiConnectionActionConfiguration> ConvertJsonToYaml(Expression<Func<V1081ConvertJsonToYamlInput>> dtoRequestV1081ConvertJsonToYaml)
+        public IBodyWorkflowAction<DtoResponseV1081ConvertJsonToYaml, ApiConnectionActionConfiguration> ConvertJsonToYaml(Expression<Func<DtoRequestV1081ConvertJsonToYamlInput>> dtoRequestV1081ConvertJsonToYaml)
         {
             var __workflow_dtoRequestV1081ConvertJsonToYaml = WorkflowExpression.Compile(dtoRequestV1081ConvertJsonToYaml, nameof(dtoRequestV1081ConvertJsonToYaml), required: true);
             return new DeferredBodyAction<DtoResponseV1081ConvertJsonToYaml, ApiConnectionActionConfiguration>(() =>
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1110ConvertMultiCsvToExcel, ApiConnectionActionConfiguration> ConvertMultiCsvToExcel(Expression<Func<V1110ConvertMultiCsvToExcelInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1110ConvertMultiCsvToExcel, ApiConnectionActionConfiguration> ConvertMultiCsvToExcel(Expression<Func<ConvertMultiCsvToExcelDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1110ConvertMultiCsvToExcel, ApiConnectionActionConfiguration>(() =>
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4130ConvertPdfToMarkdown, ApiConnectionActionConfiguration> ConvertPdfToMarkdown(Expression<Func<V4130ConvertPdfToMarkdownInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4130ConvertPdfToMarkdown, ApiConnectionActionConfiguration> ConvertPdfToMarkdown(Expression<Func<ConvertPdfToMarkdownDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4130ConvertPdfToMarkdown, ApiConnectionActionConfiguration>(() =>
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4071ConvertPdfToPdfA, ApiConnectionActionConfiguration> ConvertPdfToPdfA(Expression<Func<V4071ConvertPdfToPdfAInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4071ConvertPdfToPdfA, ApiConnectionActionConfiguration> ConvertPdfToPdfA(Expression<Func<ConvertPdfToPdfADtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4071ConvertPdfToPdfA, ApiConnectionActionConfiguration>(() =>
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV6011ConvertSharePointSearchResults, ApiConnectionActionConfiguration> ConvertSharePointSearchResults(Expression<Func<V6011ConvertSharePointSearchResultsInput>> dtoRequestV6011ConvertSharePointSearchResults)
+        public IBodyWorkflowAction<DtoResponseV6011ConvertSharePointSearchResults, ApiConnectionActionConfiguration> ConvertSharePointSearchResults(Expression<Func<DtoRequestV6011ConvertSharePointSearchResultsInput>> dtoRequestV6011ConvertSharePointSearchResults)
         {
             var __workflow_dtoRequestV6011ConvertSharePointSearchResults = WorkflowExpression.Compile(dtoRequestV6011ConvertSharePointSearchResults, nameof(dtoRequestV6011ConvertSharePointSearchResults), required: true);
             return new DeferredBodyAction<DtoResponseV6011ConvertSharePointSearchResults, ApiConnectionActionConfiguration>(() =>
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml, ApiConnectionActionConfiguration> ConvertWordToHtml(Expression<Func<V5160ConvertWordToHtmlInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5160ConvertWordToHtml, ApiConnectionActionConfiguration> ConvertWordToHtml(Expression<Func<ConvertWordToHtmlDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5160ConvertWordToHtml, ApiConnectionActionConfiguration>(() =>
@@ -518,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5170ConvertWordToMarkdown, ApiConnectionActionConfiguration> ConvertWordToMarkdown(Expression<Func<V5170ConvertWordToMarkdownInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5170ConvertWordToMarkdown, ApiConnectionActionConfiguration> ConvertWordToMarkdown(Expression<Func<ConvertWordToMarkdownDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5170ConvertWordToMarkdown, ApiConnectionActionConfiguration>(() =>
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1130ConvertXmlToCsv, ApiConnectionActionConfiguration> ConvertXmlToCsv(Expression<Func<V1130ConvertXmlToCsvInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1130ConvertXmlToCsv, ApiConnectionActionConfiguration> ConvertXmlToCsv(Expression<Func<ConvertXmlToCsvDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1130ConvertXmlToCsv, ApiConnectionActionConfiguration>(() =>
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1120ConvertXmlToExcel, ApiConnectionActionConfiguration> ConvertXmlToExcel(Expression<Func<V1120ConvertXmlToExcelInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1120ConvertXmlToExcel, ApiConnectionActionConfiguration> ConvertXmlToExcel(Expression<Func<ConvertXmlToExcelDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1120ConvertXmlToExcel, ApiConnectionActionConfiguration>(() =>
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1053ConvertXmlToJson, ApiConnectionActionConfiguration> ConvertXmlToJson(Expression<Func<V1053ConvertXmlToJsonInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV1053ConvertXmlToJson, ApiConnectionActionConfiguration> ConvertXmlToJson(Expression<Func<ConvertXmlToJsonDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV1053ConvertXmlToJson, ApiConnectionActionConfiguration>(() =>
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV8011ConvertXRechnungToPdf, ApiConnectionActionConfiguration> ConvertXRechnungToPdf(Expression<Func<V8011ConvertXRechnungToPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV8011ConvertXRechnungToPdf, ApiConnectionActionConfiguration> ConvertXRechnungToPdf(Expression<Func<ConvertXRechnungToPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV8011ConvertXRechnungToPdf, ApiConnectionActionConfiguration>(() =>
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV1071ConvertYamlToJson, ApiConnectionActionConfiguration> ConvertYamlToJson(Expression<Func<V1071ConvertYamlToJsonInput>> dtoRequestV1071YamlToJson)
+        public IBodyWorkflowAction<DtoResponseV1071ConvertYamlToJson, ApiConnectionActionConfiguration> ConvertYamlToJson(Expression<Func<DtoRequestV1071YamlToJsonInput>> dtoRequestV1071YamlToJson)
         {
             var __workflow_dtoRequestV1071YamlToJson = WorkflowExpression.Compile(dtoRequestV1071YamlToJson, nameof(dtoRequestV1071YamlToJson), required: true);
             return new DeferredBodyAction<DtoResponseV1071ConvertYamlToJson, ApiConnectionActionConfiguration>(() =>
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3092CreateChartImage, ApiConnectionActionConfiguration> CreateChartImage(Expression<Func<V3092CreateChartImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3092CreateChartImage, ApiConnectionActionConfiguration> CreateChartImage(Expression<Func<CreateChartImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3092CreateChartImage, ApiConnectionActionConfiguration>(() =>
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3063CreateCode, ApiConnectionActionConfiguration> CreateCode(Expression<Func<V3063CreateCodeInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3063CreateCode, ApiConnectionActionConfiguration> CreateCode(Expression<Func<CreateCodeDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3063CreateCode, ApiConnectionActionConfiguration>(() =>
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3112CreateGraphImage, ApiConnectionActionConfiguration> CreateGraphImage(Expression<Func<V3112CreateGraphImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3112CreateGraphImage, ApiConnectionActionConfiguration> CreateGraphImage(Expression<Func<CreateGraphImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3112CreateGraphImage, ApiConnectionActionConfiguration>(() =>
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3102CreateTableImage, ApiConnectionActionConfiguration> CreateTableImage(Expression<Func<V3102CreateTableImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3102CreateTableImage, ApiConnectionActionConfiguration> CreateTableImage(Expression<Func<CreateTableImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3102CreateTableImage, ApiConnectionActionConfiguration>(() =>
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3082CreateWatermarkImage, ApiConnectionActionConfiguration> CreateWatermarkImage(Expression<Func<V3082CreateWatermarkImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3082CreateWatermarkImage, ApiConnectionActionConfiguration> CreateWatermarkImage(Expression<Func<CreateWatermarkImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3082CreateWatermarkImage, ApiConnectionActionConfiguration>(() =>
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5012CreateWordFile, ApiConnectionActionConfiguration> CreateWordFile(Expression<Func<V5012CreateWordFileInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5012CreateWordFile, ApiConnectionActionConfiguration> CreateWordFile(Expression<Func<CreateWordFileDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5012CreateWordFile, ApiConnectionActionConfiguration>(() =>
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf, ApiConnectionActionConfiguration> ExtractImagesFromPdf(Expression<Func<V4090ExtractImagesFromPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4090ExtractImagesFromPdf, ApiConnectionActionConfiguration> ExtractImagesFromPdf(Expression<Func<ExtractImagesFromPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4090ExtractImagesFromPdf, ApiConnectionActionConfiguration>(() =>
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2100ExtractJsonObjectProperties, ApiConnectionActionConfiguration> ExtractJsonObjectProperties(Expression<Func<V2100ExtractJsonObjectPropertiesInput>> dtoRequestV2100ExtractJsonObjectProperties)
+        public IBodyWorkflowAction<DtoResponseV2100ExtractJsonObjectProperties, ApiConnectionActionConfiguration> ExtractJsonObjectProperties(Expression<Func<DtoRequestV2100ExtractJsonObjectPropertiesInput>> dtoRequestV2100ExtractJsonObjectProperties)
         {
             var __workflow_dtoRequestV2100ExtractJsonObjectProperties = WorkflowExpression.Compile(dtoRequestV2100ExtractJsonObjectProperties, nameof(dtoRequestV2100ExtractJsonObjectProperties), required: true);
             return new DeferredBodyAction<DtoResponseV2100ExtractJsonObjectProperties, ApiConnectionActionConfiguration>(() =>
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4061ExtractPdfPages, ApiConnectionActionConfiguration> ExtractPdfPages(Expression<Func<V4061ExtractPdfPagesInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4061ExtractPdfPages, ApiConnectionActionConfiguration> ExtractPdfPages(Expression<Func<ExtractPdfPagesDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4061ExtractPdfPages, ApiConnectionActionConfiguration>(() =>
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4160ExtractPdfTablesToCsv, ApiConnectionActionConfiguration> ExtractPdfTablesToCsv(Expression<Func<V4160ExtractPdfTablesToCsvInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4160ExtractPdfTablesToCsv, ApiConnectionActionConfiguration> ExtractPdfTablesToCsv(Expression<Func<ExtractPdfTablesToCsvDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4160ExtractPdfTablesToCsv, ApiConnectionActionConfiguration>(() =>
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4150ExtractPdfTablesToExcel, ApiConnectionActionConfiguration> ExtractPdfTablesToExcel(Expression<Func<V4150ExtractPdfTablesToExcelInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4150ExtractPdfTablesToExcel, ApiConnectionActionConfiguration> ExtractPdfTablesToExcel(Expression<Func<ExtractPdfTablesToExcelDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4150ExtractPdfTablesToExcel, ApiConnectionActionConfiguration>(() =>
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4170ExtractPdfTablesToHtml, ApiConnectionActionConfiguration> ExtractPdfTablesToHtml(Expression<Func<V4170ExtractPdfTablesToHtmlInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4170ExtractPdfTablesToHtml, ApiConnectionActionConfiguration> ExtractPdfTablesToHtml(Expression<Func<ExtractPdfTablesToHtmlDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4170ExtractPdfTablesToHtml, ApiConnectionActionConfiguration>(() =>
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4140ExtractPdfTablesToJson, ApiConnectionActionConfiguration> ExtractPdfTablesToJson(Expression<Func<V4140ExtractPdfTablesToJsonInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4140ExtractPdfTablesToJson, ApiConnectionActionConfiguration> ExtractPdfTablesToJson(Expression<Func<ExtractPdfTablesToJsonDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4140ExtractPdfTablesToJson, ApiConnectionActionConfiguration>(() =>
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2140ExtractTextAccordingToPattern, ApiConnectionActionConfiguration> ExtractTextAccordingToPattern(Expression<Func<V2140ExtractTextAccordingToPatternInput>> dtoRequestV2140ExtractTextAccordingToPattern)
+        public IBodyWorkflowAction<DtoResponseV2140ExtractTextAccordingToPattern, ApiConnectionActionConfiguration> ExtractTextAccordingToPattern(Expression<Func<DtoRequestV2140ExtractTextAccordingToPatternInput>> dtoRequestV2140ExtractTextAccordingToPattern)
         {
             var __workflow_dtoRequestV2140ExtractTextAccordingToPattern = WorkflowExpression.Compile(dtoRequestV2140ExtractTextAccordingToPattern, nameof(dtoRequestV2140ExtractTextAccordingToPattern), required: true);
             return new DeferredBodyAction<DtoResponseV2140ExtractTextAccordingToPattern, ApiConnectionActionConfiguration>(() =>
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf, ApiConnectionActionConfiguration> ExtractTextFromPdf(Expression<Func<V4100ExtractTextFromPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4100ExtractTextFromPdf, ApiConnectionActionConfiguration> ExtractTextFromPdf(Expression<Func<ExtractTextFromPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4100ExtractTextFromPdf, ApiConnectionActionConfiguration>(() =>
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks, ApiConnectionActionConfiguration> ExtractWordBookmarks(Expression<Func<V5021ExtractWordBookmarksInput>> dtoRequestV5021ExtractWordBookmarks)
+        public IBodyWorkflowAction<DtoResponseV5021ExtractWordBookmarks, ApiConnectionActionConfiguration> ExtractWordBookmarks(Expression<Func<DtoRequestV5021ExtractWordBookmarksInput>> dtoRequestV5021ExtractWordBookmarks)
         {
             var __workflow_dtoRequestV5021ExtractWordBookmarks = WorkflowExpression.Compile(dtoRequestV5021ExtractWordBookmarks, nameof(dtoRequestV5021ExtractWordBookmarks), required: true);
             return new DeferredBodyAction<DtoResponseV5021ExtractWordBookmarks, ApiConnectionActionConfiguration>(() =>
@@ -826,7 +826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls, ApiConnectionActionConfiguration> ExtractWordContentControls(Expression<Func<V5120ExtractWordContentControlsInput>> dtoRequestV5120ExtractWordContentControls)
+        public IBodyWorkflowAction<DtoResponseV5120ExtractWordContentControls, ApiConnectionActionConfiguration> ExtractWordContentControls(Expression<Func<DtoRequestV5120ExtractWordContentControlsInput>> dtoRequestV5120ExtractWordContentControls)
         {
             var __workflow_dtoRequestV5120ExtractWordContentControls = WorkflowExpression.Compile(dtoRequestV5120ExtractWordContentControls, nameof(dtoRequestV5120ExtractWordContentControls), required: true);
             return new DeferredBodyAction<DtoResponseV5120ExtractWordContentControls, ApiConnectionActionConfiguration>(() =>
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2021IbanData, ApiConnectionActionConfiguration> IbanData(Expression<Func<V2021IbanDataInput>> dtoRequestV2021IbanData)
+        public IBodyWorkflowAction<DtoResponseV2021IbanData, ApiConnectionActionConfiguration> IbanData(Expression<Func<DtoRequestV2021IbanDataInput>> dtoRequestV2021IbanData)
         {
             var __workflow_dtoRequestV2021IbanData = WorkflowExpression.Compile(dtoRequestV2021IbanData, nameof(dtoRequestV2021IbanData), required: true);
             return new DeferredBodyAction<DtoResponseV2021IbanData, ApiConnectionActionConfiguration>(() =>
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration> ImageMetaData(Expression<Func<V3071ImageMetaDataInput>> dtoRequestV3071ImageMetaData)
+        public IBodyWorkflowAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration> ImageMetaData(Expression<Func<DtoRequestV3071ImageMetaDataInput>> dtoRequestV3071ImageMetaData)
         {
             var __workflow_dtoRequestV3071ImageMetaData = WorkflowExpression.Compile(dtoRequestV3071ImageMetaData, nameof(dtoRequestV3071ImageMetaData), required: true);
             return new DeferredBodyAction<DtoResponseV3071ImageMetaData, ApiConnectionActionConfiguration>(() =>
@@ -868,7 +868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertImageToPowerPoint(Expression<Func<V9020InsertImageToPowerPointInput>> dtoRequestV9020InsertImagePowerPoint = null)
+        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertImageToPowerPoint(Expression<Func<DtoRequestV9020InsertImagePowerPointInput>> dtoRequestV9020InsertImagePowerPoint = null)
         {
             var __workflow_dtoRequestV9020InsertImagePowerPoint = WorkflowExpression.Compile(dtoRequestV9020InsertImagePowerPoint, nameof(dtoRequestV9020InsertImagePowerPoint), required: false);
             return new DeferredBodyAction<DtoResponseFile, ApiConnectionActionConfiguration>(() =>
@@ -883,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5082InsertImageToWord, ApiConnectionActionConfiguration> InsertImageToWord(Expression<Func<V5082InsertImageToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5082InsertImageToWord, ApiConnectionActionConfiguration> InsertImageToWord(Expression<Func<InsertImageToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5082InsertImageToWord, ApiConnectionActionConfiguration>(() =>
@@ -897,7 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5111InsertMultipleTextSectionsToWord, ApiConnectionActionConfiguration> InsertMultipleTextSectionsToWord(Expression<Func<V5111InsertMultipleTextSectionsToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5111InsertMultipleTextSectionsToWord, ApiConnectionActionConfiguration> InsertMultipleTextSectionsToWord(Expression<Func<InsertMultipleTextSectionsToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5111InsertMultipleTextSectionsToWord, ApiConnectionActionConfiguration>(() =>
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5092InsertTableToWord, ApiConnectionActionConfiguration> InsertTableToWord(Expression<Func<V5092InsertTableToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5092InsertTableToWord, ApiConnectionActionConfiguration> InsertTableToWord(Expression<Func<InsertTableToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5092InsertTableToWord, ApiConnectionActionConfiguration>(() =>
@@ -925,7 +925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertTextToPowerPoint(Expression<Func<V9010InsertTextToPowerPointInput>> dtoRequestV9010InsertTextToPowerPoint)
+        public IBodyWorkflowAction<DtoResponseFile, ApiConnectionActionConfiguration> InsertTextToPowerPoint(Expression<Func<DtoRequestV9010InsertTextToPowerPointInput>> dtoRequestV9010InsertTextToPowerPoint)
         {
             var __workflow_dtoRequestV9010InsertTextToPowerPoint = WorkflowExpression.Compile(dtoRequestV9010InsertTextToPowerPoint, nameof(dtoRequestV9010InsertTextToPowerPoint), required: true);
             return new DeferredBodyAction<DtoResponseFile, ApiConnectionActionConfiguration>(() =>
@@ -939,7 +939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5072InsertTextToWord, ApiConnectionActionConfiguration> InsertTextToWord(Expression<Func<V5072InsertTextToWordInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5072InsertTextToWord, ApiConnectionActionConfiguration> InsertTextToWord(Expression<Func<InsertTextToWordDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5072InsertTextToWord, ApiConnectionActionConfiguration>(() =>
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4120MergeMultiplePdfs, ApiConnectionActionConfiguration> MergeMultiplePdfs(Expression<Func<V4120MergeMultiplePdfsInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4120MergeMultiplePdfs, ApiConnectionActionConfiguration> MergeMultiplePdfs(Expression<Func<MergeMultiplePdfsDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4120MergeMultiplePdfs, ApiConnectionActionConfiguration>(() =>
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4022MergePdfs, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<V4022MergePdfsInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4022MergePdfs, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<MergePdfsDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4022MergePdfs, ApiConnectionActionConfiguration>(() =>
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2120MatchPatternCheck, ApiConnectionActionConfiguration> PatternMatchCheck(Expression<Func<V2120PatternMatchCheckInput>> dtoRequestV2120PatternMatchCheck)
+        public IBodyWorkflowAction<DtoResponseV2120MatchPatternCheck, ApiConnectionActionConfiguration> PatternMatchCheck(Expression<Func<DtoRequestV2120PatternMatchCheckInput>> dtoRequestV2120PatternMatchCheck)
         {
             var __workflow_dtoRequestV2120PatternMatchCheck = WorkflowExpression.Compile(dtoRequestV2120PatternMatchCheck, nameof(dtoRequestV2120PatternMatchCheck), required: true);
             return new DeferredBodyAction<DtoResponseV2120MatchPatternCheck, ApiConnectionActionConfiguration>(() =>
@@ -995,7 +995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata, ApiConnectionActionConfiguration> PdfMetadata(Expression<Func<V4031PdfMetadataInput>> dtoRequestV4031PdfMetadata)
+        public IBodyWorkflowAction<DtoResponseV4031PdfMetadata, ApiConnectionActionConfiguration> PdfMetadata(Expression<Func<DtoRequestV4031PdfMetadataInput>> dtoRequestV4031PdfMetadata)
         {
             var __workflow_dtoRequestV4031PdfMetadata = WorkflowExpression.Compile(dtoRequestV4031PdfMetadata, nameof(dtoRequestV4031PdfMetadata), required: true);
             return new DeferredBodyAction<DtoResponseV4031PdfMetadata, ApiConnectionActionConfiguration>(() =>
@@ -1009,7 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4042ProtectPdf, ApiConnectionActionConfiguration> ProtectPdf(Expression<Func<V4042ProtectPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4042ProtectPdf, ApiConnectionActionConfiguration> ProtectPdf(Expression<Func<ProtectPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4042ProtectPdf, ApiConnectionActionConfiguration>(() =>
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3051ReadCode, ApiConnectionActionConfiguration> ReadCode(Expression<Func<V3051ReadCodeInput>> dtoRequestReadCodeData)
+        public IBodyWorkflowAction<DtoResponseV3051ReadCode, ApiConnectionActionConfiguration> ReadCode(Expression<Func<DtoRequestReadCodeDataInput>> dtoRequestReadCodeData)
         {
             var __workflow_dtoRequestReadCodeData = WorkflowExpression.Compile(dtoRequestReadCodeData, nameof(dtoRequestReadCodeData), required: true);
             return new DeferredBodyAction<DtoResponseV3051ReadCode, ApiConnectionActionConfiguration>(() =>
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2011RegularExpression, ApiConnectionActionConfiguration> RegularExpression(Expression<Func<V2011RegularExpressionInput>> dtoRequestV2011RegularExpression)
+        public IBodyWorkflowAction<DtoResponseV2011RegularExpression, ApiConnectionActionConfiguration> RegularExpression(Expression<Func<DtoRequestV2011RegularExpressionInput>> dtoRequestV2011RegularExpression)
         {
             var __workflow_dtoRequestV2011RegularExpression = WorkflowExpression.Compile(dtoRequestV2011RegularExpression, nameof(dtoRequestV2011RegularExpression), required: true);
             return new DeferredBodyAction<DtoResponseV2011RegularExpression, ApiConnectionActionConfiguration>(() =>
@@ -1051,7 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4111RemovePagesFromPdf, ApiConnectionActionConfiguration> RemovePagesFromPdf(Expression<Func<V4111RemovePagesFromPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4111RemovePagesFromPdf, ApiConnectionActionConfiguration> RemovePagesFromPdf(Expression<Func<RemovePagesFromPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4111RemovePagesFromPdf, ApiConnectionActionConfiguration>(() =>
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2110ReplaceTextWithPattern, ApiConnectionActionConfiguration> ReplaceTextWithPattern(Expression<Func<V2110ReplaceTextWithPatternInput>> dtoRequestV2110ReplaceTextWithPattern)
+        public IBodyWorkflowAction<DtoResponseV2110ReplaceTextWithPattern, ApiConnectionActionConfiguration> ReplaceTextWithPattern(Expression<Func<DtoRequestV2110ReplaceTextWithPatternInput>> dtoRequestV2110ReplaceTextWithPattern)
         {
             var __workflow_dtoRequestV2110ReplaceTextWithPattern = WorkflowExpression.Compile(dtoRequestV2110ReplaceTextWithPattern, nameof(dtoRequestV2110ReplaceTextWithPattern), required: true);
             return new DeferredBodyAction<DtoResponseV2110ReplaceTextWithPattern, ApiConnectionActionConfiguration>(() =>
@@ -1079,7 +1079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3023ResizeImage, ApiConnectionActionConfiguration> ResizeImage(Expression<Func<V3023ResizeImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3023ResizeImage, ApiConnectionActionConfiguration> ResizeImage(Expression<Func<ResizeImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3023ResizeImage, ApiConnectionActionConfiguration>(() =>
@@ -1093,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV3032RotateImage, ApiConnectionActionConfiguration> RotateImage(Expression<Func<V3032RotateImageInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV3032RotateImage, ApiConnectionActionConfiguration> RotateImage(Expression<Func<RotateImageDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV3032RotateImage, ApiConnectionActionConfiguration>(() =>
@@ -1107,7 +1107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2151RunCode, ApiConnectionActionConfiguration> RunCode(Expression<Func<V2151RunCodeInput>> dto)
+        public IBodyWorkflowAction<DtoResponseV2151RunCode, ApiConnectionActionConfiguration> RunCode(Expression<Func<DtoInput>> dto)
         {
             var __workflow_dto = WorkflowExpression.Compile(dto, nameof(dto), required: true);
             return new DeferredBodyAction<DtoResponseV2151RunCode, ApiConnectionActionConfiguration>(() =>
@@ -1121,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2130SmartTextSplit, ApiConnectionActionConfiguration> SmartTextSplit(Expression<Func<V2130SmartTextSplitInput>> dtoRequestV2130SmartTextSplit)
+        public IBodyWorkflowAction<DtoResponseV2130SmartTextSplit, ApiConnectionActionConfiguration> SmartTextSplit(Expression<Func<DtoRequestV2130SmartTextSplitInput>> dtoRequestV2130SmartTextSplit)
         {
             var __workflow_dtoRequestV2130SmartTextSplit = WorkflowExpression.Compile(dtoRequestV2130SmartTextSplit, nameof(dtoRequestV2130SmartTextSplit), required: true);
             return new DeferredBodyAction<DtoResponseV2130SmartTextSplit, ApiConnectionActionConfiguration>(() =>
@@ -1135,7 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2061SortCsv, ApiConnectionActionConfiguration> SortCsv(Expression<Func<V2061SortCsvInput>> dtoRequestV2061SortCsv)
+        public IBodyWorkflowAction<DtoResponseV2061SortCsv, ApiConnectionActionConfiguration> SortCsv(Expression<Func<DtoRequestV2061SortCsvInput>> dtoRequestV2061SortCsv)
         {
             var __workflow_dtoRequestV2061SortCsv = WorkflowExpression.Compile(dtoRequestV2061SortCsv, nameof(dtoRequestV2061SortCsv), required: true);
             return new DeferredBodyAction<DtoResponseV2061SortCsv, ApiConnectionActionConfiguration>(() =>
@@ -1149,7 +1149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2051SortJson, ApiConnectionActionConfiguration> SortJson(Expression<Func<V2051SortJsonInput>> dtoRequestV2051SortJson)
+        public IBodyWorkflowAction<DtoResponseV2051SortJson, ApiConnectionActionConfiguration> SortJson(Expression<Func<DtoRequestV2051SortJsonInput>> dtoRequestV2051SortJson)
         {
             var __workflow_dtoRequestV2051SortJson = WorkflowExpression.Compile(dtoRequestV2051SortJson, nameof(dtoRequestV2051SortJson), required: true);
             return new DeferredBodyAction<DtoResponseV2051SortJson, ApiConnectionActionConfiguration>(() =>
@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2041Translate, ApiConnectionActionConfiguration> Translate(Expression<Func<V2041TranslateInput>> dtoRequestV2041Translate)
+        public IBodyWorkflowAction<DtoResponseV2041Translate, ApiConnectionActionConfiguration> Translate(Expression<Func<DtoRequestV2041TranslateInput>> dtoRequestV2041Translate)
         {
             var __workflow_dtoRequestV2041Translate = WorkflowExpression.Compile(dtoRequestV2041Translate, nameof(dtoRequestV2041Translate), required: true);
             return new DeferredBodyAction<DtoResponseV2041Translate, ApiConnectionActionConfiguration>(() =>
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV4052UnProtectPdf, ApiConnectionActionConfiguration> UnProtectPdf(Expression<Func<V4052UnProtectPdfInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV4052UnProtectPdf, ApiConnectionActionConfiguration> UnProtectPdf(Expression<Func<UnProtectPdfDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV4052UnProtectPdf, ApiConnectionActionConfiguration>(() =>
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5151UpdateMultipleWordContentControls, ApiConnectionActionConfiguration> UpdateMultipleWordContentControls(Expression<Func<V5151UpdateMultipleWordContentControlsInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5151UpdateMultipleWordContentControls, ApiConnectionActionConfiguration> UpdateMultipleWordContentControls(Expression<Func<UpdateMultipleWordContentControlsDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5151UpdateMultipleWordContentControls, ApiConnectionActionConfiguration>(() =>
@@ -1205,7 +1205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5141UpdateWordContentControl, ApiConnectionActionConfiguration> UpdateWordContentControl(Expression<Func<V5141UpdateWordContentControlInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5141UpdateWordContentControl, ApiConnectionActionConfiguration> UpdateWordContentControl(Expression<Func<UpdateWordContentControlDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5141UpdateWordContentControl, ApiConnectionActionConfiguration>(() =>
@@ -1219,7 +1219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV5131UpdateWordTableOfContents, ApiConnectionActionConfiguration> UpdateWordTableOfContents(Expression<Func<V5131UpdateWordTableOfContentsInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV5131UpdateWordTableOfContents, ApiConnectionActionConfiguration> UpdateWordTableOfContents(Expression<Func<UpdateWordTableOfContentsDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV5131UpdateWordTableOfContents, ApiConnectionActionConfiguration>(() =>
@@ -1233,7 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "converterbypower2apps")]
-        public IBodyWorkflowAction<DtoResponseV2032UrlToFile, ApiConnectionActionConfiguration> UrlToFile(Expression<Func<V2032UrlToFileInput>> dtoRequest)
+        public IBodyWorkflowAction<DtoResponseV2032UrlToFile, ApiConnectionActionConfiguration> UrlToFile(Expression<Func<UrlToFileDtoRequestInput>> dtoRequest)
         {
             var __workflow_dtoRequest = WorkflowExpression.Compile(dtoRequest, nameof(dtoRequest), required: true);
             return new DeferredBodyAction<DtoResponseV2032UrlToFile, ApiConnectionActionConfiguration>(() =>
@@ -1266,7 +1266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5102AddHtmlToWordInput
+    public class AddHtmlToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -1293,7 +1293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5032AddImageToWordInput
+    public class AddImageToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -1329,7 +1329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5043AddImageWithinTableToWordInput
+    public class AddImageWithinTableToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -1365,7 +1365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5053AddTableToWordInput
+    public class AddTableToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -1401,7 +1401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5062AddTextToWordInput
+    public class AddTextToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -1422,7 +1422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string CSVResponse { get; set; }
     }
 
-    public class V2081CombineCsvsInput
+    public class DtoRequestV2081CombineCsvsInput
     {
         [JsonProperty("mainCsv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MainCSV { get; set; }
@@ -1443,7 +1443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
-    public class V2091CombineJsonArraysInput
+    public class DtoRequestV2091CombineJsonArraysInput
     {
         [JsonProperty("mainJson", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MainJSON { get; set; }
@@ -1473,7 +1473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3042CompressImageInput
+    public class CompressImageDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
@@ -1500,7 +1500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4081CompressPdfInput
+    public class CompressPdfDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -1554,7 +1554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string ColorName { get; set; }
     }
 
-    public class V2071ConvertColorInput
+    public class DtoRequestV2071ConvertColorInput
     {
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Color { get; set; }
@@ -1581,7 +1581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string DetectedDelimiter { get; set; }
     }
 
-    public class V1035ConvertCsvToExcelInput
+    public class ConvertCsvToExcelDtoRequestInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -1632,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string HTMLResponse { get; set; }
     }
 
-    public class V7061ConvertCsvToHtmlTableInput
+    public class DtoRequestV7061ConvertCsvToHtmlTableInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -1668,7 +1668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
-    public class V1022ConvertCsvToJsonInput
+    public class DtoRequestV1022ConvertCsvToJsonInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -1722,7 +1722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V1150ConvertCsvToMarkdownInput
+    public class ConvertCsvToMarkdownDtoRequestInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -1755,7 +1755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONSchemaResponse { get; set; }
     }
 
-    public class V1100ConvertExcelToJsonInput
+    public class DtoRequestV1100ConvertExcelToJsonInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExcelFile { get; set; }
@@ -1794,7 +1794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V1140ConvertExcelToMarkdownInput
+    public class ConvertExcelToMarkdownDtoRequestInput
     {
         [JsonProperty("excel", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Excel { get; set; }
@@ -1827,7 +1827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4014ConvertFileToPdfInput
+    public class ConvertFileToPdfDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
@@ -1854,7 +1854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] AllCSVTablesResponse { get; set; }
     }
 
-    public class V7070ConvertHtmlTableToCsvInput
+    public class DtoRequestV7070ConvertHtmlTableToCsvInput
     {
         [JsonProperty("htmlTable", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTMLTable { get; set; }
@@ -1881,7 +1881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] Notes { get; set; }
     }
 
-    public class V7082ConvertHtmlTableToExcelInput
+    public class ConvertHtmlTableToExcelDtoRequestInput
     {
         [JsonProperty("htmlTable", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTMLTable { get; set; }
@@ -1902,7 +1902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] Notes { get; set; }
     }
 
-    public class V7013ConvertHtmlTableToJsonInput
+    public class ConvertHtmlTableToJsonDtoRequestInput
     {
         [JsonProperty("htmlTable", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTMLTable { get; set; }
@@ -1923,7 +1923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V7032ConvertHtmlToImageInput
+    public class ConvertHtmlToImageDtoRequestInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
@@ -1962,7 +1962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V7090ConvertHtmlToMarkdownInput
+    public class ConvertHtmlToMarkdownDtoRequestInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
@@ -1995,7 +1995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V7023ConvertHtmlToPdfInput
+    public class ConvertHtmlToPdfDtoRequestInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
@@ -2052,13 +2052,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V7041ConvertHtmlToWordInput
+    public class DtoRequestV7041ConvertHtmlToWordInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
     }
 
-    public class V3012ConvertImageInput
+    public class DtoRequestV3012ConvertImageInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
@@ -2073,7 +2073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string CSVResponse { get; set; }
     }
 
-    public class V1013ConvertJsonToCsvInput
+    public class DtoRequestV1013ConvertJsonToCsvInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -2097,7 +2097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V1064ConvertJsonToExcelInput
+    public class ConvertJsonToExcelDtoRequestInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -2118,7 +2118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int? ReduceResponseSize { get; set; }
     }
 
-    public class V7051ConvertJsonToHtmlTableInput
+    public class DtoRequestV7051ConvertJsonToHtmlTableInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -2130,7 +2130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string TextResponse { get; set; }
     }
 
-    public class V1090ConvertJsonToTextTableInput
+    public class DtoRequestV1090ConvertJsonToTextTableInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -2142,7 +2142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string XMLResponse { get; set; }
     }
 
-    public class V1042ConvertJsonToXmlInput
+    public class DtoRequestV1042ConvertJsonToXmlInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -2154,7 +2154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string YAMLResponse { get; set; }
     }
 
-    public class V1081ConvertJsonToYamlInput
+    public class DtoRequestV1081ConvertJsonToYamlInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -2178,7 +2178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V1110ConvertMultiCsvToExcelInput
+    public class ConvertMultiCsvToExcelDtoRequestInput
     {
         [JsonProperty("csvSheets", DefaultValueHandling = DefaultValueHandling.Include)]
         public CsvSheetItem[] Sheet { get; set; }
@@ -2256,7 +2256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V4130ConvertPdfToMarkdownInput
+    public class ConvertPdfToMarkdownDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -2298,7 +2298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4071ConvertPdfToPdfAInput
+    public class ConvertPdfToPdfADtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -2325,7 +2325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Link { get; set; }
     }
 
-    public class V6011ConvertSharePointSearchResultsInput
+    public class DtoRequestV6011ConvertSharePointSearchResultsInput
     {
         [JsonProperty("sharepointResult", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SPSearchResult { get; set; }
@@ -2337,7 +2337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string HTMLResponse { get; set; }
     }
 
-    public class V5160ConvertWordToHtmlInput
+    public class ConvertWordToHtmlDtoRequestInput
     {
         [JsonProperty("word", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Word { get; set; }
@@ -2376,7 +2376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V5170ConvertWordToMarkdownInput
+    public class ConvertWordToMarkdownDtoRequestInput
     {
         [JsonProperty("word", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Word { get; set; }
@@ -2409,7 +2409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V1130ConvertXmlToCsvInput
+    public class ConvertXmlToCsvDtoRequestInput
     {
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
         public string XML { get; set; }
@@ -2445,7 +2445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V1120ConvertXmlToExcelInput
+    public class ConvertXmlToExcelDtoRequestInput
     {
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
         public string XML { get; set; }
@@ -2478,7 +2478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
-    public class V1053ConvertXmlToJsonInput
+    public class ConvertXmlToJsonDtoRequestInput
     {
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
         public string XML { get; set; }
@@ -2502,7 +2502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V8011ConvertXRechnungToPdfInput
+    public class ConvertXRechnungToPdfDtoRequestInput
     {
         [JsonProperty("xml", DefaultValueHandling = DefaultValueHandling.Include)]
         public string XRechnung { get; set; }
@@ -2517,7 +2517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
-    public class V1071ConvertYamlToJsonInput
+    public class DtoRequestV1071YamlToJsonInput
     {
         [JsonProperty("yaml", DefaultValueHandling = DefaultValueHandling.Include)]
         public string YAML { get; set; }
@@ -2538,7 +2538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3092CreateChartImageInput
+    public class CreateChartImageDtoRequestInput
     {
         [JsonProperty("width")]
         public int? ImageWidth { get; set; }
@@ -2577,7 +2577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3063CreateCodeInput
+    public class CreateCodeDtoRequestInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
@@ -2622,7 +2622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3112CreateGraphImageInput
+    public class CreateGraphImageDtoRequestInput
     {
         [JsonProperty("width")]
         public int? ImageWidth { get; set; }
@@ -2658,7 +2658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3102CreateTableImageInput
+    public class CreateTableImageDtoRequestInput
     {
         [JsonProperty("width")]
         public int? ImageWidth { get; set; }
@@ -2700,7 +2700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3082CreateWatermarkImageInput
+    public class CreateWatermarkImageDtoRequestInput
     {
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent MainImage { get; set; }
@@ -2739,7 +2739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5012CreateWordFileInput
+    public class CreateWordFileDtoRequestInput
     {
         [JsonProperty("existingFileContent")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -2787,7 +2787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileAsBase64String { get; set; }
     }
 
-    public class V4090ExtractImagesFromPdfInput
+    public class ExtractImagesFromPdfDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -2826,7 +2826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Path { get; set; }
     }
 
-    public class V2100ExtractJsonObjectPropertiesInput
+    public class DtoRequestV2100ExtractJsonObjectPropertiesInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -2850,7 +2850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4061ExtractPdfPagesInput
+    public class ExtractPdfPagesDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
@@ -2889,7 +2889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Notes { get; set; }
     }
 
-    public class V4160ExtractPdfTablesToCsvInput
+    public class ExtractPdfTablesToCsvDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -2937,7 +2937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Notes { get; set; }
     }
 
-    public class V4150ExtractPdfTablesToExcelInput
+    public class ExtractPdfTablesToExcelDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -2985,7 +2985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Notes { get; set; }
     }
 
-    public class V4170ExtractPdfTablesToHtmlInput
+    public class ExtractPdfTablesToHtmlDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -3021,7 +3021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Notes { get; set; }
     }
 
-    public class V4140ExtractPdfTablesToJsonInput
+    public class ExtractPdfTablesToJsonDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -3042,7 +3042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] TextMatchesAsList { get; set; }
     }
 
-    public class V2140ExtractTextAccordingToPatternInput
+    public class DtoRequestV2140ExtractTextAccordingToPatternInput
     {
         [JsonProperty("inputText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -3078,7 +3078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Text { get; set; }
     }
 
-    public class V4100ExtractTextFromPdfInput
+    public class ExtractTextFromPdfDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -3117,7 +3117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Value { get; set; }
     }
 
-    public class V5021ExtractWordBookmarksInput
+    public class DtoRequestV5021ExtractWordBookmarksInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
@@ -3159,7 +3159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Value { get; set; }
     }
 
-    public class V5120ExtractWordContentControlsInput
+    public class DtoRequestV5120ExtractWordContentControlsInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
@@ -3216,7 +3216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string BankAddress { get; set; }
     }
 
-    public class V2021IbanDataInput
+    public class DtoRequestV2021IbanDataInput
     {
         [JsonProperty("iban", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IBAN { get; set; }
@@ -3261,13 +3261,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool HasXMPData { get; set; }
     }
 
-    public class V3071ImageMetaDataInput
+    public class DtoRequestV3071ImageMetaDataInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
     }
 
-    public class V9020InsertImageToPowerPointInput
+    public class DtoRequestV9020InsertImagePowerPointInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -3306,7 +3306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5082InsertImageToWordInput
+    public class InsertImageToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -3348,7 +3348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5111InsertMultipleTextSectionsToWordInput
+    public class InsertMultipleTextSectionsToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -3390,7 +3390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5092InsertTableToWordInput
+    public class InsertTableToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -3417,7 +3417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public int? ReduceResponseSize { get; set; }
     }
 
-    public class V9010InsertTextToPowerPointInput
+    public class DtoRequestV9010InsertTextToPowerPointInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -3450,7 +3450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5072InsertTextToWordInput
+    public class InsertTextToWordDtoRequestInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -3489,7 +3489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FileName { get; set; }
     }
 
-    public class V4120MergeMultiplePdfsInput
+    public class MergeMultiplePdfsDtoRequestInput
     {
         [JsonProperty("pdfFiles", DefaultValueHandling = DefaultValueHandling.Include)]
         public PdfMergeItem[] PDF { get; set; }
@@ -3540,7 +3540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4022MergePdfsInput
+    public class MergePdfsDtoRequestInput
     {
         [JsonProperty("file1", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File1 { get; set; }
@@ -3558,7 +3558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool MatchSuccess { get; set; }
     }
 
-    public class V2120PatternMatchCheckInput
+    public class DtoRequestV2120PatternMatchCheckInput
     {
         [JsonProperty("inputText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputText { get; set; }
@@ -3603,7 +3603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Keywords { get; set; }
     }
 
-    public class V4031PdfMetadataInput
+    public class DtoRequestV4031PdfMetadataInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
@@ -3624,7 +3624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4042ProtectPdfInput
+    public class ProtectPdfDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
@@ -3648,7 +3648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string CodeType { get; set; }
     }
 
-    public class V3051ReadCodeInput
+    public class DtoRequestReadCodeDataInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent QROrBarcode { get; set; }
@@ -3669,7 +3669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string FirstMatchValue { get; set; }
     }
 
-    public class V2011RegularExpressionInput
+    public class DtoRequestV2011RegularExpressionInput
     {
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TextToMatch { get; set; }
@@ -3696,7 +3696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4111RemovePagesFromPdfInput
+    public class RemovePagesFromPdfDtoRequestInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -3723,7 +3723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string ReplacedText { get; set; }
     }
 
-    public class V2110ReplaceTextWithPatternInput
+    public class DtoRequestV2110ReplaceTextWithPatternInput
     {
         [JsonProperty("inputText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputText { get; set; }
@@ -3750,7 +3750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3023ResizeImageInput
+    public class ResizeImageDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
@@ -3783,7 +3783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V3032RotateImageInput
+    public class RotateImageDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
@@ -3810,7 +3810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public bool IsSuccessful { get; set; }
     }
 
-    public class V2151RunCodeInput
+    public class DtoInput
     {
         [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PythonOrJavaScriptCode { get; set; }
@@ -3831,7 +3831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] TextSegmentsAsList { get; set; }
     }
 
-    public class V2130SmartTextSplitInput
+    public class DtoRequestV2130SmartTextSplitInput
     {
         [JsonProperty("inputText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputText { get; set; }
@@ -3852,7 +3852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string CSVResponse { get; set; }
     }
 
-    public class V2061SortCsvInput
+    public class DtoRequestV2061SortCsvInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
@@ -3897,7 +3897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string JSONResponse { get; set; }
     }
 
-    public class V2051SortJsonInput
+    public class DtoRequestV2051SortJsonInput
     {
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSON { get; set; }
@@ -3921,7 +3921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string[] TranslationsResponse { get; set; }
     }
 
-    public class V2041TranslateInput
+    public class DtoRequestV2041TranslateInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -3948,7 +3948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V4052UnProtectPdfInput
+    public class UnProtectPdfDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
@@ -3978,7 +3978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5151UpdateMultipleWordContentControlsInput
+    public class UpdateMultipleWordContentControlsDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -4017,7 +4017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5141UpdateWordContentControlInput
+    public class UpdateWordContentControlDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -4047,7 +4047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V5131UpdateWordTableOfContentsInput
+    public class UpdateWordTableOfContentsDtoRequestInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
@@ -4071,7 +4071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string Extension { get; set; }
     }
 
-    public class V2032UrlToFileInput
+    public class UrlToFileDtoRequestInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string URL { get; set; }

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateOcrRequestResponse, ApiConnectionActionConfiguration> CreateOcrRequest(Expression<Func<CreateOcrRequestInput>> fileIdBody)
+        public IBodyWorkflowAction<CreateOcrRequestResponse, ApiConnectionActionConfiguration> CreateOcrRequest(Expression<Func<FileIdBodyInput>> fileIdBody)
         {
             var __workflow_fileIdBody = WorkflowExpression.Compile(fileIdBody, nameof(fileIdBody), required: true);
             return new DeferredBodyAction<CreateOcrRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse, ApiConnectionActionConfiguration> CreateFieldExtractionRequest(Expression<Func<CreateFieldExtractionRequestInput>> body = null)
+        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse, ApiConnectionActionConfiguration> CreateFieldExtractionRequest(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateFieldExtractionRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse, ApiConnectionActionConfiguration> CreateDocumentClassificationRequest(Expression<Func<CreateDocumentClassificationRequestInput>> fileIdBody)
+        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse, ApiConnectionActionConfiguration> CreateDocumentClassificationRequest(Expression<Func<FileIdBodyInput>> fileIdBody)
         {
             var __workflow_fileIdBody = WorkflowExpression.Compile(fileIdBody, nameof(fileIdBody), required: true);
             return new DeferredBodyAction<CreateDocumentClassificationRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse, ApiConnectionActionConfiguration> CreateLanguageClassificationRequest(Expression<Func<CreateLanguageClassificationRequestInput>> fileIdBody)
+        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse, ApiConnectionActionConfiguration> CreateLanguageClassificationRequest(Expression<Func<FileIdBodyInput>> fileIdBody)
         {
             var __workflow_fileIdBody = WorkflowExpression.Compile(fileIdBody, nameof(fileIdBody), required: true);
             return new DeferredBodyAction<CreateLanguageClassificationRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateMlcRequestResponse, ApiConnectionActionConfiguration> CreateMlcRequest(Expression<Func<CreateMlcRequestInput>> fileIdBody)
+        public IBodyWorkflowAction<CreateMlcRequestResponse, ApiConnectionActionConfiguration> CreateMlcRequest(Expression<Func<FileIdBodyInput>> fileIdBody)
         {
             var __workflow_fileIdBody = WorkflowExpression.Compile(fileIdBody, nameof(fileIdBody), required: true);
             return new DeferredBodyAction<CreateMlcRequestResponse, ApiConnectionActionConfiguration>(() =>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<NormalizeDatesResponse, ApiConnectionActionConfiguration> NormalizeDates(Expression<Func<NormalizeDatesInput>> textBody)
+        public IBodyWorkflowAction<NormalizeDatesResponse, ApiConnectionActionConfiguration> NormalizeDates(Expression<Func<TextBodyInput>> textBody)
         {
             var __workflow_textBody = WorkflowExpression.Compile(textBody, nameof(textBody), required: true);
             return new DeferredBodyAction<NormalizeDatesResponse, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         public string Status { get; set; }
     }
 
-    public class CreateOcrRequestInput
+    public class FileIdBodyInput
     {
         [JsonProperty("file_id")]
         public string FileId { get; set; }
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         public string Status { get; set; }
     }
 
-    public class CreateFieldExtractionRequestInput
+    public class BodyInput
     {
         [JsonProperty("file_id")]
         public string FileId { get; set; }
@@ -444,12 +444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         public string Status { get; set; }
     }
 
-    public class CreateDocumentClassificationRequestInput
-    {
-        [JsonProperty("file_id")]
-        public string FileId { get; set; }
-    }
-
     public class GetDocumentClassificationRequestStatusResponse
     {
         [JsonProperty("status")]
@@ -483,12 +477,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         public string Status { get; set; }
     }
 
-    public class CreateLanguageClassificationRequestInput
-    {
-        [JsonProperty("file_id")]
-        public string FileId { get; set; }
-    }
-
     public class GetLanguageClassificationRequestStatusResponse
     {
         [JsonProperty("status")]
@@ -517,12 +505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
 
         [JsonProperty("status")]
         public string Status { get; set; }
-    }
-
-    public class CreateMlcRequestInput
-    {
-        [JsonProperty("file_id")]
-        public string FileId { get; set; }
     }
 
     public class GetMlcRequestStatusResponse
@@ -570,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
         public int Year { get; set; }
     }
 
-    public class NormalizeDatesInput
+    public class TextBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }

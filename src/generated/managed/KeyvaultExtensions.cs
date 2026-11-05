@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptData(Expression<Func<string>> keyName, Expression<Func<EncryptDataInput>> operationInput)
+        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptData(Expression<Func<string>> keyName, Expression<Func<EncryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_operationInput = WorkflowExpression.Compile(operationInput, nameof(operationInput), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<EncryptDataWithVersionInput>> operationInput)
+        public IBodyWorkflowAction<KeyEncryptOutput, ApiConnectionActionConfiguration> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<EncryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptData(Expression<Func<string>> keyName, Expression<Func<DecryptDataInput>> operationInput)
+        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptData(Expression<Func<string>> keyName, Expression<Func<DecryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_operationInput = WorkflowExpression.Compile(operationInput, nameof(operationInput), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<DecryptDataWithVersionInput>> operationInput)
+        public IBodyWorkflowAction<KeyDecryptOutput, ApiConnectionActionConfiguration> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<DecryptDataOperationInputInput>> operationInput)
         {
             var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
@@ -255,37 +255,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         public string EncryptedData { get; set; }
     }
 
-    public class EncryptDataInput
+    public class EncryptDataOperationInputInput
     {
         [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EncryptDataInputAlgorithmType Algorithm { get; set; } = EncryptDataInputAlgorithmType.RSAOAEP256;
+        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
 
         [JsonProperty("rawData", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RawData { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EncryptDataInputAlgorithmType
-    {
-        [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
-        [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
-        [EnumMember(Value = "RSA1_5")]
-        RSA15
-    }
-
-    public class EncryptDataWithVersionInput
-    {
-        [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EncryptDataWithVersionInputAlgorithmType Algorithm { get; set; } = EncryptDataWithVersionInputAlgorithmType.RSAOAEP256;
-
-        [JsonProperty("rawData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string RawData { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EncryptDataWithVersionInputAlgorithmType
+    public enum OperationInputInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP-256")]
         RSAOAEP256,
@@ -301,44 +281,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         public string RawData { get; set; }
     }
 
-    public class DecryptDataInput
+    public class DecryptDataOperationInputInput
     {
         [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DecryptDataInputAlgorithmType Algorithm { get; set; } = DecryptDataInputAlgorithmType.RSAOAEP256;
+        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
 
         [JsonProperty("encryptedData", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EncryptedData { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DecryptDataInputAlgorithmType
-    {
-        [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
-        [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
-        [EnumMember(Value = "RSA1_5")]
-        RSA15
-    }
-
-    public class DecryptDataWithVersionInput
-    {
-        [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DecryptDataWithVersionInputAlgorithmType Algorithm { get; set; } = DecryptDataWithVersionInputAlgorithmType.RSAOAEP256;
-
-        [JsonProperty("encryptedData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EncryptedData { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DecryptDataWithVersionInputAlgorithmType
-    {
-        [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
-        [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
-        [EnumMember(Value = "RSA1_5")]
-        RSA15
     }
 
     public class SecretMetadataCollection

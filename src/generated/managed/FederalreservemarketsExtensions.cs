@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     public class FederalreservemarketsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse, ApiConnectionActionConfiguration> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse, ApiConnectionActionConfiguration> GetTreasurySecuritiesOperationsByStatus(Expression<Func<GetTreasurySecuritiesOperationsByStatusOperationInput>> operation, Expression<Func<StatusInput>> status, Expression<Func<IncludeInput>> include, Expression<Func<FormatInput>> format)
         {
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse, ApiConnectionActionConfiguration> GetSecuritiesLendingOperations(Expression<Func<operationInput2>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse, ApiConnectionActionConfiguration> GetSecuritiesLendingOperations(Expression<Func<GetSecuritiesLendingOperationsOperationInput>> operation, Expression<Func<IncludeInput>> include, Expression<Func<FormatInput>> format)
         {
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
             var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum operationInput
+    public enum GetTreasurySecuritiesOperationsByStatusOperationInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "announcements")]
         Announcements,
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeInput
+    public enum IncludeInput
     {
         [EnumMember(Value = "summary")]
         Summary,
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "json")]
         Json,
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum operationInput2
+    public enum GetSecuritiesLendingOperationsOperationInput
     {
         [EnumMember(Value = "all")]
         All,

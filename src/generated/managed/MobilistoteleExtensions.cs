@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobilistotele")]
-        public IBodyWorkflowAction<DialResponse, ApiConnectionActionConfiguration> Dial(Expression<Func<DialInput>> body)
+        public IBodyWorkflowAction<DialResponse, ApiConnectionActionConfiguration> Dial(Expression<Func<DialBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DialResponse, ApiConnectionActionConfiguration>(() =>
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/CallConnected";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CallConnectedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallConnectedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/CallCompleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CallCompletedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallCompletedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -368,20 +368,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/VoicemailCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new VoicemailCreatedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<VoicemailCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<VoicemailDeletedResponse, ApiConnectionTriggerConfiguration> VoicemailDeleted(Expression<Func<VoicemailDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VoicemailDeletedResponse, ApiConnectionTriggerConfiguration> VoicemailDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<VoicemailDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/VoicemailDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<VoicemailDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -393,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/LostCallerAdded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new LostCallerAddedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<LostCallerAddedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -405,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/LostCallerUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new LostCallerUpdatedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<LostCallerUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -417,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/LostCallerRemoved";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new LostCallerRemovedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<LostCallerRemovedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -429,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/CallRecorded";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CallRecordedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallRecordedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -441,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/CallTransfered";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CallTransferedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallTransferedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -453,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
                 var apiCallPath = "/webhooks/CallStarted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CallStartedInput().ToJToken();
+                callPayload.Body = new CallCompletedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<CallStartedResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -879,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         public JToken Data { get; set; }
     }
 
-    public class DialInput
+    public class DialBodyInput
     {
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Destination { get; set; }
@@ -1185,7 +1184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         public string Data { get; set; }
     }
 
-    public class CallConnectedInput
+    public class CallCompletedBodyInput
     {
         [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
@@ -1209,12 +1208,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         public string Data { get; set; }
     }
 
-    public class CallCompletedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class VoicemailCreatedResponse
     {
         [JsonProperty("version")]
@@ -1231,12 +1224,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
 
         [JsonProperty("data")]
         public string Data { get; set; }
-    }
-
-    public class VoicemailCreatedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class VoicemailDeletedResponse
@@ -1257,12 +1244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         public string Data { get; set; }
     }
 
-    public class VoicemailDeletedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class LostCallerAddedResponse
     {
         [JsonProperty("version")]
@@ -1279,12 +1260,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
 
         [JsonProperty("data")]
         public string Data { get; set; }
-    }
-
-    public class LostCallerAddedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class LostCallerUpdatedResponse
@@ -1305,12 +1280,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         public string Data { get; set; }
     }
 
-    public class LostCallerUpdatedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class LostCallerRemovedResponse
     {
         [JsonProperty("version")]
@@ -1327,12 +1296,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
 
         [JsonProperty("data")]
         public string Data { get; set; }
-    }
-
-    public class LostCallerRemovedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class CallRecordedResponse
@@ -1353,12 +1316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         public string Data { get; set; }
     }
 
-    public class CallRecordedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class CallTransferedResponse
     {
         [JsonProperty("version")]
@@ -1377,12 +1334,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
         public string Data { get; set; }
     }
 
-    public class CallTransferedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
     public class CallStartedResponse
     {
         [JsonProperty("version")]
@@ -1399,12 +1350,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilistotele
 
         [JsonProperty("data")]
         public string Data { get; set; }
-    }
-
-    public class CallStartedInput
-    {
-        [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Endpoint { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class GetGroupsResponse

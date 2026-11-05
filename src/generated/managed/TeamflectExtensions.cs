@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
     public class TeamflectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Feedback, ApiConnectionActionConfiguration> SendFeedbackRequest(Expression<Func<SendFeedbackRequestInput>> body)
+        public IBodyWorkflowAction<Feedback, ApiConnectionActionConfiguration> SendFeedbackRequest(Expression<Func<SendFeedbackRequestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Feedback, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Feedback, ApiConnectionActionConfiguration> SendExternalFeedbackRequest(Expression<Func<SendExternalFeedbackRequestInput>> body)
+        public IBodyWorkflowAction<Feedback, ApiConnectionActionConfiguration> SendExternalFeedbackRequest(Expression<Func<SendExternalFeedbackRequestBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Feedback, ApiConnectionActionConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<UpdateGoalInput>> body)
+        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> UpdateGoal(Expression<Func<UpdateGoalBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Goal, ApiConnectionActionConfiguration>(() =>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<CreateGoalInput>> body)
+        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> CreateGoal(Expression<Func<CreateGoalBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Goal, ApiConnectionActionConfiguration>(() =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> AddCommentGoal(Expression<Func<AddCommentGoalInput>> comment)
+        public IBodyWorkflowAction<Goal, ApiConnectionActionConfiguration> AddCommentGoal(Expression<Func<CommentInput>> comment)
         {
             var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: true);
             return new DeferredBodyAction<Goal, ApiConnectionActionConfiguration>(() =>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionResponse[], ApiConnectionActionConfiguration> GetRecognitions(Expression<Func<GetRecognitionsInput>> body = null)
+        public IBodyWorkflowAction<RecognitionResponse[], ApiConnectionActionConfiguration> GetRecognitions(Expression<Func<GetRecognitionsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RecognitionResponse[], ApiConnectionActionConfiguration>(() =>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionCreateResponse, ApiConnectionActionConfiguration> CreateRecognition(Expression<Func<CreateRecognitionInput>> body = null)
+        public IBodyWorkflowAction<RecognitionCreateResponse, ApiConnectionActionConfiguration> CreateRecognition(Expression<Func<CreateRecognitionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RecognitionCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<UpdateUserInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateUser(Expression<Func<UpdateUserBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public string UserPrincipalName { get; set; }
     }
 
-    public class SendFeedbackRequestInput
+    public class SendFeedbackRequestBodyInput
     {
         [JsonProperty("feedbackAboutUPNorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FeedbackSubject { get; set; }
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public bool IsPrivate { get; set; }
     }
 
-    public class SendExternalFeedbackRequestInput
+    public class SendExternalFeedbackRequestBodyInput
     {
         [JsonProperty("feedbackAboutUPNorId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FeedbackSubject { get; set; }
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public double CurrentValue { get; set; }
     }
 
-    public class UpdateGoalInput
+    public class UpdateGoalBodyInput
     {
         [JsonProperty("goalId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GoalId { get; set; }
@@ -495,20 +495,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public string NewStatus { get; set; }
 
         [JsonProperty("goalUpdater", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateGoalInputUpdaterTypeType UpdaterType { get; set; }
+        public BodyInputUpdaterTypeType UpdaterType { get; set; }
 
         [JsonProperty("goalUpdaterSystemName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SystemName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateGoalInputUpdaterTypeType
+    public enum BodyInputUpdaterTypeType
     {
         Owner,
         System
     }
 
-    public class CreateGoalInput
+    public class CreateGoalBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GoalTitle { get; set; }
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public bool NotifyOwner { get; set; }
     }
 
-    public class AddCommentGoalInput
+    public class CommentInput
     {
         [JsonProperty("goalId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IdOfTheGoal { get; set; }
@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public string Id { get; set; }
     }
 
-    public class GetRecognitionsInput
+    public class GetRecognitionsBodyInput
     {
         [JsonProperty("recipientsIdsOrUPNS", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] RecipientsToSearch { get; set; }
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public double Rank { get; set; }
     }
 
-    public class CreateRecognitionInput
+    public class CreateRecognitionBodyInput
     {
         [JsonProperty("senderIdOrUPN", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecognitionSender { get; set; }
@@ -850,16 +850,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public JToken[] Attachments { get; set; }
     }
 
-    public class UpdateUserInput
+    public class UpdateUserBodyInput
     {
         [JsonProperty("userMail")]
         public string UserEmail { get; set; }
 
         [JsonProperty("userAttributes")]
-        public UpdateUserInputUserAttributesTypeItem[] UserAttributes { get; set; }
+        public BodyInputUserAttributesTypeItem[] UserAttributes { get; set; }
     }
 
-    public class UpdateUserInputUserAttributesTypeItem
+    public class BodyInputUserAttributesTypeItem
     {
         [JsonProperty("label")]
         public string AttributeLabel { get; set; }

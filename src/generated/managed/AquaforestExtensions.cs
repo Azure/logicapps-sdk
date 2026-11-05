@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     public class AquaforestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiRenameByBarcodePost200ApplicationJsonResponse, ApiConnectionActionConfiguration> GetBarcodeValue(Expression<Func<GetBarcodeValueInput>> getBarcode = null)
+        public IBodyWorkflowAction<ApiRenameByBarcodePost200ApplicationJsonResponse, ApiConnectionActionConfiguration> GetBarcodeValue(Expression<Func<GetBarcodeInput>> getBarcode = null)
         {
             var __workflow_getBarcode = WorkflowExpression.Compile(getBarcode, nameof(getBarcode), required: false);
             return new DeferredBodyAction<ApiRenameByBarcodePost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<GetPDFInfoResponse, ApiConnectionActionConfiguration> GetPdfInformation(Expression<Func<GetPdfInformationInput>> getPDFInfoRequest = null)
+        public IBodyWorkflowAction<GetPDFInfoResponse, ApiConnectionActionConfiguration> GetPdfInformation(Expression<Func<GetPDFInfoRequestInput>> getPDFInfoRequest = null)
         {
             var __workflow_getPDFInfoRequest = WorkflowExpression.Compile(getPDFInfoRequest, nameof(getPDFInfoRequest), required: false);
             return new DeferredBodyAction<GetPDFInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDataFromPdf(Expression<Func<GetDataFromPdfInput>> getDataFromPDFRequest = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetDataFromPdf(Expression<Func<GetDataFromPDFRequestInput>> getDataFromPDFRequest = null)
         {
             var __workflow_getDataFromPDFRequest = WorkflowExpression.Compile(getDataFromPDFRequest, nameof(getDataFromPDFRequest), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiGetTextValueJsonResponse, ApiConnectionActionConfiguration> GetTextValue(Expression<Func<GetTextValueInput>> getText = null)
+        public IBodyWorkflowAction<ApiGetTextValueJsonResponse, ApiConnectionActionConfiguration> GetTextValue(Expression<Func<GetTextInput>> getText = null)
         {
             var __workflow_getText = WorkflowExpression.Compile(getText, nameof(getText), required: false);
             return new DeferredBodyAction<ApiGetTextValueJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<OcrResponse, ApiConnectionActionConfiguration> OcrFileToPdf(Expression<Func<OcrFileToPdfInput>> ocrData = null)
+        public IBodyWorkflowAction<OcrResponse, ApiConnectionActionConfiguration> OcrFileToPdf(Expression<Func<OcrDataInput>> ocrData = null)
         {
             var __workflow_ocrData = WorkflowExpression.Compile(ocrData, nameof(ocrData), required: false);
             return new DeferredBodyAction<OcrResponse, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByBarcode(Expression<Func<SplitByBarcodeInput>> splitBarcode = null)
+        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByBarcode(Expression<Func<SplitBarcodeInput>> splitBarcode = null)
         {
             var __workflow_splitBarcode = WorkflowExpression.Compile(splitBarcode, nameof(splitBarcode), required: false);
             return new DeferredBodyAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitByTextInput>> splitText = null)
+        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByText(Expression<Func<SplitTextInput>> splitText = null)
         {
             var __workflow_splitText = WorkflowExpression.Compile(splitText, nameof(splitText), required: false);
             return new DeferredBodyAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByBarcode(Expression<Func<ExtractByBarcodeInput>> extractBarcode = null)
+        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByBarcode(Expression<Func<ExtractBarcodeInput>> extractBarcode = null)
         {
             var __workflow_extractBarcode = WorkflowExpression.Compile(extractBarcode, nameof(extractBarcode), required: false);
             return new DeferredBodyAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByText(Expression<Func<ExtractByTextInput>> extractText = null)
+        public IBodyWorkflowAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> ExtractByText(Expression<Func<ExtractTextInput>> extractText = null)
         {
             var __workflow_extractText = WorkflowExpression.Compile(extractText, nameof(extractText), required: false);
             return new DeferredBodyAction<ApiExtractPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aquaforest")]
-        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByPageRange(Expression<Func<SplitByPageRangeInput>> splitPdfByPage = null)
+        public IBodyWorkflowAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration> SplitByPageRange(Expression<Func<SplitPdfByPageInput>> splitPdfByPage = null)
         {
             var __workflow_splitPdfByPage = WorkflowExpression.Compile(splitPdfByPage, nameof(splitPdfByPage), required: false);
             return new DeferredBodyAction<ApiSplitPost200ApplicationJsonResponse, ApiConnectionActionConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string[] ZoneValues { get; set; }
     }
 
-    public class GetBarcodeValueInput
+    public class GetBarcodeInput
     {
         [JsonProperty("barcodeResultTemplate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BarcodeResultTemplate { get; set; } = "%VALUE1%";
@@ -214,15 +214,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileName { get; set; }
 
         [JsonProperty("zones", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetBarcodeValueInputBarcodeTypeItem[] Barcode { get; set; } = new GetBarcodeValueInputBarcodeTypeItem[]
+        public GetBarcodeInputBarcodeTypeItem[] Barcode { get; set; } = new GetBarcodeInputBarcodeTypeItem[]
         {
         };
     }
 
-    public class GetBarcodeValueInputBarcodeTypeItem
+    public class GetBarcodeInputBarcodeTypeItem
     {
         [JsonProperty("barcodeFormats")]
-        public GetBarcodeValueInputBarcodeTypeItemTypeTypeItem[] Type { get; set; }
+        public GetBarcodeInputBarcodeTypeItemTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; } = "all";
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetBarcodeValueInputBarcodeTypeItemTypeTypeItem
+    public enum GetBarcodeInputBarcodeTypeItemTypeTypeItem
     {
         [EnumMember(Value = "All 1D")]
         All1D,
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string XMPMetadata { get; set; }
     }
 
-    public class GetPdfInformationInput
+    public class GetPDFInfoRequestInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -323,16 +323,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public int? PageLimit { get; set; } = 10;
     }
 
-    public class GetDataFromPdfInput
+    public class GetDataFromPDFRequestInput
     {
         [JsonProperty("advancedFlags")]
-        public GetDataFromPdfInputAdvancedSettingsTypeItem[] AdvancedSettings { get; set; }
+        public GetDataFromPDFRequestInputAdvancedSettingsTypeItem[] AdvancedSettings { get; set; }
 
         [JsonProperty("confidenceScore")]
         public double? ConfidenceScore { get; set; }
 
         [JsonProperty("dateAsISO", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDataFromPdfInputDateConversionType? DateConversion { get; set; } = GetDataFromPdfInputDateConversionType.ISOConversionDMYInputAssumed;
+        public GetDataFromPDFRequestInputDateConversionType? DateConversion { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.GetDataFromPDFRequestInputDateConversionType.ISOConversionDMYInputAssumed;
 
         [JsonProperty("expectedKeys")]
         public string ExpectedKeys { get; set; }
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public bool? TrimSymbols { get; set; } = true;
     }
 
-    public class GetDataFromPdfInputAdvancedSettingsTypeItem
+    public class GetDataFromPDFRequestInputAdvancedSettingsTypeItem
     {
         [JsonProperty("settingName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetDataFromPdfInputDateConversionType
+    public enum GetDataFromPDFRequestInputDateConversionType
     {
         [EnumMember(Value = "Do not convert date values")]
         DoNotConvertDateValues,
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string[] ZoneValues { get; set; }
     }
 
-    public class GetTextValueInput
+    public class GetTextInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -425,12 +425,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string TextResultTemplate { get; set; } = "%VALUE1%";
 
         [JsonProperty("zones", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetTextValueInputTextTypeItem[] Text { get; set; } = new GetTextValueInputTextTypeItem[]
+        public GetTextInputTextTypeItem[] Text { get; set; } = new GetTextInputTextTypeItem[]
         {
         };
     }
 
-    public class GetTextValueInputTextTypeItem
+    public class GetTextInputTextTypeItem
     {
         [JsonProperty("expression")]
         public string[] Value { get; set; }
@@ -442,14 +442,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public int? PageDeprecated { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetTextValueInputTextTypeItemSelectType? Select { get; set; } = GetTextValueInputTextTypeItemSelectType.TextInZone;
+        public GetTextInputTextTypeItemSelectType? Select { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.GetTextInputTextTypeItemSelectType.TextInZone;
 
         [JsonProperty("regex")]
         public string Pattern { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetTextValueInputTextTypeItemSelectType
+    public enum GetTextInputTextTypeItemSelectType
     {
         [EnumMember(Value = "text in zone")]
         TextInZone,
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string ProcessedFileContent { get; set; }
     }
 
-    public class OcrFileToPdfInput
+    public class OcrDataInput
     {
         [JsonProperty("aquaforestImageTimeout", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? AquaforestImageTimeout { get; set; } = 120000;
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string Jbig2EncFlags { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrFileToPdfInputLanguageType? Language { get; set; } = OcrFileToPdfInputLanguageType.English;
+        public OcrDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.OcrDataInputLanguageType.English;
 
         [JsonProperty("libTiffSavePageAsBmp", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? LibTiffSavePageAsBmp { get; set; } = false;
@@ -597,13 +597,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string Password { get; set; }
 
         [JsonProperty("pdfToImageBpp")]
-        public OcrFileToPdfInputPdfToImageBppType? PdfToImageBpp { get; set; }
+        public OcrDataInputPdfToImageBppType? PdfToImageBpp { get; set; }
 
         [JsonProperty("pdfToImageCompression")]
-        public OcrFileToPdfInputPdfToImageCompressionType? PdfToImageCompression { get; set; }
+        public OcrDataInputPdfToImageCompressionType? PdfToImageCompression { get; set; }
 
         [JsonProperty("pdfToImageDpi")]
-        public OcrFileToPdfInputPdfToImageDpiType? PdfToImageDpi { get; set; }
+        public OcrDataInputPdfToImageDpiType? PdfToImageDpi { get; set; }
 
         [JsonProperty("pdfToImageForceVectorCheck", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? PdfToImageForceVectorCheck { get; set; } = false;
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public int? PdfToImageMinRes { get; set; } = 200;
 
         [JsonProperty("pdfaVersion")]
-        public OcrFileToPdfInputPDFAVersionType? PDFAVersion { get; set; }
+        public OcrDataInputPDFAVersionType? PDFAVersion { get; set; }
 
         [JsonProperty("pipeClientConnectionTimeout", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? PipeClientConnectionTimeout { get; set; } = 60000;
@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrFileToPdfInputLanguageType
+    public enum OcrDataInputLanguageType
     {
         English,
         German,
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrFileToPdfInputPdfToImageBppType
+    public enum OcrDataInputPdfToImageBppType
     {
         [EnumMember(Value = "Bpp_1")]
         Bpp1,
@@ -730,14 +730,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrFileToPdfInputPdfToImageCompressionType
+    public enum OcrDataInputPdfToImageCompressionType
     {
         CCITT4,
         LZW
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrFileToPdfInputPdfToImageDpiType
+    public enum OcrDataInputPdfToImageDpiType
     {
         [EnumMember(Value = "DPI_72")]
         DPI72,
@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrFileToPdfInputPDFAVersionType
+    public enum OcrDataInputPDFAVersionType
     {
         [EnumMember(Value = "PDF_A1b")]
         PDFA1b,
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string PageRange { get; set; }
     }
 
-    public class SplitByBarcodeInput
+    public class SplitBarcodeInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileNameTemplate { get; set; } = "%VALUE1%";
 
         [JsonProperty("noMatch", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByBarcodeInputPagesWithNoMatchType? PagesWithNoMatch { get; set; } = SplitByBarcodeInputPagesWithNoMatchType.DoNotCopyToOutput;
+        public SplitBarcodeInputPagesWithNoMatchType? PagesWithNoMatch { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.SplitBarcodeInputPagesWithNoMatchType.DoNotCopyToOutput;
 
         [JsonProperty("noTextFileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NoBarcodeMatchTemplate { get; set; } = "NoText_%FILENAME%";
@@ -810,14 +810,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileName { get; set; }
 
         [JsonProperty("splitOption", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByBarcodeInputOutputFileOptionsType? OutputFileOptions { get; set; } = SplitByBarcodeInputOutputFileOptionsType.BarcodeOnFirstPage;
+        public SplitBarcodeInputOutputFileOptionsType? OutputFileOptions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.SplitBarcodeInputOutputFileOptionsType.BarcodeOnFirstPage;
 
         [JsonProperty("zones")]
-        public SplitByBarcodeInputBarcodeTypeItem[] Barcode { get; set; }
+        public SplitBarcodeInputBarcodeTypeItem[] Barcode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByBarcodeInputPagesWithNoMatchType
+    public enum SplitBarcodeInputPagesWithNoMatchType
     {
         [EnumMember(Value = "Do not copy to output")]
         DoNotCopyToOutput,
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByBarcodeInputOutputFileOptionsType
+    public enum SplitBarcodeInputOutputFileOptionsType
     {
         [EnumMember(Value = "Barcode on first page")]
         BarcodeOnFirstPage,
@@ -838,10 +838,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         RemoveBarcodePage
     }
 
-    public class SplitByBarcodeInputBarcodeTypeItem
+    public class SplitBarcodeInputBarcodeTypeItem
     {
         [JsonProperty("barcodeFormats")]
-        public SplitByBarcodeInputBarcodeTypeItemTypeTypeItem[] Type { get; set; }
+        public SplitBarcodeInputBarcodeTypeItemTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; } = "all";
@@ -851,7 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByBarcodeInputBarcodeTypeItemTypeTypeItem
+    public enum SplitBarcodeInputBarcodeTypeItemTypeTypeItem
     {
         [EnumMember(Value = "All 1D")]
         All1D,
@@ -889,7 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         UPCEANEXTENSION
     }
 
-    public class SplitByTextInput
+    public class SplitTextInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileNameTemplate { get; set; } = "%VALUE1%";
 
         [JsonProperty("noMatch", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByTextInputPagesWithNoMatchType? PagesWithNoMatch { get; set; } = SplitByTextInputPagesWithNoMatchType.DoNotCopyToOutput;
+        public SplitTextInputPagesWithNoMatchType? PagesWithNoMatch { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.SplitTextInputPagesWithNoMatchType.DoNotCopyToOutput;
 
         [JsonProperty("noTextFileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NoFileTemplate { get; set; } = "NoText_%FILENAME%";
@@ -907,14 +907,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileName { get; set; }
 
         [JsonProperty("splitOption", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByTextInputOutputFileOptionsType? OutputFileOptions { get; set; } = SplitByTextInputOutputFileOptionsType.PageThatMatchesTextOnFirstPage;
+        public SplitTextInputOutputFileOptionsType? OutputFileOptions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.SplitTextInputOutputFileOptionsType.PageThatMatchesTextOnFirstPage;
 
         [JsonProperty("zones")]
-        public SplitByTextInputTextTypeItem[] Text { get; set; }
+        public SplitTextInputTextTypeItem[] Text { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByTextInputPagesWithNoMatchType
+    public enum SplitTextInputPagesWithNoMatchType
     {
         [EnumMember(Value = "Do not copy to output")]
         DoNotCopyToOutput,
@@ -925,7 +925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByTextInputOutputFileOptionsType
+    public enum SplitTextInputOutputFileOptionsType
     {
         [EnumMember(Value = "Page that matches text on first page")]
         PageThatMatchesTextOnFirstPage,
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         RemoveThePageThatMatchesText
     }
 
-    public class SplitByTextInputTextTypeItem
+    public class SplitTextInputTextTypeItem
     {
         [JsonProperty("expression")]
         public string[] Value { get; set; }
@@ -944,14 +944,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string Location { get; set; } = "all";
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByTextInputTextTypeItemSelectType? Select { get; set; } = SplitByTextInputTextTypeItemSelectType.TextInZone;
+        public SplitTextInputTextTypeItemSelectType? Select { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.SplitTextInputTextTypeItemSelectType.TextInZone;
 
         [JsonProperty("regex")]
         public string Pattern { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByTextInputTextTypeItemSelectType
+    public enum SplitTextInputTextTypeItemSelectType
     {
         [EnumMember(Value = "text in zone")]
         TextInZone,
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string PageNumber { get; set; }
     }
 
-    public class ExtractByBarcodeInput
+    public class ExtractBarcodeInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -1009,13 +1009,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileName { get; set; }
 
         [JsonProperty("zones")]
-        public ExtractByBarcodeInputBarcodeTypeItem[] Barcode { get; set; }
+        public ExtractBarcodeInputBarcodeTypeItem[] Barcode { get; set; }
     }
 
-    public class ExtractByBarcodeInputBarcodeTypeItem
+    public class ExtractBarcodeInputBarcodeTypeItem
     {
         [JsonProperty("barcodeFormats")]
-        public ExtractByBarcodeInputBarcodeTypeItemTypeTypeItem[] Type { get; set; }
+        public ExtractBarcodeInputBarcodeTypeItemTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; } = "all";
@@ -1025,7 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractByBarcodeInputBarcodeTypeItemTypeTypeItem
+    public enum ExtractBarcodeInputBarcodeTypeItemTypeTypeItem
     {
         [EnumMember(Value = "All 1D")]
         All1D,
@@ -1063,7 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         UPCEANEXTENSION
     }
 
-    public class ExtractByTextInput
+    public class ExtractTextInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -1078,10 +1078,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileName { get; set; }
 
         [JsonProperty("zones")]
-        public ExtractByTextInputTextTypeItem[] Text { get; set; }
+        public ExtractTextInputTextTypeItem[] Text { get; set; }
     }
 
-    public class ExtractByTextInputTextTypeItem
+    public class ExtractTextInputTextTypeItem
     {
         [JsonProperty("expression")]
         public string[] Value { get; set; }
@@ -1090,14 +1090,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string Location { get; set; } = "all";
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractByTextInputTextTypeItemSelectType? Select { get; set; } = ExtractByTextInputTextTypeItemSelectType.TextInZone;
+        public ExtractTextInputTextTypeItemSelectType? Select { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.ExtractTextInputTextTypeItemSelectType.TextInZone;
 
         [JsonProperty("regex")]
         public string Pattern { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractByTextInputTextTypeItemSelectType
+    public enum ExtractTextInputTextTypeItemSelectType
     {
         [EnumMember(Value = "text in zone")]
         TextInZone,
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         AllTextInZoneBeforeValue
     }
 
-    public class SplitByPageRangeInput
+    public class SplitPdfByPageInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
@@ -1127,7 +1127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
         public string FileName { get; set; }
 
         [JsonProperty("splitOption", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitByPageRangeInputSplitTypeType SplitType { get; set; } = SplitByPageRangeInputSplitTypeType.SplitIntoSinglePages;
+        public SplitPdfByPageInputSplitTypeType SplitType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest.SplitPdfByPageInputSplitTypeType.SplitIntoSinglePages;
 
         [JsonProperty("pageRange")]
         public string PageRange { get; set; }
@@ -1143,7 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aquaforest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitByPageRangeInputSplitTypeType
+    public enum SplitPdfByPageInputSplitTypeType
     {
         [EnumMember(Value = "Split into Single Pages")]
         SplitIntoSinglePages,

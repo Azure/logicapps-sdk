@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
-        public IBodyWorkflowAction<PageableMessageListV2, ApiConnectionActionConfiguration> GetAllMessages(Expression<Func<string>> networkId = null, Expression<Func<int>> olderThan = null, Expression<Func<int>> newerThan = null, Expression<Func<threadedInput>> threaded = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<PageableMessageListV2, ApiConnectionActionConfiguration> GetAllMessages(Expression<Func<string>> networkId = null, Expression<Func<int>> olderThan = null, Expression<Func<int>> newerThan = null, Expression<Func<ThreadedInput>> threaded = null, Expression<Func<int>> limit = null)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
             var __workflow_olderThan = WorkflowExpression.Compile(olderThan, nameof(olderThan), required: false);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
-        public IBodyWorkflowAction<PageableMessageListV2, ApiConnectionActionConfiguration> GetMessagesFollowing(Expression<Func<string>> networkId = null, Expression<Func<int>> olderThan = null, Expression<Func<int>> newerThan = null, Expression<Func<threadedInput>> threaded = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<PageableMessageListV2, ApiConnectionActionConfiguration> GetMessagesFollowing(Expression<Func<string>> networkId = null, Expression<Func<int>> olderThan = null, Expression<Func<int>> newerThan = null, Expression<Func<ThreadedInput>> threaded = null, Expression<Func<int>> limit = null)
         {
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
             var __workflow_olderThan = WorkflowExpression.Compile(olderThan, nameof(olderThan), required: false);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
-        public IBodyWorkflowAction<PageableMessageListV2, ApiConnectionActionConfiguration> GetMessagesInGroup(Expression<Func<int>> groupId, Expression<Func<string>> networkId = null, Expression<Func<int>> olderThan = null, Expression<Func<int>> newerThan = null, Expression<Func<threadedInput>> threaded = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<PageableMessageListV2, ApiConnectionActionConfiguration> GetMessagesInGroup(Expression<Func<int>> groupId, Expression<Func<string>> networkId = null, Expression<Func<int>> olderThan = null, Expression<Func<int>> newerThan = null, Expression<Func<ThreadedInput>> threaded = null, Expression<Func<int>> limit = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yammer")]
-        public IBodyWorkflowAction<MessageListV2, ApiConnectionActionConfiguration> PostMessage(Expression<Func<PostMessageV2Input>> input, Expression<Func<string>> networkId = null)
+        public IBodyWorkflowAction<MessageListV2, ApiConnectionActionConfiguration> PostMessage(Expression<Func<InputInput>> input, Expression<Func<string>> networkId = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum threadedInput
+    public enum ThreadedInput
     {
         [EnumMember(Value = "true")]
         True,
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yammer
         public MessageV2[] Messages { get; set; }
     }
 
-    public class PostMessageV2Input
+    public class InputInput
     {
         [JsonProperty("group_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GroupId { get; set; }

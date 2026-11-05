@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     public class ConnectiveesignaturesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration> CreateInstantPackage(Expression<Func<CreateInstantPackageInput>> body = null)
+        public IBodyWorkflowAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration> CreateInstantPackage(Expression<Func<CreateInstantPackageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateInstantPackageResponse, ApiConnectionActionConfiguration>(() =>
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreatePackageResponse, ApiConnectionActionConfiguration> CreatePackage(Expression<Func<string>> contentType, Expression<Func<CreatePackageInput>> body = null)
+        public IBodyWorkflowAction<CreatePackageResponse, ApiConnectionActionConfiguration> CreatePackage(Expression<Func<string>> contentType, Expression<Func<CreatePackageBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<AddDocumentToPackageResponse, ApiConnectionActionConfiguration> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<AddDocumentToPackageInput>> body = null)
+        public IBodyWorkflowAction<AddDocumentToPackageResponse, ApiConnectionActionConfiguration> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<AddDocumentToPackageBodyInput>> body = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageStatusInfo, ApiConnectionActionConfiguration> SetPackageStatus(Expression<Func<string>> id, Expression<Func<SetPackageStatusInput>> body)
+        public IBodyWorkflowAction<PackageStatusInfo, ApiConnectionActionConfiguration> SetPackageStatus(Expression<Func<string>> id, Expression<Func<SetPackageStatusBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<ExpiryTimeStampInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<ExpiryTimeStampBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetProcessInformation(Expression<Func<string>> id, Expression<Func<SetProcessInformationInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetProcessInformation(Expression<Func<string>> id, Expression<Func<SetProcessInformationBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<ProofExternalSourceInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<ProofExternalSourceBodyInput>> body = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -314,11 +314,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string CreationTimestamp { get; set; }
     }
 
-    public class CreateInstantPackageInput
+    public class CreateInstantPackageBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Document { get; set; } = global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent.FromBase64("");
-        public CreateInstantPackageInputDocumentLanguageType? DocumentLanguage { get; set; }
+        public BodyInputDocumentLanguageType? DocumentLanguage { get; set; }
         public string DocumentName { get; set; }
         public string ExternalPackageData { get; set; }
         public string Initiator { get; set; }
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateInstantPackageInputDocumentLanguageType
+    public enum BodyInputDocumentLanguageType
     {
         [EnumMember(Value = "en")]
         En,
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string CreationTimestamp { get; set; }
     }
 
-    public class CreatePackageInput
+    public class CreatePackageBodyInput
     {
         public string Initiator { get; set; }
         public string PackageName { get; set; }
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public int PageNumber { get; set; }
     }
 
-    public class AddDocumentToPackageInput
+    public class AddDocumentToPackageBodyInput
     {
         public string Document { get; set; }
         public string DocumentLanguage { get; set; }
@@ -553,24 +553,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string UsedSigningType { get; set; }
     }
 
-    public class SetPackageStatusInput
+    public class SetPackageStatusBodyInput
     {
         public string Status { get; set; }
     }
 
-    public class ExpiryTimeStampInput
+    public class ExpiryTimeStampBodyInput
     {
         public string ExpiryTimestamp { get; set; }
     }
 
-    public class SetProcessInformationInput
+    public class SetProcessInformationBodyInput
     {
-        public SetProcessInformationInputStakeholdersTypeItem[] Stakeholders { get; set; }
+        public BodyInputStakeholdersTypeItem[] Stakeholders { get; set; }
     }
 
-    public class SetProcessInformationInputStakeholdersTypeItem
+    public class BodyInputStakeholdersTypeItem
     {
-        public SetProcessInformationInputStakeholdersTypeItemActorsTypeItem[] Actors { get; set; }
+        public BodyInputStakeholdersTypeItemActorsTypeItem[] Actors { get; set; }
         public string EmailAddress { get; set; }
         public string FirstName { get; set; }
         public string Language { get; set; }
@@ -579,29 +579,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string ExternalStakeholderReference { get; set; }
     }
 
-    public class SetProcessInformationInputStakeholdersTypeItemActorsTypeItem
+    public class BodyInputStakeholdersTypeItemActorsTypeItem
     {
-        public SetProcessInformationInputStakeholdersTypeItemActorsTypeItemTypeType? Type { get; set; }
+        public BodyInputStakeholdersTypeItemActorsTypeItemTypeType? Type { get; set; }
         public string OrderIndex { get; set; }
         public string[] LocationIds { get; set; }
         public SigningTypeInfo[] SigningTypes { get; set; }
         public string Phonenumber { get; set; }
         public string RedirectURL { get; set; }
         public bool? SendNotifications { get; set; }
-        public SetProcessInformationInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem[] UserRoles { get; set; }
+        public BodyInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem[] UserRoles { get; set; }
         public string LegalNoticeCode { get; set; }
         public string LegalNoticetext { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetProcessInformationInputStakeholdersTypeItemActorsTypeItemTypeType
+    public enum BodyInputStakeholdersTypeItemActorsTypeItemTypeType
     {
         Signer,
         Receiver
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetProcessInformationInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem
+    public enum BodyInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem
     {
         LEGALNOTICE1,
         LEGALNOTICE2,
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string Content { get; set; }
     }
 
-    public class ProofExternalSourceInput
+    public class ProofExternalSourceBodyInput
     {
         public string Content { get; set; }
         public string LocationId { get; set; }

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EventControllerSubscribeCallback(Expression<Func<EventControllerSubscribeCallbackInput>> @event)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EventControllerSubscribeCallback(Expression<Func<EventInput>> @event)
         {
             var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "actsoft")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> TrackingControllerSubscribeCallback(Expression<Func<TrackingControllerSubscribeCallbackInput>> position)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> TrackingControllerSubscribeCallback(Expression<Func<PositionInput>> position)
         {
             var __workflow_position = WorkflowExpression.Compile(position, nameof(position), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         _2 = 2
     }
 
-    public class EventControllerSubscribeCallbackInput
+    public class EventInput
     {
         public string Id { get; set; }
         public int? EventType { get; set; }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Actsoft
         public JToken EventParams { get; set; }
     }
 
-    public class TrackingControllerSubscribeCallbackInput
+    public class PositionInput
     {
         public string Id { get; set; }
         public string DeviceId { get; set; }

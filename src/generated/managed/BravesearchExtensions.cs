@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     public class BravesearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<WebSearchGetResponse, ApiConnectionActionConfiguration> WebSearchGet(Expression<Func<string>> q, Expression<Func<cacheControlInput>> cacheControl = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> xLocLat = null, Expression<Func<string>> xLocLong = null, Expression<Func<string>> xLocTimezone = null, Expression<Func<string>> xLocCity = null, Expression<Func<string>> xLocState = null, Expression<Func<string>> xLocStateName = null, Expression<Func<string>> xLocCountry = null, Expression<Func<string>> xLocPostalCode = null, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<uiLangInput>> uiLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<string>> freshness = null, Expression<Func<bool>> textDecorations = null, Expression<Func<bool>> spellcheck = null, Expression<Func<string>> resultFilter = null, Expression<Func<string>> gogglesId = null, Expression<Func<string>> units = null, Expression<Func<bool>> extraSnippets = null, Expression<Func<bool>> summary = null)
+        public IBodyWorkflowAction<WebSearchGetResponse, ApiConnectionActionConfiguration> WebSearchGet(Expression<Func<string>> q, Expression<Func<CacheControlInput>> cacheControl = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> xLocLat = null, Expression<Func<string>> xLocLong = null, Expression<Func<string>> xLocTimezone = null, Expression<Func<string>> xLocCity = null, Expression<Func<string>> xLocState = null, Expression<Func<string>> xLocStateName = null, Expression<Func<string>> xLocCountry = null, Expression<Func<string>> xLocPostalCode = null, Expression<Func<CountryInput>> country = null, Expression<Func<SearchLangInput>> searchLang = null, Expression<Func<UiLangInput>> uiLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<SafesearchInput>> safesearch = null, Expression<Func<string>> freshness = null, Expression<Func<bool>> textDecorations = null, Expression<Func<bool>> spellcheck = null, Expression<Func<string>> resultFilter = null, Expression<Func<string>> gogglesId = null, Expression<Func<string>> units = null, Expression<Func<bool>> extraSnippets = null, Expression<Func<bool>> summary = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_cacheControl = WorkflowExpression.Compile(cacheControl, nameof(cacheControl), required: false);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<ImageSearchGetResponse, ApiConnectionActionConfiguration> ImageSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
+        public IBodyWorkflowAction<ImageSearchGetResponse, ApiConnectionActionConfiguration> ImageSearchGet(Expression<Func<string>> q, Expression<Func<CountryInput>> country = null, Expression<Func<SearchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<SafesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<VideoSearchGetResponse, ApiConnectionActionConfiguration> VideoSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
+        public IBodyWorkflowAction<VideoSearchGetResponse, ApiConnectionActionConfiguration> VideoSearchGet(Expression<Func<string>> q, Expression<Func<CountryInput>> country = null, Expression<Func<SearchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<SafesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<NewsSearchGetResponse, ApiConnectionActionConfiguration> NewsSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null, Expression<Func<freshnessInput>> freshness = null, Expression<Func<bool>> extraSnippets = null)
+        public IBodyWorkflowAction<NewsSearchGetResponse, ApiConnectionActionConfiguration> NewsSearchGet(Expression<Func<string>> q, Expression<Func<CountryInput>> country = null, Expression<Func<SearchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<SafesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null, Expression<Func<FreshnessInput>> freshness = null, Expression<Func<bool>> extraSnippets = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<SuggestionSearchGetResponse, ApiConnectionActionConfiguration> SuggestionSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null, Expression<Func<int>> count = null, Expression<Func<bool>> rich = null)
+        public IBodyWorkflowAction<SuggestionSearchGetResponse, ApiConnectionActionConfiguration> SuggestionSearchGet(Expression<Func<string>> q, Expression<Func<CountryInput>> country = null, Expression<Func<LangInput>> lang = null, Expression<Func<int>> count = null, Expression<Func<bool>> rich = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<SpellcheckSearchGetResponse, ApiConnectionActionConfiguration> SpellcheckSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null)
+        public IBodyWorkflowAction<SpellcheckSearchGetResponse, ApiConnectionActionConfiguration> SpellcheckSearchGet(Expression<Func<string>> q, Expression<Func<CountryInput>> country = null, Expression<Func<LangInput>> lang = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
@@ -630,14 +630,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cacheControlInput
+    public enum CacheControlInput
     {
         [EnumMember(Value = "no-cache")]
         NoCache
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countryInput
+    public enum CountryInput
     {
         ALL,
         AR,
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchLangInput
+    public enum SearchLangInput
     {
         [EnumMember(Value = "ar")]
         Ar,
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum uiLangInput
+    public enum UiLangInput
     {
         [EnumMember(Value = "ar")]
         Ar,
@@ -890,7 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum safesearchInput
+    public enum SafesearchInput
     {
         [EnumMember(Value = "strict")]
         Strict,
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum freshnessInput
+    public enum FreshnessInput
     {
         [EnumMember(Value = "pd")]
         Pd,
@@ -1209,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum langInput
+    public enum LangInput
     {
         [EnumMember(Value = "ar")]
         Ar,

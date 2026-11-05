@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
     public class InfusionsoftActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infusionsoft")]
-        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infusionsoft")]
-        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<int>> id, Expression<Func<UpdateTaskInput>> body)
+        public IBodyWorkflowAction<TaskResponse, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<int>> id, Expression<Func<BodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         public string DueDate { get; set; }
     }
 
-    public class CreateTaskInput
+    public class BodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         public string Description { get; set; }
 
         [JsonProperty("type")]
-        public CreateTaskInputTypeType? Type { get; set; }
+        public BodyInputTypeType? Type { get; set; }
 
         [JsonProperty("priority")]
         public int? Priority { get; set; }
@@ -116,36 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTaskInputTypeType
-    {
-        Call,
-        Email,
-        Appointment,
-        Fax,
-        Letter,
-        Other
-    }
-
-    public class UpdateTaskInput
-    {
-        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("type")]
-        public UpdateTaskInputTypeType? Type { get; set; }
-
-        [JsonProperty("priority")]
-        public int? Priority { get; set; }
-
-        [JsonProperty("due_date")]
-        public string DueDateFormatYYYYMMDdThhMmSsFffZ { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputTypeType
+    public enum BodyInputTypeType
     {
         Call,
         Email,

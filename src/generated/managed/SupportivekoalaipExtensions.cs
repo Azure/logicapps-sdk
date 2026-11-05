@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     public class SupportivekoalaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImagesPostResponse, ApiConnectionActionConfiguration> Images(Expression<Func<ImagesPostInput>> body = null)
+        public IBodyWorkflowAction<ImagesResponse, ApiConnectionActionConfiguration> Images(Expression<Func<ImagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ImagesPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ImagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/images/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ImagesPostResponse>(callPayload);
+                return new ApiConnectionAction<ImagesResponse>(callPayload);
             });
         }
 
@@ -53,17 +53,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplatePostResponse, ApiConnectionActionConfiguration> Template(Expression<Func<TemplatePostInput>> body = null)
+        public IBodyWorkflowAction<TemplateResponse, ApiConnectionActionConfiguration> Template(Expression<Func<TemplateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TemplatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/templates/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+                return new ApiConnectionAction<TemplateResponse>(callPayload);
             });
         }
 
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     {
     }
 
-    public class ImagesPostResponse
+    public class ImagesResponse
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
-    public class ImagesPostInput
+    public class ImagesBodyInput
     {
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Template { get; set; }
@@ -127,11 +127,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public JToken Params { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImagesPostInputFormatType? Format { get; set; } = ImagesPostInputFormatType.Png;
+        public BodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip.BodyInputFormatType.Png;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImagesPostInputFormatType
+    public enum BodyInputFormatType
     {
         [EnumMember(Value = "png")]
         Png,
@@ -183,10 +183,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
-    public class TemplatePostResponse
+    public class TemplateResponse
     {
         [JsonProperty("generatedImages")]
-        public TemplatePostResponseGeneratedImagesTypeItem[] GeneratedImages { get; set; }
+        public TemplateResponseGeneratedImagesTypeItem[] GeneratedImages { get; set; }
 
         [JsonProperty("width")]
         public int Width { get; set; }
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
-    public class TemplatePostResponseGeneratedImagesTypeItem
+    public class TemplateResponseGeneratedImagesTypeItem
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
-    public class TemplatePostInput
+    public class TemplateBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

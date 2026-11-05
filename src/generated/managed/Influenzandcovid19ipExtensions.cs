@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     public class Influenzandcovid19ipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallUSStatesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallUSStates(Expression<Func<sortInput>> sort = null, Expression<Func<bool>> yesterday = null, Expression<Func<bool>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19totalsforallUSStatesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallUSStates(Expression<Func<GetCOVID19totalsforallUSStatesSortInput>> sort = null, Expression<Func<bool>> yesterday = null, Expression<Func<bool>> allowNull = null)
         {
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforspecificUSStatesResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforspecificUSStates(Expression<Func<statesInput>> states, Expression<Func<string>> yesterday = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19totalsforspecificUSStatesResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforspecificUSStates(Expression<Func<StatesInput>> states, Expression<Func<string>> yesterday = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_states = WorkflowExpression.Compile(states, nameof(states), required: true);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallcontinents(Expression<Func<bool>> yesterday = null, Expression<Func<bool>> twoDaysAgo = null, Expression<Func<sortInput2>> sort = null, Expression<Func<bool>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallcontinents(Expression<Func<bool>> yesterday = null, Expression<Func<bool>> twoDaysAgo = null, Expression<Func<GetCOVID19totalsforallcontinentsSortInput>> sort = null, Expression<Func<bool>> allowNull = null)
         {
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_twoDaysAgo = WorkflowExpression.Compile(twoDaysAgo, nameof(twoDaysAgo), required: false);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcontinentResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcontinent(Expression<Func<continentInput>> continent, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcontinentResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcontinent(Expression<Func<ContinentInput>> continent, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_continent = WorkflowExpression.Compile(continent, nameof(continent), required: true);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcountry(Expression<Func<countryInput>> country, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcountry(Expression<Func<GetCOVID19timeseriesdataforaspecificcountryCountryInput>> country, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountyResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcounty(Expression<Func<countyInput>> county)
+        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountyResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcounty(Expression<Func<CountyInput>> county)
         {
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: true);
             return new DeferredBodyAction<GetCOVID19totalsforaspecificcountyResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforaspecificcountry(Expression<Func<countryInput>> country, Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetCOVID19timeseriesdataforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforaspecificcountry(Expression<Func<GetCOVID19timeseriesdataforaspecificcountryCountryInput>> country, Expression<Func<string>> lastdays = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstate(Expression<Func<stateInput>> state, Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstate(Expression<Func<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateStateInput>> state, Expression<Func<string>> lastdays = null)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforsincethepandemicbeganResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforsincethepandemicbegan(Expression<Func<countyInput>> county, Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetCOVID19timeseriesdataforsincethepandemicbeganResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforsincethepandemicbegan(Expression<Func<CountyInput>> county, Expression<Func<string>> lastdays = null)
         {
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration> GetCOVID19governmentreporteddataforaspecificcountry(Expression<Func<countryInput2>> country, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration> GetCOVID19governmentreporteddataforaspecificcountry(Expression<Func<GetCOVID19governmentreporteddataforaspecificcountryCountryInput>> country, Expression<Func<string>> allowNull = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforasinglecountry(Expression<Func<countryInput3>> country, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCOVID19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforasinglecountry(Expression<Func<GetCOVID19vaccinedoseforasinglecountryCountryInput>> country, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedoseforastateResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforastate(Expression<Func<stateInput2>> state, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCOVID19vaccinedoseforastateResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforastate(Expression<Func<GetCOVID19vaccinedoseforastateStateInput>> state, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum GetCOVID19totalsforallUSStatesSortInput
     {
         [EnumMember(Value = "cases")]
         Cases,
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statesInput
+    public enum StatesInput
     {
         [EnumMember(Value = "alabama")]
         Alabama,
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput2
+    public enum GetCOVID19totalsforallcontinentsSortInput
     {
         [EnumMember(Value = "cases")]
         Cases,
@@ -888,7 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum continentInput
+    public enum ContinentInput
     {
         [EnumMember(Value = "North America")]
         NorthAmerica,
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countryInput
+    public enum GetCOVID19timeseriesdataforaspecificcountryCountryInput
     {
         Australia,
         [EnumMember(Value = "Cook Islands")]
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countyInput
+    public enum CountyInput
     {
         Abbeville,
         Acadia,
@@ -3430,7 +3430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stateInput
+    public enum GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateStateInput
     {
         [EnumMember(Value = "alabama")]
         Alabama,
@@ -3701,7 +3701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countryInput2
+    public enum GetCOVID19governmentreporteddataforaspecificcountryCountryInput
     {
         Austria,
         Canada,
@@ -3754,7 +3754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countryInput3
+    public enum GetCOVID19vaccinedoseforasinglecountryCountryInput
     {
         Afghanistan,
         Albania,
@@ -4050,7 +4050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stateInput2
+    public enum GetCOVID19vaccinedoseforastateStateInput
     {
         Alabama,
         Alaska,

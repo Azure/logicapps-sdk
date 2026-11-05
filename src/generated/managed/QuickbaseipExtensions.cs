@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     public class QuickbaseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateAppResponse, ApiConnectionActionConfiguration> CreateApp(Expression<Func<CreateAppInput>> generated = null)
+        public IBodyWorkflowAction<CreateAppResponse, ApiConnectionActionConfiguration> CreateApp(Expression<Func<CreateAppGeneratedInput>> generated = null)
         {
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<CreateAppResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<DeleteAppResponse, ApiConnectionActionConfiguration> DeleteApp(Expression<Func<string>> appId, Expression<Func<DeleteAppInput>> generated = null)
+        public IBodyWorkflowAction<DeleteAppResponse, ApiConnectionActionConfiguration> DeleteApp(Expression<Func<string>> appId, Expression<Func<DeleteAppGeneratedInput>> generated = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<UpdateAppResponse, ApiConnectionActionConfiguration> UpdateApp(Expression<Func<string>> appId, Expression<Func<UpdateAppInput>> generated = null)
+        public IBodyWorkflowAction<UpdateAppResponse, ApiConnectionActionConfiguration> UpdateApp(Expression<Func<string>> appId, Expression<Func<UpdateAppGeneratedInput>> generated = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CopyAppResponse, ApiConnectionActionConfiguration> CopyApp(Expression<Func<string>> appId, Expression<Func<CopyAppInput>> generated = null)
+        public IBodyWorkflowAction<CopyAppResponse, ApiConnectionActionConfiguration> CopyApp(Expression<Func<string>> appId, Expression<Func<CopyAppGeneratedInput>> generated = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateTableResponse, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> appId, Expression<Func<CreateTableInput>> generated = null)
+        public IBodyWorkflowAction<CreateTableResponse, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> appId, Expression<Func<CreateTableGeneratedInput>> generated = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<UpdateTableResponse, ApiConnectionActionConfiguration> UpdateTable(Expression<Func<string>> appId, Expression<Func<string>> tableId, Expression<Func<UpdateTableInput>> generated = null)
+        public IBodyWorkflowAction<UpdateTableResponse, ApiConnectionActionConfiguration> UpdateTable(Expression<Func<string>> appId, Expression<Func<string>> tableId, Expression<Func<UpdateTableGeneratedInput>> generated = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateRelationshipResponse, ApiConnectionActionConfiguration> CreateRelationship(Expression<Func<string>> tableId, Expression<Func<CreateRelationshipInput>> generated = null)
+        public IBodyWorkflowAction<CreateRelationshipResponse, ApiConnectionActionConfiguration> CreateRelationship(Expression<Func<string>> tableId, Expression<Func<CreateRelationshipGeneratedInput>> generated = null)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<UpdateRelationshipResponse, ApiConnectionActionConfiguration> UpdateRelationship(Expression<Func<string>> tableId, Expression<Func<double>> relationshipId, Expression<Func<UpdateRelationshipInput>> generated = null)
+        public IBodyWorkflowAction<UpdateRelationshipResponse, ApiConnectionActionConfiguration> UpdateRelationship(Expression<Func<string>> tableId, Expression<Func<double>> relationshipId, Expression<Func<UpdateRelationshipGeneratedInput>> generated = null)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
             var __workflow_relationshipId = WorkflowExpression.Compile(relationshipId, nameof(relationshipId), required: true);
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<DeleteFieldsResponse, ApiConnectionActionConfiguration> DeleteFields(Expression<Func<string>> tableId, Expression<Func<DeleteFieldsInput>> generated = null)
+        public IBodyWorkflowAction<DeleteFieldsResponse, ApiConnectionActionConfiguration> DeleteFields(Expression<Func<string>> tableId, Expression<Func<DeleteFieldsGeneratedInput>> generated = null)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> tableId, Expression<Func<CreateFieldInput>> generated = null)
+        public IBodyWorkflowAction<CreateFieldResponse, ApiConnectionActionConfiguration> CreateField(Expression<Func<string>> tableId, Expression<Func<CreateFieldGeneratedInput>> generated = null)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<UpdateFieldResponse, ApiConnectionActionConfiguration> UpdateField(Expression<Func<string>> tableId, Expression<Func<int>> fieldId, Expression<Func<UpdateFieldInput>> generated = null)
+        public IBodyWorkflowAction<UpdateFieldResponse, ApiConnectionActionConfiguration> UpdateField(Expression<Func<string>> tableId, Expression<Func<int>> fieldId, Expression<Func<UpdateFieldGeneratedInput>> generated = null)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
             var __workflow_fieldId = WorkflowExpression.Compile(fieldId, nameof(fieldId), required: true);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<RunFormulaResponse, ApiConnectionActionConfiguration> RunFormula(Expression<Func<RunFormulaInput>> generated = null)
+        public IBodyWorkflowAction<RunFormulaResponse, ApiConnectionActionConfiguration> RunFormula(Expression<Func<RunFormulaGeneratedInput>> generated = null)
         {
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<RunFormulaResponse, ApiConnectionActionConfiguration>(() =>
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<DeleteRecordsResponse, ApiConnectionActionConfiguration> DeleteRecords(Expression<Func<DeleteRecordsInput>> generated = null)
+        public IBodyWorkflowAction<DeleteRecordsResponse, ApiConnectionActionConfiguration> DeleteRecords(Expression<Func<DeleteRecordsGeneratedInput>> generated = null)
         {
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<DeleteRecordsResponse, ApiConnectionActionConfiguration>(() =>
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<RunQueryResponse, ApiConnectionActionConfiguration> RunQuery(Expression<Func<RunQueryInput>> generated = null)
+        public IBodyWorkflowAction<RunQueryResponse, ApiConnectionActionConfiguration> RunQuery(Expression<Func<RunQueryGeneratedInput>> generated = null)
         {
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<RunQueryResponse, ApiConnectionActionConfiguration>(() =>
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickbaseip")]
-        public IBodyWorkflowAction<CloneUserTokenResponse, ApiConnectionActionConfiguration> CloneUserToken(Expression<Func<CloneUserTokenInput>> generated = null)
+        public IBodyWorkflowAction<CloneUserTokenResponse, ApiConnectionActionConfiguration> CloneUserToken(Expression<Func<CloneUserTokenGeneratedInput>> generated = null)
         {
             var __workflow_generated = WorkflowExpression.Compile(generated, nameof(generated), required: false);
             return new DeferredBodyAction<CloneUserTokenResponse, ApiConnectionActionConfiguration>(() =>
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string Value { get; set; }
     }
 
-    public class CreateAppInput
+    public class CreateAppGeneratedInput
     {
         [JsonProperty("assignToken")]
         public bool? AssignToken { get; set; }
@@ -662,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string DeletedAppId { get; set; }
     }
 
-    public class DeleteAppInput
+    public class DeleteAppGeneratedInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string DataClassification { get; set; }
     }
 
-    public class UpdateAppInput
+    public class UpdateAppGeneratedInput
     {
         [JsonProperty("variables")]
         public Variable[] Variables { get; set; }
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string DataClassification { get; set; }
     }
 
-    public class CopyAppInput
+    public class CopyAppGeneratedInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         DESC
     }
 
-    public class CreateTableInput
+    public class CreateTableGeneratedInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1044,7 +1044,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string SpaceRemaining { get; set; }
     }
 
-    public class UpdateTableInput
+    public class UpdateTableGeneratedInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1164,7 +1164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public SummaryField[] SummaryFields { get; set; }
     }
 
-    public class CreateRelationshipInput
+    public class CreateRelationshipGeneratedInput
     {
         [JsonProperty("summaryFields")]
         public SummaryField1[] SummaryFields { get; set; }
@@ -1246,7 +1246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public SummaryField[] SummaryFields { get; set; }
     }
 
-    public class UpdateRelationshipInput
+    public class UpdateRelationshipGeneratedInput
     {
         [JsonProperty("summaryFields")]
         public SummaryField1[] SummaryFields { get; set; }
@@ -1547,7 +1547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string[] Errors { get; set; }
     }
 
-    public class DeleteFieldsInput
+    public class DeleteFieldsGeneratedInput
     {
         [JsonProperty("fieldIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public int[] FieldIds { get; set; }
@@ -1598,7 +1598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public Properties1 Properties { get; set; }
 
         [JsonProperty("permissions")]
-        public Permission[] Permissions { get; set; }
+        public CreateFieldPermissionResponse[] Permissions { get; set; }
     }
 
     public class Properties1
@@ -1739,7 +1739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public int Width { get; set; }
 
         [JsonProperty("currencyFormat")]
-        public CurrencyFormat CurrencyFormat { get; set; }
+        public CreateFieldCurrencyFormatResponse CurrencyFormat { get; set; }
 
         [JsonProperty("displayImages")]
         public bool DisplayImages { get; set; }
@@ -1769,7 +1769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public JToken[] CompositeFields { get; set; }
 
         [JsonProperty("versionMode")]
-        public VersionMode VersionMode { get; set; }
+        public CreateFieldVersionModeResponse VersionMode { get; set; }
 
         [JsonProperty("displayTime")]
         public bool DisplayTime { get; set; }
@@ -1828,7 +1828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CurrencyFormat
+    public enum CreateFieldCurrencyFormatResponse
     {
         [EnumMember(Value = "left")]
         Left,
@@ -1839,7 +1839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum VersionMode
+    public enum CreateFieldVersionModeResponse
     {
         [EnumMember(Value = "keepallversions")]
         Keepallversions,
@@ -1847,7 +1847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         Keeplastversions
     }
 
-    public class Permission
+    public class CreateFieldPermissionResponse
     {
         [JsonProperty("role")]
         public string Role { get; set; }
@@ -1859,7 +1859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public int RoleId { get; set; }
     }
 
-    public class CreateFieldInput
+    public class CreateFieldGeneratedInput
     {
         [JsonProperty("audited")]
         public bool? Audited { get; set; }
@@ -1880,7 +1880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public FieldType2 FieldType { get; set; }
 
         [JsonProperty("permissions")]
-        public Permission2[] Permissions { get; set; }
+        public CreateFieldPermission[] Permissions { get; set; }
 
         [JsonProperty("addToForms")]
         public bool? AddToForms { get; set; }
@@ -2006,7 +2006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public int? Width { get; set; }
 
         [JsonProperty("currencyFormat")]
-        public CurrencyFormat? CurrencyFormat { get; set; }
+        public CreateFieldCurrencyFormat? CurrencyFormat { get; set; }
 
         [JsonProperty("displayImages")]
         public bool? DisplayImages { get; set; }
@@ -2033,7 +2033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public bool? DisplayTime { get; set; }
 
         [JsonProperty("versionMode")]
-        public VersionMode? VersionMode { get; set; }
+        public CreateFieldVersionMode? VersionMode { get; set; }
 
         [JsonProperty("snapFieldId")]
         public int? SnapFieldId { get; set; }
@@ -2058,6 +2058,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
         [JsonProperty("displayAsLink")]
         public bool? DisplayAsLink { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateFieldCurrencyFormat
+    {
+        [EnumMember(Value = "left")]
+        Left,
+        [EnumMember(Value = "right")]
+        Right,
+        [EnumMember(Value = "middle")]
+        Middle
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CreateFieldVersionMode
+    {
+        [EnumMember(Value = "keepallversions")]
+        Keepallversions,
+        [EnumMember(Value = "keeplastversions")]
+        Keeplastversions
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2109,7 +2129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         File
     }
 
-    public class Permission2
+    public class CreateFieldPermission
     {
         [JsonProperty("role")]
         public string Role { get; set; }
@@ -2166,7 +2186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public Properties1 Properties { get; set; }
 
         [JsonProperty("permissions")]
-        public Permission[] Permissions { get; set; }
+        public CreateFieldPermissionResponse[] Permissions { get; set; }
     }
 
     public class UpdateFieldResponse
@@ -2214,10 +2234,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public Properties1 Properties { get; set; }
 
         [JsonProperty("permissions")]
-        public Permission[] Permissions { get; set; }
+        public CreateFieldPermissionResponse[] Permissions { get; set; }
     }
 
-    public class UpdateFieldInput
+    public class UpdateFieldGeneratedInput
     {
         [JsonProperty("audited")]
         public bool? Audited { get; set; }
@@ -2241,7 +2261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public bool? Unique { get; set; }
 
         [JsonProperty("permissions")]
-        public Permission2[] Permissions { get; set; }
+        public CreateFieldPermission[] Permissions { get; set; }
 
         [JsonProperty("addToForms")]
         public bool? AddToForms { get; set; }
@@ -2379,7 +2399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public int? Width { get; set; }
 
         [JsonProperty("currencyFormat")]
-        public CurrencyFormat? CurrencyFormat { get; set; }
+        public CreateFieldCurrencyFormat? CurrencyFormat { get; set; }
 
         [JsonProperty("displayImages")]
         public bool? DisplayImages { get; set; }
@@ -2412,7 +2432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public bool? DisplayTime { get; set; }
 
         [JsonProperty("versionMode")]
-        public VersionMode? VersionMode { get; set; }
+        public CreateFieldVersionMode? VersionMode { get; set; }
 
         [JsonProperty("snapFieldId")]
         public int? SnapFieldId { get; set; }
@@ -2746,7 +2766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string Result { get; set; }
     }
 
-    public class RunFormulaInput
+    public class RunFormulaGeneratedInput
     {
         [JsonProperty("formula", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Formula { get; set; }
@@ -2764,7 +2784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public int NumberDeleted { get; set; }
     }
 
-    public class DeleteRecordsInput
+    public class DeleteRecordsGeneratedInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -2797,7 +2817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string Type { get; set; }
     }
 
-    public class RunQueryInput
+    public class RunQueryGeneratedInput
     {
         [JsonProperty("options")]
         public Options Options { get; set; }
@@ -2887,7 +2907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string Name { get; set; }
     }
 
-    public class CloneUserTokenInput
+    public class CloneUserTokenGeneratedInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

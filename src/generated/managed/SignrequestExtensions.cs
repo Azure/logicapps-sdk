@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
     public class SignrequestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signrequest")]
-        public IBodyWorkflowAction<SignRequestQuickCreate, ApiConnectionActionConfiguration> SignrequestQuickCreateCreate(Expression<Func<SignrequestQuickCreateCreateInput>> data)
+        public IBodyWorkflowAction<SignRequestQuickCreate, ApiConnectionActionConfiguration> SignrequestQuickCreateCreate(Expression<Func<SignrequestQuickCreateCreateDataInput>> data)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
             return new DeferredBodyAction<SignRequestQuickCreate, ApiConnectionActionConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
     public class SignrequestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> WebhooksCreate(Expression<Func<WebhooksCreateInput>> data, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration> WebhooksCreate(Expression<Func<WebhooksCreateDataInput>> data, FlowRecurrence recurrence = null)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
             return new DeferredBodyTrigger<WebhookSubscription, ApiConnectionTriggerConfiguration>(() =>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Name { get; set; }
 
         [JsonProperty("prefill_tags")]
-        public InlinePrefillTags[] PrefillTags { get; set; }
+        public SignrequestQuickCreateCreateInlinePrefillTagsResponse[] PrefillTags { get; set; }
 
         [JsonProperty("prepare_url")]
         public string PrepareUrl { get; set; }
@@ -124,13 +124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string RedirectUrlDeclined { get; set; }
 
         [JsonProperty("required_attachments")]
-        public RequiredAttachment[] RequiredAttachments { get; set; }
+        public SignrequestQuickCreateCreateRequiredAttachmentResponse[] RequiredAttachments { get; set; }
 
         [JsonProperty("send_reminders")]
         public bool SendReminders { get; set; }
 
         [JsonProperty("signers")]
-        public Signer[] Signers { get; set; }
+        public SignrequestQuickCreateCreateSignerResponse[] Signers { get; set; }
 
         [JsonProperty("subdomain")]
         public string Subdomain { get; set; }
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public SignRequestQuickCreateWhoType Who { get; set; }
     }
 
-    public class InlinePrefillTags
+    public class SignrequestQuickCreateCreateInlinePrefillTagsResponse
     {
         [JsonProperty("checkbox_value")]
         public bool CheckboxValue { get; set; }
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Text { get; set; }
     }
 
-    public class RequiredAttachment
+    public class SignrequestQuickCreateCreateRequiredAttachmentResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Uuid { get; set; }
     }
 
-    public class Signer
+    public class SignrequestQuickCreateCreateSignerResponse
     {
         [JsonProperty("after_document")]
         public string AfterDocument { get; set; }
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public bool ApproveOnly { get; set; }
 
         [JsonProperty("attachments")]
-        public SignerAttachment[] Attachments { get; set; }
+        public SignrequestQuickCreateCreateSignerAttachmentResponse[] Attachments { get; set; }
 
         [JsonProperty("declined")]
         public bool Declined { get; set; }
@@ -238,10 +238,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public bool InPerson { get; set; }
 
         [JsonProperty("inputs")]
-        public SignerInputs[] Inputs { get; set; }
+        public SignrequestQuickCreateCreateSignerInputsResponse[] Inputs { get; set; }
 
         [JsonProperty("language")]
-        public SignerLanguageType Language { get; set; }
+        public SignrequestQuickCreateCreateSignerLanguageTypeResponse Language { get; set; }
 
         [JsonProperty("last_name")]
         public string LastName { get; set; }
@@ -286,13 +286,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public bool Viewed { get; set; }
     }
 
-    public class SignerAttachment
+    public class SignrequestQuickCreateCreateSignerAttachmentResponse
     {
         [JsonProperty("file")]
         public string File { get; set; }
 
         [JsonProperty("for_attachment")]
-        public RequiredAttachment ForAttachment { get; set; }
+        public SignrequestQuickCreateCreateRequiredAttachmentResponse ForAttachment { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Uuid { get; set; }
     }
 
-    public class SignerInputs
+    public class SignrequestQuickCreateCreateSignerInputsResponse
     {
         [JsonProperty("checkbox_value")]
         public bool CheckboxValue { get; set; }
@@ -322,11 +322,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Text { get; set; }
 
         [JsonProperty("type")]
-        public SignerInputsTypeType Type { get; set; }
+        public SignrequestQuickCreateCreateSignerInputsTypeTypeResponse Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignerInputsTypeType
+    public enum SignrequestQuickCreateCreateSignerInputsTypeTypeResponse
     {
         [EnumMember(Value = "s")]
         S,
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignerLanguageType
+    public enum SignrequestQuickCreateCreateSignerLanguageTypeResponse
     {
         [EnumMember(Value = "en")]
         En,
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         O
     }
 
-    public class SignrequestQuickCreateCreateInput
+    public class SignrequestQuickCreateCreateDataInput
     {
         [JsonProperty("auto_delete_days")]
         public int? AutoDeleteDays { get; set; }
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Name { get; set; }
 
         [JsonProperty("prefill_tags")]
-        public InlinePrefillTags2[] PrefillTags { get; set; }
+        public SignrequestQuickCreateCreateInlinePrefillTags[] PrefillTags { get; set; }
 
         [JsonProperty("prepare_url")]
         public string PrepareUrl { get; set; }
@@ -471,13 +471,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string RedirectUrlDeclined { get; set; }
 
         [JsonProperty("required_attachments")]
-        public RequiredAttachment2[] RequiredAttachments { get; set; }
+        public SignrequestQuickCreateCreateRequiredAttachment[] RequiredAttachments { get; set; }
 
         [JsonProperty("send_reminders")]
         public bool? SendReminders { get; set; }
 
         [JsonProperty("signers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Signer2[] Signers { get; set; }
+        public SignrequestQuickCreateCreateSigner[] Signers { get; set; }
 
         [JsonProperty("subdomain")]
         public string Subdomain { get; set; }
@@ -498,10 +498,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Uuid { get; set; }
 
         [JsonProperty("who", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignrequestQuickCreateCreateInputWhoType? Who { get; set; } = SignrequestQuickCreateCreateInputWhoType.O;
+        public DataInputWhoType? Who { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest.DataInputWhoType.O;
     }
 
-    public class InlinePrefillTags2
+    public class SignrequestQuickCreateCreateInlinePrefillTags
     {
         [JsonProperty("checkbox_value")]
         public bool? CheckboxValue { get; set; }
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Text { get; set; }
     }
 
-    public class RequiredAttachment2
+    public class SignrequestQuickCreateCreateRequiredAttachment
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Uuid { get; set; }
     }
 
-    public class Signer2
+    public class SignrequestQuickCreateCreateSigner
     {
         [JsonProperty("after_document")]
         public string AfterDocument { get; set; }
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public bool? ApproveOnly { get; set; }
 
         [JsonProperty("attachments")]
-        public SignerAttachment2[] Attachments { get; set; }
+        public SignrequestQuickCreateCreateSignerAttachment[] Attachments { get; set; }
 
         [JsonProperty("declined")]
         public bool? Declined { get; set; }
@@ -585,10 +585,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public bool? InPerson { get; set; }
 
         [JsonProperty("inputs")]
-        public SignerInputs2[] Inputs { get; set; }
+        public SignrequestQuickCreateCreateSignerInputs[] Inputs { get; set; }
 
         [JsonProperty("language")]
-        public SignerLanguageType? Language { get; set; }
+        public SignrequestQuickCreateCreateSignerLanguageType? Language { get; set; }
 
         [JsonProperty("last_name")]
         public string LastName { get; set; }
@@ -633,13 +633,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public bool? Viewed { get; set; }
     }
 
-    public class SignerAttachment2
+    public class SignrequestQuickCreateCreateSignerAttachment
     {
         [JsonProperty("file")]
         public string File { get; set; }
 
         [JsonProperty("for_attachment")]
-        public RequiredAttachment2 ForAttachment { get; set; }
+        public SignrequestQuickCreateCreateRequiredAttachment ForAttachment { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Uuid { get; set; }
     }
 
-    public class SignerInputs2
+    public class SignrequestQuickCreateCreateSignerInputs
     {
         [JsonProperty("checkbox_value")]
         public bool? CheckboxValue { get; set; }
@@ -669,11 +669,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Text { get; set; }
 
         [JsonProperty("type")]
-        public SignerInputsTypeType? Type { get; set; }
+        public SignrequestQuickCreateCreateSignerInputsTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SignrequestQuickCreateCreateInputWhoType
+    public enum SignrequestQuickCreateCreateSignerInputsTypeType
+    {
+        [EnumMember(Value = "s")]
+        S,
+        [EnumMember(Value = "i")]
+        I,
+        [EnumMember(Value = "n")]
+        N,
+        [EnumMember(Value = "d")]
+        D,
+        [EnumMember(Value = "t")]
+        T,
+        [EnumMember(Value = "c")]
+        C
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SignrequestQuickCreateCreateSignerLanguageType
+    {
+        [EnumMember(Value = "en")]
+        En,
+        [EnumMember(Value = "en-gb")]
+        EnGb,
+        [EnumMember(Value = "nl")]
+        Nl,
+        [EnumMember(Value = "fr")]
+        Fr,
+        [EnumMember(Value = "de")]
+        De,
+        [EnumMember(Value = "he")]
+        He,
+        [EnumMember(Value = "da")]
+        Da,
+        [EnumMember(Value = "fi")]
+        Fi,
+        [EnumMember(Value = "hu")]
+        Hu,
+        [EnumMember(Value = "it")]
+        It,
+        [EnumMember(Value = "no")]
+        No,
+        [EnumMember(Value = "pl")]
+        Pl,
+        [EnumMember(Value = "pt")]
+        Pt,
+        [EnumMember(Value = "es")]
+        Es,
+        [EnumMember(Value = "sv")]
+        Sv,
+        [EnumMember(Value = "ru")]
+        Ru
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DataInputWhoType
     {
         [EnumMember(Value = "m")]
         M,
@@ -761,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Url { get; set; }
     }
 
-    public class WebhooksCreateInput
+    public class WebhooksCreateDataInput
     {
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -770,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Created { get; set; }
 
         [JsonProperty("event_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhooksCreateInputEventTypeType EventType { get; set; }
+        public DataInputEventTypeType EventType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -779,7 +833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Subdomain { get; set; }
 
         [JsonProperty("team")]
-        public WebhooksCreateInputTeamType Team { get; set; }
+        public DataInputTeamType Team { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -789,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebhooksCreateInputEventTypeType
+    public enum DataInputEventTypeType
     {
         [EnumMember(Value = "convert_error")]
         ConvertError,
@@ -827,7 +881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         SignrequestReceived
     }
 
-    public class WebhooksCreateInputTeamType
+    public class DataInputTeamType
     {
         [JsonProperty("name")]
         public string Name { get; set; }

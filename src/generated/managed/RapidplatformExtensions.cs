@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetAttachments(Expression<Func<string>> listNameDynamic, Expression<Func<int>> itemId, Expression<Func<attachmentsInputItem[]>> attachments)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetAttachments(Expression<Func<string>> listNameDynamic, Expression<Func<int>> itemId, Expression<Func<AttachmentsInputItem[]>> attachments)
         {
             var __workflow_listNameDynamic = WorkflowExpression.Compile(listNameDynamic, nameof(listNameDynamic), required: true);
             var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
 
     public class RapidplatformTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ListHookTrigger(Expression<Func<ListHookTriggerInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ListHookTrigger(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         }
     }
 
-    public class attachmentsInputItem
+    public class AttachmentsInputItem
     {
         [JsonProperty("drive_id")]
         public string DriveId { get; set; }
@@ -142,13 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         public string DriveItemId { get; set; }
     }
 
-    public class ListHookTriggerInput
+    public class RequestBodyOfWebhookInput
     {
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListHookTriggerInputConfigType Config { get; set; } = new ListHookTriggerInputConfigType();
+        public RequestBodyOfWebhookInputConfigType Config { get; set; } = new RequestBodyOfWebhookInputConfigType();
     }
 
-    public class ListHookTriggerInputConfigType
+    public class RequestBodyOfWebhookInputConfigType
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
@@ -157,11 +157,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         public string Table { get; set; }
 
         [JsonProperty("trigger", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListHookTriggerInputConfigTypeTriggerTypeType TriggerType { get; set; }
+        public RequestBodyOfWebhookInputConfigTypeTriggerTypeType TriggerType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListHookTriggerInputConfigTypeTriggerTypeType
+    public enum RequestBodyOfWebhookInputConfigTypeTriggerTypeType
     {
         [EnumMember(Value = "Item Created")]
         ItemCreated,

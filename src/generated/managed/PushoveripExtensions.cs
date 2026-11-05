@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
     public class PushoveripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> body = null)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<ValidateKeyResponse, ApiConnectionActionConfiguration> ValidateKey(Expression<Func<ValidateKeyInput>> body = null)
+        public IBodyWorkflowAction<ValidateKeyResponse, ApiConnectionActionConfiguration> ValidateKey(Expression<Func<ValidateKeyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ValidateKeyResponse, ApiConnectionActionConfiguration>(() =>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string Request { get; set; }
     }
 
-    public class SendMessageInput
+    public class SendMessageBodyInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; } = "";
@@ -89,13 +89,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string Device { get; set; }
 
         [JsonProperty("priority")]
-        public SendMessageInputPriorityType? Priority { get; set; }
+        public BodyInputPriorityType? Priority { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("html")]
-        public SendMessageInputHtmlType? Html { get; set; }
+        public BodyInputHtmlType? Html { get; set; }
 
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string UrlTitle { get; set; }
     }
 
-    public enum SendMessageInputPriorityType
+    public enum BodyInputPriorityType
     {
         Negative2 = -2,
         Negative1 = -1,
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         _2 = 2
     }
 
-    public enum SendMessageInputHtmlType
+    public enum BodyInputHtmlType
     {
         _1 = 1
     }
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string Request { get; set; }
     }
 
-    public class ValidateKeyInput
+    public class ValidateKeyBodyInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; } = "";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
     public class SparkpostActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRecipientList(Expression<Func<CreateRecipientListInput>> recipientList)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRecipientList(Expression<Func<RecipientListInput>> recipientList)
         {
             var __workflow_recipientList = WorkflowExpression.Compile(recipientList, nameof(recipientList), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddUserToRecipientList(Expression<Func<string>> recipientListId, Expression<Func<AddUserToRecipientListInput>> addUserToRecipientListRequest)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> AddUserToRecipientList(Expression<Func<string>> recipientListId, Expression<Func<AddUserToRecipientListRequestInput>> addUserToRecipientListRequest)
         {
             var __workflow_recipientListId = WorkflowExpression.Compile(recipientListId, nameof(recipientListId), required: true);
             var __workflow_addUserToRecipientListRequest = WorkflowExpression.Compile(addUserToRecipientListRequest, nameof(addUserToRecipientListRequest), required: true);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteUserFromRecipientList(Expression<Func<string>> recipientListId, Expression<Func<DeleteUserFromRecipientListInput>> deleteUserRequest)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteUserFromRecipientList(Expression<Func<string>> recipientListId, Expression<Func<DeleteUserRequestInput>> deleteUserRequest)
         {
             var __workflow_recipientListId = WorkflowExpression.Compile(recipientListId, nameof(recipientListId), required: true);
             var __workflow_deleteUserRequest = WorkflowExpression.Compile(deleteUserRequest, nameof(deleteUserRequest), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmailToRecipientList(Expression<Func<SendEmailToRecipientListInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmailToRecipientList(Expression<Func<SendEmailToRecipientListRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmailToRecipient(Expression<Func<SendEmailToRecipientInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendEmailToRecipient(Expression<Func<SendEmailToRecipientRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         }
     }
 
-    public class CreateRecipientListInput
+    public class RecipientListInput
     {
         [JsonProperty("id")]
         public string IdOfTheRecipientList { get; set; }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         public string EmailAddressOfFirstRecipient { get; set; }
     }
 
-    public class AddUserToRecipientListInput
+    public class AddUserToRecipientListRequestInput
     {
         [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
         public Recipient Recipient { get; set; }
@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         public string Name { get; set; }
     }
 
-    public class DeleteUserFromRecipientListInput
+    public class DeleteUserRequestInput
     {
         [JsonProperty("email_address")]
         public string EmailAddress { get; set; }
     }
 
-    public class SendEmailToRecipientListInput
+    public class SendEmailToRecipientListRequestInput
     {
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public EmailRecipientList Recipients { get; set; }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
         public string Template { get; set; }
     }
 
-    public class SendEmailToRecipientInput
+    public class SendEmailToRecipientRequestInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public EmailTemplateList Content { get; set; }

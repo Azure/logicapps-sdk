@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slascone
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/WebhookRegistration/isv/{0}", __workflow_isvId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new CreateCustomerTriggerInput().ToJToken();
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebHookRegistrationDto>(callPayload, recurrence: recurrence);
             });
         }
@@ -60,13 +60,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slascone
         _14 = 14
     }
 
-    public class CreateCustomerTriggerInput
+    public class BodyInput
     {
         [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCustomerTriggerInputEventsTypeItem[] Events { get; set; }
+        public BodyInputEventsTypeItem[] Events { get; set; }
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Name { get; set; } = "msflow";
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slascone
         internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public enum CreateCustomerTriggerInputEventsTypeItem
+    public enum BodyInputEventsTypeItem
     {
         _0 = 0,
         _1 = 1,

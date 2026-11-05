@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> id, Expression<Func<ReplyToV2Input>> replyMessage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> id, Expression<Func<ReplyMessageInput>> replyMessage)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_replyMessage = WorkflowExpression.Compile(replyMessage, nameof(replyMessage), required: true);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<SendEmailV2Input>> emailMessage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<EmailMessageInput>> emailMessage)
         {
             var __workflow_emailMessage = WorkflowExpression.Compile(emailMessage, nameof(emailMessage), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
 
     public class GmailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<DetailedReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmail(Expression<Func<string>> label = null, Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> subject = null, Expression<Func<importanceInput>> importance = null, Expression<Func<starredInput>> starred = null, Expression<Func<bool>> fetchOnlyWithAttachments = null, Expression<Func<bool>> includeAttachments = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DetailedReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmail(Expression<Func<string>> label = null, Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> subject = null, Expression<Func<ImportanceInput>> importance = null, Expression<Func<StarredInput>> starred = null, Expression<Func<bool>> fetchOnlyWithAttachments = null, Expression<Func<bool>> includeAttachments = null, FlowRecurrence recurrence = null)
         {
             var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -156,14 +156,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [JsonProperty("IsHtml")]
         public bool IsHTML { get; set; }
         public bool HasAttachments { get; set; }
-        public Attachment[] Attachments { get; set; }
+        public GetEmailAttachmentResponse[] Attachments { get; set; }
 
         [JsonProperty("Id")]
         public string MessageId { get; set; }
         public string ThreadId { get; set; }
     }
 
-    public class Attachment
+    public class GetEmailAttachmentResponse
     {
         public string Name { get; set; }
 
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string ContentType { get; set; }
     }
 
-    public class ReplyToV2Input
+    public class ReplyMessageInput
     {
         public string To { get; set; }
 
@@ -184,19 +184,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string Subject { get; set; }
         public string Body { get; set; }
         public bool? ReplyAll { get; set; }
-        public ReplyToV2InputImportanceType? Importance { get; set; }
-        public Attachment2[] Attachments { get; set; }
+        public ReplyMessageInputImportanceType? Importance { get; set; }
+        public ReplyToAttachment[] Attachments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReplyToV2InputImportanceType
+    public enum ReplyMessageInputImportanceType
     {
         Normal,
         Low,
         High
     }
 
-    public class Attachment2
+    public class ReplyToAttachment
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string ContentType { get; set; }
     }
 
-    public class SendEmailV2Input
+    public class EmailMessageInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -218,12 +218,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string BCC { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
-        public SendEmailV2InputImportanceType? Importance { get; set; }
-        public Attachment2[] Attachments { get; set; }
+        public EmailMessageInputImportanceType? Importance { get; set; }
+        public ReplyToAttachment[] Attachments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendEmailV2InputImportanceType
+    public enum EmailMessageInputImportanceType
     {
         Normal,
         Low,
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum importanceInput
+    public enum ImportanceInput
     {
         All,
         Important,
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum starredInput
+    public enum StarredInput
     {
         All,
         Starred,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
     public class InqubajourneyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PublishEvent(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<PublishEventInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PublishEvent(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<PublishEventBodyInput>> body)
         {
             var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
             var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PublishTransaction(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<PublishTransactionInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PublishTransaction(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<PublishTransactionBodyInput>> body = null)
         {
             var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
             var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
     {
     }
 
-    public class PublishEventInput
+    public class PublishEventBodyInput
     {
         [JsonProperty("eventDefinitionCode")]
         public string EventDefinitionCode { get; set; }
@@ -65,10 +65,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         public bool? IsTest { get; set; }
 
         [JsonProperty("attributes")]
-        public PublishEventInputAttributesTypeItem[] Attributes { get; set; }
+        public BodyInputAttributesTypeItem[] Attributes { get; set; }
     }
 
-    public class PublishEventInputAttributesTypeItem
+    public class BodyInputAttributesTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         public string Value { get; set; }
     }
 
-    public class PublishTransactionInput
+    public class PublishTransactionBodyInput
     {
         [JsonProperty("transactionDefinitionCode")]
         public string TransactionDefinitionCode { get; set; }
@@ -86,16 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         public bool? IsTest { get; set; }
 
         [JsonProperty("attributes")]
-        public PublishTransactionInputAttributesTypeItem[] Attributes { get; set; }
-    }
-
-    public class PublishTransactionInputAttributesTypeItem
-    {
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("value")]
-        public string Value { get; set; }
+        public BodyInputAttributesTypeItem[] Attributes { get; set; }
     }
 }
 

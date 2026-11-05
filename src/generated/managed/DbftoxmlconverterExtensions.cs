@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
     public class DbftoxmlconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dbftoxmlconverter")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Dbf2XmlConvert(Expression<Func<Dbf2XmlConvertInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Dbf2XmlConvert(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -33,17 +33,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
     {
     }
 
-    public class Dbf2XmlConvertInput
+    public class BodyInput
     {
         [JsonProperty("conten_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContenType { get; set; }
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Dbf2XmlConvertInputEncodingType Encoding { get; set; }
+        public BodyInputEncodingType Encoding { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Dbf2XmlConvertInputEncodingType
+    public enum BodyInputEncodingType
     {
         [EnumMember(Value = "cp1251")]
         Cp1251,

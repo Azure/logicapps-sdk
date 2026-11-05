@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IBodyWorkflowAction<AddSystemResponse, ApiConnectionActionConfiguration> AddSystem(Expression<Func<AddSystemInput>> body)
+        public IBodyWorkflowAction<AddSystemResponse, ApiConnectionActionConfiguration> AddSystem(Expression<Func<AddSystemBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddSystemResponse, ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddSystemAdvanced(Expression<Func<AddSystemAdvancedInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddSystemAdvanced(Expression<Func<AddSystemAdvancedBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -231,22 +231,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         public string Title { get; set; }
     }
 
-    public class AddSystemInput
+    public class AddSystemBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
     }
 
-    public class AddSystemAdvancedInput
+    public class AddSystemAdvancedBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
         [JsonProperty("fields")]
-        public AddSystemAdvancedInputFieldsType Fields { get; set; }
+        public BodyInputFieldsType Fields { get; set; }
     }
 
-    public class AddSystemAdvancedInputFieldsType
+    public class BodyInputFieldsType
     {
         [JsonProperty("additional-name")]
         public string SystemNickname { get; set; }

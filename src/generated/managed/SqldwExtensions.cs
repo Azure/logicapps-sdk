@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
     public class SqldwActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<ExecutePassThroughNativeQueryV2Input>> query)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<QueryInput>> query)
         {
             var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
             var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
     {
     }
 
-    public class ExecutePassThroughNativeQueryV2Input
+    public class QueryInput
     {
         [JsonProperty("query")]
         public string Query { get; set; }

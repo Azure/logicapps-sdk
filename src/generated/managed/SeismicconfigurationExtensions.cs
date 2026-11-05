@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicconfiguration")]
-        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration> AddContentProperty(Expression<Func<AddContentPropertyInput>> body = null)
+        public IBodyWorkflowAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration> AddContentProperty(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SeismicContentManagerAddContentPropertyResponse, ApiConnectionActionConfiguration>(() =>
@@ -214,13 +214,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
         public string ContentPropertyId { get; set; }
     }
 
-    public class AddContentPropertyInput
+    public class BodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddContentPropertyInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("domainOfValues", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ContentPropertyValues { get; set; }
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddContentPropertyInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "string")]
         String,

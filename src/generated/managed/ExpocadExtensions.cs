@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth[], ApiConnectionActionConfiguration> BoothsGetAllBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<deletedFilterInput>> deletedFilter = null)
+        public IBodyWorkflowAction<Booth[], ApiConnectionActionConfiguration> BoothsGetAllBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<DeletedFilterInput>> deletedFilter = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<ClassesCreateInput>> boothClass, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<BoothClassInput>> boothClass, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothClass = WorkflowExpression.Compile(boothClass, nameof(boothClass), required: true);
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<ClassesUpdateInput>> boothClass, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<BoothClass, ApiConnectionActionConfiguration> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<BoothClassInput>> boothClass, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_boothClass = WorkflowExpression.Compile(boothClass, nameof(boothClass), required: true);
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<ExhibitorsAddExhibitorInput>> exhibitor, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<ExhibitorInput>> exhibitor, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_exhibitor = WorkflowExpression.Compile(exhibitor, nameof(exhibitor), required: true);
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<ExhibitorsUpdateExhibitorInput>> exhibitor, Expression<Func<string>> id, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Exhibitor, ApiConnectionActionConfiguration> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<ExhibitorInput>> exhibitor, Expression<Func<string>> id, Expression<Func<string>> databaseName)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_exhibitor = WorkflowExpression.Compile(exhibitor, nameof(exhibitor), required: true);
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Transaction[], ApiConnectionActionConfiguration> FinancialsGetAllTransactions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> boothNumber = null, Expression<Func<string>> expocadUser = null, Expression<Func<string>> glCode = null, Expression<Func<reversedFilterInput>> reversedFilter = null)
+        public IBodyWorkflowAction<Transaction[], ApiConnectionActionConfiguration> FinancialsGetAllTransactions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> boothNumber = null, Expression<Func<string>> expocadUser = null, Expression<Func<string>> glCode = null, Expression<Func<ReversedFilterInput>> reversedFilter = null)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan, ApiConnectionActionConfiguration> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<RatePlansAddRatePlanInput>> ratePlan)
+        public IBodyWorkflowAction<RatePlan, ApiConnectionActionConfiguration> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<RatePlanInput>> ratePlan)
         {
             var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum deletedFilterInput
+    public enum DeletedFilterInput
     {
         IncludeAll,
         OnlyNonDeleted,
@@ -954,23 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public int Color { get; set; }
     }
 
-    public class ClassesCreateInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int KeepWhenCombined { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int CountAsInventory { get; set; }
-        public string Prioritity { get; set; }
-        public int? Color { get; set; }
-    }
-
-    public class ClassesUpdateInput
+    public class BoothClassInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -1064,48 +1048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public string WebSite { get; set; }
     }
 
-    public class ExhibitorsAddExhibitorInput
-    {
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string City { get; set; }
-        public string Comments { get; set; }
-        public string Comments2 { get; set; }
-        public string Contact { get; set; }
-        public string Country { get; set; }
-        public string CellPhone { get; set; }
-        public string DisplayOnDrawing { get; set; }
-        public string DoingBusinessAs { get; set; }
-        public string DoingBusinessAsDisplayOnDrawing { get; set; }
-        public string Email { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExhibitorId { get; set; }
-        public string ExhibitorName { get; set; }
-        public string ExhibitorNameLine2 { get; set; }
-        public string Fax { get; set; }
-        public string Field1 { get; set; }
-        public string Field2 { get; set; }
-        public string Field3 { get; set; }
-        public string Field4 { get; set; }
-        public string Field5 { get; set; }
-        public string Field6 { get; set; }
-        public string Field7 { get; set; }
-        public string Field8 { get; set; }
-        public string Field9 { get; set; }
-        public string NickName { get; set; }
-        public string Salutation { get; set; }
-        public string Title { get; set; }
-        public string Phone { get; set; }
-        public string PostalCode { get; set; }
-        public string PrimaryGroup { get; set; }
-        public string PriorityPoints { get; set; }
-        public string ProductDescription { get; set; }
-        public string State { get; set; }
-        public string WebSite { get; set; }
-    }
-
-    public class ExhibitorsUpdateExhibitorInput
+    public class ExhibitorInput
     {
         public string Address1 { get; set; }
         public string Address2 { get; set; }
@@ -1176,7 +1119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum reversedFilterInput
+    public enum ReversedFilterInput
     {
         All,
         Reversed,
@@ -1282,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public bool IsFixed { get; set; }
     }
 
-    public class RatePlansAddRatePlanInput
+    public class RatePlanInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

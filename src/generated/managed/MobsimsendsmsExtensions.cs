@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
     public class MobsimsendsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SMS(Expression<Func<SMSInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SMS(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
     {
     }
 
-    public class SMSInput
+    public class BodyInput
     {
         [JsonProperty("groupId")]
         public string GroupId { get; set; }
@@ -43,10 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
         public string GroupMsg { get; set; }
 
         [JsonProperty("messages")]
-        public SMSInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class SMSInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class SparsepowerboxtoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<PdfStampImageInput>> reqPdfStampImage = null)
+        public IBodyWorkflowAction<Resp200PdfStampImage, ApiConnectionActionConfiguration> PdfStampImage(Expression<Func<ReqPdfStampImageInput>> reqPdfStampImage = null)
         {
             var __workflow_reqPdfStampImage = WorkflowExpression.Compile(reqPdfStampImage, nameof(reqPdfStampImage), required: false);
             return new DeferredBodyAction<Resp200PdfStampImage, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<ExcelSheetAddRowsInput>> reqExcelSheetAddrows = null)
+        public IBodyWorkflowAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration> ExcelSheetAddRows(Expression<Func<ReqExcelSheetAddrowsInput>> reqExcelSheetAddrows = null)
         {
             var __workflow_reqExcelSheetAddrows = WorkflowExpression.Compile(reqExcelSheetAddrows, nameof(reqExcelSheetAddrows), required: false);
             return new DeferredBodyAction<Resp200ExcelSheetAddRows, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration> PdfCreateByHtml(Expression<Func<PdfCreateByHtmlInput>> reqPdfCreateByHtml = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration> PdfCreateByHtml(Expression<Func<ReqPdfCreateByHtmlInput>> reqPdfCreateByHtml = null)
         {
             var __workflow_reqPdfCreateByHtml = WorkflowExpression.Compile(reqPdfCreateByHtml, nameof(reqPdfCreateByHtml), required: false);
             return new DeferredBodyAction<Resp200PdfCreateByHtml, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<ImageMergeDrawingInput>> reqImageMergeDrawing = null)
+        public IBodyWorkflowAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration> ImageMergeDrawing(Expression<Func<ReqImageMergeDrawingInput>> reqImageMergeDrawing = null)
         {
             var __workflow_reqImageMergeDrawing = WorkflowExpression.Compile(reqImageMergeDrawing, nameof(reqImageMergeDrawing), required: false);
             return new DeferredBodyAction<Resp200ImageMergeDrawing, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<PdfStampTextInput>> reqPdfStampText = null)
+        public IBodyWorkflowAction<Resp200PdfStampText, ApiConnectionActionConfiguration> PdfStampText(Expression<Func<ReqPdfStampTextInput>> reqPdfStampText = null)
         {
             var __workflow_reqPdfStampText = WorkflowExpression.Compile(reqPdfStampText, nameof(reqPdfStampText), required: false);
             return new DeferredBodyAction<Resp200PdfStampText, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<CsvToJsonInput>> reqCsvToJson = null)
+        public IBodyWorkflowAction<Resp200CsvToJson, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<ReqCsvToJsonInput>> reqCsvToJson = null)
         {
             var __workflow_reqCsvToJson = WorkflowExpression.Compile(reqCsvToJson, nameof(reqCsvToJson), required: false);
             return new DeferredBodyAction<Resp200CsvToJson, ApiConnectionActionConfiguration>(() =>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration> PdfCreateByUrl(Expression<Func<PdfCreateByUrlInput>> reqPdfCreateByUrl = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration> PdfCreateByUrl(Expression<Func<ReqPdfCreateByUrlInput>> reqPdfCreateByUrl = null)
         {
             var __workflow_reqPdfCreateByUrl = WorkflowExpression.Compile(reqPdfCreateByUrl, nameof(reqPdfCreateByUrl), required: false);
             return new DeferredBodyAction<Resp200PdfCreateByUrl, ApiConnectionActionConfiguration>(() =>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampText, ApiConnectionActionConfiguration> ImageStampText(Expression<Func<ImageStampTextInput>> reqImageStampText = null)
+        public IBodyWorkflowAction<Resp200ImageStampText, ApiConnectionActionConfiguration> ImageStampText(Expression<Func<ReqImageStampTextInput>> reqImageStampText = null)
         {
             var __workflow_reqImageStampText = WorkflowExpression.Compile(reqImageStampText, nameof(reqImageStampText), required: false);
             return new DeferredBodyAction<Resp200ImageStampText, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageResize, ApiConnectionActionConfiguration> ImageResize(Expression<Func<ImageResizeInput>> reqImageResize = null)
+        public IBodyWorkflowAction<Resp200ImageResize, ApiConnectionActionConfiguration> ImageResize(Expression<Func<ReqImageResizeInput>> reqImageResize = null)
         {
             var __workflow_reqImageResize = WorkflowExpression.Compile(reqImageResize, nameof(reqImageResize), required: false);
             return new DeferredBodyAction<Resp200ImageResize, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration> PdfSplitByPage(Expression<Func<PdfSplitByPageInput>> reqPdfSplitByPage = null)
+        public IBodyWorkflowAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration> PdfSplitByPage(Expression<Func<ReqPdfSplitByPageInput>> reqPdfSplitByPage = null)
         {
             var __workflow_reqPdfSplitByPage = WorkflowExpression.Compile(reqPdfSplitByPage, nameof(reqPdfSplitByPage), required: false);
             return new DeferredBodyAction<Resp200PdfSplitByPage, ApiConnectionActionConfiguration>(() =>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampExif, ApiConnectionActionConfiguration> ImageStampExif(Expression<Func<ImageStampExifInput>> reqImageStampExif = null)
+        public IBodyWorkflowAction<Resp200ImageStampExif, ApiConnectionActionConfiguration> ImageStampExif(Expression<Func<ReqImageStampExifInput>> reqImageStampExif = null)
         {
             var __workflow_reqImageStampExif = WorkflowExpression.Compile(reqImageStampExif, nameof(reqImageStampExif), required: false);
             return new DeferredBodyAction<Resp200ImageStampExif, ApiConnectionActionConfiguration>(() =>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfFillForm, ApiConnectionActionConfiguration> PdfFillForm(Expression<Func<PdfFillFormInput>> reqPdfFillForm = null)
+        public IBodyWorkflowAction<Resp200PdfFillForm, ApiConnectionActionConfiguration> PdfFillForm(Expression<Func<ReqPdfFillFormInput>> reqPdfFillForm = null)
         {
             var __workflow_reqPdfFillForm = WorkflowExpression.Compile(reqPdfFillForm, nameof(reqPdfFillForm), required: false);
             return new DeferredBodyAction<Resp200PdfFillForm, ApiConnectionActionConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration> PdfGetFormData(Expression<Func<PdfGetFormDataInput>> reqPdfGetFormData = null)
+        public IBodyWorkflowAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration> PdfGetFormData(Expression<Func<ReqPdfGetFormDataInput>> reqPdfGetFormData = null)
         {
             var __workflow_reqPdfGetFormData = WorkflowExpression.Compile(reqPdfGetFormData, nameof(reqPdfGetFormData), required: false);
             return new DeferredBodyAction<Resp200PdfGetFormData, ApiConnectionActionConfiguration>(() =>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration> PdfMergeSimple(Expression<Func<PdfMergeSimpleInput>> reqPdfMergeSimple = null)
+        public IBodyWorkflowAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration> PdfMergeSimple(Expression<Func<ReqPdfMergeSimpleInput>> reqPdfMergeSimple = null)
         {
             var __workflow_reqPdfMergeSimple = WorkflowExpression.Compile(reqPdfMergeSimple, nameof(reqPdfMergeSimple), required: false);
             return new DeferredBodyAction<Resp200PdfMergeSimple, ApiConnectionActionConfiguration>(() =>
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
-    public class PdfStampImageInput
+    public class ReqPdfStampImageInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -242,10 +242,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfStampImageInputOptionsType Options { get; set; } = new PdfStampImageInputOptionsType();
+        public ReqPdfStampImageInputOptionsType Options { get; set; } = new ReqPdfStampImageInputOptionsType();
     }
 
-    public class PdfStampImageInputOptionsType
+    public class ReqPdfStampImageInputOptionsType
     {
         [JsonProperty("opacity", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? Opacity { get; set; } = 1;
@@ -257,10 +257,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public int? Rotate { get; set; } = 0;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfStampImageInputOptionsTypePositionType Position { get; set; } = new PdfStampImageInputOptionsTypePositionType();
+        public ReqPdfStampImageInputOptionsTypePositionType Position { get; set; } = new ReqPdfStampImageInputOptionsTypePositionType();
     }
 
-    public class PdfStampImageInputOptionsTypePositionType
+    public class ReqPdfStampImageInputOptionsTypePositionType
     {
         [JsonProperty("yOffset", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? YOffset { get; set; } = 25;
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string ExcelSheet { get; set; }
     }
 
-    public class ExcelSheetAddRowsInput
+    public class ReqExcelSheetAddrowsInput
     {
         [JsonProperty("sheet", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sheetname { get; set; }
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
-    public class PdfCreateByHtmlInput
+    public class ReqPdfCreateByHtmlInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
@@ -305,10 +305,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public JToken Data { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfCreateByHtmlInputOptionsType Options { get; set; } = new PdfCreateByHtmlInputOptionsType();
+        public ReqPdfCreateByHtmlInputOptionsType Options { get; set; } = new ReqPdfCreateByHtmlInputOptionsType();
     }
 
-    public class PdfCreateByHtmlInputOptionsType
+    public class ReqPdfCreateByHtmlInputOptionsType
     {
         [JsonProperty("mediaType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MediaType { get; set; } = "print";
@@ -320,10 +320,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public bool? Landscape { get; set; } = false;
 
         [JsonProperty("margin", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfCreateByHtmlInputOptionsTypeMarginType Margin { get; set; } = new PdfCreateByHtmlInputOptionsTypeMarginType();
+        public ReqPdfCreateByHtmlInputOptionsTypeMarginType Margin { get; set; } = new ReqPdfCreateByHtmlInputOptionsTypeMarginType();
     }
 
-    public class PdfCreateByHtmlInputOptionsTypeMarginType
+    public class ReqPdfCreateByHtmlInputOptionsTypeMarginType
     {
         [JsonProperty("left", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarginLeft { get; set; } = "0px";
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string Image { get; set; }
     }
 
-    public class ImageMergeDrawingInput
+    public class ReqImageMergeDrawingInput
     {
         [JsonProperty("background", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Background { get; set; }
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
-    public class PdfStampTextInput
+    public class ReqPdfStampTextInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
@@ -368,10 +368,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string Text { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfStampTextInputOptionsType Options { get; set; } = new PdfStampTextInputOptionsType();
+        public ReqPdfStampTextInputOptionsType Options { get; set; } = new ReqPdfStampTextInputOptionsType();
     }
 
-    public class PdfStampTextInputOptionsType
+    public class ReqPdfStampTextInputOptionsType
     {
         [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FontColor { get; set; } = "#000000";
@@ -383,10 +383,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public int? Rotate { get; set; } = 0;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfStampTextInputOptionsTypePositionType Position { get; set; } = new PdfStampTextInputOptionsTypePositionType();
+        public ReqPdfStampTextInputOptionsTypePositionType Position { get; set; } = new ReqPdfStampTextInputOptionsTypePositionType();
     }
 
-    public class PdfStampTextInputOptionsTypePositionType
+    public class ReqPdfStampTextInputOptionsTypePositionType
     {
         [JsonProperty("yOffset", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? YOffset { get; set; } = 25;
@@ -404,16 +404,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public JToken[] Records { get; set; }
     }
 
-    public class CsvToJsonInput
+    public class ReqCsvToJsonInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent CSV { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CsvToJsonInputOptionsType Options { get; set; } = new CsvToJsonInputOptionsType();
+        public ReqCsvToJsonInputOptionsType Options { get; set; } = new ReqCsvToJsonInputOptionsType();
     }
 
-    public class CsvToJsonInputOptionsType
+    public class ReqCsvToJsonInputOptionsType
     {
         [JsonProperty("hasHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool HasHeaders { get; set; } = true;
@@ -428,16 +428,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
-    public class PdfCreateByUrlInput
+    public class ReqPdfCreateByUrlInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfCreateByUrlInputOptionsType Options { get; set; } = new PdfCreateByUrlInputOptionsType();
+        public ReqPdfCreateByUrlInputOptionsType Options { get; set; } = new ReqPdfCreateByUrlInputOptionsType();
     }
 
-    public class PdfCreateByUrlInputOptionsType
+    public class ReqPdfCreateByUrlInputOptionsType
     {
         [JsonProperty("mediaType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MediaType { get; set; } = "print";
@@ -449,10 +449,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public bool? Landscape { get; set; } = false;
 
         [JsonProperty("margin", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfCreateByUrlInputOptionsTypeMarginType Margin { get; set; } = new PdfCreateByUrlInputOptionsTypeMarginType();
+        public ReqPdfCreateByUrlInputOptionsTypeMarginType Margin { get; set; } = new ReqPdfCreateByUrlInputOptionsTypeMarginType();
     }
 
-    public class PdfCreateByUrlInputOptionsTypeMarginType
+    public class ReqPdfCreateByUrlInputOptionsTypeMarginType
     {
         [JsonProperty("left", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MarginLeft { get; set; } = "0px";
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string StampedImage { get; set; }
     }
 
-    public class ImageStampTextInput
+    public class ReqImageStampTextInput
     {
         [JsonProperty("image")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
@@ -482,10 +482,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string TextToStamp { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageStampTextInputOptionsType Options { get; set; } = new ImageStampTextInputOptionsType();
+        public ReqImageStampTextInputOptionsType Options { get; set; } = new ReqImageStampTextInputOptionsType();
     }
 
-    public class ImageStampTextInputOptionsType
+    public class ReqImageStampTextInputOptionsType
     {
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LocationOfTheStamp { get; set; } = "Center";
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string ResizedImage { get; set; }
     }
 
-    public class ImageResizeInput
+    public class ReqImageResizeInput
     {
         [JsonProperty("image")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
@@ -515,10 +515,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public int? Height { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageResizeInputOptionsType Options { get; set; } = new ImageResizeInputOptionsType();
+        public ReqImageResizeInputOptionsType Options { get; set; } = new ReqImageResizeInputOptionsType();
     }
 
-    public class ImageResizeInputOptionsType
+    public class ReqImageResizeInputOptionsType
     {
         [JsonProperty("ignoreAspectRation", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IgnoreTheAspectRation { get; set; } = false;
@@ -530,16 +530,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string[] PDFFile { get; set; }
     }
 
-    public class PdfSplitByPageInput
+    public class ReqPdfSplitByPageInput
     {
         [JsonProperty("pdf")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfSplitByPageInputOptionsType Options { get; set; } = new PdfSplitByPageInputOptionsType();
+        public ReqPdfSplitByPageInputOptionsType Options { get; set; } = new ReqPdfSplitByPageInputOptionsType();
     }
 
-    public class PdfSplitByPageInputOptionsType
+    public class ReqPdfSplitByPageInputOptionsType
     {
         [JsonProperty("numberOfPages", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? NumberOfPages { get; set; } = 1;
@@ -554,16 +554,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string[] PrintedTags { get; set; }
     }
 
-    public class ImageStampExifInput
+    public class ReqImageStampExifInput
     {
         [JsonProperty("image")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageStampExifInputOptionsType Options { get; set; } = new ImageStampExifInputOptionsType();
+        public ReqImageStampExifInputOptionsType Options { get; set; } = new ReqImageStampExifInputOptionsType();
     }
 
-    public class ImageStampExifInputOptionsType
+    public class ReqImageStampExifInputOptionsType
     {
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
-    public class PdfFillFormInput
+    public class ReqPdfFillFormInput
     {
         [JsonProperty("pdf")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public JToken FormData { get; set; }
     }
 
-    public class PdfGetFormDataInput
+    public class ReqPdfGetFormDataInput
     {
         [JsonProperty("pdf")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public string PDFFile { get; set; }
     }
 
-    public class PdfMergeSimpleInput
+    public class ReqPdfMergeSimpleInput
     {
         [JsonProperty("pdfs")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] PDFFile { get; set; }

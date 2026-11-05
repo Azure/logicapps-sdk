@@ -13,18 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin
     public class ZenloginActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlogin")]
-        public IBodyWorkflowAction<LoginPostResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> appId, Expression<Func<LoginPostInput>> body = null)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> appId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<LoginPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LoginResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/applications/{0}/logins/checks", __workflow_appId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<LoginPostResponse>(callPayload);
+                return new ApiConnectionAction<LoginResponse>(callPayload);
             });
         }
     }
@@ -33,16 +33,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin
     {
     }
 
-    public class LoginPostResponse
+    public class LoginResponse
     {
         [JsonProperty("data")]
-        public LoginPostResponseDataType Data { get; set; }
+        public LoginResponseDataType Data { get; set; }
 
         [JsonProperty("errors")]
-        public LoginPostResponseErrorsTypeItem[] Errors { get; set; }
+        public LoginResponseErrorsTypeItem[] Errors { get; set; }
     }
 
-    public class LoginPostResponseDataType
+    public class LoginResponseDataType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin
         public int Timestamp { get; set; }
     }
 
-    public class LoginPostResponseErrorsTypeItem
+    public class LoginResponseErrorsTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin
         public string Detail { get; set; }
     }
 
-    public class LoginPostInput
+    public class BodyInput
     {
         [JsonProperty("identity_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IdentityKey { get; set; }
@@ -84,10 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin
         public string IdentityFullName { get; set; }
 
         [JsonProperty("req_process", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LoginPostInputReqProcessType? ReqProcess { get; set; } = LoginPostInputReqProcessType._1;
+        public BodyInputReqProcessType? ReqProcess { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zenlogin.BodyInputReqProcessType._1;
     }
 
-    public enum LoginPostInputReqProcessType
+    public enum BodyInputReqProcessType
     {
         _0 = 0,
         _1 = 1

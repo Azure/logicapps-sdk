@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class UplandpanvivausActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<OperationsSearchResponse, ApiConnectionActionConfiguration> OperationsSearch(Expression<Func<string>> instance, Expression<Func<string>> term, Expression<Func<int>> pageOffset = null, Expression<Func<int>> pageLimit = null, Expression<Func<changedWhenInput>> changedWhen = null, Expression<Func<int>> directParentFolderId = null)
+        public IBodyWorkflowAction<OperationsSearchResponse, ApiConnectionActionConfiguration> OperationsSearch(Expression<Func<string>> instance, Expression<Func<string>> term, Expression<Func<int>> pageOffset = null, Expression<Func<int>> pageLimit = null, Expression<Func<ChangedWhenInput>> changedWhen = null, Expression<Func<int>> directParentFolderId = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<OperationsLiveCshInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveCsh(Expression<Func<string>> instance, Expression<Func<OperationsLiveCshBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<OperationsLiveDocumentInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveDocument(Expression<Func<string>> instance, Expression<Func<OperationsLiveDocumentBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<OperationsLiveSearchInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> OperationsLiveSearch(Expression<Func<string>> instance, Expression<Func<OperationsLiveCshBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<PutArtefactResponse, ApiConnectionActionConfiguration> PublishArtefact(Expression<Func<string>> instance, Expression<Func<string>> id, Expression<Func<PublishArtefactInput>> body = null)
+        public IBodyWorkflowAction<PutArtefactResponse, ApiConnectionActionConfiguration> PublishArtefact(Expression<Func<string>> instance, Expression<Func<string>> id, Expression<Func<PublishArtefactBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<ResourcesArtefactCategoryPostInput>> body = null)
+        public IBodyWorkflowAction<PostArtefactCategoryResponse, ApiConnectionActionConfiguration> ResourcesArtefactCategory(Expression<Func<string>> instance, Expression<Func<ResourcesArtefactCategoryBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uplandpanvivaus")]
-        public IBodyWorkflowAction<PostArtefactResponse, ApiConnectionActionConfiguration> ResourcesCreateArtefact(Expression<Func<string>> instance, Expression<Func<bool>> isDraft = null, Expression<Func<ResourcesCreateArtefactInput>> body = null)
+        public IBodyWorkflowAction<PostArtefactResponse, ApiConnectionActionConfiguration> ResourcesCreateArtefact(Expression<Func<string>> instance, Expression<Func<bool>> isDraft = null, Expression<Func<ResourcesCreateArtefactBodyInput>> body = null)
         {
             var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             var __workflow_isDraft = WorkflowExpression.Compile(isDraft, nameof(isDraft), required: false);
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum changedWhenInput
+    public enum ChangedWhenInput
     {
         NotProvided,
         [EnumMember(Value = "today")]
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string Id { get; set; }
 
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public OperationsArtefactNlsResponseSectionResponse[] Content { get; set; }
 
         [JsonProperty("simpleContent")]
         public string SimpleContent { get; set; }
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public Highlights Highlights { get; set; }
     }
 
-    public class ResponseSection
+    public class OperationsArtefactNlsResponseSectionResponse
     {
         [JsonProperty("mediaType")]
         public string MediaType { get; set; }
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string Title { get; set; }
     }
 
-    public class OperationsLiveCshInput
+    public class OperationsLiveCshBodyInput
     {
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public bool? MaximizeClient { get; set; }
     }
 
-    public class OperationsLiveDocumentInput
+    public class OperationsLiveDocumentBodyInput
     {
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -647,24 +647,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
 
         [JsonProperty("containerId")]
         public string ContainerId { get; set; }
-    }
-
-    public class OperationsLiveSearchInput
-    {
-        [JsonProperty("username")]
-        public string Username { get; set; }
-
-        [JsonProperty("userId")]
-        public string UserId { get; set; }
-
-        [JsonProperty("query")]
-        public string Query { get; set; }
-
-        [JsonProperty("maximizeClient")]
-        public bool? MaximizeClient { get; set; }
-
-        [JsonProperty("showFirstResult")]
-        public bool? ShowFirstResult { get; set; }
     }
 
     public class GetContainerResponse
@@ -793,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string Title { get; set; }
 
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public OperationsArtefactNlsResponseSectionResponse[] Content { get; set; }
 
         [JsonProperty("simpleContent")]
         public string SimpleContent { get; set; }
@@ -841,16 +823,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string DateModified { get; set; }
 
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public OperationsArtefactNlsResponseSectionResponse[] Content { get; set; }
 
         [JsonProperty("simpleContent")]
         public string SimpleContent { get; set; }
 
         [JsonProperty("channels")]
-        public Channel[] Channels { get; set; }
+        public ResourcesArtefactByIdChannelResponse[] Channels { get; set; }
     }
 
-    public class Channel
+    public class ResourcesArtefactByIdChannelResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -871,7 +853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string Status { get; set; }
     }
 
-    public class PublishArtefactInput
+    public class PublishArtefactBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1357,7 +1339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string CategoryName { get; set; }
     }
 
-    public class ResourcesArtefactCategoryPostInput
+    public class ResourcesArtefactCategoryBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1375,7 +1357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public string ResponseId { get; set; }
     }
 
-    public class ResourcesCreateArtefactInput
+    public class ResourcesCreateArtefactBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1408,13 +1390,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class ResponseVariationModel
     {
         [JsonProperty("content")]
-        public ResponseSection[] Content { get; set; }
+        public ResourcesCreateArtefactResponseSection[] Content { get; set; }
 
         [JsonProperty("channels")]
-        public Channel2[] Channels { get; set; }
+        public ResourcesCreateArtefactChannel[] Channels { get; set; }
     }
 
-    public class Channel2
+    public class ResourcesCreateArtefactResponseSection
+    {
+        [JsonProperty("mediaType")]
+        public string MediaType { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("href")]
+        public string Href { get; set; }
+
+        [JsonProperty("resourceLocation")]
+        public string ResourceLocation { get; set; }
+    }
+
+    public class ResourcesCreateArtefactChannel
     {
         [JsonProperty("id")]
         public int? Id { get; set; }

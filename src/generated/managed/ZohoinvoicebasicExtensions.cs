@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     public class ZohoinvoicebasicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<ContactsGetResponse, ApiConnectionActionConfiguration> ContactsGet(Expression<Func<string>> contactName = null, Expression<Func<string>> companyName = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> address = null, Expression<Func<string>> email = null, Expression<Func<string>> phone = null, Expression<Func<filterByInput>> filterBy = null, Expression<Func<string>> searchText = null, Expression<Func<sortColumnInput>> sortColumn = null, Expression<Func<int>> zcrmContactId = null, Expression<Func<int>> zcrmAccountId = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ContactsGetResponse, ApiConnectionActionConfiguration> ContactsGet(Expression<Func<string>> contactName = null, Expression<Func<string>> companyName = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> address = null, Expression<Func<string>> email = null, Expression<Func<string>> phone = null, Expression<Func<ContactsGetFilterByInput>> filterBy = null, Expression<Func<string>> searchText = null, Expression<Func<ContactsGetSortColumnInput>> sortColumn = null, Expression<Func<int>> zcrmContactId = null, Expression<Func<int>> zcrmAccountId = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_contactName = WorkflowExpression.Compile(contactName, nameof(contactName), required: false);
             var __workflow_companyName = WorkflowExpression.Compile(companyName, nameof(companyName), required: false);
@@ -67,17 +67,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<ContactPostResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactPostInput>> body = null)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ContactPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoice/v3/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ContactPostResponse>(callPayload);
+                return new ApiConnectionAction<ContactResponse>(callPayload);
             });
         }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<ContactPutResponse, ApiConnectionActionConfiguration> ContactPut(Expression<Func<string>> contactId, Expression<Func<ContactPutInput>> body = null)
+        public IBodyWorkflowAction<ContactPutResponse, ApiConnectionActionConfiguration> ContactPut(Expression<Func<string>> contactId, Expression<Func<ContactPutBodyInput>> body = null)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<InvoicesGetResponse, ApiConnectionActionConfiguration> InvoicesGet(Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> itemName = null, Expression<Func<string>> itemId = null, Expression<Func<string>> itemDescription = null, Expression<Func<string>> referenceNumber = null, Expression<Func<string>> customerName = null, Expression<Func<string>> recurringInvoiceId = null, Expression<Func<string>> email = null, Expression<Func<string>> total = null, Expression<Func<string>> balance = null, Expression<Func<string>> customField = null, Expression<Func<string>> date = null, Expression<Func<string>> dueDate = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> customerId = null, Expression<Func<filterByInput2>> filterBy = null, Expression<Func<string>> searchText = null, Expression<Func<sortColumnInput2>> sortColumn = null, Expression<Func<string>> zcrmPotentialId = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<InvoicesGetResponse, ApiConnectionActionConfiguration> InvoicesGet(Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> itemName = null, Expression<Func<string>> itemId = null, Expression<Func<string>> itemDescription = null, Expression<Func<string>> referenceNumber = null, Expression<Func<string>> customerName = null, Expression<Func<string>> recurringInvoiceId = null, Expression<Func<string>> email = null, Expression<Func<string>> total = null, Expression<Func<string>> balance = null, Expression<Func<string>> customField = null, Expression<Func<string>> date = null, Expression<Func<string>> dueDate = null, Expression<Func<StatusInput>> status = null, Expression<Func<string>> customerId = null, Expression<Func<InvoicesGetFilterByInput>> filterBy = null, Expression<Func<string>> searchText = null, Expression<Func<InvoicesGetSortColumnInput>> sortColumn = null, Expression<Func<string>> zcrmPotentialId = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_invoiceNumber = WorkflowExpression.Compile(invoiceNumber, nameof(invoiceNumber), required: false);
             var __workflow_itemName = WorkflowExpression.Compile(itemName, nameof(itemName), required: false);
@@ -199,12 +199,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<InvoicePostResponse, ApiConnectionActionConfiguration> Invoice(Expression<Func<bool>> send = null, Expression<Func<bool>> ignoreAutoNumberGeneration = null, Expression<Func<InvoicePostInput>> body = null)
+        public IBodyWorkflowAction<InvoiceResponse, ApiConnectionActionConfiguration> Invoice(Expression<Func<bool>> send = null, Expression<Func<bool>> ignoreAutoNumberGeneration = null, Expression<Func<InvoiceBodyInput>> body = null)
         {
             var __workflow_send = WorkflowExpression.Compile(send, nameof(send), required: false);
             var __workflow_ignoreAutoNumberGeneration = WorkflowExpression.Compile(ignoreAutoNumberGeneration, nameof(ignoreAutoNumberGeneration), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<InvoicePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<InvoiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/invoice/v3/invoices";
                 var apiCallHttpMethod = "post";
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
                     callPayload.Queries["ignore_auto_number_generation"] = ExpressionConverter.Convert(__workflow_ignoreAutoNumberGeneration);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<InvoicePostResponse>(callPayload);
+                return new ApiConnectionAction<InvoiceResponse>(callPayload);
             });
         }
 
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<InvoicePutResponse, ApiConnectionActionConfiguration> InvoicePut(Expression<Func<string>> invoiceId, Expression<Func<InvoicePutInput>> body = null)
+        public IBodyWorkflowAction<InvoicePutResponse, ApiConnectionActionConfiguration> InvoicePut(Expression<Func<string>> invoiceId, Expression<Func<InvoiceBodyInput>> body = null)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterByInput
+    public enum ContactsGetFilterByInput
     {
         [EnumMember(Value = "Status.All")]
         StatusAll,
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortColumnInput
+    public enum ContactsGetSortColumnInput
     {
         [EnumMember(Value = "contact_name")]
         ContactName,
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         LastModifiedTime
     }
 
-    public class ContactPostResponse
+    public class ContactResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
@@ -363,10 +363,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Message { get; set; }
 
         [JsonProperty("contact")]
-        public ContactPostResponseContactType Contact { get; set; }
+        public ContactResponseContactType Contact { get; set; }
     }
 
-    public class ContactPostResponseContactType
+    public class ContactResponseContactType
     {
         [JsonProperty("contact_id")]
         public string ContactId { get; set; }
@@ -480,13 +480,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public bool PaymentReminderEnabled { get; set; }
 
         [JsonProperty("custom_fields")]
-        public ContactPostResponseContactTypeCustomFieldsTypeItem[] CustomFields { get; set; }
+        public ContactResponseContactTypeCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("billing_address")]
-        public ContactPostResponseContactTypeBillingAddressType BillingAddress { get; set; }
+        public ContactResponseContactTypeBillingAddressType BillingAddress { get; set; }
 
         [JsonProperty("shipping_address")]
-        public ContactPostResponseContactTypeShippingAddressType ShippingAddress { get; set; }
+        public ContactResponseContactTypeShippingAddressType ShippingAddress { get; set; }
 
         [JsonProperty("facebook")]
         public string Facebook { get; set; }
@@ -495,10 +495,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Twitter { get; set; }
 
         [JsonProperty("contact_persons")]
-        public ContactPostResponseContactTypeContactPersonsTypeItem[] ContactPersons { get; set; }
+        public ContactResponseContactTypeContactPersonsTypeItem[] ContactPersons { get; set; }
 
         [JsonProperty("default_templates")]
-        public ContactPostResponseContactTypeDefaultTemplatesType DefaultTemplates { get; set; }
+        public ContactResponseContactTypeDefaultTemplatesType DefaultTemplates { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string LastModifiedTime { get; set; }
     }
 
-    public class ContactPostResponseContactTypeCustomFieldsTypeItem
+    public class ContactResponseContactTypeCustomFieldsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Label { get; set; }
     }
 
-    public class ContactPostResponseContactTypeBillingAddressType
+    public class ContactResponseContactTypeBillingAddressType
     {
         [JsonProperty("attention")]
         public string Attention { get; set; }
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Phone { get; set; }
     }
 
-    public class ContactPostResponseContactTypeShippingAddressType
+    public class ContactResponseContactTypeShippingAddressType
     {
         [JsonProperty("attention")]
         public string Attention { get; set; }
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Phone { get; set; }
     }
 
-    public class ContactPostResponseContactTypeContactPersonsTypeItem
+    public class ContactResponseContactTypeContactPersonsTypeItem
     {
         [JsonProperty("salutation")]
         public string Salutation { get; set; }
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public bool IsPrimaryContact { get; set; }
     }
 
-    public class ContactPostResponseContactTypeDefaultTemplatesType
+    public class ContactResponseContactTypeDefaultTemplatesType
     {
         [JsonProperty("invoice_template_id")]
         public string InvoiceTemplateId { get; set; }
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string CreditnoteEmailTemplateName { get; set; }
     }
 
-    public class ContactPostInput
+    public class ContactBodyInput
     {
         [JsonProperty("contact_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactName { get; set; }
@@ -669,22 +669,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Website { get; set; }
 
         [JsonProperty("custom_fields")]
-        public ContactPostInputCustomFieldsTypeItem[] CustomFields { get; set; }
+        public ContactBodyInputCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("billing_address")]
-        public ContactPostInputBillingAddressType BillingAddress { get; set; }
+        public BodyInputBillingAddressType BillingAddress { get; set; }
 
         [JsonProperty("shipping_address")]
-        public ContactPostInputShippingAddressType ShippingAddress { get; set; }
+        public BodyInputShippingAddressType ShippingAddress { get; set; }
 
         [JsonProperty("contact_persons")]
-        public ContactPostInputContactPersonsTypeItem[] ContactPersons { get; set; }
+        public BodyInputContactPersonsTypeItem[] ContactPersons { get; set; }
 
         [JsonProperty("default_templates")]
-        public ContactPostInputDefaultTemplatesType DefaultTemplates { get; set; }
+        public BodyInputDefaultTemplatesType DefaultTemplates { get; set; }
 
         [JsonProperty("language_code")]
-        public ContactPostInputLanguageCodeType? LanguageCode { get; set; }
+        public BodyInputLanguageCodeType? LanguageCode { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string TaxTreatment { get; set; }
 
         [JsonProperty("tax_regime")]
-        public ContactPostInputTaxRegimeType? TaxRegime { get; set; }
+        public BodyInputTaxRegimeType? TaxRegime { get; set; }
 
         [JsonProperty("legal_name")]
         public string LegalName { get; set; }
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string GstNo { get; set; }
 
         [JsonProperty("gst_treatment")]
-        public ContactPostInputGstTreatmentType? GstTreatment { get; set; }
+        public BodyInputGstTreatmentType? GstTreatment { get; set; }
 
         [JsonProperty("tax_authority_name")]
         public string TaxAuthorityName { get; set; }
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Twitter { get; set; }
     }
 
-    public class ContactPostInputCustomFieldsTypeItem
+    public class ContactBodyInputCustomFieldsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -765,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public int? Index { get; set; }
     }
 
-    public class ContactPostInputBillingAddressType
+    public class BodyInputBillingAddressType
     {
         [JsonProperty("attention")]
         public string Attention { get; set; }
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Phone { get; set; }
     }
 
-    public class ContactPostInputShippingAddressType
+    public class BodyInputShippingAddressType
     {
         [JsonProperty("attention")]
         public string Attention { get; set; }
@@ -831,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Phone { get; set; }
     }
 
-    public class ContactPostInputContactPersonsTypeItem
+    public class BodyInputContactPersonsTypeItem
     {
         [JsonProperty("salutation")]
         public string Salutation { get; set; }
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public bool? IsPrimaryContact { get; set; }
     }
 
-    public class ContactPostInputDefaultTemplatesType
+    public class BodyInputDefaultTemplatesType
     {
         [JsonProperty("invoice_template_id")]
         public string InvoiceTemplateId { get; set; }
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactPostInputLanguageCodeType
+    public enum BodyInputLanguageCodeType
     {
         [EnumMember(Value = "de")]
         De,
@@ -920,7 +920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactPostInputTaxRegimeType
+    public enum BodyInputTaxRegimeType
     {
         [EnumMember(Value = "general_legal_person")]
         GeneralLegalPerson,
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactPostInputGstTreatmentType
+    public enum BodyInputGstTreatmentType
     {
         [EnumMember(Value = "business_gst")]
         BusinessGst,
@@ -1560,7 +1560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string CreditnoteEmailTemplateName { get; set; }
     }
 
-    public class ContactPutInput
+    public class ContactPutBodyInput
     {
         [JsonProperty("contact_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactName { get; set; }
@@ -1578,22 +1578,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Website { get; set; }
 
         [JsonProperty("custom_fields")]
-        public ContactPutInputCustomFieldsTypeItem[] CustomFields { get; set; }
+        public ContactPutBodyInputCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("billing_address")]
-        public ContactPutInputBillingAddressType BillingAddress { get; set; }
+        public BodyInputBillingAddressType BillingAddress { get; set; }
 
         [JsonProperty("shipping_address")]
-        public ContactPutInputShippingAddressType ShippingAddress { get; set; }
+        public BodyInputShippingAddressType ShippingAddress { get; set; }
 
         [JsonProperty("contact_persons")]
-        public ContactPutInputContactPersonsTypeItem[] ContactPersons { get; set; }
+        public BodyInputContactPersonsTypeItem[] ContactPersons { get; set; }
 
         [JsonProperty("default_templates")]
-        public ContactPutInputDefaultTemplatesType DefaultTemplates { get; set; }
+        public BodyInputDefaultTemplatesType DefaultTemplates { get; set; }
 
         [JsonProperty("language_code")]
-        public ContactPutInputLanguageCodeType? LanguageCode { get; set; }
+        public BodyInputLanguageCodeType? LanguageCode { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -1608,13 +1608,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string CountryCode { get; set; }
 
         [JsonProperty("vat_treatment")]
-        public ContactPutInputVatTreatmentType? VatTreatment { get; set; }
+        public BodyInputVatTreatmentType? VatTreatment { get; set; }
 
         [JsonProperty("tax_treatment")]
         public string TaxTreatment { get; set; }
 
         [JsonProperty("tax_regime")]
-        public ContactPutInputTaxRegimeType? TaxRegime { get; set; }
+        public BodyInputTaxRegimeType? TaxRegime { get; set; }
 
         [JsonProperty("legal_name")]
         public string LegalName { get; set; }
@@ -1629,7 +1629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string GstNo { get; set; }
 
         [JsonProperty("gst_treatment")]
-        public ContactPutInputGstTreatmentType? GstTreatment { get; set; }
+        public BodyInputGstTreatmentType? GstTreatment { get; set; }
 
         [JsonProperty("tax_authority_name")]
         public string TaxAuthorityName { get; set; }
@@ -1665,7 +1665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Twitter { get; set; }
     }
 
-    public class ContactPutInputCustomFieldsTypeItem
+    public class ContactPutBodyInputCustomFieldsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1677,162 +1677,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Label { get; set; }
     }
 
-    public class ContactPutInputBillingAddressType
-    {
-        [JsonProperty("attention")]
-        public string Attention { get; set; }
-
-        [JsonProperty("address")]
-        public string Address { get; set; }
-
-        [JsonProperty("street2")]
-        public string Street2 { get; set; }
-
-        [JsonProperty("state_code")]
-        public string StateCode { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("zip")]
-        public string Zip { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("fax")]
-        public string Fax { get; set; }
-
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-    }
-
-    public class ContactPutInputShippingAddressType
-    {
-        [JsonProperty("attention")]
-        public string Attention { get; set; }
-
-        [JsonProperty("address")]
-        public string Address { get; set; }
-
-        [JsonProperty("street2")]
-        public string Street2 { get; set; }
-
-        [JsonProperty("state_code")]
-        public string StateCode { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("zip")]
-        public string Zip { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("fax")]
-        public string Fax { get; set; }
-
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-    }
-
-    public class ContactPutInputContactPersonsTypeItem
-    {
-        [JsonProperty("salutation")]
-        public string Salutation { get; set; }
-
-        [JsonProperty("first_name")]
-        public string FirstName { get; set; }
-
-        [JsonProperty("last_name")]
-        public string LastName { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("phone")]
-        public string Phone { get; set; }
-
-        [JsonProperty("mobile")]
-        public string Mobile { get; set; }
-
-        [JsonProperty("is_primary_contact")]
-        public bool? IsPrimaryContact { get; set; }
-    }
-
-    public class ContactPutInputDefaultTemplatesType
-    {
-        [JsonProperty("invoice_template_id")]
-        public string InvoiceTemplateId { get; set; }
-
-        [JsonProperty("invoice_template_name")]
-        public string InvoiceTemplateName { get; set; }
-
-        [JsonProperty("estimate_template_id")]
-        public string EstimateTemplateId { get; set; }
-
-        [JsonProperty("estimate_template_name")]
-        public string EstimateTemplateName { get; set; }
-
-        [JsonProperty("creditnote_template_id")]
-        public string CreditnoteTemplateId { get; set; }
-
-        [JsonProperty("creditnote_template_name")]
-        public string CreditnoteTemplateName { get; set; }
-
-        [JsonProperty("invoice_email_template_id")]
-        public string InvoiceEmailTemplateId { get; set; }
-
-        [JsonProperty("invoice_email_template_name")]
-        public string InvoiceEmailTemplateName { get; set; }
-
-        [JsonProperty("estimate_email_template_id")]
-        public string EstimateEmailTemplateId { get; set; }
-
-        [JsonProperty("estimate_email_template_name")]
-        public string EstimateEmailTemplateName { get; set; }
-
-        [JsonProperty("creditnote_email_template_id")]
-        public string CreditnoteEmailTemplateId { get; set; }
-
-        [JsonProperty("creditnote_email_template_name")]
-        public string CreditnoteEmailTemplateName { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactPutInputLanguageCodeType
-    {
-        [EnumMember(Value = "de")]
-        De,
-        [EnumMember(Value = "en")]
-        En,
-        [EnumMember(Value = "es")]
-        Es,
-        [EnumMember(Value = "fr")]
-        Fr,
-        [EnumMember(Value = "it")]
-        It,
-        [EnumMember(Value = "ja")]
-        Ja,
-        [EnumMember(Value = "nl")]
-        Nl,
-        [EnumMember(Value = "pt")]
-        Pt,
-        [EnumMember(Value = "sv")]
-        Sv,
-        [EnumMember(Value = "zh")]
-        Zh
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactPutInputVatTreatmentType
+    public enum BodyInputVatTreatmentType
     {
         [EnumMember(Value = "uk")]
         Uk,
@@ -1846,62 +1692,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         BorderRegionMexico,
         [EnumMember(Value = "non_mexico")]
         NonMexico
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactPutInputTaxRegimeType
-    {
-        [EnumMember(Value = "general_legal_person")]
-        GeneralLegalPerson,
-        [EnumMember(Value = "legal_entities_non_profit")]
-        LegalEntitiesNonProfit,
-        [EnumMember(Value = "resident_abroad")]
-        ResidentAbroad,
-        [EnumMember(Value = "production_cooperative_societies")]
-        ProductionCooperativeSocieties,
-        [EnumMember(Value = "agricultural_livestock")]
-        AgriculturalLivestock,
-        [EnumMember(Value = "optional_group_of_companies")]
-        OptionalGroupOfCompanies,
-        [EnumMember(Value = "coordinated")]
-        Coordinated,
-        [EnumMember(Value = "simplified_trust")]
-        SimplifiedTrust,
-        [EnumMember(Value = "wages_salaries_income")]
-        WagesSalariesIncome,
-        [EnumMember(Value = "lease")]
-        Lease,
-        [EnumMember(Value = "property_disposal_acquisition")]
-        PropertyDisposalAcquisition,
-        [EnumMember(Value = "other_income")]
-        OtherIncome,
-        [EnumMember(Value = "divident_income")]
-        DividentIncome,
-        [EnumMember(Value = "individual_business_professional")]
-        IndividualBusinessProfessional,
-        [EnumMember(Value = "interest_income")]
-        InterestIncome,
-        [EnumMember(Value = "income_obtaining_price")]
-        IncomeObtainingPrice,
-        [EnumMember(Value = "no_tax_obligation")]
-        NoTaxObligation,
-        [EnumMember(Value = "tax_incorporation")]
-        TaxIncorporation,
-        [EnumMember(Value = "income_through_technology_platform")]
-        IncomeThroughTechnologyPlatform
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactPutInputGstTreatmentType
-    {
-        [EnumMember(Value = "business_gst")]
-        BusinessGst,
-        [EnumMember(Value = "business_none")]
-        BusinessNone,
-        [EnumMember(Value = "overseas")]
-        Overseas,
-        [EnumMember(Value = "consumer")]
-        Consumer
     }
 
     public class InvoicesGetResponse
@@ -2295,7 +2085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "sent")]
         Sent,
@@ -2316,7 +2106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterByInput2
+    public enum InvoicesGetFilterByInput
     {
         [EnumMember(Value = "Status.All")]
         StatusAll,
@@ -2341,7 +2131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortColumnInput2
+    public enum InvoicesGetSortColumnInput
     {
         [EnumMember(Value = "customer_name")]
         CustomerName,
@@ -2359,7 +2149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         CreatedTime
     }
 
-    public class InvoicePostResponse
+    public class InvoiceResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
@@ -2368,10 +2158,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Message { get; set; }
 
         [JsonProperty("invoice")]
-        public InvoicePostResponseInvoiceType Invoice { get; set; }
+        public InvoiceResponseInvoiceType Invoice { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceType
+    public class InvoiceResponseInvoiceType
     {
         [JsonProperty("invoice_id")]
         public string InvoiceId { get; set; }
@@ -2473,7 +2263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string ClientViewedTime { get; set; }
 
         [JsonProperty("line_items")]
-        public InvoicePostResponseInvoiceTypeLineItemsTypeItem[] LineItems { get; set; }
+        public InvoiceResponseInvoiceTypeLineItemsTypeItem[] LineItems { get; set; }
 
         [JsonProperty("shipping_charge")]
         public double ShippingCharge { get; set; }
@@ -2494,7 +2284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public double Total { get; set; }
 
         [JsonProperty("taxes")]
-        public InvoicePostResponseInvoiceTypeTaxesTypeItem[] Taxes { get; set; }
+        public InvoiceResponseInvoiceTypeTaxesTypeItem[] Taxes { get; set; }
 
         [JsonProperty("payment_reminder_enabled")]
         public bool PaymentReminderEnabled { get; set; }
@@ -2521,7 +2311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public int PricePrecision { get; set; }
 
         [JsonProperty("payment_options")]
-        public InvoicePostResponseInvoiceTypePaymentOptionsType PaymentOptions { get; set; }
+        public InvoiceResponseInvoiceTypePaymentOptionsType PaymentOptions { get; set; }
 
         [JsonProperty("is_emailed")]
         public bool IsEmailed { get; set; }
@@ -2533,10 +2323,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string LastReminderSentDate { get; set; }
 
         [JsonProperty("billing_address")]
-        public InvoicePostResponseInvoiceTypeBillingAddressType BillingAddress { get; set; }
+        public InvoiceResponseInvoiceTypeBillingAddressType BillingAddress { get; set; }
 
         [JsonProperty("shipping_address")]
-        public InvoicePostResponseInvoiceTypeShippingAddressType ShippingAddress { get; set; }
+        public InvoiceResponseInvoiceTypeShippingAddressType ShippingAddress { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -2545,7 +2335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Terms { get; set; }
 
         [JsonProperty("custom_fields")]
-        public InvoicePostResponseInvoiceTypeCustomFieldsTypeItem[] CustomFields { get; set; }
+        public InvoiceResponseInvoiceTypeCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("template_id")]
         public string TemplateId { get; set; }
@@ -2575,7 +2365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string InvoiceUrl { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceTypeLineItemsTypeItem
+    public class InvoiceResponseInvoiceTypeLineItemsTypeItem
     {
         [JsonProperty("line_item_id")]
         public string LineItemId { get; set; }
@@ -2656,7 +2446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string UnitkeyCode { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceTypeTaxesTypeItem
+    public class InvoiceResponseInvoiceTypeTaxesTypeItem
     {
         [JsonProperty("tax_name")]
         public string TaxName { get; set; }
@@ -2665,13 +2455,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public double TaxAmount { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceTypePaymentOptionsType
+    public class InvoiceResponseInvoiceTypePaymentOptionsType
     {
         [JsonProperty("payment_gateways")]
-        public InvoicePostResponseInvoiceTypePaymentOptionsTypePaymentGatewaysTypeItem[] PaymentGateways { get; set; }
+        public InvoiceResponseInvoiceTypePaymentOptionsTypePaymentGatewaysTypeItem[] PaymentGateways { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceTypePaymentOptionsTypePaymentGatewaysTypeItem
+    public class InvoiceResponseInvoiceTypePaymentOptionsTypePaymentGatewaysTypeItem
     {
         [JsonProperty("configured")]
         public bool Configured { get; set; }
@@ -2683,7 +2473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string GatewayName { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceTypeBillingAddressType
+    public class InvoiceResponseInvoiceTypeBillingAddressType
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -2704,7 +2494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Fax { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceTypeShippingAddressType
+    public class InvoiceResponseInvoiceTypeShippingAddressType
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -2725,7 +2515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Fax { get; set; }
     }
 
-    public class InvoicePostResponseInvoiceTypeCustomFieldsTypeItem
+    public class InvoiceResponseInvoiceTypeCustomFieldsTypeItem
     {
         [JsonProperty("customfield_id")]
         public string CustomfieldId { get; set; }
@@ -2749,7 +2539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public double Value { get; set; }
     }
 
-    public class InvoicePostInput
+    public class InvoiceBodyInput
     {
         [JsonProperty("customer_id")]
         public string CustomerId { get; set; }
@@ -2821,16 +2611,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string SalespersonName { get; set; }
 
         [JsonProperty("custom_fields")]
-        public InvoicePostInputCustomFieldsTypeItem[] CustomFields { get; set; }
+        public InvoiceBodyInputCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("project_id")]
         public string ProjectId { get; set; }
 
         [JsonProperty("line_items")]
-        public InvoicePostInputLineItemsTypeItem[] LineItems { get; set; }
+        public BodyInputLineItemsTypeItem[] LineItems { get; set; }
 
         [JsonProperty("payment_options")]
-        public InvoicePostInputPaymentOptionsType PaymentOptions { get; set; }
+        public BodyInputPaymentOptionsType PaymentOptions { get; set; }
 
         [JsonProperty("allow_partial_payments")]
         public bool? AllowPartialPayments { get; set; }
@@ -2875,7 +2665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string AvataxExemptNo { get; set; }
     }
 
-    public class InvoicePostInputCustomFieldsTypeItem
+    public class InvoiceBodyInputCustomFieldsTypeItem
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -2884,7 +2674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public double? Value { get; set; }
     }
 
-    public class InvoicePostInputLineItemsTypeItem
+    public class BodyInputLineItemsTypeItem
     {
         [JsonProperty("item_id")]
         public string ItemId { get; set; }
@@ -2959,13 +2749,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public double? ItemTotal { get; set; }
     }
 
-    public class InvoicePostInputPaymentOptionsType
+    public class BodyInputPaymentOptionsType
     {
         [JsonProperty("payment_gateways")]
-        public InvoicePostInputPaymentOptionsTypePaymentGatewaysTypeItem[] PaymentGateways { get; set; }
+        public BodyInputPaymentOptionsTypePaymentGatewaysTypeItem[] PaymentGateways { get; set; }
     }
 
-    public class InvoicePostInputPaymentOptionsTypePaymentGatewaysTypeItem
+    public class BodyInputPaymentOptionsTypePaymentGatewaysTypeItem
     {
         [JsonProperty("configured")]
         public bool? Configured { get; set; }
@@ -3764,234 +3554,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
 
         [JsonProperty("value")]
         public double Value { get; set; }
-    }
-
-    public class InvoicePutInput
-    {
-        [JsonProperty("customer_id")]
-        public string CustomerId { get; set; }
-
-        [JsonProperty("contact_persons")]
-        public int[] ContactPersons { get; set; }
-
-        [JsonProperty("invoice_number")]
-        public string InvoiceNumber { get; set; }
-
-        [JsonProperty("reference_number")]
-        public string ReferenceNumber { get; set; }
-
-        [JsonProperty("place_of_supply")]
-        public string PlaceOfSupply { get; set; }
-
-        [JsonProperty("vat_treatment")]
-        public string VatTreatment { get; set; }
-
-        [JsonProperty("gst_treatment")]
-        public string GstTreatment { get; set; }
-
-        [JsonProperty("tax_treatment")]
-        public string TaxTreatment { get; set; }
-
-        [JsonProperty("cfdi_usage")]
-        public string CfdiUsage { get; set; }
-
-        [JsonProperty("gst_no")]
-        public string GstNo { get; set; }
-
-        [JsonProperty("template_id")]
-        public string TemplateId { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("payment_terms")]
-        public int? PaymentTerms { get; set; }
-
-        [JsonProperty("payment_terms_label")]
-        public string PaymentTermsLabel { get; set; }
-
-        [JsonProperty("due_date")]
-        public string DueDate { get; set; }
-
-        [JsonProperty("discount")]
-        public double? Discount { get; set; }
-
-        [JsonProperty("is_discount_before_tax")]
-        public bool? IsDiscountBeforeTax { get; set; }
-
-        [JsonProperty("discount_type")]
-        public string DiscountType { get; set; }
-
-        [JsonProperty("is_inclusive_tax")]
-        public bool? IsInclusiveTax { get; set; }
-
-        [JsonProperty("exchange_rate")]
-        public double? ExchangeRate { get; set; }
-
-        [JsonProperty("recurring_invoice_id")]
-        public string RecurringInvoiceId { get; set; }
-
-        [JsonProperty("invoiced_estimate_id")]
-        public string InvoicedEstimateId { get; set; }
-
-        [JsonProperty("salesperson_name")]
-        public string SalespersonName { get; set; }
-
-        [JsonProperty("custom_fields")]
-        public InvoicePutInputCustomFieldsTypeItem[] CustomFields { get; set; }
-
-        [JsonProperty("project_id")]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("line_items")]
-        public InvoicePutInputLineItemsTypeItem[] LineItems { get; set; }
-
-        [JsonProperty("payment_options")]
-        public InvoicePutInputPaymentOptionsType PaymentOptions { get; set; }
-
-        [JsonProperty("allow_partial_payments")]
-        public bool? AllowPartialPayments { get; set; }
-
-        [JsonProperty("custom_body")]
-        public string CustomBody { get; set; }
-
-        [JsonProperty("custom_subject")]
-        public string CustomSubject { get; set; }
-
-        [JsonProperty("notes")]
-        public string Notes { get; set; }
-
-        [JsonProperty("terms")]
-        public string Terms { get; set; }
-
-        [JsonProperty("shipping_charge")]
-        public double? ShippingCharge { get; set; }
-
-        [JsonProperty("adjustment")]
-        public double? Adjustment { get; set; }
-
-        [JsonProperty("adjustment_description")]
-        public string AdjustmentDescription { get; set; }
-
-        [JsonProperty("reason")]
-        public string Reason { get; set; }
-
-        [JsonProperty("tax_authority_id")]
-        public string TaxAuthorityId { get; set; }
-
-        [JsonProperty("tax_exemption_id")]
-        public string TaxExemptionId { get; set; }
-
-        [JsonProperty("avatax_use_code")]
-        public string AvataxUseCode { get; set; }
-
-        [JsonProperty("avatax_tax_code")]
-        public string AvataxTaxCode { get; set; }
-
-        [JsonProperty("avatax_exempt_no")]
-        public string AvataxExemptNo { get; set; }
-    }
-
-    public class InvoicePutInputCustomFieldsTypeItem
-    {
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("value")]
-        public double? Value { get; set; }
-    }
-
-    public class InvoicePutInputLineItemsTypeItem
-    {
-        [JsonProperty("item_id")]
-        public string ItemId { get; set; }
-
-        [JsonProperty("project_id")]
-        public string ProjectId { get; set; }
-
-        [JsonProperty("time_entry_ids")]
-        public int[] TimeEntryIds { get; set; }
-
-        [JsonProperty("expense_id")]
-        public string ExpenseId { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("product_type")]
-        public string ProductType { get; set; }
-
-        [JsonProperty("hsn_or_sac")]
-        public int? HsnOrSac { get; set; }
-
-        [JsonProperty("sat_item_key_code")]
-        public int? SatItemKeyCode { get; set; }
-
-        [JsonProperty("unitkey_code")]
-        public string UnitkeyCode { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("item_order")]
-        public int? ItemOrder { get; set; }
-
-        [JsonProperty("rate")]
-        public double? Rate { get; set; }
-
-        [JsonProperty("quantity")]
-        public double? Quantity { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("discount")]
-        public double? Discount { get; set; }
-
-        [JsonProperty("tax_id")]
-        public string TaxId { get; set; }
-
-        [JsonProperty("tds_tax_id")]
-        public string TdsTaxId { get; set; }
-
-        [JsonProperty("tax_exemption_id")]
-        public string TaxExemptionId { get; set; }
-
-        [JsonProperty("avatax_use_code")]
-        public string AvataxUseCode { get; set; }
-
-        [JsonProperty("avatax_exempt_no")]
-        public string AvataxExemptNo { get; set; }
-
-        [JsonProperty("tax_name")]
-        public string TaxName { get; set; }
-
-        [JsonProperty("tax_type")]
-        public string TaxType { get; set; }
-
-        [JsonProperty("tax_percentage")]
-        public double? TaxPercentage { get; set; }
-
-        [JsonProperty("item_total")]
-        public double? ItemTotal { get; set; }
-    }
-
-    public class InvoicePutInputPaymentOptionsType
-    {
-        [JsonProperty("payment_gateways")]
-        public InvoicePutInputPaymentOptionsTypePaymentGatewaysTypeItem[] PaymentGateways { get; set; }
-    }
-
-    public class InvoicePutInputPaymentOptionsTypePaymentGatewaysTypeItem
-    {
-        [JsonProperty("configured")]
-        public bool? Configured { get; set; }
-
-        [JsonProperty("additional_field1")]
-        public string AdditionalField1 { get; set; }
-
-        [JsonProperty("gateway_name")]
-        public string GatewayName { get; set; }
     }
 }
 

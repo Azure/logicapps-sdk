@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<NumberLookupResponse, ApiConnectionActionConfiguration> NumberLookup(Expression<Func<NumberLookupInput>> body = null)
+        public IBodyWorkflowAction<NumberLookupResponse, ApiConnectionActionConfiguration> NumberLookup(Expression<Func<NumberLookupBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<NumberLookupResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<OTPSendOTPInput>> body = null)
+        public IBodyWorkflowAction<OTPSendOTPResponse, ApiConnectionActionConfiguration> OTPSendOTP(Expression<Func<OTPSendOTPBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OTPSendOTPResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<OTPResendOTPInput>> body = null)
+        public IBodyWorkflowAction<OTPResendOTPResponse, ApiConnectionActionConfiguration> OTPResendOTP(Expression<Func<OTPResendOTPBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OTPResendOTPResponse, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
-        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<OTPVerifyOTPInput>> body = null)
+        public IBodyWorkflowAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration> OTPVerifyOTP(Expression<Func<OTPVerifyOTPBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OTPVerifyOTPResponse, ApiConnectionActionConfiguration>(() =>
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public string Status { get; set; }
     }
 
-    public class NumberLookupInput
+    public class NumberLookupBodyInput
     {
         [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Recipient { get; set; }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public int Expiry { get; set; }
     }
 
-    public class OTPSendOTPInput
+    public class OTPSendOTPBodyInput
     {
         [JsonProperty("originator", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Originator { get; set; }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public string Content { get; set; } = "Greetings from D7 API, your mobile verification code is: {}";
 
         [JsonProperty("data_coding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OTPSendOTPInputDataCodingType DataCoding { get; set; } = OTPSendOTPInputDataCodingType.Auto;
+        public BodyInputDataCodingType DataCoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging.BodyInputDataCodingType.Auto;
 
         [JsonProperty("expiry")]
         public string Expiry { get; set; }
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public string OtpCodeLength { get; set; }
 
         [JsonProperty("otp_type")]
-        public OTPSendOTPInputOtpTypeType? OtpType { get; set; }
+        public BodyInputOtpTypeType? OtpType { get; set; }
 
         [JsonProperty("success_url")]
         public string SuccessUrl { get; set; }
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OTPSendOTPInputDataCodingType
+    public enum BodyInputDataCodingType
     {
         [EnumMember(Value = "auto")]
         Auto,
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OTPSendOTPInputOtpTypeType
+    public enum BodyInputOtpTypeType
     {
         [EnumMember(Value = "numeric")]
         Numeric,
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public int ResendCount { get; set; }
     }
 
-    public class OTPResendOTPInput
+    public class OTPResendOTPBodyInput
     {
         [JsonProperty("otp_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OtpId { get; set; }
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public string Status { get; set; }
     }
 
-    public class OTPVerifyOTPInput
+    public class OTPVerifyOTPBodyInput
     {
         [JsonProperty("otp_id")]
         public string OtpId { get; set; }

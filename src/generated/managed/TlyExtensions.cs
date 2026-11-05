@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPostResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<PixelPostInput>> body = null)
+        public IBodyWorkflowAction<PixelResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<PixelBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PixelPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PixelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/pixel";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PixelPostResponse>(callPayload);
+                return new ApiConnectionAction<PixelResponse>(callPayload);
             });
         }
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPutResponse, ApiConnectionActionConfiguration> PixelPut(Expression<Func<string>> pixelId, Expression<Func<PixelPutInput>> body = null)
+        public IBodyWorkflowAction<PixelPutResponse, ApiConnectionActionConfiguration> PixelPut(Expression<Func<string>> pixelId, Expression<Func<PixelPutBodyInput>> body = null)
         {
             var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -82,17 +82,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPostResponse, ApiConnectionActionConfiguration> Link(Expression<Func<LinkPostInput>> body = null)
+        public IBodyWorkflowAction<LinkResponse, ApiConnectionActionConfiguration> Link(Expression<Func<LinkBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<LinkPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/shorten";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<LinkPostResponse>(callPayload);
+                return new ApiConnectionAction<LinkResponse>(callPayload);
             });
         }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<LinkDeleteInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<LinkDeleteBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPutResponse, ApiConnectionActionConfiguration> LinkPut(Expression<Func<LinkPutInput>> body = null)
+        public IBodyWorkflowAction<LinkPutResponse, ApiConnectionActionConfiguration> LinkPut(Expression<Func<LinkPutBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<LinkPutResponse, ApiConnectionActionConfiguration>(() =>
@@ -142,17 +142,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkExpandPostResponse, ApiConnectionActionConfiguration> LinkExpand(Expression<Func<LinkExpandPostInput>> body = null)
+        public IBodyWorkflowAction<LinkExpandResponse, ApiConnectionActionConfiguration> LinkExpand(Expression<Func<LinkExpandBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<LinkExpandPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LinkExpandResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/expand";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<LinkExpandPostResponse>(callPayload);
+                return new ApiConnectionAction<LinkExpandResponse>(callPayload);
             });
         }
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinkBulk(Expression<Func<LinkBulkPostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> LinkBulk(Expression<Func<LinkBulkBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -228,17 +228,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPostResponse, ApiConnectionActionConfiguration> Tag(Expression<Func<TagPostInput>> body = null)
+        public IBodyWorkflowAction<TagResponse, ApiConnectionActionConfiguration> Tag(Expression<Func<TagBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TagPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TagResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/link/tag";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TagPostResponse>(callPayload);
+                return new ApiConnectionAction<TagResponse>(callPayload);
             });
         }
 
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPutResponse, ApiConnectionActionConfiguration> TagPut(Expression<Func<string>> tagId, Expression<Func<TagPutInput>> body = null)
+        public IBodyWorkflowAction<TagPutResponse, ApiConnectionActionConfiguration> TagPut(Expression<Func<string>> tagId, Expression<Func<TagBodyInput>> body = null)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string UpdatedAt { get; set; }
     }
 
-    public class PixelPostResponse
+    public class PixelResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string UpdatedAt { get; set; }
     }
 
-    public class PixelPostInput
+    public class PixelBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string UpdatedAt { get; set; }
     }
 
-    public class PixelPutInput
+    public class PixelPutBodyInput
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string PixelType { get; set; }
     }
 
-    public class LinkPostResponse
+    public class LinkResponse
     {
         [JsonProperty("short_url")]
         public string ShortUrl { get; set; }
@@ -433,16 +433,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string UpdatedAt { get; set; }
 
         [JsonProperty("meta")]
-        public LinkPostResponseMetaType Meta { get; set; }
+        public LinkResponseMetaType Meta { get; set; }
     }
 
-    public class LinkPostResponseMetaType
+    public class LinkResponseMetaType
     {
         [JsonProperty("smart_urls")]
-        public LinkPostResponseMetaTypeSmartUrlsTypeItem[] SmartUrls { get; set; }
+        public LinkResponseMetaTypeSmartUrlsTypeItem[] SmartUrls { get; set; }
     }
 
-    public class LinkPostResponseMetaTypeSmartUrlsTypeItem
+    public class LinkResponseMetaTypeSmartUrlsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string Url { get; set; }
     }
 
-    public class LinkPostInput
+    public class LinkBodyInput
     {
         [JsonProperty("long_url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LongUrl { get; set; }
@@ -469,16 +469,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public bool? PublicStats { get; set; }
 
         [JsonProperty("meta")]
-        public LinkPostInputMetaType Meta { get; set; }
+        public BodyInputMetaType Meta { get; set; }
     }
 
-    public class LinkPostInputMetaType
+    public class BodyInputMetaType
     {
         [JsonProperty("smart_urls")]
-        public LinkPostInputMetaTypeSmartUrlsTypeItem[] SmartUrls { get; set; }
+        public BodyInputMetaTypeSmartUrlsTypeItem[] SmartUrls { get; set; }
     }
 
-    public class LinkPostInputMetaTypeSmartUrlsTypeItem
+    public class BodyInputMetaTypeSmartUrlsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public int[] Pixels { get; set; }
     }
 
-    public class LinkDeleteInput
+    public class LinkDeleteBodyInput
     {
         [JsonProperty("short_url")]
         public string ShortUrl { get; set; }
@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string Url { get; set; }
     }
 
-    public class LinkPutInput
+    public class LinkPutBodyInput
     {
         [JsonProperty("short_url")]
         public string ShortUrl { get; set; }
@@ -616,7 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public int[] Pixels { get; set; }
     }
 
-    public class LinkExpandPostResponse
+    public class LinkExpandResponse
     {
         [JsonProperty("long_url")]
         public string LongUrl { get; set; }
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public bool Expired { get; set; }
     }
 
-    public class LinkExpandPostInput
+    public class LinkExpandBodyInput
     {
         [JsonProperty("short_url")]
         public string ShortUrl { get; set; }
@@ -721,13 +721,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string Email { get; set; }
     }
 
-    public class LinkBulkPostInput
+    public class LinkBulkBodyInput
     {
         [JsonProperty("domain")]
         public string Domain { get; set; }
 
         [JsonProperty("links")]
-        public LinkBulkPostInputLinksTypeItem[] Links { get; set; }
+        public BodyInputLinksTypeItem[] Links { get; set; }
 
         [JsonProperty("tags")]
         public int[] Tags { get; set; }
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public int[] Pixels { get; set; }
     }
 
-    public class LinkBulkPostInputLinksTypeItem
+    public class BodyInputLinksTypeItem
     {
         public string LongUrl { get; set; }
         public string Backhalf { get; set; }
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string UpdatedAt { get; set; }
     }
 
-    public class TagPostResponse
+    public class TagResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         public string UpdatedAt { get; set; }
     }
 
-    public class TagPostInput
+    public class TagBodyInput
     {
         [JsonProperty("tag", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Tag { get; set; }
@@ -850,12 +850,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
-    }
-
-    public class TagPutInput
-    {
-        [JsonProperty("tag", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Tag { get; set; }
     }
 }
 

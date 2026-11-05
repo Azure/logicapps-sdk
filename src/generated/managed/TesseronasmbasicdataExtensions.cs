@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<SetEnterpriseStatusResponse, ApiConnectionActionConfiguration> SetEnterpriseStatus(Expression<Func<SetEnterpriseStatusInput>> body)
+        public IBodyWorkflowAction<SetEnterpriseStatusResponse, ApiConnectionActionConfiguration> SetEnterpriseStatus(Expression<Func<SetEnterpriseStatusBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SetEnterpriseStatusResponse, ApiConnectionActionConfiguration>(() =>
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiContactCreateContactResponse, ApiConnectionActionConfiguration> ApiContactCreateContact(Expression<Func<ApiContactCreateContactInput>> body)
+        public IBodyWorkflowAction<ApiContactCreateContactResponse, ApiConnectionActionConfiguration> ApiContactCreateContact(Expression<Func<ApiContactCreateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApiContactCreateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmbasicdata")]
-        public IBodyWorkflowAction<ApiContactUpdateContactResponse, ApiConnectionActionConfiguration> ApiContactUpdateContact(Expression<Func<ApiContactUpdateContactInput>> body)
+        public IBodyWorkflowAction<ApiContactUpdateContactResponse, ApiConnectionActionConfiguration> ApiContactUpdateContact(Expression<Func<ApiContactUpdateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApiContactUpdateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public int[] EnterpriseId { get; set; }
     }
 
-    public class SetEnterpriseStatusInput
+    public class SetEnterpriseStatusBodyInput
     {
         [JsonProperty("enterpriseId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int EnterpriseId { get; set; }
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public int ContactId { get; set; }
     }
 
-    public class ApiContactCreateContactInput
+    public class ApiContactCreateContactBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnterpriseReferenceNumber { get; set; }
@@ -252,12 +252,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public bool? IsAddressFromMainEnterprise { get; set; } = true;
 
         [JsonProperty("address")]
-        public ApiContactCreateContactInputAddressType Address { get; set; }
-        public ApiContactCreateContactInputPhoneNumbersTypeItem[] PhoneNumbers { get; set; }
-        public ApiContactCreateContactInputEmailsTypeItem[] Emails { get; set; }
+        public BodyInputAddressType Address { get; set; }
+        public BodyInputPhoneNumbersTypeItem[] PhoneNumbers { get; set; }
+        public BodyInputEmailsTypeItem[] Emails { get; set; }
     }
 
-    public class ApiContactCreateContactInputAddressType
+    public class BodyInputAddressType
     {
         [JsonProperty("street")]
         public string Street { get; set; }
@@ -293,13 +293,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public string CountryName { get; set; }
     }
 
-    public class ApiContactCreateContactInputPhoneNumbersTypeItem
+    public class BodyInputPhoneNumbersTypeItem
     {
         public string Number { get; set; }
         public string Name { get; set; }
     }
 
-    public class ApiContactCreateContactInputEmailsTypeItem
+    public class BodyInputEmailsTypeItem
     {
         public string EMail { get; set; }
         public string Name { get; set; }
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public int ContactId { get; set; }
     }
 
-    public class ApiContactUpdateContactInput
+    public class ApiContactUpdateContactBodyInput
     {
         [JsonProperty("contactId")]
         public string ContactId { get; set; }
@@ -355,57 +355,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public bool? IsAddressFromMainEnterprise { get; set; } = true;
 
         [JsonProperty("address")]
-        public ApiContactUpdateContactInputAddressType Address { get; set; }
-        public ApiContactUpdateContactInputPhoneNumbersTypeItem[] PhoneNumbers { get; set; }
-        public ApiContactUpdateContactInputEmailsTypeItem[] Emails { get; set; }
-    }
-
-    public class ApiContactUpdateContactInputAddressType
-    {
-        [JsonProperty("street")]
-        public string Street { get; set; }
-
-        [JsonProperty("city")]
-        public string City { get; set; }
-
-        [JsonProperty("postcode")]
-        public string Postcode { get; set; }
-
-        [JsonProperty("address1")]
-        public string Address1 { get; set; }
-
-        [JsonProperty("address2")]
-        public string Address2 { get; set; }
-
-        [JsonProperty("address3")]
-        public string Address3 { get; set; }
-
-        [JsonProperty("postbox")]
-        public string Postbox { get; set; }
-
-        [JsonProperty("county")]
-        public string County { get; set; }
-
-        [JsonProperty("countyShort")]
-        public string CountyShort { get; set; }
-
-        [JsonProperty("countryCode")]
-        public string CountryCode { get; set; }
-
-        [JsonProperty("countryName")]
-        public string CountryName { get; set; }
-    }
-
-    public class ApiContactUpdateContactInputPhoneNumbersTypeItem
-    {
-        public string Number { get; set; }
-        public string Name { get; set; }
-    }
-
-    public class ApiContactUpdateContactInputEmailsTypeItem
-    {
-        public string EMail { get; set; }
-        public string Name { get; set; }
+        public BodyInputAddressType Address { get; set; }
+        public BodyInputPhoneNumbersTypeItem[] PhoneNumbers { get; set; }
+        public BodyInputEmailsTypeItem[] Emails { get; set; }
     }
 
     public class ApiContactGetContactsResponse

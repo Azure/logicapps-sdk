@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallRfc3(Expression<Func<string>> rfcName, Expression<Func<object>> rfcInputs, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<inputFormatInput>> inputFormat = null, Expression<Func<returnFormatInput>> returnFormat = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallRfc3(Expression<Func<string>> rfcName, Expression<Func<object>> rfcInputs, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<InputFormatInput>> inputFormat = null, Expression<Func<ReturnFormatInput>> returnFormat = null)
         {
             var __workflow_rfcName = WorkflowExpression.Compile(rfcName, nameof(rfcName), required: true);
             var __workflow_rfcInputs = WorkflowExpression.Compile(rfcInputs, nameof(rfcInputs), required: true);
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<IdocNumbersList, ApiConnectionActionConfiguration> GetTransactionIdocs(Expression<Func<directionInput>> direction, Expression<Func<string>> tId)
+        public IBodyWorkflowAction<IdocNumbersList, ApiConnectionActionConfiguration> GetTransactionIdocs(Expression<Func<DirectionInput>> direction, Expression<Func<string>> tId)
         {
             var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: true);
             var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<ReadTableResponse, ApiConnectionActionConfiguration> ReadTableVersion2(Expression<Func<ReadTableVersion2Input>> inputParameters)
+        public IBodyWorkflowAction<ReadTableResponse, ApiConnectionActionConfiguration> ReadTableVersion2(Expression<Func<InputParametersInput>> inputParameters)
         {
             var __workflow_inputParameters = WorkflowExpression.Compile(inputParameters, nameof(inputParameters), required: true);
             return new DeferredBodyAction<ReadTableResponse, ApiConnectionActionConfiguration>(() =>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse, ApiConnectionActionConfiguration> SendIDoc(Expression<Func<string>> idocType, Expression<Func<string>> body, Expression<Func<string>> releaseVersion = null, Expression<Func<recordTypesVersionInput>> recordTypesVersion = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<SendIdocResponse, ApiConnectionActionConfiguration> SendIDoc(Expression<Func<string>> idocType, Expression<Func<string>> body, Expression<Func<string>> releaseVersion = null, Expression<Func<RecordTypesVersionInput>> recordTypesVersion = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_idocType = WorkflowExpression.Compile(idocType, nameof(idocType), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse, ApiConnectionActionConfiguration> SendIDocVersion2(Expression<Func<object>> dynamicParameters, Expression<Func<idocFormatInput>> idocFormat = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null)
+        public IBodyWorkflowAction<SendIdocResponse, ApiConnectionActionConfiguration> SendIDocVersion2(Expression<Func<object>> dynamicParameters, Expression<Func<IdocFormatInput>> idocFormat = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null)
         {
             var __workflow_dynamicParameters = WorkflowExpression.Compile(dynamicParameters, nameof(dynamicParameters), required: true);
             var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: false);
@@ -422,7 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SubscribeResponse, ApiConnectionActionConfiguration> StartLongRunningRfc(Expression<Func<StartLongRunningRfcInput>> callRfcSubscription, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
+        public IBodyWorkflowAction<SubscribeResponse, ApiConnectionActionConfiguration> StartLongRunningRfc(Expression<Func<CallRfcSubscriptionInput>> callRfcSubscription, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
         {
             var __workflow_callRfcSubscription = WorkflowExpression.Compile(callRfcSubscription, nameof(callRfcSubscription), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -444,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<SubscribeInput>> subscription, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse, ApiConnectionTriggerConfiguration> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<SubscriptionInput>> subscription, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, FlowRecurrence recurrence = null)
         {
             var __workflow_gatewayHost = WorkflowExpression.Compile(gatewayHost, nameof(gatewayHost), required: true);
             var __workflow_gatewayService = WorkflowExpression.Compile(gatewayService, nameof(gatewayService), required: true);
@@ -524,14 +524,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputFormatInput
+    public enum InputFormatInput
     {
         Json,
         Xml
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum returnFormatInput
+    public enum ReturnFormatInput
     {
         Json,
         Xml
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum directionInput
+    public enum DirectionInput
     {
         Send,
         Receive
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         public string FieldDescription { get; set; }
     }
 
-    public class ReadTableVersion2Input
+    public class InputParametersInput
     {
         [JsonProperty("tableName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TableName { get; set; }
@@ -624,7 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum recordTypesVersionInput
+    public enum RecordTypesVersionInput
     {
         [EnumMember(Value = "2")]
         _2,
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum idocFormatInput
+    public enum IdocFormatInput
     {
         Xml,
         FlatFile
@@ -698,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         HttpVersionNotSupported
     }
 
-    public class StartLongRunningRfcInput
+    public class CallRfcSubscriptionInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public RfcCallParameters RfcCallParameters { get; set; }
@@ -724,12 +724,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         public string QueueName { get; set; }
     }
 
-    public class SubscribeInput
+    public class SubscriptionInput
     {
         public string[] SapActions { get; set; }
 
         [JsonProperty("IdocFormat")]
-        public SubscribeInputIdOCFormatType? IdOCFormat { get; set; }
+        public SubscriptionInputIdOCFormatType? IdOCFormat { get; set; }
 
         [JsonProperty("ReceiveIdocsWithUnreleasedSegments")]
         public bool? ReceiveIdOCsWithUnreleasedSegments { get; set; }
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SubscribeInputIdOCFormatType
+    public enum SubscriptionInputIdOCFormatType
     {
         MicrosoftLobNamespaceXml,
         SapPlainXml,

@@ -37,17 +37,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListPostResponse, ApiConnectionActionConfiguration> List(Expression<Func<ListPostInput>> body = null)
+        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> List(Expression<Func<ListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ListPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ListPostResponse>(callPayload);
+                return new ApiConnectionAction<ListResponse>(callPayload);
             });
         }
 
@@ -91,17 +91,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ContactPostResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactPostInput>> body = null)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ContactPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ContactPostResponse>(callPayload);
+                return new ApiConnectionAction<ContactResponse>(callPayload);
             });
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<UnsubscribePatchResponse, ApiConnectionActionConfiguration> UnsubscribePatch(Expression<Func<UnsubscribePatchInput>> body)
+        public IBodyWorkflowAction<UnsubscribePatchResponse, ApiConnectionActionConfiguration> UnsubscribePatch(Expression<Func<UnsubscribePatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UnsubscribePatchResponse, ApiConnectionActionConfiguration>(() =>
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         public int SubscribedContactsCount { get; set; }
     }
 
-    public class ListPostResponse
+    public class ListResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         public int Id { get; set; }
     }
 
-    public class ListPostInput
+    public class ListBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         public string CreatedAt { get; set; }
     }
 
-    public class ContactPostResponse
+    public class ContactResponse
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         public string CreatedAgo { get; set; }
     }
 
-    public class ContactPostInput
+    public class ContactBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         public string[] ContactFields { get; set; }
     }
 
-    public class UnsubscribePatchInput
+    public class UnsubscribePatchBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }

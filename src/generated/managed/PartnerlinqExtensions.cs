@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "partnerlinq")]
-        public IBodyWorkflowAction<PartnerLinqPostResponse, ApiConnectionActionConfiguration> PartnerLinq(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tenantId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId, Expression<Func<PartnerLinqPostInput>> body = null)
+        public IBodyWorkflowAction<PartnerLinqResponse, ApiConnectionActionConfiguration> PartnerLinq(Expression<Func<string>> code, Expression<Func<string>> environment, Expression<Func<string>> tenantId, Expression<Func<string>> companyId, Expression<Func<string>> process, Expression<Func<string>> partnerId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
             var __workflow_process = WorkflowExpression.Compile(process, nameof(process), required: true);
             var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PartnerLinqPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PartnerLinqResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/FUNC_HTTP_DATA_RECEIVE";
                 var apiCallHttpMethod = "post";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
                 callPayload.Headers["PartnerId"] = ExpressionConverter.Convert(__workflow_partnerId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PartnerLinqPostResponse>(callPayload);
+                return new ApiConnectionAction<PartnerLinqResponse>(callPayload);
             });
         }
     }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
         public string Data { get; set; }
     }
 
-    public class PartnerLinqPostResponse
+    public class PartnerLinqResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnerlinq
         public string Response { get; set; }
     }
 
-    public class PartnerLinqPostInput
+    public class BodyInput
     {
         [JsonProperty("data")]
         public string Data { get; set; }

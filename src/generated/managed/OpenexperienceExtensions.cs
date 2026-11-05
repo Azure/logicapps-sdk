@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
     public class OpenexperienceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openexperience")]
-        public IBodyWorkflowAction<CreateNewProjectResponse, ApiConnectionActionConfiguration> CreateNewProject(Expression<Func<CreateNewProjectInput>> projectSettings)
+        public IBodyWorkflowAction<CreateNewProjectResponse, ApiConnectionActionConfiguration> CreateNewProject(Expression<Func<ProjectSettingsInput>> projectSettings)
         {
             var __workflow_projectSettings = WorkflowExpression.Compile(projectSettings, nameof(projectSettings), required: true);
             return new DeferredBodyAction<CreateNewProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
         public string Code { get; set; }
     }
 
-    public class CreateNewProjectInput
+    public class ProjectSettingsInput
     {
         [JsonProperty("customerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerId { get; set; }
@@ -64,10 +64,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
         public string[] Services { get; set; }
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateNewProjectInputSettingsType Settings { get; set; } = new CreateNewProjectInputSettingsType();
+        public ProjectSettingsInputSettingsType Settings { get; set; } = new ProjectSettingsInputSettingsType();
     }
 
-    public class CreateNewProjectInputSettingsType
+    public class ProjectSettingsInputSettingsType
     {
         [JsonProperty("projectAdminMembersAccess", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ProjectAdminMembersAccess { get; set; } = false;

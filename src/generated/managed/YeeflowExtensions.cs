@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
     public class YeeflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<AddItemResponse, ApiConnectionActionConfiguration> AddItem(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<AddItemInput>> body = null)
+        public IBodyWorkflowAction<AddItemResponse, ApiConnectionActionConfiguration> AddItem(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<AddItemBodyInput>> body = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<UpdateItemResponse, ApiConnectionActionConfiguration> UpdateItem(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<string>> id, Expression<Func<UpdateItemInput>> body = null)
+        public IBodyWorkflowAction<UpdateItemResponse, ApiConnectionActionConfiguration> UpdateItem(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<string>> id, Expression<Func<UpdateItemBodyInput>> body = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<StartWorkflowResponse, ApiConnectionActionConfiguration> StartWorkflow(Expression<Func<string>> application, Expression<Func<string>> key, Expression<Func<StartWorkflowInput>> body = null)
+        public IBodyWorkflowAction<StartWorkflowResponse, ApiConnectionActionConfiguration> StartWorkflow(Expression<Func<string>> application, Expression<Func<string>> key, Expression<Func<StartWorkflowBodyInput>> body = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<QueryItemsResponse, ApiConnectionActionConfiguration> QueryItems(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<QueryItemsInput>> body = null)
+        public IBodyWorkflowAction<QueryItemsResponse, ApiConnectionActionConfiguration> QueryItems(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<QueryItemsBodyInput>> body = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -274,11 +274,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
     public class YeeflowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<OnItemCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/1", __workflow_listId.WithUrlEncoding(1)));
@@ -286,16 +285,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<OnItemModifiedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/2", __workflow_listId.WithUrlEncoding(1)));
@@ -303,16 +301,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<OnItemCreatedModifiedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/3", __workflow_listId.WithUrlEncoding(1)));
@@ -320,16 +317,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listId, Expression<Func<OnItemDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listId, FlowRecurrence recurrence = null)
         {
             var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/41/{0}/hooks/4", __workflow_listId.WithUrlEncoding(1)));
@@ -337,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
                 callPayload.Queries["channel"] = Convert.ToString("ms-power");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new OnItemCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
             });
         }
@@ -351,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public string Message { get; set; }
     }
 
-    public class AddItemInput
+    public class AddItemBodyInput
     {
         public JToken Data { get; set; }
     }
@@ -379,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public string Message { get; set; }
     }
 
-    public class UpdateItemInput
+    public class UpdateItemBodyInput
     {
         public int? RowVersion { get; set; }
         public JToken Data { get; set; }
@@ -427,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public string FlowNo { get; set; }
     }
 
-    public class StartWorkflowInput
+    public class StartWorkflowBodyInput
     {
         [JsonProperty("ApplicantID")]
         public string ApplicantId { get; set; }
@@ -481,11 +477,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public int TotalCount { get; set; }
     }
 
-    public class QueryItemsInput
+    public class QueryItemsBodyInput
     {
         public string[] Fields { get; set; }
         public ListDataWhereRequest[] Filters { get; set; }
-        public QueryItemsInputSortsTypeItem[] Sorts { get; set; }
+        public BodyInputSortsTypeItem[] Sorts { get; set; }
 
         [JsonProperty("PageIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? PageNumber { get; set; } = 1;
@@ -503,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public int? FilterType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListDataWhereRequestPreType? Pre { get; set; } = ListDataWhereRequestPreType.And;
+        public ListDataWhereRequestPreType? Pre { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow.ListDataWhereRequestPreType.And;
         public ListDataWhereRequest[] Child { get; set; }
     }
 
@@ -516,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         Or
     }
 
-    public class QueryItemsInputSortsTypeItem
+    public class BodyInputSortsTypeItem
     {
         public string Field { get; set; }
 
@@ -579,25 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public string Message { get; set; }
     }
 
-    public class OnItemCreatedInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnItemModifiedInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnItemCreatedModifiedInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class OnItemDeletedInput
+    public class OnItemCreatedBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

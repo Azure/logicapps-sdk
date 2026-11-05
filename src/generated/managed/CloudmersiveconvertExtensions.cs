@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class CloudmersiveconvertActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<CreateBlankDocxResponse, ApiConnectionActionConfiguration> EditDocumentDocxCreateBlankDocument(Expression<Func<EditDocumentDocxCreateBlankDocumentInput>> input)
+        public IBodyWorkflowAction<CreateBlankDocxResponse, ApiConnectionActionConfiguration> EditDocumentDocxCreateBlankDocument(Expression<Func<EditDocumentDocxCreateBlankDocumentInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<CreateBlankDocxResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentDocxDeletePages(Expression<Func<EditDocumentDocxDeletePagesInput>> reqConfig)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentDocxDeletePages(Expression<Func<EditDocumentDocxDeletePagesReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<DeleteDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxDeleteTableRow(Expression<Func<EditDocumentDocxDeleteTableRowInput>> reqConfig)
+        public IBodyWorkflowAction<DeleteDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxDeleteTableRow(Expression<Func<EditDocumentDocxDeleteTableRowReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<DeleteDocxTableRowResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<DeleteDocxTableRowRangeResponse, ApiConnectionActionConfiguration> EditDocumentDocxDeleteTableRowRange(Expression<Func<EditDocumentDocxDeleteTableRowRangeInput>> reqConfig)
+        public IBodyWorkflowAction<DeleteDocxTableRowRangeResponse, ApiConnectionActionConfiguration> EditDocumentDocxDeleteTableRowRange(Expression<Func<EditDocumentDocxDeleteTableRowRangeReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<DeleteDocxTableRowRangeResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxBodyResponse, ApiConnectionActionConfiguration> EditDocumentDocxBody(Expression<Func<EditDocumentDocxBodyInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxBodyResponse, ApiConnectionActionConfiguration> EditDocumentDocxBody(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxBodyResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxCommentsHierarchicalResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetCommentsHierarchical(Expression<Func<EditDocumentDocxGetCommentsHierarchicalInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxCommentsHierarchicalResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetCommentsHierarchical(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxCommentsHierarchicalResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxHeadersAndFootersResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetHeadersAndFooters(Expression<Func<EditDocumentDocxGetHeadersAndFootersInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxHeadersAndFootersResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetHeadersAndFooters(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxHeadersAndFootersResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxImagesResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetImages(Expression<Func<EditDocumentDocxGetImagesInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxImagesResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetImages(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxImagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxPagesResponse, ApiConnectionActionConfiguration> EditDocumentDocxPages(Expression<Func<EditDocumentDocxPagesInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxPagesResponse, ApiConnectionActionConfiguration> EditDocumentDocxPages(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxPagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxSectionsResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetSections(Expression<Func<EditDocumentDocxGetSectionsInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxSectionsResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetSections(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxSectionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxStylesResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetStyles(Expression<Func<EditDocumentDocxGetStylesInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxStylesResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetStyles(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxStylesResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetTableRow(Expression<Func<EditDocumentDocxGetTableRowInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetTableRow(Expression<Func<EditDocumentDocxDeleteTableRowReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxTableRowResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxTableByIndexResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetTableByIndex(Expression<Func<EditDocumentDocxGetTableByIndexInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxTableByIndexResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetTableByIndex(Expression<Func<EditDocumentDocxGetTableByIndexReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxTableByIndexResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetDocxTablesResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetTables(Expression<Func<EditDocumentDocxGetTablesInput>> reqConfig)
+        public IBodyWorkflowAction<GetDocxTablesResponse, ApiConnectionActionConfiguration> EditDocumentDocxGetTables(Expression<Func<EditDocumentDocxBodyReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<GetDocxTablesResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<InsertDocxCommentOnParagraphResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertCommentOnParagraph(Expression<Func<EditDocumentDocxInsertCommentOnParagraphInput>> reqConfig)
+        public IBodyWorkflowAction<InsertDocxCommentOnParagraphResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertCommentOnParagraph(Expression<Func<EditDocumentDocxInsertCommentOnParagraphReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<InsertDocxCommentOnParagraphResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<DocxInsertImageResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertImage(Expression<Func<EditDocumentDocxInsertImageInput>> reqConfig)
+        public IBodyWorkflowAction<DocxInsertImageResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertImage(Expression<Func<EditDocumentDocxInsertImageReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<DocxInsertImageResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<InsertDocxInsertParagraphResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertParagraph(Expression<Func<EditDocumentDocxInsertParagraphInput>> reqConfig)
+        public IBodyWorkflowAction<InsertDocxInsertParagraphResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertParagraph(Expression<Func<EditDocumentDocxInsertParagraphReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<InsertDocxInsertParagraphResponse, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<InsertDocxTablesResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertTable(Expression<Func<EditDocumentDocxInsertTableInput>> reqConfig)
+        public IBodyWorkflowAction<InsertDocxTablesResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertTable(Expression<Func<EditDocumentDocxInsertTableReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<InsertDocxTablesResponse, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<InsertDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertTableRow(Expression<Func<EditDocumentDocxInsertTableRowInput>> reqConfig)
+        public IBodyWorkflowAction<InsertDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxInsertTableRow(Expression<Func<EditDocumentDocxInsertTableRowReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<InsertDocxTableRowResponse, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<RemoveDocxHeadersAndFootersResponse, ApiConnectionActionConfiguration> EditDocumentDocxRemoveHeadersAndFooters(Expression<Func<EditDocumentDocxRemoveHeadersAndFootersInput>> reqConfig)
+        public IBodyWorkflowAction<RemoveDocxHeadersAndFootersResponse, ApiConnectionActionConfiguration> EditDocumentDocxRemoveHeadersAndFooters(Expression<Func<EditDocumentDocxRemoveHeadersAndFootersReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<RemoveDocxHeadersAndFootersResponse, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<DocxRemoveObjectResponse, ApiConnectionActionConfiguration> EditDocumentDocxRemoveObject(Expression<Func<EditDocumentDocxRemoveObjectInput>> reqConfig)
+        public IBodyWorkflowAction<DocxRemoveObjectResponse, ApiConnectionActionConfiguration> EditDocumentDocxRemoveObject(Expression<Func<EditDocumentDocxRemoveObjectReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<DocxRemoveObjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentDocxReplace(Expression<Func<EditDocumentDocxReplaceInput>> reqConfig)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentDocxReplace(Expression<Func<EditDocumentDocxReplaceReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<DocxSetFooterResponse, ApiConnectionActionConfiguration> EditDocumentDocxSetFooter(Expression<Func<EditDocumentDocxSetFooterInput>> reqConfig)
+        public IBodyWorkflowAction<DocxSetFooterResponse, ApiConnectionActionConfiguration> EditDocumentDocxSetFooter(Expression<Func<EditDocumentDocxSetFooterReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<DocxSetFooterResponse, ApiConnectionActionConfiguration>(() =>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<DocxSetFooterResponse, ApiConnectionActionConfiguration> EditDocumentDocxSetFooterAddPageNumber(Expression<Func<EditDocumentDocxSetFooterAddPageNumberInput>> reqConfig)
+        public IBodyWorkflowAction<DocxSetFooterResponse, ApiConnectionActionConfiguration> EditDocumentDocxSetFooterAddPageNumber(Expression<Func<EditDocumentDocxSetFooterAddPageNumberReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<DocxSetFooterResponse, ApiConnectionActionConfiguration>(() =>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<DocxSetHeaderResponse, ApiConnectionActionConfiguration> EditDocumentDocxSetHeader(Expression<Func<EditDocumentDocxSetHeaderInput>> reqConfig)
+        public IBodyWorkflowAction<DocxSetHeaderResponse, ApiConnectionActionConfiguration> EditDocumentDocxSetHeader(Expression<Func<EditDocumentDocxSetHeaderReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<DocxSetHeaderResponse, ApiConnectionActionConfiguration>(() =>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<UpdateDocxTableCellResponse, ApiConnectionActionConfiguration> EditDocumentDocxUpdateTableCell(Expression<Func<EditDocumentDocxUpdateTableCellInput>> reqConfig)
+        public IBodyWorkflowAction<UpdateDocxTableCellResponse, ApiConnectionActionConfiguration> EditDocumentDocxUpdateTableCell(Expression<Func<EditDocumentDocxUpdateTableCellReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<UpdateDocxTableCellResponse, ApiConnectionActionConfiguration>(() =>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<UpdateDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxUpdateTableRow(Expression<Func<EditDocumentDocxUpdateTableRowInput>> reqConfig)
+        public IBodyWorkflowAction<UpdateDocxTableRowResponse, ApiConnectionActionConfiguration> EditDocumentDocxUpdateTableRow(Expression<Func<EditDocumentDocxUpdateTableRowReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<UpdateDocxTableRowResponse, ApiConnectionActionConfiguration>(() =>
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentFinishEditing(Expression<Func<EditDocumentFinishEditingInput>> reqConfig)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentFinishEditing(Expression<Func<EditDocumentFinishEditingReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentPptxDeleteSlides(Expression<Func<EditDocumentPptxDeleteSlidesInput>> reqConfig)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentPptxDeleteSlides(Expression<Func<EditDocumentPptxDeleteSlidesReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentPptxReplace(Expression<Func<EditDocumentPptxReplaceInput>> reqConfig)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EditDocumentPptxReplace(Expression<Func<EditDocumentDocxReplaceReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<ClearXlsxCellResponse, ApiConnectionActionConfiguration> EditDocumentXlsxClearCellByIndex(Expression<Func<EditDocumentXlsxClearCellByIndexInput>> input)
+        public IBodyWorkflowAction<ClearXlsxCellResponse, ApiConnectionActionConfiguration> EditDocumentXlsxClearCellByIndex(Expression<Func<EditDocumentXlsxClearCellByIndexInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<ClearXlsxCellResponse, ApiConnectionActionConfiguration>(() =>
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<CreateBlankSpreadsheetResponse, ApiConnectionActionConfiguration> EditDocumentXlsxCreateBlankSpreadsheet(Expression<Func<EditDocumentXlsxCreateBlankSpreadsheetInput>> input)
+        public IBodyWorkflowAction<CreateBlankSpreadsheetResponse, ApiConnectionActionConfiguration> EditDocumentXlsxCreateBlankSpreadsheet(Expression<Func<EditDocumentXlsxCreateBlankSpreadsheetInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<CreateBlankSpreadsheetResponse, ApiConnectionActionConfiguration>(() =>
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<CreateSpreadsheetFromDataResponse, ApiConnectionActionConfiguration> EditDocumentXlsxCreateSpreadsheetFromData(Expression<Func<EditDocumentXlsxCreateSpreadsheetFromDataInput>> input)
+        public IBodyWorkflowAction<CreateSpreadsheetFromDataResponse, ApiConnectionActionConfiguration> EditDocumentXlsxCreateSpreadsheetFromData(Expression<Func<EditDocumentXlsxCreateSpreadsheetFromDataInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<CreateSpreadsheetFromDataResponse, ApiConnectionActionConfiguration>(() =>
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditDocumentXlsxDeleteWorksheet(Expression<Func<EditDocumentXlsxDeleteWorksheetInput>> reqConfig)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditDocumentXlsxDeleteWorksheet(Expression<Func<EditDocumentXlsxDeleteWorksheetReqConfigInput>> reqConfig)
         {
             var __workflow_reqConfig = WorkflowExpression.Compile(reqConfig, nameof(reqConfig), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetXlsxCellByIdentifierResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetCellByIdentifier(Expression<Func<EditDocumentXlsxGetCellByIdentifierInput>> input)
+        public IBodyWorkflowAction<GetXlsxCellByIdentifierResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetCellByIdentifier(Expression<Func<EditDocumentXlsxGetCellByIdentifierInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetXlsxCellByIdentifierResponse, ApiConnectionActionConfiguration>(() =>
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetXlsxCellResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetCellByIndex(Expression<Func<EditDocumentXlsxGetCellByIndexInput>> input)
+        public IBodyWorkflowAction<GetXlsxCellResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetCellByIndex(Expression<Func<EditDocumentXlsxGetCellByIndexInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetXlsxCellResponse, ApiConnectionActionConfiguration>(() =>
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetXlsxColumnsResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetColumns(Expression<Func<EditDocumentXlsxGetColumnsInput>> input)
+        public IBodyWorkflowAction<GetXlsxColumnsResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetColumns(Expression<Func<EditDocumentXlsxGetColumnsInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetXlsxColumnsResponse, ApiConnectionActionConfiguration>(() =>
@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetXlsxImagesResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetImages(Expression<Func<EditDocumentXlsxGetImagesInput>> input)
+        public IBodyWorkflowAction<GetXlsxImagesResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetImages(Expression<Func<EditDocumentXlsxGetColumnsInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetXlsxImagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetXlsxRowsAndCellsResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetRowsAndCells(Expression<Func<EditDocumentXlsxGetRowsAndCellsInput>> input)
+        public IBodyWorkflowAction<GetXlsxRowsAndCellsResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetRowsAndCells(Expression<Func<EditDocumentXlsxGetColumnsInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetXlsxRowsAndCellsResponse, ApiConnectionActionConfiguration>(() =>
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetXlsxStylesResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetStyles(Expression<Func<EditDocumentXlsxGetStylesInput>> input)
+        public IBodyWorkflowAction<GetXlsxStylesResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetStyles(Expression<Func<EditDocumentXlsxGetStylesInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetXlsxStylesResponse, ApiConnectionActionConfiguration>(() =>
@@ -573,7 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<GetXlsxWorksheetsResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetWorksheets(Expression<Func<EditDocumentXlsxGetWorksheetsInput>> input)
+        public IBodyWorkflowAction<GetXlsxWorksheetsResponse, ApiConnectionActionConfiguration> EditDocumentXlsxGetWorksheets(Expression<Func<EditDocumentXlsxGetStylesInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<GetXlsxWorksheetsResponse, ApiConnectionActionConfiguration>(() =>
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<InsertXlsxWorksheetResponse, ApiConnectionActionConfiguration> EditDocumentXlsxInsertWorksheet(Expression<Func<EditDocumentXlsxInsertWorksheetInput>> input)
+        public IBodyWorkflowAction<InsertXlsxWorksheetResponse, ApiConnectionActionConfiguration> EditDocumentXlsxInsertWorksheet(Expression<Func<EditDocumentXlsxInsertWorksheetInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<InsertXlsxWorksheetResponse, ApiConnectionActionConfiguration>(() =>
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<SetXlsxCellByIdentifierResponse, ApiConnectionActionConfiguration> EditDocumentXlsxSetCellByIdentifier(Expression<Func<EditDocumentXlsxSetCellByIdentifierInput>> input)
+        public IBodyWorkflowAction<SetXlsxCellByIdentifierResponse, ApiConnectionActionConfiguration> EditDocumentXlsxSetCellByIdentifier(Expression<Func<EditDocumentXlsxSetCellByIdentifierInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<SetXlsxCellByIdentifierResponse, ApiConnectionActionConfiguration>(() =>
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<SetXlsxCellResponse, ApiConnectionActionConfiguration> EditDocumentXlsxSetCellByIndex(Expression<Func<EditDocumentXlsxSetCellByIndexInput>> input)
+        public IBodyWorkflowAction<SetXlsxCellResponse, ApiConnectionActionConfiguration> EditDocumentXlsxSetCellByIndex(Expression<Func<EditDocumentXlsxSetCellByIndexInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<SetXlsxCellResponse, ApiConnectionActionConfiguration>(() =>
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebHtmlToDocx(Expression<Func<ConvertWebHtmlToDocxInput>> inputRequest)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebHtmlToDocx(Expression<Func<InputRequestInput>> inputRequest)
         {
             var __workflow_inputRequest = WorkflowExpression.Compile(inputRequest, nameof(inputRequest), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<HtmlTemplateApplicationResponse, ApiConnectionActionConfiguration> ConvertTemplateApplyHtmlTemplate(Expression<Func<ConvertTemplateApplyHtmlTemplateInput>> value)
+        public IBodyWorkflowAction<HtmlTemplateApplicationResponse, ApiConnectionActionConfiguration> ConvertTemplateApplyHtmlTemplate(Expression<Func<ValueInput>> value)
         {
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<HtmlTemplateApplicationResponse, ApiConnectionActionConfiguration>(() =>
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebHtmlToPdf(Expression<Func<ConvertWebHtmlToPdfInput>> input)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebHtmlToPdf(Expression<Func<ConvertWebHtmlToPdfInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -685,7 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ConvertWebHtmlToPng(Expression<Func<ConvertWebHtmlToPngInput>> input)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ConvertWebHtmlToPng(Expression<Func<ConvertWebHtmlToPngInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<HtmlToTextResponse, ApiConnectionActionConfiguration> ConvertWebHtmlToTxt(Expression<Func<ConvertWebHtmlToTxtInput>> input)
+        public IBodyWorkflowAction<HtmlToTextResponse, ApiConnectionActionConfiguration> ConvertWebHtmlToTxt(Expression<Func<ConvertWebHtmlToTxtInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<HtmlToTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebUrlToPdf(Expression<Func<ConvertWebUrlToPdfInput>> input)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebUrlToPdf(Expression<Func<ConvertWebUrlToPdfInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -727,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebUrlToScreenshot(Expression<Func<ConvertWebUrlToScreenshotInput>> input)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConvertWebUrlToScreenshot(Expression<Func<ConvertWebUrlToPdfInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersiveconvert")]
-        public IBodyWorkflowAction<UrlToTextResponse, ApiConnectionActionConfiguration> ConvertWebUrlToTxt(Expression<Func<ConvertWebUrlToTxtInput>> input)
+        public IBodyWorkflowAction<UrlToTextResponse, ApiConnectionActionConfiguration> ConvertWebUrlToTxt(Expression<Func<ConvertWebUrlToTxtInputInput>> input)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredBodyAction<UrlToTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -765,12 +765,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxCreateBlankDocumentInput
+    public class EditDocumentDocxCreateBlankDocumentInputInput
     {
         public string InitialText { get; set; }
     }
 
-    public class EditDocumentDocxDeletePagesInput
+    public class EditDocumentDocxDeletePagesReqConfigInput
     {
         public int? EndDeletePageNumber { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxDeleteTableRowInput
+    public class EditDocumentDocxDeleteTableRowReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxDeleteTableRowRangeInput
+    public class EditDocumentDocxDeleteTableRowRangeReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -815,14 +815,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class DocxBody
     {
-        public DocxParagraph[] AllParagraphs { get; set; }
-        public DocxTable[] AllTables { get; set; }
+        public EditDocumentDocxBodyDocxParagraphResponse[] AllParagraphs { get; set; }
+        public EditDocumentDocxBodyDocxTableResponse[] AllTables { get; set; }
         public string Path { get; set; }
     }
 
-    public class DocxParagraph
+    public class EditDocumentDocxBodyDocxParagraphResponse
     {
-        public DocxRun[] ContentRuns { get; set; }
+        public EditDocumentDocxBodyDocxRunResponse[] ContentRuns { get; set; }
         public int ParagraphIndex { get; set; }
         public string Path { get; set; }
 
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string StyleId { get; set; }
     }
 
-    public class DocxRun
+    public class EditDocumentDocxBodyDocxRunResponse
     {
         public bool Bold { get; set; }
         public string FontFamily { get; set; }
@@ -838,18 +838,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Italic { get; set; }
         public string Path { get; set; }
         public int RunIndex { get; set; }
-        public DocxText[] TextItems { get; set; }
+        public EditDocumentDocxBodyDocxTextResponse[] TextItems { get; set; }
         public string Underline { get; set; }
     }
 
-    public class DocxText
+    public class EditDocumentDocxBodyDocxTextResponse
     {
         public string Path { get; set; }
         public string TextContent { get; set; }
         public int TextIndex { get; set; }
     }
 
-    public class DocxTable
+    public class EditDocumentDocxBodyDocxTableResponse
     {
         public string BottomBorderColor { get; set; }
         public int BottomBorderSize { get; set; }
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string TableId { get; set; }
         public string TableIndentationMode { get; set; }
         public int TableIndentationWidth { get; set; }
-        public DocxTableRow[] TableRows { get; set; }
+        public EditDocumentDocxBodyDocxTableRowResponse[] TableRows { get; set; }
         public string TopBorderColor { get; set; }
         public int TopBorderSize { get; set; }
         public int TopBorderSpace { get; set; }
@@ -894,14 +894,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string WidthType { get; set; }
     }
 
-    public class DocxTableRow
+    public class EditDocumentDocxBodyDocxTableRowResponse
     {
         public string Path { get; set; }
-        public DocxTableCell[] RowCells { get; set; }
+        public EditDocumentDocxBodyDocxTableCellResponse[] RowCells { get; set; }
         public int RowIndex { get; set; }
     }
 
-    public class DocxTableCell
+    public class EditDocumentDocxBodyDocxTableCellResponse
     {
         public int CellIndex { get; set; }
         public string CellShadingColor { get; set; }
@@ -909,11 +909,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string CellShadingPattern { get; set; }
         public string CellWidth { get; set; }
         public string CellWidthMode { get; set; }
-        public DocxParagraph[] Paragraphs { get; set; }
+        public EditDocumentDocxBodyDocxParagraphResponse[] Paragraphs { get; set; }
         public string Path { get; set; }
     }
 
-    public class EditDocumentDocxBodyInput
+    public class EditDocumentDocxBodyReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -934,10 +934,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string CommentText { get; set; }
         public bool Done { get; set; }
         public string Path { get; set; }
-        public DocxComment[] ReplyChildComments { get; set; }
+        public EditDocumentDocxGetCommentsHierarchicalDocxCommentResponse[] ReplyChildComments { get; set; }
     }
 
-    public class DocxComment
+    public class EditDocumentDocxGetCommentsHierarchicalDocxCommentResponse
     {
         public string Author { get; set; }
         public string AuthorInitials { get; set; }
@@ -950,52 +950,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string Path { get; set; }
     }
 
-    public class EditDocumentDocxGetCommentsHierarchicalInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-    }
-
     public class GetDocxHeadersAndFootersResponse
     {
-        public DocxFooter[] Footers { get; set; }
-        public DocxHeader[] Headers { get; set; }
+        public EditDocumentDocxGetHeadersAndFootersDocxFooterResponse[] Footers { get; set; }
+        public EditDocumentDocxGetHeadersAndFootersDocxHeaderResponse[] Headers { get; set; }
         public bool Successful { get; set; }
     }
 
-    public class DocxFooter
+    public class EditDocumentDocxGetHeadersAndFootersDocxFooterResponse
     {
-        public DocxParagraph[] Paragraphs { get; set; }
+        public EditDocumentDocxBodyDocxParagraphResponse[] Paragraphs { get; set; }
         public string Path { get; set; }
-        public DocxSection[] SectionsWithFooter { get; set; }
+        public EditDocumentDocxGetHeadersAndFootersDocxSectionResponse[] SectionsWithFooter { get; set; }
     }
 
-    public class DocxSection
+    public class EditDocumentDocxGetHeadersAndFootersDocxSectionResponse
     {
         public string Path { get; set; }
         public int[] StartingPageNumbers { get; set; }
     }
 
-    public class DocxHeader
+    public class EditDocumentDocxGetHeadersAndFootersDocxHeaderResponse
     {
-        public DocxParagraph[] Paragraphs { get; set; }
+        public EditDocumentDocxBodyDocxParagraphResponse[] Paragraphs { get; set; }
         public string Path { get; set; }
-        public DocxSection[] SectionsWithHeader { get; set; }
-    }
-
-    public class EditDocumentDocxGetHeadersAndFootersInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
+        public EditDocumentDocxGetHeadersAndFootersDocxSectionResponse[] SectionsWithHeader { get; set; }
     }
 
     public class GetDocxImagesResponse
     {
-        public DocxImage[] Images { get; set; }
+        public EditDocumentDocxGetImagesDocxImageResponse[] Images { get; set; }
         public bool Successful { get; set; }
     }
 
-    public class DocxImage
+    public class EditDocumentDocxGetImagesDocxImageResponse
     {
         public string ImageContentsURL { get; set; }
         public string ImageDataContentType { get; set; }
@@ -1012,12 +1000,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public int YOffset { get; set; }
     }
 
-    public class EditDocumentDocxGetImagesInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-    }
-
     public class GetDocxPagesResponse
     {
         public int PageCount { get; set; }
@@ -1028,25 +1010,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class DocxPage
     {
         public int PageNumber { get; set; }
-        public DocxParagraph[] Paragraphs { get; set; }
-    }
-
-    public class EditDocumentDocxPagesInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
+        public EditDocumentDocxBodyDocxParagraphResponse[] Paragraphs { get; set; }
     }
 
     public class GetDocxSectionsResponse
     {
-        public DocxSection[] Sections { get; set; }
+        public EditDocumentDocxGetHeadersAndFootersDocxSectionResponse[] Sections { get; set; }
         public bool Successful { get; set; }
-    }
-
-    public class EditDocumentDocxGetSectionsInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
     }
 
     public class GetDocxStylesResponse
@@ -1068,33 +1038,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Underline { get; set; }
     }
 
-    public class EditDocumentDocxGetStylesInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-    }
-
     public class GetDocxTableRowResponse
     {
-        public DocxTableRow RowResult { get; set; }
+        public EditDocumentDocxBodyDocxTableRowResponse RowResult { get; set; }
         public bool Successful { get; set; }
-    }
-
-    public class EditDocumentDocxGetTableRowInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-        public string TablePath { get; set; }
-        public int? TableRowRowIndex { get; set; }
     }
 
     public class GetDocxTableByIndexResponse
     {
         public bool Successful { get; set; }
-        public DocxTable Table { get; set; }
+        public EditDocumentDocxBodyDocxTableResponse Table { get; set; }
     }
 
-    public class EditDocumentDocxGetTableByIndexInput
+    public class EditDocumentDocxGetTableByIndexReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -1104,13 +1060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class GetDocxTablesResponse
     {
         public bool Successful { get; set; }
-        public DocxTable[] Tables { get; set; }
-    }
-
-    public class EditDocumentDocxGetTablesInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
+        public EditDocumentDocxBodyDocxTableResponse[] Tables { get; set; }
     }
 
     public class InsertDocxCommentOnParagraphResponse
@@ -1119,15 +1069,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxInsertCommentOnParagraphInput
+    public class EditDocumentDocxInsertCommentOnParagraphReqConfigInput
     {
-        public DocxComment2 CommentToInsert { get; set; }
+        public EditDocumentDocxInsertCommentOnParagraphDocxComment CommentToInsert { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string ParagraphPath { get; set; }
     }
 
-    public class DocxComment2
+    public class EditDocumentDocxInsertCommentOnParagraphDocxComment
     {
         public string Author { get; set; }
         public string AuthorInitials { get; set; }
@@ -1146,10 +1096,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxInsertImageInput
+    public class EditDocumentDocxInsertImageReqConfigInput
     {
         public int? HeightInEMUs { get; set; }
-        public DocxImage2 ImageToAdd { get; set; }
+        public EditDocumentDocxInsertImageDocxImage ImageToAdd { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputDocumentFileBytes { get; set; }
         public string InputDocumentFileUrl { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputImageFileBytes { get; set; }
@@ -1159,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public int? WidthInEMUs { get; set; }
     }
 
-    public class DocxImage2
+    public class EditDocumentDocxInsertImageDocxImage
     {
         public string ImageContentsURL { get; set; }
         public string ImageDataContentType { get; set; }
@@ -1182,18 +1132,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxInsertParagraphInput
+    public class EditDocumentDocxInsertParagraphReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string InsertPath { get; set; }
         public string InsertPlacement { get; set; }
-        public DocxParagraph2 ParagraphToInsert { get; set; }
+        public EditDocumentDocxInsertParagraphDocxParagraph ParagraphToInsert { get; set; }
     }
 
-    public class DocxParagraph2
+    public class EditDocumentDocxInsertParagraphDocxParagraph
     {
-        public DocxRun2[] ContentRuns { get; set; }
+        public EditDocumentDocxInsertParagraphDocxRun[] ContentRuns { get; set; }
         public int? ParagraphIndex { get; set; }
         public string Path { get; set; }
 
@@ -1201,7 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string StyleId { get; set; }
     }
 
-    public class DocxRun2
+    public class EditDocumentDocxInsertParagraphDocxRun
     {
         public bool? Bold { get; set; }
         public string FontFamily { get; set; }
@@ -1209,11 +1159,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool? Italic { get; set; }
         public string Path { get; set; }
         public int? RunIndex { get; set; }
-        public DocxText2[] TextItems { get; set; }
+        public EditDocumentDocxInsertParagraphDocxText[] TextItems { get; set; }
         public string Underline { get; set; }
     }
 
-    public class DocxText2
+    public class EditDocumentDocxInsertParagraphDocxText
     {
         public string Path { get; set; }
         public string TextContent { get; set; }
@@ -1226,16 +1176,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxInsertTableInput
+    public class EditDocumentDocxInsertTableReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string InsertPath { get; set; }
         public string InsertPlacement { get; set; }
-        public DocxTable2 TableToInsert { get; set; }
+        public EditDocumentDocxInsertTableDocxTable TableToInsert { get; set; }
     }
 
-    public class DocxTable2
+    public class EditDocumentDocxInsertTableDocxTable
     {
         public string BottomBorderColor { get; set; }
         public int? BottomBorderSize { get; set; }
@@ -1271,7 +1221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string TableId { get; set; }
         public string TableIndentationMode { get; set; }
         public int? TableIndentationWidth { get; set; }
-        public DocxTableRow2[] TableRows { get; set; }
+        public EditDocumentDocxInsertTableDocxTableRow[] TableRows { get; set; }
         public string TopBorderColor { get; set; }
         public int? TopBorderSize { get; set; }
         public int? TopBorderSpace { get; set; }
@@ -1280,14 +1230,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string WidthType { get; set; }
     }
 
-    public class DocxTableRow2
+    public class EditDocumentDocxInsertTableDocxTableRow
     {
         public string Path { get; set; }
-        public DocxTableCell2[] RowCells { get; set; }
+        public EditDocumentDocxInsertTableDocxTableCell[] RowCells { get; set; }
         public int? RowIndex { get; set; }
     }
 
-    public class DocxTableCell2
+    public class EditDocumentDocxInsertTableDocxTableCell
     {
         public int? CellIndex { get; set; }
         public string CellShadingColor { get; set; }
@@ -1295,7 +1245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string CellShadingPattern { get; set; }
         public string CellWidth { get; set; }
         public string CellWidthMode { get; set; }
-        public DocxParagraph2[] Paragraphs { get; set; }
+        public EditDocumentDocxInsertParagraphDocxParagraph[] Paragraphs { get; set; }
         public string Path { get; set; }
     }
 
@@ -1305,13 +1255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxInsertTableRowInput
+    public class EditDocumentDocxInsertTableRowReqConfigInput
     {
         public string ExistingTablePath { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string InsertPlacement { get; set; }
-        public DocxTableRow2 RowToInsert { get; set; }
+        public EditDocumentDocxInsertTableDocxTableRow RowToInsert { get; set; }
     }
 
     public class RemoveDocxHeadersAndFootersResponse
@@ -1320,7 +1270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxRemoveHeadersAndFootersInput
+    public class EditDocumentDocxRemoveHeadersAndFootersReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -1334,14 +1284,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxRemoveObjectInput
+    public class EditDocumentDocxRemoveObjectReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string PathToObjectToRemove { get; set; }
     }
 
-    public class EditDocumentDocxReplaceInput
+    public class EditDocumentDocxReplaceReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -1356,21 +1306,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxSetFooterInput
+    public class EditDocumentDocxSetFooterReqConfigInput
     {
-        public DocxFooter2 FooterToApply { get; set; }
+        public EditDocumentDocxSetFooterDocxFooter FooterToApply { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
-    public class DocxFooter2
+    public class EditDocumentDocxSetFooterDocxFooter
     {
-        public DocxParagraph2[] Paragraphs { get; set; }
+        public EditDocumentDocxInsertParagraphDocxParagraph[] Paragraphs { get; set; }
         public string Path { get; set; }
-        public DocxSection[] SectionsWithFooter { get; set; }
+        public EditDocumentDocxSetFooterDocxSection[] SectionsWithFooter { get; set; }
     }
 
-    public class EditDocumentDocxSetFooterAddPageNumberInput
+    public class EditDocumentDocxSetFooterDocxSection
+    {
+        public string Path { get; set; }
+        public int[] StartingPageNumbers { get; set; }
+    }
+
+    public class EditDocumentDocxSetFooterAddPageNumberReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -1383,18 +1339,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxSetHeaderInput
+    public class EditDocumentDocxSetHeaderReqConfigInput
     {
-        public DocxHeader2 HeaderToApply { get; set; }
+        public EditDocumentDocxSetHeaderDocxHeader HeaderToApply { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
-    public class DocxHeader2
+    public class EditDocumentDocxSetHeaderDocxHeader
     {
-        public DocxParagraph2[] Paragraphs { get; set; }
+        public EditDocumentDocxInsertParagraphDocxParagraph[] Paragraphs { get; set; }
         public string Path { get; set; }
-        public DocxSection[] SectionsWithHeader { get; set; }
+        public EditDocumentDocxSetFooterDocxSection[] SectionsWithHeader { get; set; }
     }
 
     public class UpdateDocxTableCellResponse
@@ -1403,9 +1359,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxUpdateTableCellInput
+    public class EditDocumentDocxUpdateTableCellReqConfigInput
     {
-        public DocxTableCell2 CellToUpdate { get; set; }
+        public EditDocumentDocxInsertTableDocxTableCell CellToUpdate { get; set; }
         public string ExistingTablePath { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -1419,35 +1375,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentDocxUpdateTableRowInput
+    public class EditDocumentDocxUpdateTableRowReqConfigInput
     {
         public string ExistingTablePath { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
-        public DocxTableRow2 RowToUpdate { get; set; }
+        public EditDocumentDocxInsertTableDocxTableRow RowToUpdate { get; set; }
         public int? TableRowIndex { get; set; }
     }
 
-    public class EditDocumentFinishEditingInput
+    public class EditDocumentFinishEditingReqConfigInput
     {
         public string InputFileUrl { get; set; }
     }
 
-    public class EditDocumentPptxDeleteSlidesInput
+    public class EditDocumentPptxDeleteSlidesReqConfigInput
     {
         public int? EndDeleteSlideNumber { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? StartDeleteSlideNumber { get; set; }
-    }
-
-    public class EditDocumentPptxReplaceInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-        public bool? MatchCase { get; set; }
-        public string MatchString { get; set; }
-        public string ReplaceString { get; set; }
     }
 
     public class ClearXlsxCellResponse
@@ -1456,16 +1403,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentXlsxClearCellByIndexInput
+    public class EditDocumentXlsxClearCellByIndexInputInput
     {
         public int? CellIndex { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? RowIndex { get; set; }
-        public XlsxWorksheet WorksheetToUpdate { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToUpdate { get; set; }
     }
 
-    public class XlsxWorksheet
+    public class EditDocumentXlsxClearCellByIndexXlsxWorksheet
     {
         public string Path { get; set; }
         public string WorksheetName { get; set; }
@@ -1477,7 +1424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentXlsxCreateBlankSpreadsheetInput
+    public class EditDocumentXlsxCreateBlankSpreadsheetInputInput
     {
         public string WorksheetName { get; set; }
     }
@@ -1488,19 +1435,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentXlsxCreateSpreadsheetFromDataInput
+    public class EditDocumentXlsxCreateSpreadsheetFromDataInputInput
     {
-        public XlsxSpreadsheetRow2[] Rows { get; set; }
+        public EditDocumentXlsxCreateSpreadsheetFromDataXlsxSpreadsheetRow[] Rows { get; set; }
         public string WorksheetName { get; set; }
     }
 
-    public class XlsxSpreadsheetRow2
+    public class EditDocumentXlsxCreateSpreadsheetFromDataXlsxSpreadsheetRow
     {
-        public XlsxSpreadsheetCell2[] Cells { get; set; }
+        public EditDocumentXlsxCreateSpreadsheetFromDataXlsxSpreadsheetCell[] Cells { get; set; }
         public string Path { get; set; }
     }
 
-    public class XlsxSpreadsheetCell2
+    public class EditDocumentXlsxCreateSpreadsheetFromDataXlsxSpreadsheetCell
     {
         public string CellIdentifier { get; set; }
         public string Formula { get; set; }
@@ -1509,20 +1456,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string TextValue { get; set; }
     }
 
-    public class EditDocumentXlsxDeleteWorksheetInput
+    public class EditDocumentXlsxDeleteWorksheetReqConfigInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToRemove { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToRemove { get; set; }
     }
 
     public class GetXlsxCellByIdentifierResponse
     {
-        public XlsxSpreadsheetCell Cell { get; set; }
+        public EditDocumentXlsxGetCellByIdentifierXlsxSpreadsheetCellResponse Cell { get; set; }
         public bool Successful { get; set; }
     }
 
-    public class XlsxSpreadsheetCell
+    public class EditDocumentXlsxGetCellByIdentifierXlsxSpreadsheetCellResponse
     {
         public string CellIdentifier { get; set; }
         public string Formula { get; set; }
@@ -1531,27 +1478,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string TextValue { get; set; }
     }
 
-    public class EditDocumentXlsxGetCellByIdentifierInput
+    public class EditDocumentXlsxGetCellByIdentifierInputInput
     {
         public string CellIdentifier { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToQuery { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToQuery { get; set; }
     }
 
     public class GetXlsxCellResponse
     {
-        public XlsxSpreadsheetCell Cell { get; set; }
+        public EditDocumentXlsxGetCellByIdentifierXlsxSpreadsheetCellResponse Cell { get; set; }
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentXlsxGetCellByIndexInput
+    public class EditDocumentXlsxGetCellByIndexInputInput
     {
         public int? CellIndex { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? RowIndex { get; set; }
-        public XlsxWorksheet WorksheetToQuery { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToQuery { get; set; }
     }
 
     public class GetXlsxColumnsResponse
@@ -1562,15 +1509,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class XlsxSpreadsheetColumn
     {
-        public XlsxSpreadsheetCell HeadingCell { get; set; }
+        public EditDocumentXlsxGetCellByIdentifierXlsxSpreadsheetCellResponse HeadingCell { get; set; }
         public string Path { get; set; }
     }
 
-    public class EditDocumentXlsxGetColumnsInput
+    public class EditDocumentXlsxGetColumnsInputInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToQuery { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToQuery { get; set; }
     }
 
     public class GetXlsxImagesResponse
@@ -1588,30 +1535,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string Path { get; set; }
     }
 
-    public class EditDocumentXlsxGetImagesInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToQuery { get; set; }
-    }
-
     public class GetXlsxRowsAndCellsResponse
     {
-        public XlsxSpreadsheetRow[] Rows { get; set; }
+        public EditDocumentXlsxGetRowsAndCellsXlsxSpreadsheetRowResponse[] Rows { get; set; }
         public bool Successful { get; set; }
     }
 
-    public class XlsxSpreadsheetRow
+    public class EditDocumentXlsxGetRowsAndCellsXlsxSpreadsheetRowResponse
     {
-        public XlsxSpreadsheetCell[] Cells { get; set; }
+        public EditDocumentXlsxGetCellByIdentifierXlsxSpreadsheetCellResponse[] Cells { get; set; }
         public string Path { get; set; }
-    }
-
-    public class EditDocumentXlsxGetRowsAndCellsInput
-    {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToQuery { get; set; }
     }
 
     public class GetXlsxStylesResponse
@@ -1631,7 +1564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string Path { get; set; }
     }
 
-    public class EditDocumentXlsxGetStylesInput
+    public class EditDocumentXlsxGetStylesInputInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
@@ -1640,13 +1573,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class GetXlsxWorksheetsResponse
     {
         public bool Successful { get; set; }
-        public XlsxWorksheet[] Worksheets { get; set; }
+        public EditDocumentXlsxGetWorksheetsXlsxWorksheetResponse[] Worksheets { get; set; }
     }
 
-    public class EditDocumentXlsxGetWorksheetsInput
+    public class EditDocumentXlsxGetWorksheetsXlsxWorksheetResponse
     {
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
+        public string Path { get; set; }
+        public string WorksheetName { get; set; }
     }
 
     public class InsertXlsxWorksheetResponse
@@ -1655,11 +1588,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentXlsxInsertWorksheetInput
+    public class EditDocumentXlsxInsertWorksheetInputInput
     {
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToInsert { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToInsert { get; set; }
     }
 
     public class SetXlsxCellByIdentifierResponse
@@ -1668,13 +1601,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentXlsxSetCellByIdentifierInput
+    public class EditDocumentXlsxSetCellByIdentifierInputInput
     {
         public string CellIdentifier { get; set; }
-        public XlsxSpreadsheetCell2 CellValue { get; set; }
+        public EditDocumentXlsxCreateSpreadsheetFromDataXlsxSpreadsheetCell CellValue { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToUpdate { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToUpdate { get; set; }
     }
 
     public class SetXlsxCellResponse
@@ -1683,17 +1616,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class EditDocumentXlsxSetCellByIndexInput
+    public class EditDocumentXlsxSetCellByIndexInputInput
     {
         public int? CellIndex { get; set; }
-        public XlsxSpreadsheetCell2 CellValue { get; set; }
+        public EditDocumentXlsxCreateSpreadsheetFromDataXlsxSpreadsheetCell CellValue { get; set; }
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? RowIndex { get; set; }
-        public XlsxWorksheet WorksheetToUpdate { get; set; }
+        public EditDocumentXlsxClearCellByIndexXlsxWorksheet WorksheetToUpdate { get; set; }
     }
 
-    public class ConvertWebHtmlToDocxInput
+    public class InputRequestInput
     {
         public string Html { get; set; }
     }
@@ -1704,7 +1637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
-    public class ConvertTemplateApplyHtmlTemplateInput
+    public class ValueInput
     {
         public string HtmlTemplate { get; set; }
         public string HtmlTemplateUrl { get; set; }
@@ -1723,13 +1656,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         _1 = 1
     }
 
-    public class ConvertWebHtmlToPdfInput
+    public class ConvertWebHtmlToPdfInputInput
     {
         public int? ExtraLoadingWait { get; set; }
         public string Html { get; set; }
     }
 
-    public class ConvertWebHtmlToPngInput
+    public class ConvertWebHtmlToPngInputInput
     {
         public int? ExtraLoadingWait { get; set; }
         public string Html { get; set; }
@@ -1743,20 +1676,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string TextContentResult { get; set; }
     }
 
-    public class ConvertWebHtmlToTxtInput
+    public class ConvertWebHtmlToTxtInputInput
     {
         public string Html { get; set; }
     }
 
-    public class ConvertWebUrlToPdfInput
-    {
-        public int? ExtraLoadingWait { get; set; }
-        public int? ScreenshotHeight { get; set; }
-        public int? ScreenshotWidth { get; set; }
-        public string Url { get; set; }
-    }
-
-    public class ConvertWebUrlToScreenshotInput
+    public class ConvertWebUrlToPdfInputInput
     {
         public int? ExtraLoadingWait { get; set; }
         public int? ScreenshotHeight { get; set; }
@@ -1770,7 +1695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string TextContentResult { get; set; }
     }
 
-    public class ConvertWebUrlToTxtInput
+    public class ConvertWebUrlToTxtInputInput
     {
         public string Url { get; set; }
     }

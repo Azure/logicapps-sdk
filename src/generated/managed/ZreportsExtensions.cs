@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
     public class ZreportsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<NewDispatchAdviceInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
             });
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewInvoice(Expression<Func<string>> brandId, Expression<Func<NewInvoiceInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody, ApiConnectionTriggerConfiguration> NewInvoice(Expression<Func<string>> brandId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -80,16 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
         public string Url { get; set; }
     }
 
-    public class NewDispatchAdviceInput
-    {
-        [JsonProperty("storeIds")]
-        public string StoreIds { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class NewInvoiceInput
+    public class BodyInput
     {
         [JsonProperty("storeIds")]
         public string StoreIds { get; set; }

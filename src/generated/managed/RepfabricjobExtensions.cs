@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricjob
     public class RepfabricjobActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "repfabricjob")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateJob(Expression<Func<RepfabricCreateJobInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateJob(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricjob
     {
     }
 
-    public class RepfabricCreateJobInput
+    public class BodyInput
     {
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }

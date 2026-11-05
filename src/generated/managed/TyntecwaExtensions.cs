@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTextResponse, ApiConnectionActionConfiguration> SendWhatsAppText(Expression<Func<SendWhatsAppTextInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTextResponse, ApiConnectionActionConfiguration> SendWhatsAppText(Expression<Func<SendWhatsAppTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppContactResponse, ApiConnectionActionConfiguration> SendWhatsAppContact(Expression<Func<SendWhatsAppContactInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppContactResponse, ApiConnectionActionConfiguration> SendWhatsAppContact(Expression<Func<SendWhatsAppContactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppLocationResponse, ApiConnectionActionConfiguration> SendWhatsAppLocation(Expression<Func<SendWhatsAppLocationInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppLocationResponse, ApiConnectionActionConfiguration> SendWhatsAppLocation(Expression<Func<SendWhatsAppLocationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppLocationResponse, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse, ApiConnectionActionConfiguration> SendWhatsAppQuickReply(Expression<Func<SendWhatsAppQuickReplyInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse, ApiConnectionActionConfiguration> SendWhatsAppQuickReply(Expression<Func<SendWhatsAppQuickReplyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppQuickReplyResponse, ApiConnectionActionConfiguration>(() =>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppProductListResponse, ApiConnectionActionConfiguration> SendWhatsAppProductList(Expression<Func<SendWhatsAppProductListInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppProductListResponse, ApiConnectionActionConfiguration> SendWhatsAppProductList(Expression<Func<SendWhatsAppProductListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppProductListResponse, ApiConnectionActionConfiguration>(() =>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppProductResponse, ApiConnectionActionConfiguration> SendWhatsAppProduct(Expression<Func<SendWhatsAppProductInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppProductResponse, ApiConnectionActionConfiguration> SendWhatsAppProduct(Expression<Func<SendWhatsAppProductBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppProductResponse, ApiConnectionActionConfiguration>(() =>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppListResponse, ApiConnectionActionConfiguration> SendWhatsAppList(Expression<Func<SendWhatsAppListInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppListResponse, ApiConnectionActionConfiguration> SendWhatsAppList(Expression<Func<SendWhatsAppListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppListResponse, ApiConnectionActionConfiguration>(() =>
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendsWhatsAppImageResponse, ApiConnectionActionConfiguration> SendsWhatsAppImage(Expression<Func<SendsWhatsAppImageInput>> body = null)
+        public IBodyWorkflowAction<SendsWhatsAppImageResponse, ApiConnectionActionConfiguration> SendsWhatsAppImage(Expression<Func<SendsWhatsAppImageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendsWhatsAppImageResponse, ApiConnectionActionConfiguration>(() =>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppVideoResponse, ApiConnectionActionConfiguration> SendWhatsAppVideo(Expression<Func<SendWhatsAppVideoInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppVideoResponse, ApiConnectionActionConfiguration> SendWhatsAppVideo(Expression<Func<SendWhatsAppVideoBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppVideoResponse, ApiConnectionActionConfiguration>(() =>
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppDocumentResponse, ApiConnectionActionConfiguration> SendWhatsAppDocument(Expression<Func<SendWhatsAppDocumentInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppDocumentResponse, ApiConnectionActionConfiguration> SendWhatsAppDocument(Expression<Func<SendWhatsAppDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppAudioResponse, ApiConnectionActionConfiguration> SendWhatsAppAudio(Expression<Func<SendWhatsAppAudioInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppAudioResponse, ApiConnectionActionConfiguration> SendWhatsAppAudio(Expression<Func<SendWhatsAppAudioBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppAudioResponse, ApiConnectionActionConfiguration>(() =>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppStickerResponse, ApiConnectionActionConfiguration> SendWhatsAppSticker(Expression<Func<SendWhatsAppStickerInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppStickerResponse, ApiConnectionActionConfiguration> SendWhatsAppSticker(Expression<Func<SendWhatsAppStickerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppStickerResponse, ApiConnectionActionConfiguration>(() =>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateText(Expression<Func<SendWhatsAppTemplateTextInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateText(Expression<Func<SendWhatsAppTemplateTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateLocation(Expression<Func<SendWhatsAppTemplateLocationInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateLocation(Expression<Func<SendWhatsAppTemplateLocationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateLocationResponse, ApiConnectionActionConfiguration>(() =>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateImage(Expression<Func<SendWhatsAppTemplateImageInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateImage(Expression<Func<SendWhatsAppTemplateImageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateImageResponse, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateDocument(Expression<Func<SendWhatsAppTemplateDocumentInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateDocument(Expression<Func<SendWhatsAppTemplateDocumentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateDocumentResponse, ApiConnectionActionConfiguration>(() =>
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateVideo(Expression<Func<SendWhatsAppTemplateVideoInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateVideo(Expression<Func<SendWhatsAppTemplateVideoBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateVideoResponse, ApiConnectionActionConfiguration>(() =>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateDynamicButton(Expression<Func<SendWhatsAppTemplateDynamicButtonInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateDynamicButton(Expression<Func<SendWhatsAppTemplateDynamicButtonBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateDynamicButtonResponse, ApiConnectionActionConfiguration>(() =>
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateQuickReply(Expression<Func<SendWhatsAppTemplateQuickReplyInput>> body = null)
+        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse, ApiConnectionActionConfiguration> SendWhatsAppTemplateQuickReply(Expression<Func<SendWhatsAppTemplateQuickReplyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendWhatsAppTemplateQuickReplyResponse, ApiConnectionActionConfiguration>(() =>
@@ -311,32 +311,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<StatusCheckV3Response, ApiConnectionActionConfiguration> StatusCheck(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<StatusCheckResponse, ApiConnectionActionConfiguration> StatusCheck(Expression<Func<string>> messageId)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
-            return new DeferredBodyAction<StatusCheckV3Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StatusCheckResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/messages/{0}/status", __workflow_messageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
+                return new ApiConnectionAction<StatusCheckResponse>(callPayload);
             });
         }
     }
 
     public class TyntecwaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Incoming(Expression<Func<string>> wABA, Expression<Func<IncomingV2Input>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> Incoming(Expression<Func<string>> wABA, FlowRecurrence recurrence = null)
         {
             var __workflow_wABA = WorkflowExpression.Compile(wABA, nameof(wABA), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", __workflow_wABA.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new IncomingBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -402,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTextInput
+    public class SendWhatsAppTextBodyInput
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -414,10 +412,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTextInputContentType Content { get; set; } = new SendWhatsAppTextInputContentType();
+        public SendWhatsAppTextBodyInputContentType Content { get; set; } = new SendWhatsAppTextBodyInputContentType();
     }
 
-    public class SendWhatsAppTextInputContentType
+    public class SendWhatsAppTextBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "text";
@@ -435,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppContactInput
+    public class SendWhatsAppContactBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -447,28 +445,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppContactInputContentType Content { get; set; } = new SendWhatsAppContactInputContentType();
+        public SendWhatsAppContactBodyInputContentType Content { get; set; } = new SendWhatsAppContactBodyInputContentType();
     }
 
-    public class SendWhatsAppContactInputContentType
+    public class SendWhatsAppContactBodyInputContentType
     {
         [JsonProperty("contacts")]
-        public SendWhatsAppContactInputContentTypeContactsTypeItem[] Contacts { get; set; }
+        public BodyInputContentTypeContactsTypeItem[] Contacts { get; set; }
 
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "contacts";
     }
 
-    public class SendWhatsAppContactInputContentTypeContactsTypeItem
+    public class BodyInputContentTypeContactsTypeItem
     {
         [JsonProperty("addresses")]
-        public SendWhatsAppContactInputContentTypeContactsTypeItemAddressesTypeItem[] Addresses { get; set; }
+        public BodyInputContentTypeContactsTypeItemAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("name")]
-        public SendWhatsAppContactInputContentTypeContactsTypeItemNameType Name { get; set; }
+        public BodyInputContentTypeContactsTypeItemNameType Name { get; set; }
     }
 
-    public class SendWhatsAppContactInputContentTypeContactsTypeItemAddressesTypeItem
+    public class BodyInputContentTypeContactsTypeItemAddressesTypeItem
     {
         [JsonProperty("city")]
         public string City { get; set; }
@@ -489,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Zip { get; set; }
     }
 
-    public class SendWhatsAppContactInputContentTypeContactsTypeItemNameType
+    public class BodyInputContentTypeContactsTypeItemNameType
     {
         [JsonProperty("formattedName")]
         public string FormattedName { get; set; }
@@ -507,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppLocationInput
+    public class SendWhatsAppLocationBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -519,19 +517,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppLocationInputContentType Content { get; set; } = new SendWhatsAppLocationInputContentType();
+        public SendWhatsAppLocationBodyInputContentType Content { get; set; } = new SendWhatsAppLocationBodyInputContentType();
     }
 
-    public class SendWhatsAppLocationInputContentType
+    public class SendWhatsAppLocationBodyInputContentType
     {
         [JsonProperty("location")]
-        public SendWhatsAppLocationInputContentTypeLocationType Location { get; set; }
+        public BodyInputContentTypeLocationType Location { get; set; }
 
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "location";
     }
 
-    public class SendWhatsAppLocationInputContentTypeLocationType
+    public class BodyInputContentTypeLocationType
     {
         [JsonProperty("longitude")]
         public double? Longitude { get; set; }
@@ -555,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppQuickReplyInput
+    public class SendWhatsAppQuickReplyBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -567,43 +565,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppQuickReplyInputContentType Content { get; set; } = new SendWhatsAppQuickReplyInputContentType();
+        public SendWhatsAppQuickReplyBodyInputContentType Content { get; set; } = new SendWhatsAppQuickReplyBodyInputContentType();
     }
 
-    public class SendWhatsAppQuickReplyInputContentType
+    public class SendWhatsAppQuickReplyBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppQuickReplyInputContentTypeInteractiveType();
+        public SendWhatsAppQuickReplyBodyInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppQuickReplyBodyInputContentTypeInteractiveType();
     }
 
-    public class SendWhatsAppQuickReplyInputContentTypeInteractiveType
+    public class SendWhatsAppQuickReplyBodyInputContentTypeInteractiveType
     {
         [JsonProperty("subType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string SubType { get; set; } = "buttons";
 
         [JsonProperty("components", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsType Components { get; set; }
+        public SendWhatsAppQuickReplyBodyInputContentTypeInteractiveTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsType
+    public class SendWhatsAppQuickReplyBodyInputContentTypeInteractiveTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
 
         [JsonProperty("footer")]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
 
         [JsonProperty("buttons", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItem[] Buttons { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItem[] Buttons { get; set; }
     }
 
-    public class SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeHeaderType
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeHeaderType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -612,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Text { get; set; }
     }
 
-    public class SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeBodyType
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeBodyType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -621,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Text { get; set; }
     }
 
-    public class SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeFooterType
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeFooterType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -630,16 +628,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Text { get; set; }
     }
 
-    public class SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItem
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItem
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "reply";
 
         [JsonProperty("reply")]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItemReplyType Reply { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItemReplyType Reply { get; set; }
     }
 
-    public class SendWhatsAppQuickReplyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItemReplyType
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeButtonsTypeItemReplyType
     {
         [JsonProperty("payload")]
         public string Payload { get; set; }
@@ -657,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppProductListInput
+    public class SendWhatsAppProductListBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -669,85 +667,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductListInputContentType Content { get; set; } = new SendWhatsAppProductListInputContentType();
+        public SendWhatsAppProductListBodyInputContentType Content { get; set; } = new SendWhatsAppProductListBodyInputContentType();
     }
 
-    public class SendWhatsAppProductListInputContentType
+    public class SendWhatsAppProductListBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductListInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppProductListInputContentTypeInteractiveType();
+        public SendWhatsAppProductListBodyInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppProductListBodyInputContentTypeInteractiveType();
     }
 
-    public class SendWhatsAppProductListInputContentTypeInteractiveType
+    public class SendWhatsAppProductListBodyInputContentTypeInteractiveType
     {
         [JsonProperty("subType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string SubType { get; set; } = "productList";
 
         [JsonProperty("components")]
-        public SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsType Components { get; set; }
+        public SendWhatsAppProductListBodyInputContentTypeInteractiveTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsType
+    public class SendWhatsAppProductListBodyInputContentTypeInteractiveTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
 
         [JsonProperty("footer")]
-        public SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
 
         [JsonProperty("productList")]
-        public SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeProductListType ProductList { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeProductListType ProductList { get; set; }
     }
 
-    public class SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeHeaderType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeBodyType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeFooterType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeProductListType
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeProductListType
     {
         [JsonProperty("catalogId")]
         public string CatalogId { get; set; }
 
         [JsonProperty("sections")]
-        public SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItem[] Sections { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItem[] Sections { get; set; }
     }
 
-    public class SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItem
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItem
     {
         [JsonProperty("items")]
-        public SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItemItemsTypeItem[] Items { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItemItemsTypeItem[] Items { get; set; }
     }
 
-    public class SendWhatsAppProductListInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItemItemsTypeItem
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeProductListTypeSectionsTypeItemItemsTypeItem
     {
         [JsonProperty("productId")]
         public string ProductId { get; set; }
@@ -762,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppProductInput
+    public class SendWhatsAppProductBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -774,70 +745,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductInputContentType Content { get; set; } = new SendWhatsAppProductInputContentType();
+        public SendWhatsAppProductBodyInputContentType Content { get; set; } = new SendWhatsAppProductBodyInputContentType();
     }
 
-    public class SendWhatsAppProductInputContentType
+    public class SendWhatsAppProductBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppProductInputContentTypeInteractiveType();
+        public SendWhatsAppProductBodyInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppProductBodyInputContentTypeInteractiveType();
     }
 
-    public class SendWhatsAppProductInputContentTypeInteractiveType
+    public class SendWhatsAppProductBodyInputContentTypeInteractiveType
     {
         [JsonProperty("subType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string SubType { get; set; } = "product";
 
         [JsonProperty("components")]
-        public SendWhatsAppProductInputContentTypeInteractiveTypeComponentsType Components { get; set; }
+        public SendWhatsAppProductBodyInputContentTypeInteractiveTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppProductInputContentTypeInteractiveTypeComponentsType
+    public class SendWhatsAppProductBodyInputContentTypeInteractiveTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
 
         [JsonProperty("footer")]
-        public SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
 
         [JsonProperty("product")]
-        public SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeProductType Product { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeProductType Product { get; set; }
     }
 
-    public class SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeHeaderType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeBodyType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeFooterType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppProductInputContentTypeInteractiveTypeComponentsTypeProductType
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeProductType
     {
         [JsonProperty("catalogId")]
         public string CatalogId { get; set; }
@@ -855,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppListInput
+    public class SendWhatsAppListBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -867,88 +811,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppListInputContentType Content { get; set; } = new SendWhatsAppListInputContentType();
+        public SendWhatsAppListBodyInputContentType Content { get; set; } = new SendWhatsAppListBodyInputContentType();
     }
 
-    public class SendWhatsAppListInputContentType
+    public class SendWhatsAppListBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppListInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppListInputContentTypeInteractiveType();
+        public SendWhatsAppListBodyInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppListBodyInputContentTypeInteractiveType();
     }
 
-    public class SendWhatsAppListInputContentTypeInteractiveType
+    public class SendWhatsAppListBodyInputContentTypeInteractiveType
     {
         [JsonProperty("subType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string SubType { get; set; } = "list";
 
         [JsonProperty("components")]
-        public SendWhatsAppListInputContentTypeInteractiveTypeComponentsType Components { get; set; }
+        public SendWhatsAppListBodyInputContentTypeInteractiveTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppListInputContentTypeInteractiveTypeComponentsType
+    public class SendWhatsAppListBodyInputContentTypeInteractiveTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeHeaderType Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeBodyType Body { get; set; }
 
         [JsonProperty("footer")]
-        public SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeFooterType Footer { get; set; }
 
         [JsonProperty("list")]
-        public SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeListType List { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeListType List { get; set; }
     }
 
-    public class SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeHeaderType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeBodyType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeFooterType
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeListType
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeListType
     {
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("sections")]
-        public SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItem[] Sections { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItem[] Sections { get; set; }
     }
 
-    public class SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItem
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
 
         [JsonProperty("rows")]
-        public SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItemRowsTypeItem[] Rows { get; set; }
+        public BodyInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItemRowsTypeItem[] Rows { get; set; }
     }
 
-    public class SendWhatsAppListInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItemRowsTypeItem
+    public class BodyInputContentTypeInteractiveTypeComponentsTypeListTypeSectionsTypeItemRowsTypeItem
     {
         [JsonProperty("payload")]
         public string Payload { get; set; }
@@ -969,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendsWhatsAppImageInput
+    public class SendsWhatsAppImageBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -981,19 +898,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendsWhatsAppImageInputContentType Content { get; set; } = new SendsWhatsAppImageInputContentType();
+        public SendsWhatsAppImageBodyInputContentType Content { get; set; } = new SendsWhatsAppImageBodyInputContentType();
     }
 
-    public class SendsWhatsAppImageInputContentType
+    public class SendsWhatsAppImageBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "image";
 
         [JsonProperty("image")]
-        public SendsWhatsAppImageInputContentTypeImageType Image { get; set; }
+        public BodyInputContentTypeImageType Image { get; set; }
     }
 
-    public class SendsWhatsAppImageInputContentTypeImageType
+    public class BodyInputContentTypeImageType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1011,7 +928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppVideoInput
+    public class SendWhatsAppVideoBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1023,19 +940,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppVideoInputContentType Content { get; set; } = new SendWhatsAppVideoInputContentType();
+        public SendWhatsAppVideoBodyInputContentType Content { get; set; } = new SendWhatsAppVideoBodyInputContentType();
     }
 
-    public class SendWhatsAppVideoInputContentType
+    public class SendWhatsAppVideoBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "video";
 
         [JsonProperty("video")]
-        public SendWhatsAppVideoInputContentTypeVideoType Video { get; set; }
+        public BodyInputContentTypeVideoType Video { get; set; }
     }
 
-    public class SendWhatsAppVideoInputContentTypeVideoType
+    public class BodyInputContentTypeVideoType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1053,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppDocumentInput
+    public class SendWhatsAppDocumentBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1065,19 +982,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppDocumentInputContentType Content { get; set; } = new SendWhatsAppDocumentInputContentType();
+        public SendWhatsAppDocumentBodyInputContentType Content { get; set; } = new SendWhatsAppDocumentBodyInputContentType();
     }
 
-    public class SendWhatsAppDocumentInputContentType
+    public class SendWhatsAppDocumentBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "document";
 
         [JsonProperty("document")]
-        public SendWhatsAppDocumentInputContentTypeDocumentType Document { get; set; }
+        public BodyInputContentTypeDocumentType Document { get; set; }
     }
 
-    public class SendWhatsAppDocumentInputContentTypeDocumentType
+    public class BodyInputContentTypeDocumentType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1098,7 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppAudioInput
+    public class SendWhatsAppAudioBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1110,19 +1027,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppAudioInputContentType Content { get; set; } = new SendWhatsAppAudioInputContentType();
+        public SendWhatsAppAudioBodyInputContentType Content { get; set; } = new SendWhatsAppAudioBodyInputContentType();
     }
 
-    public class SendWhatsAppAudioInputContentType
+    public class SendWhatsAppAudioBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "audio";
 
         [JsonProperty("audio")]
-        public SendWhatsAppAudioInputContentTypeAudioType Audio { get; set; }
+        public BodyInputContentTypeAudioType Audio { get; set; }
     }
 
-    public class SendWhatsAppAudioInputContentTypeAudioType
+    public class BodyInputContentTypeAudioType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1137,7 +1054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppStickerInput
+    public class SendWhatsAppStickerBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1149,19 +1066,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppStickerInputContentType Content { get; set; } = new SendWhatsAppStickerInputContentType();
+        public SendWhatsAppStickerBodyInputContentType Content { get; set; } = new SendWhatsAppStickerBodyInputContentType();
     }
 
-    public class SendWhatsAppStickerInputContentType
+    public class SendWhatsAppStickerBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "sticker";
 
         [JsonProperty("sticker")]
-        public SendWhatsAppStickerInputContentTypeStickerType Sticker { get; set; }
+        public BodyInputContentTypeStickerType Sticker { get; set; }
     }
 
-    public class SendWhatsAppStickerInputContentTypeStickerType
+    public class BodyInputContentTypeStickerType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1176,7 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTemplateTextInput
+    public class SendWhatsAppTemplateTextBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1188,19 +1105,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateTextInputContentType Content { get; set; } = new SendWhatsAppTemplateTextInputContentType();
+        public SendWhatsAppTemplateTextBodyInputContentType Content { get; set; } = new SendWhatsAppTemplateTextBodyInputContentType();
     }
 
-    public class SendWhatsAppTemplateTextInputContentType
+    public class SendWhatsAppTemplateTextBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "template";
 
         [JsonProperty("template")]
-        public SendWhatsAppTemplateTextInputContentTypeTemplateType Template { get; set; }
+        public SendWhatsAppTemplateTextBodyInputContentTypeTemplateType Template { get; set; }
     }
 
-    public class SendWhatsAppTemplateTextInputContentTypeTemplateType
+    public class SendWhatsAppTemplateTextBodyInputContentTypeTemplateType
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
@@ -1209,19 +1126,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string TemplateLanguage { get; set; }
 
         [JsonProperty("components")]
-        public SendWhatsAppTemplateTextInputContentTypeTemplateTypeComponentsType Components { get; set; }
+        public SendWhatsAppTemplateTextBodyInputContentTypeTemplateTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppTemplateTextInputContentTypeTemplateTypeComponentsType
+    public class SendWhatsAppTemplateTextBodyInputContentTypeTemplateTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppTemplateTextInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
+        public SendWhatsAppTemplateTextBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppTemplateTextInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
     }
 
-    public class SendWhatsAppTemplateTextInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
+    public class SendWhatsAppTemplateTextBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1230,7 +1147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Text { get; set; }
     }
 
-    public class SendWhatsAppTemplateTextInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
+    public class SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1248,7 +1165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTemplateLocationInput
+    public class SendWhatsAppTemplateLocationBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1260,19 +1177,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateLocationInputContentType Content { get; set; } = new SendWhatsAppTemplateLocationInputContentType();
+        public SendWhatsAppTemplateLocationBodyInputContentType Content { get; set; } = new SendWhatsAppTemplateLocationBodyInputContentType();
     }
 
-    public class SendWhatsAppTemplateLocationInputContentType
+    public class SendWhatsAppTemplateLocationBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "template";
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateLocationInputContentTypeTemplateType Template { get; set; }
+        public SendWhatsAppTemplateLocationBodyInputContentTypeTemplateType Template { get; set; }
     }
 
-    public class SendWhatsAppTemplateLocationInputContentTypeTemplateType
+    public class SendWhatsAppTemplateLocationBodyInputContentTypeTemplateType
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
@@ -1281,28 +1198,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string TemplateLanguage { get; set; }
 
         [JsonProperty("components", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsType Components { get; set; }
+        public SendWhatsAppTemplateLocationBodyInputContentTypeTemplateTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsType
+    public class SendWhatsAppTemplateLocationBodyInputContentTypeTemplateTypeComponentsType
     {
         [JsonProperty("header", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
+        public SendWhatsAppTemplateLocationBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
     }
 
-    public class SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
+    public class SendWhatsAppTemplateLocationBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
     {
         [JsonProperty("location")]
-        public SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemLocationType Location { get; set; }
+        public BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemLocationType Location { get; set; }
 
         [JsonProperty("header-type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string HeaderType { get; set; } = "location";
     }
 
-    public class SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemLocationType
+    public class BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemLocationType
     {
         [JsonProperty("longitude")]
         public double? Longitude { get; set; }
@@ -1317,15 +1234,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Address { get; set; }
     }
 
-    public class SendWhatsAppTemplateLocationInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
     public class SendWhatsAppTemplateImageResponse
     {
         [JsonProperty("messageId")]
@@ -1335,7 +1243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTemplateImageInput
+    public class SendWhatsAppTemplateImageBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1347,19 +1255,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateImageInputContentType Content { get; set; } = new SendWhatsAppTemplateImageInputContentType();
+        public SendWhatsAppTemplateImageBodyInputContentType Content { get; set; } = new SendWhatsAppTemplateImageBodyInputContentType();
     }
 
-    public class SendWhatsAppTemplateImageInputContentType
+    public class SendWhatsAppTemplateImageBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "template";
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateImageInputContentTypeTemplateType Template { get; set; }
+        public SendWhatsAppTemplateImageBodyInputContentTypeTemplateType Template { get; set; }
     }
 
-    public class SendWhatsAppTemplateImageInputContentTypeTemplateType
+    public class SendWhatsAppTemplateImageBodyInputContentTypeTemplateType
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
@@ -1368,34 +1276,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string TemplateLanguage { get; set; }
 
         [JsonProperty("components", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsType Components { get; set; }
+        public SendWhatsAppTemplateImageBodyInputContentTypeTemplateTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsType
+    public class SendWhatsAppTemplateImageBodyInputContentTypeTemplateTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
+        public SendWhatsAppTemplateImageBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
+        public SendWhatsAppTemplateImageBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
     }
 
-    public class SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
+    public class SendWhatsAppTemplateImageBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("image")]
-        public SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemImageType Image { get; set; }
+        public BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemImageType Image { get; set; }
     }
 
-    public class SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemImageType
+    public class BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemImageType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class SendWhatsAppTemplateImageInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
+    public class SendWhatsAppTemplateImageBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "image";
@@ -1413,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTemplateDocumentInput
+    public class SendWhatsAppTemplateDocumentBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1425,19 +1333,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateDocumentInputContentType Content { get; set; } = new SendWhatsAppTemplateDocumentInputContentType();
+        public SendWhatsAppTemplateDocumentBodyInputContentType Content { get; set; } = new SendWhatsAppTemplateDocumentBodyInputContentType();
     }
 
-    public class SendWhatsAppTemplateDocumentInputContentType
+    public class SendWhatsAppTemplateDocumentBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "template";
 
         [JsonProperty("template")]
-        public SendWhatsAppTemplateDocumentInputContentTypeTemplateType Template { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateType Template { get; set; }
     }
 
-    public class SendWhatsAppTemplateDocumentInputContentTypeTemplateType
+    public class SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateType
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
@@ -1446,40 +1354,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string TemplateLanguage { get; set; }
 
         [JsonProperty("components")]
-        public SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsType Components { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsType
+    public class SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
     }
 
-    public class SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
+    public class SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("document")]
-        public SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemDocumentType Document { get; set; }
+        public BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemDocumentType Document { get; set; }
     }
 
-    public class SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemDocumentType
+    public class BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemDocumentType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
-    }
-
-    public class SendWhatsAppTemplateDocumentInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
     }
 
     public class SendWhatsAppTemplateVideoResponse
@@ -1491,7 +1390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTemplateVideoInput
+    public class SendWhatsAppTemplateVideoBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1503,19 +1402,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Channel { get; set; }
 
         [JsonProperty("content")]
-        public SendWhatsAppTemplateVideoInputContentType Content { get; set; }
+        public SendWhatsAppTemplateVideoBodyInputContentType Content { get; set; }
     }
 
-    public class SendWhatsAppTemplateVideoInputContentType
+    public class SendWhatsAppTemplateVideoBodyInputContentType
     {
         [JsonProperty("contentType")]
         public string ContentType { get; set; }
 
         [JsonProperty("template")]
-        public SendWhatsAppTemplateVideoInputContentTypeTemplateType Template { get; set; }
+        public SendWhatsAppTemplateVideoBodyInputContentTypeTemplateType Template { get; set; }
     }
 
-    public class SendWhatsAppTemplateVideoInputContentTypeTemplateType
+    public class SendWhatsAppTemplateVideoBodyInputContentTypeTemplateType
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
@@ -1524,40 +1423,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string TemplateLanguage { get; set; }
 
         [JsonProperty("components")]
-        public SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsType Components { get; set; }
+        public SendWhatsAppTemplateVideoBodyInputContentTypeTemplateTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsType
+    public class SendWhatsAppTemplateVideoBodyInputContentTypeTemplateTypeComponentsType
     {
         [JsonProperty("header")]
-        public SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
+        public SendWhatsAppTemplateVideoBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem[] Header { get; set; }
 
         [JsonProperty("body")]
-        public SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
     }
 
-    public class SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
+    public class SendWhatsAppTemplateVideoBodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("video")]
-        public SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemVideoType Video { get; set; }
+        public BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemVideoType Video { get; set; }
     }
 
-    public class SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemVideoType
+    public class BodyInputContentTypeTemplateTypeComponentsTypeHeaderTypeItemVideoType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
-    }
-
-    public class SendWhatsAppTemplateVideoInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
     }
 
     public class SendWhatsAppTemplateDynamicButtonResponse
@@ -1569,7 +1459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTemplateDynamicButtonInput
+    public class SendWhatsAppTemplateDynamicButtonBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1581,19 +1471,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateDynamicButtonInputContentType Content { get; set; } = new SendWhatsAppTemplateDynamicButtonInputContentType();
+        public SendWhatsAppTemplateDynamicButtonBodyInputContentType Content { get; set; } = new SendWhatsAppTemplateDynamicButtonBodyInputContentType();
     }
 
-    public class SendWhatsAppTemplateDynamicButtonInputContentType
+    public class SendWhatsAppTemplateDynamicButtonBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "template";
 
         [JsonProperty("template")]
-        public SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateType Template { get; set; }
+        public SendWhatsAppTemplateDynamicButtonBodyInputContentTypeTemplateType Template { get; set; }
     }
 
-    public class SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateType
+    public class SendWhatsAppTemplateDynamicButtonBodyInputContentTypeTemplateType
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
@@ -1602,28 +1492,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string TemplateLanguage { get; set; }
 
         [JsonProperty("components")]
-        public SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateTypeComponentsType Components { get; set; }
+        public SendWhatsAppTemplateDynamicButtonBodyInputContentTypeTemplateTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateTypeComponentsType
+    public class SendWhatsAppTemplateDynamicButtonBodyInputContentTypeTemplateTypeComponentsType
     {
         [JsonProperty("body")]
-        public SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
 
         [JsonProperty("button")]
-        public SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateTypeComponentsTypeButtonTypeItem[] Button { get; set; }
+        public SendWhatsAppTemplateDynamicButtonBodyInputContentTypeTemplateTypeComponentsTypeButtonTypeItem[] Button { get; set; }
     }
 
-    public class SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppTemplateDynamicButtonInputContentTypeTemplateTypeComponentsTypeButtonTypeItem
+    public class SendWhatsAppTemplateDynamicButtonBodyInputContentTypeTemplateTypeComponentsTypeButtonTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1644,7 +1525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class SendWhatsAppTemplateQuickReplyInput
+    public class SendWhatsAppTemplateQuickReplyBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1656,19 +1537,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateQuickReplyInputContentType Content { get; set; } = new SendWhatsAppTemplateQuickReplyInputContentType();
+        public SendWhatsAppTemplateQuickReplyBodyInputContentType Content { get; set; } = new SendWhatsAppTemplateQuickReplyBodyInputContentType();
     }
 
-    public class SendWhatsAppTemplateQuickReplyInputContentType
+    public class SendWhatsAppTemplateQuickReplyBodyInputContentType
     {
         [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ContentType { get; set; } = "template";
 
         [JsonProperty("template")]
-        public SendWhatsAppTemplateQuickReplyInputContentTypeTemplateType Template { get; set; }
+        public SendWhatsAppTemplateQuickReplyBodyInputContentTypeTemplateType Template { get; set; }
     }
 
-    public class SendWhatsAppTemplateQuickReplyInputContentTypeTemplateType
+    public class SendWhatsAppTemplateQuickReplyBodyInputContentTypeTemplateType
     {
         [JsonProperty("templateId")]
         public string TemplateId { get; set; }
@@ -1677,28 +1558,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string TemplateLanguage { get; set; }
 
         [JsonProperty("components")]
-        public SendWhatsAppTemplateQuickReplyInputContentTypeTemplateTypeComponentsType Components { get; set; }
+        public SendWhatsAppTemplateQuickReplyBodyInputContentTypeTemplateTypeComponentsType Components { get; set; }
     }
 
-    public class SendWhatsAppTemplateQuickReplyInputContentTypeTemplateTypeComponentsType
+    public class SendWhatsAppTemplateQuickReplyBodyInputContentTypeTemplateTypeComponentsType
     {
         [JsonProperty("body")]
-        public SendWhatsAppTemplateQuickReplyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
+        public SendWhatsAppTemplateDocumentBodyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem[] Body { get; set; }
 
         [JsonProperty("button")]
-        public SendWhatsAppTemplateQuickReplyInputContentTypeTemplateTypeComponentsTypeButtonTypeItem[] Button { get; set; }
+        public SendWhatsAppTemplateQuickReplyBodyInputContentTypeTemplateTypeComponentsTypeButtonTypeItem[] Button { get; set; }
     }
 
-    public class SendWhatsAppTemplateQuickReplyInputContentTypeTemplateTypeComponentsTypeBodyTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class SendWhatsAppTemplateQuickReplyInputContentTypeTemplateTypeComponentsTypeButtonTypeItem
+    public class SendWhatsAppTemplateQuickReplyBodyInputContentTypeTemplateTypeComponentsTypeButtonTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1710,7 +1582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Payload { get; set; }
     }
 
-    public class StatusCheckV3Response
+    public class StatusCheckResponse
     {
         [JsonProperty("messageId")]
         public string MessageId { get; set; }
@@ -1722,7 +1594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         public string Timestamp { get; set; }
     }
 
-    public class IncomingV2Input
+    public class IncomingBodyInput
     {
         [JsonProperty("inboundMessageUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string InboundMessageUrl { get; set; } = "#{listCallbackUrl()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
     public class PowertextorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse, ApiConnectionActionConfiguration> SendTextMessageToMultipleContacts(Expression<Func<SendTextMessageToMultipleContactsInput>> body)
+        public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse, ApiConnectionActionConfiguration> SendTextMessageToMultipleContacts(Expression<Func<SendTextMessageToMultipleContactsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageToMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageForContacts(Expression<Func<ScheduleReviewTextMessageForContactsInput>> body)
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageForContacts(Expression<Func<ScheduleReviewTextMessageForContactsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleReviewTextMessageForContactsResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse, ApiConnectionActionConfiguration> SendTextMessageToMultipleGroups(Expression<Func<SendTextMessageToMultipleGroupsInput>> body)
+        public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse, ApiConnectionActionConfiguration> SendTextMessageToMultipleGroups(Expression<Func<SendTextMessageToMultipleGroupsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageToMultipleGroupsResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextGroupsResponse, ApiConnectionActionConfiguration> SendReviewTextGroups(Expression<Func<SendReviewTextGroupsInput>> body)
+        public IBodyWorkflowAction<SendReviewTextGroupsResponse, ApiConnectionActionConfiguration> SendReviewTextGroups(Expression<Func<SendReviewTextGroupsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendReviewTextGroupsResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleMessageForAContactResponse, ApiConnectionActionConfiguration> ScheduleMessageForAContact(Expression<Func<ScheduleMessageForAContactInput>> body)
+        public IBodyWorkflowAction<ScheduleMessageForAContactResponse, ApiConnectionActionConfiguration> ScheduleMessageForAContact(Expression<Func<ScheduleMessageForAContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleMessageForAContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleMessageForGroupsResponse, ApiConnectionActionConfiguration> ScheduleMessageForGroups(Expression<Func<ScheduleMessageForGroupsInput>> body)
+        public IBodyWorkflowAction<ScheduleMessageForGroupsResponse, ApiConnectionActionConfiguration> ScheduleMessageForGroups(Expression<Func<ScheduleMessageForGroupsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleMessageForGroupsResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse, ApiConnectionActionConfiguration> ScheduleReviewMessageForAContact(Expression<Func<ScheduleReviewMessageForAContactInput>> body)
+        public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse, ApiConnectionActionConfiguration> ScheduleReviewMessageForAContact(Expression<Func<ScheduleReviewMessageForAContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleReviewMessageForAContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewGroupsResponse, ApiConnectionActionConfiguration> ScheduleReviewGroups(Expression<Func<ScheduleReviewGroupsInput>> body)
+        public IBodyWorkflowAction<ScheduleReviewGroupsResponse, ApiConnectionActionConfiguration> ScheduleReviewGroups(Expression<Func<ScheduleReviewGroupsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleReviewGroupsResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextToAContactResponse, ApiConnectionActionConfiguration> SendTextToAContact(Expression<Func<SendTextToAContactInput>> body)
+        public IBodyWorkflowAction<SendTextToAContactResponse, ApiConnectionActionConfiguration> SendTextToAContact(Expression<Func<SendTextMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextToAContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse, ApiConnectionActionConfiguration> ScheduleTextToMultipleContacts(Expression<Func<ScheduleTextToMultipleContactsInput>> body)
+        public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse, ApiConnectionActionConfiguration> ScheduleTextToMultipleContacts(Expression<Func<ScheduleMessageForGroupsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleTextToMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewSingleContactResponse, ApiConnectionActionConfiguration> SendReviewSingleContact(Expression<Func<SendReviewSingleContactInput>> body)
+        public IBodyWorkflowAction<SendReviewSingleContactResponse, ApiConnectionActionConfiguration> SendReviewSingleContact(Expression<Func<SendReviewSingleContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendReviewSingleContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse, ApiConnectionActionConfiguration> SendReviewTextMultipleContacts(Expression<Func<SendReviewTextMultipleContactsInput>> body)
+        public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse, ApiConnectionActionConfiguration> SendReviewTextMultipleContacts(Expression<Func<SendReviewTextMultipleContactsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendReviewTextMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToAContact(Expression<Func<SendTextMessageEventReminderToAContactInput>> body)
+        public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToAContact(Expression<Func<SendTextEventReminderToAGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageEventReminderToAContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToMultipleContacts(Expression<Func<SendTextMessageEventReminderToMultipleContactsInput>> body)
+        public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToMultipleContacts(Expression<Func<SendTextMessageEventReminderToMultipleContactsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageEventReminderToMultipleContactsResponse, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToGroups(Expression<Func<SendTextMessageEventReminderToGroupsInput>> body)
+        public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse, ApiConnectionActionConfiguration> SendTextMessageEventReminderToGroups(Expression<Func<SendTextMessageEventReminderToGroupsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageEventReminderToGroupsResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToANumberResponse, ApiConnectionActionConfiguration> SendTextMessageToANumber(Expression<Func<SendTextMessageToANumberInput>> body)
+        public IBodyWorkflowAction<SendTextMessageToANumberResponse, ApiConnectionActionConfiguration> SendTextMessageToANumber(Expression<Func<SendTextMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageToANumberResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageForAGroup(Expression<Func<ScheduleReviewTextMessageForAGroupInput>> body)
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageForAGroup(Expression<Func<ScheduleReviewTextMessageForAGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleReviewTextMessageForAGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse, ApiConnectionActionConfiguration> ScheduleTextMessagesForAGroup(Expression<Func<ScheduleTextMessagesForAGroupInput>> body)
+        public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse, ApiConnectionActionConfiguration> ScheduleTextMessagesForAGroup(Expression<Func<ScheduleMessageForAContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleTextMessagesForAGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse, ApiConnectionActionConfiguration> SendTextEventReminderToAGroup(Expression<Func<SendTextEventReminderToAGroupInput>> body)
+        public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse, ApiConnectionActionConfiguration> SendTextEventReminderToAGroup(Expression<Func<SendTextEventReminderToAGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextEventReminderToAGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse, ApiConnectionActionConfiguration> SendReviewTextMessageToAGroup(Expression<Func<SendReviewTextMessageToAGroupInput>> body)
+        public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse, ApiConnectionActionConfiguration> SendReviewTextMessageToAGroup(Expression<Func<SendReviewTextMessageToAGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendReviewTextMessageToAGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToAGroupResponse, ApiConnectionActionConfiguration> SendTextMessageToAGroup(Expression<Func<SendTextMessageToAGroupInput>> body)
+        public IBodyWorkflowAction<SendTextMessageToAGroupResponse, ApiConnectionActionConfiguration> SendTextMessageToAGroup(Expression<Func<SendTextMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageToAGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextToANewGroupResponse, ApiConnectionActionConfiguration> SendTextToANewGroup(Expression<Func<SendTextToANewGroupInput>> body)
+        public IBodyWorkflowAction<SendTextToANewGroupResponse, ApiConnectionActionConfiguration> SendTextToANewGroup(Expression<Func<SendTextToANewGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextToANewGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextForANewGroupResponse, ApiConnectionActionConfiguration> ScheduleTextForANewGroup(Expression<Func<ScheduleTextForANewGroupInput>> body)
+        public IBodyWorkflowAction<ScheduleTextForANewGroupResponse, ApiConnectionActionConfiguration> ScheduleTextForANewGroup(Expression<Func<ScheduleTextForANewGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleTextForANewGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse, ApiConnectionActionConfiguration> SendTextEventReminderToNewGroup(Expression<Func<SendTextEventReminderToNewGroupInput>> body)
+        public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse, ApiConnectionActionConfiguration> SendTextEventReminderToNewGroup(Expression<Func<SendTextEventReminderToNewGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextEventReminderToNewGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageToANewContactResponse, ApiConnectionActionConfiguration> SendMessageToANewContact(Expression<Func<SendMessageToANewContactInput>> body)
+        public IBodyWorkflowAction<SendMessageToANewContactResponse, ApiConnectionActionConfiguration> SendMessageToANewContact(Expression<Func<SendMessageToANewContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMessageToANewContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageToANewContact(Expression<Func<ScheduleReviewTextMessageToANewContactInput>> body)
+        public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration> ScheduleReviewTextMessageToANewContact(Expression<Func<ScheduleReviewTextMessageToANewContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration> SendReviewTextMessageToANewContact(Expression<Func<SendReviewTextMessageToANewContactInput>> body)
+        public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration> SendReviewTextMessageToANewContact(Expression<Func<SendReviewTextMessageToANewContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendReviewTextMessageToANewContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse, ApiConnectionActionConfiguration> ScheduleReviewToANewGroup(Expression<Func<ScheduleReviewToANewGroupInput>> body)
+        public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse, ApiConnectionActionConfiguration> ScheduleReviewToANewGroup(Expression<Func<ScheduleReviewToANewGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleReviewToANewGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewToANewGroupResponse, ApiConnectionActionConfiguration> SendReviewToANewGroup(Expression<Func<SendReviewToANewGroupInput>> body)
+        public IBodyWorkflowAction<SendReviewToANewGroupResponse, ApiConnectionActionConfiguration> SendReviewToANewGroup(Expression<Func<SendReviewToANewGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendReviewToANewGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextForANewContactResponse, ApiConnectionActionConfiguration> ScheduleTextForANewContact(Expression<Func<ScheduleTextForANewContactInput>> body)
+        public IBodyWorkflowAction<ScheduleTextForANewContactResponse, ApiConnectionActionConfiguration> ScheduleTextForANewContact(Expression<Func<ScheduleTextForANewContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduleTextForANewContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<CreateAContactResponse, ApiConnectionActionConfiguration> CreateAContact(Expression<Func<CreateAContactInput>> body)
+        public IBodyWorkflowAction<CreateAContactResponse, ApiConnectionActionConfiguration> CreateAContact(Expression<Func<CreateAContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse, ApiConnectionActionConfiguration> SendMessageEventReminderToANewContact(Expression<Func<SendMessageEventReminderToANewContactInput>> body)
+        public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse, ApiConnectionActionConfiguration> SendMessageEventReminderToANewContact(Expression<Func<SendMessageEventReminderToANewContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMessageEventReminderToANewContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<UpdateAPowerTextorContactResponse, ApiConnectionActionConfiguration> UpdateAPowerTextorContact(Expression<Func<UpdateAPowerTextorContactInput>> body)
+        public IBodyWorkflowAction<UpdateAPowerTextorContactResponse, ApiConnectionActionConfiguration> UpdateAPowerTextorContact(Expression<Func<UpdateAPowerTextorContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateAPowerTextorContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse, ApiConnectionActionConfiguration> SendMessageToMultipleNumbers(Expression<Func<SendMessageToMultipleNumbersInput>> body)
+        public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse, ApiConnectionActionConfiguration> SendMessageToMultipleNumbers(Expression<Func<SendMessageToMultipleNumbersBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMessageToMultipleNumbersResponse, ApiConnectionActionConfiguration>(() =>
@@ -489,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageResponse, ApiConnectionActionConfiguration> SendTextMessage(Expression<Func<SendTextMessageInput>> body)
+        public IBodyWorkflowAction<SendTextMessageResponse, ApiConnectionActionConfiguration> SendTextMessage(Expression<Func<SendTextMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendTextMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -505,30 +505,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class PowertextorTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductionWebhook(Expression<Func<ProductionWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ProductionWebhook(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/twilio/registration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new MMSWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MMSWebhook(Expression<Func<MMSWebhookInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> MMSWebhook(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/twilio/MMSregistration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new MMSWebhookBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -571,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendTextMessageToMultipleContactsInput
+    public class SendTextMessageToMultipleContactsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -611,7 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public string Message { get; set; }
     }
 
-    public class ScheduleReviewTextMessageForContactsInput
+    public class ScheduleReviewTextMessageForContactsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -654,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int UndeliveredCount { get; set; }
     }
 
-    public class SendTextMessageToMultipleGroupsInput
+    public class SendTextMessageToMultipleGroupsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
@@ -688,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int UndeliveredCount { get; set; }
     }
 
-    public class SendReviewTextGroupsInput
+    public class SendReviewTextGroupsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
@@ -738,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleMessageForAContactInput
+    public class ScheduleMessageForAContactBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -791,7 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleMessageForGroupsInput
+    public class ScheduleMessageForGroupsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -844,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleReviewMessageForAContactInput
+    public class ScheduleReviewMessageForAContactBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -900,7 +896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleReviewGroupsInput
+    public class ScheduleReviewGroupsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
@@ -950,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public string Message { get; set; }
     }
 
-    public class SendTextToAContactInput
+    public class SendTextMessageBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -995,22 +991,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public string GroupId { get; set; }
         public string Name { get; set; }
         public int ContactsCount { get; set; }
-    }
-
-    public class ScheduleTextToMultipleContactsInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] To { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ScheduledDate { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ScheduledTime { get; set; }
     }
 
     public class SendReviewSingleContactResponse
@@ -1074,7 +1054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendReviewSingleContactInput
+    public class SendReviewSingleContactBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -1124,7 +1104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendReviewTextMultipleContactsInput
+    public class SendReviewTextMultipleContactsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -1174,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendTextMessageEventReminderToAContactInput
+    public class SendTextEventReminderToAGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -1230,7 +1210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendTextMessageEventReminderToMultipleContactsInput
+    public class SendTextMessageEventReminderToMultipleContactsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -1286,7 +1266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendTextMessageEventReminderToGroupsInput
+    public class SendTextMessageEventReminderToGroupsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] GroupName { get; set; }
@@ -1336,16 +1316,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public string Message { get; set; }
     }
 
-    public class SendTextMessageToANumberInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string To { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
-    }
-
     public class ScheduleReviewTextMessageForAGroupResponse
     {
         public bool Success { get; set; }
@@ -1383,7 +1353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleReviewTextMessageForAGroupInput
+    public class ScheduleReviewTextMessageForAGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -1427,22 +1397,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int UndeliveredCount { get; set; }
     }
 
-    public class ScheduleTextMessagesForAGroupInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string To { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Body { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ScheduledDate { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
-    }
-
     public class SendTextEventReminderToAGroupResponse
     {
         public bool Success { get; set; }
@@ -1478,25 +1432,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public string GroupId { get; set; }
         public string Name { get; set; }
         public int ContactsCount { get; set; }
-    }
-
-    public class SendTextEventReminderToAGroupInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string To { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ReminderText { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EventDate { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Day { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Time { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
     }
 
     public class SendReviewTextMessageToAGroupResponse
@@ -1536,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendReviewTextMessageToAGroupInput
+    public class SendReviewTextMessageToAGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -1586,16 +1521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendTextMessageToAGroupInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string To { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
-    }
-
     public class SendTextToANewGroupResponse
     {
         public bool Success { get; set; }
@@ -1626,7 +1551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int UndeliveredCount { get; set; }
     }
 
-    public class SendTextToANewGroupInput
+    public class SendTextToANewGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -1669,7 +1594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int UndeliveredCount { get; set; }
     }
 
-    public class ScheduleTextForANewGroupInput
+    public class ScheduleTextForANewGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -1718,7 +1643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int UndeliveredCount { get; set; }
     }
 
-    public class SendTextEventReminderToNewGroupInput
+    public class SendTextEventReminderToNewGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -1777,7 +1702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendMessageToANewContactInput
+    public class SendMessageToANewContactBodyInput
     {
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
@@ -1827,7 +1752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleReviewTextMessageToANewContactInput
+    public class ScheduleReviewTextMessageToANewContactBodyInput
     {
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
@@ -1886,7 +1811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendReviewTextMessageToANewContactInput
+    public class SendReviewTextMessageToANewContactBodyInput
     {
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
@@ -1939,7 +1864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleReviewToANewGroupInput
+    public class ScheduleReviewToANewGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -1998,7 +1923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendReviewToANewGroupInput
+    public class SendReviewToANewGroupBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] To { get; set; }
@@ -2051,7 +1976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class ScheduleTextForANewContactInput
+    public class ScheduleTextForANewContactBodyInput
     {
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
@@ -2100,7 +2025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class CreateAContactInput
+    public class CreateAContactBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Phone { get; set; }
@@ -2145,7 +2070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendMessageEventReminderToANewContactInput
+    public class SendMessageEventReminderToANewContactBodyInput
     {
         public string ContactName { get; set; }
         public string ContactLastName { get; set; }
@@ -2198,7 +2123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class UpdateAPowerTextorContactInput
+    public class UpdateAPowerTextorContactBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Contact { get; set; }
@@ -2246,7 +2171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public int ContactsCount { get; set; }
     }
 
-    public class SendMessageToMultipleNumbersInput
+    public class SendMessageToMultipleNumbersBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactNumber { get; set; }
@@ -2287,23 +2212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public string Message { get; set; }
     }
 
-    public class SendTextMessageInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string To { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
-    }
-
-    public class ProductionWebhookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class MMSWebhookInput
+    public class MMSWebhookBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";

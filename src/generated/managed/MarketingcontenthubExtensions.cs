@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
     public class MarketingcontenthubActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "marketingcontenthub")]
-        public IBodyWorkflowAction<AddFetchJobResponse, ApiConnectionActionConfiguration> AddFetchJob(Expression<Func<AddFetchJobInput>> items = null)
+        public IBodyWorkflowAction<AddFetchJobResponse, ApiConnectionActionConfiguration> AddFetchJob(Expression<Func<ItemsInput>> items = null)
         {
             var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: false);
             return new DeferredBodyAction<AddFetchJobResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "marketingcontenthub")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ListEntitiesByDefinition(Expression<Func<string>> typeDynamic, Expression<Func<string>> take = null, Expression<Func<string>> skip = null, Expression<Func<string>> members = null, Expression<Func<string>> renditions = null, Expression<Func<string>> culture = null, Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> sortCulture = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ListEntitiesByDefinition(Expression<Func<string>> typeDynamic, Expression<Func<string>> take = null, Expression<Func<string>> skip = null, Expression<Func<string>> members = null, Expression<Func<string>> renditions = null, Expression<Func<string>> culture = null, Expression<Func<string>> sort = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> sortCulture = null)
         {
             var __workflow_typeDynamic = WorkflowExpression.Compile(typeDynamic, nameof(typeDynamic), required: true);
             var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "marketingcontenthub")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> QueryEntitiesByDefinitionSimple(Expression<Func<string>> typeDynamic, Expression<Func<object>> dynamicTypeSchema = null, Expression<Func<string>> take = null, Expression<Func<string>> skip = null, Expression<Func<string>> members = null, Expression<Func<string>> renditions = null, Expression<Func<string>> culture = null, Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> sortCulture = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> QueryEntitiesByDefinitionSimple(Expression<Func<string>> typeDynamic, Expression<Func<object>> dynamicTypeSchema = null, Expression<Func<string>> take = null, Expression<Func<string>> skip = null, Expression<Func<string>> members = null, Expression<Func<string>> renditions = null, Expression<Func<string>> culture = null, Expression<Func<string>> sort = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> sortCulture = null)
         {
             var __workflow_typeDynamic = WorkflowExpression.Compile(typeDynamic, nameof(typeDynamic), required: true);
             var __workflow_dynamicTypeSchema = WorkflowExpression.Compile(dynamicTypeSchema, nameof(dynamicTypeSchema), required: false);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "marketingcontenthub")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> QueryEntitiesByDefinitionAdvanced(Expression<Func<string>> typeDynamic, Expression<Func<string>> query, Expression<Func<string>> take = null, Expression<Func<string>> skip = null, Expression<Func<string>> members = null, Expression<Func<string>> renditions = null, Expression<Func<string>> culture = null, Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> sortCulture = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> QueryEntitiesByDefinitionAdvanced(Expression<Func<string>> typeDynamic, Expression<Func<string>> query, Expression<Func<string>> take = null, Expression<Func<string>> skip = null, Expression<Func<string>> members = null, Expression<Func<string>> renditions = null, Expression<Func<string>> culture = null, Expression<Func<string>> sort = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> sortCulture = null)
         {
             var __workflow_typeDynamic = WorkflowExpression.Compile(typeDynamic, nameof(typeDynamic), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
 
     public class MarketingcontenthubTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnEntitySaveTrigger(Expression<Func<OnEntitySaveTriggerInput>> addSaveEntityTriggerSchema, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnEntitySaveTrigger(Expression<Func<AddSaveEntityTriggerSchemaInput>> addSaveEntityTriggerSchema, FlowRecurrence recurrence = null)
         {
             var __workflow_addSaveEntityTriggerSchema = WorkflowExpression.Compile(addSaveEntityTriggerSchema, nameof(addSaveEntityTriggerSchema), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
         public string Id { get; set; }
     }
 
-    public class AddFetchJobInput
+    public class ItemsInput
     {
         [JsonProperty("assetId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int AssetId { get; set; }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         Asc,
         Desc
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marketingcontenthub
         public string Identifier { get; set; }
     }
 
-    public class OnEntitySaveTriggerInput
+    public class AddSaveEntityTriggerSchemaInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

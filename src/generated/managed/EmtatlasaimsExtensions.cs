@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<AssetSearchResult, ApiConnectionActionConfiguration> AssetsSearch(Expression<Func<AssetsSearchInput>> body, Expression<Func<string>> baseUrl)
+        public IBodyWorkflowAction<AssetSearchResult, ApiConnectionActionConfiguration> AssetsSearch(Expression<Func<BodyInput>> body, Expression<Func<string>> baseUrl)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         public int NumberOfParentRelations { get; set; }
     }
 
-    public class AssetsSearchInput
+    public class BodyInput
     {
         [JsonProperty("contract")]
         public string ContractId { get; set; }
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         public int? PageSize { get; set; }
 
         [JsonProperty("modified_date")]
-        public AssetsSearchInputModifiedDateType ModifiedDate { get; set; }
+        public BodyInputModifiedDateType ModifiedDate { get; set; }
 
         [JsonProperty("sortKey")]
         public string SortKey { get; set; }
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         public string[] FilteredAssetClassCode { get; set; }
     }
 
-    public class AssetsSearchInputModifiedDateType
+    public class BodyInputModifiedDateType
     {
         [JsonProperty("gt")]
         public string GreaterThan { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
     public class MuralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        public IBodyWorkflowAction<CreateNewMuralResponse, ApiConnectionActionConfiguration> CreateNewMural(Expression<Func<CreateNewMuralInput>> body = null)
+        public IBodyWorkflowAction<CreateNewMuralResponse, ApiConnectionActionConfiguration> CreateNewMural(Expression<Func<CreateNewMuralBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateNewMuralResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        public IBodyWorkflowAction<CreateNewStickyNoteResponse, ApiConnectionActionConfiguration> CreateNewStickyNote(Expression<Func<string>> workspaceId, Expression<Func<string>> roomId, Expression<Func<string>> muralId, Expression<Func<CreateNewStickyNoteInput>> body = null)
+        public IBodyWorkflowAction<CreateNewStickyNoteResponse, ApiConnectionActionConfiguration> CreateNewStickyNote(Expression<Func<string>> workspaceId, Expression<Func<string>> roomId, Expression<Func<string>> muralId, Expression<Func<CreateNewStickyNoteBodyInput>> body = null)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         public string WorkspaceMembers { get; set; }
     }
 
-    public class CreateNewMuralInput
+    public class CreateNewMuralBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         public bool Border { get; set; }
     }
 
-    public class CreateNewStickyNoteInput
+    public class CreateNewStickyNoteBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         public string Title { get; set; }
 
         [JsonProperty("shape", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateNewStickyNoteInputShapeType Shape { get; set; } = CreateNewStickyNoteInputShapeType.Circle;
+        public BodyInputShapeType Shape { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mural.BodyInputShapeType.Circle;
 
         [JsonProperty("x", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int X { get; set; } = 150;
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateNewStickyNoteInputShapeType
+    public enum BodyInputShapeType
     {
         [EnumMember(Value = "rectangle")]
         Rectangle,

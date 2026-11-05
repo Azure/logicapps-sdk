@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
     public class MintlifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        public IBodyWorkflowAction<DocGenResponse, ApiConnectionActionConfiguration> DocGen(Expression<Func<DocGenInput>> body)
+        public IBodyWorkflowAction<DocGenResponse, ApiConnectionActionConfiguration> DocGen(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DocGenResponse, ApiConnectionActionConfiguration>(() =>
@@ -61,26 +61,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         public string Documentation { get; set; }
     }
 
-    public class DocGenInput
+    public class BodyInput
     {
         [JsonProperty("commented", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Commented { get; set; } = true;
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DocGenInputLanguageType Language { get; set; } = DocGenInputLanguageType.Javascript;
+        public BodyInputLanguageType Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip.BodyInputLanguageType.Javascript;
 
         [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 
         [JsonProperty("format")]
-        public DocGenInputFormatType? Format { get; set; }
+        public BodyInputFormatType? Format { get; set; }
 
         [JsonProperty("context")]
         public string Context { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocGenInputLanguageType
+    public enum BodyInputLanguageType
     {
         [EnumMember(Value = "javascript")]
         Javascript,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocGenInputFormatType
+    public enum BodyInputFormatType
     {
         [EnumMember(Value = "")]
         None,

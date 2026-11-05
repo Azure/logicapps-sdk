@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
     public class AliruActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendNews(Expression<Func<SendNewsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendNews(Expression<Func<SendNewsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<SendNotificationInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<SendNotificationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
     {
     }
 
-    public class SendNewsInput
+    public class SendNewsBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Headline { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
         public string UserId { get; set; }
     }
 
-    public class SendNotificationInput
+    public class SendNotificationBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }

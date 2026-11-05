@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
-        public IBodyWorkflowAction<FilterTimeSeriesResponse, ApiConnectionActionConfiguration> FilterTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<FilterTimeSeriesInput>> body = null)
+        public IBodyWorkflowAction<FilterTimeSeriesResponse, ApiConnectionActionConfiguration> FilterTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<FilterTimeSeriesBodyInput>> body = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
-        public IBodyWorkflowAction<SearchTimeSeriesResponse, ApiConnectionActionConfiguration> SearchTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<SearchTimeSeriesInput>> body = null)
+        public IBodyWorkflowAction<SearchTimeSeriesResponse, ApiConnectionActionConfiguration> SearchTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<SearchTimeSeriesBodyInput>> body = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> QueryGraphQL(Expression<Func<string>> project, Expression<Func<string>> space, Expression<Func<string>> datamodel, Expression<Func<string>> version, Expression<Func<QueryGraphQLInput>> body, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> QueryGraphQL(Expression<Func<string>> project, Expression<Func<string>> space, Expression<Func<string>> datamodel, Expression<Func<string>> version, Expression<Func<QueryGraphQLBodyInput>> body, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_space = WorkflowExpression.Compile(space, nameof(space), required: true);
@@ -257,10 +257,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public string Auteb { get; set; }
     }
 
-    public class FilterTimeSeriesInput
+    public class FilterTimeSeriesBodyInput
     {
         [JsonProperty("filter")]
-        public FilterTimeSeriesInputFilterType Filter { get; set; }
+        public BodyInputFilterType Filter { get; set; }
 
         [JsonProperty("advancedFilter")]
         public JToken AdvancedFilter { get; set; }
@@ -275,10 +275,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public string Partition { get; set; }
 
         [JsonProperty("sort")]
-        public FilterTimeSeriesInputSortTypeItem[] Sort { get; set; }
+        public BodyInputSortTypeItem[] Sort { get; set; }
     }
 
-    public class FilterTimeSeriesInputFilterType
+    public class BodyInputFilterType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -305,22 +305,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public int[] RootAssetIds { get; set; }
 
         [JsonProperty("assetSubtreeIds")]
-        public FilterTimeSeriesInputFilterTypeAssetSubtreeIdsTypeItem[] AssetSubtreeIds { get; set; }
+        public BodyInputFilterTypeAssetSubtreeIdsTypeItem[] AssetSubtreeIds { get; set; }
 
         [JsonProperty("dataSetIds")]
-        public FilterTimeSeriesInputFilterTypeDataSetIdsTypeItem[] DataSetIds { get; set; }
+        public BodyInputFilterTypeDataSetIdsTypeItem[] DataSetIds { get; set; }
 
         [JsonProperty("externalIdPrefix")]
         public string ExternalIdPrefix { get; set; }
 
         [JsonProperty("createdTime")]
-        public FilterTimeSeriesInputFilterTypeCreatedTimeType CreatedTime { get; set; }
+        public BodyInputFilterTypeCreatedTimeType CreatedTime { get; set; }
 
         [JsonProperty("lastUpdatedTime")]
-        public FilterTimeSeriesInputFilterTypeLastUpdatedTimeType LastUpdatedTime { get; set; }
+        public BodyInputFilterTypeLastUpdatedTimeType LastUpdatedTime { get; set; }
     }
 
-    public class FilterTimeSeriesInputFilterTypeAssetSubtreeIdsTypeItem
+    public class BodyInputFilterTypeAssetSubtreeIdsTypeItem
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public string ExternalId { get; set; }
     }
 
-    public class FilterTimeSeriesInputFilterTypeDataSetIdsTypeItem
+    public class BodyInputFilterTypeDataSetIdsTypeItem
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public string ExternalId { get; set; }
     }
 
-    public class FilterTimeSeriesInputFilterTypeCreatedTimeType
+    public class BodyInputFilterTypeCreatedTimeType
     {
         [JsonProperty("max")]
         public int? Max { get; set; }
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public int? Min { get; set; }
     }
 
-    public class FilterTimeSeriesInputFilterTypeLastUpdatedTimeType
+    public class BodyInputFilterTypeLastUpdatedTimeType
     {
         [JsonProperty("max")]
         public int? Max { get; set; }
@@ -356,20 +356,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public int? Min { get; set; }
     }
 
-    public class FilterTimeSeriesInputSortTypeItem
+    public class BodyInputSortTypeItem
     {
         [JsonProperty("property")]
         public string[] Property { get; set; }
 
         [JsonProperty("order")]
-        public FilterTimeSeriesInputSortTypeItemOrderType? Order { get; set; }
+        public BodyInputSortTypeItemOrderType? Order { get; set; }
 
         [JsonProperty("nulls", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FilterTimeSeriesInputSortTypeItemNullsType? Nulls { get; set; } = FilterTimeSeriesInputSortTypeItemNullsType.Auto;
+        public BodyInputSortTypeItemNullsType? Nulls { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu.BodyInputSortTypeItemNullsType.Auto;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FilterTimeSeriesInputSortTypeItemOrderType
+    public enum BodyInputSortTypeItemOrderType
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FilterTimeSeriesInputSortTypeItemNullsType
+    public enum BodyInputSortTypeItemNullsType
     {
         [EnumMember(Value = "first")]
         First,
@@ -445,97 +445,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public string Reprehenderit36 { get; set; }
     }
 
-    public class SearchTimeSeriesInput
+    public class SearchTimeSeriesBodyInput
     {
         [JsonProperty("filter")]
-        public SearchTimeSeriesInputFilterType Filter { get; set; }
+        public BodyInputFilterType Filter { get; set; }
 
         [JsonProperty("search")]
-        public SearchTimeSeriesInputSearchType Search { get; set; }
+        public BodyInputSearchType Search { get; set; }
 
         [JsonProperty("limit", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Limit { get; set; } = 100;
     }
 
-    public class SearchTimeSeriesInputFilterType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("unit")]
-        public string Unit { get; set; }
-
-        [JsonProperty("isString")]
-        public bool? IsString { get; set; }
-
-        [JsonProperty("isStep")]
-        public bool? IsStep { get; set; }
-
-        [JsonProperty("metadata")]
-        public JToken Metadata { get; set; }
-
-        [JsonProperty("assetIds")]
-        public int[] AssetIds { get; set; }
-
-        [JsonProperty("assetExternalIds")]
-        public string[] AssetExternalIds { get; set; }
-
-        [JsonProperty("rootAssetIds")]
-        public int[] RootAssetIds { get; set; }
-
-        [JsonProperty("assetSubtreeIds")]
-        public SearchTimeSeriesInputFilterTypeAssetSubtreeIdsTypeItem[] AssetSubtreeIds { get; set; }
-
-        [JsonProperty("dataSetIds")]
-        public SearchTimeSeriesInputFilterTypeDataSetIdsTypeItem[] DataSetIds { get; set; }
-
-        [JsonProperty("externalIdPrefix")]
-        public string ExternalIdPrefix { get; set; }
-
-        [JsonProperty("createdTime")]
-        public SearchTimeSeriesInputFilterTypeCreatedTimeType CreatedTime { get; set; }
-
-        [JsonProperty("lastUpdatedTime")]
-        public SearchTimeSeriesInputFilterTypeLastUpdatedTimeType LastUpdatedTime { get; set; }
-    }
-
-    public class SearchTimeSeriesInputFilterTypeAssetSubtreeIdsTypeItem
-    {
-        [JsonProperty("id")]
-        public int? Id { get; set; }
-
-        [JsonProperty("externalId")]
-        public string ExternalId { get; set; }
-    }
-
-    public class SearchTimeSeriesInputFilterTypeDataSetIdsTypeItem
-    {
-        [JsonProperty("id")]
-        public int? Id { get; set; }
-
-        [JsonProperty("externalId")]
-        public string ExternalId { get; set; }
-    }
-
-    public class SearchTimeSeriesInputFilterTypeCreatedTimeType
-    {
-        [JsonProperty("max")]
-        public int? Max { get; set; }
-
-        [JsonProperty("min")]
-        public int? Min { get; set; }
-    }
-
-    public class SearchTimeSeriesInputFilterTypeLastUpdatedTimeType
-    {
-        [JsonProperty("max")]
-        public int? Max { get; set; }
-
-        [JsonProperty("min")]
-        public int? Min { get; set; }
-    }
-
-    public class SearchTimeSeriesInputSearchType
+    public class BodyInputSearchType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -547,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public string Query { get; set; }
     }
 
-    public class QueryGraphQLInput
+    public class QueryGraphQLBodyInput
     {
         [JsonProperty("query")]
         public string Query { get; set; }

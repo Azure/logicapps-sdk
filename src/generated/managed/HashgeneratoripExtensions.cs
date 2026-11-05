@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
     public class HashgeneratoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
-        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<HashInput>> body = null)
+        public IBodyWorkflowAction<HashResponse, ApiConnectionActionConfiguration> Hash(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<HashResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
         public string ValueToHash { get; set; }
     }
 
-    public class HashInput
+    public class BodyInput
     {
         [JsonProperty("string", DefaultValueHandling = DefaultValueHandling.Include)]
         public string String { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HashInputTypeType? Type { get; set; } = HashInputTypeType.SHA1;
+        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip.BodyInputTypeType.SHA1;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HashInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "sha1")]
         SHA1,

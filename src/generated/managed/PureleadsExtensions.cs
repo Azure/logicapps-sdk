@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     public class PureleadsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NewLeadSubmission(Expression<Func<NewLeadSubmissionInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NewLeadSubmission(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
         }
     }
 
-    public class NewLeadSubmissionInput
+    public class BodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }

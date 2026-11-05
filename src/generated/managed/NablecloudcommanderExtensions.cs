@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetUsersResponse, ApiConnectionActionConfiguration> GetUsers(Expression<Func<string>> filter, Expression<Func<int>> top, Expression<Func<skipInput>> skip = null)
+        public IBodyWorkflowAction<GetUsersResponse, ApiConnectionActionConfiguration> GetUsers(Expression<Func<string>> filter, Expression<Func<int>> top, Expression<Func<SkipInput>> skip = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> organizationId, Expression<Func<CreateUserInput>> body = null)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<string>> organizationId, Expression<Func<CreateUserBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PatchGraphUserInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PatchGraphUserBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PostUserLicenseInput>> body = null)
+        public IBodyWorkflowAction<PostUserLicenseResponse, ApiConnectionActionConfiguration> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PostUserLicenseBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<PostGraphGroupResponse, ApiConnectionActionConfiguration> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<PostGraphGroupInput>> body = null)
+        public IBodyWorkflowAction<PostGraphGroupResponse, ApiConnectionActionConfiguration> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<PostGraphGroupBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<AddGraphGroupMemberBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<PatchSubscriptionQuantityInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<PatchSubscriptionQuantityBodyInput>> body = null)
         {
             var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutAssignManager(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PutAssignManagerInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutAssignManager(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<PutAssignManagerBodyInput>> body = null)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string ModifiedOn { get; set; }
     }
 
-    public enum skipInput
+    public enum SkipInput
     {
         _0 = 0,
         _5 = 5,
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string UserPrincipalName { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("accountEnabled")]
         public bool? AccountEnabled { get; set; }
@@ -534,10 +534,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string UserPrincipalName { get; set; }
 
         [JsonProperty("passwordProfile")]
-        public CreateUserInputPasswordProfileType PasswordProfile { get; set; }
+        public BodyInputPasswordProfileType PasswordProfile { get; set; }
     }
 
-    public class CreateUserInputPasswordProfileType
+    public class BodyInputPasswordProfileType
     {
         [JsonProperty("forceChangePasswordNextSignIn")]
         public bool? ForceChangePasswordNextSignIn { get; set; }
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string Country { get; set; }
     }
 
-    public class PatchGraphUserInput
+    public class PatchGraphUserBodyInput
     {
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -627,16 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public bool? AccountEnabled { get; set; }
 
         [JsonProperty("passwordProfile")]
-        public PatchGraphUserInputPasswordProfileType PasswordProfile { get; set; }
-    }
-
-    public class PatchGraphUserInputPasswordProfileType
-    {
-        [JsonProperty("forceChangePasswordNextSignIn")]
-        public bool? ForceChangePasswordNextSignIn { get; set; }
-
-        [JsonProperty("password")]
-        public string Password { get; set; }
+        public BodyInputPasswordProfileType PasswordProfile { get; set; }
     }
 
     public class GetUserLicenseDetailsResponse
@@ -771,16 +762,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string AppliesTo { get; set; }
     }
 
-    public class PostUserLicenseInput
+    public class PostUserLicenseBodyInput
     {
         [JsonProperty("addLicenses", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostUserLicenseInputAddLicensesTypeItem[] AddLicenses { get; set; }
+        public BodyInputAddLicensesTypeItem[] AddLicenses { get; set; }
 
         [JsonProperty("removeLicenses")]
         public string[] RemoveLicenses { get; set; }
     }
 
-    public class PostUserLicenseInputAddLicensesTypeItem
+    public class BodyInputAddLicensesTypeItem
     {
         [JsonProperty("disabledPlans")]
         public string[] DisabledPlans { get; set; }
@@ -945,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string[] OnPremisesProvisioningErrors { get; set; }
     }
 
-    public class PostGraphGroupInput
+    public class PostGraphGroupBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1011,7 +1002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string State { get; set; }
     }
 
-    public class AddGraphGroupMemberInput
+    public class AddGraphGroupMemberBodyInput
     {
         [JsonProperty("@odata.id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -1125,7 +1116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string ObjectType { get; set; }
     }
 
-    public class PatchSubscriptionQuantityInput
+    public class PatchSubscriptionQuantityBodyInput
     {
         [JsonProperty("quantity")]
         public int? Quantity { get; set; }
@@ -1200,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string Id { get; set; }
     }
 
-    public class PutAssignManagerInput
+    public class PutAssignManagerBodyInput
     {
         [JsonProperty("@odata.id")]
         public string Id { get; set; }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> UnassignUsers(Expression<Func<string>> id, Expression<Func<UnassignUsersInput>> body)
+        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> UnassignUsers(Expression<Func<string>> id, Expression<Func<UnassignUsersBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> AssignUsers(Expression<Func<string>> id, Expression<Func<AssignUsersInput>> body)
+        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> AssignUsers(Expression<Func<string>> id, Expression<Func<AssignUsersBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<CreateBucketResponse, ApiConnectionActionConfiguration> CreateBucket(Expression<Func<CreateBucketV2Input>> body)
+        public IBodyWorkflowAction<CreateBucketResponse, ApiConnectionActionConfiguration> CreateBucket(Expression<Func<CreateBucketBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateBucketResponse, ApiConnectionActionConfiguration>(() =>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV3, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskV4Input>> body)
+        public IBodyWorkflowAction<GetTaskResponseV3, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetTaskResponseV3, ApiConnectionActionConfiguration>(() =>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<UpdateTaskV3Input>> body)
+        public IBodyWorkflowAction<GetTaskResponseV2, ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<UpdateTaskBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
-        public IBodyWorkflowAction<GetTaskDetailsResponse, ApiConnectionActionConfiguration> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<UpdateTaskDetailsV2Input>> body)
+        public IBodyWorkflowAction<GetTaskDetailsResponse, ApiConnectionActionConfiguration> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<UpdateTaskDetailsBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string Id { get; set; }
 
         [JsonProperty("appliedCategories")]
-        public AppliedCategories AppliedCategories { get; set; }
+        public AssignUsersAppliedCategoriesResponse AppliedCategories { get; set; }
 
         [JsonProperty("_assignments")]
         public GetTaskResponseV2AssignmentsTypeItem[] Assignments { get; set; }
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string Id { get; set; }
     }
 
-    public class AppliedCategories
+    public class AssignUsersAppliedCategoriesResponse
     {
         [JsonProperty("category1")]
         public bool Pink { get; set; }
@@ -413,13 +413,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string AssignedByUserId { get; set; }
     }
 
-    public class UnassignUsersInput
+    public class UnassignUsersBodyInput
     {
         [JsonProperty("assignments", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RemoveAssignedUsers { get; set; }
     }
 
-    public class AssignUsersInput
+    public class AssignUsersBodyInput
     {
         [JsonProperty("assignments", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AssignedUserIds { get; set; }
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string Id { get; set; }
     }
 
-    public class CreateBucketV2Input
+    public class CreateBucketBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string Id { get; set; }
 
         [JsonProperty("appliedCategories")]
-        public AppliedCategories AppliedCategories { get; set; }
+        public AssignUsersAppliedCategoriesResponse AppliedCategories { get; set; }
 
         [JsonProperty("priority")]
         public int Priority { get; set; }
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string AssignedByUserId { get; set; }
     }
 
-    public class CreateTaskV4Input
+    public class CreateTaskBodyInput
     {
         [JsonProperty("groupId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
@@ -587,13 +587,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string AssignedUserIds { get; set; }
 
         [JsonProperty("appliedCategories")]
-        public AppliedCategories2 AppliedCategories { get; set; }
+        public CreateTaskAppliedCategories AppliedCategories { get; set; }
 
         [JsonProperty("priority")]
         public int? Priority { get; set; }
     }
 
-    public class AppliedCategories2
+    public class CreateTaskAppliedCategories
     {
         [JsonProperty("category1")]
         public bool? Pink { get; set; }
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string NextLink { get; set; }
     }
 
-    public class UpdateTaskV3Input
+    public class UpdateTaskBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -767,22 +767,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string BucketId { get; set; }
 
         [JsonProperty("appliedCategories")]
-        public AppliedCategories2 AppliedCategories { get; set; }
+        public CreateTaskAppliedCategories AppliedCategories { get; set; }
     }
 
-    public class UpdateTaskDetailsV2Input
+    public class UpdateTaskDetailsBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("references")]
-        public UpdateTaskDetailsV2InputReferencesTypeItem[] References { get; set; }
+        public BodyInputReferencesTypeItem[] References { get; set; }
 
         [JsonProperty("checklist")]
-        public UpdateTaskDetailsV2InputChecklistTypeItem[] Checklist { get; set; }
+        public BodyInputChecklistTypeItem[] Checklist { get; set; }
     }
 
-    public class UpdateTaskDetailsV2InputReferencesTypeItem
+    public class BodyInputReferencesTypeItem
     {
         [JsonProperty("alias")]
         public string Alias { get; set; }
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public JToken TypeOfTheReference { get; set; }
     }
 
-    public class UpdateTaskDetailsV2InputChecklistTypeItem
+    public class BodyInputChecklistTypeItem
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }

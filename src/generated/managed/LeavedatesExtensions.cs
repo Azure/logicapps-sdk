@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<AddEmploymentResponse, ApiConnectionActionConfiguration> AddEmployment(Expression<Func<AddEmploymentInput>> body)
+        public IBodyWorkflowAction<AddEmploymentResponse, ApiConnectionActionConfiguration> AddEmployment(Expression<Func<AddEmploymentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddEmploymentResponse, ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEmployment(Expression<Func<string>> id, Expression<Func<DeleteEmploymentInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEmployment(Expression<Func<string>> id, Expression<Func<DeleteEmploymentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<UpdateEmploymentResponse, ApiConnectionActionConfiguration> UpdateEmployment(Expression<Func<string>> id, Expression<Func<UpdateEmploymentInput>> body)
+        public IBodyWorkflowAction<UpdateEmploymentResponse, ApiConnectionActionConfiguration> UpdateEmployment(Expression<Func<string>> id, Expression<Func<AddEmploymentBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> UpdateLeave(Expression<Func<string>> id, Expression<Func<UpdateLeaveInput>> body)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> UpdateLeave(Expression<Func<string>> id, Expression<Func<UpdateLeaveBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RequestLeave(Expression<Func<RequestLeaveInput>> body)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> RequestLeave(Expression<Func<RequestLeaveBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string Id { get; set; }
     }
 
-    public class AddEmploymentInput
+    public class AddEmploymentBodyInput
     {
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string AvatarUrl { get; set; }
     }
 
-    public class DeleteEmploymentInput
+    public class DeleteEmploymentBodyInput
     {
         [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyId { get; set; }
@@ -513,51 +513,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
 
         [JsonProperty("id")]
         public string Id { get; set; }
-    }
-
-    public class UpdateEmploymentInput
-    {
-        [JsonProperty("job_title")]
-        public string JobTitle { get; set; }
-
-        [JsonProperty("full_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FullName { get; set; }
-
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("timezone")]
-        public string Timezone { get; set; }
-
-        [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CompanyId { get; set; }
-
-        [JsonProperty("approver_id")]
-        public string ApproverId { get; set; }
-
-        [JsonProperty("department_id")]
-        public string DepartmentId { get; set; }
-
-        [JsonProperty("employee_code")]
-        public string EmployeeCode { get; set; }
-
-        [JsonProperty("is_admin", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IsAdmin { get; set; } = false;
-
-        [JsonProperty("start_date")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("end_date")]
-        public string EndDate { get; set; }
-
-        [JsonProperty("holiday_location")]
-        public string HolidayLocation { get; set; }
-
-        [JsonProperty("allowance_unit_is_days")]
-        public string AllowanceUnitIsDays { get; set; }
-
-        [JsonProperty("minutes_per_working_day")]
-        public string MinutesPerWorkingDay { get; set; }
     }
 
     public class GetLeaveDetailsResponse
@@ -614,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string Name { get; set; }
     }
 
-    public class UpdateLeaveInput
+    public class UpdateLeaveBodyInput
     {
         [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyId { get; set; }
@@ -632,10 +587,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string Reason { get; set; }
 
         [JsonProperty("leave_breakdowns")]
-        public UpdateLeaveInputLeaveBreakdownsTypeItem[] LeaveBreakdowns { get; set; }
+        public UpdateLeaveBodyInputLeaveBreakdownsTypeItem[] LeaveBreakdowns { get; set; }
     }
 
-    public class UpdateLeaveInputLeaveBreakdownsTypeItem
+    public class UpdateLeaveBodyInputLeaveBreakdownsTypeItem
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -650,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public string Duration { get; set; }
     }
 
-    public class RequestLeaveInput
+    public class RequestLeaveBodyInput
     {
         [JsonProperty("company_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CompanyId { get; set; }
@@ -671,19 +626,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         public bool? IsPrivate { get; set; } = false;
 
         [JsonProperty("leave_breakdowns")]
-        public RequestLeaveInputLeaveBreakdownsTypeItem[] LeaveBreakdowns { get; set; }
+        public RequestLeaveBodyInputLeaveBreakdownsTypeItem[] LeaveBreakdowns { get; set; }
     }
 
-    public class RequestLeaveInputLeaveBreakdownsTypeItem
+    public class RequestLeaveBodyInputLeaveBreakdownsTypeItem
     {
         [JsonProperty("owner_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OwnerId { get; set; }
 
         [JsonProperty("breakdowns")]
-        public RequestLeaveInputLeaveBreakdownsTypeItemBreakdownsTypeItem[] Breakdowns { get; set; }
+        public BodyInputLeaveBreakdownsTypeItemBreakdownsTypeItem[] Breakdowns { get; set; }
     }
 
-    public class RequestLeaveInputLeaveBreakdownsTypeItemBreakdownsTypeItem
+    public class BodyInputLeaveBreakdownsTypeItemBreakdownsTypeItem
     {
         [JsonProperty("from")]
         public string From { get; set; }

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionCreateResponse, ApiConnectionActionConfiguration> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<PositionCreateResponse, ApiConnectionActionConfiguration> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionUpdateByIdResponse, ApiConnectionActionConfiguration> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<PositionUpdateByIdInput>> body = null)
+        public IBodyWorkflowAction<PositionUpdateByIdResponse, ApiConnectionActionConfiguration> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_positionId = WorkflowExpression.Compile(positionId, nameof(positionId), required: true);
             var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupCreateResponse, ApiConnectionActionConfiguration> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<GroupCreateResponse, ApiConnectionActionConfiguration> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
             var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         public string Name { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         public string Type { get; set; }
 
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
     }
 
     public class PositionDeleteByIdResponse
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         public string Name { get; set; }
     }
 
-    public class PositionUpdateByIdInput
+    public class BodyInput
     {
         [JsonProperty("import_id")]
         public string ImportId { get; set; }

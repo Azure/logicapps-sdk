@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     public class SquarepaymentsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<ApplePayRegisterResponse, ApiConnectionActionConfiguration> ApplePayRegister(Expression<Func<ApplePayRegisterInput>> body)
+        public IBodyWorkflowAction<ApplePayRegisterResponse, ApiConnectionActionConfiguration> ApplePayRegister(Expression<Func<ApplePayRegisterBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ApplePayRegisterResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CardListResponse, ApiConnectionActionConfiguration> CardList(Expression<Func<string>> cursor = null, Expression<Func<string>> customerId = null, Expression<Func<bool>> includeDisabled = null, Expression<Func<string>> referenceId = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<CardListResponse, ApiConnectionActionConfiguration> CardList(Expression<Func<string>> cursor = null, Expression<Func<string>> customerId = null, Expression<Func<bool>> includeDisabled = null, Expression<Func<string>> referenceId = null, Expression<Func<SortOrderInput>> sortOrder = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: false);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CardCreateResponse, ApiConnectionActionConfiguration> CardCreate(Expression<Func<CardCreateInput>> body)
+        public IBodyWorkflowAction<CardCreateResponse, ApiConnectionActionConfiguration> CardCreate(Expression<Func<CardCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CardCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogBatchDeleteResponse, ApiConnectionActionConfiguration> CatalogBatchDelete(Expression<Func<CatalogBatchDeleteInput>> body = null)
+        public IBodyWorkflowAction<CatalogBatchDeleteResponse, ApiConnectionActionConfiguration> CatalogBatchDelete(Expression<Func<CatalogBatchDeleteBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CatalogBatchDeleteResponse, ApiConnectionActionConfiguration>(() =>
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogBatchRetrieveResponse, ApiConnectionActionConfiguration> CatalogBatchRetrieve(Expression<Func<CatalogBatchRetrieveInput>> body)
+        public IBodyWorkflowAction<CatalogBatchRetrieveResponse, ApiConnectionActionConfiguration> CatalogBatchRetrieve(Expression<Func<CatalogBatchRetrieveBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogBatchRetrieveResponse, ApiConnectionActionConfiguration>(() =>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogBatchUpsertResponse, ApiConnectionActionConfiguration> CatalogBatchUpsert(Expression<Func<CatalogBatchUpsertInput>> body)
+        public IBodyWorkflowAction<CatalogBatchUpsertResponse, ApiConnectionActionConfiguration> CatalogBatchUpsert(Expression<Func<CatalogBatchUpsertBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogBatchUpsertResponse, ApiConnectionActionConfiguration>(() =>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogUpsertResponse, ApiConnectionActionConfiguration> CatalogUpsert(Expression<Func<CatalogUpsertInput>> body)
+        public IBodyWorkflowAction<CatalogUpsertResponse, ApiConnectionActionConfiguration> CatalogUpsert(Expression<Func<CatalogUpsertBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogUpsertResponse, ApiConnectionActionConfiguration>(() =>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogSearchResponse, ApiConnectionActionConfiguration> CatalogSearch(Expression<Func<CatalogSearchInput>> body)
+        public IBodyWorkflowAction<CatalogSearchResponse, ApiConnectionActionConfiguration> CatalogSearch(Expression<Func<CatalogSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogUpdateModifierResponse, ApiConnectionActionConfiguration> CatalogUpdateModifier(Expression<Func<CatalogUpdateModifierInput>> body)
+        public IBodyWorkflowAction<CatalogUpdateModifierResponse, ApiConnectionActionConfiguration> CatalogUpdateModifier(Expression<Func<CatalogUpdateModifierBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogUpdateModifierResponse, ApiConnectionActionConfiguration>(() =>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CatalogUpdateTaxesResponse, ApiConnectionActionConfiguration> CatalogUpdateTaxes(Expression<Func<CatalogUpdateTaxesInput>> body)
+        public IBodyWorkflowAction<CatalogUpdateTaxesResponse, ApiConnectionActionConfiguration> CatalogUpdateTaxes(Expression<Func<CatalogUpdateTaxesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CatalogUpdateTaxesResponse, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomGroupCreateResponse, ApiConnectionActionConfiguration> CustomGroupCreate(Expression<Func<CustomGroupCreateInput>> body = null)
+        public IBodyWorkflowAction<CustomGroupCreateResponse, ApiConnectionActionConfiguration> CustomGroupCreate(Expression<Func<CustomGroupCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CustomGroupCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomerGroupUpdateResponse, ApiConnectionActionConfiguration> CustomerGroupUpdate(Expression<Func<string>> groupId, Expression<Func<CustomerGroupUpdateInput>> body = null)
+        public IBodyWorkflowAction<CustomerGroupUpdateResponse, ApiConnectionActionConfiguration> CustomerGroupUpdate(Expression<Func<string>> groupId, Expression<Func<CustomGroupCreateBodyInput>> body = null)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomerListResponse, ApiConnectionActionConfiguration> CustomerList(Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<CustomerListResponse, ApiConnectionActionConfiguration> CustomerList(Expression<Func<string>> cursor = null, Expression<Func<int>> limit = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<SortOrderInput>> sortOrder = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomerCreateResponse, ApiConnectionActionConfiguration> CustomerCreate(Expression<Func<CustomerCreateInput>> body)
+        public IBodyWorkflowAction<CustomerCreateResponse, ApiConnectionActionConfiguration> CustomerCreate(Expression<Func<CustomerCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomerCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<CustomerSearchResponse, ApiConnectionActionConfiguration> CustomerSearch(Expression<Func<CustomerSearchInput>> body)
+        public IBodyWorkflowAction<CustomerSearchResponse, ApiConnectionActionConfiguration> CustomerSearch(Expression<Func<CustomerSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomerSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<DisputeListResponse, ApiConnectionActionConfiguration> DisputeList(Expression<Func<string>> cursor = null, Expression<Func<statesInput>> states = null, Expression<Func<string>> locationId = null)
+        public IBodyWorkflowAction<DisputeListResponse, ApiConnectionActionConfiguration> DisputeList(Expression<Func<string>> cursor = null, Expression<Func<StatesInput>> states = null, Expression<Func<string>> locationId = null)
         {
             var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             var __workflow_states = WorkflowExpression.Compile(states, nameof(states), required: false);
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<DisputeCreateEvidenceTextResponse, ApiConnectionActionConfiguration> DisputeCreateEvidenceText(Expression<Func<string>> disputeId, Expression<Func<DisputeCreateEvidenceTextInput>> body = null)
+        public IBodyWorkflowAction<DisputeCreateEvidenceTextResponse, ApiConnectionActionConfiguration> DisputeCreateEvidenceText(Expression<Func<string>> disputeId, Expression<Func<DisputeCreateEvidenceTextBodyInput>> body = null)
         {
             var __workflow_disputeId = WorkflowExpression.Compile(disputeId, nameof(disputeId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InventoryBatchChangeResponse, ApiConnectionActionConfiguration> InventoryBatchChange(Expression<Func<InventoryBatchChangeInput>> body)
+        public IBodyWorkflowAction<InventoryBatchChangeResponse, ApiConnectionActionConfiguration> InventoryBatchChange(Expression<Func<InventoryBatchChangeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InventoryBatchChangeResponse, ApiConnectionActionConfiguration>(() =>
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InventoryBatchRetrieveChangesResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveChanges(Expression<Func<InventoryBatchRetrieveChangesInput>> body)
+        public IBodyWorkflowAction<InventoryBatchRetrieveChangesResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveChanges(Expression<Func<InventoryBatchRetrieveChangesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InventoryBatchRetrieveChangesResponse, ApiConnectionActionConfiguration>(() =>
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InventoryBatchRetrieveCountsResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveCounts(Expression<Func<InventoryBatchRetrieveCountsInput>> body)
+        public IBodyWorkflowAction<InventoryBatchRetrieveCountsResponse, ApiConnectionActionConfiguration> InventoryBatchRetrieveCounts(Expression<Func<InventoryBatchRetrieveCountsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InventoryBatchRetrieveCountsResponse, ApiConnectionActionConfiguration>(() =>
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceCreateResponse, ApiConnectionActionConfiguration> InvoiceCreate(Expression<Func<InvoiceCreateInput>> body)
+        public IBodyWorkflowAction<InvoiceCreateResponse, ApiConnectionActionConfiguration> InvoiceCreate(Expression<Func<InvoiceCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InvoiceCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceSearchResponse, ApiConnectionActionConfiguration> InvoiceSearch(Expression<Func<InvoiceSearchInput>> body)
+        public IBodyWorkflowAction<InvoiceSearchResponse, ApiConnectionActionConfiguration> InvoiceSearch(Expression<Func<InvoiceSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InvoiceSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceUpdateResponse, ApiConnectionActionConfiguration> InvoiceUpdate(Expression<Func<string>> invoiceId, Expression<Func<InvoiceUpdateInput>> body = null)
+        public IBodyWorkflowAction<InvoiceUpdateResponse, ApiConnectionActionConfiguration> InvoiceUpdate(Expression<Func<string>> invoiceId, Expression<Func<InvoiceUpdateBodyInput>> body = null)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoiceCancelResponse, ApiConnectionActionConfiguration> InvoiceCancel(Expression<Func<string>> invoiceId, Expression<Func<InvoiceCancelInput>> body = null)
+        public IBodyWorkflowAction<InvoiceCancelResponse, ApiConnectionActionConfiguration> InvoiceCancel(Expression<Func<string>> invoiceId, Expression<Func<InvoiceCancelBodyInput>> body = null)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<InvoicePublishResponse, ApiConnectionActionConfiguration> InvoicePublish(Expression<Func<string>> invoiceId, Expression<Func<InvoicePublishInput>> body)
+        public IBodyWorkflowAction<InvoicePublishResponse, ApiConnectionActionConfiguration> InvoicePublish(Expression<Func<string>> invoiceId, Expression<Func<InvoicePublishBodyInput>> body)
         {
             var __workflow_invoiceId = WorkflowExpression.Compile(invoiceId, nameof(invoiceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderCreateResponse, ApiConnectionActionConfiguration> OrderCreate(Expression<Func<OrderCreateInput>> body)
+        public IBodyWorkflowAction<OrderCreateResponse, ApiConnectionActionConfiguration> OrderCreate(Expression<Func<OrderCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderBatchRetrieveResponse, ApiConnectionActionConfiguration> OrderBatchRetrieve(Expression<Func<OrderBatchRetrieveInput>> body = null)
+        public IBodyWorkflowAction<OrderBatchRetrieveResponse, ApiConnectionActionConfiguration> OrderBatchRetrieve(Expression<Func<OrderBatchRetrieveBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<OrderBatchRetrieveResponse, ApiConnectionActionConfiguration>(() =>
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderCalculateResponse, ApiConnectionActionConfiguration> OrderCalculate(Expression<Func<OrderCalculateInput>> body)
+        public IBodyWorkflowAction<OrderCalculateResponse, ApiConnectionActionConfiguration> OrderCalculate(Expression<Func<OrderCalculateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderCalculateResponse, ApiConnectionActionConfiguration>(() =>
@@ -859,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderCloneResponse, ApiConnectionActionConfiguration> OrderClone(Expression<Func<OrderCloneInput>> body)
+        public IBodyWorkflowAction<OrderCloneResponse, ApiConnectionActionConfiguration> OrderClone(Expression<Func<OrderCloneBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderCloneResponse, ApiConnectionActionConfiguration>(() =>
@@ -873,7 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderSearchResponse, ApiConnectionActionConfiguration> OrderSearch(Expression<Func<OrderSearchInput>> body)
+        public IBodyWorkflowAction<OrderSearchResponse, ApiConnectionActionConfiguration> OrderSearch(Expression<Func<OrderSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<OrderSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -900,7 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderUpdateResponse, ApiConnectionActionConfiguration> OrderUpdate(Expression<Func<string>> orderId, Expression<Func<OrderUpdateInput>> body)
+        public IBodyWorkflowAction<OrderUpdateResponse, ApiConnectionActionConfiguration> OrderUpdate(Expression<Func<string>> orderId, Expression<Func<OrderUpdateBodyInput>> body)
         {
             var __workflow_orderId = WorkflowExpression.Compile(orderId, nameof(orderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<OrderPayResponse, ApiConnectionActionConfiguration> OrderPay(Expression<Func<string>> orderId, Expression<Func<OrderPayInput>> body)
+        public IBodyWorkflowAction<OrderPayResponse, ApiConnectionActionConfiguration> OrderPay(Expression<Func<string>> orderId, Expression<Func<OrderPayBodyInput>> body)
         {
             var __workflow_orderId = WorkflowExpression.Compile(orderId, nameof(orderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<PaymentListResponse, ApiConnectionActionConfiguration> PaymentList(Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> cursor = null, Expression<Func<string>> locationId = null, Expression<Func<int>> total = null, Expression<Func<string>> last4 = null, Expression<Func<string>> cardBrand = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<PaymentListResponse, ApiConnectionActionConfiguration> PaymentList(Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<string>> cursor = null, Expression<Func<string>> locationId = null, Expression<Func<int>> total = null, Expression<Func<string>> last4 = null, Expression<Func<string>> cardBrand = null, Expression<Func<int>> limit = null)
         {
             var __workflow_beginTime = WorkflowExpression.Compile(beginTime, nameof(beginTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<PaymentCreateResponse, ApiConnectionActionConfiguration> PaymentCreate(Expression<Func<PaymentCreateInput>> body)
+        public IBodyWorkflowAction<PaymentCreateResponse, ApiConnectionActionConfiguration> PaymentCreate(Expression<Func<PaymentCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PaymentCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -984,7 +984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PaymentCancelIdempotency(Expression<Func<PaymentCancelIdempotencyInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PaymentCancelIdempotency(Expression<Func<PaymentCancelIdempotencyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<PaymentUpdateResponse, ApiConnectionActionConfiguration> PaymentUpdate(Expression<Func<string>> paymentId, Expression<Func<PaymentUpdateInput>> body)
+        public IBodyWorkflowAction<PaymentUpdateResponse, ApiConnectionActionConfiguration> PaymentUpdate(Expression<Func<string>> paymentId, Expression<Func<PaymentUpdateBodyInput>> body)
         {
             var __workflow_paymentId = WorkflowExpression.Compile(paymentId, nameof(paymentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<RefundListResponse, ApiConnectionActionConfiguration> RefundList(Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> cursor = null, Expression<Func<string>> locationId = null, Expression<Func<string>> status = null, Expression<Func<string>> sourceType = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<RefundListResponse, ApiConnectionActionConfiguration> RefundList(Expression<Func<string>> beginTime = null, Expression<Func<string>> endTime = null, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<string>> cursor = null, Expression<Func<string>> locationId = null, Expression<Func<string>> status = null, Expression<Func<string>> sourceType = null, Expression<Func<int>> limit = null)
         {
             var __workflow_beginTime = WorkflowExpression.Compile(beginTime, nameof(beginTime), required: false);
             var __workflow_endTime = WorkflowExpression.Compile(endTime, nameof(endTime), required: false);
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<RefundPaymentResponse, ApiConnectionActionConfiguration> RefundPayment(Expression<Func<RefundPaymentInput>> body)
+        public IBodyWorkflowAction<RefundPaymentResponse, ApiConnectionActionConfiguration> RefundPayment(Expression<Func<RefundPaymentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RefundPaymentResponse, ApiConnectionActionConfiguration>(() =>
@@ -1117,7 +1117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<SubscriptionCreateResponse, ApiConnectionActionConfiguration> SubscriptionCreate(Expression<Func<SubscriptionCreateInput>> body)
+        public IBodyWorkflowAction<SubscriptionCreateResponse, ApiConnectionActionConfiguration> SubscriptionCreate(Expression<Func<SubscriptionCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriptionCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -1131,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<SubscriptionSearchResponse, ApiConnectionActionConfiguration> SubscriptionSearch(Expression<Func<SubscriptionSearchInput>> body)
+        public IBodyWorkflowAction<SubscriptionSearchResponse, ApiConnectionActionConfiguration> SubscriptionSearch(Expression<Func<SubscriptionSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriptionSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1158,7 +1158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<SubscriptionUpdateResponse, ApiConnectionActionConfiguration> SubscriptionUpdate(Expression<Func<string>> subscriptionId, Expression<Func<SubscriptionUpdateInput>> body)
+        public IBodyWorkflowAction<SubscriptionUpdateResponse, ApiConnectionActionConfiguration> SubscriptionUpdate(Expression<Func<string>> subscriptionId, Expression<Func<SubscriptionUpdateBodyInput>> body)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1215,7 +1215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalCreateCheckoutResponse, ApiConnectionActionConfiguration> TerminalCreateCheckout(Expression<Func<TerminalCreateCheckoutInput>> body)
+        public IBodyWorkflowAction<TerminalCreateCheckoutResponse, ApiConnectionActionConfiguration> TerminalCreateCheckout(Expression<Func<TerminalCreateCheckoutBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TerminalCreateCheckoutResponse, ApiConnectionActionConfiguration>(() =>
@@ -1229,7 +1229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalSearchCheckoutsResponse, ApiConnectionActionConfiguration> TerminalSearchCheckouts(Expression<Func<TerminalSearchCheckoutsInput>> body)
+        public IBodyWorkflowAction<TerminalSearchCheckoutsResponse, ApiConnectionActionConfiguration> TerminalSearchCheckouts(Expression<Func<TerminalSearchCheckoutsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TerminalSearchCheckoutsResponse, ApiConnectionActionConfiguration>(() =>
@@ -1272,7 +1272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalCreateRefundResponse, ApiConnectionActionConfiguration> TerminalCreateRefund(Expression<Func<TerminalCreateRefundInput>> body)
+        public IBodyWorkflowAction<TerminalCreateRefundResponse, ApiConnectionActionConfiguration> TerminalCreateRefund(Expression<Func<TerminalCreateRefundBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TerminalCreateRefundResponse, ApiConnectionActionConfiguration>(() =>
@@ -1286,7 +1286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarepaymentsip")]
-        public IBodyWorkflowAction<TerminalSearchRefundsResponse, ApiConnectionActionConfiguration> TerminalSearchRefunds(Expression<Func<TerminalSearchRefundsInput>> body = null)
+        public IBodyWorkflowAction<TerminalSearchRefundsResponse, ApiConnectionActionConfiguration> TerminalSearchRefunds(Expression<Func<TerminalSearchCheckoutsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TerminalSearchRefundsResponse, ApiConnectionActionConfiguration>(() =>
@@ -1340,7 +1340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Status { get; set; }
     }
 
-    public class ApplePayRegisterInput
+    public class ApplePayRegisterBodyInput
     {
         [JsonProperty("domain_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }
@@ -1428,7 +1428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOrderInput
+    public enum SortOrderInput
     {
         ASC,
         DESC
@@ -1509,7 +1509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Country { get; set; }
     }
 
-    public class CardCreateInput
+    public class CardCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
@@ -1518,13 +1518,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string SourceId { get; set; }
 
         [JsonProperty("card")]
-        public CardCreateInputCardType Card { get; set; }
+        public BodyInputCardType Card { get; set; }
     }
 
-    public class CardCreateInputCardType
+    public class BodyInputCardType
     {
         [JsonProperty("billing_address")]
-        public CardCreateInputCardTypeBillingAddressType BillingAddress { get; set; }
+        public BodyInputCardTypeBillingAddressType BillingAddress { get; set; }
 
         [JsonProperty("cardholder_name")]
         public string CardholderName { get; set; }
@@ -1536,7 +1536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ReferenceId { get; set; }
     }
 
-    public class CardCreateInputCardTypeBillingAddressType
+    public class BodyInputCardTypeBillingAddressType
     {
         [JsonProperty("address_line_1")]
         public string AddressLine1 { get; set; }
@@ -1716,7 +1716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string DeletedAt { get; set; }
     }
 
-    public class CatalogBatchDeleteInput
+    public class CatalogBatchDeleteBodyInput
     {
         [JsonProperty("object_ids")]
         public string[] ObjectIds { get; set; }
@@ -1875,7 +1875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool Enabled { get; set; }
     }
 
-    public class CatalogBatchRetrieveInput
+    public class CatalogBatchRetrieveBodyInput
     {
         [JsonProperty("object_ids")]
         public string[] ObjectIds { get; set; }
@@ -2031,22 +2031,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ObjectId { get; set; }
     }
 
-    public class CatalogBatchUpsertInput
+    public class CatalogBatchUpsertBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("batches")]
-        public CatalogBatchUpsertInputBatchesTypeItem[] Batches { get; set; }
+        public BodyInputBatchesTypeItem[] Batches { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItem
+    public class BodyInputBatchesTypeItem
     {
         [JsonProperty("objects")]
-        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItem[] Objects { get; set; }
+        public BodyInputBatchesTypeItemObjectsTypeItem[] Objects { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItem
+    public class BodyInputBatchesTypeItemObjectsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2058,16 +2058,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool? PresentAtAllLocations { get; set; }
 
         [JsonProperty("item_data")]
-        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataType ItemData { get; set; }
+        public BodyInputBatchesTypeItemObjectsTypeItemItemDataType ItemData { get; set; }
 
         [JsonProperty("category_data")]
-        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemCategoryDataType CategoryData { get; set; }
+        public BodyInputBatchesTypeItemObjectsTypeItemCategoryDataType CategoryData { get; set; }
 
         [JsonProperty("tax_data")]
-        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemTaxDataType TaxData { get; set; }
+        public BodyInputBatchesTypeItemObjectsTypeItemTaxDataType TaxData { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataType
+    public class BodyInputBatchesTypeItemObjectsTypeItemItemDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2082,10 +2082,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string[] TaxIds { get; set; }
 
         [JsonProperty("variations")]
-        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItem[] Variations { get; set; }
+        public BodyInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItem[] Variations { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItem
+    public class BodyInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2097,10 +2097,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool? PresentAtAllLocations { get; set; }
 
         [JsonProperty("item_variation_data")]
-        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType ItemVariationData { get; set; }
+        public BodyInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType ItemVariationData { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType
+    public class BodyInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataType
     {
         [JsonProperty("item_id")]
         public string ItemId { get; set; }
@@ -2112,10 +2112,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string PricingType { get; set; }
 
         [JsonProperty("price_money")]
-        public CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
+        public BodyInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType
+    public class BodyInputBatchesTypeItemObjectsTypeItemItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -2124,13 +2124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemCategoryDataType
+    public class BodyInputBatchesTypeItemObjectsTypeItemCategoryDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CatalogBatchUpsertInputBatchesTypeItemObjectsTypeItemTaxDataType
+    public class BodyInputBatchesTypeItemObjectsTypeItemTaxDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2364,16 +2364,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ObjectId { get; set; }
     }
 
-    public class CatalogUpsertInput
+    public class CatalogUpsertBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("object")]
-        public CatalogUpsertInputObjectEntityType ObjectEntity { get; set; }
+        public BodyInputObjectEntityType ObjectEntity { get; set; }
     }
 
-    public class CatalogUpsertInputObjectEntityType
+    public class BodyInputObjectEntityType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2382,10 +2382,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Type { get; set; }
 
         [JsonProperty("item_data")]
-        public CatalogUpsertInputObjectEntityTypeItemDataType ItemData { get; set; }
+        public BodyInputObjectEntityTypeItemDataType ItemData { get; set; }
     }
 
-    public class CatalogUpsertInputObjectEntityTypeItemDataType
+    public class BodyInputObjectEntityTypeItemDataType
     {
         [JsonProperty("abbreviation")]
         public string Abbreviation { get; set; }
@@ -2397,10 +2397,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
 
         [JsonProperty("variations")]
-        public CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItem[] Variations { get; set; }
+        public BodyInputObjectEntityTypeItemDataTypeVariationsTypeItem[] Variations { get; set; }
     }
 
-    public class CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItem
+    public class BodyInputObjectEntityTypeItemDataTypeVariationsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2409,10 +2409,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Type { get; set; }
 
         [JsonProperty("item_variation_data")]
-        public CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataType ItemVariationData { get; set; }
+        public BodyInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataType ItemVariationData { get; set; }
     }
 
-    public class CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataType
+    public class BodyInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataType
     {
         [JsonProperty("item_id")]
         public string ItemId { get; set; }
@@ -2424,10 +2424,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string PricingType { get; set; }
 
         [JsonProperty("price_money")]
-        public CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
+        public BodyInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType PriceMoney { get; set; }
     }
 
-    public class CatalogUpsertInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType
+    public class BodyInputObjectEntityTypeItemDataTypeVariationsTypeItemItemVariationDataTypePriceMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -2649,25 +2649,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class CatalogSearchInput
+    public class CatalogSearchBodyInput
     {
         [JsonProperty("object_types")]
         public string[] ObjectTypes { get; set; }
 
         [JsonProperty("query")]
-        public CatalogSearchInputQueryType Query { get; set; }
+        public CatalogSearchBodyInputQueryType Query { get; set; }
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
     }
 
-    public class CatalogSearchInputQueryType
+    public class CatalogSearchBodyInputQueryType
     {
         [JsonProperty("prefix_query")]
-        public CatalogSearchInputQueryTypePrefixQueryType PrefixQuery { get; set; }
+        public BodyInputQueryTypePrefixQueryType PrefixQuery { get; set; }
     }
 
-    public class CatalogSearchInputQueryTypePrefixQueryType
+    public class BodyInputQueryTypePrefixQueryType
     {
         [JsonProperty("attribute_name")]
         public string AttributeName { get; set; }
@@ -2682,7 +2682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string UpdatedAt { get; set; }
     }
 
-    public class CatalogUpdateModifierInput
+    public class CatalogUpdateModifierBodyInput
     {
         [JsonProperty("item_ids")]
         public string[] ItemIds { get; set; }
@@ -2700,7 +2700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string UpdatedAt { get; set; }
     }
 
-    public class CatalogUpdateTaxesInput
+    public class CatalogUpdateTaxesBodyInput
     {
         [JsonProperty("item_ids")]
         public string[] ItemIds { get; set; }
@@ -2754,13 +2754,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string UpdatedAt { get; set; }
     }
 
-    public class CustomGroupCreateInput
+    public class CustomGroupCreateBodyInput
     {
         [JsonProperty("group")]
-        public CustomGroupCreateInputGroupType Group { get; set; }
+        public BodyInputGroupType Group { get; set; }
     }
 
-    public class CustomGroupCreateInputGroupType
+    public class BodyInputGroupType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2806,18 +2806,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
-    }
-
-    public class CustomerGroupUpdateInput
-    {
-        [JsonProperty("group")]
-        public CustomerGroupUpdateInputGroupType Group { get; set; }
-    }
-
-    public class CustomerGroupUpdateInputGroupType
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
     }
 
     public class CustomerSegmentListResponse
@@ -2944,7 +2932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortFieldInput
+    public enum SortFieldInput
     {
         DEFAULT,
         [EnumMember(Value = "CREATED_AT")]
@@ -3035,7 +3023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool EmailUnsubscribed { get; set; }
     }
 
-    public class CustomerCreateInput
+    public class CustomerCreateBodyInput
     {
         [JsonProperty("given_name")]
         public string GivenName { get; set; }
@@ -3053,7 +3041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Nickname { get; set; }
 
         [JsonProperty("address")]
-        public CustomerCreateInputAddressType Address { get; set; }
+        public BodyInputAddressType Address { get; set; }
 
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
@@ -3068,7 +3056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Birthday { get; set; }
     }
 
-    public class CustomerCreateInputAddressType
+    public class BodyInputAddressType
     {
         [JsonProperty("address_line_1")]
         public string AddressLine1 { get; set; }
@@ -3173,46 +3161,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool EmailUnsubscribed { get; set; }
     }
 
-    public class CustomerSearchInput
+    public class CustomerSearchBodyInput
     {
         [JsonProperty("query")]
-        public CustomerSearchInputQueryType Query { get; set; }
+        public CustomerSearchBodyInputQueryType Query { get; set; }
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
     }
 
-    public class CustomerSearchInputQueryType
+    public class CustomerSearchBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public CustomerSearchInputQueryTypeFilterType Filter { get; set; }
+        public CustomerSearchBodyInputQueryTypeFilterType Filter { get; set; }
 
         [JsonProperty("sort")]
-        public CustomerSearchInputQueryTypeSortType Sort { get; set; }
+        public CustomerSearchBodyInputQueryTypeSortType Sort { get; set; }
     }
 
-    public class CustomerSearchInputQueryTypeFilterType
+    public class CustomerSearchBodyInputQueryTypeFilterType
     {
         [JsonProperty("email_address")]
-        public CustomerSearchInputQueryTypeFilterTypeEmailAddressType EmailAddress { get; set; }
+        public BodyInputQueryTypeFilterTypeEmailAddressType EmailAddress { get; set; }
 
         [JsonProperty("creation_source")]
-        public CustomerSearchInputQueryTypeFilterTypeCreationSourceType CreationSource { get; set; }
+        public BodyInputQueryTypeFilterTypeCreationSourceType CreationSource { get; set; }
 
         [JsonProperty("created_at")]
-        public CustomerSearchInputQueryTypeFilterTypeCreatedAtType CreatedAt { get; set; }
+        public BodyInputQueryTypeFilterTypeCreatedAtType CreatedAt { get; set; }
 
         [JsonProperty("group_ids")]
-        public CustomerSearchInputQueryTypeFilterTypeGroupIdsType GroupIds { get; set; }
+        public BodyInputQueryTypeFilterTypeGroupIdsType GroupIds { get; set; }
     }
 
-    public class CustomerSearchInputQueryTypeFilterTypeEmailAddressType
+    public class BodyInputQueryTypeFilterTypeEmailAddressType
     {
         [JsonProperty("fuzzy")]
         public string Fuzzy { get; set; }
     }
 
-    public class CustomerSearchInputQueryTypeFilterTypeCreationSourceType
+    public class BodyInputQueryTypeFilterTypeCreationSourceType
     {
         [JsonProperty("values")]
         public string[] Values { get; set; }
@@ -3221,7 +3209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Rule { get; set; }
     }
 
-    public class CustomerSearchInputQueryTypeFilterTypeCreatedAtType
+    public class BodyInputQueryTypeFilterTypeCreatedAtType
     {
         [JsonProperty("start_at")]
         public string StartAt { get; set; }
@@ -3230,13 +3218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string EndAt { get; set; }
     }
 
-    public class CustomerSearchInputQueryTypeFilterTypeGroupIdsType
+    public class BodyInputQueryTypeFilterTypeGroupIdsType
     {
         [JsonProperty("all")]
         public string[] All { get; set; }
     }
 
-    public class CustomerSearchInputQueryTypeSortType
+    public class CustomerSearchBodyInputQueryTypeSortType
     {
         [JsonProperty("field")]
         public string Field { get; set; }
@@ -3456,7 +3444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statesInput
+    public enum StatesInput
     {
         [EnumMember(Value = "UNKNOWN_STATE")]
         UNKNOWNSTATE,
@@ -3650,10 +3638,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string UploadedAt { get; set; }
     }
 
-    public class DisputeCreateEvidenceTextInput
+    public class DisputeCreateEvidenceTextBodyInput
     {
         [JsonProperty("evidence_type")]
-        public DisputeCreateEvidenceTextInputEvidenceTypeType? EvidenceType { get; set; }
+        public BodyInputEvidenceTypeType? EvidenceType { get; set; }
 
         [JsonProperty("evidence_text")]
         public string EvidenceText { get; set; }
@@ -3663,7 +3651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DisputeCreateEvidenceTextInputEvidenceTypeType
+    public enum BodyInputEvidenceTypeType
     {
         [EnumMember(Value = "GENERIC_EVIDENCE")]
         GENERICEVIdENCE,
@@ -3879,28 +3867,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string CalculatedAt { get; set; }
     }
 
-    public class InventoryBatchChangeInput
+    public class InventoryBatchChangeBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("changes")]
-        public InventoryBatchChangeInputChangesTypeItem[] Changes { get; set; }
+        public BodyInputChangesTypeItem[] Changes { get; set; }
 
         [JsonProperty("ignore_unchanged_counts")]
         public bool? IgnoreUnchangedCounts { get; set; }
     }
 
-    public class InventoryBatchChangeInputChangesTypeItem
+    public class BodyInputChangesTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("physical_count")]
-        public InventoryBatchChangeInputChangesTypeItemPhysicalCountType PhysicalCount { get; set; }
+        public BodyInputChangesTypeItemPhysicalCountType PhysicalCount { get; set; }
     }
 
-    public class InventoryBatchChangeInputChangesTypeItemPhysicalCountType
+    public class BodyInputChangesTypeItemPhysicalCountType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -3987,7 +3975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
-    public class InventoryBatchRetrieveChangesInput
+    public class InventoryBatchRetrieveChangesBodyInput
     {
         [JsonProperty("catalog_object_ids")]
         public string[] CatalogObjectIds { get; set; }
@@ -4035,7 +4023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string CalculatedAt { get; set; }
     }
 
-    public class InventoryBatchRetrieveCountsInput
+    public class InventoryBatchRetrieveCountsBodyInput
     {
         [JsonProperty("catalog_object_ids")]
         public string[] CatalogObjectIds { get; set; }
@@ -4539,16 +4527,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Placement { get; set; }
     }
 
-    public class InvoiceCreateInput
+    public class InvoiceCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("invoice")]
-        public InvoiceCreateInputInvoiceType Invoice { get; set; }
+        public InvoiceCreateBodyInputInvoiceType Invoice { get; set; }
     }
 
-    public class InvoiceCreateInputInvoiceType
+    public class InvoiceCreateBodyInputInvoiceType
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -4560,13 +4548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ScheduledAt { get; set; }
 
         [JsonProperty("primary_recipient")]
-        public InvoiceCreateInputInvoiceTypePrimaryRecipientType PrimaryRecipient { get; set; }
+        public BodyInputInvoiceTypePrimaryRecipientType PrimaryRecipient { get; set; }
 
         [JsonProperty("delivery_method")]
         public string DeliveryMethod { get; set; }
 
         [JsonProperty("payment_requests")]
-        public InvoiceCreateInputInvoiceTypePaymentRequestsTypeItem[] PaymentRequests { get; set; }
+        public InvoiceCreateBodyInputInvoiceTypePaymentRequestsTypeItem[] PaymentRequests { get; set; }
 
         [JsonProperty("invoice_number")]
         public string InvoiceNumber { get; set; }
@@ -4578,22 +4566,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Description { get; set; }
 
         [JsonProperty("accepted_payment_methods")]
-        public InvoiceCreateInputInvoiceTypeAcceptedPaymentMethodsType AcceptedPaymentMethods { get; set; }
+        public BodyInputInvoiceTypeAcceptedPaymentMethodsType AcceptedPaymentMethods { get; set; }
 
         [JsonProperty("custom_fields")]
-        public InvoiceCreateInputInvoiceTypeCustomFieldsTypeItem[] CustomFields { get; set; }
+        public BodyInputInvoiceTypeCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("sale_or_service_date")]
         public string SaleOrServiceDate { get; set; }
     }
 
-    public class InvoiceCreateInputInvoiceTypePrimaryRecipientType
+    public class BodyInputInvoiceTypePrimaryRecipientType
     {
         [JsonProperty("customer_id")]
         public string CustomerId { get; set; }
     }
 
-    public class InvoiceCreateInputInvoiceTypePaymentRequestsTypeItem
+    public class InvoiceCreateBodyInputInvoiceTypePaymentRequestsTypeItem
     {
         [JsonProperty("request_type")]
         public string RequestType { get; set; }
@@ -4608,10 +4596,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string AutomaticPaymentSource { get; set; }
 
         [JsonProperty("reminders")]
-        public InvoiceCreateInputInvoiceTypePaymentRequestsTypeItemRemindersTypeItem[] Reminders { get; set; }
+        public BodyInputInvoiceTypePaymentRequestsTypeItemRemindersTypeItem[] Reminders { get; set; }
     }
 
-    public class InvoiceCreateInputInvoiceTypePaymentRequestsTypeItemRemindersTypeItem
+    public class BodyInputInvoiceTypePaymentRequestsTypeItemRemindersTypeItem
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -4620,7 +4608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public int? RelativeScheduledDays { get; set; }
     }
 
-    public class InvoiceCreateInputInvoiceTypeAcceptedPaymentMethodsType
+    public class BodyInputInvoiceTypeAcceptedPaymentMethodsType
     {
         [JsonProperty("card")]
         public bool? Card { get; set; }
@@ -4632,7 +4620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool? BankAccount { get; set; }
     }
 
-    public class InvoiceCreateInputInvoiceTypeCustomFieldsTypeItem
+    public class BodyInputInvoiceTypeCustomFieldsTypeItem
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -4833,40 +4821,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class InvoiceSearchInput
+    public class InvoiceSearchBodyInput
     {
         [JsonProperty("query")]
-        public InvoiceSearchInputQueryType Query { get; set; }
+        public InvoiceSearchBodyInputQueryType Query { get; set; }
     }
 
-    public class InvoiceSearchInputQueryType
+    public class InvoiceSearchBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public InvoiceSearchInputQueryTypeFilterType Filter { get; set; }
+        public InvoiceSearchBodyInputQueryTypeFilterType Filter { get; set; }
 
         [JsonProperty("sort")]
-        public InvoiceSearchInputQueryTypeSortType Sort { get; set; }
+        public CustomerSearchBodyInputQueryTypeSortType Sort { get; set; }
 
         [JsonProperty("limit")]
         public int? Limit { get; set; }
     }
 
-    public class InvoiceSearchInputQueryTypeFilterType
+    public class InvoiceSearchBodyInputQueryTypeFilterType
     {
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
 
         [JsonProperty("customer_ids")]
         public string[] CustomerIds { get; set; }
-    }
-
-    public class InvoiceSearchInputQueryTypeSortType
-    {
-        [JsonProperty("field")]
-        public string Field { get; set; }
-
-        [JsonProperty("order")]
-        public string Order { get; set; }
     }
 
     public class InvoiceGetResponse
@@ -5193,25 +5172,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Placement { get; set; }
     }
 
-    public class InvoiceUpdateInput
+    public class InvoiceUpdateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("invoice")]
-        public InvoiceUpdateInputInvoiceType Invoice { get; set; }
+        public InvoiceUpdateBodyInputInvoiceType Invoice { get; set; }
 
         [JsonProperty("fields_to_clear")]
         public string[] FieldsToClear { get; set; }
     }
 
-    public class InvoiceUpdateInputInvoiceType
+    public class InvoiceUpdateBodyInputInvoiceType
     {
         [JsonProperty("payment_requests")]
-        public InvoiceUpdateInputInvoiceTypePaymentRequestsTypeItem[] PaymentRequests { get; set; }
+        public InvoiceUpdateBodyInputInvoiceTypePaymentRequestsTypeItem[] PaymentRequests { get; set; }
     }
 
-    public class InvoiceUpdateInputInvoiceTypePaymentRequestsTypeItem
+    public class InvoiceUpdateBodyInputInvoiceTypePaymentRequestsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -5385,7 +5364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Placement { get; set; }
     }
 
-    public class InvoiceCancelInput
+    public class InvoiceCancelBodyInput
     {
         [JsonProperty("version")]
         public int? Version { get; set; }
@@ -5559,7 +5538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Placement { get; set; }
     }
 
-    public class InvoicePublishInput
+    public class InvoicePublishBodyInput
     {
         [JsonProperty("version")]
         public int? Version { get; set; }
@@ -5994,16 +5973,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
-    public class OrderCreateInput
+    public class OrderCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("order")]
-        public OrderCreateInputOrderType Order { get; set; }
+        public OrderCreateBodyInputOrderType Order { get; set; }
     }
 
-    public class OrderCreateInputOrderType
+    public class OrderCreateBodyInputOrderType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -6012,16 +5991,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string LocationId { get; set; }
 
         [JsonProperty("line_items")]
-        public OrderCreateInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+        public OrderCreateBodyInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
 
         [JsonProperty("taxes")]
-        public OrderCreateInputOrderTypeTaxesTypeItem[] Taxes { get; set; }
+        public BodyInputOrderTypeTaxesTypeItem[] Taxes { get; set; }
 
         [JsonProperty("discounts")]
-        public OrderCreateInputOrderTypeDiscountsTypeItem[] Discounts { get; set; }
+        public OrderCreateBodyInputOrderTypeDiscountsTypeItem[] Discounts { get; set; }
     }
 
-    public class OrderCreateInputOrderTypeLineItemsTypeItem
+    public class OrderCreateBodyInputOrderTypeLineItemsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -6030,19 +6009,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Quantity { get; set; }
 
         [JsonProperty("base_price_money")]
-        public OrderCreateInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
+        public BodyInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
 
         [JsonProperty("catalog_object_id")]
         public string CatalogObjectId { get; set; }
 
         [JsonProperty("modifiers")]
-        public OrderCreateInputOrderTypeLineItemsTypeItemModifiersTypeItem[] Modifiers { get; set; }
+        public BodyInputOrderTypeLineItemsTypeItemModifiersTypeItem[] Modifiers { get; set; }
 
         [JsonProperty("applied_discounts")]
-        public OrderCreateInputOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
+        public BodyInputOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem[] AppliedDiscounts { get; set; }
     }
 
-    public class OrderCreateInputOrderTypeLineItemsTypeItemBasePriceMoneyType
+    public class BodyInputOrderTypeLineItemsTypeItemBasePriceMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -6051,19 +6030,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class OrderCreateInputOrderTypeLineItemsTypeItemModifiersTypeItem
+    public class BodyInputOrderTypeLineItemsTypeItemModifiersTypeItem
     {
         [JsonProperty("catalog_object_id")]
         public string CatalogObjectId { get; set; }
     }
 
-    public class OrderCreateInputOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem
+    public class BodyInputOrderTypeLineItemsTypeItemAppliedDiscountsTypeItem
     {
         [JsonProperty("discount_uid")]
         public string DiscountUid { get; set; }
     }
 
-    public class OrderCreateInputOrderTypeTaxesTypeItem
+    public class BodyInputOrderTypeTaxesTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -6078,7 +6057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Scope { get; set; }
     }
 
-    public class OrderCreateInputOrderTypeDiscountsTypeItem
+    public class OrderCreateBodyInputOrderTypeDiscountsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -6096,10 +6075,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string CatalogObjectId { get; set; }
 
         [JsonProperty("amount_money")]
-        public OrderCreateInputOrderTypeDiscountsTypeItemAmountMoneyType AmountMoney { get; set; }
+        public BodyInputOrderTypeDiscountsTypeItemAmountMoneyType AmountMoney { get; set; }
     }
 
-    public class OrderCreateInputOrderTypeDiscountsTypeItemAmountMoneyType
+    public class BodyInputOrderTypeDiscountsTypeItemAmountMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -6177,7 +6156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class OrderBatchRetrieveInput
+    public class OrderBatchRetrieveBodyInput
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
@@ -6480,28 +6459,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class OrderCalculateInput
+    public class OrderCalculateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("order")]
-        public OrderCalculateInputOrderType Order { get; set; }
+        public OrderCalculateBodyInputOrderType Order { get; set; }
     }
 
-    public class OrderCalculateInputOrderType
+    public class OrderCalculateBodyInputOrderType
     {
         [JsonProperty("location_id")]
         public string LocationId { get; set; }
 
         [JsonProperty("discounts")]
-        public OrderCalculateInputOrderTypeDiscountsTypeItem[] Discounts { get; set; }
+        public OrderCalculateBodyInputOrderTypeDiscountsTypeItem[] Discounts { get; set; }
 
         [JsonProperty("line_items")]
-        public OrderCalculateInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+        public OrderCalculateBodyInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
     }
 
-    public class OrderCalculateInputOrderTypeDiscountsTypeItem
+    public class OrderCalculateBodyInputOrderTypeDiscountsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -6513,7 +6492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Scope { get; set; }
     }
 
-    public class OrderCalculateInputOrderTypeLineItemsTypeItem
+    public class OrderCalculateBodyInputOrderTypeLineItemsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -6522,16 +6501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Quantity { get; set; }
 
         [JsonProperty("base_price_money")]
-        public OrderCalculateInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
-    }
-
-    public class OrderCalculateInputOrderTypeLineItemsTypeItemBasePriceMoneyType
-    {
-        [JsonProperty("amount")]
-        public int? Amount { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
+        public BodyInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
     }
 
     public class OrderCloneResponse
@@ -6960,7 +6930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
-    public class OrderCloneInput
+    public class OrderCloneBodyInput
     {
         [JsonProperty("order_id")]
         public string OrderId { get; set; }
@@ -6993,7 +6963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public int Version { get; set; }
     }
 
-    public class OrderSearchInput
+    public class OrderSearchBodyInput
     {
         [JsonProperty("return_entries")]
         public bool? ReturnEntries { get; set; }
@@ -7005,34 +6975,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string[] LocationIds { get; set; }
 
         [JsonProperty("query")]
-        public OrderSearchInputQueryType Query { get; set; }
+        public OrderSearchBodyInputQueryType Query { get; set; }
     }
 
-    public class OrderSearchInputQueryType
+    public class OrderSearchBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public OrderSearchInputQueryTypeFilterType Filter { get; set; }
+        public OrderSearchBodyInputQueryTypeFilterType Filter { get; set; }
 
         [JsonProperty("sort")]
-        public OrderSearchInputQueryTypeSortType Sort { get; set; }
+        public OrderSearchBodyInputQueryTypeSortType Sort { get; set; }
     }
 
-    public class OrderSearchInputQueryTypeFilterType
+    public class OrderSearchBodyInputQueryTypeFilterType
     {
         [JsonProperty("date_time_filter")]
-        public OrderSearchInputQueryTypeFilterTypeDateTimeFilterType DateTimeFilter { get; set; }
+        public BodyInputQueryTypeFilterTypeDateTimeFilterType DateTimeFilter { get; set; }
 
         [JsonProperty("state_filter")]
-        public OrderSearchInputQueryTypeFilterTypeStateFilterType StateFilter { get; set; }
+        public BodyInputQueryTypeFilterTypeStateFilterType StateFilter { get; set; }
     }
 
-    public class OrderSearchInputQueryTypeFilterTypeDateTimeFilterType
+    public class BodyInputQueryTypeFilterTypeDateTimeFilterType
     {
         [JsonProperty("closed_at")]
-        public OrderSearchInputQueryTypeFilterTypeDateTimeFilterTypeClosedAtType ClosedAt { get; set; }
+        public BodyInputQueryTypeFilterTypeDateTimeFilterTypeClosedAtType ClosedAt { get; set; }
     }
 
-    public class OrderSearchInputQueryTypeFilterTypeDateTimeFilterTypeClosedAtType
+    public class BodyInputQueryTypeFilterTypeDateTimeFilterTypeClosedAtType
     {
         [JsonProperty("start_at")]
         public string StartAt { get; set; }
@@ -7041,13 +7011,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string EndAt { get; set; }
     }
 
-    public class OrderSearchInputQueryTypeFilterTypeStateFilterType
+    public class BodyInputQueryTypeFilterTypeStateFilterType
     {
         [JsonProperty("states")]
         public string[] States { get; set; }
     }
 
-    public class OrderSearchInputQueryTypeSortType
+    public class OrderSearchBodyInputQueryTypeSortType
     {
         [JsonProperty("sort_field")]
         public string SortField { get; set; }
@@ -7578,28 +7548,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public int Amount { get; set; }
     }
 
-    public class OrderUpdateInput
+    public class OrderUpdateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("order")]
-        public OrderUpdateInputOrderType Order { get; set; }
+        public OrderUpdateBodyInputOrderType Order { get; set; }
 
         [JsonProperty("fields_to_clear")]
         public string[] FieldsToClear { get; set; }
     }
 
-    public class OrderUpdateInputOrderType
+    public class OrderUpdateBodyInputOrderType
     {
         [JsonProperty("version")]
         public int? Version { get; set; }
 
         [JsonProperty("line_items")]
-        public OrderUpdateInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
+        public OrderUpdateBodyInputOrderTypeLineItemsTypeItem[] LineItems { get; set; }
     }
 
-    public class OrderUpdateInputOrderTypeLineItemsTypeItem
+    public class OrderUpdateBodyInputOrderTypeLineItemsTypeItem
     {
         [JsonProperty("uid")]
         public string Uid { get; set; }
@@ -7611,16 +7581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
 
         [JsonProperty("base_price_money")]
-        public OrderUpdateInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
-    }
-
-    public class OrderUpdateInputOrderTypeLineItemsTypeItemBasePriceMoneyType
-    {
-        [JsonProperty("amount")]
-        public int? Amount { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
+        public BodyInputOrderTypeLineItemsTypeItemBasePriceMoneyType BasePriceMoney { get; set; }
     }
 
     public class OrderPayResponse
@@ -7920,7 +7881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
-    public class OrderPayInput
+    public class OrderPayBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
@@ -8316,13 +8277,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ApplicationId { get; set; }
     }
 
-    public class PaymentCreateInput
+    public class PaymentCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("amount_money")]
-        public PaymentCreateInputAmountMoneyType AmountMoney { get; set; }
+        public BodyInputAmountMoneyType AmountMoney { get; set; }
 
         [JsonProperty("source_id")]
         public string SourceId { get; set; }
@@ -8343,10 +8304,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Note { get; set; }
 
         [JsonProperty("app_fee_money")]
-        public PaymentCreateInputAppFeeMoneyType AppFeeMoney { get; set; }
+        public BodyInputAppFeeMoneyType AppFeeMoney { get; set; }
     }
 
-    public class PaymentCreateInputAmountMoneyType
+    public class BodyInputAmountMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -8355,7 +8316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class PaymentCreateInputAppFeeMoneyType
+    public class BodyInputAppFeeMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -8364,7 +8325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class PaymentCancelIdempotencyInput
+    public class PaymentCancelIdempotencyBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
@@ -8754,28 +8715,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string ApplicationId { get; set; }
     }
 
-    public class PaymentUpdateInput
+    public class PaymentUpdateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("payment")]
-        public PaymentUpdateInputPaymentType Payment { get; set; }
+        public BodyInputPaymentType Payment { get; set; }
     }
 
-    public class PaymentUpdateInputPaymentType
+    public class BodyInputPaymentType
     {
         [JsonProperty("amount_money")]
-        public PaymentUpdateInputPaymentTypeAmountMoneyType AmountMoney { get; set; }
+        public BodyInputPaymentTypeAmountMoneyType AmountMoney { get; set; }
 
         [JsonProperty("tip_money")]
-        public PaymentUpdateInputPaymentTypeTipMoneyType TipMoney { get; set; }
+        public BodyInputPaymentTypeTipMoneyType TipMoney { get; set; }
 
         [JsonProperty("version_token")]
         public string VersionToken { get; set; }
     }
 
-    public class PaymentUpdateInputPaymentTypeAmountMoneyType
+    public class BodyInputPaymentTypeAmountMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -8784,7 +8745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class PaymentUpdateInputPaymentTypeTipMoneyType
+    public class BodyInputPaymentTypeTipMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -9303,7 +9264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class RefundPaymentInput
+    public class RefundPaymentBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
@@ -9312,31 +9273,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string PaymentId { get; set; }
 
         [JsonProperty("amount_money")]
-        public RefundPaymentInputAmountMoneyType AmountMoney { get; set; }
+        public BodyInputAmountMoneyType AmountMoney { get; set; }
 
         [JsonProperty("app_fee_money")]
-        public RefundPaymentInputAppFeeMoneyType AppFeeMoney { get; set; }
+        public BodyInputAppFeeMoneyType AppFeeMoney { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
-    }
-
-    public class RefundPaymentInputAmountMoneyType
-    {
-        [JsonProperty("amount")]
-        public int? Amount { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-    }
-
-    public class RefundPaymentInputAppFeeMoneyType
-    {
-        [JsonProperty("amount")]
-        public int? Amount { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
     }
 
     public class RefundGetResponse
@@ -9471,7 +9414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
-    public class SubscriptionCreateInput
+    public class SubscriptionCreateBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
@@ -9495,16 +9438,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string TaxPercentage { get; set; }
 
         [JsonProperty("price_override_money")]
-        public SubscriptionCreateInputPriceOverrideMoneyType PriceOverrideMoney { get; set; }
+        public BodyInputPriceOverrideMoneyType PriceOverrideMoney { get; set; }
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
 
         [JsonProperty("source")]
-        public SubscriptionCreateInputSourceType Source { get; set; }
+        public BodyInputSourceType Source { get; set; }
     }
 
-    public class SubscriptionCreateInputPriceOverrideMoneyType
+    public class BodyInputPriceOverrideMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -9513,7 +9456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class SubscriptionCreateInputSourceType
+    public class BodyInputSourceType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -9594,19 +9537,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class SubscriptionSearchInput
+    public class SubscriptionSearchBodyInput
     {
         [JsonProperty("query")]
-        public SubscriptionSearchInputQueryType Query { get; set; }
+        public SubscriptionSearchBodyInputQueryType Query { get; set; }
     }
 
-    public class SubscriptionSearchInputQueryType
+    public class SubscriptionSearchBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public SubscriptionSearchInputQueryTypeFilterType Filter { get; set; }
+        public SubscriptionSearchBodyInputQueryTypeFilterType Filter { get; set; }
     }
 
-    public class SubscriptionSearchInputQueryTypeFilterType
+    public class SubscriptionSearchBodyInputQueryTypeFilterType
     {
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
@@ -9735,13 +9678,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Name { get; set; }
     }
 
-    public class SubscriptionUpdateInput
+    public class SubscriptionUpdateBodyInput
     {
         [JsonProperty("subscription")]
-        public SubscriptionUpdateInputSubscriptionType Subscription { get; set; }
+        public BodyInputSubscriptionType Subscription { get; set; }
     }
 
-    public class SubscriptionUpdateInputSubscriptionType
+    public class BodyInputSubscriptionType
     {
         [JsonProperty("version")]
         public int? Version { get; set; }
@@ -9750,10 +9693,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string TaxPercentage { get; set; }
 
         [JsonProperty("price_override_money")]
-        public SubscriptionUpdateInputSubscriptionTypePriceOverrideMoneyType PriceOverrideMoney { get; set; }
+        public BodyInputSubscriptionTypePriceOverrideMoneyType PriceOverrideMoney { get; set; }
     }
 
-    public class SubscriptionUpdateInputSubscriptionTypePriceOverrideMoneyType
+    public class BodyInputSubscriptionTypePriceOverrideMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -9960,31 +9903,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool AllowTipping { get; set; }
     }
 
-    public class TerminalCreateCheckoutInput
+    public class TerminalCreateCheckoutBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("checkout")]
-        public TerminalCreateCheckoutInputCheckoutType Checkout { get; set; }
+        public BodyInputCheckoutType Checkout { get; set; }
     }
 
-    public class TerminalCreateCheckoutInputCheckoutType
+    public class BodyInputCheckoutType
     {
         [JsonProperty("amount_money")]
-        public TerminalCreateCheckoutInputCheckoutTypeAmountMoneyType AmountMoney { get; set; }
+        public BodyInputCheckoutTypeAmountMoneyType AmountMoney { get; set; }
 
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
 
         [JsonProperty("device_options")]
-        public TerminalCreateCheckoutInputCheckoutTypeDeviceOptionsType DeviceOptions { get; set; }
+        public BodyInputCheckoutTypeDeviceOptionsType DeviceOptions { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
     }
 
-    public class TerminalCreateCheckoutInputCheckoutTypeAmountMoneyType
+    public class BodyInputCheckoutTypeAmountMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -9993,7 +9936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Currency { get; set; }
     }
 
-    public class TerminalCreateCheckoutInputCheckoutTypeDeviceOptionsType
+    public class BodyInputCheckoutTypeDeviceOptionsType
     {
         [JsonProperty("device_id")]
         public string DeviceId { get; set; }
@@ -10071,22 +10014,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public bool AllowTipping { get; set; }
     }
 
-    public class TerminalSearchCheckoutsInput
+    public class TerminalSearchCheckoutsBodyInput
     {
         [JsonProperty("limit")]
         public int? Limit { get; set; }
 
         [JsonProperty("query")]
-        public TerminalSearchCheckoutsInputQueryType Query { get; set; }
+        public TerminalSearchCheckoutsBodyInputQueryType Query { get; set; }
     }
 
-    public class TerminalSearchCheckoutsInputQueryType
+    public class TerminalSearchCheckoutsBodyInputQueryType
     {
         [JsonProperty("filter")]
-        public TerminalSearchCheckoutsInputQueryTypeFilterType Filter { get; set; }
+        public TerminalSearchCheckoutsBodyInputQueryTypeFilterType Filter { get; set; }
     }
 
-    public class TerminalSearchCheckoutsInputQueryTypeFilterType
+    public class TerminalSearchCheckoutsBodyInputQueryTypeFilterType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -10305,19 +10248,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string Bin { get; set; }
     }
 
-    public class TerminalCreateRefundInput
+    public class TerminalCreateRefundBodyInput
     {
         [JsonProperty("idempotency_key")]
         public string IdempotencyKey { get; set; }
 
         [JsonProperty("refund")]
-        public TerminalCreateRefundInputRefundType Refund { get; set; }
+        public BodyInputRefundType Refund { get; set; }
     }
 
-    public class TerminalCreateRefundInputRefundType
+    public class BodyInputRefundType
     {
         [JsonProperty("amount_money")]
-        public TerminalCreateRefundInputRefundTypeAmountMoneyType AmountMoney { get; set; }
+        public BodyInputRefundTypeAmountMoneyType AmountMoney { get; set; }
 
         [JsonProperty("device_id")]
         public string DeviceId { get; set; }
@@ -10329,7 +10272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
         public string PaymentId { get; set; }
     }
 
-    public class TerminalCreateRefundInputRefundTypeAmountMoneyType
+    public class BodyInputRefundTypeAmountMoneyType
     {
         [JsonProperty("amount")]
         public int? Amount { get; set; }
@@ -10420,27 +10363,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
 
         [JsonProperty("bin")]
         public string Bin { get; set; }
-    }
-
-    public class TerminalSearchRefundsInput
-    {
-        [JsonProperty("limit")]
-        public int? Limit { get; set; }
-
-        [JsonProperty("query")]
-        public TerminalSearchRefundsInputQueryType Query { get; set; }
-    }
-
-    public class TerminalSearchRefundsInputQueryType
-    {
-        [JsonProperty("filter")]
-        public TerminalSearchRefundsInputQueryTypeFilterType Filter { get; set; }
-    }
-
-    public class TerminalSearchRefundsInputQueryTypeFilterType
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
     }
 
     public class TerminalGetRefundResponse

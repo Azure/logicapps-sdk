@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<AddNoteToIncidentInput>> request)
+        public IBodyWorkflowAction<AddNoteResponse, ApiConnectionActionConfiguration> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<AddNoteToIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<AcknowledgeIncidentInput>> request)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<AcknowledgeIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<ResolveIncidentInput>> request)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<ResolveIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<ReassignIncidentInput>> request)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<ReassignIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<SnoozeIncidentInput>> request)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<SnoozeIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<EscalateIncidentInput>> request)
+        public IBodyWorkflowAction<SingleIncident, ApiConnectionActionConfiguration> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<EscalateIncidentRequestInput>> request)
         {
             var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<NewIncident, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<CreateIncidentInput>> request)
+        public IBodyWorkflowAction<NewIncident, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<CreateIncidentRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<NewIncident, ApiConnectionActionConfiguration>(() =>
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string DateAndTimeTheNoteWasCreated { get; set; }
     }
 
-    public class AddNoteToIncidentInput
+    public class AddNoteToIncidentRequestInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AddedBy { get; set; }
@@ -573,19 +573,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public Incident Incident { get; set; }
     }
 
-    public class AcknowledgeIncidentInput
+    public class AcknowledgeIncidentRequestInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AcknowledgedBy { get; set; }
     }
 
-    public class ResolveIncidentInput
+    public class ResolveIncidentRequestInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResolvedBy { get; set; }
     }
 
-    public class ReassignIncidentInput
+    public class ReassignIncidentRequestInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromUser { get; set; }
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string ToUser { get; set; }
     }
 
-    public class SnoozeIncidentInput
+    public class SnoozeIncidentRequestInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SnoozedBy { get; set; }
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public int Snooze { get; set; }
     }
 
-    public class EscalateIncidentInput
+    public class EscalateIncidentRequestInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EscalatedBy { get; set; }
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Key { get; set; }
     }
 
-    public class CreateIncidentInput
+    public class CreateIncidentRequestInput
     {
         [JsonProperty("service_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ServiceKey { get; set; }

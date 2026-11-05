@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
     public class CrmbotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration> BuildCustomMessage(Expression<Func<BuildCustomMessageInput>> body = null)
+        public IBodyWorkflowAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration> BuildCustomMessage(Expression<Func<BuildCustomMessageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BuildCustomMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildTextMessageResponse, ApiConnectionActionConfiguration> BuildTextMessage(Expression<Func<BuildTextMessageInput>> body = null)
+        public IBodyWorkflowAction<BuildTextMessageResponse, ApiConnectionActionConfiguration> BuildTextMessage(Expression<Func<BuildCustomMessageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BuildTextMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildCardMessageResponse, ApiConnectionActionConfiguration> BuildCardMessage(Expression<Func<BuildCardMessageInput>> body)
+        public IBodyWorkflowAction<BuildCardMessageResponse, ApiConnectionActionConfiguration> BuildCardMessage(Expression<Func<BuildCardMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BuildCardMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration> BuildQuickrepliesMessage(Expression<Func<BuildQuickrepliesMessageInput>> body)
+        public IBodyWorkflowAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration> BuildQuickrepliesMessage(Expression<Func<BuildQuickrepliesMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BuildQuickrepliesMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IBodyWorkflowAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration> BuildMediaMessage(Expression<Func<BuildMediaMessageInput>> body = null)
+        public IBodyWorkflowAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration> BuildMediaMessage(Expression<Func<BuildMediaMessageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BuildMediaMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendResponse(Expression<Func<SendResponseInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendResponse(Expression<Func<SendResponseBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "crmbot")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendProactiveMessage(Expression<Func<SendProactiveMessageInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendProactiveMessage(Expression<Func<SendProactiveMessageBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
 
     public class CrmbotTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> IntentDetected(Expression<Func<IntentDetectedInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> IntentDetected(Expression<Func<IntentDetectedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
-    public class BuildCustomMessageInput
+    public class BuildCustomMessageBodyInput
     {
         [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Platform { get; set; }
@@ -152,22 +152,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
-    public class BuildTextMessageInput
-    {
-        [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Platform { get; set; }
-
-        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Text { get; set; }
-    }
-
     public class BuildCardMessageResponse
     {
         [JsonProperty("message")]
         public JToken Message { get; set; }
     }
 
-    public class BuildCardMessageInput
+    public class BuildCardMessageBodyInput
     {
         [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Platform { get; set; }
@@ -209,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
-    public class BuildQuickrepliesMessageInput
+    public class BuildQuickrepliesMessageBodyInput
     {
         [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Platform { get; set; }
@@ -227,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
-    public class BuildMediaMessageInput
+    public class BuildMediaMessageBodyInput
     {
         [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Platform { get; set; }
@@ -236,11 +227,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public string Url { get; set; }
 
         [JsonProperty("mediaType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BuildMediaMessageInputMediaTypeType MediaType { get; set; }
+        public BodyInputMediaTypeType MediaType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BuildMediaMessageInputMediaTypeType
+    public enum BodyInputMediaTypeType
     {
         [EnumMember(Value = "1")]
         Image,
@@ -248,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         Video
     }
 
-    public class SendResponseInput
+    public class SendResponseBodyInput
     {
         [JsonProperty("sessionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
@@ -260,10 +251,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public string TargetLanguage { get; set; }
 
         [JsonProperty("webhookResponse")]
-        public SendResponseInputWebhookResponseType WebhookResponse { get; set; }
+        public SendResponseBodyInputWebhookResponseType WebhookResponse { get; set; }
     }
 
-    public class SendResponseInputWebhookResponseType
+    public class SendResponseBodyInputWebhookResponseType
     {
         public JToken[] FulfillmentMessages { get; set; }
 
@@ -277,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public int? DurationOfContext { get; set; }
     }
 
-    public class SendProactiveMessageInput
+    public class SendProactiveMessageBodyInput
     {
         [JsonProperty("sessionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SessionId { get; set; }
@@ -289,15 +280,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public string TargetLanguage { get; set; }
 
         [JsonProperty("webhookResponse")]
-        public SendProactiveMessageInputWebhookResponseType WebhookResponse { get; set; }
+        public SendProactiveMessageBodyInputWebhookResponseType WebhookResponse { get; set; }
     }
 
-    public class SendProactiveMessageInputWebhookResponseType
+    public class SendProactiveMessageBodyInputWebhookResponseType
     {
         public JToken[] FulfillmentMessages { get; set; }
     }
 
-    public class IntentDetectedInput
+    public class IntentDetectedBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
@@ -306,11 +297,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public string SelectIntentYouWouldLikeToTriggerOn { get; set; }
 
         [JsonProperty("platform", DefaultValueHandling = DefaultValueHandling.Include)]
-        public IntentDetectedInputUseUnspecifiedIfYourFlowIsPlatformAgnosticType UseUnspecifiedIfYourFlowIsPlatformAgnostic { get; set; }
+        public BodyInputUseUnspecifiedIfYourFlowIsPlatformAgnosticType UseUnspecifiedIfYourFlowIsPlatformAgnostic { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IntentDetectedInputUseUnspecifiedIfYourFlowIsPlatformAgnosticType
+    public enum BodyInputUseUnspecifiedIfYourFlowIsPlatformAgnosticType
     {
         Unspecified,
         Messenger,

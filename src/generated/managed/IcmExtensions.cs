@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewIcMDiscussionEntry(Expression<Func<string>> id, Expression<Func<AddNewIcMDiscussionEntryInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddNewIcMDiscussionEntry(Expression<Func<string>> id, Expression<Func<AddNewIcMDiscussionEntryBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<IcmDescriptionEntriesResponse, ApiConnectionActionConfiguration> GetDescriptionEntries(Expression<Func<string>> id, Expression<Func<int>> count = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IBodyWorkflowAction<IcmDescriptionEntriesResponse, ApiConnectionActionConfiguration> GetDescriptionEntries(Expression<Func<string>> id, Expression<Func<int>> count = null, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentSeverity(Expression<Func<string>> id, Expression<Func<UpdateIncidentSeverityInput>> body = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentSeverity(Expression<Func<string>> id, Expression<Func<UpdateIncidentSeverityBodyInput>> body = null, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentTitle(Expression<Func<string>> id, Expression<Func<UpdateIncidentTitleInput>> body = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentTitle(Expression<Func<string>> id, Expression<Func<UpdateIncidentTitleBodyInput>> body = null, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentOwner(Expression<Func<string>> id, Expression<Func<UpdateIncidentOwnerInput>> body = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentOwner(Expression<Func<string>> id, Expression<Func<UpdateIncidentOwnerBodyInput>> body = null, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentCustomFields(Expression<Func<string>> id, Expression<Func<UpdateIncidentCustomFieldsInput>> body = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentCustomFields(Expression<Func<string>> id, Expression<Func<UpdateIncidentCustomFieldsBodyInput>> body = null, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentSingleCustomField(Expression<Func<string>> id, Expression<Func<UpdateIncidentSingleCustomFieldInput>> body = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentSingleCustomField(Expression<Func<string>> id, Expression<Func<UpdateIncidentSingleCustomFieldBodyInput>> body = null, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentTags(Expression<Func<string>> id, Expression<Func<UpdateIncidentTagsInput>> body = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateIncidentTags(Expression<Func<string>> id, Expression<Func<UpdateIncidentTagsBodyInput>> body = null, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<TagUserInDiscussionResponse, ApiConnectionActionConfiguration> TagUserInDiscussion(Expression<Func<string>> id, Expression<Func<TagUserInDiscussionInput>> body, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IBodyWorkflowAction<TagUserInDiscussionResponse, ApiConnectionActionConfiguration> TagUserInDiscussion(Expression<Func<string>> id, Expression<Func<TagUserInDiscussionBodyInput>> body, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<IncidentAddUpdateResult, ApiConnectionActionConfiguration> CreateIcMIncident(Expression<Func<CreateIcMIncidentInput>> body = null)
+        public IBodyWorkflowAction<IncidentAddUpdateResult, ApiConnectionActionConfiguration> CreateIcMIncident(Expression<Func<CreateIcMIncidentBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<IncidentAddUpdateResult, ApiConnectionActionConfiguration>(() =>
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<IcmIncidentSearchResponse, ApiConnectionActionConfiguration> SearchIncidents(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<searchEndpointInput>> searchEndpoint = null)
+        public IBodyWorkflowAction<IcmIncidentSearchResponse, ApiConnectionActionConfiguration> SearchIncidents(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<SearchEndpointInput>> searchEndpoint = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<OmnisearchIncidentsResponse, ApiConnectionActionConfiguration> SearchIncidentsOmnisearch(Expression<Func<SearchIncidentsOmnisearchInput>> body, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IBodyWorkflowAction<OmnisearchIncidentsResponse, ApiConnectionActionConfiguration> SearchIncidentsOmnisearch(Expression<Func<SearchIncidentsOmnisearchBodyInput>> body, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> CheckUserAccess(Expression<Func<string>> id, Expression<Func<string>> upn, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> CheckUserAccess(Expression<Func<string>> id, Expression<Func<string>> upn, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_upn = WorkflowExpression.Compile(upn, nameof(upn), required: true);
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TransferIncident(Expression<Func<string>> id, Expression<Func<TransferIncidentInput>> body, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TransferIncident(Expression<Func<string>> id, Expression<Func<TransferIncidentBodyInput>> body, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MitigateIncident(Expression<Func<string>> id, Expression<Func<MitigateIncidentInput>> body, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MitigateIncident(Expression<Func<string>> id, Expression<Func<MitigateIncidentBodyInput>> body, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReactivateIncident(Expression<Func<string>> id, Expression<Func<ReactivateIncidentInput>> body, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReactivateIncident(Expression<Func<string>> id, Expression<Func<ReactivateIncidentBodyInput>> body, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ResolveIncident(Expression<Func<string>> id, Expression<Func<ResolveIncidentInput>> body, Expression<Func<icmEndpointInput>> icmEndpoint = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ResolveIncident(Expression<Func<string>> id, Expression<Func<ResolveIncidentBodyInput>> body, Expression<Func<IcmEndpointInput>> icmEndpoint = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<object>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HttpRequest(Expression<Func<string>> uri, Expression<Func<MethodInput>> method, Expression<Func<object>> body = null, Expression<Func<string>> contentType = null)
         {
             var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
 
     public class IcmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration> WhenAnIcMIncidentIsCreated(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<searchEndpointInput>> searchEndpoint = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration> WhenAnIcMIncidentIsCreated(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<SearchEndpointInput>> searchEndpoint = null, FlowRecurrence recurrence = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
             });
         }
 
-        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration> WhenAnIcMIncidentIsModified(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<searchEndpointInput>> searchEndpoint = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse, ApiConnectionTriggerConfiguration> WhenAnIcMIncidentIsModified(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<SearchEndpointInput>> searchEndpoint = null, FlowRecurrence recurrence = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
             var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
@@ -1320,17 +1320,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public IcmBridge[] Value { get; set; }
     }
 
-    public class AddNewIcMDiscussionEntryInput
+    public class AddNewIcMDiscussionEntryBodyInput
     {
         [JsonProperty("discussionText")]
         public string DiscussionText { get; set; }
 
         [JsonProperty("renderType")]
-        public AddNewIcMDiscussionEntryInputRenderTypeType? RenderType { get; set; }
+        public BodyInputRenderTypeType? RenderType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddNewIcMDiscussionEntryInputRenderTypeType
+    public enum BodyInputRenderTypeType
     {
         Html,
         Plaintext
@@ -1343,23 +1343,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum icmEndpointInput
+    public enum IcmEndpointInput
     {
         Public,
         Eudb
     }
 
-    public class UpdateIncidentSeverityInput
+    public class UpdateIncidentSeverityBodyInput
     {
         [JsonProperty("severity", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateIncidentSeverityInputSeverityType Severity { get; set; }
+        public UpdateIncidentSeverityBodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("descriptionEntry")]
         public string DescriptionEntry { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateIncidentSeverityInputSeverityType
+    public enum UpdateIncidentSeverityBodyInputSeverityType
     {
         [EnumMember(Value = "2")]
         _2,
@@ -1371,19 +1371,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         _25
     }
 
-    public class UpdateIncidentTitleInput
+    public class UpdateIncidentTitleBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
     }
 
-    public class UpdateIncidentOwnerInput
+    public class UpdateIncidentOwnerBodyInput
     {
         [JsonProperty("owningContactAlias", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OwningContactAlias { get; set; }
     }
 
-    public class UpdateIncidentCustomFieldsInput
+    public class UpdateIncidentCustomFieldsBodyInput
     {
         [JsonProperty("groupType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupType { get; set; }
@@ -1395,10 +1395,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string ContainerId { get; set; }
 
         [JsonProperty("customFields", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateIncidentCustomFieldsInputCustomFieldsTypeItem[] CustomFields { get; set; }
+        public BodyInputCustomFieldsTypeItem[] CustomFields { get; set; }
     }
 
-    public class UpdateIncidentCustomFieldsInputCustomFieldsTypeItem
+    public class BodyInputCustomFieldsTypeItem
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string FieldType { get; set; }
     }
 
-    public class UpdateIncidentSingleCustomFieldInput
+    public class UpdateIncidentSingleCustomFieldBodyInput
     {
         [JsonProperty("field", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomField { get; set; }
@@ -1422,7 +1422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string Value { get; set; }
     }
 
-    public class UpdateIncidentTagsInput
+    public class UpdateIncidentTagsBodyInput
     {
         [JsonProperty("tags", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Tags { get; set; }
@@ -1446,7 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string Message { get; set; }
     }
 
-    public class TagUserInDiscussionInput
+    public class TagUserInDiscussionBodyInput
     {
         [JsonProperty("recipient", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientEmail { get; set; }
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         Unresolved
     }
 
-    public class CreateIcMIncidentInput
+    public class CreateIcMIncidentBodyInput
     {
         [JsonProperty("owningTeam")]
         public string OwningTeam { get; set; }
@@ -1522,10 +1522,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string Title { get; set; }
 
         [JsonProperty("howFound")]
-        public CreateIcMIncidentInputHowFoundType? HowFound { get; set; }
+        public BodyInputHowFoundType? HowFound { get; set; }
 
         [JsonProperty("severity")]
-        public CreateIcMIncidentInputSeverityType? Severity { get; set; }
+        public CreateIcMIncidentBodyInputSeverityType? Severity { get; set; }
 
         [JsonProperty("discussionEntry")]
         public AddIcmDiscussionEntryRequest DiscussionEntry { get; set; }
@@ -1537,7 +1537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string Tags { get; set; }
 
         [JsonProperty("cloudInstance")]
-        public CreateIcMIncidentInputCloudInstanceType? CloudInstance { get; set; }
+        public BodyInputCloudInstanceType? CloudInstance { get; set; }
 
         [JsonProperty("occurringLocation")]
         public IcmOccurringLocation OccurringLocation { get; set; }
@@ -1553,7 +1553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateIcMIncidentInputHowFoundType
+    public enum BodyInputHowFoundType
     {
         Other,
         Monitor,
@@ -1567,7 +1567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateIcMIncidentInputSeverityType
+    public enum CreateIcMIncidentBodyInputSeverityType
     {
         Sev0,
         Sev1,
@@ -1594,7 +1594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateIcMIncidentInputCloudInstanceType
+    public enum BodyInputCloudInstanceType
     {
         Public,
         ChinaGallatin,
@@ -1658,7 +1658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchEndpointInput
+    public enum SearchEndpointInput
     {
         Public,
         Eudb
@@ -1696,7 +1696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string ContactAlias { get; set; }
     }
 
-    public class SearchIncidentsOmnisearchInput
+    public class SearchIncidentsOmnisearchBodyInput
     {
         [JsonProperty("searchString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SearchString { get; set; }
@@ -1708,7 +1708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string OrderColumn { get; set; } = "CreateDate";
 
         [JsonProperty("orderDir", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SearchIncidentsOmnisearchInputOrderDirectionType? OrderDirection { get; set; } = SearchIncidentsOmnisearchInputOrderDirectionType.Desc;
+        public BodyInputOrderDirectionType? OrderDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Icm.BodyInputOrderDirectionType.Desc;
 
         [JsonProperty("skip", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Skip { get; set; } = 0;
@@ -1718,7 +1718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchIncidentsOmnisearchInputOrderDirectionType
+    public enum BodyInputOrderDirectionType
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -1918,7 +1918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string EmailAddress { get; set; }
     }
 
-    public class TransferIncidentInput
+    public class TransferIncidentBodyInput
     {
         [JsonProperty("owningTenantPublicId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OwningTenantPublicId { get; set; }
@@ -1930,7 +1930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string Description { get; set; }
     }
 
-    public class MitigateIncidentInput
+    public class MitigateIncidentBodyInput
     {
         [JsonProperty("isCustomerImpacting")]
         public bool? IsCustomerImpacting { get; set; }
@@ -1945,7 +1945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string HowFixed { get; set; }
     }
 
-    public class ReactivateIncidentInput
+    public class ReactivateIncidentBodyInput
     {
         [JsonProperty("disableVoiceNotifications")]
         public bool? DisableVoiceNotifications { get; set; }
@@ -1954,7 +1954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string Description { get; set; }
     }
 
-    public class ResolveIncidentInput
+    public class ResolveIncidentBodyInput
     {
         [JsonProperty("isCustomerImpacting")]
         public bool? IsCustomerImpacting { get; set; }
@@ -1967,7 +1967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         POST,

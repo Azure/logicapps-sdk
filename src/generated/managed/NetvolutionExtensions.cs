@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IBodyWorkflowAction<CheckEventResponse, ApiConnectionActionConfiguration> CheckEvent(Expression<Func<eventNameInput>> eventName = null, Expression<Func<string>> contactId = null, Expression<Func<string>> since = null)
+        public IBodyWorkflowAction<CheckEventResponse, ApiConnectionActionConfiguration> CheckEvent(Expression<Func<CheckEventEventNameInput>> eventName = null, Expression<Func<string>> contactId = null, Expression<Func<string>> since = null)
         {
             var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: false);
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
     public class NetvolutionTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<eventNameInput2>> eventName, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration> OnNewEvent(Expression<Func<OnNewEventEventNameInput>> eventName, FlowRecurrence recurrence = null)
         {
             var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: true);
             return new DeferredBodyTrigger<OnNewEventResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum eventNameInput
+    public enum CheckEventEventNameInput
     {
         [EnumMember(Value = "add_to_cart")]
         AddToCart,
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum eventNameInput2
+    public enum OnNewEventEventNameInput
     {
         [EnumMember(Value = "add_to_cart")]
         AddToCart,

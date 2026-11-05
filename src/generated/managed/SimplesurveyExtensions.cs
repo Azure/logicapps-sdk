@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
-        public IBodyWorkflowAction<GetSurveyRespondentsDetailsResponse, ApiConnectionActionConfiguration> GetSurveyRespondentsDetails(Expression<Func<string>> idProject, Expression<Func<string>> tableCode, Expression<Func<formatInput>> format, Expression<Func<string>> xSAKKey)
+        public IBodyWorkflowAction<GetSurveyRespondentsDetailsResponse, ApiConnectionActionConfiguration> GetSurveyRespondentsDetails(Expression<Func<string>> idProject, Expression<Func<string>> tableCode, Expression<Func<FormatInput>> format, Expression<Func<string>> xSAKKey)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_tableCode = WorkflowExpression.Compile(tableCode, nameof(tableCode), required: true);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
-        public IBodyWorkflowAction<GetSurveyDataWarehouseReportResponse, ApiConnectionActionConfiguration> GetSurveyDataWarehouseReport(Expression<Func<string>> idProject, Expression<Func<formatInput>> format, Expression<Func<string>> xSAKKey)
+        public IBodyWorkflowAction<GetSurveyDataWarehouseReportResponse, ApiConnectionActionConfiguration> GetSurveyDataWarehouseReport(Expression<Func<string>> idProject, Expression<Func<FormatInput>> format, Expression<Func<string>> xSAKKey)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
 
     public class SimplesurveyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<ResponseSubmittedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<ResponseChangedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         JSON,
         CSV
@@ -529,16 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         public int Count { get; set; }
     }
 
-    public class ResponseSubmittedInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ResponseChangedInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

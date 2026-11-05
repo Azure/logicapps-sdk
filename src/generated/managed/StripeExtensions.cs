@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
     public class StripeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> id, Expression<Func<UpdateProductInput>> body)
+        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> id, Expression<Func<UpdateProductBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<CreateProductInput>> body)
+        public IBodyWorkflowAction<ProductResponse, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<CreateProductBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProductResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> UpdateCustomer(Expression<Func<string>> id, Expression<Func<UpdateCustomerInput>> body = null)
+        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> UpdateCustomer(Expression<Func<string>> id, Expression<Func<CreateCustomerBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stripe")]
-        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> CreateCustomer(Expression<Func<CreateCustomerInput>> body = null)
+        public IBodyWorkflowAction<CustomerResponse, ApiConnectionActionConfiguration> CreateCustomer(Expression<Func<CreateCustomerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CustomerResponse, ApiConnectionActionConfiguration>(() =>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         public string URL { get; set; }
     }
 
-    public class UpdateProductInput
+    public class UpdateProductBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         public string URL { get; set; }
     }
 
-    public class CreateProductInput
+    public class CreateProductBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -280,16 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
         public double AmountOff { get; set; }
     }
 
-    public class UpdateCustomerInput
-    {
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-    }
-
-    public class CreateCustomerInput
+    public class CreateCustomerBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }

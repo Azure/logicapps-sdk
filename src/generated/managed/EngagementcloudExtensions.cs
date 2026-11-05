@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
     public class EngagementcloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateAddressBookResponse, ApiConnectionActionConfiguration> CreateAddressBook(Expression<Func<regionInput>> region, Expression<Func<CreateAddressBookInput>> body)
+        public IBodyWorkflowAction<CreateAddressBookResponse, ApiConnectionActionConfiguration> CreateAddressBook(Expression<Func<RegionInput>> region, Expression<Func<CreateAddressBookBodyInput>> body)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> addressBook, Expression<Func<regionInput>> region, Expression<Func<CreateContactInput>> body)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<string>> addressBook, Expression<Func<RegionInput>> region, Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_addressBook = WorkflowExpression.Compile(addressBook, nameof(addressBook), required: true);
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<SendEmailCampaignResponse, ApiConnectionActionConfiguration> SendEmailCampaign(Expression<Func<regionInput>> region, Expression<Func<SendEmailCampaignInput>> body)
+        public IBodyWorkflowAction<SendEmailCampaignResponse, ApiConnectionActionConfiguration> SendEmailCampaign(Expression<Func<RegionInput>> region, Expression<Func<SendEmailCampaignBodyInput>> body)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<regionInput>> region, Expression<Func<SendTransactionalEmailUsingTriggeredCampaginInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<RegionInput>> region, Expression<Func<SendTransactionalEmailUsingTriggeredCampaginBodyInput>> body)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateProgramEnrolmentResponse, ApiConnectionActionConfiguration> CreateProgramEnrolment(Expression<Func<regionInput>> region, Expression<Func<CreateProgramEnrolmentInput>> body)
+        public IBodyWorkflowAction<CreateProgramEnrolmentResponse, ApiConnectionActionConfiguration> CreateProgramEnrolment(Expression<Func<RegionInput>> region, Expression<Func<CreateProgramEnrolmentBodyInput>> body)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendSmsMessage(Expression<Func<string>> telephoneNumber, Expression<Func<regionInput>> region, Expression<Func<SendSmsMessageInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendSmsMessage(Expression<Func<string>> telephoneNumber, Expression<Func<RegionInput>> region, Expression<Func<SendSmsMessageBodyInput>> body)
         {
             var __workflow_telephoneNumber = WorkflowExpression.Compile(telephoneNumber, nameof(telephoneNumber), required: true);
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
@@ -156,24 +156,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public string Visibility { get; set; }
     }
 
-    public enum regionInput
+    public enum RegionInput
     {
         _1 = 1,
         _2 = 2,
         _3 = 3
     }
 
-    public class CreateAddressBookInput
+    public class CreateAddressBookBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("visibility", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAddressBookInputVisibilityType? Visibility { get; set; } = CreateAddressBookInputVisibilityType.Private;
+        public BodyInputVisibilityType? Visibility { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud.BodyInputVisibilityType.Private;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAddressBookInputVisibilityType
+    public enum BodyInputVisibilityType
     {
         Private,
         Public
@@ -209,22 +209,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public string Value { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("dataFields")]
-        public CreateContactInputDataFieldsTypeItem[] DataFields { get; set; }
+        public BodyInputDataFieldsTypeItem[] DataFields { get; set; }
 
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("emailType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactInputEmailTypeType? EmailType { get; set; } = CreateContactInputEmailTypeType.Html;
+        public BodyInputEmailTypeType? EmailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud.BodyInputEmailTypeType.Html;
 
         [JsonProperty("optInType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactInputOptInTypeType? OptInType { get; set; } = CreateContactInputOptInTypeType.Unknown;
+        public BodyInputOptInTypeType? OptInType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud.BodyInputOptInTypeType.Unknown;
     }
 
-    public class CreateContactInputDataFieldsTypeItem
+    public class BodyInputDataFieldsTypeItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -234,14 +234,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactInputEmailTypeType
+    public enum BodyInputEmailTypeType
     {
         PlainText,
         Html
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactInputOptInTypeType
+    public enum BodyInputOptInTypeType
     {
         Unknown,
         Single,
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public int TestPeriodHours { get; set; }
     }
 
-    public class SendEmailCampaignInput
+    public class SendEmailCampaignBodyInput
     {
         public int[] AddressBookIDs { get; set; }
 
@@ -290,17 +290,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public string SendDate { get; set; }
     }
 
-    public class SendTransactionalEmailUsingTriggeredCampaginInput
+    public class SendTransactionalEmailUsingTriggeredCampaginBodyInput
     {
         [JsonProperty("CampaignID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CampaignId { get; set; }
-        public SendTransactionalEmailUsingTriggeredCampaginInputPersonalizationValuesTypeItem[] PersonalizationValues { get; set; }
+        public BodyInputPersonalizationValuesTypeItem[] PersonalizationValues { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ToAddresses { get; set; }
     }
 
-    public class SendTransactionalEmailUsingTriggeredCampaginInputPersonalizationValuesTypeItem
+    public class BodyInputPersonalizationValuesTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public string Status { get; set; }
     }
 
-    public class CreateProgramEnrolmentInput
+    public class CreateProgramEnrolmentBodyInput
     {
         public int[] AddressBooks { get; set; }
         public int[] Contacts { get; set; }
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public int ProgramId { get; set; }
     }
 
-    public class SendSmsMessageInput
+    public class SendSmsMessageBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }

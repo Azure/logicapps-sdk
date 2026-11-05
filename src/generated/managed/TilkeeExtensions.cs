@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     public class TilkeeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectCreateResponse, ApiConnectionActionConfiguration> ProjectCreate(Expression<Func<ProjectCreateInput>> body = null)
+        public IBodyWorkflowAction<ProjectCreateResponse, ApiConnectionActionConfiguration> ProjectCreate(Expression<Func<ProjectCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ProjectCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectUpdateResponse, ApiConnectionActionConfiguration> ProjectUpdate(Expression<Func<string>> id, Expression<Func<ProjectUpdateInput>> body)
+        public IBodyWorkflowAction<ProjectUpdateResponse, ApiConnectionActionConfiguration> ProjectUpdate(Expression<Func<string>> id, Expression<Func<ProjectUpdateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<AccessLinkCreateResponse, ApiConnectionActionConfiguration> AccessLinkCreate(Expression<Func<string>> projectId, Expression<Func<AccessLinkCreateInput>> body)
+        public IBodyWorkflowAction<AccessLinkCreateResponse, ApiConnectionActionConfiguration> AccessLinkCreate(Expression<Func<string>> projectId, Expression<Func<AccessLinkCreateBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<AddItemToProjectResponseItem[], ApiConnectionActionConfiguration> AddItemToProject(Expression<Func<string>> projectId, Expression<Func<AddItemToProjectInput>> body)
+        public IBodyWorkflowAction<AddItemToProjectResponseItem[], ApiConnectionActionConfiguration> AddItemToProject(Expression<Func<string>> projectId, Expression<Func<AddItemToProjectBodyInput>> body)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ItemCreateResponseItem[], ApiConnectionActionConfiguration> ItemCreate(Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<ItemCreateResponseItem[], ApiConnectionActionConfiguration> ItemCreate(Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ItemCreateResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
 
     public class TilkeeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEvent(Expression<Func<OnTilkeeEventInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEvent(Expression<Func<OnTilkeeEventBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventEnded(Expression<Func<OnTilkeeEventEndedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventEnded(Expression<Func<OnTilkeeEventEndedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventSigned(Expression<Func<OnTilkeeEventSignedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> OnTilkeeEventSigned(Expression<Func<OnTilkeeEventSignedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -311,19 +311,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string ExternalId { get; set; }
     }
 
-    public class ProjectCreateInput
+    public class ProjectCreateBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ProjectCreateInputProjectType Project { get; set; } = new ProjectCreateInputProjectType();
+        public BodyInputProjectType Project { get; set; } = new BodyInputProjectType();
 
         [JsonProperty("documents")]
-        public ProjectCreateInputDocumentsTypeItem[] Documents { get; set; }
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("person")]
-        public ProjectCreateInputPersonTypeItem[] Person { get; set; }
+        public BodyInputPersonTypeItem[] Person { get; set; }
     }
 
-    public class ProjectCreateInputProjectType
+    public class BodyInputProjectType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -353,16 +353,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string ExternalId { get; set; }
 
         [JsonProperty("theme")]
-        public ProjectCreateInputProjectTypeThemeType Theme { get; set; }
+        public BodyInputProjectTypeThemeType Theme { get; set; }
     }
 
-    public class ProjectCreateInputProjectTypeThemeType
+    public class BodyInputProjectTypeThemeType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
     }
 
-    public class ProjectCreateInputDocumentsTypeItem
+    public class BodyInputDocumentsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string ExternalId { get; set; }
     }
 
-    public class ProjectCreateInputPersonTypeItem
+    public class BodyInputPersonTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -788,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string Name { get; set; }
     }
 
-    public class ProjectUpdateInput
+    public class ProjectUpdateBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string[] Tags { get; set; }
 
         [JsonProperty("verdict")]
-        public ProjectUpdateInputVerdictType? Verdict { get; set; }
+        public BodyInputVerdictType? Verdict { get; set; }
 
         [JsonProperty("collaborators")]
         public JToken[] Collaborators { get; set; }
@@ -833,11 +833,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string[] EmailCible { get; set; }
 
         [JsonProperty("theme")]
-        public ProjectUpdateInputThemeType Theme { get; set; }
+        public BodyInputThemeType Theme { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ProjectUpdateInputVerdictType
+    public enum BodyInputVerdictType
     {
         [EnumMember(Value = "won")]
         Won,
@@ -849,7 +849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         Nc
     }
 
-    public class ProjectUpdateInputThemeType
+    public class BodyInputThemeType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -876,13 +876,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string ExternalId { get; set; }
     }
 
-    public class AccessLinkCreateInput
+    public class AccessLinkCreateBodyInput
     {
         [JsonProperty("persons")]
-        public AccessLinkCreateInputAccessLinkTypeItem[] AccessLink { get; set; }
+        public BodyInputAccessLinkTypeItem[] AccessLink { get; set; }
     }
 
-    public class AccessLinkCreateInputAccessLinkTypeItem
+    public class BodyInputAccessLinkTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -987,16 +987,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string[] Status { get; set; }
     }
 
-    public class AddItemToProjectInput
+    public class AddItemToProjectBodyInput
     {
         [JsonProperty("items")]
-        public AddItemToProjectInputItemsTypeItem[] Items { get; set; }
+        public BodyInputItemsTypeItem[] Items { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "ProjectItem";
     }
 
-    public class AddItemToProjectInputItemsTypeItem
+    public class BodyInputItemsTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1239,10 +1239,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string Avatar { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
         [JsonProperty("type")]
-        public bodyInputItemTypeType Type { get; set; }
+        public BodyInputItemTypeType? Type { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -1264,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemTypeType
+    public enum BodyInputItemTypeType
     {
         [EnumMember(Value = "file")]
         File,
@@ -1299,10 +1299,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string Name { get; set; }
     }
 
-    public class OnTilkeeEventInput
+    public class OnTilkeeEventBodyInput
     {
         [JsonProperty("rule", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnTilkeeEventInputRuleType Rule { get; set; } = OnTilkeeEventInputRuleType.ConnexionEnded;
+        public BodyInputRuleType Rule { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee.BodyInputRuleType.ConnexionEnded;
 
         [JsonProperty("user_id")]
         public string UserId { get; set; }
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OnTilkeeEventInputRuleType
+    public enum BodyInputRuleType
     {
         [EnumMember(Value = "connexion_started")]
         ConnexionStarted,
@@ -1336,7 +1336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         UserCreated
     }
 
-    public class OnTilkeeEventEndedInput
+    public class OnTilkeeEventEndedBodyInput
     {
         [JsonProperty("rule", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Rule { get; set; } = "connexion_ended";
@@ -1354,7 +1354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         internal string Target { get; set; } = "Webhook";
     }
 
-    public class OnTilkeeEventSignedInput
+    public class OnTilkeeEventSignedBodyInput
     {
         [JsonProperty("rule", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Rule { get; set; } = "token_signed";

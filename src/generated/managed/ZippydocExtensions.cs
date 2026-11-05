@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippydoc")]
-        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> UploadTable(Expression<Func<UploadTableInput>> body = null)
+        public IBodyWorkflowAction<int, ApiConnectionActionConfiguration> UploadTable(Expression<Func<UploadTableBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<int, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
 
     public class ZippydocTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnTableChange(Expression<Func<OnTableChangeInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnTableChange(Expression<Func<OnTableChangeBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         }
     }
 
-    public class UploadTableInput
+    public class UploadTableBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -104,17 +104,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
         public JToken[] Tags { get; set; }
     }
 
-    public class OnTableChangeInput
+    public class OnTableChangeBodyInput
     {
         [JsonProperty("x-ms-notification-url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string XMsNotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("type")]
-        public OnTableChangeInputTypeType? Type { get; set; }
+        public BodyInputTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OnTableChangeInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "ON_TABLE_CHANGE")]
         ONTABLECHANGE

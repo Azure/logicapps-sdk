@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
 
     public class AirslateTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration> CreateSlateTrigger(Expression<Func<CreateSlateTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration> CreateSlateTrigger(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<CreateSlateTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         public string Id { get; set; }
     }
 
-    public class CreateSlateTriggerInput
+    public class BodyInput
     {
         [JsonProperty("botToken", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BotAuthorizationToken { get; set; }

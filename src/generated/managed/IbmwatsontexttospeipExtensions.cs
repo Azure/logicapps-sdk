@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
     public class IbmwatsontexttospeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<SynthesizeResponse, ApiConnectionActionConfiguration> Synthesize(Expression<Func<voiceInput>> voice = null, Expression<Func<SynthesizeInput>> body = null)
+        public IBodyWorkflowAction<SynthesizeResponse, ApiConnectionActionConfiguration> Synthesize(Expression<Func<VoiceInput>> voice = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<PronunciationResponse, ApiConnectionActionConfiguration> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
+        public IBodyWorkflowAction<PronunciationResponse, ApiConnectionActionConfiguration> Pronunciation(Expression<Func<VoiceInput>> voice = null, Expression<Func<string>> text = null)
         {
             var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum voiceInput
+    public enum VoiceInput
     {
         [EnumMember(Value = "ar-MS_OmarVoice")]
         ArMSOmarVoice,
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         ZhCNZhangJingVoice
     }
 
-    public class SynthesizeInput
+    public class BodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }

@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<FundsByFIdResponse, ApiConnectionActionConfiguration> FundsByFId(Expression<Func<string>> companyIds, Expression<Func<includesInput>> includes)
+        public IBodyWorkflowAction<FundsByFIdResponse, ApiConnectionActionConfiguration> FundsByFId(Expression<Func<string>> companyIds, Expression<Func<IncludesInput>> includes)
         {
             var __workflow_companyIds = WorkflowExpression.Compile(companyIds, nameof(companyIds), required: true);
             var __workflow_includes = WorkflowExpression.Compile(includes, nameof(includes), required: true);
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includesInput
+    public enum IncludesInput
     {
         [EnumMember(Value = "grants")]
         Grants,

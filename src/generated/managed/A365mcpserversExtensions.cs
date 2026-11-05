@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
     public class A365mcpserversActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpMailTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpMailToolsInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpMailTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpMeServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpMeServerInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpMeServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpCalendarTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpCalendarToolsInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpCalendarTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpTeamsServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpTeamsServerInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpTeamsServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpODSPRemoteServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpODSPRemoteServerInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpODSPRemoteServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpSharepointListsTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpSharepointListsToolsInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpSharepointListsTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpAdmin365Tools(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpAdmin365ToolsInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpAdmin365Tools(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpWordServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpWordServerInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpWordServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpM365copilot(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpM365copilotInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpM365copilot(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -179,175 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
     {
     }
 
-    public class McpMailToolsInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpMeServerInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpCalendarToolsInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpTeamsServerInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpODSPRemoteServerInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpSharepointListsToolsInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpAdmin365ToolsInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpWordServerInput
-    {
-        [JsonProperty("jsonrpc")]
-        public string Jsonrpc { get; set; }
-
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        [JsonProperty("method")]
-        public string Method { get; set; }
-
-        [JsonProperty("params")]
-        public JToken Params { get; set; }
-
-        [JsonProperty("result")]
-        public JToken Result { get; set; }
-
-        [JsonProperty("error")]
-        public JToken Error { get; set; }
-    }
-
-    public class McpM365copilotInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
     public class EsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<UploadFileInput>> body)
+        public IBodyWorkflowAction<UploadFileResponse, ApiConnectionActionConfiguration> UploadFile(Expression<Func<UploadFileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadFileResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateEnvelopeFromTemplate(Expression<Func<CreateEnvelopeFromTemplateInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateEnvelopeFromTemplate(Expression<Func<CreateEnvelopeFromTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeInput>> body)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration>(() =>
@@ -60,41 +60,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class EsignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SignDocument(Expression<Func<SignDocumentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SignDocument(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v3/pa_create_webhook";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new SignDocumentBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreatedEnvelope(Expression<Func<CreatedEnvelopeInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreatedEnvelope(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v3/pa_create_webhook_two";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreatedEnvelopeBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CompletedEnvelope(Expression<Func<CompletedEnvelopeInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CompletedEnvelope(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v3/pa_create_webhook_three";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CompletedEnvelopeBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -493,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public string Name { get; set; }
     }
 
-    public class UploadFileInput
+    public class UploadFileBodyInput
     {
         [JsonProperty("base64", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Base64 { get; set; }
@@ -508,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         internal string Type { get; set; } = "document";
     }
 
-    public class CreateEnvelopeFromTemplateInput
+    public class CreateEnvelopeFromTemplateBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -523,10 +520,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public string Subject { get; set; }
 
         [JsonProperty("signers")]
-        public CreateEnvelopeFromTemplateInputSignersTypeItem[] Signers { get; set; }
+        public CreateEnvelopeFromTemplateBodyInputSignersTypeItem[] Signers { get; set; }
     }
 
-    public class CreateEnvelopeFromTemplateInputSignersTypeItem
+    public class CreateEnvelopeFromTemplateBodyInputSignersTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -931,7 +928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public string Name { get; set; }
     }
 
-    public class CreateEnvelopeInput
+    public class CreateEnvelopeBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -943,52 +940,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public string Description { get; set; }
 
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopeInputDocumentsTypeItem[] Documents { get; set; }
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("signers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopeInputSignersTypeItem[] Signers { get; set; }
+        public CreateEnvelopeBodyInputSignersTypeItem[] Signers { get; set; }
 
         [JsonProperty("envelope_options")]
-        public CreateEnvelopeInputEnvelopeOptionsType EnvelopeOptions { get; set; }
+        public BodyInputEnvelopeOptionsType EnvelopeOptions { get; set; }
 
         [JsonProperty("carbon_copies")]
-        public CreateEnvelopeInputCarbonCopiesTypeItem[] CarbonCopies { get; set; }
+        public BodyInputCarbonCopiesTypeItem[] CarbonCopies { get; set; }
     }
 
-    public class CreateEnvelopeInputDocumentsTypeItem
+    public class BodyInputDocumentsTypeItem
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
         [JsonProperty("upload_file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopeInputDocumentsTypeItemUploadFileType UploadFile { get; set; }
+        public BodyInputDocumentsTypeItemUploadFileType UploadFile { get; set; }
 
         [JsonProperty("attachment_files")]
-        public CreateEnvelopeInputDocumentsTypeItemAttachmentFilesTypeItem[] AttachmentFiles { get; set; }
+        public BodyInputDocumentsTypeItemAttachmentFilesTypeItem[] AttachmentFiles { get; set; }
 
         [JsonProperty("document_fields")]
-        public CreateEnvelopeInputDocumentsTypeItemDocumentFieldsTypeItem[] DocumentFields { get; set; }
+        public BodyInputDocumentsTypeItemDocumentFieldsTypeItem[] DocumentFields { get; set; }
     }
 
-    public class CreateEnvelopeInputDocumentsTypeItemUploadFileType
+    public class BodyInputDocumentsTypeItemUploadFileType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
-    public class CreateEnvelopeInputDocumentsTypeItemAttachmentFilesTypeItem
+    public class BodyInputDocumentsTypeItemAttachmentFilesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateEnvelopeInputDocumentsTypeItemDocumentFieldsTypeItem
+    public class BodyInputDocumentsTypeItemDocumentFieldsTypeItem
     {
         [JsonProperty("signer_email")]
         public string SignerEmail { get; set; }
 
         [JsonProperty("field_type")]
-        public CreateEnvelopeInputDocumentsTypeItemDocumentFieldsTypeItemFieldTypeType? FieldType { get; set; }
+        public BodyInputDocumentsTypeItemDocumentFieldsTypeItemFieldTypeType? FieldType { get; set; }
 
         [JsonProperty("field_required")]
         public bool? FieldRequired { get; set; }
@@ -1000,11 +997,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public string FieldValue { get; set; }
 
         [JsonProperty("document_position")]
-        public CreateEnvelopeInputDocumentsTypeItemDocumentFieldsTypeItemDocumentPositionType DocumentPosition { get; set; }
+        public BodyInputDocumentsTypeItemDocumentFieldsTypeItemDocumentPositionType DocumentPosition { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEnvelopeInputDocumentsTypeItemDocumentFieldsTypeItemFieldTypeType
+    public enum BodyInputDocumentsTypeItemDocumentFieldsTypeItemFieldTypeType
     {
         [EnumMember(Value = "request-text")]
         RequestText,
@@ -1026,7 +1023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         Payment
     }
 
-    public class CreateEnvelopeInputDocumentsTypeItemDocumentFieldsTypeItemDocumentPositionType
+    public class BodyInputDocumentsTypeItemDocumentFieldsTypeItemDocumentPositionType
     {
         [JsonProperty("x")]
         public string X { get; set; }
@@ -1038,7 +1035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public int? Page { get; set; }
     }
 
-    public class CreateEnvelopeInputSignersTypeItem
+    public class CreateEnvelopeBodyInputSignersTypeItem
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1047,13 +1044,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public string Email { get; set; }
     }
 
-    public class CreateEnvelopeInputEnvelopeOptionsType
+    public class BodyInputEnvelopeOptionsType
     {
         [JsonProperty("sign_in_sequential_order")]
         public bool? SignInSequentialOrder { get; set; }
     }
 
-    public class CreateEnvelopeInputCarbonCopiesTypeItem
+    public class BodyInputCarbonCopiesTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1062,7 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         public string Email { get; set; }
     }
 
-    public class SignDocumentInput
+    public class SignDocumentBodyInput
     {
         [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -1071,7 +1068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         internal string Event { get; set; } = "document_signed";
     }
 
-    public class CreatedEnvelopeInput
+    public class CreatedEnvelopeBodyInput
     {
         [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -1080,7 +1077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         internal string Event { get; set; } = "envelope_created";
     }
 
-    public class CompletedEnvelopeInput
+    public class CompletedEnvelopeBodyInput
     {
         [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";

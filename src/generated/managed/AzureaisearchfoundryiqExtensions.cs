@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearchfoundryiq
     public class AzureaisearchfoundryiqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearchfoundryiq")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AzureAISearchKBRetrieveMcp(Expression<Func<string>> knowledgeBaseName, Expression<Func<string>> apiVersion, Expression<Func<string>> mcpSessionId = null, Expression<Func<AzureAISearchKBRetrieveMcpInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AzureAISearchKBRetrieveMcp(Expression<Func<string>> knowledgeBaseName, Expression<Func<string>> apiVersion, Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_knowledgeBaseName = WorkflowExpression.Compile(knowledgeBaseName, nameof(knowledgeBaseName), required: true);
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearchfoundryiq
     {
     }
 
-    public class AzureAISearchKBRetrieveMcpInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

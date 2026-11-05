@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddTaskResponse, ApiConnectionActionConfiguration> AddTask(Expression<Func<AddTaskInput>> body)
+        public IBodyWorkflowAction<AddTaskResponse, ApiConnectionActionConfiguration> AddTask(Expression<Func<AddTaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddTaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration> UpdateSingleTaskField(Expression<Func<UpdateSingleTaskFieldInput>> body)
+        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration> UpdateSingleTaskField(Expression<Func<UpdateSingleTaskFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateSingleTaskFieldResponse, ApiConnectionActionConfiguration>(() =>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<CreateTrackerResponse, ApiConnectionActionConfiguration> CreateTracker(Expression<Func<CreateTrackerInput>> body)
+        public IBodyWorkflowAction<CreateTrackerResponse, ApiConnectionActionConfiguration> CreateTracker(Expression<Func<CreateTrackerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTrackerResponse, ApiConnectionActionConfiguration>(() =>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddCustomFieldResponse, ApiConnectionActionConfiguration> AddCustomField(Expression<Func<AddCustomFieldInput>> body)
+        public IBodyWorkflowAction<AddCustomFieldResponse, ApiConnectionActionConfiguration> AddCustomField(Expression<Func<AddCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddCustomFieldResponse, ApiConnectionActionConfiguration>(() =>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration> ClearSingleTaskField(Expression<Func<ClearSingleTaskFieldInput>> body)
+        public IBodyWorkflowAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration> ClearSingleTaskField(Expression<Func<ClearSingleTaskFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ClearSingleTaskFieldResponse, ApiConnectionActionConfiguration>(() =>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ImportTrackerResponse, ApiConnectionActionConfiguration> ImportTracker(Expression<Func<ImportTrackerInput>> body)
+        public IBodyWorkflowAction<ImportTrackerResponse, ApiConnectionActionConfiguration> ImportTracker(Expression<Func<ImportTrackerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImportTrackerResponse, ApiConnectionActionConfiguration>(() =>
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         Tracker
     }
 
-    public class AddTaskInput
+    public class AddTaskBodyInput
     {
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public TaskProfile Data { get; set; }
     }
 
-    public class UpdateSingleTaskFieldInput
+    public class UpdateSingleTaskFieldBodyInput
     {
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string BasicProperties { get; set; }
     }
 
-    public class CreateTrackerInput
+    public class CreateTrackerBodyInput
     {
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string FieldId { get; set; }
     }
 
-    public class AddCustomFieldInput
+    public class AddCustomFieldBodyInput
     {
         [JsonProperty("workspaceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string ContextId { get; set; }
 
         [JsonProperty("viewOption", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddCustomFieldInputViewOptionType ViewOption { get; set; } = AddCustomFieldInputViewOptionType.TableViewAndDetailsView;
+        public BodyInputViewOptionType ViewOption { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker.BodyInputViewOptionType.TableViewAndDetailsView;
 
         [JsonProperty("field_title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldTitle { get; set; }
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddCustomFieldInputViewOptionType
+    public enum BodyInputViewOptionType
     {
         [EnumMember(Value = "Details View")]
         DetailsView,
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public TaskProfile Data { get; set; }
     }
 
-    public class ClearSingleTaskFieldInput
+    public class ClearSingleTaskFieldBodyInput
     {
         [JsonProperty("context_work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContextWorkId { get; set; }
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public JToken Data { get; set; }
     }
 
-    public class ImportTrackerInput
+    public class ImportTrackerBodyInput
     {
         [JsonProperty("source_workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceWorkspaceId { get; set; }

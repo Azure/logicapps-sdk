@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
     public class TodoistActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<TaskV2, ApiConnectionActionConfiguration> CreateItem(Expression<Func<CreateItemV4Input>> newItem)
+        public IBodyWorkflowAction<TaskV2, ApiConnectionActionConfiguration> CreateItem(Expression<Func<NewItemInput>> newItem)
         {
             var __workflow_newItem = WorkflowExpression.Compile(newItem, nameof(newItem), required: true);
             return new DeferredBodyAction<TaskV2, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<LabelV4, ApiConnectionActionConfiguration> CreateLabel(Expression<Func<CreateLabelV4Input>> newLabel)
+        public IBodyWorkflowAction<LabelV4, ApiConnectionActionConfiguration> CreateLabel(Expression<Func<NewLabelInput>> newLabel)
         {
             var __workflow_newLabel = WorkflowExpression.Compile(newLabel, nameof(newLabel), required: true);
             return new DeferredBodyAction<LabelV4, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<ProjectV4, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectV4Input>> newProject)
+        public IBodyWorkflowAction<ProjectV4, ApiConnectionActionConfiguration> CreateProject(Expression<Func<NewProjectInput>> newProject)
         {
             var __workflow_newProject = WorkflowExpression.Compile(newProject, nameof(newProject), required: true);
             return new DeferredBodyAction<ProjectV4, ApiConnectionActionConfiguration>(() =>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IBodyWorkflowAction<ProjectV4, ApiConnectionActionConfiguration> ShareProject(Expression<Func<string>> projectId, Expression<Func<ShareProjectV4Input>> shareProject)
+        public IBodyWorkflowAction<ProjectV4, ApiConnectionActionConfiguration> ShareProject(Expression<Func<string>> projectId, Expression<Func<ShareProjectInput>> shareProject)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_shareProject = WorkflowExpression.Compile(shareProject, nameof(shareProject), required: true);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateItem(Expression<Func<string>> projectId, Expression<Func<string>> id, Expression<Func<UpdateItemV4Input>> changeItem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateItem(Expression<Func<string>> projectId, Expression<Func<string>> id, Expression<Func<ChangeItemInput>> changeItem)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateLabel(Expression<Func<string>> id, Expression<Func<UpdateLabelV4Input>> changeLabel)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateLabel(Expression<Func<string>> id, Expression<Func<ChangeLabelInput>> changeLabel)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_changeLabel = WorkflowExpression.Compile(changeLabel, nameof(changeLabel), required: true);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> id, Expression<Func<UpdateProjectV4Input>> changeProject)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> id, Expression<Func<ChangeProjectInput>> changeProject)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_changeProject = WorkflowExpression.Compile(changeProject, nameof(changeProject), required: true);
@@ -173,29 +173,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
     public class TodoistTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnItemCompletedV4Response, ApiConnectionTriggerConfiguration> OnItemCompleted(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCompletedResponse, ApiConnectionTriggerConfiguration> OnItemCompleted(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<OnItemCompletedV4Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnItemCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v4/trigger/completed/get_all";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<OnItemCompletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<OnItemCreatedV4Response, ApiConnectionTriggerConfiguration> OnItemCreated(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCreatedResponse, ApiConnectionTriggerConfiguration> OnItemCreated(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            return new DeferredBodyTrigger<OnItemCreatedV4Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnItemCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v4/trigger/sync";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
-                return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<OnItemCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
     }
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public string Unit { get; set; }
     }
 
-    public class CreateItemV4Input
+    public class NewItemInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public bool IsFavorite { get; set; }
     }
 
-    public class CreateLabelV4Input
+    public class NewLabelInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public string ViewStyle { get; set; }
     }
 
-    public class CreateProjectV4Input
+    public class NewProjectInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -389,13 +389,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public bool? IsFavorite { get; set; }
     }
 
-    public class ShareProjectV4Input
+    public class ShareProjectInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
     }
 
-    public class UpdateItemV4Input
+    public class ChangeItemInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public int? Priority { get; set; }
     }
 
-    public class UpdateLabelV4Input
+    public class ChangeLabelInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public int? Order { get; set; }
     }
 
-    public class UpdateProjectV4Input
+    public class ChangeProjectInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public bool? IsFavorite { get; set; }
     }
 
-    public class OnItemCompletedV4Response
+    public class OnItemCompletedResponse
     {
         [JsonProperty("items")]
         public CompletedItemV2[] CompletedItems { get; set; }
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         public JToken DynamicProperties { get; set; }
     }
 
-    public class OnItemCreatedV4Response
+    public class OnItemCreatedResponse
     {
         [JsonProperty("items")]
         public ItemV3[] Items { get; set; }

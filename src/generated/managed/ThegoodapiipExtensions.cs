@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<PlantPostResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<PlantPostInput>> body)
+        public IBodyWorkflowAction<PlantResponse, ApiConnectionActionConfiguration> Plant(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PlantPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PlantResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/plant/trees";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PlantPostResponse>(callPayload);
+                return new ApiConnectionAction<PlantResponse>(callPayload);
             });
         }
     }
@@ -61,16 +61,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         public string CreatedAt { get; set; }
     }
 
-    public class PlantPostResponse
+    public class PlantResponse
     {
         [JsonProperty("total_planted_trees")]
         public int TotalPlantedTrees { get; set; }
 
         [JsonProperty("tree_details")]
-        public PlantPostResponseTreeDetailsTypeItem[] TreeDetails { get; set; }
+        public PlantResponseTreeDetailsTypeItem[] TreeDetails { get; set; }
     }
 
-    public class PlantPostResponseTreeDetailsTypeItem
+    public class PlantResponseTreeDetailsTypeItem
     {
         [JsonProperty("count")]
         public int Count { get; set; }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         public string CreatedAt { get; set; }
     }
 
-    public class PlantPostInput
+    public class BodyInput
     {
         [JsonProperty("count")]
         public int? Count { get; set; }

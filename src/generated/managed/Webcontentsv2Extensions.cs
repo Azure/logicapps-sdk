@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
     public class Webcontentsv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontentsv2")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeHttp(Expression<Func<InvokeHttpInput>> request)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeHttp(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
     {
     }
 
-    public class InvokeHttpInput
+    public class RequestInput
     {
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InvokeHttpInputMethodType Method { get; set; }
+        public RequestInputMethodType Method { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UrlOfTheRequest { get; set; }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InvokeHttpInputMethodType
+    public enum RequestInputMethodType
     {
         GET,
         DELETE,

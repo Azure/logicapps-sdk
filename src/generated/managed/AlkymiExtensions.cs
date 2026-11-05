@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
-        public IBodyWorkflowAction<PaginatedExecutionList, ApiConnectionActionConfiguration> ExecutionsList(Expression<Func<documentStatusInputItem[]>> documentStatus = null)
+        public IBodyWorkflowAction<PaginatedExecutionList, ApiConnectionActionConfiguration> ExecutionsList(Expression<Func<DocumentStatusInputItem[]>> documentStatus = null)
         {
             var __workflow_documentStatus = WorkflowExpression.Compile(documentStatus, nameof(documentStatus), required: false);
             return new DeferredBodyAction<PaginatedExecutionList, ApiConnectionActionConfiguration>(() =>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alkymi")]
-        public IBodyWorkflowAction<PaginatedRecordList, ApiConnectionActionConfiguration> RecordsList(Expression<Func<string>> dataset = null, Expression<Func<documentStatusInputItem[]>> documentStatus = null, Expression<Func<string>> pipeline = null, Expression<Func<bool>> removed = null, Expression<Func<bool>> reviewed = null, Expression<Func<string>> schema = null)
+        public IBodyWorkflowAction<PaginatedRecordList, ApiConnectionActionConfiguration> RecordsList(Expression<Func<string>> dataset = null, Expression<Func<DocumentStatusInputItem[]>> documentStatus = null, Expression<Func<string>> pipeline = null, Expression<Func<bool>> removed = null, Expression<Func<bool>> reviewed = null, Expression<Func<string>> schema = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
             var __workflow_documentStatus = WorkflowExpression.Compile(documentStatus, nameof(documentStatus), required: false);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
 
     public class AlkymiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration> EventListener(Expression<Func<EventListenerInput>> body = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration> EventListener(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyTrigger<WebHookCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum documentStatusInputItem
+    public enum DocumentStatusInputItem
     {
         [EnumMember(Value = "completed")]
         Completed,
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         public string Uuid { get; set; }
     }
 
-    public class EventListenerInput
+    public class BodyInput
     {
         [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Target { get; set; } = "#{listCallbackUrl()}";
@@ -491,11 +491,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alkymi
         public string DisplayName { get; set; }
 
         [JsonProperty("events")]
-        public EventListenerInputEventsTypeItem[] Events { get; set; }
+        public BodyInputEventsTypeItem[] Events { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventListenerInputEventsTypeItem
+    public enum BodyInputEventsTypeItem
     {
         [EnumMember(Value = "on_execution_upload_start")]
         OnExecutionUploadStart,

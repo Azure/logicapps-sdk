@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     public class TrelloActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card[], ApiConnectionActionConfiguration> ListCards(Expression<Func<string>> boardId, Expression<Func<string>> actions = null, Expression<Func<bool>> attachments = null, Expression<Func<string>> attachmentFields = null, Expression<Func<bool>> stickers = null, Expression<Func<bool>> members = null, Expression<Func<string>> memeberFields = null, Expression<Func<bool>> checkItemStates = null, Expression<Func<checklistsInput>> checklists = null, Expression<Func<int>> limit = null, Expression<Func<string>> since = null, Expression<Func<string>> before = null, Expression<Func<filterInput>> filter = null, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<Card[], ApiConnectionActionConfiguration> ListCards(Expression<Func<string>> boardId, Expression<Func<string>> actions = null, Expression<Func<bool>> attachments = null, Expression<Func<string>> attachmentFields = null, Expression<Func<bool>> stickers = null, Expression<Func<bool>> members = null, Expression<Func<string>> memeberFields = null, Expression<Func<bool>> checkItemStates = null, Expression<Func<ChecklistsInput>> checklists = null, Expression<Func<int>> limit = null, Expression<Func<string>> since = null, Expression<Func<string>> before = null, Expression<Func<ListCardsFilterInput>> filter = null, Expression<Func<string>> fields = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_actions = WorkflowExpression.Compile(actions, nameof(actions), required: false);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<CardWithChecklists, ApiConnectionActionConfiguration> GetCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> actions = null, Expression<Func<bool>> actionsEntities = null, Expression<Func<bool>> actionsDisplay = null, Expression<Func<int>> actionsLimit = null, Expression<Func<string>> actionFields = null, Expression<Func<string>> actionMemberCreatorFields = null, Expression<Func<bool>> attachments = null, Expression<Func<string>> attachmentFields = null, Expression<Func<bool>> members = null, Expression<Func<string>> memberFields = null, Expression<Func<bool>> membersVoted = null, Expression<Func<string>> memberVotedFields = null, Expression<Func<bool>> checkItemStates = null, Expression<Func<string>> checkItemStateFields = null, Expression<Func<checklistsInput>> checklists = null, Expression<Func<string>> checklistFields = null, Expression<Func<bool>> board = null, Expression<Func<string>> boardFields = null, Expression<Func<bool>> list = null, Expression<Func<string>> listFields = null, Expression<Func<bool>> stickers = null, Expression<Func<string>> stickerFields = null, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<CardWithChecklists, ApiConnectionActionConfiguration> GetCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<string>> actions = null, Expression<Func<bool>> actionsEntities = null, Expression<Func<bool>> actionsDisplay = null, Expression<Func<int>> actionsLimit = null, Expression<Func<string>> actionFields = null, Expression<Func<string>> actionMemberCreatorFields = null, Expression<Func<bool>> attachments = null, Expression<Func<string>> attachmentFields = null, Expression<Func<bool>> members = null, Expression<Func<string>> memberFields = null, Expression<Func<bool>> membersVoted = null, Expression<Func<string>> memberVotedFields = null, Expression<Func<bool>> checkItemStates = null, Expression<Func<string>> checkItemStateFields = null, Expression<Func<ChecklistsInput>> checklists = null, Expression<Func<string>> checklistFields = null, Expression<Func<bool>> board = null, Expression<Func<string>> boardFields = null, Expression<Func<bool>> list = null, Expression<Func<string>> listFields = null, Expression<Func<bool>> stickers = null, Expression<Func<string>> stickerFields = null, Expression<Func<string>> fields = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Board[], ApiConnectionActionConfiguration> ListBoards(Expression<Func<string>> filter = null, Expression<Func<string>> fields = null, Expression<Func<string>> actions = null, Expression<Func<bool>> actionsEntities = null, Expression<Func<int>> actionsLimit = null, Expression<Func<actionsFormatInput>> actionsFormat = null, Expression<Func<string>> actionsSince = null, Expression<Func<string>> actionFields = null, Expression<Func<string>> memberships = null, Expression<Func<bool>> organization = null, Expression<Func<string>> organizationFields = null, Expression<Func<string>> lists = null)
+        public IBodyWorkflowAction<Board[], ApiConnectionActionConfiguration> ListBoards(Expression<Func<string>> filter = null, Expression<Func<string>> fields = null, Expression<Func<string>> actions = null, Expression<Func<bool>> actionsEntities = null, Expression<Func<int>> actionsLimit = null, Expression<Func<ActionsFormatInput>> actionsFormat = null, Expression<Func<string>> actionsSince = null, Expression<Func<string>> actionFields = null, Expression<Func<string>> memberships = null, Expression<Func<bool>> organization = null, Expression<Func<string>> organizationFields = null, Expression<Func<string>> lists = null)
         {
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<BoardWithChecklists, ApiConnectionActionConfiguration> GetBoard(Expression<Func<string>> boardId, Expression<Func<string>> actions = null, Expression<Func<bool>> actionEntities = null, Expression<Func<bool>> actionsDisplay = null, Expression<Func<actionsFormatInput>> actionsFormat = null, Expression<Func<string>> actionsSince = null, Expression<Func<int>> actionsLimit = null, Expression<Func<string>> actionFields = null, Expression<Func<bool>> actionMember = null, Expression<Func<string>> actionMemberFields = null, Expression<Func<bool>> actionMemberCreator = null, Expression<Func<string>> actionMemberCreatorFields = null, Expression<Func<cardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<bool>> cardAttachments = null, Expression<Func<string>> cardAttachmentFields = null, Expression<Func<cardChecklistsInput>> cardChecklists = null, Expression<Func<bool>> cardStickers = null, Expression<Func<boardStarsInput>> boardStars = null, Expression<Func<labelsInput>> labels = null, Expression<Func<string>> labelFields = null, Expression<Func<int>> labelsLimit = null, Expression<Func<listsInput>> lists = null, Expression<Func<string>> listFields = null, Expression<Func<string>> memberships = null, Expression<Func<bool>> membershipsMember = null, Expression<Func<string>> membershipsMemberFields = null, Expression<Func<membersInput>> members = null, Expression<Func<string>> memberFields = null, Expression<Func<membersInvitedInput>> membersInvited = null, Expression<Func<string>> membersInvitedFields = null, Expression<Func<checklistsInput>> checklists = null, Expression<Func<string>> checklistFields = null, Expression<Func<bool>> organization = null, Expression<Func<string>> organizationFields = null, Expression<Func<string>> organizationMemberships = null, Expression<Func<bool>> myPerfs = null, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<BoardWithChecklists, ApiConnectionActionConfiguration> GetBoard(Expression<Func<string>> boardId, Expression<Func<string>> actions = null, Expression<Func<bool>> actionEntities = null, Expression<Func<bool>> actionsDisplay = null, Expression<Func<ActionsFormatInput>> actionsFormat = null, Expression<Func<string>> actionsSince = null, Expression<Func<int>> actionsLimit = null, Expression<Func<string>> actionFields = null, Expression<Func<bool>> actionMember = null, Expression<Func<string>> actionMemberFields = null, Expression<Func<bool>> actionMemberCreator = null, Expression<Func<string>> actionMemberCreatorFields = null, Expression<Func<GetBoardCardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<bool>> cardAttachments = null, Expression<Func<string>> cardAttachmentFields = null, Expression<Func<CardChecklistsInput>> cardChecklists = null, Expression<Func<bool>> cardStickers = null, Expression<Func<BoardStarsInput>> boardStars = null, Expression<Func<LabelsInput>> labels = null, Expression<Func<string>> labelFields = null, Expression<Func<int>> labelsLimit = null, Expression<Func<ListsInput>> lists = null, Expression<Func<string>> listFields = null, Expression<Func<string>> memberships = null, Expression<Func<bool>> membershipsMember = null, Expression<Func<string>> membershipsMemberFields = null, Expression<Func<MembersInput>> members = null, Expression<Func<string>> memberFields = null, Expression<Func<MembersInvitedInput>> membersInvited = null, Expression<Func<string>> membersInvitedFields = null, Expression<Func<ChecklistsInput>> checklists = null, Expression<Func<string>> checklistFields = null, Expression<Func<bool>> organization = null, Expression<Func<string>> organizationFields = null, Expression<Func<string>> organizationMemberships = null, Expression<Func<bool>> myPerfs = null, Expression<Func<string>> fields = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_actions = WorkflowExpression.Compile(actions, nameof(actions), required: false);
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Board, ApiConnectionActionConfiguration> UpdateBoard(Expression<Func<string>> boardId, Expression<Func<UpdateBoardInput>> board = null)
+        public IBodyWorkflowAction<Board, ApiConnectionActionConfiguration> UpdateBoard(Expression<Func<string>> boardId, Expression<Func<UpdateBoardBoardInput>> board = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: false);
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<List[], ApiConnectionActionConfiguration> ListLists(Expression<Func<string>> boardId, Expression<Func<cardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<filterInput2>> filter = null, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<List[], ApiConnectionActionConfiguration> ListLists(Expression<Func<string>> boardId, Expression<Func<GetBoardCardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<ListListsFilterInput>> filter = null, Expression<Func<string>> fields = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_cards = WorkflowExpression.Compile(cards, nameof(cards), required: false);
@@ -415,7 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<List, ApiConnectionActionConfiguration> GetList(Expression<Func<string>> boardId, Expression<Func<string>> listId, Expression<Func<cardsInput2>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<bool>> board = null, Expression<Func<string>> boardFields = null, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<List, ApiConnectionActionConfiguration> GetList(Expression<Func<string>> boardId, Expression<Func<string>> listId, Expression<Func<GetListCardsInput>> cards = null, Expression<Func<string>> cardFields = null, Expression<Func<bool>> board = null, Expression<Func<string>> boardFields = null, Expression<Func<string>> fields = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> UpdateList(Expression<Func<string>> boardId, Expression<Func<string>> listId, Expression<Func<string>> name = null, Expression<Func<closedInput>> closed = null, Expression<Func<string>> idBoard = null, Expression<Func<posInput>> pos = null, Expression<Func<subscribedInput>> subscribed = null)
+        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> UpdateList(Expression<Func<string>> boardId, Expression<Func<string>> listId, Expression<Func<string>> name = null, Expression<Func<ClosedInput>> closed = null, Expression<Func<string>> idBoard = null, Expression<Func<PosInput>> pos = null, Expression<Func<SubscribedInput>> subscribed = null)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> AddCommentToCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<AddCommentToCardInput>> comment)
+        public IBodyWorkflowAction<Comment, ApiConnectionActionConfiguration> AddCommentToCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<CommentInput>> comment)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Board, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardInput>> board)
+        public IBodyWorkflowAction<Board, ApiConnectionActionConfiguration> CreateBoard(Expression<Func<CreateBoardBoardInput>> board)
         {
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             return new DeferredBodyAction<Board, ApiConnectionActionConfiguration>(() =>
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> CreateList(Expression<Func<CreateListInput>> list)
+        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> CreateList(Expression<Func<ListInput>> list)
         {
             var __workflow_list = WorkflowExpression.Compile(list, nameof(list), required: true);
             return new DeferredBodyAction<CreateListResponse, ApiConnectionActionConfiguration>(() =>
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card, ApiConnectionActionConfiguration> CreateCard(Expression<Func<string>> boardId, Expression<Func<CreateCardV2Input>> newCard)
+        public IBodyWorkflowAction<Card, ApiConnectionActionConfiguration> CreateCard(Expression<Func<string>> boardId, Expression<Func<NewCardInput>> newCard)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_newCard = WorkflowExpression.Compile(newCard, nameof(newCard), required: true);
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trello")]
-        public IBodyWorkflowAction<Card, ApiConnectionActionConfiguration> UpdateCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<UpdateCardV2Input>> updateCard)
+        public IBodyWorkflowAction<Card, ApiConnectionActionConfiguration> UpdateCard(Expression<Func<string>> boardId, Expression<Func<string>> cardId, Expression<Func<UpdateCardInput>> updateCard)
         {
             var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
@@ -721,7 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
                     },
                     Method = "post",
                 };
-                input.Subscribe.Body = new CreateOnBoardChangesSubscriptionInput().ToJToken();
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<CardInAction[]>(input);
             });
         }
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
                     Method = "post",
                 };
                 input.Subscribe.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
-                input.Subscribe.Body = new CreateOnListChangesSubscriptionInput().ToJToken();
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<CardInAction[]>(input);
             });
         }
@@ -905,7 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum checklistsInput
+    public enum ChecklistsInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -914,7 +914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterInput
+    public enum ListCardsFilterInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1157,7 +1157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum actionsFormatInput
+    public enum ActionsFormatInput
     {
         [EnumMember(Value = "count")]
         Count,
@@ -1231,7 +1231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cardsInput
+    public enum GetBoardCardsInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1246,7 +1246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cardChecklistsInput
+    public enum CardChecklistsInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1255,7 +1255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum boardStarsInput
+    public enum BoardStarsInput
     {
         [EnumMember(Value = "mine")]
         Mine,
@@ -1264,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum labelsInput
+    public enum LabelsInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1273,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum listsInput
+    public enum ListsInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1286,7 +1286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum membersInput
+    public enum MembersInput
     {
         [EnumMember(Value = "admins")]
         Admins,
@@ -1301,7 +1301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum membersInvitedInput
+    public enum MembersInvitedInput
     {
         [EnumMember(Value = "admin")]
         Admin,
@@ -1315,13 +1315,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Owners
     }
 
-    public class UpdateBoardInput
+    public class UpdateBoardBoardInput
     {
         [JsonProperty("name")]
         public string BoardName { get; set; }
 
         [JsonProperty("defaultLists")]
-        public UpdateBoardInputCreateDefaultListsType? CreateDefaultLists { get; set; }
+        public BoardInputCreateDefaultListsType? CreateDefaultLists { get; set; }
 
         [JsonProperty("desc")]
         public string BoardDescription { get; set; }
@@ -1330,32 +1330,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string TeamId { get; set; }
 
         [JsonProperty("prefs_permissionLevel")]
-        public UpdateBoardInputPermissionLevelType? PermissionLevel { get; set; }
+        public BoardInputPermissionLevelType? PermissionLevel { get; set; }
 
         [JsonProperty("prefs_comments")]
-        public UpdateBoardInputCommentPreferencesType? CommentPreferences { get; set; }
+        public BoardInputCommentPreferencesType? CommentPreferences { get; set; }
 
         [JsonProperty("prefs_invitations")]
-        public UpdateBoardInputInvitationPreferencesType? InvitationPreferences { get; set; }
+        public BoardInputInvitationPreferencesType? InvitationPreferences { get; set; }
 
         [JsonProperty("prefs_cardCovers")]
-        public UpdateBoardInputUseCardCoversType? UseCardCovers { get; set; }
+        public BoardInputUseCardCoversType? UseCardCovers { get; set; }
 
         [JsonProperty("prefs_background")]
-        public UpdateBoardInputBackgroundColorType? BackgroundColor { get; set; }
+        public BoardInputBackgroundColorType? BackgroundColor { get; set; }
 
         [JsonProperty("prefs_voting")]
-        public UpdateBoardInputVotingPowerUpPreferencesType? VotingPowerUpPreferences { get; set; }
+        public BoardInputVotingPowerUpPreferencesType? VotingPowerUpPreferences { get; set; }
 
         [JsonProperty("prefs_cardAging")]
-        public UpdateBoardInputCardAgingPowerUpPreferencesType? CardAgingPowerUpPreferences { get; set; }
+        public BoardInputCardAgingPowerUpPreferencesType? CardAgingPowerUpPreferences { get; set; }
 
         [JsonProperty("enable_calendar")]
-        public UpdateBoardInputEnableCalendarPowerUpType? EnableCalendarPowerUp { get; set; }
+        public BoardInputEnableCalendarPowerUpType? EnableCalendarPowerUp { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputCreateDefaultListsType
+    public enum BoardInputCreateDefaultListsType
     {
         [EnumMember(Value = "true")]
         True,
@@ -1364,7 +1364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputPermissionLevelType
+    public enum BoardInputPermissionLevelType
     {
         [EnumMember(Value = "org")]
         Org,
@@ -1375,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputCommentPreferencesType
+    public enum BoardInputCommentPreferencesType
     {
         [EnumMember(Value = "disabled")]
         Disabled,
@@ -1390,7 +1390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputInvitationPreferencesType
+    public enum BoardInputInvitationPreferencesType
     {
         [EnumMember(Value = "admins")]
         Admins,
@@ -1399,7 +1399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputUseCardCoversType
+    public enum BoardInputUseCardCoversType
     {
         [EnumMember(Value = "true")]
         True,
@@ -1408,7 +1408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputBackgroundColorType
+    public enum BoardInputBackgroundColorType
     {
         [EnumMember(Value = "blue")]
         Blue,
@@ -1431,7 +1431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputVotingPowerUpPreferencesType
+    public enum BoardInputVotingPowerUpPreferencesType
     {
         [EnumMember(Value = "disabled")]
         Disabled,
@@ -1446,7 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputCardAgingPowerUpPreferencesType
+    public enum BoardInputCardAgingPowerUpPreferencesType
     {
         [EnumMember(Value = "disabled")]
         Disabled,
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateBoardInputEnableCalendarPowerUpType
+    public enum BoardInputEnableCalendarPowerUpType
     {
         [EnumMember(Value = "true")]
         True,
@@ -1493,7 +1493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterInput2
+    public enum ListListsFilterInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1506,7 +1506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cardsInput2
+    public enum GetListCardsInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1534,7 +1534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum closedInput
+    public enum ClosedInput
     {
         [EnumMember(Value = "true")]
         True,
@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posInput
+    public enum PosInput
     {
         [EnumMember(Value = "top")]
         Top,
@@ -1552,7 +1552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum subscribedInput
+    public enum SubscribedInput
     {
         [EnumMember(Value = "true")]
         True,
@@ -1632,19 +1632,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string DatetimeCreated { get; set; }
     }
 
-    public class AddCommentToCardInput
+    public class CommentInput
     {
         [JsonProperty("text")]
         public string CommentText { get; set; }
     }
 
-    public class CreateBoardInput
+    public class CreateBoardBoardInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BoardName { get; set; }
 
         [JsonProperty("defaultLists")]
-        public CreateBoardInputCreateDefaultListsType? CreateDefaultLists { get; set; }
+        public BoardInputCreateDefaultListsType? CreateDefaultLists { get; set; }
 
         [JsonProperty("desc")]
         public string BoardDescription { get; set; }
@@ -1653,142 +1653,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string TeamId { get; set; }
 
         [JsonProperty("prefs_permissionLevel")]
-        public CreateBoardInputPermissionLevelType? PermissionLevel { get; set; }
+        public BoardInputPermissionLevelType? PermissionLevel { get; set; }
 
         [JsonProperty("prefs_comments")]
-        public CreateBoardInputCommentPreferencesType? CommentPreferences { get; set; }
+        public BoardInputCommentPreferencesType? CommentPreferences { get; set; }
 
         [JsonProperty("prefs_invitations")]
-        public CreateBoardInputInvitationPreferencesType? InvitationPreferences { get; set; }
+        public BoardInputInvitationPreferencesType? InvitationPreferences { get; set; }
 
         [JsonProperty("prefs_cardCovers")]
-        public CreateBoardInputUseCardCoversType? UseCardCovers { get; set; }
+        public BoardInputUseCardCoversType? UseCardCovers { get; set; }
 
         [JsonProperty("prefs_background")]
-        public CreateBoardInputBackgroundColorType? BackgroundColor { get; set; }
+        public BoardInputBackgroundColorType? BackgroundColor { get; set; }
 
         [JsonProperty("prefs_voting")]
-        public CreateBoardInputVotingPowerUpPreferencesType? VotingPowerUpPreferences { get; set; }
+        public BoardInputVotingPowerUpPreferencesType? VotingPowerUpPreferences { get; set; }
 
         [JsonProperty("prefs_cardAging")]
-        public CreateBoardInputCardAgingPowerUpPreferencesType? CardAgingPowerUpPreferences { get; set; }
+        public BoardInputCardAgingPowerUpPreferencesType? CardAgingPowerUpPreferences { get; set; }
 
         [JsonProperty("enable_calendar")]
-        public CreateBoardInputEnableCalendarPowerUpType? EnableCalendarPowerUp { get; set; }
+        public BoardInputEnableCalendarPowerUpType? EnableCalendarPowerUp { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputCreateDefaultListsType
-    {
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputPermissionLevelType
-    {
-        [EnumMember(Value = "org")]
-        Org,
-        [EnumMember(Value = "private")]
-        Private,
-        [EnumMember(Value = "public")]
-        Public
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputCommentPreferencesType
-    {
-        [EnumMember(Value = "disabled")]
-        Disabled,
-        [EnumMember(Value = "members")]
-        Members,
-        [EnumMember(Value = "observers")]
-        Observers,
-        [EnumMember(Value = "org")]
-        Org,
-        [EnumMember(Value = "public")]
-        Public
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputInvitationPreferencesType
-    {
-        [EnumMember(Value = "admins")]
-        Admins,
-        [EnumMember(Value = "members")]
-        Members
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputUseCardCoversType
-    {
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputBackgroundColorType
-    {
-        [EnumMember(Value = "blue")]
-        Blue,
-        [EnumMember(Value = "orange")]
-        Orange,
-        [EnumMember(Value = "green")]
-        Green,
-        [EnumMember(Value = "red")]
-        Red,
-        [EnumMember(Value = "purple")]
-        Purple,
-        [EnumMember(Value = "pink")]
-        Pink,
-        [EnumMember(Value = "lime")]
-        Lime,
-        [EnumMember(Value = "sky")]
-        Sky,
-        [EnumMember(Value = "grey")]
-        Grey
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputVotingPowerUpPreferencesType
-    {
-        [EnumMember(Value = "disabled")]
-        Disabled,
-        [EnumMember(Value = "members")]
-        Members,
-        [EnumMember(Value = "observers")]
-        Observers,
-        [EnumMember(Value = "org")]
-        Org,
-        [EnumMember(Value = "public")]
-        Public
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputCardAgingPowerUpPreferencesType
-    {
-        [EnumMember(Value = "disabled")]
-        Disabled,
-        [EnumMember(Value = "pirate")]
-        Pirate,
-        [EnumMember(Value = "regular")]
-        Regular
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateBoardInputEnableCalendarPowerUpType
-    {
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
-    public class CreateListInput
+    public class ListInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
@@ -1797,14 +1686,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string BoardId { get; set; }
 
         [JsonProperty("pos")]
-        public CreateListInputListPositionType? ListPosition { get; set; }
+        public ListInputListPositionType? ListPosition { get; set; }
 
         [JsonProperty("idListSource")]
         public string ListSource { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateListInputListPositionType
+    public enum ListInputListPositionType
     {
         [EnumMember(Value = "top")]
         Top,
@@ -1812,7 +1701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Bottom
     }
 
-    public class CreateCardV2Input
+    public class NewCardInput
     {
         [JsonProperty("idList", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentListId { get; set; }
@@ -1824,7 +1713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string CardDescription { get; set; }
 
         [JsonProperty("pos")]
-        public CreateCardV2InputCardPositionType? CardPosition { get; set; }
+        public NewCardInputCardPositionType? CardPosition { get; set; }
 
         [JsonProperty("idMembersArray")]
         public string[] MemberIds { get; set; }
@@ -1849,7 +1738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCardV2InputCardPositionType
+    public enum NewCardInputCardPositionType
     {
         [EnumMember(Value = "top")]
         Top,
@@ -1857,7 +1746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Bottom
     }
 
-    public class UpdateCardV2Input
+    public class UpdateCardInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1908,13 +1797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string CardDueDate { get; set; }
     }
 
-    public class CreateOnBoardChangesSubscriptionInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateOnListChangesSubscriptionInput
+    public class SubscriptionInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";

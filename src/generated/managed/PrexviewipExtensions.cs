@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
     public class PrexviewipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prexviewip")]
-        public IBodyWorkflowAction<TransformPostResponse, ApiConnectionActionConfiguration> Transform(Expression<Func<TransformPostInput>> body)
+        public IBodyWorkflowAction<TransformResponse, ApiConnectionActionConfiguration> Transform(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<TransformPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TransformResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/transform";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TransformPostResponse>(callPayload);
+                return new ApiConnectionAction<TransformResponse>(callPayload);
             });
         }
     }
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
     {
     }
 
-    public class TransformPostResponse
+    public class TransformResponse
     {
         [JsonProperty("$content-type")]
         public string ContentType { get; set; }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
         public string Content { get; set; }
     }
 
-    public class TransformPostInput
+    public class BodyInput
     {
         [JsonProperty("xml")]
         public string Xml { get; set; }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
         public string Json { get; set; }
 
         [JsonProperty("output", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TransformPostInputOutputType Output { get; set; } = TransformPostInputOutputType.Pdf;
+        public BodyInputOutputType Output { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip.BodyInputOutputType.Pdf;
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Template { get; set; }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TransformPostInputOutputType
+    public enum BodyInputOutputType
     {
         [EnumMember(Value = "pdf")]
         Pdf,

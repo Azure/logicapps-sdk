@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 
     public class SigninghubwebhooksTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeTrigger(Expression<Func<WebhookSubscribeTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookSubscribeTrigger(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -42,17 +42,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
         }
     }
 
-    public class WebhookSubscribeTriggerInput
+    public class BodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookSubscribeTriggerInputEventTypeType EventType { get; set; }
+        public BodyInputEventTypeType EventType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WebhookSubscribeTriggerInputEventTypeType
+    public enum BodyInputEventTypeType
     {
         SHARED,
         SIGNED,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
     public class OqshaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<CreateIncidentResponse, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<CreateIncidentInput>> body = null)
+        public IBodyWorkflowAction<CreateIncidentResponse, ApiConnectionActionConfiguration> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<CreateIncidentBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
-        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> contentType = null, Expression<Func<LoginInput>> body = null)
+        public IBodyWorkflowAction<LoginResponse, ApiConnectionActionConfiguration> Login(Expression<Func<string>> contentType = null, Expression<Func<LoginBodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         public int OrgOwnerId { get; set; }
     }
 
-    public class CreateIncidentInput
+    public class CreateIncidentBodyInput
     {
         public string Location { get; set; }
         public string LocationId { get; set; }
@@ -111,10 +111,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         public string DivisionId { get; set; }
         public string UserId { get; set; }
         public bool? AnonymouslyReported { get; set; }
-        public CreateIncidentInputCheckListDataTypeItem[] CheckListData { get; set; }
+        public BodyInputCheckListDataTypeItem[] CheckListData { get; set; }
     }
 
-    public class CreateIncidentInputCheckListDataTypeItem
+    public class BodyInputCheckListDataTypeItem
     {
         [JsonProperty("checkListId")]
         public string CheckListId { get; set; }
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         public bool Enabled { get; set; }
     }
 
-    public class LoginInput
+    public class LoginBodyInput
     {
         public string UserUid { get; set; }
         public string AppPassword { get; set; }

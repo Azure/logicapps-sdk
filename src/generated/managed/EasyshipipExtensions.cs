@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
     public class EasyshipipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
-        public IBodyWorkflowAction<GetRatesTaxesResponse, ApiConnectionActionConfiguration> GetRatesTaxes(Expression<Func<GetRatesTaxesInput>> body)
+        public IBodyWorkflowAction<GetRatesTaxesResponse, ApiConnectionActionConfiguration> GetRatesTaxes(Expression<Func<GetRatesTaxesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetRatesTaxesResponse, ApiConnectionActionConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
-        public IBodyWorkflowAction<CreateAShipmentResponse, ApiConnectionActionConfiguration> CreateAShipment(Expression<Func<CreateAShipmentInput>> body)
+        public IBodyWorkflowAction<CreateAShipmentResponse, ApiConnectionActionConfiguration> CreateAShipment(Expression<Func<CreateAShipmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAShipmentResponse, ApiConnectionActionConfiguration>(() =>
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
-        public IBodyWorkflowAction<BuyAShipmentLabelResponse, ApiConnectionActionConfiguration> BuyAShipmentLabel(Expression<Func<BuyAShipmentLabelInput>> body)
+        public IBodyWorkflowAction<BuyAShipmentLabelResponse, ApiConnectionActionConfiguration> BuyAShipmentLabel(Expression<Func<BuyAShipmentLabelBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BuyAShipmentLabelResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
-        public IBodyWorkflowAction<UpdateAShipmentResponse, ApiConnectionActionConfiguration> UpdateAShipment(Expression<Func<string>> easyshipShipmentId, Expression<Func<UpdateAShipmentInput>> body)
+        public IBodyWorkflowAction<UpdateAShipmentResponse, ApiConnectionActionConfiguration> UpdateAShipment(Expression<Func<string>> easyshipShipmentId, Expression<Func<UpdateAShipmentBodyInput>> body)
         {
             var __workflow_easyshipShipmentId = WorkflowExpression.Compile(easyshipShipmentId, nameof(easyshipShipmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
-        public IBodyWorkflowAction<UpdateWarehouseStateResponse, ApiConnectionActionConfiguration> UpdateWarehouseState(Expression<Func<UpdateWarehouseStateInput>> body)
+        public IBodyWorkflowAction<UpdateWarehouseStateResponse, ApiConnectionActionConfiguration> UpdateWarehouseState(Expression<Func<UpdateWarehouseStateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateWarehouseStateResponse, ApiConnectionActionConfiguration>(() =>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyshipip")]
-        public IBodyWorkflowAction<RequestAPickupResponse, ApiConnectionActionConfiguration> RequestAPickup(Expression<Func<RequestAPickupInput>> body)
+        public IBodyWorkflowAction<RequestAPickupResponse, ApiConnectionActionConfiguration> RequestAPickup(Expression<Func<RequestAPickupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RequestAPickupResponse, ApiConnectionActionConfiguration>(() =>
@@ -394,31 +394,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public int Height { get; set; }
     }
 
-    public class GetRatesTaxesInput
+    public class GetRatesTaxesBodyInput
     {
         [JsonProperty("origin_address")]
-        public GetRatesTaxesInputOriginAddressType OriginAddress { get; set; }
+        public GetRatesTaxesBodyInputOriginAddressType OriginAddress { get; set; }
 
         [JsonProperty("destination_address")]
-        public GetRatesTaxesInputDestinationAddressType DestinationAddress { get; set; }
+        public GetRatesTaxesBodyInputDestinationAddressType DestinationAddress { get; set; }
 
         [JsonProperty("incoterms")]
         public string Incoterms { get; set; }
 
         [JsonProperty("insurance")]
-        public GetRatesTaxesInputInsuranceType Insurance { get; set; }
+        public BodyInputInsuranceType Insurance { get; set; }
 
         [JsonProperty("courier_selection")]
-        public GetRatesTaxesInputCourierSelectionType CourierSelection { get; set; }
+        public GetRatesTaxesBodyInputCourierSelectionType CourierSelection { get; set; }
 
         [JsonProperty("shipping_settings")]
-        public GetRatesTaxesInputShippingSettingsType ShippingSettings { get; set; }
+        public GetRatesTaxesBodyInputShippingSettingsType ShippingSettings { get; set; }
 
         [JsonProperty("parcels")]
-        public GetRatesTaxesInputParcelsTypeItem[] Parcels { get; set; }
+        public BodyInputParcelsTypeItem[] Parcels { get; set; }
     }
 
-    public class GetRatesTaxesInputOriginAddressType
+    public class GetRatesTaxesBodyInputOriginAddressType
     {
         [JsonProperty("line_1")]
         public string Line1 { get; set; }
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string CountryAlpha2 { get; set; }
     }
 
-    public class GetRatesTaxesInputDestinationAddressType
+    public class GetRatesTaxesBodyInputDestinationAddressType
     {
         [JsonProperty("line_1")]
         public string Line1 { get; set; }
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string CountryAlpha2 { get; set; }
     }
 
-    public class GetRatesTaxesInputInsuranceType
+    public class BodyInputInsuranceType
     {
         [JsonProperty("is_insured")]
         public bool? IsInsured { get; set; }
@@ -472,22 +472,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string InsuredCurrency { get; set; }
     }
 
-    public class GetRatesTaxesInputCourierSelectionType
+    public class GetRatesTaxesBodyInputCourierSelectionType
     {
         [JsonProperty("apply_shipping_rules")]
         public bool? ApplyShippingRules { get; set; }
     }
 
-    public class GetRatesTaxesInputShippingSettingsType
+    public class GetRatesTaxesBodyInputShippingSettingsType
     {
         [JsonProperty("units")]
-        public GetRatesTaxesInputShippingSettingsTypeUnitsType Units { get; set; }
+        public BodyInputShippingSettingsTypeUnitsType Units { get; set; }
 
         [JsonProperty("output_currency")]
         public string OutputCurrency { get; set; }
     }
 
-    public class GetRatesTaxesInputShippingSettingsTypeUnitsType
+    public class BodyInputShippingSettingsTypeUnitsType
     {
         [JsonProperty("weight")]
         public string Weight { get; set; }
@@ -496,19 +496,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string Dimensions { get; set; }
     }
 
-    public class GetRatesTaxesInputParcelsTypeItem
+    public class BodyInputParcelsTypeItem
     {
         [JsonProperty("total_actual_weight")]
         public double? TotalActualWeight { get; set; }
 
         [JsonProperty("box")]
-        public GetRatesTaxesInputParcelsTypeItemBoxType Box { get; set; }
+        public BodyInputParcelsTypeItemBoxType Box { get; set; }
 
         [JsonProperty("items")]
-        public GetRatesTaxesInputParcelsTypeItemItemsTypeItem[] Items { get; set; }
+        public BodyInputParcelsTypeItemItemsTypeItem[] Items { get; set; }
     }
 
-    public class GetRatesTaxesInputParcelsTypeItemBoxType
+    public class BodyInputParcelsTypeItemBoxType
     {
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public int? Height { get; set; }
     }
 
-    public class GetRatesTaxesInputParcelsTypeItemItemsTypeItem
+    public class BodyInputParcelsTypeItemItemsTypeItem
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public int? Quantity { get; set; }
 
         [JsonProperty("dimensions")]
-        public GetRatesTaxesInputParcelsTypeItemItemsTypeItemDimensionsType Dimensions { get; set; }
+        public BodyInputParcelsTypeItemItemsTypeItemDimensionsType Dimensions { get; set; }
 
         [JsonProperty("actual_weight")]
         public int? ActualWeight { get; set; }
@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public int? DeclaredCustomsValue { get; set; }
     }
 
-    public class GetRatesTaxesInputParcelsTypeItemItemsTypeItemDimensionsType
+    public class BodyInputParcelsTypeItemItemsTypeItemDimensionsType
     {
         [JsonProperty("length")]
         public string Length { get; set; }
@@ -1603,19 +1603,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string Percentage { get; set; }
     }
 
-    public class CreateAShipmentInput
+    public class CreateAShipmentBodyInput
     {
         [JsonProperty("origin_address")]
-        public CreateAShipmentInputOriginAddressType OriginAddress { get; set; }
+        public CreateAShipmentBodyInputOriginAddressType OriginAddress { get; set; }
 
         [JsonProperty("sender_address")]
-        public CreateAShipmentInputSenderAddressType SenderAddress { get; set; }
+        public BodyInputSenderAddressType SenderAddress { get; set; }
 
         [JsonProperty("return_address")]
-        public CreateAShipmentInputReturnAddressType ReturnAddress { get; set; }
+        public BodyInputReturnAddressType ReturnAddress { get; set; }
 
         [JsonProperty("destination_address")]
-        public CreateAShipmentInputDestinationAddressType DestinationAddress { get; set; }
+        public CreateAShipmentBodyInputDestinationAddressType DestinationAddress { get; set; }
 
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
@@ -1633,22 +1633,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string Incoterms { get; set; }
 
         [JsonProperty("insurance")]
-        public CreateAShipmentInputInsuranceType Insurance { get; set; }
+        public BodyInputInsuranceType Insurance { get; set; }
 
         [JsonProperty("order_data")]
-        public CreateAShipmentInputOrderDataType OrderData { get; set; }
+        public BodyInputOrderDataType OrderData { get; set; }
 
         [JsonProperty("courier_selection")]
-        public CreateAShipmentInputCourierSelectionType CourierSelection { get; set; }
+        public CreateAShipmentBodyInputCourierSelectionType CourierSelection { get; set; }
 
         [JsonProperty("shipping_settings")]
-        public CreateAShipmentInputShippingSettingsType ShippingSettings { get; set; }
+        public CreateAShipmentBodyInputShippingSettingsType ShippingSettings { get; set; }
 
         [JsonProperty("parcels")]
-        public CreateAShipmentInputParcelsTypeItem[] Parcels { get; set; }
+        public BodyInputParcelsTypeItem[] Parcels { get; set; }
     }
 
-    public class CreateAShipmentInputOriginAddressType
+    public class CreateAShipmentBodyInputOriginAddressType
     {
         [JsonProperty("line_1")]
         public string Line1 { get; set; }
@@ -1681,7 +1681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string ContactEmail { get; set; }
     }
 
-    public class CreateAShipmentInputSenderAddressType
+    public class BodyInputSenderAddressType
     {
         [JsonProperty("line_1")]
         public string Line1 { get; set; }
@@ -1714,7 +1714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string ContactEmail { get; set; }
     }
 
-    public class CreateAShipmentInputReturnAddressType
+    public class BodyInputReturnAddressType
     {
         [JsonProperty("line_1")]
         public string Line1 { get; set; }
@@ -1747,7 +1747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string ContactEmail { get; set; }
     }
 
-    public class CreateAShipmentInputDestinationAddressType
+    public class CreateAShipmentBodyInputDestinationAddressType
     {
         [JsonProperty("line_1")]
         public string Line1 { get; set; }
@@ -1780,19 +1780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string ContactEmail { get; set; }
     }
 
-    public class CreateAShipmentInputInsuranceType
-    {
-        [JsonProperty("is_insured")]
-        public bool? IsInsured { get; set; }
-
-        [JsonProperty("insured_amount")]
-        public int? InsuredAmount { get; set; }
-
-        [JsonProperty("insured_currency")]
-        public string InsuredCurrency { get; set; }
-    }
-
-    public class CreateAShipmentInputOrderDataType
+    public class BodyInputOrderDataType
     {
         [JsonProperty("platform_name")]
         public string PlatformName { get; set; }
@@ -1810,7 +1798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string BuyerNotes { get; set; }
     }
 
-    public class CreateAShipmentInputCourierSelectionType
+    public class CreateAShipmentBodyInputCourierSelectionType
     {
         [JsonProperty("selected_courier_id")]
         public string SelectedCourierId { get; set; }
@@ -1822,13 +1810,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public bool? ApplyShippingRules { get; set; }
     }
 
-    public class CreateAShipmentInputShippingSettingsType
+    public class CreateAShipmentBodyInputShippingSettingsType
     {
         [JsonProperty("units")]
-        public CreateAShipmentInputShippingSettingsTypeUnitsType Units { get; set; }
+        public BodyInputShippingSettingsTypeUnitsType Units { get; set; }
 
         [JsonProperty("printing_options")]
-        public CreateAShipmentInputShippingSettingsTypePrintingOptionsType PrintingOptions { get; set; }
+        public BodyInputShippingSettingsTypePrintingOptionsType PrintingOptions { get; set; }
 
         [JsonProperty("buy_label")]
         public bool? BuyLabel { get; set; }
@@ -1837,16 +1825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public bool? BuyLabelSynchronous { get; set; }
     }
 
-    public class CreateAShipmentInputShippingSettingsTypeUnitsType
-    {
-        [JsonProperty("weight")]
-        public string Weight { get; set; }
-
-        [JsonProperty("dimensions")]
-        public string Dimensions { get; set; }
-    }
-
-    public class CreateAShipmentInputShippingSettingsTypePrintingOptionsType
+    public class BodyInputShippingSettingsTypePrintingOptionsType
     {
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -1859,72 +1838,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
 
         [JsonProperty("packing_slip")]
         public string PackingSlip { get; set; }
-    }
-
-    public class CreateAShipmentInputParcelsTypeItem
-    {
-        [JsonProperty("total_actual_weight")]
-        public double? TotalActualWeight { get; set; }
-
-        [JsonProperty("box")]
-        public CreateAShipmentInputParcelsTypeItemBoxType Box { get; set; }
-
-        [JsonProperty("items")]
-        public CreateAShipmentInputParcelsTypeItemItemsTypeItem[] Items { get; set; }
-    }
-
-    public class CreateAShipmentInputParcelsTypeItemBoxType
-    {
-        [JsonProperty("slug")]
-        public string Slug { get; set; }
-
-        [JsonProperty("length")]
-        public int? Length { get; set; }
-
-        [JsonProperty("width")]
-        public int? Width { get; set; }
-
-        [JsonProperty("height")]
-        public int? Height { get; set; }
-    }
-
-    public class CreateAShipmentInputParcelsTypeItemItemsTypeItem
-    {
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("category")]
-        public string Category { get; set; }
-
-        [JsonProperty("sku")]
-        public string Sku { get; set; }
-
-        [JsonProperty("quantity")]
-        public int? Quantity { get; set; }
-
-        [JsonProperty("dimensions")]
-        public CreateAShipmentInputParcelsTypeItemItemsTypeItemDimensionsType Dimensions { get; set; }
-
-        [JsonProperty("actual_weight")]
-        public int? ActualWeight { get; set; }
-
-        [JsonProperty("declared_currency")]
-        public string DeclaredCurrency { get; set; }
-
-        [JsonProperty("declared_customs_value")]
-        public int? DeclaredCustomsValue { get; set; }
-    }
-
-    public class CreateAShipmentInputParcelsTypeItemItemsTypeItemDimensionsType
-    {
-        [JsonProperty("length")]
-        public string Length { get; set; }
-
-        [JsonProperty("width")]
-        public string Width { get; set; }
-
-        [JsonProperty("height")]
-        public string Height { get; set; }
     }
 
     public class BuyAShipmentLabelResponse
@@ -1966,13 +1879,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string TrackingPageUrl { get; set; }
     }
 
-    public class BuyAShipmentLabelInput
+    public class BuyAShipmentLabelBodyInput
     {
         [JsonProperty("shipments")]
-        public BuyAShipmentLabelInputShipmentsTypeItem[] Shipments { get; set; }
+        public BuyAShipmentLabelBodyInputShipmentsTypeItem[] Shipments { get; set; }
     }
 
-    public class BuyAShipmentLabelInputShipmentsTypeItem
+    public class BuyAShipmentLabelBodyInputShipmentsTypeItem
     {
         [JsonProperty("easyship_shipment_id")]
         public string EasyshipShipmentId { get; set; }
@@ -2299,7 +2212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string PaymentRecipient { get; set; }
     }
 
-    public class UpdateAShipmentInput
+    public class UpdateAShipmentBodyInput
     {
         [JsonProperty("destination_country_alpha2")]
         public string DestinationCountryAlpha2 { get; set; }
@@ -2317,7 +2230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string DestinationPhoneNumber { get; set; }
 
         [JsonProperty("items")]
-        public UpdateAShipmentInputItemsTypeItem[] Items { get; set; }
+        public BodyInputItemsTypeItem[] Items { get; set; }
 
         [JsonProperty("platform_name")]
         public string PlatformName { get; set; }
@@ -2347,7 +2260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string DestinationEmailAddress { get; set; }
     }
 
-    public class UpdateAShipmentInputItemsTypeItem
+    public class BodyInputItemsTypeItem
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -2737,13 +2650,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string WarehouseStateUpdated { get; set; }
     }
 
-    public class UpdateWarehouseStateInput
+    public class UpdateWarehouseStateBodyInput
     {
         [JsonProperty("shipments")]
-        public UpdateWarehouseStateInputShipmentsTypeItem[] Shipments { get; set; }
+        public UpdateWarehouseStateBodyInputShipmentsTypeItem[] Shipments { get; set; }
     }
 
-    public class UpdateWarehouseStateInputShipmentsTypeItem
+    public class UpdateWarehouseStateBodyInputShipmentsTypeItem
     {
         [JsonProperty("easyship_shipment_id")]
         public string EasyshipShipmentId { get; set; }
@@ -2755,10 +2668,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string Message { get; set; }
 
         [JsonProperty("metadata")]
-        public UpdateWarehouseStateInputShipmentsTypeItemMetadataType Metadata { get; set; }
+        public BodyInputShipmentsTypeItemMetadataType Metadata { get; set; }
     }
 
-    public class UpdateWarehouseStateInputShipmentsTypeItemMetadataType
+    public class BodyInputShipmentsTypeItemMetadataType
     {
         [JsonProperty("serial_number")]
         public string SerialNumber { get; set; }
@@ -2878,7 +2791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyshipip
         public string ContactName { get; set; }
     }
 
-    public class RequestAPickupInput
+    public class RequestAPickupBodyInput
     {
         [JsonProperty("courier_id")]
         public string CourierId { get; set; }

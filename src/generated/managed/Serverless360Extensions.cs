@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
     public class Serverless360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveActivity(Expression<Func<ArchiveActivityInput>> body, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360StageActivityId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ArchiveActivity(Expression<Func<BodyInput>> body, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360StageActivityId)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IBodyWorkflowAction<StartActivityResponse, ApiConnectionActionConfiguration> StartActivity(Expression<Func<StartActivityInput>> body, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360MainActivityId = null, Expression<Func<string>> sL360PreviousStage = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null, Expression<Func<string>> sL360BatchId = null)
+        public IBodyWorkflowAction<StartActivityResponse, ApiConnectionActionConfiguration> StartActivity(Expression<Func<BodyInput>> body, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<string>> sL360MainActivityId = null, Expression<Func<string>> sL360PreviousStage = null, Expression<Func<SL360ArchiveMessageInput>> sL360ArchiveMessage = null, Expression<Func<string>> sL360BatchId = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_sL360BusinessProcess = WorkflowExpression.Compile(sL360BusinessProcess, nameof(sL360BusinessProcess), required: true);
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serverless360")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<UpdateActivityInput>> body, Expression<Func<string>> sL360MainActivityId, Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<sL360StatusInput>> sL360Status = null, Expression<Func<sL360ArchiveMessageInput>> sL360ArchiveMessage = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<BodyInput>> body, Expression<Func<string>> sL360MainActivityId, Expression<Func<string>> sL360StageActivityId, Expression<Func<string>> sL360BusinessProcess, Expression<Func<string>> sL360BusinessTransaction, Expression<Func<string>> sL360CurrentStage, Expression<Func<SL360StatusInput>> sL360Status = null, Expression<Func<SL360ArchiveMessageInput>> sL360ArchiveMessage = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_sL360MainActivityId = WorkflowExpression.Compile(sL360MainActivityId, nameof(sL360MainActivityId), required: true);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
     {
     }
 
-    public class ArchiveActivityInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken MessageBody { get; set; }
@@ -137,33 +137,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         public string StageActivityId { get; set; }
     }
 
-    public class StartActivityInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken MessageBody { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken MessageHeader { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sL360ArchiveMessageInput
+    public enum SL360ArchiveMessageInput
     {
         True,
         False
     }
 
-    public class UpdateActivityInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken MessageBody { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken MessageHeader { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sL360StatusInput
+    public enum SL360StatusInput
     {
         Success,
         Failure,

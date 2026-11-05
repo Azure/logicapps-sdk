@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
     public class Itoc360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itoc360")]
-        public IBodyWorkflowAction<SendEventResponse, ApiConnectionActionConfiguration> SendEvent(Expression<Func<SendEventInput>> body)
+        public IBodyWorkflowAction<SendEventResponse, ApiConnectionActionConfiguration> SendEvent(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendEventResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,10 +58,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
         public string Fingerprint { get; set; }
     }
 
-    public class SendEventInput
+    public class BodyInput
     {
         [JsonProperty("event_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEventInputEventTypeType EventType { get; set; } = SendEventInputEventTypeType.Alert;
+        public BodyInputEventTypeType EventType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360.BodyInputEventTypeType.Alert;
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
         public string Host { get; set; }
 
         [JsonProperty("severity", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEventInputSeverityType Severity { get; set; } = SendEventInputSeverityType.Medium;
+        public BodyInputSeverityType Severity { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360.BodyInputSeverityType.Medium;
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendEventInputEventTypeType
+    public enum BodyInputEventTypeType
     {
         [EnumMember(Value = "alert")]
         Alert,
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itoc360
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendEventInputSeverityType
+    public enum BodyInputSeverityType
     {
         [EnumMember(Value = "critical")]
         Critical,

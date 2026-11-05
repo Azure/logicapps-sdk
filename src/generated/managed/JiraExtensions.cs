@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTransition(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<UpdateTransitionInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTransition(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<UpdateTransitionBodyInput>> body)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_issueIdOrKey = WorkflowExpression.Compile(issueIdOrKey, nameof(issueIdOrKey), required: true);
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpJiraIssueManagement(Expression<Func<McpJiraIssueManagementInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpJiraIssueManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueKey, Expression<Func<AddCommentV2Input>> body)
+        public IBodyWorkflowAction<CommentResponse, ApiConnectionActionConfiguration> AddComment(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueKey, Expression<Func<AddCommentBodyInput>> body)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_issueKey = WorkflowExpression.Compile(issueKey, nameof(issueKey), required: true);
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<CreateProjectV2Input>> project)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<ProjectInput>> project)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateProjectCategory(Expression<Func<string>> xRequestJirainstance, Expression<Func<CreateProjectCategoryV2Input>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateProjectCategory(Expression<Func<string>> xRequestJirainstance, Expression<Func<CreateProjectCategoryBodyInput>> body = null)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditIssue(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<bool>> notifyUsers = null, Expression<Func<bool>> overrideScreenSecurity = null, Expression<Func<bool>> overrideEditableFlag = null, Expression<Func<EditIssueV2Input>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditIssue(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> issueIdOrKey, Expression<Func<bool>> notifyUsers = null, Expression<Func<bool>> overrideScreenSecurity = null, Expression<Func<bool>> overrideEditableFlag = null, Expression<Func<EditIssueBodyInput>> body = null)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_issueIdOrKey = WorkflowExpression.Compile(issueIdOrKey, nameof(issueIdOrKey), required: true);
@@ -248,16 +248,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IBodyWorkflowAction<GetAllProjectCategoriesV2ResponseItem[], ApiConnectionActionConfiguration> GetAllProjectCategories(Expression<Func<string>> xRequestJirainstance)
+        public IBodyWorkflowAction<GetAllProjectCategoriesResponseItem[], ApiConnectionActionConfiguration> GetAllProjectCategories(Expression<Func<string>> xRequestJirainstance)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
-            return new DeferredBodyAction<GetAllProjectCategoriesV2ResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetAllProjectCategoriesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/projectCategory";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["X-Request-Jirainstance"] = ExpressionConverter.Convert(__workflow_xRequestJirainstance);
-                return new ApiConnectionAction<GetAllProjectCategoriesV2ResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetAllProjectCategoriesResponseItem[]>(callPayload);
             });
         }
 
@@ -370,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jira")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> projectIdOrKey, Expression<Func<UpdateProjectV2Input>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProject(Expression<Func<string>> xRequestJirainstance, Expression<Func<string>> projectIdOrKey, Expression<Func<UpdateProjectBodyInput>> body = null)
         {
             var __workflow_xRequestJirainstance = WorkflowExpression.Compile(xRequestJirainstance, nameof(xRequestJirainstance), required: true);
             var __workflow_projectIdOrKey = WorkflowExpression.Compile(projectIdOrKey, nameof(projectIdOrKey), required: true);
@@ -553,67 +553,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Name { get; set; }
     }
 
-    public class UpdateTransitionInput
+    public class UpdateTransitionBodyInput
     {
         [JsonProperty("fields")]
-        public UpdateTransitionInputFieldsType Fields { get; set; }
+        public BodyInputFieldsType Fields { get; set; }
 
         [JsonProperty("historyMetadata")]
-        public UpdateTransitionInputHistoryMetadataType HistoryMetadata { get; set; }
+        public UpdateTransitionBodyInputHistoryMetadataType HistoryMetadata { get; set; }
 
         [JsonProperty("transition")]
-        public UpdateTransitionInputTransitionType Transition { get; set; }
+        public UpdateTransitionBodyInputTransitionType Transition { get; set; }
 
         [JsonProperty("update")]
-        public UpdateTransitionInputUpdateType Update { get; set; }
+        public BodyInputUpdateType Update { get; set; }
     }
 
-    public class UpdateTransitionInputFieldsType
+    public class BodyInputFieldsType
     {
         [JsonProperty("assignee")]
-        public UpdateTransitionInputFieldsTypeAssigneeType Assignee { get; set; }
+        public BodyInputFieldsTypeAssigneeType Assignee { get; set; }
 
         [JsonProperty("resolution")]
-        public UpdateTransitionInputFieldsTypeResolutionType Resolution { get; set; }
+        public BodyInputFieldsTypeResolutionType Resolution { get; set; }
     }
 
-    public class UpdateTransitionInputFieldsTypeAssigneeType
+    public class BodyInputFieldsTypeAssigneeType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class UpdateTransitionInputFieldsTypeResolutionType
+    public class BodyInputFieldsTypeResolutionType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class UpdateTransitionInputHistoryMetadataType
+    public class UpdateTransitionBodyInputHistoryMetadataType
     {
         [JsonProperty("activityDescription")]
         public string ActivityDescription { get; set; }
 
         [JsonProperty("actor")]
-        public UpdateTransitionInputHistoryMetadataTypeActorType Actor { get; set; }
+        public UpdateTransitionBodyInputHistoryMetadataTypeActorType Actor { get; set; }
 
         [JsonProperty("cause")]
-        public UpdateTransitionInputHistoryMetadataTypeCauseType Cause { get; set; }
+        public UpdateTransitionBodyInputHistoryMetadataTypeCauseType Cause { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
         [JsonProperty("extraData")]
-        public UpdateTransitionInputHistoryMetadataTypeExtraDataType ExtraData { get; set; }
+        public BodyInputHistoryMetadataTypeExtraDataType ExtraData { get; set; }
 
         [JsonProperty("generator")]
-        public UpdateTransitionInputHistoryMetadataTypeGeneratorType Generator { get; set; }
+        public UpdateTransitionBodyInputHistoryMetadataTypeGeneratorType Generator { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
     }
 
-    public class UpdateTransitionInputHistoryMetadataTypeActorType
+    public class UpdateTransitionBodyInputHistoryMetadataTypeActorType
     {
         [JsonProperty("avatarUrl")]
         public string AvatarUrl { get; set; }
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Url { get; set; }
     }
 
-    public class UpdateTransitionInputHistoryMetadataTypeCauseType
+    public class UpdateTransitionBodyInputHistoryMetadataTypeCauseType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -640,13 +640,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Type { get; set; }
     }
 
-    public class UpdateTransitionInputHistoryMetadataTypeExtraDataType
+    public class BodyInputHistoryMetadataTypeExtraDataType
     {
         public string Iteration { get; set; }
         public string Step { get; set; }
     }
 
-    public class UpdateTransitionInputHistoryMetadataTypeGeneratorType
+    public class UpdateTransitionBodyInputHistoryMetadataTypeGeneratorType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -655,25 +655,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Type { get; set; }
     }
 
-    public class UpdateTransitionInputTransitionType
+    public class UpdateTransitionBodyInputTransitionType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class UpdateTransitionInputUpdateType
+    public class BodyInputUpdateType
     {
         [JsonProperty("comment")]
-        public UpdateTransitionInputUpdateTypeCommentTypeItem[] Comment { get; set; }
+        public BodyInputUpdateTypeCommentTypeItem[] Comment { get; set; }
     }
 
-    public class UpdateTransitionInputUpdateTypeCommentTypeItem
+    public class BodyInputUpdateTypeCommentTypeItem
     {
         [JsonProperty("add")]
-        public UpdateTransitionInputUpdateTypeCommentTypeItemAddType Add { get; set; }
+        public BodyInputUpdateTypeCommentTypeItemAddType Add { get; set; }
     }
 
-    public class UpdateTransitionInputUpdateTypeCommentTypeItemAddType
+    public class BodyInputUpdateTypeCommentTypeItemAddType
     {
         [JsonProperty("body")]
         public string Body { get; set; }
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public JToken Error { get; set; }
     }
 
-    public class McpJiraIssueManagementInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string CreatedDateTime { get; set; }
     }
 
-    public class AddCommentV2Input
+    public class AddCommentBodyInput
     {
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Comment { get; set; }
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string ProjectKey { get; set; }
     }
 
-    public class CreateProjectV2Input
+    public class ProjectInput
     {
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectKey { get; set; }
@@ -766,7 +766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Name { get; set; }
 
         [JsonProperty("projectTypeKey", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectV2InputTypeType Type { get; set; }
+        public ProjectInputTypeType Type { get; set; }
 
         [JsonProperty("leadAccountId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LeadId { get; set; }
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateProjectV2InputTypeType
+    public enum ProjectInputTypeType
     {
         [EnumMember(Value = "Software - Scrum software development")]
         SoftwareScrumSoftwareDevelopment,
@@ -792,7 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         BusinessProcessManagement
     }
 
-    public class CreateProjectCategoryV2Input
+    public class CreateProjectCategoryBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -801,10 +801,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string Description { get; set; }
     }
 
-    public class EditIssueV2Input
+    public class EditIssueBodyInput
     {
         [JsonProperty("transition")]
-        public EditIssueV2InputTransitionType Transition { get; set; }
+        public EditIssueBodyInputTransitionType Transition { get; set; }
 
         [JsonProperty("fields")]
         public JToken Fields { get; set; }
@@ -813,13 +813,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public JToken Update { get; set; }
 
         [JsonProperty("historyMetadata")]
-        public EditIssueV2InputHistoryMetadataType HistoryMetadata { get; set; }
+        public EditIssueBodyInputHistoryMetadataType HistoryMetadata { get; set; }
 
         [JsonProperty("properties")]
-        public EditIssueV2InputPropertiesTypeItem[] Properties { get; set; }
+        public BodyInputPropertiesTypeItem[] Properties { get; set; }
     }
 
-    public class EditIssueV2InputTransitionType
+    public class EditIssueBodyInputTransitionType
     {
         [JsonProperty("id")]
         public string TransitionId { get; set; }
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string TransitionLooped { get; set; }
     }
 
-    public class EditIssueV2InputHistoryMetadataType
+    public class EditIssueBodyInputHistoryMetadataType
     {
         [JsonProperty("type")]
         public string MetadataType { get; set; }
@@ -852,19 +852,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string MetadataEmailDescriptionKey { get; set; }
 
         [JsonProperty("actor")]
-        public EditIssueV2InputHistoryMetadataTypeActorType Actor { get; set; }
+        public EditIssueBodyInputHistoryMetadataTypeActorType Actor { get; set; }
 
         [JsonProperty("generator")]
-        public EditIssueV2InputHistoryMetadataTypeGeneratorType Generator { get; set; }
+        public EditIssueBodyInputHistoryMetadataTypeGeneratorType Generator { get; set; }
 
         [JsonProperty("cause")]
-        public EditIssueV2InputHistoryMetadataTypeCauseType Cause { get; set; }
+        public EditIssueBodyInputHistoryMetadataTypeCauseType Cause { get; set; }
 
         [JsonProperty("extraData")]
         public string ExtraData { get; set; }
     }
 
-    public class EditIssueV2InputHistoryMetadataTypeActorType
+    public class EditIssueBodyInputHistoryMetadataTypeActorType
     {
         [JsonProperty("id")]
         public string ActorId { get; set; }
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string ActorUrl { get; set; }
     }
 
-    public class EditIssueV2InputHistoryMetadataTypeGeneratorType
+    public class EditIssueBodyInputHistoryMetadataTypeGeneratorType
     {
         [JsonProperty("id")]
         public string GeneratorId { get; set; }
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string GeneratorUrl { get; set; }
     }
 
-    public class EditIssueV2InputHistoryMetadataTypeCauseType
+    public class EditIssueBodyInputHistoryMetadataTypeCauseType
     {
         [JsonProperty("id")]
         public string CauseId { get; set; }
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string CauseUrl { get; set; }
     }
 
-    public class EditIssueV2InputPropertiesTypeItem
+    public class BodyInputPropertiesTypeItem
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public JToken Value { get; set; }
     }
 
-    public class GetAllProjectCategoriesV2ResponseItem
+    public class GetAllProjectCategoriesResponseItem
     {
         [JsonProperty("self")]
         public string Self { get; set; }
@@ -1269,7 +1269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jira
         public string DisplayName { get; set; }
     }
 
-    public class UpdateProjectV2Input
+    public class UpdateProjectBodyInput
     {
         [JsonProperty("key")]
         public string Key { get; set; }

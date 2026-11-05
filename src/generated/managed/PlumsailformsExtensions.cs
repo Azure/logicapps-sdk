@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormIsSubmitted(Expression<Func<FormIsSubmittedInput>> subscriber, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormIsSubmitted(Expression<Func<SubscriberInput>> subscriber, FlowRecurrence recurrence = null)
         {
             var __workflow_subscriber = WorkflowExpression.Compile(subscriber, nameof(subscriber), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         }
     }
 
-    public class FormIsSubmittedInput
+    public class SubscriberInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

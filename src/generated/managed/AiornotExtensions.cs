@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
-        public IBodyWorkflowAction<ImageReportResponse, ApiConnectionActionConfiguration> ImageReport(Expression<Func<ImageReportInput>> body)
+        public IBodyWorkflowAction<ImageReportResponse, ApiConnectionActionConfiguration> ImageReport(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImageReportResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         public bool IsDetected { get; set; }
     }
 
-    public class ImageReportInput
+    public class BodyInput
     {
         [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ObjectEntity { get; set; }

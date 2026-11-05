@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicSearchSearchResponse, ApiConnectionActionConfiguration> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<QueryContentInput>> searchRequestBody = null)
+        public IBodyWorkflowAction<SeismicSearchSearchResponse, ApiConnectionActionConfiguration> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<SearchRequestBodyInput>> searchRequestBody = null)
         {
             var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             var __workflow_searchRequestBody = WorkflowExpression.Compile(searchRequestBody, nameof(searchRequestBody), required: false);
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         public string ApplicationUrl { get; set; }
     }
 
-    public class QueryContentInput
+    public class SearchRequestBodyInput
     {
         [JsonProperty("term")]
         public string Term { get; set; }

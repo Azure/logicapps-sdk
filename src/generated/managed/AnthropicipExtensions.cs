@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     public class AnthropicipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
-        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<MessagePostInput>> body = null)
+        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/messages";
                 var apiCallHttpMethod = "post";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
                 callPayload.Headers["anthropic-version"] = Convert.ToString("2023-06-01");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                return new ApiConnectionAction<MessageResponse>(callPayload);
             });
         }
     }
@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     {
     }
 
-    public class MessagePostResponse
+    public class MessageResponse
     {
         [JsonProperty("content")]
-        public MessagePostResponseContentTypeItem[] Content { get; set; }
+        public MessageResponseContentTypeItem[] Content { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public string Type { get; set; }
 
         [JsonProperty("usage")]
-        public MessagePostResponseUsageType Usage { get; set; }
+        public MessageResponseUsageType Usage { get; set; }
     }
 
-    public class MessagePostResponseContentTypeItem
+    public class MessageResponseContentTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public string Name { get; set; }
     }
 
-    public class MessagePostResponseUsageType
+    public class MessageResponseUsageType
     {
         [JsonProperty("input_tokens")]
         public int InputTokens { get; set; }
@@ -93,19 +93,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public int OutputTokens { get; set; }
     }
 
-    public class MessagePostInput
+    public class BodyInput
     {
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessagePostInputModelType Model { get; set; } = MessagePostInputModelType.ClaudeOpus40;
+        public BodyInputModelType Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip.BodyInputModelType.ClaudeOpus40;
 
         [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessagePostInputMessagesTypeItem[] Messages { get; set; }
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
 
         [JsonProperty("max_tokens", DefaultValueHandling = DefaultValueHandling.Include)]
         public int MaxTokens { get; set; } = 100;
 
         [JsonProperty("thinking")]
-        public MessagePostInputThinkingType Thinking { get; set; }
+        public BodyInputThinkingType Thinking { get; set; }
 
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public double? Temperature { get; set; }
 
         [JsonProperty("tools")]
-        public MessagePostInputToolsTypeItem[] Tools { get; set; }
+        public BodyInputToolsTypeItem[] Tools { get; set; }
 
         [JsonProperty("top_k")]
         public int? TopK { get; set; }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MessagePostInputModelType
+    public enum BodyInputModelType
     {
         [EnumMember(Value = "claude-opus-4-0")]
         ClaudeOpus40,
@@ -146,17 +146,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         Claude3OpusLatest
     }
 
-    public class MessagePostInputMessagesTypeItem
+    public class BodyInputMessagesTypeItem
     {
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessagePostInputMessagesTypeItemRoleType Role { get; set; } = MessagePostInputMessagesTypeItemRoleType.User;
+        public BodyInputMessagesTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip.BodyInputMessagesTypeItemRoleType.User;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MessagePostInputMessagesTypeItemRoleType
+    public enum BodyInputMessagesTypeItemRoleType
     {
         [EnumMember(Value = "user")]
         User,
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         Assistant
     }
 
-    public class MessagePostInputThinkingType
+    public class BodyInputThinkingType
     {
         [JsonProperty("type")]
         public bool? Type { get; set; }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public int? BudgetTokens { get; set; }
     }
 
-    public class MessagePostInputToolsTypeItem
+    public class BodyInputToolsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

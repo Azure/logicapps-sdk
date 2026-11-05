@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<ListCreateResponse, ApiConnectionActionConfiguration> ListCreate(Expression<Func<ListCreateInput>> body)
+        public IBodyWorkflowAction<ListCreateResponse, ApiConnectionActionConfiguration> ListCreate(Expression<Func<ListCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<ListUpdateResponse, ApiConnectionActionConfiguration> ListUpdate(Expression<Func<string>> mailingListId, Expression<Func<ListUpdateInput>> body)
+        public IBodyWorkflowAction<ListUpdateResponse, ApiConnectionActionConfiguration> ListUpdate(Expression<Func<string>> mailingListId, Expression<Func<ListCreateBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<FieldCreateResponse, ApiConnectionActionConfiguration> FieldCreate(Expression<Func<string>> mailingListId, Expression<Func<FieldCreateInput>> body)
+        public IBodyWorkflowAction<FieldCreateResponse, ApiConnectionActionConfiguration> FieldCreate(Expression<Func<string>> mailingListId, Expression<Func<FieldCreateBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<FieldUpdateResponse, ApiConnectionActionConfiguration> FieldUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> customFieldId, Expression<Func<FieldUpdateInput>> body)
+        public IBodyWorkflowAction<FieldUpdateResponse, ApiConnectionActionConfiguration> FieldUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> customFieldId, Expression<Func<FieldCreateBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<SubscriberAddResponse, ApiConnectionActionConfiguration> SubscriberAdd(Expression<Func<string>> mailingListId, Expression<Func<SubscriberAddInput>> body)
+        public IBodyWorkflowAction<SubscriberAddResponse, ApiConnectionActionConfiguration> SubscriberAdd(Expression<Func<string>> mailingListId, Expression<Func<SubscriberAddBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<SubscriberAddBulkResponse, ApiConnectionActionConfiguration> SubscriberAddBulk(Expression<Func<string>> mailingListId, Expression<Func<SubscriberAddBulkInput>> body)
+        public IBodyWorkflowAction<SubscriberAddBulkResponse, ApiConnectionActionConfiguration> SubscriberAddBulk(Expression<Func<string>> mailingListId, Expression<Func<SubscriberAddBulkBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<SubscriberUpdateResponse, ApiConnectionActionConfiguration> SubscriberUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> subscriberId, Expression<Func<SubscriberUpdateInput>> body)
+        public IBodyWorkflowAction<SubscriberUpdateResponse, ApiConnectionActionConfiguration> SubscriberUpdate(Expression<Func<string>> mailingListId, Expression<Func<string>> subscriberId, Expression<Func<SubscriberAddBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeAccountResponse, ApiConnectionActionConfiguration> UnsubscribeAccount(Expression<Func<UnsubscribeAccountInput>> body)
+        public IBodyWorkflowAction<UnsubscribeAccountResponse, ApiConnectionActionConfiguration> UnsubscribeAccount(Expression<Func<UnsubscribeAccountBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UnsubscribeAccountResponse, ApiConnectionActionConfiguration>(() =>
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeListResponse, ApiConnectionActionConfiguration> UnsubscribeList(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeListInput>> body)
+        public IBodyWorkflowAction<UnsubscribeListResponse, ApiConnectionActionConfiguration> UnsubscribeList(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeAccountBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeRemoveResponse, ApiConnectionActionConfiguration> UnsubscribeRemove(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeRemoveInput>> body)
+        public IBodyWorkflowAction<UnsubscribeRemoveResponse, ApiConnectionActionConfiguration> UnsubscribeRemove(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeAccountBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<UnsubscribeRemoveBulkResponse, ApiConnectionActionConfiguration> UnsubscribeRemoveBulk(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeRemoveBulkInput>> body)
+        public IBodyWorkflowAction<UnsubscribeRemoveBulkResponse, ApiConnectionActionConfiguration> UnsubscribeRemoveBulk(Expression<Func<string>> mailingListId, Expression<Func<UnsubscribeRemoveBulkBodyInput>> body)
         {
             var __workflow_mailingListId = WorkflowExpression.Compile(mailingListId, nameof(mailingListId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignCreateResponse, ApiConnectionActionConfiguration> CampaignCreate(Expression<Func<CampaignCreateInput>> body)
+        public IBodyWorkflowAction<CampaignCreateResponse, ApiConnectionActionConfiguration> CampaignCreate(Expression<Func<CampaignCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CampaignCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignUpdateResponse, ApiConnectionActionConfiguration> CampaignUpdate(Expression<Func<string>> campaignId, Expression<Func<CampaignUpdateInput>> body)
+        public IBodyWorkflowAction<CampaignUpdateResponse, ApiConnectionActionConfiguration> CampaignUpdate(Expression<Func<string>> campaignId, Expression<Func<CampaignCreateBodyInput>> body)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignTestResponse, ApiConnectionActionConfiguration> CampaignTest(Expression<Func<string>> campaignId, Expression<Func<CampaignTestInput>> body)
+        public IBodyWorkflowAction<CampaignTestResponse, ApiConnectionActionConfiguration> CampaignTest(Expression<Func<string>> campaignId, Expression<Func<CampaignTestBodyInput>> body)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignStatsResponse, ApiConnectionActionConfiguration> CampaignStats(Expression<Func<string>> campaignId, Expression<Func<typeInput>> type, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<CampaignStatsResponse, ApiConnectionActionConfiguration> CampaignStats(Expression<Func<string>> campaignId, Expression<Func<TypeInput>> type, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "moosendip")]
-        public IBodyWorkflowAction<CampaignScheduleResponse, ApiConnectionActionConfiguration> CampaignSchedule(Expression<Func<string>> campaignId, Expression<Func<CampaignScheduleInput>> body)
+        public IBodyWorkflowAction<CampaignScheduleResponse, ApiConnectionActionConfiguration> CampaignSchedule(Expression<Func<string>> campaignId, Expression<Func<CampaignScheduleBodyInput>> body)
         {
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class ListCreateInput
+    public class ListCreateBodyInput
     {
         public string Name { get; set; }
         public string ConfirmationPage { get; set; }
@@ -688,13 +688,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
-    }
-
-    public class ListUpdateInput
-    {
-        public string Name { get; set; }
-        public string ConfirmationPage { get; set; }
-        public string RedirectAfterUnsubscribePage { get; set; }
     }
 
     public class ListDeleteResponse
@@ -711,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class FieldCreateInput
+    public class FieldCreateBodyInput
     {
         public string Name { get; set; }
         public string CustomFieldType { get; set; }
@@ -723,13 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
-    }
-
-    public class FieldUpdateInput
-    {
-        public string Name { get; set; }
-        public string CustomFieldType { get; set; }
-        public string Options { get; set; }
     }
 
     public class FieldDeleteResponse
@@ -879,7 +865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Value { get; set; }
     }
 
-    public class SubscriberAddInput
+    public class SubscriberAddBodyInput
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -920,13 +906,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Value { get; set; }
     }
 
-    public class SubscriberAddBulkInput
+    public class SubscriberAddBulkBodyInput
     {
         public bool? HasExternalDoubleOptIn { get; set; }
-        public SubscriberAddBulkInputSubscribersTypeItem[] Subscribers { get; set; }
+        public BodyInputSubscribersTypeItem[] Subscribers { get; set; }
     }
 
-    public class SubscriberAddBulkInputSubscribersTypeItem
+    public class BodyInputSubscribersTypeItem
     {
         public string Name { get; set; }
         public string Email { get; set; }
@@ -966,14 +952,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Value { get; set; }
     }
 
-    public class SubscriberUpdateInput
-    {
-        public string Name { get; set; }
-        public bool? HasExternalDoubleOptIn { get; set; }
-        public string Email { get; set; }
-        public string[] CustomFields { get; set; }
-    }
-
     public class UnsubscribeAccountResponse
     {
         public int Code { get; set; }
@@ -981,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class UnsubscribeAccountInput
+    public class UnsubscribeAccountBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -994,23 +972,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class UnsubscribeListInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-    }
-
     public class UnsubscribeRemoveResponse
     {
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
-    }
-
-    public class UnsubscribeRemoveInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
     }
 
     public class UnsubscribeRemoveBulkResponse
@@ -1026,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public int EmailsProcessed { get; set; }
     }
 
-    public class UnsubscribeRemoveBulkInput
+    public class UnsubscribeRemoveBulkBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Emails { get; set; }
@@ -1308,7 +1274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class CampaignCreateInput
+    public class CampaignCreateBodyInput
     {
         public string Name { get; set; }
         public string Subject { get; set; }
@@ -1316,7 +1282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string ReplyToEmail { get; set; }
         public string ConfirmationToEmail { get; set; }
         public string WebLocation { get; set; }
-        public CampaignCreateInputMailingListsTypeItem[] MailingLists { get; set; }
+        public BodyInputMailingListsTypeItem[] MailingLists { get; set; }
         public string IsAB { get; set; }
         public string ABCampaignType { get; set; }
         public string WebLocationB { get; set; }
@@ -1325,7 +1291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string ABWinnerSelectionType { get; set; }
     }
 
-    public class CampaignCreateInputMailingListsTypeItem
+    public class BodyInputMailingListsTypeItem
     {
         [JsonProperty("MailingListID")]
         public string MailingListId { get; set; }
@@ -1339,32 +1305,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public int Code { get; set; }
         public string Error { get; set; }
         public string Context { get; set; }
-    }
-
-    public class CampaignUpdateInput
-    {
-        public string Name { get; set; }
-        public string Subject { get; set; }
-        public string SenderEmail { get; set; }
-        public string ReplyToEmail { get; set; }
-        public string ConfirmationToEmail { get; set; }
-        public string WebLocation { get; set; }
-        public CampaignUpdateInputMailingListsTypeItem[] MailingLists { get; set; }
-        public string IsAB { get; set; }
-        public string ABCampaignType { get; set; }
-        public string WebLocationB { get; set; }
-        public string HoursToTest { get; set; }
-        public string ListPercentage { get; set; }
-        public string ABWinnerSelectionType { get; set; }
-    }
-
-    public class CampaignUpdateInputMailingListsTypeItem
-    {
-        [JsonProperty("MailingListID")]
-        public string MailingListId { get; set; }
-
-        [JsonProperty("SegmentID")]
-        public string SegmentId { get; set; }
     }
 
     public class CampaignDeleteResponse
@@ -1381,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class CampaignTestInput
+    public class CampaignTestBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] TestEmails { get; set; }
@@ -1427,7 +1367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         Sent,
         Opened,
@@ -1549,7 +1489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Context { get; set; }
     }
 
-    public class CampaignScheduleInput
+    public class CampaignScheduleBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DateTime { get; set; }

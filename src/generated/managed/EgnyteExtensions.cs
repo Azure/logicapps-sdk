@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class EgnyteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<CreateGroupInput>> body)
+        public IBodyWorkflowAction<CreateGroupResponse, ApiConnectionActionConfiguration> CreateGroup(Expression<Func<CreateGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<GroupInfoByIdResponse, ApiConnectionActionConfiguration> GroupInfoById(Expression<Func<GroupInfoByIdInput>> body)
+        public IBodyWorkflowAction<GroupInfoByIdResponse, ApiConnectionActionConfiguration> GroupInfoById(Expression<Func<DeleteFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupInfoByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListGroupsResponse, ApiConnectionActionConfiguration> ListGroups(Expression<Func<ListGroupsInput>> body = null)
+        public IBodyWorkflowAction<ListGroupsResponse, ApiConnectionActionConfiguration> ListGroups(Expression<Func<GetUserListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ListGroupsResponse, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UserInfoResponse, ApiConnectionActionConfiguration> GetUser(Expression<Func<GetUserInput>> body)
+        public IBodyWorkflowAction<UserInfoResponse, ApiConnectionActionConfiguration> GetUser(Expression<Func<DeleteUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UserInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UserListResponse, ApiConnectionActionConfiguration> GetUserList(Expression<Func<GetUserListInput>> body = null)
+        public IBodyWorkflowAction<UserListResponse, ApiConnectionActionConfiguration> GetUserList(Expression<Func<GetUserListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UserListResponse, ApiConnectionActionConfiguration>(() =>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UpdateUserResponse, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<UpdateUserInput>> body)
+        public IBodyWorkflowAction<UpdateUserResponse, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<UpdateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateUserResponse, ApiConnectionActionConfiguration>(() =>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body)
+        public IBodyWorkflowAction<CreateUserResponse, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateUserResponse, ApiConnectionActionConfiguration>(() =>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteUser(Expression<Func<DeleteUserInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteUser(Expression<Func<DeleteUserBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateFolderResponse, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<CreateFolderInput>> body)
+        public IBodyWorkflowAction<CreateFolderResponse, ApiConnectionActionConfiguration> CreateFolder(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateFolderResponse, ApiConnectionActionConfiguration>(() =>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFileByPathResponse, ApiConnectionActionConfiguration> DeleteFileByPath(Expression<Func<DeleteFileByPathInput>> body)
+        public IBodyWorkflowAction<DeleteFileByPathResponse, ApiConnectionActionConfiguration> DeleteFileByPath(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteFileByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFolderByPathResponse, ApiConnectionActionConfiguration> DeleteFolderByPath(Expression<Func<DeleteFolderByPathInput>> body)
+        public IBodyWorkflowAction<DeleteFolderByPathResponse, ApiConnectionActionConfiguration> DeleteFolderByPath(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteFolderByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFolderByIdResponse, ApiConnectionActionConfiguration> DeleteFolderById(Expression<Func<DeleteFolderByIdInput>> body)
+        public IBodyWorkflowAction<DeleteFolderByIdResponse, ApiConnectionActionConfiguration> DeleteFolderById(Expression<Func<DeleteFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteFolderByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFileByIdResponse, ApiConnectionActionConfiguration> DeleteFileById(Expression<Func<DeleteFileByIdInput>> body)
+        public IBodyWorkflowAction<DeleteFileByIdResponse, ApiConnectionActionConfiguration> DeleteFileById(Expression<Func<DeleteFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteFileByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFileByPathResponse, ApiConnectionActionConfiguration> CopyFileByPath(Expression<Func<CopyFileByPathInput>> body)
+        public IBodyWorkflowAction<CopyFileByPathResponse, ApiConnectionActionConfiguration> CopyFileByPath(Expression<Func<CopyFileByPathBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CopyFileByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFolderByPathResponse, ApiConnectionActionConfiguration> CopyFolderByPath(Expression<Func<CopyFolderByPathInput>> body)
+        public IBodyWorkflowAction<CopyFolderByPathResponse, ApiConnectionActionConfiguration> CopyFolderByPath(Expression<Func<CopyFileByPathBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CopyFolderByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FullGroupUpdateResponse, ApiConnectionActionConfiguration> FullGroupUpdate(Expression<Func<FullGroupUpdateInput>> body)
+        public IBodyWorkflowAction<FullGroupUpdateResponse, ApiConnectionActionConfiguration> FullGroupUpdate(Expression<Func<FullGroupUpdateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FullGroupUpdateResponse, ApiConnectionActionConfiguration>(() =>
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<PartialGroupUpdateResponse, ApiConnectionActionConfiguration> PartialGroupUpdate(Expression<Func<PartialGroupUpdateInput>> body)
+        public IBodyWorkflowAction<PartialGroupUpdateResponse, ApiConnectionActionConfiguration> PartialGroupUpdate(Expression<Func<PartialGroupUpdateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PartialGroupUpdateResponse, ApiConnectionActionConfiguration>(() =>
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteGroup(Expression<Func<DeleteGroupInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteGroup(Expression<Func<DeleteFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFileByIdResponse, ApiConnectionActionConfiguration> CopyFileById(Expression<Func<CopyFileByIdInput>> body)
+        public IBodyWorkflowAction<CopyFileByIdResponse, ApiConnectionActionConfiguration> CopyFileById(Expression<Func<CopyFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CopyFileByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFolderByIdResponse, ApiConnectionActionConfiguration> CopyFolderById(Expression<Func<CopyFolderByIdInput>> body)
+        public IBodyWorkflowAction<CopyFolderByIdResponse, ApiConnectionActionConfiguration> CopyFolderById(Expression<Func<CopyFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CopyFolderByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFileByPathResponse, ApiConnectionActionConfiguration> MoveFileByPath(Expression<Func<MoveFileByPathInput>> body)
+        public IBodyWorkflowAction<MoveFileByPathResponse, ApiConnectionActionConfiguration> MoveFileByPath(Expression<Func<CopyFileByPathBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveFileByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFolderByPathResponse, ApiConnectionActionConfiguration> MoveFolderByPath(Expression<Func<MoveFolderByPathInput>> body)
+        public IBodyWorkflowAction<MoveFolderByPathResponse, ApiConnectionActionConfiguration> MoveFolderByPath(Expression<Func<CopyFileByPathBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveFolderByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFileByIdResponse, ApiConnectionActionConfiguration> MoveFileById(Expression<Func<MoveFileByIdInput>> body)
+        public IBodyWorkflowAction<MoveFileByIdResponse, ApiConnectionActionConfiguration> MoveFileById(Expression<Func<CopyFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveFileByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFolderByIdResponse, ApiConnectionActionConfiguration> MoveFolderById(Expression<Func<MoveFolderByIdInput>> body)
+        public IBodyWorkflowAction<MoveFolderByIdResponse, ApiConnectionActionConfiguration> MoveFolderById(Expression<Func<CopyFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MoveFolderByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ShareFileResponse, ApiConnectionActionConfiguration> ShareFile(Expression<Func<ShareFileInput>> body)
+        public IBodyWorkflowAction<ShareFileResponse, ApiConnectionActionConfiguration> ShareFile(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShareFileResponse, ApiConnectionActionConfiguration>(() =>
@@ -365,7 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ShareFolderResponse, ApiConnectionActionConfiguration> ShareFolder(Expression<Func<ShareFolderInput>> body)
+        public IBodyWorkflowAction<ShareFolderResponse, ApiConnectionActionConfiguration> ShareFolder(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShareFolderResponse, ApiConnectionActionConfiguration>(() =>
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FileInfoResponse, ApiConnectionActionConfiguration> FileInfoByPath(Expression<Func<FileInfoByPathInput>> body)
+        public IBodyWorkflowAction<FileInfoResponse, ApiConnectionActionConfiguration> FileInfoByPath(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FileInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FolderInfoByPath(Expression<Func<FolderInfoByPathInput>> body)
+        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FolderInfoByPath(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FolderInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ModifyFolderOptionsResponse, ApiConnectionActionConfiguration> ModifyFolderOptions(Expression<Func<ModifyFolderOptionsInput>> body)
+        public IBodyWorkflowAction<ModifyFolderOptionsResponse, ApiConnectionActionConfiguration> ModifyFolderOptions(Expression<Func<ModifyFolderOptionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModifyFolderOptionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FileInfoResponse, ApiConnectionActionConfiguration> FileInfoById(Expression<Func<FileInfoByIdInput>> body)
+        public IBodyWorkflowAction<FileInfoResponse, ApiConnectionActionConfiguration> FileInfoById(Expression<Func<DeleteFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FileInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FolderInfoById(Expression<Func<FolderInfoByIdInput>> body)
+        public IBodyWorkflowAction<FolderInfoResponse, ApiConnectionActionConfiguration> FolderInfoById(Expression<Func<DeleteFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FolderInfoResponse, ApiConnectionActionConfiguration>(() =>
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<LockFileByPathResponse, ApiConnectionActionConfiguration> LockFileByPath(Expression<Func<LockFileByPathInput>> body)
+        public IBodyWorkflowAction<LockFileByPathResponse, ApiConnectionActionConfiguration> LockFileByPath(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LockFileByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UnlockFileByPath(Expression<Func<UnlockFileByPathInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UnlockFileByPath(Expression<Func<UnlockFileByPathBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<LockFileByIdResponse, ApiConnectionActionConfiguration> LockFileById(Expression<Func<LockFileByIdInput>> body)
+        public IBodyWorkflowAction<LockFileByIdResponse, ApiConnectionActionConfiguration> LockFileById(Expression<Func<DeleteFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<LockFileByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UnlockFileById(Expression<Func<UnlockFileByIdInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UnlockFileById(Expression<Func<UnlockFileByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentByPath(Expression<Func<GetFileContentByPathInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentByPath(Expression<Func<GetFileContentByPathBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentById(Expression<Func<GetFileContentByIdInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetFileContentById(Expression<Func<GetFileContentByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetMetadataByFileId(Expression<Func<SetMetadataByFileIdInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetMetadataByFileId(Expression<Func<SetMetadataByFileIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetMetadataByFolderId(Expression<Func<SetMetadataByFolderIdInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetMetadataByFolderId(Expression<Func<SetMetadataByFolderIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateNamespace(Expression<Func<CreateNamespaceInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateNamespace(Expression<Func<CreateNamespaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<NamespaceItem, ApiConnectionActionConfiguration> UpdateNamespaceAttributes(Expression<Func<UpdateNamespaceAttributesInput>> body)
+        public IBodyWorkflowAction<NamespaceItem, ApiConnectionActionConfiguration> UpdateNamespaceAttributes(Expression<Func<UpdateNamespaceAttributesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NamespaceItem, ApiConnectionActionConfiguration>(() =>
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UpdateNamespaceKeysResponse, ApiConnectionActionConfiguration> UpdateNamespaceKeys(Expression<Func<UpdateNamespaceKeysInput>> body)
+        public IBodyWorkflowAction<UpdateNamespaceKeysResponse, ApiConnectionActionConfiguration> UpdateNamespaceKeys(Expression<Func<UpdateNamespaceKeysBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateNamespaceKeysResponse, ApiConnectionActionConfiguration>(() =>
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<NamespaceItem, ApiConnectionActionConfiguration> GetNamespace(Expression<Func<GetNamespaceInput>> body)
+        public IBodyWorkflowAction<NamespaceItem, ApiConnectionActionConfiguration> GetNamespace(Expression<Func<GetNamespaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NamespaceItem, ApiConnectionActionConfiguration>(() =>
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteNamespace(Expression<Func<DeleteNamespaceInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteNamespace(Expression<Func<DeleteNamespaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MarkFolderAsProjectResponse, ApiConnectionActionConfiguration> MarkFolderAsProject(Expression<Func<MarkFolderAsProjectInput>> body)
+        public IBodyWorkflowAction<MarkFolderAsProjectResponse, ApiConnectionActionConfiguration> MarkFolderAsProject(Expression<Func<MarkFolderAsProjectBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MarkFolderAsProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateProjectFromTemplateResponse, ApiConnectionActionConfiguration> CreateProjectFromTemplate(Expression<Func<CreateProjectFromTemplateInput>> body)
+        public IBodyWorkflowAction<CreateProjectFromTemplateResponse, ApiConnectionActionConfiguration> CreateProjectFromTemplate(Expression<Func<CreateProjectFromTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProjectFromTemplateResponse, ApiConnectionActionConfiguration>(() =>
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ProjectItem, ApiConnectionActionConfiguration> GetProjectById(Expression<Func<GetProjectByIdInput>> body)
+        public IBodyWorkflowAction<ProjectItem, ApiConnectionActionConfiguration> GetProjectById(Expression<Func<GetProjectByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProjectItem, ApiConnectionActionConfiguration>(() =>
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProjectById(Expression<Func<UpdateProjectByIdInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateProjectById(Expression<Func<UpdateProjectByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ProjectItem[], ApiConnectionActionConfiguration> GetProjectByRootFolderId(Expression<Func<GetProjectByRootFolderIdInput>> body)
+        public IBodyWorkflowAction<ProjectItem[], ApiConnectionActionConfiguration> GetProjectByRootFolderId(Expression<Func<GetProjectByRootFolderIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProjectItem[], ApiConnectionActionConfiguration>(() =>
@@ -756,7 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CleanupProjectResponse, ApiConnectionActionConfiguration> CleanupProject(Expression<Func<CleanupProjectInput>> body)
+        public IBodyWorkflowAction<CleanupProjectResponse, ApiConnectionActionConfiguration> CleanupProject(Expression<Func<CleanupProjectBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CleanupProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateMetadataKey(Expression<Func<CreateMetadataKeyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateMetadataKey(Expression<Func<CreateMetadataKeyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteMetadataKey(Expression<Func<DeleteMetadataKeyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteMetadataKey(Expression<Func<DeleteMetadataKeyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -798,7 +798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetMetadataByFileId(Expression<Func<GetMetadataByFileIdInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetMetadataByFileId(Expression<Func<GetMetadataByFileIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetMetadataByFolderId(Expression<Func<GetMetadataByFolderIdInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetMetadataByFolderId(Expression<Func<GetMetadataByFolderIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -826,7 +826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SearchMetadata(Expression<Func<SearchMetadataInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SearchMetadata(Expression<Func<SearchMetadataBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<GetEffectivePermissionsResponse, ApiConnectionActionConfiguration> GetEffectivePermissions(Expression<Func<GetEffectivePermissionsInput>> body)
+        public IBodyWorkflowAction<GetEffectivePermissionsResponse, ApiConnectionActionConfiguration> GetEffectivePermissions(Expression<Func<GetEffectivePermissionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetEffectivePermissionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -854,7 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetFolderPermissions(Expression<Func<SetFolderPermissionsInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetFolderPermissions(Expression<Func<SetFolderPermissionsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -868,7 +868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<GetFolderPermissionsResponse, ApiConnectionActionConfiguration> GetFolderPermissions(Expression<Func<GetFolderPermissionsInput>> body)
+        public IBodyWorkflowAction<GetFolderPermissionsResponse, ApiConnectionActionConfiguration> GetFolderPermissions(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetFolderPermissionsResponse, ApiConnectionActionConfiguration>(() =>
@@ -882,7 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeepLinksByIdResponse, ApiConnectionActionConfiguration> DeepLinksById(Expression<Func<DeepLinksByIdInput>> body)
+        public IBodyWorkflowAction<DeepLinksByIdResponse, ApiConnectionActionConfiguration> DeepLinksById(Expression<Func<DeepLinksByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeepLinksByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -896,7 +896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeepLinksByPathResponse, ApiConnectionActionConfiguration> DeepLinksByPath(Expression<Func<DeepLinksByPathInput>> body)
+        public IBodyWorkflowAction<DeepLinksByPathResponse, ApiConnectionActionConfiguration> DeepLinksByPath(Expression<Func<CreateFolderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeepLinksByPathResponse, ApiConnectionActionConfiguration>(() =>
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ShowLinkDetailsResponse, ApiConnectionActionConfiguration> ShowLinkDetails(Expression<Func<ShowLinkDetailsInput>> body)
+        public IBodyWorkflowAction<ShowLinkDetailsResponse, ApiConnectionActionConfiguration> ShowLinkDetails(Expression<Func<DeleteLinkBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ShowLinkDetailsResponse, ApiConnectionActionConfiguration>(() =>
@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<CreateLinkInput>> body)
+        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<CreateLinkBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateLinkResponse, ApiConnectionActionConfiguration>(() =>
@@ -938,7 +938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteLink(Expression<Func<DeleteLinkInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteLink(Expression<Func<DeleteLinkBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AIQuestionResponse, ApiConnectionActionConfiguration> AskDocumentQuestion(Expression<Func<AskDocumentQuestionInput>> body)
+        public IBodyWorkflowAction<AIQuestionResponse, ApiConnectionActionConfiguration> AskDocumentQuestion(Expression<Func<AskDocumentQuestionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AIQuestionResponse, ApiConnectionActionConfiguration>(() =>
@@ -966,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AISummaryResponse, ApiConnectionActionConfiguration> SummarizeDocument(Expression<Func<SummarizeDocumentInput>> body)
+        public IBodyWorkflowAction<AISummaryResponse, ApiConnectionActionConfiguration> SummarizeDocument(Expression<Func<SummarizeDocumentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AISummaryResponse, ApiConnectionActionConfiguration>(() =>
@@ -980,7 +980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AICopilotResponse, ApiConnectionActionConfiguration> CopilotAsk(Expression<Func<CopilotAskInput>> body)
+        public IBodyWorkflowAction<AICopilotResponse, ApiConnectionActionConfiguration> CopilotAsk(Expression<Func<CopilotAskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AICopilotResponse, ApiConnectionActionConfiguration>(() =>
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AICopilotResponse, ApiConnectionActionConfiguration> AskKnowledgeBase(Expression<Func<AskKnowledgeBaseInput>> body)
+        public IBodyWorkflowAction<AICopilotResponse, ApiConnectionActionConfiguration> AskKnowledgeBase(Expression<Func<AskKnowledgeBaseBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AICopilotResponse, ApiConnectionActionConfiguration>(() =>
@@ -1008,7 +1008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<KnowledgeBaseListResponse, ApiConnectionActionConfiguration> ListKnowledgeBases(Expression<Func<ListKnowledgeBasesInput>> body)
+        public IBodyWorkflowAction<KnowledgeBaseListResponse, ApiConnectionActionConfiguration> ListKnowledgeBases(Expression<Func<ListKnowledgeBasesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<KnowledgeBaseListResponse, ApiConnectionActionConfiguration>(() =>
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<HybridSearchResponse, ApiConnectionActionConfiguration> HybridSearch(Expression<Func<HybridSearchInput>> body)
+        public IBodyWorkflowAction<HybridSearchResponse, ApiConnectionActionConfiguration> HybridSearch(Expression<Func<HybridSearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<HybridSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1036,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AgentListResponseItem[], ApiConnectionActionConfiguration> ListAgents(Expression<Func<ListAgentsInput>> body)
+        public IBodyWorkflowAction<AgentListResponseItem[], ApiConnectionActionConfiguration> ListAgents(Expression<Func<ListAgentsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AgentListResponseItem[], ApiConnectionActionConfiguration>(() =>
@@ -1050,7 +1050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AskAgentResponse, ApiConnectionActionConfiguration> AskAgent(Expression<Func<AskAgentInput>> body)
+        public IBodyWorkflowAction<AskAgentResponse, ApiConnectionActionConfiguration> AskAgent(Expression<Func<AskAgentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AskAgentResponse, ApiConnectionActionConfiguration>(() =>
@@ -1064,7 +1064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AgentExecutionStatusResponse, ApiConnectionActionConfiguration> GetAgentExecutionStatus(Expression<Func<GetAgentExecutionStatusInput>> body)
+        public IBodyWorkflowAction<AgentExecutionStatusResponse, ApiConnectionActionConfiguration> GetAgentExecutionStatus(Expression<Func<GetAgentExecutionStatusBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AgentExecutionStatusResponse, ApiConnectionActionConfiguration>(() =>
@@ -1078,40 +1078,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListLinksV2Response, ApiConnectionActionConfiguration> ListLinks(Expression<Func<ListLinksV2Input>> body = null)
+        public IBodyWorkflowAction<ListLinksResponse, ApiConnectionActionConfiguration> ListLinks(Expression<Func<ListLinksBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ListLinksV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ListLinksResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-proxy/ListLinksV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ListLinksV2Response>(callPayload);
+                return new ApiConnectionAction<ListLinksResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<SearchV2Response, ApiConnectionActionConfiguration> Search(Expression<Func<SearchV2Input>> body)
+        public IBodyWorkflowAction<SearchResponse, ApiConnectionActionConfiguration> Search(Expression<Func<SearchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SearchV2Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api-proxy/SearchV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SearchV2Response>(callPayload);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
             });
         }
     }
 
     public class EgnyteTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileLocked(Expression<Func<FileLockedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileLocked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1119,14 +1118,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileUnlocked(Expression<Func<FileUnlockedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileUnlocked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1134,14 +1132,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileUpdated(Expression<Func<FileUpdatedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1149,14 +1146,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileCreated(Expression<Func<FileCreatedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1164,14 +1160,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShareLinkCreated(Expression<Func<ShareLinkCreatedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShareLinkCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1179,14 +1174,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShareLinkDeleted(Expression<Func<ShareLinkDeletedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShareLinkDeleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1194,14 +1188,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileOrFolderPermissionChange(Expression<Func<FileOrFolderPermissionChangeInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileOrFolderPermissionChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1209,14 +1202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileOrFolderMetadataChange(Expression<Func<FileOrFolderMetadataChangeInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FileOrFolderMetadataChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1224,14 +1216,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectAdded(Expression<Func<FolderProjectAddedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectAdded(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1239,14 +1230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectUnmarked(Expression<Func<FolderProjectUnmarkedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectUnmarked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1254,14 +1244,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectUpdated(Expression<Func<FolderProjectUpdatedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FolderProjectUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1269,14 +1258,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowCreated(Expression<Func<WorkflowCreatedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1284,14 +1272,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowCompleted(Expression<Func<WorkflowCompletedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowCompleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1299,14 +1286,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowApprovalTaskApproved(Expression<Func<WorkflowApprovalTaskApprovedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1314,14 +1300,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowApprovalTaskRejected(Expression<Func<WorkflowApprovalTaskRejectedInput>> body, Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -1329,46 +1314,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(__workflow_folderPath);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupCreated(Expression<Func<GroupCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupCreated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/GroupCreated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupUpdated(Expression<Func<GroupUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupUpdated(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/GroupUpdated";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupDeleted(Expression<Func<GroupDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> GroupDeleted(FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhook/GroupDeleted";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new FileCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -1528,16 +1510,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Display { get; set; }
     }
 
-    public class CreateGroupInput
+    public class CreateGroupBodyInput
     {
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
         [JsonProperty("members")]
-        public CreateGroupInputMembersTypeItem[] Members { get; set; }
+        public CreateGroupBodyInputMembersTypeItem[] Members { get; set; }
     }
 
-    public class CreateGroupInputMembersTypeItem
+    public class CreateGroupBodyInputMembersTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1567,7 +1549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Display { get; set; }
     }
 
-    public class GroupInfoByIdInput
+    public class DeleteFileByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -1597,7 +1579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string DisplayName { get; set; }
     }
 
-    public class ListGroupsInput
+    public class GetUserListBodyInput
     {
         [JsonProperty("startIndex")]
         public int? StartIndex { get; set; }
@@ -1726,7 +1708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Value { get; set; }
     }
 
-    public class GetUserInput
+    public class DeleteUserBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
@@ -1855,18 +1837,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Standard
     }
 
-    public class GetUserListInput
-    {
-        [JsonProperty("startIndex")]
-        public int? StartIndex { get; set; }
-
-        [JsonProperty("count")]
-        public int? Count { get; set; }
-
-        [JsonProperty("filter")]
-        public string Filter { get; set; }
-    }
-
     public class UpdateUserResponse
     {
         [JsonProperty("id")]
@@ -1939,7 +1909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Standard
     }
 
-    public class UpdateUserInput
+    public class UpdateUserBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
@@ -1948,7 +1918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Email { get; set; }
 
         [JsonProperty("name")]
-        public UpdateUserInputNameType Name { get; set; }
+        public UpdateUserBodyInputNameType Name { get; set; }
 
         [JsonProperty("active")]
         public bool? Active { get; set; }
@@ -1957,13 +1927,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool? SendInvite { get; set; }
 
         [JsonProperty("language")]
-        public UpdateUserInputLanguageType? Language { get; set; }
+        public BodyInputLanguageType? Language { get; set; }
 
         [JsonProperty("authType")]
-        public UpdateUserInputAuthTypeType? AuthType { get; set; }
+        public BodyInputAuthTypeType? AuthType { get; set; }
 
         [JsonProperty("userType")]
-        public UpdateUserInputUserTypeType? UserType { get; set; }
+        public BodyInputUserTypeType? UserType { get; set; }
 
         [JsonProperty("role")]
         public string Role { get; set; }
@@ -1975,7 +1945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string UserPrincipalName { get; set; }
     }
 
-    public class UpdateUserInputNameType
+    public class UpdateUserBodyInputNameType
     {
         [JsonProperty("givenName")]
         public string GivenName { get; set; }
@@ -1985,7 +1955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateUserInputLanguageType
+    public enum BodyInputLanguageType
     {
         [EnumMember(Value = "en-US")]
         EnUS,
@@ -1996,7 +1966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateUserInputAuthTypeType
+    public enum BodyInputAuthTypeType
     {
         [EnumMember(Value = "ad")]
         Ad,
@@ -2007,7 +1977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateUserInputUserTypeType
+    public enum BodyInputUserTypeType
     {
         [EnumMember(Value = "admin")]
         Admin,
@@ -2108,7 +2078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Standard
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("userName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserName { get; set; }
@@ -2117,16 +2087,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Email { get; set; }
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputNameType Name { get; set; }
+        public CreateUserBodyInputNameType Name { get; set; }
 
         [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Active { get; set; }
 
         [JsonProperty("userType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputUserTypeType UserType { get; set; }
+        public BodyInputUserTypeType UserType { get; set; }
 
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputAuthTypeType AuthType { get; set; }
+        public BodyInputAuthTypeType AuthType { get; set; }
 
         [JsonProperty("externalId")]
         public string ExternalId { get; set; }
@@ -2138,7 +2108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool? IsServiceAccount { get; set; }
 
         [JsonProperty("language")]
-        public CreateUserInputLanguageType? Language { get; set; }
+        public BodyInputLanguageType? Language { get; set; }
 
         [JsonProperty("role")]
         public string Role { get; set; }
@@ -2150,52 +2120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string UserPrincipalName { get; set; }
     }
 
-    public class CreateUserInputNameType
+    public class CreateUserBodyInputNameType
     {
         [JsonProperty("givenName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GivenName { get; set; }
 
         [JsonProperty("familyName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FamilyName { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateUserInputUserTypeType
-    {
-        [EnumMember(Value = "admin")]
-        Admin,
-        [EnumMember(Value = "power")]
-        Power,
-        [EnumMember(Value = "standard")]
-        Standard
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateUserInputAuthTypeType
-    {
-        [EnumMember(Value = "ad")]
-        Ad,
-        [EnumMember(Value = "sso")]
-        Sso,
-        [EnumMember(Value = "egnyte")]
-        Egnyte
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateUserInputLanguageType
-    {
-        [EnumMember(Value = "en-US")]
-        EnUS,
-        [EnumMember(Value = "fr-CA")]
-        FrCA,
-        [EnumMember(Value = "de-DE")]
-        DeDE
-    }
-
-    public class DeleteUserInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Id { get; set; }
     }
 
     public class CreateFolderResponse
@@ -2207,7 +2138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string FolderId { get; set; }
     }
 
-    public class CreateFolderInput
+    public class CreateFolderBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
@@ -2219,22 +2150,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string ParentFolderPath { get; set; }
     }
 
-    public class DeleteFileByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-    }
-
     public class DeleteFolderByPathResponse
     {
         [JsonProperty("parent_folder_path")]
         public string ParentFolderPath { get; set; }
-    }
-
-    public class DeleteFolderByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
     }
 
     public class DeleteFolderByIdResponse
@@ -2243,22 +2162,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string ParentFolderPath { get; set; }
     }
 
-    public class DeleteFolderByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
     public class DeleteFileByIdResponse
     {
         [JsonProperty("parent_folder_path")]
         public string ParentFolderPath { get; set; }
-    }
-
-    public class DeleteFileByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
     }
 
     public class CopyFileByPathResponse
@@ -2270,7 +2177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string GroupId { get; set; }
     }
 
-    public class CopyFileByPathInput
+    public class CopyFileByPathBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
@@ -2286,15 +2193,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("folder_id")]
         public string FolderId { get; set; }
-    }
-
-    public class CopyFolderByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-
-        [JsonProperty("destination_path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationPath { get; set; }
     }
 
     public class FullGroupUpdateResponse
@@ -2321,7 +2219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Display { get; set; }
     }
 
-    public class FullGroupUpdateInput
+    public class FullGroupUpdateBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2330,10 +2228,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string DisplayName { get; set; }
 
         [JsonProperty("members")]
-        public FullGroupUpdateInputMembersTypeItem[] Members { get; set; }
+        public FullGroupUpdateBodyInputMembersTypeItem[] Members { get; set; }
     }
 
-    public class FullGroupUpdateInputMembersTypeItem
+    public class FullGroupUpdateBodyInputMembersTypeItem
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -2363,7 +2261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Display { get; set; }
     }
 
-    public class PartialGroupUpdateInput
+    public class PartialGroupUpdateBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2372,31 +2270,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string DisplayName { get; set; }
 
         [JsonProperty("members")]
-        public PartialGroupUpdateInputMembersTypeItem[] Members { get; set; }
+        public PartialGroupUpdateBodyInputMembersTypeItem[] Members { get; set; }
     }
 
-    public class PartialGroupUpdateInputMembersTypeItem
+    public class PartialGroupUpdateBodyInputMembersTypeItem
     {
         [JsonProperty("value")]
         public int? Value { get; set; }
 
         [JsonProperty("operation")]
-        public PartialGroupUpdateInputMembersTypeItemOperationType? Operation { get; set; }
+        public BodyInputMembersTypeItemOperationType? Operation { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PartialGroupUpdateInputMembersTypeItemOperationType
+    public enum BodyInputMembersTypeItemOperationType
     {
         [EnumMember(Value = "add")]
         Add,
         [EnumMember(Value = "delete")]
         Delete
-    }
-
-    public class DeleteGroupInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
     }
 
     public class CopyFileByIdResponse
@@ -2408,7 +2300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string GroupId { get; set; }
     }
 
-    public class CopyFileByIdInput
+    public class CopyFileByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2426,15 +2318,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string FolderId { get; set; }
     }
 
-    public class CopyFolderByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("destination_path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationPath { get; set; }
-    }
-
     public class MoveFileByPathResponse
     {
         [JsonProperty("path")]
@@ -2442,15 +2325,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("group_id")]
         public string GroupId { get; set; }
-    }
-
-    public class MoveFileByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-
-        [JsonProperty("destination_path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationPath { get; set; }
     }
 
     public class MoveFolderByPathResponse
@@ -2462,15 +2336,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string FolderId { get; set; }
     }
 
-    public class MoveFolderByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-
-        [JsonProperty("destination_path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationPath { get; set; }
-    }
-
     public class MoveFileByIdResponse
     {
         [JsonProperty("path")]
@@ -2480,15 +2345,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string GroupId { get; set; }
     }
 
-    public class MoveFileByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("destination_path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationPath { get; set; }
-    }
-
     public class MoveFolderByIdResponse
     {
         [JsonProperty("path")]
@@ -2496,15 +2352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("folder_id")]
         public string FolderId { get; set; }
-    }
-
-    public class MoveFolderByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("destination_path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationPath { get; set; }
     }
 
     public class ShareFileResponse
@@ -2549,12 +2396,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string[] Recipients { get; set; }
     }
 
-    public class ShareFileInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-    }
-
     public class ShareFolderResponse
     {
         [JsonProperty("links")]
@@ -2595,12 +2436,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("recipients")]
         public string[] Recipients { get; set; }
-    }
-
-    public class ShareFolderInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
     }
 
     public class FileInfoResponse
@@ -2670,12 +2505,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         [JsonProperty("size")]
         public int Size { get; set; }
-    }
-
-    public class FileInfoByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
     }
 
     public class FolderInfoResponse
@@ -2786,12 +2615,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public int NumVersions { get; set; }
     }
 
-    public class FolderInfoByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-    }
-
     public class ModifyFolderOptionsResponse
     {
         [JsonProperty("name")]
@@ -2819,7 +2642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool RestrictMoveDelete { get; set; }
     }
 
-    public class ModifyFolderOptionsInput
+    public class ModifyFolderOptionsBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
@@ -2831,17 +2654,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool? AllowLinks { get; set; }
 
         [JsonProperty("public_links")]
-        public ModifyFolderOptionsInputPublicLinksType? PublicLinks { get; set; }
+        public BodyInputPublicLinksType? PublicLinks { get; set; }
 
         [JsonProperty("restrict_move_delete")]
         public bool? RestrictMoveDelete { get; set; }
 
         [JsonProperty("email_preferences")]
-        public ModifyFolderOptionsInputEmailPreferencesType EmailPreferences { get; set; }
+        public BodyInputEmailPreferencesType EmailPreferences { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ModifyFolderOptionsInputPublicLinksType
+    public enum BodyInputPublicLinksType
     {
         [EnumMember(Value = "files_folders")]
         FilesFolders,
@@ -2851,25 +2674,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Disabled
     }
 
-    public class ModifyFolderOptionsInputEmailPreferencesType
+    public class BodyInputEmailPreferencesType
     {
         [JsonProperty("content_updates")]
         public bool? ContentUpdates { get; set; }
 
         [JsonProperty("content_accessed")]
         public bool? ContentAccessed { get; set; }
-    }
-
-    public class FileInfoByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class FolderInfoByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
     }
 
     public class LockFileByPathResponse
@@ -2881,13 +2692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string LockToken { get; set; }
     }
 
-    public class LockFileByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-    }
-
-    public class UnlockFileByPathInput
+    public class UnlockFileByPathBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
@@ -2905,13 +2710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string LockToken { get; set; }
     }
 
-    public class LockFileByIdInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-    }
-
-    public class UnlockFileByIdInput
+    public class UnlockFileByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2920,7 +2719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string LockToken { get; set; }
     }
 
-    public class GetFileContentByPathInput
+    public class GetFileContentByPathBodyInput
     {
         [JsonProperty("filePath", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilePath { get; set; }
@@ -2929,7 +2728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool? EnableAISafeguards { get; set; } = false;
     }
 
-    public class GetFileContentByIdInput
+    public class GetFileContentByIdBodyInput
     {
         [JsonProperty("fileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileId { get; set; }
@@ -2950,7 +2749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Path { get; set; }
     }
 
-    public class SetMetadataByFileIdInput
+    public class SetMetadataByFileIdBodyInput
     {
         [JsonProperty("fileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileId { get; set; }
@@ -2965,7 +2764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string MetadataValue { get; set; }
     }
 
-    public class SetMetadataByFolderIdInput
+    public class SetMetadataByFolderIdBodyInput
     {
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
@@ -3029,7 +2828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         FOLDERSCOPE
     }
 
-    public class CreateNamespaceInput
+    public class CreateNamespaceBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3038,14 +2837,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string DisplayName { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateNamespaceInputScopeType Scope { get; set; }
+        public BodyInputScopeType Scope { get; set; }
 
         [JsonProperty("keys", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateNamespaceInputKeysTypeItem[] Keys { get; set; }
+        public BodyInputKeysTypeItem[] Keys { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateNamespaceInputScopeType
+    public enum BodyInputScopeType
     {
         [EnumMember(Value = "public")]
         Public,
@@ -3055,13 +2854,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Private
     }
 
-    public class CreateNamespaceInputKeysTypeItem
+    public class BodyInputKeysTypeItem
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateNamespaceInputKeysTypeItemTypeType Type { get; set; }
+        public BodyInputKeysTypeItemTypeType Type { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -3077,7 +2876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateNamespaceInputKeysTypeItemTypeType
+    public enum BodyInputKeysTypeItemTypeType
     {
         [EnumMember(Value = "integer")]
         Integer,
@@ -3091,7 +2890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Enum
     }
 
-    public class UpdateNamespaceAttributesInput
+    public class UpdateNamespaceAttributesBodyInput
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
@@ -3121,7 +2920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public double Priority { get; set; }
     }
 
-    public class UpdateNamespaceKeysInput
+    public class UpdateNamespaceKeysBodyInput
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
@@ -3133,7 +2932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string DisplayName { get; set; }
 
         [JsonProperty("type")]
-        public UpdateNamespaceKeysInputTypeType? Type { get; set; }
+        public CreateMetadataKeyBodyInputTypeType? Type { get; set; }
 
         [JsonProperty("priority")]
         public double? Priority { get; set; }
@@ -3146,7 +2945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateNamespaceKeysInputTypeType
+    public enum CreateMetadataKeyBodyInputTypeType
     {
         [EnumMember(Value = "integer")]
         Integer,
@@ -3160,13 +2959,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Enum
     }
 
-    public class GetNamespaceInput
+    public class GetNamespaceBodyInput
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
     }
 
-    public class DeleteNamespaceInput
+    public class DeleteNamespaceBodyInput
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
@@ -3196,7 +2995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Description { get; set; }
 
         [JsonProperty("location")]
-        public ProjectLocationItem Location { get; set; }
+        public GetAllProjectsProjectLocationItemResponse Location { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3220,7 +3019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string CompletionDate { get; set; }
     }
 
-    public class ProjectLocationItem
+    public class GetAllProjectsProjectLocationItemResponse
     {
         [JsonProperty("streetAddress1")]
         public string StreetAddress1 { get; set; }
@@ -3247,7 +3046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Id { get; set; }
     }
 
-    public class MarkFolderAsProjectInput
+    public class MarkFolderAsProjectBodyInput
     {
         [JsonProperty("rootFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RootFolderId { get; set; }
@@ -3259,7 +3058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Description { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MarkFolderAsProjectInputStatusType Status { get; set; }
+        public CreateProjectFromTemplateBodyInputStatusType Status { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -3269,7 +3068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MarkFolderAsProjectInputStatusType
+    public enum CreateProjectFromTemplateBodyInputStatusType
     {
         [EnumMember(Value = "pending")]
         Pending,
@@ -3298,7 +3097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Name { get; set; }
     }
 
-    public class CreateProjectFromTemplateInput
+    public class CreateProjectFromTemplateBodyInput
     {
         [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentFolderId { get; set; }
@@ -3322,7 +3121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string CustomerName { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectFromTemplateInputStatusType Status { get; set; }
+        public CreateProjectFromTemplateBodyInputStatusType Status { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -3331,31 +3130,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string CompletionDate { get; set; }
 
         [JsonProperty("location")]
-        public ProjectLocationItem Location { get; set; }
+        public CreateProjectFromTemplateProjectLocationItem Location { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateProjectFromTemplateInputStatusType
+    public class CreateProjectFromTemplateProjectLocationItem
     {
-        [EnumMember(Value = "pending")]
-        Pending,
-        [EnumMember(Value = "in-progress")]
-        InProgress,
-        [EnumMember(Value = "completed")]
-        Completed,
-        [EnumMember(Value = "on-hold")]
-        OnHold,
-        [EnumMember(Value = "canceled")]
-        Canceled
+        [JsonProperty("streetAddress1")]
+        public string StreetAddress1 { get; set; }
+
+        [JsonProperty("streetAddress2")]
+        public string StreetAddress2 { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("postalCode")]
+        public string PostalCode { get; set; }
     }
 
-    public class GetProjectByIdInput
+    public class GetProjectByIdBodyInput
     {
         [JsonProperty("projectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
     }
 
-    public class UpdateProjectByIdInput
+    public class UpdateProjectByIdBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -3373,10 +3178,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string CustomerName { get; set; }
 
         [JsonProperty("location")]
-        public UpdateProjectByIdInputLocationType Location { get; set; }
+        public BodyInputLocationType Location { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateProjectByIdInputStatusType Status { get; set; }
+        public CreateProjectFromTemplateBodyInputStatusType Status { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -3385,7 +3190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string CompletionDate { get; set; }
     }
 
-    public class UpdateProjectByIdInputLocationType
+    public class BodyInputLocationType
     {
         [JsonProperty("streetAddress1")]
         public string StreetAddress1 { get; set; }
@@ -3406,22 +3211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Country { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateProjectByIdInputStatusType
-    {
-        [EnumMember(Value = "pending")]
-        Pending,
-        [EnumMember(Value = "in-progress")]
-        InProgress,
-        [EnumMember(Value = "completed")]
-        Completed,
-        [EnumMember(Value = "on-hold")]
-        OnHold,
-        [EnumMember(Value = "canceled")]
-        Canceled
-    }
-
-    public class GetProjectByRootFolderIdInput
+    public class GetProjectByRootFolderIdBodyInput
     {
         [JsonProperty("rootFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RootFolderId { get; set; }
@@ -3433,7 +3223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Message { get; set; }
     }
 
-    public class CleanupProjectInput
+    public class CleanupProjectBodyInput
     {
         [JsonProperty("projectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
@@ -3448,7 +3238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public int[] UsersToDisable { get; set; }
     }
 
-    public class CreateMetadataKeyInput
+    public class CreateMetadataKeyBodyInput
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
@@ -3457,7 +3247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Key { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateMetadataKeyInputTypeType Type { get; set; }
+        public CreateMetadataKeyBodyInputTypeType Type { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -3472,22 +3262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string[] Data { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateMetadataKeyInputTypeType
-    {
-        [EnumMember(Value = "integer")]
-        Integer,
-        [EnumMember(Value = "string")]
-        String,
-        [EnumMember(Value = "decimal")]
-        Decimal,
-        [EnumMember(Value = "date")]
-        Date,
-        [EnumMember(Value = "enum")]
-        Enum
-    }
-
-    public class DeleteMetadataKeyInput
+    public class DeleteMetadataKeyBodyInput
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
@@ -3499,7 +3274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool? Force { get; set; }
     }
 
-    public class GetMetadataByFileIdInput
+    public class GetMetadataByFileIdBodyInput
     {
         [JsonProperty("fileId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileId { get; set; }
@@ -3508,7 +3283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Namespace { get; set; }
     }
 
-    public class GetMetadataByFolderIdInput
+    public class GetMetadataByFolderIdBodyInput
     {
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FolderId { get; set; }
@@ -3517,27 +3292,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Namespace { get; set; }
     }
 
-    public class SearchMetadataInput
+    public class SearchMetadataBodyInput
     {
         [JsonProperty("type")]
-        public SearchMetadataInputTypeType? Type { get; set; }
+        public SearchBodyInputTypeType? Type { get; set; }
 
         [JsonProperty("hasKey")]
-        public SearchMetadataInputHasKeyTypeItem[] HasKey { get; set; }
+        public BodyInputHasKeyTypeItem[] HasKey { get; set; }
 
         [JsonProperty("keyWithValue")]
-        public SearchMetadataInputKeyWithValueTypeItem[] KeyWithValue { get; set; }
+        public BodyInputKeyWithValueTypeItem[] KeyWithValue { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchMetadataInputTypeType
+    public enum SearchBodyInputTypeType
     {
-        ALL,
         FOLDER,
-        FILE
+        FILE,
+        ALL
     }
 
-    public class SearchMetadataInputHasKeyTypeItem
+    public class BodyInputHasKeyTypeItem
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
@@ -3546,7 +3321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string KeyName { get; set; }
     }
 
-    public class SearchMetadataInputKeyWithValueTypeItem
+    public class BodyInputKeyWithValueTypeItem
     {
         [JsonProperty("namespace", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Namespace { get; set; }
@@ -3576,7 +3351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Owner
     }
 
-    public class GetEffectivePermissionsInput
+    public class GetEffectivePermissionsBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
@@ -3585,7 +3360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Username { get; set; }
     }
 
-    public class SetFolderPermissionsInput
+    public class SetFolderPermissionsBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
@@ -3618,29 +3393,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool KeepParentPermissions { get; set; }
     }
 
-    public class GetFolderPermissionsInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
-    }
-
     public class DeepLinksByIdResponse
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class DeepLinksByIdInput
+    public class DeepLinksByIdBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeepLinksByIdInputTypeType Type { get; set; }
+        public DeepLinksByIdBodyInputTypeType Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DeepLinksByIdInputTypeType
+    public enum DeepLinksByIdBodyInputTypeType
     {
         [EnumMember(Value = "file")]
         File,
@@ -3652,12 +3421,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     {
         [JsonProperty("url")]
         public string Url { get; set; }
-    }
-
-    public class DeepLinksByPathInput
-    {
-        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Path { get; set; }
     }
 
     public class ShowLinkDetailsResponse
@@ -3705,7 +3468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string[] Recipients { get; set; }
     }
 
-    public class ShowLinkDetailsInput
+    public class DeleteLinkBodyInput
     {
         [JsonProperty("linkId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LinkId { get; set; }
@@ -3753,16 +3516,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string[] Recipients { get; set; }
     }
 
-    public class CreateLinkInput
+    public class CreateLinkBodyInput
     {
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLinkInputTypeType Type { get; set; }
+        public CreateLinkBodyInputTypeType Type { get; set; }
 
         [JsonProperty("accessibility")]
-        public CreateLinkInputAccessibilityType? Accessibility { get; set; }
+        public CreateLinkBodyInputAccessibilityType? Accessibility { get; set; }
 
         [JsonProperty("useDefaultSettings", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool UseDefaultSettings { get; set; } = true;
@@ -3798,14 +3561,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Password { get; set; }
 
         [JsonProperty("protection")]
-        public CreateLinkInputProtectionType? Protection { get; set; }
+        public BodyInputProtectionType? Protection { get; set; }
 
         [JsonProperty("folder_per_recipient")]
         public bool? FolderPerRecipient { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLinkInputTypeType
+    public enum CreateLinkBodyInputTypeType
     {
         [EnumMember(Value = "file")]
         File,
@@ -3816,7 +3579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLinkInputAccessibilityType
+    public enum CreateLinkBodyInputAccessibilityType
     {
         [EnumMember(Value = "anyone")]
         Anyone,
@@ -3831,16 +3594,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLinkInputProtectionType
+    public enum BodyInputProtectionType
     {
         PREVIEW,
         NONE
-    }
-
-    public class DeleteLinkInput
-    {
-        [JsonProperty("linkId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LinkId { get; set; }
     }
 
     public class AIQuestionResponse
@@ -3879,7 +3636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string SourceText { get; set; }
     }
 
-    public class AskDocumentQuestionInput
+    public class AskDocumentQuestionBodyInput
     {
         [JsonProperty("entryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
@@ -3924,7 +3681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public AIResponse Response { get; set; }
     }
 
-    public class SummarizeDocumentInput
+    public class SummarizeDocumentBodyInput
     {
         [JsonProperty("entryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EntryId { get; set; }
@@ -3945,7 +3702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string ConversationId { get; set; }
     }
 
-    public class CopilotAskInput
+    public class CopilotAskBodyInput
     {
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
@@ -3981,7 +3738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string EntryId { get; set; }
     }
 
-    public class AskKnowledgeBaseInput
+    public class AskKnowledgeBaseBodyInput
     {
         [JsonProperty("kbId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KbId { get; set; }
@@ -4113,16 +3870,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public int UserId { get; set; }
     }
 
-    public class ListKnowledgeBasesInput
+    public class ListKnowledgeBasesBodyInput
     {
         [JsonProperty("sortBy", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListKnowledgeBasesInputSortByType SortBy { get; set; } = ListKnowledgeBasesInputSortByType.CreatedOn;
+        public ListAgentsBodyInputSortByType SortBy { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListAgentsBodyInputSortByType.CreatedOn;
 
         [JsonProperty("sortDirection", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListKnowledgeBasesInputSortDirectionType SortDirection { get; set; } = ListKnowledgeBasesInputSortDirectionType.ASC;
+        public ListKnowledgeBasesBodyInputSortDirectionType SortDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListKnowledgeBasesBodyInputSortDirectionType.ASC;
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListKnowledgeBasesInputStatusType Status { get; set; } = ListKnowledgeBasesInputStatusType.ACTIVE;
+        public ListKnowledgeBasesBodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListKnowledgeBasesBodyInputStatusType.ACTIVE;
 
         [JsonProperty("page")]
         public int? Page { get; set; }
@@ -4150,23 +3907,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListKnowledgeBasesInputSortByType
+    public enum ListAgentsBodyInputSortByType
     {
-        [EnumMember(Value = "createdOn")]
-        CreatedOn,
         [EnumMember(Value = "name")]
-        Name
+        Name,
+        [EnumMember(Value = "createdOn")]
+        CreatedOn
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListKnowledgeBasesInputSortDirectionType
+    public enum ListKnowledgeBasesBodyInputSortDirectionType
     {
         ASC,
         DESC
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListKnowledgeBasesInputStatusType
+    public enum ListKnowledgeBasesBodyInputStatusType
     {
         ACTIVE,
         DELETED,
@@ -4209,7 +3966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public double Score { get; set; }
     }
 
-    public class HybridSearchInput
+    public class HybridSearchBodyInput
     {
         [JsonProperty("semanticWeight", DefaultValueHandling = DefaultValueHandling.Include)]
         public double SemanticWeight { get; set; }
@@ -4278,26 +4035,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string CreatedBy { get; set; }
     }
 
-    public class ListAgentsInput
+    public class ListAgentsBodyInput
     {
         [JsonProperty("sortBy", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListAgentsInputSortByType? SortBy { get; set; } = ListAgentsInputSortByType.Name;
+        public ListAgentsBodyInputSortByType? SortBy { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListAgentsBodyInputSortByType.Name;
 
         [JsonProperty("sortOrder", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListAgentsInputSortOrderType? SortOrder { get; set; } = ListAgentsInputSortOrderType.Asc;
+        public BodyInputSortOrderType? SortOrder { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.BodyInputSortOrderType.Asc;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListAgentsInputSortByType
-    {
-        [EnumMember(Value = "name")]
-        Name,
-        [EnumMember(Value = "createdOn")]
-        CreatedOn
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListAgentsInputSortOrderType
+    public enum BodyInputSortOrderType
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -4314,7 +4062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string ConversationId { get; set; }
     }
 
-    public class AskAgentInput
+    public class AskAgentBodyInput
     {
         [JsonProperty("agentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
@@ -4371,7 +4119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Type { get; set; }
     }
 
-    public class GetAgentExecutionStatusInput
+    public class GetAgentExecutionStatusBodyInput
     {
         [JsonProperty("agentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
@@ -4380,16 +4128,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string RequestId { get; set; }
     }
 
-    public class ListLinksV2Response
+    public class ListLinksResponse
     {
         [JsonProperty("links")]
-        public ListLinksV2ResponseLinksTypeItem[] Links { get; set; }
+        public ListLinksResponseLinksTypeItem[] Links { get; set; }
 
         [JsonProperty("count")]
         public double Count { get; set; }
     }
 
-    public class ListLinksV2ResponseLinksTypeItem
+    public class ListLinksResponseLinksTypeItem
     {
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -4437,7 +4185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string ExpiryDate { get; set; }
     }
 
-    public class ListLinksV2Input
+    public class ListLinksBodyInput
     {
         [JsonProperty("path")]
         public string Path { get; set; }
@@ -4452,10 +4200,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string CreatedAfter { get; set; }
 
         [JsonProperty("type")]
-        public ListLinksV2InputTypeType? Type { get; set; }
+        public DeepLinksByIdBodyInputTypeType? Type { get; set; }
 
         [JsonProperty("accessibility")]
-        public ListLinksV2InputAccessibilityType? Accessibility { get; set; }
+        public ListLinksBodyInputAccessibilityType? Accessibility { get; set; }
 
         [JsonProperty("offset")]
         public string Offset { get; set; }
@@ -4465,16 +4213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListLinksV2InputTypeType
-    {
-        [EnumMember(Value = "file")]
-        File,
-        [EnumMember(Value = "folder")]
-        Folder
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ListLinksV2InputAccessibilityType
+    public enum ListLinksBodyInputAccessibilityType
     {
         [EnumMember(Value = "anyone")]
         Anyone,
@@ -4486,10 +4225,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Recipients
     }
 
-    public class SearchV2Response
+    public class SearchResponse
     {
         [JsonProperty("results")]
-        public SearchV2ResponseResultsTypeItem[] Results { get; set; }
+        public SearchResponseResultsTypeItem[] Results { get; set; }
 
         [JsonProperty("total_count")]
         public int TotalCount { get; set; }
@@ -4501,7 +4240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool HasMore { get; set; }
     }
 
-    public class SearchV2ResponseResultsTypeItem
+    public class SearchResponseResultsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4543,13 +4282,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool IsFolder { get; set; }
 
         [JsonProperty("custom_properties")]
-        public SearchV2ResponseResultsTypeItemCustomPropertiesTypeItem[] CustomProperties { get; set; }
+        public SearchResponseResultsTypeItemCustomPropertiesTypeItem[] CustomProperties { get; set; }
 
         [JsonProperty("score")]
         public double Score { get; set; }
     }
 
-    public class SearchV2ResponseResultsTypeItemCustomPropertiesTypeItem
+    public class SearchResponseResultsTypeItemCustomPropertiesTypeItem
     {
         [JsonProperty("scope")]
         public string Scope { get; set; }
@@ -4564,7 +4303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Value { get; set; }
     }
 
-    public class SearchV2Input
+    public class SearchBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Query { get; set; }
@@ -4594,25 +4333,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public int? UploadedAfter { get; set; }
 
         [JsonProperty("type")]
-        public SearchV2InputTypeType? Type { get; set; }
+        public SearchBodyInputTypeType? Type { get; set; }
 
         [JsonProperty("snippetRequested", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SnippetRequested { get; set; } = true;
 
         [JsonProperty("sortBy")]
-        public SearchV2InputSortByType? SortBy { get; set; }
+        public SearchBodyInputSortByType? SortBy { get; set; }
 
         [JsonProperty("sortDirection")]
-        public SearchV2InputSortDirectionType? SortDirection { get; set; }
+        public SearchBodyInputSortDirectionType? SortDirection { get; set; }
 
         [JsonProperty("fileQueryFields")]
-        public SearchV2InputFileQueryFieldsTypeItem[] FileQueryFields { get; set; }
+        public BodyInputFileQueryFieldsTypeItem[] FileQueryFields { get; set; }
 
         [JsonProperty("folderQueryFields")]
-        public SearchV2InputFolderQueryFieldsTypeItem[] FolderQueryFields { get; set; }
+        public BodyInputFolderQueryFieldsTypeItem[] FolderQueryFields { get; set; }
 
         [JsonProperty("queryOperator")]
-        public SearchV2InputQueryOperatorType? QueryOperator { get; set; }
+        public BodyInputQueryOperatorType? QueryOperator { get; set; }
 
         [JsonProperty("mlt")]
         public string[] Mlt { get; set; }
@@ -4622,15 +4361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchV2InputTypeType
-    {
-        FOLDER,
-        FILE,
-        ALL
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchV2InputSortByType
+    public enum SearchBodyInputSortByType
     {
         [EnumMember(Value = "last_modified")]
         LastModified,
@@ -4643,7 +4374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchV2InputSortDirectionType
+    public enum SearchBodyInputSortDirectionType
     {
         [EnumMember(Value = "ascending")]
         Ascending,
@@ -4652,7 +4383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchV2InputFileQueryFieldsTypeItem
+    public enum BodyInputFileQueryFieldsTypeItem
     {
         ALL,
         FILENAME,
@@ -4661,7 +4392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchV2InputFolderQueryFieldsTypeItem
+    public enum BodyInputFolderQueryFieldsTypeItem
     {
         ALL,
         FOLDERNAME,
@@ -4669,115 +4400,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchV2InputQueryOperatorType
+    public enum BodyInputQueryOperatorType
     {
         ANY,
         ALL
     }
 
-    public class FileLockedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FileUnlockedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FileUpdatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FileCreatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class ShareLinkCreatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class ShareLinkDeletedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FileOrFolderPermissionChangeInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FileOrFolderMetadataChangeInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FolderProjectAddedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FolderProjectUnmarkedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class FolderProjectUpdatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WorkflowCreatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WorkflowCompletedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WorkflowApprovalTaskApprovedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WorkflowApprovalTaskRejectedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class GroupCreatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class GroupUpdatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class GroupDeletedInput
+    public class FileCreatedBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

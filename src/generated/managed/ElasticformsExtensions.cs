@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     public class ElasticformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<AssignFormResponse, ApiConnectionActionConfiguration> AssignForm(Expression<Func<AssignFormInput>> formAssignBody)
+        public IBodyWorkflowAction<AssignFormResponse, ApiConnectionActionConfiguration> AssignForm(Expression<Func<FormAssignBodyInput>> formAssignBody)
         {
             var __workflow_formAssignBody = WorkflowExpression.Compile(formAssignBody, nameof(formAssignBody), required: true);
             return new DeferredBodyAction<AssignFormResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddData(Expression<Func<AddDataInput>> formDataBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddData(Expression<Func<FormDataBodyInput>> formDataBody)
         {
             var __workflow_formDataBody = WorkflowExpression.Compile(formDataBody, nameof(formDataBody), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
 
     public class ElasticformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TrigNewResponse(Expression<Func<TrigNewResponseInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TrigNewResponse(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook, FlowRecurrence recurrence = null)
         {
             var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         public string AssignedFormUrl { get; set; }
     }
 
-    public class AssignFormInput
+    public class FormAssignBodyInput
     {
         [JsonProperty("UserName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string User { get; set; }
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         public JToken Fields { get; set; }
     }
 
-    public class AddDataInput
+    public class FormDataBodyInput
     {
         [JsonProperty("FormUid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Form { get; set; }
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         public JToken Fields { get; set; }
     }
 
-    public class TrigNewResponseInput
+    public class RequestBodyOfWebhookInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TriggerUrl { get; set; } = "#{listCallbackUrl()}";

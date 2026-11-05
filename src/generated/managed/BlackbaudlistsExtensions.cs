@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     public class BlackbaudlistsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
-        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<CreateListFromIDsInput>> body)
+        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<CreateListFromIDsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListApiCreatedList, ApiConnectionActionConfiguration>(() =>
@@ -46,10 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     {
     }
 
-    public class AppendIDsToListInput
+    public class AppendIDsToListBodyInput
     {
         [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AppendIDsToListInputListTypeType ListType { get; set; }
+        public BodyInputListTypeType ListType { get; set; }
 
         [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string List { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AppendIDsToListInputListTypeType
+    public enum BodyInputListTypeType
     {
         Constituent,
         Gift,
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         public string Id { get; set; }
     }
 
-    public class CreateListFromIDsInput
+    public class CreateListFromIDsBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -82,26 +82,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         public string Description { get; set; }
 
         [JsonProperty("list_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateListFromIDsInputListTypeType ListType { get; set; }
+        public BodyInputListTypeType ListType { get; set; }
 
         [JsonProperty("list_permissions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateListFromIDsInputPermissionsType Permissions { get; set; }
+        public BodyInputPermissionsType Permissions { get; set; }
 
         [JsonProperty("ids", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] IdS { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateListFromIDsInputListTypeType
-    {
-        Constituent,
-        Gift,
-        Action,
-        Opportunity
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateListFromIDsInputPermissionsType
+    public enum BodyInputPermissionsType
     {
         OnlyOwnerCanAccess,
         OthersCanView,

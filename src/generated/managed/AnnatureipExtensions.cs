@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "annatureip")]
-        public IBodyWorkflowAction<GetEnvelopesResponseItem[], ApiConnectionActionConfiguration> GetEnvelopes(Expression<Func<string>> name = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> recipient = null, Expression<Func<string>> createdBefore = null, Expression<Func<string>> createdAfter = null, Expression<Func<string>> completedBefore = null, Expression<Func<string>> completedAfter = null)
+        public IBodyWorkflowAction<GetEnvelopesResponseItem[], ApiConnectionActionConfiguration> GetEnvelopes(Expression<Func<string>> name = null, Expression<Func<StatusInput>> status = null, Expression<Func<string>> recipient = null, Expression<Func<string>> createdBefore = null, Expression<Func<string>> createdAfter = null, Expression<Func<string>> completedBefore = null, Expression<Func<string>> completedAfter = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "annatureip")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeInput>> body)
+        public IBodyWorkflowAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration> CreateEnvelope(Expression<Func<CreateEnvelopeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEnvelopeResponse, ApiConnectionActionConfiguration>(() =>
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "annatureip")]
-        public IBodyWorkflowAction<UseTemplateResponse, ApiConnectionActionConfiguration> UseTemplate(Expression<Func<string>> id, Expression<Func<UseTemplateInput>> body)
+        public IBodyWorkflowAction<UseTemplateResponse, ApiConnectionActionConfiguration> UseTemplate(Expression<Func<string>> id, Expression<Func<UseTemplateBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
                 var apiCallPath = "/endpoints";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new OnDocumentEventInput().ToJToken();
+                callPayload.Body = new OnDocumentEventBodyInput().ToJToken();
                 return new ApiConnectionTrigger<OnDocumentEventResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "draft")]
         Draft,
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string SessionDeclined { get; set; }
     }
 
-    public class CreateEnvelopeInput
+    public class CreateEnvelopeBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -737,16 +737,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string GroupId { get; set; }
 
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopeInputDocumentsTypeItem[] Documents { get; set; }
+        public CreateEnvelopeBodyInputDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopeInputRecipientsTypeItem[] Recipients { get; set; }
+        public CreateEnvelopeBodyInputRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
     }
 
-    public class CreateEnvelopeInputDocumentsTypeItem
+    public class CreateEnvelopeBodyInputDocumentsTypeItem
     {
         [JsonProperty("id")]
         public string GroupId { get; set; }
@@ -755,20 +755,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public CreateEnvelopeInputDocumentsTypeItemTypeType? Type { get; set; }
+        public BodyInputDocumentsTypeItemTypeType? Type { get; set; }
 
         [JsonProperty("base")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEnvelopeInputDocumentsTypeItemTypeType
+    public enum BodyInputDocumentsTypeItemTypeType
     {
         [EnumMember(Value = "application/pdf")]
         ApplicationPdf
     }
 
-    public class CreateEnvelopeInputRecipientsTypeItem
+    public class CreateEnvelopeBodyInputRecipientsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string Mobile { get; set; }
 
         [JsonProperty("type")]
-        public CreateEnvelopeInputRecipientsTypeItemRecipientTypeType? RecipientType { get; set; }
+        public BodyInputRecipientsTypeItemRecipientTypeType? RecipientType { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -795,14 +795,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public int? SigningOrder { get; set; }
 
         [JsonProperty("redirects")]
-        public CreateEnvelopeInputRecipientsTypeItemRedirectsType Redirects { get; set; }
+        public BodyInputRecipientsTypeItemRedirectsType Redirects { get; set; }
 
         [JsonProperty("fields")]
-        public CreateEnvelopeInputRecipientsTypeItemFieldsTypeItem[] Fields { get; set; }
+        public CreateEnvelopeBodyInputRecipientsTypeItemFieldsTypeItem[] Fields { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEnvelopeInputRecipientsTypeItemRecipientTypeType
+    public enum BodyInputRecipientsTypeItemRecipientTypeType
     {
         [EnumMember(Value = "signer")]
         Signer,
@@ -812,7 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         CarbonCopy
     }
 
-    public class CreateEnvelopeInputRecipientsTypeItemRedirectsType
+    public class BodyInputRecipientsTypeItemRedirectsType
     {
         [JsonProperty("session_completed")]
         public string SessionCompleted { get; set; }
@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string SessionDeclined { get; set; }
     }
 
-    public class CreateEnvelopeInputRecipientsTypeItemFieldsTypeItem
+    public class CreateEnvelopeBodyInputRecipientsTypeItemFieldsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -830,7 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string RecipientId { get; set; }
 
         [JsonProperty("type")]
-        public CreateEnvelopeInputRecipientsTypeItemFieldsTypeItemTypeType? Type { get; set; }
+        public BodyInputRecipientsTypeItemFieldsTypeItemTypeType? Type { get; set; }
 
         [JsonProperty("page")]
         public int? Page { get; set; }
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEnvelopeInputRecipientsTypeItemFieldsTypeItemTypeType
+    public enum BodyInputRecipientsTypeItemFieldsTypeItemTypeType
     {
         [EnumMember(Value = "signature")]
         Signature,
@@ -1390,7 +1390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string SessionDeclined { get; set; }
     }
 
-    public class UseTemplateInput
+    public class UseTemplateBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1411,13 +1411,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string GroupId { get; set; }
 
         [JsonProperty("documents")]
-        public UseTemplateInputDocumentsTypeItem[] Documents { get; set; }
+        public UseTemplateBodyInputDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UseTemplateInputRecipientsTypeItem[] Recipients { get; set; }
+        public UseTemplateBodyInputRecipientsTypeItem[] Recipients { get; set; }
     }
 
-    public class UseTemplateInputDocumentsTypeItem
+    public class UseTemplateBodyInputDocumentsTypeItem
     {
         [JsonProperty("id")]
         public string GroupId { get; set; }
@@ -1426,20 +1426,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public UseTemplateInputDocumentsTypeItemGroupId2Type? GroupId2 { get; set; }
+        public BodyInputDocumentsTypeItemGroupId2Type? GroupId2 { get; set; }
 
         [JsonProperty("base")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UseTemplateInputDocumentsTypeItemGroupId2Type
+    public enum BodyInputDocumentsTypeItemGroupId2Type
     {
         [EnumMember(Value = "application/pdf")]
         ApplicationPdf
     }
 
-    public class UseTemplateInputRecipientsTypeItem
+    public class UseTemplateBodyInputRecipientsTypeItem
     {
         [JsonProperty("role_id")]
         public string RoleId { get; set; }
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string SMSAuth { get; set; }
 
         [JsonProperty("type")]
-        public UseTemplateInputRecipientsTypeItemRecipientTypeType? RecipientType { get; set; }
+        public BodyInputRecipientsTypeItemRecipientTypeType? RecipientType { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -1472,39 +1472,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public int? SigningOrder { get; set; }
 
         [JsonProperty("fields")]
-        public UseTemplateInputRecipientsTypeItemFieldsTypeItem[] Fields { get; set; }
+        public UseTemplateBodyInputRecipientsTypeItemFieldsTypeItem[] Fields { get; set; }
 
         [JsonProperty("redirects")]
-        public UseTemplateInputRecipientsTypeItemRedirectsType Redirects { get; set; }
+        public BodyInputRecipientsTypeItemRedirectsType Redirects { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UseTemplateInputRecipientsTypeItemRecipientTypeType
-    {
-        [EnumMember(Value = "signer")]
-        Signer,
-        [EnumMember(Value = "viewer")]
-        Viewer,
-        [EnumMember(Value = "carbon-copy")]
-        CarbonCopy
-    }
-
-    public class UseTemplateInputRecipientsTypeItemFieldsTypeItem
+    public class UseTemplateBodyInputRecipientsTypeItemFieldsTypeItem
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldIdFromTemplate { get; set; }
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
-    }
-
-    public class UseTemplateInputRecipientsTypeItemRedirectsType
-    {
-        [JsonProperty("session_completed")]
-        public string SessionCompleted { get; set; }
-
-        [JsonProperty("session_declined")]
-        public string SessionDeclined { get; set; }
     }
 
     public class GetRecipientResponse
@@ -1585,7 +1565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public string Created { get; set; }
     }
 
-    public class OnDocumentEventInput
+    public class OnDocumentEventBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

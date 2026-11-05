@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     public class HumeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<JobsGetResponseItem[], ApiConnectionActionConfiguration> JobsGet(Expression<Func<int>> limit = null, Expression<Func<statusInput>> status = null, Expression<Func<whenInput>> when = null, Expression<Func<string>> timestampMs = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<directionInput>> direction = null)
+        public IBodyWorkflowAction<JobsGetResponseItem[], ApiConnectionActionConfiguration> JobsGet(Expression<Func<int>> limit = null, Expression<Func<StatusInput>> status = null, Expression<Func<WhenInput>> when = null, Expression<Func<string>> timestampMs = null, Expression<Func<SortByInput>> sortBy = null, Expression<Func<DirectionInput>> direction = null)
         {
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -43,17 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<JobPostResponse, ApiConnectionActionConfiguration> Job(Expression<Func<JobPostInput>> body = null)
+        public IBodyWorkflowAction<JobResponse, ApiConnectionActionConfiguration> Job(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<JobPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<JobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/batch/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<JobPostResponse>(callPayload);
+                return new ApiConnectionAction<JobResponse>(callPayload);
             });
         }
 
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         COMPLETED,
         [EnumMember(Value = "IN_PROGRESS")]
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum whenInput
+    public enum WhenInput
     {
         [EnumMember(Value = "created_before")]
         CreatedBefore,
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortByInput
+    public enum SortByInput
     {
         [EnumMember(Value = "created")]
         Created,
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum directionInput
+    public enum DirectionInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -288,19 +288,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         Desc
     }
 
-    public class JobPostResponse
+    public class JobResponse
     {
         [JsonProperty("job_id")]
         public string JobId { get; set; }
     }
 
-    public class JobPostInput
+    public class BodyInput
     {
         [JsonProperty("models")]
-        public JobPostInputModelsType Models { get; set; }
+        public BodyInputModelsType Models { get; set; }
 
         [JsonProperty("transcription")]
-        public JobPostInputTranscriptionType Transcription { get; set; }
+        public BodyInputTranscriptionType Transcription { get; set; }
 
         [JsonProperty("urls")]
         public string[] Urls { get; set; }
@@ -312,22 +312,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         public bool? Notify { get; set; }
     }
 
-    public class JobPostInputModelsType
+    public class BodyInputModelsType
     {
         [JsonProperty("face")]
-        public JobPostInputModelsTypeFaceType Face { get; set; }
+        public BodyInputModelsTypeFaceType Face { get; set; }
 
         [JsonProperty("prosody")]
-        public JobPostInputModelsTypeProsodyType Prosody { get; set; }
+        public BodyInputModelsTypeProsodyType Prosody { get; set; }
 
         [JsonProperty("language")]
-        public JobPostInputModelsTypeLanguageType Language { get; set; }
+        public BodyInputModelsTypeLanguageType Language { get; set; }
 
         [JsonProperty("ner")]
-        public JobPostInputModelsTypeNerType Ner { get; set; }
+        public BodyInputModelsTypeNerType Ner { get; set; }
     }
 
-    public class JobPostInputModelsTypeFaceType
+    public class BodyInputModelsTypeFaceType
     {
         [JsonProperty("fps_pred")]
         public double? FpsPred { get; set; }
@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         public bool? SaveFaces { get; set; }
     }
 
-    public class JobPostInputModelsTypeProsodyType
+    public class BodyInputModelsTypeProsodyType
     {
         [JsonProperty("granularity")]
         public string Granularity { get; set; }
@@ -354,10 +354,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         public bool? IdentifySpeakers { get; set; }
 
         [JsonProperty("window")]
-        public JobPostInputModelsTypeProsodyTypeWindowType Window { get; set; }
+        public BodyInputModelsTypeProsodyTypeWindowType Window { get; set; }
     }
 
-    public class JobPostInputModelsTypeProsodyTypeWindowType
+    public class BodyInputModelsTypeProsodyTypeWindowType
     {
         [JsonProperty("length")]
         public int? Length { get; set; }
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         public int? Step { get; set; }
     }
 
-    public class JobPostInputModelsTypeLanguageType
+    public class BodyInputModelsTypeLanguageType
     {
         [JsonProperty("granularity")]
         public string Granularity { get; set; }
@@ -375,13 +375,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         public bool? IdentifySpeakers { get; set; }
     }
 
-    public class JobPostInputModelsTypeNerType
+    public class BodyInputModelsTypeNerType
     {
         [JsonProperty("identify_speakers")]
         public bool? IdentifySpeakers { get; set; }
     }
 
-    public class JobPostInputTranscriptionType
+    public class BodyInputTranscriptionType
     {
         [JsonProperty("language")]
         public string Language { get; set; }

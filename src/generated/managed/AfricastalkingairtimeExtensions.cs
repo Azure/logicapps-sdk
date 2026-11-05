@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
     public class AfricastalkingairtimeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingairtime")]
-        public IBodyWorkflowAction<SendAirtimeResponse, ApiConnectionActionConfiguration> SendAirtime(Expression<Func<SendAirtimeInput>> body)
+        public IBodyWorkflowAction<SendAirtimeResponse, ApiConnectionActionConfiguration> SendAirtime(Expression<Func<SendAirtimeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendAirtimeResponse, ApiConnectionActionConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new AirtimeStatusNotificationInput().ToJToken();
+                callPayload.Body = new AirtimeStatusNotificationBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -101,16 +101,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
         public string Status { get; set; }
     }
 
-    public class SendAirtimeInput
+    public class SendAirtimeBodyInput
     {
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendAirtimeInputRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputRecipientsTypeItem[] Recipients { get; set; }
     }
 
-    public class SendAirtimeInputRecipientsTypeItem
+    public class BodyInputRecipientsTypeItem
     {
         [JsonProperty("phoneNumber", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PhoneNumber { get; set; }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
         public string Status { get; set; }
     }
 
-    public class AirtimeStatusNotificationInput
+    public class AirtimeStatusNotificationBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

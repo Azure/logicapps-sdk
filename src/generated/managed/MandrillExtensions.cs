@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<ListScheduledInfo[], ApiConnectionActionConfiguration> ScheduledMessageInfo(Expression<Func<ScheduledMessageInfoInput>> listScheduledRequest)
+        public IBodyWorkflowAction<ListScheduledInfo[], ApiConnectionActionConfiguration> ScheduledMessageInfo(Expression<Func<ListScheduledRequestInput>> listScheduledRequest)
         {
             var __workflow_listScheduledRequest = WorkflowExpression.Compile(listScheduledRequest, nameof(listScheduledRequest), required: true);
             return new DeferredBodyAction<ListScheduledInfo[], ApiConnectionActionConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
-        public IBodyWorkflowAction<SendMessageResponse[], ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageV2Input>> sendMessageRequest)
+        public IBodyWorkflowAction<SendMessageResponse[], ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageRequestInput>> sendMessageRequest)
         {
             var __workflow_sendMessageRequest = WorkflowExpression.Compile(sendMessageRequest, nameof(sendMessageRequest), required: true);
             return new DeferredBodyAction<SendMessageResponse[], ApiConnectionActionConfiguration>(() =>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         OrRule
     }
 
-    public class ScheduledMessageInfoInput
+    public class ListScheduledRequestInput
     {
         public string To { get; set; }
     }
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string MessageId { get; set; }
     }
 
-    public class SendMessageV2Input
+    public class SendMessageRequestInput
     {
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public SendMessageInfoV2 Message { get; set; } = new SendMessageInfoV2();
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string Name { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RecipientInfoSendAsType? SendAs { get; set; } = RecipientInfoSendAsType.To;
+        public RecipientInfoSendAsType? SendAs { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill.RecipientInfoSendAsType.To;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

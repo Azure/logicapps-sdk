@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
-        public IBodyWorkflowAction<UsersPartlistsUpdateResponse, ApiConnectionActionConfiguration> UsersPartlistsUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<UsersPartlistsUpdateInput>> body)
+        public IBodyWorkflowAction<UsersPartlistsUpdateResponse, ApiConnectionActionConfiguration> UsersPartlistsUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<UsersPartlistsUpdateBodyInput>> body)
         {
             var __workflow_userToken = WorkflowExpression.Compile(userToken, nameof(userToken), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrickableip")]
-        public IBodyWorkflowAction<UsersSetlistsPartialUpdateResponse, ApiConnectionActionConfiguration> UsersSetlistsPartialUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<UsersSetlistsPartialUpdateInput>> body = null)
+        public IBodyWorkflowAction<UsersSetlistsPartialUpdateResponse, ApiConnectionActionConfiguration> UsersSetlistsPartialUpdate(Expression<Func<string>> userToken, Expression<Func<string>> listId, Expression<Func<UsersSetlistsPartialUpdateBodyInput>> body = null)
         {
             var __workflow_userToken = WorkflowExpression.Compile(userToken, nameof(userToken), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -2668,7 +2668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public int NumParts { get; set; }
     }
 
-    public class UsersPartlistsUpdateInput
+    public class UsersPartlistsUpdateBodyInput
     {
         [JsonProperty("is_buildable")]
         public bool? IsBuildable { get; set; }
@@ -3168,7 +3168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public int NumSets { get; set; }
     }
 
-    public class UsersSetlistsPartialUpdateInput
+    public class UsersSetlistsPartialUpdateBodyInput
     {
         [JsonProperty("is_buildable")]
         public bool? IsBuildable { get; set; }

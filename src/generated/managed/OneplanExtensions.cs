@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oneplan")]
-        public IBodyWorkflowAction<CreatePlanResponse, ApiConnectionActionConfiguration> CreatePlan(Expression<Func<CreatePlanInput>> integrationPost)
+        public IBodyWorkflowAction<CreatePlanResponse, ApiConnectionActionConfiguration> CreatePlan(Expression<Func<CreatePlanIntegrationPostInput>> integrationPost)
         {
             var __workflow_integrationPost = WorkflowExpression.Compile(integrationPost, nameof(integrationPost), required: true);
             return new DeferredBodyAction<CreatePlanResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oneplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> StampMapping(Expression<Func<bool>> isImport, Expression<Func<StampMappingInput>> integrationPost)
+        public IWorkflowAction<ApiConnectionActionConfiguration> StampMapping(Expression<Func<bool>> isImport, Expression<Func<StampMappingIntegrationPostInput>> integrationPost)
         {
             var __workflow_isImport = WorkflowExpression.Compile(isImport, nameof(isImport), required: true);
             var __workflow_integrationPost = WorkflowExpression.Compile(integrationPost, nameof(integrationPost), required: true);
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oneplan")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> RespondToOnePlan(Expression<Func<RespondToOnePlanInput>> body)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> RespondToOnePlan(Expression<Func<RespondToOnePlanBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oneplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> id, Expression<Func<CreateTaskInput>> integrationPost, Expression<Func<string>> name = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> id, Expression<Func<CreateTaskIntegrationPostInput>> integrationPost, Expression<Func<string>> name = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_integrationPost = WorkflowExpression.Compile(integrationPost, nameof(integrationPost), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oneplan")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> taskid, Expression<Func<UpdateTaskInput>> integrationPost)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> taskid, Expression<Func<UpdateTaskIntegrationPostInput>> integrationPost)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_taskid = WorkflowExpression.Compile(taskid, nameof(taskid), required: true);
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oneplan")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Approve(Expression<Func<string>> id, Expression<Func<stateInput>> state, Expression<Func<string>> comment = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Approve(Expression<Func<string>> id, Expression<Func<StateInput>> state, Expression<Func<string>> comment = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
 
     public class OneplanTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> StepUpdateTrigger(Expression<Func<StepUpdateTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> StepUpdateTrigger(Expression<Func<StepUpdateTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> StepAddTrigger(Expression<Func<StepAddTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> StepAddTrigger(Expression<Func<StepAddTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PlanUpdateTrigger(Expression<Func<PlanUpdateTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> PlanUpdateTrigger(Expression<Func<PlanUpdateTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -393,7 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AutomationTrigger(Expression<Func<AutomationTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> AutomationTrigger(Expression<Func<AutomationTriggerBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -413,13 +413,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         public string Id { get; set; }
     }
 
-    public class CreatePlanInput
+    public class CreatePlanIntegrationPostInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePlanInputWorkPlanType WorkPlan { get; set; }
+        public IntegrationPostInputWorkPlanType WorkPlan { get; set; }
     }
 
-    public class CreatePlanInputWorkPlanType
+    public class IntegrationPostInputWorkPlanType
     {
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanName { get; set; }
@@ -434,7 +434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         public JToken Fields { get; set; }
     }
 
-    public class StampMappingInput
+    public class StampMappingIntegrationPostInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         internal int IntegrationVersion { get; set; } = 0;
     }
 
-    public class RespondToOnePlanInput
+    public class RespondToOnePlanBodyInput
     {
         [JsonProperty("automationProcessId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AutomationProcessId { get; set; }
@@ -464,20 +464,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         public string ConfigurationId { get; set; }
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RespondToOnePlanInputStatusType Status { get; set; }
+        public BodyInputStatusType Status { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RespondToOnePlanInputStatusType
+    public enum BodyInputStatusType
     {
         Success,
         Cancelled
     }
 
-    public class CreateTaskInput
+    public class CreateTaskIntegrationPostInput
     {
         [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskName { get; set; }
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         public JToken Fields { get; set; }
     }
 
-    public class UpdateTaskInput
+    public class UpdateTaskIntegrationPostInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Fields { get; set; }
@@ -520,14 +520,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum stateInput
+    public enum StateInput
     {
         Approved,
         Pending,
         Rejected
     }
 
-    public class StepUpdateTriggerInput
+    public class StepUpdateTriggerBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EventUrl { get; set; } = "#{listCallbackUrl()}";
@@ -548,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         };
     }
 
-    public class StepAddTriggerInput
+    public class StepAddTriggerBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EventUrl { get; set; } = "#{listCallbackUrl()}";
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         };
     }
 
-    public class PlanUpdateTriggerInput
+    public class PlanUpdateTriggerBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EventUrl { get; set; } = "#{listCallbackUrl()}";
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oneplan
         };
     }
 
-    public class AutomationTriggerInput
+    public class AutomationTriggerBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EventUrl { get; set; } = "#{listCallbackUrl()}";

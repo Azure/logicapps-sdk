@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<IdeasResponse, ApiConnectionActionConfiguration> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<IdeasResponse, ApiConnectionActionConfiguration> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
         {
             var __workflow_publishedAfter = WorkflowExpression.Compile(publishedAfter, nameof(publishedAfter), required: false);
             var __workflow_lastStageChangeAfter = WorkflowExpression.Compile(lastStageChangeAfter, nameof(lastStageChangeAfter), required: false);
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortFieldInput
+    public enum SortFieldInput
     {
         [EnumMember(Value = "PUBLISHED_AT")]
         PUBLISHEDAT,
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOrderInput
+    public enum SortOrderInput
     {
         ASC,
         DESC

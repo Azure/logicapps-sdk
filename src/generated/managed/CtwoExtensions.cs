@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
     public class CtwoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetSessionFailed(Expression<Func<string>> sessionId, Expression<Func<SetSessionFailedInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetSessionFailed(Expression<Func<string>> sessionId, Expression<Func<SetSessionFailedBodyInput>> body)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddLogToSession(Expression<Func<string>> sessionId, Expression<Func<AddLogToSessionInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddLogToSession(Expression<Func<string>> sessionId, Expression<Func<AddLogToSessionBodyInput>> body)
         {
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AssignForm(Expression<Func<string>> formId, Expression<Func<AssignFormInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AssignForm(Expression<Func<string>> formId, Expression<Func<AssignFormBodyInput>> body = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompleteForm(Expression<Func<string>> formId, Expression<Func<CompleteFormInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CompleteForm(Expression<Func<string>> formId, Expression<Func<CompleteFormBodyInput>> body = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemData(Expression<Func<string>> queueItemId, Expression<Func<SetItemDataInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemData(Expression<Func<string>> queueItemId, Expression<Func<SetItemDataBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemState(Expression<Func<string>> queueItemId, Expression<Func<SetItemStateInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SetItemState(Expression<Func<string>> queueItemId, Expression<Func<SetItemStateBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemLog(Expression<Func<string>> queueItemId, Expression<Func<AddItemLogInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemLog(Expression<Func<string>> queueItemId, Expression<Func<AddItemLogBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemTag(Expression<Func<string>> queueItemId, Expression<Func<AddItemTagInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddItemTag(Expression<Func<string>> queueItemId, Expression<Func<AddItemTagBodyInput>> body = null)
         {
             var __workflow_queueItemId = WorkflowExpression.Compile(queueItemId, nameof(queueItemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ctwo")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateItemState(Expression<Func<CreateItemStateInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateItemState(Expression<Func<CreateItemStateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -254,23 +254,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         }
     }
 
-    public class SetSessionFailedInput
+    public class SetSessionFailedBodyInput
     {
         [JsonProperty("details", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Details { get; set; }
     }
 
-    public class AddLogToSessionInput
+    public class AddLogToSessionBodyInput
     {
         [JsonProperty("level", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddLogToSessionInputLevelType Level { get; set; }
+        public AddLogToSessionBodyInputLevelType Level { get; set; }
 
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddLogToSessionInputLevelType
+    public enum AddLogToSessionBodyInputLevelType
     {
         Trace,
         Debug,
@@ -280,19 +280,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         Critical
     }
 
-    public class AssignFormInput
+    public class AssignFormBodyInput
     {
         [JsonProperty("userId")]
         public int? UserId { get; set; }
     }
 
-    public class CompleteFormInput
+    public class CompleteFormBodyInput
     {
         [JsonProperty("completedAt")]
         public string CompletedAt { get; set; }
     }
 
-    public class SetItemDataInput
+    public class SetItemDataBodyInput
     {
         [JsonProperty("data")]
         public JToken Data { get; set; }
@@ -301,45 +301,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
         public string Created { get; set; }
     }
 
-    public class SetItemStateInput
+    public class SetItemStateBodyInput
     {
         [JsonProperty("state")]
         public string State { get; set; }
     }
 
-    public class AddItemLogInput
+    public class AddItemLogBodyInput
     {
         [JsonProperty("level")]
-        public AddItemLogInputLevelType? Level { get; set; }
+        public AddItemLogBodyInputLevelType? Level { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddItemLogInputLevelType
+    public enum AddItemLogBodyInputLevelType
     {
         Information,
         Warning,
         Exception
     }
 
-    public class AddItemTagInput
+    public class AddItemTagBodyInput
     {
         [JsonProperty("tags")]
         public string Tags { get; set; }
     }
 
-    public class CreateItemStateInput
+    public class CreateItemStateBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("responseTimeCalculationBasis", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateItemStateInputResponseTimeCalculationBasisType ResponseTimeCalculationBasis { get; set; } = CreateItemStateInputResponseTimeCalculationBasisType.ItemStateEnterTime;
+        public BodyInputResponseTimeCalculationBasisType ResponseTimeCalculationBasis { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo.BodyInputResponseTimeCalculationBasisType.ItemStateEnterTime;
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateItemStateInputStateType State { get; set; }
+        public BodyInputStateType State { get; set; }
 
         [JsonProperty("queueId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int QueueId { get; set; }
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateItemStateInputResponseTimeCalculationBasisType
+    public enum BodyInputResponseTimeCalculationBasisType
     {
         ItemStateEnterTime,
         ItemCreationTime,
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ctwo
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateItemStateInputStateType
+    public enum BodyInputStateType
     {
         Pending,
         Completed,

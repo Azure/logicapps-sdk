@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoCreateResponse, ApiConnectionActionConfiguration> VideoCreate(Expression<Func<VideoCreateInput>> body)
+        public IBodyWorkflowAction<VideoCreateResponse, ApiConnectionActionConfiguration> VideoCreate(Expression<Func<VideoCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VideoCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoPatchResponse, ApiConnectionActionConfiguration> VideoPatch(Expression<Func<string>> videoId, Expression<Func<VideoPatchInput>> body)
+        public IBodyWorkflowAction<VideoPatchResponse, ApiConnectionActionConfiguration> VideoPatch(Expression<Func<string>> videoId, Expression<Func<VideoPatchBodyInput>> body)
         {
             var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
-        public IBodyWorkflowAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration> VideoCreateTemplate(Expression<Func<VideoCreateTemplateInput>> body)
+        public IBodyWorkflowAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration> VideoCreateTemplate(Expression<Func<VideoCreateTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<VideoCreateTemplateResponse, ApiConnectionActionConfiguration>(() =>
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Url { get; set; }
     }
 
-    public class VideoCreateInput
+    public class VideoCreateBodyInput
     {
         [JsonProperty("test")]
         public bool? Test { get; set; }
@@ -240,19 +240,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Visibility { get; set; }
 
         [JsonProperty("ctaSettings")]
-        public VideoCreateInputCtaSettingsType CtaSettings { get; set; }
+        public BodyInputCtaSettingsType CtaSettings { get; set; }
 
         [JsonProperty("callbackId")]
         public string CallbackId { get; set; }
 
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
-        public VideoCreateInputInputTypeItem[] Input { get; set; }
+        public BodyInputInputTypeItem[] Input { get; set; }
 
         [JsonProperty("soundtrack")]
         public string Soundtrack { get; set; }
     }
 
-    public class VideoCreateInputCtaSettingsType
+    public class BodyInputCtaSettingsType
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Url { get; set; }
     }
 
-    public class VideoCreateInputInputTypeItem
+    public class BodyInputInputTypeItem
     {
         [JsonProperty("scriptText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScriptText { get; set; }
@@ -276,16 +276,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Avatar { get; set; }
 
         [JsonProperty("avatarSettings")]
-        public VideoCreateInputInputTypeItemAvatarSettingsType AvatarSettings { get; set; }
+        public BodyInputInputTypeItemAvatarSettingsType AvatarSettings { get; set; }
 
         [JsonProperty("background", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Background { get; set; }
 
         [JsonProperty("backgroundSettings")]
-        public VideoCreateInputInputTypeItemBackgroundSettingsType BackgroundSettings { get; set; }
+        public BodyInputInputTypeItemBackgroundSettingsType BackgroundSettings { get; set; }
     }
 
-    public class VideoCreateInputInputTypeItemAvatarSettingsType
+    public class BodyInputInputTypeItemAvatarSettingsType
     {
         [JsonProperty("voice")]
         public string Voice { get; set; }
@@ -306,13 +306,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public bool? Seamless { get; set; }
     }
 
-    public class VideoCreateInputInputTypeItemBackgroundSettingsType
+    public class BodyInputInputTypeItemBackgroundSettingsType
     {
         [JsonProperty("videoSettings")]
-        public VideoCreateInputInputTypeItemBackgroundSettingsTypeVideoSettingsType VideoSettings { get; set; }
+        public BodyInputInputTypeItemBackgroundSettingsTypeVideoSettingsType VideoSettings { get; set; }
     }
 
-    public class VideoCreateInputInputTypeItemBackgroundSettingsTypeVideoSettingsType
+    public class BodyInputInputTypeItemBackgroundSettingsTypeVideoSettingsType
     {
         [JsonProperty("shortBackgroundContentMatchMode")]
         public string ShortBackgroundContentMatchMode { get; set; }
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Url { get; set; }
     }
 
-    public class VideoPatchInput
+    public class VideoPatchBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -420,19 +420,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Description { get; set; }
 
         [JsonProperty("ctaSettings")]
-        public VideoPatchInputCtaSettingsType CtaSettings { get; set; }
+        public BodyInputCtaSettingsType CtaSettings { get; set; }
 
         [JsonProperty("visibility")]
         public string Visibility { get; set; }
-    }
-
-    public class VideoPatchInputCtaSettingsType
-    {
-        [JsonProperty("label")]
-        public string Label { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
     }
 
     public class TemplateListResponse
@@ -513,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string Visibility { get; set; }
     }
 
-    public class VideoCreateTemplateInput
+    public class VideoCreateTemplateBodyInput
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -528,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string TemplateId { get; set; }
 
         [JsonProperty("templateData")]
-        public VideoCreateTemplateInputTemplateDataType TemplateData { get; set; }
+        public BodyInputTemplateDataType TemplateData { get; set; }
 
         [JsonProperty("test")]
         public bool? Test { get; set; }
@@ -537,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         public string CallbackId { get; set; }
     }
 
-    public class VideoCreateTemplateInputTemplateDataType
+    public class BodyInputTemplateDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }

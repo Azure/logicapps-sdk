@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     public class NameapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<ParseNameResponse, ApiConnectionActionConfiguration> ParseName(Expression<Func<ParseNameInput>> body)
+        public IBodyWorkflowAction<ParseNameResponse, ApiConnectionActionConfiguration> ParseName(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ParseNameResponse, ApiConnectionActionConfiguration>(() =>
@@ -135,32 +135,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         public double Confidence { get; set; }
     }
 
-    public class ParseNameInput
+    public class BodyInput
     {
         [JsonProperty("inputPerson", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParseNameInputInputPersonType InputPerson { get; set; } = new ParseNameInputInputPersonType();
+        public BodyInputInputPersonType InputPerson { get; set; } = new BodyInputInputPersonType();
     }
 
-    public class ParseNameInputInputPersonType
+    public class BodyInputInputPersonType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Type { get; set; } = "NaturalInputPerson";
 
         [JsonProperty("personName")]
-        public ParseNameInputInputPersonTypePersonNameType PersonName { get; set; }
+        public BodyInputInputPersonTypePersonNameType PersonName { get; set; }
 
         [JsonProperty("gender")]
-        public ParseNameInputInputPersonTypeGenderType? Gender { get; set; }
+        public BodyInputInputPersonTypeGenderType? Gender { get; set; }
     }
 
-    public class ParseNameInputInputPersonTypePersonNameType
+    public class BodyInputInputPersonTypePersonNameType
     {
         [JsonProperty("nameFields", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] PersonNames { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ParseNameInputInputPersonTypeGenderType
+    public enum BodyInputInputPersonTypeGenderType
     {
         MALE,
         FEMALE,

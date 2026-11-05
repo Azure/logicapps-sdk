@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     public class AdobesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementByFileStream(Expression<Func<CreateAgreementByFileStreamInput>> agreementCreationInfoIdFileStream, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementByFileStream(Expression<Func<AgreementCreationInfoIdFileStreamInput>> agreementCreationInfoIdFileStream, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_agreementCreationInfoIdFileStream = WorkflowExpression.Compile(agreementCreationInfoIdFileStream, nameof(agreementCreationInfoIdFileStream), required: true);
             var __workflow_xApiUser = WorkflowExpression.Compile(xApiUser, nameof(xApiUser), required: false);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<UserAgreementListV6, ApiConnectionActionConfiguration> SearchAgreements(Expression<Func<SearchAgreementsInput>> searchRequestBody, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<UserAgreementListV6, ApiConnectionActionConfiguration> SearchAgreements(Expression<Func<SearchRequestBodyInput>> searchRequestBody, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_searchRequestBody = WorkflowExpression.Compile(searchRequestBody, nameof(searchRequestBody), required: true);
             var __workflow_xApiUser = WorkflowExpression.Compile(xApiUser, nameof(xApiUser), required: false);
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<AgreementViews, ApiConnectionActionConfiguration> PostAgreementViews(Expression<Func<string>> agreementId, Expression<Func<PostAgreementViewsInput>> agreementViewInfo, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<AgreementViews, ApiConnectionActionConfiguration> PostAgreementViews(Expression<Func<string>> agreementId, Expression<Func<AgreementViewInfoInput>> agreementViewInfo, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_agreementId = WorkflowExpression.Compile(agreementId, nameof(agreementId), required: true);
             var __workflow_agreementViewInfo = WorkflowExpression.Compile(agreementViewInfo, nameof(agreementViewInfo), required: true);
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementById(Expression<Func<CreateAgreementByIdV2Input>> agreementCreationInfoIdV6, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementById(Expression<Func<AgreementCreationInfoIdV6Input>> agreementCreationInfoIdV6, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_agreementCreationInfoIdV6 = WorkflowExpression.Compile(agreementCreationInfoIdV6, nameof(agreementCreationInfoIdV6), required: true);
             var __workflow_xApiUser = WorkflowExpression.Compile(xApiUser, nameof(xApiUser), required: false);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementByTemplate(Expression<Func<CreateAgreementByTemplateV2Input>> agreementCreationInfoTemplateV6, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementByTemplate(Expression<Func<AgreementCreationInfoTemplateV6Input>> agreementCreationInfoTemplateV6, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_agreementCreationInfoTemplateV6 = WorkflowExpression.Compile(agreementCreationInfoTemplateV6, nameof(agreementCreationInfoTemplateV6), required: true);
             var __workflow_xApiUser = WorkflowExpression.Compile(xApiUser, nameof(xApiUser), required: false);
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementByUrl(Expression<Func<CreateAgreementByUrlV2Input>> agreementCreationInfoUrlV6, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<AgreementCreationResponseV6, ApiConnectionActionConfiguration> CreateAgreementByUrl(Expression<Func<AgreementCreationInfoUrlV6Input>> agreementCreationInfoUrlV6, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_agreementCreationInfoUrlV6 = WorkflowExpression.Compile(agreementCreationInfoUrlV6, nameof(agreementCreationInfoUrlV6), required: true);
             var __workflow_xApiUser = WorkflowExpression.Compile(xApiUser, nameof(xApiUser), required: false);
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<LibraryDocumentCreationResponseV6, ApiConnectionActionConfiguration> CreateLibraryDocumentById(Expression<Func<CreateLibraryDocumentByIdV2Input>> libraryDocumentInfoId, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<LibraryDocumentCreationResponseV6, ApiConnectionActionConfiguration> CreateLibraryDocumentById(Expression<Func<LibraryDocumentInfoIdInput>> libraryDocumentInfoId, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_libraryDocumentInfoId = WorkflowExpression.Compile(libraryDocumentInfoId, nameof(libraryDocumentInfoId), required: true);
             var __workflow_xApiUser = WorkflowExpression.Compile(xApiUser, nameof(xApiUser), required: false);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<LibraryDocumentCreationResponseV6, ApiConnectionActionConfiguration> CreateLibraryDocumentByUrl(Expression<Func<CreateLibraryDocumentByUrlV2Input>> libraryDocumentInfoUrl, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<LibraryDocumentCreationResponseV6, ApiConnectionActionConfiguration> CreateLibraryDocumentByUrl(Expression<Func<LibraryDocumentInfoUrlInput>> libraryDocumentInfoUrl, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_libraryDocumentInfoUrl = WorkflowExpression.Compile(libraryDocumentInfoUrl, nameof(libraryDocumentInfoUrl), required: true);
             var __workflow_xApiUser = WorkflowExpression.Compile(xApiUser, nameof(xApiUser), required: false);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobesign")]
-        public IBodyWorkflowAction<AgreementDocumentsV6, ApiConnectionActionConfiguration> GetAllDocumentsofAnAgreement(Expression<Func<string>> agreementId, Expression<Func<supportingDocumentContentFormatInput>> supportingDocumentContentFormat = null, Expression<Func<string>> xApiUser = null)
+        public IBodyWorkflowAction<AgreementDocumentsV6, ApiConnectionActionConfiguration> GetAllDocumentsofAnAgreement(Expression<Func<string>> agreementId, Expression<Func<SupportingDocumentContentFormatInput>> supportingDocumentContentFormat = null, Expression<Func<string>> xApiUser = null)
         {
             var __workflow_agreementId = WorkflowExpression.Compile(agreementId, nameof(agreementId), required: true);
             var __workflow_supportingDocumentContentFormat = WorkflowExpression.Compile(supportingDocumentContentFormat, nameof(supportingDocumentContentFormat), required: false);
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
 
     public class AdobesignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementCreatedEvent(Expression<Func<CreateWebhookForAgreementCreatedEventInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementCreatedEvent(Expression<Func<CreateWebhookForAgreementCreatedEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementSignatureRequestedEvent(Expression<Func<CreateWebhookForAgreementSignatureRequestedEventInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementSignatureRequestedEvent(Expression<Func<CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementSignedEvent(Expression<Func<CreateWebhookForAgreementSignedEventInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementSignedEvent(Expression<Func<CreateWebhookForAgreementSignedEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementStatusUpdated(Expression<Func<CreateWebhookForAgreementStatusUpdatedInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForAgreementStatusUpdated(Expression<Func<CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookGeneric(Expression<Func<CreateWebhookGenericInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookGeneric(Expression<Func<CreateWebhookGenericWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForWebFormAgreementEvent(Expression<Func<CreateWebhookForWebFormAgreementEventInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForWebFormAgreementEvent(Expression<Func<CreateWebhookForWebFormAgreementEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -525,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForGroupEvent(Expression<Func<CreateWebhookForGroupEventInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> CreateWebhookForGroupEvent(Expression<Func<CreateWebhookForGroupEventWebhookCreationInfoInput>> webhookCreationInfo, FlowRecurrence recurrence = null)
         {
             var __workflow_webhookCreationInfo = WorkflowExpression.Compile(webhookCreationInfo, nameof(webhookCreationInfo), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Id { get; set; }
     }
 
-    public class CreateAgreementByFileStreamInput
+    public class AgreementCreationInfoIdFileStreamInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public DocumentFileInfoFileStream[] File { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByFileStreamInputSignatureTypeType SignatureType { get; set; } = CreateAgreementByFileStreamInputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoIdFileStreamInputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoIdFileStreamInputSignatureTypeType.ESIGN;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Participant { get; set; }
@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Message { get; set; } = "Please review and complete this document";
 
         [JsonProperty("sendType")]
-        public CreateAgreementByFileStreamInputSendTypeType? SendType { get; set; }
+        public AgreementCreationInfoIdFileStreamInputSendTypeType? SendType { get; set; }
 
         [JsonProperty("ccs")]
         public AgreementCcInfo[] CCs { get; set; }
@@ -578,10 +578,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string ExternalId { get; set; }
 
         [JsonProperty("reminderFrequency")]
-        public CreateAgreementByFileStreamInputReminderFrequencyType? ReminderFrequency { get; set; }
+        public AgreementCreationInfoIdFileStreamInputReminderFrequencyType? ReminderFrequency { get; set; }
 
         [JsonProperty("securityOption")]
-        public CreateAgreementByFileStreamInputSecurityOptionType SecurityOption { get; set; }
+        public AgreementCreationInfoIdFileStreamInputSecurityOptionType SecurityOption { get; set; }
 
         [JsonProperty("mergeFieldInfo")]
         public MergefieldInfo[] FormField { get; set; }
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByFileStreamInputStateType State { get; set; } = CreateAgreementByFileStreamInputStateType.INPROCESS;
+        public AgreementCreationInfoIdFileStreamInputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoIdFileStreamInputStateType.INPROCESS;
     }
 
     public class DocumentFileInfoFileStream
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByFileStreamInputSignatureTypeType
+    public enum AgreementCreationInfoIdFileStreamInputSignatureTypeType
     {
         ESIGN,
         WRITTEN
@@ -615,41 +615,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     public class ParticipantCreateSetInfoV6
     {
         [JsonProperty("memberInfos", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MemberInfosV62[] Member { get; set; }
+        public CreateAgreementByFileStreamMemberInfosV6[] Member { get; set; }
 
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Order { get; set; } = 1;
 
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParticipantCreateSetInfoV6RoleType Role { get; set; } = ParticipantCreateSetInfoV6RoleType.SIGNER;
+        public ParticipantCreateSetInfoV6RoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.ParticipantCreateSetInfoV6RoleType.SIGNER;
     }
 
-    public class MemberInfosV62
+    public class CreateAgreementByFileStreamMemberInfosV6
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("securityOption")]
-        public MemberInfosV6UnnamedType2 Unnamed { get; set; }
+        public CreateAgreementByFileStreamMemberInfosV6UnnamedType Unnamed { get; set; }
     }
 
-    public class MemberInfosV6UnnamedType2
+    public class CreateAgreementByFileStreamMemberInfosV6UnnamedType
     {
         [JsonProperty("authenticationMethod")]
-        public MemberInfosV6UnnamedTypeAuthenticationType? Authentication { get; set; }
+        public CreateAgreementByFileStreamMemberInfosV6UnnamedTypeAuthenticationType? Authentication { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
 
         [JsonProperty("phoneInfo")]
-        public MemberInfosV6UnnamedTypeUnnamedType Unnamed { get; set; }
+        public CreateAgreementByFileStreamMemberInfosV6UnnamedTypeUnnamedType Unnamed { get; set; }
 
         [JsonProperty("digAuthInfo")]
-        public MemberInfosV6UnnamedTypeDigIdInfoType DigIdInfo { get; set; }
+        public CreateAgreementByFileStreamMemberInfosV6UnnamedTypeDigIdInfoType DigIdInfo { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MemberInfosV6UnnamedTypeAuthenticationType
+    public enum CreateAgreementByFileStreamMemberInfosV6UnnamedTypeAuthenticationType
     {
         NONE,
         PASSWORD,
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         DIGId
     }
 
-    public class MemberInfosV6UnnamedTypeUnnamedType
+    public class CreateAgreementByFileStreamMemberInfosV6UnnamedTypeUnnamedType
     {
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string PhoneNo { get; set; }
     }
 
-    public class MemberInfosV6UnnamedTypeDigIdInfoType
+    public class CreateAgreementByFileStreamMemberInfosV6UnnamedTypeDigIdInfoType
     {
         [JsonProperty("providerId")]
         public string ProviderId { get; set; }
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByFileStreamInputSendTypeType
+    public enum AgreementCreationInfoIdFileStreamInputSendTypeType
     {
         [EnumMember(Value = "REGULAR_SEND")]
         REGULARSEND,
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByFileStreamInputReminderFrequencyType
+    public enum AgreementCreationInfoIdFileStreamInputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
         DAILYUNTILSIGNED,
@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         WEEKLYUNTILSIGNED
     }
 
-    public class CreateAgreementByFileStreamInputSecurityOptionType
+    public class AgreementCreationInfoIdFileStreamInputSecurityOptionType
     {
         [JsonProperty("openPassword")]
         public string DocumentPassword { get; set; }
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     public class EmailOptionSendOptionsType
     {
         [JsonProperty("initEmails", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EmailOptionSendOptionsTypeInitialEmailsType? InitialEmails { get; set; } = EmailOptionSendOptionsTypeInitialEmailsType.ALL;
+        public EmailOptionSendOptionsTypeInitialEmailsType? InitialEmails { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.EmailOptionSendOptionsTypeInitialEmailsType.ALL;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByFileStreamInputStateType
+    public enum AgreementCreationInfoIdFileStreamInputStateType
     {
         AUTHORING,
         DRAFT,
@@ -1361,7 +1361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         WIdGETINSTANCE
     }
 
-    public class SearchAgreementsInput
+    public class SearchRequestBodyInput
     {
         [JsonProperty("groupId")]
         public string GroupNameId { get; set; }
@@ -1370,13 +1370,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string WorkflowNameId { get; set; }
 
         [JsonProperty("agreementAssetsCriteria")]
-        public SearchAgreementsInputAgreementAssetsCriteriaType AgreementAssetsCriteria { get; set; }
+        public SearchRequestBodyInputAgreementAssetsCriteriaType AgreementAssetsCriteria { get; set; }
     }
 
-    public class SearchAgreementsInputAgreementAssetsCriteriaType
+    public class SearchRequestBodyInputAgreementAssetsCriteriaType
     {
         [JsonProperty("createdDate")]
-        public SearchAgreementsInputAgreementAssetsCriteriaTypeCreatedDateType CreatedDate { get; set; }
+        public SearchRequestBodyInputAgreementAssetsCriteriaTypeCreatedDateType CreatedDate { get; set; }
 
         [JsonProperty("pageSize")]
         public int? PageSize { get; set; }
@@ -1385,13 +1385,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public int? StartIndex { get; set; }
     }
 
-    public class SearchAgreementsInputAgreementAssetsCriteriaTypeCreatedDateType
+    public class SearchRequestBodyInputAgreementAssetsCriteriaTypeCreatedDateType
     {
         [JsonProperty("range")]
-        public SearchAgreementsInputAgreementAssetsCriteriaTypeCreatedDateTypeRangeType Range { get; set; }
+        public SearchRequestBodyInputAgreementAssetsCriteriaTypeCreatedDateTypeRangeType Range { get; set; }
     }
 
-    public class SearchAgreementsInputAgreementAssetsCriteriaTypeCreatedDateTypeRangeType
+    public class SearchRequestBodyInputAgreementAssetsCriteriaTypeCreatedDateTypeRangeType
     {
         [JsonProperty("gt")]
         public string Gt { get; set; }
@@ -1424,17 +1424,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public bool IsCurrent { get; set; }
     }
 
-    public class PostAgreementViewsInput
+    public class AgreementViewInfoInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostAgreementViewsInputNameType Name { get; set; } = PostAgreementViewsInputNameType.AUTHORING;
+        public AgreementViewInfoInputNameType Name { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementViewInfoInputNameType.AUTHORING;
 
         [JsonProperty("commonViewConfiguration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostAgreementViewsInputCommonViewType CommonView { get; set; } = new PostAgreementViewsInputCommonViewType();
+        public AgreementViewInfoInputCommonViewType CommonView { get; set; } = new AgreementViewInfoInputCommonViewType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostAgreementViewsInputNameType
+    public enum AgreementViewInfoInputNameType
     {
         COMPOSE,
         MODIFY,
@@ -1450,7 +1450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         ALL
     }
 
-    public class PostAgreementViewsInputCommonViewType
+    public class AgreementViewInfoInputCommonViewType
     {
         [JsonProperty("autoLoginUser", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AutoLoginUser { get; set; } = true;
@@ -1462,7 +1462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string FrameParent { get; set; }
     }
 
-    public class CreateAgreementByIdV2Input
+    public class AgreementCreationInfoIdV6Input
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public DocumentFileInfoId[] Document { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByIdV2InputSignatureTypeType SignatureType { get; set; } = CreateAgreementByIdV2InputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoIdV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoIdV6InputSignatureTypeType.ESIGN;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Participant { get; set; }
@@ -1483,7 +1483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Message { get; set; } = "Please review and complete this document";
 
         [JsonProperty("sendType")]
-        public CreateAgreementByIdV2InputSendTypeType? SendType { get; set; }
+        public AgreementCreationInfoIdV6InputSendTypeType? SendType { get; set; }
 
         [JsonProperty("ccs")]
         public AgreementCcInfo[] CCs { get; set; }
@@ -1495,10 +1495,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string ExternalId { get; set; }
 
         [JsonProperty("reminderFrequency")]
-        public CreateAgreementByIdV2InputReminderFrequencyType? ReminderFrequency { get; set; }
+        public AgreementCreationInfoIdV6InputReminderFrequencyType? ReminderFrequency { get; set; }
 
         [JsonProperty("securityOption")]
-        public CreateAgreementByIdV2InputSecurityOptionType SecurityOption { get; set; }
+        public AgreementCreationInfoIdV6InputSecurityOptionType SecurityOption { get; set; }
 
         [JsonProperty("mergeFieldInfo")]
         public MergefieldInfo[] FormField { get; set; }
@@ -1510,7 +1510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByIdV2InputStateType State { get; set; } = CreateAgreementByIdV2InputStateType.INPROCESS;
+        public AgreementCreationInfoIdV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoIdV6InputStateType.INPROCESS;
     }
 
     public class DocumentFileInfoId
@@ -1520,14 +1520,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByIdV2InputSignatureTypeType
+    public enum AgreementCreationInfoIdV6InputSignatureTypeType
     {
         ESIGN,
         WRITTEN
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByIdV2InputSendTypeType
+    public enum AgreementCreationInfoIdV6InputSendTypeType
     {
         [EnumMember(Value = "REGULAR_SEND")]
         REGULARSEND,
@@ -1538,7 +1538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByIdV2InputReminderFrequencyType
+    public enum AgreementCreationInfoIdV6InputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
         DAILYUNTILSIGNED,
@@ -1546,14 +1546,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         WEEKLYUNTILSIGNED
     }
 
-    public class CreateAgreementByIdV2InputSecurityOptionType
+    public class AgreementCreationInfoIdV6InputSecurityOptionType
     {
         [JsonProperty("openPassword")]
         public string DocumentPassword { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByIdV2InputStateType
+    public enum AgreementCreationInfoIdV6InputStateType
     {
         AUTHORING,
         DRAFT,
@@ -1561,7 +1561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         INPROCESS
     }
 
-    public class CreateAgreementByTemplateV2Input
+    public class AgreementCreationInfoTemplateV6Input
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
@@ -1570,7 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public DocumentFileInfoTemplate[] Library { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByTemplateV2InputSignatureTypeType SignatureType { get; set; } = CreateAgreementByTemplateV2InputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoTemplateV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoTemplateV6InputSignatureTypeType.ESIGN;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Participant { get; set; }
@@ -1582,7 +1582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Message { get; set; } = "Please review and complete this document";
 
         [JsonProperty("sendType")]
-        public CreateAgreementByTemplateV2InputSendTypeType? SendType { get; set; }
+        public AgreementCreationInfoTemplateV6InputSendTypeType? SendType { get; set; }
 
         [JsonProperty("ccs")]
         public AgreementCcInfo[] CCs { get; set; }
@@ -1594,10 +1594,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string ExternalId { get; set; }
 
         [JsonProperty("reminderFrequency")]
-        public CreateAgreementByTemplateV2InputReminderFrequencyType? ReminderFrequency { get; set; }
+        public AgreementCreationInfoTemplateV6InputReminderFrequencyType? ReminderFrequency { get; set; }
 
         [JsonProperty("securityOption")]
-        public CreateAgreementByTemplateV2InputSecurityOptionType SecurityOption { get; set; }
+        public AgreementCreationInfoTemplateV6InputSecurityOptionType SecurityOption { get; set; }
 
         [JsonProperty("mergeFieldInfo")]
         public MergefieldInfo[] FormField { get; set; }
@@ -1609,7 +1609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByTemplateV2InputStateType State { get; set; } = CreateAgreementByTemplateV2InputStateType.INPROCESS;
+        public AgreementCreationInfoTemplateV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoTemplateV6InputStateType.INPROCESS;
     }
 
     public class DocumentFileInfoTemplate
@@ -1619,14 +1619,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByTemplateV2InputSignatureTypeType
+    public enum AgreementCreationInfoTemplateV6InputSignatureTypeType
     {
         ESIGN,
         WRITTEN
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByTemplateV2InputSendTypeType
+    public enum AgreementCreationInfoTemplateV6InputSendTypeType
     {
         [EnumMember(Value = "REGULAR_SEND")]
         REGULARSEND,
@@ -1637,7 +1637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByTemplateV2InputReminderFrequencyType
+    public enum AgreementCreationInfoTemplateV6InputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
         DAILYUNTILSIGNED,
@@ -1645,14 +1645,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         WEEKLYUNTILSIGNED
     }
 
-    public class CreateAgreementByTemplateV2InputSecurityOptionType
+    public class AgreementCreationInfoTemplateV6InputSecurityOptionType
     {
         [JsonProperty("openPassword")]
         public string DocumentPassword { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByTemplateV2InputStateType
+    public enum AgreementCreationInfoTemplateV6InputStateType
     {
         AUTHORING,
         DRAFT,
@@ -1660,7 +1660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         INPROCESS
     }
 
-    public class CreateAgreementByUrlV2Input
+    public class AgreementCreationInfoUrlV6Input
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgreementName { get; set; }
@@ -1669,7 +1669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public DocumentFileInfoUrl[] Document { get; set; }
 
         [JsonProperty("signatureType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByUrlV2InputSignatureTypeType SignatureType { get; set; } = CreateAgreementByUrlV2InputSignatureTypeType.ESIGN;
+        public AgreementCreationInfoUrlV6InputSignatureTypeType SignatureType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoUrlV6InputSignatureTypeType.ESIGN;
 
         [JsonProperty("participantSetsInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParticipantCreateSetInfoV6[] Participant { get; set; }
@@ -1681,7 +1681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Message { get; set; } = "Please review and complete this document";
 
         [JsonProperty("sendType")]
-        public CreateAgreementByUrlV2InputSendTypeType? SendType { get; set; }
+        public AgreementCreationInfoUrlV6InputSendTypeType? SendType { get; set; }
 
         [JsonProperty("ccs")]
         public AgreementCcInfo[] CCs { get; set; }
@@ -1693,10 +1693,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string ExternalId { get; set; }
 
         [JsonProperty("reminderFrequency")]
-        public CreateAgreementByUrlV2InputReminderFrequencyType? ReminderFrequency { get; set; }
+        public AgreementCreationInfoUrlV6InputReminderFrequencyType? ReminderFrequency { get; set; }
 
         [JsonProperty("securityOption")]
-        public CreateAgreementByUrlV2InputSecurityOptionType SecurityOption { get; set; }
+        public AgreementCreationInfoUrlV6InputSecurityOptionType SecurityOption { get; set; }
 
         [JsonProperty("mergeFieldInfo")]
         public MergefieldInfo[] FormField { get; set; }
@@ -1708,7 +1708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public EmailOption EmailOption { get; set; } = new EmailOption();
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgreementByUrlV2InputStateType State { get; set; } = CreateAgreementByUrlV2InputStateType.INPROCESS;
+        public AgreementCreationInfoUrlV6InputStateType State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.AgreementCreationInfoUrlV6InputStateType.INPROCESS;
     }
 
     public class DocumentFileInfoUrl
@@ -1767,14 +1767,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByUrlV2InputSignatureTypeType
+    public enum AgreementCreationInfoUrlV6InputSignatureTypeType
     {
         ESIGN,
         WRITTEN
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByUrlV2InputSendTypeType
+    public enum AgreementCreationInfoUrlV6InputSendTypeType
     {
         [EnumMember(Value = "REGULAR_SEND")]
         REGULARSEND,
@@ -1785,7 +1785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByUrlV2InputReminderFrequencyType
+    public enum AgreementCreationInfoUrlV6InputReminderFrequencyType
     {
         [EnumMember(Value = "DAILY_UNTIL_SIGNED")]
         DAILYUNTILSIGNED,
@@ -1793,14 +1793,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         WEEKLYUNTILSIGNED
     }
 
-    public class CreateAgreementByUrlV2InputSecurityOptionType
+    public class AgreementCreationInfoUrlV6InputSecurityOptionType
     {
         [JsonProperty("openPassword")]
         public string DocumentPassword { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgreementByUrlV2InputStateType
+    public enum AgreementCreationInfoUrlV6InputStateType
     {
         AUTHORING,
         DRAFT,
@@ -1814,32 +1814,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Id { get; set; }
     }
 
-    public class CreateLibraryDocumentByIdV2Input
+    public class LibraryDocumentInfoIdInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
         [JsonProperty("templateTypes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLibraryDocumentByIdV2InputTemplateTypeTypeItem[] TemplateType { get; set; } = new CreateLibraryDocumentByIdV2InputTemplateTypeTypeItem[]
+        public LibraryDocumentInfoIdInputTemplateTypeTypeItem[] TemplateType { get; set; } = new LibraryDocumentInfoIdInputTemplateTypeTypeItem[]
         {
-            (CreateLibraryDocumentByIdV2InputTemplateTypeTypeItem)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.LibraryDocumentInfoIdInputTemplateTypeTypeItem.DOCUMENT
         };
 
         [JsonProperty("sharingMode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLibraryDocumentByIdV2InputSharingModeType SharingMode { get; set; } = CreateLibraryDocumentByIdV2InputSharingModeType.USER;
+        public LibraryDocumentInfoIdInputSharingModeType SharingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.LibraryDocumentInfoIdInputSharingModeType.USER;
 
         [JsonProperty("fileInfos", DefaultValueHandling = DefaultValueHandling.Include)]
         public LibraryDocumentFileInfoId[] Document { get; set; }
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLibraryDocumentByIdV2InputTemplateStateType TemplateState { get; set; } = CreateLibraryDocumentByIdV2InputTemplateStateType.ACTIVE;
+        public LibraryDocumentInfoIdInputTemplateStateType TemplateState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.LibraryDocumentInfoIdInputTemplateStateType.ACTIVE;
 
         [JsonProperty("groupId")]
         public string GroupId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLibraryDocumentByIdV2InputTemplateTypeTypeItem
+    public enum LibraryDocumentInfoIdInputTemplateTypeTypeItem
     {
         DOCUMENT,
         [EnumMember(Value = "FORM_FIELD_LAYER")]
@@ -1847,7 +1847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLibraryDocumentByIdV2InputSharingModeType
+    public enum LibraryDocumentInfoIdInputSharingModeType
     {
         USER,
         GROUP,
@@ -1861,38 +1861,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLibraryDocumentByIdV2InputTemplateStateType
+    public enum LibraryDocumentInfoIdInputTemplateStateType
     {
         AUTHORING,
         ACTIVE
     }
 
-    public class CreateLibraryDocumentByUrlV2Input
+    public class LibraryDocumentInfoUrlInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
 
         [JsonProperty("templateTypes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLibraryDocumentByUrlV2InputTemplateTypeTypeItem[] TemplateType { get; set; } = new CreateLibraryDocumentByUrlV2InputTemplateTypeTypeItem[]
+        public LibraryDocumentInfoUrlInputTemplateTypeTypeItem[] TemplateType { get; set; } = new LibraryDocumentInfoUrlInputTemplateTypeTypeItem[]
         {
-            (CreateLibraryDocumentByUrlV2InputTemplateTypeTypeItem)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.LibraryDocumentInfoUrlInputTemplateTypeTypeItem.DOCUMENT
         };
 
         [JsonProperty("sharingMode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLibraryDocumentByUrlV2InputSharingModeType SharingMode { get; set; } = CreateLibraryDocumentByUrlV2InputSharingModeType.USER;
+        public LibraryDocumentInfoUrlInputSharingModeType SharingMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.LibraryDocumentInfoUrlInputSharingModeType.USER;
 
         [JsonProperty("fileInfos", DefaultValueHandling = DefaultValueHandling.Include)]
         public LibraryDocumentFileInfoUrl[] Document { get; set; }
 
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateLibraryDocumentByUrlV2InputTemplateStateType TemplateState { get; set; } = CreateLibraryDocumentByUrlV2InputTemplateStateType.ACTIVE;
+        public LibraryDocumentInfoUrlInputTemplateStateType TemplateState { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.LibraryDocumentInfoUrlInputTemplateStateType.ACTIVE;
 
         [JsonProperty("groupId")]
         public string GroupNameId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLibraryDocumentByUrlV2InputTemplateTypeTypeItem
+    public enum LibraryDocumentInfoUrlInputTemplateTypeTypeItem
     {
         DOCUMENT,
         [EnumMember(Value = "FORM_FIELD_LAYER")]
@@ -1900,7 +1900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLibraryDocumentByUrlV2InputSharingModeType
+    public enum LibraryDocumentInfoUrlInputSharingModeType
     {
         USER,
         GROUP,
@@ -1914,7 +1914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateLibraryDocumentByUrlV2InputTemplateStateType
+    public enum LibraryDocumentInfoUrlInputTemplateStateType
     {
         AUTHORING,
         ACTIVE
@@ -1994,7 +1994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     public class ParticipantSetInfoV6
     {
         [JsonProperty("memberInfos")]
-        public MemberInfosV6[] ParticipantSetMemberInfos { get; set; }
+        public GetAgreementInfoMemberInfosV6Response[] ParticipantSetMemberInfos { get; set; }
 
         [JsonProperty("order")]
         public int Order { get; set; }
@@ -2012,28 +2012,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string[] ParticipantSetVisiblePages { get; set; }
     }
 
-    public class MemberInfosV6
+    public class GetAgreementInfoMemberInfosV6Response
     {
         [JsonProperty("email")]
         public string Email { get; set; }
 
         [JsonProperty("securityOption")]
-        public MemberInfosV6UnnamedType Unnamed { get; set; }
+        public GetAgreementInfoMemberInfosV6UnnamedTypeResponse Unnamed { get; set; }
     }
 
-    public class MemberInfosV6UnnamedType
+    public class GetAgreementInfoMemberInfosV6UnnamedTypeResponse
     {
         [JsonProperty("authenticationMethod")]
-        public MemberInfosV6UnnamedTypeAuthenticationType Authentication { get; set; }
+        public GetAgreementInfoMemberInfosV6UnnamedTypeAuthenticationTypeResponse Authentication { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
 
         [JsonProperty("phoneInfo")]
-        public MemberInfosV6UnnamedTypeUnnamedType Unnamed { get; set; }
+        public GetAgreementInfoMemberInfosV6UnnamedTypeUnnamedTypeResponse Unnamed { get; set; }
 
         [JsonProperty("digAuthInfo")]
-        public MemberInfosV6UnnamedTypeDigIdInfoType DigIdInfo { get; set; }
+        public GetAgreementInfoMemberInfosV6UnnamedTypeDigIdInfoTypeResponse DigIdInfo { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum GetAgreementInfoMemberInfosV6UnnamedTypeAuthenticationTypeResponse
+    {
+        NONE,
+        PASSWORD,
+        PHONE,
+        KBA,
+        [EnumMember(Value = "ADOBE_SIGN")]
+        ADOBESIGN,
+        [EnumMember(Value = "EMAIL_OTP")]
+        EMAILOTP,
+        [EnumMember(Value = "DIG_ID")]
+        DIGId
+    }
+
+    public class GetAgreementInfoMemberInfosV6UnnamedTypeUnnamedTypeResponse
+    {
+        [JsonProperty("countryCode")]
+        public string CountryCode { get; set; }
+
+        [JsonProperty("phone")]
+        public string PhoneNo { get; set; }
+    }
+
+    public class GetAgreementInfoMemberInfosV6UnnamedTypeDigIdInfoTypeResponse
+    {
+        [JsonProperty("providerId")]
+        public string ProviderId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2156,7 +2186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum supportingDocumentContentFormatInput
+    public enum SupportingDocumentContentFormatInput
     {
         ORIGINAL,
         [EnumMember(Value = "CONVERTED_PDF")]
@@ -2233,7 +2263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string WebhookId { get; set; }
     }
 
-    public class CreateWebhookForAgreementCreatedEventInput
+    public class CreateWebhookForAgreementCreatedEventWebhookCreationInfoInput
     {
         [JsonProperty("webhookUrlInfo", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookUrlInfo WebhookUrlInfo { get; set; } = new WebhookUrlInfo();
@@ -2245,12 +2275,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForAgreementCreatedEventInputScopeType Scope { get; set; }
+        public CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementCreatedEventInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementCreatedEventInputWebhookSubscriptionEventsTypeItem[]
+        internal CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[]
         {
-            (CreateWebhookForAgreementCreatedEventInputWebhookSubscriptionEventsTypeItem)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AGREEMENTCREATED
         };
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2264,7 +2294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementCreatedEventInputScopeType
+    public enum CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputScopeType
     {
         [EnumMember(Value = "Any agreement in my account")]
         AnyAgreementInMyAccount,
@@ -2275,7 +2305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementCreatedEventInputWebhookSubscriptionEventsTypeItem
+    public enum CreateWebhookForAgreementCreatedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "AGREEMENT_CREATED")]
         AGREEMENTCREATED
@@ -2296,7 +2326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public bool? IncludeParticipantsInfo { get; set; } = false;
     }
 
-    public class CreateWebhookForAgreementSignatureRequestedEventInput
+    public class CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInput
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
@@ -2308,18 +2338,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForAgreementSignatureRequestedEventInputScopeType Scope { get; set; }
+        public CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementSignatureRequestedEventInputResourceTypeType ResourceType { get; set; } = CreateWebhookForAgreementSignatureRequestedEventInputResourceTypeType.AGREEMENT;
+        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.AGREEMENT;
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
 
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementSignatureRequestedEventInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementSignatureRequestedEventInputWebhookSubscriptionEventsTypeItem[]
+        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[]
         {
-            (CreateWebhookForAgreementSignatureRequestedEventInputWebhookSubscriptionEventsTypeItem)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AGREEMENTACTIONREQUESTED
         };
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2327,7 +2357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementSignatureRequestedEventInputScopeType
+    public enum CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType
     {
         [EnumMember(Value = "Any agreement in my account")]
         AnyAgreementInMyAccount,
@@ -2340,13 +2370,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementSignatureRequestedEventInputResourceTypeType
+    public enum CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType
     {
         AGREEMENT
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementSignatureRequestedEventInputWebhookSubscriptionEventsTypeItem
+    public enum CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "AGREEMENT_ACTION_REQUESTED")]
         AGREEMENTACTIONREQUESTED
@@ -2370,7 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public bool? IncludeDocumentsInfo { get; set; } = false;
     }
 
-    public class CreateWebhookForAgreementSignedEventInput
+    public class CreateWebhookForAgreementSignedEventWebhookCreationInfoInput
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
@@ -2382,18 +2412,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForAgreementSignedEventInputScopeType Scope { get; set; }
+        public CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementSignedEventInputResourceTypeType ResourceType { get; set; } = CreateWebhookForAgreementSignedEventInputResourceTypeType.AGREEMENT;
+        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.AGREEMENT;
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
 
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementSignedEventInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementSignedEventInputWebhookSubscriptionEventsTypeItem[]
+        internal CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; } = new CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[]
         {
-            (CreateWebhookForAgreementSignedEventInputWebhookSubscriptionEventsTypeItem)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem.AGREEMENTWORKFLOWCOMPLETED
         };
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2401,26 +2431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementSignedEventInputScopeType
-    {
-        [EnumMember(Value = "Any agreement in my account")]
-        AnyAgreementInMyAccount,
-        [EnumMember(Value = "Any agreement in my group")]
-        AnyAgreementInMyGroup,
-        [EnumMember(Value = "Any of my agreements")]
-        AnyOfMyAgreements,
-        [EnumMember(Value = "A specific agreement")]
-        ASpecificAgreement
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementSignedEventInputResourceTypeType
-    {
-        AGREEMENT
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementSignedEventInputWebhookSubscriptionEventsTypeItem
+    public enum CreateWebhookForAgreementSignedEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "AGREEMENT_WORKFLOW_COMPLETED")]
         AGREEMENTWORKFLOWCOMPLETED
@@ -2447,7 +2458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public bool? IncludeSignedDocuments { get; set; } = false;
     }
 
-    public class CreateWebhookForAgreementStatusUpdatedInput
+    public class CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInput
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
@@ -2459,42 +2470,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForAgreementStatusUpdatedInputScopeType Scope { get; set; }
+        public CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForAgreementStatusUpdatedInputResourceTypeType ResourceType { get; set; } = CreateWebhookForAgreementStatusUpdatedInputResourceTypeType.AGREEMENT;
+        internal CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForAgreementSignatureRequestedEventWebhookCreationInfoInputResourceTypeType.AGREEMENT;
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
 
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForAgreementStatusUpdatedInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
+        public CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookConditionalParamsForAgreementStatusChange WebhookConditionalParams { get; set; } = new WebhookConditionalParamsForAgreementStatusChange();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementStatusUpdatedInputScopeType
-    {
-        [EnumMember(Value = "Any agreement in my account")]
-        AnyAgreementInMyAccount,
-        [EnumMember(Value = "Any agreement in my group")]
-        AnyAgreementInMyGroup,
-        [EnumMember(Value = "Any of my agreements")]
-        AnyOfMyAgreements,
-        [EnumMember(Value = "A specific agreement")]
-        ASpecificAgreement
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementStatusUpdatedInputResourceTypeType
-    {
-        AGREEMENT
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForAgreementStatusUpdatedInputWebhookSubscriptionEventsTypeItem
+    public enum CreateWebhookForAgreementStatusUpdatedWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "When an agreement is created")]
         WhenAnAgreementIsCreated,
@@ -2531,7 +2523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public bool? IncludeSignedDocuments { get; set; } = false;
     }
 
-    public class CreateWebhookGenericInput
+    public class CreateWebhookGenericWebhookCreationInfoInput
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
@@ -2543,23 +2535,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookGenericInputScopeType Scope { get; set; }
+        public CreateWebhookGenericWebhookCreationInfoInputScopeType Scope { get; set; }
 
         [JsonProperty("resourceType")]
-        public CreateWebhookGenericInputResourceTypeType? ResourceType { get; set; }
+        public CreateWebhookGenericWebhookCreationInfoInputResourceTypeType? ResourceType { get; set; }
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
 
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookGenericInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
+        public CreateWebhookForGroupEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
 
         [JsonProperty("webhookConditionalParams")]
         public WebhookConditionalParamsGeneric WebhookConditionalParams { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookGenericInputScopeType
+    public enum CreateWebhookGenericWebhookCreationInfoInputScopeType
     {
         [EnumMember(Value = "Any resource in my account")]
         AnyResourceInMyAccount,
@@ -2572,7 +2564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookGenericInputResourceTypeType
+    public enum CreateWebhookGenericWebhookCreationInfoInputResourceTypeType
     {
         Agreement,
         [EnumMember(Value = "Mega Sign")]
@@ -2582,7 +2574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookGenericInputWebhookSubscriptionEventsTypeItem
+    public enum CreateWebhookForGroupEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "When any agreement event occurs")]
         WhenAnyAgreementEventOccurs,
@@ -2697,7 +2689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public bool? IncludeDocumentsInfo { get; set; }
     }
 
-    public class CreateWebhookForWebFormAgreementEventInput
+    public class CreateWebhookForWebFormAgreementEventWebhookCreationInfoInput
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
@@ -2709,31 +2701,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForWebFormAgreementEventInputScopeType Scope { get; set; } = CreateWebhookForWebFormAgreementEventInputScopeType.RESOURCE;
+        internal CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType Scope { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType.RESOURCE;
 
         [JsonProperty("pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForWebFormAgreementEventInputPageSizeType? PageSize { get; set; } = CreateWebhookForWebFormAgreementEventInputPageSizeType._50;
+        public WebhookCreationInfoInputPageSizeType? PageSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.WebhookCreationInfoInputPageSizeType._50;
 
         [JsonProperty("resourceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForWebFormAgreementEventInputResourceTypeType ResourceType { get; set; } = CreateWebhookForWebFormAgreementEventInputResourceTypeType.WIdGET;
+        internal CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType ResourceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType.WIdGET;
 
         [JsonProperty("resourceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceId { get; set; }
 
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForWebFormAgreementEventInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
+        public CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
 
         [JsonProperty("webhookConditionalParams", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebhookConditionalParamsForAgreementStatusChange WebhookConditionalParams { get; set; } = new WebhookConditionalParamsForAgreementStatusChange();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForWebFormAgreementEventInputScopeType
+    public enum CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputScopeType
     {
         RESOURCE
     }
 
-    public enum CreateWebhookForWebFormAgreementEventInputPageSizeType
+    public enum WebhookCreationInfoInputPageSizeType
     {
         _50 = 50,
         _100 = 100,
@@ -2744,14 +2736,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForWebFormAgreementEventInputResourceTypeType
+    public enum CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputResourceTypeType
     {
         [EnumMember(Value = "WIDGET")]
         WIdGET
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForWebFormAgreementEventInputWebhookSubscriptionEventsTypeItem
+    public enum CreateWebhookForWebFormAgreementEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem
     {
         [EnumMember(Value = "When any web form agreement event occurs")]
         WhenAnyWebFormAgreementEventOccurs,
@@ -2771,7 +2763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         WhenAWebFormAgreementExpires
     }
 
-    public class CreateWebhookForGroupEventInput
+    public class CreateWebhookForGroupEventWebhookCreationInfoInput
     {
         [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string State { get; set; } = "ACTIVE";
@@ -2783,94 +2775,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign
         public string Name { get; set; }
 
         [JsonProperty("scope", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateWebhookForGroupEventInputScopeType Scope { get; set; } = CreateWebhookForGroupEventInputScopeType.AnyResourceInMyGroup;
+        internal CreateWebhookForGroupEventWebhookCreationInfoInputScopeType Scope { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Adobesign.CreateWebhookForGroupEventWebhookCreationInfoInputScopeType.AnyResourceInMyGroup;
 
         [JsonProperty("resourceId")]
         public string ResourceId { get; set; }
 
         [JsonProperty("webhookSubscriptionEvents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookForGroupEventInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
+        public CreateWebhookForGroupEventWebhookCreationInfoInputWebhookSubscriptionEventsTypeItem[] WebhookSubscriptionEvents { get; set; }
 
         [JsonProperty("webhookConditionalParams")]
         public WebhookConditionalParamsGeneric WebhookConditionalParams { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForGroupEventInputScopeType
+    public enum CreateWebhookForGroupEventWebhookCreationInfoInputScopeType
     {
         [EnumMember(Value = "Any resource in my group")]
         AnyResourceInMyGroup
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateWebhookForGroupEventInputWebhookSubscriptionEventsTypeItem
-    {
-        [EnumMember(Value = "When any agreement event occurs")]
-        WhenAnyAgreementEventOccurs,
-        [EnumMember(Value = "When an agreement is created")]
-        WhenAnAgreementIsCreated,
-        [EnumMember(Value = "When an agreement is sent")]
-        WhenAnAgreementIsSent,
-        [EnumMember(Value = "When a participant completes their action")]
-        WhenAParticipantCompletesTheirAction,
-        [EnumMember(Value = "When an agreement workflow is completed successfully")]
-        WhenAnAgreementWorkflowIsCompletedSuccessfully,
-        [EnumMember(Value = "When an agreement expires")]
-        WhenAnAgreementExpires,
-        [EnumMember(Value = "When an agreement is deleted")]
-        WhenAnAgreementIsDeleted,
-        [EnumMember(Value = "When an agreement is cancelled")]
-        WhenAnAgreementIsCancelled,
-        [EnumMember(Value = "When an agreement is rejected by a participant")]
-        WhenAnAgreementIsRejectedByAParticipant,
-        [EnumMember(Value = "When an agreement is shared")]
-        WhenAnAgreementIsShared,
-        [EnumMember(Value = "When an agreement is delegated")]
-        WhenAnAgreementIsDelegated,
-        [EnumMember(Value = "When an agreement participant is replaced")]
-        WhenAnAgreementParticipantIsReplaced,
-        [EnumMember(Value = "When an agreement is modified")]
-        WhenAnAgreementIsModified,
-        [EnumMember(Value = "When an agreement modification is acknowledged")]
-        WhenAnAgreementModificationIsAcknowledged,
-        [EnumMember(Value = "When an agreement email is viewed by a participant")]
-        WhenAnAgreementEmailIsViewedByAParticipant,
-        [EnumMember(Value = "When an agreement email gets bounced")]
-        WhenAnAgreementEmailGetsBounced,
-        [EnumMember(Value = "When an agreement creation fails")]
-        WhenAnAgreementCreationFails,
-        [EnumMember(Value = "When an offline agreement is synced")]
-        WhenAnOfflineAgreementIsSynced,
-        [EnumMember(Value = "When an agreement is uploaded by sender")]
-        WhenAnAgreementIsUploadedBySender,
-        [EnumMember(Value = "When an agreement is vaulted")]
-        WhenAnAgreementIsVaulted,
-        [EnumMember(Value = "When an agreement participant is authenticated through social identity")]
-        WhenAnAgreementParticipantIsAuthenticatedThroughSocialIdentity,
-        [EnumMember(Value = "When an agreement participant is authenticated through KBA")]
-        WhenAnAgreementParticipantIsAuthenticatedThroughKBA,
-        [EnumMember(Value = "When any mega sign event occurs")]
-        WhenAnyMegaSignEventOccurs,
-        [EnumMember(Value = "When a mega sign is created")]
-        WhenAMegaSignIsCreated,
-        [EnumMember(Value = "When a mega sign is shared")]
-        WhenAMegaSignIsShared,
-        [EnumMember(Value = "When a mega sign is recalled")]
-        WhenAMegaSignIsRecalled,
-        [EnumMember(Value = "When any web form event occurs")]
-        WhenAnyWebFormEventOccurs,
-        [EnumMember(Value = "When a web form is created")]
-        WhenAWebFormIsCreated,
-        [EnumMember(Value = "When a web form is enabled")]
-        WhenAWebFormIsEnabled,
-        [EnumMember(Value = "When a web form is disabled")]
-        WhenAWebFormIsDisabled,
-        [EnumMember(Value = "When a web form is modified")]
-        WhenAWebFormIsModified,
-        [EnumMember(Value = "When a web form is shared")]
-        WhenAWebFormIsShared,
-        [EnumMember(Value = "When a web form creation fails")]
-        WhenAWebFormCreationFails
     }
 }
 

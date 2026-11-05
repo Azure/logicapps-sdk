@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
     public class AmazonsqsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IBodyWorkflowAction<QueueMessageMetadata, ApiConnectionActionConfiguration> SendMessageToQueue(Expression<Func<SendMessageToQueueInput>> sendMessageOperationInput)
+        public IBodyWorkflowAction<QueueMessageMetadata, ApiConnectionActionConfiguration> SendMessageToQueue(Expression<Func<SendMessageOperationInputInput>> sendMessageOperationInput)
         {
             var __workflow_sendMessageOperationInput = WorkflowExpression.Compile(sendMessageOperationInput, nameof(sendMessageOperationInput), required: true);
             return new DeferredBodyAction<QueueMessageMetadata, ApiConnectionActionConfiguration>(() =>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
         public string ContentMD5 { get; set; }
     }
 
-    public class SendMessageToQueueInput
+    public class SendMessageOperationInputInput
     {
         [JsonProperty("messageVisibilityDelaySeconds")]
         public int? MessageVisibilityDelayInSeconds { get; set; }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerSecretsUpdateSecretResponse, ApiConnectionActionConfiguration> DopplerSecretsUpdateSecret(Expression<Func<DopplerSecretsUpdateSecretInput>> body)
+        public IBodyWorkflowAction<DopplerSecretsUpdateSecretResponse, ApiConnectionActionConfiguration> DopplerSecretsUpdateSecret(Expression<Func<DopplerSecretsUpdateSecretBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerSecretsUpdateSecretResponse, ApiConnectionActionConfiguration>(() =>
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DopplerSecretsUpdateSecretNote(Expression<Func<DopplerSecretsUpdateSecretNoteInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DopplerSecretsUpdateSecretNote(Expression<Func<DopplerSecretsUpdateSecretNoteBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigCreateConfigResponse, ApiConnectionActionConfiguration> DopplerConfigCreateConfig(Expression<Func<DopplerConfigCreateConfigInput>> body)
+        public IBodyWorkflowAction<DopplerConfigCreateConfigResponse, ApiConnectionActionConfiguration> DopplerConfigCreateConfig(Expression<Func<DopplerConfigCreateConfigBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerConfigCreateConfigResponse, ApiConnectionActionConfiguration>(() =>
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigUpdateConfigNameResponse, ApiConnectionActionConfiguration> DopplerConfigUpdateConfigName(Expression<Func<DopplerConfigUpdateConfigNameInput>> body)
+        public IBodyWorkflowAction<DopplerConfigUpdateConfigNameResponse, ApiConnectionActionConfiguration> DopplerConfigUpdateConfigName(Expression<Func<DopplerConfigCloneConfigBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerConfigUpdateConfigNameResponse, ApiConnectionActionConfiguration>(() =>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigCloneConfigResponse, ApiConnectionActionConfiguration> DopplerConfigCloneConfig(Expression<Func<DopplerConfigCloneConfigInput>> body)
+        public IBodyWorkflowAction<DopplerConfigCloneConfigResponse, ApiConnectionActionConfiguration> DopplerConfigCloneConfig(Expression<Func<DopplerConfigCloneConfigBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerConfigCloneConfigResponse, ApiConnectionActionConfiguration>(() =>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigLockConfigResponse, ApiConnectionActionConfiguration> DopplerConfigLockConfig(Expression<Func<DopplerConfigLockConfigInput>> body)
+        public IBodyWorkflowAction<DopplerConfigLockConfigResponse, ApiConnectionActionConfiguration> DopplerConfigLockConfig(Expression<Func<DopplerConfigLockConfigBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerConfigLockConfigResponse, ApiConnectionActionConfiguration>(() =>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerConfigUnlockConfigResponse, ApiConnectionActionConfiguration> DopplerConfigUnlockConfig(Expression<Func<DopplerConfigUnlockConfigInput>> body)
+        public IBodyWorkflowAction<DopplerConfigUnlockConfigResponse, ApiConnectionActionConfiguration> DopplerConfigUnlockConfig(Expression<Func<DopplerConfigLockConfigBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerConfigUnlockConfigResponse, ApiConnectionActionConfiguration>(() =>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectsCreateResponse, ApiConnectionActionConfiguration> DopplerProjectsCreate(Expression<Func<DopplerProjectsCreateInput>> body)
+        public IBodyWorkflowAction<DopplerProjectsCreateResponse, ApiConnectionActionConfiguration> DopplerProjectsCreate(Expression<Func<DopplerProjectsCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerProjectsCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectsUpdateResponse, ApiConnectionActionConfiguration> DopplerProjectsUpdate(Expression<Func<DopplerProjectsUpdateInput>> body)
+        public IBodyWorkflowAction<DopplerProjectsUpdateResponse, ApiConnectionActionConfiguration> DopplerProjectsUpdate(Expression<Func<DopplerProjectsUpdateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DopplerProjectsUpdateResponse, ApiConnectionActionConfiguration>(() =>
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectMembersAddResponse, ApiConnectionActionConfiguration> DopplerProjectMembersAdd(Expression<Func<string>> project, Expression<Func<DopplerProjectMembersAddInput>> body)
+        public IBodyWorkflowAction<DopplerProjectMembersAddResponse, ApiConnectionActionConfiguration> DopplerProjectMembersAdd(Expression<Func<string>> project, Expression<Func<DopplerProjectMembersAddBodyInput>> body)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectMembersRetrieveResponse, ApiConnectionActionConfiguration> DopplerProjectMembersRetrieve(Expression<Func<typeInput>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
+        public IBodyWorkflowAction<DopplerProjectMembersRetrieveResponse, ApiConnectionActionConfiguration> DopplerProjectMembersRetrieve(Expression<Func<TypeInput>> type, Expression<Func<string>> slug, Expression<Func<string>> project)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doppler")]
-        public IBodyWorkflowAction<DopplerProjectMembersUpdateResponse, ApiConnectionActionConfiguration> DopplerProjectMembersUpdate(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project, Expression<Func<DopplerProjectMembersUpdateInput>> body = null)
+        public IBodyWorkflowAction<DopplerProjectMembersUpdateResponse, ApiConnectionActionConfiguration> DopplerProjectMembersUpdate(Expression<Func<string>> type, Expression<Func<string>> slug, Expression<Func<string>> project, Expression<Func<DopplerProjectMembersUpdateBodyInput>> body = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public JToken Secrets { get; set; }
     }
 
-    public class DopplerSecretsUpdateSecretInput
+    public class DopplerSecretsUpdateSecretBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
@@ -438,7 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Note { get; set; }
     }
 
-    public class DopplerSecretsUpdateSecretNoteInput
+    public class DopplerSecretsUpdateSecretNoteBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Project { get; set; }
     }
 
-    public class DopplerConfigCreateConfigInput
+    public class DopplerConfigCreateConfigBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Project { get; set; }
     }
 
-    public class DopplerConfigUpdateConfigNameInput
+    public class DopplerConfigCloneConfigBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
@@ -657,18 +657,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Project { get; set; }
     }
 
-    public class DopplerConfigCloneConfigInput
-    {
-        [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Project { get; set; }
-
-        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Config { get; set; }
-
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     public class DopplerConfigLockConfigResponse
     {
         [JsonProperty("config")]
@@ -702,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Project { get; set; }
     }
 
-    public class DopplerConfigLockConfigInput
+    public class DopplerConfigLockConfigBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
@@ -742,15 +730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
 
         [JsonProperty("project")]
         public string Project { get; set; }
-    }
-
-    public class DopplerConfigUnlockConfigInput
-    {
-        [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Project { get; set; }
-
-        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Config { get; set; }
     }
 
     public class DopplerProjectsListResponse
@@ -801,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string CreatedAt { get; set; }
     }
 
-    public class DopplerProjectsCreateInput
+    public class DopplerProjectsCreateBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; } = "My_awesome_project";
@@ -852,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string CreatedAt { get; set; }
     }
 
-    public class DopplerProjectsUpdateInput
+    public class DopplerProjectsUpdateBodyInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Project { get; set; }
@@ -972,10 +951,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Identifier { get; set; }
     }
 
-    public class DopplerProjectMembersAddInput
+    public class DopplerProjectMembersAddBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DopplerProjectMembersAddInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Slug { get; set; }
@@ -988,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DopplerProjectMembersAddInputTypeType
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "workplace_user")]
         WorkplaceUser,
@@ -1031,7 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "workplace_user")]
         WorkplaceUser,
@@ -1073,7 +1052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Identifier { get; set; }
     }
 
-    public class DopplerProjectMembersUpdateInput
+    public class DopplerProjectMembersUpdateBodyInput
     {
         [JsonProperty("role")]
         public string Role { get; set; }

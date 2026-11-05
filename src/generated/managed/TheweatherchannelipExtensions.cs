@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
     public class TheweatherchannelipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetConditions(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetConditions(Expression<Func<string>> geocode, Expression<Func<UnitsInput>> units, Expression<Func<string>> language, Expression<Func<FormatInput>> format)
         {
             var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<FormatInput>> format)
         {
             var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
             var __workflow_acceptHeader = WorkflowExpression.Compile(acceptHeader, nameof(acceptHeader), required: true);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetHistory(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema, ApiConnectionActionConfiguration> GetHistory(Expression<Func<string>> geocode, Expression<Func<UnitsInput>> units, Expression<Func<string>> language, Expression<Func<FormatInput>> format)
         {
             var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum unitsInput
+    public enum UnitsInput
     {
         [EnumMember(Value = "e")]
         E,
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "json")]
         Json

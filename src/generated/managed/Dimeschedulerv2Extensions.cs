@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
 
     public class Dimeschedulerv2Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<CreateAppointmentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<CreateAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<UpdateAppointmentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<UpdateAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DeleteAppointment(Expression<Func<DeleteAppointmentInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DeleteAppointment(Expression<Func<DeleteAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
         }
     }
 
-    public class CreateAppointmentInput
+    public class CreateAppointmentBodyInput
     {
         [JsonProperty("sourceApp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceApp { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
         };
     }
 
-    public class UpdateAppointmentInput
+    public class UpdateAppointmentBodyInput
     {
         [JsonProperty("sourceApp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceApp { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dimeschedulerv2
         };
     }
 
-    public class DeleteAppointmentInput
+    public class DeleteAppointmentBodyInput
     {
         [JsonProperty("sourceApp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceApp { get; set; }

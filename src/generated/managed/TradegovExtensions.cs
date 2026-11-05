@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ScreeningListSearchResponse, ApiConnectionActionConfiguration> ConsolidatedScreeningListSearch(Expression<Func<string>> name = null, Expression<Func<fuzzyNameInput>> fuzzyName = null, Expression<Func<string>> sources = null, Expression<Func<string>> types = null, Expression<Func<string>> countries = null, Expression<Func<string>> address = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> fullAddress = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ScreeningListSearchResponse, ApiConnectionActionConfiguration> ConsolidatedScreeningListSearch(Expression<Func<string>> name = null, Expression<Func<FuzzyNameInput>> fuzzyName = null, Expression<Func<string>> sources = null, Expression<Func<string>> types = null, Expression<Func<string>> countries = null, Expression<Func<string>> address = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> fullAddress = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_fuzzyName = WorkflowExpression.Compile(fuzzyName, nameof(fuzzyName), required: false);
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fuzzyNameInput
+    public enum FuzzyNameInput
     {
         [EnumMember(Value = "")]
         None,

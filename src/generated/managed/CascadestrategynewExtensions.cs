@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
     public class CascadestrategynewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateMeasure2Response, ApiConnectionActionConfiguration> UpdateMeasure2(Expression<Func<UpdateMeasure2Input>> body, Expression<Func<string>> measureId)
+        public IBodyWorkflowAction<UpdateMeasure2Response, ApiConnectionActionConfiguration> UpdateMeasure2(Expression<Func<UpdateMeasure2BodyInput>> body, Expression<Func<string>> measureId)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_measureId = WorkflowExpression.Compile(measureId, nameof(measureId), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response, ApiConnectionActionConfiguration> UpdateMeasureHistoricalValue2(Expression<Func<UpdateMeasureHistoricalValue2Input>> body, Expression<Func<string>> measureId)
+        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response, ApiConnectionActionConfiguration> UpdateMeasureHistoricalValue2(Expression<Func<UpdateMeasureHistoricalValue2BodyInput>> body, Expression<Func<string>> measureId)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_measureId = WorkflowExpression.Compile(measureId, nameof(measureId), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateAction2Response, ApiConnectionActionConfiguration> UpdateAction2(Expression<Func<UpdateAction2Input>> body, Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<UpdateAction2Response, ApiConnectionActionConfiguration> UpdateAction2(Expression<Func<UpdateAction2BodyInput>> body, Expression<Func<string>> actionId)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         public string Message { get; set; }
     }
 
-    public class UpdateMeasure2Input
+    public class UpdateMeasure2BodyInput
     {
         [JsonProperty("workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         public string Message { get; set; }
     }
 
-    public class UpdateMeasureHistoricalValue2Input
+    public class UpdateMeasureHistoricalValue2BodyInput
     {
         [JsonProperty("workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         public string PlanId { get; set; }
 
         [JsonProperty("historical_data")]
-        public UpdateMeasureHistoricalValue2InputHistoricalDataTypeItem[] HistoricalData { get; set; }
+        public BodyInputHistoricalDataTypeItem[] HistoricalData { get; set; }
     }
 
-    public class UpdateMeasureHistoricalValue2InputHistoricalDataTypeItem
+    public class BodyInputHistoricalDataTypeItem
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         public string Message { get; set; }
     }
 
-    public class UpdateAction2Input
+    public class UpdateAction2BodyInput
     {
         [JsonProperty("workspace_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkspaceId { get; set; }

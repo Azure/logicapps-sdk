@@ -13,92 +13,92 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     public class CohereipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<EmbedPostResponse, ApiConnectionActionConfiguration> Embed(Expression<Func<EmbedPostInput>> body = null)
+        public IBodyWorkflowAction<EmbedResponse, ApiConnectionActionConfiguration> Embed(Expression<Func<EmbedBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EmbedPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<EmbedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/embed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<EmbedPostResponse>(callPayload);
+                return new ApiConnectionAction<EmbedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<ClassifyPostResponse, ApiConnectionActionConfiguration> Classify(Expression<Func<ClassifyPostInput>> body = null)
+        public IBodyWorkflowAction<ClassifyResponse, ApiConnectionActionConfiguration> Classify(Expression<Func<ClassifyBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ClassifyPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ClassifyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/classify";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ClassifyPostResponse>(callPayload);
+                return new ApiConnectionAction<ClassifyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<TokenPostResponse, ApiConnectionActionConfiguration> Token(Expression<Func<TokenPostInput>> body = null)
+        public IBodyWorkflowAction<TokenResponse, ApiConnectionActionConfiguration> Token(Expression<Func<TokenBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TokenPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/tokenize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TokenPostResponse>(callPayload);
+                return new ApiConnectionAction<TokenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<DetokenPostResponse, ApiConnectionActionConfiguration> Detoken(Expression<Func<DetokenPostInput>> body = null)
+        public IBodyWorkflowAction<DetokenResponse, ApiConnectionActionConfiguration> Detoken(Expression<Func<DetokenBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DetokenPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DetokenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detokenize";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DetokenPostResponse>(callPayload);
+                return new ApiConnectionAction<DetokenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<LanguagePostResponse, ApiConnectionActionConfiguration> Language(Expression<Func<LanguagePostInput>> body = null)
+        public IBodyWorkflowAction<LanguageResponse, ApiConnectionActionConfiguration> Language(Expression<Func<LanguageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<LanguagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LanguageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detect-language";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<LanguagePostResponse>(callPayload);
+                return new ApiConnectionAction<LanguageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohereip")]
-        public IBodyWorkflowAction<ChatPostResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatPostInput>> body = null)
+        public IBodyWorkflowAction<ChatResponse, ApiConnectionActionConfiguration> Chat(Expression<Func<ChatBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ChatPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ChatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/chat";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ChatPostResponse>(callPayload);
+                return new ApiConnectionAction<ChatResponse>(callPayload);
             });
         }
     }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     {
     }
 
-    public class EmbedPostResponse
+    public class EmbedResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -119,16 +119,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public double[][] Embeddings { get; set; }
 
         [JsonProperty("meta")]
-        public EmbedPostResponseMetaType Meta { get; set; }
+        public EmbedResponseMetaType Meta { get; set; }
     }
 
-    public class EmbedPostResponseMetaType
+    public class EmbedResponseMetaType
     {
         [JsonProperty("api_version")]
-        public EmbedPostResponseMetaTypeApiVersionType ApiVersion { get; set; }
+        public EmbedResponseMetaTypeApiVersionType ApiVersion { get; set; }
     }
 
-    public class EmbedPostResponseMetaTypeApiVersionType
+    public class EmbedResponseMetaTypeApiVersionType
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -137,20 +137,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsDeprecated { get; set; }
     }
 
-    public class EmbedPostInput
+    public class EmbedBodyInput
     {
         [JsonProperty("texts")]
         public string[] Texts { get; set; }
 
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EmbedPostInputModelType? Model { get; set; } = EmbedPostInputModelType.Large;
+        public EmbedBodyInputModelType? Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip.EmbedBodyInputModelType.Large;
 
         [JsonProperty("truncate")]
-        public EmbedPostInputTruncateType? Truncate { get; set; }
+        public BodyInputTruncateType? Truncate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EmbedPostInputModelType
+    public enum EmbedBodyInputModelType
     {
         [EnumMember(Value = "large")]
         Large,
@@ -159,26 +159,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EmbedPostInputTruncateType
+    public enum BodyInputTruncateType
     {
         NONE,
         START,
         END
     }
 
-    public class ClassifyPostResponse
+    public class ClassifyResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("classifications")]
-        public ClassifyPostResponseClassificationsTypeItem[] Classifications { get; set; }
+        public ClassifyResponseClassificationsTypeItem[] Classifications { get; set; }
 
         [JsonProperty("meta")]
-        public ClassifyPostResponseMetaType Meta { get; set; }
+        public ClassifyResponseMetaType Meta { get; set; }
     }
 
-    public class ClassifyPostResponseClassificationsTypeItem
+    public class ClassifyResponseClassificationsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -193,13 +193,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public double Confidence { get; set; }
 
         [JsonProperty("confidences")]
-        public ClassifyPostResponseClassificationsTypeItemConfidencesTypeItem[] Confidences { get; set; }
+        public ClassifyResponseClassificationsTypeItemConfidencesTypeItem[] Confidences { get; set; }
 
         [JsonProperty("labels")]
-        public ClassifyPostResponseClassificationsTypeItemLabelsType Labels { get; set; }
+        public ClassifyResponseClassificationsTypeItemLabelsType Labels { get; set; }
     }
 
-    public class ClassifyPostResponseClassificationsTypeItemConfidencesTypeItem
+    public class ClassifyResponseClassificationsTypeItemConfidencesTypeItem
     {
         [JsonProperty("option")]
         public string Option { get; set; }
@@ -208,32 +208,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public double Confidence { get; set; }
     }
 
-    public class ClassifyPostResponseClassificationsTypeItemLabelsType
+    public class ClassifyResponseClassificationsTypeItemLabelsType
     {
         [JsonProperty("Not spam")]
-        public ClassifyPostResponseClassificationsTypeItemLabelsTypeNotSpamType NotSpam { get; set; }
-        public ClassifyPostResponseClassificationsTypeItemLabelsTypeSpamType Spam { get; set; }
+        public ClassifyResponseClassificationsTypeItemLabelsTypeNotSpamType NotSpam { get; set; }
+        public ClassifyResponseClassificationsTypeItemLabelsTypeSpamType Spam { get; set; }
     }
 
-    public class ClassifyPostResponseClassificationsTypeItemLabelsTypeNotSpamType
+    public class ClassifyResponseClassificationsTypeItemLabelsTypeNotSpamType
     {
         [JsonProperty("confidence")]
         public double Confidence { get; set; }
     }
 
-    public class ClassifyPostResponseClassificationsTypeItemLabelsTypeSpamType
+    public class ClassifyResponseClassificationsTypeItemLabelsTypeSpamType
     {
         [JsonProperty("confidence")]
         public double Confidence { get; set; }
     }
 
-    public class ClassifyPostResponseMetaType
+    public class ClassifyResponseMetaType
     {
         [JsonProperty("api_version")]
-        public ClassifyPostResponseMetaTypeApiVersionType ApiVersion { get; set; }
+        public ClassifyResponseMetaTypeApiVersionType ApiVersion { get; set; }
     }
 
-    public class ClassifyPostResponseMetaTypeApiVersionType
+    public class ClassifyResponseMetaTypeApiVersionType
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -242,26 +242,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsDeprecated { get; set; }
     }
 
-    public class ClassifyPostInput
+    public class ClassifyBodyInput
     {
         [JsonProperty("inputs")]
         public string[] Inputs { get; set; }
 
         [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ClassifyPostInputModelType? Model { get; set; } = ClassifyPostInputModelType.Large;
+        public ClassifyBodyInputModelType? Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip.ClassifyBodyInputModelType.Large;
 
         [JsonProperty("examples")]
-        public ClassifyPostInputExamplesTypeItem[] Examples { get; set; }
+        public BodyInputExamplesTypeItem[] Examples { get; set; }
 
         [JsonProperty("preset")]
         public string Preset { get; set; }
 
         [JsonProperty("truncate")]
-        public ClassifyPostInputTruncateType? Truncate { get; set; }
+        public BodyInputTruncateType? Truncate { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ClassifyPostInputModelType
+    public enum ClassifyBodyInputModelType
     {
         [EnumMember(Value = "large")]
         Large,
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         Multilingual2212
     }
 
-    public class ClassifyPostInputExamplesTypeItem
+    public class BodyInputExamplesTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -280,15 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string Label { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ClassifyPostInputTruncateType
-    {
-        NONE,
-        START,
-        END
-    }
-
-    public class TokenPostResponse
+    public class TokenResponse
     {
         [JsonProperty("tokens")]
         public int[] Tokens { get; set; }
@@ -297,16 +289,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string[] TokenStrings { get; set; }
 
         [JsonProperty("meta")]
-        public TokenPostResponseMetaType Meta { get; set; }
+        public TokenResponseMetaType Meta { get; set; }
     }
 
-    public class TokenPostResponseMetaType
+    public class TokenResponseMetaType
     {
         [JsonProperty("api_version")]
-        public TokenPostResponseMetaTypeApiVersionType ApiVersion { get; set; }
+        public TokenResponseMetaTypeApiVersionType ApiVersion { get; set; }
     }
 
-    public class TokenPostResponseMetaTypeApiVersionType
+    public class TokenResponseMetaTypeApiVersionType
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -315,28 +307,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsDeprecated { get; set; }
     }
 
-    public class TokenPostInput
+    public class TokenBodyInput
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DetokenPostResponse
+    public class DetokenResponse
     {
         [JsonProperty("text")]
         public string Text { get; set; }
 
         [JsonProperty("meta")]
-        public DetokenPostResponseMetaType Meta { get; set; }
+        public DetokenResponseMetaType Meta { get; set; }
     }
 
-    public class DetokenPostResponseMetaType
+    public class DetokenResponseMetaType
     {
         [JsonProperty("api_version")]
-        public DetokenPostResponseMetaTypeApiVersionType ApiVersion { get; set; }
+        public DetokenResponseMetaTypeApiVersionType ApiVersion { get; set; }
     }
 
-    public class DetokenPostResponseMetaTypeApiVersionType
+    public class DetokenResponseMetaTypeApiVersionType
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -345,25 +337,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsDeprecated { get; set; }
     }
 
-    public class DetokenPostInput
+    public class DetokenBodyInput
     {
         [JsonProperty("tokens")]
         public int[] Tokens { get; set; }
     }
 
-    public class LanguagePostResponse
+    public class LanguageResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("results")]
-        public LanguagePostResponseResultsTypeItem[] Results { get; set; }
+        public LanguageResponseResultsTypeItem[] Results { get; set; }
 
         [JsonProperty("meta")]
-        public LanguagePostResponseMetaType Meta { get; set; }
+        public LanguageResponseMetaType Meta { get; set; }
     }
 
-    public class LanguagePostResponseResultsTypeItem
+    public class LanguageResponseResultsTypeItem
     {
         [JsonProperty("language_code")]
         public string LanguageCode { get; set; }
@@ -372,13 +364,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string LanguageName { get; set; }
     }
 
-    public class LanguagePostResponseMetaType
+    public class LanguageResponseMetaType
     {
         [JsonProperty("api_version")]
-        public LanguagePostResponseMetaTypeApiVersionType ApiVersion { get; set; }
+        public LanguageResponseMetaTypeApiVersionType ApiVersion { get; set; }
     }
 
-    public class LanguagePostResponseMetaTypeApiVersionType
+    public class LanguageResponseMetaTypeApiVersionType
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -387,13 +379,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsDeprecated { get; set; }
     }
 
-    public class LanguagePostInput
+    public class LanguageBodyInput
     {
         [JsonProperty("texts")]
         public string[] Texts { get; set; }
     }
 
-    public class ChatPostResponse
+    public class ChatResponse
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -402,34 +394,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string GenerationId { get; set; }
 
         [JsonProperty("citations")]
-        public ChatPostResponseCitationsTypeItem[] Citations { get; set; }
+        public ChatResponseCitationsTypeItem[] Citations { get; set; }
 
         [JsonProperty("documents")]
-        public ChatPostResponseDocumentsTypeItem[] Documents { get; set; }
+        public ChatResponseDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("is_search_required")]
         public bool IsSearchRequired { get; set; }
 
         [JsonProperty("search_queries")]
-        public ChatPostResponseSearchQueriesTypeItem[] SearchQueries { get; set; }
+        public ChatResponseSearchQueriesTypeItem[] SearchQueries { get; set; }
 
         [JsonProperty("search_results")]
-        public ChatPostResponseSearchResultsTypeItem[] SearchResults { get; set; }
+        public ChatResponseSearchResultsTypeItem[] SearchResults { get; set; }
 
         [JsonProperty("finish_reason")]
         public string FinishReason { get; set; }
 
         [JsonProperty("tool_calls")]
-        public ChatPostResponseToolCallsTypeItem[] ToolCalls { get; set; }
+        public ChatResponseToolCallsTypeItem[] ToolCalls { get; set; }
 
         [JsonProperty("chat_history")]
-        public ChatPostResponseChatHistoryTypeItem[] ChatHistory { get; set; }
+        public ChatResponseChatHistoryTypeItem[] ChatHistory { get; set; }
 
         [JsonProperty("meta")]
-        public ChatPostResponseMetaType Meta { get; set; }
+        public ChatResponseMetaType Meta { get; set; }
     }
 
-    public class ChatPostResponseCitationsTypeItem
+    public class ChatResponseCitationsTypeItem
     {
         [JsonProperty("start")]
         public int Start { get; set; }
@@ -444,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string[] DocumentIds { get; set; }
     }
 
-    public class ChatPostResponseDocumentsTypeItem
+    public class ChatResponseDocumentsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -453,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string AdditionalProp { get; set; }
     }
 
-    public class ChatPostResponseSearchQueriesTypeItem
+    public class ChatResponseSearchQueriesTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -462,13 +454,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string GenerationId { get; set; }
     }
 
-    public class ChatPostResponseSearchResultsTypeItem
+    public class ChatResponseSearchResultsTypeItem
     {
         [JsonProperty("search_query")]
-        public ChatPostResponseSearchResultsTypeItemSearchQueryType SearchQuery { get; set; }
+        public ChatResponseSearchResultsTypeItemSearchQueryType SearchQuery { get; set; }
 
         [JsonProperty("connector")]
-        public ChatPostResponseSearchResultsTypeItemConnectorType Connector { get; set; }
+        public ChatResponseSearchResultsTypeItemConnectorType Connector { get; set; }
 
         [JsonProperty("document_ids")]
         public string[] DocumentIds { get; set; }
@@ -480,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool ContinueOnFailure { get; set; }
     }
 
-    public class ChatPostResponseSearchResultsTypeItemSearchQueryType
+    public class ChatResponseSearchResultsTypeItemSearchQueryType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -489,28 +481,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string GenerationId { get; set; }
     }
 
-    public class ChatPostResponseSearchResultsTypeItemConnectorType
+    public class ChatResponseSearchResultsTypeItemConnectorType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class ChatPostResponseToolCallsTypeItem
+    public class ChatResponseToolCallsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("parameters")]
-        public ChatPostResponseToolCallsTypeItemParametersType Parameters { get; set; }
+        public ChatResponseToolCallsTypeItemParametersType Parameters { get; set; }
     }
 
-    public class ChatPostResponseToolCallsTypeItemParametersType
+    public class ChatResponseToolCallsTypeItemParametersType
     {
         [JsonProperty("additionalProp")]
         public JToken AdditionalProp { get; set; }
     }
 
-    public class ChatPostResponseChatHistoryTypeItem
+    public class ChatResponseChatHistoryTypeItem
     {
         [JsonProperty("role")]
         public string Role { get; set; }
@@ -519,22 +511,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string Message { get; set; }
     }
 
-    public class ChatPostResponseMetaType
+    public class ChatResponseMetaType
     {
         [JsonProperty("api_version")]
-        public ChatPostResponseMetaTypeApiVersionType ApiVersion { get; set; }
+        public ChatResponseMetaTypeApiVersionType ApiVersion { get; set; }
 
         [JsonProperty("billed_units")]
-        public ChatPostResponseMetaTypeBilledUnitsType BilledUnits { get; set; }
+        public ChatResponseMetaTypeBilledUnitsType BilledUnits { get; set; }
 
         [JsonProperty("tokens")]
-        public ChatPostResponseMetaTypeTokensType Tokens { get; set; }
+        public ChatResponseMetaTypeTokensType Tokens { get; set; }
 
         [JsonProperty("warnings")]
         public string[] Warnings { get; set; }
     }
 
-    public class ChatPostResponseMetaTypeApiVersionType
+    public class ChatResponseMetaTypeApiVersionType
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -546,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsExperimental { get; set; }
     }
 
-    public class ChatPostResponseMetaTypeBilledUnitsType
+    public class ChatResponseMetaTypeBilledUnitsType
     {
         [JsonProperty("input_tokens")]
         public int InputTokens { get; set; }
@@ -561,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public int Classifications { get; set; }
     }
 
-    public class ChatPostResponseMetaTypeTokensType
+    public class ChatResponseMetaTypeTokensType
     {
         [JsonProperty("input_tokens")]
         public int InputTokens { get; set; }
@@ -570,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public int OutputTokens { get; set; }
     }
 
-    public class ChatPostInput
+    public class ChatBodyInput
     {
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -582,25 +574,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string Preamble { get; set; }
 
         [JsonProperty("chat_history")]
-        public ChatPostInputChatHistoryTypeItem[] ChatHistory { get; set; }
+        public BodyInputChatHistoryTypeItem[] ChatHistory { get; set; }
 
         [JsonProperty("conversation_id")]
         public string ConversationId { get; set; }
 
         [JsonProperty("prompt_truncation")]
-        public ChatPostInputPromptTruncationType? PromptTruncation { get; set; }
+        public BodyInputPromptTruncationType? PromptTruncation { get; set; }
 
         [JsonProperty("connectors")]
-        public ChatPostInputConnectorsTypeItem[] Connectors { get; set; }
+        public BodyInputConnectorsTypeItem[] Connectors { get; set; }
 
         [JsonProperty("search_queries_only")]
         public bool? SearchQueriesOnly { get; set; }
 
         [JsonProperty("documents")]
-        public ChatPostInputDocumentsTypeItem[] Documents { get; set; }
+        public BodyInputDocumentsTypeItem[] Documents { get; set; }
 
         [JsonProperty("citation_quality")]
-        public ChatPostInputCitationQualityType? CitationQuality { get; set; }
+        public BodyInputCitationQualityType? CitationQuality { get; set; }
 
         [JsonProperty("temperature")]
         public double? Temperature { get; set; }
@@ -630,20 +622,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public double? PresencePenalty { get; set; }
 
         [JsonProperty("tools")]
-        public ChatPostInputToolsTypeItem[] Tools { get; set; }
+        public BodyInputToolsTypeItem[] Tools { get; set; }
     }
 
-    public class ChatPostInputChatHistoryTypeItem
+    public class BodyInputChatHistoryTypeItem
     {
         [JsonProperty("role")]
-        public ChatPostInputChatHistoryTypeItemRoleType? Role { get; set; }
+        public BodyInputChatHistoryTypeItemRoleType? Role { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChatPostInputChatHistoryTypeItemRoleType
+    public enum BodyInputChatHistoryTypeItemRoleType
     {
         CHATBOT,
         SYSTEM,
@@ -651,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChatPostInputPromptTruncationType
+    public enum BodyInputPromptTruncationType
     {
         AUTO,
         [EnumMember(Value = "AUTO_PRESERVE_ORDER")]
@@ -659,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         OFF
     }
 
-    public class ChatPostInputConnectorsTypeItem
+    public class BodyInputConnectorsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -674,7 +666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public JToken Options { get; set; }
     }
 
-    public class ChatPostInputDocumentsTypeItem
+    public class BodyInputDocumentsTypeItem
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -684,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ChatPostInputCitationQualityType
+    public enum BodyInputCitationQualityType
     {
         [EnumMember(Value = "accurate")]
         Accurate,
@@ -692,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         Fast
     }
 
-    public class ChatPostInputToolsTypeItem
+    public class BodyInputToolsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

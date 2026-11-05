@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
     public class ClimatiqipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateResponse, ApiConnectionActionConfiguration> EmissionEstimate(Expression<Func<EmissionEstimateInput>> body)
+        public IBodyWorkflowAction<EmissionEstimateResponse, ApiConnectionActionConfiguration> EmissionEstimate(Expression<Func<EmissionEstimateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmissionEstimateResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration> EmissionEstimateBulk(Expression<Func<bodyInputItem[]>> body)
+        public IBodyWorkflowAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration> EmissionEstimateBulk(Expression<Func<EmissionEstimateBulkBodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EmissionEstimateBulkResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<TravelFlightResponse, ApiConnectionActionConfiguration> TravelFlight(Expression<Func<TravelFlightInput>> body)
+        public IBodyWorkflowAction<TravelFlightResponse, ApiConnectionActionConfiguration> TravelFlight(Expression<Func<FreightFlightBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TravelFlightResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<FreightFlightResponse, ApiConnectionActionConfiguration> FreightFlight(Expression<Func<FreightFlightInput>> body)
+        public IBodyWorkflowAction<FreightFlightResponse, ApiConnectionActionConfiguration> FreightFlight(Expression<Func<FreightFlightBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FreightFlightResponse, ApiConnectionActionConfiguration>(() =>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeCPUResponse, ApiConnectionActionConfiguration> ComputeCPU(Expression<Func<string>> provider, Expression<Func<ComputeCPUInput>> body)
+        public IBodyWorkflowAction<ComputeCPUResponse, ApiConnectionActionConfiguration> ComputeCPU(Expression<Func<string>> provider, Expression<Func<ComputeCPUBodyInput>> body)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeStorageResponse, ApiConnectionActionConfiguration> ComputeStorage(Expression<Func<string>> provider, Expression<Func<ComputeStorageInput>> body)
+        public IBodyWorkflowAction<ComputeStorageResponse, ApiConnectionActionConfiguration> ComputeStorage(Expression<Func<string>> provider, Expression<Func<ComputeStorageBodyInput>> body)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ComputeMemoryResponse, ApiConnectionActionConfiguration> ComputeMemory(Expression<Func<string>> provider, Expression<Func<ComputeMemoryInput>> body)
+        public IBodyWorkflowAction<ComputeMemoryResponse, ApiConnectionActionConfiguration> ComputeMemory(Expression<Func<string>> provider, Expression<Func<ComputeMemoryBodyInput>> body)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<ClassificationResponse, ApiConnectionActionConfiguration> Classification(Expression<Func<ClassificationInput>> body = null)
+        public IBodyWorkflowAction<ClassificationResponse, ApiConnectionActionConfiguration> Classification(Expression<Func<ClassificationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ClassificationResponse, ApiConnectionActionConfiguration>(() =>
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomResponse, ApiConnectionActionConfiguration> Custom(Expression<Func<CustomInput>> body)
+        public IBodyWorkflowAction<CustomResponse, ApiConnectionActionConfiguration> Custom(Expression<Func<CustomBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomResponse, ApiConnectionActionConfiguration>(() =>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
-        public IBodyWorkflowAction<CustomBatchResponse, ApiConnectionActionConfiguration> CustomBatch(Expression<Func<bodyInputItem2[]>> body)
+        public IBodyWorkflowAction<CustomBatchResponse, ApiConnectionActionConfiguration> CustomBatch(Expression<Func<CustomBatchBodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CustomBatchResponse, ApiConnectionActionConfiguration>(() =>
@@ -551,16 +551,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class EmissionEstimateInput
+    public class EmissionEstimateBodyInput
     {
         [JsonProperty("emission_factor")]
-        public EmissionEstimateInputEmissionFactorType EmissionFactor { get; set; }
+        public BodyInputEmissionFactorType EmissionFactor { get; set; }
 
         [JsonProperty("parameters")]
-        public EmissionEstimateInputParametersType Parameters { get; set; }
+        public BodyInputParametersType Parameters { get; set; }
     }
 
-    public class EmissionEstimateInputEmissionFactorType
+    public class BodyInputEmissionFactorType
     {
         [JsonProperty("uuid")]
         public string Uuid { get; set; }
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string CalculationMethod { get; set; }
     }
 
-    public class EmissionEstimateInputParametersType
+    public class BodyInputParametersType
     {
         [JsonProperty("energy")]
         public int? Energy { get; set; }
@@ -716,10 +716,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class bodyInputItem
+    public class EmissionEstimateBulkBodyInputItem
     {
         [JsonProperty("co2e")]
-        public double Co2e { get; set; }
+        public double? Co2e { get; set; }
 
         [JsonProperty("co2e_unit")]
         public string Co2eUnit { get; set; }
@@ -731,13 +731,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string Co2eCalculationOrigin { get; set; }
 
         [JsonProperty("emission_factor")]
-        public bodyInputItemEmissionFactorType EmissionFactor { get; set; }
+        public BodyInputItemEmissionFactorType EmissionFactor { get; set; }
 
         [JsonProperty("constituent_gases")]
-        public bodyInputItemConstituentGasesType ConstituentGases { get; set; }
+        public BodyInputItemConstituentGasesType ConstituentGases { get; set; }
     }
 
-    public class bodyInputItemEmissionFactorType
+    public class BodyInputItemEmissionFactorType
     {
         [JsonProperty("activity_id")]
         public string ActivityId { get; set; }
@@ -770,22 +770,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string[] DataQualityFlags { get; set; }
     }
 
-    public class bodyInputItemConstituentGasesType
+    public class BodyInputItemConstituentGasesType
     {
         [JsonProperty("co2e_total")]
-        public double Co2eTotal { get; set; }
+        public double? Co2eTotal { get; set; }
 
         [JsonProperty("co2e_other")]
-        public double Co2eOther { get; set; }
+        public double? Co2eOther { get; set; }
 
         [JsonProperty("co2")]
-        public double Co2 { get; set; }
+        public double? Co2 { get; set; }
 
         [JsonProperty("ch4")]
-        public double Ch4 { get; set; }
+        public double? Ch4 { get; set; }
 
         [JsonProperty("n2o")]
-        public double N2o { get; set; }
+        public double? N2o { get; set; }
     }
 
     public class TravelFlightResponse
@@ -872,13 +872,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class TravelFlightInput
+    public class FreightFlightBodyInput
     {
         [JsonProperty("legs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TravelFlightInputLegsTypeItem[] Legs { get; set; }
+        public BodyInputLegsTypeItem[] Legs { get; set; }
     }
 
-    public class TravelFlightInputLegsTypeItem
+    public class BodyInputLegsTypeItem
     {
         [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }
@@ -975,27 +975,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
         [JsonProperty("n2o")]
         public double N2o { get; set; }
-    }
-
-    public class FreightFlightInput
-    {
-        [JsonProperty("legs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FreightFlightInputLegsTypeItem[] Legs { get; set; }
-    }
-
-    public class FreightFlightInputLegsTypeItem
-    {
-        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string From { get; set; }
-
-        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string To { get; set; }
-
-        [JsonProperty("passengers")]
-        public int? Passengers { get; set; }
-
-        [JsonProperty("class")]
-        public string Class { get; set; }
     }
 
     public class ComputeMetadataResponse
@@ -1142,7 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class ComputeCPUInput
+    public class ComputeCPUBodyInput
     {
         [JsonProperty("cpu_count", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CpuCount { get; set; }
@@ -1232,13 +1211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class ComputeStorageInput
+    public class ComputeStorageBodyInput
     {
         [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Region { get; set; }
 
         [JsonProperty("storage_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ComputeStorageInputStorageTypeType StorageType { get; set; } = ComputeStorageInputStorageTypeType.Ssd;
+        public BodyInputStorageTypeType StorageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip.BodyInputStorageTypeType.Ssd;
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Data { get; set; }
@@ -1254,7 +1233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ComputeStorageInputStorageTypeType
+    public enum BodyInputStorageTypeType
     {
         [EnumMember(Value = "ssd")]
         Ssd,
@@ -1334,7 +1313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class ComputeMemoryInput
+    public class ComputeMemoryBodyInput
     {
         [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Region { get; set; }
@@ -1424,16 +1403,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class ClassificationInput
+    public class ClassificationBodyInput
     {
         [JsonProperty("classification")]
-        public ClassificationInputClassificationType Classification { get; set; }
+        public BodyInputClassificationType Classification { get; set; }
 
         [JsonProperty("parameters")]
-        public ClassificationInputParametersType Parameters { get; set; }
+        public BodyInputParametersType Parameters { get; set; }
     }
 
-    public class ClassificationInputClassificationType
+    public class BodyInputClassificationType
     {
         [JsonProperty("classification_type")]
         public string ClassificationType { get; set; }
@@ -1458,57 +1437,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
         [JsonProperty("calculation_method")]
         public string CalculationMethod { get; set; }
-    }
-
-    public class ClassificationInputParametersType
-    {
-        [JsonProperty("energy")]
-        public int? Energy { get; set; }
-
-        [JsonProperty("energy_unit")]
-        public string EnergyUnit { get; set; }
-
-        [JsonProperty("data")]
-        public int? Data { get; set; }
-
-        [JsonProperty("data_unit")]
-        public string DataUnit { get; set; }
-
-        [JsonProperty("distance")]
-        public int? Distance { get; set; }
-
-        [JsonProperty("distance_unit")]
-        public string DistanceUnit { get; set; }
-
-        [JsonProperty("money")]
-        public int? Money { get; set; }
-
-        [JsonProperty("money_unit")]
-        public string MoneyUnit { get; set; }
-
-        [JsonProperty("number")]
-        public int? Number { get; set; }
-
-        [JsonProperty("time")]
-        public int? Time { get; set; }
-
-        [JsonProperty("time_unit")]
-        public string TimeUnit { get; set; }
-
-        [JsonProperty("passengers")]
-        public int? Passengers { get; set; }
-
-        [JsonProperty("volume")]
-        public int? Volume { get; set; }
-
-        [JsonProperty("volume_unit")]
-        public string VolumeUnit { get; set; }
-
-        [JsonProperty("weight")]
-        public int? Weight { get; set; }
-
-        [JsonProperty("weight_unit")]
-        public string WeightUnit { get; set; }
     }
 
     public class CustomResponse
@@ -1583,16 +1511,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class CustomInput
+    public class CustomBodyInput
     {
         [JsonProperty("custom_activity", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CustomInputCustomActivityType CustomActivity { get; set; }
+        public BodyInputCustomActivityType CustomActivity { get; set; }
 
         [JsonProperty("parameters")]
-        public CustomInputParametersType Parameters { get; set; }
+        public BodyInputParametersType Parameters { get; set; }
     }
 
-    public class CustomInputCustomActivityType
+    public class BodyInputCustomActivityType
     {
         [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
@@ -1614,57 +1542,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
 
         [JsonProperty("calculation_method")]
         public string CalculationMethod { get; set; }
-    }
-
-    public class CustomInputParametersType
-    {
-        [JsonProperty("energy")]
-        public int? Energy { get; set; }
-
-        [JsonProperty("energy_unit")]
-        public string EnergyUnit { get; set; }
-
-        [JsonProperty("data")]
-        public int? Data { get; set; }
-
-        [JsonProperty("data_unit")]
-        public string DataUnit { get; set; }
-
-        [JsonProperty("distance")]
-        public int? Distance { get; set; }
-
-        [JsonProperty("distance_unit")]
-        public string DistanceUnit { get; set; }
-
-        [JsonProperty("money")]
-        public int? Money { get; set; }
-
-        [JsonProperty("money_unit")]
-        public string MoneyUnit { get; set; }
-
-        [JsonProperty("number")]
-        public int? Number { get; set; }
-
-        [JsonProperty("time")]
-        public int? Time { get; set; }
-
-        [JsonProperty("time_unit")]
-        public string TimeUnit { get; set; }
-
-        [JsonProperty("passengers")]
-        public int? Passengers { get; set; }
-
-        [JsonProperty("volume")]
-        public int? Volume { get; set; }
-
-        [JsonProperty("volume_unit")]
-        public string VolumeUnit { get; set; }
-
-        [JsonProperty("weight")]
-        public int? Weight { get; set; }
-
-        [JsonProperty("weight_unit")]
-        public string WeightUnit { get; set; }
     }
 
     public class CustomBatchResponse
@@ -1745,18 +1622,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
-    public class bodyInputItem2
+    public class CustomBatchBodyInputItem
     {
-        [JsonProperty("custom_activity")]
-        public bodyInputItemCustomActivityType CustomActivity { get; set; }
+        [JsonProperty("custom_activity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemCustomActivityType CustomActivity { get; set; }
 
         [JsonProperty("parameters")]
-        public bodyInputItemParametersType Parameters { get; set; }
+        public BodyInputItemParametersType Parameters { get; set; }
     }
 
-    public class bodyInputItemCustomActivityType
+    public class BodyInputItemCustomActivityType
     {
-        [JsonProperty("label")]
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
 
         [JsonProperty("source")]
@@ -1766,7 +1643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string Region { get; set; }
 
         [JsonProperty("region_fallback")]
-        public bool RegionFallback { get; set; }
+        public bool? RegionFallback { get; set; }
 
         [JsonProperty("year")]
         public string Year { get; set; }
@@ -1778,52 +1655,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public string CalculationMethod { get; set; }
     }
 
-    public class bodyInputItemParametersType
+    public class BodyInputItemParametersType
     {
         [JsonProperty("energy")]
-        public int Energy { get; set; }
+        public int? Energy { get; set; }
 
         [JsonProperty("energy_unit")]
         public string EnergyUnit { get; set; }
 
         [JsonProperty("data")]
-        public int Data { get; set; }
+        public int? Data { get; set; }
 
         [JsonProperty("data_unit")]
         public string DataUnit { get; set; }
 
         [JsonProperty("distance")]
-        public int Distance { get; set; }
+        public int? Distance { get; set; }
 
         [JsonProperty("distance_unit")]
         public string DistanceUnit { get; set; }
 
         [JsonProperty("money")]
-        public int Money { get; set; }
+        public int? Money { get; set; }
 
         [JsonProperty("money_unit")]
         public string MoneyUnit { get; set; }
 
         [JsonProperty("number")]
-        public int Number { get; set; }
+        public int? Number { get; set; }
 
         [JsonProperty("time")]
-        public int Time { get; set; }
+        public int? Time { get; set; }
 
         [JsonProperty("time_unit")]
         public string TimeUnit { get; set; }
 
         [JsonProperty("passengers")]
-        public int Passengers { get; set; }
+        public int? Passengers { get; set; }
 
         [JsonProperty("volume")]
-        public int Volume { get; set; }
+        public int? Volume { get; set; }
 
         [JsonProperty("volume_unit")]
         public string VolumeUnit { get; set; }
 
         [JsonProperty("weight")]
-        public int Weight { get; set; }
+        public int? Weight { get; set; }
 
         [JsonProperty("weight_unit")]
         public string WeightUnit { get; set; }

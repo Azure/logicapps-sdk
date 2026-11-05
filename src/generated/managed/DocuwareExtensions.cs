@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<GetFileCabinetsResponse, ApiConnectionActionConfiguration> GetFileCabinets(Expression<Func<fileCabinetTypeInput>> fileCabinetType)
+        public IBodyWorkflowAction<GetFileCabinetsResponse, ApiConnectionActionConfiguration> GetFileCabinets(Expression<Func<FileCabinetTypeInput>> fileCabinetType)
         {
             var __workflow_fileCabinetType = WorkflowExpression.Compile(fileCabinetType, nameof(fileCabinetType), required: true);
             return new DeferredBodyAction<GetFileCabinetsResponse, ApiConnectionActionConfiguration>(() =>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadFile(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<string>> fileNumber, Expression<Func<documentFormatInput>> documentFormat)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadFile(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<string>> fileNumber, Expression<Func<DocumentFormatInput>> documentFormat)
         {
             var __workflow_fileCabinetId = WorkflowExpression.Compile(fileCabinetId, nameof(fileCabinetId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<documentFormatInput>> documentFormat)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<DocumentFormatInput>> documentFormat)
         {
             var __workflow_fileCabinetId = WorkflowExpression.Compile(fileCabinetId, nameof(fileCabinetId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<UpdateIndexFieldsResponse, ApiConnectionActionConfiguration> UpdateIndexFields(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<documentFieldsInputItem[]>> documentFields)
+        public IBodyWorkflowAction<UpdateIndexFieldsResponse, ApiConnectionActionConfiguration> UpdateIndexFields(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<DocumentFieldsInputItem[]>> documentFields)
         {
             var __workflow_fileCabinetId = WorkflowExpression.Compile(fileCabinetId, nameof(fileCabinetId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<TransferDocumentResponse, ApiConnectionActionConfiguration> TransferDocument(Expression<Func<string>> destinationFileCabinetId, Expression<Func<TransferDocumentInput>> transferInfo, Expression<Func<string>> storeDialogId = null)
+        public IBodyWorkflowAction<TransferDocumentResponse, ApiConnectionActionConfiguration> TransferDocument(Expression<Func<string>> destinationFileCabinetId, Expression<Func<TransferInfoInput>> transferInfo, Expression<Func<string>> storeDialogId = null)
         {
             var __workflow_destinationFileCabinetId = WorkflowExpression.Compile(destinationFileCabinetId, nameof(destinationFileCabinetId), required: true);
             var __workflow_transferInfo = WorkflowExpression.Compile(transferInfo, nameof(transferInfo), required: true);
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<PlaceAStampResponse, ApiConnectionActionConfiguration> PlaceAStamp(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<PlaceAStampInput>> stampData)
+        public IBodyWorkflowAction<PlaceAStampResponse, ApiConnectionActionConfiguration> PlaceAStamp(Expression<Func<string>> fileCabinetId, Expression<Func<int>> documentId, Expression<Func<StampDataInput>> stampData)
         {
             var __workflow_fileCabinetId = WorkflowExpression.Compile(fileCabinetId, nameof(fileCabinetId), required: true);
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<GetDialogsResponse, ApiConnectionActionConfiguration> GetDialogs(Expression<Func<string>> fileCabinet, Expression<Func<dialogTypeInput>> dialogType = null)
+        public IBodyWorkflowAction<GetDialogsResponse, ApiConnectionActionConfiguration> GetDialogs(Expression<Func<string>> fileCabinet, Expression<Func<DialogTypeInput>> dialogType = null)
         {
             var __workflow_fileCabinet = WorkflowExpression.Compile(fileCabinet, nameof(fileCabinet), required: true);
             var __workflow_dialogType = WorkflowExpression.Compile(dialogType, nameof(dialogType), required: false);
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docuware")]
-        public IBodyWorkflowAction<GetFileCabinetFieldsResponse, ApiConnectionActionConfiguration> GetFileCabinetFields(Expression<Func<string>> fileCabinet, Expression<Func<fieldTypeInput>> fieldType = null)
+        public IBodyWorkflowAction<GetFileCabinetFieldsResponse, ApiConnectionActionConfiguration> GetFileCabinetFields(Expression<Func<string>> fileCabinet, Expression<Func<FieldTypeInput>> fieldType = null)
         {
             var __workflow_fileCabinet = WorkflowExpression.Compile(fileCabinet, nameof(fileCabinet), required: true);
             var __workflow_fieldType = WorkflowExpression.Compile(fieldType, nameof(fieldType), required: false);
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fileCabinetTypeInput
+    public enum FileCabinetTypeInput
     {
         All,
         FileCabinet,
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum documentFormatInput
+    public enum DocumentFormatInput
     {
         Original,
         [EnumMember(Value = "PDF with annotations")]
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         public bool IsEmail { get; set; }
     }
 
-    public class documentFieldsInputItem
+    public class DocumentFieldsInputItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
@@ -536,27 +536,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         public bool IsEmail { get; set; }
     }
 
-    public class TransferDocumentInput
+    public class TransferInfoInput
     {
         [JsonProperty("SourceFileCabinetId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileCabinetDocumentTray { get; set; }
 
         [JsonProperty("Documents")]
-        public TransferDocumentInputDocsTypeItem[] Docs { get; set; }
+        public TransferInfoInputDocsTypeItem[] Docs { get; set; }
         public bool? KeepSource { get; set; }
         public bool? FillIntellix { get; set; }
     }
 
-    public class TransferDocumentInputDocsTypeItem
+    public class TransferInfoInputDocsTypeItem
     {
         [JsonProperty("DocumentId")]
         public int? Id { get; set; }
 
         [JsonProperty("IndexFields")]
-        public TransferDocumentInputDocsTypeItemFieldTypeItem[] Field { get; set; }
+        public TransferInfoInputDocsTypeItemFieldTypeItem[] Field { get; set; }
     }
 
-    public class TransferDocumentInputDocsTypeItemFieldTypeItem
+    public class TransferInfoInputDocsTypeItemFieldTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         public string Time { get; set; }
     }
 
-    public class PlaceAStampInput
+    public class StampDataInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int FileNumber { get; set; }
@@ -603,10 +603,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
         public string Password { get; set; }
 
         [JsonProperty("Fields")]
-        public PlaceAStampInputFieldTypeItem[] Field { get; set; }
+        public StampDataInputFieldTypeItem[] Field { get; set; }
     }
 
-    public class PlaceAStampInputFieldTypeItem
+    public class StampDataInputFieldTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dialogTypeInput
+    public enum DialogTypeInput
     {
         All,
         Search,
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docuware
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldTypeInput
+    public enum FieldTypeInput
     {
         User,
         System

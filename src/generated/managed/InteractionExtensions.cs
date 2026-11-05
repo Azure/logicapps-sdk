@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     public class InteractionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByIdResponse, ApiConnectionActionConfiguration> ReadListById(Expression<Func<ReadListByIdInput>> body)
+        public IBodyWorkflowAction<ReadListByIdResponse, ApiConnectionActionConfiguration> ReadListById(Expression<Func<ReadListByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadListByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByNameResponse, ApiConnectionActionConfiguration> ReadListByName(Expression<Func<ReadListByNameInput>> body)
+        public IBodyWorkflowAction<ReadListByNameResponse, ApiConnectionActionConfiguration> ReadListByName(Expression<Func<ReadListByNameBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadListByNameResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<ReadAdditionalFieldDefinitionsAndValuesInput>> body)
+        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<ReadAdditionalFieldDefinitionsAndValuesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadAdditionalFieldDefinitionsAndValuesResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration> AddOrUpdateAdditionalFieldValues(Expression<Func<AddOrUpdateAdditionalFieldValuesInput>> body)
+        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration> AddOrUpdateAdditionalFieldValues(Expression<Func<AddOrUpdateAdditionalFieldValuesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddOrUpdateAdditionalFieldValuesResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadContactByIdResponse, ApiConnectionActionConfiguration> ReadContactById(Expression<Func<ReadContactByIdInput>> body)
+        public IBodyWorkflowAction<ReadContactByIdResponse, ApiConnectionActionConfiguration> ReadContactById(Expression<Func<ReadContactByIdBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ReadContactByIdResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> ReadLists(Expression<Func<ReadListsInput>> body)
+        public IBodyWorkflowAction<ListResponse, ApiConnectionActionConfiguration> ReadLists(Expression<Func<ReadListsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddContactsToListsResponse, ApiConnectionActionConfiguration> AddContactsToLists(Expression<Func<AddContactsToListsInput>> body)
+        public IBodyWorkflowAction<AddContactsToListsResponse, ApiConnectionActionConfiguration> AddContactsToLists(Expression<Func<AddContactsToListsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddContactsToListsResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration> RemoveContactsfromList(Expression<Func<RemoveContactsfromListInput>> body)
+        public IBodyWorkflowAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration> RemoveContactsfromList(Expression<Func<RemoveContactsfromListBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<RemoveContactsfromListResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration> UpdatePersonContact(Expression<Func<UpdatePersonContactInput>> body)
+        public IBodyWorkflowAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration> UpdatePersonContact(Expression<Func<UpdatePersonContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdatePersonContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<CreateActivityInput>> body)
+        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<CreateActivityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateActivityResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<SearchContactsResponse, ApiConnectionActionConfiguration> SearchContacts(Expression<Func<SearchContactsInput>> body)
+        public IBodyWorkflowAction<SearchContactsResponse, ApiConnectionActionConfiguration> SearchContacts(Expression<Func<SearchContactsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SearchContactsResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdateActivityResponse, ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<UpdateActivityInput>> body)
+        public IBodyWorkflowAction<UpdateActivityResponse, ApiConnectionActionConfiguration> UpdateActivity(Expression<Func<UpdateActivityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateActivityResponse, ApiConnectionActionConfiguration>(() =>
@@ -328,16 +328,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public bool IsPrimary { get; set; }
     }
 
-    public class ReadListByIdInput
+    public class ReadListByIdBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "query list($id: ID!, $skip: Int, $limit: Int, $primarySponsorName: String) {     list(id: $id) {         id         name         description         listType {             id             isActive             listClass             name         }         allowedLinkInto         allowedRemoveFrom         addAllowed         deleteAllowed         addActivityAllowed         addNoteAllowed         ownerName         creatorName         allowedContactEntity         isAdministrator         contacts(             skip: $skip             limit: $limit,             filter: { primarySponsorUserName: $primarySponsorName, checkForStrictPrimarySponsor: true },             sort: { direction: \"Ascending\", field: \"displayName\" }         ) {             totalModels             models {                 id                 title                 phoneNumber                 emailAddress                 displayName                 companyName                 companyId                 contactEntity                 sponsors {                     displayName                     fullName                     id                     isPrimary                 }                 additionalFieldValues {                     totalModels                     models {                         contactId                         dataType                         fieldDisplayName                         fieldId                         format                         id                         listId                         valueItems {                             lastEditDate                             value                             valueId                         }                     }                 }             }         }     } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadListByIdInputVariablesType Variables { get; set; } = new ReadListByIdInputVariablesType();
+        public ReadListByIdBodyInputVariablesType Variables { get; set; } = new ReadListByIdBodyInputVariablesType();
     }
 
-    public class ReadListByIdInputVariablesType
+    public class ReadListByIdBodyInputVariablesType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -490,16 +490,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public bool IsPrimary { get; set; }
     }
 
-    public class ReadListByNameInput
+    public class ReadListByNameBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "query MyQuery($filterByName: String, $skip: Int, $limit: Int) {       lists(filter: { field: name, value: $filterByName }) {           totalModels           models {               id               name               description               listType {                   id                   isActive                   listClass                   name               }               allowedLinkInto               allowedRemoveFrom               addAllowed               deleteAllowed               addActivityAllowed               addNoteAllowed               ownerName               creatorName               allowedContactEntity               isAdministrator               contacts(skip: $skip, limit: $limit,sort: {direction: \"Ascending\", field: \"displayName\"}) {                   totalModels                   models {                       id                       title                       phoneNumber                       emailAddress                       displayName                       companyName                       companyId                       contactEntity                       sponsors {                           displayName                           fullName                           id                           isPrimary                       }                   }               }           }       }   }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadListByNameInputVariablesType Variables { get; set; } = new ReadListByNameInputVariablesType();
+        public ReadListByNameBodyInputVariablesType Variables { get; set; } = new ReadListByNameBodyInputVariablesType();
     }
 
-    public class ReadListByNameInputVariablesType
+    public class ReadListByNameBodyInputVariablesType
     {
         [JsonProperty("filterByName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FilterByName { get; set; }
@@ -742,16 +742,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string ValueId { get; set; }
     }
 
-    public class ReadAdditionalFieldDefinitionsAndValuesInput
+    public class ReadAdditionalFieldDefinitionsAndValuesBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "query listContactAdditionalFieldsViewDefinitionsAndValues(     $id: ID!     $skip: Int     $limit: Int ) {     list(id: $id) {         id         name         description         listType {             id             isActive             listClass             name         }         additionalFieldDefinitions {             totalModels             models {                 userDataTypeUserProfessional                 userDataTypeUserActive                 stringDataTypeMultiLine                 stringDataTypeMaxLength                 secondaryFieldName                 numericDataTypeMinValue                 numericDataTypeMaxValue                 name                 listDataType {                     options {                         id                         name                     }                 }                 id                 fieldDataType                 description                 decimalDataTypePrecision                 dataTypeDisplayName                 booleanDataTypeFalseValue                 booleanDataTypeTrueValue                 allowsSecondaryField                 allowsMultipleValues             }         }         contacts(             skip: $skip             limit: $limit             sort: { direction: \"Ascending\", field: \"displayName\" }         ) {             totalModels             models {                 id                 title                 phoneNumber                 emailAddress                 displayName                 companyName                 companyId                 contactEntity                 sponsors {                     displayName                     fullName                     id                     isPrimary                 }                 additionalFieldValues {                     totalModels                     models {                         contactId                         dataType                         fieldDisplayName                         fieldId                         format                         id                         listId                         separator                         valueItems {                             lastEditDate                             qualification                             value                             valueId                         }                     }                 }             }         }     } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadAdditionalFieldDefinitionsAndValuesInputVariablesType Variables { get; set; } = new ReadAdditionalFieldDefinitionsAndValuesInputVariablesType();
+        public ReadAdditionalFieldDefinitionsAndValuesBodyInputVariablesType Variables { get; set; } = new ReadAdditionalFieldDefinitionsAndValuesBodyInputVariablesType();
     }
 
-    public class ReadAdditionalFieldDefinitionsAndValuesInputVariablesType
+    public class ReadAdditionalFieldDefinitionsAndValuesBodyInputVariablesType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -802,31 +802,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Typename { get; set; }
     }
 
-    public class AddOrUpdateAdditionalFieldValuesInput
+    public class AddOrUpdateAdditionalFieldValuesBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "mutation updateAdditionalFields($input: UpdateListContactAdditionalFieldInput!) {   updateListContactAdditionalFields(input: $input) {     models {       failureReason       fieldId       isSuccessful       valueId       __typename     }     __typename   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateAdditionalFieldValuesInputVariablesType Variables { get; set; }
+        public AddOrUpdateAdditionalFieldValuesBodyInputVariablesType Variables { get; set; }
     }
 
-    public class AddOrUpdateAdditionalFieldValuesInputVariablesType
+    public class AddOrUpdateAdditionalFieldValuesBodyInputVariablesType
     {
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputType Input { get; set; }
+        public AddOrUpdateAdditionalFieldValuesBodyInputVariablesTypeInputType Input { get; set; }
     }
 
-    public class AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputType
+    public class AddOrUpdateAdditionalFieldValuesBodyInputVariablesTypeInputType
     {
         [JsonProperty("contactId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactId { get; set; }
 
         [JsonProperty("additionalFields", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
+        public BodyInputVariablesTypeInputTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
     }
 
-    public class AddOrUpdateAdditionalFieldValuesInputVariablesTypeInputTypeAdditionalFieldsTypeItem
+    public class BodyInputVariablesTypeInputTypeAdditionalFieldsTypeItem
     {
         [JsonProperty("fieldId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldId { get; set; }
@@ -1180,16 +1180,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string FullName { get; set; }
     }
 
-    public class ReadContactByIdInput
+    public class ReadContactByIdBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "query contact($contactid: ID!, $listid: ID!) {   contact(id: $contactid) {     contactId: id     displayName     contactEntity     ... on Person {       contactId: id       displayName       title       firstName       middleName       lastName       goesBy       currentJobTitle       currentEmployer {         companyName: name         companyId: id       }       additionalFieldValues(listId: $listid) {         totalModels         models {           contactId           dataType           fieldId           fieldDisplayName           additionalFieldValueId: id           listId           valueItems {             lastEditDate             value             valueId           }         }       }       addresses {         addressID: id         street         city         administrativeDivision         country         postalCode       type       usage}     }     ... on Company {       contactId: id       name       additionalFieldValues(listId: $listid) {         totalModels         models {           contactId           dataType           fieldId           fieldDisplayName           id           listId           valueItems {             lastEditDate             value             valueId           }         }       }     }     visibility     emailAddresses {       emailId: id       type       usage       address       label       owningContactId       isGlobal     }     phoneNumbers {       phoneId: id       number       label       type       usage       owningContactId       isGlobal     }     activities {       totalModels       models {         ...ActivityFragment       }     }     notes {       allNotes {         ...NoteResultsFragment       }     }     lists(sort: {field: \"name\", direction: \"Ascending\"}, listIds: [$listid]) {       totalModels       models {         listId: id         name         listClass         description         type         userIsSponsor         allowedLinkInto         allowedRemoveFrom         ownerName         creatorName         sponsors {           sponsorId: id           displayName           isPrimary           fullName         }       }     }   } }  fragment ActivityFragment on Activity {   activityId: id   type   typeId   activityClass   typeGroup   activityStartDate   lastEditedDate   subject   summary   location }  fragment NoteResultsFragment on NoteResults {   totalModels   models {     changeDate     folderId     noteId     notes   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadContactByIdInputVariablesType Variables { get; set; } = new ReadContactByIdInputVariablesType();
+        public ReadContactByIdBodyInputVariablesType Variables { get; set; } = new ReadContactByIdBodyInputVariablesType();
     }
 
-    public class ReadContactByIdInputVariablesType
+    public class ReadContactByIdBodyInputVariablesType
     {
         [JsonProperty("contactid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Contactid { get; set; }
@@ -1282,22 +1282,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Label { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "mutation addPerson($input: AddPersonInput!) {   addPerson(input: $input) {     status     item {       id       firstName       lastName       goesBy       currentJobTitle       phoneNumbers {         id         number         label         type         usage       }       emailAddresses {         id         type         usage         address         label       }       middleName       title       currentEmployer {         name       }       addresses {         city         country         administrativeDivision         street         postalCode       }     }     validationErrors {       propertyName       message     }   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactInputVariablesType Variables { get; set; }
+        public CreateContactBodyInputVariablesType Variables { get; set; }
     }
 
-    public class CreateContactInputVariablesType
+    public class CreateContactBodyInputVariablesType
     {
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactInputVariablesTypeInputType Input { get; set; }
+        public CreateContactBodyInputVariablesTypeInputType Input { get; set; }
     }
 
-    public class CreateContactInputVariablesTypeInputType
+    public class CreateContactBodyInputVariablesTypeInputType
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -1327,13 +1327,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string PrimaryPhone { get; set; }
 
         [JsonProperty("businessAddress")]
-        public CreateContactInputVariablesTypeInputTypeBusinessAddressType BusinessAddress { get; set; }
+        public BodyInputVariablesTypeInputTypeBusinessAddressType BusinessAddress { get; set; }
     }
 
-    public class CreateContactInputVariablesTypeInputTypeBusinessAddressType
+    public class BodyInputVariablesTypeInputTypeBusinessAddressType
     {
         [JsonProperty("country")]
-        public CreateContactInputVariablesTypeInputTypeBusinessAddressTypeCountryType? Country { get; set; }
+        public BodyInputVariablesTypeInputTypeBusinessAddressTypeCountryType? Country { get; set; }
 
         [JsonProperty("street")]
         public string Street { get; set; }
@@ -1349,7 +1349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactInputVariablesTypeInputTypeBusinessAddressTypeCountryType
+    public enum BodyInputVariablesTypeInputTypeBusinessAddressTypeCountryType
     {
         Afghanistan,
         [EnumMember(Value = "Aland Islands")]
@@ -1764,19 +1764,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Name { get; set; }
     }
 
-    public class ReadListsInput
+    public class ReadListsBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "query Lists($listClass: [ListClass], $skip: Int, $limit: Int, $filterByName: String) {   lists(listClass: $listClass, skip: $skip, limit: $limit,  filter: {field: name, value: $filterByName}) {     skip     limit     totalModels     models {       id       name       description       listType {         id         isActive         listClass         name       }       allowedLinkInto       allowedRemoveFrom       addAllowed       deleteAllowed       addActivityAllowed       addNoteAllowed       ownerName       creatorName       allowedContactEntity       isAdministrator     }   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadListsInputVariablesType Variables { get; set; } = new ReadListsInputVariablesType();
+        public ReadListsBodyInputVariablesType Variables { get; set; } = new ReadListsBodyInputVariablesType();
     }
 
-    public class ReadListsInputVariablesType
+    public class ReadListsBodyInputVariablesType
     {
         [JsonProperty("listClass")]
-        public ReadListsInputVariablesTypeListClassType? ListClass { get; set; }
+        public BodyInputVariablesTypeListClassType? ListClass { get; set; }
 
         [JsonProperty("skip", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Skip { get; set; } = 0;
@@ -1789,7 +1789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReadListsInputVariablesTypeListClassType
+    public enum BodyInputVariablesTypeListClassType
     {
         MarketingList,
         MarketingListWithSponsorship,
@@ -1822,16 +1822,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string ResultText { get; set; }
     }
 
-    public class AddContactsToListsInput
+    public class AddContactsToListsBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "mutation addContactsToLists(   $listIds: [ID!]!,   $contactIds: [ID!]! ) {   addContactsToLists(     listIds: $listIds,     contactIds: $contactIds   ) {     totalCount     successCount     resultText   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddContactsToListsInputVariablesType Variables { get; set; }
+        public AddContactsToListsBodyInputVariablesType Variables { get; set; }
     }
 
-    public class AddContactsToListsInputVariablesType
+    public class AddContactsToListsBodyInputVariablesType
     {
         [JsonProperty("listIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ListIds { get; set; }
@@ -1864,16 +1864,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public int ContactsEffected { get; set; }
     }
 
-    public class RemoveContactsfromListInput
+    public class RemoveContactsfromListBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "mutation MyMutation ($contactIds : [ID!]!, $listId: ID!){   removeContactsFromList(contactIds: $contactIds, listId: $listId) {     resultText pendingContactsEffected     contactsEffected  } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RemoveContactsfromListInputVariablesType Variables { get; set; }
+        public RemoveContactsfromListBodyInputVariablesType Variables { get; set; }
     }
 
-    public class RemoveContactsfromListInputVariablesType
+    public class RemoveContactsfromListBodyInputVariablesType
     {
         [JsonProperty("contactIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ContactIds { get; set; }
@@ -1912,22 +1912,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Id { get; set; }
     }
 
-    public class UpdatePersonContactInput
+    public class UpdatePersonContactBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "mutation updatePublicPerson($input: UpdatePublicPersonInput!) {   updatePublicPerson(input: $input) {     item {       id      }     status     validationErrors {       propertyName       message           }   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdatePersonContactInputVariablesType Variables { get; set; }
+        public UpdatePersonContactBodyInputVariablesType Variables { get; set; }
     }
 
-    public class UpdatePersonContactInputVariablesType
+    public class UpdatePersonContactBodyInputVariablesType
     {
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdatePersonContactInputVariablesTypeInputType Input { get; set; }
+        public UpdatePersonContactBodyInputVariablesTypeInputType Input { get; set; }
     }
 
-    public class UpdatePersonContactInputVariablesTypeInputType
+    public class UpdatePersonContactBodyInputVariablesTypeInputType
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -1951,19 +1951,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string JobTitle { get; set; }
 
         [JsonProperty("address")]
-        public UpdatePersonContactInputVariablesTypeInputTypeAddressType Address { get; set; }
+        public BodyInputVariablesTypeInputTypeAddressType Address { get; set; }
 
         [JsonProperty("email")]
-        public UpdatePersonContactInputVariablesTypeInputTypeEmailType Email { get; set; }
+        public BodyInputVariablesTypeInputTypeEmailType Email { get; set; }
 
         [JsonProperty("primaryPhone")]
-        public UpdatePersonContactInputVariablesTypeInputTypePrimaryPhoneType PrimaryPhone { get; set; }
+        public BodyInputVariablesTypeInputTypePrimaryPhoneType PrimaryPhone { get; set; }
 
         [JsonProperty("companyName")]
         public string CompanyName { get; set; }
     }
 
-    public class UpdatePersonContactInputVariablesTypeInputTypeAddressType
+    public class BodyInputVariablesTypeInputTypeAddressType
     {
         [JsonProperty("street")]
         public string Street { get; set; }
@@ -1975,14 +1975,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string AdministrativeDivision { get; set; }
 
         [JsonProperty("country")]
-        public UpdatePersonContactInputVariablesTypeInputTypeAddressTypeCountryType? Country { get; set; }
+        public BodyInputVariablesTypeInputTypeAddressTypeCountryType? Country { get; set; }
 
         [JsonProperty("postalCode")]
         public string PostalCode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdatePersonContactInputVariablesTypeInputTypeAddressTypeCountryType
+    public enum BodyInputVariablesTypeInputTypeAddressTypeCountryType
     {
         Afghanistan,
         [EnumMember(Value = "Aland Islands")]
@@ -2310,13 +2310,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         Zimbabwe
     }
 
-    public class UpdatePersonContactInputVariablesTypeInputTypeEmailType
+    public class BodyInputVariablesTypeInputTypeEmailType
     {
         [JsonProperty("electronicAddress")]
         public string ElectronicAddress { get; set; }
     }
 
-    public class UpdatePersonContactInputVariablesTypeInputTypePrimaryPhoneType
+    public class BodyInputVariablesTypeInputTypePrimaryPhoneType
     {
         [JsonProperty("number")]
         public string Number { get; set; }
@@ -2340,22 +2340,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Id { get; set; }
     }
 
-    public class CreateActivityInput
+    public class CreateActivityBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "mutation addActivity($input: AddActivityInput!) {   addActivity(input: $input) {     id   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateActivityInputVariablesType Variables { get; set; }
+        public CreateActivityBodyInputVariablesType Variables { get; set; }
     }
 
-    public class CreateActivityInputVariablesType
+    public class CreateActivityBodyInputVariablesType
     {
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateActivityInputVariablesTypeInputType Input { get; set; }
+        public CreateActivityBodyInputVariablesTypeInputType Input { get; set; }
     }
 
-    public class CreateActivityInputVariablesTypeInputType
+    public class CreateActivityBodyInputVariablesTypeInputType
     {
         [JsonProperty("typeId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TypeId { get; set; }
@@ -2652,16 +2652,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string FullName { get; set; }
     }
 
-    public class SearchContactsInput
+    public class SearchContactsBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "query MyQuery($filterField: ContactFilterField, $filterValue: String) {   searchFirmContacts(filter: {field: $filterField, value: $filterValue}) {     totalModels     models {       contactId: id       displayName       contactEntity       ... on Person {         contactId: id         displayName         title         firstName         middleName         lastName         currentJobTitle         currentEmployer {           companyName: name           companyId: id         }         addresses {           addressID: id           street           city           administrativeDivision           country           postalCode           type           usage         }       }       ... on Company {         contactId: id         name       }       visibility       emailAddresses {         emailId: id         type         usage         address         label         owningContactId         isGlobal       }       phoneNumbers {         phoneId: id         number         label         type         usage         owningContactId         isGlobal       }       activities {         totalModels         models {           activityId: id           type           typeId           activityClass           typeGroup           activityStartDate           lastEditedDate           subject           summary           location         }       }       notes {         allNotes {           totalModels           models {             changeDate             folderId             noteId             notes           }         }       }       lists(sort: {field: \"name\", direction: \"Ascending\"}) {         totalModels         models {           listId: id           name           listClass           description           type           userIsSponsor           allowedLinkInto           allowedRemoveFrom           ownerName           creatorName           sponsors {             sponsorId: id             displayName             isPrimary             fullName           }         }       }     }   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SearchContactsInputVariablesType Variables { get; set; }
+        public SearchContactsBodyInputVariablesType Variables { get; set; }
     }
 
-    public class SearchContactsInputVariablesType
+    public class SearchContactsBodyInputVariablesType
     {
         [JsonProperty("emailAddress")]
         public string EmailAddress { get; set; }
@@ -2730,22 +2730,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Regarding { get; set; }
     }
 
-    public class UpdateActivityInput
+    public class UpdateActivityBodyInput
     {
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Query { get; set; } = "mutation updateActivity($input: UpdateActivityInput!) {   updateActivity(input: $input) {     validationErrors {       propertyName       message     }     item {       id       type       typeId       activityClass       typeGroup       activityStartDate       lastEditedDate       subject       summary       location         regarding         }   } }";
 
         [JsonProperty("variables", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateActivityInputVariablesType Variables { get; set; }
+        public UpdateActivityBodyInputVariablesType Variables { get; set; }
     }
 
-    public class UpdateActivityInputVariablesType
+    public class UpdateActivityBodyInputVariablesType
     {
         [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateActivityInputVariablesTypeInputType Input { get; set; }
+        public UpdateActivityBodyInputVariablesTypeInputType Input { get; set; }
     }
 
-    public class UpdateActivityInputVariablesTypeInputType
+    public class UpdateActivityBodyInputVariablesTypeInputType
     {
         [JsonProperty("activityId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActivityId { get; set; }

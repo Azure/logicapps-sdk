@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<DealResponse, ApiConnectionActionConfiguration> UpdateDealStatus(Expression<Func<int>> dealId, Expression<Func<UpdateDealStatusInput>> body)
+        public IBodyWorkflowAction<DealResponse, ApiConnectionActionConfiguration> UpdateDealStatus(Expression<Func<int>> dealId, Expression<Func<UpdateDealStatusBodyInput>> body)
         {
             var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<ActivityResponse, ApiConnectionActionConfiguration> AddActivity(Expression<Func<AddActivityInput>> body)
+        public IBodyWorkflowAction<ActivityResponse, ApiConnectionActionConfiguration> AddActivity(Expression<Func<AddActivityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ActivityResponse, ApiConnectionActionConfiguration>(() =>
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> AddDeal(Expression<Func<AddDealV2Input>> body)
+        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> AddDeal(Expression<Func<AddDealBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DealResponseV2, ApiConnectionActionConfiguration>(() =>
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipedrive")]
-        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> UpdateDealStage(Expression<Func<int>> dealId, Expression<Func<UpdateDealStageV2Input>> body)
+        public IBodyWorkflowAction<DealResponseV2, ApiConnectionActionConfiguration> UpdateDealStage(Expression<Func<int>> dealId, Expression<Func<UpdateDealStageBodyInput>> body)
         {
             var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -287,17 +287,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         public int Id { get; set; }
     }
 
-    public class UpdateDealStatusInput
+    public class UpdateDealStatusBodyInput
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDealStatusInputStatusType Status { get; set; }
+        public UpdateDealStatusBodyInputStatusType Status { get; set; }
 
         [JsonProperty("lost_reason")]
         public string LostReason { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateDealStatusInputStatusType
+    public enum UpdateDealStatusBodyInputStatusType
     {
         [EnumMember(Value = "open")]
         Open,
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         public string OwnerName { get; set; }
     }
 
-    public class AddActivityInput
+    public class AddActivityBodyInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         public int Id { get; set; }
     }
 
-    public class AddDealV2Input
+    public class AddDealBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         public string StageId { get; set; }
 
         [JsonProperty("status")]
-        public AddDealV2InputStatusType? Status { get; set; }
+        public AddDealBodyInputStatusType? Status { get; set; }
 
         [JsonProperty("value")]
         public int? Value { get; set; }
@@ -615,11 +615,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         public string ExpectedCloseDate { get; set; }
 
         [JsonProperty("visible_to")]
-        public AddDealV2InputVisiblityType? Visiblity { get; set; }
+        public BodyInputVisiblityType? Visiblity { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddDealV2InputStatusType
+    public enum AddDealBodyInputStatusType
     {
         Open,
         Won,
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddDealV2InputVisiblityType
+    public enum BodyInputVisiblityType
     {
         [EnumMember(Value = "Owner and followers")]
         OwnerAndFollowers,
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipedrive
         EntireCompany
     }
 
-    public class UpdateDealStageV2Input
+    public class UpdateDealStageBodyInput
     {
         [JsonProperty("pipeline_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PipelineId { get; set; }

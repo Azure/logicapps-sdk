@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
     public class MavimimproveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IChart[], ApiConnectionActionConfiguration> GetTopicCharts(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IChart[], ApiConnectionActionConfiguration> GetTopicCharts(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateTopicAfter(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateTopicAfterInput>> body = null)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateTopicAfter(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateChildTopicBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> DeleteTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> DeleteTopic(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> GetTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> GetTopic(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> UpdateTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<UpdateTopicInput>> body = null)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> UpdateTopic(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<UpdateTopicBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateChildTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateChildTopicInput>> body = null)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> CreateChildTopic(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<CreateChildTopicBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetTopicChildren(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetTopicChildren(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField[], ApiConnectionActionConfiguration> GetTopicFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IField[], ApiConnectionActionConfiguration> GetTopicFields(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> GetFieldByDcvAndFieldsetId(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> GetFieldByDcvAndFieldsetId(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateBooleanSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateBooleanSingleFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateBooleanSingleField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateBooleanSingleFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateTextSingleFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextSingleField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDateSingleFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateTextMultiFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateTextMultiField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDateMultiFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateNumberSingleFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberSingleField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateNumberSingleFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateNumberMultiFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateNumberMultiField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateNumberMultiFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDecimalSingleFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalSingleField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDecimalSingleFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDecimalMultiFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDecimalMultiField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDecimalMultiFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDateSingleFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateSingleField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDateSingleFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDateMultiFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateDateMultiField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateDateMultiFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateListSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateListSingleFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateListSingleField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateListSingleFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateRelationshipSingleFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipSingleField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateRelationshipSingleFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateRelationshipMultiFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipMultiField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateRelationshipMultiFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -399,7 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipListField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateRelationshipListFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateRelationshipListField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateRelationshipListFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<UpdateFieldsInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateFields(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<UpdateFieldsBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateSingleHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateSingleHyperlinkFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateSingleHyperlinkField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateSingleHyperlinkFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateMultiHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateMultiHyperlinkFieldInput>> body = null)
+        public IBodyWorkflowAction<IField, ApiConnectionActionConfiguration> UpdateMultiHyperlinkField(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<UpdateMultiHyperlinkFieldBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicToTop(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicToTop(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicToBottom(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicToBottom(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicUp(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicDown(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicLevelUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicLevelUp(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicLevelDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> MoveTopicLevelDown(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IRelationship[], ApiConnectionActionConfiguration> GetTopicRelations(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IRelationship[], ApiConnectionActionConfiguration> GetTopicRelations(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IRelationship, ApiConnectionActionConfiguration> SaveRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<SaveRelationInput>> body = null)
+        public IBodyWorkflowAction<IRelationship, ApiConnectionActionConfiguration> SaveRelation(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<SaveRelationBodyInput>> body = null)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> relationId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteRelation(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> relationId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> GetTopicRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
+        public IBodyWorkflowAction<ITopic, ApiConnectionActionConfiguration> GetTopicRoot(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -629,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopicPath, ApiConnectionActionConfiguration> GetPathToRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopicPath, ApiConnectionActionConfiguration> GetPathToRoot(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetTopicSiblings(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetTopicSiblings(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetRelationCategories(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
+        public IBodyWorkflowAction<ITopic[], ApiConnectionActionConfiguration> GetRelationCategories(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetTopicTypes(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetTopicTypes(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetTopicIcons(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicType)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetTopicIcons(Expression<Func<string>> dbId, Expression<Func<DataLanguageInput>> dataLanguage, Expression<Func<string>> topicType)
         {
             var __workflow_dbId = WorkflowExpression.Compile(dbId, nameof(dbId), required: true);
             var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: true);
@@ -729,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dataLanguageInput
+    public enum DataLanguageInput
     {
         [EnumMember(Value = "en")]
         En,
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public bool CanCreateTopicAfter { get; set; }
     }
 
-    public class CreateTopicAfterInput
+    public class CreateChildTopicBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -823,22 +823,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Icon { get; set; }
     }
 
-    public class UpdateTopicInput
+    public class UpdateTopicBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
-    }
-
-    public class CreateChildTopicInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
-
-        [JsonProperty("icon", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Icon { get; set; }
     }
 
     public class IField
@@ -865,7 +853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string TopicId { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public GetFieldByDcvAndFieldsetIdFieldTypeResponse FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool Required { get; set; }
@@ -877,17 +865,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public GetFieldByDcvAndFieldsetIdIRelationshipElementResponse RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public GetFieldByDcvAndFieldsetIdIRelationshipElementResponse Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum FieldType
+    public enum GetFieldByDcvAndFieldsetIdFieldTypeResponse
     {
         Unknown,
         Text,
@@ -907,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         MultiHyperlink
     }
 
-    public class IRelationshipElement
+    public class GetFieldByDcvAndFieldsetIdIRelationshipElementResponse
     {
         [JsonProperty("dcv")]
         public string Dcv { get; set; }
@@ -919,7 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Icon { get; set; }
     }
 
-    public class UpdateBooleanSingleFieldInput
+    public class UpdateBooleanSingleFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -943,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -955,10 +943,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -967,7 +955,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public bool? Data { get; set; }
     }
 
-    public class UpdateTextSingleFieldInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateBooleanSingleFieldFieldType
+    {
+        Unknown,
+        Text,
+        MultiText,
+        Number,
+        MultiNumber,
+        Decimal,
+        MultiDecimal,
+        Boolean,
+        Date,
+        MultiDate,
+        List,
+        Relationship,
+        MultiRelationship,
+        RelationshipList,
+        Hyperlink,
+        MultiHyperlink
+    }
+
+    public class UpdateBooleanSingleFieldIRelationshipElement
+    {
+        [JsonProperty("dcv")]
+        public string Dcv { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("icon")]
+        public string Icon { get; set; }
+    }
+
+    public class UpdateDateSingleFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -991,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1003,10 +1024,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1015,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Data { get; set; }
     }
 
-    public class UpdateTextMultiFieldInput
+    public class UpdateDateMultiFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -1039,7 +1060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1051,10 +1072,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1063,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string[] Data { get; set; }
     }
 
-    public class UpdateNumberSingleFieldInput
+    public class UpdateNumberSingleFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -1087,7 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1099,10 +1120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1111,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public int? Data { get; set; }
     }
 
-    public class UpdateNumberMultiFieldInput
+    public class UpdateNumberMultiFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -1135,7 +1156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1147,10 +1168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1159,7 +1180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public int[] Data { get; set; }
     }
 
-    public class UpdateDecimalSingleFieldInput
+    public class UpdateDecimalSingleFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -1183,7 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1195,10 +1216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1207,7 +1228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public double? Data { get; set; }
     }
 
-    public class UpdateDecimalMultiFieldInput
+    public class UpdateDecimalMultiFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -1231,7 +1252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1243,10 +1264,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1255,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public double[] Data { get; set; }
     }
 
-    public class UpdateDateSingleFieldInput
+    public class UpdateListSingleFieldBodyInput
     {
         [JsonProperty("fieldsetId")]
         public string FieldsetId { get; set; }
@@ -1279,7 +1300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1291,106 +1312,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
-
-        [JsonProperty("openLocation")]
-        public string OpenLocation { get; set; }
-
-        [JsonProperty("data")]
-        public string Data { get; set; }
-    }
-
-    public class UpdateDateMultiFieldInput
-    {
-        [JsonProperty("fieldsetId")]
-        public string FieldsetId { get; set; }
-
-        [JsonProperty("fieldId")]
-        public string FieldId { get; set; }
-
-        [JsonProperty("setOrder")]
-        public int? SetOrder { get; set; }
-
-        [JsonProperty("order")]
-        public int? Order { get; set; }
-
-        [JsonProperty("topicId")]
-        public string TopicId { get; set; }
-
-        [JsonProperty("setName")]
-        public string SetName { get; set; }
-
-        [JsonProperty("fieldName")]
-        public string FieldName { get; set; }
-
-        [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
-
-        [JsonProperty("required")]
-        public bool? Required { get; set; }
-
-        [JsonProperty("readonly")]
-        public bool? Readonly { get; set; }
-
-        [JsonProperty("usage")]
-        public string Usage { get; set; }
-
-        [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
-
-        [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
-
-        [JsonProperty("openLocation")]
-        public string OpenLocation { get; set; }
-
-        [JsonProperty("data")]
-        public string[] Data { get; set; }
-    }
-
-    public class UpdateListSingleFieldInput
-    {
-        [JsonProperty("fieldsetId")]
-        public string FieldsetId { get; set; }
-
-        [JsonProperty("fieldId")]
-        public string FieldId { get; set; }
-
-        [JsonProperty("setOrder")]
-        public int? SetOrder { get; set; }
-
-        [JsonProperty("order")]
-        public int? Order { get; set; }
-
-        [JsonProperty("topicId")]
-        public string TopicId { get; set; }
-
-        [JsonProperty("setName")]
-        public string SetName { get; set; }
-
-        [JsonProperty("fieldName")]
-        public string FieldName { get; set; }
-
-        [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
-
-        [JsonProperty("required")]
-        public bool? Required { get; set; }
-
-        [JsonProperty("readonly")]
-        public bool? Readonly { get; set; }
-
-        [JsonProperty("usage")]
-        public string Usage { get; set; }
-
-        [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
-
-        [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1402,7 +1327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public JToken Options { get; set; }
     }
 
-    public class UpdateRelationshipSingleFieldInput
+    public class UpdateRelationshipSingleFieldBodyInput
     {
         [JsonProperty("fieldId")]
         public string FieldId { get; set; }
@@ -1426,7 +1351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Icon { get; set; }
     }
 
-    public class UpdateRelationshipMultiFieldInput
+    public class UpdateRelationshipMultiFieldBodyInput
     {
         [JsonProperty("fieldId")]
         public string FieldId { get; set; }
@@ -1438,7 +1363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public RelationshipElement[] Data { get; set; }
     }
 
-    public class UpdateRelationshipListFieldInput
+    public class UpdateRelationshipListFieldBodyInput
     {
         [JsonProperty("fieldId")]
         public string FieldId { get; set; }
@@ -1450,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public JToken Data { get; set; }
     }
 
-    public class UpdateFieldsInput
+    public class UpdateFieldsBodyInput
     {
         [JsonProperty("singleTextFields")]
         public SingleTextField[] SingleTextFields { get; set; }
@@ -1522,7 +1447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1534,10 +1459,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1570,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1582,10 +1507,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1618,7 +1543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1630,10 +1555,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1666,7 +1591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1678,10 +1603,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1714,7 +1639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1726,10 +1651,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1762,7 +1687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1774,10 +1699,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1810,7 +1735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1822,10 +1747,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1858,7 +1783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1870,10 +1795,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1906,7 +1831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1918,10 +1843,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -1954,7 +1879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -1966,10 +1891,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -2041,7 +1966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -2053,10 +1978,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -2089,7 +2014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType? FieldValueType { get; set; }
+        public UpdateBooleanSingleFieldFieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
         public bool? Required { get; set; }
@@ -2101,10 +2026,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Usage { get; set; }
 
         [JsonProperty("relationshipCategory")]
-        public IRelationshipElement RelationshipCategory { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement RelationshipCategory { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public UpdateBooleanSingleFieldIRelationshipElement Characteristic { get; set; }
 
         [JsonProperty("openLocation")]
         public string OpenLocation { get; set; }
@@ -2113,13 +2038,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string[] Data { get; set; }
     }
 
-    public class UpdateSingleHyperlinkFieldInput
+    public class UpdateSingleHyperlinkFieldBodyInput
     {
         [JsonProperty("data")]
         public string Data { get; set; }
     }
 
-    public class UpdateMultiHyperlinkFieldInput
+    public class UpdateMultiHyperlinkFieldBodyInput
     {
         [JsonProperty("data")]
         public string[] Data { get; set; }
@@ -2140,25 +2065,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public CategoryType CategoryType { get; set; }
 
         [JsonProperty("relationshipType")]
-        public RelationshipType RelationshipType { get; set; }
+        public GetTopicRelationsRelationshipTypeResponse RelationshipType { get; set; }
 
         [JsonProperty("icon")]
         public string Icon { get; set; }
 
         [JsonProperty("userInstruction")]
-        public IRelationshipElement UserInstruction { get; set; }
+        public GetFieldByDcvAndFieldsetIdIRelationshipElementResponse UserInstruction { get; set; }
 
         [JsonProperty("dispatchInstructions")]
         public ISimpleDispatchInstruction[] DispatchInstructions { get; set; }
 
         [JsonProperty("characteristic")]
-        public IRelationshipElement Characteristic { get; set; }
+        public GetFieldByDcvAndFieldsetIdIRelationshipElementResponse Characteristic { get; set; }
 
         [JsonProperty("withElement")]
-        public IRelationshipElement WithElement { get; set; }
+        public GetFieldByDcvAndFieldsetIdIRelationshipElementResponse WithElement { get; set; }
 
         [JsonProperty("withElementParent")]
-        public IRelationshipElement WithElementParent { get; set; }
+        public GetFieldByDcvAndFieldsetIdIRelationshipElementResponse WithElementParent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2180,7 +2105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RelationshipType
+    public enum GetTopicRelationsRelationshipTypeResponse
     {
         Unknown,
         WithWhat,
@@ -2206,7 +2131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Icon { get; set; }
     }
 
-    public class SaveRelationInput
+    public class SaveRelationBodyInput
     {
         [JsonProperty("fromElementDcv")]
         public string FromElementDcv { get; set; }
@@ -2215,7 +2140,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string ToElementDcv { get; set; }
 
         [JsonProperty("relationshipType")]
-        public RelationshipType? RelationshipType { get; set; }
+        public SaveRelationRelationshipType? RelationshipType { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SaveRelationRelationshipType
+    {
+        Unknown,
+        WithWhat,
+        Who,
+        When,
+        Where,
+        Why,
+        WhereTo
     }
 
     public class ITopicPath

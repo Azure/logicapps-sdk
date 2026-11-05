@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatsappip
     public class WhatsappipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatsappip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> version, Expression<Func<int>> phoneNumberId, Expression<Func<SendMessageInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> version, Expression<Func<int>> phoneNumberId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_phoneNumberId = WorkflowExpression.Compile(phoneNumberId, nameof(phoneNumberId), required: true);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatsappip
     {
     }
 
-    public class SendMessageInput
+    public class BodyInput
     {
         [JsonProperty("messaging_product")]
         public string MessagingProduct { get; set; }
@@ -46,49 +46,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatsappip
         public string Type { get; set; }
 
         [JsonProperty("template")]
-        public SendMessageInputTemplateType Template { get; set; }
+        public BodyInputTemplateType Template { get; set; }
     }
 
-    public class SendMessageInputTemplateType
+    public class BodyInputTemplateType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("language")]
-        public SendMessageInputTemplateTypeLanguageType Language { get; set; }
+        public BodyInputTemplateTypeLanguageType Language { get; set; }
 
         [JsonProperty("components")]
-        public SendMessageInputTemplateTypeComponentsTypeItem[] Components { get; set; }
+        public BodyInputTemplateTypeComponentsTypeItem[] Components { get; set; }
     }
 
-    public class SendMessageInputTemplateTypeLanguageType
+    public class BodyInputTemplateTypeLanguageType
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class SendMessageInputTemplateTypeComponentsTypeItem
+    public class BodyInputTemplateTypeComponentsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public SendMessageInputTemplateTypeComponentsTypeItemParametersTypeItem[] Parameters { get; set; }
+        public BodyInputTemplateTypeComponentsTypeItemParametersTypeItem[] Parameters { get; set; }
     }
 
-    public class SendMessageInputTemplateTypeComponentsTypeItemParametersTypeItem
+    public class BodyInputTemplateTypeComponentsTypeItemParametersTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("image")]
-        public SendMessageInputTemplateTypeComponentsTypeItemParametersTypeItemImageType Image { get; set; }
+        public BodyInputTemplateTypeComponentsTypeItemParametersTypeItemImageType Image { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class SendMessageInputTemplateTypeComponentsTypeItemParametersTypeItemImageType
+    public class BodyInputTemplateTypeComponentsTypeItemParametersTypeItemImageType
     {
         [JsonProperty("link")]
         public string Link { get; set; }

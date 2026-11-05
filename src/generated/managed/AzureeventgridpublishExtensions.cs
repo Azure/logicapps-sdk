@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
     public class AzureeventgridpublishActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureeventgridpublish")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PublishEvent(Expression<Func<bodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PublishEvent(Expression<Func<BodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,18 +31,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
     {
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("subject")]
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
-        [JsonProperty("eventType")]
+        [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventType { get; set; }
 
-        [JsonProperty("data")]
+        [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Data { get; set; }
 
         [JsonProperty("eventTime")]

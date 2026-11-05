@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     public class EonetbynasaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<EventsGeoJSONStatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsGeoJSONResponse, ApiConnectionActionConfiguration> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsGeoJSONResponse, ApiConnectionActionConfiguration> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<EventsGeoJSONStatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventCategoriesResponse, ApiConnectionActionConfiguration> EventCategories(Expression<Func<string>> category, Expression<Func<string>> source = null, Expression<Func<statusInput2>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        public IBodyWorkflowAction<EventCategoriesResponse, ApiConnectionActionConfiguration> EventCategories(Expression<Func<string>> category, Expression<Func<string>> source = null, Expression<Func<EventCategoriesStatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum EventsGeoJSONStatusInput
     {
         [EnumMember(Value = "open")]
         Open,
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput2
+    public enum EventCategoriesStatusInput
     {
         [EnumMember(Value = "open")]
         Open,

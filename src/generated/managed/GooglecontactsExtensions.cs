@@ -13,33 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
     public class GooglecontactsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecontacts")]
-        public IBodyWorkflowAction<PeopleApiListContactsV4Response, ApiConnectionActionConfiguration> PeopleApiListContacts()
+        public IBodyWorkflowAction<PeopleApiListContactsResponse, ApiConnectionActionConfiguration> PeopleApiListContacts()
         {
-            return new DeferredBodyAction<PeopleApiListContactsV4Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PeopleApiListContactsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4/people/v1/me/connections";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<PeopleApiListContactsV4Response>(callPayload);
+                return new ApiConnectionAction<PeopleApiListContactsResponse>(callPayload);
             });
         }
     }
 
     public class GooglecontactsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedV3Response, ApiConnectionTriggerConfiguration> PeopleApiOnContactUpdated(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedResponse, ApiConnectionTriggerConfiguration> PeopleApiOnContactUpdated(FlowRecurrence recurrence = null)
         {
-            return new DeferredBodyTrigger<PeopleApiOnContactUpdatedV3Response, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PeopleApiOnContactUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v3/people/trigger/onContactUpdated";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PeopleApiOnContactUpdatedV3Response>(callPayload, recurrence: recurrence);
+                return new ApiConnectionTrigger<PeopleApiOnContactUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class PeopleApiListContactsV4Response
+    public class PeopleApiListContactsResponse
     {
         [JsonProperty("connections")]
         public PeopleApiConnectionV2[] Connections { get; set; }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
         public string Type { get; set; }
     }
 
-    public class PeopleApiOnContactUpdatedV3Response
+    public class PeopleApiOnContactUpdatedResponse
     {
         [JsonProperty("connections")]
         public PeopleApiConnectionV2[] Connections { get; set; }

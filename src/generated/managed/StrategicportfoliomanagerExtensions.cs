@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class StrategicportfoliomanagerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddFinancialValuesChangedHook(Expression<Func<EventsAddFinancialValuesChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddFinancialValuesChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityCreatedHook(Expression<Func<EventsAddEntityCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityUpdatedHook(Expression<Func<EventsAddEntityUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityDeletedHook(Expression<Func<EventsAddEntityDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddEntityDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddStageTransitionHook(Expression<Func<EventsAddStageTransitionHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddStageTransitionHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -845,7 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<EventsAddActualsApprovalWorkflowStartedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsPeriodStatusChangedHook(Expression<Func<EventsAddActualsPeriodStatusChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddActualsPeriodStatusChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -871,7 +871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestCreatedHook(Expression<Func<EventsAddChangeRequestCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -884,7 +884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestUpdatedHook(Expression<Func<EventsAddChangeRequestUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -897,7 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestDeletedHook(Expression<Func<EventsAddChangeRequestDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestStatusChangedHook(Expression<Func<EventsAddChangeRequestStatusChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddChangeRequestStatusChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentAddedHook(Expression<Func<EventsAddResourceAssignmentAddedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentAddedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentRemovedHook(Expression<Func<EventsAddResourceAssignmentRemovedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentRemovedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -949,7 +949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentUpdatedHook(Expression<Func<EventsAddResourceAssignmentUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddResourceAssignmentUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -962,7 +962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneCreatedHook(Expression<Func<EventsAddMilestoneCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -975,7 +975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneUpdatedHook(Expression<Func<EventsAddMilestoneUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -988,7 +988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneDeletedHook(Expression<Func<EventsAddMilestoneDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddMilestoneDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipCreatedHook(Expression<Func<EventsAddRelationshipCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1014,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipUpdatedHook(Expression<Func<EventsAddRelationshipUpdatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipUpdatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1027,7 +1027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipDeletedHook(Expression<Func<EventsAddRelationshipDeletedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddRelationshipDeletedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestCreatedHook(Expression<Func<EventsAddApprovalRequestCreatedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestCreatedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
             });
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestChangedHook(Expression<Func<EventsAddApprovalRequestChangedHookInput>> eventCreationInformation, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration> EventsAddApprovalRequestChangedHook(Expression<Func<EventCreationInformationInput>> eventCreationInformation, FlowRecurrence recurrence = null)
         {
             var __workflow_eventCreationInformation = WorkflowExpression.Compile(eventCreationInformation, nameof(eventCreationInformation), required: true);
             return new DeferredBodyTrigger<EventCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1158,7 +1158,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class EntityFieldValuePair
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uid { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
@@ -1176,7 +1179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class FinancialFieldValuePair
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uid { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
@@ -1200,7 +1206,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
     public class MilestoneFieldValuePair
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uid { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
@@ -1209,196 +1218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         public bool Succeeded { get; set; }
     }
 
-    public class EventsAddFinancialValuesChangedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddEntityCreatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddEntityUpdatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddEntityDeletedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddStageTransitionHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddActualsApprovalWorkflowStartedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddActualsPeriodStatusChangedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddChangeRequestCreatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddChangeRequestUpdatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddChangeRequestDeletedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddChangeRequestStatusChangedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddResourceAssignmentAddedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddResourceAssignmentRemovedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddResourceAssignmentUpdatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddMilestoneCreatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddMilestoneUpdatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddMilestoneDeletedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddRelationshipCreatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddRelationshipUpdatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddRelationshipDeletedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddApprovalRequestCreatedHookInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string ReceiverEndpoint { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class EventsAddApprovalRequestChangedHookInput
+    public class EventCreationInformationInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteURL { get; set; }

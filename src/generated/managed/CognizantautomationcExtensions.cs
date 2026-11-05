@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<TriggerActionResponse, ApiConnectionActionConfiguration> TriggerAction(Expression<Func<string>> activityId, Expression<Func<TriggerActionInput>> body)
+        public IBodyWorkflowAction<TriggerActionResponse, ApiConnectionActionConfiguration> TriggerAction(Expression<Func<string>> activityId, Expression<Func<TriggerActionBodyInput>> body)
         {
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<TriggerISResponse, ApiConnectionActionConfiguration> TriggerIS(Expression<Func<string>> activityId, Expression<Func<TriggerISInput>> body)
+        public IBodyWorkflowAction<TriggerISResponse, ApiConnectionActionConfiguration> TriggerIS(Expression<Func<string>> activityId, Expression<Func<TriggerISBodyInput>> body)
         {
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<UpdateActionOutputResponse, ApiConnectionActionConfiguration> UpdateActionOutput(Expression<Func<string>> activityActionId, Expression<Func<UpdateActionOutputInput>> body)
+        public IBodyWorkflowAction<UpdateActionOutputResponse, ApiConnectionActionConfiguration> UpdateActionOutput(Expression<Func<string>> activityActionId, Expression<Func<UpdateActionOutputBodyInput>> body)
         {
             var __workflow_activityActionId = WorkflowExpression.Compile(activityActionId, nameof(activityActionId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<LinkAsChildActivityResponse, ApiConnectionActionConfiguration> LinkAsChildActivity(Expression<Func<string>> activityId, Expression<Func<LinkAsChildActivityInput>> body)
+        public IBodyWorkflowAction<LinkAsChildActivityResponse, ApiConnectionActionConfiguration> LinkAsChildActivity(Expression<Func<string>> activityId, Expression<Func<LinkAsChildActivityBodyInput>> body)
         {
             var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<CreateActivityInput>> body)
+        public IBodyWorkflowAction<CreateActivityResponse, ApiConnectionActionConfiguration> CreateActivity(Expression<Func<CreateActivityBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateActivityResponse, ApiConnectionActionConfiguration>(() =>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognizantautomationc")]
-        public IBodyWorkflowAction<CreateaActivityLogResponse, ApiConnectionActionConfiguration> CreateaActivityLog(Expression<Func<CreateaActivityLogInput>> body)
+        public IBodyWorkflowAction<CreateaActivityLogResponse, ApiConnectionActionConfiguration> CreateaActivityLog(Expression<Func<CreateaActivityLogBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateaActivityLogResponse, ApiConnectionActionConfiguration>(() =>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
-    public class TriggerActionInput
+    public class TriggerActionBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ActionId { get; set; }
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
-    public class TriggerISInput
+    public class TriggerISBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string SkillId { get; set; }
@@ -283,16 +283,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
-    public class UpdateActionOutputInput
+    public class UpdateActionOutputBodyInput
     {
         [JsonProperty("output", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Output { get; set; }
 
         [JsonProperty("ActionExecutionStatus")]
-        public UpdateActionOutputInputExecutionStatusType? ExecutionStatus { get; set; }
+        public BodyInputExecutionStatusType? ExecutionStatus { get; set; }
     }
 
-    public enum UpdateActionOutputInputExecutionStatusType
+    public enum BodyInputExecutionStatusType
     {
         _1 = 1,
         _2 = 2
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
-    public class LinkAsChildActivityInput
+    public class LinkAsChildActivityBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ChildId { get; set; }
@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
-    public class CreateActivityInput
+    public class CreateActivityBodyInput
     {
         [JsonProperty("pa_run_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RunId { get; set; } = "@{workflow().run.name}";
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string TransactionKey { get; set; }
     }
 
-    public class CreateaActivityLogInput
+    public class CreateaActivityLogBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ActivityId { get; set; }

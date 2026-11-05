@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SmarpCreate(Expression<Func<SmarpCreatePostInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SmarpCreate(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         public string Name { get; set; }
     }
 
-    public class SmarpCreatePostInput
+    public class BodyInput
     {
         [JsonProperty("body")]
         public string Body { get; set; }

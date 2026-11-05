@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricleadloader
     public class RepfabricleadloaderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "repfabricleadloader")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateLead(Expression<Func<RepfabricCreateLeadInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RepfabricCreateLead(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Repfabricleadloader
     {
     }
 
-    public class RepfabricCreateLeadInput
+    public class BodyInput
     {
         [JsonProperty("domain-name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DomainName { get; set; }

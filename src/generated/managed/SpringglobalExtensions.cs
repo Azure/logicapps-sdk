@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
 
     public class SpringglobalTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnSurveyExecution(Expression<Func<OnSurveyExecutionInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> OnSurveyExecution(Expression<Func<BodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -88,16 +88,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
         public string Email { get; set; }
     }
 
-    public class OnSurveyExecutionInput
+    public class BodyInput
     {
         [JsonProperty("callback", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Callback { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnSurveyExecutionInputParametersType Parameters { get; set; }
+        public BodyInputParametersType Parameters { get; set; }
     }
 
-    public class OnSurveyExecutionInputParametersType
+    public class BodyInputParametersType
     {
         [JsonProperty("surveyId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SurveyId { get; set; }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration> BttnWebhook(Expression<Func<BttnWebhookInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration> BttnWebhook(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<BttnWebhookResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
         public string Name { get; set; }
     }
 
-    public class BttnWebhookInput
+    public class BodyInput
     {
         [JsonProperty("actionConfigId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionConfigId { get; set; }

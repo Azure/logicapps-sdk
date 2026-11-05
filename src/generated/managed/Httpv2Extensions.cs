@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpv2
     public class Httpv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "httpv2")]
-        public IBodyWorkflowAction<HttpResponse, ApiConnectionActionConfiguration> InvokeHttpRequest(Expression<Func<InvokeHttpRequestInput>> request)
+        public IBodyWorkflowAction<HttpResponse, ApiConnectionActionConfiguration> InvokeHttpRequest(Expression<Func<RequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<HttpResponse, ApiConnectionActionConfiguration>(() =>
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpv2
         public int StatusCode { get; set; }
 
         [JsonProperty("headers")]
-        public KeyValue[] Headers { get; set; }
+        public InvokeHttpRequestKeyValueResponse[] Headers { get; set; }
 
         [JsonProperty("body")]
         public JToken Body { get; set; }
     }
 
-    public class KeyValue
+    public class InvokeHttpRequestKeyValueResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -52,19 +52,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpv2
         public string Value { get; set; }
     }
 
-    public class InvokeHttpRequestInput
+    public class RequestInput
     {
         [JsonProperty("headers")]
-        public KeyValue2[] Headers { get; set; }
+        public InvokeHttpRequestKeyValue[] Headers { get; set; }
 
         [JsonProperty("queryParameters")]
-        public KeyValue2[] QueryParameters { get; set; }
+        public InvokeHttpRequestKeyValue[] QueryParameters { get; set; }
 
         [JsonProperty("body")]
         public JToken Body { get; set; }
     }
 
-    public class KeyValue2
+    public class InvokeHttpRequestKeyValue
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

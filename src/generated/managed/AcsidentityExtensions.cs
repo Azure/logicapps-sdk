@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
     public class AcsidentityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration> CreateCommunicationIdentity(Expression<Func<CreateCommunicationIdentityInput>> body = null)
+        public IBodyWorkflowAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration> CreateCommunicationIdentity(Expression<Func<CreateCommunicationIdentityBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateCommunicationIdentityResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<AccessTokenInfo, ApiConnectionActionConfiguration> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<IssueIdentityAccessTokenInput>> body)
+        public IBodyWorkflowAction<AccessTokenInfo, ApiConnectionActionConfiguration> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<IssueIdentityAccessTokenBodyInput>> body)
         {
             var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         public string TokenExpiry { get; set; }
     }
 
-    public class CreateCommunicationIdentityInput
+    public class CreateCommunicationIdentityBodyInput
     {
         [JsonProperty("createTokenWithScopes")]
         public TokenScopes[] TokenScopes { get; set; }
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         Voip
     }
 
-    public class IssueIdentityAccessTokenInput
+    public class IssueIdentityAccessTokenBodyInput
     {
         [JsonProperty("scopes", DefaultValueHandling = DefaultValueHandling.Include)]
         public TokenScopes[] TokenScopes { get; set; } = new TokenScopes[]

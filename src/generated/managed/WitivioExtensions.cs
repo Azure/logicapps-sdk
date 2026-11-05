@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
     public class WitivioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendFeedback(Expression<Func<string>> botId, Expression<Func<SendFeedbackInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendFeedback(Expression<Func<string>> botId, Expression<Func<SendFeedbackBodyInput>> body)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> botId, Expression<Func<SendMessageInput>> body)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<string>> botId, Expression<Func<SendMessageBodyInput>> body)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> StartEscalation(Expression<Func<string>> botId, Expression<Func<StartEscalationInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> StartEscalation(Expression<Func<string>> botId, Expression<Func<StartEscalationBodyInput>> body)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendAdaptiveResponse, ApiConnectionActionConfiguration> SendAdaptive(Expression<Func<string>> botId, Expression<Func<SendAdaptiveInput>> body)
+        public IBodyWorkflowAction<SendAdaptiveResponse, ApiConnectionActionConfiguration> SendAdaptive(Expression<Func<string>> botId, Expression<Func<SendAdaptiveBodyInput>> body)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageInputResponse, ApiConnectionActionConfiguration> SendMessageInput(Expression<Func<string>> botId, Expression<Func<SendMessageInputInput>> body)
+        public IBodyWorkflowAction<SendMessageInputResponse, ApiConnectionActionConfiguration> SendMessageInput(Expression<Func<string>> botId, Expression<Func<SendMessageInputBodyInput>> body)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageInputListResponse, ApiConnectionActionConfiguration> SendMessageInputList(Expression<Func<string>> botId, Expression<Func<SendMessageInputListInput>> body)
+        public IBodyWorkflowAction<SendMessageInputListResponse, ApiConnectionActionConfiguration> SendMessageInputList(Expression<Func<string>> botId, Expression<Func<SendMessageInputListBodyInput>> body)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "witivio")]
-        public IBodyWorkflowAction<SendMessageInputArrayResponse, ApiConnectionActionConfiguration> SendMessageInputArray(Expression<Func<string>> botId, Expression<Func<SendMessageInputArrayInput>> body)
+        public IBodyWorkflowAction<SendMessageInputArrayResponse, ApiConnectionActionConfiguration> SendMessageInputArray(Expression<Func<string>> botId, Expression<Func<SendMessageInputArrayBodyInput>> body)
         {
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -120,14 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
 
     public class WitivioTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, Expression<Func<WebhookTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> questionId, FlowRecurrence recurrence = null)
         {
             var __workflow_licenceId = WorkflowExpression.Compile(licenceId, nameof(licenceId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_questionId = WorkflowExpression.Compile(questionId, nameof(questionId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/conversations/{0}/{1}/questions/{2}/triggers/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_questionId.WithUrlEncoding(1)));
@@ -135,20 +134,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);
                 callPayload.Queries["profileId"] = ExpressionConverter.Convert(__workflow_profileId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new WebhookEscalationTriggerBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, Expression<Func<WebhookEscalationTriggerInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WebhookEscalationTrigger(Expression<Func<string>> licenceId, Expression<Func<string>> botId, Expression<Func<string>> language, Expression<Func<string>> profileId, Expression<Func<string>> escalationId, FlowRecurrence recurrence = null)
         {
             var __workflow_licenceId = WorkflowExpression.Compile(licenceId, nameof(licenceId), required: true);
             var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             var __workflow_escalationId = WorkflowExpression.Compile(escalationId, nameof(escalationId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/escalation/{0}/{1}/triggers/{2}/register", __workflow_botId.WithUrlEncoding(1), __workflow_language.WithUrlEncoding(1), __workflow_escalationId.WithUrlEncoding(1)));
@@ -156,14 +153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["licenceId"] = ExpressionConverter.Convert(__workflow_licenceId);
                 callPayload.Queries["profileId"] = ExpressionConverter.Convert(__workflow_profileId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new WebhookEscalationTriggerBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
     }
 
-    public class SendFeedbackInput
+    public class SendFeedbackBodyInput
     {
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
@@ -178,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         public string Message { get; set; }
     }
 
-    public class SendMessageInput
+    public class SendMessageBodyInput
     {
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
@@ -187,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         public string Message { get; set; }
     }
 
-    public class StartEscalationInput
+    public class StartEscalationBodyInput
     {
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
@@ -208,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         public string Message { get; set; }
     }
 
-    public class SendAdaptiveInput
+    public class SendAdaptiveBodyInput
     {
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
@@ -226,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         public JToken[] Files { get; set; }
     }
 
-    public class SendMessageInputInput
+    public class SendMessageInputBodyInput
     {
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
@@ -244,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         public string Message { get; set; }
     }
 
-    public class SendMessageInputListInput
+    public class SendMessageInputListBodyInput
     {
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
@@ -292,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         public JToken Body { get; set; }
     }
 
-    public class SendMessageInputArrayInput
+    public class SendMessageInputArrayBodyInput
     {
         [JsonProperty("conversationContext", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ConversationContext { get; set; }
@@ -307,13 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
         public string ValueToSelectInList { get; set; }
     }
 
-    public class WebhookTriggerInput
-    {
-        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookEscalationTriggerInput
+    public class WebhookEscalationTriggerBodyInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
     public class PowerappsnotificationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerappsnotification")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendPushNotification(Expression<Func<SendPushNotificationInput>> payload)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendPushNotification(Expression<Func<PayloadInput>> payload)
         {
             var __workflow_payload = WorkflowExpression.Compile(payload, nameof(payload), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
     {
     }
 
-    public class SendPushNotificationInput
+    public class PayloadInput
     {
         [JsonProperty("recipients")]
         public string[] Recipients { get; set; }

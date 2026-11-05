@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
     public class RealfavicongeneratorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "realfavicongenerator")]
-        public IBodyWorkflowAction<FaviconPostResponse, ApiConnectionActionConfiguration> Favicon(Expression<Func<FaviconPostInput>> body = null)
+        public IBodyWorkflowAction<FaviconResponse, ApiConnectionActionConfiguration> Favicon(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<FaviconPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FaviconResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/favicon";
                 var apiCallHttpMethod = "post";
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
                 callPayload.Queries["api_key"] = Convert.ToString("@connectionParameters('key')");
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FaviconPostResponse>(callPayload);
+                return new ApiConnectionAction<FaviconResponse>(callPayload);
             });
         }
     }
@@ -33,22 +33,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
     {
     }
 
-    public class FaviconPostResponse
+    public class FaviconResponse
     {
         [JsonProperty("favicon_generation_result")]
-        public FaviconPostResponseFaviconGenerationResultType FaviconGenerationResult { get; set; }
+        public FaviconResponseFaviconGenerationResultType FaviconGenerationResult { get; set; }
     }
 
-    public class FaviconPostResponseFaviconGenerationResultType
+    public class FaviconResponseFaviconGenerationResultType
     {
         [JsonProperty("result")]
-        public FaviconPostResponseFaviconGenerationResultTypeResultType Result { get; set; }
+        public FaviconResponseFaviconGenerationResultTypeResultType Result { get; set; }
 
         [JsonProperty("favicon")]
-        public FaviconPostResponseFaviconGenerationResultTypeFaviconType Favicon { get; set; }
+        public FaviconResponseFaviconGenerationResultTypeFaviconType Favicon { get; set; }
 
         [JsonProperty("files_location")]
-        public FaviconPostResponseFaviconGenerationResultTypeFilesLocationType FilesLocation { get; set; }
+        public FaviconResponseFaviconGenerationResultTypeFilesLocationType FilesLocation { get; set; }
 
         [JsonProperty("preview_picture_url")]
         public string PreviewPictureUrl { get; set; }
@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Version { get; set; }
     }
 
-    public class FaviconPostResponseFaviconGenerationResultTypeResultType
+    public class FaviconResponseFaviconGenerationResultTypeResultType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class FaviconPostResponseFaviconGenerationResultTypeFaviconType
+    public class FaviconResponseFaviconGenerationResultTypeFaviconType
     {
         [JsonProperty("package_url")]
         public string PackageUrl { get; set; }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string[] OverlappingMarkups { get; set; }
     }
 
-    public class FaviconPostResponseFaviconGenerationResultTypeFilesLocationType
+    public class FaviconResponseFaviconGenerationResultTypeFilesLocationType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -90,31 +90,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Path { get; set; }
     }
 
-    public class FaviconPostInput
+    public class BodyInput
     {
         [JsonProperty("favicon_generation")]
-        public FaviconPostInputFaviconGenerationType FaviconGeneration { get; set; }
+        public BodyInputFaviconGenerationType FaviconGeneration { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationType
+    public class BodyInputFaviconGenerationType
     {
         [JsonProperty("master_picture")]
-        public FaviconPostInputFaviconGenerationTypeMasterPictureType MasterPicture { get; set; }
+        public BodyInputFaviconGenerationTypeMasterPictureType MasterPicture { get; set; }
 
         [JsonProperty("files_location")]
-        public FaviconPostInputFaviconGenerationTypeFilesLocationType FilesLocation { get; set; }
+        public BodyInputFaviconGenerationTypeFilesLocationType FilesLocation { get; set; }
 
         [JsonProperty("favicon_design")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignType FaviconDesign { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignType FaviconDesign { get; set; }
 
         [JsonProperty("settings")]
-        public FaviconPostInputFaviconGenerationTypeSettingsType Settings { get; set; }
+        public BodyInputFaviconGenerationTypeSettingsType Settings { get; set; }
 
         [JsonProperty("versioning")]
-        public FaviconPostInputFaviconGenerationTypeVersioningType Versioning { get; set; }
+        public BodyInputFaviconGenerationTypeVersioningType Versioning { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeMasterPictureType
+    public class BodyInputFaviconGenerationTypeMasterPictureType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Url { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFilesLocationType
+    public class BodyInputFaviconGenerationTypeFilesLocationType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -132,37 +132,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Path { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignType
+    public class BodyInputFaviconGenerationTypeFaviconDesignType
     {
         [JsonProperty("desktop_browser")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserType DesktopBrowser { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserType DesktopBrowser { get; set; }
 
         [JsonProperty("ios")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosType Ios { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeIosType Ios { get; set; }
 
         [JsonProperty("windows")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeWindowsType Windows { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeWindowsType Windows { get; set; }
 
         [JsonProperty("firefox_app")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppType FirefoxApp { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppType FirefoxApp { get; set; }
 
         [JsonProperty("android_chrome")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeType AndroidChrome { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeType AndroidChrome { get; set; }
 
         [JsonProperty("safari_pinned_tab")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeSafariPinnedTabType SafariPinnedTab { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeSafariPinnedTabType SafariPinnedTab { get; set; }
 
         [JsonProperty("coast")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeCoastType Coast { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeCoastType Coast { get; set; }
 
         [JsonProperty("open_graph")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeOpenGraphType OpenGraph { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeOpenGraphType OpenGraph { get; set; }
 
         [JsonProperty("yandex_browser")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserType YandexBrowser { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserType YandexBrowser { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
@@ -174,19 +174,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string BackgroundColor { get; set; }
 
         [JsonProperty("startup_image")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageType StartupImage { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageType StartupImage { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageType
     {
         [JsonProperty("master_picture")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageTypeMasterPictureType MasterPicture { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageTypeMasterPictureType MasterPicture { get; set; }
 
         [JsonProperty("background_color")]
         public string BackgroundColor { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageTypeMasterPictureType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeDesktopBrowserTypeStartupImageTypeMasterPictureType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Url { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeIosType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
@@ -207,22 +207,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string BackgroundColor { get; set; }
 
         [JsonProperty("startup_image")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageType StartupImage { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageType StartupImage { get; set; }
 
         [JsonProperty("assets")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosTypeAssetsType Assets { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeIosTypeAssetsType Assets { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageType
     {
         [JsonProperty("master_picture")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageTypeMasterPictureType MasterPicture { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageTypeMasterPictureType MasterPicture { get; set; }
 
         [JsonProperty("background_color")]
         public string BackgroundColor { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageTypeMasterPictureType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeIosTypeStartupImageTypeMasterPictureType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Url { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeIosTypeAssetsType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeIosTypeAssetsType
     {
         [JsonProperty("ios6_and_prior_icons")]
         public bool? Ios6AndPriorIcons { get; set; }
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public bool? DeclareOnlyDefaultIcon { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeWindowsType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeWindowsType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
@@ -255,19 +255,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string BackgroundColor { get; set; }
 
         [JsonProperty("assets")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsType Assets { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsType Assets { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsType
     {
         [JsonProperty("windows_80_ie_10_tile")]
         public bool? Windows80Ie10Tile { get; set; }
 
         [JsonProperty("windows_10_ie_11_edge_tiles")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsTypeWindows10Ie11EdgeTilesType Windows10Ie11EdgeTiles { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsTypeWindows10Ie11EdgeTilesType Windows10Ie11EdgeTiles { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsTypeWindows10Ie11EdgeTilesType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeWindowsTypeAssetsTypeWindows10Ie11EdgeTilesType
     {
         [JsonProperty("small")]
         public bool? Small { get; set; }
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public bool? Rectangle { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
@@ -297,10 +297,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string BackgroundColor { get; set; }
 
         [JsonProperty("manifest")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppTypeManifestType Manifest { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppTypeManifestType Manifest { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppTypeManifestType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeFirefoxAppTypeManifestType
     {
         [JsonProperty("app_name")]
         public string AppName { get; set; }
@@ -315,22 +315,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string DeveloperUrl { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
 
         [JsonProperty("manifest")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeManifestType Manifest { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeManifestType Manifest { get; set; }
 
         [JsonProperty("assets")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeAssetsType Assets { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeAssetsType Assets { get; set; }
 
         [JsonProperty("theme_color")]
         public string ThemeColor { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeManifestType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeManifestType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string ExistingManifest { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeAssetsType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeAndroidChromeTypeAssetsType
     {
         [JsonProperty("legacy_icon")]
         public bool? LegacyIcon { get; set; }
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public bool? LowResolutionIcons { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeSafariPinnedTabType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeSafariPinnedTabType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string ThemeColor { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeCoastType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeCoastType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Margin { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeOpenGraphType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeOpenGraphType
     {
         [JsonProperty("picture_aspect")]
         public string PictureAspect { get; set; }
@@ -396,16 +396,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Ratio { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserType
     {
         [JsonProperty("background_color")]
         public string BackgroundColor { get; set; }
 
         [JsonProperty("manifest")]
-        public FaviconPostInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserTypeManifestType Manifest { get; set; }
+        public BodyInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserTypeManifestType Manifest { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserTypeManifestType
+    public class BodyInputFaviconGenerationTypeFaviconDesignTypeYandexBrowserTypeManifestType
     {
         [JsonProperty("show_title")]
         public bool? ShowTitle { get; set; }
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public string Version { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeSettingsType
+    public class BodyInputFaviconGenerationTypeSettingsType
     {
         [JsonProperty("compression")]
         public string Compression { get; set; }
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realfavicongenerator
         public bool? UsePathAsIs { get; set; }
     }
 
-    public class FaviconPostInputFaviconGenerationTypeVersioningType
+    public class BodyInputFaviconGenerationTypeVersioningType
     {
         [JsonProperty("param_name")]
         public string ParamName { get; set; }

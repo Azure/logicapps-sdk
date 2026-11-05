@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
     public class GsaanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
-        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetReportData(Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetReportData(Expression<Func<GetAgencyReportDataReportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
-        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetAgencyReportData(Expression<Func<agencyNameInput>> agencyName, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetAgencyReportData(Expression<Func<AgencyNameInput>> agencyName, Expression<Func<GetAgencyReportDataReportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_agencyName = WorkflowExpression.Compile(agencyName, nameof(agencyName), required: true);
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
-        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput2>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<GetDomainReportDataReportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum reportNameInput
+    public enum GetAgencyReportDataReportNameInput
     {
         [EnumMember(Value = "download")]
         Download,
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum agencyNameInput
+    public enum AgencyNameInput
     {
         [EnumMember(Value = "agency-international-development")]
         AgencyForInternationalDevelopment,
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum reportNameInput2
+    public enum GetDomainReportDataReportNameInput
     {
         [EnumMember(Value = "download")]
         Download,

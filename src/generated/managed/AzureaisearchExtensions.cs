@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<IntegratedVectorSearchInput>> integratedVectorSearchRequest)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<IntegratedVectorSearchRequestInput>> integratedVectorSearchRequest)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_integratedVectorSearchRequest = WorkflowExpression.Compile(integratedVectorSearchRequest, nameof(integratedVectorSearchRequest), required: true);
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> SemanticHybridSearch(Expression<Func<string>> indexName, Expression<Func<SemanticHybridSearchInput>> semanticHybridSearchRequest)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> SemanticHybridSearch(Expression<Func<string>> indexName, Expression<Func<SemanticHybridSearchRequestInput>> semanticHybridSearchRequest)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_semanticHybridSearchRequest = WorkflowExpression.Compile(semanticHybridSearchRequest, nameof(semanticHybridSearchRequest), required: true);
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> VectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> vectorFieldsName, Expression<Func<double[]>> vectorFieldsValue, Expression<Func<int>> nearestNeighbors, Expression<Func<string>> searchQuery = null, Expression<Func<searchModeInput>> searchMode = null, Expression<Func<string>> filterCondition = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> VectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> vectorFieldsName, Expression<Func<double[]>> vectorFieldsValue, Expression<Func<int>> nearestNeighbors, Expression<Func<string>> searchQuery = null, Expression<Func<SearchModeInput>> searchMode = null, Expression<Func<string>> filterCondition = null)
         {
             var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
             var __workflow_vectorFieldsName = WorkflowExpression.Compile(vectorFieldsName, nameof(vectorFieldsName), required: true);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
     {
     }
 
-    public class IntegratedVectorSearchInput
+    public class IntegratedVectorSearchRequestInput
     {
         [JsonProperty("searchText")]
         public string SearchText { get; set; }
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
         public int? SkipSearches { get; set; }
     }
 
-    public class SemanticHybridSearchInput
+    public class SemanticHybridSearchRequestInput
     {
         [JsonProperty("searchText")]
         public string SearchText { get; set; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchModeInput
+    public enum SearchModeInput
     {
         Any,
         All
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
     public class AgenticRetrievalInput
     {
         [JsonProperty("role")]
-        public AgenticRetrievalInputRoleType Role { get; set; }
+        public AgenticRetrievalInputRoleType? Role { get; set; }
 
         [JsonProperty("content")]
         public string AgentMessageContent { get; set; }

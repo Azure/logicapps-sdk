@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration> UpdateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<UpdateLibraryFileInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration> UpdateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<UpdateLibraryFileBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration> CopyLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryFileInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse, ApiConnectionActionConfiguration> CopyLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryFileBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse, ApiConnectionActionConfiguration> CreateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<CreateLibraryFolderInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse, ApiConnectionActionConfiguration> CreateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<CreateLibraryFolderBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse, ApiConnectionActionConfiguration> UpdateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<UpdateLibraryFolderInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse, ApiConnectionActionConfiguration> UpdateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CreateLibraryFolderBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse, ApiConnectionActionConfiguration> CopyLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryFolderInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse, ApiConnectionActionConfiguration> CopyLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryFileBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse, ApiConnectionActionConfiguration> CopyLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryItemInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse, ApiConnectionActionConfiguration> CopyLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryFileBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse, ApiConnectionActionConfiguration> AddLibraryInstruction(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<AddLibraryInstructionInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse, ApiConnectionActionConfiguration> AddLibraryInstruction(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<AddLibraryInstructionBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<SubmitLibraryItemToWorkflowInput>> body = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<RecallItemFromWorkflowBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RecallItemFromWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<RecallItemFromWorkflowInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RecallItemFromWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<RecallItemFromWorkflowBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse, ApiConnectionActionConfiguration> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<PublishLibraryItemsInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse, ApiConnectionActionConfiguration> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<PublishLibraryItemsBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse, ApiConnectionActionConfiguration> UpdateLibraryWorkflowStep(Expression<Func<string>> approvalWorkflowId, Expression<Func<string>> stepId, Expression<Func<UpdateLibraryWorkflowStepInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse, ApiConnectionActionConfiguration> UpdateLibraryWorkflowStep(Expression<Func<string>> approvalWorkflowId, Expression<Func<string>> stepId, Expression<Func<UpdateLibraryWorkflowStepBodyInput>> body = null)
         {
             var __workflow_approvalWorkflowId = WorkflowExpression.Compile(approvalWorkflowId, nameof(approvalWorkflowId), required: true);
             var __workflow_stepId = WorkflowExpression.Compile(stepId, nameof(stepId), required: true);
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse, ApiConnectionActionConfiguration> CreateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<CreateLibraryUrlInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse, ApiConnectionActionConfiguration> CreateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<CreateLibraryUrlBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse, ApiConnectionActionConfiguration> UpdateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<UpdateLibraryUrlInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse, ApiConnectionActionConfiguration> UpdateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<UpdateLibraryUrlBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -529,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse, ApiConnectionActionConfiguration> CopyLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryUrlInput>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse, ApiConnectionActionConfiguration> CopyLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<CopyLibraryFileBodyInput>> body = null)
         {
             var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
             var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
@@ -583,10 +583,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string ThumbnailUrl { get; set; }
 
         [JsonProperty("experts")]
-        public SeismicLibraryContentManagementContentExperts[] Experts { get; set; }
+        public CopyLibraryFileSeismicLibraryContentManagementContentExpertsResponse[] Experts { get; set; }
 
         [JsonProperty("properties")]
-        public SeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
+        public CopyLibraryFileSeismicLibraryContentManagementCustomPropertiesResponse[] ContentProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string Type { get; set; }
     }
 
-    public class SeismicLibraryContentManagementContentExperts
+    public class CopyLibraryFileSeismicLibraryContentManagementContentExpertsResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string Type { get; set; }
     }
 
-    public class SeismicLibraryContentManagementCustomProperties
+    public class CopyLibraryFileSeismicLibraryContentManagementCustomPropertiesResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public bool IsDeleted { get; set; }
     }
 
-    public class UpdateLibraryFileInput
+    public class UpdateLibraryFileBodyInput
     {
         [JsonProperty("ownerId")]
         public string OwnerId { get; set; }
@@ -740,10 +740,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string ExternalConnectionId { get; set; }
 
         [JsonProperty("experts")]
-        public SeismicLibraryContentManagementContentExperts[] Experts { get; set; }
+        public CreateLibraryUrlSeismicLibraryContentManagementContentExperts[] Experts { get; set; }
 
         [JsonProperty("properties")]
-        public SeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
+        public CreateLibraryUrlSeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
+    }
+
+    public class CreateLibraryUrlSeismicLibraryContentManagementContentExperts
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class CreateLibraryUrlSeismicLibraryContentManagementCustomProperties
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public string[] Values { get; set; }
     }
 
     public class SeismicCommonDownloadLocationResp
@@ -752,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string DownloadUrl { get; set; }
     }
 
-    public class CopyLibraryFileInput
+    public class CopyLibraryFileBodyInput
     {
         [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentFolderId { get; set; }
@@ -794,22 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string ExternalConnectionId { get; set; }
     }
 
-    public class CreateLibraryFolderInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-
-        [JsonProperty("parentFolderId")]
-        public string ParentFolderId { get; set; }
-
-        [JsonProperty("externalId")]
-        public string ExternalId { get; set; }
-
-        [JsonProperty("externalConnectionId")]
-        public string ExternalConnectionId { get; set; }
-    }
-
-    public class UpdateLibraryFolderInput
+    public class CreateLibraryFolderBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -834,12 +840,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
 
         [JsonProperty("path")]
         public SeismicLibraryContentManagementNestedLibraryFoldersResponse[] Path { get; set; }
-    }
-
-    public class CopyLibraryFolderInput
-    {
-        [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ParentFolderId { get; set; }
     }
 
     public class SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse
@@ -902,10 +902,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string ThumbnailUrl { get; set; }
 
         [JsonProperty("experts")]
-        public SeismicLibraryContentManagementContentExperts[] Experts { get; set; }
+        public CopyLibraryFileSeismicLibraryContentManagementContentExpertsResponse[] Experts { get; set; }
 
         [JsonProperty("properties")]
-        public SeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
+        public CopyLibraryFileSeismicLibraryContentManagementCustomPropertiesResponse[] ContentProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -957,12 +957,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
 
         [JsonProperty("type")]
         public string UrlType { get; set; }
-    }
-
-    public class CopyLibraryItemInput
-    {
-        [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ParentFolderId { get; set; }
     }
 
     public class SeismicLibraryContentManagementSimpleItemVersion
@@ -1019,7 +1013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string Id { get; set; }
 
         [JsonProperty("type")]
-        public SeismicLibraryInstructionsInstructionType Type { get; set; }
+        public AddLibraryInstructionSeismicLibraryInstructionsInstructionTypeResponse Type { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1029,16 +1023,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SeismicLibraryInstructionsInstructionType
+    public enum AddLibraryInstructionSeismicLibraryInstructionsInstructionTypeResponse
     {
         [EnumMember(Value = "text")]
         Text
     }
 
-    public class AddLibraryInstructionInput
+    public class AddLibraryInstructionBodyInput
     {
         [JsonProperty("type")]
-        public SeismicLibraryInstructionsInstructionType? Type { get; set; }
+        public AddLibraryInstructionSeismicLibraryInstructionsInstructionType? Type { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1047,13 +1041,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string Text { get; set; }
     }
 
-    public class SubmitLibraryItemToWorkflowInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddLibraryInstructionSeismicLibraryInstructionsInstructionType
     {
-        [JsonProperty("comments")]
-        public string Comments { get; set; }
+        [EnumMember(Value = "text")]
+        Text
     }
 
-    public class RecallItemFromWorkflowInput
+    public class RecallItemFromWorkflowBodyInput
     {
         [JsonProperty("comments")]
         public string Comments { get; set; }
@@ -1089,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string Message { get; set; }
     }
 
-    public class PublishLibraryItemsInput
+    public class PublishLibraryItemsBodyInput
     {
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -1245,7 +1240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public bool IsDeleted { get; set; }
     }
 
-    public class UpdateLibraryWorkflowStepInput
+    public class UpdateLibraryWorkflowStepBodyInput
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public SeismicLibraryWorkflowWorkflowApprovalAction Action { get; set; }
@@ -1334,10 +1329,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string ThumbnailUrl { get; set; }
 
         [JsonProperty("experts")]
-        public SeismicLibraryContentManagementContentExperts[] Experts { get; set; }
+        public CopyLibraryFileSeismicLibraryContentManagementContentExpertsResponse[] Experts { get; set; }
 
         [JsonProperty("properties")]
-        public SeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
+        public CopyLibraryFileSeismicLibraryContentManagementCustomPropertiesResponse[] ContentProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1379,7 +1374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string ExternalConnectionId { get; set; }
     }
 
-    public class CreateLibraryUrlInput
+    public class CreateLibraryUrlBodyInput
     {
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -1409,10 +1404,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string ExternalConnectionId { get; set; }
 
         [JsonProperty("experts")]
-        public SeismicLibraryContentManagementContentExperts[] Experts { get; set; }
+        public CreateLibraryUrlSeismicLibraryContentManagementContentExperts[] Experts { get; set; }
 
         [JsonProperty("properties")]
-        public SeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
+        public CreateLibraryUrlSeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
     }
 
     public class SeismicLibraryContentManagementAddUrl
@@ -1424,7 +1419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public bool? OpenInNewWindow { get; set; }
     }
 
-    public class UpdateLibraryUrlInput
+    public class UpdateLibraryUrlBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public SeismicLibraryContentManagementAddUrl Url { get; set; }
@@ -1433,10 +1428,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string OwnerId { get; set; }
 
         [JsonProperty("experts")]
-        public SeismicLibraryContentManagementContentExperts[] Experts { get; set; }
+        public CreateLibraryUrlSeismicLibraryContentManagementContentExperts[] Experts { get; set; }
 
         [JsonProperty("properties")]
-        public SeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
+        public CreateLibraryUrlSeismicLibraryContentManagementCustomProperties[] ContentProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1455,12 +1450,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
 
         [JsonProperty("externalConnectionId")]
         public string ExternalConnectionId { get; set; }
-    }
-
-    public class CopyLibraryUrlInput
-    {
-        [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ParentFolderId { get; set; }
     }
 }
 

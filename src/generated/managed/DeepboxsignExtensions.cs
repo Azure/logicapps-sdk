@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
-        public IBodyWorkflowAction<Observer, ApiConnectionActionConfiguration> AddObserver(Expression<Func<string>> documentId, Expression<Func<AddObserverInput>> body)
+        public IBodyWorkflowAction<Observer, ApiConnectionActionConfiguration> AddObserver(Expression<Func<string>> documentId, Expression<Func<AddObserverBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
-        public IBodyWorkflowAction<Signee, ApiConnectionActionConfiguration> AddSignee(Expression<Func<string>> documentId, Expression<Func<AddSigneeInput>> body)
+        public IBodyWorkflowAction<Signee, ApiConnectionActionConfiguration> AddSignee(Expression<Func<string>> documentId, Expression<Func<AddSigneeBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
-        public IBodyWorkflowAction<Signee, ApiConnectionActionConfiguration> UpdateSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId, Expression<Func<UpdateSigneeInput>> body)
+        public IBodyWorkflowAction<Signee, ApiConnectionActionConfiguration> UpdateSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId, Expression<Func<UpdateSigneeBodyInput>> body)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
     public class Signee
     {
         [JsonProperty("autographPosition")]
-        public AutographPosition AutographPosition { get; set; }
+        public AddSigneeAutographPositionResponse AutographPosition { get; set; }
 
         [JsonProperty("completionTime")]
         public string CompletionTime { get; set; }
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public string ViewedTime { get; set; }
     }
 
-    public class AutographPosition
+    public class AddSigneeAutographPositionResponse
     {
         [JsonProperty("height")]
         public double Height { get; set; }
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         Seal
     }
 
-    public class AddObserverInput
+    public class AddObserverBodyInput
     {
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -426,10 +426,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public string Language { get; set; }
     }
 
-    public class AddSigneeInput
+    public class AddSigneeBodyInput
     {
         [JsonProperty("autographPosition")]
-        public AutographPosition2 AutographPosition { get; set; }
+        public AddSigneeAutographPosition AutographPosition { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public int? SignOrder { get; set; }
     }
 
-    public class AutographPosition2
+    public class AddSigneeAutographPosition
     {
         [JsonProperty("height")]
         public double? Height { get; set; }
@@ -465,10 +465,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public double? Y { get; set; }
     }
 
-    public class UpdateSigneeInput
+    public class UpdateSigneeBodyInput
     {
         [JsonProperty("autographPosition")]
-        public AutographPosition2 AutographPosition { get; set; }
+        public AddSigneeAutographPosition AutographPosition { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }

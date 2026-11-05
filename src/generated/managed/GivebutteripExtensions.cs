@@ -28,16 +28,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignPostResponse, ApiConnectionActionConfiguration> Campaign(Expression<Func<CampaignPostInput>> body)
+        public IBodyWorkflowAction<CampaignResponse, ApiConnectionActionConfiguration> Campaign(Expression<Func<CampaignBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CampaignPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CampaignResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/campaigns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CampaignPostResponse>(callPayload);
+                return new ApiConnectionAction<CampaignResponse>(callPayload);
             });
         }
 
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignPatchResponse, ApiConnectionActionConfiguration> CampaignPatch(Expression<Func<string>> id, Expression<Func<CampaignPatchInput>> body = null)
+        public IBodyWorkflowAction<CampaignPatchResponse, ApiConnectionActionConfiguration> CampaignPatch(Expression<Func<string>> id, Expression<Func<CampaignPatchBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -167,16 +167,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactPostResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactPostInput>> body)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> Contact(Expression<Func<ContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<ContactPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ContactResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ContactPostResponse>(callPayload);
+                return new ApiConnectionAction<ContactResponse>(callPayload);
             });
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactPatchResponse, ApiConnectionActionConfiguration> ContactPatch(Expression<Func<string>> id, Expression<Func<ContactPatchInput>> body)
+        public IBodyWorkflowAction<ContactPatchResponse, ApiConnectionActionConfiguration> ContactPatch(Expression<Func<string>> id, Expression<Func<ContactPatchBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -347,16 +347,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<FundPostResponse, ApiConnectionActionConfiguration> Fund(Expression<Func<FundPostInput>> body)
+        public IBodyWorkflowAction<FundResponse, ApiConnectionActionConfiguration> Fund(Expression<Func<FundBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<FundPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FundResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/funds";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FundPostResponse>(callPayload);
+                return new ApiConnectionAction<FundResponse>(callPayload);
             });
         }
 
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<FundPatchResponse, ApiConnectionActionConfiguration> FundPatch(Expression<Func<string>> id, Expression<Func<FundPatchInput>> body)
+        public IBodyWorkflowAction<FundPatchResponse, ApiConnectionActionConfiguration> FundPatch(Expression<Func<string>> id, Expression<Func<FundBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public bool Active { get; set; }
     }
 
-    public class CampaignPostResponse
+    public class CampaignResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Logo { get; set; }
 
         [JsonProperty("cover")]
-        public CampaignPostResponseCoverType Cover { get; set; }
+        public CampaignResponseCoverType Cover { get; set; }
 
         [JsonProperty("end_at")]
         public string EndAt { get; set; }
@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string UpdatedAt { get; set; }
     }
 
-    public class CampaignPostResponseCoverType
+    public class CampaignResponseCoverType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Source { get; set; }
     }
 
-    public class CampaignPostInput
+    public class CampaignBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Source { get; set; }
     }
 
-    public class CampaignPatchInput
+    public class CampaignPatchBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1420,7 +1420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public bool Active { get; set; }
     }
 
-    public class ContactPostResponse
+    public class ContactResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1453,10 +1453,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string FacebookUrl { get; set; }
 
         [JsonProperty("emails")]
-        public ContactPostResponseEmailsTypeItem[] Emails { get; set; }
+        public ContactResponseEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("phones")]
-        public ContactPostResponsePhonesTypeItem[] Phones { get; set; }
+        public ContactResponsePhonesTypeItem[] Phones { get; set; }
 
         [JsonProperty("primary_email")]
         public string PrimaryEmail { get; set; }
@@ -1468,13 +1468,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Note { get; set; }
 
         [JsonProperty("addresses")]
-        public ContactPostResponseAddressesTypeItem[] Addresses { get; set; }
+        public ContactResponseAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("primary_address")]
-        public ContactPostResponsePrimaryAddressType PrimaryAddress { get; set; }
+        public ContactResponsePrimaryAddressType PrimaryAddress { get; set; }
 
         [JsonProperty("stats")]
-        public ContactPostResponseStatsType Stats { get; set; }
+        public ContactResponseStatsType Stats { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1492,7 +1492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string UpdatedAt { get; set; }
     }
 
-    public class ContactPostResponseEmailsTypeItem
+    public class ContactResponseEmailsTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1501,7 +1501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Value { get; set; }
     }
 
-    public class ContactPostResponsePhonesTypeItem
+    public class ContactResponsePhonesTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1510,7 +1510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Value { get; set; }
     }
 
-    public class ContactPostResponseAddressesTypeItem
+    public class ContactResponseAddressesTypeItem
     {
         [JsonProperty("address_1")]
         public string Address1 { get; set; }
@@ -1543,7 +1543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string UpdatedAt { get; set; }
     }
 
-    public class ContactPostResponsePrimaryAddressType
+    public class ContactResponsePrimaryAddressType
     {
         [JsonProperty("address_1")]
         public string Address1 { get; set; }
@@ -1576,7 +1576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string UpdatedAt { get; set; }
     }
 
-    public class ContactPostResponseStatsType
+    public class ContactResponseStatsType
     {
         [JsonProperty("recurring_contributions")]
         public int RecurringContributions { get; set; }
@@ -1585,7 +1585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public int TotalContributions { get; set; }
     }
 
-    public class ContactPostInput
+    public class ContactBodyInput
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1597,13 +1597,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string LastName { get; set; }
 
         [JsonProperty("emails")]
-        public ContactPostInputEmailsTypeItem[] Emails { get; set; }
+        public BodyInputEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("phones")]
-        public ContactPostInputPhonesTypeItem[] Phones { get; set; }
+        public BodyInputPhonesTypeItem[] Phones { get; set; }
 
         [JsonProperty("addresses")]
-        public ContactPostInputAddressesTypeItem[] Addresses { get; set; }
+        public BodyInputAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1627,7 +1627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string FacebookUrl { get; set; }
     }
 
-    public class ContactPostInputEmailsTypeItem
+    public class BodyInputEmailsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1636,7 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Type { get; set; }
     }
 
-    public class ContactPostInputPhonesTypeItem
+    public class BodyInputPhonesTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1645,7 +1645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string Type { get; set; }
     }
 
-    public class ContactPostInputAddressesTypeItem
+    public class BodyInputAddressesTypeItem
     {
         [JsonProperty("address_1")]
         public string Address1 { get; set; }
@@ -1996,7 +1996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public int TotalContributions { get; set; }
     }
 
-    public class ContactPatchInput
+    public class ContactPatchBodyInput
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -3157,7 +3157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public bool Active { get; set; }
     }
 
-    public class FundPostResponse
+    public class FundResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3181,7 +3181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
         public string UpdatedAt { get; set; }
     }
 
-    public class FundPostInput
+    public class FundBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3236,15 +3236,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
-    }
-
-    public class FundPatchInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
     }
 }
 

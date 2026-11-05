@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
     public class GoformzActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportForm(Expression<Func<string>> formId, Expression<Func<ExportFormInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportForm(Expression<Func<string>> formId, Expression<Func<ExportFormBodyInput>> body = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateForm(Expression<Func<bool>> runCalculations = null, Expression<Func<CreateFormInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateForm(Expression<Func<bool>> runCalculations = null, Expression<Func<CreateFormBodyInput>> body = null)
         {
             var __workflow_runCalculations = WorkflowExpression.Compile(runCalculations, nameof(runCalculations), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 
     public class GoformzTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormCompleted(Expression<Func<FormCompletedInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormCompleted(Expression<Func<FormCompletedBodyInput>> body = null, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         }
     }
 
-    public class ExportFormInput
+    public class ExportFormBodyInput
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         public string Pages { get; set; }
     }
 
-    public class CreateFormInput
+    public class CreateFormBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -99,13 +99,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         public string TemplateId { get; set; }
 
         [JsonProperty("assignment")]
-        public AssignmentDto Assignment { get; set; }
+        public CreateFormAssignmentDto Assignment { get; set; }
 
         [JsonProperty("fields")]
         public JToken Fields { get; set; }
     }
 
-    public class AssignmentDto
+    public class CreateFormAssignmentDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         public string LastUpdateDate { get; set; }
 
         [JsonProperty("assignment")]
-        public AssignmentDto Assignment { get; set; }
+        public GetFormAssignmentDtoResponse Assignment { get; set; }
 
         [JsonProperty("location")]
         public LocationDto Location { get; set; }
@@ -159,6 +159,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         public string ChangeDate { get; set; }
     }
 
+    public class GetFormAssignmentDtoResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
     public class LocationDto
     {
         [JsonProperty("latitude")]
@@ -171,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         public double Accuracy { get; set; }
     }
 
-    public class FormCompletedInput
+    public class FormCompletedBodyInput
     {
         [JsonProperty("eventType")]
         public string EventType { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
     public class MailjetipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<SendEmailv31Response, ApiConnectionActionConfiguration> SendEmailv31(Expression<Func<SendEmailv31Input>> body)
+        public IBodyWorkflowAction<SendEmailv31Response, ApiConnectionActionConfiguration> SendEmailv31(Expression<Func<SendEmailv31BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendEmailv31Response, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<SendEmailv3Response, ApiConnectionActionConfiguration> SendEmailv3(Expression<Func<SendEmailv3Input>> body)
+        public IBodyWorkflowAction<SendEmailv3Response, ApiConnectionActionConfiguration> SendEmailv3(Expression<Func<SendEmailv3BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendEmailv3Response, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<GetMessagesResponse, ApiConnectionActionConfiguration> GetMessages(Expression<Func<int>> contact = null, Expression<Func<int>> customId = null, Expression<Func<int>> destination = null, Expression<Func<string>> fromTS = null, Expression<Func<int>> limit = null, Expression<Func<fromTypeInput>> fromType = null)
+        public IBodyWorkflowAction<GetMessagesResponse, ApiConnectionActionConfiguration> GetMessages(Expression<Func<int>> contact = null, Expression<Func<int>> customId = null, Expression<Func<int>> destination = null, Expression<Func<string>> fromTS = null, Expression<Func<int>> limit = null, Expression<Func<FromTypeInput>> fromType = null)
         {
             var __workflow_contact = WorkflowExpression.Compile(contact, nameof(contact), required: false);
             var __workflow_customId = WorkflowExpression.Compile(customId, nameof(customId), required: false);
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactId, Expression<Func<UpdateContactInput>> body)
+        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<string>> contactId, Expression<Func<UpdateContactBodyInput>> body)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<CreateContactListResponse, ApiConnectionActionConfiguration> CreateContactList(Expression<Func<CreateContactListInput>> body)
+        public IBodyWorkflowAction<CreateContactListResponse, ApiConnectionActionConfiguration> CreateContactList(Expression<Func<CreateContactListBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateContactListResponse, ApiConnectionActionConfiguration>(() =>
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<UpdateContactListResponse, ApiConnectionActionConfiguration> UpdateContactList(Expression<Func<string>> listId, Expression<Func<UpdateContactListInput>> body)
+        public IBodyWorkflowAction<UpdateContactListResponse, ApiConnectionActionConfiguration> UpdateContactList(Expression<Func<string>> listId, Expression<Func<CreateContactListBodyInput>> body)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<CreateCampaignDraftResponse, ApiConnectionActionConfiguration> CreateCampaignDraft(Expression<Func<CreateCampaignDraftInput>> body)
+        public IBodyWorkflowAction<CreateCampaignDraftResponse, ApiConnectionActionConfiguration> CreateCampaignDraft(Expression<Func<CreateCampaignDraftBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCampaignDraftResponse, ApiConnectionActionConfiguration>(() =>
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailjetip")]
-        public IBodyWorkflowAction<UpdateCampaignDraftResponse, ApiConnectionActionConfiguration> UpdateCampaignDraft(Expression<Func<int>> draftId, Expression<Func<UpdateCampaignDraftInput>> body, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<UpdateCampaignDraftResponse, ApiConnectionActionConfiguration> UpdateCampaignDraft(Expression<Func<int>> draftId, Expression<Func<CreateCampaignDraftBodyInput>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_draftId = WorkflowExpression.Compile(draftId, nameof(draftId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -465,25 +465,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public string MessageHref { get; set; }
     }
 
-    public class SendEmailv31Input
+    public class SendEmailv31BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailv31InputMessagesTypeItem[] Messages { get; set; }
+        public SendEmailv31BodyInputMessagesTypeItem[] Messages { get; set; }
         public bool? SandboxMode { get; set; }
         public bool? AdvanceErrorHandling { get; set; }
     }
 
-    public class SendEmailv31InputMessagesTypeItem
+    public class SendEmailv31BodyInputMessagesTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailv31InputMessagesTypeItemFromType From { get; set; }
+        public BodyInputMessagesTypeItemFromType From { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailv31InputMessagesTypeItemToTypeItem[] To { get; set; }
-        public SendEmailv31InputMessagesTypeItemSenderType Sender { get; set; }
-        public SendEmailv31InputMessagesTypeItemReplyToType ReplyTo { get; set; }
-        public SendEmailv31InputMessagesTypeItemCcTypeItem[] Cc { get; set; }
-        public SendEmailv31InputMessagesTypeItemBccTypeItem[] Bcc { get; set; }
+        public BodyInputMessagesTypeItemToTypeItem[] To { get; set; }
+        public BodyInputMessagesTypeItemSenderType Sender { get; set; }
+        public BodyInputMessagesTypeItemReplyToType ReplyTo { get; set; }
+        public BodyInputMessagesTypeItemCcTypeItem[] Cc { get; set; }
+        public BodyInputMessagesTypeItemBccTypeItem[] Bcc { get; set; }
         public string Subject { get; set; }
         public string TextPart { get; set; }
         public string HTMLPart { get; set; }
@@ -493,38 +493,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public Attachmentv31[] Attachments { get; set; }
     }
 
-    public class SendEmailv31InputMessagesTypeItemFromType
+    public class BodyInputMessagesTypeItemFromType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
         public string Name { get; set; }
     }
 
-    public class SendEmailv31InputMessagesTypeItemToTypeItem
+    public class BodyInputMessagesTypeItemToTypeItem
     {
         public string Email { get; set; }
         public string Name { get; set; }
     }
 
-    public class SendEmailv31InputMessagesTypeItemSenderType
+    public class BodyInputMessagesTypeItemSenderType
     {
         public string Email { get; set; }
         public string Name { get; set; }
     }
 
-    public class SendEmailv31InputMessagesTypeItemReplyToType
+    public class BodyInputMessagesTypeItemReplyToType
     {
         public string Email { get; set; }
         public string Name { get; set; }
     }
 
-    public class SendEmailv31InputMessagesTypeItemCcTypeItem
+    public class BodyInputMessagesTypeItemCcTypeItem
     {
         public string Email { get; set; }
         public string Name { get; set; }
     }
 
-    public class SendEmailv31InputMessagesTypeItemBccTypeItem
+    public class BodyInputMessagesTypeItemBccTypeItem
     {
         public string Email { get; set; }
         public string Name { get; set; }
@@ -555,19 +555,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public string MessageUUID { get; set; }
     }
 
-    public class SendEmailv3Input
+    public class SendEmailv3BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailv3InputMessagesTypeItem[] Messages { get; set; }
+        public SendEmailv3BodyInputMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class SendEmailv3InputMessagesTypeItem
+    public class SendEmailv3BodyInputMessagesTypeItem
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromEmail { get; set; }
         public string FromName { get; set; }
         public bool? Sender { get; set; }
-        public SendEmailv3InputMessagesTypeItemRecipientsTypeItem[] Recipients { get; set; }
+        public BodyInputMessagesTypeItemRecipientsTypeItem[] Recipients { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -583,10 +583,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public Attachment[] Attachments { get; set; }
 
         [JsonProperty("Inline_attachments")]
-        public SendEmailv3InputMessagesTypeItemInlineAttachmentsTypeItem[] InlineAttachments { get; set; }
+        public BodyInputMessagesTypeItemInlineAttachmentsTypeItem[] InlineAttachments { get; set; }
     }
 
-    public class SendEmailv3InputMessagesTypeItemRecipientsTypeItem
+    public class BodyInputMessagesTypeItemRecipientsTypeItem
     {
         public string Email { get; set; }
         public string Name { get; set; }
@@ -601,7 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public string Content { get; set; }
     }
 
-    public class SendEmailv3InputMessagesTypeItemInlineAttachmentsTypeItem
+    public class BodyInputMessagesTypeItemInlineAttachmentsTypeItem
     {
         public string Filename { get; set; }
 
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public string UUID { get; set; }
     }
 
-    public enum fromTypeInput
+    public enum FromTypeInput
     {
         _1 = 1,
         _2 = 2,
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public int Total { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         public string IsExcludedFromCampaigns { get; set; }
         public string Name { get; set; }
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public int Total { get; set; }
     }
 
-    public class UpdateContactInput
+    public class UpdateContactBodyInput
     {
         public bool? IsExcludedFromCampaigns { get; set; }
         public string Name { get; set; }
@@ -777,7 +777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public int Total { get; set; }
     }
 
-    public class CreateContactListInput
+    public class CreateContactListBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -796,13 +796,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public int Count { get; set; }
         public ContactsListResponse[] Data { get; set; }
         public int Total { get; set; }
-    }
-
-    public class UpdateContactListInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-        public bool? IsDeleted { get; set; }
     }
 
     public class GetCampaignsDraftResponse
@@ -859,10 +852,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public int Total { get; set; }
     }
 
-    public class CreateCampaignDraftInput
+    public class CreateCampaignDraftBodyInput
     {
         public int? Current { get; set; }
-        public CreateCampaignDraftInputEditModeType? EditMode { get; set; }
+        public BodyInputEditModeType? EditMode { get; set; }
         public bool? IsStarred { get; set; }
         public bool? IsTextPartIncluded { get; set; }
         public string ReplyEmail { get; set; }
@@ -890,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCampaignDraftInputEditModeType
+    public enum BodyInputEditModeType
     {
         [EnumMember(Value = "tool2")]
         Tool2,
@@ -912,47 +905,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public int Count { get; set; }
         public CampaignDraftResponse[] Data { get; set; }
         public int Total { get; set; }
-    }
-
-    public class UpdateCampaignDraftInput
-    {
-        public int? Current { get; set; }
-        public UpdateCampaignDraftInputEditModeType? EditMode { get; set; }
-        public bool? IsStarred { get; set; }
-        public bool? IsTextPartIncluded { get; set; }
-        public string ReplyEmail { get; set; }
-        public string SenderName { get; set; }
-
-        [JsonProperty("TemplateID")]
-        public int? TemplateId { get; set; }
-        public string Title { get; set; }
-
-        [JsonProperty("ContactsListID")]
-        public string ContactsListId { get; set; }
-        public string ContactsListAlt { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Locale { get; set; }
-
-        [JsonProperty("SegmentationID")]
-        public int? SegmentationId { get; set; }
-        public string SegmentationAlt { get; set; }
-        public string Sender { get; set; }
-        public string SenderEmail { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Subject { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateCampaignDraftInputEditModeType
-    {
-        [EnumMember(Value = "tool2")]
-        Tool2,
-        [EnumMember(Value = "html2")]
-        Html2,
-        [EnumMember(Value = "mjml")]
-        Mjml
     }
 
     public class GetCampaignOverviewResponse

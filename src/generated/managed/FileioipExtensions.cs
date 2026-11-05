@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUploadResponse, ApiConnectionActionConfiguration> FileUpload(Expression<Func<FileUploadInput>> body = null)
+        public IBodyWorkflowAction<FileUploadResponse, ApiConnectionActionConfiguration> FileUpload(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FileUploadResponse, ApiConnectionActionConfiguration>(() =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUpdateResponse, ApiConnectionActionConfiguration> FileUpdate(Expression<Func<string>> key, Expression<Func<FileUpdateInput>> body = null)
+        public IBodyWorkflowAction<FileUpdateResponse, ApiConnectionActionConfiguration> FileUpdate(Expression<Func<string>> key, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         public string Modified { get; set; }
     }
 
-    public class FileUploadInput
+    public class BodyInput
     {
         [JsonProperty("file")]
         public string File { get; set; }
@@ -299,21 +299,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
 
         [JsonProperty("modified")]
         public string Modified { get; set; }
-    }
-
-    public class FileUpdateInput
-    {
-        [JsonProperty("file")]
-        public string File { get; set; }
-
-        [JsonProperty("expires")]
-        public string Expires { get; set; }
-
-        [JsonProperty("maxDownloads")]
-        public int? MaxDownloads { get; set; }
-
-        [JsonProperty("autoDelete")]
-        public bool? AutoDelete { get; set; }
     }
 
     public class FileDeleteResponse

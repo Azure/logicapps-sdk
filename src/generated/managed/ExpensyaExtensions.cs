@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddReciept(Expression<Func<AddRecieptInput>> addReceiptInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddReciept(Expression<Func<AddReceiptInputInput>> addReceiptInput = null)
         {
             var __workflow_addReceiptInput = WorkflowExpression.Compile(addReceiptInput, nameof(addReceiptInput), required: false);
             return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<UpdateReportStatusInput>> reportUpdateStatusInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<ReportUpdateStatusInputInput>> reportUpdateStatusInput = null)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             var __workflow_reportUpdateStatusInput = WorkflowExpression.Compile(reportUpdateStatusInput, nameof(reportUpdateStatusInput), required: false);
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<AddQuickExpenseV2Input>> quickExpenseInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<QuickExpenseInputInput>> quickExpenseInput = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_quickExpenseInput = WorkflowExpression.Compile(quickExpenseInput, nameof(quickExpenseInput), required: false);
@@ -655,7 +655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> InviteUser(Expression<Func<InviteUserV2Input>> userInviteInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> InviteUser(Expression<Func<UserInviteInputInput>> userInviteInput = null)
         {
             var __workflow_userInviteInput = WorkflowExpression.Compile(userInviteInput, nameof(userInviteInput), required: false);
             return new DeferredBodyAction<BaseResult, ApiConnectionActionConfiguration>(() =>
@@ -682,7 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpateUser(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<UpateUserV2Input>> userUpdateInput = null)
+        public IBodyWorkflowAction<BaseResult, ApiConnectionActionConfiguration> UpateUser(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<UserUpdateInputInput>> userUpdateInput = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_shouldUpdateValidators = WorkflowExpression.Compile(shouldUpdateValidators, nameof(shouldUpdateValidators), required: true);
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration> UpdateProjectState(Expression<Func<UpdateProjectStateV2Input>> updateProjectStateInput = null)
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration> UpdateProjectState(Expression<Func<UpdateProjectStateInputInput>> updateProjectStateInput = null)
         {
             var __workflow_updateProjectStateInput = WorkflowExpression.Compile(updateProjectStateInput, nameof(updateProjectStateInput), required: false);
             return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult, ApiConnectionActionConfiguration>(() =>
@@ -992,16 +992,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class AddOrUpdateProjectInput
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool HasBillable { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsActive { get; set; }
         public string MileageConfigurations { get; set; }
         public string Address { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ExternalId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectRef { get; set; }
 
         [JsonProperty("Validator_Id")]
@@ -1010,12 +1019,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [JsonProperty("Reviewer_Id")]
         public string ReviewerId { get; set; }
         public string ClientName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ForAllCompany { get; set; }
-        public bool IsBillableDefaultValue { get; set; }
+        public bool? IsBillableDefaultValue { get; set; }
         public string PayId2 { get; set; }
         public string Currency { get; set; }
         public string ExtraData { get; set; }
-        public AddOrUpdateProjectInputProjectUseTypeType ProjectUseType { get; set; }
+        public AddOrUpdateProjectInputProjectUseTypeType? ProjectUseType { get; set; }
         public string Description { get; set; }
         public string CategoriesIds { get; set; }
         public string[] TagsToAssign { get; set; }
@@ -1092,7 +1103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008 = 2008
     }
 
-    public class AddRecieptInput
+    public class AddReceiptInputInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -1246,10 +1257,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008 = 2008
     }
 
-    public class UpdateReportStatusInput
+    public class ReportUpdateStatusInputInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateReportStatusInputOperationType Operation { get; set; }
+        public ReportUpdateStatusInputInputOperationType Operation { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -1257,7 +1268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string AccountingPeriod { get; set; }
     }
 
-    public enum UpdateReportStatusInputOperationType
+    public enum ReportUpdateStatusInputInputOperationType
     {
         _0 = 0,
         _2 = 2,
@@ -1464,7 +1475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008 = 2008
     }
 
-    public class AddQuickExpenseV2Input
+    public class QuickExpenseInputInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileToSend { get; set; }
@@ -1480,13 +1491,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Comment { get; set; }
         public string MerchantExpenseId { get; set; }
         public bool? IsEncrypted { get; set; }
-        public AddQuickExpenseV2InputExpenseUseTypeType? ExpenseUseType { get; set; }
+        public QuickExpenseInputInputExpenseUseTypeType? ExpenseUseType { get; set; }
         public string PaymentTypeCode { get; set; }
         public string ExpenseTypeCode { get; set; }
         public string FileType { get; set; }
     }
 
-    public enum AddQuickExpenseV2InputExpenseUseTypeType
+    public enum QuickExpenseInputInputExpenseUseTypeType
     {
         _1 = 1,
         _2 = 2,
@@ -2235,7 +2246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008 = 2008
     }
 
-    public class InviteUserV2Input
+    public class UserInviteInputInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
@@ -2261,18 +2272,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string ReviewerId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public InviteUserV2InputUserTypeType UserType { get; set; }
+        public UserInviteInputInputUserTypeType UserType { get; set; }
         public string Vendor { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public InviteUserV2InputUserRoleType UserRole { get; set; }
+        public UserInviteInputInputUserRoleType UserRole { get; set; }
         public string DefaultProjectId { get; set; }
         public string IKRatesId { get; set; }
         public ValidatorInput[] AdditionalValidators { get; set; }
         public string[] TagsToAssign { get; set; }
     }
 
-    public enum InviteUserV2InputUserTypeType
+    public enum UserInviteInputInputUserTypeType
     {
         _0 = 0,
         _1 = 1,
@@ -2284,7 +2295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _56 = 56
     }
 
-    public enum InviteUserV2InputUserRoleType
+    public enum UserInviteInputInputUserRoleType
     {
         _0 = 0,
         _2 = 2,
@@ -2408,7 +2419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008 = 2008
     }
 
-    public class UpateUserV2Input
+    public class UserUpdateInputInput
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -2429,9 +2440,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
         [JsonProperty("Reviewer_Id")]
         public string ReviewerId { get; set; }
-        public UpateUserV2InputUserTypeType? UserType { get; set; }
+        public UserUpdateInputInputUserTypeType? UserType { get; set; }
         public string Vendor { get; set; }
-        public UpateUserV2InputUserRoleType? UserRole { get; set; }
+        public UserUpdateInputInputUserRoleType? UserRole { get; set; }
         public string JobTitle { get; set; }
         public bool? CanAddPurchase { get; set; }
         public string DefaultProjectId { get; set; }
@@ -2443,7 +2454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string[] TagsToUnassign { get; set; }
     }
 
-    public enum UpateUserV2InputUserTypeType
+    public enum UserUpdateInputInputUserTypeType
     {
         _0 = 0,
         _1 = 1,
@@ -2455,7 +2466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _56 = 56
     }
 
-    public enum UpateUserV2InputUserRoleType
+    public enum UserUpdateInputInputUserRoleType
     {
         _0 = 0,
         _2 = 2,
@@ -2486,7 +2497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _67108864 = 67108864
     }
 
-    public class UpdateProjectStateV2Input
+    public class UpdateProjectStateInputInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ItemIds { get; set; }
@@ -2616,7 +2627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
     public class UpdateUserStateInput
     {
         public string UserId { get; set; }
-        public UpdateUserStateInputOperationType Operation { get; set; }
+        public UpdateUserStateInputOperationType? Operation { get; set; }
     }
 
     public enum UpdateUserStateInputOperationType

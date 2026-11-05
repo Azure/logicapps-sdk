@@ -13,62 +13,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
     public class TldripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ArticleHumanPostResponse, ApiConnectionActionConfiguration> ArticleHuman(Expression<Func<ArticleHumanPostInput>> body = null)
+        public IBodyWorkflowAction<ArticleHumanResponse, ApiConnectionActionConfiguration> ArticleHuman(Expression<Func<ArticleHumanBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ArticleHumanPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ArticleHumanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-url/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ArticleHumanPostResponse>(callPayload);
+                return new ApiConnectionAction<ArticleHumanResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractArticlePostResponse, ApiConnectionActionConfiguration> ExtractArticle(Expression<Func<ExtractArticlePostInput>> body = null)
+        public IBodyWorkflowAction<ExtractArticleResponse, ApiConnectionActionConfiguration> ExtractArticle(Expression<Func<ExtractArticleBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractArticlePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractArticleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-url/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractArticlePostResponse>(callPayload);
+                return new ApiConnectionAction<ExtractArticleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<TextHumanPostResponse, ApiConnectionActionConfiguration> TextHuman(Expression<Func<TextHumanPostInput>> body = null)
+        public IBodyWorkflowAction<TextHumanResponse, ApiConnectionActionConfiguration> TextHuman(Expression<Func<TextHumanBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TextHumanPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TextHumanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-text/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TextHumanPostResponse>(callPayload);
+                return new ApiConnectionAction<TextHumanResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
-        public IBodyWorkflowAction<ExtractTextPostResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<ExtractTextPostInput>> body = null)
+        public IBodyWorkflowAction<ExtractTextResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<ExtractTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractTextPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-text/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractTextPostResponse>(callPayload);
+                return new ApiConnectionAction<ExtractTextResponse>(callPayload);
             });
         }
     }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
     {
     }
 
-    public class ArticleHumanPostResponse
+    public class ArticleHumanResponse
     {
         [JsonProperty("summary")]
         public string[] Summary { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         public string ArticleAbstract { get; set; }
     }
 
-    public class ArticleHumanPostInput
+    public class ArticleHumanBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         public bool? IsDetailed { get; set; }
     }
 
-    public class ExtractArticlePostResponse
+    public class ExtractArticleResponse
     {
         [JsonProperty("summary")]
         public string[] Summary { get; set; }
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         public string ArticleAbstract { get; set; }
     }
 
-    public class ExtractArticlePostInput
+    public class ExtractArticleBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -164,13 +164,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         public bool? IsDetailed { get; set; } = true;
     }
 
-    public class TextHumanPostResponse
+    public class TextHumanResponse
     {
         [JsonProperty("summary")]
         public string Summary { get; set; }
     }
 
-    public class TextHumanPostInput
+    public class TextHumanBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -182,13 +182,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         public int? MaxLength { get; set; } = 300;
     }
 
-    public class ExtractTextPostResponse
+    public class ExtractTextResponse
     {
         [JsonProperty("summary")]
         public string[] Summary { get; set; }
     }
 
-    public class ExtractTextPostInput
+    public class ExtractTextBodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }

@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ramquestactions")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AddTask(Expression<Func<string>> orderId, Expression<Func<AddTaskInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AddTask(Expression<Func<string>> orderId, Expression<Func<BodyInput>> body)
         {
             var __workflow_orderId = WorkflowExpression.Compile(orderId, nameof(orderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ramquestactions")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> orderId, Expression<Func<UpdateTaskInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateTask(Expression<Func<string>> orderId, Expression<Func<BodyInput>> body)
         {
             var __workflow_orderId = WorkflowExpression.Compile(orderId, nameof(orderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1433,7 +1433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
         public bool IsApplicable { get; set; }
     }
 
-    public class AddTaskInput
+    public class BodyInput
     {
         [JsonProperty("workflowTaskId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int WorkflowTaskId { get; set; }
@@ -1442,31 +1442,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
         public string TaskNote { get; set; }
 
         [JsonProperty("targetStatus")]
-        public AddTaskInputTargetStatusType? TargetStatus { get; set; }
+        public BodyInputTargetStatusType? TargetStatus { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddTaskInputTargetStatusType
-    {
-        None,
-        Complete,
-        Open
-    }
-
-    public class UpdateTaskInput
-    {
-        [JsonProperty("workflowTaskId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int WorkflowTaskId { get; set; }
-
-        [JsonProperty("taskNote", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TaskNote { get; set; }
-
-        [JsonProperty("targetStatus")]
-        public UpdateTaskInputTargetStatusType? TargetStatus { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateTaskInputTargetStatusType
+    public enum BodyInputTargetStatusType
     {
         None,
         Complete,

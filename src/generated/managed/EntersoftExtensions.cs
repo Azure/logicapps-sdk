@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ES00DocumentsPostBodyToES00Blob(Expression<Func<ES00DocumentsPostBodyToES00BlobInput>> blobInfo)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ES00DocumentsPostBodyToES00Blob(Expression<Func<BlobInfoInput>> blobInfo)
         {
             var __workflow_blobInfo = WorkflowExpression.Compile(blobInfo, nameof(blobInfo), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDeleteES00Document(Expression<Func<ES00DocumentsDeleteES00DocumentInput>> @params)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ES00DocumentsDeleteES00Document(Expression<Func<ParamsInput>> @params)
         {
             var __workflow_params = WorkflowExpression.Compile(@params, nameof(@params), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<ES00DocumentsAddOrUpdateAttachedDocumentInput>> inDoc)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<InDocInput>> inDoc)
         {
             var __workflow_inDoc = WorkflowExpression.Compile(inDoc, nameof(inDoc), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsES00DocumentInfo, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESCollaborationBroadcastMessage(Expression<Func<ESCollaborationBroadcastMessageInput>> msg)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ESCollaborationBroadcastMessage(Expression<Func<ESCollaborationBroadcastMessageMsgInput>> msg)
         {
             var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationSendEmail(Expression<Func<ESCollaborationSendEmailInput>> msg)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationSendEmail(Expression<Func<ESCollaborationSendEmailMsgInput>> msg)
         {
             var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ESCollaborationSendSMS(Expression<Func<ESCollaborationSendSMSInput>> msg)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> ESCollaborationSendSMS(Expression<Func<ESCollaborationSendSMSMsgInput>> msg)
         {
             var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse, ApiConnectionActionConfiguration> ESCollaborationSendViberMessage(Expression<Func<ESCollaborationSendViberMessageInput>> msg)
+        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse, ApiConnectionActionConfiguration> ESCollaborationSendViberMessage(Expression<Func<ESCollaborationSendViberMessageMsgInput>> msg)
         {
             var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
             return new DeferredBodyAction<EntersoftWebApiControllersESViberResponse, ApiConnectionActionConfiguration>(() =>
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationCreateRFARequest(Expression<Func<ESCollaborationCreateRFARequestInput>> rFARequest)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationCreateRFARequest(Expression<Func<RFARequestInput>> rFARequest)
         {
             var __workflow_rFARequest = WorkflowExpression.Compile(rFARequest, nameof(rFARequest), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationRespondToRFARequest(Expression<Func<ESCollaborationRespondToRFARequestInput>> rFAResponse)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESCollaborationRespondToRFARequest(Expression<Func<RFAResponseInput>> rFAResponse)
         {
             var __workflow_rFAResponse = WorkflowExpression.Compile(rFAResponse, nameof(rFAResponse), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityDeleteEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityDeleteEntityByType(Expression<Func<EntityTypeInput>> entityType, Expression<Func<string>> pK)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityUpdateEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK, Expression<Func<object>> updProperties)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ESEntityUpdateEntityByType(Expression<Func<EntityTypeInput>> entityType, Expression<Func<string>> pK, Expression<Func<object>> updProperties)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration> ESEntityCreateEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<object>> updProperties)
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo, ApiConnectionActionConfiguration> ESEntityCreateEntityByType(Expression<Func<EntityTypeInput>> entityType, Expression<Func<object>> updProperties)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_updProperties = WorkflowExpression.Compile(updProperties, nameof(updProperties), required: true);
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration> ESEntityEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity, ApiConnectionActionConfiguration> ESEntityEntityByType(Expression<Func<EntityTypeInput>> entityType, Expression<Func<string>> pK)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_pK = WorkflowExpression.Compile(pK, nameof(pK), required: true);
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesById(Expression<Func<string>> entityId, Expression<Func<ESEntityEntitiesByIdInput>> fetchOptions)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesById(Expression<Func<string>> entityId, Expression<Func<FetchOptionsInput>> fetchOptions)
         {
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_fetchOptions = WorkflowExpression.Compile(fetchOptions, nameof(fetchOptions), required: true);
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<ESEntityEntitiesByTypeInput>> fetchOptions)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult, ApiConnectionActionConfiguration> ESEntityEntitiesByType(Expression<Func<EntityTypeInput>> entityType, Expression<Func<FetchOptionsInput>> fetchOptions)
         {
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
             var __workflow_fetchOptions = WorkflowExpression.Compile(fetchOptions, nameof(fetchOptions), required: true);
@@ -1230,7 +1230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> ESRPCLog(Expression<Func<string>> id, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> ESRPCLog(Expression<Func<string>> id, Expression<Func<string>> description = null, Expression<Func<SeverityInput>> severity = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
@@ -1289,7 +1289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteScrollerCommand(Expression<Func<ESRPCExecuteScrollerCommandInput>> eSScrollerCommand)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteScrollerCommand(Expression<Func<ESScrollerCommandInput>> eSScrollerCommand)
         {
             var __workflow_eSScrollerCommand = WorkflowExpression.Compile(eSScrollerCommand, nameof(eSScrollerCommand), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration>(() =>
@@ -1303,7 +1303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteCommand(Expression<Func<ESRPCExecuteCommandInput>> eSCommandIn)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteCommand(Expression<Func<ESCommandInInput>> eSCommandIn)
         {
             var __workflow_eSCommandIn = WorkflowExpression.Compile(eSCommandIn, nameof(eSCommandIn), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESScrollerCommandOut, ApiConnectionActionConfiguration>(() =>
@@ -1317,7 +1317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteFormCommand(Expression<Func<ESRPCExecuteFormCommandInput>> formCommand)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut, ApiConnectionActionConfiguration> ESRPCExecuteFormCommand(Expression<Func<FormCommandInput>> formCommand)
         {
             var __workflow_formCommand = WorkflowExpression.Compile(formCommand, nameof(formCommand), required: true);
             return new DeferredBodyAction<EntersoftWebApiModelsESFormCommandOut, ApiConnectionActionConfiguration>(() =>
@@ -1619,7 +1619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESBusinessHookPost(Expression<Func<ESBusinessHookPostInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESBusinessHookPost(Expression<Func<ESBusinessHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1632,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESPodHookPost(Expression<Func<ESPodHookPostInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESPodHookPost(Expression<Func<ESPodHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1645,7 +1645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESRFAHookPost(Expression<Func<ESRFAHookPostInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESRFAHookPost(Expression<Func<ESRFAHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1658,7 +1658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESHookPost(Expression<Func<ESHookPostInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESHookPost(Expression<Func<ESHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1671,7 +1671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
             });
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESSystemHookPost(Expression<Func<ESSystemHookPostInput>> registration, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration> ESSystemHookPost(Expression<Func<ESSystemHookPostRegistrationInput>> registration, FlowRecurrence recurrence = null)
         {
             var __workflow_registration = WorkflowExpression.Compile(registration, nameof(registration), required: true);
             return new DeferredBodyTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -1736,7 +1736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string BLOBDATA { get; set; }
     }
 
-    public class ES00DocumentsPostBodyToES00BlobInput
+    public class BlobInfoInput
     {
         [JsonProperty("GID")]
         public string GId { get; set; }
@@ -1772,7 +1772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public bool IsNew { get; set; }
     }
 
-    public class ES00DocumentsDeleteES00DocumentInput
+    public class ParamsInput
     {
         [JsonProperty("GID")]
         public string GId { get; set; }
@@ -1823,7 +1823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BLOBDATA { get; set; }
     }
 
-    public class ES00DocumentsAddOrUpdateAttachedDocumentInput
+    public class InDocInput
     {
         [JsonProperty("GID")]
         public string GId { get; set; }
@@ -2009,13 +2009,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Investigate
     }
 
-    public class ESCollaborationBroadcastMessageInput
+    public class ESCollaborationBroadcastMessageMsgInput
     {
         public string[] Recipients { get; set; }
         public string Message { get; set; }
     }
 
-    public class ESCollaborationSendEmailInput
+    public class ESCollaborationSendEmailMsgInput
     {
         public string FromEmailAddr { get; set; }
         public string ToEmailAddr { get; set; }
@@ -2023,7 +2023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string Body { get; set; }
     }
 
-    public class ESCollaborationSendSMSInput
+    public class ESCollaborationSendSMSMsgInput
     {
         public string Body { get; set; }
         public string[] Recipients { get; set; }
@@ -2037,7 +2037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken[] Message { get; set; }
     }
 
-    public class ESCollaborationSendViberMessageInput
+    public class ESCollaborationSendViberMessageMsgInput
     {
         public string[] Recipients { get; set; }
         public string DateToSend { get; set; }
@@ -2060,7 +2060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string SMSText { get; set; }
     }
 
-    public class ESCollaborationCreateRFARequestInput
+    public class RFARequestInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2072,7 +2072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestedBy { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ESCollaborationCreateRFARequestInputPriorityType? Priority { get; set; } = ESCollaborationCreateRFARequestInputPriorityType.Normal;
+        public RFARequestInputPriorityType? Priority { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft.RFARequestInputPriorityType.Normal;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsExternal { get; set; } = false;
@@ -2092,14 +2092,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESCollaborationCreateRFARequestInputPriorityType
+    public enum RFARequestInputPriorityType
     {
         Low,
         Normal,
         High
     }
 
-    public class ESCollaborationRespondToRFARequestInput
+    public class RFAResponseInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2148,7 +2148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum entityTypeInput
+    public enum EntityTypeInput
     {
         ES00Device,
         ES00List,
@@ -2678,20 +2678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken[] Rows { get; set; }
     }
 
-    public class ESEntityEntitiesByIdInput
-    {
-        public string[] SelectFields { get; set; }
-        public string[] OrderByFields { get; set; }
-        public JToken Params { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Page { get; set; } = 1;
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? PageSize { get; set; } = 500;
-    }
-
-    public class ESEntityEntitiesByTypeInput
+    public class FetchOptionsInput
     {
         public string[] SelectFields { get; set; }
         public string[] OrderByFields { get; set; }
@@ -12903,7 +12890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum severityInput
+    public enum SeverityInput
     {
         Information,
         Warning,
@@ -12943,7 +12930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken Variables { get; set; }
     }
 
-    public class ESRPCExecuteScrollerCommandInput
+    public class ESScrollerCommandInput
     {
         public JToken ScrollerParams { get; set; }
         public JToken ScrollerDataset { get; set; }
@@ -12963,7 +12950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken UnboundVariables { get; set; }
     }
 
-    public class ESRPCExecuteCommandInput
+    public class ESCommandInInput
     {
         [JsonProperty("ScrollerID", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScrollerId { get; set; }
@@ -12981,7 +12968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken Variables { get; set; }
     }
 
-    public class ESRPCExecuteFormCommandInput
+    public class FormCommandInput
     {
         [JsonProperty("EntityID")]
         public string EntityId { get; set; }
@@ -15497,10 +15484,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
-    public class ESBusinessHookPostInput
+    public class ESBusinessHookPostRegistrationInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ESBusinessHookPostInputBusinessEventTypeType BusinessEventType { get; set; } = ESBusinessHookPostInputBusinessEventTypeType.HighValueSalesOrder;
+        public RegistrationInputBusinessEventTypeType BusinessEventType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft.RegistrationInputBusinessEventTypeType.HighValueSalesOrder;
         public string Context { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -15518,7 +15505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESBusinessHookPostInputBusinessEventTypeType
+    public enum RegistrationInputBusinessEventTypeType
     {
         HighValueSalesOrder,
         HighValuePurchaseOrder,
@@ -15541,13 +15528,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RequestHasBeenApproved
     }
 
-    public class ESPodHookPostInput
+    public class ESPodHookPostRegistrationInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ESPodHookPostInputStateType? State { get; set; } = ESPodHookPostInputStateType.All;
+        public RegistrationInputStateType? State { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft.RegistrationInputStateType.All;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ESPodHookPostInputPackageTypeType? PackageType { get; set; } = ESPodHookPostInputPackageTypeType.All;
+        public RegistrationInputPackageTypeType? PackageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft.RegistrationInputPackageTypeType.All;
         public string ConveyanceLicencePlate { get; set; }
 
         [JsonProperty("BranchID")]
@@ -15567,7 +15554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESPodHookPostInputStateType
+    public enum RegistrationInputStateType
     {
         Initial,
         Arrived,
@@ -15578,7 +15565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESPodHookPostInputPackageTypeType
+    public enum RegistrationInputPackageTypeType
     {
         MasterPackage,
         Package,
@@ -15588,10 +15575,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
-    public class ESRFAHookPostInput
+    public class ESRFAHookPostRegistrationInput
     {
         public string RequestedBy { get; set; }
-        public ESRFAHookPostInputPriorityType? Priority { get; set; }
+        public RegistrationInputPriorityType? Priority { get; set; }
         public string RequestClass { get; set; }
         public string RequestCategory { get; set; }
 
@@ -15610,20 +15597,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESRFAHookPostInputPriorityType
+    public enum RegistrationInputPriorityType
     {
         Low,
         Normal,
         High
     }
 
-    public class ESHookPostInput
+    public class ESHookPostRegistrationInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ESHookPostInputEntityTypeType EntityType { get; set; }
+        public RegistrationInputEntityTypeType EntityType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ESHookPostInputEventTypeType EventType { get; set; }
+        public RegistrationInputEventTypeType EventType { get; set; }
 
         [JsonProperty("ExternalID")]
         public string ExternalId { get; set; }
@@ -15637,7 +15624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESHookPostInputEntityTypeType
+    public enum RegistrationInputEntityTypeType
     {
         ES00Device,
         ES00List,
@@ -15884,7 +15871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESHookPostInputEventTypeType
+    public enum RegistrationInputEventTypeType
     {
         Create,
         Update,
@@ -15892,10 +15879,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         CreateOrUpdate
     }
 
-    public class ESSystemHookPostInput
+    public class ESSystemHookPostRegistrationInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ESSystemHookPostInputSystemEventTypeTypeItem[] SystemEventType { get; set; }
+        public RegistrationInputSystemEventTypeTypeItem[] SystemEventType { get; set; }
         public string OtherEvent { get; set; }
 
         [JsonProperty("ExternalID")]
@@ -15910,7 +15897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ESSystemHookPostInputSystemEventTypeTypeItem
+    public enum RegistrationInputSystemEventTypeTypeItem
     {
         RestartAppServer,
         UpgradeStart,

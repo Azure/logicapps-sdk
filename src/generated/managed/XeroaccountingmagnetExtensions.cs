@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xeroaccountingmagnet")]
-        public IBodyWorkflowAction<SendHttpRequestResponse, ApiConnectionActionConfiguration> SendHttpRequest(Expression<Func<string>> xeroTenantId, Expression<Func<SendHttpRequestInput>> body)
+        public IBodyWorkflowAction<SendHttpRequestResponse, ApiConnectionActionConfiguration> SendHttpRequest(Expression<Func<string>> xeroTenantId, Expression<Func<SendHttpRequestBodyInput>> body)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -128,12 +128,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
 
     public class XeroaccountingmagnetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<eventTypeInput>> eventType, Expression<Func<eventCategoryInput>> eventCategory, Expression<Func<TriggerXeroInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TriggerXero(Expression<Func<string>> xeroTenantId, Expression<Func<EventTypeInput>> eventType, Expression<Func<EventCategoryInput>> eventCategory, FlowRecurrence recurrence = null)
         {
             var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
             var __workflow_eventType = WorkflowExpression.Compile(eventType, nameof(eventType), required: true);
             var __workflow_eventCategory = WorkflowExpression.Compile(eventCategory, nameof(eventCategory), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/webhook/register";
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
                 callPayload.Queries["eventType"] = ExpressionConverter.Convert(__workflow_eventType);
                 callPayload.Queries["eventCategory"] = ExpressionConverter.Convert(__workflow_eventCategory);
                 callPayload.Headers["xero-tenant-id"] = ExpressionConverter.Convert(__workflow_xeroTenantId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new TriggerXeroBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -160,23 +159,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         public int StatusCode { get; set; }
     }
 
-    public class SendHttpRequestInput
+    public class SendHttpRequestBodyInput
     {
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendHttpRequestInputMethodType Method { get; set; }
+        public BodyInputMethodType Method { get; set; }
 
         [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uri { get; set; }
 
         [JsonProperty("headers")]
-        public SendHttpRequestInputHeadersTypeItem[] Headers { get; set; }
+        public BodyInputHeadersTypeItem[] Headers { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendHttpRequestInputMethodType
+    public enum BodyInputMethodType
     {
         GET,
         POST,
@@ -185,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
         DELETE
     }
 
-    public class SendHttpRequestInputHeadersTypeItem
+    public class BodyInputHeadersTypeItem
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -195,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum eventTypeInput
+    public enum EventTypeInput
     {
         Create,
         Update,
@@ -204,13 +203,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum eventCategoryInput
+    public enum EventCategoryInput
     {
         Invoice,
         Contact
     }
 
-    public class TriggerXeroInput
+    public class TriggerXeroBodyInput
     {
         [JsonProperty("webhookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";

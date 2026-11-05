@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<PostUnblockPostInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnblock(Expression<Func<string>> blogIdentifier, Expression<Func<PostUnblockBodyInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<PostBlockPostInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostBlock(Expression<Func<string>> blogIdentifier, Expression<Func<PostBlockBodyInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<PostsBlockPostInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostsBlock(Expression<Func<string>> blogIdentifier, Expression<Func<PostsBlockBodyInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<PostQueuedReorderPostInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostQueuedReorder(Expression<Func<string>> blogIdentifier, Expression<Func<PostQueuedReorderBodyInput>> body = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -273,22 +273,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostCreatePostResponse, ApiConnectionActionConfiguration> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<PostCreatePostInput>> body)
+        public IBodyWorkflowAction<PostCreateResponse, ApiConnectionActionConfiguration> PostCreate(Expression<Func<string>> blogIdentifier, Expression<Func<PostCreateBodyInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PostCreatePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostCreateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/blog/{0}/posts", __workflow_blogIdentifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PostCreatePostResponse>(callPayload);
+                return new ApiConnectionAction<PostCreateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostRetrieveGetResponse, ApiConnectionActionConfiguration> PostRetrieveGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<postFormatInput>> postFormat = null)
+        public IBodyWorkflowAction<PostRetrieveGetResponse, ApiConnectionActionConfiguration> PostRetrieveGet(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<PostFormatInput>> postFormat = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostEditPutResponse, ApiConnectionActionConfiguration> PostEditPut(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<PostEditPutInput>> body)
+        public IBodyWorkflowAction<PostEditPutResponse, ApiConnectionActionConfiguration> PostEditPut(Expression<Func<string>> blogIdentifier, Expression<Func<string>> postId, Expression<Func<PostCreateBodyInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostDeleteResponse, ApiConnectionActionConfiguration> PostDelete(Expression<Func<string>> blogIdentifier, Expression<Func<PostDeleteInput>> body)
+        public IBodyWorkflowAction<PostDeleteResponse, ApiConnectionActionConfiguration> PostDelete(Expression<Func<string>> blogIdentifier, Expression<Func<PostDeleteBodyInput>> body)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<PostNotesGetResponse, ApiConnectionActionConfiguration> PostNotesGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> id, Expression<Func<double>> beforeTimestamp = null, Expression<Func<modeInput>> mode = null)
+        public IBodyWorkflowAction<PostNotesGetResponse, ApiConnectionActionConfiguration> PostNotesGet(Expression<Func<string>> blogIdentifier, Expression<Func<double>> id, Expression<Func<double>> beforeTimestamp = null, Expression<Func<ModeInput>> mode = null)
         {
             var __workflow_blogIdentifier = WorkflowExpression.Compile(blogIdentifier, nameof(blogIdentifier), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -419,37 +419,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogFollowPostResponse, ApiConnectionActionConfiguration> BlogFollow(Expression<Func<BlogFollowPostInput>> body = null)
+        public IBodyWorkflowAction<BlogFollowResponse, ApiConnectionActionConfiguration> BlogFollow(Expression<Func<BlogFollowBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<BlogFollowPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BlogFollowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/follow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<BlogFollowPostResponse>(callPayload);
+                return new ApiConnectionAction<BlogFollowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<BlogUnfollowPostResponse, ApiConnectionActionConfiguration> BlogUnfollow(Expression<Func<BlogUnfollowPostInput>> body = null)
+        public IBodyWorkflowAction<BlogUnfollowResponse, ApiConnectionActionConfiguration> BlogUnfollow(Expression<Func<BlogUnfollowBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<BlogUnfollowPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BlogUnfollowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/user/unfollow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<BlogUnfollowPostResponse>(callPayload);
+                return new ApiConnectionAction<BlogUnfollowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostLike(Expression<Func<PostLikePostInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostLike(Expression<Func<PostLikeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tumblrip")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnlike(Expression<Func<PostUnlikePostInput>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostUnlike(Expression<Func<PostLikeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public int Offset { get; set; }
     }
 
-    public class PostUnblockPostInput
+    public class PostUnblockBodyInput
     {
         [JsonProperty("blocked_tumblelog")]
         public string BlockedTumblelog { get; set; }
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public bool? AnonymousOnly { get; set; }
     }
 
-    public class PostBlockPostInput
+    public class PostBlockBodyInput
     {
         [JsonProperty("blocked_tumblelog")]
         public string BlockedTumblelog { get; set; }
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string PostId { get; set; }
     }
 
-    public class PostsBlockPostInput
+    public class PostsBlockBodyInput
     {
         [JsonProperty("blocked_tumblelogs")]
         public string BlockedTumblelogs { get; set; }
@@ -1326,7 +1326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Id { get; set; }
     }
 
-    public class PostQueuedReorderPostInput
+    public class PostQueuedReorderBodyInput
     {
         [JsonProperty("post_id")]
         public string PostId { get; set; }
@@ -1923,19 +1923,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Before { get; set; }
     }
 
-    public class PostCreatePostResponse
+    public class PostCreateResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class PostCreatePostInput
+    public class PostCreateBodyInput
     {
         [JsonProperty("content")]
-        public PostCreatePostInputContentTypeItem[] Content { get; set; }
+        public BodyInputContentTypeItem[] Content { get; set; }
 
         [JsonProperty("layout")]
-        public PostCreatePostInputLayoutTypeItem[] Layout { get; set; }
+        public BodyInputLayoutTypeItem[] Layout { get; set; }
 
         [JsonProperty("state")]
         public string State { get; set; }
@@ -1977,19 +1977,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public bool? HideTrail { get; set; }
     }
 
-    public class PostCreatePostInputContentTypeItem
+    public class BodyInputContentTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("media")]
-        public PostCreatePostInputContentTypeItemMediaTypeItem[] Media { get; set; }
+        public BodyInputContentTypeItemMediaTypeItem[] Media { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PostCreatePostInputContentTypeItemMediaTypeItem
+    public class BodyInputContentTypeItemMediaTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2004,16 +2004,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public int? Height { get; set; }
     }
 
-    public class PostCreatePostInputLayoutTypeItem
+    public class BodyInputLayoutTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("display")]
-        public PostCreatePostInputLayoutTypeItemDisplayTypeItem[] Display { get; set; }
+        public BodyInputLayoutTypeItemDisplayTypeItem[] Display { get; set; }
     }
 
-    public class PostCreatePostInputLayoutTypeItemDisplayTypeItem
+    public class BodyInputLayoutTypeItemDisplayTypeItem
     {
         [JsonProperty("blocks")]
         public int[] Blocks { get; set; }
@@ -2149,7 +2149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum postFormatInput
+    public enum PostFormatInput
     {
         [EnumMember(Value = "npf")]
         Npf,
@@ -2163,96 +2163,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Id { get; set; }
     }
 
-    public class PostEditPutInput
-    {
-        [JsonProperty("content")]
-        public PostEditPutInputContentTypeItem[] Content { get; set; }
-
-        [JsonProperty("layout")]
-        public PostEditPutInputLayoutTypeItem[] Layout { get; set; }
-
-        [JsonProperty("state")]
-        public string State { get; set; }
-
-        [JsonProperty("published_on")]
-        public string PublishedOn { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("tags")]
-        public string Tags { get; set; }
-
-        [JsonProperty("source_url")]
-        public string SourceUrl { get; set; }
-
-        [JsonProperty("send_to_twitter")]
-        public bool? SendToTwitter { get; set; }
-
-        [JsonProperty("is_private")]
-        public bool? IsPrivate { get; set; }
-
-        [JsonProperty("slug")]
-        public string Slug { get; set; }
-
-        [JsonProperty("interactability_reblog")]
-        public string InteractabilityReblog { get; set; }
-
-        [JsonProperty("parent_tumblelog_uuid")]
-        public string ParentTumblelogUuid { get; set; }
-
-        [JsonProperty("parent_post_id")]
-        public int? ParentPostId { get; set; }
-
-        [JsonProperty("reblog_key")]
-        public string ReblogKey { get; set; }
-
-        [JsonProperty("hide_trail")]
-        public bool? HideTrail { get; set; }
-    }
-
-    public class PostEditPutInputContentTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("media")]
-        public PostEditPutInputContentTypeItemMediaTypeItem[] Media { get; set; }
-
-        [JsonProperty("text")]
-        public string Text { get; set; }
-    }
-
-    public class PostEditPutInputContentTypeItemMediaTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("width")]
-        public int? Width { get; set; }
-
-        [JsonProperty("height")]
-        public int? Height { get; set; }
-    }
-
-    public class PostEditPutInputLayoutTypeItem
-    {
-        [JsonProperty("type")]
-        public string Type { get; set; }
-
-        [JsonProperty("display")]
-        public PostEditPutInputLayoutTypeItemDisplayTypeItem[] Display { get; set; }
-    }
-
-    public class PostEditPutInputLayoutTypeItemDisplayTypeItem
-    {
-        [JsonProperty("blocks")]
-        public int[] Blocks { get; set; }
-    }
-
     public class PostDeleteResponse
     {
         [JsonProperty("id")]
@@ -2262,7 +2172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string IdString { get; set; }
     }
 
-    public class PostDeleteInput
+    public class PostDeleteBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -2308,7 +2218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modeInput
+    public enum ModeInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -3183,13 +3093,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public int Updated { get; set; }
     }
 
-    public class BlogFollowPostResponse
+    public class BlogFollowResponse
     {
         [JsonProperty("blog")]
-        public BlogFollowPostResponseBlogType Blog { get; set; }
+        public BlogFollowResponseBlogType Blog { get; set; }
     }
 
-    public class BlogFollowPostResponseBlogType
+    public class BlogFollowResponseBlogType
     {
         [JsonProperty("ask")]
         public bool Ask { get; set; }
@@ -3204,7 +3114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public bool AsksAllowMedia { get; set; }
 
         [JsonProperty("avatar")]
-        public BlogFollowPostResponseBlogTypeAvatarTypeItem[] Avatar { get; set; }
+        public BlogFollowResponseBlogTypeAvatarTypeItem[] Avatar { get; set; }
 
         [JsonProperty("can_chat")]
         public bool CanChat { get; set; }
@@ -3243,7 +3153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public bool Subscribed { get; set; }
 
         [JsonProperty("theme")]
-        public BlogFollowPostResponseBlogTypeThemeType Theme { get; set; }
+        public BlogFollowResponseBlogTypeThemeType Theme { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3261,7 +3171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Uuid { get; set; }
     }
 
-    public class BlogFollowPostResponseBlogTypeAvatarTypeItem
+    public class BlogFollowResponseBlogTypeAvatarTypeItem
     {
         [JsonProperty("width")]
         public int Width { get; set; }
@@ -3273,7 +3183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Url { get; set; }
     }
 
-    public class BlogFollowPostResponseBlogTypeThemeType
+    public class BlogFollowResponseBlogTypeThemeType
     {
         [JsonProperty("header_full_width")]
         public int HeaderFullWidth { get; set; }
@@ -3339,7 +3249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string TitleFontWeight { get; set; }
     }
 
-    public class BlogFollowPostInput
+    public class BlogFollowBodyInput
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -3348,13 +3258,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Email { get; set; }
     }
 
-    public class BlogUnfollowPostResponse
+    public class BlogUnfollowResponse
     {
         [JsonProperty("blog")]
-        public BlogUnfollowPostResponseBlogType Blog { get; set; }
+        public BlogUnfollowResponseBlogType Blog { get; set; }
     }
 
-    public class BlogUnfollowPostResponseBlogType
+    public class BlogUnfollowResponseBlogType
     {
         [JsonProperty("ask")]
         public bool Ask { get; set; }
@@ -3369,7 +3279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public bool AsksAllowMedia { get; set; }
 
         [JsonProperty("avatar")]
-        public BlogUnfollowPostResponseBlogTypeAvatarTypeItem[] Avatar { get; set; }
+        public BlogUnfollowResponseBlogTypeAvatarTypeItem[] Avatar { get; set; }
 
         [JsonProperty("can_chat")]
         public bool CanChat { get; set; }
@@ -3408,7 +3318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public bool Subscribed { get; set; }
 
         [JsonProperty("theme")]
-        public BlogUnfollowPostResponseBlogTypeThemeType Theme { get; set; }
+        public BlogUnfollowResponseBlogTypeThemeType Theme { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3426,7 +3336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Uuid { get; set; }
     }
 
-    public class BlogUnfollowPostResponseBlogTypeAvatarTypeItem
+    public class BlogUnfollowResponseBlogTypeAvatarTypeItem
     {
         [JsonProperty("width")]
         public int Width { get; set; }
@@ -3438,7 +3348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string Url { get; set; }
     }
 
-    public class BlogUnfollowPostResponseBlogTypeThemeType
+    public class BlogUnfollowResponseBlogTypeThemeType
     {
         [JsonProperty("header_full_width")]
         public int HeaderFullWidth { get; set; }
@@ -3504,22 +3414,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tumblrip
         public string TitleFontWeight { get; set; }
     }
 
-    public class BlogUnfollowPostInput
+    public class BlogUnfollowBodyInput
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class PostLikePostInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("reblog_key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ReblogKey { get; set; }
-    }
-
-    public class PostUnlikePostInput
+    public class PostLikeBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
     public class SecuremessagedeliveryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
-        public IBodyWorkflowAction<SendSecureMessageResponse, ApiConnectionActionConfiguration> SendSecureMessageAsync(Expression<Func<SendSecureMessageAsyncInput>> request, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
+        public IBodyWorkflowAction<SendSecureMessageResponse, ApiConnectionActionConfiguration> SendSecureMessageAsync(Expression<Func<RequestInput>> request, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         public string ApplicationId { get; set; }
     }
 
-    public class SendSecureMessageAsyncInput
+    public class RequestInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string From { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     public class NutrientextractfrompActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientextractfromp")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<ExtractTextInput>> inputPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractText(Expression<Func<ExtractTextInputPdfDataInput>> inputPdfData)
         {
             var __workflow_inputPdfData = WorkflowExpression.Compile(inputPdfData, nameof(inputPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientextractfromp")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractKeyValuePairs(Expression<Func<ExtractKeyValuePairsInput>> inputPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ExtractKeyValuePairs(Expression<Func<ExtractKeyValuePairsInputPdfDataInput>> inputPdfData)
         {
             var __workflow_inputPdfData = WorkflowExpression.Compile(inputPdfData, nameof(inputPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientextractfromp")]
-        public IBodyWorkflowAction<OcrOperationResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<OcrTextInput>> inputData)
+        public IBodyWorkflowAction<OcrOperationResponse, ApiConnectionActionConfiguration> OcrText(Expression<Func<InputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OcrOperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         InvalidExtension
     }
 
-    public class ExtractTextInput
+    public class ExtractTextInputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     {
     }
 
-    public class ExtractKeyValuePairsInput
+    public class ExtractKeyValuePairsInputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -136,37 +136,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         public string OCRLanguage { get; set; } = "eng";
 
         [JsonProperty("dpi", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputDPIType? DPI { get; set; } = ExtractKeyValuePairsInputDPIType._300;
+        public InputPdfDataInputDPIType? DPI { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputDPIType._300;
 
         [JsonProperty("kvp_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputKVPOutputFormatType? KVPOutputFormat { get; set; } = ExtractKeyValuePairsInputKVPOutputFormatType.Json;
+        public InputPdfDataInputKVPOutputFormatType? KVPOutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputKVPOutputFormatType.Json;
 
         [JsonProperty("page_range", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PageRange { get; set; } = "*";
 
         [JsonProperty("autorotate", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputAutorotateType? Autorotate { get; set; } = ExtractKeyValuePairsInputAutorotateType.Default;
+        public InputPdfDataInputAutorotateType? Autorotate { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputAutorotateType.Default;
 
         [JsonProperty("trim_symbols", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputTrimSymbolsType? TrimSymbols { get; set; } = ExtractKeyValuePairsInputTrimSymbolsType.Default;
+        public InputPdfDataInputTrimSymbolsType? TrimSymbols { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputTrimSymbolsType.Default;
 
         [JsonProperty("include_key_bounding_box", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeKeyBoundingBoxType? IncludeKeyBoundingBox { get; set; } = ExtractKeyValuePairsInputIncludeKeyBoundingBoxType.Default;
+        public InputPdfDataInputIncludeKeyBoundingBoxType? IncludeKeyBoundingBox { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputIncludeKeyBoundingBoxType.Default;
 
         [JsonProperty("include_value_bounding_box", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeValueBoundingBoxType? IncludeValueBoundingBox { get; set; } = ExtractKeyValuePairsInputIncludeValueBoundingBoxType.Default;
+        public InputPdfDataInputIncludeValueBoundingBoxType? IncludeValueBoundingBox { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputIncludeValueBoundingBoxType.Default;
 
         [JsonProperty("include_page_number", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludePageNumberType? IncludePageNumber { get; set; } = ExtractKeyValuePairsInputIncludePageNumberType.Default;
+        public InputPdfDataInputIncludePageNumberType? IncludePageNumber { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputIncludePageNumberType.Default;
 
         [JsonProperty("include_confidence", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeConfidenceType? IncludeConfidence { get; set; } = ExtractKeyValuePairsInputIncludeConfidenceType.Default;
+        public InputPdfDataInputIncludeConfidenceType? IncludeConfidence { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputIncludeConfidenceType.Default;
 
         [JsonProperty("confidence_threshold", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ConfidenceThreshold { get; set; } = 50;
 
         [JsonProperty("include_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExtractKeyValuePairsInputIncludeTypeType? IncludeType { get; set; } = ExtractKeyValuePairsInputIncludeTypeType.Default;
+        public InputPdfDataInputIncludeTypeType? IncludeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputPdfDataInputIncludeTypeType.Default;
 
         [JsonProperty("expected_keys")]
         public string ExpectedKeys { get; set; }
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputDPIType
+    public enum InputPdfDataInputDPIType
     {
         [EnumMember(Value = "500")]
         _500,
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputKVPOutputFormatType
+    public enum InputPdfDataInputKVPOutputFormatType
     {
         [EnumMember(Value = "json")]
         Json,
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputAutorotateType
+    public enum InputPdfDataInputAutorotateType
     {
         Default,
         Yes,
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputTrimSymbolsType
+    public enum InputPdfDataInputTrimSymbolsType
     {
         Default,
         Yes,
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeKeyBoundingBoxType
+    public enum InputPdfDataInputIncludeKeyBoundingBoxType
     {
         Default,
         Yes,
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeValueBoundingBoxType
+    public enum InputPdfDataInputIncludeValueBoundingBoxType
     {
         Default,
         Yes,
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludePageNumberType
+    public enum InputPdfDataInputIncludePageNumberType
     {
         Default,
         Yes,
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeConfidenceType
+    public enum InputPdfDataInputIncludeConfidenceType
     {
         Default,
         Yes,
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExtractKeyValuePairsInputIncludeTypeType
+    public enum InputPdfDataInputIncludeTypeType
     {
         Default,
         Yes,
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         InvalidExtension
     }
 
-    public class OcrTextInput
+    public class InputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputLanguageType? Language { get; set; } = OcrTextInputLanguageType.English;
+        public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputDataInputLanguageType.English;
 
         [JsonProperty("x")]
         public string XCoordinate { get; set; }
@@ -324,10 +324,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         public string PageNumber { get; set; } = "";
 
         [JsonProperty("performance", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputPerformanceType? Performance { get; set; } = OcrTextInputPerformanceType.SlowButAccurate;
+        public InputDataInputPerformanceType? Performance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputDataInputPerformanceType.SlowButAccurate;
 
         [JsonProperty("characters_option", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OcrTextInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = OcrTextInputBlacklistWhitelistType.None;
+        public InputDataInputBlacklistWhitelistType? BlacklistWhitelist { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputDataInputBlacklistWhitelistType.None;
 
         [JsonProperty("characters")]
         public string Characters { get; set; }
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputLanguageType
+    public enum InputDataInputLanguageType
     {
         English,
         Arabic,
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputPerformanceType
+    public enum InputDataInputPerformanceType
     {
         [EnumMember(Value = "Slow but accurate")]
         SlowButAccurate,
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OcrTextInputBlacklistWhitelistType
+    public enum InputDataInputBlacklistWhitelistType
     {
         None,
         Whitelist,

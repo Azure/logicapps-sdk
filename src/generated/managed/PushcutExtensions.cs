@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
     public class PushcutActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> notificationName, Expression<Func<SendNotificationInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendNotification(Expression<Func<string>> notificationName, Expression<Func<SendNotificationBodyInput>> body)
         {
             var __workflow_notificationName = WorkflowExpression.Compile(notificationName, nameof(notificationName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
 
     public class PushcutTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ActionExecuted(Expression<Func<ActionExecutedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ActionExecuted(Expression<Func<ActionExecutedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
         }
     }
 
-    public class SendNotificationInput
+    public class SendNotificationBodyInput
     {
         [JsonProperty("text")]
         public string DynamicText { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
         public string[] Devices { get; set; }
     }
 
-    public class ActionExecutedInput
+    public class ActionExecutedBodyInput
     {
         [JsonProperty("actionName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ActionName { get; set; }

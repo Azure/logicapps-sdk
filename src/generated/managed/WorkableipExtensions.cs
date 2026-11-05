@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
-        public IBodyWorkflowAction<PostSubscriptionResponse, ApiConnectionActionConfiguration> PostSubscription(Expression<Func<PostSubscriptionInput>> body = null)
+        public IBodyWorkflowAction<PostSubscriptionResponse, ApiConnectionActionConfiguration> PostSubscription(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PostSubscriptionResponse, ApiConnectionActionConfiguration>(() =>
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         public int Id { get; set; }
     }
 
-    public class PostSubscriptionInput
+    public class BodyInput
     {
         [JsonProperty("target")]
         public string Target { get; set; }
@@ -961,10 +961,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         public string Event { get; set; }
 
         [JsonProperty("args", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostSubscriptionInputArgsType Args { get; set; } = new PostSubscriptionInputArgsType();
+        public BodyInputArgsType Args { get; set; } = new BodyInputArgsType();
     }
 
-    public class PostSubscriptionInputArgsType
+    public class BodyInputArgsType
     {
         [JsonProperty("account_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AccountId { get; set; } = "aker-carbon-capture";

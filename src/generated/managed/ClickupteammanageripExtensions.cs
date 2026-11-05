@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
     public class ClickupteammanageripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
-        public IBodyWorkflowAction<CreateAFolderResponse, ApiConnectionActionConfiguration> CreateAFolder(Expression<Func<string>> spaceId, Expression<Func<CreateAFolderInput>> body = null)
+        public IBodyWorkflowAction<CreateAFolderResponse, ApiConnectionActionConfiguration> CreateAFolder(Expression<Func<string>> spaceId, Expression<Func<CreateAFolderBodyInput>> body = null)
         {
             var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
-        public IBodyWorkflowAction<CreateSpaceResponse, ApiConnectionActionConfiguration> CreateSpace(Expression<Func<string>> teamId, Expression<Func<CreateSpaceInput>> body = null)
+        public IBodyWorkflowAction<CreateSpaceResponse, ApiConnectionActionConfiguration> CreateSpace(Expression<Func<string>> teamId, Expression<Func<CreateSpaceBodyInput>> body = null)
         {
             var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
-        public IBodyWorkflowAction<CreateAListResponse, ApiConnectionActionConfiguration> CreateAList(Expression<Func<string>> folderId, Expression<Func<CreateAListInput>> body = null)
+        public IBodyWorkflowAction<CreateAListResponse, ApiConnectionActionConfiguration> CreateAList(Expression<Func<string>> folderId, Expression<Func<CreateAListBodyInput>> body = null)
         {
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public bool Access { get; set; }
     }
 
-    public class CreateAFolderInput
+    public class CreateAFolderBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public bool? HiddenFolder { get; set; }
 
         [JsonProperty("space")]
-        public CreateAFolderInputSpaceType Space { get; set; }
+        public CreateAFolderBodyInputSpaceType Space { get; set; }
 
         [JsonProperty("task_count")]
         public string TaskCount { get; set; }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public string PermissionLevel { get; set; }
     }
 
-    public class CreateAFolderInputSpaceType
+    public class CreateAFolderBodyInputSpaceType
     {
     }
 
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public bool Enabled { get; set; }
     }
 
-    public class CreateSpaceInput
+    public class CreateSpaceBodyInput
     {
         [JsonProperty("name")]
         public string SpaceName { get; set; }
@@ -426,40 +426,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public bool? MultipleAssignees { get; set; }
 
         [JsonProperty("features")]
-        public CreateSpaceInputFeaturesType Features { get; set; }
+        public BodyInputFeaturesType Features { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesType
+    public class BodyInputFeaturesType
     {
         [JsonProperty("due_dates")]
-        public CreateSpaceInputFeaturesTypeDueDatesType DueDates { get; set; }
+        public BodyInputFeaturesTypeDueDatesType DueDates { get; set; }
 
         [JsonProperty("time_tracking")]
-        public CreateSpaceInputFeaturesTypeTimeTrackingType TimeTracking { get; set; }
+        public BodyInputFeaturesTypeTimeTrackingType TimeTracking { get; set; }
 
         [JsonProperty("tags")]
-        public CreateSpaceInputFeaturesTypeTagsType Tags { get; set; }
+        public BodyInputFeaturesTypeTagsType Tags { get; set; }
 
         [JsonProperty("time_estimates")]
-        public CreateSpaceInputFeaturesTypeTimeEstimatesType TimeEstimates { get; set; }
+        public BodyInputFeaturesTypeTimeEstimatesType TimeEstimates { get; set; }
 
         [JsonProperty("checklists")]
-        public CreateSpaceInputFeaturesTypeChecklistsType Checklists { get; set; }
+        public BodyInputFeaturesTypeChecklistsType Checklists { get; set; }
 
         [JsonProperty("custom_fields")]
-        public CreateSpaceInputFeaturesTypeCustomFieldsType CustomFields { get; set; }
+        public BodyInputFeaturesTypeCustomFieldsType CustomFields { get; set; }
 
         [JsonProperty("remap_dependencies")]
-        public CreateSpaceInputFeaturesTypeRemapDependenciesType RemapDependencies { get; set; }
+        public BodyInputFeaturesTypeRemapDependenciesType RemapDependencies { get; set; }
 
         [JsonProperty("dependency_warning")]
-        public CreateSpaceInputFeaturesTypeDependencyWarningType DependencyWarning { get; set; }
+        public BodyInputFeaturesTypeDependencyWarningType DependencyWarning { get; set; }
 
         [JsonProperty("portfolios")]
-        public CreateSpaceInputFeaturesTypePortfoliosType Portfolios { get; set; }
+        public BodyInputFeaturesTypePortfoliosType Portfolios { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeDueDatesType
+    public class BodyInputFeaturesTypeDueDatesType
     {
         [JsonProperty("enabled")]
         public bool? DueDates { get; set; }
@@ -474,49 +474,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public bool? RemapClosedDueDate { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeTimeTrackingType
+    public class BodyInputFeaturesTypeTimeTrackingType
     {
         [JsonProperty("enabled")]
         public bool? TimeTracking { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeTagsType
+    public class BodyInputFeaturesTypeTagsType
     {
         [JsonProperty("enabled")]
         public bool? Tags { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeTimeEstimatesType
+    public class BodyInputFeaturesTypeTimeEstimatesType
     {
         [JsonProperty("enabled")]
         public bool? TimeEstimates { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeChecklistsType
+    public class BodyInputFeaturesTypeChecklistsType
     {
         [JsonProperty("enabled")]
         public bool? Checklist { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeCustomFieldsType
+    public class BodyInputFeaturesTypeCustomFieldsType
     {
         [JsonProperty("enabled")]
         public bool? CustomFields { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeRemapDependenciesType
+    public class BodyInputFeaturesTypeRemapDependenciesType
     {
         [JsonProperty("enabled")]
         public bool? RemapDependencies { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypeDependencyWarningType
+    public class BodyInputFeaturesTypeDependencyWarningType
     {
         [JsonProperty("enabled")]
         public bool? DependencyWarning { get; set; }
     }
 
-    public class CreateSpaceInputFeaturesTypePortfoliosType
+    public class BodyInputFeaturesTypePortfoliosType
     {
         [JsonProperty("enabled")]
         public bool? Portfolios { get; set; }
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public string Type { get; set; }
     }
 
-    public class CreateAListInput
+    public class CreateAListBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -663,48 +663,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         public int? OrderIndex { get; set; }
 
         [JsonProperty("status")]
-        public CreateAListInputStatusType Status { get; set; }
+        public BodyInputStatusType Status { get; set; }
 
         [JsonProperty("priority")]
-        public CreateAListInputPriorityType Priority { get; set; }
+        public BodyInputPriorityType Priority { get; set; }
 
         [JsonProperty("assignee")]
-        public CreateAListInputAssigneeType Assignee { get; set; }
+        public BodyInputAssigneeType Assignee { get; set; }
 
         [JsonProperty("due_date_time")]
         public bool? DueDate2 { get; set; }
 
         [JsonProperty("folder")]
-        public CreateAListInputFolderType Folder { get; set; }
+        public BodyInputFolderType Folder { get; set; }
 
         [JsonProperty("space")]
-        public CreateAListInputSpaceType Space { get; set; }
+        public CreateAListBodyInputSpaceType Space { get; set; }
 
         [JsonProperty("statuses")]
-        public CreateAListInputStatusesTypeItem[] Statuses { get; set; }
+        public BodyInputStatusesTypeItem[] Statuses { get; set; }
     }
 
-    public class CreateAListInputStatusType
+    public class BodyInputStatusType
     {
     }
 
-    public class CreateAListInputPriorityType
+    public class BodyInputPriorityType
     {
     }
 
-    public class CreateAListInputAssigneeType
+    public class BodyInputAssigneeType
     {
     }
 
-    public class CreateAListInputFolderType
+    public class BodyInputFolderType
     {
     }
 
-    public class CreateAListInputSpaceType
+    public class CreateAListBodyInputSpaceType
     {
     }
 
-    public class CreateAListInputStatusesTypeItem
+    public class BodyInputStatusesTypeItem
     {
     }
 }

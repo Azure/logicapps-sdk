@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ideanote")]
-        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> userId, Expression<Func<UpdateUserInput>> body)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<string>> userId, Expression<Func<UpdateUserBodyInput>> body)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ideanote")]
-        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserInput>> body, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> sendInvitation = null)
+        public IBodyWorkflowAction<User, ApiConnectionActionConfiguration> CreateUser(Expression<Func<CreateUserBodyInput>> body, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> sendInvitation = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new FinishRatingInput().ToJToken();
+                callPayload.Body = new FinishRatingBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
             });
         }
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new NewIdeaInput().ToJToken();
+                callPayload.Body = new NewIdeaBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
             });
         }
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new NewUserInput().ToJToken();
+                callPayload.Body = new NewUserBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
             });
         }
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new NewCommentInput().ToJToken();
+                callPayload.Body = new NewCommentBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
             });
         }
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new NewLikeInput().ToJToken();
+                callPayload.Body = new NewLikeBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
             });
         }
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new UpdatedIdeaStatusInput().ToJToken();
+                callPayload.Body = new UpdatedIdeaStatusBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
             });
         }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Body = new UpdatedIdeaPhaseInput().ToJToken();
+                callPayload.Body = new UpdatedIdeaPhaseBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Model>(callPayload, recurrence: recurrence);
             });
         }
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string UserURLPath { get; set; }
     }
 
-    public class UpdateUserInput
+    public class UpdateUserBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string LastName { get; set; }
     }
 
-    public class CreateUserInput
+    public class CreateUserBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -696,7 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string LastName { get; set; }
     }
 
-    public class FinishRatingInput
+    public class FinishRatingBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         internal string Kind { get; set; } = "finish_rating";
     }
 
-    public class NewIdeaInput
+    public class NewIdeaBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         internal string Kind { get; set; } = "new_idea";
     }
 
-    public class NewUserInput
+    public class NewUserBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         internal string Kind { get; set; } = "new_user";
     }
 
-    public class NewCommentInput
+    public class NewCommentBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -732,7 +732,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         internal string Kind { get; set; } = "new_comment";
     }
 
-    public class NewLikeInput
+    public class NewLikeBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         internal string Kind { get; set; } = "new_like";
     }
 
-    public class UpdatedIdeaStatusInput
+    public class UpdatedIdeaStatusBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
@@ -750,7 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         internal string Kind { get; set; } = "updated_idea_status";
     }
 
-    public class UpdatedIdeaPhaseInput
+    public class UpdatedIdeaPhaseBodyInput
     {
         [JsonProperty("targetUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";

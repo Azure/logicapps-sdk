@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workiqsharepoint
     public class WorkiqsharepointActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workiqsharepoint")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> McpSharePointRemoteServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<McpSharePointRemoteServerInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> McpSharePointRemoteServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workiqsharepoint
     {
     }
 
-    public class McpSharePointRemoteServerInput
+    public class QueryRequestInput
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

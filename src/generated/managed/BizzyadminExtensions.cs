@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
     public class BizzyadminActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzyadmin")]
-        public IBodyWorkflowAction<AdminRedactBotMessagePayload, ApiConnectionActionConfiguration> AdminRedactBotMessage(Expression<Func<AdminRedactBotMessageInput>> content)
+        public IBodyWorkflowAction<AdminRedactBotMessagePayload, ApiConnectionActionConfiguration> AdminRedactBotMessage(Expression<Func<ContentInput>> content)
         {
             var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             return new DeferredBodyAction<AdminRedactBotMessagePayload, ApiConnectionActionConfiguration>(() =>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
 
     public class BizzyadminTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPostSkillModified(Expression<Func<WebHookRegistrationsPostSkillModifiedInput>> webHook, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook, ApiConnectionTriggerConfiguration> WebHookRegistrationsPostSkillModified(Expression<Func<WebHookInput>> webHook, FlowRecurrence recurrence = null)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyTrigger<WebHook, ApiConnectionTriggerConfiguration>(() =>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         public string Response { get; set; }
     }
 
-    public class AdminRedactBotMessageInput
+    public class ContentInput
     {
         [JsonProperty("messageRef", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MessageReference { get; set; }
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzyadmin
         public JToken Properties { get; set; }
     }
 
-    public class WebHookRegistrationsPostSkillModifiedInput
+    public class WebHookInput
     {
         [JsonProperty("webHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";

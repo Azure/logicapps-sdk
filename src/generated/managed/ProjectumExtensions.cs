@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
     public class ProjectumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GeneratePowerpointDoc(Expression<Func<GeneratePowerpointDocInput>> generationInfo)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GeneratePowerpointDoc(Expression<Func<GenerationInfoInput>> generationInfo)
         {
             var __workflow_generationInfo = WorkflowExpression.Compile(generationInfo, nameof(generationInfo), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateWordDoc(Expression<Func<GenerateWordDocInput>> generationInfo)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GenerateWordDoc(Expression<Func<GenerationInfoInput>> generationInfo)
         {
             var __workflow_generationInfo = WorkflowExpression.Compile(generationInfo, nameof(generationInfo), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -73,16 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
     {
     }
 
-    public class GeneratePowerpointDocInput
-    {
-        [JsonProperty("dataMap", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DataMap { get; set; }
-
-        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
-    }
-
-    public class GenerateWordDocInput
+    public class GenerationInfoInput
     {
         [JsonProperty("dataMap", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DataMap { get; set; }

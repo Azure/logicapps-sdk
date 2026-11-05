@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
     public class ThesmsworksipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thesmsworksip")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> ScheduleMessage(Expression<Func<ScheduleMessageInput>> smsMessage)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> ScheduleMessage(Expression<Func<ScheduleMessageSmsMessageInput>> smsMessage)
         {
             var __workflow_smsMessage = WorkflowExpression.Compile(smsMessage, nameof(smsMessage), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thesmsworksip")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetMessages(Expression<Func<object>> query)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetMessages(Expression<Func<QueryInput>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thesmsworksip")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetInboxMessages(Expression<Func<object>> query)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetInboxMessages(Expression<Func<QueryInput>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thesmsworksip")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetFailedMessages(Expression<Func<object>> query)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetFailedMessages(Expression<Func<QueryInput>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<JToken[], ApiConnectionActionConfiguration>(() =>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thesmsworksip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendBatch(Expression<Func<object>> smsMessage)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SendBatch(Expression<Func<ScheduleBatchSmsMessageInput>> smsMessage)
         {
             var __workflow_smsMessage = WorkflowExpression.Compile(smsMessage, nameof(smsMessage), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thesmsworksip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ScheduleBatch(Expression<Func<object>> smsMessage)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ScheduleBatch(Expression<Func<ScheduleBatchSmsMessageInput>> smsMessage)
         {
             var __workflow_smsMessage = WorkflowExpression.Compile(smsMessage, nameof(smsMessage), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
     {
     }
 
-    public class ScheduleMessageInput
+    public class ScheduleMessageSmsMessageInput
     {
         [JsonProperty("sender", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Sender { get; set; }
@@ -204,13 +204,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
         public string[] Responseemail { get; set; }
 
         [JsonProperty("metadata")]
-        public ScheduleMessageInputMetadataType Metadata { get; set; }
+        public SmsMessageInputMetadataType Metadata { get; set; }
 
         [JsonProperty("validity")]
         public double? Validity { get; set; }
     }
 
-    public class ScheduleMessageInputMetadataType
+    public class SmsMessageInputMetadataType
     {
         [JsonProperty("schema")]
         public MetaData Schema { get; set; }
@@ -223,6 +223,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class QueryInput
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("credits")]
+        public double? Credits { get; set; }
+
+        [JsonProperty("destination")]
+        public string Destination { get; set; }
+
+        [JsonProperty("sender")]
+        public string Sender { get; set; }
+
+        [JsonProperty("keyword")]
+        public string Keyword { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("unread")]
+        public bool? Unread { get; set; }
+
+        [JsonProperty("metadata")]
+        public QueryInputMetadataType Metadata { get; set; }
+    }
+
+    public class QueryInputMetadataType
+    {
+        [JsonProperty("schema")]
+        public MetaData Schema { get; set; }
+    }
+
+    public class ScheduleBatchSmsMessageInput
+    {
+        [JsonProperty("sender", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Sender { get; set; }
+
+        [JsonProperty("destinations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Destinations { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
+
+        [JsonProperty("deliveryreporturl")]
+        public string Deliveryreporturl { get; set; }
+
+        [JsonProperty("schedule")]
+        public string Schedule { get; set; }
+
+        [JsonProperty("tag")]
+        public string Tag { get; set; }
+
+        [JsonProperty("ttl")]
+        public double? Ttl { get; set; }
+
+        [JsonProperty("validity")]
+        public double? Validity { get; set; }
     }
 }
 

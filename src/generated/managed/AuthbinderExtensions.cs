@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
     public class AuthbinderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
-        public IBodyWorkflowAction<EventResponse, ApiConnectionActionConfiguration> LogAgentEvent(Expression<Func<LogAgentEventInput>> body)
+        public IBodyWorkflowAction<EventResponse, ApiConnectionActionConfiguration> LogAgentEvent(Expression<Func<LogAgentEventBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EventResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "authbinder")]
-        public IBodyWorkflowAction<BatchResponse, ApiConnectionActionConfiguration> LogAgentEventsBatch(Expression<Func<LogAgentEventsBatchInput>> body)
+        public IBodyWorkflowAction<BatchResponse, ApiConnectionActionConfiguration> LogAgentEventsBatch(Expression<Func<LogAgentEventsBatchBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BatchResponse, ApiConnectionActionConfiguration>(() =>
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         Critical
     }
 
-    public class LogAgentEventInput
+    public class LogAgentEventBodyInput
     {
         [JsonProperty("tenantId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TenantId { get; set; }
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         public JToken[] Errors { get; set; }
     }
 
-    public class LogAgentEventsBatchInput
+    public class LogAgentEventsBatchBodyInput
     {
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
         public EventIngest[] Events { get; set; }

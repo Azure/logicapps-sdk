@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<StartJobsInput>> body = null)
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto, ApiConnectionActionConfiguration> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<StartJobsBodyInput>> body = null)
         {
             var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<AddQueueItemInput>> body = null)
+        public IBodyWorkflowAction<QueueItemDto, ApiConnectionActionConfiguration> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<AddQueueItemBodyInput>> body = null)
         {
             var __workflow_xUIPATHOrganizationUnitId = WorkflowExpression.Compile(xUIPATHOrganizationUnitId, nameof(xUIPATHOrganizationUnitId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -399,13 +399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Custom
     }
 
-    public class StartJobsInput
+    public class StartJobsBodyInput
     {
         [JsonProperty("startInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartJobsInputStartInfoType StartInfo { get; set; } = new StartJobsInputStartInfoType();
+        public BodyInputStartInfoType StartInfo { get; set; } = new BodyInputStartInfoType();
     }
 
-    public class StartJobsInputStartInfoType
+    public class BodyInputStartInfoType
     {
         [JsonProperty("ReleaseKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessName { get; set; }
@@ -415,15 +415,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int JobsCount { get; set; }
-        public StartJobsInputStartInfoTypeSourceType? Source { get; set; }
-        public StartJobsInputStartInfoTypeJobPriorityType? JobPriority { get; set; }
-        public StartJobsInputStartInfoTypeRuntimeTypeType? RuntimeType { get; set; }
+        public BodyInputStartInfoTypeSourceType? Source { get; set; }
+        public BodyInputStartInfoTypeJobPriorityType? JobPriority { get; set; }
+        public BodyInputStartInfoTypeRuntimeTypeType? RuntimeType { get; set; }
         public string InputArguments { get; set; }
         public string Reference { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartJobsInputStartInfoTypeSourceType
+    public enum BodyInputStartInfoTypeSourceType
     {
         Manual,
         Schedule,
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartJobsInputStartInfoTypeJobPriorityType
+    public enum BodyInputStartInfoTypeJobPriorityType
     {
         Low,
         Normal,
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum StartJobsInputStartInfoTypeRuntimeTypeType
+    public enum BodyInputStartInfoTypeRuntimeTypeType
     {
         NonProduction,
         Attended,
@@ -721,18 +721,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Low
     }
 
-    public class AddQueueItemInput
+    public class AddQueueItemBodyInput
     {
         [JsonProperty("itemData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddQueueItemInputItemDataType ItemData { get; set; } = new AddQueueItemInputItemDataType();
+        public BodyInputItemDataType ItemData { get; set; } = new BodyInputItemDataType();
     }
 
-    public class AddQueueItemInputItemDataType
+    public class BodyInputItemDataType
     {
         public string Name { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddQueueItemInputItemDataTypePriorityType? Priority { get; set; } = AddQueueItemInputItemDataTypePriorityType.Normal;
+        public BodyInputItemDataTypePriorityType? Priority { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator.BodyInputItemDataTypePriorityType.Normal;
         public JToken SpecificContent { get; set; }
         public string DeferDate { get; set; }
         public string DueDate { get; set; }
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddQueueItemInputItemDataTypePriorityType
+    public enum BodyInputItemDataTypePriorityType
     {
         High,
         Normal,

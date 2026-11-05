@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
     public class SigmaconsocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ProcessjobResponse, ApiConnectionActionConfiguration> Processjob(Expression<Func<string>> applicationURL, Expression<Func<ProcessjobInput>> body)
+        public IBodyWorkflowAction<ProcessjobResponse, ApiConnectionActionConfiguration> Processjob(Expression<Func<string>> applicationURL, Expression<Func<ProcessjobBodyInput>> body)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ConsolidationjobResponse, ApiConnectionActionConfiguration> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<ConsolidationjobInput>> body)
+        public IBodyWorkflowAction<ConsolidationjobResponse, ApiConnectionActionConfiguration> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<ConsolidationjobBodyInput>> body)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ScheduledjobResponse, ApiConnectionActionConfiguration> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<ScheduledjobInput>> body)
+        public IBodyWorkflowAction<ScheduledjobResponse, ApiConnectionActionConfiguration> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<ScheduledjobBodyInput>> body)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ImportFileResponse, ApiConnectionActionConfiguration> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<ImportFileInput>> body)
+        public IBodyWorkflowAction<ImportFileResponse, ApiConnectionActionConfiguration> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<ImportFileBodyInput>> body)
         {
             var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         public string Message { get; set; }
     }
 
-    public class ProcessjobInput
+    public class ProcessjobBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Process { get; set; }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         public string Message { get; set; }
     }
 
-    public class ConsolidationjobInput
+    public class ConsolidationjobBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConsoCode { get; set; }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         public string Message { get; set; }
     }
 
-    public class ScheduledjobInput
+    public class ScheduledjobBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string JobScheduleName { get; set; }
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         public string Message { get; set; }
     }
 
-    public class ImportFileInput
+    public class ImportFileBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImportStructureCode { get; set; }

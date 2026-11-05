@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
     public class GooglecloudtranslaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
-        public IBodyWorkflowAction<TextTranslateResponse, ApiConnectionActionConfiguration> TextTranslate(Expression<Func<string>> q, Expression<Func<string>> target, Expression<Func<formatInput>> format = null, Expression<Func<string>> source = null, Expression<Func<string>> model = null)
+        public IBodyWorkflowAction<TextTranslateResponse, ApiConnectionActionConfiguration> TextTranslate(Expression<Func<string>> q, Expression<Func<string>> target, Expression<Func<FormatInput>> format = null, Expression<Func<string>> source = null, Expression<Func<string>> model = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "html")]
         Html,

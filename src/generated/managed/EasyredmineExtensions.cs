@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
     public class EasyredmineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
-        public IBodyWorkflowAction<GetIssueResponse, ApiConnectionActionConfiguration> CreateIssue(Expression<Func<CreateIssueInput>> issue)
+        public IBodyWorkflowAction<GetIssueResponse, ApiConnectionActionConfiguration> CreateIssue(Expression<Func<CreateIssueIssueInput>> issue)
         {
             var __workflow_issue = WorkflowExpression.Compile(issue, nameof(issue), required: true);
             return new DeferredBodyAction<GetIssueResponse, ApiConnectionActionConfiguration>(() =>
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<UpdateIssueInput>> issue)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<UpdateIssueIssueInput>> issue)
         {
             var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
             var __workflow_issue = WorkflowExpression.Compile(issue, nameof(issue), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectInput>> project)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<ProjectInput>> project)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
@@ -237,13 +237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         public string Author { get; set; }
     }
 
-    public class CreateIssueInput
+    public class CreateIssueIssueInput
     {
         [JsonProperty("issue", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateIssueInputIssueType Issue { get; set; }
+        public CreateIssueIssueInputIssueType Issue { get; set; }
     }
 
-    public class CreateIssueInputIssueType
+    public class CreateIssueIssueInputIssueType
     {
         [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProjectId { get; set; }
@@ -267,13 +267,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         public double? EstimatedHours { get; set; }
     }
 
-    public class UpdateIssueInput
+    public class UpdateIssueIssueInput
     {
         [JsonProperty("issue")]
-        public UpdateIssueInputIssueType Issue { get; set; }
+        public UpdateIssueIssueInputIssueType Issue { get; set; }
     }
 
-    public class UpdateIssueInputIssueType
+    public class UpdateIssueIssueInputIssueType
     {
         [JsonProperty("project_id")]
         public string ProjectId { get; set; }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         public string Description { get; set; }
 
         [JsonProperty("status_id")]
-        public UpdateIssueInputIssueTypeStatusType? Status { get; set; }
+        public IssueInputIssueTypeStatusType? Status { get; set; }
 
         [JsonProperty("assigned_to_id")]
         public string AssignToId { get; set; }
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateIssueInputIssueTypeStatusType
+    public enum IssueInputIssueTypeStatusType
     {
         New,
         Estimated,
@@ -359,13 +359,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         public string Author { get; set; }
     }
 
-    public class CreateProjectInput
+    public class ProjectInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectInputProjectType Project { get; set; } = new CreateProjectInputProjectType();
+        public ProjectInputProjectType Project { get; set; } = new ProjectInputProjectType();
     }
 
-    public class CreateProjectInputProjectType
+    public class ProjectInputProjectType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

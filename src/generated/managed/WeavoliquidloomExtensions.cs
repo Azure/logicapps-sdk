@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
     public class WeavoliquidloomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<CsvToJsonInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CsvToJson(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CsvToText(Expression<Func<CsvToTextInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CsvToText(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CsvToXml(Expression<Func<CsvToXmlInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CsvToXml(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JsonToJson(Expression<Func<JsonToJsonInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JsonToJson(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> JsonToText(Expression<Func<JsonToTextInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> JsonToText(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JsonToXml(Expression<Func<JsonToXmlInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> JsonToXml(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToJson(Expression<Func<XmlToJsonInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToJson(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> XmlToText(Expression<Func<XmlToTextInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> XmlToText(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml(Expression<Func<XmlToXmlInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EdiToJson(Expression<Func<EdiToJsonInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EdiToJson(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EdiToText(Expression<Func<EdiToTextInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EdiToText(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weavoliquidloom")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml11(Expression<Func<XmlToXml11Input>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> XmlToXml11(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -248,139 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weavoliquidloom
     {
     }
 
-    public class CsvToJsonInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class CsvToTextInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class CsvToXmlInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class JsonToJsonInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class JsonToTextInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class JsonToXmlInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class XmlToJsonInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class XmlToTextInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class XmlToXmlInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class EdiToJsonInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class EdiToTextInput
-    {
-        [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputString { get; set; }
-
-        [JsonProperty("liquidTemplate")]
-        public string LiquidTemplate { get; set; }
-
-        [JsonProperty("logFileName")]
-        public string LogFileName { get; set; }
-    }
-
-    public class XmlToXml11Input
+    public class BodyInput
     {
         [JsonProperty("inputString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string InputString { get; set; }

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration> AskSirvaBotAboutTopic(Expression<Func<AskSirvaBotAboutTopicInput>> body = null)
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration> AskSirvaBotAboutTopic(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AskSirvaBotAboutTopicResponse, ApiConnectionActionConfiguration>(() =>
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string Answer { get; set; }
     }
 
-    public class AskSirvaBotAboutTopicInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RelocationId { get; set; }
@@ -642,11 +642,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string Query { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public AskSirvaBotAboutTopicInputTopicType Topic { get; set; }
+        public BodyInputTopicType Topic { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AskSirvaBotAboutTopicInputTopicType
+    public enum BodyInputTopicType
     {
         Counselor,
         Contacts,

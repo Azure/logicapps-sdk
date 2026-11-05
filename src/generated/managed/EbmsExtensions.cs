@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
     public class EbmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<CreateProductInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateProduct(Expression<Func<CreateProductBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> productId, Expression<Func<UpdateProductInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateProduct(Expression<Func<string>> productId, Expression<Func<UpdateProductBodyInput>> body = null)
         {
             var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
     {
     }
 
-    public class CreateProductInput
+    public class CreateProductBodyInput
     {
         [JsonProperty("ID")]
         public string Id { get; set; }
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         public string EXTERNALId { get; set; }
     }
 
-    public class UpdateProductInput
+    public class UpdateProductBodyInput
     {
         [JsonProperty("DESCR_1")]
         public string DESCR1 { get; set; }

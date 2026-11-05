@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
     public class AdpemployeeselfserviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactInput>> body = null)
+        public IBodyWorkflowAction<CreateContactResponse, ApiConnectionActionConfiguration> CreateContact(Expression<Func<CreateContactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<DeleteContactsResponse, ApiConnectionActionConfiguration> DeleteContacts(Expression<Func<DeleteContactsInput>> body = null)
+        public IBodyWorkflowAction<DeleteContactsResponse, ApiConnectionActionConfiguration> DeleteContacts(Expression<Func<DeleteContactsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DeleteContactsResponse, ApiConnectionActionConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<UpdateContactInput>> body = null)
+        public IBodyWorkflowAction<UpdateContactResponse, ApiConnectionActionConfiguration> UpdateContact(Expression<Func<UpdateContactBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateContactResponse, ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateUserResponse, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<UpdateUserInput>> body = null)
+        public IBodyWorkflowAction<UpdateUserResponse, ApiConnectionActionConfiguration> UpdateUser(Expression<Func<UpdateUserBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateUserResponse, ApiConnectionActionConfiguration>(() =>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string ItemId { get; set; }
     }
 
-    public class CreateContactInput
+    public class CreateContactBodyInput
     {
         [JsonProperty("contactName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContactName { get; set; }
@@ -164,22 +164,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string AddressPostalCode { get; set; }
 
         [JsonProperty("phones")]
-        public CreateContactInputPhonesTypeItem[] Phones { get; set; }
+        public BodyInputPhonesTypeItem[] Phones { get; set; }
 
         [JsonProperty("emails")]
-        public CreateContactInputEmailsTypeItem[] Emails { get; set; }
+        public BodyInputEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("relation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateContactInputRelationType Relation { get; set; }
+        public BodyInputRelationType Relation { get; set; }
 
         [JsonProperty("isPrimary", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsPrimary { get; set; }
     }
 
-    public class CreateContactInputPhonesTypeItem
+    public class BodyInputPhonesTypeItem
     {
         [JsonProperty("phoneType")]
-        public CreateContactInputPhonesTypeItemPhoneTypeType? PhoneType { get; set; }
+        public BodyInputPhonesTypeItemPhoneTypeType? PhoneType { get; set; }
 
         [JsonProperty("countryCode")]
         public int? CountryCode { get; set; }
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactInputPhonesTypeItemPhoneTypeType
+    public enum BodyInputPhonesTypeItemPhoneTypeType
     {
         [EnumMember(Value = "home")]
         Home,
@@ -207,14 +207,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         Mobile
     }
 
-    public class CreateContactInputEmailsTypeItem
+    public class BodyInputEmailsTypeItem
     {
         [JsonProperty("address")]
         public string Address { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateContactInputRelationType
+    public enum BodyInputRelationType
     {
         [EnumMember(Value = "spouse")]
         Spouse,
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string Error { get; set; }
     }
 
-    public class DeleteContactsInput
+    public class DeleteContactsBodyInput
     {
         [JsonProperty("itemIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] ItemIds { get; set; }
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string Message { get; set; }
     }
 
-    public class UpdateContactInput
+    public class UpdateContactBodyInput
     {
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemId { get; set; }
@@ -446,70 +446,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string AddressPostalCode { get; set; }
 
         [JsonProperty("phones")]
-        public UpdateContactInputPhonesTypeItem[] Phones { get; set; }
+        public BodyInputPhonesTypeItem[] Phones { get; set; }
 
         [JsonProperty("emails")]
-        public UpdateContactInputEmailsTypeItem[] Emails { get; set; }
+        public BodyInputEmailsTypeItem[] Emails { get; set; }
 
         [JsonProperty("relation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateContactInputRelationType Relation { get; set; }
+        public BodyInputRelationType Relation { get; set; }
 
         [JsonProperty("isPrimary", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsPrimary { get; set; }
-    }
-
-    public class UpdateContactInputPhonesTypeItem
-    {
-        [JsonProperty("phoneType")]
-        public UpdateContactInputPhonesTypeItemPhoneTypeType? PhoneType { get; set; }
-
-        [JsonProperty("countryCode")]
-        public int? CountryCode { get; set; }
-
-        [JsonProperty("areaCode")]
-        public int? AreaCode { get; set; }
-
-        [JsonProperty("number")]
-        public int? Number { get; set; }
-
-        [JsonProperty("extension")]
-        public int? Extension { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateContactInputPhonesTypeItemPhoneTypeType
-    {
-        [EnumMember(Value = "home")]
-        Home,
-        [EnumMember(Value = "work")]
-        Work,
-        [EnumMember(Value = "alternate")]
-        Alternate,
-        [EnumMember(Value = "mobile")]
-        Mobile
-    }
-
-    public class UpdateContactInputEmailsTypeItem
-    {
-        [JsonProperty("address")]
-        public string Address { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UpdateContactInputRelationType
-    {
-        [EnumMember(Value = "spouse")]
-        Spouse,
-        [EnumMember(Value = "partner")]
-        Partner,
-        [EnumMember(Value = "child")]
-        Child,
-        [EnumMember(Value = "sibling")]
-        Sibling,
-        [EnumMember(Value = "parent")]
-        Parent,
-        [EnumMember(Value = "other")]
-        Other
     }
 
     public class UpdateUserResponse
@@ -530,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string Error { get; set; }
     }
 
-    public class UpdateUserInput
+    public class UpdateUserBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     public class RssActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
-        public IBodyWorkflowAction<FeedItem[], ApiConnectionActionConfiguration> ListFeedItems(Expression<Func<string>> feedUrl, Expression<Func<string>> since = null, Expression<Func<sincePropertyInput>> sinceProperty = null)
+        public IBodyWorkflowAction<FeedItem[], ApiConnectionActionConfiguration> ListFeedItems(Expression<Func<string>> feedUrl, Expression<Func<string>> since = null, Expression<Func<SincePropertyInput>> sinceProperty = null)
         {
             var __workflow_feedUrl = WorkflowExpression.Compile(feedUrl, nameof(feedUrl), required: true);
             var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: false);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
 
     public class RssTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem, ApiConnectionTriggerConfiguration> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<sincePropertyInput>> sinceProperty = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem, ApiConnectionTriggerConfiguration> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<SincePropertyInput>> sinceProperty = null, FlowRecurrence recurrence = null)
         {
             var __workflow_feedUrl = WorkflowExpression.Compile(feedUrl, nameof(feedUrl), required: true);
             var __workflow_sinceProperty = WorkflowExpression.Compile(sinceProperty, nameof(sinceProperty), required: false);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sincePropertyInput
+    public enum SincePropertyInput
     {
         PublishDate,
         UpdatedOn

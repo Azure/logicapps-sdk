@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostProblemComment(Expression<Func<string>> problemId, Expression<Func<PostProblemCommentInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostProblemComment(Expression<Func<string>> problemId, Expression<Func<PostProblemCommentBodyInput>> body = null)
         {
             var __workflow_problemId = WorkflowExpression.Compile(problemId, nameof(problemId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEventIngest(Expression<Func<PostEventIngestInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEventIngest(Expression<Func<PostEventIngestBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         public string Context { get; set; }
     }
 
-    public class PostProblemCommentInput
+    public class PostProblemCommentBodyInput
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -1191,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         public string Type { get; set; }
     }
 
-    public class PostEventIngestInput
+    public class PostEventIngestBodyInput
     {
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EventType { get; set; }

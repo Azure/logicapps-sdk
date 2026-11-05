@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     public class EmfluencempActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSearchSimpleResponse, ApiConnectionActionConfiguration> ContactsSearchSimple(Expression<Func<string>> email = null, Expression<Func<int>> groupId = null, Expression<Func<bool>> suppressed = null, Expression<Func<bool>> held = null, Expression<Func<int>> page = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null)
+        public IBodyWorkflowAction<ContactsSearchSimpleResponse, ApiConnectionActionConfiguration> ContactsSearchSimple(Expression<Func<string>> email = null, Expression<Func<int>> groupId = null, Expression<Func<bool>> suppressed = null, Expression<Func<bool>> held = null, Expression<Func<int>> page = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<SortDirectionInput>> sortDirection = null)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: false);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSearchResponse, ApiConnectionActionConfiguration> ContactsSearch(Expression<Func<ContactsSearchInput>> body = null)
+        public IBodyWorkflowAction<ContactsSearchResponse, ApiConnectionActionConfiguration> ContactsSearch(Expression<Func<ContactsSearchBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ContactsSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emfluencemp")]
-        public IBodyWorkflowAction<ContactsSaveResponse, ApiConnectionActionConfiguration> ContactsSave(Expression<Func<ContactsSaveInput>> body)
+        public IBodyWorkflowAction<ContactsSaveResponse, ApiConnectionActionConfiguration> ContactsSave(Expression<Func<ContactsSaveBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ContactsSaveResponse, ApiConnectionActionConfiguration>(() =>
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortFieldInput
+    public enum SortFieldInput
     {
         [EnumMember(Value = "contactID")]
         ContactId,
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortDirectionInput
+    public enum SortDirectionInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string LastName { get; set; }
     }
 
-    public class ContactsSearchInput
+    public class ContactsSearchBodyInput
     {
         [JsonProperty("groupID")]
         public int? GroupId { get; set; }
@@ -321,17 +321,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public int? Rpp { get; set; }
 
         [JsonProperty("sortField")]
-        public ContactsSearchInputSortFieldType? SortField { get; set; }
+        public BodyInputSortFieldType? SortField { get; set; }
 
         [JsonProperty("sortDirection")]
-        public ContactsSearchInputSortDirectionType? SortDirection { get; set; }
+        public BodyInputSortDirectionType? SortDirection { get; set; }
 
         [JsonProperty("_internal", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Internal { get; set; } = true;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactsSearchInputSortFieldType
+    public enum BodyInputSortFieldType
     {
         [EnumMember(Value = "contactID")]
         ContactId,
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactsSearchInputSortDirectionType
+    public enum BodyInputSortDirectionType
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public JToken[] GroupIDs { get; set; }
     }
 
-    public class ContactsSaveInput
+    public class ContactsSaveBodyInput
     {
         [JsonProperty("contactID")]
         public int? ContactId { get; set; }

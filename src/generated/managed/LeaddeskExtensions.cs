@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
     public class LeaddeskActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        public IBodyWorkflowAction<AgentCampaignAccessResponse, ApiConnectionActionConfiguration> AgentCampaignAccess(Expression<Func<int>> agentId, Expression<Func<int>> campaignId, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<AgentCampaignAccessResponse, ApiConnectionActionConfiguration> AgentCampaignAccess(Expression<Func<int>> agentId, Expression<Func<int>> campaignId, Expression<Func<TypeInput>> type)
         {
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
             var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        public IBodyWorkflowAction<CreateAgentResponse, ApiConnectionActionConfiguration> CreateAgent(Expression<Func<CreateAgentInput>> body)
+        public IBodyWorkflowAction<CreateAgentResponse, ApiConnectionActionConfiguration> CreateAgent(Expression<Func<CreateAgentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAgentResponse, ApiConnectionActionConfiguration>(() =>
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        public IBodyWorkflowAction<CreateCallbackResponse, ApiConnectionActionConfiguration> CreateCallback(Expression<Func<CreateCallbackInput>> body)
+        public IBodyWorkflowAction<CreateCallbackResponse, ApiConnectionActionConfiguration> CreateCallback(Expression<Func<CreateCallbackBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateCallbackResponse, ApiConnectionActionConfiguration>(() =>
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        public IBodyWorkflowAction<ModifyAgentResponse, ApiConnectionActionConfiguration> ModifyAgent(Expression<Func<ModifyAgentInput>> body)
+        public IBodyWorkflowAction<ModifyAgentResponse, ApiConnectionActionConfiguration> ModifyAgent(Expression<Func<ModifyAgentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModifyAgentResponse, ApiConnectionActionConfiguration>(() =>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leaddesk")]
-        public IBodyWorkflowAction<ModifyContactResponse, ApiConnectionActionConfiguration> ModifyContact(Expression<Func<int>> contactId, Expression<Func<string>> fname = null, Expression<Func<string>> lname = null, Expression<Func<string>> phone = null, Expression<Func<string>> birthyear = null, Expression<Func<string>> gender = null, Expression<Func<string>> email = null, Expression<Func<string>> www = null, Expression<Func<string>> address = null, Expression<Func<string>> postcode = null, Expression<Func<string>> city = null, Expression<Func<string>> country = null, Expression<Func<string>> ssc = null, Expression<Func<int>> companyid = null, Expression<Func<string>> company = null, Expression<Func<string>> vatin = null, Expression<Func<string>> title = null, Expression<Func<string>> comment = null, Expression<Func<string>> other1 = null, Expression<Func<string>> other2 = null, Expression<Func<string>> other3 = null, Expression<Func<string>> other4 = null, Expression<Func<string>> other5 = null, Expression<Func<string>> other6 = null, Expression<Func<string>> other7 = null, Expression<Func<string>> other8 = null, Expression<Func<string>> other9 = null, Expression<Func<string>> other10 = null, Expression<Func<string>> other11 = null, Expression<Func<string>> other12 = null, Expression<Func<string>> other13 = null, Expression<Func<string>> other14 = null, Expression<Func<string>> other15 = null, Expression<Func<string>> other16 = null, Expression<Func<string>> other17 = null, Expression<Func<string>> other18 = null, Expression<Func<string>> other19 = null, Expression<Func<string>> other20 = null, Expression<Func<string>> other21 = null, Expression<Func<string>> other22 = null, Expression<Func<string>> other23 = null, Expression<Func<string>> other24 = null, Expression<Func<string>> other25 = null, Expression<Func<string>> other26 = null, Expression<Func<string>> other27 = null, Expression<Func<string>> other28 = null, Expression<Func<string>> other29 = null, Expression<Func<string>> other30 = null, Expression<Func<string>> other31 = null, Expression<Func<string>> other32 = null, Expression<Func<string>> other33 = null, Expression<Func<string>> other34 = null, Expression<Func<string>> other35 = null, Expression<Func<string>> list = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> assignToAgent = null)
+        public IBodyWorkflowAction<ModifyContactResponse, ApiConnectionActionConfiguration> ModifyContact(Expression<Func<int>> contactId, Expression<Func<string>> fname = null, Expression<Func<string>> lname = null, Expression<Func<string>> phone = null, Expression<Func<string>> birthyear = null, Expression<Func<string>> gender = null, Expression<Func<string>> email = null, Expression<Func<string>> www = null, Expression<Func<string>> address = null, Expression<Func<string>> postcode = null, Expression<Func<string>> city = null, Expression<Func<string>> country = null, Expression<Func<string>> ssc = null, Expression<Func<int>> companyid = null, Expression<Func<string>> company = null, Expression<Func<string>> vatin = null, Expression<Func<string>> title = null, Expression<Func<string>> comment = null, Expression<Func<string>> other1 = null, Expression<Func<string>> other2 = null, Expression<Func<string>> other3 = null, Expression<Func<string>> other4 = null, Expression<Func<string>> other5 = null, Expression<Func<string>> other6 = null, Expression<Func<string>> other7 = null, Expression<Func<string>> other8 = null, Expression<Func<string>> other9 = null, Expression<Func<string>> other10 = null, Expression<Func<string>> other11 = null, Expression<Func<string>> other12 = null, Expression<Func<string>> other13 = null, Expression<Func<string>> other14 = null, Expression<Func<string>> other15 = null, Expression<Func<string>> other16 = null, Expression<Func<string>> other17 = null, Expression<Func<string>> other18 = null, Expression<Func<string>> other19 = null, Expression<Func<string>> other20 = null, Expression<Func<string>> other21 = null, Expression<Func<string>> other22 = null, Expression<Func<string>> other23 = null, Expression<Func<string>> other24 = null, Expression<Func<string>> other25 = null, Expression<Func<string>> other26 = null, Expression<Func<string>> other27 = null, Expression<Func<string>> other28 = null, Expression<Func<string>> other29 = null, Expression<Func<string>> other30 = null, Expression<Func<string>> other31 = null, Expression<Func<string>> other32 = null, Expression<Func<string>> other33 = null, Expression<Func<string>> other34 = null, Expression<Func<string>> other35 = null, Expression<Func<string>> list = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> assignToAgent = null)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_fname = WorkflowExpression.Compile(fname, nameof(fname), required: false);
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "add")]
         Add,
@@ -508,19 +508,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public bool Success { get; set; }
     }
 
-    public class CreateAgentInput
+    public class CreateAgentBodyInput
     {
         [JsonProperty("account", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentInputAccountType Account { get; set; } = new CreateAgentInputAccountType();
+        public CreateAgentBodyInputAccountType Account { get; set; } = new CreateAgentBodyInputAccountType();
 
         [JsonProperty("contact_information", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentInputContactInformationType ContactInformation { get; set; }
+        public CreateAgentBodyInputContactInformationType ContactInformation { get; set; }
 
         [JsonProperty("employment", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentInputEmploymentType Employment { get; set; } = new CreateAgentInputEmploymentType();
+        public CreateAgentBodyInputEmploymentType Employment { get; set; } = new CreateAgentBodyInputEmploymentType();
     }
 
-    public class CreateAgentInputAccountType
+    public class CreateAgentBodyInputAccountType
     {
         [JsonProperty("external_id")]
         public string ExternalId { get; set; }
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string VoipUsername { get; set; }
     }
 
-    public class CreateAgentInputContactInformationType
+    public class CreateAgentBodyInputContactInformationType
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string Workphone { get; set; }
     }
 
-    public class CreateAgentInputEmploymentType
+    public class CreateAgentBodyInputEmploymentType
     {
         [JsonProperty("agent_group_id")]
         public int? AgentGroupId { get; set; }
@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string Description { get; set; }
 
         [JsonProperty("employment", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentInputEmploymentTypeEmploymentType? Employment { get; set; } = CreateAgentInputEmploymentTypeEmploymentType.Active;
+        public CreateAgentBodyInputEmploymentTypeEmploymentType? Employment { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk.CreateAgentBodyInputEmploymentTypeEmploymentType.Active;
 
         [JsonProperty("employment_start")]
         public string EmploymentStart { get; set; }
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgentInputEmploymentTypeEmploymentType
+    public enum CreateAgentBodyInputEmploymentTypeEmploymentType
     {
         [EnumMember(Value = "active")]
         Active,
@@ -622,19 +622,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public bool Success { get; set; }
     }
 
-    public class CreateCallbackInput
+    public class CreateCallbackBodyInput
     {
         [JsonProperty("contact")]
-        public CreateCallbackInputContactType Contact { get; set; }
+        public BodyInputContactType Contact { get; set; }
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCallbackInputPropertiesType Properties { get; set; } = new CreateCallbackInputPropertiesType();
+        public BodyInputPropertiesType Properties { get; set; } = new BodyInputPropertiesType();
 
         [JsonProperty("return_callback_id", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool ReturnCallbackId { get; set; } = true;
     }
 
-    public class CreateCallbackInputContactType
+    public class BodyInputContactType
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string Postcode { get; set; }
     }
 
-    public class CreateCallbackInputPropertiesType
+    public class BodyInputPropertiesType
     {
         [JsonProperty("agent", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Agent { get; set; }
@@ -790,11 +790,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string Timestamp { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCallbackInputPropertiesTypeTypeType Type { get; set; } = CreateCallbackInputPropertiesTypeTypeType.Private;
+        public BodyInputPropertiesTypeTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk.BodyInputPropertiesTypeTypeType.Private;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCallbackInputPropertiesTypeTypeType
+    public enum BodyInputPropertiesTypeTypeType
     {
         [EnumMember(Value = "private")]
         Private,
@@ -838,25 +838,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public bool Success { get; set; }
     }
 
-    public class ModifyAgentInput
+    public class ModifyAgentBodyInput
     {
         [JsonProperty("account")]
-        public ModifyAgentInputAccountType Account { get; set; }
+        public ModifyAgentBodyInputAccountType Account { get; set; }
 
         [JsonProperty("contact_information")]
-        public ModifyAgentInputContactInformationType ContactInformation { get; set; }
+        public ModifyAgentBodyInputContactInformationType ContactInformation { get; set; }
 
         [JsonProperty("disable", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Disable { get; set; } = false;
 
         [JsonProperty("employment")]
-        public ModifyAgentInputEmploymentType Employment { get; set; }
+        public ModifyAgentBodyInputEmploymentType Employment { get; set; }
 
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
     }
 
-    public class ModifyAgentInputAccountType
+    public class ModifyAgentBodyInputAccountType
     {
         [JsonProperty("external_id")]
         public string ExternalId { get; set; }
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string VoipUsername { get; set; }
     }
 
-    public class ModifyAgentInputContactInformationType
+    public class ModifyAgentBodyInputContactInformationType
     {
         [JsonProperty("address")]
         public string Address { get; set; }
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string Workphone { get; set; }
     }
 
-    public class ModifyAgentInputEmploymentType
+    public class ModifyAgentBodyInputEmploymentType
     {
         [JsonProperty("agent_group_id")]
         public int? AgentGroupId { get; set; }
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public string Description { get; set; }
 
         [JsonProperty("employment")]
-        public ModifyAgentInputEmploymentTypeEmploymentType? Employment { get; set; }
+        public ModifyAgentBodyInputEmploymentTypeEmploymentType? Employment { get; set; }
 
         [JsonProperty("employment_start")]
         public string EmploymentStart { get; set; }
@@ -938,7 +938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ModifyAgentInputEmploymentTypeEmploymentType
+    public enum ModifyAgentBodyInputEmploymentTypeEmploymentType
     {
         [EnumMember(Value = "")]
         None,
@@ -958,7 +958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderInput
+    public enum OrderInput
     {
         [EnumMember(Value = "first")]
         First,

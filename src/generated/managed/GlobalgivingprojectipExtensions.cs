@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
     public class GlobalgivingprojectipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<AccessTokenGetResponse, ApiConnectionActionConfiguration> AccessTokenGet(Expression<Func<AccessTokenGetInput>> body = null)
+        public IBodyWorkflowAction<AccessTokenGetResponse, ApiConnectionActionConfiguration> AccessTokenGet(Expression<Func<AccessTokenGetBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AccessTokenGetResponse, ApiConnectionActionConfiguration>(() =>
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<DonationSubmitResponse, ApiConnectionActionConfiguration> DonationSubmit(Expression<Func<bool>> isTest = null, Expression<Func<DonationSubmitInput>> body = null)
+        public IBodyWorkflowAction<DonationSubmitResponse, ApiConnectionActionConfiguration> DonationSubmit(Expression<Func<bool>> isTest = null, Expression<Func<DonationSubmitBodyInput>> body = null)
         {
             var __workflow_isTest = WorkflowExpression.Compile(isTest, nameof(isTest), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<GiftCardSendResponse, ApiConnectionActionConfiguration> GiftCardSend(Expression<Func<bool>> isTest = null, Expression<Func<GiftCardSendInput>> body = null)
+        public IBodyWorkflowAction<GiftCardSendResponse, ApiConnectionActionConfiguration> GiftCardSend(Expression<Func<bool>> isTest = null, Expression<Func<GiftCardSendBodyInput>> body = null)
         {
             var __workflow_isTest = WorkflowExpression.Compile(isTest, nameof(isTest), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<GiftCertificateOrderResponse, ApiConnectionActionConfiguration> GiftCertificateOrder(Expression<Func<GiftCertificateOrderInput>> body, Expression<Func<bool>> isTest = null)
+        public IBodyWorkflowAction<GiftCertificateOrderResponse, ApiConnectionActionConfiguration> GiftCertificateOrder(Expression<Func<GiftCertificateOrderBodyInput>> body, Expression<Func<bool>> isTest = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_isTest = WorkflowExpression.Compile(isTest, nameof(isTest), required: false);
@@ -519,22 +519,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string AccessToken { get; set; }
     }
 
-    public class AccessTokenGetInput
+    public class AccessTokenGetBodyInput
     {
         [JsonProperty("auth_request")]
-        public AccessTokenGetInputAuthRequestType AuthRequest { get; set; }
+        public BodyInputAuthRequestType AuthRequest { get; set; }
     }
 
-    public class AccessTokenGetInputAuthRequestType
+    public class BodyInputAuthRequestType
     {
         [JsonProperty("user")]
-        public AccessTokenGetInputAuthRequestTypeUserType User { get; set; }
+        public BodyInputAuthRequestTypeUserType User { get; set; }
 
         [JsonProperty("api_key")]
         public string ApiKey { get; set; }
     }
 
-    public class AccessTokenGetInputAuthRequestTypeUserType
+    public class BodyInputAuthRequestTypeUserType
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -5109,13 +5109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public double TotalAmountBilled { get; set; }
     }
 
-    public class DonationSubmitInput
+    public class DonationSubmitBodyInput
     {
         [JsonProperty("donation")]
-        public DonationSubmitInputDonationType Donation { get; set; }
+        public BodyInputDonationType Donation { get; set; }
     }
 
-    public class DonationSubmitInputDonationType
+    public class BodyInputDonationType
     {
         [JsonProperty("refcode")]
         public int? Refcode { get; set; }
@@ -5130,7 +5130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public double? Amount { get; set; }
 
         [JsonProperty("project")]
-        public DonationSubmitInputDonationTypeProjectType Project { get; set; }
+        public BodyInputDonationTypeProjectType Project { get; set; }
 
         [JsonProperty("signupForGGNewsletter")]
         public bool? SignupForGGNewsletter { get; set; }
@@ -5139,7 +5139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public bool? SignupForCharityNewsletter { get; set; }
 
         [JsonProperty("payment_detail")]
-        public DonationSubmitInputDonationTypePaymentDetailType PaymentDetail { get; set; }
+        public BodyInputDonationTypePaymentDetailType PaymentDetail { get; set; }
 
         [JsonProperty("ipAddress")]
         public string IpAddress { get; set; }
@@ -5148,13 +5148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string UserAgent { get; set; }
     }
 
-    public class DonationSubmitInputDonationTypeProjectType
+    public class BodyInputDonationTypeProjectType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
     }
 
-    public class DonationSubmitInputDonationTypePaymentDetailType
+    public class BodyInputDonationTypePaymentDetailType
     {
         [JsonProperty("firstname")]
         public string Firstname { get; set; }
@@ -5400,13 +5400,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Message { get; set; }
     }
 
-    public class GiftCardSendInput
+    public class GiftCardSendBodyInput
     {
         [JsonProperty("giftCard")]
-        public GiftCardSendInputGiftCardType GiftCard { get; set; }
+        public BodyInputGiftCardType GiftCard { get; set; }
     }
 
-    public class GiftCardSendInputGiftCardType
+    public class BodyInputGiftCardType
     {
         [JsonProperty("refcode")]
         public int? Refcode { get; set; }
@@ -5421,16 +5421,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public double? Amount { get; set; }
 
         [JsonProperty("payment_detail")]
-        public GiftCardSendInputGiftCardTypePaymentDetailType PaymentDetail { get; set; }
+        public BodyInputGiftCardTypePaymentDetailType PaymentDetail { get; set; }
 
         [JsonProperty("giftCardDesign")]
-        public GiftCardSendInputGiftCardTypeGiftCardDesignType GiftCardDesign { get; set; }
+        public BodyInputGiftCardTypeGiftCardDesignType GiftCardDesign { get; set; }
 
         [JsonProperty("giftCard_detail")]
-        public GiftCardSendInputGiftCardTypeGiftCardDetailType GiftCardDetail { get; set; }
+        public BodyInputGiftCardTypeGiftCardDetailType GiftCardDetail { get; set; }
     }
 
-    public class GiftCardSendInputGiftCardTypePaymentDetailType
+    public class BodyInputGiftCardTypePaymentDetailType
     {
         [JsonProperty("firstname")]
         public string Firstname { get; set; }
@@ -5469,13 +5469,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public int? ExpiryDateYear { get; set; }
     }
 
-    public class GiftCardSendInputGiftCardTypeGiftCardDesignType
+    public class BodyInputGiftCardTypeGiftCardDesignType
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
     }
 
-    public class GiftCardSendInputGiftCardTypeGiftCardDetailType
+    public class BodyInputGiftCardTypeGiftCardDetailType
     {
         [JsonProperty("dateToSend")]
         public string DateToSend { get; set; }
@@ -5529,13 +5529,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string ExpirationDate { get; set; }
     }
 
-    public class GiftCertificateOrderInput
+    public class GiftCertificateOrderBodyInput
     {
         [JsonProperty("giftCertificate")]
-        public GiftCertificateOrderInputGiftCertificateType GiftCertificate { get; set; }
+        public BodyInputGiftCertificateType GiftCertificate { get; set; }
     }
 
-    public class GiftCertificateOrderInputGiftCertificateType
+    public class BodyInputGiftCertificateType
     {
         [JsonProperty("refcode")]
         public int? Refcode { get; set; }

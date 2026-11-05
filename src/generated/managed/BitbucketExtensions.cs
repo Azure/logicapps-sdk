@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     public class BitbucketActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
-        public IBodyWorkflowAction<IssueResponse, ApiConnectionActionConfiguration> CreateIssue(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateIssueInput>> body)
+        public IBodyWorkflowAction<IssueResponse, ApiConnectionActionConfiguration> CreateIssue(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateIssueBodyInput>> body)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
@@ -116,107 +116,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateHookIssueCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateHookIssueUpdatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateHookPullRequestApprovedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateHookPullRequestCreatedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateHookPullRequestDeclinedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateHookPullRequestMergedInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<CreateHookRepositoryPushInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", __workflow_account.WithUrlEncoding(1), __workflow_slug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateHookIssueCreatedBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -336,41 +329,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Milestone { get; set; }
     }
 
-    public class CreateIssueInput
+    public class CreateIssueBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string IssueTitle { get; set; }
 
         [JsonProperty("content")]
-        public CreateIssueInputContentType Content { get; set; }
+        public BodyInputContentType Content { get; set; }
 
         [JsonProperty("kind", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateIssueInputIssueTypeType IssueType { get; set; }
+        public BodyInputIssueTypeType IssueType { get; set; }
 
         [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateIssueInputPriorityType Priority { get; set; }
+        public BodyInputPriorityType Priority { get; set; }
 
         [JsonProperty("status")]
-        public CreateIssueInputStatusType? Status { get; set; }
+        public BodyInputStatusType? Status { get; set; }
 
         [JsonProperty("component")]
-        public CreateIssueInputComponentType Component { get; set; }
+        public BodyInputComponentType Component { get; set; }
 
         [JsonProperty("milestone")]
-        public CreateIssueInputMilestoneType Milestone { get; set; }
+        public BodyInputMilestoneType Milestone { get; set; }
 
         [JsonProperty("version")]
-        public CreateIssueInputVersionType Version { get; set; }
+        public BodyInputVersionType Version { get; set; }
     }
 
-    public class CreateIssueInputContentType
+    public class BodyInputContentType
     {
         [JsonProperty("raw")]
         public string Description { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateIssueInputIssueTypeType
+    public enum BodyInputIssueTypeType
     {
         [EnumMember(Value = "bug")]
         Bug,
@@ -383,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateIssueInputPriorityType
+    public enum BodyInputPriorityType
     {
         [EnumMember(Value = "trivial")]
         Trivial,
@@ -398,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateIssueInputStatusType
+    public enum BodyInputStatusType
     {
         [EnumMember(Value = "new")]
         New,
@@ -416,19 +409,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         Wontfix
     }
 
-    public class CreateIssueInputComponentType
+    public class BodyInputComponentType
     {
         [JsonProperty("name")]
         public string Component { get; set; }
     }
 
-    public class CreateIssueInputMilestoneType
+    public class BodyInputMilestoneType
     {
         [JsonProperty("name")]
         public string Milestone { get; set; }
     }
 
-    public class CreateIssueInputVersionType
+    public class BodyInputVersionType
     {
         [JsonProperty("name")]
         public string Version { get; set; }
@@ -698,43 +691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string UUID { get; set; }
     }
 
-    public class CreateHookIssueCreatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateHookIssueUpdatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateHookPullRequestApprovedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateHookPullRequestCreatedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateHookPullRequestDeclinedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateHookPullRequestMergedInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Url { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateHookRepositoryPushInput
+    public class CreateHookIssueCreatedBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";

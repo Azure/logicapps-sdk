@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
     public class ClevertapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UploadProfiles(Expression<Func<UploadProfilesInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UploadProfiles(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
     {
     }
 
-    public class UploadProfilesInput
+    public class BodyInput
     {
         [JsonProperty("d", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UploadProfilesInputDTypeItem[] D { get; set; }
+        public BodyInputDTypeItem[] D { get; set; }
     }
 
-    public class UploadProfilesInputDTypeItem
+    public class BodyInputDTypeItem
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string RecordType { get; set; } = "profile";
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
         internal string DataSource { get; set; } = "Dynamics_CRM";
 
         [JsonProperty("profileData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UploadProfilesInputDTypeItemProfileDataType ProfileData { get; set; }
+        public BodyInputDTypeItemProfileDataType ProfileData { get; set; }
     }
 
-    public class UploadProfilesInputDTypeItemProfileDataType
+    public class BodyInputDTypeItemProfileDataType
     {
         public string Email { get; set; }
         public string Phone { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
     public class TdoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ProductImport(Expression<Func<bodyInputItem[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ProductImport(Expression<Func<ProductImportBodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CustomerImport(Expression<Func<bodyInputItem2[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CustomerImport(Expression<Func<CustomerImportBodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tdox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ListImport(Expression<Func<bodyInputItem22[]>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ListImport(Expression<Func<ListImportBodyInputItem[]>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -62,29 +62,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
     {
     }
 
-    public class bodyInputItem
+    public class ProductImportBodyInputItem
     {
         public string UiProduct { get; set; }
         public string CdErpCode { get; set; }
         public string CdBarcode { get; set; }
         public string DsDescription { get; set; }
-        public int FlPrice { get; set; }
-        public int FlDiscount1 { get; set; }
-        public int FlDiscount2 { get; set; }
-        public int FlDiscount3 { get; set; }
-        public int FlDiscount4 { get; set; }
-        public int FlDiscount5 { get; set; }
-        public int FlQty { get; set; }
+        public int? FlPrice { get; set; }
+        public int? FlDiscount1 { get; set; }
+        public int? FlDiscount2 { get; set; }
+        public int? FlDiscount3 { get; set; }
+        public int? FlDiscount4 { get; set; }
+        public int? FlDiscount5 { get; set; }
+        public int? FlQty { get; set; }
         public string TxUm { get; set; }
-        public int FlVat { get; set; }
+        public int? FlVat { get; set; }
         public string UiProductRevision { get; set; }
         public string AdditionalData { get; set; }
     }
 
-    public class bodyInputItem2
+    public class CustomerImportBodyInputItem
     {
         public string Id { get; set; }
-        public bool IsPerson { get; set; }
+        public bool? IsPerson { get; set; }
         public string BusinessName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -101,19 +101,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tdox
         public string Country { get; set; }
         public string Fax { get; set; }
         public string WebSite { get; set; }
-        public int Latitude { get; set; }
-        public int Longitude { get; set; }
+        public int? Latitude { get; set; }
+        public int? Longitude { get; set; }
         public string AdditionalData { get; set; }
     }
 
-    public class bodyInputItem22
+    public class ListImportBodyInputItem
     {
         public string ListCode { get; set; }
         public string ListDescription { get; set; }
-        public bodyInputItemItemsTypeItem[] Items { get; set; }
+        public BodyInputItemItemsTypeItem[] Items { get; set; }
     }
 
-    public class bodyInputItemItemsTypeItem
+    public class BodyInputItemItemsTypeItem
     {
         public string ItemCode { get; set; }
         public string ItemDescription { get; set; }

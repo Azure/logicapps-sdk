@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
     public class EwaycrmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteCompany(Expression<Func<DeleteCompanyInput>> deleteCompanyWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteCompany(Expression<Func<DeleteCompanyWrapperInput>> deleteCompanyWrapper)
         {
             var __workflow_deleteCompanyWrapper = WorkflowExpression.Compile(deleteCompanyWrapper, nameof(deleteCompanyWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteContact(Expression<Func<DeleteContactInput>> deleteContactWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteContact(Expression<Func<DeleteContactWrapperInput>> deleteContactWrapper)
         {
             var __workflow_deleteContactWrapper = WorkflowExpression.Compile(deleteContactWrapper, nameof(deleteContactWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteJournal(Expression<Func<DeleteJournalInput>> deleteJournalWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteJournal(Expression<Func<DeleteJournalWrapperInput>> deleteJournalWrapper)
         {
             var __workflow_deleteJournalWrapper = WorkflowExpression.Compile(deleteJournalWrapper, nameof(deleteJournalWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteLead(Expression<Func<DeleteLeadInput>> deleteLeadWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteLead(Expression<Func<DeleteLeadWrapperInput>> deleteLeadWrapper)
         {
             var __workflow_deleteLeadWrapper = WorkflowExpression.Compile(deleteLeadWrapper, nameof(deleteLeadWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteProject(Expression<Func<DeleteProjectInput>> deleteProjectWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteProject(Expression<Func<DeleteProjectWrapperInput>> deleteProjectWrapper)
         {
             var __workflow_deleteProjectWrapper = WorkflowExpression.Compile(deleteProjectWrapper, nameof(deleteProjectWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteTask(Expression<Func<DeleteTaskInput>> deleteTaskWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration> DeleteTask(Expression<Func<DeleteTaskWrapperInput>> deleteTaskWrapper)
         {
             var __workflow_deleteTaskWrapper = WorkflowExpression.Compile(deleteTaskWrapper, nameof(deleteTaskWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesResponseBase, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveCompany(Expression<Func<SaveCompanyInput>> saveCompanyWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveCompany(Expression<Func<SaveCompanyWrapperInput>> saveCompanyWrapper)
         {
             var __workflow_saveCompanyWrapper = WorkflowExpression.Compile(saveCompanyWrapper, nameof(saveCompanyWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveContact(Expression<Func<SaveContactInput>> saveContactWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveContact(Expression<Func<SaveContactWrapperInput>> saveContactWrapper)
         {
             var __workflow_saveContactWrapper = WorkflowExpression.Compile(saveContactWrapper, nameof(saveContactWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveJournal(Expression<Func<SaveJournalInput>> saveJournalWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveJournal(Expression<Func<SaveJournalWrapperInput>> saveJournalWrapper)
         {
             var __workflow_saveJournalWrapper = WorkflowExpression.Compile(saveJournalWrapper, nameof(saveJournalWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveLead(Expression<Func<SaveLeadInput>> saveLeadWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveLead(Expression<Func<SaveLeadWrapperInput>> saveLeadWrapper)
         {
             var __workflow_saveLeadWrapper = WorkflowExpression.Compile(saveLeadWrapper, nameof(saveLeadWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveProject(Expression<Func<SaveProjectInput>> saveProjectWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveProject(Expression<Func<SaveProjectWrapperInput>> saveProjectWrapper)
         {
             var __workflow_saveProjectWrapper = WorkflowExpression.Compile(saveProjectWrapper, nameof(saveProjectWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesBooleanResponse, ApiConnectionActionConfiguration> SaveRelation(Expression<Func<SaveRelationInput>> saveRelationWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesBooleanResponse, ApiConnectionActionConfiguration> SaveRelation(Expression<Func<SaveRelationWrapperInput>> saveRelationWrapper)
         {
             var __workflow_saveRelationWrapper = WorkflowExpression.Compile(saveRelationWrapper, nameof(saveRelationWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesBooleanResponse, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveTask(Expression<Func<SaveTaskInput>> saveTaskWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration> SaveTask(Expression<Func<SaveTaskWrapperInput>> saveTaskWrapper)
         {
             var __workflow_saveTaskWrapper = WorkflowExpression.Compile(saveTaskWrapper, nameof(saveTaskWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesSaveResponse, ApiConnectionActionConfiguration>(() =>
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany, ApiConnectionActionConfiguration> SearchCompanies(Expression<Func<SearchCompaniesInput>> searchCompaniesWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany, ApiConnectionActionConfiguration> SearchCompanies(Expression<Func<SearchCompaniesWrapperInput>> searchCompaniesWrapper)
         {
             var __workflow_searchCompaniesWrapper = WorkflowExpression.Compile(searchCompaniesWrapper, nameof(searchCompaniesWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany, ApiConnectionActionConfiguration>(() =>
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact, ApiConnectionActionConfiguration> SearchContacts(Expression<Func<SearchContactsInput>> searchContactsWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact, ApiConnectionActionConfiguration> SearchContacts(Expression<Func<SearchContactsWrapperInput>> searchContactsWrapper)
         {
             var __workflow_searchContactsWrapper = WorkflowExpression.Compile(searchContactsWrapper, nameof(searchContactsWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedContact, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal, ApiConnectionActionConfiguration> SearchJournals(Expression<Func<SearchJournalsInput>> searchJournalsWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal, ApiConnectionActionConfiguration> SearchJournals(Expression<Func<SearchJournalsWrapperInput>> searchJournalsWrapper)
         {
             var __workflow_searchJournalsWrapper = WorkflowExpression.Compile(searchJournalsWrapper, nameof(searchJournalsWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal, ApiConnectionActionConfiguration>(() =>
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead, ApiConnectionActionConfiguration> SearchLeads(Expression<Func<SearchLeadsInput>> searchLeadsWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead, ApiConnectionActionConfiguration> SearchLeads(Expression<Func<SearchLeadsWrapperInput>> searchLeadsWrapper)
         {
             var __workflow_searchLeadsWrapper = WorkflowExpression.Compile(searchLeadsWrapper, nameof(searchLeadsWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject, ApiConnectionActionConfiguration> SearchProjects(Expression<Func<SearchProjectsInput>> searchProjectsWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject, ApiConnectionActionConfiguration> SearchProjects(Expression<Func<SearchProjectsWrapperInput>> searchProjectsWrapper)
         {
             var __workflow_searchProjectsWrapper = WorkflowExpression.Compile(searchProjectsWrapper, nameof(searchProjectsWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject, ApiConnectionActionConfiguration>(() =>
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask, ApiConnectionActionConfiguration> SearchTasks(Expression<Func<SearchTasksInput>> searchTasksWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask, ApiConnectionActionConfiguration> SearchTasks(Expression<Func<SearchTasksWrapperInput>> searchTasksWrapper)
         {
             var __workflow_searchTasksWrapper = WorkflowExpression.Compile(searchTasksWrapper, nameof(searchTasksWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask, ApiConnectionActionConfiguration>(() =>
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ewaycrm")]
-        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1SystemGuid, ApiConnectionActionConfiguration> UnlinkItems(Expression<Func<UnlinkItemsInput>> unlinkItemsWrapper)
+        public IBodyWorkflowAction<EWayWcfServiceResponsesDataResponse1SystemGuid, ApiConnectionActionConfiguration> UnlinkItems(Expression<Func<UnlinkItemsWrapperInput>> unlinkItemsWrapper)
         {
             var __workflow_unlinkItemsWrapper = WorkflowExpression.Compile(unlinkItemsWrapper, nameof(unlinkItemsWrapper), required: true);
             return new DeferredBodyAction<EWayWcfServiceResponsesDataResponse1SystemGuid, ApiConnectionActionConfiguration>(() =>
@@ -368,37 +368,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Description { get; set; }
     }
 
-    public class DeleteCompanyInput
+    public class DeleteCompanyWrapperInput
     {
         [JsonProperty("itemGuid")]
         public string ItemGuid { get; set; }
     }
 
-    public class DeleteContactInput
+    public class DeleteContactWrapperInput
     {
         [JsonProperty("itemGuid")]
         public string ItemGuid { get; set; }
     }
 
-    public class DeleteJournalInput
+    public class DeleteJournalWrapperInput
     {
         [JsonProperty("itemGuid")]
         public string ItemGuid { get; set; }
     }
 
-    public class DeleteLeadInput
+    public class DeleteLeadWrapperInput
     {
         [JsonProperty("itemGuid")]
         public string ItemGuid { get; set; }
     }
 
-    public class DeleteProjectInput
+    public class DeleteProjectWrapperInput
     {
         [JsonProperty("itemGuid")]
         public string ItemGuid { get; set; }
     }
 
-    public class DeleteTaskInput
+    public class DeleteTaskWrapperInput
     {
         [JsonProperty("itemGuid")]
         public string ItemGuid { get; set; }
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Description { get; set; }
     }
 
-    public class SaveCompanyInput
+    public class SaveCompanyWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedCompanyTracked TransmitObject { get; set; }
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public int? ItemVersion { get; set; }
     }
 
-    public class SaveContactInput
+    public class SaveContactWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedContactTracked TransmitObject { get; set; }
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public int? ItemVersion { get; set; }
     }
 
-    public class SaveJournalInput
+    public class SaveJournalWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedJournalTracked TransmitObject { get; set; }
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public int? ItemVersion { get; set; }
     }
 
-    public class SaveLeadInput
+    public class SaveLeadWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedLeadTracked TransmitObject { get; set; }
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public int? ItemVersion { get; set; }
     }
 
-    public class SaveProjectInput
+    public class SaveProjectWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedProjectTracked TransmitObject { get; set; }
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Description { get; set; }
     }
 
-    public class SaveRelationInput
+    public class SaveRelationWrapperInput
     {
         [JsonProperty("transmitObject", DefaultValueHandling = DefaultValueHandling.Include)]
         public EWayWcfServiceItemTypesRelation TransmitObject { get; set; } = new EWayWcfServiceItemTypesRelation();
@@ -997,7 +997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         XsltTransformations
     }
 
-    public class SaveTaskInput
+    public class SaveTaskWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedTaskTracked TransmitObject { get; set; }
@@ -1151,12 +1151,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int ItemVersion { get; set; }
     }
 
-    public class EWayWcfServiceItemTypesInnerTypesBoundRelation
+    public class NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse
     {
         public string ItemGUID { get; set; }
         public string RelationDataGUID { get; set; }
@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string MainItemGUID { get; set; }
     }
 
-    public class SearchCompaniesInput
+    public class SearchCompaniesWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedCompanyWithFKs TransmitObject { get; set; }
@@ -1258,12 +1258,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
+        public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int? ItemVersion { get; set; }
     }
 
-    public class EWayWcfServiceItemTypesInnerTypesBoundRelation2
+    public class SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation
     {
         public string ItemGUID { get; set; }
         public string RelationDataGUID { get; set; }
@@ -1360,12 +1360,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int ItemVersion { get; set; }
     }
 
-    public class SearchContactsInput
+    public class SearchContactsWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedContactWithFKs TransmitObject { get; set; }
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
+        public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int? ItemVersion { get; set; }
     }
@@ -1507,12 +1507,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int ItemVersion { get; set; }
     }
 
-    public class SearchJournalsInput
+    public class SearchJournalsWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedJournalWithFKs TransmitObject { get; set; }
@@ -1583,7 +1583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
+        public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int? ItemVersion { get; set; }
     }
@@ -1648,12 +1648,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int ItemVersion { get; set; }
     }
 
-    public class SearchLeadsInput
+    public class SearchLeadsWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedLeadWithFKs TransmitObject { get; set; }
@@ -1729,7 +1729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
+        public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int? ItemVersion { get; set; }
     }
@@ -1814,12 +1814,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int ItemVersion { get; set; }
     }
 
-    public class SearchProjectsInput
+    public class SearchProjectsWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedProjectWithFKs TransmitObject { get; set; }
@@ -1921,7 +1921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
+        public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int? ItemVersion { get; set; }
     }
@@ -1968,12 +1968,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public NewOrUpdatedCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelationResponse[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int ItemVersion { get; set; }
     }
 
-    public class SearchTasksInput
+    public class SearchTasksWrapperInput
     {
         [JsonProperty("transmitObject")]
         public EWayWcfServiceItemTypesGeneratedTaskWithFKs TransmitObject { get; set; }
@@ -2058,7 +2058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
+        public SearchCompaniesEWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
         public string ItemGUID { get; set; }
         public int? ItemVersion { get; set; }
     }
@@ -2070,26 +2070,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Description { get; set; }
     }
 
-    public class UnlinkItemsInput
+    public class UnlinkItemsWrapperInput
     {
         [JsonProperty("itemGuid")]
         public string ItemGuid { get; set; }
 
         [JsonProperty("folderName")]
-        public UnlinkItemsInputFolderNameType? FolderName { get; set; }
+        public UnlinkItemsWrapperInputFolderNameType? FolderName { get; set; }
 
         [JsonProperty("relatedItemGuids")]
         public string[] RelatedItemGuids { get; set; }
 
         [JsonProperty("relatedFolderName")]
-        public UnlinkItemsInputRelatedFolderNameType? RelatedFolderName { get; set; }
+        public UnlinkItemsWrapperInputRelatedFolderNameType? RelatedFolderName { get; set; }
 
         [JsonProperty("skipUnlinkAvailabilityCheck")]
         public bool? SkipUnlinkAvailabilityCheck { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UnlinkItemsInputFolderNameType
+    public enum UnlinkItemsWrapperInputFolderNameType
     {
         Actions,
         AdditionalFields,
@@ -2171,7 +2171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UnlinkItemsInputRelatedFolderNameType
+    public enum UnlinkItemsWrapperInputRelatedFolderNameType
     {
         Actions,
         AdditionalFields,

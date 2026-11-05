@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmRiskUser(Expression<Func<ConfirmRiskUserInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConfirmRiskUser(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DismissRiskUser(Expression<Func<DismissRiskUserInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DismissRiskUser(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         public string UserPrincipalName { get; set; }
     }
 
-    public class ConfirmRiskUserInput
+    public class BodyInput
     {
         [JsonProperty("userIds")]
         public string[] UserIds { get; set; }
@@ -195,12 +195,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     {
         [JsonProperty("@@odata.type")]
         public string OdataType { get; set; }
-    }
-
-    public class DismissRiskUserInput
-    {
-        [JsonProperty("userIds")]
-        public string[] UserIds { get; set; }
     }
 
     public class GetRiskHistory

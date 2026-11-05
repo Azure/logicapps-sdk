@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
     public class WordcloudbytextvisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordcloudbytextvisip")]
-        public IBodyWorkflowAction<CloudCreateResponse, ApiConnectionActionConfiguration> CloudCreate(Expression<Func<CloudCreateInput>> body)
+        public IBodyWorkflowAction<CloudCreateResponse, ApiConnectionActionConfiguration> CloudCreate(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CloudCreateResponse, ApiConnectionActionConfiguration>(() =>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
         public string Data { get; set; }
     }
 
-    public class CloudCreateInput
+    public class BodyInput
     {
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }

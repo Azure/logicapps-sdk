@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubAddResponse, ApiConnectionActionConfiguration> FormSubAdd(Expression<Func<string>> formId, Expression<Func<FormSubAddInput>> body)
+        public IBodyWorkflowAction<FormSubAddResponse, ApiConnectionActionConfiguration> FormSubAdd(Expression<Func<string>> formId, Expression<Func<FormSubAddBodyInput>> body)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubListResponse, ApiConnectionActionConfiguration> FormSubList(Expression<Func<string>> formId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<FormSubListResponse, ApiConnectionActionConfiguration> FormSubList(Expression<Func<string>> formId, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<SubscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubAddResponse, ApiConnectionActionConfiguration> SequenceSubAdd(Expression<Func<string>> sequenceId, Expression<Func<SequenceSubAddInput>> body)
+        public IBodyWorkflowAction<SequenceSubAddResponse, ApiConnectionActionConfiguration> SequenceSubAdd(Expression<Func<string>> sequenceId, Expression<Func<FormSubAddBodyInput>> body)
         {
             var __workflow_sequenceId = WorkflowExpression.Compile(sequenceId, nameof(sequenceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubListResponse, ApiConnectionActionConfiguration> SequenceSubList(Expression<Func<string>> sequenceId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SequenceSubListResponse, ApiConnectionActionConfiguration> SequenceSubList(Expression<Func<string>> sequenceId, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<SubscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
         {
             var __workflow_sequenceId = WorkflowExpression.Compile(sequenceId, nameof(sequenceId), required: true);
             var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagAddResponse, ApiConnectionActionConfiguration> TagAdd(Expression<Func<TagAddInput>> body)
+        public IBodyWorkflowAction<TagAddResponse, ApiConnectionActionConfiguration> TagAdd(Expression<Func<TagAddBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TagAddResponse, ApiConnectionActionConfiguration>(() =>
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubResponse, ApiConnectionActionConfiguration> TagSub(Expression<Func<string>> tagId, Expression<Func<TagSubInput>> body = null)
+        public IBodyWorkflowAction<TagSubResponse, ApiConnectionActionConfiguration> TagSub(Expression<Func<string>> tagId, Expression<Func<TagSubBodyInput>> body = null)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubRemoveEmailResponse, ApiConnectionActionConfiguration> TagSubRemoveEmail(Expression<Func<string>> tagId, Expression<Func<TagSubRemoveEmailInput>> body)
+        public IBodyWorkflowAction<TagSubRemoveEmailResponse, ApiConnectionActionConfiguration> TagSubRemoveEmail(Expression<Func<string>> tagId, Expression<Func<SubscriberUnsubBodyInput>> body)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubListResponse, ApiConnectionActionConfiguration> TagSubList(Expression<Func<string>> tagId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<TagSubListResponse, ApiConnectionActionConfiguration> TagSubList(Expression<Func<string>> tagId, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<SubscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
         {
             var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberListResponse, ApiConnectionActionConfiguration> SubscriberList(Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> updatedFrom = null, Expression<Func<string>> updatedTo = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<string>> emailAddress = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SubscriberListResponse, ApiConnectionActionConfiguration> SubscriberList(Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> updatedFrom = null, Expression<Func<string>> updatedTo = null, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<string>> emailAddress = null, Expression<Func<int>> page = null)
         {
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUpdateResponse, ApiConnectionActionConfiguration> SubscriberUpdate(Expression<Func<string>> subscriberId, Expression<Func<SubscriberUpdateInput>> body)
+        public IBodyWorkflowAction<SubscriberUpdateResponse, ApiConnectionActionConfiguration> SubscriberUpdate(Expression<Func<string>> subscriberId, Expression<Func<SubscriberUpdateBodyInput>> body)
         {
             var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUnsubResponse, ApiConnectionActionConfiguration> SubscriberUnsub(Expression<Func<SubscriberUnsubInput>> body)
+        public IBodyWorkflowAction<SubscriberUnsubResponse, ApiConnectionActionConfiguration> SubscriberUnsub(Expression<Func<SubscriberUnsubBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SubscriberUnsubResponse, ApiConnectionActionConfiguration>(() =>
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastAddResponse, ApiConnectionActionConfiguration> BroadcastAdd(Expression<Func<BroadcastAddInput>> body)
+        public IBodyWorkflowAction<BroadcastAddResponse, ApiConnectionActionConfiguration> BroadcastAdd(Expression<Func<BroadcastAddBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BroadcastAddResponse, ApiConnectionActionConfiguration>(() =>
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastUpdateResponse, ApiConnectionActionConfiguration> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<BroadcastUpdateInput>> body)
+        public IBodyWorkflowAction<BroadcastUpdateResponse, ApiConnectionActionConfiguration> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<BroadcastAddBodyInput>> body)
         {
             var __workflow_broadcastId = WorkflowExpression.Compile(broadcastId, nameof(broadcastId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseAddResponse, ApiConnectionActionConfiguration> PurchaseAdd(Expression<Func<PurchaseAddInput>> body)
+        public IBodyWorkflowAction<PurchaseAddResponse, ApiConnectionActionConfiguration> PurchaseAdd(Expression<Func<PurchaseAddBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<PurchaseAddResponse, ApiConnectionActionConfiguration>(() =>
@@ -558,7 +558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public JToken Fields { get; set; }
     }
 
-    public class FormSubAddInput
+    public class FormSubAddBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOrderInput
+    public enum SortOrderInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum subscriberStateInput
+    public enum SubscriberStateInput
     {
         [EnumMember(Value = "active")]
         Active,
@@ -715,21 +715,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
     {
         [JsonProperty("id")]
         public int Id { get; set; }
-    }
-
-    public class SequenceSubAddInput
-    {
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("first_name")]
-        public string FirstName { get; set; }
-
-        [JsonProperty("fields")]
-        public JToken Fields { get; set; }
-
-        [JsonProperty("tags")]
-        public int[] Tags { get; set; }
     }
 
     public class SequenceSubListResponse
@@ -843,13 +828,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public string UpdatedAt { get; set; }
     }
 
-    public class TagAddInput
+    public class TagAddBodyInput
     {
         [JsonProperty("tag", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TagAddInputTagType Tag { get; set; }
+        public BodyInputTagType Tag { get; set; }
     }
 
-    public class TagAddInputTagType
+    public class BodyInputTagType
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -894,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public int Id { get; set; }
     }
 
-    public class TagSubInput
+    public class TagSubBodyInput
     {
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -933,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public string CreatedAt { get; set; }
     }
 
-    public class TagSubRemoveEmailInput
+    public class SubscriberUnsubBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -1051,7 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortFieldInput
+    public enum SortFieldInput
     {
         [EnumMember(Value = "")]
         None,
@@ -1119,7 +1104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public JToken Fields { get; set; }
     }
 
-    public class SubscriberUpdateInput
+    public class SubscriberUpdateBodyInput
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1162,12 +1147,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
     {
         [JsonProperty("last_name")]
         public string LastName { get; set; }
-    }
-
-    public class SubscriberUnsubInput
-    {
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
     }
 
     public class SubscriberTagsResponse
@@ -1251,7 +1230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public string EmailLayoutTemplate { get; set; }
     }
 
-    public class BroadcastAddInput
+    public class BroadcastAddBodyInput
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1372,39 +1351,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 
         [JsonProperty("email_layout_template")]
         public string EmailLayoutTemplate { get; set; }
-    }
-
-    public class BroadcastUpdateInput
-    {
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("subject")]
-        public string Subject { get; set; }
-
-        [JsonProperty("content")]
-        public string Content { get; set; }
-
-        [JsonProperty("email_address")]
-        public string EmailAddress { get; set; }
-
-        [JsonProperty("email_layout_template")]
-        public string EmailLayoutTemplate { get; set; }
-
-        [JsonProperty("public")]
-        public bool? Public { get; set; }
-
-        [JsonProperty("published_at")]
-        public string PublishedAt { get; set; }
-
-        [JsonProperty("send_at")]
-        public string SendAt { get; set; }
-
-        [JsonProperty("thumbnail_alt")]
-        public string ThumbnailAlt { get; set; }
-
-        [JsonProperty("thumbnail_url")]
-        public string ThumbnailUrl { get; set; }
     }
 
     public class BroadcastGetStatResponse
@@ -1572,13 +1518,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public string Name { get; set; }
     }
 
-    public class PurchaseAddInput
+    public class PurchaseAddBodyInput
     {
         [JsonProperty("purchase", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PurchaseAddInputPurchaseType Purchase { get; set; }
+        public BodyInputPurchaseType Purchase { get; set; }
     }
 
-    public class PurchaseAddInputPurchaseType
+    public class BodyInputPurchaseType
     {
         [JsonProperty("transaction_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TransactionId { get; set; }
@@ -1614,10 +1560,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public string Status { get; set; }
 
         [JsonProperty("products", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PurchaseAddInputPurchaseTypeProductsTypeItem[] Products { get; set; }
+        public BodyInputPurchaseTypeProductsTypeItem[] Products { get; set; }
     }
 
-    public class PurchaseAddInputPurchaseTypeProductsTypeItem
+    public class BodyInputPurchaseTypeProductsTypeItem
     {
         [JsonProperty("pid", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Pid { get; set; }

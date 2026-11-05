@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<FundraisingApiCreatedAppealAttachment, ApiConnectionActionConfiguration> CreateAppealAttachment(Expression<Func<CreateAppealAttachmentInput>> body)
+        public IBodyWorkflowAction<FundraisingApiCreatedAppealAttachment, ApiConnectionActionConfiguration> CreateAppealAttachment(Expression<Func<CreateAppealAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedAppealAttachment, ApiConnectionActionConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditAppealAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditAppealAttachmentBodyInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<FundraisingApiCreatedAppealCustomField, ApiConnectionActionConfiguration> CreateAppealCustomField(Expression<Func<CreateAppealCustomFieldInput>> body)
+        public IBodyWorkflowAction<FundraisingApiCreatedAppealCustomField, ApiConnectionActionConfiguration> CreateAppealCustomField(Expression<Func<CreateAppealCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedAppealCustomField, ApiConnectionActionConfiguration>(() =>
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditAppealCustomFieldInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppealCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditAppealCustomFieldBodyInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<FundraisingApiCreatedCampaignAttachment, ApiConnectionActionConfiguration> CreateCampaignAttachment(Expression<Func<CreateCampaignAttachmentInput>> body)
+        public IBodyWorkflowAction<FundraisingApiCreatedCampaignAttachment, ApiConnectionActionConfiguration> CreateCampaignAttachment(Expression<Func<CreateCampaignAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedCampaignAttachment, ApiConnectionActionConfiguration>(() =>
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditCampaignAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditAppealAttachmentBodyInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<FundraisingApiCreatedCampaignCustomField, ApiConnectionActionConfiguration> CreateCampaignCustomField(Expression<Func<CreateCampaignCustomFieldInput>> body)
+        public IBodyWorkflowAction<FundraisingApiCreatedCampaignCustomField, ApiConnectionActionConfiguration> CreateCampaignCustomField(Expression<Func<CreateCampaignCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedCampaignCustomField, ApiConnectionActionConfiguration>(() =>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditCampaignCustomFieldInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaignCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditAppealCustomFieldBodyInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<FundraisingApiCreatedFundAttachment, ApiConnectionActionConfiguration> CreateFundAttachment(Expression<Func<CreateFundAttachmentInput>> body)
+        public IBodyWorkflowAction<FundraisingApiCreatedFundAttachment, ApiConnectionActionConfiguration> CreateFundAttachment(Expression<Func<CreateFundAttachmentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedFundAttachment, ApiConnectionActionConfiguration>(() =>
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditFundAttachmentInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundAttachment(Expression<Func<string>> attachmentId, Expression<Func<EditAppealAttachmentBodyInput>> body)
         {
             var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<FundraisingApiCreatedFundCustomField, ApiConnectionActionConfiguration> CreateFundCustomField(Expression<Func<CreateFundCustomFieldInput>> body)
+        public IBodyWorkflowAction<FundraisingApiCreatedFundCustomField, ApiConnectionActionConfiguration> CreateFundCustomField(Expression<Func<CreateFundCustomFieldBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FundraisingApiCreatedFundCustomField, ApiConnectionActionConfiguration>(() =>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditFundCustomFieldInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditFundCustomField(Expression<Func<string>> customFieldId, Expression<Func<EditAppealCustomFieldBodyInput>> body)
         {
             var __workflow_customFieldId = WorkflowExpression.Compile(customFieldId, nameof(customFieldId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedAppeal, ApiConnectionActionConfiguration> CreateAppeal(Expression<Func<CreateAppealInput>> body)
+        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedAppeal, ApiConnectionActionConfiguration> CreateAppeal(Expression<Func<CreateAppealBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NXTDataIntegrationApiCreatedAppeal, ApiConnectionActionConfiguration>(() =>
@@ -455,7 +455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppeal(Expression<Func<int>> id, Expression<Func<EditAppealInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditAppeal(Expression<Func<int>> id, Expression<Func<EditAppealBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedCampaign, ApiConnectionActionConfiguration> CreateCampaign(Expression<Func<CreateCampaignInput>> body)
+        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedCampaign, ApiConnectionActionConfiguration> CreateCampaign(Expression<Func<CreateCampaignBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NXTDataIntegrationApiCreatedCampaign, ApiConnectionActionConfiguration>(() =>
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaign(Expression<Func<int>> id, Expression<Func<EditCampaignInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditCampaign(Expression<Func<int>> id, Expression<Func<EditCampaignBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedConstituentAppeal, ApiConnectionActionConfiguration> CreateConstituentAppeal(Expression<Func<CreateConstituentAppealInput>> body)
+        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedConstituentAppeal, ApiConnectionActionConfiguration> CreateConstituentAppeal(Expression<Func<CreateConstituentAppealBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NXTDataIntegrationApiCreatedConstituentAppeal, ApiConnectionActionConfiguration>(() =>
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAppeal(Expression<Func<int>> id, Expression<Func<EditConstituentAppealInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditConstituentAppeal(Expression<Func<int>> id, Expression<Func<EditConstituentAppealBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedFund, ApiConnectionActionConfiguration> CreateFund(Expression<Func<CreateFundInput>> body)
+        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedFund, ApiConnectionActionConfiguration> CreateFund(Expression<Func<CreateFundBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NXTDataIntegrationApiCreatedFund, ApiConnectionActionConfiguration>(() =>
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditFund(Expression<Func<int>> id, Expression<Func<EditFundInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditFund(Expression<Func<int>> id, Expression<Func<EditFundBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -859,13 +859,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateAppealAttachmentInput
+    public class CreateAppealAttachmentBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppealId { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAppealAttachmentInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -890,13 +890,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAppealAttachmentInputTypeType
+    public enum BodyInputTypeType
     {
         Link,
         Physical
     }
 
-    public class EditAppealAttachmentInput
+    public class EditAppealAttachmentBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -917,7 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateAppealCustomFieldInput
+    public class CreateAppealCustomFieldBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AppealId { get; set; }
@@ -935,7 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Comment { get; set; }
     }
 
-    public class EditAppealCustomFieldInput
+    public class EditAppealCustomFieldBodyInput
     {
         [JsonProperty("category")]
         public string Category { get; set; }
@@ -1150,13 +1150,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateCampaignAttachmentInput
+    public class CreateCampaignAttachmentBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignId { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCampaignAttachmentInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1180,55 +1180,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string[] Tags { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateCampaignAttachmentInputTypeType
-    {
-        Link,
-        Physical
-    }
-
-    public class EditCampaignAttachmentInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("url")]
-        public string URL { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
-    }
-
     public class FundraisingApiCreatedCampaignCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateCampaignCustomFieldInput
+    public class CreateCampaignCustomFieldBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CampaignId { get; set; }
 
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Category { get; set; }
-
-        [JsonProperty("value")]
-        public JToken Value { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("comment")]
-        public string Comment { get; set; }
-    }
-
-    public class EditCampaignCustomFieldInput
-    {
-        [JsonProperty("category")]
         public string Category { get; set; }
 
         [JsonProperty("value")]
@@ -1444,13 +1407,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateFundAttachmentInput
+    public class CreateFundAttachmentBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateFundAttachmentInputTypeType Type { get; set; }
+        public BodyInputTypeType Type { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1474,55 +1437,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string[] Tags { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateFundAttachmentInputTypeType
-    {
-        Link,
-        Physical
-    }
-
-    public class EditFundAttachmentInput
-    {
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("url")]
-        public string URL { get; set; }
-
-        [JsonProperty("tags")]
-        public string[] Tags { get; set; }
-    }
-
     public class FundraisingApiCreatedFundCustomField
     {
         [JsonProperty("id")]
         public string Id { get; set; }
     }
 
-    public class CreateFundCustomFieldInput
+    public class CreateFundCustomFieldBodyInput
     {
         [JsonProperty("parent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
         [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Category { get; set; }
-
-        [JsonProperty("value")]
-        public JToken Value { get; set; }
-
-        [JsonProperty("date")]
-        public string Date { get; set; }
-
-        [JsonProperty("comment")]
-        public string Comment { get; set; }
-    }
-
-    public class EditFundCustomFieldInput
-    {
-        [JsonProperty("category")]
         public string Category { get; set; }
 
         [JsonProperty("value")]
@@ -1607,7 +1533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateAppealInput
+    public class CreateAppealBodyInput
     {
         [JsonProperty("appeal_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupId { get; set; }
@@ -1646,7 +1572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public bool? Inactive { get; set; }
     }
 
-    public class EditAppealInput
+    public class EditAppealBodyInput
     {
         [JsonProperty("appeal_id")]
         public string LookupId { get; set; }
@@ -1691,7 +1617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateCampaignInput
+    public class CreateCampaignBodyInput
     {
         [JsonProperty("campaign_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupId { get; set; }
@@ -1721,7 +1647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public int? DefaultFundId { get; set; }
     }
 
-    public class EditCampaignInput
+    public class EditCampaignBodyInput
     {
         [JsonProperty("campaign_id")]
         public string LookupId { get; set; }
@@ -1757,7 +1683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateConstituentAppealInput
+    public class CreateConstituentAppealBodyInput
     {
         [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ConstituentId { get; set; }
@@ -1793,7 +1719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string ImportId { get; set; }
     }
 
-    public class EditConstituentAppealInput
+    public class EditConstituentAppealBodyInput
     {
         [JsonProperty("appeal_description")]
         public string AppealDescription { get; set; }
@@ -1829,7 +1755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Id { get; set; }
     }
 
-    public class CreateFundInput
+    public class CreateFundBodyInput
     {
         [JsonProperty("fund_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LookupId { get; set; }
@@ -1868,7 +1794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public int? DefaultAppealId { get; set; }
     }
 
-    public class EditFundInput
+    public class EditFundBodyInput
     {
         [JsonProperty("fund_id")]
         public string LookupId { get; set; }

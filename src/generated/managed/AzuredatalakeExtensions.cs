@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AppendFileConcurrent(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body, Expression<Func<appendModeInput>> appendMode = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AppendFileConcurrent(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body, Expression<Func<AppendModeInput>> appendMode = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum appendModeInput
+    public enum AppendModeInput
     {
         [EnumMember(Value = "autocreate")]
         Autocreate,

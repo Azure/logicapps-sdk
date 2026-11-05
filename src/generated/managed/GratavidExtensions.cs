@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     public class GratavidActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<SendNoteResponse, ApiConnectionActionConfiguration> SendNote(Expression<Func<SendNoteInput>> body = null)
+        public IBodyWorkflowAction<SendNoteResponse, ApiConnectionActionConfiguration> SendNote(Expression<Func<SendNoteBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SendNoteResponse, ApiConnectionActionConfiguration>(() =>
@@ -49,10 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
 
     public class GratavidTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, Expression<Func<NewEventInput>> body = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewEvent(Expression<Func<WebookHookEventInput>> webookHookEvent, FlowRecurrence recurrence = null)
         {
             var __workflow_webookHookEvent = WorkflowExpression.Compile(webookHookEvent, nameof(webookHookEvent), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/manageIntegrations";
@@ -61,8 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
                 callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
                 callPayload.Queries["webookHookEvent"] = ExpressionConverter.Convert(__workflow_webookHookEvent);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new NewEventBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
@@ -80,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         public string ViewInGratavidLink { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -125,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         public string ViewInGratavidLink { get; set; }
     }
 
-    public class SendNoteInput
+    public class SendNoteBodyInput
     {
         [JsonProperty("noteId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NoteId { get; set; }
@@ -153,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum webookHookEventInput
+    public enum WebookHookEventInput
     {
         [EnumMember(Value = "taskSent")]
         GratavidTaskSentToAContact,
@@ -167,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         ContactOptOutOfTextRepliesSTOPAfterReceivingGratavid
     }
 
-    public class NewEventInput
+    public class NewEventBodyInput
     {
         [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";

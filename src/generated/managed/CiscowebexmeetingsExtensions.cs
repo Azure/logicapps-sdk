@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
     public class CiscowebexmeetingsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
-        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> NewMeeting(Expression<Func<NewMeetingInput>> body)
+        public IBodyWorkflowAction<NewMeetingResponse, ApiConnectionActionConfiguration> NewMeeting(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NewMeetingResponse, ApiConnectionActionConfiguration>(() =>
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
         public string Topic { get; set; }
     }
 
-    public class NewMeetingInput
+    public class BodyInput
     {
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }

@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendMailWithOptions(Expression<Func<SendMailWithOptionsInput>> optionsEmailSubscription)
+        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendMailWithOptions(Expression<Func<OptionsEmailSubscriptionInput>> optionsEmailSubscription)
         {
             var __workflow_optionsEmailSubscription = WorkflowExpression.Compile(optionsEmailSubscription, nameof(optionsEmailSubscription), required: true);
             return new DeferredBodyAction<SubscriptionResponse, ApiConnectionActionConfiguration>(() =>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendApprovalMail(Expression<Func<SendApprovalMailInput>> approvalEmailSubscription)
+        public IBodyWorkflowAction<SubscriptionResponse, ApiConnectionActionConfiguration> SendApprovalMail(Expression<Func<ApprovalEmailSubscriptionInput>> approvalEmailSubscription)
         {
             var __workflow_approvalEmailSubscription = WorkflowExpression.Compile(approvalEmailSubscription, nameof(approvalEmailSubscription), required: true);
             return new DeferredBodyAction<SubscriptionResponse, ApiConnectionActionConfiguration>(() =>
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactPostItem(Expression<Func<string>> table, Expression<Func<ContactPostItemInput>> item)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactPostItem(Expression<Func<string>> table, Expression<Func<ContactPatchItemItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<ContactPatchItemInput>> item)
+        public IBodyWorkflowAction<ContactResponse, ApiConnectionActionConfiguration> ContactPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<ContactPatchItemItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RespondToEvent(Expression<Func<string>> eventId, Expression<Func<responseInput>> response, Expression<Func<RespondToEventInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RespondToEvent(Expression<Func<string>> eventId, Expression<Func<ResponseInput>> response, Expression<Func<RespondToEventBodyInput>> body = null)
         {
             var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             var __workflow_response = WorkflowExpression.Compile(response, nameof(response), required: true);
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ForwardEmail(Expression<Func<string>> messageId, Expression<Func<ForwardEmailInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ForwardEmail(Expression<Func<string>> messageId, Expression<Func<ForwardEmailBodyInput>> body)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums, ApiConnectionActionConfiguration> CalendarPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<V3CalendarPatchItemInput>> item)
+        public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums, ApiConnectionActionConfiguration> CalendarPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<CalendarPatchItemItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums, ApiConnectionActionConfiguration> CalendarPostItem(Expression<Func<string>> table, Expression<Func<V3CalendarPostItemInput>> item)
+        public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums, ApiConnectionActionConfiguration> CalendarPostItem(Expression<Func<string>> table, Expression<Func<CalendarPatchItemItemInput>> item)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IBodyWorkflowAction<BatchResponseClientReceiveMessage, ApiConnectionActionConfiguration> GetEmails(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<BatchResponseClientReceiveMessage, ApiConnectionActionConfiguration> GetEmails(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<ImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> messageId, Expression<Func<ReplyToV3Input>> replyParameters)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ReplyTo(Expression<Func<string>> messageId, Expression<Func<ReplyParametersInput>> replyParameters)
         {
             var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             var __workflow_replyParameters = WorkflowExpression.Compile(replyParameters, nameof(replyParameters), required: true);
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<SendEmailV2Input>> emailMessage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<EmailMessageInput>> emailMessage)
         {
             var __workflow_emailMessage = WorkflowExpression.Compile(emailMessage, nameof(emailMessage), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["pastDays"] = Convert.ToString(50);
                 if (__workflow_pastDays != null)
                     input.Subscribe.Queries["pastDays"] = ExpressionConverter.Convert(__workflow_pastDays);
-                input.Subscribe.Body = new CreateOnChangedEventPokeSubscriptionInput().ToJToken();
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<CalendarEventListWithActionType>(input);
             });
         }
@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage, ApiConnectionTriggerConfiguration> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage, ApiConnectionTriggerConfiguration> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<ImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -624,12 +624,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
                 if (__workflow_fetchOnlyWithAttachment != null)
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
-                input.Subscribe.Body = new CreateOnFlaggedEmailPokeSubscriptionInput().ToJToken();
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<ImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -694,12 +694,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
                 if (__workflow_fetchOnlyWithAttachment != null)
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
-                input.Subscribe.Body = new CreateOnNewEmailPokeSubscriptionInput().ToJToken();
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
             });
         }
 
-        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewMentionMeEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage, ApiConnectionTriggerConfiguration> OnNewMentionMeEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<ImportanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
@@ -762,7 +762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
                 input.Subscribe.Queries["fetchOnlyWithAttachment"] = Convert.ToString(false);
                 if (__workflow_fetchOnlyWithAttachment != null)
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = ExpressionConverter.Convert(__workflow_fetchOnlyWithAttachment);
-                input.Subscribe.Body = new CreateOnNewMentionMeEmailPokeSubscriptionInput().ToJToken();
+                input.Subscribe.Body = new SubscriptionInput().ToJToken();
                 return new ApiConnectionTrigger<TriggerBatchResponseClientReceiveMessage>(input);
             });
         }
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string NotificationUrl { get; set; }
     }
 
-    public class SendMailWithOptionsInput
+    public class OptionsEmailSubscriptionInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
@@ -909,7 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string Body { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessageWithOptionsImportanceType? Importance { get; set; } = MessageWithOptionsImportanceType.Normal;
+        public MessageWithOptionsImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Outlook.MessageWithOptionsImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
         public bool? UseOnlyHTMLMessage { get; set; }
 
@@ -937,7 +937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
-    public class SendApprovalMailInput
+    public class ApprovalEmailSubscriptionInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string Body { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ApprovalMessageImportanceType? Importance { get; set; } = ApprovalMessageImportanceType.Normal;
+        public ApprovalMessageImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Outlook.ApprovalMessageImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
         public bool? UseOnlyHTMLMessage { get; set; }
 
@@ -1016,7 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string Surname { get; set; }
         public string Title { get; set; }
         public string Generation { get; set; }
-        public EmailAddress[] EmailAddresses { get; set; }
+        public ContactGetItemEmailAddressResponse[] EmailAddresses { get; set; }
 
         [JsonProperty("ImAddresses")]
         public string[] IMAddresses { get; set; }
@@ -1032,9 +1032,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         [JsonProperty("MobilePhone1")]
         public string MobilePhone { get; set; }
-        public PhysicalAddress HomeAddress { get; set; }
-        public PhysicalAddress BusinessAddress { get; set; }
-        public PhysicalAddress OtherAddress { get; set; }
+        public ContactGetItemPhysicalAddressResponse HomeAddress { get; set; }
+        public ContactGetItemPhysicalAddressResponse BusinessAddress { get; set; }
+        public ContactGetItemPhysicalAddressResponse OtherAddress { get; set; }
         public string YomiCompanyName { get; set; }
         public string YomiGivenName { get; set; }
         public string YomiSurname { get; set; }
@@ -1048,13 +1048,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string LastModifiedTime { get; set; }
     }
 
-    public class EmailAddress
+    public class ContactGetItemEmailAddressResponse
     {
         public string Name { get; set; }
         public string Address { get; set; }
     }
 
-    public class PhysicalAddress
+    public class ContactGetItemPhysicalAddressResponse
     {
         public string Street { get; set; }
         public string City { get; set; }
@@ -1063,7 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string PostalCode { get; set; }
     }
 
-    public class ContactPostItemInput
+    public class ContactPatchItemItemInput
     {
         public string Id { get; set; }
         public string ParentFolderId { get; set; }
@@ -1081,7 +1081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string Surname { get; set; }
         public string Title { get; set; }
         public string Generation { get; set; }
-        public EmailAddress[] EmailAddresses { get; set; }
+        public ContactPatchItemEmailAddress[] EmailAddresses { get; set; }
 
         [JsonProperty("ImAddresses")]
         public string[] IMAddresses { get; set; }
@@ -1100,9 +1100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         [JsonProperty("MobilePhone1")]
         public string MobilePhone { get; set; }
-        public PhysicalAddress HomeAddress { get; set; }
-        public PhysicalAddress BusinessAddress { get; set; }
-        public PhysicalAddress OtherAddress { get; set; }
+        public ContactPatchItemPhysicalAddress HomeAddress { get; set; }
+        public ContactPatchItemPhysicalAddress BusinessAddress { get; set; }
+        public ContactPatchItemPhysicalAddress OtherAddress { get; set; }
         public string YomiCompanyName { get; set; }
         public string YomiGivenName { get; set; }
         public string YomiSurname { get; set; }
@@ -1116,61 +1116,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string LastModifiedTime { get; set; }
     }
 
-    public class ContactPatchItemInput
+    public class ContactPatchItemEmailAddress
     {
-        public string Id { get; set; }
-        public string ParentFolderId { get; set; }
-        public string Birthday { get; set; }
-        public string FileAs { get; set; }
-        public string DisplayName { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+    }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string GivenName { get; set; }
-        public string Initials { get; set; }
-        public string MiddleName { get; set; }
-
-        [JsonProperty("NickName")]
-        public string Nickname { get; set; }
-        public string Surname { get; set; }
-        public string Title { get; set; }
-        public string Generation { get; set; }
-        public EmailAddress[] EmailAddresses { get; set; }
-
-        [JsonProperty("ImAddresses")]
-        public string[] IMAddresses { get; set; }
-        public string JobTitle { get; set; }
-        public string CompanyName { get; set; }
-        public string Department { get; set; }
-        public string OfficeLocation { get; set; }
-        public string Profession { get; set; }
-        public string BusinessHomePage { get; set; }
-        public string AssistantName { get; set; }
-        public string Manager { get; set; }
-
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] HomePhones { get; set; }
-        public string[] BusinessPhones { get; set; }
-
-        [JsonProperty("MobilePhone1")]
-        public string MobilePhone { get; set; }
-        public PhysicalAddress HomeAddress { get; set; }
-        public PhysicalAddress BusinessAddress { get; set; }
-        public PhysicalAddress OtherAddress { get; set; }
-        public string YomiCompanyName { get; set; }
-        public string YomiGivenName { get; set; }
-        public string YomiSurname { get; set; }
-        public string[] Categories { get; set; }
-        public string ChangeKey { get; set; }
-
-        [JsonProperty("DateTimeCreated")]
-        public string CreatedTime { get; set; }
-
-        [JsonProperty("DateTimeLastModified")]
-        public string LastModifiedTime { get; set; }
+    public class ContactPatchItemPhysicalAddress
+    {
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string CountryOrRegion { get; set; }
+        public string PostalCode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum responseInput
+    public enum ResponseInput
     {
         Accept,
         [EnumMember(Value = "Tentatively Accept")]
@@ -1178,7 +1140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Decline
     }
 
-    public class RespondToEventInput
+    public class RespondToEventBodyInput
     {
         public string Comment { get; set; }
 
@@ -1186,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool? SendResponse { get; set; } = true;
     }
 
-    public class ForwardEmailInput
+    public class ForwardEmailBodyInput
     {
         public string Comment { get; set; }
 
@@ -1336,7 +1298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool ResponseRequested { get; set; }
     }
 
-    public class V3CalendarPatchItemInput
+    public class CalendarPatchItemItemInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
@@ -1346,28 +1308,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         [JsonProperty("End", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
-        public V3CalendarPatchItemInputTimeZoneType? TimeZone { get; set; }
+        public ItemInputTimeZoneType? TimeZone { get; set; }
         public string RequiredAttendees { get; set; }
         public string OptionalAttendees { get; set; }
         public string ResourceAttendees { get; set; }
         public string Body { get; set; }
         public string Location { get; set; }
-        public V3CalendarPatchItemInputImportanceType? Importance { get; set; }
+        public ItemInputImportanceType? Importance { get; set; }
 
         [JsonProperty("IsAllDay")]
         public bool? IsAllDayEvent { get; set; }
-        public V3CalendarPatchItemInputRecurrenceType? Recurrence { get; set; }
+        public ItemInputRecurrenceType? Recurrence { get; set; }
 
         [JsonProperty("RecurrenceEnd")]
         public string RecurrenceEndTime { get; set; }
         public int? NumberOfOccurrences { get; set; }
         public int? Reminder { get; set; }
-        public V3CalendarPatchItemInputShowAsType? ShowAs { get; set; }
+        public ItemInputShowAsType? ShowAs { get; set; }
         public bool? ResponseRequested { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPatchItemInputTimeZoneType
+    public enum ItemInputTimeZoneType
     {
         [EnumMember(Value = "")]
         None,
@@ -1646,7 +1608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPatchItemInputImportanceType
+    public enum ItemInputImportanceType
     {
         Low,
         Normal,
@@ -1654,7 +1616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPatchItemInputRecurrenceType
+    public enum ItemInputRecurrenceType
     {
         None,
         Daily,
@@ -1664,345 +1626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPatchItemInputShowAsType
-    {
-        Free,
-        Tentative,
-        Busy,
-        Oof,
-        WorkingElsewhere,
-        Unknown
-    }
-
-    public class V3CalendarPostItemInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Subject { get; set; }
-
-        [JsonProperty("Start", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string StartTime { get; set; }
-
-        [JsonProperty("End", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EndTime { get; set; }
-        public V3CalendarPostItemInputTimeZoneType? TimeZone { get; set; }
-        public string RequiredAttendees { get; set; }
-        public string OptionalAttendees { get; set; }
-        public string ResourceAttendees { get; set; }
-        public string Body { get; set; }
-        public string Location { get; set; }
-        public V3CalendarPostItemInputImportanceType? Importance { get; set; }
-
-        [JsonProperty("IsAllDay")]
-        public bool? IsAllDayEvent { get; set; }
-        public V3CalendarPostItemInputRecurrenceType? Recurrence { get; set; }
-
-        [JsonProperty("RecurrenceEnd")]
-        public string RecurrenceEndTime { get; set; }
-        public int? NumberOfOccurrences { get; set; }
-        public int? Reminder { get; set; }
-        public V3CalendarPostItemInputShowAsType? ShowAs { get; set; }
-        public bool? ResponseRequested { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPostItemInputTimeZoneType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "(UTC-12:00) International Date Line West")]
-        UTC1200InternationalDateLineWest,
-        [EnumMember(Value = "(UTC-11:00) Coordinated Universal Time-11")]
-        UTC1100CoordinatedUniversalTime11,
-        [EnumMember(Value = "(UTC-10:00) Aleutian Islands")]
-        UTC1000AleutianIslands,
-        [EnumMember(Value = "(UTC-10:00) Hawaii")]
-        UTC1000Hawaii,
-        [EnumMember(Value = "(UTC-09:30) Marquesas Islands")]
-        UTC0930MarquesasIslands,
-        [EnumMember(Value = "(UTC-09:00) Alaska")]
-        UTC0900Alaska,
-        [EnumMember(Value = "(UTC-09:00) Coordinated Universal Time-09")]
-        UTC0900CoordinatedUniversalTime09,
-        [EnumMember(Value = "(UTC-08:00) Baja California")]
-        UTC0800BajaCalifornia,
-        [EnumMember(Value = "(UTC-08:00) Coordinated Universal Time-08")]
-        UTC0800CoordinatedUniversalTime08,
-        [EnumMember(Value = "(UTC-08:00) Pacific Time (US & Canada)")]
-        UTC0800PacificTimeUSCanada,
-        [EnumMember(Value = "(UTC-07:00) Arizona")]
-        UTC0700Arizona,
-        [EnumMember(Value = "(UTC-07:00) Chihuahua, La Paz, Mazatlan")]
-        UTC0700ChihuahuaLaPazMazatlan,
-        [EnumMember(Value = "(UTC-07:00) Mountain Time (US & Canada)")]
-        UTC0700MountainTimeUSCanada,
-        [EnumMember(Value = "(UTC-06:00) Central America")]
-        UTC0600CentralAmerica,
-        [EnumMember(Value = "(UTC-06:00) Central Time (US & Canada)")]
-        UTC0600CentralTimeUSCanada,
-        [EnumMember(Value = "(UTC-06:00) Easter Island")]
-        UTC0600EasterIsland,
-        [EnumMember(Value = "(UTC-06:00) Guadalajara, Mexico City, Monterrey")]
-        UTC0600GuadalajaraMexicoCityMonterrey,
-        [EnumMember(Value = "(UTC-06:00) Saskatchewan")]
-        UTC0600Saskatchewan,
-        [EnumMember(Value = "(UTC-05:00) Bogota, Lima, Quito, Rio Branco")]
-        UTC0500BogotaLimaQuitoRioBranco,
-        [EnumMember(Value = "(UTC-05:00) Chetumal")]
-        UTC0500Chetumal,
-        [EnumMember(Value = "(UTC-05:00) Eastern Time (US & Canada)")]
-        UTC0500EasternTimeUSCanada,
-        [EnumMember(Value = "(UTC-05:00) Haiti")]
-        UTC0500Haiti,
-        [EnumMember(Value = "(UTC-05:00) Havana")]
-        UTC0500Havana,
-        [EnumMember(Value = "(UTC-05:00) Indiana (East)")]
-        UTC0500IndianaEast,
-        [EnumMember(Value = "(UTC-04:00) Asuncion")]
-        UTC0400Asuncion,
-        [EnumMember(Value = "(UTC-04:00) Atlantic Time (Canada)")]
-        UTC0400AtlanticTimeCanada,
-        [EnumMember(Value = "(UTC-04:00) Caracas")]
-        UTC0400Caracas,
-        [EnumMember(Value = "(UTC-04:00) Cuiaba")]
-        UTC0400Cuiaba,
-        [EnumMember(Value = "(UTC-04:00) Georgetown, La Paz, Manaus, San Juan")]
-        UTC0400GeorgetownLaPazManausSanJuan,
-        [EnumMember(Value = "(UTC-04:00) Santiago")]
-        UTC0400Santiago,
-        [EnumMember(Value = "(UTC-04:00) Turks and Caicos")]
-        UTC0400TurksAndCaicos,
-        [EnumMember(Value = "(UTC-03:30) Newfoundland")]
-        UTC0330Newfoundland,
-        [EnumMember(Value = "(UTC-03:00) Araguaina")]
-        UTC0300Araguaina,
-        [EnumMember(Value = "(UTC-03:00) Brasilia")]
-        UTC0300Brasilia,
-        [EnumMember(Value = "(UTC-03:00) Cayenne, Fortaleza")]
-        UTC0300CayenneFortaleza,
-        [EnumMember(Value = "(UTC-03:00) City of Buenos Aires")]
-        UTC0300CityOfBuenosAires,
-        [EnumMember(Value = "(UTC-03:00) Greenland")]
-        UTC0300Greenland,
-        [EnumMember(Value = "(UTC-03:00) Montevideo")]
-        UTC0300Montevideo,
-        [EnumMember(Value = "(UTC-03:00) Punta Arenas")]
-        UTC0300PuntaArenas,
-        [EnumMember(Value = "(UTC-03:00) Saint Pierre and Miquelon")]
-        UTC0300SaintPierreAndMiquelon,
-        [EnumMember(Value = "(UTC-03:00) Salvador")]
-        UTC0300Salvador,
-        [EnumMember(Value = "(UTC-02:00) Coordinated Universal Time-02")]
-        UTC0200CoordinatedUniversalTime02,
-        [EnumMember(Value = "(UTC-02:00) Mid-Atlantic - Old")]
-        UTC0200MidAtlanticOld,
-        [EnumMember(Value = "(UTC-01:00) Azores")]
-        UTC0100Azores,
-        [EnumMember(Value = "(UTC-01:00) Cabo Verde Is.")]
-        UTC0100CaboVerdeIs,
-        [EnumMember(Value = "(UTC) Coordinated Universal Time")]
-        UTCCoordinatedUniversalTime,
-        [EnumMember(Value = "(UTC+00:00) Casablanca")]
-        UTC0000Casablanca,
-        [EnumMember(Value = "(UTC+00:00) Dublin, Edinburgh, Lisbon, London")]
-        UTC0000DublinEdinburghLisbonLondon,
-        [EnumMember(Value = "(UTC+00:00) Monrovia, Reykjavik")]
-        UTC0000MonroviaReykjavik,
-        [EnumMember(Value = "(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna")]
-        UTC0100AmsterdamBerlinBernRomeStockholmVienna,
-        [EnumMember(Value = "(UTC+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague")]
-        UTC0100BelgradeBratislavaBudapestLjubljanaPrague,
-        [EnumMember(Value = "(UTC+01:00) Brussels, Copenhagen, Madrid, Paris")]
-        UTC0100BrusselsCopenhagenMadridParis,
-        [EnumMember(Value = "(UTC+01:00) Sarajevo, Skopje, Warsaw, Zagreb")]
-        UTC0100SarajevoSkopjeWarsawZagreb,
-        [EnumMember(Value = "(UTC+01:00) West Central Africa")]
-        UTC0100WestCentralAfrica,
-        [EnumMember(Value = "(UTC+01:00) Windhoek")]
-        UTC0100Windhoek,
-        [EnumMember(Value = "(UTC+02:00) Amman")]
-        UTC0200Amman,
-        [EnumMember(Value = "(UTC+02:00) Athens, Bucharest")]
-        UTC0200AthensBucharest,
-        [EnumMember(Value = "(UTC+02:00) Beirut")]
-        UTC0200Beirut,
-        [EnumMember(Value = "(UTC+02:00) Cairo")]
-        UTC0200Cairo,
-        [EnumMember(Value = "(UTC+02:00) Chisinau")]
-        UTC0200Chisinau,
-        [EnumMember(Value = "(UTC+02:00) Damascus")]
-        UTC0200Damascus,
-        [EnumMember(Value = "(UTC+02:00) Gaza, Hebron")]
-        UTC0200GazaHebron,
-        [EnumMember(Value = "(UTC+02:00) Harare, Pretoria")]
-        UTC0200HararePretoria,
-        [EnumMember(Value = "(UTC+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius")]
-        UTC0200HelsinkiKyivRigaSofiaTallinnVilnius,
-        [EnumMember(Value = "(UTC+02:00) Jerusalem")]
-        UTC0200Jerusalem,
-        [EnumMember(Value = "(UTC+02:00) Kaliningrad")]
-        UTC0200Kaliningrad,
-        [EnumMember(Value = "(UTC+02:00) Tripoli")]
-        UTC0200Tripoli,
-        [EnumMember(Value = "(UTC+03:00) Baghdad")]
-        UTC0300Baghdad,
-        [EnumMember(Value = "(UTC+03:00) Istanbul")]
-        UTC0300Istanbul,
-        [EnumMember(Value = "(UTC+03:00) Kuwait, Riyadh")]
-        UTC0300KuwaitRiyadh,
-        [EnumMember(Value = "(UTC+03:00) Minsk")]
-        UTC0300Minsk,
-        [EnumMember(Value = "(UTC+03:00) Moscow, St. Petersburg")]
-        UTC0300MoscowStPetersburg,
-        [EnumMember(Value = "(UTC+03:00) Nairobi")]
-        UTC0300Nairobi,
-        [EnumMember(Value = "(UTC+03:30) Tehran")]
-        UTC0330Tehran,
-        [EnumMember(Value = "(UTC+04:00) Abu Dhabi, Muscat")]
-        UTC0400AbuDhabiMuscat,
-        [EnumMember(Value = "(UTC+04:00) Astrakhan, Ulyanovsk")]
-        UTC0400AstrakhanUlyanovsk,
-        [EnumMember(Value = "(UTC+04:00) Baku")]
-        UTC0400Baku,
-        [EnumMember(Value = "(UTC+04:00) Izhevsk, Samara")]
-        UTC0400IzhevskSamara,
-        [EnumMember(Value = "(UTC+04:00) Port Louis")]
-        UTC0400PortLouis,
-        [EnumMember(Value = "(UTC+04:00) Saratov")]
-        UTC0400Saratov,
-        [EnumMember(Value = "(UTC+04:00) Tbilisi")]
-        UTC0400Tbilisi,
-        [EnumMember(Value = "(UTC+04:00) Volgograd")]
-        UTC0400Volgograd,
-        [EnumMember(Value = "(UTC+04:00) Yerevan")]
-        UTC0400Yerevan,
-        [EnumMember(Value = "(UTC+04:30) Kabul")]
-        UTC0430Kabul,
-        [EnumMember(Value = "(UTC+05:00) Ashgabat, Tashkent")]
-        UTC0500AshgabatTashkent,
-        [EnumMember(Value = "(UTC+05:00) Ekaterinburg")]
-        UTC0500Ekaterinburg,
-        [EnumMember(Value = "(UTC+05:00) Islamabad, Karachi")]
-        UTC0500IslamabadKarachi,
-        [EnumMember(Value = "(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi")]
-        UTC0530ChennaiKolkataMumbaiNewDelhi,
-        [EnumMember(Value = "(UTC+05:30) Sri Jayawardenepura")]
-        UTC0530SriJayawardenepura,
-        [EnumMember(Value = "(UTC+05:45) Kathmandu")]
-        UTC0545Kathmandu,
-        [EnumMember(Value = "(UTC+06:00) Astana")]
-        UTC0600Astana,
-        [EnumMember(Value = "(UTC+06:00) Dhaka")]
-        UTC0600Dhaka,
-        [EnumMember(Value = "(UTC+06:00) Omsk")]
-        UTC0600Omsk,
-        [EnumMember(Value = "(UTC+06:30) Yangon (Rangoon)")]
-        UTC0630YangonRangoon,
-        [EnumMember(Value = "(UTC+07:00) Bangkok, Hanoi, Jakarta")]
-        UTC0700BangkokHanoiJakarta,
-        [EnumMember(Value = "(UTC+07:00) Barnaul, Gorno-Altaysk")]
-        UTC0700BarnaulGornoAltaysk,
-        [EnumMember(Value = "(UTC+07:00) Hovd")]
-        UTC0700Hovd,
-        [EnumMember(Value = "(UTC+07:00) Krasnoyarsk")]
-        UTC0700Krasnoyarsk,
-        [EnumMember(Value = "(UTC+07:00) Novosibirsk")]
-        UTC0700Novosibirsk,
-        [EnumMember(Value = "(UTC+07:00) Tomsk")]
-        UTC0700Tomsk,
-        [EnumMember(Value = "(UTC+08:00) Beijing, Chongqing, Hong Kong, Urumqi")]
-        UTC0800BeijingChongqingHongKongUrumqi,
-        [EnumMember(Value = "(UTC+08:00) Irkutsk")]
-        UTC0800Irkutsk,
-        [EnumMember(Value = "(UTC+08:00) Kuala Lumpur, Singapore")]
-        UTC0800KualaLumpurSingapore,
-        [EnumMember(Value = "(UTC+08:00) Perth")]
-        UTC0800Perth,
-        [EnumMember(Value = "(UTC+08:00) Taipei")]
-        UTC0800Taipei,
-        [EnumMember(Value = "(UTC+08:00) Ulaanbaatar")]
-        UTC0800Ulaanbaatar,
-        [EnumMember(Value = "(UTC+08:30) Pyongyang")]
-        UTC0830Pyongyang,
-        [EnumMember(Value = "(UTC+08:45) Eucla")]
-        UTC0845Eucla,
-        [EnumMember(Value = "(UTC+09:00) Chita")]
-        UTC0900Chita,
-        [EnumMember(Value = "(UTC+09:00) Osaka, Sapporo, Tokyo")]
-        UTC0900OsakaSapporoTokyo,
-        [EnumMember(Value = "(UTC+09:00) Seoul")]
-        UTC0900Seoul,
-        [EnumMember(Value = "(UTC+09:00) Yakutsk")]
-        UTC0900Yakutsk,
-        [EnumMember(Value = "(UTC+09:30) Adelaide")]
-        UTC0930Adelaide,
-        [EnumMember(Value = "(UTC+09:30) Darwin")]
-        UTC0930Darwin,
-        [EnumMember(Value = "(UTC+10:00) Brisbane")]
-        UTC1000Brisbane,
-        [EnumMember(Value = "(UTC+10:00) Canberra, Melbourne, Sydney")]
-        UTC1000CanberraMelbourneSydney,
-        [EnumMember(Value = "(UTC+10:00) Guam, Port Moresby")]
-        UTC1000GuamPortMoresby,
-        [EnumMember(Value = "(UTC+10:00) Hobart")]
-        UTC1000Hobart,
-        [EnumMember(Value = "(UTC+10:00) Vladivostok")]
-        UTC1000Vladivostok,
-        [EnumMember(Value = "(UTC+10:30) Lord Howe Island")]
-        UTC1030LordHoweIsland,
-        [EnumMember(Value = "(UTC+11:00) Bougainville Island")]
-        UTC1100BougainvilleIsland,
-        [EnumMember(Value = "(UTC+11:00) Chokurdakh")]
-        UTC1100Chokurdakh,
-        [EnumMember(Value = "(UTC+11:00) Magadan")]
-        UTC1100Magadan,
-        [EnumMember(Value = "(UTC+11:00) Norfolk Island")]
-        UTC1100NorfolkIsland,
-        [EnumMember(Value = "(UTC+11:00) Sakhalin")]
-        UTC1100Sakhalin,
-        [EnumMember(Value = "(UTC+11:00) Solomon Is., New Caledonia")]
-        UTC1100SolomonIsNewCaledonia,
-        [EnumMember(Value = "(UTC+12:00) Anadyr, Petropavlovsk-Kamchatsky")]
-        UTC1200AnadyrPetropavlovskKamchatsky,
-        [EnumMember(Value = "(UTC+12:00) Auckland, Wellington")]
-        UTC1200AucklandWellington,
-        [EnumMember(Value = "(UTC+12:00) Coordinated Universal Time+12")]
-        UTC1200CoordinatedUniversalTime12,
-        [EnumMember(Value = "(UTC+12:00) Fiji")]
-        UTC1200Fiji,
-        [EnumMember(Value = "(UTC+12:00) Petropavlovsk-Kamchatsky - Old")]
-        UTC1200PetropavlovskKamchatskyOld,
-        [EnumMember(Value = "(UTC+12:45) Chatham Islands")]
-        UTC1245ChathamIslands,
-        [EnumMember(Value = "(UTC+13:00) Coordinated Universal Time+13")]
-        UTC1300CoordinatedUniversalTime13,
-        [EnumMember(Value = "(UTC+13:00) Nuku'alofa")]
-        UTC1300NukuAlofa,
-        [EnumMember(Value = "(UTC+13:00) Samoa")]
-        UTC1300Samoa,
-        [EnumMember(Value = "(UTC+14:00) Kiritimati Island")]
-        UTC1400KiritimatiIsland
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPostItemInputImportanceType
-    {
-        Low,
-        Normal,
-        High
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPostItemInputRecurrenceType
-    {
-        None,
-        Daily,
-        Weekly,
-        Monthly,
-        Yearly
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum V3CalendarPostItemInputShowAsType
+    public enum ItemInputShowAsType
     {
         Free,
         Tentative,
@@ -2019,7 +1643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum importanceInput
+    public enum ImportanceInput
     {
         Any,
         Low,
@@ -2033,7 +1657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public CalendarEventClientReceiveStringEnums[] Value { get; set; }
     }
 
-    public class ReplyToV3Input
+    public class ReplyParametersInput
     {
         public string To { get; set; }
 
@@ -2045,19 +1669,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string Subject { get; set; }
         public string Body { get; set; }
         public bool? ReplyAll { get; set; }
-        public ReplyToV3InputImportanceType? Importance { get; set; }
+        public ReplyParametersInputImportanceType? Importance { get; set; }
         public ClientSendAttachment[] Attachments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReplyToV3InputImportanceType
+    public enum ReplyParametersInputImportanceType
     {
         Low,
         Normal,
         High
     }
 
-    public class SendEmailV2Input
+    public class EmailMessageInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
@@ -2080,11 +1704,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string ReplyTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendEmailV2InputImportanceType? Importance { get; set; } = SendEmailV2InputImportanceType.Normal;
+        public EmailMessageInputImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Outlook.EmailMessageInputImportanceType.Normal;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SendEmailV2InputImportanceType
+    public enum EmailMessageInputImportanceType
     {
         Low,
         Normal,
@@ -2159,7 +1783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Deleted
     }
 
-    public class CreateOnChangedEventPokeSubscriptionInput
+    public class SubscriptionInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
@@ -2169,24 +1793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     {
         [JsonProperty("value")]
         public ClientReceiveMessage[] Value { get; set; }
-    }
-
-    public class CreateOnFlaggedEmailPokeSubscriptionInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateOnNewEmailPokeSubscriptionInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class CreateOnNewMentionMeEmailPokeSubscriptionInput
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

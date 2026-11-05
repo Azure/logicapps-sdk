@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 
     public class DvelopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<DynamicWebhookTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_triggerId = WorkflowExpression.Compile(triggerId, nameof(triggerId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
         }
     }
 
-    public class DynamicWebhookTriggerInput
+    public class BodyInput
     {
         [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackUrlForTheTrigger { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("conditions")]
-        public DynamicWebhookTriggerInputConditionTypeItem[] Condition { get; set; }
+        public BodyInputConditionTypeItem[] Condition { get; set; }
     }
 
-    public class DynamicWebhookTriggerInputConditionTypeItem
+    public class BodyInputConditionTypeItem
     {
         [JsonProperty("conditionType")]
         public string Type { get; set; }

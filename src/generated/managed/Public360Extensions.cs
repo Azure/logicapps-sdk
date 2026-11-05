@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
     public class Public360Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateFileResponse, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> hosturl, Expression<Func<CreateFileInput>> body)
+        public IBodyWorkflowAction<CreateFileResponse, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> hosturl, Expression<Func<CreateFileBodyInput>> body)
         {
             var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateDocumentResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> hosturl, Expression<Func<CreateDocumentInput>> body)
+        public IBodyWorkflowAction<CreateDocumentResponse, ApiConnectionActionConfiguration> CreateDocument(Expression<Func<string>> hosturl, Expression<Func<CreateDocumentBodyInput>> body)
         {
             var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
-        public IBodyWorkflowAction<CreateCaseResponse, ApiConnectionActionConfiguration> CreateCase(Expression<Func<string>> hosturl, Expression<Func<CreateCaseInput>> body)
+        public IBodyWorkflowAction<CreateCaseResponse, ApiConnectionActionConfiguration> CreateCase(Expression<Func<string>> hosturl, Expression<Func<CreateCaseBodyInput>> body)
         {
             var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         public string ErrorDetails { get; set; }
     }
 
-    public class CreateFileInput
+    public class CreateFileBodyInput
     {
         [JsonProperty("parameter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateFileInputParameterType Parameter { get; set; }
+        public CreateFileBodyInputParameterType Parameter { get; set; }
     }
 
-    public class CreateFileInputParameterType
+    public class CreateFileBodyInputParameterType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -91,10 +91,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Base64Data { get; set; }
-        public CreateFileInputParameterTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
+        public BodyInputParameterTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
     }
 
-    public class CreateFileInputParameterTypeAdditionalFieldsTypeItem
+    public class BodyInputParameterTypeAdditionalFieldsTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
@@ -109,13 +109,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         public string ErrorDetails { get; set; }
     }
 
-    public class CreateDocumentInput
+    public class CreateDocumentBodyInput
     {
         [JsonProperty("parameter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateDocumentInputParameterType Parameter { get; set; }
+        public CreateDocumentBodyInputParameterType Parameter { get; set; }
     }
 
-    public class CreateDocumentInputParameterType
+    public class CreateDocumentBodyInputParameterType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -127,20 +127,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         public string Status { get; set; }
         public string Archive { get; set; }
         public string Notes { get; set; }
-        public CreateDocumentInputParameterTypeContactsTypeItem[] Contacts { get; set; }
-        public CreateDocumentInputParameterTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
+        public BodyInputParameterTypeContactsTypeItem[] Contacts { get; set; }
+        public BodyInputParameterTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
     }
 
-    public class CreateDocumentInputParameterTypeContactsTypeItem
+    public class BodyInputParameterTypeContactsTypeItem
     {
         public string Role { get; set; }
         public string ReferenceNumber { get; set; }
-    }
-
-    public class CreateDocumentInputParameterTypeAdditionalFieldsTypeItem
-    {
-        public string Name { get; set; }
-        public string Value { get; set; }
     }
 
     public class CreateCaseResponse
@@ -152,13 +146,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         public string ErrorDetails { get; set; }
     }
 
-    public class CreateCaseInput
+    public class CreateCaseBodyInput
     {
         [JsonProperty("parameter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCaseInputParameterType Parameter { get; set; }
+        public CreateCaseBodyInputParameterType Parameter { get; set; }
     }
 
-    public class CreateCaseInputParameterType
+    public class CreateCaseBodyInputParameterType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -169,13 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         public string ResponsiblePersonIdNumber { get; set; }
         public string ResponsibleEnterpriseNumber { get; set; }
         public int? ProgressPlanId { get; set; }
-        public CreateCaseInputParameterTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
-    }
-
-    public class CreateCaseInputParameterTypeAdditionalFieldsTypeItem
-    {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public BodyInputParameterTypeAdditionalFieldsTypeItem[] AdditionalFields { get; set; }
     }
 }
 

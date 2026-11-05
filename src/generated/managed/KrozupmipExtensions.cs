@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddCardResponse, ApiConnectionActionConfiguration> ActionAddCard(Expression<Func<string>> boardUUID, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> accept, Expression<Func<ActionAddCardInput>> body)
+        public IBodyWorkflowAction<ActionAddCardResponse, ApiConnectionActionConfiguration> ActionAddCard(Expression<Func<string>> boardUUID, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> accept, Expression<Func<ActionAddCardBodyInput>> body)
         {
             var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -322,7 +322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionDeleteCardResponse, ApiConnectionActionConfiguration> ActionDeleteCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionDeleteCardInput>> body)
+        public IBodyWorkflowAction<ActionDeleteCardResponse, ApiConnectionActionConfiguration> ActionDeleteCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionDeleteCardBodyInput>> body)
         {
             var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddMessageToBoardResponse, ApiConnectionActionConfiguration> ActionAddMessageToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddMessageToBoardInput>> body)
+        public IBodyWorkflowAction<ActionAddMessageToBoardResponse, ApiConnectionActionConfiguration> ActionAddMessageToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddMessageToBoardBodyInput>> body)
         {
             var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddChecklistToCardResponse, ApiConnectionActionConfiguration> ActionAddChecklistToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardInput>> body)
+        public IBodyWorkflowAction<ActionAddChecklistToCardResponse, ApiConnectionActionConfiguration> ActionAddChecklistToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
             var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAddListResponse, ApiConnectionActionConfiguration> ActionAddList(Expression<Func<string>> baordUUID, Expression<Func<string>> accept, Expression<Func<ActionAddListInput>> body)
+        public IBodyWorkflowAction<ActionAddListResponse, ApiConnectionActionConfiguration> ActionAddList(Expression<Func<string>> baordUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
             var __workflow_baordUUID = WorkflowExpression.Compile(baordUUID, nameof(baordUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionListRenameResponse, ApiConnectionActionConfiguration> ActionListRename(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<ActionListRenameInput>> body)
+        public IBodyWorkflowAction<ActionListRenameResponse, ApiConnectionActionConfiguration> ActionListRename(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
             var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionBoardRenameResponse, ApiConnectionActionConfiguration> ActionBoardRename(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionBoardRenameInput>> body)
+        public IBodyWorkflowAction<ActionBoardRenameResponse, ApiConnectionActionConfiguration> ActionBoardRename(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAddChecklistToCardBodyInput>> body)
         {
             var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAssignToCardResponse, ApiConnectionActionConfiguration> ActionAssignToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToCardInput>> body)
+        public IBodyWorkflowAction<ActionAssignToCardResponse, ApiConnectionActionConfiguration> ActionAssignToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
             var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionAssignToBoardResponse, ApiConnectionActionConfiguration> ActionAssignToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardInput>> body)
+        public IBodyWorkflowAction<ActionAssignToBoardResponse, ApiConnectionActionConfiguration> ActionAssignToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
             var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionUnassignFromCardResponse, ApiConnectionActionConfiguration> ActionUnassignFromCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionUnassignFromCardInput>> body)
+        public IBodyWorkflowAction<ActionUnassignFromCardResponse, ApiConnectionActionConfiguration> ActionUnassignFromCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
             var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionUnassignFromBoardResponse, ApiConnectionActionConfiguration> ActionUnassignFromBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionUnassignFromBoardInput>> body)
+        public IBodyWorkflowAction<ActionUnassignFromBoardResponse, ApiConnectionActionConfiguration> ActionUnassignFromBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<ActionAssignToBoardBodyInput>> body)
         {
             var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
-        public IBodyWorkflowAction<ActionDeleteListResponse, ApiConnectionActionConfiguration> ActionDeleteList(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<ActionDeleteListInput>> body)
+        public IBodyWorkflowAction<ActionDeleteListResponse, ApiConnectionActionConfiguration> ActionDeleteList(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<ActionDeleteListBodyInput>> body)
         {
             var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionAddCardInput
+    public class ActionAddCardBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1351,7 +1351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionDeleteCardInput
+    public class ActionDeleteCardBodyInput
     {
         [JsonProperty("confirmed", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Confirmed { get; set; }
@@ -1366,7 +1366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public string Messageuuid { get; set; }
     }
 
-    public class ActionAddMessageToBoardInput
+    public class ActionAddMessageToBoardBodyInput
     {
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -1393,7 +1393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionAddChecklistToCardInput
+    public class ActionAddChecklistToCardBodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -1426,12 +1426,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionAddListInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     public class ActionListRenameResponse
     {
         [JsonProperty("status")]
@@ -1450,12 +1444,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionListRenameInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     public class ActionBoardRenameResponse
     {
         [JsonProperty("status")]
@@ -1472,12 +1460,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
         [JsonProperty("thisUpdate")]
         public int ThisUpdate { get; set; }
-    }
-
-    public class ActionBoardRenameInput
-    {
-        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
     }
 
     public class ActionAssignToCardResponse
@@ -1504,7 +1486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionAssignToCardInput
+    public class ActionAssignToBoardBodyInput
     {
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
@@ -1537,15 +1519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionAssignToBoardInput
-    {
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Role { get; set; }
-    }
-
     public class ActionUnassignFromCardResponse
     {
         [JsonProperty("status")]
@@ -1568,15 +1541,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
 
         [JsonProperty("thisUpdate")]
         public int ThisUpdate { get; set; }
-    }
-
-    public class ActionUnassignFromCardInput
-    {
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Role { get; set; }
     }
 
     public class ActionUnassignFromBoardResponse
@@ -1603,15 +1567,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionUnassignFromBoardInput
-    {
-        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
-
-        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Role { get; set; }
-    }
-
     public class ActionDeleteListResponse
     {
         [JsonProperty("status")]
@@ -1636,7 +1591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         public int ThisUpdate { get; set; }
     }
 
-    public class ActionDeleteListInput
+    public class ActionDeleteListBodyInput
     {
         [JsonProperty("confirm", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Confirm { get; set; }

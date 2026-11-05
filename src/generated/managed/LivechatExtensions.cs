@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
     public class LivechatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAgent(Expression<Func<CreateAgentV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateAgent(Expression<Func<CreateAgentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAgent(Expression<Func<DeleteAgentV2Input>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAgent(Expression<Func<DeleteAgentBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
     {
     }
 
-    public class CreateAgentV2Input
+    public class CreateAgentBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
@@ -66,10 +66,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         public string Name { get; set; }
 
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentV2InputRoleType? Role { get; set; } = CreateAgentV2InputRoleType.Normal;
+        public BodyInputRoleType? Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Livechat.BodyInputRoleType.Normal;
 
         [JsonProperty("login_status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentV2InputLoginStatusType? LoginStatus { get; set; } = CreateAgentV2InputLoginStatusType.NotAcceptingChats;
+        public BodyInputLoginStatusType? LoginStatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Livechat.BodyInputLoginStatusType.NotAcceptingChats;
 
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
@@ -84,20 +84,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         public bool? AwaitingApproval { get; set; } = true;
 
         [JsonProperty("groups")]
-        public AgentGroupV22[] Groups { get; set; }
+        public CreateAgentAgentGroupV2[] Groups { get; set; }
 
         [JsonProperty("notifications")]
         public string[] Notifications { get; set; }
 
         [JsonProperty("email_subscriptions")]
-        public CreateAgentV2InputEmailSubscriptionsTypeItem[] EmailSubscriptions { get; set; }
+        public BodyInputEmailSubscriptionsTypeItem[] EmailSubscriptions { get; set; }
 
         [JsonProperty("work_scheduler")]
         public WorkSchedulerV2 WorkScheduler { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgentV2InputRoleType
+    public enum BodyInputRoleType
     {
         [EnumMember(Value = "viceowner")]
         Viceowner,
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgentV2InputLoginStatusType
+    public enum BodyInputLoginStatusType
     {
         [EnumMember(Value = "accepting chats")]
         AcceptingChats,
@@ -116,17 +116,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         NotAcceptingChats
     }
 
-    public class AgentGroupV22
+    public class CreateAgentAgentGroupV2
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GroupId { get; set; }
 
         [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AgentGroupV2PriorityType Priority { get; set; }
+        public CreateAgentAgentGroupV2PriorityType Priority { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AgentGroupV2PriorityType
+    public enum CreateAgentAgentGroupV2PriorityType
     {
         [EnumMember(Value = "first")]
         First,
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAgentV2InputEmailSubscriptionsTypeItem
+    public enum BodyInputEmailSubscriptionsTypeItem
     {
         [EnumMember(Value = "daily_summary")]
         DailySummary,
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         Saturday
     }
 
-    public class DeleteAgentV2Input
+    public class DeleteAgentBodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
@@ -229,16 +229,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         public bool AwaitingApproval { get; set; }
 
         [JsonProperty("groups")]
-        public AgentGroupV2[] Groups { get; set; }
+        public ListAgentsAgentGroupV2Response[] Groups { get; set; }
     }
 
-    public class AgentGroupV2
+    public class ListAgentsAgentGroupV2Response
     {
         [JsonProperty("id")]
         public int GroupId { get; set; }
 
         [JsonProperty("priority")]
-        public AgentGroupV2PriorityType Priority { get; set; }
+        public ListAgentsAgentGroupV2PriorityTypeResponse Priority { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum ListAgentsAgentGroupV2PriorityTypeResponse
+    {
+        [EnumMember(Value = "first")]
+        First,
+        [EnumMember(Value = "normal")]
+        Normal,
+        [EnumMember(Value = "last")]
+        Last,
+        [EnumMember(Value = "supervisor")]
+        Supervisor
     }
 }
 

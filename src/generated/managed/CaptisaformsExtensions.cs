@@ -46,30 +46,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
     public class CaptisaformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookCreateTrigger(Expression<Func<string>> formId, Expression<Func<WebhookCreateTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookCreateTrigger(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/msflow/forms/{0}/c/subscribe", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookUpdateTrigger(Expression<Func<string>> formId, Expression<Func<WebhookUpdateTriggerInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse, ApiConnectionTriggerConfiguration> WebhookUpdateTrigger(Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/msflow/forms/{0}/u/subscribe", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
             });
         }
@@ -114,13 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
         public string WebhookDeleteUrl { get; set; }
     }
 
-    public class WebhookCreateTriggerInput
-    {
-        [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class WebhookUpdateTriggerInput
+    public class BodyInput
     {
         [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
     public class WordliftgraphqlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordliftgraphql")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ExecuteGraphQL(Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<ExecuteGraphQLInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ExecuteGraphQL(Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
     {
     }
 
-    public class ExecuteGraphQLInput
+    public class BodyInput
     {
         [JsonProperty("query")]
         public string Query { get; set; }

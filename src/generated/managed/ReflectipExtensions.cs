@@ -51,23 +51,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<LinkPostResponseItem[], ApiConnectionActionConfiguration> Link(Expression<Func<string>> graphId, Expression<Func<LinkPostInput>> body = null)
+        public IBodyWorkflowAction<LinkResponseItem[], ApiConnectionActionConfiguration> Link(Expression<Func<string>> graphId, Expression<Func<LinkBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<LinkPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LinkResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/links", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<LinkPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<LinkResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<DailyNotePutResponse, ApiConnectionActionConfiguration> DailyNotePut(Expression<Func<string>> graphId, Expression<Func<DailyNotePutInput>> body = null)
+        public IBodyWorkflowAction<DailyNotePutResponse, ApiConnectionActionConfiguration> DailyNotePut(Expression<Func<string>> graphId, Expression<Func<DailyNotePutBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -83,18 +83,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reflectip")]
-        public IBodyWorkflowAction<NotePostResponse, ApiConnectionActionConfiguration> Note(Expression<Func<string>> graphId, Expression<Func<NotePostInput>> body = null)
+        public IBodyWorkflowAction<NoteResponse, ApiConnectionActionConfiguration> Note(Expression<Func<string>> graphId, Expression<Func<NoteBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<NotePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/graphs/{0}/notes", __workflow_graphId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NotePostResponse>(callPayload);
+                return new ApiConnectionAction<NoteResponse>(callPayload);
             });
         }
     }
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         public string[] Highlights { get; set; }
     }
 
-    public class LinkPostResponseItem
+    public class LinkResponseItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         public string[] Highlights { get; set; }
     }
 
-    public class LinkPostInput
+    public class LinkBodyInput
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         public bool Success { get; set; }
     }
 
-    public class DailyNotePutInput
+    public class DailyNotePutBodyInput
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -232,13 +232,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reflectip
         public string ListName { get; set; }
     }
 
-    public class NotePostResponse
+    public class NoteResponse
     {
         [JsonProperty("success")]
         public bool Success { get; set; }
     }
 
-    public class NotePostInput
+    public class NoteBodyInput
     {
         [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }

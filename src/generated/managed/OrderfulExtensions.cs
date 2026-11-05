@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
 
     public class OrderfulTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration> CommunicationChannel(Expression<Func<CommunicationChannelInput>> communicationChannelRequestBody = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration> CommunicationChannel(Expression<Func<CommunicationChannelRequestBodyInput>> communicationChannelRequestBody = null, FlowRecurrence recurrence = null)
         {
             var __workflow_communicationChannelRequestBody = WorkflowExpression.Compile(communicationChannelRequestBody, nameof(communicationChannelRequestBody), required: false);
             return new DeferredBodyTrigger<CommunicationChannelCreationResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
         public int WebhookCommunicationChannelId { get; set; }
     }
 
-    public class CommunicationChannelInput
+    public class CommunicationChannelRequestBodyInput
     {
         [JsonProperty("isActive", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsActive { get; set; } = true;
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
         public string Name { get; set; }
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommunicationChannelInputConfigType Config { get; set; } = new CommunicationChannelInputConfigType();
+        public CommunicationChannelRequestBodyInputConfigType Config { get; set; } = new CommunicationChannelRequestBodyInputConfigType();
 
         [JsonProperty("ownerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int OwnerId { get; set; }
     }
 
-    public class CommunicationChannelInputConfigType
+    public class CommunicationChannelRequestBodyInputConfigType
     {
         [JsonProperty("destinationTypeName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DestinationTypeName { get; set; } = "http";

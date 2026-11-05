@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
     public class HunteripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<DomainResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> seniority = null, Expression<Func<string>> department = null)
+        public IBodyWorkflowAction<DomainResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<TypeInput>> type = null, Expression<Func<string>> seniority = null, Expression<Func<string>> department = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<EmailCountResponse, ApiConnectionActionConfiguration> EmailCount(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<EmailCountResponse, ApiConnectionActionConfiguration> EmailCount(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<TypeInput>> type = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "personal")]
         Personal,

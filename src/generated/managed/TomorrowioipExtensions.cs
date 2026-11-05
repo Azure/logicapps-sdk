@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
     public class TomorrowioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<ForecastGetResponse, ApiConnectionActionConfiguration> ForecastGet(Expression<Func<string>> location, Expression<Func<string[]>> timesteps = null, Expression<Func<unitsInput>> units = null)
+        public IBodyWorkflowAction<ForecastGetResponse, ApiConnectionActionConfiguration> ForecastGet(Expression<Func<string>> location, Expression<Func<string[]>> timesteps = null, Expression<Func<UnitsInput>> units = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_timesteps = WorkflowExpression.Compile(timesteps, nameof(timesteps), required: false);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<RealtimeGetResponse, ApiConnectionActionConfiguration> RealtimeGet(Expression<Func<string>> location, Expression<Func<unitsInput>> units = null)
+        public IBodyWorkflowAction<RealtimeGetResponse, ApiConnectionActionConfiguration> RealtimeGet(Expression<Func<string>> location, Expression<Func<UnitsInput>> units = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: false);
@@ -50,17 +50,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<TimelinePostResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<TimelinePostInput>> body = null)
+        public IBodyWorkflowAction<TimelineResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TimelinePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TimelineResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/timelines";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TimelinePostResponse>(callPayload);
+                return new ApiConnectionAction<TimelineResponse>(callPayload);
             });
         }
 
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum unitsInput
+    public enum UnitsInput
     {
         [EnumMember(Value = "metric")]
         Metric,
@@ -677,19 +677,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         public string Type { get; set; }
     }
 
-    public class TimelinePostResponse
+    public class TimelineResponse
     {
         [JsonProperty("data")]
-        public TimelinePostResponseDataType Data { get; set; }
+        public TimelineResponseDataType Data { get; set; }
     }
 
-    public class TimelinePostResponseDataType
+    public class TimelineResponseDataType
     {
         [JsonProperty("timelines")]
-        public TimelinePostResponseDataTypeTimelinesTypeItem[] Timelines { get; set; }
+        public TimelineResponseDataTypeTimelinesTypeItem[] Timelines { get; set; }
     }
 
-    public class TimelinePostResponseDataTypeTimelinesTypeItem
+    public class TimelineResponseDataTypeTimelinesTypeItem
     {
         [JsonProperty("timestep")]
         public string Timestep { get; set; }
@@ -701,25 +701,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         public string StartTime { get; set; }
 
         [JsonProperty("intervals")]
-        public TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItem[] Intervals { get; set; }
+        public TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItem[] Intervals { get; set; }
     }
 
-    public class TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItem
+    public class TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItem
     {
         [JsonProperty("startTime")]
         public string StartTime { get; set; }
 
         [JsonProperty("values")]
-        public TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType Values { get; set; }
+        public TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType Values { get; set; }
     }
 
-    public class TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType
+    public class TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType
     {
         [JsonProperty("temperature")]
         public double Temperature { get; set; }
     }
 
-    public class TimelinePostInput
+    public class BodyInput
     {
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Location { get; set; }
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         public string[] Fields { get; set; }
 
         [JsonProperty("units")]
-        public TimelinePostInputUnitsType? Units { get; set; }
+        public BodyInputUnitsType? Units { get; set; }
 
         [JsonProperty("timesteps")]
         public string[] Timesteps { get; set; }
@@ -744,7 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TimelinePostInputUnitsType
+    public enum BodyInputUnitsType
     {
         [EnumMember(Value = "metric")]
         Metric,

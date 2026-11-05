@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<CreatePersonInput>> body)
+        public IBodyWorkflowAction<CreatePersonResponse, ApiConnectionActionConfiguration> CreatePerson(Expression<Func<CreatePersonBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatePersonResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<GetObjectivesResponse, ApiConnectionActionConfiguration> GetObjectives(Expression<Func<string>> searchTitle = null, Expression<Func<string>> personEmail = null, Expression<Func<string>> tag = null, Expression<Func<string>> closed = null, Expression<Func<objectiveTypeInput>> objectiveType = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> activeAt = null)
+        public IBodyWorkflowAction<GetObjectivesResponse, ApiConnectionActionConfiguration> GetObjectives(Expression<Func<string>> searchTitle = null, Expression<Func<string>> personEmail = null, Expression<Func<string>> tag = null, Expression<Func<string>> closed = null, Expression<Func<ObjectiveTypeInput>> objectiveType = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> activeAt = null)
         {
             var __workflow_searchTitle = WorkflowExpression.Compile(searchTitle, nameof(searchTitle), required: false);
             var __workflow_personEmail = WorkflowExpression.Compile(personEmail, nameof(personEmail), required: false);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateObjectiveByTemplateResponse, ApiConnectionActionConfiguration> CreateObjectiveByTemplate(Expression<Func<CreateObjectiveByTemplateInput>> body)
+        public IBodyWorkflowAction<CreateObjectiveByTemplateResponse, ApiConnectionActionConfiguration> CreateObjectiveByTemplate(Expression<Func<CreateObjectiveByTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateObjectiveByTemplateResponse, ApiConnectionActionConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateObjectiveResponse, ApiConnectionActionConfiguration> CreateObjective(Expression<Func<CreateObjectiveInput>> body)
+        public IBodyWorkflowAction<CreateObjectiveResponse, ApiConnectionActionConfiguration> CreateObjective(Expression<Func<CreateObjectiveBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateObjectiveResponse, ApiConnectionActionConfiguration>(() =>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<UpdateObjectiveScoreResponse, ApiConnectionActionConfiguration> UpdateObjectiveScore(Expression<Func<string>> objectiveId, Expression<Func<UpdateObjectiveScoreInput>> body)
+        public IBodyWorkflowAction<UpdateObjectiveScoreResponse, ApiConnectionActionConfiguration> UpdateObjectiveScore(Expression<Func<string>> objectiveId, Expression<Func<UpdateObjectiveScoreBodyInput>> body)
         {
             var __workflow_objectiveId = WorkflowExpression.Compile(objectiveId, nameof(objectiveId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateArticleResponse, ApiConnectionActionConfiguration> CreateArticle(Expression<Func<CreateArticleInput>> body)
+        public IBodyWorkflowAction<CreateArticleResponse, ApiConnectionActionConfiguration> CreateArticle(Expression<Func<CreateArticleBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateArticleResponse, ApiConnectionActionConfiguration>(() =>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateAlertResponse, ApiConnectionActionConfiguration> CreateAlert(Expression<Func<CreateAlertInput>> body)
+        public IBodyWorkflowAction<CreateAlertResponse, ApiConnectionActionConfiguration> CreateAlert(Expression<Func<CreateAlertBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateAlertResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "staffcircle")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskInput>> body)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
 
     public class StaffcircleTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewPerson(Expression<Func<NewPersonInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewPerson(Expression<Func<NewPersonBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewObjective(Expression<Func<NewObjectiveInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewObjective(Expression<Func<NewObjectiveBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> UpdateObjective(Expression<Func<UpdateObjectiveInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> UpdateObjective(Expression<Func<UpdateObjectiveBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> PublishedArticle(Expression<Func<PublishedArticleInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> PublishedArticle(Expression<Func<PublishedArticleBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewTask(Expression<Func<NewTaskInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewTask(Expression<Func<NewTaskBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewReview(Expression<Func<NewReviewInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewReview(Expression<Func<NewReviewBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             });
         }
 
-        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewAbsence(Expression<Func<NewAbsenceInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionTriggerConfiguration> NewAbsence(Expression<Func<NewAbsenceBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionTriggerConfiguration>(() =>
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class CreatePersonInput
+    public class CreatePersonBodyInput
     {
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
@@ -553,11 +553,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public bool? IsContactDataEnabled { get; set; }
 
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePersonInputTimeZoneType? TimeZone { get; set; } = CreatePersonInputTimeZoneType.GMT0000London;
+        public BodyInputTimeZoneType? TimeZone { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle.BodyInputTimeZoneType.GMT0000London;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatePersonInputTimeZoneType
+    public enum BodyInputTimeZoneType
     {
         [EnumMember(Value = "(GMT-11:00) Niue")]
         GMT1100Niue,
@@ -1186,7 +1186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum objectiveTypeInput
+    public enum ObjectiveTypeInput
     {
         Personal,
         Departmental,
@@ -1199,7 +1199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class CreateObjectiveByTemplateInput
+    public class CreateObjectiveByTemplateBodyInput
     {
         [JsonProperty("objectiveTemplateId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ObjectiveTemplateId { get; set; }
@@ -1247,7 +1247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class CreateObjectiveInput
+    public class CreateObjectiveBodyInput
     {
         [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CategoryId { get; set; }
@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public string EndDate { get; set; }
 
         [JsonProperty("valueType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateObjectiveInputValueTypeType ValueType { get; set; }
+        public BodyInputValueTypeType ValueType { get; set; }
 
         [JsonProperty("tag")]
         public string Tag { get; set; }
@@ -1304,7 +1304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public bool? AllowAddProgress { get; set; } = false;
 
         [JsonProperty("recurType")]
-        public CreateObjectiveInputRecurTypeType? RecurType { get; set; }
+        public BodyInputRecurTypeType? RecurType { get; set; }
 
         [JsonProperty("recurInterval")]
         public int? RecurInterval { get; set; }
@@ -1313,11 +1313,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public bool? CumulativeProgress { get; set; } = false;
 
         [JsonProperty("contentSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateObjectiveInputContentSettingsType ContentSettings { get; set; } = new CreateObjectiveInputContentSettingsType();
+        public CreateObjectiveBodyInputContentSettingsType ContentSettings { get; set; } = new CreateObjectiveBodyInputContentSettingsType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateObjectiveInputValueTypeType
+    public enum BodyInputValueTypeType
     {
         Number,
         Percentage,
@@ -1326,7 +1326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateObjectiveInputRecurTypeType
+    public enum BodyInputRecurTypeType
     {
         Days,
         Weeks,
@@ -1334,7 +1334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         Years
     }
 
-    public class CreateObjectiveInputContentSettingsType
+    public class CreateObjectiveBodyInputContentSettingsType
     {
         [JsonProperty("push", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Push { get; set; } = true;
@@ -1370,7 +1370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class UpdateObjectiveScoreInput
+    public class UpdateObjectiveScoreBodyInput
     {
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
@@ -1388,16 +1388,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class CreateArticleInput
+    public class CreateArticleBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
         [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateArticleInputPriorityType Priority { get; set; } = CreateArticleInputPriorityType.Information;
+        public BodyInputPriorityType Priority { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle.BodyInputPriorityType.Information;
 
         [JsonProperty("articleType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateArticleInputArticleTypeType ArticleType { get; set; } = CreateArticleInputArticleTypeType.Social;
+        public BodyInputArticleTypeType ArticleType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle.BodyInputArticleTypeType.Social;
 
         [JsonProperty("htmlContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HtmlContent { get; set; }
@@ -1415,14 +1415,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int? ChannelId { get; set; }
 
         [JsonProperty("contentSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateArticleInputContentSettingsType ContentSettings { get; set; } = new CreateArticleInputContentSettingsType();
+        public CreateArticleBodyInputContentSettingsType ContentSettings { get; set; } = new CreateArticleBodyInputContentSettingsType();
 
         [JsonProperty("publicationDetails", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateArticleInputPublicationDetailsType PublicationDetails { get; set; } = new CreateArticleInputPublicationDetailsType();
+        public BodyInputPublicationDetailsType PublicationDetails { get; set; } = new BodyInputPublicationDetailsType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateArticleInputPriorityType
+    public enum BodyInputPriorityType
     {
         Critical,
         Important,
@@ -1431,13 +1431,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateArticleInputArticleTypeType
+    public enum BodyInputArticleTypeType
     {
         Social,
         Blog
     }
 
-    public class CreateArticleInputContentSettingsType
+    public class CreateArticleBodyInputContentSettingsType
     {
         [JsonProperty("push", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Push { get; set; } = false;
@@ -1464,7 +1464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public bool? AllowImagesInComments { get; set; } = true;
     }
 
-    public class CreateArticleInputPublicationDetailsType
+    public class BodyInputPublicationDetailsType
     {
         [JsonProperty("pinFromDate")]
         public string PinFromDate { get; set; }
@@ -1488,13 +1488,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class CreateAlertInput
+    public class CreateAlertBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
         [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAlertInputPriorityType Priority { get; set; } = CreateAlertInputPriorityType.Critical;
+        public BodyInputPriorityType Priority { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle.BodyInputPriorityType.Critical;
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
@@ -1503,22 +1503,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public bool? Everyone { get; set; } = false;
 
         [JsonProperty("audience")]
-        public CreateAlertInputAudienceType Audience { get; set; }
+        public BodyInputAudienceType Audience { get; set; }
 
         [JsonProperty("communicationMethods", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAlertInputCommunicationMethodsType CommunicationMethods { get; set; } = new CreateAlertInputCommunicationMethodsType();
+        public BodyInputCommunicationMethodsType CommunicationMethods { get; set; } = new BodyInputCommunicationMethodsType();
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateAlertInputPriorityType
-    {
-        Critical,
-        Important,
-        Highlight,
-        Information
-    }
-
-    public class CreateAlertInputAudienceType
+    public class BodyInputAudienceType
     {
         [JsonProperty("departmentTags")]
         public string DepartmentTags { get; set; }
@@ -1533,7 +1524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public string SiteTags { get; set; }
     }
 
-    public class CreateAlertInputCommunicationMethodsType
+    public class BodyInputCommunicationMethodsType
     {
         [JsonProperty("push", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Push { get; set; } = false;
@@ -1557,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
-    public class CreateTaskInput
+    public class CreateTaskBodyInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -1593,10 +1584,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int? TaskIntervalId { get; set; }
 
         [JsonProperty("contentSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskInputContentSettingsType ContentSettings { get; set; } = new CreateTaskInputContentSettingsType();
+        public CreateTaskBodyInputContentSettingsType ContentSettings { get; set; } = new CreateTaskBodyInputContentSettingsType();
     }
 
-    public class CreateTaskInputContentSettingsType
+    public class CreateTaskBodyInputContentSettingsType
     {
         [JsonProperty("push", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Push { get; set; } = false;
@@ -1626,7 +1617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public bool? AllowDocuments { get; set; }
     }
 
-    public class NewPersonInput
+    public class NewPersonBodyInput
     {
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
@@ -1656,7 +1647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         internal bool IsActive { get; set; } = true;
     }
 
-    public class NewObjectiveInput
+    public class NewObjectiveBodyInput
     {
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
@@ -1686,7 +1677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         internal bool IsActive { get; set; } = true;
     }
 
-    public class UpdateObjectiveInput
+    public class UpdateObjectiveBodyInput
     {
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
@@ -1716,7 +1707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         internal bool IsActive { get; set; } = true;
     }
 
-    public class PublishedArticleInput
+    public class PublishedArticleBodyInput
     {
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
@@ -1749,7 +1740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         internal bool IsActive { get; set; } = true;
     }
 
-    public class NewTaskInput
+    public class NewTaskBodyInput
     {
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
@@ -1779,7 +1770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         internal bool Notifications { get; set; } = false;
     }
 
-    public class NewReviewInput
+    public class NewReviewBodyInput
     {
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";
@@ -1809,7 +1800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         internal bool Notifications { get; set; } = false;
     }
 
-    public class NewAbsenceInput
+    public class NewAbsenceBodyInput
     {
         [JsonProperty("authType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string AuthType { get; set; } = "none";

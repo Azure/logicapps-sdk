@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
     public class MeetingroommapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomLocations(Expression<Func<GetCustomLocationsInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCustomLocations(Expression<Func<GetCustomLocationsBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IBodyWorkflowAction<GetCustomLocationsByImageNameResponse, ApiConnectionActionConfiguration> GetCustomLocationsByImageName(Expression<Func<GetCustomLocationsByImageNameInput>> body = null)
+        public IBodyWorkflowAction<GetCustomLocationsByImageNameResponse, ApiConnectionActionConfiguration> GetCustomLocationsByImageName(Expression<Func<GetCustomLocationsByImageNameBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetCustomLocationsByImageNameResponse, ApiConnectionActionConfiguration>(() =>
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
     {
     }
 
-    public class GetCustomLocationsInput
+    public class GetCustomLocationsBodyInput
     {
         [JsonProperty("categories")]
         public string[] Categories { get; set; }
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         public string OriginalUrl { get; set; }
     }
 
-    public class GetCustomLocationsByImageNameInput
+    public class GetCustomLocationsByImageNameBodyInput
     {
         [JsonProperty("imageName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ImageName { get; set; } = "The unique image name to return mapped locations by";

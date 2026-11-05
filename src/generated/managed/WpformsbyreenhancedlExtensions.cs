@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFlow(Expression<Func<CreateFlowInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateFlow(Expression<Func<BodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -67,16 +67,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
         public JToken Fields { get; set; }
     }
 
-    public class CreateFlowInput
+    public class BodyInput
     {
         [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FormId { get; set; }
 
         [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateFlowInputMetaType Meta { get; set; } = new CreateFlowInputMetaType();
+        public BodyInputMetaType Meta { get; set; } = new BodyInputMetaType();
     }
 
-    public class CreateFlowInputMetaType
+    public class BodyInputMetaType
     {
         [JsonProperty("powerAutomateUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string PowerAutomateUrl { get; set; } = "#{listCallbackUrl()}";

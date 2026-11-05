@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
     public class AlchemyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration> GetSelfHelpInsights(Expression<Func<GetSelfHelpInsightsInput>> body)
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration> GetSelfHelpInsights(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetSelfHelpInsightsResponse, ApiConnectionActionConfiguration>(() =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
         public string GPTInsight { get; set; }
     }
 
-    public class GetSelfHelpInsightsInput
+    public class BodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }

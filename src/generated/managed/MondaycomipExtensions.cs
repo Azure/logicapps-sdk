@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
     public class MondaycomipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mondaycomip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallGraphQL(Expression<Func<CallGraphQLInput>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CallGraphQL(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
     {
     }
 
-    public class CallGraphQLInput
+    public class BodyInput
     {
         [JsonProperty("query")]
         public string Query { get; set; }

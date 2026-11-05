@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     public class VenaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<ExportAttributesInput>> lidsBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<LidsBodyInput>> lidsBody)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_lidsBody = WorkflowExpression.Compile(lidsBody, nameof(lidsBody), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<ExportHierarchiesInput>> hierarchiesBody = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<HierarchiesBodyInput>> hierarchiesBody = null)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_hierarchiesBody = WorkflowExpression.Compile(hierarchiesBody, nameof(hierarchiesBody), required: false);
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<ExportValuesInput>> valuesBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<ValuesBodyInput>> valuesBody)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_valuesBody = WorkflowExpression.Compile(valuesBody, nameof(valuesBody), required: true);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<ExportLIDsInput>> lidsBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<LidsBodyInput>> lidsBody)
         {
             var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
             var __workflow_lidsBody = WorkflowExpression.Compile(lidsBody, nameof(lidsBody), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     {
     }
 
-    public class ExportAttributesInput
+    public class LidsBodyInput
     {
         [JsonProperty("showHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowHeader { get; set; } = false;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.CSV;
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Encoding? FileEncoding { get; set; } = Encoding.UTF8;
+        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.UTF8;
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Destination { get; set; } = "ToCSV";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         Cp1252
     }
 
-    public class ExportHierarchiesInput
+    public class HierarchiesBodyInput
     {
         [JsonProperty("showHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowHeader { get; set; } = false;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.CSV;
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Encoding? FileEncoding { get; set; } = Encoding.UTF8;
+        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.UTF8;
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Destination { get; set; } = "ToCSV";
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public bool? ExportMemberIDs { get; set; } = false;
     }
 
-    public class ExportValuesInput
+    public class ValuesBodyInput
     {
         [JsonProperty("showHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ShowHeader { get; set; } = false;
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.CSV;
 
         [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Encoding? FileEncoding { get; set; } = Encoding.UTF8;
+        public Encoding? FileEncoding { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.Encoding.UTF8;
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Destination { get; set; } = "ToCSV";
@@ -157,24 +157,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
 
         [JsonProperty("isNamedHeader", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? NamedDimensions { get; set; } = false;
-    }
-
-    public class ExportLIDsInput
-    {
-        [JsonProperty("showHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ShowHeader { get; set; } = false;
-
-        [JsonProperty("queryString")]
-        public string MQLQueryString { get; set; }
-
-        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FileFormat? FileFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Vena.FileFormat.CSV;
-
-        [JsonProperty("encoding", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Encoding? FileEncoding { get; set; } = Encoding.UTF8;
-
-        [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string Destination { get; set; } = "ToCSV";
     }
 }
 

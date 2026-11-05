@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<SharedAccessSignature, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<CreateShareLinkByPathV2Input>> policy)
+        public IBodyWorkflowAction<SharedAccessSignature, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<PolicyInput>> policy)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetBlobTierByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<newTierInput>> newTier)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetBlobTierByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<NewTierInput>> newTier)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
@@ -367,24 +367,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         public string WebUrl { get; set; }
     }
 
-    public class CreateShareLinkByPathV2Input
+    public class PolicyInput
     {
         public string GroupPolicyIdentifier { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateShareLinkByPathV2InputPermissionsType? Permissions { get; set; } = CreateShareLinkByPathV2InputPermissionsType.Read;
+        public PolicyInputPermissionsType? Permissions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob.PolicyInputPermissionsType.Read;
         public string StartTime { get; set; }
         public string ExpiryTime { get; set; }
 
         [JsonProperty("AccessProtocol")]
-        public CreateShareLinkByPathV2InputSharedAccessProtocolType? SharedAccessProtocol { get; set; }
+        public PolicyInputSharedAccessProtocolType? SharedAccessProtocol { get; set; }
 
         [JsonProperty("IpAddressOrRange")]
         public string IPAddressOrIPAddressRange { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateShareLinkByPathV2InputPermissionsType
+    public enum PolicyInputPermissionsType
     {
         Read,
         Write,
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateShareLinkByPathV2InputSharedAccessProtocolType
+    public enum PolicyInputSharedAccessProtocolType
     {
         HttpsOnly,
         HttpsOrHttp
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newTierInput
+    public enum NewTierInput
     {
         Hot,
         Cool,

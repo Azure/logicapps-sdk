@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     public class NutrientconverttopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> Convert(Expression<Func<ConvertInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> Convert(Expression<Func<ConvertInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertCad(Expression<Func<ConvertCadInput>> inputCadData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertCad(Expression<Func<InputCadDataInput>> inputCadData)
         {
             var __workflow_inputCadData = WorkflowExpression.Compile(inputCadData, nameof(inputCadData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertEmail(Expression<Func<ConvertEmailInput>> inputEmailData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertEmail(Expression<Func<InputEmailDataInput>> inputEmailData)
         {
             var __workflow_inputEmailData = WorkflowExpression.Compile(inputEmailData, nameof(inputEmailData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertExcel(Expression<Func<ConvertExcelInput>> inputExcelData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertExcel(Expression<Func<InputExcelDataInput>> inputExcelData)
         {
             var __workflow_inputExcelData = WorkflowExpression.Compile(inputExcelData, nameof(inputExcelData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertHtml(Expression<Func<ConvertHtmlInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertHtml(Expression<Func<ConvertHtmlInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertInfopath(Expression<Func<ConvertInfopathInput>> inputInfopathData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertInfopath(Expression<Func<InputInfopathDataInput>> inputInfopathData)
         {
             var __workflow_inputInfopathData = WorkflowExpression.Compile(inputInfopathData, nameof(inputInfopathData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPdfa(Expression<Func<ConvertPdfaInput>> inputPdfData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPdfa(Expression<Func<InputPdfDataInput>> inputPdfData)
         {
             var __workflow_inputPdfData = WorkflowExpression.Compile(inputPdfData, nameof(inputPdfData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPowerpoint(Expression<Func<ConvertPowerpointInput>> inputPowerpointData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertPowerpoint(Expression<Func<InputPowerpointDataInput>> inputPowerpointData)
         {
             var __workflow_inputPowerpointData = WorkflowExpression.Compile(inputPowerpointData, nameof(inputPowerpointData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<ConvertVisioInput>> inputVisioData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertVisio(Expression<Func<InputVisioDataInput>> inputVisioData)
         {
             var __workflow_inputVisioData = WorkflowExpression.Compile(inputVisioData, nameof(inputVisioData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertWord(Expression<Func<ConvertWordInput>> inputWordData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ConvertWord(Expression<Func<InputWordDataInput>> inputWordData)
         {
             var __workflow_inputWordData = WorkflowExpression.Compile(inputWordData, nameof(inputWordData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         InvalidExtension
     }
 
-    public class ConvertInput
+    public class ConvertInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertInputOutputFormatType OutputFormat { get; set; } = ConvertInputOutputFormatType.PDF;
+        public InputDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInputOutputFormatType
+    public enum InputDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         XFDF
     }
 
-    public class ConvertCadInput
+    public class InputCadDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("paper_size", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputPaperSizeType? PaperSize { get; set; } = ConvertCadInputPaperSizeType.Letter;
+        public InputCadDataInputPaperSizeType? PaperSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputCadDataInputPaperSizeType.Letter;
 
         [JsonProperty("paper_size_custom")]
         public string PaperSizeCustom { get; set; }
@@ -289,16 +289,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public string BackgroundColor { get; set; } = "White";
 
         [JsonProperty("foreground_color", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputForegroundColorType? ForegroundColor { get; set; } = ConvertCadInputForegroundColorType.GreyscaleDarken;
+        public InputCadDataInputForegroundColorType? ForegroundColor { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputCadDataInputForegroundColorType.GreyscaleDarken;
 
         [JsonProperty("foreground_color_custom")]
         public string ForegroundColorCustom { get; set; }
 
         [JsonProperty("empty_layout_detection_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputEmptyLayoutDetectionType? EmptyLayoutDetection { get; set; } = ConvertCadInputEmptyLayoutDetectionType.SkipEmptyLayouts;
+        public InputCadDataInputEmptyLayoutDetectionType? EmptyLayoutDetection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputCadDataInputEmptyLayoutDetectionType.SkipEmptyLayouts;
 
         [JsonProperty("layout_sort_order", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertCadInputLayoutSortOrderType? LayoutSortOrder { get; set; } = ConvertCadInputLayoutSortOrderType.Ascending;
+        public InputCadDataInputLayoutSortOrderType? LayoutSortOrder { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputCadDataInputLayoutSortOrderType.Ascending;
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputPaperSizeType
+    public enum InputCadDataInputPaperSizeType
     {
         A3,
         A4,
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputForegroundColorType
+    public enum InputCadDataInputForegroundColorType
     {
         Default,
         CorrectForBackground,
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputEmptyLayoutDetectionType
+    public enum InputCadDataInputEmptyLayoutDetectionType
     {
         Default,
         SkipNone,
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertCadInputLayoutSortOrderType
+    public enum InputCadDataInputLayoutSortOrderType
     {
         Default,
         Ascending,
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         TabOrder
     }
 
-    public class ConvertEmailInput
+    public class InputEmailDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -376,13 +376,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public bool? IncludeAttachments { get; set; } = true;
 
         [JsonProperty("attachment_merge_mode")]
-        public ConvertEmailInputAttachmentActionType? AttachmentAction { get; set; }
+        public InputEmailDataInputAttachmentActionType? AttachmentAction { get; set; }
 
         [JsonProperty("display_attachment_summary", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? AttachmentSummary { get; set; } = true;
 
         [JsonProperty("unsupported_attachment_behaviour", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertEmailInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; } = ConvertEmailInputUnsupportedAttachmentActionType.Error;
+        public InputEmailDataInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputEmailDataInputUnsupportedAttachmentActionType.Error;
 
         [JsonProperty("include_attachment_types")]
         public string IncludeAttachmentFilter { get; set; }
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public string ViewportSize { get; set; } = "Paper";
 
         [JsonProperty("paper_size", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertEmailInputPaperSizeType? PaperSize { get; set; } = ConvertEmailInputPaperSizeType.Letter;
+        public InputEmailDataInputPaperSizeType? PaperSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputEmailDataInputPaperSizeType.Letter;
 
         [JsonProperty("paper_size_custom")]
         public string PaperSizeCustom { get; set; }
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertEmailInputConversionQualityType? ConversionQuality { get; set; }
+        public InputEmailDataInputConversionQualityType? ConversionQuality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputAttachmentActionType
+    public enum InputEmailDataInputAttachmentActionType
     {
         Default,
         Merge,
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputUnsupportedAttachmentActionType
+    public enum InputEmailDataInputUnsupportedAttachmentActionType
     {
         Error,
         Remove,
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputPaperSizeType
+    public enum InputEmailDataInputPaperSizeType
     {
         A3,
         A4,
@@ -456,14 +456,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertEmailInputConversionQualityType
+    public enum InputEmailDataInputConversionQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertExcelInput
+    public class InputExcelDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -478,13 +478,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertExcelInputOutputFormatType OutputFormat { get; set; } = ConvertExcelInputOutputFormatType.PDF;
+        public InputExcelDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputExcelDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("range")]
-        public ConvertExcelInputRangeType? Range { get; set; }
+        public InputExcelDataInputRangeType? Range { get; set; }
 
         [JsonProperty("unhide_all_rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? RevealHiddenRows { get; set; } = false;
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertExcelInputQualityType? Quality { get; set; }
+        public InputExcelDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertExcelInputOutputFormatType
+    public enum InputExcelDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertExcelInputRangeType
+    public enum InputExcelDataInputRangeType
     {
         VisibleDocuments,
         AllDocuments,
@@ -542,14 +542,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertExcelInputQualityType
+    public enum InputExcelDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertHtmlInput
+    public class ConvertHtmlInputDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -558,13 +558,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public string SourceURLOrHTML { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlInputPageOrientationType? PageOrientation { get; set; } = ConvertHtmlInputPageOrientationType.Portrait;
+        public InputDataInputPageOrientationType? PageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputPageOrientationType.Portrait;
 
         [JsonProperty("media_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlInputMediaTypeType? MediaType { get; set; } = ConvertHtmlInputMediaTypeType.Screen;
+        public InputDataInputMediaTypeType? MediaType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputMediaTypeType.Screen;
 
         [JsonProperty("authentication_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertHtmlInputAuthenticationTypeType? AuthenticationType { get; set; } = ConvertHtmlInputAuthenticationTypeType.Anonymous;
+        public InputDataInputAuthenticationTypeType? AuthenticationType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputAuthenticationTypeType.Anonymous;
 
         [JsonProperty("username")]
         public string UserName { get; set; }
@@ -583,21 +583,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlInputPageOrientationType
+    public enum InputDataInputPageOrientationType
     {
         Portrait,
         Landscape
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlInputMediaTypeType
+    public enum InputDataInputMediaTypeType
     {
         Screen,
         Print
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertHtmlInputAuthenticationTypeType
+    public enum InputDataInputAuthenticationTypeType
     {
         Anonymous,
         [EnumMember(Value = "SharePoint Online")]
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Web
     }
 
-    public class ConvertInfopathInput
+    public class InputInfopathDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertInfopathInputOutputFormatType OutputFormat { get; set; } = ConvertInfopathInputOutputFormatType.PDF;
+        public InputInfopathDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputInfopathDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -635,10 +635,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public bool? IncludeAttachment { get; set; } = true;
 
         [JsonProperty("attachment_merge_mode")]
-        public ConvertInfopathInputAttachmentActionType? AttachmentAction { get; set; }
+        public InputInfopathDataInputAttachmentActionType? AttachmentAction { get; set; }
 
         [JsonProperty("unsupported_attachment_behaviour")]
-        public ConvertInfopathInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; }
+        public InputInfopathDataInputUnsupportedAttachmentActionType? UnsupportedAttachmentAction { get; set; }
 
         [JsonProperty("break_merge_on_error")]
         public bool? BreakMergeOnError { get; set; }
@@ -650,22 +650,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public string ExcludeAttachmentFilter { get; set; }
 
         [JsonProperty("default_paper_size")]
-        public ConvertInfopathInputDefaultPaperSizeType? DefaultPaperSize { get; set; }
+        public InputInfopathDataInputDefaultPaperSizeType? DefaultPaperSize { get; set; }
 
         [JsonProperty("default_paper_size_custom")]
         public string DefaultPaperSizeCustom { get; set; }
 
         [JsonProperty("force_paper_size")]
-        public ConvertInfopathInputForcePaperSizeType? ForcePaperSize { get; set; }
+        public InputInfopathDataInputForcePaperSizeType? ForcePaperSize { get; set; }
 
         [JsonProperty("force_paper_size_custom")]
         public string ForcePaperSizeCustom { get; set; }
 
         [JsonProperty("default_page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertInfopathInputDefaultPageOrientationType? DefaultPageOrientation { get; set; } = ConvertInfopathInputDefaultPageOrientationType.Default;
+        public InputInfopathDataInputDefaultPageOrientationType? DefaultPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputInfopathDataInputDefaultPageOrientationType.Default;
 
         [JsonProperty("force_page_orientation")]
-        public ConvertInfopathInputForcePageOrientationType? ForcePageOrientation { get; set; }
+        public InputInfopathDataInputForcePageOrientationType? ForcePageOrientation { get; set; }
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertInfopathInputConversionQualityType? ConversionQuality { get; set; }
+        public InputInfopathDataInputConversionQualityType? ConversionQuality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputOutputFormatType
+    public enum InputInfopathDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputAttachmentActionType
+    public enum InputInfopathDataInputAttachmentActionType
     {
         Default,
         Merge,
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputUnsupportedAttachmentActionType
+    public enum InputInfopathDataInputUnsupportedAttachmentActionType
     {
         Error,
         Remove,
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputDefaultPaperSizeType
+    public enum InputInfopathDataInputDefaultPaperSizeType
     {
         A3,
         A4,
@@ -731,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputForcePaperSizeType
+    public enum InputInfopathDataInputForcePaperSizeType
     {
         A3,
         A4,
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputDefaultPageOrientationType
+    public enum InputInfopathDataInputDefaultPageOrientationType
     {
         Default,
         Portrait,
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputForcePageOrientationType
+    public enum InputInfopathDataInputForcePageOrientationType
     {
         Default,
         Portrait,
@@ -760,14 +760,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertInfopathInputConversionQualityType
+    public enum InputInfopathDataInputConversionQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertPdfaInput
+    public class InputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -785,7 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("pdf_profile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertPdfaInputPDFProfileType PDFProfile { get; set; } = ConvertPdfaInputPDFProfileType.PDFA2B;
+        public InputPdfDataInputPDFProfileType PDFProfile { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputPdfDataInputPDFProfileType.PDFA2B;
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPdfaInputPDFProfileType
+    public enum InputPdfDataInputPDFProfileType
     {
         Default,
         [EnumMember(Value = "PDF_1_5")]
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         PDF17
     }
 
-    public class ConvertPowerpointInput
+    public class InputPowerpointDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -839,16 +839,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertPowerpointInputOutputFormatType OutputFormat { get; set; } = ConvertPowerpointInputOutputFormatType.PDF;
+        public InputPowerpointDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputPowerpointDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("range")]
-        public ConvertPowerpointInputRangeType? Range { get; set; }
+        public InputPowerpointDataInputRangeType? Range { get; set; }
 
         [JsonProperty("print_output_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertPowerpointInputPrintLayoutHandoutsType? PrintLayoutHandouts { get; set; } = ConvertPowerpointInputPrintLayoutHandoutsType.Slides;
+        public InputPowerpointDataInputPrintLayoutHandoutsType? PrintLayoutHandouts { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputPowerpointDataInputPrintLayoutHandoutsType.Slides;
 
         [JsonProperty("frame_slides", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FrameSlides { get; set; } = true;
@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertPowerpointInputQualityType? Quality { get; set; }
+        public InputPowerpointDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputOutputFormatType
+    public enum InputPowerpointDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -884,7 +884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputRangeType
+    public enum InputPowerpointDataInputRangeType
     {
         VisibleDocuments,
         AllDocuments,
@@ -892,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputPrintLayoutHandoutsType
+    public enum InputPowerpointDataInputPrintLayoutHandoutsType
     {
         Slides,
         OneSlideHandouts,
@@ -906,14 +906,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertPowerpointInputQualityType
+    public enum InputPowerpointDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertVisioInput
+    public class InputVisioDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -928,13 +928,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertVisioInputOutputFormatType OutputFormat { get; set; } = ConvertVisioInputOutputFormatType.PDF;
+        public InputVisioDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputVisioDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("range")]
-        public ConvertVisioInputRangeType? Range { get; set; }
+        public InputVisioDataInputRangeType? Range { get; set; }
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -943,7 +943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertVisioInputQualityType? Quality { get; set; }
+        public InputVisioDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -953,28 +953,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertVisioInputOutputFormatType
+    public enum InputVisioDataInputOutputFormatType
     {
         PDF,
         XPS
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertVisioInputRangeType
+    public enum InputVisioDataInputRangeType
     {
         AllDocuments,
         ActiveDocuments
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertVisioInputQualityType
+    public enum InputVisioDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,
         Original
     }
 
-    public class ConvertWordInput
+    public class InputWordDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
@@ -989,19 +989,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertWordInputOutputFormatType OutputFormat { get; set; } = ConvertWordInputOutputFormatType.PDF;
+        public InputWordDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputWordDataInputOutputFormatType.PDF;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("revisions_and_comments_display_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertWordInputDisplayForReviewType? DisplayForReview { get; set; } = ConvertWordInputDisplayForReviewType.Final;
+        public InputWordDataInputDisplayForReviewType? DisplayForReview { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputWordDataInputDisplayForReviewType.Final;
 
         [JsonProperty("revisions_and_comments_markup_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConvertWordInputReviewMarkupModeType? ReviewMarkupMode { get; set; } = ConvertWordInputReviewMarkupModeType.InLine;
+        public InputWordDataInputReviewMarkupModeType? ReviewMarkupMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputWordDataInputReviewMarkupModeType.InLine;
 
         [JsonProperty("generate_bookmarks")]
-        public ConvertWordInputGenerateBookmarksType? GenerateBookmarks { get; set; }
+        public InputWordDataInputGenerateBookmarksType? GenerateBookmarks { get; set; }
 
         [JsonProperty("start_page")]
         public int? StartPage { get; set; }
@@ -1010,7 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public int? EndPage { get; set; }
 
         [JsonProperty("quality")]
-        public ConvertWordInputQualityType? Quality { get; set; }
+        public InputWordDataInputQualityType? Quality { get; set; }
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -1020,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputOutputFormatType
+    public enum InputWordDataInputOutputFormatType
     {
         PDF,
         XPS,
@@ -1039,7 +1039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputDisplayForReviewType
+    public enum InputWordDataInputDisplayForReviewType
     {
         Final,
         Original,
@@ -1048,7 +1048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputReviewMarkupModeType
+    public enum InputWordDataInputReviewMarkupModeType
     {
         Balloon,
         InLine,
@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputGenerateBookmarksType
+    public enum InputWordDataInputGenerateBookmarksType
     {
         Disabled,
         Automatic,
@@ -1064,7 +1064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ConvertWordInputQualityType
+    public enum InputWordDataInputQualityType
     {
         OptimizeForPrint,
         OptimizeForOnScreen,

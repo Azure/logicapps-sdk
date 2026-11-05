@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
-        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<SendMessageInput>> message)
+        public IBodyWorkflowAction<SendMessageResponse, ApiConnectionActionConfiguration> SendMessage(Expression<Func<MessageInput>> message)
         {
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             return new DeferredBodyAction<SendMessageResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 
     public class EdgilityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<InboundMessageInput>> config, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> InboundMessage(Expression<Func<ConfigInput>> config, FlowRecurrence recurrence = null)
         {
             var __workflow_config = WorkflowExpression.Compile(config, nameof(config), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         public int FailedCount { get; set; }
     }
 
-    public class SendMessageInput
+    public class MessageInput
     {
         [JsonProperty("to")]
         public string To { get; set; }
@@ -117,10 +117,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         public string Date { get; set; }
     }
 
-    public class InboundMessageInput
+    public class ConfigInput
     {
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal InboundMessageInputEventType Event { get; set; } = InboundMessageInputEventType.MessageReceived;
+        internal ConfigInputEventType Event { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Edgility.ConfigInputEventType.MessageReceived;
 
         [JsonProperty("dedicated_number")]
         public string DedicatedNumber { get; set; }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InboundMessageInputEventType
+    public enum ConfigInputEventType
     {
         [EnumMember(Value = "message_received")]
         MessageReceived

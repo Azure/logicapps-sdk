@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     public class CognitiveservicescomputervisionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImage(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image, Expression<Func<double>> maxCandidates = null, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageContent(Expression<Func<string>> subdomainName, Expression<Func<string>> image, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageContent(Expression<Func<string>> subdomainName, Expression<Func<string>> image, Expression<Func<double>> maxCandidates = null, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<DescribeImageURLV3Input>> imageURL, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DescribeResponse, ApiConnectionActionConfiguration> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<ImageURLInput>> imageURL, Expression<Func<double>> maxCandidates = null, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_imageURL = WorkflowExpression.Compile(imageURL, nameof(imageURL), required: true);
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DetectResponse, ApiConnectionActionConfiguration> DetectObjects(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<DetectResponse, ApiConnectionActionConfiguration> DetectObjects(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AreaOfInterestResponse, ApiConnectionActionConfiguration> GetAreaOfInterest(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<AreaOfInterestResponse, ApiConnectionActionConfiguration> GetAreaOfInterest(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetThumbnail(Expression<Func<string>> subdomainName, Expression<Func<double>> width, Expression<Func<double>> height, Expression<Func<formatInput>> format, Expression<Func<object>> image, Expression<Func<bool>> smartCropping = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetThumbnail(Expression<Func<string>> subdomainName, Expression<Func<double>> width, Expression<Func<double>> height, Expression<Func<FormatInput>> format, Expression<Func<object>> image, Expression<Func<bool>> smartCropping = null)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: true);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRJsonResponse, ApiConnectionActionConfiguration> OCR(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<OCRJsonResponse, ApiConnectionActionConfiguration> OCR(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRTextResponse, ApiConnectionActionConfiguration> OCRText(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<OCRTextResponse, ApiConnectionActionConfiguration> OCRText(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DomainModelResponse, ApiConnectionActionConfiguration> RecognizeDomainSpecificContent(Expression<Func<string>> subdomainName, Expression<Func<modelInput>> model, Expression<Func<formatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<DomainModelResponse, ApiConnectionActionConfiguration> RecognizeDomainSpecificContent(Expression<Func<string>> subdomainName, Expression<Func<ModelInput>> model, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<TagResponse, ApiConnectionActionConfiguration> TagImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image)
+        public IBodyWorkflowAction<TagResponse, ApiConnectionActionConfiguration> TagImage(Expression<Func<string>> subdomainName, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "Image Content")]
         ImageContent,
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum languageInput
+    public enum LanguageInput
     {
         [EnumMember(Value = "en")]
         En,
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string CaptionText { get; set; }
     }
 
-    public class DescribeImageURLV3Input
+    public class ImageURLInput
     {
         [JsonProperty("url")]
         public string ImageURL { get; set; }
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modelInput
+    public enum ModelInput
     {
         [EnumMember(Value = "celebrities")]
         Celebrities,

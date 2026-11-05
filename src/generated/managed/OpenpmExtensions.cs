@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesPOST(Expression<Func<PackagesPOSTInput>> body = null)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesPOST(Expression<Func<BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Package, ApiConnectionActionConfiguration>(() =>
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<PackagesByPackageIdPOSTInput>> body = null)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<PackagesOpenapiResponse, ApiConnectionActionConfiguration> PackagesOpenapiByPackageIdGET(Expression<Func<string>> packageId, Expression<Func<formatInput>> format = null)
+        public IBodyWorkflowAction<PackagesOpenapiResponse, ApiConnectionActionConfiguration> PackagesOpenapiByPackageIdGET(Expression<Func<string>> packageId, Expression<Func<FormatInput>> format = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -257,52 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         public string Openapi { get; set; }
     }
 
-    public class PackagesPOSTInput
-    {
-        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Id { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("machine_name")]
-        public string MachineName { get; set; }
-
-        [JsonProperty("domain")]
-        public string Domain { get; set; }
-
-        [JsonProperty("version")]
-        public string Version { get; set; }
-
-        [JsonProperty("created_at")]
-        public string CreatedAt { get; set; }
-
-        [JsonProperty("updated_at")]
-        public string UpdatedAt { get; set; }
-
-        [JsonProperty("published_at")]
-        public string PublishedAt { get; set; }
-
-        [JsonProperty("logo_url")]
-        public string LogoUrl { get; set; }
-
-        [JsonProperty("contact_email")]
-        public string ContactEmail { get; set; }
-
-        [JsonProperty("description")]
-        public string Description { get; set; }
-
-        [JsonProperty("machine_description")]
-        public string MachineDescription { get; set; }
-
-        [JsonProperty("user_id")]
-        public string UserId { get; set; }
-
-        [JsonProperty("openapi")]
-        public string Openapi { get; set; }
-    }
-
-    public class PackagesByPackageIdPOSTInput
+    public class BodyInput
     {
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
@@ -369,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "json")]
         Json,

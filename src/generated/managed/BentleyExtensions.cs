@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
     public class BentleyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
-        public IBodyWorkflowAction<BadRequestObjectResult, ApiConnectionActionConfiguration> SynchronizeDocumentAttributes(Expression<Func<string>> connection, Expression<Func<string>> documentIdentifier, Expression<Func<SynchronizeDocumentAttributesV2Input>> attributeSynchronizationModel)
+        public IBodyWorkflowAction<BadRequestObjectResult, ApiConnectionActionConfiguration> SynchronizeDocumentAttributes(Expression<Func<string>> connection, Expression<Func<string>> documentIdentifier, Expression<Func<AttributeSynchronizationModelInput>> attributeSynchronizationModel)
         {
             var __workflow_connection = WorkflowExpression.Compile(connection, nameof(connection), required: true);
             var __workflow_documentIdentifier = WorkflowExpression.Compile(documentIdentifier, nameof(documentIdentifier), required: true);
@@ -69,14 +69,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
         public int StatusCode { get; set; }
     }
 
-    public class SynchronizeDocumentAttributesV2Input
+    public class AttributeSynchronizationModelInput
     {
         [JsonProperty("direction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SynchronizeDocumentAttributesV2InputDirectionType Direction { get; set; }
+        public AttributeSynchronizationModelInputDirectionType Direction { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SynchronizeDocumentAttributesV2InputDirectionType
+    public enum AttributeSynchronizationModelInputDirectionType
     {
         [EnumMember(Value = "fromFile")]
         FromFile,

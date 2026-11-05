@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class Pdf4mebarcodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<AddBarcodeV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AddBarcode(Expression<Func<AddBarcodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Createbarcode(Expression<Func<CreatebarcodeV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> Createbarcode(Expression<Func<CreatebarcodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateEpcQrCode(Expression<Func<CreateEpcQrCodeV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateEpcQrCode(Expression<Func<CreateEpcQrCodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSwissQrBill(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSwissQrBill(Expression<Func<SchemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
             var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
             var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
@@ -95,37 +95,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<ReadBarcodesV1Response, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<ReadBarcodesV1Input>> body = null)
+        public IBodyWorkflowAction<ReadBarcodesResponse, ApiConnectionActionConfiguration> ReadBarcodes(Expression<Func<ReadBarcodesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ReadBarcodesV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ReadBarcodesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ReadBarcodesV1Response>(callPayload);
+                return new ApiConnectionAction<ReadBarcodesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<ReadBarcodesFromImageV1Response, ApiConnectionActionConfiguration> ReadBarcodesFromImage(Expression<Func<ReadBarcodesFromImageV1Input>> body = null)
+        public IBodyWorkflowAction<ReadBarcodesFromImageResponse, ApiConnectionActionConfiguration> ReadBarcodesFromImage(Expression<Func<ReadBarcodesFromImageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ReadBarcodesFromImageV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ReadBarcodesFromImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadBarcodesFromImage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ReadBarcodesFromImageV1Response>(callPayload);
+                return new ApiConnectionAction<ReadBarcodesFromImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadSwissQrBillV1Input>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReadSwissQrBill(Expression<Func<ReadBarcodesFromImageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -140,17 +140,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4mebarcode")]
-        public IBodyWorkflowAction<SplitDocByBarcodeV1Response, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<SplitDocByBarcodeV1Input>> body = null)
+        public IBodyWorkflowAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration> SplitDocByBarcode(Expression<Func<SplitDocByBarcodeBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SplitDocByBarcodeV1Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SplitDocByBarcodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SplitDocByBarcodeV1Response>(callPayload);
+                return new ApiConnectionAction<SplitDocByBarcodeResponse>(callPayload);
             });
         }
     }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     {
     }
 
-    public class AddBarcodeV1Input
+    public class AddBarcodeBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -171,16 +171,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public string Text { get; set; }
 
         [JsonProperty("barcodeType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddBarcodeV1InputBarcodeTypeType BarcodeType { get; set; } = AddBarcodeV1InputBarcodeTypeType.QrCode;
+        public AddBarcodeBodyInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.AddBarcodeBodyInputBarcodeTypeType.QrCode;
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pages { get; set; } = "1";
 
         [JsonProperty("alignX", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddBarcodeV1InputAlignXType AlignX { get; set; } = AddBarcodeV1InputAlignXType.Left;
+        public BodyInputAlignXType AlignX { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputAlignXType.Left;
 
         [JsonProperty("alignY", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddBarcodeV1InputAlignYType AlignY { get; set; } = AddBarcodeV1InputAlignYType.Top;
+        public BodyInputAlignYType AlignY { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputAlignYType.Top;
 
         [JsonProperty("heightInMM", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HeightInMM { get; set; } = "0";
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddBarcodeV1InputBarcodeTypeType
+    public enum AddBarcodeBodyInputBarcodeTypeType
     {
         QrCode,
         Datamatrix,
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddBarcodeV1InputAlignXType
+    public enum BodyInputAlignXType
     {
         Left,
         Center,
@@ -224,17 +224,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddBarcodeV1InputAlignYType
+    public enum BodyInputAlignYType
     {
         Top,
         Middle,
         Bottom
     }
 
-    public class CreatebarcodeV1Input
+    public class CreatebarcodeBodyInput
     {
         [JsonProperty("barcodeType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatebarcodeV1InputBarcodeTypeType BarcodeType { get; set; } = CreatebarcodeV1InputBarcodeTypeType.QrCode;
+        public AddBarcodeBodyInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.AddBarcodeBodyInputBarcodeTypeType.QrCode;
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
@@ -243,36 +243,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public bool? HideText { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreatebarcodeV1InputBarcodeTypeType
-    {
-        QrCode,
-        Datamatrix,
-        Code128,
-        Aztec,
-        Pdf417,
-        Hanxin
-    }
-
-    public class CreateEpcQrCodeV1Input
+    public class CreateEpcQrCodeBodyInput
     {
         [JsonProperty("epcQrCodeAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEpcQrCodeV1InputEpcQrCodeActionType EpcQrCodeAction { get; set; } = new CreateEpcQrCodeV1InputEpcQrCodeActionType();
+        public BodyInputEpcQrCodeActionType EpcQrCodeAction { get; set; } = new BodyInputEpcQrCodeActionType();
     }
 
-    public class CreateEpcQrCodeV1InputEpcQrCodeActionType
+    public class BodyInputEpcQrCodeActionType
     {
         [JsonProperty("serviceTag", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateEpcQrCodeV1InputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = CreateEpcQrCodeV1InputEpcQrCodeActionTypeServiceTagType.BCD;
+        internal BodyInputEpcQrCodeActionTypeServiceTagType ServiceTag { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeServiceTagType.BCD;
 
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEpcQrCodeV1InputEpcQrCodeActionTypeVersionType Version { get; set; } = CreateEpcQrCodeV1InputEpcQrCodeActionTypeVersionType.V2;
+        public BodyInputEpcQrCodeActionTypeVersionType Version { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeVersionType.V2;
 
         [JsonProperty("characterSet", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEpcQrCodeV1InputEpcQrCodeActionTypeCharacterSetType? CharacterSet { get; set; } = CreateEpcQrCodeV1InputEpcQrCodeActionTypeCharacterSetType.UTF8;
+        public BodyInputEpcQrCodeActionTypeCharacterSetType? CharacterSet { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeCharacterSetType.UTF8;
 
         [JsonProperty("identificationCode", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateEpcQrCodeV1InputEpcQrCodeActionTypeIdentificationCodeType IdentificationCode { get; set; } = CreateEpcQrCodeV1InputEpcQrCodeActionTypeIdentificationCodeType.SCT;
+        internal BodyInputEpcQrCodeActionTypeIdentificationCodeType IdentificationCode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeIdentificationCodeType.SCT;
 
         [JsonProperty("bic")]
         public string Bic { get; set; }
@@ -284,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public string Iban { get; set; }
 
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal CreateEpcQrCodeV1InputEpcQrCodeActionTypeCurrencyType Currency { get; set; } = CreateEpcQrCodeV1InputEpcQrCodeActionTypeCurrencyType.EUR;
+        internal BodyInputEpcQrCodeActionTypeCurrencyType Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputEpcQrCodeActionTypeCurrencyType.EUR;
 
         [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
@@ -303,20 +292,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEpcQrCodeV1InputEpcQrCodeActionTypeServiceTagType
+    public enum BodyInputEpcQrCodeActionTypeServiceTagType
     {
         BCD
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEpcQrCodeV1InputEpcQrCodeActionTypeVersionType
+    public enum BodyInputEpcQrCodeActionTypeVersionType
     {
         V1,
         V2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEpcQrCodeV1InputEpcQrCodeActionTypeCharacterSetType
+    public enum BodyInputEpcQrCodeActionTypeCharacterSetType
     {
         UTF8,
         [EnumMember(Value = "ISO8859_1")]
@@ -336,19 +325,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEpcQrCodeV1InputEpcQrCodeActionTypeIdentificationCodeType
+    public enum BodyInputEpcQrCodeActionTypeIdentificationCodeType
     {
         SCT
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEpcQrCodeV1InputEpcQrCodeActionTypeCurrencyType
+    public enum BodyInputEpcQrCodeActionTypeCurrencyType
     {
         EUR
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum schemaValInput
+    public enum SchemaValInput
     {
         PDF,
         PNG,
@@ -356,13 +345,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         Tiff
     }
 
-    public class ReadBarcodesV1Response
+    public class ReadBarcodesResponse
     {
         [JsonProperty("barcodes")]
-        public ReadBarcodesV1ResponseBarcodesTypeItem[] Barcodes { get; set; }
+        public ReadBarcodesResponseBarcodesTypeItem[] Barcodes { get; set; }
     }
 
-    public class ReadBarcodesV1ResponseBarcodesTypeItem
+    public class ReadBarcodesResponseBarcodesTypeItem
     {
         [JsonProperty("barcodeType")]
         public string BarcodeType { get; set; }
@@ -372,29 +361,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public int Page { get; set; }
     }
 
-    public class ReadBarcodesV1Input
+    public class ReadBarcodesBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadBarcodesV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("barcodeType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadBarcodesV1InputBarcodeTypeTypeItem[] BarcodeType { get; set; }
+        public BodyInputBarcodeTypeTypeItem[] BarcodeType { get; set; }
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pages { get; set; } = "all";
     }
 
-    public class ReadBarcodesV1InputDocumentType
+    public class BodyInputDocumentType
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ReadBarcodesV1InputBarcodeTypeTypeItem
+    public enum BodyInputBarcodeTypeTypeItem
     {
         All,
         QrCode,
@@ -405,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         Code93
     }
 
-    public class ReadBarcodesFromImageV1Response
+    public class ReadBarcodesFromImageResponse
     {
         [JsonProperty("traceId")]
         public string TraceId { get; set; }
@@ -414,43 +403,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public string Barcode { get; set; }
     }
 
-    public class ReadBarcodesFromImageV1Input
+    public class ReadBarcodesFromImageBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadBarcodesFromImageV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
     }
 
-    public class ReadBarcodesFromImageV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class ReadSwissQrBillV1Input
-    {
-        [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
-
-        [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ReadSwissQrBillV1InputDocumentType Document { get; set; }
-    }
-
-    public class ReadSwissQrBillV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
-    public class SplitDocByBarcodeV1Response
+    public class SplitDocByBarcodeResponse
     {
         [JsonProperty("splitedDocuments")]
-        public SplitDocByBarcodeV1ResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
+        public SplitDocByBarcodeResponseSplitedDocumentsTypeItem[] SplitedDocuments { get; set; }
     }
 
-    public class SplitDocByBarcodeV1ResponseSplitedDocumentsTypeItem
+    public class SplitDocByBarcodeResponseSplitedDocumentsTypeItem
     {
         [JsonProperty("fileName")]
         public string FileName { get; set; }
@@ -462,25 +430,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public string StreamFile { get; set; }
     }
 
-    public class SplitDocByBarcodeV1Input
+    public class SplitDocByBarcodeBodyInput
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocByBarcodeV1InputDocumentType Document { get; set; }
+        public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("barcodeFilter", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocByBarcodeV1InputBarcodeFilterType BarcodeFilter { get; set; } = SplitDocByBarcodeV1InputBarcodeFilterType.StartsWith;
+        public BodyInputBarcodeFilterType BarcodeFilter { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputBarcodeFilterType.StartsWith;
 
         [JsonProperty("barcodeString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BarcodeString { get; set; }
 
         [JsonProperty("barcodeType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocByBarcodeV1InputBarcodeTypeType BarcodeType { get; set; } = SplitDocByBarcodeV1InputBarcodeTypeType.Any;
+        public SplitDocByBarcodeBodyInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.SplitDocByBarcodeBodyInputBarcodeTypeType.Any;
 
         [JsonProperty("splitBarcodePage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SplitDocByBarcodeV1InputSplitBarcodePageType SplitBarcodePage { get; set; } = SplitDocByBarcodeV1InputSplitBarcodePageType.Before;
+        public BodyInputSplitBarcodePageType SplitBarcodePage { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode.BodyInputSplitBarcodePageType.Before;
 
         [JsonProperty("combinePagesWithSameConsecutiveBarcodes", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CombinePagesWithSameConsecutiveBarcodes { get; set; } = false;
@@ -492,14 +460,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public bool? IsAsync { get; set; } = false;
     }
 
-    public class SplitDocByBarcodeV1InputDocumentType
-    {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
-    }
-
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocByBarcodeV1InputBarcodeFilterType
+    public enum BodyInputBarcodeFilterType
     {
         [EnumMember(Value = "startsWith")]
         StartsWith,
@@ -512,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocByBarcodeV1InputBarcodeTypeType
+    public enum SplitDocByBarcodeBodyInputBarcodeTypeType
     {
         [EnumMember(Value = "any")]
         Any,
@@ -523,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SplitDocByBarcodeV1InputSplitBarcodePageType
+    public enum BodyInputSplitBarcodePageType
     {
         [EnumMember(Value = "before")]
         Before,

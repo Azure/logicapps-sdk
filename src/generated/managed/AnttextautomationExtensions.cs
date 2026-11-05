@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
     public class AnttextautomationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anttextautomation")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostAntTextEmail(Expression<Func<PostAntTextEmailInput>> postBodyParameter)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> PostAntTextEmail(Expression<Func<PostBodyParameterInput>> postBodyParameter)
         {
             var __workflow_postBodyParameter = WorkflowExpression.Compile(postBodyParameter, nameof(postBodyParameter), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
     {
     }
 
-    public class PostAntTextEmailInput
+    public class PostBodyParameterInput
     {
         [JsonProperty("AntTextOwner", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailForAntTextBusiness { get; set; }
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
         public string To { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostAntTextEmailInputSaveCopyToSentItemsType? SaveCopyToSentItems { get; set; } = PostAntTextEmailInputSaveCopyToSentItemsType.Yes;
+        public PostBodyParameterInputSaveCopyToSentItemsType? SaveCopyToSentItems { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation.PostBodyParameterInputSaveCopyToSentItemsType.Yes;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostAntTextEmailInputImportanceType? Importance { get; set; } = PostAntTextEmailInputImportanceType.Normal;
+        public PostBodyParameterInputImportanceType? Importance { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation.PostBodyParameterInputImportanceType.Normal;
         public string FlowField1 { get; set; }
         public string FlowField2 { get; set; }
         public string FlowField3 { get; set; }
@@ -75,18 +75,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
         public string FlowField20 { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostAntTextEmailInputIncludeAntTextSignatureType? IncludeAntTextSignature { get; set; } = PostAntTextEmailInputIncludeAntTextSignatureType.Yes;
+        public PostBodyParameterInputIncludeAntTextSignatureType? IncludeAntTextSignature { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation.PostBodyParameterInputIncludeAntTextSignatureType.Yes;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostAntTextEmailInputSaveCopyToSentItemsType
+    public enum PostBodyParameterInputSaveCopyToSentItemsType
     {
         Yes,
         No
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostAntTextEmailInputImportanceType
+    public enum PostBodyParameterInputImportanceType
     {
         High,
         Normal,
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostAntTextEmailInputIncludeAntTextSignatureType
+    public enum PostBodyParameterInputIncludeAntTextSignatureType
     {
         Yes,
         No

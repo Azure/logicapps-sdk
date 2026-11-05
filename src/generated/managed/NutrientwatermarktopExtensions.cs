@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     public class NutrientwatermarktopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> CompositeWatermark(Expression<Func<CompositeWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> CompositeWatermark(Expression<Func<CompositeWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> EllipseWatermark(Expression<Func<EllipseWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> EllipseWatermark(Expression<Func<EllipseWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ImageWatermark(Expression<Func<ImageWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> ImageWatermark(Expression<Func<ImageWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LineWatermark(Expression<Func<LineWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LineWatermark(Expression<Func<LineWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LinearBarcodeWatermark(Expression<Func<LinearBarcodeWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> LinearBarcodeWatermark(Expression<Func<LinearBarcodeWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> PdfWatermark(Expression<Func<PdfWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> PdfWatermark(Expression<Func<PdfWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> QrCodeWatermark(Expression<Func<QrCodeWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> QrCodeWatermark(Expression<Func<QrCodeWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RectangleWatermark(Expression<Func<RectangleWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RectangleWatermark(Expression<Func<RectangleWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RtfWatermark(Expression<Func<RtfWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> RtfWatermark(Expression<Func<RtfWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientwatermarktop")]
-        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> TextWatermark(Expression<Func<TextWatermarkInput>> inputData)
+        public IBodyWorkflowAction<OperationResponse, ApiConnectionActionConfiguration> TextWatermark(Expression<Func<TextWatermarkInputDataInput>> inputData)
         {
             var __workflow_inputData = WorkflowExpression.Compile(inputData, nameof(inputData), required: true);
             return new DeferredBodyAction<OperationResponse, ApiConnectionActionConfiguration>(() =>
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         InvalidExtension
     }
 
-    public class CompositeWatermarkInput
+    public class CompositeWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     {
     }
 
-    public class EllipseWatermarkInput
+    public class EllipseWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputPositionType Position { get; set; } = EllipseWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputLayerType? Layer { get; set; } = EllipseWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -273,10 +273,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = EllipseWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EllipseWatermarkInputPrintOnlyType? PrintOnly { get; set; } = EllipseWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputPositionType
+    public enum InputDataInputPositionType
     {
         [EnumMember(Value = "Top Left")]
         TopLeft,
@@ -317,14 +317,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputLayerType
+    public enum InputDataInputLayerType
     {
         Background,
         Foreground
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputWatermarkPageOrientationType
+    public enum InputDataInputWatermarkPageOrientationType
     {
         Portrait,
         Landscape,
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EllipseWatermarkInputPrintOnlyType
+    public enum InputDataInputPrintOnlyType
     {
         [EnumMember(Value = "false")]
         False,
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         True
     }
 
-    public class ImageWatermarkInput
+    public class ImageWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputPositionType Position { get; set; } = ImageWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputLayerType? Layer { get; set; } = ImageWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -400,10 +400,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = ImageWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ImageWatermarkInputPrintOnlyType? PrintOnly { get; set; } = ImageWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -418,56 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ImageWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class LineWatermarkInput
+    public class LineWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -479,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputPositionType Position { get; set; } = LineWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -497,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinateEnd { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputLayerType? Layer { get; set; } = LineWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -521,10 +472,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = LineWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LineWatermarkInputPrintOnlyType? PrintOnly { get; set; } = LineWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -539,56 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LineWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class LinearBarcodeWatermarkInput
+    public class LinearBarcodeWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -606,16 +508,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("barcode_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputBarcodeTypeType BarcodeType { get; set; } = LinearBarcodeWatermarkInputBarcodeTypeType.Codabar;
+        public InputDataInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputBarcodeTypeType.Codabar;
 
         [JsonProperty("omit_start_stop_symbols", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputOmitEncodingOfStartStopSymbolsType? OmitEncodingOfStartStopSymbols { get; set; } = LinearBarcodeWatermarkInputOmitEncodingOfStartStopSymbolsType.False;
+        public InputDataInputOmitEncodingOfStartStopSymbolsType? OmitEncodingOfStartStopSymbols { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputOmitEncodingOfStartStopSymbolsType.False;
 
         [JsonProperty("disable_checkdigit", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputDisableCheckDigitType DisableCheckDigit { get; set; } = LinearBarcodeWatermarkInputDisableCheckDigitType.False;
+        public InputDataInputDisableCheckDigitType DisableCheckDigit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputDisableCheckDigitType.False;
 
         [JsonProperty("show_checkdigit", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputShowCheckDigitType ShowCheckDigit { get; set; } = LinearBarcodeWatermarkInputShowCheckDigitType.False;
+        public InputDataInputShowCheckDigitType ShowCheckDigit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputShowCheckDigitType.False;
 
         [JsonProperty("margin")]
         public string Margin { get; set; }
@@ -630,10 +532,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string FontStyle { get; set; }
 
         [JsonProperty("label_placement", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputLabelPlacementType? LabelPlacement { get; set; } = LinearBarcodeWatermarkInputLabelPlacementType.BottomCenter;
+        public InputDataInputLabelPlacementType? LabelPlacement { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLabelPlacementType.BottomCenter;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputPositionType Position { get; set; } = LinearBarcodeWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -648,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputLayerType? Layer { get; set; } = LinearBarcodeWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -672,10 +574,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = LinearBarcodeWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public LinearBarcodeWatermarkInputPrintOnlyType? PrintOnly { get; set; } = LinearBarcodeWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -691,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputBarcodeTypeType
+    public enum InputDataInputBarcodeTypeType
     {
         Codabar,
         Code11,
@@ -710,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputOmitEncodingOfStartStopSymbolsType
+    public enum InputDataInputOmitEncodingOfStartStopSymbolsType
     {
         [EnumMember(Value = "true")]
         True,
@@ -719,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputDisableCheckDigitType
+    public enum InputDataInputDisableCheckDigitType
     {
         [EnumMember(Value = "true")]
         True,
@@ -728,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputShowCheckDigitType
+    public enum InputDataInputShowCheckDigitType
     {
         [EnumMember(Value = "true")]
         True,
@@ -737,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputLabelPlacementType
+    public enum InputDataInputLabelPlacementType
     {
         [EnumMember(Value = "Top Left")]
         TopLeft,
@@ -754,56 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         BottomRight
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum LinearBarcodeWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class PdfWatermarkInput
+    public class PdfWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -821,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputPositionType Position { get; set; } = PdfWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -836,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputLayerType? Layer { get; set; } = PdfWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -854,10 +707,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = PdfWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PdfWatermarkInputPrintOnlyType? PrintOnly { get; set; } = PdfWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -872,56 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PdfWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class QrCodeWatermarkInput
+    public class QrCodeWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -939,16 +743,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputVersionType Version { get; set; } = QrCodeWatermarkInputVersionType.Auto;
+        public InputDataInputVersionType Version { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputVersionType.Auto;
 
         [JsonProperty("input_mode", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputInputModeType InputMode { get; set; } = QrCodeWatermarkInputInputModeType.Binary;
+        public InputDataInputInputModeType InputMode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputInputModeType.Binary;
 
         [JsonProperty("error_correction_level", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputErrorCorrectionLevelType ErrorCorrectionLevel { get; set; } = QrCodeWatermarkInputErrorCorrectionLevelType.Low;
+        public InputDataInputErrorCorrectionLevelType ErrorCorrectionLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputErrorCorrectionLevelType.Low;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputPositionType Position { get; set; } = QrCodeWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -963,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputLayerType? Layer { get; set; } = QrCodeWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -987,10 +791,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = QrCodeWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public QrCodeWatermarkInputPrintOnlyType? PrintOnly { get; set; } = QrCodeWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -1006,7 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputVersionType
+    public enum InputDataInputVersionType
     {
         Auto,
         [EnumMember(Value = "Version 1")]
@@ -1092,7 +896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputInputModeType
+    public enum InputDataInputInputModeType
     {
         Binary,
         Alphanumeric,
@@ -1100,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputErrorCorrectionLevelType
+    public enum InputDataInputErrorCorrectionLevelType
     {
         Low,
         Medium,
@@ -1108,56 +912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         Quartile
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum QrCodeWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class RectangleWatermarkInput
+    public class RectangleWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -1169,7 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputPositionType Position { get; set; } = RectangleWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -1187,7 +942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputLayerType? Layer { get; set; } = RectangleWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -1214,10 +969,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = RectangleWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RectangleWatermarkInputPrintOnlyType? PrintOnly { get; set; } = RectangleWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -1232,56 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RectangleWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class RtfWatermarkInput
+    public class RtfWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -1299,7 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputPositionType Position { get; set; } = RtfWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -1314,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputLayerType? Layer { get; set; } = RtfWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -1341,10 +1047,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = RtfWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RtfWatermarkInputPrintOnlyType? PrintOnly { get; set; } = RtfWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -1359,56 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public bool? FailOnError { get; set; } = true;
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RtfWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
-    }
-
-    public class TextWatermarkInput
+    public class TextWatermarkInputDataInput
     {
         [JsonProperty("source_file_name")]
         public string SourceFileName { get; set; }
@@ -1435,13 +1092,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string FontColor { get; set; } = "#000000";
 
         [JsonProperty("alignment", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputTextAlignmentType TextAlignment { get; set; } = TextWatermarkInputTextAlignmentType.TopLeft;
+        public InputDataInputTextAlignmentType TextAlignment { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputTextAlignmentType.TopLeft;
 
         [JsonProperty("word_wrap", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputWordWrapType WordWrap { get; set; } = TextWatermarkInputWordWrapType.Word;
+        public InputDataInputWordWrapType WordWrap { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWordWrapType.Word;
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputPositionType Position { get; set; } = TextWatermarkInputPositionType.MiddleCenter;
+        public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -1456,7 +1113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string YCoordinate { get; set; }
 
         [JsonProperty("layer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputLayerType? Layer { get; set; } = TextWatermarkInputLayerType.Foreground;
+        public InputDataInputLayerType? Layer { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputLayerType.Foreground;
 
         [JsonProperty("rotation")]
         public string Rotation { get; set; }
@@ -1483,10 +1140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public int? WatermarkPageInterval { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = TextWatermarkInputWatermarkPageOrientationType.Both;
+        public InputDataInputWatermarkPageOrientationType? WatermarkPageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputWatermarkPageOrientationType.Both;
 
         [JsonProperty("print_only", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TextWatermarkInputPrintOnlyType? PrintOnly { get; set; } = TextWatermarkInputPrintOnlyType.False;
+        public InputDataInputPrintOnlyType? PrintOnly { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPrintOnlyType.False;
 
         [JsonProperty("start_section")]
         public int? WatermarkStartSection { get; set; }
@@ -1502,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputTextAlignmentType
+    public enum InputDataInputTextAlignmentType
     {
         [EnumMember(Value = "Top Left")]
         TopLeft,
@@ -1531,61 +1188,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputWordWrapType
+    public enum InputDataInputWordWrapType
     {
         WordOnly,
         Character,
         None,
         Word
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputPositionType
-    {
-        [EnumMember(Value = "Top Left")]
-        TopLeft,
-        [EnumMember(Value = "Top Center")]
-        TopCenter,
-        [EnumMember(Value = "Top Right")]
-        TopRight,
-        [EnumMember(Value = "Middle Left")]
-        MiddleLeft,
-        [EnumMember(Value = "Middle Center")]
-        MiddleCenter,
-        [EnumMember(Value = "Middle Right")]
-        MiddleRight,
-        [EnumMember(Value = "Bottom Left")]
-        BottomLeft,
-        [EnumMember(Value = "Bottom Center")]
-        BottomCenter,
-        [EnumMember(Value = "Bottom Right")]
-        BottomRight,
-        Absolute,
-        Random
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputLayerType
-    {
-        Background,
-        Foreground
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputWatermarkPageOrientationType
-    {
-        Portrait,
-        Landscape,
-        Both
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TextWatermarkInputPrintOnlyType
-    {
-        [EnumMember(Value = "false")]
-        False,
-        [EnumMember(Value = "true")]
-        True
     }
 }
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
     public class RobolytixActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robolytix")]
-        public IBodyWorkflowAction<SonarResponse, ApiConnectionActionConfiguration> Sonar(Expression<Func<SonarInput>> body)
+        public IBodyWorkflowAction<SonarResponse, ApiConnectionActionConfiguration> Sonar(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SonarResponse, ApiConnectionActionConfiguration>(() =>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
         public string Runid { get; set; }
     }
 
-    public class SonarInput
+    public class BodyInput
     {
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     public class ChatterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration> CreatePostInGroup(Expression<Func<CreatePostInGroupInput>> body, Expression<Func<string>> createPostInGroupText)
+        public IBodyWorkflowAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration> CreatePostInGroup(Expression<Func<CreatePostInGroupBodyInput>> body, Expression<Func<string>> createPostInGroupText)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_createPostInGroupText = WorkflowExpression.Compile(createPostInGroupText, nameof(createPostInGroupText), required: true);
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<GroupMemberResponse, ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<AddUserToGroupInput>> body)
+        public IBodyWorkflowAction<GroupMemberResponse, ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<AddUserToGroupBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string Small { get; set; }
     }
 
-    public class CreatePostInGroupInput
+    public class CreatePostInGroupBodyInput
     {
         [JsonProperty("subjectId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupId { get; set; }
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string Small { get; set; }
     }
 
-    public class AddUserToGroupInput
+    public class AddUserToGroupBodyInput
     {
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SalesforceUserId { get; set; }

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
     public class CraftmypdfipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> Create(Expression<Func<CreateInput>> body)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> Create(Expression<Func<CreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> CreateMerge(Expression<Func<CreateMergeInput>> body)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> CreateMerge(Expression<Func<CreateMergeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration> NewTemplateFrom(Expression<Func<NewTemplateFromInput>> body)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration> NewTemplateFrom(Expression<Func<NewTemplateFromBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessCreateNewTemplate, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<UpdateTemplateInput>> body)
+        public IBodyWorkflowAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<UpdateTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseUpdateTemplate, ApiConnectionActionConfiguration>(() =>
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration> CreateEditorSession(Expression<Func<CreateEditorSessionInput>> body)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration> CreateEditorSession(Expression<Func<CreateEditorSessionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessCreateNewEditorSession, ApiConnectionActionConfiguration>(() =>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<MergePdfsInput>> body)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> MergePdfs(Expression<Func<MergePdfsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> AddWatermark(Expression<Func<AddWatermarkInput>> body)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> AddWatermark(Expression<Func<AddWatermarkBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration>(() =>
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public string TransactionRef { get; set; }
     }
 
-    public class CreateInput
+    public class CreateBodyInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Data { get; set; }
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public bool? IsCmyk { get; set; }
     }
 
-    public class CreateMergeInput
+    public class CreateMergeBodyInput
     {
         [JsonProperty("templates", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Templates { get; set; }
@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public string TemplateId { get; set; }
     }
 
-    public class NewTemplateFromInput
+    public class NewTemplateFromBodyInput
     {
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public string Status { get; set; }
     }
 
-    public class UpdateTemplateInput
+    public class UpdateTemplateBodyInput
     {
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public string Url { get; set; }
     }
 
-    public class CreateEditorSessionInput
+    public class CreateEditorSessionBodyInput
     {
         [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateId { get; set; }
@@ -339,7 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public JToken[] Transactions { get; set; }
     }
 
-    public class MergePdfsInput
+    public class MergePdfsBodyInput
     {
         [JsonProperty("urls", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken[] Urls { get; set; }
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
         public string OutputFile { get; set; }
     }
 
-    public class AddWatermarkInput
+    public class AddWatermarkBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }

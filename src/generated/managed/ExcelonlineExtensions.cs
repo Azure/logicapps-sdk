@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
     public class ExcelonlineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
-        public IBodyWorkflowAction<TableMetadata, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> @file, Expression<Func<CreateTableInput>> table)
+        public IBodyWorkflowAction<TableMetadata, ApiConnectionActionConfiguration> CreateTable(Expression<Func<string>> @file, Expression<Func<TableInput>> table)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
-        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
+        public IBodyWorkflowAction<ItemsList, ApiConnectionActionConfiguration> GetItems(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null, Expression<Func<DateTimeFormatInput>> dateTimeFormat = null)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<DateTimeFormatInput>> dateTimeFormat = null)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<itemInput>> item, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> PatchItem(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<string>> idColumn, Expression<Func<string>> id, Expression<Func<ItemInput>> item, Expression<Func<DateTimeFormatInput>> dateTimeFormat = null)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
-        public IBodyWorkflowAction<WorksheetMetadata, ApiConnectionActionConfiguration> CreateWorksheet(Expression<Func<string>> @file, Expression<Func<CreateWorksheetInput>> body)
+        public IBodyWorkflowAction<WorksheetMetadata, ApiConnectionActionConfiguration> CreateWorksheet(Expression<Func<string>> @file, Expression<Func<BodyInput>> body)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "excelonline")]
-        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> AddRow(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<itemInput>> item, Expression<Func<dateTimeFormatInput>> dateTimeFormat = null)
+        public IBodyWorkflowAction<Item, ApiConnectionActionConfiguration> AddRow(Expression<Func<string>> @file, Expression<Func<string>> table, Expression<Func<ItemInput>> item, Expression<Func<DateTimeFormatInput>> dateTimeFormat = null)
         {
             var __workflow_file = WorkflowExpression.Compile(@file, nameof(@file), required: true);
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         Skiptoken
     }
 
-    public class CreateTableInput
+    public class TableInput
     {
         public string TableName { get; set; }
 
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dateTimeFormatInput
+    public enum DateTimeFormatInput
     {
         [EnumMember(Value = "Serial Number")]
         SerialNumber,
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         ISO8601
     }
 
-    public class itemInput
+    public class ItemInput
     {
         [JsonProperty("dynamicProperties")]
         public JToken DynamicProperties { get; set; }
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonline
         public string Visibility { get; set; }
     }
 
-    public class CreateWorksheetInput
+    public class BodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }

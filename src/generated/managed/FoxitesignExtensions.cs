@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     public class FoxitesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateEnvelopefromURLResponse, ApiConnectionActionConfiguration> CreateEnvelopefromURL(Expression<Func<CreateEnvelopefromURLInput>> body)
+        public IBodyWorkflowAction<CreateEnvelopefromURLResponse, ApiConnectionActionConfiguration> CreateEnvelopefromURL(Expression<Func<CreateEnvelopefromURLBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEnvelopefromURLResponse, ApiConnectionActionConfiguration>(() =>
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<GetEnvelopeIdsResponse, ApiConnectionActionConfiguration> GetEnvelopeIds(Expression<Func<string>> dateFrom, Expression<Func<string>> dateTo, Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<GetEnvelopeIdsResponse, ApiConnectionActionConfiguration> GetEnvelopeIds(Expression<Func<string>> dateFrom, Expression<Func<string>> dateTo, Expression<Func<StatusInput>> status = null)
         {
             var __workflow_dateFrom = WorkflowExpression.Compile(dateFrom, nameof(dateFrom), required: true);
             var __workflow_dateTo = WorkflowExpression.Compile(dateTo, nameof(dateTo), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<SendSignatureReminderResponse, ApiConnectionActionConfiguration> SendSignatureReminder(Expression<Func<SendSignatureReminderInput>> body)
+        public IBodyWorkflowAction<SendSignatureReminderResponse, ApiConnectionActionConfiguration> SendSignatureReminder(Expression<Func<SendSignatureReminderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendSignatureReminderResponse, ApiConnectionActionConfiguration>(() =>
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CancelEnvelopeResponse, ApiConnectionActionConfiguration> CancelEnvelope(Expression<Func<CancelEnvelopeInput>> body)
+        public IBodyWorkflowAction<CancelEnvelopeResponse, ApiConnectionActionConfiguration> CancelEnvelope(Expression<Func<CancelEnvelopeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CancelEnvelopeResponse, ApiConnectionActionConfiguration>(() =>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<DeleteEnvelopesResponse, ApiConnectionActionConfiguration> DeleteEnvelopes(Expression<Func<DeleteEnvelopesInput>> body)
+        public IBodyWorkflowAction<DeleteEnvelopesResponse, ApiConnectionActionConfiguration> DeleteEnvelopes(Expression<Func<DeleteEnvelopesBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DeleteEnvelopesResponse, ApiConnectionActionConfiguration>(() =>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<GetTemplatesbyTemplateIdsResponse, ApiConnectionActionConfiguration> GetTemplatesbyTemplateIds(Expression<Func<GetTemplatesbyTemplateIdsInput>> body)
+        public IBodyWorkflowAction<GetTemplatesbyTemplateIdsResponse, ApiConnectionActionConfiguration> GetTemplatesbyTemplateIds(Expression<Func<GetTemplatesbyTemplateIdsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetTemplatesbyTemplateIdsResponse, ApiConnectionActionConfiguration>(() =>
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateTemplatefromURLResponse, ApiConnectionActionConfiguration> CreateTemplatefromURL(Expression<Func<CreateTemplatefromURLInput>> body)
+        public IBodyWorkflowAction<CreateTemplatefromURLResponse, ApiConnectionActionConfiguration> CreateTemplatefromURL(Expression<Func<CreateTemplatefromURLBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTemplatefromURLResponse, ApiConnectionActionConfiguration>(() =>
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateTemplatefromBase64Response, ApiConnectionActionConfiguration> CreateTemplatefromBase64(Expression<Func<CreateTemplatefromBase64Input>> body)
+        public IBodyWorkflowAction<CreateTemplatefromBase64Response, ApiConnectionActionConfiguration> CreateTemplatefromBase64(Expression<Func<CreateTemplatefromBase64BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTemplatefromBase64Response, ApiConnectionActionConfiguration>(() =>
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateEnvelopefromTemplateResponse, ApiConnectionActionConfiguration> CreateEnvelopefromTemplate(Expression<Func<CreateEnvelopefromTemplateInput>> body)
+        public IBodyWorkflowAction<CreateEnvelopefromTemplateResponse, ApiConnectionActionConfiguration> CreateEnvelopefromTemplate(Expression<Func<CreateEnvelopefromTemplateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEnvelopefromTemplateResponse, ApiConnectionActionConfiguration>(() =>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateEmailGroupResponse, ApiConnectionActionConfiguration> CreateEmailGroup(Expression<Func<CreateEmailGroupInput>> body)
+        public IBodyWorkflowAction<CreateEmailGroupResponse, ApiConnectionActionConfiguration> CreateEmailGroup(Expression<Func<CreateEmailGroupBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEmailGroupResponse, ApiConnectionActionConfiguration>(() =>
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<GetEmailGroupDetailsResponse, ApiConnectionActionConfiguration> GetEmailGroupDetails(Expression<Func<GetEmailGroupDetailsInput>> body)
+        public IBodyWorkflowAction<GetEmailGroupDetailsResponse, ApiConnectionActionConfiguration> GetEmailGroupDetails(Expression<Func<GetEmailGroupDetailsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GetEmailGroupDetailsResponse, ApiConnectionActionConfiguration>(() =>
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadReport(Expression<Func<DownloadReportInput>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadReport(Expression<Func<DownloadReportBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foxitesign")]
-        public IBodyWorkflowAction<CreateEnvelopefromBase64Response, ApiConnectionActionConfiguration> CreateEnvelopefromBase64(Expression<Func<CreateEnvelopefromBase64Input>> body)
+        public IBodyWorkflowAction<CreateEnvelopefromBase64Response, ApiConnectionActionConfiguration> CreateEnvelopefromBase64(Expression<Func<CreateEnvelopefromBase64BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateEnvelopefromBase64Response, ApiConnectionActionConfiguration>(() =>
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class FoxitesignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeSent(Expression<Func<TriggerEnvelopeSentInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeSent(Expression<Func<TriggerEnvelopeSentBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeViewed(Expression<Func<TriggerEnvelopeViewedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeViewed(Expression<Func<TriggerEnvelopeViewedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeSigned(Expression<Func<TriggerEnvelopeSignedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeSigned(Expression<Func<TriggerEnvelopeSignedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeCancelled(Expression<Func<TriggerEnvelopeCancelledInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeCancelled(Expression<Func<TriggerEnvelopeCancelledBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeExecuted(Expression<Func<TriggerEnvelopeExecutedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeExecuted(Expression<Func<TriggerEnvelopeExecutedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
@@ -423,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeDeleted(Expression<Func<TriggerEnvelopeDeletedInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration> TriggerEnvelopeDeleted(Expression<Func<TriggerEnvelopeDeletedBodyInput>> body, FlowRecurrence recurrence = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<WebhookEventPayload, ApiConnectionTriggerConfiguration>(() =>
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SigningSessionURL { get; set; }
     }
 
-    public class CreateEnvelopefromURLInput
+    public class CreateEnvelopefromURLBodyInput
     {
         [JsonProperty("folderName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnvelopeName { get; set; }
@@ -1702,7 +1702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         EXECUTED,
         SHARED,
@@ -1723,7 +1723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public int EnvelopeId { get; set; }
     }
 
-    public class SendSignatureReminderInput
+    public class SendSignatureReminderBodyInput
     {
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int EnvelopeId { get; set; }
@@ -1737,7 +1737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class EnvelopeIdentifiers
     {
-        [JsonProperty("folderIds")]
+        [JsonProperty("folderIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public int[] FolderIds { get; set; }
     }
 
@@ -1858,7 +1858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public int[] CancelledEnvelopeIDs { get; set; }
     }
 
-    public class CancelEnvelopeInput
+    public class CancelEnvelopeBodyInput
     {
         [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int EnvelopeId { get; set; }
@@ -1873,7 +1873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Result { get; set; }
     }
 
-    public class DeleteEnvelopesInput
+    public class DeleteEnvelopesBodyInput
     {
         [JsonProperty("folderIds")]
         public int[] FolderIds { get; set; }
@@ -1891,7 +1891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public JToken TemplateList { get; set; }
     }
 
-    public class GetTemplatesbyTemplateIdsInput
+    public class GetTemplatesbyTemplateIdsBodyInput
     {
         [JsonProperty("templateIds", DefaultValueHandling = DefaultValueHandling.Include)]
         public int[] TemplateIds { get; set; }
@@ -2431,7 +2431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string AttachmentDescription { get; set; }
     }
 
-    public class CreateTemplatefromURLInput
+    public class CreateTemplatefromURLBodyInput
     {
         [JsonProperty("templateName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
@@ -2704,7 +2704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string AttachmentDescription { get; set; }
     }
 
-    public class CreateTemplatefromBase64Input
+    public class CreateTemplatefromBase64BodyInput
     {
         [JsonProperty("templateName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TemplateName { get; set; }
@@ -2713,7 +2713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Base64FileString { get; set; }
 
         [JsonProperty("inputType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTemplatefromBase64InputInputTypeType InputType { get; set; } = CreateTemplatefromBase64InputInputTypeType.Base64;
+        public BodyInputInputTypeType InputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputInputTypeType.Base64;
 
         [JsonProperty("processTextTags", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ProcessTextTags { get; set; } = true;
@@ -2774,7 +2774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateTemplatefromBase64InputInputTypeType
+    public enum BodyInputInputTypeType
     {
         [EnumMember(Value = "base64")]
         Base64
@@ -3215,7 +3215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public int SigningOrder { get; set; }
     }
 
-    public class CreateEnvelopefromTemplateInput
+    public class CreateEnvelopefromTemplateBodyInput
     {
         [JsonProperty("folderName")]
         public string EnvelopeName { get; set; }
@@ -3515,7 +3515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Email { get; set; }
     }
 
-    public class CreateEmailGroupInput
+    public class CreateEmailGroupBodyInput
     {
         [JsonProperty("emailGroupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
@@ -3527,10 +3527,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public bool? AllowAdvancedEmailValidation { get; set; }
 
         [JsonProperty("parties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEmailGroupInputPartiesTypeItem[] Parties { get; set; }
+        public BodyInputPartiesTypeItem[] Parties { get; set; }
     }
 
-    public class CreateEmailGroupInputPartiesTypeItem
+    public class BodyInputPartiesTypeItem
     {
         [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
@@ -3581,13 +3581,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string Email { get; set; }
     }
 
-    public class GetEmailGroupDetailsInput
+    public class GetEmailGroupDetailsBodyInput
     {
         [JsonProperty("emailGroupNames", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] EmailGroupNames { get; set; }
     }
 
-    public class DownloadReportInput
+    public class DownloadReportBodyInput
     {
         [JsonProperty("status")]
         public EnvelopeStatus? Status { get; set; }
@@ -4293,13 +4293,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string SigningSessionURL { get; set; }
     }
 
-    public class CreateEnvelopefromBase64Input
+    public class CreateEnvelopefromBase64BodyInput
     {
         [JsonProperty("folderName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EnvelopeName { get; set; }
 
         [JsonProperty("inputType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEnvelopefromBase64InputInputTypeType? InputType { get; set; } = CreateEnvelopefromBase64InputInputTypeType.Base64;
+        public BodyInputInputTypeType? InputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputInputTypeType.Base64;
 
         [JsonProperty("base64FileString", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Base64FileStrings { get; set; }
@@ -4459,13 +4459,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
         [JsonProperty("selfSignerSuccessUrl")]
         public string SelfSignerSuccessUrl { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateEnvelopefromBase64InputInputTypeType
-    {
-        [EnumMember(Value = "base64")]
-        Base64
     }
 
     public class WebhookEventPayload
@@ -4978,7 +4971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public bool PasswordStatus { get; set; }
     }
 
-    public class TriggerEnvelopeSentInput
+    public class TriggerEnvelopeSentBodyInput
     {
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
@@ -4987,7 +4980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerEnvelopeSentInputWebhookLevelType WebhookLevel { get; set; } = TriggerEnvelopeSentInputWebhookLevelType.Account;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.Account;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5000,14 +4993,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerEnvelopeSentInputWebhookLevelType
+    public enum BodyInputWebhookLevelType
     {
         Account,
         [EnumMember(Value = "API App")]
         APIApp
     }
 
-    public class TriggerEnvelopeViewedInput
+    public class TriggerEnvelopeViewedBodyInput
     {
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
@@ -5016,7 +5009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerEnvelopeViewedInputWebhookLevelType WebhookLevel { get; set; } = TriggerEnvelopeViewedInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5028,15 +5021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal JToken Events { get; set; } = JToken.Parse("{\"folder_sent\":false,\"folder_viewed\":true,\"folder_signed\":false,\"folder_cancelled\":false,\"folder_executed\":false,\"folder_deleted\":false}");
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerEnvelopeViewedInputWebhookLevelType
-    {
-        Account,
-        [EnumMember(Value = "API App")]
-        APIApp
-    }
-
-    public class TriggerEnvelopeSignedInput
+    public class TriggerEnvelopeSignedBodyInput
     {
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
@@ -5045,7 +5030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerEnvelopeSignedInputWebhookLevelType WebhookLevel { get; set; } = TriggerEnvelopeSignedInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5057,15 +5042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal JToken Events { get; set; } = JToken.Parse("{\"folder_sent\":false,\"folder_viewed\":false,\"folder_signed\":true,\"folder_cancelled\":false,\"folder_executed\":false,\"folder_deleted\":false}");
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerEnvelopeSignedInputWebhookLevelType
-    {
-        Account,
-        [EnumMember(Value = "API App")]
-        APIApp
-    }
-
-    public class TriggerEnvelopeCancelledInput
+    public class TriggerEnvelopeCancelledBodyInput
     {
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
@@ -5074,7 +5051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerEnvelopeCancelledInputWebhookLevelType WebhookLevel { get; set; } = TriggerEnvelopeCancelledInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5086,15 +5063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal JToken Events { get; set; } = JToken.Parse("{\"folder_sent\":false,\"folder_viewed\":false,\"folder_signed\":false,\"folder_cancelled\":true,\"folder_executed\":false,\"folder_deleted\":false}");
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerEnvelopeCancelledInputWebhookLevelType
-    {
-        Account,
-        [EnumMember(Value = "API App")]
-        APIApp
-    }
-
-    public class TriggerEnvelopeExecutedInput
+    public class TriggerEnvelopeExecutedBodyInput
     {
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
@@ -5103,7 +5072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerEnvelopeExecutedInputWebhookLevelType WebhookLevel { get; set; } = TriggerEnvelopeExecutedInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5115,15 +5084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal JToken Events { get; set; } = JToken.Parse("{\"folder_sent\":false,\"folder_viewed\":false,\"folder_signed\":false,\"folder_cancelled\":false,\"folder_executed\":true,\"folder_deleted\":false}");
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerEnvelopeExecutedInputWebhookLevelType
-    {
-        Account,
-        [EnumMember(Value = "API App")]
-        APIApp
-    }
-
-    public class TriggerEnvelopeDeletedInput
+    public class TriggerEnvelopeDeletedBodyInput
     {
         [JsonProperty("channelName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ChannelName { get; set; }
@@ -5132,7 +5093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("webhookLevel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggerEnvelopeDeletedInputWebhookLevelType WebhookLevel { get; set; } = TriggerEnvelopeDeletedInputWebhookLevelType.APIApp;
+        public BodyInputWebhookLevelType WebhookLevel { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign.BodyInputWebhookLevelType.APIApp;
 
         [JsonProperty("webhookSecret")]
         public string WebhookSecret { get; set; }
@@ -5142,14 +5103,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
         [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
         internal JToken Events { get; set; } = JToken.Parse("{\"folder_sent\":false,\"folder_viewed\":false,\"folder_signed\":false,\"folder_cancelled\":false,\"folder_executed\":false,\"folder_deleted\":true}");
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum TriggerEnvelopeDeletedInputWebhookLevelType
-    {
-        Account,
-        [EnumMember(Value = "API App")]
-        APIApp
     }
 }
 

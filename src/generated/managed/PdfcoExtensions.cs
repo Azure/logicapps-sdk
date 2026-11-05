@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     public class PdfcoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<HtmlToPdfResponse, ApiConnectionActionConfiguration> HtmlToPdf(Expression<Func<HtmlToPdfInput>> body = null)
+        public IBodyWorkflowAction<HtmlToPdfResponse, ApiConnectionActionConfiguration> HtmlToPdf(Expression<Func<HtmlToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<HtmlToPdfResponse, ApiConnectionActionConfiguration>(() =>
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<UrlToPdfResponse, ApiConnectionActionConfiguration> UrlToPdf(Expression<Func<UrlToPdfInput>> body = null)
+        public IBodyWorkflowAction<UrlToPdfResponse, ApiConnectionActionConfiguration> UrlToPdf(Expression<Func<UrlToPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UrlToPdfResponse, ApiConnectionActionConfiguration>(() =>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PdfFillerResponse, ApiConnectionActionConfiguration> PdfFiller(Expression<Func<PdfFillerInput>> body = null)
+        public IBodyWorkflowAction<PdfFillerResponse, ApiConnectionActionConfiguration> PdfFiller(Expression<Func<PdfFillerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PdfFillerResponse, ApiConnectionActionConfiguration>(() =>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<MergePdfSimplifiedResponse, ApiConnectionActionConfiguration> MergePdfSimplified(Expression<Func<MergePdfSimplifiedInput>> body = null)
+        public IBodyWorkflowAction<MergePdfSimplifiedResponse, ApiConnectionActionConfiguration> MergePdfSimplified(Expression<Func<MergePdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<MergePdfSimplifiedResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<MergePdfResponse, ApiConnectionActionConfiguration> MergePdf(Expression<Func<MergePdfInput>> body = null)
+        public IBodyWorkflowAction<MergePdfResponse, ApiConnectionActionConfiguration> MergePdf(Expression<Func<MergePdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<MergePdfResponse, ApiConnectionActionConfiguration>(() =>
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SplitPdfResponse, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfInput>> body = null)
+        public IBodyWorkflowAction<SplitPdfResponse, ApiConnectionActionConfiguration> SplitPdf(Expression<Func<SplitPdfBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SplitPdfResponse, ApiConnectionActionConfiguration>(() =>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SplitPdf2Response, ApiConnectionActionConfiguration> SplitPdf2(Expression<Func<SplitPdf2Input>> body = null)
+        public IBodyWorkflowAction<SplitPdf2Response, ApiConnectionActionConfiguration> SplitPdf2(Expression<Func<SplitPdf2BodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SplitPdf2Response, ApiConnectionActionConfiguration>(() =>
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFSerarchTextResponse, ApiConnectionActionConfiguration> PDFSerarchText(Expression<Func<PDFSerarchTextInput>> body = null)
+        public IBodyWorkflowAction<PDFSerarchTextResponse, ApiConnectionActionConfiguration> PDFSerarchText(Expression<Func<PDFSerarchTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFSerarchTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<DocumentParserResponse, ApiConnectionActionConfiguration> DocumentParser(Expression<Func<DocumentParserInput>> body = null)
+        public IBodyWorkflowAction<DocumentParserResponse, ApiConnectionActionConfiguration> DocumentParser(Expression<Func<DocumentParserBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DocumentParserResponse, ApiConnectionActionConfiguration>(() =>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<JobCheckResponse, ApiConnectionActionConfiguration> JobCheck(Expression<Func<JobCheckInput>> body = null)
+        public IBodyWorkflowAction<JobCheckResponse, ApiConnectionActionConfiguration> JobCheck(Expression<Func<JobCheckBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JobCheckResponse, ApiConnectionActionConfiguration>(() =>
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<BarcodeGeneratorResponse, ApiConnectionActionConfiguration> BarcodeGenerator(Expression<Func<BarcodeGeneratorInput>> body = null)
+        public IBodyWorkflowAction<BarcodeGeneratorResponse, ApiConnectionActionConfiguration> BarcodeGenerator(Expression<Func<BarcodeGeneratorBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BarcodeGeneratorResponse, ApiConnectionActionConfiguration>(() =>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<BarcodeReaderResponse, ApiConnectionActionConfiguration> BarcodeReader(Expression<Func<BarcodeReaderInput>> body = null)
+        public IBodyWorkflowAction<BarcodeReaderResponse, ApiConnectionActionConfiguration> BarcodeReader(Expression<Func<BarcodeReaderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BarcodeReaderResponse, ApiConnectionActionConfiguration>(() =>
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFInfoReaderResponse, ApiConnectionActionConfiguration> PDFInfoReader(Expression<Func<PDFInfoReaderInput>> body = null)
+        public IBodyWorkflowAction<PDFInfoReaderResponse, ApiConnectionActionConfiguration> PDFInfoReader(Expression<Func<PDFInfoReaderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFInfoReaderResponse, ApiConnectionActionConfiguration>(() =>
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFormsInfoReaderResponse, ApiConnectionActionConfiguration> PDFFormsInfoReader(Expression<Func<PDFFormsInfoReaderInput>> body = null)
+        public IBodyWorkflowAction<PDFFormsInfoReaderResponse, ApiConnectionActionConfiguration> PDFFormsInfoReader(Expression<Func<PDFFormsInfoReaderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFFormsInfoReaderResponse, ApiConnectionActionConfiguration>(() =>
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFindTableResponse, ApiConnectionActionConfiguration> PDFFindTable(Expression<Func<PDFFindTableInput>> body = null)
+        public IBodyWorkflowAction<PDFFindTableResponse, ApiConnectionActionConfiguration> PDFFindTable(Expression<Func<PDFFindTableBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFFindTableResponse, ApiConnectionActionConfiguration>(() =>
@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SearchAndReplaceResponse, ApiConnectionActionConfiguration> SearchAndReplace(Expression<Func<SearchAndReplaceInput>> body = null)
+        public IBodyWorkflowAction<SearchAndReplaceResponse, ApiConnectionActionConfiguration> SearchAndReplace(Expression<Func<SearchAndReplaceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SearchAndReplaceResponse, ApiConnectionActionConfiguration>(() =>
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SearchAndReplaceWithImageResponse, ApiConnectionActionConfiguration> SearchAndReplaceWithImage(Expression<Func<SearchAndReplaceWithImageInput>> body = null)
+        public IBodyWorkflowAction<SearchAndReplaceWithImageResponse, ApiConnectionActionConfiguration> SearchAndReplaceWithImage(Expression<Func<SearchAndReplaceWithImageBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SearchAndReplaceWithImageResponse, ApiConnectionActionConfiguration>(() =>
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<SearchAndDeleteTextResponse, ApiConnectionActionConfiguration> SearchAndDeleteText(Expression<Func<SearchAndDeleteTextInput>> body = null)
+        public IBodyWorkflowAction<SearchAndDeleteTextResponse, ApiConnectionActionConfiguration> SearchAndDeleteText(Expression<Func<SearchAndDeleteTextBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SearchAndDeleteTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFSearchableResponse, ApiConnectionActionConfiguration> PDFSearchable(Expression<Func<PDFSearchableInput>> body = null)
+        public IBodyWorkflowAction<PDFSearchableResponse, ApiConnectionActionConfiguration> PDFSearchable(Expression<Func<PDFSearchableBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFSearchableResponse, ApiConnectionActionConfiguration>(() =>
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFUnSearchableResponse, ApiConnectionActionConfiguration> PDFUnSearchable(Expression<Func<PDFUnSearchableInput>> body = null)
+        public IBodyWorkflowAction<PDFUnSearchableResponse, ApiConnectionActionConfiguration> PDFUnSearchable(Expression<Func<PDFUnSearchableBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFUnSearchableResponse, ApiConnectionActionConfiguration>(() =>
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToCSVResponse, ApiConnectionActionConfiguration> PDFToCSV(Expression<Func<PDFToCSVInput>> body = null)
+        public IBodyWorkflowAction<PDFToCSVResponse, ApiConnectionActionConfiguration> PDFToCSV(Expression<Func<PDFToCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToCSVResponse, ApiConnectionActionConfiguration>(() =>
@@ -328,7 +328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToJSONResponse, ApiConnectionActionConfiguration> PDFToJSON(Expression<Func<PDFToJSONInput>> body = null)
+        public IBodyWorkflowAction<PDFToJSONResponse, ApiConnectionActionConfiguration> PDFToJSON(Expression<Func<PDFToCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToJSONResponse, ApiConnectionActionConfiguration>(() =>
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToJSONMetaResponse, ApiConnectionActionConfiguration> PDFToJSONMeta(Expression<Func<PDFToJSONMetaInput>> body = null)
+        public IBodyWorkflowAction<PDFToJSONMetaResponse, ApiConnectionActionConfiguration> PDFToJSONMeta(Expression<Func<PDFToCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToJSONMetaResponse, ApiConnectionActionConfiguration>(() =>
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToTextResponse, ApiConnectionActionConfiguration> PDFToText(Expression<Func<PDFToTextInput>> body = null)
+        public IBodyWorkflowAction<PDFToTextResponse, ApiConnectionActionConfiguration> PDFToText(Expression<Func<PDFToCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToTextResponse, ApiConnectionActionConfiguration>(() =>
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToTextSimpleResponse, ApiConnectionActionConfiguration> PDFToTextSimple(Expression<Func<PDFToTextSimpleInput>> body = null)
+        public IBodyWorkflowAction<PDFToTextSimpleResponse, ApiConnectionActionConfiguration> PDFToTextSimple(Expression<Func<PDFToTextSimpleBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToTextSimpleResponse, ApiConnectionActionConfiguration>(() =>
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToXLSResponse, ApiConnectionActionConfiguration> PDFToXLS(Expression<Func<PDFToXLSInput>> body = null)
+        public IBodyWorkflowAction<PDFToXLSResponse, ApiConnectionActionConfiguration> PDFToXLS(Expression<Func<PDFToXLSBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToXLSResponse, ApiConnectionActionConfiguration>(() =>
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToXLSXResponse, ApiConnectionActionConfiguration> PDFToXLSX(Expression<Func<PDFToXLSXInput>> body = null)
+        public IBodyWorkflowAction<PDFToXLSXResponse, ApiConnectionActionConfiguration> PDFToXLSX(Expression<Func<PDFToXLSBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToXLSXResponse, ApiConnectionActionConfiguration>(() =>
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToXMLResponse, ApiConnectionActionConfiguration> PDFToXML(Expression<Func<PDFToXMLInput>> body = null)
+        public IBodyWorkflowAction<PDFToXMLResponse, ApiConnectionActionConfiguration> PDFToXML(Expression<Func<PDFToCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToXMLResponse, ApiConnectionActionConfiguration>(() =>
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToJPGResponse, ApiConnectionActionConfiguration> PDFToJPG(Expression<Func<PDFToJPGInput>> body = null)
+        public IBodyWorkflowAction<PDFToJPGResponse, ApiConnectionActionConfiguration> PDFToJPG(Expression<Func<PDFToJPGBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToJPGResponse, ApiConnectionActionConfiguration>(() =>
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToPNGResponse, ApiConnectionActionConfiguration> PDFToPNG(Expression<Func<PDFToPNGInput>> body = null)
+        public IBodyWorkflowAction<PDFToPNGResponse, ApiConnectionActionConfiguration> PDFToPNG(Expression<Func<PDFToJPGBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToPNGResponse, ApiConnectionActionConfiguration>(() =>
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToWEBPResponse, ApiConnectionActionConfiguration> PDFToWEBP(Expression<Func<PDFToWEBPInput>> body = null)
+        public IBodyWorkflowAction<PDFToWEBPResponse, ApiConnectionActionConfiguration> PDFToWEBP(Expression<Func<PDFToJPGBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToWEBPResponse, ApiConnectionActionConfiguration>(() =>
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFToTIFFResponse, ApiConnectionActionConfiguration> PDFToTIFF(Expression<Func<PDFToTIFFInput>> body = null)
+        public IBodyWorkflowAction<PDFToTIFFResponse, ApiConnectionActionConfiguration> PDFToTIFF(Expression<Func<PDFToJPGBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFToTIFFResponse, ApiConnectionActionConfiguration>(() =>
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromCSVResponse, ApiConnectionActionConfiguration> PDFFromCSV(Expression<Func<PDFFromCSVInput>> body = null)
+        public IBodyWorkflowAction<PDFFromCSVResponse, ApiConnectionActionConfiguration> PDFFromCSV(Expression<Func<PDFFromCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFFromCSVResponse, ApiConnectionActionConfiguration>(() =>
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromDocResponse, ApiConnectionActionConfiguration> PDFFromDoc(Expression<Func<PDFFromDocInput>> body = null)
+        public IBodyWorkflowAction<PDFFromDocResponse, ApiConnectionActionConfiguration> PDFFromDoc(Expression<Func<PDFFromCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFFromDocResponse, ApiConnectionActionConfiguration>(() =>
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromImagesResponse, ApiConnectionActionConfiguration> PDFFromImages(Expression<Func<PDFFromImagesInput>> body = null)
+        public IBodyWorkflowAction<PDFFromImagesResponse, ApiConnectionActionConfiguration> PDFFromImages(Expression<Func<PDFFromImagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFFromImagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromEmailResponse, ApiConnectionActionConfiguration> PDFFromEmail(Expression<Func<PDFFromEmailInput>> body = null)
+        public IBodyWorkflowAction<PDFFromEmailResponse, ApiConnectionActionConfiguration> PDFFromEmail(Expression<Func<PDFFromEmailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFFromEmailResponse, ApiConnectionActionConfiguration>(() =>
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFAddSecurityResponse, ApiConnectionActionConfiguration> PDFAddSecurity(Expression<Func<PDFAddSecurityInput>> body = null)
+        public IBodyWorkflowAction<PDFAddSecurityResponse, ApiConnectionActionConfiguration> PDFAddSecurity(Expression<Func<PDFAddSecurityBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFAddSecurityResponse, ApiConnectionActionConfiguration>(() =>
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFSecurityRemoveResponse, ApiConnectionActionConfiguration> PDFSecurityRemove(Expression<Func<PDFSecurityRemoveInput>> body = null)
+        public IBodyWorkflowAction<PDFSecurityRemoveResponse, ApiConnectionActionConfiguration> PDFSecurityRemove(Expression<Func<PDFSecurityRemoveBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFSecurityRemoveResponse, ApiConnectionActionConfiguration>(() =>
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFFromXLSXLSXResponse, ApiConnectionActionConfiguration> PDFFromXLSXLSX(Expression<Func<PDFFromXLSXLSXInput>> body = null)
+        public IBodyWorkflowAction<PDFFromXLSXLSXResponse, ApiConnectionActionConfiguration> PDFFromXLSXLSX(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFFromXLSXLSXResponse, ApiConnectionActionConfiguration>(() =>
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoCSVResponse, ApiConnectionActionConfiguration> XLStoCSV(Expression<Func<XLStoCSVInput>> body = null)
+        public IBodyWorkflowAction<XLStoCSVResponse, ApiConnectionActionConfiguration> XLStoCSV(Expression<Func<XLStoCSVBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<XLStoCSVResponse, ApiConnectionActionConfiguration>(() =>
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoJSONResponse, ApiConnectionActionConfiguration> XLStoJSON(Expression<Func<XLStoJSONInput>> body = null)
+        public IBodyWorkflowAction<XLStoJSONResponse, ApiConnectionActionConfiguration> XLStoJSON(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<XLStoJSONResponse, ApiConnectionActionConfiguration>(() =>
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoHTMLResponse, ApiConnectionActionConfiguration> XLStoHTML(Expression<Func<XLStoHTMLInput>> body = null)
+        public IBodyWorkflowAction<XLStoHTMLResponse, ApiConnectionActionConfiguration> XLStoHTML(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<XLStoHTMLResponse, ApiConnectionActionConfiguration>(() =>
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoTXTResponse, ApiConnectionActionConfiguration> XLStoTXT(Expression<Func<XLStoTXTInput>> body = null)
+        public IBodyWorkflowAction<XLStoTXTResponse, ApiConnectionActionConfiguration> XLStoTXT(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<XLStoTXTResponse, ApiConnectionActionConfiguration>(() =>
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<XLStoXMLResponse, ApiConnectionActionConfiguration> XLStoXML(Expression<Func<XLStoXMLInput>> body = null)
+        public IBodyWorkflowAction<XLStoXMLResponse, ApiConnectionActionConfiguration> XLStoXML(Expression<Func<PDFFromXLSXLSXBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<XLStoXMLResponse, ApiConnectionActionConfiguration>(() =>
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFRotatePagesResponse, ApiConnectionActionConfiguration> PDFRotatePages(Expression<Func<PDFRotatePagesInput>> body = null)
+        public IBodyWorkflowAction<PDFRotatePagesResponse, ApiConnectionActionConfiguration> PDFRotatePages(Expression<Func<PDFRotatePagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFRotatePagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFAutoRotatePagesResponse, ApiConnectionActionConfiguration> PDFAutoRotatePages(Expression<Func<PDFAutoRotatePagesInput>> body = null)
+        public IBodyWorkflowAction<PDFAutoRotatePagesResponse, ApiConnectionActionConfiguration> PDFAutoRotatePages(Expression<Func<PDFAutoRotatePagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFAutoRotatePagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFDeletePagesResponse, ApiConnectionActionConfiguration> PDFDeletePages(Expression<Func<PDFDeletePagesInput>> body = null)
+        public IBodyWorkflowAction<PDFDeletePagesResponse, ApiConnectionActionConfiguration> PDFDeletePages(Expression<Func<PDFDeletePagesBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFDeletePagesResponse, ApiConnectionActionConfiguration>(() =>
@@ -718,7 +718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFCompressResponse, ApiConnectionActionConfiguration> PDFCompress(Expression<Func<PDFCompressInput>> body = null)
+        public IBodyWorkflowAction<PDFCompressResponse, ApiConnectionActionConfiguration> PDFCompress(Expression<Func<PDFCompressBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFCompressResponse, ApiConnectionActionConfiguration>(() =>
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFClassifierResponse, ApiConnectionActionConfiguration> PDFClassifier(Expression<Func<PDFClassifierInput>> body = null)
+        public IBodyWorkflowAction<PDFClassifierResponse, ApiConnectionActionConfiguration> PDFClassifier(Expression<Func<PDFClassifierBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFClassifierResponse, ApiConnectionActionConfiguration>(() =>
@@ -748,7 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<EmailSendResponse, ApiConnectionActionConfiguration> EmailSend(Expression<Func<EmailSendInput>> body = null)
+        public IBodyWorkflowAction<EmailSendResponse, ApiConnectionActionConfiguration> EmailSend(Expression<Func<EmailSendBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<EmailSendResponse, ApiConnectionActionConfiguration>(() =>
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<EmailDecodeResponse, ApiConnectionActionConfiguration> EmailDecode(Expression<Func<EmailDecodeInput>> body = null)
+        public IBodyWorkflowAction<EmailDecodeResponse, ApiConnectionActionConfiguration> EmailDecode(Expression<Func<EmailAttachmentExtractionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<EmailDecodeResponse, ApiConnectionActionConfiguration>(() =>
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<EmailAttachmentExtractionResponse, ApiConnectionActionConfiguration> EmailAttachmentExtraction(Expression<Func<EmailAttachmentExtractionInput>> body = null)
+        public IBodyWorkflowAction<EmailAttachmentExtractionResponse, ApiConnectionActionConfiguration> EmailAttachmentExtraction(Expression<Func<EmailAttachmentExtractionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<EmailAttachmentExtractionResponse, ApiConnectionActionConfiguration>(() =>
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfco")]
-        public IBodyWorkflowAction<PDFAttachmentExtractionResponse, ApiConnectionActionConfiguration> PDFAttachmentExtraction(Expression<Func<PDFAttachmentExtractionInput>> body = null)
+        public IBodyWorkflowAction<PDFAttachmentExtractionResponse, ApiConnectionActionConfiguration> PDFAttachmentExtraction(Expression<Func<PDFAttachmentExtractionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PDFAttachmentExtractionResponse, ApiConnectionActionConfiguration>(() =>
@@ -842,7 +842,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class HtmlToPdfInput
+    public class HtmlToPdfBodyInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Html { get; set; }
@@ -854,10 +854,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string Margins { get; set; } = "5px 5px 5px 5px";
 
         [JsonProperty("paperSize", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HtmlToPdfInputPaperSizeType? PaperSize { get; set; } = HtmlToPdfInputPaperSizeType.Letter;
+        public BodyInputPaperSizeType? PaperSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco.BodyInputPaperSizeType.Letter;
 
         [JsonProperty("orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public HtmlToPdfInputOrientationType? Orientation { get; set; } = HtmlToPdfInputOrientationType.Portrait;
+        public HtmlToPdfBodyInputOrientationType? Orientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco.HtmlToPdfBodyInputOrientationType.Portrait;
 
         [JsonProperty("printBackground", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? PrintBackground { get; set; } = true;
@@ -879,7 +879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HtmlToPdfInputPaperSizeType
+    public enum BodyInputPaperSizeType
     {
         Letter,
         Legal,
@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum HtmlToPdfInputOrientationType
+    public enum HtmlToPdfBodyInputOrientationType
     {
         [EnumMember(Value = "portrait")]
         Portrait,
@@ -933,7 +933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class UrlToPdfInput
+    public class UrlToPdfBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -945,7 +945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string PaperSize { get; set; } = "Letter";
 
         [JsonProperty("orientation", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UrlToPdfInputOrientationType? Orientation { get; set; } = UrlToPdfInputOrientationType.Portrait;
+        public UrlToPdfBodyInputOrientationType? Orientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco.UrlToPdfBodyInputOrientationType.Portrait;
 
         [JsonProperty("printBackground", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? PrintBackground { get; set; } = true;
@@ -967,7 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UrlToPdfInputOrientationType
+    public enum UrlToPdfBodyInputOrientationType
     {
         Portrait,
         Landscape
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class PdfFillerInput
+    public class PdfFillerBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1063,7 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class MergePdfSimplifiedInput
+    public class MergePdfBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1108,21 +1108,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class MergePdfInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-
-        [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Async { get; set; } = false;
-    }
-
     public class SplitPdfResponse
     {
         [JsonProperty("urls")]
@@ -1156,7 +1141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class SplitPdfInput
+    public class SplitPdfBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1213,7 +1198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class SplitPdf2Input
+    public class SplitPdf2BodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1303,7 +1288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int PageIndex { get; set; }
     }
 
-    public class PDFSerarchTextInput
+    public class PDFSerarchTextBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1321,7 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public bool? Inline { get; set; } = true;
 
         [JsonProperty("wordMatchingMode")]
-        public PDFSerarchTextInputWordMatchingModeType? WordMatchingMode { get; set; }
+        public BodyInputWordMatchingModeType? WordMatchingMode { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1334,7 +1319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFSerarchTextInputWordMatchingModeType
+    public enum BodyInputWordMatchingModeType
     {
         [EnumMember(Value = "")]
         None,
@@ -1407,7 +1392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public JToken[] Rows { get; set; }
     }
 
-    public class DocumentParserInput
+    public class DocumentParserBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1416,7 +1401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string TemplateId { get; set; }
 
         [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DocumentParserInputOutputFormatType OutputFormat { get; set; } = DocumentParserInputOutputFormatType.JSON;
+        public BodyInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco.BodyInputOutputFormatType.JSON;
 
         [JsonProperty("inline")]
         public bool? Inline { get; set; }
@@ -1435,7 +1420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum DocumentParserInputOutputFormatType
+    public enum BodyInputOutputFormatType
     {
         JSON,
         CSV,
@@ -1478,7 +1463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int ErrorCode { get; set; }
     }
 
-    public class JobCheckInput
+    public class JobCheckBodyInput
     {
         [JsonProperty("jobid", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Jobid { get; set; }
@@ -1511,7 +1496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class BarcodeGeneratorInput
+    public class BarcodeGeneratorBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1520,7 +1505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string Value { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BarcodeGeneratorInputTypeType Type { get; set; } = BarcodeGeneratorInputTypeType.QRCode;
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco.BodyInputTypeType.QRCode;
 
         [JsonProperty("decorationImage")]
         public string DecorationImage { get; set; }
@@ -1536,7 +1521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BarcodeGeneratorInputTypeType
+    public enum BodyInputTypeType
     {
         Code128,
         Code39,
@@ -1649,7 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string TypeName { get; set; }
     }
 
-    public class BarcodeReaderInput
+    public class BarcodeReaderBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1743,7 +1728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public double Y { get; set; }
     }
 
-    public class PDFInfoReaderInput
+    public class PDFInfoReaderBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1860,7 +1845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public double Height { get; set; }
     }
 
-    public class PDFFormsInfoReaderInput
+    public class PDFFormsInfoReaderBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1927,7 +1912,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string Rect { get; set; }
     }
 
-    public class PDFFindTableInput
+    public class PDFFindTableBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -1981,7 +1966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class SearchAndReplaceInput
+    public class SearchAndReplaceBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2047,7 +2032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class SearchAndReplaceWithImageInput
+    public class SearchAndReplaceWithImageBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2110,7 +2095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class SearchAndDeleteTextInput
+    public class SearchAndDeleteTextBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2176,7 +2161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFSearchableInput
+    public class PDFSearchableBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2227,7 +2212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFUnSearchableInput
+    public class PDFUnSearchableBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2275,7 +2260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToCSVInput
+    public class PDFToCSVBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2287,7 +2272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public bool? Inline { get; set; } = true;
 
         [JsonProperty("unwrap")]
-        public PDFToCSVInputUnwrapType? Unwrap { get; set; }
+        public BodyInputUnwrapType? Unwrap { get; set; }
 
         [JsonProperty("pages")]
         public string Pages { get; set; }
@@ -2312,7 +2297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFToCSVInputUnwrapType
+    public enum BodyInputUnwrapType
     {
         [EnumMember(Value = "")]
         None,
@@ -2355,53 +2340,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToJSONInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty("inline", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Inline { get; set; } = true;
-
-        [JsonProperty("unwrap")]
-        public PDFToJSONInputUnwrapType? Unwrap { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Async { get; set; } = false;
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("lineGrouping")]
-        public string LineGrouping { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFToJSONInputUnwrapType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
     public class PDFToJSONMetaResponse
     {
         [JsonProperty("body")]
@@ -2433,53 +2371,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("duration")]
         public int Duration { get; set; }
-    }
-
-    public class PDFToJSONMetaInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty("inline", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Inline { get; set; } = true;
-
-        [JsonProperty("unwrap")]
-        public PDFToJSONMetaInputUnwrapType? Unwrap { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Async { get; set; } = false;
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("lineGrouping")]
-        public string LineGrouping { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFToJSONMetaInputUnwrapType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
     }
 
     public class PDFToTextResponse
@@ -2515,53 +2406,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToTextInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty("inline", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Inline { get; set; } = true;
-
-        [JsonProperty("unwrap")]
-        public PDFToTextInputUnwrapType? Unwrap { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Async { get; set; } = false;
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("lineGrouping")]
-        public string LineGrouping { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFToTextInputUnwrapType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
     public class PDFToTextSimpleResponse
     {
         [JsonProperty("body")]
@@ -2595,7 +2439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToTextSimpleInput
+    public class PDFToTextSimpleBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2646,7 +2490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToXLSInput
+    public class PDFToXLSBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2655,7 +2499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string Lang { get; set; }
 
         [JsonProperty("unwrap")]
-        public PDFToXLSInputUnwrapType? Unwrap { get; set; }
+        public BodyInputUnwrapType? Unwrap { get; set; }
 
         [JsonProperty("pages")]
         public string Pages { get; set; }
@@ -2677,17 +2521,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("profiles")]
         public string Profiles { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFToXLSInputUnwrapType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
     }
 
     public class PDFToXLSXResponse
@@ -2718,50 +2551,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("duration")]
         public int Duration { get; set; }
-    }
-
-    public class PDFToXLSXInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty("unwrap")]
-        public PDFToXLSXInputUnwrapType? Unwrap { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Async { get; set; } = false;
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("lineGrouping")]
-        public string LineGrouping { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFToXLSXInputUnwrapType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
     }
 
     public class PDFToXMLResponse
@@ -2797,53 +2586,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToXMLInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("inline", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Inline { get; set; } = true;
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty("unwrap")]
-        public PDFToXMLInputUnwrapType? Unwrap { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Async { get; set; } = false;
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("lineGrouping")]
-        public string LineGrouping { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFToXMLInputUnwrapType
-    {
-        [EnumMember(Value = "")]
-        None,
-        [EnumMember(Value = "true")]
-        True,
-        [EnumMember(Value = "false")]
-        False
-    }
-
     public class PDFToJPGResponse
     {
         [JsonProperty("urls")]
@@ -2874,7 +2616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToJPGInput
+    public class PDFToJPGBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -2928,30 +2670,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToPNGInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("inline")]
-        public bool? Inline { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
     public class PDFToWEBPResponse
     {
         [JsonProperty("urls")]
@@ -2980,30 +2698,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("duration")]
         public int Duration { get; set; }
-    }
-
-    public class PDFToWEBPInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("inline")]
-        public bool? Inline { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
     }
 
     public class PDFToTIFFResponse
@@ -3036,30 +2730,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFToTIFFInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("inline")]
-        public bool? Inline { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("rect")]
-        public string Rect { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
     public class PDFFromCSVResponse
     {
         [JsonProperty("url")]
@@ -3090,7 +2760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFFromCSVInput
+    public class PDFFromCSVBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3141,27 +2811,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFFromDocInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("pages")]
-        public string Pages { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
     public class PDFFromImagesResponse
     {
         [JsonProperty("url")]
@@ -3192,7 +2841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFFromImagesInput
+    public class PDFFromImagesBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3240,7 +2889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFFromEmailInput
+    public class PDFFromEmailBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3258,7 +2907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string PaperSize { get; set; }
 
         [JsonProperty("orientation")]
-        public PDFFromEmailInputOrientationType? Orientation { get; set; }
+        public PDFFromEmailBodyInputOrientationType? Orientation { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3274,7 +2923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFFromEmailInputOrientationType
+    public enum PDFFromEmailBodyInputOrientationType
     {
         [EnumMember(Value = "")]
         None,
@@ -3312,7 +2961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFAddSecurityInput
+    public class PDFAddSecurityBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3324,7 +2973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string UserPassword { get; set; }
 
         [JsonProperty("encryptionAlgorithm")]
-        public PDFAddSecurityInputEncryptionAlgorithmType? EncryptionAlgorithm { get; set; }
+        public BodyInputEncryptionAlgorithmType? EncryptionAlgorithm { get; set; }
 
         [JsonProperty("allowAccessibilitySupport")]
         public bool? AllowAccessibilitySupport { get; set; }
@@ -3348,7 +2997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public bool? AllowModifyAnnotations { get; set; }
 
         [JsonProperty("printQuality")]
-        public PDFAddSecurityInputPrintQualityType? PrintQuality { get; set; }
+        public BodyInputPrintQualityType? PrintQuality { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3364,7 +3013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFAddSecurityInputEncryptionAlgorithmType
+    public enum BodyInputEncryptionAlgorithmType
     {
         [EnumMember(Value = "")]
         None,
@@ -3379,7 +3028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PDFAddSecurityInputPrintQualityType
+    public enum BodyInputPrintQualityType
     {
         [EnumMember(Value = "")]
         None,
@@ -3417,7 +3066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFSecurityRemoveInput
+    public class PDFSecurityRemoveBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3468,7 +3117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFFromXLSXLSXInput
+    public class PDFFromXLSXLSXBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3516,7 +3165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class XLStoCSVInput
+    public class XLStoCSVBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3570,27 +3219,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class XLStoJSONInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("worksheetIndex", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorksheetIndex { get; set; } = "0";
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
     public class XLStoHTMLResponse
     {
         [JsonProperty("url")]
@@ -3616,27 +3244,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("duration")]
         public int Duration { get; set; }
-    }
-
-    public class XLStoHTMLInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("worksheetIndex", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorksheetIndex { get; set; } = "0";
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
     }
 
     public class XLStoTXTResponse
@@ -3666,27 +3273,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class XLStoTXTInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("worksheetIndex", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorksheetIndex { get; set; } = "0";
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-    }
-
     public class XLStoXMLResponse
     {
         [JsonProperty("url")]
@@ -3712,27 +3298,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
 
         [JsonProperty("duration")]
         public int Duration { get; set; }
-    }
-
-    public class XLStoXMLInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("worksheetIndex", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorksheetIndex { get; set; } = "0";
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("expiration", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int? Expiration { get; set; } = 60;
-
-        [JsonProperty("async")]
-        public bool? Async { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
     }
 
     public class PDFRotatePagesResponse
@@ -3765,13 +3330,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFRotatePagesInput
+    public class PDFRotatePagesBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
 
         [JsonProperty("angle")]
-        public PDFRotatePagesInputAngleType? Angle { get; set; }
+        public BodyInputAngleType? Angle { get; set; }
 
         [JsonProperty("pages")]
         public string Pages { get; set; }
@@ -3789,7 +3354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public bool? Async { get; set; } = false;
     }
 
-    public enum PDFRotatePagesInputAngleType
+    public enum BodyInputAngleType
     {
         _90 = 90,
         _180 = 180,
@@ -3826,7 +3391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFAutoRotatePagesInput
+    public class PDFAutoRotatePagesBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3877,7 +3442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFDeletePagesInput
+    public class PDFDeletePagesBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3928,7 +3493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class PDFCompressInput
+    public class PDFCompressBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -3994,7 +3559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string Class { get; set; }
     }
 
-    public class PDFClassifierInput
+    public class PDFClassifierBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -4045,7 +3610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Duration { get; set; }
     }
 
-    public class EmailSendInput
+    public class EmailSendBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -4171,7 +3736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public string Name { get; set; }
     }
 
-    public class EmailDecodeInput
+    public class EmailAttachmentExtractionBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; }
@@ -4246,18 +3811,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int Filesizeinbytes { get; set; }
     }
 
-    public class EmailAttachmentExtractionInput
-    {
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Url { get; set; }
-
-        [JsonProperty("profiles")]
-        public string Profiles { get; set; }
-
-        [JsonProperty("async", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Async { get; set; } = false;
-    }
-
     public class PDFAttachmentExtractionResponse
     {
         [JsonProperty("urls")]
@@ -4291,7 +3844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfco
         public int RemainingCredits { get; set; }
     }
 
-    public class PDFAttachmentExtractionInput
+    public class PDFAttachmentExtractionBodyInput
     {
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Url { get; set; } = "";

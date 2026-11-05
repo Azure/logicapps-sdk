@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteLightResponse, ApiConnectionActionConfiguration> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<ExecuteLightInput>> body = null)
+        public IBodyWorkflowAction<ExecuteLightResponse, ApiConnectionActionConfiguration> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<ExecuteLightBodyInput>> body = null)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteDeviceResponse, ApiConnectionActionConfiguration> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<ExecuteDeviceInput>> body = null)
+        public IBodyWorkflowAction<ExecuteDeviceResponse, ApiConnectionActionConfiguration> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<ExecuteDeviceBodyInput>> body = null)
         {
             var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -553,64 +553,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         public string Description { get; set; }
     }
 
-    public class ExecuteLightInput
+    public class ExecuteLightBodyInput
     {
         [JsonProperty("metadata")]
-        public ExecuteLightInputMetadataType Metadata { get; set; }
+        public ExecuteLightBodyInputMetadataType Metadata { get; set; }
 
         [JsonProperty("on")]
-        public ExecuteLightInputOnType On { get; set; }
+        public BodyInputOnType On { get; set; }
 
         [JsonProperty("dimming")]
-        public ExecuteLightInputDimmingType Dimming { get; set; }
+        public BodyInputDimmingType Dimming { get; set; }
 
         [JsonProperty("color_temperature")]
-        public ExecuteLightInputColorTemperatureType ColorTemperature { get; set; }
+        public BodyInputColorTemperatureType ColorTemperature { get; set; }
 
         [JsonProperty("color")]
-        public ExecuteLightInputColorType Color { get; set; }
+        public BodyInputColorType Color { get; set; }
 
         [JsonProperty("dynamics")]
-        public ExecuteLightInputDynamicsType Dynamics { get; set; }
+        public BodyInputDynamicsType Dynamics { get; set; }
 
         [JsonProperty("alert", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExecuteLightInputAlertType Alert { get; set; } = new ExecuteLightInputAlertType();
+        public BodyInputAlertType Alert { get; set; } = new BodyInputAlertType();
 
         [JsonProperty("gradient")]
-        public ExecuteLightInputGradientType Gradient { get; set; }
+        public BodyInputGradientType Gradient { get; set; }
     }
 
-    public class ExecuteLightInputMetadataType
+    public class ExecuteLightBodyInputMetadataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class ExecuteLightInputOnType
+    public class BodyInputOnType
     {
         [JsonProperty("on")]
         public bool? On { get; set; }
     }
 
-    public class ExecuteLightInputDimmingType
+    public class BodyInputDimmingType
     {
         [JsonProperty("brightness")]
         public double? Brightness { get; set; }
     }
 
-    public class ExecuteLightInputColorTemperatureType
+    public class BodyInputColorTemperatureType
     {
         [JsonProperty("mirek")]
         public int? Mirek { get; set; }
     }
 
-    public class ExecuteLightInputColorType
+    public class BodyInputColorType
     {
         [JsonProperty("xy")]
-        public ExecuteLightInputColorTypeXyType Xy { get; set; }
+        public BodyInputColorTypeXyType Xy { get; set; }
     }
 
-    public class ExecuteLightInputColorTypeXyType
+    public class BodyInputColorTypeXyType
     {
         [JsonProperty("x")]
         public double? X { get; set; }
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         public double? Y { get; set; }
     }
 
-    public class ExecuteLightInputDynamicsType
+    public class BodyInputDynamicsType
     {
         [JsonProperty("speed")]
         public double? Speed { get; set; }
@@ -628,31 +628,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         public int? Duration { get; set; }
     }
 
-    public class ExecuteLightInputAlertType
+    public class BodyInputAlertType
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Action { get; set; } = "breathe";
     }
 
-    public class ExecuteLightInputGradientType
+    public class BodyInputGradientType
     {
         [JsonProperty("points")]
-        public ExecuteLightInputGradientTypePointsTypeItem[] Points { get; set; }
+        public BodyInputGradientTypePointsTypeItem[] Points { get; set; }
     }
 
-    public class ExecuteLightInputGradientTypePointsTypeItem
+    public class BodyInputGradientTypePointsTypeItem
     {
         [JsonProperty("color")]
-        public ExecuteLightInputGradientTypePointsTypeItemColorType Color { get; set; }
+        public BodyInputGradientTypePointsTypeItemColorType Color { get; set; }
     }
 
-    public class ExecuteLightInputGradientTypePointsTypeItemColorType
+    public class BodyInputGradientTypePointsTypeItemColorType
     {
         [JsonProperty("xy")]
-        public ExecuteLightInputGradientTypePointsTypeItemColorTypeXyType Xy { get; set; }
+        public BodyInputGradientTypePointsTypeItemColorTypeXyType Xy { get; set; }
     }
 
-    public class ExecuteLightInputGradientTypePointsTypeItemColorTypeXyType
+    public class BodyInputGradientTypePointsTypeItemColorTypeXyType
     {
         [JsonProperty("x")]
         public double? X { get; set; }
@@ -835,26 +835,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         public string Description { get; set; }
     }
 
-    public class ExecuteDeviceInput
+    public class ExecuteDeviceBodyInput
     {
         [JsonProperty("metadata")]
-        public ExecuteDeviceInputMetadataType Metadata { get; set; }
+        public ExecuteDeviceBodyInputMetadataType Metadata { get; set; }
 
         [JsonProperty("identify", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ExecuteDeviceInputIdentifyType Identify { get; set; } = new ExecuteDeviceInputIdentifyType();
+        public BodyInputIdentifyType Identify { get; set; } = new BodyInputIdentifyType();
     }
 
-    public class ExecuteDeviceInputMetadataType
+    public class ExecuteDeviceBodyInputMetadataType
     {
         [JsonProperty("archetype")]
-        public ExecuteDeviceInputMetadataTypeArchetypeType? Archetype { get; set; }
+        public BodyInputMetadataTypeArchetypeType? Archetype { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ExecuteDeviceInputMetadataTypeArchetypeType
+    public enum BodyInputMetadataTypeArchetypeType
     {
         [EnumMember(Value = "bridge_v2")]
         BridgeV2,
@@ -936,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         HueSigne
     }
 
-    public class ExecuteDeviceInputIdentifyType
+    public class BodyInputIdentifyType
     {
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Action { get; set; } = "identify";
