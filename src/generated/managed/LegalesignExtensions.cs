@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Group { get; set; }
 
         [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PdfFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfFile { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Filename { get; set; }
@@ -1041,20 +1041,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
 
     public class DocumentSignerPost
     {
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("firstname")]
+        [JsonProperty("firstname", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Firstname { get; set; }
 
-        [JsonProperty("lastname")]
+        [JsonProperty("lastname", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Lastname { get; set; }
 
         [JsonProperty("attachments")]
         public string[] Attachments { get; set; }
 
-        [JsonProperty("decide_later")]
-        public bool DecideLater { get; set; }
+        [JsonProperty("decide_later", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool DecideLater { get; set; } = false;
 
         [JsonProperty("expires")]
         public string Expires { get; set; }
@@ -1083,11 +1083,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         [JsonProperty("lastname")]
         public string Lastname { get; set; }
 
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("include_link")]
-        public bool IncludeLink { get; set; }
+        [JsonProperty("include_link", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeLink { get; set; } = false;
     }
 
     public enum PostDocumentInputPdfPasswordTypeType
@@ -1150,7 +1150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Group { get; set; }
 
         [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PdfFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfFile { get; set; }
 
         [JsonProperty("process_tags")]
         public bool? ProcessTags { get; set; }

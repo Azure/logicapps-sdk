@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         public string SourceFileName { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -120,20 +120,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
     public class SharepointFile
     {
-        [JsonProperty("site_url")]
-        public string SiteUrl { get; set; }
-
-        [JsonProperty("source_file_url")]
-        public string SourceFilePath { get; set; }
-
-        [JsonProperty("destination_file_url")]
-        public string DestinationFilePath { get; set; }
-
-        [JsonProperty("username")]
-        public string UserName { get; set; }
-
-        [JsonProperty("password")]
-        public string Password { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -218,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         public string SourceFileName { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }

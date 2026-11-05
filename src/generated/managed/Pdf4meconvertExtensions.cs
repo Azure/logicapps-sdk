@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class ConvertHtmlToPdfV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("docName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocName { get; set; }
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class ConvertJsonToExcelV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConvertJsonToExcelV1InputDocumentType Document { get; set; }
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class ConvertMdToPdfV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("docName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocName { get; set; }
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class ConvertToPdfV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConvertToPdfV1InputDocumentType Document { get; set; }
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class ConvertWordToPdfFormV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConvertWordToPdfFormV1InputDocumentType Document { get; set; }
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         public CreatePdfAV1InputComplianceType Compliance { get; set; } = CreatePdfAV1InputComplianceType.PdfA1b;
 
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreatePdfAV1InputDocumentType Document { get; set; }
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class PdfToExcelV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public PdfToExcelV1InputDocumentType Document { get; set; }
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class PdfToPowerPointV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public PdfToPowerPointV1InputDocumentType Document { get; set; }
@@ -503,7 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     public class PdfToWordV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public PdfToWordV1InputDocumentType Document { get; set; }

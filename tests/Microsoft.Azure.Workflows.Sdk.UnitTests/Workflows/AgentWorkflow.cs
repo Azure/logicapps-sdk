@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
     using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -64,9 +65,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             agent.AddTool(toolContext =>
                 {
                     return WorkflowActions.Managed.Office365("outlook").SendEmail(
-                        emailMessageto: () => toolContext.Parameters.Recipient,
-                        emailMessagesubject: () => toolContext.Parameters.Subject,
-                        emailMessagebody: () => toolContext.Parameters.Body);
+                        emailMessage: () => new SendEmailV2Input
+                        {
+                            To = toolContext.Parameters.Recipient,
+                            Subject = toolContext.Parameters.Subject,
+                            Body = toolContext.Parameters.Body,
+                        });
                 },
                description: "This tool will send an email",
                parameters: new EmailParameters());

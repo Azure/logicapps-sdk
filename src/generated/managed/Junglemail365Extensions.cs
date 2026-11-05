@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string Office365Groups { get; set; }
 
         [JsonProperty("attachmentContent")]
-        public string AttachmentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
 
         [JsonProperty("attachmentName")]
         public string AttachmentName { get; set; }

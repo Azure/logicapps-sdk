@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
 
     public class EditDocumentDocxGetCommentsInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
 
     public class EditTextBase64EncodeInput
     {
-        public string ContentToEncode { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentToEncode { get; set; }
     }
 
     public class Base64DecodeResponse
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
     public class ZipFile
     {
         public string FileName { get; set; }
-        public string FileContents { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContents { get; set; }
     }
 
     public class ZipDirectory
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
 
     public class ZipArchiveZipEncryptAdvancedInput
     {
-        public string InputFileContents { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileContents { get; set; }
         public string Password { get; set; }
         public string EncryptionAlgorithm { get; set; }
     }

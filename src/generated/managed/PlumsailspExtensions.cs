@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput>> target, Expression<Func<object>> request)
+        public IWorkflowAction<ApiConnectionActionConfiguration> FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput2>> target, Expression<Func<object>> request)
         {
             var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -819,8 +819,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public enum targetInput
     {
         Site,
+        List,
         Item,
-        Group
+        Folder,
+        Document
     }
 
     public class FlowV1SharePointFlowJobsActivateFeaturePostInput
@@ -1127,16 +1129,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Owner { get; set; }
 
         [JsonProperty("allowMembersEditMembership")]
-        public bool AllowMembersEditMembership { get; set; }
+        public bool? AllowMembersEditMembership { get; set; }
 
         [JsonProperty("allowRequestToJoinLeave")]
-        public bool AllowRequestToJoinLeave { get; set; }
+        public bool? AllowRequestToJoinLeave { get; set; }
 
         [JsonProperty("autoAcceptRequestToJoinLeave")]
-        public bool AutoAcceptRequestToJoinLeave { get; set; }
+        public bool? AutoAcceptRequestToJoinLeave { get; set; }
 
         [JsonProperty("onlyAllowMembersViewMembership")]
-        public bool OnlyAllowMembersViewMembership { get; set; }
+        public bool? OnlyAllowMembersViewMembership { get; set; }
 
         [JsonProperty("requestToJoinLeaveEmailSetting")]
         public string RequestToJoinLeaveEmailSetting { get; set; }
@@ -1250,10 +1252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Description { get; set; }
 
         [JsonProperty("quickLaunchEnabled")]
-        public bool QuickLaunchEnabled { get; set; }
+        public bool? QuickLaunchEnabled { get; set; }
 
         [JsonProperty("treeViewEnabled")]
-        public bool TreeViewEnabled { get; set; }
+        public bool? TreeViewEnabled { get; set; }
 
         [JsonProperty("siteLogoUrl")]
         public string SiteLogoURL { get; set; }
@@ -1271,43 +1273,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string AssociatedVisitorGroup { get; set; }
 
         [JsonProperty("containsConfidentialInfo")]
-        public bool ContainsConfidentialInfo { get; set; }
+        public bool? ContainsConfidentialInfo { get; set; }
 
         [JsonProperty("customMasterUrl")]
         public string CustomMasterURL { get; set; }
 
         [JsonProperty("enableMinimalDownload")]
-        public bool EnableMinimalDownload { get; set; }
+        public bool? EnableMinimalDownload { get; set; }
 
         [JsonProperty("isMultilingual")]
-        public bool IsMultilingual { get; set; }
+        public bool? IsMultilingual { get; set; }
 
         [JsonProperty("masterUrl")]
         public string MasterURL { get; set; }
 
         [JsonProperty("membersCanShare")]
-        public bool MembersCanShare { get; set; }
+        public bool? MembersCanShare { get; set; }
 
         [JsonProperty("noCrawl")]
-        public bool NoCrawl { get; set; }
+        public bool? NoCrawl { get; set; }
 
         [JsonProperty("overwriteTranslationsOnChange")]
-        public bool OverwriteTranslationsOnChange { get; set; }
+        public bool? OverwriteTranslationsOnChange { get; set; }
 
         [JsonProperty("requestAccessEmail")]
         public string RequestAccessEmail { get; set; }
 
         [JsonProperty("saveSiteAsTemplateEnabled")]
-        public bool SaveSiteAsTemplateEnabled { get; set; }
+        public bool? SaveSiteAsTemplateEnabled { get; set; }
 
         [JsonProperty("serverRelativeUrl")]
         public string ServerRelativeURL { get; set; }
 
         [JsonProperty("syndicationEnabled")]
-        public bool SyndicationEnabled { get; set; }
+        public bool? SyndicationEnabled { get; set; }
 
         [JsonProperty("uiVersion")]
-        public int UIVersion { get; set; }
+        public int? UIVersion { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsDeleteSharePointSitePostInput
@@ -1329,6 +1331,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
         [JsonProperty("optionName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OptionName { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum targetInput2
+    {
+        Site,
+        Item,
+        Group
     }
 
     public class ListFileUrlsResponse
@@ -1523,7 +1533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string SharePointSiteURL { get; set; }
 
         [JsonProperty("xmlTemplateContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplateContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateContent { get; set; }
 
         [JsonProperty("overwriteSystemPropertyBagValues")]
         public bool? OverwriteSystemPropertyBagValues { get; set; }
@@ -1556,7 +1566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string SharePointSiteURL { get; set; }
 
         [JsonProperty("xmlTemplateContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string TemplateContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateContent { get; set; }
 
         [JsonProperty("overwriteSystemPropertyBagValues")]
         public bool? OverwriteSystemPropertyBagValues { get; set; }
@@ -1675,7 +1685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class FlowV1SharePointFlowJobsParseCsvPostInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentOfCSVDocument { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCSVDocument { get; set; }
 
         [JsonProperty("delimiter")]
         public FlowV1SharePointFlowJobsParseCsvPostInputDelimiterType? Delimiter { get; set; }

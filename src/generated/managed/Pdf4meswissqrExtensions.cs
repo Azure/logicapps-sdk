@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         public CreateSwissQrBillV1InputCurrencyType? Currency { get; set; } = CreateSwissQrBillV1InputCurrencyType.CHF;
 
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateSwissQrBillV1InputDocumentType Document { get; set; }
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     public class ReadSwissQrBillV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public ReadSwissQrBillV1InputDocumentType Document { get; set; }
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         internal SplitDocBySwissQrCodeV1InputBarcodeTypeType BarcodeType { get; set; } = SplitDocBySwissQrCodeV1InputBarcodeTypeType.Qrcode;
 
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public SplitDocBySwissQrCodeV1InputDocumentType Document { get; set; }

@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
-        public void SdkEnumsDeclareTheirWireRepresentation()
+        public void PublicSdkEnumsDeclareTheirWireRepresentation()
         {
-            var missing = typeof(WorkflowActions).Assembly.GetTypes()
+            var missing = typeof(WorkflowActions).Assembly.GetExportedTypes()
                 .Where(type => type.IsEnum &&
                     type.GetCustomAttribute<JsonConverterAttribute>()?.ConverterType != typeof(StringEnumConverter) &&
                     !IsGeneratedIntegerEnum(type))

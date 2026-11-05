@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -214,20 +214,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
     public class SharepointFile
     {
-        [JsonProperty("site_url")]
-        public string SiteUrl { get; set; }
-
-        [JsonProperty("source_file_url")]
-        public string SourceFilePath { get; set; }
-
-        [JsonProperty("destination_file_url")]
-        public string DestinationFilePath { get; set; }
-
-        [JsonProperty("username")]
-        public string UserName { get; set; }
-
-        [JsonProperty("password")]
-        public string Password { get; set; }
     }
 
     public class EllipseWatermarkInput
@@ -239,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public EllipseWatermarkInputPositionType Position { get; set; } = EllipseWatermarkInputPositionType.MiddleCenter;
@@ -363,10 +349,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("image_file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -490,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public LineWatermarkInputPositionType Position { get; set; } = LineWatermarkInputPositionType.MiddleCenter;
@@ -611,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BarcodeContent { get; set; }
@@ -826,10 +812,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDFWatermark { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFWatermark { get; set; }
 
         [JsonProperty("sharepoint_file")]
         public SharepointFile SharepointFile { get; set; }
@@ -944,7 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
@@ -1180,7 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public RectangleWatermarkInputPositionType Position { get; set; } = RectangleWatermarkInputPositionType.MiddleCenter;
@@ -1304,7 +1290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("rtf_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkContent { get; set; }
@@ -1431,7 +1417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkContent { get; set; }

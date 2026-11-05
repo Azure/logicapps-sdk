@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -316,7 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -485,7 +485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -733,7 +733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string ImageName { get; set; }
 
         [JsonProperty("image_file")]
-        public string ImageFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
 
         [JsonProperty("image_url")]
         public string ImageUrl { get; set; }
@@ -888,7 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -928,7 +928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -955,7 +955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -979,7 +979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -1063,7 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string FileName { get; set; }
 
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("file_url")]
         public string FileUrl { get; set; }

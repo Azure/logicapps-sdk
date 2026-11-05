@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Csvconverterbypower2
     public class T01A004AV01CV01ConvertExcelToCsvInput
     {
         [JsonProperty("excel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExcelFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExcelFile { get; set; }
     }
 
     public class DtoResponseT01A005AV01CV01ConvertCsvToHtml

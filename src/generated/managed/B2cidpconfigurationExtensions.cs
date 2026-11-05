@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
     public class PostApplicationInput
     {
         [JsonProperty("displayName")]
-        public string DisplayName { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DisplayName { get; set; }
 
         [JsonProperty("isFallbackPublicClient")]
         public bool? IsFallbackPublicClient { get; set; }
@@ -508,8 +508,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [JsonProperty("userFlowTypeVersion", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? UserFlowTypeVersion { get; set; } = 1;
 
-        [JsonProperty("tokenClaimsConfiguration")]
-        public PostB2cUserflowInputTokenClaimsConfigurationType TokenClaimsConfiguration { get; set; }
+        [JsonProperty("tokenClaimsConfiguration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostB2cUserflowInputTokenClaimsConfigurationType TokenClaimsConfiguration { get; set; } = new PostB2cUserflowInputTokenClaimsConfigurationType();
     }
 
     public class PostB2cUserflowInputTokenClaimsConfigurationType

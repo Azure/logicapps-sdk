@@ -1269,7 +1269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5102AddHtmlToWordInput
     {
         [JsonProperty("existingFileContent")]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
@@ -1296,10 +1296,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5032AddImageToWordInput
     {
         [JsonProperty("existingFileContent")]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("imageText")]
         public string CaptionText { get; set; }
@@ -1332,10 +1332,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5043AddImageWithinTableToWordInput
     {
         [JsonProperty("existingFileContent")]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("imageText")]
         public string DescriptionText { get; set; }
@@ -1368,7 +1368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5053AddTableToWordInput
     {
         [JsonProperty("existingFileContent")]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("table", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TableData { get; set; }
@@ -1404,7 +1404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5062AddTextToWordInput
     {
         [JsonProperty("existingFileContent")]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("sectionType", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; } = "Heading1";
@@ -1476,7 +1476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V3042CompressImageInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
 
         [JsonProperty("quality")]
         public int? ImageQuality { get; set; }
@@ -1503,7 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4081CompressPdfInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("compressImages")]
         public bool? CompressImages { get; set; }
@@ -1758,7 +1758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V1100ConvertExcelToJsonInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExcelFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExcelFile { get; set; }
 
         [JsonProperty("hasHeaders", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ExcelHasHeaders { get; set; } = true;
@@ -1797,7 +1797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V1140ConvertExcelToMarkdownInput
     {
         [JsonProperty("excel", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Excel { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Excel { get; set; }
 
         [JsonProperty("firstRowIsHeader")]
         public bool? FirstRowIsTheHeader { get; set; }
@@ -1830,7 +1830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4014ConvertFileToPdfInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("fileName")]
         public string OriginFileName { get; set; }
@@ -2061,7 +2061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V3012ConvertImageInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
 
         [JsonProperty("outFormat", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OutputFormat { get; set; } = "JPEG";
@@ -2225,7 +2225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class CsvSheetItem
     {
-        [JsonProperty("csv")]
+        [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSV { get; set; }
 
         [JsonProperty("sheetName")]
@@ -2259,7 +2259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4130ConvertPdfToMarkdownInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -2301,7 +2301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4071ConvertPdfToPdfAInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("conformanceLevel")]
         public int? ConformanceLevel { get; set; }
@@ -2340,7 +2340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5160ConvertWordToHtmlInput
     {
         [JsonProperty("word", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Word { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Word { get; set; }
 
         [JsonProperty("embedImages")]
         public bool? EmbedImages { get; set; }
@@ -2379,7 +2379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5170ConvertWordToMarkdownInput
     {
         [JsonProperty("word", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Word { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Word { get; set; }
 
         [JsonProperty("keepImagePlaceholders")]
         public bool? KeepImagePlaceholders { get; set; }
@@ -2595,7 +2595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
         public string OutputFormat { get; set; }
 
         [JsonProperty("image")]
-        public string EmbeddedImage { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent EmbeddedImage { get; set; }
 
         [JsonProperty("imageOpacity")]
         public double? EmbeddedImageOpacity { get; set; }
@@ -2703,10 +2703,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V3082CreateWatermarkImageInput
     {
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MainImage { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent MainImage { get; set; }
 
         [JsonProperty("watermarkImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WatermarkImage { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent WatermarkImage { get; set; }
 
         [JsonProperty("opacity")]
         public int? WatermarkOpacity { get; set; }
@@ -2742,7 +2742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5012CreateWordFileInput
     {
         [JsonProperty("existingFileContent")]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("sections", DefaultValueHandling = DefaultValueHandling.Include)]
         public Section[] Section { get; set; }
@@ -2753,10 +2753,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class Section
     {
-        [JsonProperty("sectionType")]
-        public string Type { get; set; }
+        [JsonProperty("sectionType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; } = "Heading1";
 
-        [JsonProperty("sectionContent")]
+        [JsonProperty("sectionContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
     }
 
@@ -2790,7 +2790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4090ExtractImagesFromPdfInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -2853,7 +2853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4061ExtractPdfPagesInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDFFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PagesToExtract { get; set; }
@@ -2892,7 +2892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4160ExtractPdfTablesToCsvInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -2940,7 +2940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4150ExtractPdfTablesToExcelInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -2988,7 +2988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4170ExtractPdfTablesToHtmlInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3024,7 +3024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4140ExtractPdfTablesToJsonInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3081,7 +3081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4100ExtractTextFromPdfInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("fromPage")]
         public int? FromPage { get; set; }
@@ -3120,7 +3120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5021ExtractWordBookmarksInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("includeHiddenBookmarks", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeHiddenBookmarks { get; set; } = false;
@@ -3162,7 +3162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5120ExtractWordContentControlsInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("searchTag")]
         public string SearchTag { get; set; }
@@ -3264,19 +3264,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V3071ImageMetaDataInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
     }
 
     public class V9020InsertImageToPowerPointInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("placeholderName")]
         public string PlaceholderName { get; set; }
 
         [JsonProperty("placeholderImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PlaceholderImage { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PlaceholderImage { get; set; }
 
         [JsonProperty("width")]
         public int? MaximumImageWidth { get; set; }
@@ -3309,13 +3309,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5082InsertImageToWordInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("placeholderName")]
         public string PlaceholderName { get; set; }
 
         [JsonProperty("placeholderImage", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("maxWidth")]
         public int? MaximumImageWidth { get; set; }
@@ -3351,7 +3351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5111InsertMultipleTextSectionsToWordInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("insertSections", DefaultValueHandling = DefaultValueHandling.Include)]
         public InsertSection[] Placeholder { get; set; }
@@ -3368,7 +3368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class InsertSection
     {
-        [JsonProperty("placeholderName")]
+        [JsonProperty("placeholderName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("placeholderText")]
@@ -3393,7 +3393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5092InsertTableToWordInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("placeholderName")]
         public string PlaceholderName { get; set; }
@@ -3420,7 +3420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V9010InsertTextToPowerPointInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("placeholderName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlaceholderName { get; set; }
@@ -3453,7 +3453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5072InsertTextToWordInput
     {
         [JsonProperty("existingFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("placeholderName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlaceholderName { get; set; }
@@ -3521,8 +3521,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class PdfMergeItem
     {
-        [JsonProperty("file")]
-        public string File { get; set; }
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
     }
 
     public class DtoResponseV4022MergePdfs
@@ -3543,10 +3543,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4022MergePdfsInput
     {
         [JsonProperty("file1", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File1 { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File1 { get; set; }
 
         [JsonProperty("file2", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File2 { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File2 { get; set; }
 
         [JsonProperty("fileResponseMode")]
         public int? ReduceResponseSize { get; set; }
@@ -3606,7 +3606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4031PdfMetadataInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
     }
 
     public class DtoResponseV4042ProtectPdf
@@ -3627,7 +3627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4042ProtectPdfInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("ownerPassword")]
         public string OwnerPassword { get; set; }
@@ -3651,7 +3651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V3051ReadCodeInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string QROrBarcode { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent QROrBarcode { get; set; }
     }
 
     public class DtoResponseV2011RegularExpression
@@ -3699,7 +3699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4111RemovePagesFromPdfInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("pages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Pages { get; set; }
@@ -3753,7 +3753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V3023ResizeImageInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
 
         [JsonProperty("width")]
         public double? ImageWidth { get; set; }
@@ -3786,7 +3786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V3032RotateImageInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFile { get; set; }
 
         [JsonProperty("rotate")]
         public double? Rotate { get; set; }
@@ -3951,7 +3951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V4052UnProtectPdfInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("ownerPassword")]
         public string OwnerPassword { get; set; }
@@ -3981,7 +3981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5151UpdateMultipleWordContentControlsInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("contentControls", DefaultValueHandling = DefaultValueHandling.Include)]
         public ContentControl[] ContentControl { get; set; }
@@ -3992,14 +3992,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
 
     public class ContentControl
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
 
         [JsonProperty("searchBy")]
-        public int SearchBy { get; set; }
+        public int? SearchBy { get; set; }
     }
 
     public class DtoResponseV5141UpdateWordContentControl
@@ -4020,7 +4020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5141UpdateWordContentControlInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -4050,7 +4050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Converterbypower2apps
     public class V5131UpdateWordTableOfContentsInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ExistingFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ExistingFileContent { get; set; }
 
         [JsonProperty("fileResponseMode")]
         public int? ReduceResponseSize { get; set; }

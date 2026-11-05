@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
     public class ApiAnalyzePostInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }

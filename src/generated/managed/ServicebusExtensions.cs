@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessages(Expression<Func<string>> entityName, Expression<Func<ServiceBusMessage[]>> messages, Expression<Func<string>> systemProperties = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendMessages(Expression<Func<string>> entityName, Expression<Func<ServiceBusMessageInput[]>> messages, Expression<Func<string>> systemProperties = null)
         {
             var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             var __workflow_messages = WorkflowExpression.Compile(messages, nameof(messages), required: true);
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     public class SendMessageInput
     {
         [JsonProperty("ContentData")]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
         public string ContentType { get; set; }
         public JToken Properties { get; set; }
         public string MessageId { get; set; }
@@ -662,10 +662,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         public string TimeToLive { get; set; }
     }
 
-    public class ServiceBusMessage
+    public class ServiceBusMessageInput
     {
         [JsonProperty("ContentData")]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
         public string ContentType { get; set; }
         public JToken Properties { get; set; }
         public string MessageId { get; set; }
@@ -686,6 +686,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     {
         Main,
         DeadLetter
+    }
+
+    public class ServiceBusMessage
+    {
+        [JsonProperty("ContentData")]
+        public string Content { get; set; }
+        public string ContentType { get; set; }
+        public JToken Properties { get; set; }
+        public string MessageId { get; set; }
+        public string To { get; set; }
+        public string ReplyTo { get; set; }
+        public string ReplyToSessionId { get; set; }
+        public string Label { get; set; }
+        public string ScheduledEnqueueTimeUtc { get; set; }
+        public string SessionId { get; set; }
+        public string CorrelationId { get; set; }
+        public int SequenceNumber { get; set; }
+        public string LockToken { get; set; }
+        public string TimeToLive { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

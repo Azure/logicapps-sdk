@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> body, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdateDocument(Expression<Func<string>> id, Expression<Func<global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent>> body, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
     public class NetdocumentsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput2>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
         {
             var __workflow_cabId = WorkflowExpression.Compile(cabId, nameof(cabId), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
@@ -1077,18 +1077,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderbyInput
     {
-        [EnumMember(Value = "relevance desc")]
-        RelevanceDesc,
-        [EnumMember(Value = "lastMod desc")]
-        LastModDesc,
-        [EnumMember(Value = "name asc")]
-        NameAsc,
-        [EnumMember(Value = "relevance asc")]
-        RelevanceAsc,
-        [EnumMember(Value = "lastMod asc")]
-        LastModAsc,
-        [EnumMember(Value = "name desc")]
-        NameDesc
+        [EnumMember(Value = "key")]
+        Key,
+        [EnumMember(Value = "parent")]
+        Parent
     }
 
     public class DeleteLookupEntryResponse
@@ -1238,6 +1230,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum orderbyInput2
+    {
+        [EnumMember(Value = "relevance desc")]
+        RelevanceDesc,
+        [EnumMember(Value = "lastMod desc")]
+        LastModDesc,
+        [EnumMember(Value = "name asc")]
+        NameAsc,
+        [EnumMember(Value = "relevance asc")]
+        RelevanceAsc,
+        [EnumMember(Value = "lastMod asc")]
+        LastModAsc,
+        [EnumMember(Value = "name desc")]
+        NameDesc
     }
 }
 

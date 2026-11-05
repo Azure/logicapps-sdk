@@ -1312,10 +1312,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class ClientSendAttachment
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("ContentBytes")]
-        public string Content { get; set; }
+        [JsonProperty("ContentBytes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1397,25 +1398,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessageWithOptions Message { get; set; }
+        public MessageWithOptions Message { get; set; } = new MessageWithOptions();
     }
 
     public class MessageWithOptions
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
-        public string Subject { get; set; }
 
-        [JsonProperty("Options")]
-        public string UserOptions { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; } = "Your input is required";
+
+        [JsonProperty("Options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserOptions { get; set; } = "Choice1, Choice2, Choice3";
         public string HeaderText { get; set; }
         public string SelectionText { get; set; }
         public string Body { get; set; }
-        public MessageWithOptionsImportanceType Importance { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public MessageWithOptionsImportanceType? Importance { get; set; } = MessageWithOptionsImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
-        public bool UseOnlyHTMLMessage { get; set; }
-        public bool HideHTMLMessage { get; set; }
-        public bool ShowHTMLConfirmationDialog { get; set; }
-        public bool HideMicrosoftFooter { get; set; }
+        public bool? UseOnlyHTMLMessage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHTMLMessage { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideMicrosoftFooter { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1432,24 +1444,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ApprovalMessage Message { get; set; }
+        public ApprovalMessage Message { get; set; } = new ApprovalMessage();
     }
 
     public class ApprovalMessage
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
-        public string Subject { get; set; }
 
-        [JsonProperty("Options")]
-        public string UserOptions { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; } = "Approval Request";
+
+        [JsonProperty("Options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserOptions { get; set; } = "Approve, Reject";
         public string HeaderText { get; set; }
         public string SelectionText { get; set; }
         public string Body { get; set; }
-        public ApprovalMessageImportanceType Importance { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public ApprovalMessageImportanceType? Importance { get; set; } = ApprovalMessageImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
-        public bool UseOnlyHTMLMessage { get; set; }
-        public bool HideHTMLMessage { get; set; }
-        public bool ShowHTMLConfirmationDialog { get; set; }
+        public bool? UseOnlyHTMLMessage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHTMLMessage { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3084,8 +3105,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class FlagV2Input
     {
-        [JsonProperty("flag")]
-        public FlagV2InputFlagType Flag { get; set; }
+        [JsonProperty("flag", DefaultValueHandling = DefaultValueHandling.Include)]
+        public FlagV2InputFlagType Flag { get; set; } = new FlagV2InputFlagType();
     }
 
     public class FlagV2InputFlagType
@@ -3498,7 +3519,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [EnumMember(Value = "alwaysEnabled")]
         AlwaysEnabled,
         [EnumMember(Value = "scheduled")]
-        Scheduled
+        Scheduled,
+        [EnumMember(Value = "Scheduled")]
+        Scheduled2
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3509,7 +3532,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         [EnumMember(Value = "contactsOnly")]
         ContactsOnly,
         [EnumMember(Value = "all")]
-        All
+        All,
+        [EnumMember(Value = "None")]
+        None2
     }
 
     public class AutomaticRepliesSettingClientV2StartTimeType
@@ -3532,8 +3557,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
 
     public class SetAutomaticRepliesSettingV2Input
     {
-        [JsonProperty("automaticRepliesSetting")]
-        public AutomaticRepliesSettingClientV2 AutomaticRepliesSetting { get; set; }
+        [JsonProperty("automaticRepliesSetting", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AutomaticRepliesSettingClientV22 AutomaticRepliesSetting { get; set; } = new AutomaticRepliesSettingClientV22();
+    }
+
+    public class AutomaticRepliesSettingClientV22
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AutomaticRepliesSettingClientV2StatusType Status { get; set; } = AutomaticRepliesSettingClientV2StatusType.Scheduled2;
+
+        [JsonProperty("externalAudience", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AutomaticRepliesSettingClientV2ExternalAudienceType ExternalAudience { get; set; } = AutomaticRepliesSettingClientV2ExternalAudienceType.None2;
+
+        [JsonProperty("scheduledStartDateTime")]
+        public AutomaticRepliesSettingClientV2StartTimeType StartTime { get; set; }
+
+        [JsonProperty("scheduledEndDateTime")]
+        public AutomaticRepliesSettingClientV2EndTimeType EndTime { get; set; }
+
+        [JsonProperty("internalReplyMessage")]
+        public string InternalReplyMessage { get; set; }
+
+        [JsonProperty("externalReplyMessage")]
+        public string ExternalReplyMessage { get; set; }
     }
 
     public class SharedMailboxSendEmailV2Input

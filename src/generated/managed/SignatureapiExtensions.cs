@@ -598,10 +598,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Message { get; set; }
 
         [JsonProperty("mode")]
-        public EnvelopeMode? Mode { get; set; }
+        public EnvelopeMode Mode { get; set; }
 
         [JsonProperty("routing")]
-        public EnvelopeRouting? Routing { get; set; }
+        public EnvelopeRouting Routing { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string TimestampFormat { get; set; }
 
         [JsonProperty("attestation")]
-        public EnvelopeAttestation? Attestation { get; set; }
+        public EnvelopeAttestation Attestation { get; set; }
 
         [JsonProperty("sender")]
         public CreateEnvelopeInputSenderType Sender { get; set; }
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Title { get; set; }
 
         [JsonProperty("file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Format { get; set; }
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Title { get; set; }
 
         [JsonProperty("file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Format { get; set; }
@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Title { get; set; }
 
         [JsonProperty("file_content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Format { get; set; }
@@ -772,16 +772,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string RecipientKey { get; set; }
 
         [JsonProperty("height")]
-        public double? Height { get; set; }
+        public double Height { get; set; }
 
         [JsonProperty("page")]
-        public double? Page { get; set; }
+        public double Page { get; set; }
 
         [JsonProperty("top")]
-        public double? Top { get; set; }
+        public double Top { get; set; }
 
         [JsonProperty("left")]
-        public double? Left { get; set; }
+        public double Left { get; set; }
 
         [JsonProperty("extra")]
         public string Extra { get; set; }
@@ -799,16 +799,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string RecipientKey { get; set; }
 
         [JsonProperty("height")]
-        public double? Height { get; set; }
+        public double Height { get; set; }
 
         [JsonProperty("page")]
-        public double? Page { get; set; }
+        public double Page { get; set; }
 
         [JsonProperty("top")]
-        public double? Top { get; set; }
+        public double Top { get; set; }
 
         [JsonProperty("left")]
-        public double? Left { get; set; }
+        public double Left { get; set; }
 
         [JsonProperty("extra")]
         public string Extra { get; set; }
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Prompt { get; set; }
 
         [JsonProperty("requirement")]
-        public PlaceRequirement? Requirement { get; set; }
+        public PlaceRequirement Requirement { get; set; }
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -844,13 +844,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string FormatMessage { get; set; }
 
         [JsonProperty("page")]
-        public double? Page { get; set; }
+        public double Page { get; set; }
 
         [JsonProperty("top")]
-        public double? Top { get; set; }
+        public double Top { get; set; }
 
         [JsonProperty("left")]
-        public double? Left { get; set; }
+        public double Left { get; set; }
 
         [JsonProperty("extra")]
         public string Extra { get; set; }
@@ -877,19 +877,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Value { get; set; }
 
         [JsonProperty("font_size")]
-        public double? FontSize { get; set; }
+        public double FontSize { get; set; }
 
         [JsonProperty("font_color")]
         public string FontColor { get; set; }
 
         [JsonProperty("page")]
-        public double? Page { get; set; }
+        public double Page { get; set; }
 
         [JsonProperty("top")]
-        public double? Top { get; set; }
+        public double Top { get; set; }
 
         [JsonProperty("left")]
-        public double? Left { get; set; }
+        public double Left { get; set; }
 
         [JsonProperty("extra")]
         public string Extra { get; set; }
@@ -910,13 +910,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string DateFormat { get; set; }
 
         [JsonProperty("page")]
-        public double? Page { get; set; }
+        public double Page { get; set; }
 
         [JsonProperty("top")]
-        public double? Top { get; set; }
+        public double Top { get; set; }
 
         [JsonProperty("left")]
-        public double? Left { get; set; }
+        public double Left { get; set; }
 
         [JsonProperty("extra")]
         public string Extra { get; set; }
@@ -934,13 +934,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string DateFormat { get; set; }
 
         [JsonProperty("page")]
-        public double? Page { get; set; }
+        public double Page { get; set; }
 
         [JsonProperty("top")]
-        public double? Top { get; set; }
+        public double Top { get; set; }
 
         [JsonProperty("left")]
-        public double? Left { get; set; }
+        public double Left { get; set; }
 
         [JsonProperty("extra")]
         public string Extra { get; set; }
@@ -1000,10 +1000,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Key { get; set; }
 
         [JsonProperty("ceremony_creation")]
-        public RecipientCeremonyCreation? CeremonyCreation { get; set; }
+        public RecipientCeremonyCreation CeremonyCreation { get; set; }
 
         [JsonProperty("delivery_type")]
-        public RecipientDeliveryType? DeliveryType { get; set; }
+        public RecipientDeliveryType DeliveryType { get; set; }
 
         [JsonProperty("extra")]
         public string Extra { get; set; }

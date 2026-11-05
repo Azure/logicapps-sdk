@@ -236,13 +236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class PdfStampImageInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
-        [JsonProperty("options")]
-        public PdfStampImageInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfStampImageInputOptionsType Options { get; set; } = new PdfStampImageInputOptionsType();
     }
 
     public class PdfStampImageInputOptionsType
@@ -256,8 +256,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [JsonProperty("rotate", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Rotate { get; set; } = 0;
 
-        [JsonProperty("position")]
-        public PdfStampImageInputOptionsTypePositionType Position { get; set; }
+        [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfStampImageInputOptionsTypePositionType Position { get; set; } = new PdfStampImageInputOptionsTypePositionType();
     }
 
     public class PdfStampImageInputOptionsTypePositionType
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         public JToken[] Data { get; set; }
 
         [JsonProperty("excelFile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Excel { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Excel { get; set; }
     }
 
     public class Resp200PdfCreateByHtml
@@ -304,8 +304,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [JsonProperty("data")]
         public JToken Data { get; set; }
 
-        [JsonProperty("options")]
-        public PdfCreateByHtmlInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfCreateByHtmlInputOptionsType Options { get; set; } = new PdfCreateByHtmlInputOptionsType();
     }
 
     public class PdfCreateByHtmlInputOptionsType
@@ -319,8 +319,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [JsonProperty("landscape", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Landscape { get; set; } = false;
 
-        [JsonProperty("margin")]
-        public PdfCreateByHtmlInputOptionsTypeMarginType Margin { get; set; }
+        [JsonProperty("margin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfCreateByHtmlInputOptionsTypeMarginType Margin { get; set; } = new PdfCreateByHtmlInputOptionsTypeMarginType();
     }
 
     public class PdfCreateByHtmlInputOptionsTypeMarginType
@@ -347,10 +347,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class ImageMergeDrawingInput
     {
         [JsonProperty("background", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Background { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Background { get; set; }
 
         [JsonProperty("drawing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Drawing { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Drawing { get; set; }
     }
 
     public class Resp200PdfStampText
@@ -362,13 +362,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class PdfStampTextInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDF { get; set; }
 
         [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
-        [JsonProperty("options")]
-        public PdfStampTextInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfStampTextInputOptionsType Options { get; set; } = new PdfStampTextInputOptionsType();
     }
 
     public class PdfStampTextInputOptionsType
@@ -382,8 +382,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [JsonProperty("rotate", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Rotate { get; set; } = 0;
 
-        [JsonProperty("position")]
-        public PdfStampTextInputOptionsTypePositionType Position { get; set; }
+        [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfStampTextInputOptionsTypePositionType Position { get; set; } = new PdfStampTextInputOptionsTypePositionType();
     }
 
     public class PdfStampTextInputOptionsTypePositionType
@@ -407,10 +407,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class CsvToJsonInput
     {
         [JsonProperty("csv", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSV { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent CSV { get; set; }
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CsvToJsonInputOptionsType Options { get; set; }
+        public CsvToJsonInputOptionsType Options { get; set; } = new CsvToJsonInputOptionsType();
     }
 
     public class CsvToJsonInputOptionsType
@@ -433,8 +433,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         public string HTML { get; set; }
 
-        [JsonProperty("options")]
-        public PdfCreateByUrlInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfCreateByUrlInputOptionsType Options { get; set; } = new PdfCreateByUrlInputOptionsType();
     }
 
     public class PdfCreateByUrlInputOptionsType
@@ -448,8 +448,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [JsonProperty("landscape", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? Landscape { get; set; } = false;
 
-        [JsonProperty("margin")]
-        public PdfCreateByUrlInputOptionsTypeMarginType Margin { get; set; }
+        [JsonProperty("margin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfCreateByUrlInputOptionsTypeMarginType Margin { get; set; } = new PdfCreateByUrlInputOptionsTypeMarginType();
     }
 
     public class PdfCreateByUrlInputOptionsTypeMarginType
@@ -476,13 +476,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class ImageStampTextInput
     {
         [JsonProperty("image")]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("text")]
         public string TextToStamp { get; set; }
 
-        [JsonProperty("options")]
-        public ImageStampTextInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ImageStampTextInputOptionsType Options { get; set; } = new ImageStampTextInputOptionsType();
     }
 
     public class ImageStampTextInputOptionsType
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class ImageResizeInput
     {
         [JsonProperty("image")]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
         [JsonProperty("width")]
         public int? Width { get; set; }
@@ -514,8 +514,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [JsonProperty("height")]
         public int? Height { get; set; }
 
-        [JsonProperty("options")]
-        public ImageResizeInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ImageResizeInputOptionsType Options { get; set; } = new ImageResizeInputOptionsType();
     }
 
     public class ImageResizeInputOptionsType
@@ -533,10 +533,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class PdfSplitByPageInput
     {
         [JsonProperty("pdf")]
-        public string PDFFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
 
-        [JsonProperty("options")]
-        public PdfSplitByPageInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PdfSplitByPageInputOptionsType Options { get; set; } = new PdfSplitByPageInputOptionsType();
     }
 
     public class PdfSplitByPageInputOptionsType
@@ -557,10 +557,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class ImageStampExifInput
     {
         [JsonProperty("image")]
-        public string Image { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
-        [JsonProperty("options")]
-        public ImageStampExifInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ImageStampExifInputOptionsType Options { get; set; } = new ImageStampExifInputOptionsType();
     }
 
     public class ImageStampExifInputOptionsType
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class PdfFillFormInput
     {
         [JsonProperty("pdf")]
-        public string PDFFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
 
         [JsonProperty("data")]
         public JToken Data { get; set; }
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class PdfGetFormDataInput
     {
         [JsonProperty("pdf")]
-        public string PDFFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFile { get; set; }
     }
 
     public class Resp200PdfMergeSimple
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class PdfMergeSimpleInput
     {
         [JsonProperty("pdfs")]
-        public string[] PDFFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] PDFFile { get; set; }
     }
 }
 

@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public SignContractFromProvidedFileV2NewInputLanguageType? Language { get; set; }
 
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("people", DefaultValueHandling = DefaultValueHandling.Include)]
         public SignContractFromProvidedFileV2NewInputPeopleTypeItem[] People { get; set; }
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public SignContractFromProvidedFileV2NewWaitInputLanguageType? Language { get; set; }
 
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("people", DefaultValueHandling = DefaultValueHandling.Include)]
         public SignContractFromProvidedFileV2NewWaitInputPeopleTypeItem[] People { get; set; }
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         internal bool LastDocument { get; set; } = true;
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("lastname_signer", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SignerSurname { get; set; }
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string LastnameSigner { get; set; }
 
         [JsonProperty("webhooks", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType Webhooks { get; set; }
+        public SignContractFromTemplateV2InputWebhooksType Webhooks { get; set; } = new SignContractFromTemplateV2InputWebhooksType();
 
         [JsonProperty("last_document", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool LastDocument { get; set; } = true;
@@ -878,13 +878,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
     public class SignContractFromTemplateV2InputWebhooksType
     {
         [JsonProperty("2", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType_2Type _2 { get; set; }
+        public SignContractFromTemplateV2InputWebhooksType_2Type _2 { get; set; } = new SignContractFromTemplateV2InputWebhooksType_2Type();
 
         [JsonProperty("1", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType_1Type _1 { get; set; }
+        public SignContractFromTemplateV2InputWebhooksType_1Type _1 { get; set; } = new SignContractFromTemplateV2InputWebhooksType_1Type();
 
         [JsonProperty("0", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SignContractFromTemplateV2InputWebhooksType_0Type _0 { get; set; }
+        public SignContractFromTemplateV2InputWebhooksType_0Type _0 { get; set; } = new SignContractFromTemplateV2InputWebhooksType_0Type();
     }
 
     public class SignContractFromTemplateV2InputWebhooksType_2Type

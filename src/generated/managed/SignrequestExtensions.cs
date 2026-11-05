@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string File { get; set; }
 
         [JsonProperty("file_from_content")]
-        public string FileFromContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileFromContent { get; set; }
 
         [JsonProperty("file_from_content_name")]
         public string FileFromContentName { get; set; }
@@ -459,7 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Name { get; set; }
 
         [JsonProperty("prefill_tags")]
-        public InlinePrefillTags[] PrefillTags { get; set; }
+        public InlinePrefillTags2[] PrefillTags { get; set; }
 
         [JsonProperty("prepare_url")]
         public string PrepareUrl { get; set; }
@@ -471,13 +471,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string RedirectUrlDeclined { get; set; }
 
         [JsonProperty("required_attachments")]
-        public RequiredAttachment[] RequiredAttachments { get; set; }
+        public RequiredAttachment2[] RequiredAttachments { get; set; }
 
         [JsonProperty("send_reminders")]
         public bool? SendReminders { get; set; }
 
         [JsonProperty("signers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Signer[] Signers { get; set; }
+        public Signer2[] Signers { get; set; }
 
         [JsonProperty("subdomain")]
         public string Subdomain { get; set; }
@@ -499,6 +499,177 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
 
         [JsonProperty("who", DefaultValueHandling = DefaultValueHandling.Include)]
         public SignrequestQuickCreateCreateInputWhoType? Who { get; set; } = SignrequestQuickCreateCreateInputWhoType.O;
+    }
+
+    public class InlinePrefillTags2
+    {
+        [JsonProperty("checkbox_value")]
+        public bool? CheckboxValue { get; set; }
+
+        [JsonProperty("date_value")]
+        public string DateValue { get; set; }
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class RequiredAttachment2
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("uuid")]
+        public string Uuid { get; set; }
+    }
+
+    public class Signer2
+    {
+        [JsonProperty("after_document")]
+        public string AfterDocument { get; set; }
+
+        [JsonProperty("approve_only")]
+        public bool? ApproveOnly { get; set; }
+
+        [JsonProperty("attachments")]
+        public SignerAttachment2[] Attachments { get; set; }
+
+        [JsonProperty("declined")]
+        public bool? Declined { get; set; }
+
+        [JsonProperty("declined_on")]
+        public string DeclinedOn { get; set; }
+
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("downloaded")]
+        public bool? Downloaded { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("email_viewed")]
+        public bool? EmailViewed { get; set; }
+
+        [JsonProperty("emailed")]
+        public bool? Emailed { get; set; }
+
+        [JsonProperty("embed_url")]
+        public string EmbedUrl { get; set; }
+
+        [JsonProperty("embed_url_user_id")]
+        public string EmbedUrlUserId { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("force_language")]
+        public bool? ForceLanguage { get; set; }
+
+        [JsonProperty("forwarded")]
+        public bool? Forwarded { get; set; }
+
+        [JsonProperty("forwarded_on")]
+        public string ForwardedOn { get; set; }
+
+        [JsonProperty("forwarded_reason")]
+        public string ForwardedReason { get; set; }
+
+        [JsonProperty("forwarded_to_email")]
+        public string ForwardedToEmail { get; set; }
+
+        [JsonProperty("in_person")]
+        public bool? InPerson { get; set; }
+
+        [JsonProperty("inputs")]
+        public SignerInputs2[] Inputs { get; set; }
+
+        [JsonProperty("language")]
+        public SignerLanguageType? Language { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("needs_to_sign", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NeedsToSign { get; set; } = true;
+
+        [JsonProperty("notify_only")]
+        public bool? NotifyOnly { get; set; }
+
+        [JsonProperty("order")]
+        public int? Order { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("redirect_url")]
+        public string RedirectUrl { get; set; }
+
+        [JsonProperty("redirect_url_declined")]
+        public string RedirectUrlDeclined { get; set; }
+
+        [JsonProperty("signed")]
+        public bool? Signed { get; set; }
+
+        [JsonProperty("signed_on")]
+        public string SignedOn { get; set; }
+
+        [JsonProperty("use_stamp_for_approve_only")]
+        public bool? UseStampForApproveOnly { get; set; }
+
+        [JsonProperty("verify_bank_account")]
+        public string VerifyBankAccount { get; set; }
+
+        [JsonProperty("verify_phone_number")]
+        public string VerifyPhoneNumber { get; set; }
+
+        [JsonProperty("viewed")]
+        public bool? Viewed { get; set; }
+    }
+
+    public class SignerAttachment2
+    {
+        [JsonProperty("file")]
+        public string File { get; set; }
+
+        [JsonProperty("for_attachment")]
+        public RequiredAttachment2 ForAttachment { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("uuid")]
+        public string Uuid { get; set; }
+    }
+
+    public class SignerInputs2
+    {
+        [JsonProperty("checkbox_value")]
+        public bool? CheckboxValue { get; set; }
+
+        [JsonProperty("date_value")]
+        public string DateValue { get; set; }
+
+        [JsonProperty("external_id")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("page_index", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int PageIndex { get; set; }
+
+        [JsonProperty("placeholder_uuid")]
+        public string PlaceholderUuid { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("type")]
+        public SignerInputsTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

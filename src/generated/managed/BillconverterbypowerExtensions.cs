@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class T10A002AV01CV01ExtractXmlFromInvoicePdfInput
     {
         [JsonProperty("invoicePdf")]
-        public string InvoicePDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePDF { get; set; }
     }
 
     public class DtoResponseT10A003AV01CV01ConvertXmlInvoiceToPdf
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class T10A001AV02CV02ConvertInvoiceToZugferdPdfInput
     {
         [JsonProperty("invoicePdf")]
-        public string InvoicePDF { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoicePDF { get; set; }
 
         [JsonProperty("invoiceNumber")]
         public string InvoiceNumber { get; set; }
@@ -326,13 +326,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class DtoSkontoTerm
     {
         [JsonProperty("days")]
-        public int Days { get; set; }
+        public int? Days { get; set; }
 
         [JsonProperty("percent")]
-        public double Percent { get; set; }
+        public double? Percent { get; set; }
 
         [JsonProperty("baseAmount")]
-        public double BaseAmount { get; set; }
+        public double? BaseAmount { get; set; }
     }
 
     public class DtoInvoiceLineV2
@@ -341,16 +341,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
         public string Description { get; set; }
 
         [JsonProperty("quantity")]
-        public double Quantity { get; set; }
+        public double? Quantity { get; set; }
 
         [JsonProperty("unitCode")]
         public string UnitCode { get; set; }
 
         [JsonProperty("unitPrice")]
-        public double UnitPrice { get; set; }
+        public double? UnitPrice { get; set; }
 
         [JsonProperty("vatPercent")]
-        public double VATPercent { get; set; }
+        public double? VATPercent { get; set; }
 
         [JsonProperty("categoryCode")]
         public string TaxCategoryCode { get; set; }
@@ -362,13 +362,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class DtoAllowanceCharge
     {
         [JsonProperty("amount")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
 
         [JsonProperty("vatPercent")]
-        public double VATPercent { get; set; }
+        public double? VATPercent { get; set; }
 
         [JsonProperty("categoryCode")]
         public string TaxCategoryCode { get; set; }
@@ -509,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Billconverterbypower
     public class T10A004AV01CV02ExtractInvoiceDataFromScanInput
     {
         [JsonProperty("invoiceFile")]
-        public string InvoiceFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InvoiceFile { get; set; }
 
         [JsonProperty("additionalInstructions")]
         public string AdditionalInstructions { get; set; }

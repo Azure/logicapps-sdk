@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         public string Title { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
 
         [JsonProperty("account_name")]
         public string SealForSealing { get; set; }
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     public class Image
     {
         [JsonProperty("content")]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -97,22 +97,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     public class Position
     {
         [JsonProperty("x")]
-        public int X { get; set; }
+        public int? X { get; set; }
 
         [JsonProperty("y")]
-        public int Y { get; set; }
+        public int? Y { get; set; }
 
         [JsonProperty("width")]
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("height")]
-        public int Height { get; set; }
+        public int? Height { get; set; }
 
         [JsonProperty("page")]
         public string Page { get; set; }
 
         [JsonProperty("rotation")]
-        public int Rotation { get; set; }
+        public int? Rotation { get; set; }
     }
 }
 

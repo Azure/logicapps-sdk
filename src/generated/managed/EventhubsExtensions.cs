@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEvent[]>> events, Expression<Func<string>> partitionKey)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventInput2[]>> events, Expression<Func<string>> partitionKey)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
@@ -87,14 +87,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
     public class SendEventInput
     {
         [JsonProperty("ContentData")]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
         public JToken Properties { get; set; }
     }
 
-    public class SendEvent
+    public class SendEventInput2
     {
         [JsonProperty("ContentData")]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
         public JToken Properties { get; set; }
     }
 

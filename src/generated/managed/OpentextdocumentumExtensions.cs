@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         public string FileName { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class CreateDocumentV2Input
@@ -190,28 +190,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         public string ParentId { get; set; }
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public File File { get; set; }
+        public File2 File { get; set; }
 
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public DocumentMetadataWriteV2 Metadata { get; set; }
     }
 
+    public class File2
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
+    }
+
     public class DocumentMetadataWriteV2
     {
-        [JsonProperty("displayName")]
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("fields")]
+        [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Fields { get; set; }
     }
 
     public class UpdateDocumentV2Input
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public File File { get; set; }
+        public File2 File { get; set; }
 
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public DocumentMetadataWriteV2 Metadata { get; set; }

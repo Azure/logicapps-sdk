@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string MergedPDFFileName { get; set; }
 
         [JsonProperty("files", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Files { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] Files { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

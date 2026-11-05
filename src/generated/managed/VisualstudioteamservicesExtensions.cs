@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<WorkItemDetailsV2Response, ApiConnectionActionConfiguration> GetWorkItemDetailsV2Async(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id, Expression<Func<string>> asOf = null, Expression<Func<expandInput>> expand = null)
+        public IBodyWorkflowAction<WorkItemDetailsV2Response, ApiConnectionActionConfiguration> GetWorkItemDetailsV2Async(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id, Expression<Func<string>> asOf = null, Expression<Func<expandInput2>> expand = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<WorkItemCommentsResponse, ApiConnectionActionConfiguration> GetWorkItemCommentsAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<int>> top = null, Expression<Func<orderInput>> order = null, Expression<Func<bool>> includeDeleted = null, Expression<Func<expandInput>> expand = null)
+        public IBodyWorkflowAction<WorkItemCommentsResponse, ApiConnectionActionConfiguration> GetWorkItemCommentsAsync(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> workItemId, Expression<Func<int>> top = null, Expression<Func<orderInput>> order = null, Expression<Func<bool>> includeDeleted = null, Expression<Func<expandInput3>> expand = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class VisualstudioteamservicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VstsListBuildResult, ApiConnectionTriggerConfiguration> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<resultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListBuildResult, ApiConnectionTriggerConfiguration> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<resultFilterInput2>> resultFilter = null, Expression<Func<string>> definitions = null, FlowRecurrence recurrence = null)
         {
             var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
@@ -1362,8 +1362,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum resultFilterInput
     {
-        [EnumMember(Value = "")]
-        None,
         [EnumMember(Value = "succeeded")]
         Succeeded,
         [EnumMember(Value = "partiallySucceeded")]
@@ -1616,6 +1614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
     public class ConfigurationVariable
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
         public string Value { get; set; }
     }
@@ -1691,15 +1690,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum expandInput
     {
-        [EnumMember(Value = "none")]
         None,
-        [EnumMember(Value = "reactions")]
-        Reactions,
-        [EnumMember(Value = "renderedText")]
-        RenderedText,
-        [EnumMember(Value = "renderedTextOnly")]
-        RenderedTextOnly,
-        [EnumMember(Value = "all")]
+        Extension,
         All
     }
 
@@ -2006,6 +1998,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         public string StateChangeDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum expandInput2
+    {
+        None,
+        Relations,
+        Fields,
+        Links,
+        All
+    }
+
     public class VstsListListWorkItemResponse
     {
         [JsonProperty("value")]
@@ -2219,6 +2221,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         Asc,
         [EnumMember(Value = "desc")]
         Desc
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum expandInput3
+    {
+        [EnumMember(Value = "none")]
+        None,
+        [EnumMember(Value = "reactions")]
+        Reactions,
+        [EnumMember(Value = "renderedText")]
+        RenderedText,
+        [EnumMember(Value = "renderedTextOnly")]
+        RenderedTextOnly,
+        [EnumMember(Value = "all")]
+        All
     }
 
     public class CreateWorkItemCommentAsyncInput
@@ -2628,6 +2645,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         [JsonProperty("System.AssignedTo")]
         public string AssignedTo { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum resultFilterInput2
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "succeeded")]
+        Succeeded,
+        [EnumMember(Value = "partiallySucceeded")]
+        PartiallySucceeded,
+        [EnumMember(Value = "failed")]
+        Failed,
+        [EnumMember(Value = "canceled")]
+        Canceled
     }
 
     public class VstsListGitPush

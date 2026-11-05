@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public string FileName { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class GetDocumentResponse
@@ -823,23 +823,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
     public class DocumentMetadataV2
     {
-        [JsonProperty("displayName")]
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("fields")]
+        [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Fields { get; set; }
     }
 
     public class File
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
-        [JsonProperty("content")]
-        public string FileContent { get; set; }
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class CreateFolderV2Input

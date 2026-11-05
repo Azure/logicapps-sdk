@@ -213,8 +213,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 
     public class SendMessageV2Input
     {
-        [JsonProperty("message")]
-        public SendMessageInfoV2 Message { get; set; }
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendMessageInfoV2 Message { get; set; } = new SendMessageInfoV2();
 
         [JsonProperty("send_at")]
         public string SendAt { get; set; }
@@ -231,47 +231,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         [JsonProperty("html")]
         public string ContentOfTheMessage { get; set; }
 
-        [JsonProperty("subject")]
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
-        [JsonProperty("from_email")]
+        [JsonProperty("from_email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FromEmail { get; set; }
 
         [JsonProperty("from_name")]
         public string FromName { get; set; }
 
-        [JsonProperty("to")]
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public RecipientInfo[] SendTo { get; set; }
 
         [JsonProperty("headers")]
         public string ExtraHeaders { get; set; }
 
         [JsonProperty("important")]
-        public bool IsThisMessageImportantTrueFalse { get; set; }
+        public bool? IsThisMessageImportantTrueFalse { get; set; }
 
         [JsonProperty("track_opens")]
-        public bool TrackWhenMessageOpensTrueFalse { get; set; }
+        public bool? TrackWhenMessageOpensTrueFalse { get; set; }
 
         [JsonProperty("track_clicks")]
-        public bool TrackClicksForThisMessageTrueFalse { get; set; }
+        public bool? TrackClicksForThisMessageTrueFalse { get; set; }
 
         [JsonProperty("auto_text")]
-        public bool FillTextMessageIfNotPresentTrueFalse { get; set; }
+        public bool? FillTextMessageIfNotPresentTrueFalse { get; set; }
 
-        [JsonProperty("auto_html")]
-        public bool FillHTMLMessageIfNotPresentTrueFalse { get; set; }
+        [JsonProperty("auto_html", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool FillHTMLMessageIfNotPresentTrueFalse { get; set; } = false;
 
         [JsonProperty("inline_css")]
-        public bool InlineCSSStylesInHtmlMessageTrueFalse { get; set; }
+        public bool? InlineCSSStylesInHtmlMessageTrueFalse { get; set; }
 
         [JsonProperty("url_strip_qs")]
-        public bool StripQueryStringFromURLInAggregatedDataTrueFalse { get; set; }
+        public bool? StripQueryStringFromURLInAggregatedDataTrueFalse { get; set; }
 
         [JsonProperty("preserve_recipients")]
-        public bool ShowAllRecipientsInToLineTrueFalse { get; set; }
+        public bool? ShowAllRecipientsInToLineTrueFalse { get; set; }
 
         [JsonProperty("view_content_link")]
-        public bool RemoveContentLoggingTrueFalse { get; set; }
+        public bool? RemoveContentLoggingTrueFalse { get; set; }
 
         [JsonProperty("bcc_address")]
         public string OptionalBCCAddress { get; set; }
@@ -288,14 +288,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
 
     public class RecipientInfo
     {
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("type")]
-        public RecipientInfoSendAsType SendAs { get; set; }
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RecipientInfoSendAsType? SendAs { get; set; } = RecipientInfoSendAsType.To;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string FileName { get; set; }
 
         [JsonProperty("content")]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 }
 

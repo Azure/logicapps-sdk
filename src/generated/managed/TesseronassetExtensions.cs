@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     public class AddAssetInputAttachmentsTypeItem
     {
         public string FileName { get; set; }
-        public string Data { get; set; }
+        public WorkflowBinaryContent Data { get; set; }
     }
 
     public class UpdateAssetResponse

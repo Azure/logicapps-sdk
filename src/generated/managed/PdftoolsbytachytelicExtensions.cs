@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
     public class OptimizePdfInput
     {
         [JsonProperty("PdfFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDFFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFileContent { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public OptimizePdfInputModeType? Mode { get; set; } = OptimizePdfInputModeType.Aggressive;

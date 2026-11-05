@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
 
     public class EditDrawPolygonInput
     {
-        public string BaseImageBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseImageBytes { get; set; }
         public string BaseImageUrl { get; set; }
         public DrawPolygonInstance[] PolygonsToDraw { get; set; }
     }
@@ -69,20 +69,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
     public class DrawPolygonInstance
     {
         public string BorderColor { get; set; }
-        public double BorderWidth { get; set; }
+        public double? BorderWidth { get; set; }
         public string FillColor { get; set; }
         public PolygonPoint[] Points { get; set; }
     }
 
     public class PolygonPoint
     {
-        public double X { get; set; }
-        public double Y { get; set; }
+        public double? X { get; set; }
+        public double? Y { get; set; }
     }
 
     public class EditDrawRectangleInput
     {
-        public string BaseImageBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseImageBytes { get; set; }
         public string BaseImageUrl { get; set; }
         public DrawRectangleInstance[] RectanglesToDraw { get; set; }
     }
@@ -90,17 +90,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
     public class DrawRectangleInstance
     {
         public string BorderColor { get; set; }
-        public double BorderWidth { get; set; }
+        public double? BorderWidth { get; set; }
         public string FillColor { get; set; }
-        public double Height { get; set; }
-        public double Width { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
+        public double? Height { get; set; }
+        public double? Width { get; set; }
+        public double? X { get; set; }
+        public double? Y { get; set; }
     }
 
     public class EditDrawTextInput
     {
-        public string BaseImageBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BaseImageBytes { get; set; }
         public string BaseImageUrl { get; set; }
         public DrawTextInstance[] TextToDraw { get; set; }
     }
@@ -109,12 +109,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveimagepr
     {
         public string Color { get; set; }
         public string FontFamilyName { get; set; }
-        public double FontSize { get; set; }
-        public double Height { get; set; }
+        public double? FontSize { get; set; }
+        public double? Height { get; set; }
         public string Text { get; set; }
-        public double Width { get; set; }
-        public double X { get; set; }
-        public double Y { get; set; }
+        public double? Width { get; set; }
+        public double? X { get; set; }
+        public double? Y { get; set; }
     }
 }
 

@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
     public class AnalyzeContentInput
     {
         [JsonProperty("inputFileContent")]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("inputFileUrl")]
         public string InputFileURL { get; set; }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentunderstanding
         public string Url { get; set; }
 
         [JsonProperty("data")]
-        public string Data { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         internal string ImageContentType { get; set; } = "image/jpeg";
 
         [JsonProperty("Image File Content")]
-        public string ImageFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageFileContent { get; set; }
     }
 
     public class GenerateDocumentInput
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         public string DocumentInformation { get; set; }
 
         [JsonProperty("templateFile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentTemplateContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentTemplateContent { get; set; }
     }
 }
 

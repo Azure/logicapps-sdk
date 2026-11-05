@@ -891,24 +891,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessageWithOptions Message { get; set; }
+        public MessageWithOptions Message { get; set; } = new MessageWithOptions();
     }
 
     public class MessageWithOptions
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
-        public string Subject { get; set; }
 
-        [JsonProperty("Options")]
-        public string UserOptions { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; } = "Your input is required";
+
+        [JsonProperty("Options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserOptions { get; set; } = "Choice1, Choice2, Choice3";
         public string HeaderText { get; set; }
         public string SelectionText { get; set; }
         public string Body { get; set; }
-        public MessageWithOptionsImportanceType Importance { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public MessageWithOptionsImportanceType? Importance { get; set; } = MessageWithOptionsImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
-        public bool UseOnlyHTMLMessage { get; set; }
-        public bool HideHTMLMessage { get; set; }
-        public bool ShowHTMLConfirmationDialog { get; set; }
+        public bool? UseOnlyHTMLMessage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHTMLMessage { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -921,10 +930,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
     public class ClientSendAttachment
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("ContentBytes")]
-        public string Content { get; set; }
+        [JsonProperty("ContentBytes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
     public class SendApprovalMailInput
@@ -933,24 +943,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public ApprovalMessage Message { get; set; }
+        public ApprovalMessage Message { get; set; } = new ApprovalMessage();
     }
 
     public class ApprovalMessage
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
-        public string Subject { get; set; }
 
-        [JsonProperty("Options")]
-        public string UserOptions { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; } = "Approval Request";
+
+        [JsonProperty("Options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserOptions { get; set; } = "Approve, Reject";
         public string HeaderText { get; set; }
         public string SelectionText { get; set; }
         public string Body { get; set; }
-        public ApprovalMessageImportanceType Importance { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public ApprovalMessageImportanceType? Importance { get; set; } = ApprovalMessageImportanceType.Normal;
         public ClientSendAttachment[] Attachments { get; set; }
-        public bool UseOnlyHTMLMessage { get; set; }
-        public bool HideHTMLMessage { get; set; }
-        public bool ShowHTMLConfirmationDialog { get; set; }
+        public bool? UseOnlyHTMLMessage { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? HideHTMLMessage { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ShowHTMLConfirmationDialog { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class CreateSealInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
     }
 
     public class ListSealsResponse
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class ListSealsInput
     {
         [JsonProperty("file")]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
     }
 
     public class VerifySealInput
     {
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("sealId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SealId { get; set; }

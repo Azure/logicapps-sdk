@@ -374,13 +374,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string DocumentId { get; set; }
 
         [JsonProperty("pdfContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PdfContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
     }
 
     public class NewFromPdfInput
     {
         [JsonProperty("pdfContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PdfContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
 
         [JsonProperty("authorRole", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewFromPdfInputAuthorRoleType AuthorRole { get; set; } = NewFromPdfInputAuthorRoleType.SigningParty;
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public string DocumentId { get; set; }
 
         [JsonProperty("pdfContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PdfContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
     }
 
     public class CancelInput
@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         public SetAuthorAttachmentInputAddToSealedFileType AddToSealedFile { get; set; }
 
         [JsonProperty("pdfContent")]
-        public string PdfContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfContent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

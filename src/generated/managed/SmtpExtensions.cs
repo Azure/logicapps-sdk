@@ -55,7 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
 
     public class AttachmentV2
     {
-        public string ContentData { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentData { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContentType { get; set; }
         public string FileName { get; set; }
         public string ContentId { get; set; }

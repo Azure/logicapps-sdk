@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentDocxDeletePagesInput
     {
         public int? EndDeletePageNumber { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? StartDeletePageNumber { get; set; }
     }
@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxDeleteTableRowInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string TablePath { get; set; }
         public int? TableRowRowIndex { get; set; }
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxDeleteTableRowRangeInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string TablePath { get; set; }
         public int? TableRowRowIndexEnd { get; set; }
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxBodyInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetCommentsHierarchicalInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -985,7 +985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetHeadersAndFootersInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1014,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetImagesInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxPagesInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1045,7 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetSectionsInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1070,7 +1070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetStylesInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetTableRowInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string TablePath { get; set; }
         public int? TableRowRowIndex { get; set; }
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetTableByIndexInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? TableIndex { get; set; }
     }
@@ -1109,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxGetTablesInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1121,10 +1121,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxInsertCommentOnParagraphInput
     {
-        public DocxComment CommentToInsert { get; set; }
-        public string InputFileBytes { get; set; }
+        public DocxComment2 CommentToInsert { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string ParagraphPath { get; set; }
+    }
+
+    public class DocxComment2
+    {
+        public string Author { get; set; }
+        public string AuthorInitials { get; set; }
+        public string CommentDate { get; set; }
+        public string CommentText { get; set; }
+        public bool? Done { get; set; }
+        public bool? IsReply { get; set; }
+        public bool? IsTopLevel { get; set; }
+        public string ParentCommentPath { get; set; }
+        public string Path { get; set; }
     }
 
     public class DocxInsertImageResponse
@@ -1136,14 +1149,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentDocxInsertImageInput
     {
         public int? HeightInEMUs { get; set; }
-        public DocxImage ImageToAdd { get; set; }
-        public string InputDocumentFileBytes { get; set; }
+        public DocxImage2 ImageToAdd { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputDocumentFileBytes { get; set; }
         public string InputDocumentFileUrl { get; set; }
-        public string InputImageFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputImageFileBytes { get; set; }
         public string InputImageFileUrl { get; set; }
         public string InsertPath { get; set; }
         public string InsertPlacement { get; set; }
         public int? WidthInEMUs { get; set; }
+    }
+
+    public class DocxImage2
+    {
+        public string ImageContentsURL { get; set; }
+        public string ImageDataContentType { get; set; }
+        public string ImageDataEmbedId { get; set; }
+        public string ImageDescription { get; set; }
+        public int? ImageHeight { get; set; }
+        public int? ImageId { get; set; }
+        public string ImageInternalFileName { get; set; }
+        public string ImageName { get; set; }
+        public int? ImageWidth { get; set; }
+        public bool? InlineWithText { get; set; }
+        public string Path { get; set; }
+        public int? XOffset { get; set; }
+        public int? YOffset { get; set; }
     }
 
     public class InsertDocxInsertParagraphResponse
@@ -1154,11 +1184,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxInsertParagraphInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string InsertPath { get; set; }
         public string InsertPlacement { get; set; }
-        public DocxParagraph ParagraphToInsert { get; set; }
+        public DocxParagraph2 ParagraphToInsert { get; set; }
+    }
+
+    public class DocxParagraph2
+    {
+        public DocxRun2[] ContentRuns { get; set; }
+        public int? ParagraphIndex { get; set; }
+        public string Path { get; set; }
+
+        [JsonProperty("StyleID")]
+        public string StyleId { get; set; }
+    }
+
+    public class DocxRun2
+    {
+        public bool? Bold { get; set; }
+        public string FontFamily { get; set; }
+        public string FontSize { get; set; }
+        public bool? Italic { get; set; }
+        public string Path { get; set; }
+        public int? RunIndex { get; set; }
+        public DocxText2[] TextItems { get; set; }
+        public string Underline { get; set; }
+    }
+
+    public class DocxText2
+    {
+        public string Path { get; set; }
+        public string TextContent { get; set; }
+        public int? TextIndex { get; set; }
     }
 
     public class InsertDocxTablesResponse
@@ -1169,11 +1228,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxInsertTableInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string InsertPath { get; set; }
         public string InsertPlacement { get; set; }
-        public DocxTable TableToInsert { get; set; }
+        public DocxTable2 TableToInsert { get; set; }
+    }
+
+    public class DocxTable2
+    {
+        public string BottomBorderColor { get; set; }
+        public int? BottomBorderSize { get; set; }
+        public int? BottomBorderSpace { get; set; }
+        public string BottomBorderType { get; set; }
+        public string CellHorizontalBorderColor { get; set; }
+        public int? CellHorizontalBorderSize { get; set; }
+        public int? CellHorizontalBorderSpace { get; set; }
+        public string CellHorizontalBorderType { get; set; }
+        public string CellVerticalBorderColor { get; set; }
+        public int? CellVerticalBorderSize { get; set; }
+        public int? CellVerticalBorderSpace { get; set; }
+        public string CellVerticalBorderType { get; set; }
+        public string EndBorderColor { get; set; }
+        public int? EndBorderSize { get; set; }
+        public int? EndBorderSpace { get; set; }
+        public string EndBorderType { get; set; }
+        public string LeftBorderColor { get; set; }
+        public int? LeftBorderSize { get; set; }
+        public int? LeftBorderSpace { get; set; }
+        public string LeftBorderType { get; set; }
+        public string Path { get; set; }
+        public string RightBorderColor { get; set; }
+        public int? RightBorderSize { get; set; }
+        public int? RightBorderSpace { get; set; }
+        public string RightBorderType { get; set; }
+        public string StartBorderColor { get; set; }
+        public int? StartBorderSize { get; set; }
+        public int? StartBorderSpace { get; set; }
+        public string StartBorderType { get; set; }
+
+        [JsonProperty("TableID")]
+        public string TableId { get; set; }
+        public string TableIndentationMode { get; set; }
+        public int? TableIndentationWidth { get; set; }
+        public DocxTableRow2[] TableRows { get; set; }
+        public string TopBorderColor { get; set; }
+        public int? TopBorderSize { get; set; }
+        public int? TopBorderSpace { get; set; }
+        public string TopBorderType { get; set; }
+        public string Width { get; set; }
+        public string WidthType { get; set; }
+    }
+
+    public class DocxTableRow2
+    {
+        public string Path { get; set; }
+        public DocxTableCell2[] RowCells { get; set; }
+        public int? RowIndex { get; set; }
+    }
+
+    public class DocxTableCell2
+    {
+        public int? CellIndex { get; set; }
+        public string CellShadingColor { get; set; }
+        public string CellShadingFill { get; set; }
+        public string CellShadingPattern { get; set; }
+        public string CellWidth { get; set; }
+        public string CellWidthMode { get; set; }
+        public DocxParagraph2[] Paragraphs { get; set; }
+        public string Path { get; set; }
     }
 
     public class InsertDocxTableRowResponse
@@ -1185,10 +1308,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentDocxInsertTableRowInput
     {
         public string ExistingTablePath { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string InsertPlacement { get; set; }
-        public DocxTableRow RowToInsert { get; set; }
+        public DocxTableRow2 RowToInsert { get; set; }
     }
 
     public class RemoveDocxHeadersAndFootersResponse
@@ -1199,7 +1322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxRemoveHeadersAndFootersInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public bool? RemoveFooters { get; set; }
         public bool? RemoveHeaders { get; set; }
@@ -1213,14 +1336,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxRemoveObjectInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string PathToObjectToRemove { get; set; }
     }
 
     public class EditDocumentDocxReplaceInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public bool? MatchCase { get; set; }
         public string MatchString { get; set; }
@@ -1235,14 +1358,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxSetFooterInput
     {
-        public DocxFooter FooterToApply { get; set; }
-        public string InputFileBytes { get; set; }
+        public DocxFooter2 FooterToApply { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
+    }
+
+    public class DocxFooter2
+    {
+        public DocxParagraph2[] Paragraphs { get; set; }
+        public string Path { get; set; }
+        public DocxSection[] SectionsWithFooter { get; set; }
     }
 
     public class EditDocumentDocxSetFooterAddPageNumberInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public string PrependText { get; set; }
     }
@@ -1255,9 +1385,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxSetHeaderInput
     {
-        public DocxHeader HeaderToApply { get; set; }
-        public string InputFileBytes { get; set; }
+        public DocxHeader2 HeaderToApply { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
+    }
+
+    public class DocxHeader2
+    {
+        public DocxParagraph2[] Paragraphs { get; set; }
+        public string Path { get; set; }
+        public DocxSection[] SectionsWithHeader { get; set; }
     }
 
     public class UpdateDocxTableCellResponse
@@ -1268,9 +1405,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentDocxUpdateTableCellInput
     {
-        public DocxTableCell CellToUpdate { get; set; }
+        public DocxTableCell2 CellToUpdate { get; set; }
         public string ExistingTablePath { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? TableCellIndex { get; set; }
         public int? TableRowIndex { get; set; }
@@ -1285,9 +1422,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentDocxUpdateTableRowInput
     {
         public string ExistingTablePath { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
-        public DocxTableRow RowToUpdate { get; set; }
+        public DocxTableRow2 RowToUpdate { get; set; }
         public int? TableRowIndex { get; set; }
     }
 
@@ -1299,14 +1436,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentPptxDeleteSlidesInput
     {
         public int? EndDeleteSlideNumber { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? StartDeleteSlideNumber { get; set; }
     }
 
     public class EditDocumentPptxReplaceInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public bool? MatchCase { get; set; }
         public string MatchString { get; set; }
@@ -1322,7 +1459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentXlsxClearCellByIndexInput
     {
         public int? CellIndex { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? RowIndex { get; set; }
         public XlsxWorksheet WorksheetToUpdate { get; set; }
@@ -1353,14 +1490,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentXlsxCreateSpreadsheetFromDataInput
     {
-        public XlsxSpreadsheetRow[] Rows { get; set; }
+        public XlsxSpreadsheetRow2[] Rows { get; set; }
         public string WorksheetName { get; set; }
     }
 
-    public class XlsxSpreadsheetRow
+    public class XlsxSpreadsheetRow2
     {
-        public XlsxSpreadsheetCell[] Cells { get; set; }
+        public XlsxSpreadsheetCell2[] Cells { get; set; }
         public string Path { get; set; }
+    }
+
+    public class XlsxSpreadsheetCell2
+    {
+        public string CellIdentifier { get; set; }
+        public string Formula { get; set; }
+        public string Path { get; set; }
+        public int? StyleIndex { get; set; }
+        public string TextValue { get; set; }
+    }
+
+    public class EditDocumentXlsxDeleteWorksheetInput
+    {
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
+        public string InputFileUrl { get; set; }
+        public XlsxWorksheet WorksheetToRemove { get; set; }
+    }
+
+    public class GetXlsxCellByIdentifierResponse
+    {
+        public XlsxSpreadsheetCell Cell { get; set; }
+        public bool Successful { get; set; }
     }
 
     public class XlsxSpreadsheetCell
@@ -1372,23 +1531,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public string TextValue { get; set; }
     }
 
-    public class EditDocumentXlsxDeleteWorksheetInput
-    {
-        public string InputFileBytes { get; set; }
-        public string InputFileUrl { get; set; }
-        public XlsxWorksheet WorksheetToRemove { get; set; }
-    }
-
-    public class GetXlsxCellByIdentifierResponse
-    {
-        public XlsxSpreadsheetCell Cell { get; set; }
-        public bool Successful { get; set; }
-    }
-
     public class EditDocumentXlsxGetCellByIdentifierInput
     {
         public string CellIdentifier { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public XlsxWorksheet WorksheetToQuery { get; set; }
     }
@@ -1402,7 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentXlsxGetCellByIndexInput
     {
         public int? CellIndex { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? RowIndex { get; set; }
         public XlsxWorksheet WorksheetToQuery { get; set; }
@@ -1422,7 +1568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentXlsxGetColumnsInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public XlsxWorksheet WorksheetToQuery { get; set; }
     }
@@ -1444,7 +1590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentXlsxGetImagesInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public XlsxWorksheet WorksheetToQuery { get; set; }
     }
@@ -1455,9 +1601,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
         public bool Successful { get; set; }
     }
 
+    public class XlsxSpreadsheetRow
+    {
+        public XlsxSpreadsheetCell[] Cells { get; set; }
+        public string Path { get; set; }
+    }
+
     public class EditDocumentXlsxGetRowsAndCellsInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public XlsxWorksheet WorksheetToQuery { get; set; }
     }
@@ -1481,7 +1633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentXlsxGetStylesInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1493,7 +1645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentXlsxGetWorksheetsInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
     }
 
@@ -1505,7 +1657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class EditDocumentXlsxInsertWorksheetInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public XlsxWorksheet WorksheetToInsert { get; set; }
     }
@@ -1519,8 +1671,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentXlsxSetCellByIdentifierInput
     {
         public string CellIdentifier { get; set; }
-        public XlsxSpreadsheetCell CellValue { get; set; }
-        public string InputFileBytes { get; set; }
+        public XlsxSpreadsheetCell2 CellValue { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public XlsxWorksheet WorksheetToUpdate { get; set; }
     }
@@ -1534,8 +1686,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
     public class EditDocumentXlsxSetCellByIndexInput
     {
         public int? CellIndex { get; set; }
-        public XlsxSpreadsheetCell CellValue { get; set; }
-        public string InputFileBytes { get; set; }
+        public XlsxSpreadsheetCell2 CellValue { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public string InputFileUrl { get; set; }
         public int? RowIndex { get; set; }
         public XlsxWorksheet WorksheetToUpdate { get; set; }
@@ -1561,7 +1713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersiveconvert
 
     public class HtmlTemplateOperation
     {
-        public HtmlTemplateOperationActionType Action { get; set; }
+        public HtmlTemplateOperationActionType? Action { get; set; }
         public string MatchAgsint { get; set; }
         public string ReplaceWith { get; set; }
     }

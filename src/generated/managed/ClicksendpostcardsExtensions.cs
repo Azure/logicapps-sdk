@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
     public class UploadMediaInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
     public class SendPostcardResponse

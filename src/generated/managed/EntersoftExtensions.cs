@@ -1820,7 +1820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [JsonProperty("fRLSNodeGID")]
         public string FRLSNodeGId { get; set; }
         public int? BLOBDATALength { get; set; }
-        public string BLOBDATA { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BLOBDATA { get; set; }
     }
 
     public class ES00DocumentsAddOrUpdateAttachedDocumentInput
@@ -1871,7 +1871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         [JsonProperty("fRLSNodeGID")]
         public string FRLSNodeGId { get; set; }
         public int? BLOBDATALength { get; set; }
-        public string BLOBDATA { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent BLOBDATA { get; set; }
     }
 
     public class EntersoftWebApi2ODSModelsESBGBudgetSheetObj

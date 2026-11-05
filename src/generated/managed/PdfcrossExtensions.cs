@@ -76,13 +76,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     public class MergePDFInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] FileContent { get; set; }
     }
 
     public class AddWatermarkTextInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("watermarkText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkText { get; set; }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     public class AddPasswordInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
     public class AddImageInput
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("imageContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ImageContent { get; set; }
 
         [JsonProperty("positionX", DefaultValueHandling = DefaultValueHandling.Include)]
         public double PositionX { get; set; }

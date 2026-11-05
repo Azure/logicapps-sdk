@@ -62,42 +62,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     public class EditPdfAddAnnotationsInput
     {
         public PdfAnnotation[] AnnotationsToAdd { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
     }
 
     public class PdfAnnotation
     {
-        public int AnnotationIndex { get; set; }
+        public int? AnnotationIndex { get; set; }
         public string AnnotationType { get; set; }
         public string CreationDate { get; set; }
-        public double Height { get; set; }
-        public double LeftX { get; set; }
+        public double? Height { get; set; }
+        public double? LeftX { get; set; }
         public string ModifiedDate { get; set; }
-        public int PageNumber { get; set; }
+        public int? PageNumber { get; set; }
         public string Subject { get; set; }
         public string TextContents { get; set; }
         public string Title { get; set; }
-        public double TopY { get; set; }
-        public double Width { get; set; }
+        public double? TopY { get; set; }
+        public double? Width { get; set; }
     }
 
     public class EditPdfSetFormFieldsInput
     {
         public SetFormFieldValue[] FieldValues { get; set; }
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
     }
 
     public class SetFormFieldValue
     {
-        public bool CheckboxValue { get; set; }
-        public int ComboBoxSelectedIndex { get; set; }
+        public bool? CheckboxValue { get; set; }
+        public int? ComboBoxSelectedIndex { get; set; }
         public string FieldName { get; set; }
         public string TextValue { get; set; }
     }
 
     public class EditPdfSetMetadataInput
     {
-        public string InputFileBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFileBytes { get; set; }
         public PdfMetadata MetadataToSet { get; set; }
     }
 
@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         public string DateCreated { get; set; }
         public string DateModified { get; set; }
         public string Keywords { get; set; }
-        public int PageCount { get; set; }
+        public int? PageCount { get; set; }
         public string Subject { get; set; }
-        public bool Successful { get; set; }
+        public bool? Successful { get; set; }
         public string Title { get; set; }
     }
 }

@@ -313,14 +313,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewTopic { get; set; }
 
-        [JsonProperty("post")]
-        public NewPostBody Post { get; set; }
+        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewPostBody Post { get; set; } = new NewPostBody();
     }
 
     public class NewPostBody
     {
-        [JsonProperty("body")]
-        public NewPostBodyBodyType Body { get; set; }
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewPostBodyBodyType Body { get; set; } = new NewPostBodyBodyType();
 
         [JsonProperty("categories")]
         public string[] PostCategories { get; set; }
@@ -334,11 +334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class NewPostBodyBodyType
     {
-        [JsonProperty("content")]
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
 
-        [JsonProperty("contentType")]
-        public string ContentType { get; set; }
+        [JsonProperty("contentType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ContentType { get; set; } = "html";
     }
 
     public class GetUsersGraphAction
@@ -353,14 +353,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class ClientSendAttachment
     {
-        [JsonProperty("@odata.type")]
-        public string FileAttachmentOdataType { get; set; }
+        [JsonProperty("@odata.type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string FileAttachmentOdataType { get; set; } = "#microsoft.graph.fileAttachment";
 
-        [JsonProperty("Name")]
+        [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttachmentName { get; set; }
 
-        [JsonProperty("ContentBytes")]
-        public string AttachmentContent { get; set; }
+        [JsonProperty("ContentBytes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
     }
 
     public class Conversation
@@ -423,10 +423,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     public class EmailAddressInfo
     {
         [JsonProperty("emailAddress")]
-        public EmailAddressEmailAddressType EmailAddress { get; set; }
+        public EmailAddressInfoEmailAddressType EmailAddress { get; set; }
     }
 
-    public class EmailAddressEmailAddressType
+    public class EmailAddressInfoEmailAddressType
     {
         [JsonProperty("name")]
         public string NameOfTheUser { get; set; }
@@ -533,8 +533,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewTopic { get; set; }
 
-        [JsonProperty("post")]
-        public NewPostBody Post { get; set; }
+        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewPostBody Post { get; set; } = new NewPostBody();
     }
 
     public class ListGroupThreadsResponse
@@ -551,8 +551,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string NewTopic { get; set; }
 
-        [JsonProperty("post")]
-        public NewPostBody Post { get; set; }
+        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewPostBody Post { get; set; } = new NewPostBody();
     }
 
     public class ListThreadPostsResponse
@@ -581,14 +581,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 
     public class ReplyToAThreadInput
     {
-        [JsonProperty("post")]
-        public NewPostBody Post { get; set; }
+        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewPostBody Post { get; set; } = new NewPostBody();
     }
 
     public class ReplyPostInput
     {
-        [JsonProperty("post")]
-        public NewPostBody Post { get; set; }
+        [JsonProperty("post", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewPostBody Post { get; set; } = new NewPostBody();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

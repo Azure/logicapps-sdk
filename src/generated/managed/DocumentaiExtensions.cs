@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
 
     public class ApplyRulesInput
     {
-        public string InputFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public PolicyRule[] Rules { get; set; }
         public string RecognitionMode { get; set; }
     }
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
 
     public class AnswerQuestionsInput
     {
-        public string InputFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public DocumentQuestionBoolean[] QuestionsYesNo { get; set; }
         public DocumentQuestionMultipleChoice[] QuestionsMultipleChoice { get; set; }
         public DocumentQuestionFreeResponse[] QuestionsFreeResponse { get; set; }
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
 
     public class ExtractFieldsAdvancedInput
     {
-        public string InputFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public FieldToExtract[] FieldsToExtract { get; set; }
         public int? MaximumPagesProcessed { get; set; }
         public string Preprocessing { get; set; }
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
     public class FieldToExtract
     {
         public string FieldName { get; set; }
-        public bool FieldOptional { get; set; }
+        public bool? FieldOptional { get; set; }
         public string FieldDescription { get; set; }
         public string FieldExample { get; set; }
     }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
 
     public class ExtractClassificationAdvancedInput
     {
-        public string InputFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public DocumentCategories[] Categories { get; set; }
         public string Preprocessing { get; set; }
         public string ResultCrossCheck { get; set; }
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
 
     public class ExtractFieldsFromDocumentAdvancedBatchJobInput
     {
-        public string InputFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent InputFile { get; set; }
         public FieldToExtract[] FieldsToExtract { get; set; }
         public int? MaximumPagesProcessed { get; set; }
         public string Preprocessing { get; set; }

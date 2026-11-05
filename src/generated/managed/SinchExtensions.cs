@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         public string Message { get; set; }
 
         [JsonProperty("media")]
-        public string Media { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Media { get; set; }
 
         [JsonProperty("source_number")]
         public string SourceNumber { get; set; }
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         internal string Encoding { get; set; } = "JSON";
 
         [JsonProperty("headers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public MessageArrivedInputHeadersType Headers { get; set; }
+        public MessageArrivedInputHeadersType Headers { get; set; } = new MessageArrivedInputHeadersType();
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Template { get; set; } = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end#if($messageId)\"message_id\": \"$messageId\",#end\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         internal string Encoding { get; set; } = "JSON";
 
         [JsonProperty("headers", DefaultValueHandling = DefaultValueHandling.Include)]
-        public GetDeliveryReceiptInputHeadersType Headers { get; set; }
+        public GetDeliveryReceiptInputHeadersType Headers { get; set; } = new GetDeliveryReceiptInputHeadersType();
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Template { get; set; } = "{\"delivery_report_id\":\"$drId\",#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"type\":\"$type\",\"message_id\":\"$messageId\",\"source_address\":\"$sourceAddress\",\"content\":\"$esc.json($mtContent)\",\"attachments\":[#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if( $foreach.hasNext ),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if( $foreach.hasNext ),#end#end]}";

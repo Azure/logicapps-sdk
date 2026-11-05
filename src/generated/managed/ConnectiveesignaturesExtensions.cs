@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     public class CreateInstantPackageInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Document { get; set; } = "";
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Document { get; set; } = global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent.FromBase64("");
         public CreateInstantPackageInputDocumentLanguageType? DocumentLanguage { get; set; }
         public string DocumentName { get; set; }
         public string ExternalPackageData { get; set; }
@@ -373,12 +373,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     public class RequestActor
     {
         public string Type { get; set; }
-        public int OrderIndex { get; set; }
+        public int? OrderIndex { get; set; }
         public SigningField[] SigningFields { get; set; }
         public SigningTypeInfo[] SigningTypes { get; set; }
         public string Phonenumber { get; set; }
         public string RedirectUrl { get; set; }
-        public bool SendNotifications { get; set; }
+        public bool? SendNotifications { get; set; }
         public string[] UserRoles { get; set; }
         public string LegalNoticeCode { get; set; }
         public string LegalNoticeText { get; set; }
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
 
     public class SigningField
     {
-        public int PageNumber { get; set; }
+        public int? PageNumber { get; set; }
         public string Width { get; set; }
         public string Height { get; set; }
         public string Left { get; set; }
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string F2FSigningUrl { get; set; }
         public string PackageStatus { get; set; }
         public PackageDocument[] PackageDocuments { get; set; }
-        public PackageStatusStakeholdersTypeItem[] Stakeholders { get; set; }
+        public PackageStatusInfoStakeholdersTypeItem[] Stakeholders { get; set; }
     }
 
     public class PackageDocument
@@ -517,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string DocumentType { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItem
+    public class PackageStatusInfoStakeholdersTypeItem
     {
         public string Type { get; set; }
         public string PersonGroupName { get; set; }
@@ -525,29 +525,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string EmailAddress { get; set; }
         public string ExternalStakeholderReference { get; set; }
         public string StakeholderId { get; set; }
-        public PackageStatusStakeholdersTypeItemActorsTypeItem[] Actors { get; set; }
+        public PackageStatusInfoStakeholdersTypeItemActorsTypeItem[] Actors { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItemActorsTypeItem
+    public class PackageStatusInfoStakeholdersTypeItemActorsTypeItem
     {
         public string ActorId { get; set; }
         public string ActionUrl { get; set; }
-        public PackageStatusStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem[] ActionUrls { get; set; }
+        public PackageStatusInfoStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem[] ActionUrls { get; set; }
         public string ActorStatus { get; set; }
         public string Type { get; set; }
         public string CompletedBy { get; set; }
         public string CompletedTimestamp { get; set; }
         public string Reason { get; set; }
-        public PackageStatusStakeholdersTypeItemActorsTypeItemLocationsTypeItem[] Locations { get; set; }
+        public PackageStatusInfoStakeholdersTypeItemActorsTypeItemLocationsTypeItem[] Locations { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem
+    public class PackageStatusInfoStakeholdersTypeItemActorsTypeItemActionUrlsTypeItem
     {
         public string EmailAddress { get; set; }
         public string Url { get; set; }
     }
 
-    public class PackageStatusStakeholdersTypeItemActorsTypeItemLocationsTypeItem
+    public class PackageStatusInfoStakeholdersTypeItemActorsTypeItemLocationsTypeItem
     {
         public string Id { get; set; }
         public string UsedSigningType { get; set; }

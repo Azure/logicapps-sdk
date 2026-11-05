@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         public EnvelopeField[] Fields { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Recipient[] Recipients { get; set; }
+        public Recipient2[] Recipients { get; set; }
 
         [JsonProperty("signatureLevel", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateEnvelopeInputSignatureLevelType? SignatureLevel { get; set; } = CreateEnvelopeInputSignatureLevelType.SIMPLE;
@@ -289,38 +289,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
 
     public class EnvelopeField
     {
-        [JsonProperty("recipientEmail")]
+        [JsonProperty("recipientEmail", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SignerEmail { get; set; }
 
-        [JsonProperty("documentIndex")]
-        public int DocumentNumber { get; set; }
+        [JsonProperty("documentIndex", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? DocumentNumber { get; set; } = 0;
 
-        [JsonProperty("pageNumber")]
-        public int Page { get; set; }
+        [JsonProperty("pageNumber", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Page { get; set; } = 1;
 
-        [JsonProperty("fieldType")]
-        public EnvelopeFieldFieldTypeType FieldType { get; set; }
+        [JsonProperty("fieldType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public EnvelopeFieldFieldTypeType FieldType { get; set; } = EnvelopeFieldFieldTypeType.SIGNATURE;
 
         [JsonProperty("anchorText")]
         public string AnchorTextRecommended { get; set; }
 
-        [JsonProperty("anchorPlacement")]
-        public EnvelopeFieldAnchorPlacementType AnchorPlacement { get; set; }
+        [JsonProperty("anchorPlacement", DefaultValueHandling = DefaultValueHandling.Include)]
+        public EnvelopeFieldAnchorPlacementType? AnchorPlacement { get; set; } = EnvelopeFieldAnchorPlacementType.Right;
 
-        [JsonProperty("anchorIndex")]
-        public int AnchorOccurrence { get; set; }
+        [JsonProperty("anchorIndex", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? AnchorOccurrence { get; set; } = 0;
 
-        [JsonProperty("x")]
-        public double X { get; set; }
+        [JsonProperty("x", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double X { get; set; } = 72;
 
-        [JsonProperty("y")]
-        public double Y { get; set; }
+        [JsonProperty("y", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Y { get; set; } = 700;
 
-        [JsonProperty("width")]
-        public double Width { get; set; }
+        [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Width { get; set; } = 150;
 
-        [JsonProperty("height")]
-        public double Height { get; set; }
+        [JsonProperty("height", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Height { get; set; } = 40;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -351,6 +351,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certyneo
         Above,
         [EnumMember(Value = "left")]
         Left
+    }
+
+    public class Recipient2
+    {
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RecipientEmail { get; set; }
+
+        [JsonProperty("name")]
+        public string RecipientName { get; set; }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RecipientRoleType? Role { get; set; } = RecipientRoleType.SIGNER;
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("signedAt")]
+        public string SignedAt { get; set; }
+
+        [JsonProperty("accessToken")]
+        public string AccessToken { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

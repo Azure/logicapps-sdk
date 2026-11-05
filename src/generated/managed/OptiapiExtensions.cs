@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
     public class GetPdfMetadataInformationInput
     {
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Pdf { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
     }
 
     public class ConvertAPdfFileToTextInput
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public ConvertAPdfFileToTextInputLayoutType Layout { get; set; } = ConvertAPdfFileToTextInputLayoutType.Raw;
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Pdf { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
 
         [JsonProperty("startPage")]
         public int? StartPage { get; set; }
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Password { get; set; }
 
         [JsonProperty("pdf", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Pdf { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Pdf { get; set; }
     }
 
     public class ReplaceTextInStringBasedOnARegularExpressionResponse

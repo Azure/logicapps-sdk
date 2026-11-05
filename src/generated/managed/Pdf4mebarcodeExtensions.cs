@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class AddBarcodeV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("docName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocName { get; set; }
@@ -257,7 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class CreateEpcQrCodeV1Input
     {
         [JsonProperty("epcQrCodeAction", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateEpcQrCodeV1InputEpcQrCodeActionType EpcQrCodeAction { get; set; }
+        public CreateEpcQrCodeV1InputEpcQrCodeActionType EpcQrCodeAction { get; set; } = new CreateEpcQrCodeV1InputEpcQrCodeActionType();
     }
 
     public class CreateEpcQrCodeV1InputEpcQrCodeActionType
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class ReadBarcodesV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public ReadBarcodesV1InputDocumentType Document { get; set; }
@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class ReadBarcodesFromImageV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public ReadBarcodesFromImageV1InputDocumentType Document { get; set; }
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class ReadSwissQrBillV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public ReadSwissQrBillV1InputDocumentType Document { get; set; }
@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     public class SplitDocByBarcodeV1Input
     {
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public SplitDocByBarcodeV1InputDocumentType Document { get; set; }

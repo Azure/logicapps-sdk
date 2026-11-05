@@ -260,11 +260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcoreshare
 
     public class File
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
-        [JsonProperty("content")]
-        public string FileContent { get; set; }
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class UpdateDocumentInput

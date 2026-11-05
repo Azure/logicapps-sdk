@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class ParseResumeDetailViaFileContentResponse
@@ -1326,7 +1326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class ParseResumeDetailViaUrlResponse
@@ -2346,7 +2346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class ParseResumeStandardViaUrlResponse
@@ -2768,7 +2768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         public string FileName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     public class ParseResumeBasicViaUrlResponse

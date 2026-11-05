@@ -115,19 +115,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
     public class CertifyFileInput
     {
         [JsonProperty("file_base_64", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileBase64 { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileBase64 { get; set; }
 
         [JsonProperty("language")]
-        public ZLanguage? Language { get; set; }
+        public ZLanguage Language { get; set; }
 
         [JsonProperty("offset")]
-        public double? Offset { get; set; }
+        public double Offset { get; set; }
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         [JsonProperty("sandbox")]
-        public bool? Sandbox { get; set; }
+        public bool Sandbox { get; set; }
     }
 
     public class CertifyHashInput
@@ -136,16 +136,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         public string Hash { get; set; }
 
         [JsonProperty("language")]
-        public ZLanguage? Language { get; set; }
+        public ZLanguage Language { get; set; }
 
         [JsonProperty("offset")]
-        public double? Offset { get; set; }
+        public double Offset { get; set; }
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         [JsonProperty("sandbox")]
-        public bool? Sandbox { get; set; }
+        public bool Sandbox { get; set; }
     }
 }
 

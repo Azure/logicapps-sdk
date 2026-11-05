@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 
     public class ContentDetails
     {
-        [JsonProperty("subject")]
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
         [JsonProperty("html")]
@@ -182,15 +182,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public string ContentType { get; set; }
 
         [JsonProperty("contentInBase64", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentInBase64 { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentInBase64 { get; set; }
     }
 
     public class EmailCustomHeader
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 }

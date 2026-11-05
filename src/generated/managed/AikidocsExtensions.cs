@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class WordAppendDocumentsInput
     {
         [JsonProperty("appendDocumentList")]
-        public string[] AppendDocumentList { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] AppendDocumentList { get; set; }
     }
 
     public class ExtractContentByHeadingResponse
@@ -188,10 +188,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class WordExtractContentByHeadingInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter SourceDocument { get; set; }
+        public WordDocumentParameter2 SourceDocument { get; set; }
 
         [JsonProperty("headingStyleName")]
         public string HeadingStyleName { get; set; }
+    }
+
+    public class WordDocumentParameter2
+    {
+        [JsonProperty("documentContent")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
+
+        [JsonProperty("documentName")]
+        public string DocumentName { get; set; }
     }
 
     public class ExtractSectionByTitleResponse
@@ -203,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class WordExtractContentByTitleInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter SourceDocument { get; set; }
+        public WordDocumentParameter2 SourceDocument { get; set; }
 
         [JsonProperty("headingText")]
         public string HeadingText { get; set; }
@@ -230,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
         public string EndBookMark { get; set; }
 
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter SourceDocument { get; set; }
+        public WordDocumentParameter2 SourceDocument { get; set; }
     }
 
     public class InsertDocumentResponse
@@ -245,10 +254,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class WordInsertDocumentsInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter SourceDocument { get; set; }
+        public WordDocumentParameter2 SourceDocument { get; set; }
 
         [JsonProperty("insertDocumentList")]
-        public string[] InsertDocumentList { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] InsertDocumentList { get; set; }
 
         [JsonProperty("bookmarkName")]
         public string BookmarkName { get; set; }
@@ -269,10 +278,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aikidocs
     public class WordApplyStyleToDocumentInput
     {
         [JsonProperty("sourceDocument")]
-        public WordDocumentParameter SourceDocument { get; set; }
+        public WordDocumentParameter2 SourceDocument { get; set; }
 
         [JsonProperty("destinationDocument")]
-        public WordDocumentParameter DestinationDocument { get; set; }
+        public WordDocumentParameter2 DestinationDocument { get; set; }
     }
 }
 

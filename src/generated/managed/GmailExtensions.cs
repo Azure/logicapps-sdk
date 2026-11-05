@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string Body { get; set; }
         public bool? ReplyAll { get; set; }
         public ReplyToV2InputImportanceType? Importance { get; set; }
-        public Attachment[] Attachments { get; set; }
+        public Attachment2[] Attachments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -194,6 +194,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         Normal,
         Low,
         High
+    }
+
+    public class Attachment2
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("ContentBytes", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
+        public string ContentType { get; set; }
     }
 
     public class SendEmailV2Input
@@ -209,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string Subject { get; set; }
         public string Body { get; set; }
         public SendEmailV2InputImportanceType? Importance { get; set; }
-        public Attachment[] Attachments { get; set; }
+        public Attachment2[] Attachments { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

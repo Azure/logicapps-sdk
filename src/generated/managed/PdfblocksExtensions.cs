@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     public class MergeDocumentsArrayInputDocumentsTypeItem
     {
         [JsonProperty("fileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("fileName")]
         public string FileName { get; set; }
