@@ -182,18 +182,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 
     public class SmartdialogTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewMessageResponse, ApiConnectionTriggerConfiguration> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, Expression<Func<CreateWebhookRequestBodyInput>> createWebhookRequestBody, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMessageResponse, ApiConnectionTriggerConfiguration> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, FlowRecurrence recurrence = null)
         {
             var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
-            var __workflow_createWebhookRequestBody = WorkflowExpression.Compile(createWebhookRequestBody, nameof(createWebhookRequestBody), required: true);
             return new DeferredBodyTrigger<NewMessageResponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/service/{0}/pipelines/actions", __workflow_service.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Customer"] = ExpressionConverter.Convert(__workflow_customer);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createWebhookRequestBody);
+                callPayload.Body = new CreateWebhookRequestBodyInput().ToJToken();
                 return new ApiConnectionTrigger<NewMessageResponse>(callPayload, recurrence: recurrence);
             });
         }

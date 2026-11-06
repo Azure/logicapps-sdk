@@ -101,9 +101,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -114,10 +111,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         public bool? FailOnError { get; set; } = true;
     }
 
-    public class SharepointFile
-    {
-    }
-
     public class ExtractKeyValuePairsInputPdfDataInput
     {
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -125,9 +118,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -301,9 +291,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp.InputDataInputLanguageType.English;

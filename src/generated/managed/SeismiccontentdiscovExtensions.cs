@@ -527,9 +527,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [JsonProperty("conditions")]
         public SeismicSearchConditionExpressionInfo[] Condition { get; set; }
 
-        [JsonProperty("filters")]
-        public SeismicSearchFilterExpressionInfo[] Filter { get; set; }
-
         [JsonProperty("operator")]
         public string Operator { get; set; }
     }

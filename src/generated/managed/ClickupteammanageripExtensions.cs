@@ -142,9 +142,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [JsonProperty("hidden")]
         public bool? HiddenFolder { get; set; }
 
-        [JsonProperty("space")]
-        public CreateAFolderBodyInputSpaceType Space { get; set; }
-
         [JsonProperty("task_count")]
         public string TaskCount { get; set; }
 
@@ -156,10 +153,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
 
         [JsonProperty("permission_level")]
         public string PermissionLevel { get; set; }
-    }
-
-    public class CreateAFolderBodyInputSpaceType
-    {
     }
 
     public class GetTeamsResponse
@@ -662,50 +655,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [JsonProperty("orderindex")]
         public int? OrderIndex { get; set; }
 
-        [JsonProperty("status")]
-        public BodyInputStatusType Status { get; set; }
-
-        [JsonProperty("priority")]
-        public BodyInputPriorityType Priority { get; set; }
-
-        [JsonProperty("assignee")]
-        public BodyInputAssigneeType Assignee { get; set; }
-
         [JsonProperty("due_date_time")]
         public bool? DueDate2 { get; set; }
-
-        [JsonProperty("folder")]
-        public BodyInputFolderType Folder { get; set; }
-
-        [JsonProperty("space")]
-        public CreateAListBodyInputSpaceType Space { get; set; }
-
-        [JsonProperty("statuses")]
-        public BodyInputStatusesTypeItem[] Statuses { get; set; }
-    }
-
-    public class BodyInputStatusType
-    {
-    }
-
-    public class BodyInputPriorityType
-    {
-    }
-
-    public class BodyInputAssigneeType
-    {
-    }
-
-    public class BodyInputFolderType
-    {
-    }
-
-    public class CreateAListBodyInputSpaceType
-    {
-    }
-
-    public class BodyInputStatusesTypeItem
-    {
     }
 }
 

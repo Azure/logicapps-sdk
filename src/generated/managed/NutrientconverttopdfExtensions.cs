@@ -202,9 +202,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputOutputFormatType.PDF;
 
@@ -219,10 +216,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
         [JsonProperty("fail_on_error", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FailOnError { get; set; } = true;
-    }
-
-    public class SharepointFile
-    {
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -266,9 +259,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -362,9 +352,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -470,9 +457,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -612,9 +596,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -775,9 +756,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -831,9 +809,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -921,9 +896,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -981,9 +953,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }

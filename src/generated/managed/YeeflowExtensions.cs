@@ -500,7 +500,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public ListDataWhereRequestPreType? Pre { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow.ListDataWhereRequestPreType.And;
-        public ListDataWhereRequest[] Child { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

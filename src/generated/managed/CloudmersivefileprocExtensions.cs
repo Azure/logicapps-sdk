@@ -364,7 +364,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
     public class ZipDirectory
     {
         public string DirectoryName { get; set; }
-        public ZipDirectory[] DirectoriesInDirectory { get; set; }
         public ZipFile[] FilesInDirectory { get; set; }
     }
 

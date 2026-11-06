@@ -90,9 +90,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool MetaData { get; set; } = false;
 
@@ -116,10 +113,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
         [JsonProperty("fail_on_error", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FailOnError { get; set; } = true;
-    }
-
-    public class SharepointFile
-    {
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -205,9 +198,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr.InputDataInputLanguageType.English;

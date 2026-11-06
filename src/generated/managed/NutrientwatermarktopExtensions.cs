@@ -202,18 +202,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("watermark_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkData { get; set; }
 
         [JsonProperty("fail_on_error", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FailOnError { get; set; } = true;
-    }
-
-    public class SharepointFile
-    {
     }
 
     public class EllipseWatermarkInputDataInput
@@ -229,9 +222,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
@@ -354,9 +344,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [JsonProperty("image_file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
@@ -432,9 +419,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("x", DefaultValueHandling = DefaultValueHandling.Include)]
         public string XCoordinateStart { get; set; }
 
@@ -503,9 +487,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BarcodeContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("barcode_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputBarcodeTypeType.Codabar;
@@ -670,9 +651,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFWatermark { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
@@ -738,9 +716,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputVersionType Version { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputVersionType.Auto;
@@ -926,9 +901,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
 
@@ -1000,9 +972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
         [JsonProperty("rtf_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop.InputDataInputPositionType.MiddleCenter;
@@ -1078,9 +1047,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("font_family_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FontFamilyName { get; set; }

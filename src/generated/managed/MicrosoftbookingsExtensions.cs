@@ -28,44 +28,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
 
     public class MicrosoftbookingsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CreateAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress, FlowRecurrence recurrence = null)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<Webhookresponse, ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentCreated", __workflow_sMTPAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CreateAppointmentBodyInput().ToJToken();
                 return new ApiConnectionTrigger<Webhookresponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<UpdateAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress, FlowRecurrence recurrence = null)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentUpdated", __workflow_sMTPAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new UpdateAppointmentBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CancelAppointmentBodyInput>> body, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress, FlowRecurrence recurrence = null)
         {
             var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentDeleted", __workflow_sMTPAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new CancelAppointmentBodyInput().ToJToken();
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }

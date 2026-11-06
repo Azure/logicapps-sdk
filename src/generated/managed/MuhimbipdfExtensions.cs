@@ -496,18 +496,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("watermark_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkData { get; set; }
 
         [JsonProperty("fail_on_error", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? FailOnError { get; set; } = true;
-    }
-
-    public class SharepointFile
-    {
     }
 
     public class CompressPdfInputPdfDataInput
@@ -517,9 +510,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -778,9 +768,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputOutputFormatType.PDF;
 
@@ -838,9 +825,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -934,9 +918,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -1042,9 +1023,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -1184,9 +1162,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -1347,9 +1322,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -1403,9 +1375,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -1493,9 +1462,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -1553,9 +1519,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -1715,9 +1678,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
 
@@ -1833,9 +1793,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -1865,9 +1822,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -1891,9 +1845,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("image_file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Image { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
@@ -1964,9 +1915,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
@@ -2024,9 +1972,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SourceFileName { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
@@ -2170,9 +2115,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("x", DefaultValueHandling = DefaultValueHandling.Include)]
         public string XCoordinateStart { get; set; }
 
@@ -2241,9 +2183,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BarcodeContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("barcode_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputBarcodeTypeType BarcodeType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputBarcodeTypeType.Codabar;
@@ -2429,9 +2368,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_content_5")]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent5 { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("document_start_page", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputEachDocumentType? EachDocument { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputEachDocumentType.StartsOnTheNextPage;
 
@@ -2477,9 +2413,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool MetaData { get; set; } = false;
@@ -2590,9 +2523,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputLanguageType? Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputLanguageType.English;
 
@@ -2640,9 +2570,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("pdf_file", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFWatermark { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
@@ -2709,9 +2636,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputVersionType Version { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputVersionType.Auto;
@@ -2897,9 +2821,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("width", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Width { get; set; }
 
@@ -2971,9 +2892,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("rtf_data", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("position", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPositionType Position { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf.InputDataInputPositionType.MiddleCenter;
@@ -3047,9 +2965,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("open_password")]
         public string OpenPassword { get; set; }
 
@@ -3114,9 +3029,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [JsonProperty("source_file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
-
         [JsonProperty("file_name_template")]
         public string FileNameTemplate { get; set; }
 
@@ -3152,9 +3064,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WatermarkContent { get; set; }
-
-        [JsonProperty("sharepoint_file")]
-        public SharepointFile SharepointFile { get; set; }
 
         [JsonProperty("font_family_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FontFamilyName { get; set; }

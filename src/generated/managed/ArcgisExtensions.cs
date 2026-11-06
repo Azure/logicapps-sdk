@@ -538,9 +538,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentCreatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentCreated(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentCreatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentCreated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
             return new DeferredBodyTrigger<WebhookAttachmentCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -550,14 +549,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookAttachmentCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentDeletedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentDeleted(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentDeletedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentDeleted(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
             return new DeferredBodyTrigger<WebhookAttachmentDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -567,14 +565,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookAttachmentDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentUpdated(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionTriggerConfiguration> WebhookAttachmentUpdated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
             return new DeferredBodyTrigger<WebhookAttachmentUpdatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -584,14 +581,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookAttachmentUpdatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLCreatedResponse, ApiConnectionTriggerConfiguration> WebhookFLCreated(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLCreatedResponse, ApiConnectionTriggerConfiguration> WebhookFLCreated(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
             return new DeferredBodyTrigger<WebhookFLCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -601,14 +597,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookFLCreatedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLDeletedResponse, ApiConnectionTriggerConfiguration> WebhookFLDeleted(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLDeletedResponse, ApiConnectionTriggerConfiguration> WebhookFLDeleted(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
             return new DeferredBodyTrigger<WebhookFLDeletedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -618,14 +613,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookFLDeletedResponse>(callPayload, recurrence: recurrence);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookFLEditedResponse, ApiConnectionTriggerConfiguration> WebhookFLEdited(Expression<Func<BodyInput>> body, Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookFLEditedResponse, ApiConnectionTriggerConfiguration> WebhookFLEdited(Expression<Func<string>> contentFilter, Expression<Func<string>> userLayer, FlowRecurrence recurrence = null)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: true);
             var __workflow_userLayer = WorkflowExpression.Compile(userLayer, nameof(userLayer), required: true);
             return new DeferredBodyTrigger<WebhookFLEditedResponse, ApiConnectionTriggerConfiguration>(() =>
@@ -635,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgis
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["contentFilter"] = ExpressionConverter.Convert(__workflow_contentFilter);
                 callPayload.Queries["userLayer"] = ExpressionConverter.Convert(__workflow_userLayer);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                callPayload.Body = new BodyInput().ToJToken();
                 return new ApiConnectionTrigger<WebhookFLEditedResponse>(callPayload, recurrence: recurrence);
             });
         }

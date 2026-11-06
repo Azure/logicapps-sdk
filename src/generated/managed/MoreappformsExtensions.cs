@@ -71,8 +71,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
 
     public class MoreappformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewSubmission(Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> NewSubmission(Expression<Func<NewSubmissionBodyInput>> body, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -81,13 +82,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_formId != null)
                     callPayload.Headers["formId"] = ExpressionConverter.Convert(__workflow_formId);
-                callPayload.Body = new NewSubmissionBodyInput().ToJToken();
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TaskFulfilled(Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> TaskFulfilled(Expression<Func<TaskFulfilledBodyInput>> body, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
             {
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_formId != null)
                     callPayload.Headers["formId"] = ExpressionConverter.Convert(__workflow_formId);
-                callPayload.Body = new TaskFulfilledBodyInput().ToJToken();
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
             });
         }
